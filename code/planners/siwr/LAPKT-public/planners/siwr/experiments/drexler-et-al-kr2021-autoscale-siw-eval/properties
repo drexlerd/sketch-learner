@@ -1,0 +1,4032 @@
+{
+  "siwr-1-childsnack-p01.pddl": {
+    "algorithm": "siwr-1",
+    "coverage": 0,
+    "domain": "childsnack",
+    "error": "plan-found",
+    "id": [
+      "siwr-1",
+      "childsnack",
+      "p01.pddl"
+    ],
+    "memory_limit": 3000,
+    "node": "n490",
+    "nodes_expanded": 1122,
+    "nodes_generated": 1529,
+    "nodes_pruned": 86578,
+    "not_i_reachable": 1,
+    "planner_exit_code": 0,
+    "problem": "p01.pddl",
+    "run_dir": "runs-00001-00100/00031",
+    "time_limit": 1800,
+    "total_time": 0.055125,
+    "width_average": 2.0,
+    "width_maximum": 2
+  },
+  "siwr-1-childsnack-p02.pddl": {
+    "algorithm": "siwr-1",
+    "coverage": 0,
+    "domain": "childsnack",
+    "error": "plan-found",
+    "id": [
+      "siwr-1",
+      "childsnack",
+      "p02.pddl"
+    ],
+    "memory_limit": 3000,
+    "node": "n721",
+    "nodes_expanded": 1592,
+    "nodes_generated": 2443,
+    "nodes_pruned": 164653,
+    "not_i_reachable": 1,
+    "planner_exit_code": 0,
+    "problem": "p02.pddl",
+    "run_dir": "runs-00001-00100/00032",
+    "time_limit": 1800,
+    "total_time": 0.128048,
+    "width_average": 2.0,
+    "width_maximum": 2
+  },
+  "siwr-1-childsnack-p03.pddl": {
+    "algorithm": "siwr-1",
+    "coverage": 0,
+    "domain": "childsnack",
+    "error": "plan-found",
+    "id": [
+      "siwr-1",
+      "childsnack",
+      "p03.pddl"
+    ],
+    "memory_limit": 3000,
+    "node": "n251",
+    "nodes_expanded": 1986,
+    "nodes_generated": 3085,
+    "nodes_pruned": 355506,
+    "not_i_reachable": 1,
+    "planner_exit_code": 0,
+    "problem": "p03.pddl",
+    "run_dir": "runs-00001-00100/00033",
+    "time_limit": 1800,
+    "total_time": 0.243966,
+    "width_average": 2.0,
+    "width_maximum": 2
+  },
+  "siwr-1-childsnack-p04.pddl": {
+    "algorithm": "siwr-1",
+    "coverage": 0,
+    "domain": "childsnack",
+    "error": "plan-found",
+    "id": [
+      "siwr-1",
+      "childsnack",
+      "p04.pddl"
+    ],
+    "memory_limit": 3000,
+    "node": "n530",
+    "nodes_expanded": 2900,
+    "nodes_generated": 4579,
+    "nodes_pruned": 1328666,
+    "not_i_reachable": 1,
+    "planner_exit_code": 0,
+    "problem": "p04.pddl",
+    "run_dir": "runs-00001-00100/00034",
+    "time_limit": 1800,
+    "total_time": 1.24844,
+    "width_average": 2.0,
+    "width_maximum": 2
+  },
+  "siwr-1-childsnack-p05.pddl": {
+    "algorithm": "siwr-1",
+    "coverage": 0,
+    "domain": "childsnack",
+    "error": "plan-found",
+    "id": [
+      "siwr-1",
+      "childsnack",
+      "p05.pddl"
+    ],
+    "memory_limit": 3000,
+    "node": "n1868",
+    "nodes_expanded": 3419,
+    "nodes_generated": 5431,
+    "nodes_pruned": 2333988,
+    "not_i_reachable": 1,
+    "planner_exit_code": 0,
+    "problem": "p05.pddl",
+    "run_dir": "runs-00001-00100/00035",
+    "time_limit": 1800,
+    "total_time": 2.3965,
+    "width_average": 2.0,
+    "width_maximum": 2
+  },
+  "siwr-1-childsnack-p06.pddl": {
+    "algorithm": "siwr-1",
+    "coverage": 0,
+    "domain": "childsnack",
+    "error": "plan-found",
+    "id": [
+      "siwr-1",
+      "childsnack",
+      "p06.pddl"
+    ],
+    "memory_limit": 3000,
+    "node": "n490",
+    "nodes_expanded": 4770,
+    "nodes_generated": 8191,
+    "nodes_pruned": 5352183,
+    "not_i_reachable": 1,
+    "planner_exit_code": 0,
+    "problem": "p06.pddl",
+    "run_dir": "runs-00001-00100/00036",
+    "time_limit": 1800,
+    "total_time": 5.96498,
+    "width_average": 2.0,
+    "width_maximum": 2
+  },
+  "siwr-1-childsnack-p07.pddl": {
+    "algorithm": "siwr-1",
+    "coverage": 0,
+    "domain": "childsnack",
+    "error": "plan-found",
+    "id": [
+      "siwr-1",
+      "childsnack",
+      "p07.pddl"
+    ],
+    "memory_limit": 3000,
+    "node": "n1961",
+    "nodes_expanded": 5430,
+    "nodes_generated": 9378,
+    "nodes_pruned": 8284490,
+    "not_i_reachable": 1,
+    "planner_exit_code": 0,
+    "problem": "p07.pddl",
+    "run_dir": "runs-00001-00100/00037",
+    "time_limit": 1800,
+    "total_time": 11.6389,
+    "width_average": 2.0,
+    "width_maximum": 2
+  },
+  "siwr-1-childsnack-p08.pddl": {
+    "algorithm": "siwr-1",
+    "coverage": 0,
+    "domain": "childsnack",
+    "error": "plan-found",
+    "id": [
+      "siwr-1",
+      "childsnack",
+      "p08.pddl"
+    ],
+    "memory_limit": 3000,
+    "node": "n530",
+    "nodes_expanded": 6135,
+    "nodes_generated": 10643,
+    "nodes_pruned": 12422821,
+    "not_i_reachable": 1,
+    "planner_exit_code": 0,
+    "problem": "p08.pddl",
+    "run_dir": "runs-00001-00100/00038",
+    "time_limit": 1800,
+    "total_time": 18.642,
+    "width_average": 2.0,
+    "width_maximum": 2
+  },
+  "siwr-1-childsnack-p09.pddl": {
+    "algorithm": "siwr-1",
+    "coverage": 0,
+    "domain": "childsnack",
+    "error": "plan-found",
+    "id": [
+      "siwr-1",
+      "childsnack",
+      "p09.pddl"
+    ],
+    "memory_limit": 3000,
+    "node": "n251",
+    "nodes_expanded": 7704,
+    "nodes_generated": 14064,
+    "nodes_pruned": 22777306,
+    "not_i_reachable": 1,
+    "planner_exit_code": 0,
+    "problem": "p09.pddl",
+    "run_dir": "runs-00001-00100/00039",
+    "time_limit": 1800,
+    "total_time": 37.6762,
+    "width_average": 2.0,
+    "width_maximum": 2
+  },
+  "siwr-1-childsnack-p10.pddl": {
+    "algorithm": "siwr-1",
+    "coverage": 0,
+    "domain": "childsnack",
+    "error": "plan-found",
+    "id": [
+      "siwr-1",
+      "childsnack",
+      "p10.pddl"
+    ],
+    "memory_limit": 3000,
+    "node": "n1686",
+    "nodes_expanded": 8523,
+    "nodes_generated": 15624,
+    "nodes_pruned": 31764177,
+    "not_i_reachable": 1,
+    "planner_exit_code": 0,
+    "problem": "p10.pddl",
+    "run_dir": "runs-00001-00100/00040",
+    "time_limit": 1800,
+    "total_time": 43.3634,
+    "width_average": 2.0,
+    "width_maximum": 2
+  },
+  "siwr-1-childsnack-p11.pddl": {
+    "algorithm": "siwr-1",
+    "coverage": 0,
+    "domain": "childsnack",
+    "error": "plan-found",
+    "id": [
+      "siwr-1",
+      "childsnack",
+      "p11.pddl"
+    ],
+    "memory_limit": 3000,
+    "node": "n1961",
+    "nodes_expanded": 10271,
+    "nodes_generated": 18984,
+    "nodes_pruned": 58273685,
+    "not_i_reachable": 1,
+    "planner_exit_code": 0,
+    "problem": "p11.pddl",
+    "run_dir": "runs-00001-00100/00041",
+    "time_limit": 1800,
+    "total_time": 114.564,
+    "width_average": 2.0,
+    "width_maximum": 2
+  },
+  "siwr-1-childsnack-p12.pddl": {
+    "algorithm": "siwr-1",
+    "coverage": 0,
+    "domain": "childsnack",
+    "error": "plan-found",
+    "id": [
+      "siwr-1",
+      "childsnack",
+      "p12.pddl"
+    ],
+    "memory_limit": 3000,
+    "node": "n1960",
+    "nodes_expanded": 11207,
+    "nodes_generated": 20784,
+    "nodes_pruned": 77036277,
+    "not_i_reachable": 1,
+    "planner_exit_code": 0,
+    "problem": "p12.pddl",
+    "run_dir": "runs-00001-00100/00042",
+    "time_limit": 1800,
+    "total_time": 149.879,
+    "width_average": 2.0,
+    "width_maximum": 2
+  },
+  "siwr-1-childsnack-p13.pddl": {
+    "algorithm": "siwr-1",
+    "coverage": 0,
+    "domain": "childsnack",
+    "error": "plan-found",
+    "id": [
+      "siwr-1",
+      "childsnack",
+      "p13.pddl"
+    ],
+    "memory_limit": 3000,
+    "node": "n721",
+    "nodes_expanded": 13057,
+    "nodes_generated": 26505,
+    "nodes_pruned": 95629964,
+    "not_i_reachable": 1,
+    "planner_exit_code": 0,
+    "problem": "p13.pddl",
+    "run_dir": "runs-00001-00100/00043",
+    "time_limit": 1800,
+    "total_time": 188.831,
+    "width_average": 2.0,
+    "width_maximum": 2
+  },
+  "siwr-1-childsnack-p14.pddl": {
+    "algorithm": "siwr-1",
+    "coverage": 0,
+    "domain": "childsnack",
+    "error": "plan-found",
+    "id": [
+      "siwr-1",
+      "childsnack",
+      "p14.pddl"
+    ],
+    "memory_limit": 3000,
+    "node": "n2010",
+    "nodes_expanded": 15307,
+    "nodes_generated": 31335,
+    "nodes_pruned": 157932577,
+    "not_i_reachable": 1,
+    "planner_exit_code": 0,
+    "problem": "p14.pddl",
+    "run_dir": "runs-00001-00100/00044",
+    "time_limit": 1800,
+    "total_time": 336.636,
+    "width_average": 2.0,
+    "width_maximum": 2
+  },
+  "siwr-1-childsnack-p15.pddl": {
+    "algorithm": "siwr-1",
+    "coverage": 0,
+    "domain": "childsnack",
+    "error": "plan-found",
+    "id": [
+      "siwr-1",
+      "childsnack",
+      "p15.pddl"
+    ],
+    "memory_limit": 3000,
+    "node": "n1960",
+    "nodes_expanded": 16498,
+    "nodes_generated": 33900,
+    "nodes_pruned": 199553656,
+    "not_i_reachable": 1,
+    "planner_exit_code": 0,
+    "problem": "p15.pddl",
+    "run_dir": "runs-00001-00100/00045",
+    "time_limit": 1800,
+    "total_time": 430.377,
+    "width_average": 2.0,
+    "width_maximum": 2
+  },
+  "siwr-1-childsnack-p16.pddl": {
+    "algorithm": "siwr-1",
+    "coverage": 0,
+    "domain": "childsnack",
+    "error": "plan-found",
+    "id": [
+      "siwr-1",
+      "childsnack",
+      "p16.pddl"
+    ],
+    "memory_limit": 3000,
+    "node": "n1686",
+    "nodes_expanded": 17734,
+    "nodes_generated": 36565,
+    "nodes_pruned": 249635936,
+    "not_i_reachable": 1,
+    "planner_exit_code": 0,
+    "problem": "p16.pddl",
+    "run_dir": "runs-00001-00100/00046",
+    "time_limit": 1800,
+    "total_time": 438.433,
+    "width_average": 2.0,
+    "width_maximum": 2
+  },
+  "siwr-1-childsnack-p17.pddl": {
+    "algorithm": "siwr-1",
+    "coverage": 0,
+    "domain": "childsnack",
+    "error": "plan-found",
+    "id": [
+      "siwr-1",
+      "childsnack",
+      "p17.pddl"
+    ],
+    "memory_limit": 3000,
+    "node": "n1959",
+    "nodes_expanded": 21673,
+    "nodes_generated": 48261,
+    "nodes_pruned": 369064177,
+    "not_i_reachable": 1,
+    "planner_exit_code": 0,
+    "problem": "p17.pddl",
+    "run_dir": "runs-00001-00100/00047",
+    "time_limit": 1800,
+    "total_time": 905.247,
+    "width_average": 2.0,
+    "width_maximum": 2
+  },
+  "siwr-1-childsnack-p18.pddl": {
+    "algorithm": "siwr-1",
+    "coverage": 0,
+    "domain": "childsnack",
+    "error": "plan-found",
+    "id": [
+      "siwr-1",
+      "childsnack",
+      "p18.pddl"
+    ],
+    "memory_limit": 3000,
+    "node": "n1960",
+    "nodes_expanded": 23147,
+    "nodes_generated": 51731,
+    "nodes_pruned": 451399255,
+    "not_i_reachable": 1,
+    "planner_exit_code": 0,
+    "problem": "p18.pddl",
+    "run_dir": "runs-00001-00100/00048",
+    "time_limit": 1800,
+    "total_time": 1100.6,
+    "width_average": 2.0,
+    "width_maximum": 2
+  },
+  "siwr-1-childsnack-p19.pddl": {
+    "algorithm": "siwr-1",
+    "coverage": 0,
+    "domain": "childsnack",
+    "error": "plan-found",
+    "id": [
+      "siwr-1",
+      "childsnack",
+      "p19.pddl"
+    ],
+    "memory_limit": 3000,
+    "node": "n1686",
+    "nodes_expanded": 26233,
+    "nodes_generated": 59031,
+    "nodes_pruned": 660448215,
+    "not_i_reachable": 1,
+    "planner_exit_code": 0,
+    "problem": "p19.pddl",
+    "run_dir": "runs-00001-00100/00049",
+    "time_limit": 1800,
+    "total_time": 1293.21,
+    "width_average": 2.0,
+    "width_maximum": 2
+  },
+  "siwr-1-childsnack-p20.pddl": {
+    "algorithm": "siwr-1",
+    "coverage": 0,
+    "domain": "childsnack",
+    "error": "unsolvable-or-error",
+    "id": [
+      "siwr-1",
+      "childsnack",
+      "p20.pddl"
+    ],
+    "memory_limit": 3000,
+    "node": "n1962",
+    "not_i_reachable": 0,
+    "planner_exit_code": -24,
+    "problem": "p20.pddl",
+    "run_dir": "runs-00001-00100/00050",
+    "time_limit": 1800
+  },
+  "siwr-1-childsnack-p21.pddl": {
+    "algorithm": "siwr-1",
+    "coverage": 0,
+    "domain": "childsnack",
+    "error": "unsolvable-or-error",
+    "id": [
+      "siwr-1",
+      "childsnack",
+      "p21.pddl"
+    ],
+    "memory_limit": 3000,
+    "node": "n1686",
+    "not_i_reachable": 0,
+    "planner_exit_code": -24,
+    "problem": "p21.pddl",
+    "run_dir": "runs-00001-00100/00051",
+    "time_limit": 1800
+  },
+  "siwr-1-childsnack-p22.pddl": {
+    "algorithm": "siwr-1",
+    "coverage": 0,
+    "domain": "childsnack",
+    "error": "unsolvable-or-error",
+    "id": [
+      "siwr-1",
+      "childsnack",
+      "p22.pddl"
+    ],
+    "memory_limit": 3000,
+    "node": "n1959",
+    "not_i_reachable": 0,
+    "planner_exit_code": -24,
+    "problem": "p22.pddl",
+    "run_dir": "runs-00001-00100/00052",
+    "time_limit": 1800
+  },
+  "siwr-1-childsnack-p23.pddl": {
+    "algorithm": "siwr-1",
+    "coverage": 0,
+    "domain": "childsnack",
+    "error": "plan-found",
+    "id": [
+      "siwr-1",
+      "childsnack",
+      "p23.pddl"
+    ],
+    "memory_limit": 3000,
+    "node": "n530",
+    "nodes_expanded": 37206,
+    "nodes_generated": 78913,
+    "nodes_pruned": 326882828,
+    "not_i_reachable": 1,
+    "planner_exit_code": 0,
+    "problem": "p23.pddl",
+    "run_dir": "runs-00001-00100/00053",
+    "time_limit": 1800,
+    "total_time": 664.57,
+    "width_average": 2.0,
+    "width_maximum": 2
+  },
+  "siwr-1-childsnack-p24.pddl": {
+    "algorithm": "siwr-1",
+    "coverage": 0,
+    "domain": "childsnack",
+    "error": "plan-found",
+    "id": [
+      "siwr-1",
+      "childsnack",
+      "p24.pddl"
+    ],
+    "memory_limit": 3000,
+    "node": "n490",
+    "nodes_expanded": 43656,
+    "nodes_generated": 94806,
+    "nodes_pruned": 424976789,
+    "not_i_reachable": 1,
+    "planner_exit_code": 0,
+    "problem": "p24.pddl",
+    "run_dir": "runs-00001-00100/00054",
+    "time_limit": 1800,
+    "total_time": 820.032,
+    "width_average": 2.0,
+    "width_maximum": 2
+  },
+  "siwr-1-childsnack-p25.pddl": {
+    "algorithm": "siwr-1",
+    "coverage": 0,
+    "domain": "childsnack",
+    "error": "plan-found",
+    "id": [
+      "siwr-1",
+      "childsnack",
+      "p25.pddl"
+    ],
+    "memory_limit": 3000,
+    "node": "n490",
+    "nodes_expanded": 47929,
+    "nodes_generated": 104482,
+    "nodes_pruned": 565643475,
+    "not_i_reachable": 1,
+    "planner_exit_code": 0,
+    "problem": "p25.pddl",
+    "run_dir": "runs-00001-00100/00055",
+    "time_limit": 1800,
+    "total_time": 1142.3,
+    "width_average": 2.0,
+    "width_maximum": 2
+  },
+  "siwr-1-childsnack-p26.pddl": {
+    "algorithm": "siwr-1",
+    "coverage": 0,
+    "domain": "childsnack",
+    "error": "plan-found",
+    "id": [
+      "siwr-1",
+      "childsnack",
+      "p26.pddl"
+    ],
+    "memory_limit": 3000,
+    "node": "n490",
+    "nodes_expanded": 55515,
+    "nodes_generated": 123474,
+    "nodes_pruned": 719718225,
+    "not_i_reachable": 1,
+    "planner_exit_code": 0,
+    "problem": "p26.pddl",
+    "run_dir": "runs-00001-00100/00056",
+    "time_limit": 1800,
+    "total_time": 1477.66,
+    "width_average": 2.0,
+    "width_maximum": 2
+  },
+  "siwr-1-childsnack-p27.pddl": {
+    "algorithm": "siwr-1",
+    "coverage": 0,
+    "domain": "childsnack",
+    "error": "unsolvable-or-error",
+    "id": [
+      "siwr-1",
+      "childsnack",
+      "p27.pddl"
+    ],
+    "memory_limit": 3000,
+    "node": "n1960",
+    "not_i_reachable": 0,
+    "planner_exit_code": -24,
+    "problem": "p27.pddl",
+    "run_dir": "runs-00001-00100/00057",
+    "time_limit": 1800
+  },
+  "siwr-1-childsnack-p28.pddl": {
+    "algorithm": "siwr-1",
+    "coverage": 0,
+    "domain": "childsnack",
+    "error": "unsolvable-or-error",
+    "id": [
+      "siwr-1",
+      "childsnack",
+      "p28.pddl"
+    ],
+    "memory_limit": 3000,
+    "node": "n1960",
+    "not_i_reachable": 0,
+    "planner_exit_code": -24,
+    "problem": "p28.pddl",
+    "run_dir": "runs-00001-00100/00058",
+    "time_limit": 1800
+  },
+  "siwr-1-childsnack-p29.pddl": {
+    "algorithm": "siwr-1",
+    "coverage": 0,
+    "domain": "childsnack",
+    "error": "unsolvable-or-error",
+    "id": [
+      "siwr-1",
+      "childsnack",
+      "p29.pddl"
+    ],
+    "memory_limit": 3000,
+    "node": "n1960",
+    "not_i_reachable": 0,
+    "planner_exit_code": -24,
+    "problem": "p29.pddl",
+    "run_dir": "runs-00001-00100/00059",
+    "time_limit": 1800
+  },
+  "siwr-1-childsnack-p30.pddl": {
+    "algorithm": "siwr-1",
+    "coverage": 0,
+    "domain": "childsnack",
+    "error": "unsolvable-or-error",
+    "id": [
+      "siwr-1",
+      "childsnack",
+      "p30.pddl"
+    ],
+    "memory_limit": 3000,
+    "node": "n1960",
+    "not_i_reachable": 0,
+    "planner_exit_code": -24,
+    "problem": "p30.pddl",
+    "run_dir": "runs-00001-00100/00060",
+    "time_limit": 1800
+  },
+  "siwr-1-driverlog-p01.pddl": {
+    "algorithm": "siwr-1",
+    "coverage": 0,
+    "domain": "driverlog",
+    "error": "plan-found",
+    "id": [
+      "siwr-1",
+      "driverlog",
+      "p01.pddl"
+    ],
+    "memory_limit": 3000,
+    "node": "n1959",
+    "nodes_expanded": 76530,
+    "nodes_generated": 115644,
+    "nodes_pruned": 1374846,
+    "not_i_reachable": 1,
+    "planner_exit_code": 0,
+    "problem": "p01.pddl",
+    "run_dir": "runs-00001-00100/00061",
+    "time_limit": 1800,
+    "total_time": 2.02576,
+    "width_average": 1.73333,
+    "width_maximum": 2
+  },
+  "siwr-1-driverlog-p02.pddl": {
+    "algorithm": "siwr-1",
+    "coverage": 0,
+    "domain": "driverlog",
+    "error": "plan-found",
+    "id": [
+      "siwr-1",
+      "driverlog",
+      "p02.pddl"
+    ],
+    "memory_limit": 3000,
+    "node": "n1960",
+    "nodes_expanded": 114645,
+    "nodes_generated": 146127,
+    "nodes_pruned": 2110578,
+    "not_i_reachable": 1,
+    "planner_exit_code": 0,
+    "problem": "p02.pddl",
+    "run_dir": "runs-00001-00100/00062",
+    "time_limit": 1800,
+    "total_time": 4.03233,
+    "width_average": 1.54545,
+    "width_maximum": 2
+  },
+  "siwr-1-driverlog-p03.pddl": {
+    "algorithm": "siwr-1",
+    "coverage": 0,
+    "domain": "driverlog",
+    "error": "plan-found",
+    "id": [
+      "siwr-1",
+      "driverlog",
+      "p03.pddl"
+    ],
+    "memory_limit": 3000,
+    "node": "n721",
+    "nodes_expanded": 209973,
+    "nodes_generated": 246729,
+    "nodes_pruned": 3412379,
+    "not_i_reachable": 1,
+    "planner_exit_code": 0,
+    "problem": "p03.pddl",
+    "run_dir": "runs-00001-00100/00063",
+    "time_limit": 1800,
+    "total_time": 8.05407,
+    "width_average": 1.5,
+    "width_maximum": 2
+  },
+  "siwr-1-driverlog-p04.pddl": {
+    "algorithm": "siwr-1",
+    "coverage": 0,
+    "domain": "driverlog",
+    "error": "plan-found",
+    "id": [
+      "siwr-1",
+      "driverlog",
+      "p04.pddl"
+    ],
+    "memory_limit": 3000,
+    "node": "n721",
+    "nodes_expanded": 889404,
+    "nodes_generated": 1529594,
+    "nodes_pruned": 14842497,
+    "not_i_reachable": 1,
+    "planner_exit_code": 0,
+    "problem": "p04.pddl",
+    "run_dir": "runs-00001-00100/00064",
+    "time_limit": 1800,
+    "total_time": 40.8498,
+    "width_average": 1.85185,
+    "width_maximum": 2
+  },
+  "siwr-1-driverlog-p05.pddl": {
+    "algorithm": "siwr-1",
+    "coverage": 0,
+    "domain": "driverlog",
+    "error": "plan-found",
+    "id": [
+      "siwr-1",
+      "driverlog",
+      "p05.pddl"
+    ],
+    "memory_limit": 3000,
+    "node": "n1960",
+    "nodes_expanded": 900507,
+    "nodes_generated": 1377117,
+    "nodes_pruned": 16512340,
+    "not_i_reachable": 1,
+    "planner_exit_code": 0,
+    "problem": "p05.pddl",
+    "run_dir": "runs-00001-00100/00065",
+    "time_limit": 1800,
+    "total_time": 52.4003,
+    "width_average": 1.73333,
+    "width_maximum": 2
+  },
+  "siwr-1-driverlog-p06.pddl": {
+    "algorithm": "siwr-1",
+    "coverage": 0,
+    "domain": "driverlog",
+    "error": "plan-found",
+    "id": [
+      "siwr-1",
+      "driverlog",
+      "p06.pddl"
+    ],
+    "memory_limit": 3000,
+    "node": "n530",
+    "nodes_expanded": 2896150,
+    "nodes_generated": 4941020,
+    "nodes_pruned": 70058355,
+    "not_i_reachable": 1,
+    "planner_exit_code": 0,
+    "problem": "p06.pddl",
+    "run_dir": "runs-00001-00100/00066",
+    "time_limit": 1800,
+    "total_time": 232.751,
+    "width_average": 1.88889,
+    "width_maximum": 2
+  },
+  "siwr-1-driverlog-p07.pddl": {
+    "algorithm": "siwr-1",
+    "coverage": 0,
+    "domain": "driverlog",
+    "error": "plan-found",
+    "id": [
+      "siwr-1",
+      "driverlog",
+      "p07.pddl"
+    ],
+    "memory_limit": 3000,
+    "node": "n1961",
+    "nodes_expanded": 2005411,
+    "nodes_generated": 3319076,
+    "nodes_pruned": 39725162,
+    "not_i_reachable": 1,
+    "planner_exit_code": 0,
+    "problem": "p07.pddl",
+    "run_dir": "runs-00001-00100/00067",
+    "time_limit": 1800,
+    "total_time": 163.526,
+    "width_average": 1.81818,
+    "width_maximum": 2
+  },
+  "siwr-1-driverlog-p08.pddl": {
+    "algorithm": "siwr-1",
+    "coverage": 0,
+    "domain": "driverlog",
+    "error": "plan-found",
+    "id": [
+      "siwr-1",
+      "driverlog",
+      "p08.pddl"
+    ],
+    "memory_limit": 3000,
+    "node": "n530",
+    "nodes_expanded": 3889452,
+    "nodes_generated": 6808553,
+    "nodes_pruned": 53301910,
+    "not_i_reachable": 1,
+    "planner_exit_code": 0,
+    "problem": "p08.pddl",
+    "run_dir": "runs-00001-00100/00068",
+    "time_limit": 1800,
+    "total_time": 227.486,
+    "width_average": 1.94444,
+    "width_maximum": 2
+  },
+  "siwr-1-driverlog-p09.pddl": {
+    "algorithm": "siwr-1",
+    "coverage": 0,
+    "domain": "driverlog",
+    "error": "plan-found",
+    "id": [
+      "siwr-1",
+      "driverlog",
+      "p09.pddl"
+    ],
+    "memory_limit": 3000,
+    "node": "n1960",
+    "nodes_expanded": 5729839,
+    "nodes_generated": 10618314,
+    "nodes_pruned": 117348377,
+    "not_i_reachable": 1,
+    "planner_exit_code": 0,
+    "problem": "p09.pddl",
+    "run_dir": "runs-00001-00100/00069",
+    "time_limit": 1800,
+    "total_time": 542.27,
+    "width_average": 1.91304,
+    "width_maximum": 2
+  },
+  "siwr-1-driverlog-p10.pddl": {
+    "algorithm": "siwr-1",
+    "cost": 265,
+    "coverage": 1,
+    "domain": "driverlog",
+    "error": "plan-found",
+    "id": [
+      "siwr-1",
+      "driverlog",
+      "p10.pddl"
+    ],
+    "memory_limit": 3000,
+    "node": "n2010",
+    "nodes_expanded": 380231,
+    "nodes_generated": 1066896,
+    "nodes_pruned": 5840814,
+    "not_i_reachable": 0,
+    "planner_exit_code": 0,
+    "problem": "p10.pddl",
+    "run_dir": "runs-00001-00100/00070",
+    "time_limit": 1800,
+    "total_time": 37.6169,
+    "width_average": 1.90566,
+    "width_maximum": 2
+  },
+  "siwr-1-driverlog-p11.pddl": {
+    "algorithm": "siwr-1",
+    "coverage": 0,
+    "domain": "driverlog",
+    "error": "unsolvable-or-error",
+    "id": [
+      "siwr-1",
+      "driverlog",
+      "p11.pddl"
+    ],
+    "memory_limit": 3000,
+    "node": "n2010",
+    "not_i_reachable": 0,
+    "planner_exit_code": 1,
+    "problem": "p11.pddl",
+    "run_dir": "runs-00001-00100/00071",
+    "time_limit": 1800,
+    "unexplained_errors": [
+      "run.err: Traceback (most recent call last):\n  File \"siw.py\", line 52, in <module>\n    main( sys.argv[1], sys.argv[2], sys.argv[3] )\n  File \"siw.py\", line 37, in main\n    task.solve()\nMemoryError\n"
+    ]
+  },
+  "siwr-1-driverlog-p12.pddl": {
+    "algorithm": "siwr-1",
+    "coverage": 0,
+    "domain": "driverlog",
+    "error": "unsolvable-or-error",
+    "id": [
+      "siwr-1",
+      "driverlog",
+      "p12.pddl"
+    ],
+    "memory_limit": 3000,
+    "node": "n1959",
+    "not_i_reachable": 0,
+    "planner_exit_code": -24,
+    "problem": "p12.pddl",
+    "run_dir": "runs-00001-00100/00072",
+    "time_limit": 1800
+  },
+  "siwr-1-driverlog-p13.pddl": {
+    "algorithm": "siwr-1",
+    "coverage": 0,
+    "domain": "driverlog",
+    "error": "unsolvable-or-error",
+    "id": [
+      "siwr-1",
+      "driverlog",
+      "p13.pddl"
+    ],
+    "memory_limit": 3000,
+    "node": "n1961",
+    "not_i_reachable": 0,
+    "planner_exit_code": 1,
+    "problem": "p13.pddl",
+    "run_dir": "runs-00001-00100/00073",
+    "time_limit": 1800,
+    "unexplained_errors": [
+      "run.err: Traceback (most recent call last):\n  File \"siw.py\", line 52, in <module>\n    main( sys.argv[1], sys.argv[2], sys.argv[3] )\n  File \"siw.py\", line 37, in main\n    task.solve()\nMemoryError\n"
+    ]
+  },
+  "siwr-1-driverlog-p14.pddl": {
+    "algorithm": "siwr-1",
+    "coverage": 0,
+    "domain": "driverlog",
+    "error": "unsolvable-or-error",
+    "id": [
+      "siwr-1",
+      "driverlog",
+      "p14.pddl"
+    ],
+    "memory_limit": 3000,
+    "node": "n1960",
+    "not_i_reachable": 0,
+    "planner_exit_code": 1,
+    "problem": "p14.pddl",
+    "run_dir": "runs-00001-00100/00074",
+    "time_limit": 1800,
+    "unexplained_errors": [
+      "run.err: Traceback (most recent call last):\n  File \"siw.py\", line 52, in <module>\n    main( sys.argv[1], sys.argv[2], sys.argv[3] )\n  File \"siw.py\", line 37, in main\n    task.solve()\nMemoryError\n"
+    ]
+  },
+  "siwr-1-driverlog-p15.pddl": {
+    "algorithm": "siwr-1",
+    "coverage": 0,
+    "domain": "driverlog",
+    "error": "unsolvable-or-error",
+    "id": [
+      "siwr-1",
+      "driverlog",
+      "p15.pddl"
+    ],
+    "memory_limit": 3000,
+    "node": "n1960",
+    "not_i_reachable": 0,
+    "planner_exit_code": 1,
+    "problem": "p15.pddl",
+    "run_dir": "runs-00001-00100/00075",
+    "time_limit": 1800,
+    "unexplained_errors": [
+      "run.err: Traceback (most recent call last):\n  File \"siw.py\", line 52, in <module>\n    main( sys.argv[1], sys.argv[2], sys.argv[3] )\n  File \"siw.py\", line 37, in main\n    task.solve()\nMemoryError\n"
+    ]
+  },
+  "siwr-1-driverlog-p16.pddl": {
+    "algorithm": "siwr-1",
+    "coverage": 0,
+    "domain": "driverlog",
+    "error": "unsolvable-or-error",
+    "id": [
+      "siwr-1",
+      "driverlog",
+      "p16.pddl"
+    ],
+    "memory_limit": 3000,
+    "node": "n530",
+    "not_i_reachable": 0,
+    "planner_exit_code": 127,
+    "problem": "p16.pddl",
+    "run_dir": "runs-00001-00100/00076",
+    "time_limit": 1800,
+    "unexplained_errors": [
+      "run.err: cannot allocate memory for thread-local data: ABORT\n"
+    ]
+  },
+  "siwr-1-driverlog-p17.pddl": {
+    "algorithm": "siwr-1",
+    "coverage": 0,
+    "domain": "driverlog",
+    "error": "unsolvable-or-error",
+    "id": [
+      "siwr-1",
+      "driverlog",
+      "p17.pddl"
+    ],
+    "memory_limit": 3000,
+    "node": "n1959",
+    "not_i_reachable": 0,
+    "planner_exit_code": 1,
+    "problem": "p17.pddl",
+    "run_dir": "runs-00001-00100/00077",
+    "time_limit": 1800,
+    "unexplained_errors": [
+      "run.err: Traceback (most recent call last):\n  File \"siw.py\", line 52, in <module>\n    main( sys.argv[1], sys.argv[2], sys.argv[3] )\n  File \"siw.py\", line 37, in main\n    task.solve()\nMemoryError\n"
+    ]
+  },
+  "siwr-1-driverlog-p18.pddl": {
+    "algorithm": "siwr-1",
+    "coverage": 0,
+    "domain": "driverlog",
+    "error": "unsolvable-or-error",
+    "id": [
+      "siwr-1",
+      "driverlog",
+      "p18.pddl"
+    ],
+    "memory_limit": 3000,
+    "node": "n490",
+    "not_i_reachable": 0,
+    "planner_exit_code": 127,
+    "problem": "p18.pddl",
+    "run_dir": "runs-00001-00100/00078",
+    "time_limit": 1800,
+    "unexplained_errors": [
+      "run.err: cannot allocate memory for thread-local data: ABORT\n"
+    ]
+  },
+  "siwr-1-driverlog-p19.pddl": {
+    "algorithm": "siwr-1",
+    "coverage": 0,
+    "domain": "driverlog",
+    "error": "unsolvable-or-error",
+    "id": [
+      "siwr-1",
+      "driverlog",
+      "p19.pddl"
+    ],
+    "memory_limit": 3000,
+    "node": "n721",
+    "not_i_reachable": 0,
+    "planner_exit_code": 127,
+    "problem": "p19.pddl",
+    "run_dir": "runs-00001-00100/00079",
+    "time_limit": 1800,
+    "unexplained_errors": [
+      "run.err: cannot allocate memory for thread-local data: ABORT\n"
+    ]
+  },
+  "siwr-1-driverlog-p20.pddl": {
+    "algorithm": "siwr-1",
+    "coverage": 0,
+    "domain": "driverlog",
+    "error": "unsolvable-or-error",
+    "id": [
+      "siwr-1",
+      "driverlog",
+      "p20.pddl"
+    ],
+    "memory_limit": 3000,
+    "node": "n1686",
+    "not_i_reachable": 0,
+    "planner_exit_code": 127,
+    "problem": "p20.pddl",
+    "run_dir": "runs-00001-00100/00080",
+    "time_limit": 1800,
+    "unexplained_errors": [
+      "run.err: cannot allocate memory for thread-local data: ABORT\n"
+    ]
+  },
+  "siwr-1-driverlog-p21.pddl": {
+    "algorithm": "siwr-1",
+    "coverage": 0,
+    "domain": "driverlog",
+    "error": "unsolvable-or-error",
+    "id": [
+      "siwr-1",
+      "driverlog",
+      "p21.pddl"
+    ],
+    "memory_limit": 3000,
+    "node": "n530",
+    "not_i_reachable": 0,
+    "planner_exit_code": 1,
+    "problem": "p21.pddl",
+    "run_dir": "runs-00001-00100/00081",
+    "time_limit": 1800,
+    "unexplained_errors": [
+      "run.err: Traceback (most recent call last):\n  File \"siw.py\", line 52, in <module>\n    main( sys.argv[1], sys.argv[2], sys.argv[3] )\n  File \"siw.py\", line 37, in main\n    task.solve()\nMemoryError\n"
+    ]
+  },
+  "siwr-1-driverlog-p22.pddl": {
+    "algorithm": "siwr-1",
+    "coverage": 0,
+    "domain": "driverlog",
+    "error": "unsolvable-or-error",
+    "id": [
+      "siwr-1",
+      "driverlog",
+      "p22.pddl"
+    ],
+    "memory_limit": 3000,
+    "node": "n530",
+    "not_i_reachable": 0,
+    "planner_exit_code": 1,
+    "problem": "p22.pddl",
+    "run_dir": "runs-00001-00100/00082",
+    "time_limit": 1800,
+    "unexplained_errors": [
+      "run.err: Traceback (most recent call last):\n  File \"siw.py\", line 52, in <module>\n    main( sys.argv[1], sys.argv[2], sys.argv[3] )\n  File \"siw.py\", line 37, in main\n    task.solve()\nMemoryError\n"
+    ]
+  },
+  "siwr-1-driverlog-p23.pddl": {
+    "algorithm": "siwr-1",
+    "coverage": 0,
+    "domain": "driverlog",
+    "error": "unsolvable-or-error",
+    "id": [
+      "siwr-1",
+      "driverlog",
+      "p23.pddl"
+    ],
+    "memory_limit": 3000,
+    "node": "n1686",
+    "not_i_reachable": 0,
+    "planner_exit_code": 1,
+    "problem": "p23.pddl",
+    "run_dir": "runs-00001-00100/00083",
+    "time_limit": 1800,
+    "unexplained_errors": [
+      "run.err: Traceback (most recent call last):\n  File \"siw.py\", line 52, in <module>\n    main( sys.argv[1], sys.argv[2], sys.argv[3] )\n  File \"siw.py\", line 37, in main\n    task.solve()\nMemoryError\n"
+    ]
+  },
+  "siwr-1-driverlog-p24.pddl": {
+    "algorithm": "siwr-1",
+    "coverage": 0,
+    "domain": "driverlog",
+    "error": "unsolvable-or-error",
+    "id": [
+      "siwr-1",
+      "driverlog",
+      "p24.pddl"
+    ],
+    "memory_limit": 3000,
+    "node": "n251",
+    "not_i_reachable": 0,
+    "planner_exit_code": 1,
+    "problem": "p24.pddl",
+    "run_dir": "runs-00001-00100/00084",
+    "time_limit": 1800,
+    "unexplained_errors": [
+      "run.err: Traceback (most recent call last):\n  File \"siw.py\", line 52, in <module>\n    main( sys.argv[1], sys.argv[2], sys.argv[3] )\n  File \"siw.py\", line 37, in main\n    task.solve()\nMemoryError\n"
+    ]
+  },
+  "siwr-1-driverlog-p25.pddl": {
+    "algorithm": "siwr-1",
+    "coverage": 0,
+    "domain": "driverlog",
+    "error": "unsolvable-or-error",
+    "id": [
+      "siwr-1",
+      "driverlog",
+      "p25.pddl"
+    ],
+    "memory_limit": 3000,
+    "node": "n1960",
+    "not_i_reachable": 0,
+    "planner_exit_code": 1,
+    "problem": "p25.pddl",
+    "run_dir": "runs-00001-00100/00085",
+    "time_limit": 1800,
+    "unexplained_errors": [
+      "run.err: Traceback (most recent call last):\n  File \"siw.py\", line 52, in <module>\n    main( sys.argv[1], sys.argv[2], sys.argv[3] )\n  File \"siw.py\", line 37, in main\n    task.solve()\nMemoryError\n"
+    ]
+  },
+  "siwr-1-driverlog-p26.pddl": {
+    "algorithm": "siwr-1",
+    "coverage": 0,
+    "domain": "driverlog",
+    "error": "plan-found",
+    "id": [
+      "siwr-1",
+      "driverlog",
+      "p26.pddl"
+    ],
+    "memory_limit": 3000,
+    "node": "n1686",
+    "nodes_expanded": 6221,
+    "nodes_generated": 7522,
+    "nodes_pruned": 205768,
+    "not_i_reachable": 1,
+    "planner_exit_code": 0,
+    "problem": "p26.pddl",
+    "run_dir": "runs-00001-00100/00086",
+    "time_limit": 1800,
+    "total_time": 3.27306,
+    "width_average": 1.0,
+    "width_maximum": 1
+  },
+  "siwr-1-driverlog-p27.pddl": {
+    "algorithm": "siwr-1",
+    "coverage": 0,
+    "domain": "driverlog",
+    "error": "plan-found",
+    "id": [
+      "siwr-1",
+      "driverlog",
+      "p27.pddl"
+    ],
+    "memory_limit": 3000,
+    "node": "n251",
+    "nodes_expanded": 4895,
+    "nodes_generated": 5690,
+    "nodes_pruned": 151371,
+    "not_i_reachable": 1,
+    "planner_exit_code": 0,
+    "problem": "p27.pddl",
+    "run_dir": "runs-00001-00100/00087",
+    "time_limit": 1800,
+    "total_time": 2.10861,
+    "width_average": 1.0,
+    "width_maximum": 1
+  },
+  "siwr-1-driverlog-p28.pddl": {
+    "algorithm": "siwr-1",
+    "coverage": 0,
+    "domain": "driverlog",
+    "error": "unsolvable-or-error",
+    "id": [
+      "siwr-1",
+      "driverlog",
+      "p28.pddl"
+    ],
+    "memory_limit": 3000,
+    "node": "n1686",
+    "not_i_reachable": 0,
+    "planner_exit_code": 127,
+    "problem": "p28.pddl",
+    "run_dir": "runs-00001-00100/00088",
+    "time_limit": 1800,
+    "unexplained_errors": [
+      "run.err: cannot allocate memory for thread-local data: ABORT\n"
+    ]
+  },
+  "siwr-1-driverlog-p29.pddl": {
+    "algorithm": "siwr-1",
+    "coverage": 0,
+    "domain": "driverlog",
+    "error": "unsolvable-or-error",
+    "id": [
+      "siwr-1",
+      "driverlog",
+      "p29.pddl"
+    ],
+    "memory_limit": 3000,
+    "node": "n721",
+    "not_i_reachable": 0,
+    "planner_exit_code": 1,
+    "problem": "p29.pddl",
+    "run_dir": "runs-00001-00100/00089",
+    "time_limit": 1800,
+    "unexplained_errors": [
+      "run.err: Traceback (most recent call last):\n  File \"siw.py\", line 52, in <module>\n  File \"siw.py\", line 12, in main\n  File \"/proj/ssiw/projects/code/LAPKT-siwr/planners/siw/fd/grounding.py\", line 349, in default\nMemoryError\n"
+    ]
+  },
+  "siwr-1-driverlog-p30.pddl": {
+    "algorithm": "siwr-1",
+    "coverage": 0,
+    "domain": "driverlog",
+    "error": "unsolvable-or-error",
+    "id": [
+      "siwr-1",
+      "driverlog",
+      "p30.pddl"
+    ],
+    "memory_limit": 3000,
+    "node": "n1960",
+    "not_i_reachable": 0,
+    "planner_exit_code": 1,
+    "problem": "p30.pddl",
+    "run_dir": "runs-00001-00100/00090",
+    "time_limit": 1800,
+    "unexplained_errors": [
+      "run.err: Traceback (most recent call last):\n  File \"siw.py\", line 52, in <module>\n  File \"siw.py\", line 12, in main\n  File \"/proj/ssiw/projects/code/LAPKT-siwr/planners/siw/fd/grounding.py\", line 349, in default\nMemoryError\n"
+    ]
+  },
+  "siwr-1-grid-p01.pddl": {
+    "algorithm": "siwr-1",
+    "coverage": 0,
+    "domain": "grid",
+    "error": "plan-found",
+    "id": [
+      "siwr-1",
+      "grid",
+      "p01.pddl"
+    ],
+    "memory_limit": 3000,
+    "node": "n1686",
+    "nodes_expanded": 4684,
+    "nodes_generated": 4882,
+    "nodes_pruned": 4347,
+    "not_i_reachable": 1,
+    "planner_exit_code": 0,
+    "problem": "p01.pddl",
+    "run_dir": "runs-00101-00200/00121",
+    "time_limit": 1800,
+    "total_time": 0.023391,
+    "width_average": 2.0,
+    "width_maximum": 2
+  },
+  "siwr-1-grid-p02.pddl": {
+    "algorithm": "siwr-1",
+    "coverage": 0,
+    "domain": "grid",
+    "error": "plan-found",
+    "id": [
+      "siwr-1",
+      "grid",
+      "p02.pddl"
+    ],
+    "memory_limit": 3000,
+    "node": "n530",
+    "nodes_expanded": 23925,
+    "nodes_generated": 24228,
+    "nodes_pruned": 23503,
+    "not_i_reachable": 1,
+    "planner_exit_code": 0,
+    "problem": "p02.pddl",
+    "run_dir": "runs-00101-00200/00122",
+    "time_limit": 1800,
+    "total_time": 0.337834,
+    "width_average": 2.0,
+    "width_maximum": 2
+  },
+  "siwr-1-grid-p03.pddl": {
+    "algorithm": "siwr-1",
+    "cost": 35,
+    "coverage": 1,
+    "domain": "grid",
+    "error": "plan-found",
+    "id": [
+      "siwr-1",
+      "grid",
+      "p03.pddl"
+    ],
+    "memory_limit": 3000,
+    "node": "n251",
+    "nodes_expanded": 37454,
+    "nodes_generated": 40863,
+    "nodes_pruned": 39863,
+    "not_i_reachable": 0,
+    "planner_exit_code": 0,
+    "problem": "p03.pddl",
+    "run_dir": "runs-00101-00200/00123",
+    "time_limit": 1800,
+    "total_time": 1.08946,
+    "width_average": 2.0,
+    "width_maximum": 2
+  },
+  "siwr-1-grid-p04.pddl": {
+    "algorithm": "siwr-1",
+    "cost": 15,
+    "coverage": 1,
+    "domain": "grid",
+    "error": "plan-found",
+    "id": [
+      "siwr-1",
+      "grid",
+      "p04.pddl"
+    ],
+    "memory_limit": 3000,
+    "node": "n1959",
+    "nodes_expanded": 1395,
+    "nodes_generated": 1827,
+    "nodes_pruned": 1104,
+    "not_i_reachable": 0,
+    "planner_exit_code": 0,
+    "problem": "p04.pddl",
+    "run_dir": "runs-00101-00200/00124",
+    "time_limit": 1800,
+    "total_time": 0.078418,
+    "width_average": 2.0,
+    "width_maximum": 2
+  },
+  "siwr-1-grid-p05.pddl": {
+    "algorithm": "siwr-1",
+    "coverage": 0,
+    "domain": "grid",
+    "error": "plan-found",
+    "id": [
+      "siwr-1",
+      "grid",
+      "p05.pddl"
+    ],
+    "memory_limit": 3000,
+    "node": "n1961",
+    "nodes_expanded": 494087,
+    "nodes_generated": 498105,
+    "nodes_pruned": 406080,
+    "not_i_reachable": 1,
+    "planner_exit_code": 0,
+    "problem": "p05.pddl",
+    "run_dir": "runs-00101-00200/00125",
+    "time_limit": 1800,
+    "total_time": 40.552,
+    "width_average": 2.0,
+    "width_maximum": 2
+  },
+  "siwr-1-grid-p06.pddl": {
+    "algorithm": "siwr-1",
+    "cost": 68,
+    "coverage": 1,
+    "domain": "grid",
+    "error": "plan-found",
+    "id": [
+      "siwr-1",
+      "grid",
+      "p06.pddl"
+    ],
+    "memory_limit": 3000,
+    "node": "n251",
+    "nodes_expanded": 135462,
+    "nodes_generated": 141345,
+    "nodes_pruned": 122832,
+    "not_i_reachable": 0,
+    "planner_exit_code": 0,
+    "problem": "p06.pddl",
+    "run_dir": "runs-00101-00200/00126",
+    "time_limit": 1800,
+    "total_time": 15.2245,
+    "width_average": 2.0,
+    "width_maximum": 2
+  },
+  "siwr-1-grid-p07.pddl": {
+    "algorithm": "siwr-1",
+    "coverage": 0,
+    "domain": "grid",
+    "error": "unsolvable-or-error",
+    "id": [
+      "siwr-1",
+      "grid",
+      "p07.pddl"
+    ],
+    "memory_limit": 3000,
+    "node": "n1959",
+    "not_i_reachable": 0,
+    "planner_exit_code": 1,
+    "problem": "p07.pddl",
+    "run_dir": "runs-00101-00200/00127",
+    "time_limit": 1800,
+    "unexplained_errors": [
+      "run.err: Traceback (most recent call last):\n  File \"siw.py\", line 52, in <module>\n    main( sys.argv[1], sys.argv[2], sys.argv[3] )\n  File \"siw.py\", line 37, in main\n    task.solve()\nMemoryError\n"
+    ]
+  },
+  "siwr-1-grid-p08.pddl": {
+    "algorithm": "siwr-1",
+    "coverage": 0,
+    "domain": "grid",
+    "error": "unsolvable-or-error",
+    "id": [
+      "siwr-1",
+      "grid",
+      "p08.pddl"
+    ],
+    "memory_limit": 3000,
+    "node": "n721",
+    "not_i_reachable": 0,
+    "planner_exit_code": 1,
+    "problem": "p08.pddl",
+    "run_dir": "runs-00101-00200/00128",
+    "time_limit": 1800,
+    "unexplained_errors": [
+      "run.err: Traceback (most recent call last):\n  File \"siw.py\", line 52, in <module>\n    main( sys.argv[1], sys.argv[2], sys.argv[3] )\n  File \"siw.py\", line 37, in main\n    task.solve()\nMemoryError\n"
+    ]
+  },
+  "siwr-1-grid-p09.pddl": {
+    "algorithm": "siwr-1",
+    "coverage": 0,
+    "domain": "grid",
+    "error": "unsolvable-or-error",
+    "id": [
+      "siwr-1",
+      "grid",
+      "p09.pddl"
+    ],
+    "memory_limit": 3000,
+    "node": "n1920",
+    "not_i_reachable": 0,
+    "planner_exit_code": 1,
+    "problem": "p09.pddl",
+    "run_dir": "runs-00101-00200/00129",
+    "time_limit": 1800,
+    "unexplained_errors": [
+      "run.err: Traceback (most recent call last):\n  File \"siw.py\", line 52, in <module>\n    main( sys.argv[1], sys.argv[2], sys.argv[3] )\n  File \"siw.py\", line 37, in main\n    task.solve()\nMemoryError\n"
+    ]
+  },
+  "siwr-1-grid-p10.pddl": {
+    "algorithm": "siwr-1",
+    "coverage": 0,
+    "domain": "grid",
+    "error": "unsolvable-or-error",
+    "id": [
+      "siwr-1",
+      "grid",
+      "p10.pddl"
+    ],
+    "memory_limit": 3000,
+    "node": "n1961",
+    "not_i_reachable": 0,
+    "planner_exit_code": 1,
+    "problem": "p10.pddl",
+    "run_dir": "runs-00101-00200/00130",
+    "time_limit": 1800,
+    "unexplained_errors": [
+      "run.err: Traceback (most recent call last):\n  File \"siw.py\", line 52, in <module>\n    main( sys.argv[1], sys.argv[2], sys.argv[3] )\n  File \"siw.py\", line 37, in main\n    task.solve()\nMemoryError\n"
+    ]
+  },
+  "siwr-1-grid-p11.pddl": {
+    "algorithm": "siwr-1",
+    "coverage": 0,
+    "domain": "grid",
+    "error": "plan-found",
+    "id": [
+      "siwr-1",
+      "grid",
+      "p11.pddl"
+    ],
+    "memory_limit": 3000,
+    "node": "n1686",
+    "nodes_expanded": 2765,
+    "nodes_generated": 2766,
+    "nodes_pruned": 4066,
+    "not_i_reachable": 1,
+    "planner_exit_code": 0,
+    "problem": "p11.pddl",
+    "run_dir": "runs-00101-00200/00131",
+    "time_limit": 1800,
+    "total_time": 0.632883,
+    "width_average": Infinity,
+    "width_maximum": 0
+  },
+  "siwr-1-grid-p12.pddl": {
+    "algorithm": "siwr-1",
+    "coverage": 0,
+    "domain": "grid",
+    "error": "plan-found",
+    "id": [
+      "siwr-1",
+      "grid",
+      "p12.pddl"
+    ],
+    "memory_limit": 3000,
+    "node": "n1959",
+    "nodes_expanded": 9,
+    "nodes_generated": 10,
+    "nodes_pruned": 2,
+    "not_i_reachable": 1,
+    "planner_exit_code": 0,
+    "problem": "p12.pddl",
+    "run_dir": "runs-00101-00200/00132",
+    "time_limit": 1800,
+    "total_time": 0.00818964,
+    "width_average": Infinity,
+    "width_maximum": 0
+  },
+  "siwr-1-grid-p13.pddl": {
+    "algorithm": "siwr-1",
+    "coverage": 0,
+    "domain": "grid",
+    "error": "unsolvable-or-error",
+    "id": [
+      "siwr-1",
+      "grid",
+      "p13.pddl"
+    ],
+    "memory_limit": 3000,
+    "node": "n530",
+    "not_i_reachable": 0,
+    "planner_exit_code": 1,
+    "problem": "p13.pddl",
+    "run_dir": "runs-00101-00200/00133",
+    "time_limit": 1800,
+    "unexplained_errors": [
+      "run.err: Traceback (most recent call last):\n  File \"siw.py\", line 52, in <module>\n    main( sys.argv[1], sys.argv[2], sys.argv[3] )\n  File \"siw.py\", line 34, in main\n    task.setup()\nMemoryError\n"
+    ]
+  },
+  "siwr-1-grid-p14.pddl": {
+    "algorithm": "siwr-1",
+    "coverage": 0,
+    "domain": "grid",
+    "error": "unsolvable-or-error",
+    "id": [
+      "siwr-1",
+      "grid",
+      "p14.pddl"
+    ],
+    "memory_limit": 3000,
+    "node": "n1960",
+    "not_i_reachable": 0,
+    "planner_exit_code": 1,
+    "problem": "p14.pddl",
+    "run_dir": "runs-00101-00200/00134",
+    "time_limit": 1800,
+    "unexplained_errors": [
+      "run.err: Traceback (most recent call last):\n  File \"siw.py\", line 52, in <module>\n  File \"siw.py\", line 12, in main\n  File \"/proj/ssiw/projects/code/LAPKT-siwr/planners/siw/fd/grounding.py\", line 349, in default\nMemoryError\n"
+    ]
+  },
+  "siwr-1-grid-p15.pddl": {
+    "algorithm": "siwr-1",
+    "coverage": 0,
+    "domain": "grid",
+    "error": "unsolvable-or-error",
+    "id": [
+      "siwr-1",
+      "grid",
+      "p15.pddl"
+    ],
+    "memory_limit": 3000,
+    "node": "n251",
+    "not_i_reachable": 0,
+    "planner_exit_code": 1,
+    "problem": "p15.pddl",
+    "run_dir": "runs-00101-00200/00135",
+    "time_limit": 1800,
+    "unexplained_errors": [
+      "run.err: Traceback (most recent call last):\n  File \"siw.py\", line 52, in <module>\n  File \"siw.py\", line 12, in main\n  File \"/proj/ssiw/projects/code/LAPKT-siwr/planners/siw/fd/grounding.py\", line 349, in default\nMemoryError\n"
+    ]
+  },
+  "siwr-1-grid-p16.pddl": {
+    "algorithm": "siwr-1",
+    "coverage": 0,
+    "domain": "grid",
+    "error": "unsolvable-or-error",
+    "id": [
+      "siwr-1",
+      "grid",
+      "p16.pddl"
+    ],
+    "memory_limit": 3000,
+    "node": "n530",
+    "not_i_reachable": 0,
+    "planner_exit_code": 1,
+    "problem": "p16.pddl",
+    "run_dir": "runs-00101-00200/00136",
+    "time_limit": 1800,
+    "unexplained_errors": [
+      "run.err: Traceback (most recent call last):\n  File \"siw.py\", line 52, in <module>\n  File \"siw.py\", line 12, in main\n  File \"/proj/ssiw/projects/code/LAPKT-siwr/planners/siw/fd/grounding.py\", line 349, in default\nMemoryError\n"
+    ]
+  },
+  "siwr-1-grid-p17.pddl": {
+    "algorithm": "siwr-1",
+    "coverage": 0,
+    "domain": "grid",
+    "error": "unsolvable-or-error",
+    "id": [
+      "siwr-1",
+      "grid",
+      "p17.pddl"
+    ],
+    "memory_limit": 3000,
+    "node": "n1686",
+    "not_i_reachable": 0,
+    "planner_exit_code": 1,
+    "problem": "p17.pddl",
+    "run_dir": "runs-00101-00200/00137",
+    "time_limit": 1800,
+    "unexplained_errors": [
+      "run.err: Traceback (most recent call last):\n  File \"siw.py\", line 52, in <module>\n  File \"siw.py\", line 12, in main\n  File \"/proj/ssiw/projects/code/LAPKT-siwr/planners/siw/fd/grounding.py\", line 349, in default\nMemoryError\n"
+    ]
+  },
+  "siwr-1-grid-p18.pddl": {
+    "algorithm": "siwr-1",
+    "coverage": 0,
+    "domain": "grid",
+    "error": "unsolvable-or-error",
+    "id": [
+      "siwr-1",
+      "grid",
+      "p18.pddl"
+    ],
+    "memory_limit": 3000,
+    "node": "n1960",
+    "not_i_reachable": 0,
+    "planner_exit_code": 1,
+    "problem": "p18.pddl",
+    "run_dir": "runs-00101-00200/00138",
+    "time_limit": 1800,
+    "unexplained_errors": [
+      "run.err: Traceback (most recent call last):\n  File \"siw.py\", line 52, in <module>\n  File \"siw.py\", line 12, in main\n  File \"/proj/ssiw/projects/code/LAPKT-siwr/planners/siw/fd/grounding.py\", line 349, in default\nMemoryError\n"
+    ]
+  },
+  "siwr-1-grid-p19.pddl": {
+    "algorithm": "siwr-1",
+    "coverage": 0,
+    "domain": "grid",
+    "error": "unsolvable-or-error",
+    "id": [
+      "siwr-1",
+      "grid",
+      "p19.pddl"
+    ],
+    "memory_limit": 3000,
+    "node": "n721",
+    "not_i_reachable": 0,
+    "planner_exit_code": 1,
+    "problem": "p19.pddl",
+    "run_dir": "runs-00101-00200/00139",
+    "time_limit": 1800,
+    "unexplained_errors": [
+      "run.err: Traceback (most recent call last):\n  File \"siw.py\", line 52, in <module>\n  File \"siw.py\", line 12, in main\n  File \"/proj/ssiw/projects/code/LAPKT-siwr/planners/siw/fd/grounding.py\", line 349, in default\nMemoryError\n"
+    ]
+  },
+  "siwr-1-grid-p20.pddl": {
+    "algorithm": "siwr-1",
+    "coverage": 0,
+    "domain": "grid",
+    "error": "unsolvable-or-error",
+    "id": [
+      "siwr-1",
+      "grid",
+      "p20.pddl"
+    ],
+    "memory_limit": 3000,
+    "node": "n1961",
+    "not_i_reachable": 0,
+    "planner_exit_code": 1,
+    "problem": "p20.pddl",
+    "run_dir": "runs-00101-00200/00140",
+    "time_limit": 1800,
+    "unexplained_errors": [
+      "run.err: Traceback (most recent call last):\n  File \"siw.py\", line 52, in <module>\n  File \"siw.py\", line 12, in main\n  File \"/proj/ssiw/projects/code/LAPKT-siwr/planners/siw/fd/grounding.py\", line 349, in default\nMemoryError\n"
+    ]
+  },
+  "siwr-1-grid-p21.pddl": {
+    "algorithm": "siwr-1",
+    "coverage": 0,
+    "domain": "grid",
+    "error": "unsolvable-or-error",
+    "id": [
+      "siwr-1",
+      "grid",
+      "p21.pddl"
+    ],
+    "memory_limit": 3000,
+    "node": "n490",
+    "not_i_reachable": 0,
+    "planner_exit_code": 1,
+    "problem": "p21.pddl",
+    "run_dir": "runs-00101-00200/00141",
+    "time_limit": 1800,
+    "unexplained_errors": [
+      "run.err: Traceback (most recent call last):\n  File \"siw.py\", line 52, in <module>\n  File \"siw.py\", line 12, in main\n  File \"/proj/ssiw/projects/code/LAPKT-siwr/planners/siw/fd/grounding.py\", line 349, in default\nMemoryError\n"
+    ]
+  },
+  "siwr-1-grid-p22.pddl": {
+    "algorithm": "siwr-1",
+    "coverage": 0,
+    "domain": "grid",
+    "error": "unsolvable-or-error",
+    "id": [
+      "siwr-1",
+      "grid",
+      "p22.pddl"
+    ],
+    "memory_limit": 3000,
+    "node": "n1959",
+    "not_i_reachable": 0,
+    "planner_exit_code": 1,
+    "problem": "p22.pddl",
+    "run_dir": "runs-00101-00200/00142",
+    "time_limit": 1800,
+    "unexplained_errors": [
+      "run.err: Traceback (most recent call last):\n  File \"siw.py\", line 52, in <module>\n  File \"siw.py\", line 12, in main\n  File \"/proj/ssiw/projects/code/LAPKT-siwr/planners/siw/fd/grounding.py\", line 349, in default\nMemoryError\n"
+    ]
+  },
+  "siwr-1-grid-p23.pddl": {
+    "algorithm": "siwr-1",
+    "coverage": 0,
+    "domain": "grid",
+    "error": "unsolvable-or-error",
+    "id": [
+      "siwr-1",
+      "grid",
+      "p23.pddl"
+    ],
+    "memory_limit": 3000,
+    "node": "n530",
+    "not_i_reachable": 0,
+    "planner_exit_code": 1,
+    "problem": "p23.pddl",
+    "run_dir": "runs-00101-00200/00143",
+    "time_limit": 1800,
+    "unexplained_errors": [
+      "run.err: Traceback (most recent call last):\n  File \"siw.py\", line 52, in <module>\n  File \"siw.py\", line 12, in main\n  File \"/proj/ssiw/projects/code/LAPKT-siwr/planners/siw/fd/grounding.py\", line 349, in default\nMemoryError\n"
+    ]
+  },
+  "siwr-1-grid-p24.pddl": {
+    "algorithm": "siwr-1",
+    "coverage": 0,
+    "domain": "grid",
+    "error": "unsolvable-or-error",
+    "id": [
+      "siwr-1",
+      "grid",
+      "p24.pddl"
+    ],
+    "memory_limit": 3000,
+    "node": "n1961",
+    "not_i_reachable": 0,
+    "planner_exit_code": 1,
+    "problem": "p24.pddl",
+    "run_dir": "runs-00101-00200/00144",
+    "time_limit": 1800,
+    "unexplained_errors": [
+      "run.err: MemoryError\n\nDuring handling of the above exception, another exception occurred:\n\nMemoryError\n\nDuring handling of the above exception, another exception occurred:\n\nMemoryError\n\nDuring handling of the above exception, another exception occurred:\n\nTraceback (most recent call last):\n  File \"siw.py\", line 52, in <module>\n    main( sys.argv[1], sys.argv[2], sys.argv[3] )\n  File \"siw.py\", line 12, in main\n    fd.grounding.default( domain_file, problem_file, task )\nMemoryError\n"
+    ]
+  },
+  "siwr-1-grid-p25.pddl": {
+    "algorithm": "siwr-1",
+    "coverage": 0,
+    "domain": "grid",
+    "error": "unsolvable-or-error",
+    "id": [
+      "siwr-1",
+      "grid",
+      "p25.pddl"
+    ],
+    "memory_limit": 3000,
+    "node": "n490",
+    "not_i_reachable": 0,
+    "planner_exit_code": 1,
+    "problem": "p25.pddl",
+    "run_dir": "runs-00101-00200/00145",
+    "time_limit": 1800,
+    "unexplained_errors": [
+      "run.err: MemoryError\n\nDuring handling of the above exception, another exception occurred:\n\nTraceback (most recent call last):\n  File \"siw.py\", line 52, in <module>\n    main( sys.argv[1], sys.argv[2], sys.argv[3] )\n  File \"siw.py\", line 12, in main\n    fd.grounding.default( domain_file, problem_file, task )\nMemoryError\n"
+    ]
+  },
+  "siwr-1-grid-p26.pddl": {
+    "algorithm": "siwr-1",
+    "coverage": 0,
+    "domain": "grid",
+    "error": "unsolvable-or-error",
+    "id": [
+      "siwr-1",
+      "grid",
+      "p26.pddl"
+    ],
+    "memory_limit": 3000,
+    "node": "n1959",
+    "not_i_reachable": 0,
+    "planner_exit_code": 1,
+    "problem": "p26.pddl",
+    "run_dir": "runs-00101-00200/00146",
+    "time_limit": 1800,
+    "unexplained_errors": [
+      "run.err: MemoryError\n\nDuring handling of the above exception, another exception occurred:\n\nTraceback (most recent call last):\n  File \"/proj/ssiw/projects/code/LAPKT-siwr/planners/siw/fd/pddl/conditions.py\", line 367, in instantiate\nMemoryError\n\nDuring handling of the above exception, another exception occurred:\n\nMemoryError\n\nDuring handling of the above exception, another exception occurred:\n\nMemoryError\n\nDuring handling of the above exception, another exception occurred:\n\nTraceback (most recent call last):\n  File \"/proj/ssiw/projects/code/LAPKT-siwr/planners/siw/fd/grounding.py\", line 63, in instantiate\nMemoryError\n\nDuring handling of the above exception, another exception occurred:\n\nMemoryError\n\nDuring handling of the above exception, another exception occurred:\n\nMemoryError\n\nDuring handling of the above exception, another exception occurred:\n\nMemoryError\n\nDuring handling of the above exception, another exception occurred:\n\nMemoryError\n\nDuring handling of the above exception, another exception occurred:\n\nMemoryError\n\nDuring handling of the above exception, another exception occurred:\n\nMemoryError\n\nDuring handling of the above exception, another exception occurred:\n\nMemoryError\n"
+    ]
+  },
+  "siwr-1-grid-p27.pddl": {
+    "algorithm": "siwr-1",
+    "coverage": 0,
+    "domain": "grid",
+    "error": "unsolvable-or-error",
+    "id": [
+      "siwr-1",
+      "grid",
+      "p27.pddl"
+    ],
+    "memory_limit": 3000,
+    "node": "n1962",
+    "not_i_reachable": 0,
+    "planner_exit_code": 1,
+    "problem": "p27.pddl",
+    "run_dir": "runs-00101-00200/00147",
+    "time_limit": 1800,
+    "unexplained_errors": [
+      "run.err: MemoryError\n\nDuring handling of the above exception, another exception occurred:\n\nTraceback (most recent call last):\n  File \"/proj/ssiw/projects/code/LAPKT-siwr/planners/siw/fd/pddl/conditions.py\", line 346, in instantiate\nMemoryError\n\nDuring handling of the above exception, another exception occurred:\n\nMemoryError\n\nDuring handling of the above exception, another exception occurred:\n\nMemoryError\n\nDuring handling of the above exception, another exception occurred:\n\nTraceback (most recent call last):\n  File \"/proj/ssiw/projects/code/LAPKT-siwr/planners/siw/fd/grounding.py\", line 63, in instantiate\nMemoryError\n\nDuring handling of the above exception, another exception occurred:\n\nMemoryError\n\nDuring handling of the above exception, another exception occurred:\n\nMemoryError\n\nDuring handling of the above exception, another exception occurred:\n\nMemoryError\n\nDuring handling of the above exception, another exception occurred:\n\nMemoryError\n\nDuring handling of the above exception, another exception occurred:\n\nMemoryError\n\nDuring handling of the above exception, another exception occurred:\n\nMemoryError\n\nDuring handling of the above exception, another exception occurred:\n\nMemoryError\n"
+    ]
+  },
+  "siwr-1-grid-p28.pddl": {
+    "algorithm": "siwr-1",
+    "coverage": 0,
+    "domain": "grid",
+    "error": "unsolvable-or-error",
+    "id": [
+      "siwr-1",
+      "grid",
+      "p28.pddl"
+    ],
+    "memory_limit": 3000,
+    "node": "n1960",
+    "not_i_reachable": 0,
+    "planner_exit_code": 1,
+    "problem": "p28.pddl",
+    "run_dir": "runs-00101-00200/00148",
+    "time_limit": 1800,
+    "unexplained_errors": [
+      "run.err: MemoryError\n\nDuring handling of the above exception, another exception occurred:\n\nTraceback (most recent call last):\n  File \"/proj/ssiw/projects/code/LAPKT-siwr/planners/siw/fd/pddl/conditions.py\", line 347, in instantiate\nMemoryError\n\nDuring handling of the above exception, another exception occurred:\n\nTraceback (most recent call last):\n  File \"/proj/ssiw/projects/code/LAPKT-siwr/planners/siw/fd/pddl/actions.py\", line 84, in instantiate\nMemoryError\n\nDuring handling of the above exception, another exception occurred:\n\nMemoryError\n\nDuring handling of the above exception, another exception occurred:\n\nMemoryError\n\nDuring handling of the above exception, another exception occurred:\n\nMemoryError\n\nDuring handling of the above exception, another exception occurred:\n\nMemoryError\n\nDuring handling of the above exception, another exception occurred:\n\nMemoryError\n\nDuring handling of the above exception, another exception occurred:\n\nMemoryError\n\nDuring handling of the above exception, another exception occurred:\n\nMemoryError\n\nDuring handling of the above exception, another exception occurred:\n\nMemoryError\n"
+    ]
+  },
+  "siwr-1-grid-p29.pddl": {
+    "algorithm": "siwr-1",
+    "coverage": 0,
+    "domain": "grid",
+    "error": "unsolvable-or-error",
+    "id": [
+      "siwr-1",
+      "grid",
+      "p29.pddl"
+    ],
+    "memory_limit": 3000,
+    "node": "n1686",
+    "not_i_reachable": 0,
+    "planner_exit_code": 1,
+    "problem": "p29.pddl",
+    "run_dir": "runs-00101-00200/00149",
+    "time_limit": 1800,
+    "unexplained_errors": [
+      "run.err: Traceback (most recent call last):\n  File \"siw.py\", line 52, in <module>\n    main( sys.argv[1], sys.argv[2], sys.argv[3] )\n  File \"siw.py\", line 12, in main\n    fd.grounding.default( domain_file, problem_file, task )\n  File \"/proj/ssiw/projects/code/LAPKT-siwr/planners/siw/fd/grounding.py\", line 308, in default\n    relaxed_reachable, atoms, actions, axioms, reachable_action_params = explore(\n  File \"/proj/ssiw/projects/code/LAPKT-siwr/planners/siw/fd/grounding.py\", line 87, in explore\n    return instantiate(task, model)\n  File \"/proj/ssiw/projects/code/LAPKT-siwr/planners/siw/fd/grounding.py\", line 67, in instantiate\n    instantiated_actions.append(inst_action)\nMemoryError\n"
+    ]
+  },
+  "siwr-1-grid-p30.pddl": {
+    "algorithm": "siwr-1",
+    "coverage": 0,
+    "domain": "grid",
+    "error": "unsolvable-or-error",
+    "id": [
+      "siwr-1",
+      "grid",
+      "p30.pddl"
+    ],
+    "memory_limit": 3000,
+    "node": "n1920",
+    "not_i_reachable": 0,
+    "planner_exit_code": 1,
+    "problem": "p30.pddl",
+    "run_dir": "runs-00101-00200/00150",
+    "time_limit": 1800,
+    "unexplained_errors": [
+      "run.err: Traceback (most recent call last):\n  File \"/proj/ssiw/projects/code/LAPKT-siwr/planners/siw/fd/pddl/effects.py\", line 64, in _instantiate\n  File \"/proj/ssiw/projects/code/LAPKT-siwr/planners/siw/fd/pddl/conditions.py\", line 370, in instantiate\nMemoryError\n\nDuring handling of the above exception, another exception occurred:\n\nMemoryError\n\nDuring handling of the above exception, another exception occurred:\n\nTraceback (most recent call last):\n  File \"/proj/ssiw/projects/code/LAPKT-siwr/planners/siw/fd/grounding.py\", line 63, in instantiate\nMemoryError\n\nDuring handling of the above exception, another exception occurred:\n\nMemoryError\n\nDuring handling of the above exception, another exception occurred:\n\nMemoryError\n\nDuring handling of the above exception, another exception occurred:\n\nMemoryError\n\nDuring handling of the above exception, another exception occurred:\n\nMemoryError\n\nDuring handling of the above exception, another exception occurred:\n\nMemoryError\n\nDuring handling of the above exception, another exception occurred:\n\nMemoryError\n\nDuring handling of the above exception, another exception occurred:\n\nMemoryError\n"
+    ]
+  },
+  "siwr-1-tpp-p01.pddl": {
+    "algorithm": "siwr-1",
+    "cost": 23,
+    "coverage": 1,
+    "domain": "tpp",
+    "error": "plan-found",
+    "id": [
+      "siwr-1",
+      "tpp",
+      "p01.pddl"
+    ],
+    "memory_limit": 3000,
+    "node": "n490",
+    "nodes_expanded": 312,
+    "nodes_generated": 365,
+    "nodes_pruned": 719,
+    "not_i_reachable": 0,
+    "planner_exit_code": 0,
+    "problem": "p01.pddl",
+    "run_dir": "runs-00101-00200/00151",
+    "time_limit": 1800,
+    "total_time": 0.00186001,
+    "width_average": 2.0,
+    "width_maximum": 2
+  },
+  "siwr-1-tpp-p02.pddl": {
+    "algorithm": "siwr-1",
+    "cost": 22,
+    "coverage": 1,
+    "domain": "tpp",
+    "error": "plan-found",
+    "id": [
+      "siwr-1",
+      "tpp",
+      "p02.pddl"
+    ],
+    "memory_limit": 3000,
+    "node": "n1868",
+    "nodes_expanded": 1037,
+    "nodes_generated": 1350,
+    "nodes_pruned": 3400,
+    "not_i_reachable": 0,
+    "planner_exit_code": 0,
+    "problem": "p02.pddl",
+    "run_dir": "runs-00101-00200/00152",
+    "time_limit": 1800,
+    "total_time": 0.00805501,
+    "width_average": 2.0,
+    "width_maximum": 2
+  },
+  "siwr-1-tpp-p03.pddl": {
+    "algorithm": "siwr-1",
+    "cost": 50,
+    "coverage": 1,
+    "domain": "tpp",
+    "error": "plan-found",
+    "id": [
+      "siwr-1",
+      "tpp",
+      "p03.pddl"
+    ],
+    "memory_limit": 3000,
+    "node": "n721",
+    "nodes_expanded": 5066,
+    "nodes_generated": 5579,
+    "nodes_pruned": 24263,
+    "not_i_reachable": 0,
+    "planner_exit_code": 0,
+    "problem": "p03.pddl",
+    "run_dir": "runs-00101-00200/00153",
+    "time_limit": 1800,
+    "total_time": 0.054204,
+    "width_average": 2.0,
+    "width_maximum": 2
+  },
+  "siwr-1-tpp-p04.pddl": {
+    "algorithm": "siwr-1",
+    "coverage": 0,
+    "domain": "tpp",
+    "error": "plan-found",
+    "id": [
+      "siwr-1",
+      "tpp",
+      "p04.pddl"
+    ],
+    "memory_limit": 3000,
+    "node": "n530",
+    "nodes_expanded": 10856,
+    "nodes_generated": 12467,
+    "nodes_pruned": 75308,
+    "not_i_reachable": 1,
+    "planner_exit_code": 0,
+    "problem": "p04.pddl",
+    "run_dir": "runs-00101-00200/00154",
+    "time_limit": 1800,
+    "total_time": 0.199321,
+    "width_average": 2.0,
+    "width_maximum": 2
+  },
+  "siwr-1-tpp-p05.pddl": {
+    "algorithm": "siwr-1",
+    "coverage": 0,
+    "domain": "tpp",
+    "error": "plan-found",
+    "id": [
+      "siwr-1",
+      "tpp",
+      "p05.pddl"
+    ],
+    "memory_limit": 3000,
+    "node": "n2010",
+    "nodes_expanded": 28394,
+    "nodes_generated": 30729,
+    "nodes_pruned": 230978,
+    "not_i_reachable": 1,
+    "planner_exit_code": 0,
+    "problem": "p05.pddl",
+    "run_dir": "runs-00101-00200/00155",
+    "time_limit": 1800,
+    "total_time": 0.661785,
+    "width_average": 2.0,
+    "width_maximum": 2
+  },
+  "siwr-1-tpp-p06.pddl": {
+    "algorithm": "siwr-1",
+    "cost": 77,
+    "coverage": 1,
+    "domain": "tpp",
+    "error": "plan-found",
+    "id": [
+      "siwr-1",
+      "tpp",
+      "p06.pddl"
+    ],
+    "memory_limit": 3000,
+    "node": "n1961",
+    "nodes_expanded": 42547,
+    "nodes_generated": 48564,
+    "nodes_pruned": 380542,
+    "not_i_reachable": 0,
+    "planner_exit_code": 0,
+    "problem": "p06.pddl",
+    "run_dir": "runs-00101-00200/00156",
+    "time_limit": 1800,
+    "total_time": 1.403,
+    "width_average": 2.0,
+    "width_maximum": 2
+  },
+  "siwr-1-tpp-p07.pddl": {
+    "algorithm": "siwr-1",
+    "cost": 100,
+    "coverage": 1,
+    "domain": "tpp",
+    "error": "plan-found",
+    "id": [
+      "siwr-1",
+      "tpp",
+      "p07.pddl"
+    ],
+    "memory_limit": 3000,
+    "node": "n1960",
+    "nodes_expanded": 116788,
+    "nodes_generated": 130420,
+    "nodes_pruned": 1237770,
+    "not_i_reachable": 0,
+    "planner_exit_code": 0,
+    "problem": "p07.pddl",
+    "run_dir": "runs-00101-00200/00157",
+    "time_limit": 1800,
+    "total_time": 5.94643,
+    "width_average": 2.0,
+    "width_maximum": 2
+  },
+  "siwr-1-tpp-p08.pddl": {
+    "algorithm": "siwr-1",
+    "coverage": 0,
+    "domain": "tpp",
+    "error": "plan-found",
+    "id": [
+      "siwr-1",
+      "tpp",
+      "p08.pddl"
+    ],
+    "memory_limit": 3000,
+    "node": "n1920",
+    "nodes_expanded": 81923,
+    "nodes_generated": 96368,
+    "nodes_pruned": 861003,
+    "not_i_reachable": 1,
+    "planner_exit_code": 0,
+    "problem": "p08.pddl",
+    "run_dir": "runs-00101-00200/00158",
+    "time_limit": 1800,
+    "total_time": 4.37739,
+    "width_average": 2.0,
+    "width_maximum": 2
+  },
+  "siwr-1-tpp-p09.pddl": {
+    "algorithm": "siwr-1",
+    "coverage": 0,
+    "domain": "tpp",
+    "error": "plan-found",
+    "id": [
+      "siwr-1",
+      "tpp",
+      "p09.pddl"
+    ],
+    "memory_limit": 3000,
+    "node": "n530",
+    "nodes_expanded": 195700,
+    "nodes_generated": 211183,
+    "nodes_pruned": 2713731,
+    "not_i_reachable": 1,
+    "planner_exit_code": 0,
+    "problem": "p09.pddl",
+    "run_dir": "runs-00101-00200/00159",
+    "time_limit": 1800,
+    "total_time": 14.9392,
+    "width_average": 2.0,
+    "width_maximum": 2
+  },
+  "siwr-1-tpp-p10.pddl": {
+    "algorithm": "siwr-1",
+    "coverage": 0,
+    "domain": "tpp",
+    "error": "plan-found",
+    "id": [
+      "siwr-1",
+      "tpp",
+      "p10.pddl"
+    ],
+    "memory_limit": 3000,
+    "node": "n1960",
+    "nodes_expanded": 346505,
+    "nodes_generated": 376122,
+    "nodes_pruned": 5358268,
+    "not_i_reachable": 1,
+    "planner_exit_code": 0,
+    "problem": "p10.pddl",
+    "run_dir": "runs-00101-00200/00160",
+    "time_limit": 1800,
+    "total_time": 29.9905,
+    "width_average": 2.0,
+    "width_maximum": 2
+  },
+  "siwr-1-tpp-p11.pddl": {
+    "algorithm": "siwr-1",
+    "cost": 161,
+    "coverage": 1,
+    "domain": "tpp",
+    "error": "plan-found",
+    "id": [
+      "siwr-1",
+      "tpp",
+      "p11.pddl"
+    ],
+    "memory_limit": 3000,
+    "node": "n490",
+    "nodes_expanded": 586149,
+    "nodes_generated": 642159,
+    "nodes_pruned": 8853062,
+    "not_i_reachable": 0,
+    "planner_exit_code": 0,
+    "problem": "p11.pddl",
+    "run_dir": "runs-00101-00200/00161",
+    "time_limit": 1800,
+    "total_time": 50.9961,
+    "width_average": 2.0,
+    "width_maximum": 2
+  },
+  "siwr-1-tpp-p12.pddl": {
+    "algorithm": "siwr-1",
+    "cost": 168,
+    "coverage": 1,
+    "domain": "tpp",
+    "error": "plan-found",
+    "id": [
+      "siwr-1",
+      "tpp",
+      "p12.pddl"
+    ],
+    "memory_limit": 3000,
+    "node": "n1960",
+    "nodes_expanded": 930545,
+    "nodes_generated": 1044647,
+    "nodes_pruned": 14775307,
+    "not_i_reachable": 0,
+    "planner_exit_code": 0,
+    "problem": "p12.pddl",
+    "run_dir": "runs-00101-00200/00162",
+    "time_limit": 1800,
+    "total_time": 101.519,
+    "width_average": 2.0,
+    "width_maximum": 2
+  },
+  "siwr-1-tpp-p13.pddl": {
+    "algorithm": "siwr-1",
+    "coverage": 0,
+    "domain": "tpp",
+    "error": "plan-found",
+    "id": [
+      "siwr-1",
+      "tpp",
+      "p13.pddl"
+    ],
+    "memory_limit": 3000,
+    "node": "n1960",
+    "nodes_expanded": 1106884,
+    "nodes_generated": 1205765,
+    "nodes_pruned": 21337355,
+    "not_i_reachable": 1,
+    "planner_exit_code": 0,
+    "problem": "p13.pddl",
+    "run_dir": "runs-00101-00200/00163",
+    "time_limit": 1800,
+    "total_time": 152.44,
+    "width_average": 2.0,
+    "width_maximum": 2
+  },
+  "siwr-1-tpp-p14.pddl": {
+    "algorithm": "siwr-1",
+    "cost": 270,
+    "coverage": 1,
+    "domain": "tpp",
+    "error": "plan-found",
+    "id": [
+      "siwr-1",
+      "tpp",
+      "p14.pddl"
+    ],
+    "memory_limit": 3000,
+    "node": "n299",
+    "nodes_expanded": 2393645,
+    "nodes_generated": 2530097,
+    "nodes_pruned": 47989259,
+    "not_i_reachable": 0,
+    "planner_exit_code": 0,
+    "problem": "p14.pddl",
+    "run_dir": "runs-00101-00200/00164",
+    "time_limit": 1800,
+    "total_time": 416.334,
+    "width_average": 2.0,
+    "width_maximum": 2
+  },
+  "siwr-1-tpp-p15.pddl": {
+    "algorithm": "siwr-1",
+    "coverage": 0,
+    "domain": "tpp",
+    "error": "plan-found",
+    "id": [
+      "siwr-1",
+      "tpp",
+      "p15.pddl"
+    ],
+    "memory_limit": 3000,
+    "node": "n1960",
+    "nodes_expanded": 2337248,
+    "nodes_generated": 2563080,
+    "nodes_pruned": 48307841,
+    "not_i_reachable": 1,
+    "planner_exit_code": 0,
+    "problem": "p15.pddl",
+    "run_dir": "runs-00101-00200/00165",
+    "time_limit": 1800,
+    "total_time": 426.812,
+    "width_average": 2.0,
+    "width_maximum": 2
+  },
+  "siwr-1-tpp-p16.pddl": {
+    "algorithm": "siwr-1",
+    "coverage": 0,
+    "domain": "tpp",
+    "error": "plan-found",
+    "id": [
+      "siwr-1",
+      "tpp",
+      "p16.pddl"
+    ],
+    "memory_limit": 3000,
+    "node": "n251",
+    "nodes_expanded": 2600277,
+    "nodes_generated": 2960716,
+    "nodes_pruned": 59118905,
+    "not_i_reachable": 1,
+    "planner_exit_code": 0,
+    "problem": "p16.pddl",
+    "run_dir": "runs-00101-00200/00166",
+    "time_limit": 1800,
+    "total_time": 591.659,
+    "width_average": 2.0,
+    "width_maximum": 2
+  },
+  "siwr-1-tpp-p17.pddl": {
+    "algorithm": "siwr-1",
+    "coverage": 0,
+    "domain": "tpp",
+    "error": "unsolvable-or-error",
+    "id": [
+      "siwr-1",
+      "tpp",
+      "p17.pddl"
+    ],
+    "memory_limit": 3000,
+    "node": "n1920",
+    "not_i_reachable": 0,
+    "planner_exit_code": 1,
+    "problem": "p17.pddl",
+    "run_dir": "runs-00101-00200/00167",
+    "time_limit": 1800,
+    "unexplained_errors": [
+      "run.err: Traceback (most recent call last):\n  File \"siw.py\", line 52, in <module>\n    main( sys.argv[1], sys.argv[2], sys.argv[3] )\n  File \"siw.py\", line 12, in main\n    fd.grounding.default( domain_file, problem_file, task )\n  File \"/proj/ssiw/projects/code/LAPKT-siwr/planners/siw/fd/grounding.py\", line 349, in default\n    output_task.add_action(name.encode('utf-8'))\nMemoryError\n"
+    ]
+  },
+  "siwr-1-tpp-p18.pddl": {
+    "algorithm": "siwr-1",
+    "coverage": 0,
+    "domain": "tpp",
+    "error": "unsolvable-or-error",
+    "id": [
+      "siwr-1",
+      "tpp",
+      "p18.pddl"
+    ],
+    "memory_limit": 3000,
+    "node": "n530",
+    "not_i_reachable": 0,
+    "planner_exit_code": 1,
+    "problem": "p18.pddl",
+    "run_dir": "runs-00101-00200/00168",
+    "time_limit": 1800,
+    "unexplained_errors": [
+      "run.err: Traceback (most recent call last):\n  File \"siw.py\", line 52, in <module>\n  File \"siw.py\", line 12, in main\n  File \"/proj/ssiw/projects/code/LAPKT-siwr/planners/siw/fd/grounding.py\", line 349, in default\nMemoryError\n"
+    ]
+  },
+  "siwr-1-tpp-p19.pddl": {
+    "algorithm": "siwr-1",
+    "coverage": 0,
+    "domain": "tpp",
+    "error": "unsolvable-or-error",
+    "id": [
+      "siwr-1",
+      "tpp",
+      "p19.pddl"
+    ],
+    "memory_limit": 3000,
+    "node": "n721",
+    "not_i_reachable": 0,
+    "planner_exit_code": 1,
+    "problem": "p19.pddl",
+    "run_dir": "runs-00101-00200/00169",
+    "time_limit": 1800,
+    "unexplained_errors": [
+      "run.err: Traceback (most recent call last):\n  File \"siw.py\", line 52, in <module>\n  File \"siw.py\", line 12, in main\n  File \"/proj/ssiw/projects/code/LAPKT-siwr/planners/siw/fd/grounding.py\", line 349, in default\nMemoryError\n"
+    ]
+  },
+  "siwr-1-tpp-p20.pddl": {
+    "algorithm": "siwr-1",
+    "coverage": 0,
+    "domain": "tpp",
+    "error": "unsolvable-or-error",
+    "id": [
+      "siwr-1",
+      "tpp",
+      "p20.pddl"
+    ],
+    "memory_limit": 3000,
+    "node": "n530",
+    "not_i_reachable": 0,
+    "planner_exit_code": 1,
+    "problem": "p20.pddl",
+    "run_dir": "runs-00101-00200/00170",
+    "time_limit": 1800,
+    "unexplained_errors": [
+      "run.err: Traceback (most recent call last):\n  File \"/proj/ssiw/projects/code/LAPKT-siwr/planners/siw/fd/grounding.py\", line 339, in default\n  File \"/proj/ssiw/projects/code/LAPKT-siwr/planners/siw/fd/grounding.py\", line 104, in set_precondition\n  File \"/proj/ssiw/projects/code/LAPKT-siwr/planners/siw/fd/pddl/conditions.py\", line 312, in text\nMemoryError\n\nDuring handling of the above exception, another exception occurred:\n\nMemoryError\n\nDuring handling of the above exception, another exception occurred:\n\nMemoryError\n"
+    ]
+  },
+  "siwr-1-tpp-p21.pddl": {
+    "algorithm": "siwr-1",
+    "coverage": 0,
+    "domain": "tpp",
+    "error": "unsolvable-or-error",
+    "id": [
+      "siwr-1",
+      "tpp",
+      "p21.pddl"
+    ],
+    "memory_limit": 3000,
+    "node": "n530",
+    "not_i_reachable": 0,
+    "planner_exit_code": 1,
+    "problem": "p21.pddl",
+    "run_dir": "runs-00101-00200/00171",
+    "time_limit": 1800,
+    "unexplained_errors": [
+      "run.err: Traceback (most recent call last):\n  File \"/proj/ssiw/projects/code/LAPKT-siwr/planners/siw/fd/grounding.py\", line 339, in default\n  File \"/proj/ssiw/projects/code/LAPKT-siwr/planners/siw/fd/grounding.py\", line 104, in set_precondition\n  File \"/proj/ssiw/projects/code/LAPKT-siwr/planners/siw/fd/pddl/conditions.py\", line 312, in text\nMemoryError\n\nDuring handling of the above exception, another exception occurred:\n\nMemoryError\n\nDuring handling of the above exception, another exception occurred:\n\nMemoryError\n"
+    ]
+  },
+  "siwr-1-tpp-p22.pddl": {
+    "algorithm": "siwr-1",
+    "coverage": 0,
+    "domain": "tpp",
+    "error": "unsolvable-or-error",
+    "id": [
+      "siwr-1",
+      "tpp",
+      "p22.pddl"
+    ],
+    "memory_limit": 3000,
+    "node": "n1959",
+    "not_i_reachable": 0,
+    "planner_exit_code": 1,
+    "problem": "p22.pddl",
+    "run_dir": "runs-00101-00200/00172",
+    "time_limit": 1800,
+    "unexplained_errors": [
+      "run.err: MemoryError\n\nDuring handling of the above exception, another exception occurred:\n\nMemoryError\n\nDuring handling of the above exception, another exception occurred:\n\nTraceback (most recent call last):\n  File \"/proj/ssiw/projects/code/LAPKT-siwr/planners/siw/fd/pddl/actions.py\", line 84, in instantiate\nMemoryError\n\nDuring handling of the above exception, another exception occurred:\n\nMemoryError\n\nDuring handling of the above exception, another exception occurred:\n\nMemoryError\n\nDuring handling of the above exception, another exception occurred:\n\nMemoryError\n\nDuring handling of the above exception, another exception occurred:\n\nMemoryError\n\nDuring handling of the above exception, another exception occurred:\n\nMemoryError\n\nDuring handling of the above exception, another exception occurred:\n\nMemoryError\n\nDuring handling of the above exception, another exception occurred:\n\nMemoryError\n\nDuring handling of the above exception, another exception occurred:\n\nMemoryError\n"
+    ]
+  },
+  "siwr-1-tpp-p23.pddl": {
+    "algorithm": "siwr-1",
+    "coverage": 0,
+    "domain": "tpp",
+    "error": "unsolvable-or-error",
+    "id": [
+      "siwr-1",
+      "tpp",
+      "p23.pddl"
+    ],
+    "memory_limit": 3000,
+    "node": "n1960",
+    "not_i_reachable": 0,
+    "planner_exit_code": 1,
+    "problem": "p23.pddl",
+    "run_dir": "runs-00101-00200/00173",
+    "time_limit": 1800,
+    "unexplained_errors": [
+      "run.err: MemoryError\n\nDuring handling of the above exception, another exception occurred:\n\nTraceback (most recent call last):\n  File \"/proj/ssiw/projects/code/LAPKT-siwr/planners/siw/fd/pddl/conditions.py\", line 368, in instantiate\nMemoryError\n\nDuring handling of the above exception, another exception occurred:\n\nMemoryError\n\nDuring handling of the above exception, another exception occurred:\n\nMemoryError\n\nDuring handling of the above exception, another exception occurred:\n\nTraceback (most recent call last):\n  File \"/proj/ssiw/projects/code/LAPKT-siwr/planners/siw/fd/grounding.py\", line 63, in instantiate\nMemoryError\n\nDuring handling of the above exception, another exception occurred:\n\nMemoryError\n\nDuring handling of the above exception, another exception occurred:\n\nMemoryError\n\nDuring handling of the above exception, another exception occurred:\n\nMemoryError\n\nDuring handling of the above exception, another exception occurred:\n\nMemoryError\n\nDuring handling of the above exception, another exception occurred:\n\nMemoryError\n\nDuring handling of the above exception, another exception occurred:\n\nMemoryError\n\nDuring handling of the above exception, another exception occurred:\n\nMemoryError\n"
+    ]
+  },
+  "siwr-1-tpp-p24.pddl": {
+    "algorithm": "siwr-1",
+    "coverage": 0,
+    "domain": "tpp",
+    "error": "unsolvable-or-error",
+    "id": [
+      "siwr-1",
+      "tpp",
+      "p24.pddl"
+    ],
+    "memory_limit": 3000,
+    "node": "n1961",
+    "not_i_reachable": 0,
+    "planner_exit_code": 1,
+    "problem": "p24.pddl",
+    "run_dir": "runs-00101-00200/00174",
+    "time_limit": 1800,
+    "unexplained_errors": [
+      "run.err: MemoryError\n\nDuring handling of the above exception, another exception occurred:\n\nTraceback (most recent call last):\n  File \"/proj/ssiw/projects/code/LAPKT-siwr/planners/siw/fd/pddl/conditions.py\", line 370, in instantiate\nMemoryError\n\nDuring handling of the above exception, another exception occurred:\n\nMemoryError\n\nDuring handling of the above exception, another exception occurred:\n\nMemoryError\n\nDuring handling of the above exception, another exception occurred:\n\nTraceback (most recent call last):\n  File \"/proj/ssiw/projects/code/LAPKT-siwr/planners/siw/fd/grounding.py\", line 63, in instantiate\nMemoryError\n\nDuring handling of the above exception, another exception occurred:\n\nMemoryError\n\nDuring handling of the above exception, another exception occurred:\n\nMemoryError\n\nDuring handling of the above exception, another exception occurred:\n\nMemoryError\n\nDuring handling of the above exception, another exception occurred:\n\nMemoryError\n\nDuring handling of the above exception, another exception occurred:\n\nMemoryError\n\nDuring handling of the above exception, another exception occurred:\n\nMemoryError\n\nDuring handling of the above exception, another exception occurred:\n\nMemoryError\n"
+    ]
+  },
+  "siwr-1-tpp-p25.pddl": {
+    "algorithm": "siwr-1",
+    "coverage": 0,
+    "domain": "tpp",
+    "error": "unsolvable-or-error",
+    "id": [
+      "siwr-1",
+      "tpp",
+      "p25.pddl"
+    ],
+    "memory_limit": 3000,
+    "node": "n1868",
+    "not_i_reachable": 0,
+    "planner_exit_code": 1,
+    "problem": "p25.pddl",
+    "run_dir": "runs-00101-00200/00175",
+    "time_limit": 1800,
+    "unexplained_errors": [
+      "run.err: MemoryError\n\nDuring handling of the above exception, another exception occurred:\n\nTraceback (most recent call last):\n  File \"/proj/ssiw/projects/code/LAPKT-siwr/planners/siw/fd/pddl/conditions.py\", line 346, in instantiate\nMemoryError\n\nDuring handling of the above exception, another exception occurred:\n\nTraceback (most recent call last):\n  File \"/proj/ssiw/projects/code/LAPKT-siwr/planners/siw/fd/pddl/actions.py\", line 84, in instantiate\nMemoryError\n\nDuring handling of the above exception, another exception occurred:\n\nMemoryError\n\nDuring handling of the above exception, another exception occurred:\n\nMemoryError\n\nDuring handling of the above exception, another exception occurred:\n\nMemoryError\n\nDuring handling of the above exception, another exception occurred:\n\nMemoryError\n\nDuring handling of the above exception, another exception occurred:\n\nMemoryError\n\nDuring handling of the above exception, another exception occurred:\n\nMemoryError\n\nDuring handling of the above exception, another exception occurred:\n\nMemoryError\n\nDuring handling of the above exception, another exception occurred:\n\nMemoryError\n"
+    ]
+  },
+  "siwr-1-tpp-p26.pddl": {
+    "algorithm": "siwr-1",
+    "coverage": 0,
+    "domain": "tpp",
+    "error": "unsolvable-or-error",
+    "id": [
+      "siwr-1",
+      "tpp",
+      "p26.pddl"
+    ],
+    "memory_limit": 3000,
+    "node": "n1961",
+    "not_i_reachable": 0,
+    "planner_exit_code": 1,
+    "problem": "p26.pddl",
+    "run_dir": "runs-00101-00200/00176",
+    "time_limit": 1800,
+    "unexplained_errors": [
+      "run.err: MemoryError\n\nDuring handling of the above exception, another exception occurred:\n\nMemoryError\n\nDuring handling of the above exception, another exception occurred:\n\nTraceback (most recent call last):\n  File \"/proj/ssiw/projects/code/LAPKT-siwr/planners/siw/fd/grounding.py\", line 87, in explore\n  File \"/proj/ssiw/projects/code/LAPKT-siwr/planners/siw/fd/grounding.py\", line 63, in instantiate\n  File \"/proj/ssiw/projects/code/LAPKT-siwr/planners/siw/fd/pddl/actions.py\", line 100, in instantiate\nMemoryError\n\nDuring handling of the above exception, another exception occurred:\n\nTraceback (most recent call last):\n  File \"siw.py\", line 52, in <module>\n  File \"siw.py\", line 12, in main\nMemoryError\n"
+    ]
+  },
+  "siwr-1-tpp-p27.pddl": {
+    "algorithm": "siwr-1",
+    "coverage": 0,
+    "domain": "tpp",
+    "error": "unsolvable-or-error",
+    "id": [
+      "siwr-1",
+      "tpp",
+      "p27.pddl"
+    ],
+    "memory_limit": 3000,
+    "node": "n2010",
+    "not_i_reachable": 0,
+    "planner_exit_code": 1,
+    "problem": "p27.pddl",
+    "run_dir": "runs-00101-00200/00177",
+    "time_limit": 1800,
+    "unexplained_errors": [
+      "run.err: MemoryError\n\nDuring handling of the above exception, another exception occurred:\n\nTraceback (most recent call last):\n  File \"/proj/ssiw/projects/code/LAPKT-siwr/planners/siw/fd/pddl/conditions.py\", line 368, in instantiate\nMemoryError\n\nDuring handling of the above exception, another exception occurred:\n\nMemoryError\n\nDuring handling of the above exception, another exception occurred:\n\nMemoryError\n\nDuring handling of the above exception, another exception occurred:\n\nTraceback (most recent call last):\n  File \"/proj/ssiw/projects/code/LAPKT-siwr/planners/siw/fd/grounding.py\", line 63, in instantiate\nMemoryError\n\nDuring handling of the above exception, another exception occurred:\n\nMemoryError\n\nDuring handling of the above exception, another exception occurred:\n\nMemoryError\n\nDuring handling of the above exception, another exception occurred:\n\nMemoryError\n\nDuring handling of the above exception, another exception occurred:\n\nMemoryError\n\nDuring handling of the above exception, another exception occurred:\n\nMemoryError\n\nDuring handling of the above exception, another exception occurred:\n\nMemoryError\n\nDuring handling of the above exception, another exception occurred:\n\nMemoryError\n"
+    ]
+  },
+  "siwr-1-tpp-p28.pddl": {
+    "algorithm": "siwr-1",
+    "coverage": 0,
+    "domain": "tpp",
+    "error": "unsolvable-or-error",
+    "id": [
+      "siwr-1",
+      "tpp",
+      "p28.pddl"
+    ],
+    "memory_limit": 3000,
+    "node": "n530",
+    "not_i_reachable": 0,
+    "planner_exit_code": 1,
+    "problem": "p28.pddl",
+    "run_dir": "runs-00101-00200/00178",
+    "time_limit": 1800,
+    "unexplained_errors": [
+      "run.err: MemoryError\n\nDuring handling of the above exception, another exception occurred:\n\nTraceback (most recent call last):\n  File \"/proj/ssiw/projects/code/LAPKT-siwr/planners/siw/fd/pddl/conditions.py\", line 368, in instantiate\nMemoryError\n\nDuring handling of the above exception, another exception occurred:\n\nMemoryError\n\nDuring handling of the above exception, another exception occurred:\n\nMemoryError\n\nDuring handling of the above exception, another exception occurred:\n\nTraceback (most recent call last):\n  File \"/proj/ssiw/projects/code/LAPKT-siwr/planners/siw/fd/grounding.py\", line 63, in instantiate\nMemoryError\n\nDuring handling of the above exception, another exception occurred:\n\nMemoryError\n\nDuring handling of the above exception, another exception occurred:\n\nMemoryError\n\nDuring handling of the above exception, another exception occurred:\n\nMemoryError\n\nDuring handling of the above exception, another exception occurred:\n\nMemoryError\n\nDuring handling of the above exception, another exception occurred:\n\nMemoryError\n\nDuring handling of the above exception, another exception occurred:\n\nMemoryError\n\nDuring handling of the above exception, another exception occurred:\n\nMemoryError\n"
+    ]
+  },
+  "siwr-1-tpp-p29.pddl": {
+    "algorithm": "siwr-1",
+    "coverage": 0,
+    "domain": "tpp",
+    "error": "unsolvable-or-error",
+    "id": [
+      "siwr-1",
+      "tpp",
+      "p29.pddl"
+    ],
+    "memory_limit": 3000,
+    "node": "n1960",
+    "not_i_reachable": 0,
+    "planner_exit_code": 1,
+    "problem": "p29.pddl",
+    "run_dir": "runs-00101-00200/00179",
+    "time_limit": 1800,
+    "unexplained_errors": [
+      "run.err: Traceback (most recent call last):\n  File \"/proj/ssiw/projects/code/LAPKT-siwr/planners/siw/fd/pddl/effects.py\", line 64, in _instantiate\n  File \"/proj/ssiw/projects/code/LAPKT-siwr/planners/siw/fd/pddl/conditions.py\", line 370, in instantiate\nMemoryError\n\nDuring handling of the above exception, another exception occurred:\n\nMemoryError\n\nDuring handling of the above exception, another exception occurred:\n\nTraceback (most recent call last):\n  File \"/proj/ssiw/projects/code/LAPKT-siwr/planners/siw/fd/grounding.py\", line 63, in instantiate\nMemoryError\n\nDuring handling of the above exception, another exception occurred:\n\nMemoryError\n\nDuring handling of the above exception, another exception occurred:\n\nMemoryError\n\nDuring handling of the above exception, another exception occurred:\n\nMemoryError\n\nDuring handling of the above exception, another exception occurred:\n\nMemoryError\n\nDuring handling of the above exception, another exception occurred:\n\nMemoryError\n\nDuring handling of the above exception, another exception occurred:\n\nMemoryError\n\nDuring handling of the above exception, another exception occurred:\n\nMemoryError\n"
+    ]
+  },
+  "siwr-1-tpp-p30.pddl": {
+    "algorithm": "siwr-1",
+    "coverage": 0,
+    "domain": "tpp",
+    "error": "unsolvable-or-error",
+    "id": [
+      "siwr-1",
+      "tpp",
+      "p30.pddl"
+    ],
+    "memory_limit": 3000,
+    "node": "n1920",
+    "not_i_reachable": 0,
+    "planner_exit_code": 1,
+    "problem": "p30.pddl",
+    "run_dir": "runs-00101-00200/00180",
+    "time_limit": 1800,
+    "unexplained_errors": [
+      "run.err: MemoryError\n\nDuring handling of the above exception, another exception occurred:\n\nTraceback (most recent call last):\n  File \"/proj/ssiw/projects/code/LAPKT-siwr/planners/siw/fd/timers.py\", line 37, in timing\n  File \"/proj/ssiw/projects/code/LAPKT-siwr/planners/siw/fd/grounding.py\", line 87, in explore\n  File \"/proj/ssiw/projects/code/LAPKT-siwr/planners/siw/fd/grounding.py\", line 61, in instantiate\nMemoryError\n\nDuring handling of the above exception, another exception occurred:\n\nMemoryError\n\nDuring handling of the above exception, another exception occurred:\n\nMemoryError\n\nDuring handling of the above exception, another exception occurred:\n\nMemoryError\n\nDuring handling of the above exception, another exception occurred:\n\nMemoryError\n\nDuring handling of the above exception, another exception occurred:\n\nMemoryError\n"
+    ]
+  },
+  "siwr-2-barman-p01.pddl": {
+    "algorithm": "siwr-2",
+    "coverage": 0,
+    "domain": "barman",
+    "error": "plan-found",
+    "id": [
+      "siwr-2",
+      "barman",
+      "p01.pddl"
+    ],
+    "memory_limit": 3000,
+    "node": "n1961",
+    "nodes_expanded": 998,
+    "nodes_generated": 1044,
+    "nodes_pruned": 4891,
+    "not_i_reachable": 1,
+    "planner_exit_code": 0,
+    "problem": "p01.pddl",
+    "run_dir": "runs-00001-00100/00001",
+    "time_limit": 1800,
+    "total_time": 0.010869,
+    "width_average": 1.0,
+    "width_maximum": 1
+  },
+  "siwr-2-barman-p02.pddl": {
+    "algorithm": "siwr-2",
+    "coverage": 0,
+    "domain": "barman",
+    "error": "plan-found",
+    "id": [
+      "siwr-2",
+      "barman",
+      "p02.pddl"
+    ],
+    "memory_limit": 3000,
+    "node": "n1920",
+    "nodes_expanded": 1539,
+    "nodes_generated": 1604,
+    "nodes_pruned": 7762,
+    "not_i_reachable": 1,
+    "planner_exit_code": 0,
+    "problem": "p02.pddl",
+    "run_dir": "runs-00001-00100/00002",
+    "time_limit": 1800,
+    "total_time": 0.022203,
+    "width_average": 1.0,
+    "width_maximum": 1
+  },
+  "siwr-2-barman-p03.pddl": {
+    "algorithm": "siwr-2",
+    "coverage": 0,
+    "domain": "barman",
+    "error": "plan-found",
+    "id": [
+      "siwr-2",
+      "barman",
+      "p03.pddl"
+    ],
+    "memory_limit": 3000,
+    "node": "n299",
+    "nodes_expanded": 2445,
+    "nodes_generated": 2559,
+    "nodes_pruned": 12998,
+    "not_i_reachable": 1,
+    "planner_exit_code": 0,
+    "problem": "p03.pddl",
+    "run_dir": "runs-00001-00100/00003",
+    "time_limit": 1800,
+    "total_time": 0.057196,
+    "width_average": 1.0,
+    "width_maximum": 1
+  },
+  "siwr-2-barman-p04.pddl": {
+    "algorithm": "siwr-2",
+    "coverage": 0,
+    "domain": "barman",
+    "error": "plan-found",
+    "id": [
+      "siwr-2",
+      "barman",
+      "p04.pddl"
+    ],
+    "memory_limit": 3000,
+    "node": "n251",
+    "nodes_expanded": 2946,
+    "nodes_generated": 3030,
+    "nodes_pruned": 16655,
+    "not_i_reachable": 1,
+    "planner_exit_code": 0,
+    "problem": "p04.pddl",
+    "run_dir": "runs-00001-00100/00004",
+    "time_limit": 1800,
+    "total_time": 0.060481,
+    "width_average": 1.0,
+    "width_maximum": 1
+  },
+  "siwr-2-barman-p05.pddl": {
+    "algorithm": "siwr-2",
+    "coverage": 0,
+    "domain": "barman",
+    "error": "plan-found",
+    "id": [
+      "siwr-2",
+      "barman",
+      "p05.pddl"
+    ],
+    "memory_limit": 3000,
+    "node": "n530",
+    "nodes_expanded": 4069,
+    "nodes_generated": 4175,
+    "nodes_pruned": 24811,
+    "not_i_reachable": 1,
+    "planner_exit_code": 0,
+    "problem": "p05.pddl",
+    "run_dir": "runs-00001-00100/00005",
+    "time_limit": 1800,
+    "total_time": 0.106955,
+    "width_average": 1.0,
+    "width_maximum": 1
+  },
+  "siwr-2-barman-p06.pddl": {
+    "algorithm": "siwr-2",
+    "coverage": 0,
+    "domain": "barman",
+    "error": "plan-found",
+    "id": [
+      "siwr-2",
+      "barman",
+      "p06.pddl"
+    ],
+    "memory_limit": 3000,
+    "node": "n1959",
+    "nodes_expanded": 5905,
+    "nodes_generated": 6133,
+    "nodes_pruned": 35418,
+    "not_i_reachable": 1,
+    "planner_exit_code": 0,
+    "problem": "p06.pddl",
+    "run_dir": "runs-00001-00100/00006",
+    "time_limit": 1800,
+    "total_time": 0.175891,
+    "width_average": 1.0,
+    "width_maximum": 1
+  },
+  "siwr-2-barman-p07.pddl": {
+    "algorithm": "siwr-2",
+    "coverage": 0,
+    "domain": "barman",
+    "error": "plan-found",
+    "id": [
+      "siwr-2",
+      "barman",
+      "p07.pddl"
+    ],
+    "memory_limit": 3000,
+    "node": "n1960",
+    "nodes_expanded": 6994,
+    "nodes_generated": 7246,
+    "nodes_pruned": 42733,
+    "not_i_reachable": 1,
+    "planner_exit_code": 0,
+    "problem": "p07.pddl",
+    "run_dir": "runs-00001-00100/00007",
+    "time_limit": 1800,
+    "total_time": 0.251875,
+    "width_average": 1.0,
+    "width_maximum": 1
+  },
+  "siwr-2-barman-p08.pddl": {
+    "algorithm": "siwr-2",
+    "coverage": 0,
+    "domain": "barman",
+    "error": "plan-found",
+    "id": [
+      "siwr-2",
+      "barman",
+      "p08.pddl"
+    ],
+    "memory_limit": 3000,
+    "node": "n721",
+    "nodes_expanded": 8459,
+    "nodes_generated": 8691,
+    "nodes_pruned": 55028,
+    "not_i_reachable": 1,
+    "planner_exit_code": 0,
+    "problem": "p08.pddl",
+    "run_dir": "runs-00001-00100/00008",
+    "time_limit": 1800,
+    "total_time": 0.351654,
+    "width_average": 1.0,
+    "width_maximum": 1
+  },
+  "siwr-2-barman-p09.pddl": {
+    "algorithm": "siwr-2",
+    "coverage": 0,
+    "domain": "barman",
+    "error": "plan-found",
+    "id": [
+      "siwr-2",
+      "barman",
+      "p09.pddl"
+    ],
+    "memory_limit": 3000,
+    "node": "n1960",
+    "nodes_expanded": 9286,
+    "nodes_generated": 9398,
+    "nodes_pruned": 62664,
+    "not_i_reachable": 1,
+    "planner_exit_code": 0,
+    "problem": "p09.pddl",
+    "run_dir": "runs-00001-00100/00009",
+    "time_limit": 1800,
+    "total_time": 0.428086,
+    "width_average": 1.0,
+    "width_maximum": 1
+  },
+  "siwr-2-barman-p10.pddl": {
+    "algorithm": "siwr-2",
+    "coverage": 0,
+    "domain": "barman",
+    "error": "plan-found",
+    "id": [
+      "siwr-2",
+      "barman",
+      "p10.pddl"
+    ],
+    "memory_limit": 3000,
+    "node": "n1920",
+    "nodes_expanded": 11506,
+    "nodes_generated": 11787,
+    "nodes_pruned": 73489,
+    "not_i_reachable": 1,
+    "planner_exit_code": 0,
+    "problem": "p10.pddl",
+    "run_dir": "runs-00001-00100/00010",
+    "time_limit": 1800,
+    "total_time": 0.629571,
+    "width_average": 1.0,
+    "width_maximum": 1
+  },
+  "siwr-2-barman-p11.pddl": {
+    "algorithm": "siwr-2",
+    "coverage": 0,
+    "domain": "barman",
+    "error": "plan-found",
+    "id": [
+      "siwr-2",
+      "barman",
+      "p11.pddl"
+    ],
+    "memory_limit": 3000,
+    "node": "n1686",
+    "nodes_expanded": 14147,
+    "nodes_generated": 14463,
+    "nodes_pruned": 95804,
+    "not_i_reachable": 1,
+    "planner_exit_code": 0,
+    "problem": "p11.pddl",
+    "run_dir": "runs-00001-00100/00011",
+    "time_limit": 1800,
+    "total_time": 0.832043,
+    "width_average": 1.0,
+    "width_maximum": 1
+  },
+  "siwr-2-barman-p12.pddl": {
+    "algorithm": "siwr-2",
+    "coverage": 0,
+    "domain": "barman",
+    "error": "plan-found",
+    "id": [
+      "siwr-2",
+      "barman",
+      "p12.pddl"
+    ],
+    "memory_limit": 3000,
+    "node": "n1686",
+    "nodes_expanded": 15682,
+    "nodes_generated": 16020,
+    "nodes_pruned": 102244,
+    "not_i_reachable": 1,
+    "planner_exit_code": 0,
+    "problem": "p12.pddl",
+    "run_dir": "runs-00001-00100/00012",
+    "time_limit": 1800,
+    "total_time": 1.02991,
+    "width_average": 1.0,
+    "width_maximum": 1
+  },
+  "siwr-2-barman-p13.pddl": {
+    "algorithm": "siwr-2",
+    "coverage": 0,
+    "domain": "barman",
+    "error": "plan-found",
+    "id": [
+      "siwr-2",
+      "barman",
+      "p13.pddl"
+    ],
+    "memory_limit": 3000,
+    "node": "n1686",
+    "nodes_expanded": 18134,
+    "nodes_generated": 18503,
+    "nodes_pruned": 124994,
+    "not_i_reachable": 1,
+    "planner_exit_code": 0,
+    "problem": "p13.pddl",
+    "run_dir": "runs-00001-00100/00013",
+    "time_limit": 1800,
+    "total_time": 1.36637,
+    "width_average": 1.0,
+    "width_maximum": 1
+  },
+  "siwr-2-barman-p14.pddl": {
+    "algorithm": "siwr-2",
+    "coverage": 0,
+    "domain": "barman",
+    "error": "plan-found",
+    "id": [
+      "siwr-2",
+      "barman",
+      "p14.pddl"
+    ],
+    "memory_limit": 3000,
+    "node": "n1960",
+    "nodes_expanded": 19993,
+    "nodes_generated": 20385,
+    "nodes_pruned": 138708,
+    "not_i_reachable": 1,
+    "planner_exit_code": 0,
+    "problem": "p14.pddl",
+    "run_dir": "runs-00001-00100/00014",
+    "time_limit": 1800,
+    "total_time": 1.6396,
+    "width_average": 1.0,
+    "width_maximum": 1
+  },
+  "siwr-2-barman-p15.pddl": {
+    "algorithm": "siwr-2",
+    "coverage": 0,
+    "domain": "barman",
+    "error": "plan-found",
+    "id": [
+      "siwr-2",
+      "barman",
+      "p15.pddl"
+    ],
+    "memory_limit": 3000,
+    "node": "n721",
+    "nodes_expanded": 22237,
+    "nodes_generated": 22537,
+    "nodes_pruned": 153765,
+    "not_i_reachable": 1,
+    "planner_exit_code": 0,
+    "problem": "p15.pddl",
+    "run_dir": "runs-00001-00100/00015",
+    "time_limit": 1800,
+    "total_time": 1.87907,
+    "width_average": 1.0,
+    "width_maximum": 1
+  },
+  "siwr-2-barman-p16.pddl": {
+    "algorithm": "siwr-2",
+    "coverage": 0,
+    "domain": "barman",
+    "error": "plan-found",
+    "id": [
+      "siwr-2",
+      "barman",
+      "p16.pddl"
+    ],
+    "memory_limit": 3000,
+    "node": "n490",
+    "nodes_expanded": 26359,
+    "nodes_generated": 26937,
+    "nodes_pruned": 179076,
+    "not_i_reachable": 1,
+    "planner_exit_code": 0,
+    "problem": "p16.pddl",
+    "run_dir": "runs-00001-00100/00016",
+    "time_limit": 1800,
+    "total_time": 2.22523,
+    "width_average": 1.0,
+    "width_maximum": 1
+  },
+  "siwr-2-barman-p17.pddl": {
+    "algorithm": "siwr-2",
+    "coverage": 0,
+    "domain": "barman",
+    "error": "plan-found",
+    "id": [
+      "siwr-2",
+      "barman",
+      "p17.pddl"
+    ],
+    "memory_limit": 3000,
+    "node": "n251",
+    "nodes_expanded": 28324,
+    "nodes_generated": 28803,
+    "nodes_pruned": 200354,
+    "not_i_reachable": 1,
+    "planner_exit_code": 0,
+    "problem": "p17.pddl",
+    "run_dir": "runs-00001-00100/00017",
+    "time_limit": 1800,
+    "total_time": 2.78054,
+    "width_average": 1.0,
+    "width_maximum": 1
+  },
+  "siwr-2-barman-p18.pddl": {
+    "algorithm": "siwr-2",
+    "coverage": 0,
+    "domain": "barman",
+    "error": "plan-found",
+    "id": [
+      "siwr-2",
+      "barman",
+      "p18.pddl"
+    ],
+    "memory_limit": 3000,
+    "node": "n530",
+    "nodes_expanded": 31702,
+    "nodes_generated": 32347,
+    "nodes_pruned": 217600,
+    "not_i_reachable": 1,
+    "planner_exit_code": 0,
+    "problem": "p18.pddl",
+    "run_dir": "runs-00001-00100/00018",
+    "time_limit": 1800,
+    "total_time": 3.56543,
+    "width_average": 1.0,
+    "width_maximum": 1
+  },
+  "siwr-2-barman-p19.pddl": {
+    "algorithm": "siwr-2",
+    "coverage": 0,
+    "domain": "barman",
+    "error": "plan-found",
+    "id": [
+      "siwr-2",
+      "barman",
+      "p19.pddl"
+    ],
+    "memory_limit": 3000,
+    "node": "n2010",
+    "nodes_expanded": 34142,
+    "nodes_generated": 34814,
+    "nodes_pruned": 235274,
+    "not_i_reachable": 1,
+    "planner_exit_code": 0,
+    "problem": "p19.pddl",
+    "run_dir": "runs-00001-00100/00019",
+    "time_limit": 1800,
+    "total_time": 3.93899,
+    "width_average": 1.0,
+    "width_maximum": 1
+  },
+  "siwr-2-barman-p20.pddl": {
+    "algorithm": "siwr-2",
+    "coverage": 0,
+    "domain": "barman",
+    "error": "plan-found",
+    "id": [
+      "siwr-2",
+      "barman",
+      "p20.pddl"
+    ],
+    "memory_limit": 3000,
+    "node": "n1960",
+    "nodes_expanded": 10375,
+    "nodes_generated": 10375,
+    "nodes_pruned": 60765,
+    "not_i_reachable": 1,
+    "planner_exit_code": 0,
+    "problem": "p20.pddl",
+    "run_dir": "runs-00001-00100/00020",
+    "time_limit": 1800,
+    "total_time": 0.296793,
+    "width_average": Infinity,
+    "width_maximum": 0
+  },
+  "siwr-2-barman-p21.pddl": {
+    "algorithm": "siwr-2",
+    "coverage": 0,
+    "domain": "barman",
+    "error": "plan-found",
+    "id": [
+      "siwr-2",
+      "barman",
+      "p21.pddl"
+    ],
+    "memory_limit": 3000,
+    "node": "n1959",
+    "nodes_expanded": 11124,
+    "nodes_generated": 11124,
+    "nodes_pruned": 65424,
+    "not_i_reachable": 1,
+    "planner_exit_code": 0,
+    "problem": "p21.pddl",
+    "run_dir": "runs-00001-00100/00021",
+    "time_limit": 1800,
+    "total_time": 0.329032,
+    "width_average": Infinity,
+    "width_maximum": 0
+  },
+  "siwr-2-barman-p22.pddl": {
+    "algorithm": "siwr-2",
+    "coverage": 0,
+    "domain": "barman",
+    "error": "plan-found",
+    "id": [
+      "siwr-2",
+      "barman",
+      "p22.pddl"
+    ],
+    "memory_limit": 3000,
+    "node": "n721",
+    "nodes_expanded": 12700,
+    "nodes_generated": 12700,
+    "nodes_pruned": 75258,
+    "not_i_reachable": 1,
+    "planner_exit_code": 0,
+    "problem": "p22.pddl",
+    "run_dir": "runs-00001-00100/00022",
+    "time_limit": 1800,
+    "total_time": 0.395356,
+    "width_average": Infinity,
+    "width_maximum": 0
+  },
+  "siwr-2-barman-p23.pddl": {
+    "algorithm": "siwr-2",
+    "coverage": 0,
+    "domain": "barman",
+    "error": "plan-found",
+    "id": [
+      "siwr-2",
+      "barman",
+      "p23.pddl"
+    ],
+    "memory_limit": 3000,
+    "node": "n530",
+    "nodes_expanded": 13527,
+    "nodes_generated": 13527,
+    "nodes_pruned": 80433,
+    "not_i_reachable": 1,
+    "planner_exit_code": 0,
+    "problem": "p23.pddl",
+    "run_dir": "runs-00001-00100/00023",
+    "time_limit": 1800,
+    "total_time": 0.438515,
+    "width_average": Infinity,
+    "width_maximum": 0
+  },
+  "siwr-2-barman-p24.pddl": {
+    "algorithm": "siwr-2",
+    "coverage": 0,
+    "domain": "barman",
+    "error": "plan-found",
+    "id": [
+      "siwr-2",
+      "barman",
+      "p24.pddl"
+    ],
+    "memory_limit": 3000,
+    "node": "n721",
+    "nodes_expanded": 14380,
+    "nodes_generated": 14380,
+    "nodes_pruned": 85780,
+    "not_i_reachable": 1,
+    "planner_exit_code": 0,
+    "problem": "p24.pddl",
+    "run_dir": "runs-00001-00100/00024",
+    "time_limit": 1800,
+    "total_time": 0.462731,
+    "width_average": Infinity,
+    "width_maximum": 0
+  },
+  "siwr-2-barman-p25.pddl": {
+    "algorithm": "siwr-2",
+    "coverage": 0,
+    "domain": "barman",
+    "error": "plan-found",
+    "id": [
+      "siwr-2",
+      "barman",
+      "p25.pddl"
+    ],
+    "memory_limit": 3000,
+    "node": "n1960",
+    "nodes_expanded": 15259,
+    "nodes_generated": 15259,
+    "nodes_pruned": 91299,
+    "not_i_reachable": 1,
+    "planner_exit_code": 0,
+    "problem": "p25.pddl",
+    "run_dir": "runs-00001-00100/00025",
+    "time_limit": 1800,
+    "total_time": 0.498772,
+    "width_average": Infinity,
+    "width_maximum": 0
+  },
+  "siwr-2-barman-p26.pddl": {
+    "algorithm": "siwr-2",
+    "coverage": 0,
+    "domain": "barman",
+    "error": "plan-found",
+    "id": [
+      "siwr-2",
+      "barman",
+      "p26.pddl"
+    ],
+    "memory_limit": 3000,
+    "node": "n1961",
+    "nodes_expanded": 16164,
+    "nodes_generated": 16164,
+    "nodes_pruned": 96990,
+    "not_i_reachable": 1,
+    "planner_exit_code": 0,
+    "problem": "p26.pddl",
+    "run_dir": "runs-00001-00100/00026",
+    "time_limit": 1800,
+    "total_time": 0.597715,
+    "width_average": Infinity,
+    "width_maximum": 0
+  },
+  "siwr-2-barman-p27.pddl": {
+    "algorithm": "siwr-2",
+    "coverage": 0,
+    "domain": "barman",
+    "error": "plan-found",
+    "id": [
+      "siwr-2",
+      "barman",
+      "p27.pddl"
+    ],
+    "memory_limit": 3000,
+    "node": "n1686",
+    "nodes_expanded": 18052,
+    "nodes_generated": 18052,
+    "nodes_pruned": 108888,
+    "not_i_reachable": 1,
+    "planner_exit_code": 0,
+    "problem": "p27.pddl",
+    "run_dir": "runs-00001-00100/00027",
+    "time_limit": 1800,
+    "total_time": 0.575926,
+    "width_average": Infinity,
+    "width_maximum": 0
+  },
+  "siwr-2-barman-p28.pddl": {
+    "algorithm": "siwr-2",
+    "coverage": 0,
+    "domain": "barman",
+    "error": "plan-found",
+    "id": [
+      "siwr-2",
+      "barman",
+      "p28.pddl"
+    ],
+    "memory_limit": 3000,
+    "node": "n1959",
+    "nodes_expanded": 19035,
+    "nodes_generated": 19035,
+    "nodes_pruned": 115095,
+    "not_i_reachable": 1,
+    "planner_exit_code": 0,
+    "problem": "p28.pddl",
+    "run_dir": "runs-00001-00100/00028",
+    "time_limit": 1800,
+    "total_time": 0.761948,
+    "width_average": Infinity,
+    "width_maximum": 0
+  },
+  "siwr-2-barman-p29.pddl": {
+    "algorithm": "siwr-2",
+    "coverage": 0,
+    "domain": "barman",
+    "error": "plan-found",
+    "id": [
+      "siwr-2",
+      "barman",
+      "p29.pddl"
+    ],
+    "memory_limit": 3000,
+    "node": "n1960",
+    "nodes_expanded": 20044,
+    "nodes_generated": 20044,
+    "nodes_pruned": 121474,
+    "not_i_reachable": 1,
+    "planner_exit_code": 0,
+    "problem": "p29.pddl",
+    "run_dir": "runs-00001-00100/00029",
+    "time_limit": 1800,
+    "total_time": 0.84104,
+    "width_average": Infinity,
+    "width_maximum": 0
+  },
+  "siwr-2-barman-p30.pddl": {
+    "algorithm": "siwr-2",
+    "coverage": 0,
+    "domain": "barman",
+    "error": "plan-found",
+    "id": [
+      "siwr-2",
+      "barman",
+      "p30.pddl"
+    ],
+    "memory_limit": 3000,
+    "node": "n1686",
+    "nodes_expanded": 21079,
+    "nodes_generated": 21079,
+    "nodes_pruned": 128025,
+    "not_i_reachable": 1,
+    "planner_exit_code": 0,
+    "problem": "p30.pddl",
+    "run_dir": "runs-00001-00100/00030",
+    "time_limit": 1800,
+    "total_time": 0.831673,
+    "width_average": Infinity,
+    "width_maximum": 0
+  },
+  "siwr-2-floortile-p01.pddl": {
+    "algorithm": "siwr-2",
+    "cost": 21,
+    "coverage": 1,
+    "domain": "floortile",
+    "error": "plan-found",
+    "id": [
+      "siwr-2",
+      "floortile",
+      "p01.pddl"
+    ],
+    "memory_limit": 3000,
+    "node": "n490",
+    "nodes_expanded": 30,
+    "nodes_generated": 61,
+    "nodes_pruned": 103,
+    "not_i_reachable": 0,
+    "planner_exit_code": 0,
+    "problem": "p01.pddl",
+    "run_dir": "runs-00001-00100/00091",
+    "time_limit": 1800,
+    "total_time": 0.000546998,
+    "width_average": 1.25,
+    "width_maximum": 2
+  },
+  "siwr-2-floortile-p02.pddl": {
+    "algorithm": "siwr-2",
+    "coverage": 0,
+    "domain": "floortile",
+    "error": "plan-found",
+    "id": [
+      "siwr-2",
+      "floortile",
+      "p02.pddl"
+    ],
+    "memory_limit": 3000,
+    "node": "n721",
+    "nodes_expanded": 305,
+    "nodes_generated": 498,
+    "nodes_pruned": 1729,
+    "not_i_reachable": 1,
+    "planner_exit_code": 0,
+    "problem": "p02.pddl",
+    "run_dir": "runs-00001-00100/00092",
+    "time_limit": 1800,
+    "total_time": 0.003659,
+    "width_average": 1.4,
+    "width_maximum": 2
+  },
+  "siwr-2-floortile-p03.pddl": {
+    "algorithm": "siwr-2",
+    "coverage": 0,
+    "domain": "floortile",
+    "error": "plan-found",
+    "id": [
+      "siwr-2",
+      "floortile",
+      "p03.pddl"
+    ],
+    "memory_limit": 3000,
+    "node": "n531",
+    "nodes_expanded": 1934,
+    "nodes_generated": 2238,
+    "nodes_pruned": 24722,
+    "not_i_reachable": 1,
+    "planner_exit_code": 0,
+    "problem": "p03.pddl",
+    "run_dir": "runs-00001-00100/00093",
+    "time_limit": 1800,
+    "total_time": 0.088234,
+    "width_average": 1.06667,
+    "width_maximum": 2
+  },
+  "siwr-2-floortile-p04.pddl": {
+    "algorithm": "siwr-2",
+    "coverage": 0,
+    "domain": "floortile",
+    "error": "plan-found",
+    "id": [
+      "siwr-2",
+      "floortile",
+      "p04.pddl"
+    ],
+    "memory_limit": 3000,
+    "node": "n721",
+    "nodes_expanded": 7330,
+    "nodes_generated": 9094,
+    "nodes_pruned": 99170,
+    "not_i_reachable": 1,
+    "planner_exit_code": 0,
+    "problem": "p04.pddl",
+    "run_dir": "runs-00001-00100/00094",
+    "time_limit": 1800,
+    "total_time": 0.77185,
+    "width_average": 1.25,
+    "width_maximum": 2
+  },
+  "siwr-2-floortile-p05.pddl": {
+    "algorithm": "siwr-2",
+    "coverage": 0,
+    "domain": "floortile",
+    "error": "plan-found",
+    "id": [
+      "siwr-2",
+      "floortile",
+      "p05.pddl"
+    ],
+    "memory_limit": 3000,
+    "node": "n530",
+    "nodes_expanded": 7607,
+    "nodes_generated": 9036,
+    "nodes_pruned": 107708,
+    "not_i_reachable": 1,
+    "planner_exit_code": 0,
+    "problem": "p05.pddl",
+    "run_dir": "runs-00001-00100/00095",
+    "time_limit": 1800,
+    "total_time": 1.61074,
+    "width_average": 1.11429,
+    "width_maximum": 2
+  },
+  "siwr-2-floortile-p06.pddl": {
+    "algorithm": "siwr-2",
+    "coverage": 0,
+    "domain": "floortile",
+    "error": "plan-found",
+    "id": [
+      "siwr-2",
+      "floortile",
+      "p06.pddl"
+    ],
+    "memory_limit": 3000,
+    "node": "n530",
+    "nodes_expanded": 10037,
+    "nodes_generated": 12094,
+    "nodes_pruned": 150261,
+    "not_i_reachable": 1,
+    "planner_exit_code": 0,
+    "problem": "p06.pddl",
+    "run_dir": "runs-00001-00100/00096",
+    "time_limit": 1800,
+    "total_time": 3.20653,
+    "width_average": 1.11628,
+    "width_maximum": 2
+  },
+  "siwr-2-floortile-p07.pddl": {
+    "algorithm": "siwr-2",
+    "coverage": 0,
+    "domain": "floortile",
+    "error": "plan-found",
+    "id": [
+      "siwr-2",
+      "floortile",
+      "p07.pddl"
+    ],
+    "memory_limit": 3000,
+    "node": "n490",
+    "nodes_expanded": 13531,
+    "nodes_generated": 15529,
+    "nodes_pruned": 186225,
+    "not_i_reachable": 1,
+    "planner_exit_code": 0,
+    "problem": "p07.pddl",
+    "run_dir": "runs-00001-00100/00097",
+    "time_limit": 1800,
+    "total_time": 6.15207,
+    "width_average": 1.0678,
+    "width_maximum": 2
+  },
+  "siwr-2-floortile-p08.pddl": {
+    "algorithm": "siwr-2",
+    "coverage": 0,
+    "domain": "floortile",
+    "error": "plan-found",
+    "id": [
+      "siwr-2",
+      "floortile",
+      "p08.pddl"
+    ],
+    "memory_limit": 3000,
+    "node": "n530",
+    "nodes_expanded": 34846,
+    "nodes_generated": 38056,
+    "nodes_pruned": 475096,
+    "not_i_reachable": 1,
+    "planner_exit_code": 0,
+    "problem": "p08.pddl",
+    "run_dir": "runs-00001-00100/00098",
+    "time_limit": 1800,
+    "total_time": 32.5438,
+    "width_average": 1.07576,
+    "width_maximum": 2
+  },
+  "siwr-2-floortile-p09.pddl": {
+    "algorithm": "siwr-2",
+    "coverage": 0,
+    "domain": "floortile",
+    "error": "plan-found",
+    "id": [
+      "siwr-2",
+      "floortile",
+      "p09.pddl"
+    ],
+    "memory_limit": 3000,
+    "node": "n2010",
+    "nodes_expanded": 30625,
+    "nodes_generated": 33717,
+    "nodes_pruned": 371964,
+    "not_i_reachable": 1,
+    "planner_exit_code": 0,
+    "problem": "p09.pddl",
+    "run_dir": "runs-00001-00100/00099",
+    "time_limit": 1800,
+    "total_time": 42.4729,
+    "width_average": 1.05263,
+    "width_maximum": 2
+  },
+  "siwr-2-floortile-p10.pddl": {
+    "algorithm": "siwr-2",
+    "coverage": 0,
+    "domain": "floortile",
+    "error": "plan-found",
+    "id": [
+      "siwr-2",
+      "floortile",
+      "p10.pddl"
+    ],
+    "memory_limit": 3000,
+    "node": "n1920",
+    "nodes_expanded": 50584,
+    "nodes_generated": 54863,
+    "nodes_pruned": 770649,
+    "not_i_reachable": 1,
+    "planner_exit_code": 0,
+    "problem": "p10.pddl",
+    "run_dir": "runs-00001-00100/00100",
+    "time_limit": 1800,
+    "total_time": 119.129,
+    "width_average": 1.06796,
+    "width_maximum": 2
+  },
+  "siwr-2-floortile-p11.pddl": {
+    "algorithm": "siwr-2",
+    "coverage": 0,
+    "domain": "floortile",
+    "error": "plan-found",
+    "id": [
+      "siwr-2",
+      "floortile",
+      "p11.pddl"
+    ],
+    "memory_limit": 3000,
+    "node": "n1960",
+    "nodes_expanded": 123465,
+    "nodes_generated": 133408,
+    "nodes_pruned": 1993821,
+    "not_i_reachable": 1,
+    "planner_exit_code": 0,
+    "problem": "p11.pddl",
+    "run_dir": "runs-00101-00200/00101",
+    "time_limit": 1800,
+    "total_time": 391.704,
+    "width_average": 1.04762,
+    "width_maximum": 2
+  },
+  "siwr-2-floortile-p12.pddl": {
+    "algorithm": "siwr-2",
+    "coverage": 0,
+    "domain": "floortile",
+    "error": "plan-found",
+    "id": [
+      "siwr-2",
+      "floortile",
+      "p12.pddl"
+    ],
+    "memory_limit": 3000,
+    "node": "n2010",
+    "nodes_expanded": 119803,
+    "nodes_generated": 127988,
+    "nodes_pruned": 1707457,
+    "not_i_reachable": 1,
+    "planner_exit_code": 0,
+    "problem": "p12.pddl",
+    "run_dir": "runs-00101-00200/00102",
+    "time_limit": 1800,
+    "total_time": 496.927,
+    "width_average": 1.03822,
+    "width_maximum": 2
+  },
+  "siwr-2-floortile-p13.pddl": {
+    "algorithm": "siwr-2",
+    "coverage": 0,
+    "domain": "floortile",
+    "error": "plan-found",
+    "id": [
+      "siwr-2",
+      "floortile",
+      "p13.pddl"
+    ],
+    "memory_limit": 3000,
+    "node": "n1686",
+    "nodes_expanded": 101720,
+    "nodes_generated": 108415,
+    "nodes_pruned": 1455776,
+    "not_i_reachable": 1,
+    "planner_exit_code": 0,
+    "problem": "p13.pddl",
+    "run_dir": "runs-00101-00200/00103",
+    "time_limit": 1800,
+    "total_time": 579.766,
+    "width_average": 1.04255,
+    "width_maximum": 2
+  },
+  "siwr-2-floortile-p14.pddl": {
+    "algorithm": "siwr-2",
+    "coverage": 0,
+    "domain": "floortile",
+    "error": "unsolvable-or-error",
+    "id": [
+      "siwr-2",
+      "floortile",
+      "p14.pddl"
+    ],
+    "memory_limit": 3000,
+    "node": "n490",
+    "not_i_reachable": 0,
+    "planner_exit_code": -24,
+    "problem": "p14.pddl",
+    "run_dir": "runs-00101-00200/00104",
+    "time_limit": 1800
+  },
+  "siwr-2-floortile-p15.pddl": {
+    "algorithm": "siwr-2",
+    "coverage": 0,
+    "domain": "floortile",
+    "error": "plan-found",
+    "id": [
+      "siwr-2",
+      "floortile",
+      "p15.pddl"
+    ],
+    "memory_limit": 3000,
+    "node": "n530",
+    "nodes_expanded": 172244,
+    "nodes_generated": 181426,
+    "nodes_pruned": 2582610,
+    "not_i_reachable": 1,
+    "planner_exit_code": 0,
+    "problem": "p15.pddl",
+    "run_dir": "runs-00101-00200/00105",
+    "time_limit": 1800,
+    "total_time": 1462.29,
+    "width_average": 1.03896,
+    "width_maximum": 2
+  },
+  "siwr-2-floortile-p16.pddl": {
+    "algorithm": "siwr-2",
+    "coverage": 0,
+    "domain": "floortile",
+    "error": "unsolvable-or-error",
+    "id": [
+      "siwr-2",
+      "floortile",
+      "p16.pddl"
+    ],
+    "memory_limit": 3000,
+    "node": "n1920",
+    "not_i_reachable": 0,
+    "planner_exit_code": -24,
+    "problem": "p16.pddl",
+    "run_dir": "runs-00101-00200/00106",
+    "time_limit": 1800
+  },
+  "siwr-2-floortile-p17.pddl": {
+    "algorithm": "siwr-2",
+    "coverage": 0,
+    "domain": "floortile",
+    "error": "unsolvable-or-error",
+    "id": [
+      "siwr-2",
+      "floortile",
+      "p17.pddl"
+    ],
+    "memory_limit": 3000,
+    "node": "n490",
+    "not_i_reachable": 0,
+    "planner_exit_code": -24,
+    "problem": "p17.pddl",
+    "run_dir": "runs-00101-00200/00107",
+    "time_limit": 1800
+  },
+  "siwr-2-floortile-p18.pddl": {
+    "algorithm": "siwr-2",
+    "coverage": 0,
+    "domain": "floortile",
+    "error": "unsolvable-or-error",
+    "id": [
+      "siwr-2",
+      "floortile",
+      "p18.pddl"
+    ],
+    "memory_limit": 3000,
+    "node": "n1961",
+    "not_i_reachable": 0,
+    "planner_exit_code": -24,
+    "problem": "p18.pddl",
+    "run_dir": "runs-00101-00200/00108",
+    "time_limit": 1800
+  },
+  "siwr-2-floortile-p19.pddl": {
+    "algorithm": "siwr-2",
+    "coverage": 0,
+    "domain": "floortile",
+    "error": "unsolvable-or-error",
+    "id": [
+      "siwr-2",
+      "floortile",
+      "p19.pddl"
+    ],
+    "memory_limit": 3000,
+    "node": "n251",
+    "not_i_reachable": 0,
+    "planner_exit_code": -24,
+    "problem": "p19.pddl",
+    "run_dir": "runs-00101-00200/00109",
+    "time_limit": 1800
+  },
+  "siwr-2-floortile-p20.pddl": {
+    "algorithm": "siwr-2",
+    "coverage": 0,
+    "domain": "floortile",
+    "error": "unsolvable-or-error",
+    "id": [
+      "siwr-2",
+      "floortile",
+      "p20.pddl"
+    ],
+    "memory_limit": 3000,
+    "node": "n1686",
+    "not_i_reachable": 0,
+    "planner_exit_code": -24,
+    "problem": "p20.pddl",
+    "run_dir": "runs-00101-00200/00110",
+    "time_limit": 1800
+  },
+  "siwr-2-floortile-p21.pddl": {
+    "algorithm": "siwr-2",
+    "coverage": 0,
+    "domain": "floortile",
+    "error": "unsolvable-or-error",
+    "id": [
+      "siwr-2",
+      "floortile",
+      "p21.pddl"
+    ],
+    "memory_limit": 3000,
+    "node": "n1960",
+    "not_i_reachable": 0,
+    "planner_exit_code": -24,
+    "problem": "p21.pddl",
+    "run_dir": "runs-00101-00200/00111",
+    "time_limit": 1800
+  },
+  "siwr-2-floortile-p22.pddl": {
+    "algorithm": "siwr-2",
+    "coverage": 0,
+    "domain": "floortile",
+    "error": "unsolvable-or-error",
+    "id": [
+      "siwr-2",
+      "floortile",
+      "p22.pddl"
+    ],
+    "memory_limit": 3000,
+    "node": "n721",
+    "not_i_reachable": 0,
+    "planner_exit_code": -24,
+    "problem": "p22.pddl",
+    "run_dir": "runs-00101-00200/00112",
+    "time_limit": 1800
+  },
+  "siwr-2-floortile-p23.pddl": {
+    "algorithm": "siwr-2",
+    "coverage": 0,
+    "domain": "floortile",
+    "error": "unsolvable-or-error",
+    "id": [
+      "siwr-2",
+      "floortile",
+      "p23.pddl"
+    ],
+    "memory_limit": 3000,
+    "node": "n530",
+    "not_i_reachable": 0,
+    "planner_exit_code": -24,
+    "problem": "p23.pddl",
+    "run_dir": "runs-00101-00200/00113",
+    "time_limit": 1800
+  },
+  "siwr-2-floortile-p24.pddl": {
+    "algorithm": "siwr-2",
+    "coverage": 0,
+    "domain": "floortile",
+    "error": "unsolvable-or-error",
+    "id": [
+      "siwr-2",
+      "floortile",
+      "p24.pddl"
+    ],
+    "memory_limit": 3000,
+    "node": "n1868",
+    "not_i_reachable": 0,
+    "planner_exit_code": -24,
+    "problem": "p24.pddl",
+    "run_dir": "runs-00101-00200/00114",
+    "time_limit": 1800
+  },
+  "siwr-2-floortile-p25.pddl": {
+    "algorithm": "siwr-2",
+    "coverage": 0,
+    "domain": "floortile",
+    "error": "unsolvable-or-error",
+    "id": [
+      "siwr-2",
+      "floortile",
+      "p25.pddl"
+    ],
+    "memory_limit": 3000,
+    "node": "n721",
+    "not_i_reachable": 0,
+    "planner_exit_code": -24,
+    "problem": "p25.pddl",
+    "run_dir": "runs-00101-00200/00115",
+    "time_limit": 1800
+  },
+  "siwr-2-floortile-p26.pddl": {
+    "algorithm": "siwr-2",
+    "coverage": 0,
+    "domain": "floortile",
+    "error": "unsolvable-or-error",
+    "id": [
+      "siwr-2",
+      "floortile",
+      "p26.pddl"
+    ],
+    "memory_limit": 3000,
+    "node": "n721",
+    "not_i_reachable": 0,
+    "planner_exit_code": -24,
+    "problem": "p26.pddl",
+    "run_dir": "runs-00101-00200/00116",
+    "time_limit": 1800
+  },
+  "siwr-2-floortile-p27.pddl": {
+    "algorithm": "siwr-2",
+    "coverage": 0,
+    "domain": "floortile",
+    "error": "unsolvable-or-error",
+    "id": [
+      "siwr-2",
+      "floortile",
+      "p27.pddl"
+    ],
+    "memory_limit": 3000,
+    "node": "n1959",
+    "not_i_reachable": 0,
+    "planner_exit_code": -24,
+    "problem": "p27.pddl",
+    "run_dir": "runs-00101-00200/00117",
+    "time_limit": 1800
+  },
+  "siwr-2-floortile-p28.pddl": {
+    "algorithm": "siwr-2",
+    "coverage": 0,
+    "domain": "floortile",
+    "error": "unsolvable-or-error",
+    "id": [
+      "siwr-2",
+      "floortile",
+      "p28.pddl"
+    ],
+    "memory_limit": 3000,
+    "node": "n1960",
+    "not_i_reachable": 0,
+    "planner_exit_code": -24,
+    "problem": "p28.pddl",
+    "run_dir": "runs-00101-00200/00118",
+    "time_limit": 1800
+  },
+  "siwr-2-floortile-p29.pddl": {
+    "algorithm": "siwr-2",
+    "coverage": 0,
+    "domain": "floortile",
+    "error": "unsolvable-or-error",
+    "id": [
+      "siwr-2",
+      "floortile",
+      "p29.pddl"
+    ],
+    "memory_limit": 3000,
+    "node": "n1686",
+    "not_i_reachable": 0,
+    "planner_exit_code": -24,
+    "problem": "p29.pddl",
+    "run_dir": "runs-00101-00200/00119",
+    "time_limit": 1800
+  },
+  "siwr-2-floortile-p30.pddl": {
+    "algorithm": "siwr-2",
+    "coverage": 0,
+    "domain": "floortile",
+    "error": "unsolvable-or-error",
+    "id": [
+      "siwr-2",
+      "floortile",
+      "p30.pddl"
+    ],
+    "memory_limit": 3000,
+    "node": "n530",
+    "not_i_reachable": 0,
+    "planner_exit_code": -24,
+    "problem": "p30.pddl",
+    "run_dir": "runs-00101-00200/00120",
+    "time_limit": 1800
+  }
+}

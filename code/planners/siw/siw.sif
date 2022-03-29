@@ -1,0 +1,79 @@
+Bootstrap: docker
+From: ubuntu:20.04
+
+%files
+   ## Copy subdirectory into the root directory of the container
+   $PWD/LAPKT-public /LAPKT-public
+
+%post
+    ## Add info for tzdata
+    export TZ=Europe/Stockholm
+    ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
+
+    ## Install all necessary dependencies.
+    apt-get update
+    apt-get install --no-install-recommends -y \
+	build-essential \
+	ca-certificates \
+	xutils-dev \
+	cmake \
+	scons \
+	gcc-multilib \
+	flex \
+	bison \
+	python2.7 \
+	python-dev \
+	libboost-dev \
+	libjudy-dev \
+	libboost-python-dev \
+	libboost-program-options-dev \
+	g++-multilib \
+	g++
+
+	## Install SIWR
+	cd /LAPKT-public/planners/siw/
+	./build.py
+
+	# Copy planner files into separate subdirectory
+    mkdir /siw
+	cp /LAPKT-public/planners/siw/siw.py /siw/siw.py
+	cp /LAPKT-public/planners/siw/libsiw.so /siw/libsiw.so
+	cp -r /LAPKT-public/planners/siw/fd /siw/fd
+
+	## Remove packages unneeded for running the planner.
+    apt-get -y autoremove cmake \
+        build-essential \
+        ca-certificates \
+        xutils-dev \
+        scons \
+        gcc-multilib \
+        flex \
+        bison \
+        g++-multilib \
+        g++
+    rm -rf /var/lib/apt/lists/*
+
+	# Cleanup trash
+	rm -rf /LAPKT-public
+
+%runscript
+    ## The runscript is called whenever the container is used to solve
+    ## an instance.
+
+    DOMAINFILE=$1
+    PROBLEMFILE=$2
+    PLANFILE=$3
+
+    ## Call your planner using FD-parser.
+    /siw/siw.py $DOMAINFILE $PROBLEMFILE $PLANFILE
+
+## Update the following fields with meta data about your submission.
+## Please use the same field names and use only one line for each value.
+%labels
+Name        LAPKT-SIW
+Description SIW implemented with LAPKT
+Authors     Nir Lipovetzky <nir.lipovetzky@unimelb.edu.au> and Miquel Ramirez <miguel.ramirez@unimelb.edu.au> and Guillem Frances <guillem.frances@unibas.ch> and Hector Geffner <hector.geffner@upf.edu>
+SupportsDerivedPredicates no
+SupportsQuantifiedPreconditions yes
+SupportsQuantifiedEffects yes
+

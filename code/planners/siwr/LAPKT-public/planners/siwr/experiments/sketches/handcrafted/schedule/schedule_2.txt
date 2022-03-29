@@ -1,0 +1,11 @@
+(:policy
+(:boolean_features "b_empty(c_or(c_primitive(scheduled,0),c_primitive(busy,0)))")
+(:numerical_features "n_count(r_diff(r_primitive(shape_g,0,1),r_primitive(shape,0,1)))"
+                     "n_count(r_diff(r_primitive(surface-condition_g,0,1),r_primitive(surface-condition,0,1)))"
+                     "n_count(r_diff(r_primitive(painted_g,0,1),r_primitive(painted,0,1)))"
+                     "n_count(r_restrict(r_primitive(temperature,0,1),c_one_of(hot)))")
+(:rule (:conditions (:c_n_gt 0)) (:effects (:e_n_dec 0) (:e_n_bot 3) (:e_b_neg 0)))
+(:rule (:conditions (:c_n_eq 0) (:c_n_gt 1)) (:effects (:e_n_bot 0) (:e_n_dec 1) (:e_n_bot 3) (:e_b_neg 0)))
+(:rule (:conditions (:c_n_eq 0) (:c_n_eq 1)) (:effects (:e_n_bot 0) (:e_n_bot 1) (:e_n_dec 2) (:e_n_bot 3) (:e_b_neg 0)))
+(:rule (:conditions (:c_b_neg 0)) (:effects (:e_n_bot 0) (:e_n_bot 1) (:e_n_bot 2) (:e_n_bot 3) (:e_b_pos 0)))
+)

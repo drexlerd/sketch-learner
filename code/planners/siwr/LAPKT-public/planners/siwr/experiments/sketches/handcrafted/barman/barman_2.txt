@@ -1,0 +1,30 @@
+(:policy
+(:boolean_features
+    "b_empty(
+        c_and(
+            c_all(
+                r_primitive(cocktail-part1,0,1),
+                c_some(
+                    r_primitive(contains,1,0),
+                    c_primitive(shaker-level,0)
+                )
+            ),
+            c_projection(
+                r_diff(
+                    r_primitive(contains_g,0,1),
+                    r_primitive(contains,0,1)
+                ),
+                1
+                )
+            )
+        )
+    "
+    "b_empty(c_and(c_all(r_primitive(cocktail-part1,0,1),c_some(r_primitive(contains,1,0),c_primitive(shaker-level,0))),c_and(c_all(r_primitive(cocktail-part2,0,1),c_some(r_primitive(contains,1,0),c_primitive(shaker-level,0))),c_projection(r_diff(r_primitive(contains_g,0,1),r_primitive(contains,0,1)),1))))"
+)
+(:numerical_features "n_count(c_diff(c_primitive(used,0),c_projection(r_and(r_primitive(contains_g,0,1),r_primitive(contains,0,1)),0)))"
+                     "n_count(r_diff(r_primitive(contains_g,0,1),r_primitive(contains,0,1)))")
+(:rule (:conditions (:c_b_pos 0)) (:effects (:e_b_neg 0) (:e_b_bot 1) (:e_n_bot 1)))
+(:rule (:conditions (:c_b_neg 0) (:c_b_pos 1)) (:effects (:e_b_bot 0) (:e_b_neg 1) (:e_n_bot 1)))
+(:rule (:conditions (:c_n_gt 0)) (:effects (:e_b_bot 0) (:e_b_bot 1) (:e_n_dec 0) (:e_n_bot 1)))
+(:rule (:conditions (:c_n_gt 1)) (:effects (:e_n_bot 0) (:e_n_dec 1)))
+)

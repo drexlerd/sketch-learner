@@ -1,0 +1,82 @@
+Bootstrap: docker
+From: ubuntu:20.04
+
+%files
+    $PWD/LAPKT-public /planner/LAPKT-public
+    $PWD/BFWS /planner/BFWS
+
+%post
+    ## Add info for tzdata
+    export TZ=Europe/Stockholm
+    ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
+
+    ## Install all necessary dependencies.
+    apt-get update
+    apt-get install --no-install-recommends -y \
+	cmake \
+	build-essential \
+	ca-certificates \
+	xutils-dev \
+	scons \
+	gcc-multilib \
+	flex \
+	bison \
+	python2.7 \
+	python-dev \
+	libboost-dev \
+	libjudy-dev \
+	libboost-python-dev \
+	libboost-program-options-dev \
+	g++-multilib \
+	g++
+
+    export LAPKT_PATH=/planner/LAPKT-public
+
+    ## Build your planner
+    cd /planner/BFWS/fd-version
+    ./build.py
+
+    ## Strip binaries.
+    strip --strip-all /planner/BFWS/ff-version/bfws
+
+    ## Remove packages unneeded for running the planner.
+    apt-get -y autoremove cmake \
+        build-essential \
+        ca-certificates \
+        xutils-dev \
+        scons \
+        gcc-multilib \
+        flex \
+        bison \
+        g++-multilib \
+        g++
+    rm -rf /var/lib/apt/lists/*
+
+    ## Only keep essential binaries.
+    mkdir -p /compiled-planner/BFWS
+    mv /planner/BFWS/fd-version /compiled-planner/BFWS
+    rm -rf /planner
+    mv /compiled-planner /planner
+
+%runscript
+    ## The runscript is called whenever the container is used to solve
+    ## an instance.
+
+    DOMAINFILE=$1
+    PROBLEMFILE=$2
+    PLANFILE=$3
+
+    ## Call your planner using FD-parser.
+    /planner/BFWS/fd-version/bfws.py $DOMAINFILE $PROBLEMFILE $PLANFILE
+
+
+## Update the following fields with meta data about your submission.
+## Please use the same field names and use only one line for each value.
+%labels
+Name        LAPKT-DUAL-BFWS
+Description DUAL-BFWS implemented with LAPKT
+Authors     Nir Lipovetzky <nir.lipovetzky@unimelb.edu.au> and Miquel Ramirez <miguel.ramirez@unimelb.edu.au> and Guillem Frances <guillem.frances@unibas.ch> and Hector Geffner <hector.geffner@upf.edu>
+SupportsDerivedPredicates no
+SupportsQuantifiedPreconditions yes
+SupportsQuantifiedEffects yes
+

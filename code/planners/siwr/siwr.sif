@@ -1,0 +1,91 @@
+Bootstrap: docker
+From: ubuntu:20.04
+
+%files
+   ## Copy subdirectory into the root directory of the container
+   $PWD/dlplan /dlplan
+   $PWD/LAPKT-public /LAPKT-public
+
+%post
+    ## Add info for tzdata
+    export TZ=Europe/Stockholm
+    ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
+
+    ## Install all necessary dependencies.
+    apt-get update
+    apt-get install --no-install-recommends -y \
+	build-essential \
+	ca-certificates \
+	xutils-dev \
+	cmake \
+	scons \
+	gcc-multilib \
+	flex \
+	bison \
+	python2.7 \
+	python-dev \
+	libboost-dev \
+	libjudy-dev \
+	libboost-python-dev \
+	libboost-program-options-dev \
+	g++-multilib \
+	g++
+
+    ## Install dlplan
+	cd /dlplan/
+	cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr/local/ -S . -B build/
+	cmake --build build -j4
+	cmake --install build
+	cd ../
+
+	## Install SIWR
+	cd /LAPKT-public/planners/siwr/
+	./build.py
+
+	# Copy planner files into separate subdirectory
+    mkdir /siwr
+	cp /LAPKT-public/planners/siwr/siwr.py /siwr/siwr.py
+	cp /LAPKT-public/planners/siwr/libsiwr.so /siwr/libsiwr.so
+	cp -r /LAPKT-public/planners/siwr/fd /siwr/fd
+
+	## Remove packages unneeded for running the planner.
+    apt-get -y autoremove cmake \
+        build-essential \
+        ca-certificates \
+        xutils-dev \
+        scons \
+        gcc-multilib \
+        flex \
+        bison \
+        g++-multilib \
+        g++
+    rm -rf /var/lib/apt/lists/*
+
+	# Cleanup trash
+	rm -rf /dlplan
+	rm -rf /LAPKT-public
+
+%runscript
+    ## The runscript is called whenever the container is used to solve
+    ## an instance.
+
+	## We need to make sure that libaries are found.
+    export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/usr/local/lib/dlplan/"
+
+    DOMAINFILE=$1
+    PROBLEMFILE=$2
+	SKETCHFILE=$3
+    PLANFILE=$4
+
+    ## Call your planner using FD-parser.
+    /siwr/siwr.py $DOMAINFILE $PROBLEMFILE $SKETCHFILE $PLANFILE
+
+## Update the following fields with meta data about your submission.
+## Please use the same field names and use only one line for each value.
+%labels
+Name        LAPKT-SIWR
+Description SIWR implemented with LAPKT
+Authors     Dominik Drexler <dominik.drexler@liu.se> and Jendrik Seipp <jendrik.seipp@liu.se> and Hector Geffner <hector.geffner@upf.edu>
+SupportsDerivedPredicates no
+SupportsQuantifiedPreconditions yes
+SupportsQuantifiedEffects yes
