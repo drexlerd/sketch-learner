@@ -27,6 +27,7 @@ class TupleGraph:
         does not work because it is asymmetric, i.e., tuple with fewer underlying states
         can be extended into successor tuple with more underlying states and vice versa.
     """
+    root_idx: int
     t_idxs_by_distance: List[List[int]]
     s_idxs_by_distance: List[List[int]]
     t_idx_to_s_idxs: Dict[int, MutableSet]
@@ -78,7 +79,7 @@ class TupleGraphFactory:
         t_idx_to_s_idxs[source_index].add(source_index)
         for suc_index in self.transition_system.forward_transitions[source_index]:
             t_idx_to_s_idxs[suc_index].add(suc_index)
-        return TupleGraph(t_idxs_by_distance, s_idxs_by_distance, t_idx_to_s_idxs, self.width)
+        return TupleGraph(source_index, t_idxs_by_distance, s_idxs_by_distance, t_idx_to_s_idxs, self.width)
 
     def _make_tuple_graph_for_width_greater_0(self, source_index):
         """ Constructing tuple graph for width greater 0 as defined in the literature. """
@@ -141,7 +142,7 @@ class TupleGraphFactory:
                         marked_t_idxs_by_distance.append(marked_t_idxs)
                 d += 1
         assert d > 1
-        return TupleGraph(t_idxs_by_distance, s_idxs_by_distance[:d], t_idx_to_s_idxs, self.width)
+        return TupleGraph(source_index, t_idxs_by_distance, s_idxs_by_distance[:d], t_idx_to_s_idxs, self.width)
 
     def print_statistics(self):
         print(f"Generated tuple graph nodes: {self.generated_nodes}")
@@ -155,7 +156,7 @@ class TupleGraphMinimizer:
         self.num_generated = 0
         self.num_pruned = 0
 
-    def minimize(self, tuple_graph : TupleGraph):
+    def minimize(self, tuple_graph: TupleGraph):
         if tuple_graph is None:
             return None
         # tuple_graph.print()
@@ -188,4 +189,35 @@ class TupleGraphMinimizer:
             t_idx_to_s_idxs[t_idx] = tuple_graph.t_idx_to_s_idxs[t_idx]
         self.num_generated += len(t_idx_to_s_idxs)
         self.num_pruned += len(tuple_graph.t_idx_to_s_idxs) - len(t_idx_to_s_idxs)
-        return TupleGraph(t_idxs_by_distance, tuple_graph.s_idxs_by_distance, t_idx_to_s_idxs, tuple_graph.width)
+        return TupleGraph(tuple_graph.root_idx, t_idxs_by_distance, tuple_graph.s_idxs_by_distance, t_idx_to_s_idxs, tuple_graph.width)
+
+class TupleGraphRelaxer:
+    """ Restrict the tuple graph to those tuples for which
+        all underlying states lie on optimal paths. """
+    def __init__(self):
+        self.num_generated = 0
+        self.num_pruned = 0
+
+    def relax(self, tuple_graph: TupleGraph, goal_distances: List[int]):
+        if tuple_graph is None:
+            return None
+        opt_states = set()
+        for d in range(len(tuple_graph.s_idxs_by_distance)):
+            s_idxs = tuple_graph.s_idxs_by_distance[d]
+            for s_idx in s_idxs:
+                assert goal_distances[tuple_graph.root_idx] <= d + goal_distances[s_idx]
+                if goal_distances[tuple_graph.root_idx] == d + goal_distances[s_idx]:
+                    opt_states.add(s_idx)
+        t_idxs_by_distance = []
+        t_idx_to_s_idxs = dict()
+        for t_idxs in tuple_graph.t_idxs_by_distance:
+            selected_t_idxs = []
+            for t_idx in t_idxs:
+                if tuple_graph.t_idx_to_s_idxs[t_idx].issubset(opt_states):
+                    self.num_generated += 1
+                    selected_t_idxs.append(t_idx)
+                    t_idx_to_s_idxs[t_idx] = tuple_graph.t_idx_to_s_idxs[t_idx]
+                else:
+                    self.num_pruned += 1
+            t_idxs_by_distance.append(selected_t_idxs)
+        return TupleGraph(tuple_graph.root_idx, t_idxs_by_distance, tuple_graph.s_idxs_by_distance, t_idx_to_s_idxs, tuple_graph.width)

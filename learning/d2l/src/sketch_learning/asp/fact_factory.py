@@ -16,6 +16,7 @@ class ASPFactFactory:
         self._add_domain_facts(builder, feature_data)
         for i in range(len(instance_datas)):
             self._add_instance_facts(i, builder, instance_datas[i], feature_data)
+        builder.log_stats()
         return str(builder)
 
     def _add_domain_facts(self, builder: ASPInstanceBuilder, feature_data: FeatureData):

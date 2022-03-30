@@ -14,12 +14,14 @@ class TransitionSystem:
         forward_transitions: Dict[int, List[int]],
         backward_transitions: Dict[int, List[int]],
         deadends: MutableSet[int],
-        goals: MutableSet[int]):
+        goals: MutableSet[int],
+        goal_distances: List[int]):
         self.states_by_index = states_by_index
         self.forward_transitions = forward_transitions
         self.backward_transitions = backward_transitions
         self.deadends = deadends
         self.goals = goals
+        self.goal_distances = goal_distances
 
     def get_num_states(self):
         return len(self.states_by_index)
@@ -108,6 +110,9 @@ class TransitionSystemFactory:
         for line in read_file(state_space_filename):
             if line.startswith('(E)'):  # An edge, with format "(E) 5 12"
                 pid, cid = (int(x) for x in line[4:].split(' '))
+                if pid == cid:
+                    # we prune self loops because they can be skipped in a search anyways.
+                    continue
                 forward_transitions[pid].add(cid)
                 backward_transitions[cid].add(pid)
                 nlines += 1
@@ -134,10 +139,28 @@ class TransitionSystemFactory:
             return None, ReturnCode.UNSOLVABLE
         if len(goals) == len(states_by_index):
             return None, ReturnCode.TRIVIALLY_SOLVABLE
-        return TransitionSystem(states_by_index, forward_transitions, backward_transitions, deadends, goals), ReturnCode.SOLVABLE
+
+        goal_distances = self._compute_goal_distances(states_by_index, goals, backward_transitions)
+        return TransitionSystem(states_by_index, forward_transitions, backward_transitions, deadends, goals, goal_distances), ReturnCode.SOLVABLE
 
     def _normalize_atom_name(self, name):
         tmp = name.replace('()', '').replace(')', '').replace('(', ',')
         if "=" in tmp:  # We have a functional atom
             tmp = tmp.replace("=", ',')
         return tmp.split(',')
+
+    def _compute_goal_distances(self, states_by_index, goals, backward_transitions):
+        distances = [math.inf for _ in states_by_index]
+        queue = deque()
+        for goal in goals:
+            distances[goal] = 0
+            queue.append(goal)
+        while queue:
+            curr_idx = queue.popleft()
+            curr_distance = distances[curr_idx]
+            assert curr_distance != math.inf
+            for succ_idx in backward_transitions.get(curr_idx, []):
+                if distances[succ_idx] == math.inf:
+                    distances[succ_idx] = curr_distance + 1
+                    queue.append(succ_idx)
+        return distances
