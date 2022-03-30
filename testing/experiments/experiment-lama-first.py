@@ -52,7 +52,7 @@ ATTRIBUTES = [
 
 
 DIR = Path(__file__).resolve().parent
-BENCHMARKS_DIR = DIR.parent.parent.parent / "benchmarks" / "testing"
+BENCHMARKS_DIR = DIR.parent.parent / "testing"/ "benchmarks"
 if project.REMOTE:
     SUITE = ["blocks-clear", "blocks-on", "childsnack", "delivery", "gripper", "miconic", "reward", "spanner", "visitall"]
     ENV = project.TetralithEnvironment(
@@ -71,7 +71,7 @@ exp.add_parse_again_step()
 exp.add_fetcher(name="fetch")
 exp.add_parser("parser-singularity.py")
 
-IMAGES_DIR = DIR.parent.parent / "planners"
+IMAGES_DIR = DIR.parent.parent / "testing" / "planners"
 
 def get_image(name):
     planner = name.replace("-", "_")
