@@ -50,15 +50,11 @@ class InstanceDataFactory:
         tuple_graph_factory = TupleGraphFactory(
             config, instance_info, transition_system)
         tuple_graph_minimizer = TupleGraphMinimizer()
-        tuple_graph_relaxer = TupleGraphRelaxer()
         #for state in transition_system.states_by_index:
         #    print(str(state))
-        tuple_graphs_by_state_index = [tuple_graph_relaxer.relax(tuple_graph_minimizer.minimize(tuple_graph_factory.make_tuple_graph(config, i)), transition_system.goal_distances) for i in range(
+        tuple_graphs_by_state_index = [tuple_graph_minimizer.minimize(tuple_graph_factory.make_tuple_graph(config, i)) for i in range(
             transition_system.get_num_states())]
         print("Tuple graph minimizer:")
         print(f"Num generated subgoal tuples: {tuple_graph_minimizer.num_generated}")
         print(f"Num pruned subgoal tuples: {tuple_graph_minimizer.num_pruned}")
-        print("Tuple graph relaxer:")
-        print(f"Num generated subgoal tuples: {tuple_graph_relaxer.num_generated}")
-        print(f"Num pruned subgoal tuples: {tuple_graph_relaxer.num_pruned}")
         return tuple_graphs_by_state_index
