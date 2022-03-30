@@ -2,7 +2,7 @@
 
 ## Installation
 
-### Step 1: Cloning the repo
+### Step 1: Cloning the repo recursively
 
 ```console
 git clone --recursive git@github.com:drexlerd/sketch-learner.git
@@ -23,7 +23,7 @@ pip install -r requirements.txt
 
 ### Step 3: Export environment variables
 
-```
+```console
 export D2L_PATH="<root>/learner/d2l"
 export PYTHONPATH="<root>/learner/d2l/src"
 ```
