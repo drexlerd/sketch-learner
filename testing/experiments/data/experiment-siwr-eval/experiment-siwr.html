@@ -1,0 +1,2986 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>experiment-siwr</title>
+<meta name="generator" content="https://txt2tags.org">
+<style type="text/css">
+blockquote{margin: 1em 2em; border-left: 2px solid #999;
+  font-style: oblique; padding-left: 1em;}
+blockquote:first-letter{margin: .2em .1em .1em 0; font-size: 160%; font-weight: bold;}
+blockquote:first-line{font-weight: bold;}
+body{font-family: sans-serif;}
+hr{background-color:#000;border:0;color:#000;}
+hr.heavy{height:2px;}
+hr.light{height:1px;}
+img{border:0;display:block;}
+img.right{margin:0 0 0 auto;}
+img.center{border:0;margin:0 auto;}
+table{border-collapse: collapse;}
+table th,table td{padding: 3px 7px 2px 7px;}
+table th{background-color: lightgrey;}
+table.center{margin-left:auto; margin-right:auto;}
+.center{text-align:center;}
+.right{text-align:right;}
+.left{text-align:left;}
+.tableborder,.tableborder td,.tableborder th{border:1px solid #000;}
+.underline{text-decoration:underline;}
+</style>
+<style type="text/css">
+    body {
+        font-family: Ubuntu, Helvetica, Arial, sans-serif;
+    }
+    table {
+        border-collapse: collapse;
+    }
+    table th {
+        text-align: left;
+        padding-top: 5px;
+        padding-bottom: 4px;
+        background-color: #aaa;
+        color: #ffffff;
+    }
+</style>
+<script type="text/javascript">
+function toggle_element(element) {
+    if (element.style.display == "none") {
+        element.style.display = "";
+    } else {
+        element.style.display = "none";
+    }
+}
+
+function find_next(element, classname) {
+    element = element.nextSibling;
+    while(element.nodeName != classname)
+        element = element.nextSibling;
+    return element;
+}
+
+function toggle_table(toggle_button) {
+    var table = find_next(toggle_button, "TABLE");
+    toggle_element(table);
+    if (toggle_button.innerHTML == "Show table") {
+        toggle_button.innerHTML = "Hide table";
+    } else {
+        toggle_button.innerHTML = "Show table";
+    }
+}
+
+function show_table(section) {
+    heading = section.children[0];
+    var toggle_button = find_next(heading, "BUTTON");
+    var table = find_next(toggle_button, "TABLE");
+    table.style.display = "";
+    toggle_button.innerHTML = "Hide table";
+}
+
+function show_main_tables() {
+    var names = ["unexplained-errors", "info", "summary"];
+    for (var i = 0; i < names.length; i++) {
+        var section = document.getElementById(names[i]);
+        try {
+            show_table(section);
+        } catch (e) {
+            console.log("No table found for " + names[i]);
+        }
+    }
+
+    // If there is only one table, show it and hide the button.
+    var buttons = document.getElementsByTagName('button');
+    var tables = document.getElementsByTagName('table');
+    if (buttons.length == 1 && tables.length == 1) {
+        tables[0].style.display = "";
+        buttons[0].style.display = "none";
+    }
+}
+
+document.addEventListener("DOMContentLoaded", show_main_tables);
+</script>
+</head>
+<body>
+<header>
+<hgroup>
+<h1>experiment-siwr</h1>
+<h3>2022-03-30</h3>
+</hgroup>
+</header>
+<article>
+
+<div class="body" id="body">
+
+<ul>
+<li><strong><a href="#info" onclick="show_table(document.getElementById('info'));">Info</a></strong>
+</li>
+<li><strong><a href="#summary" onclick="show_table(document.getElementById('summary'));">Summary</a></strong>
+</li>
+<li><strong><a href="#cost" onclick="show_table(document.getElementById('cost'));">cost</a></strong>
+  <ul>
+  <li><a href="#cost-blocks-clear" onclick="show_table(document.getElementById('cost-blocks-clear'));">blocks-clear</a> <a href="#cost-blocks-on" onclick="show_table(document.getElementById('cost-blocks-on'));">blocks-on</a> <a href="#cost-childsnack" onclick="show_table(document.getElementById('cost-childsnack'));">childsnack</a> <a href="#cost-delivery" onclick="show_table(document.getElementById('cost-delivery'));">delivery</a> <a href="#cost-gripper" onclick="show_table(document.getElementById('cost-gripper'));">gripper</a> <a href="#cost-miconic" onclick="show_table(document.getElementById('cost-miconic'));">miconic</a> <a href="#cost-reward" onclick="show_table(document.getElementById('cost-reward'));">reward</a> <a href="#cost-spanner" onclick="show_table(document.getElementById('cost-spanner'));">spanner</a> <a href="#cost-visitall" onclick="show_table(document.getElementById('cost-visitall'));">visitall</a>
+  </li>
+  </ul>
+</li>
+<li><strong><a href="#coverage" onclick="show_table(document.getElementById('coverage'));">coverage</a></strong>
+  <ul>
+  <li><a href="#coverage-blocks-clear" onclick="show_table(document.getElementById('coverage-blocks-clear'));">blocks-clear</a> <a href="#coverage-blocks-on" onclick="show_table(document.getElementById('coverage-blocks-on'));">blocks-on</a> <a href="#coverage-childsnack" onclick="show_table(document.getElementById('coverage-childsnack'));">childsnack</a> <a href="#coverage-delivery" onclick="show_table(document.getElementById('coverage-delivery'));">delivery</a> <a href="#coverage-gripper" onclick="show_table(document.getElementById('coverage-gripper'));">gripper</a> <a href="#coverage-miconic" onclick="show_table(document.getElementById('coverage-miconic'));">miconic</a> <a href="#coverage-reward" onclick="show_table(document.getElementById('coverage-reward'));">reward</a> <a href="#coverage-spanner" onclick="show_table(document.getElementById('coverage-spanner'));">spanner</a> <a href="#coverage-visitall" onclick="show_table(document.getElementById('coverage-visitall'));">visitall</a>
+  </li>
+  </ul>
+</li>
+<li><strong><a href="#error" onclick="show_table(document.getElementById('error'));">error</a></strong>
+  <ul>
+  <li><a href="#error-error-none" onclick="show_table(document.getElementById('error-error-none'));">error-none</a> <a href="#error-blocks-clear" onclick="show_table(document.getElementById('error-blocks-clear'));">blocks-clear</a> <a href="#error-blocks-on" onclick="show_table(document.getElementById('error-blocks-on'));">blocks-on</a> <a href="#error-childsnack" onclick="show_table(document.getElementById('error-childsnack'));">childsnack</a> <a href="#error-delivery" onclick="show_table(document.getElementById('error-delivery'));">delivery</a> <a href="#error-gripper" onclick="show_table(document.getElementById('error-gripper'));">gripper</a> <a href="#error-miconic" onclick="show_table(document.getElementById('error-miconic'));">miconic</a> <a href="#error-reward" onclick="show_table(document.getElementById('error-reward'));">reward</a> <a href="#error-spanner" onclick="show_table(document.getElementById('error-spanner'));">spanner</a> <a href="#error-visitall" onclick="show_table(document.getElementById('error-visitall'));">visitall</a>
+  </li>
+  </ul>
+</li>
+<li><strong><a href="#expanded" onclick="show_table(document.getElementById('expanded'));">expanded</a></strong>
+  <ul>
+  <li><a href="#expanded-blocks-clear" onclick="show_table(document.getElementById('expanded-blocks-clear'));">blocks-clear</a> <a href="#expanded-blocks-on" onclick="show_table(document.getElementById('expanded-blocks-on'));">blocks-on</a> <a href="#expanded-childsnack" onclick="show_table(document.getElementById('expanded-childsnack'));">childsnack</a> <a href="#expanded-delivery" onclick="show_table(document.getElementById('expanded-delivery'));">delivery</a> <a href="#expanded-gripper" onclick="show_table(document.getElementById('expanded-gripper'));">gripper</a> <a href="#expanded-miconic" onclick="show_table(document.getElementById('expanded-miconic'));">miconic</a> <a href="#expanded-reward" onclick="show_table(document.getElementById('expanded-reward'));">reward</a> <a href="#expanded-spanner" onclick="show_table(document.getElementById('expanded-spanner'));">spanner</a> <a href="#expanded-visitall" onclick="show_table(document.getElementById('expanded-visitall'));">visitall</a>
+  </li>
+  </ul>
+</li>
+<li><strong><a href="#generated" onclick="show_table(document.getElementById('generated'));">generated</a></strong>
+  <ul>
+  <li><a href="#generated-blocks-clear" onclick="show_table(document.getElementById('generated-blocks-clear'));">blocks-clear</a> <a href="#generated-blocks-on" onclick="show_table(document.getElementById('generated-blocks-on'));">blocks-on</a> <a href="#generated-childsnack" onclick="show_table(document.getElementById('generated-childsnack'));">childsnack</a> <a href="#generated-delivery" onclick="show_table(document.getElementById('generated-delivery'));">delivery</a> <a href="#generated-gripper" onclick="show_table(document.getElementById('generated-gripper'));">gripper</a> <a href="#generated-miconic" onclick="show_table(document.getElementById('generated-miconic'));">miconic</a> <a href="#generated-reward" onclick="show_table(document.getElementById('generated-reward'));">reward</a> <a href="#generated-spanner" onclick="show_table(document.getElementById('generated-spanner'));">spanner</a> <a href="#generated-visitall" onclick="show_table(document.getElementById('generated-visitall'));">visitall</a>
+  </li>
+  </ul>
+</li>
+<li><strong><a href="#not_i_reachable" onclick="show_table(document.getElementById('not_i_reachable'));">not_i_reachable</a></strong>
+  <ul>
+  <li><a href="#not_i_reachable-blocks-clear" onclick="show_table(document.getElementById('not_i_reachable-blocks-clear'));">blocks-clear</a> <a href="#not_i_reachable-blocks-on" onclick="show_table(document.getElementById('not_i_reachable-blocks-on'));">blocks-on</a> <a href="#not_i_reachable-childsnack" onclick="show_table(document.getElementById('not_i_reachable-childsnack'));">childsnack</a> <a href="#not_i_reachable-delivery" onclick="show_table(document.getElementById('not_i_reachable-delivery'));">delivery</a> <a href="#not_i_reachable-gripper" onclick="show_table(document.getElementById('not_i_reachable-gripper'));">gripper</a> <a href="#not_i_reachable-miconic" onclick="show_table(document.getElementById('not_i_reachable-miconic'));">miconic</a> <a href="#not_i_reachable-reward" onclick="show_table(document.getElementById('not_i_reachable-reward'));">reward</a> <a href="#not_i_reachable-spanner" onclick="show_table(document.getElementById('not_i_reachable-spanner'));">spanner</a> <a href="#not_i_reachable-visitall" onclick="show_table(document.getElementById('not_i_reachable-visitall'));">visitall</a>
+  </li>
+  </ul>
+</li>
+<li><strong><a href="#pruned" onclick="show_table(document.getElementById('pruned'));">pruned</a></strong>
+  <ul>
+  <li><a href="#pruned-blocks-clear" onclick="show_table(document.getElementById('pruned-blocks-clear'));">blocks-clear</a> <a href="#pruned-blocks-on" onclick="show_table(document.getElementById('pruned-blocks-on'));">blocks-on</a> <a href="#pruned-childsnack" onclick="show_table(document.getElementById('pruned-childsnack'));">childsnack</a> <a href="#pruned-delivery" onclick="show_table(document.getElementById('pruned-delivery'));">delivery</a> <a href="#pruned-gripper" onclick="show_table(document.getElementById('pruned-gripper'));">gripper</a> <a href="#pruned-miconic" onclick="show_table(document.getElementById('pruned-miconic'));">miconic</a> <a href="#pruned-reward" onclick="show_table(document.getElementById('pruned-reward'));">reward</a> <a href="#pruned-spanner" onclick="show_table(document.getElementById('pruned-spanner'));">spanner</a> <a href="#pruned-visitall" onclick="show_table(document.getElementById('pruned-visitall'));">visitall</a>
+  </li>
+  </ul>
+</li>
+<li><strong><a href="#run_dir" onclick="show_table(document.getElementById('run_dir'));">run_dir</a></strong>
+  <ul>
+  <li><a href="#run_dir-blocks-clear" onclick="show_table(document.getElementById('run_dir-blocks-clear'));">blocks-clear</a> <a href="#run_dir-blocks-on" onclick="show_table(document.getElementById('run_dir-blocks-on'));">blocks-on</a> <a href="#run_dir-childsnack" onclick="show_table(document.getElementById('run_dir-childsnack'));">childsnack</a> <a href="#run_dir-delivery" onclick="show_table(document.getElementById('run_dir-delivery'));">delivery</a> <a href="#run_dir-gripper" onclick="show_table(document.getElementById('run_dir-gripper'));">gripper</a> <a href="#run_dir-miconic" onclick="show_table(document.getElementById('run_dir-miconic'));">miconic</a> <a href="#run_dir-reward" onclick="show_table(document.getElementById('run_dir-reward'));">reward</a> <a href="#run_dir-spanner" onclick="show_table(document.getElementById('run_dir-spanner'));">spanner</a> <a href="#run_dir-visitall" onclick="show_table(document.getElementById('run_dir-visitall'));">visitall</a>
+  </li>
+  </ul>
+</li>
+<li><strong><a href="#total_time" onclick="show_table(document.getElementById('total_time'));">total_time</a></strong>
+  <ul>
+  <li><a href="#total_time-blocks-clear" onclick="show_table(document.getElementById('total_time-blocks-clear'));">blocks-clear</a> <a href="#total_time-blocks-on" onclick="show_table(document.getElementById('total_time-blocks-on'));">blocks-on</a> <a href="#total_time-childsnack" onclick="show_table(document.getElementById('total_time-childsnack'));">childsnack</a> <a href="#total_time-delivery" onclick="show_table(document.getElementById('total_time-delivery'));">delivery</a> <a href="#total_time-gripper" onclick="show_table(document.getElementById('total_time-gripper'));">gripper</a> <a href="#total_time-miconic" onclick="show_table(document.getElementById('total_time-miconic'));">miconic</a> <a href="#total_time-reward" onclick="show_table(document.getElementById('total_time-reward'));">reward</a> <a href="#total_time-spanner" onclick="show_table(document.getElementById('total_time-spanner'));">spanner</a> <a href="#total_time-visitall" onclick="show_table(document.getElementById('total_time-visitall'));">visitall</a>
+  </li>
+  </ul>
+</li>
+<li><strong><a href="#width_average" onclick="show_table(document.getElementById('width_average'));">width_average</a></strong>
+  <ul>
+  <li><a href="#width_average-blocks-clear" onclick="show_table(document.getElementById('width_average-blocks-clear'));">blocks-clear</a> <a href="#width_average-blocks-on" onclick="show_table(document.getElementById('width_average-blocks-on'));">blocks-on</a> <a href="#width_average-childsnack" onclick="show_table(document.getElementById('width_average-childsnack'));">childsnack</a> <a href="#width_average-delivery" onclick="show_table(document.getElementById('width_average-delivery'));">delivery</a> <a href="#width_average-gripper" onclick="show_table(document.getElementById('width_average-gripper'));">gripper</a> <a href="#width_average-miconic" onclick="show_table(document.getElementById('width_average-miconic'));">miconic</a> <a href="#width_average-reward" onclick="show_table(document.getElementById('width_average-reward'));">reward</a> <a href="#width_average-spanner" onclick="show_table(document.getElementById('width_average-spanner'));">spanner</a> <a href="#width_average-visitall" onclick="show_table(document.getElementById('width_average-visitall'));">visitall</a>
+  </li>
+  </ul>
+</li>
+<li><strong><a href="#width_maximum" onclick="show_table(document.getElementById('width_maximum'));">width_maximum</a></strong>
+  <ul>
+  <li><a href="#width_maximum-blocks-clear" onclick="show_table(document.getElementById('width_maximum-blocks-clear'));">blocks-clear</a> <a href="#width_maximum-blocks-on" onclick="show_table(document.getElementById('width_maximum-blocks-on'));">blocks-on</a> <a href="#width_maximum-childsnack" onclick="show_table(document.getElementById('width_maximum-childsnack'));">childsnack</a> <a href="#width_maximum-delivery" onclick="show_table(document.getElementById('width_maximum-delivery'));">delivery</a> <a href="#width_maximum-gripper" onclick="show_table(document.getElementById('width_maximum-gripper'));">gripper</a> <a href="#width_maximum-miconic" onclick="show_table(document.getElementById('width_maximum-miconic'));">miconic</a> <a href="#width_maximum-reward" onclick="show_table(document.getElementById('width_maximum-reward'));">reward</a> <a href="#width_maximum-spanner" onclick="show_table(document.getElementById('width_maximum-spanner'));">spanner</a> <a href="#width_maximum-visitall" onclick="show_table(document.getElementById('width_maximum-visitall'));">visitall</a>
+  </li>
+  </ul>
+</li>
+</ul>
+
+<section id="info">
+<h1>info</h1>
+
+<p>
+Used nodes: {dominik-HP-EliteBook-845-G7-Notebook-PC}
+</p>
+
+</section>
+<section id="summary">
+<h1>summary</h1>
+
+<button type="button" class="toggle-table" onclick="toggle_table(this)">Show table</button><p></p>
+
+<table class="tableborder" style="display:none">
+<tr>
+<th>Summary</th>
+<th>siwr_<wbr>0</th>
+<th>siwr_<wbr>1</th>
+<th>siwr_<wbr>2</th>
+</tr>
+<tr>
+<td><a href="#cost" onclick="show_table(document.getElementById('cost'));">cost - Sum</a></td>
+<td class="right"><span style="color:rgb(0,0,178)">552</span></td>
+<td class="right"><span style="color:rgb(0,178,0)">466</span></td>
+<td class="right"><span style="color:rgb(0,178,83)">486</span></td>
+</tr>
+<tr>
+<td><a href="#coverage" onclick="show_table(document.getElementById('coverage'));">coverage - Sum</a></td>
+<td class="right"><span style="color:rgb(0,0,178)">6</span></td>
+<td class="right"><span style="color:rgb(0,178,0)">9</span></td>
+<td class="right"><span style="color:rgb(0,178,118)">8</span></td>
+</tr>
+<tr>
+<td><a href="#error-error-none" onclick="show_table(document.getElementById('error-error-none'));">error-none - Sum</a></td>
+<td class="right">6</td>
+<td class="right">9</td>
+<td class="right">8</td>
+</tr>
+<tr>
+<td><a href="#expanded" onclick="show_table(document.getElementById('expanded'));">expanded - Sum</a></td>
+<td class="right"><span style="color:rgb(0,178,0)">552</span></td>
+<td class="right"><span style="color:rgb(0,178,107)">2057</span></td>
+<td class="right"><span style="color:rgb(0,0,178)">5561</span></td>
+</tr>
+<tr>
+<td><a href="#generated" onclick="show_table(document.getElementById('generated'));">generated - Geometric mean</a></td>
+<td class="right"><span style="color:rgb(0,178,0)">315.55</span></td>
+<td class="right"><span style="color:rgb(0,104,178)">557.42</span></td>
+<td class="right"><span style="color:rgb(0,0,178)">656.94</span></td>
+</tr>
+<tr>
+<td><a href="#not_i_reachable" onclick="show_table(document.getElementById('not_i_reachable'));">not_i_reachable - Sum</a></td>
+<td class="right"><span style="color:rgb(127,127,127)">0</span></td>
+<td class="right"><span style="color:rgb(127,127,127)">0</span></td>
+<td class="right"><span style="color:rgb(127,127,127)">0</span></td>
+</tr>
+<tr>
+<td><a href="#pruned" onclick="show_table(document.getElementById('pruned'));">pruned - Sum</a></td>
+<td class="right"><span style="color:rgb(0,178,0)">0</span></td>
+<td class="right"><span style="color:rgb(0,178,89)">6572</span></td>
+<td class="right"><span style="color:rgb(0,0,178)">26114</span></td>
+</tr>
+<tr>
+<td><a href="#total_time" onclick="show_table(document.getElementById('total_time'));">total_time - Sum</a></td>
+<td class="right"><span style="color:rgb(0,178,0)">4.54</span></td>
+<td class="right"><span style="color:rgb(0,0,178)">6.19</span></td>
+<td class="right"><span style="color:rgb(0,178,97)">4.99</span></td>
+</tr>
+<tr>
+<td><a href="#width_average" onclick="show_table(document.getElementById('width_average'));">width_average - Arithmetic mean</a></td>
+<td class="right"><span style="color:rgb(0,178,0)">0.00</span></td>
+<td class="right"><span style="color:rgb(0,167,178)">0.59</span></td>
+<td class="right"><span style="color:rgb(0,0,178)">1.11</span></td>
+</tr>
+<tr>
+<td><a href="#width_maximum" onclick="show_table(document.getElementById('width_maximum'));">width_maximum - Sum</a></td>
+<td class="right"><span style="color:rgb(0,178,0)">0</span></td>
+<td class="right"><span style="color:rgb(0,71,178)">8</span></td>
+<td class="right"><span style="color:rgb(0,0,178)">10</span></td>
+</tr>
+</table>
+
+</section>
+<section id="cost">
+<h1>cost</h1>
+
+<button type="button" class="toggle-table" onclick="toggle_table(this)">Show table</button><p></p>
+
+<table class="tableborder" style="display:none">
+<tr>
+<th>cost</th>
+<th>siwr_<wbr>0</th>
+<th>siwr_<wbr>1</th>
+<th>siwr_<wbr>2</th>
+</tr>
+<tr>
+<td><a href="#cost-blocks-clear" onclick="show_table(document.getElementById('cost-blocks-clear'));">blocks-clear</a> (1)</td>
+<td class="right"><span style="color:rgb(0,0,178)">81</span></td>
+<td class="right"><span style="color:rgb(0,178,0)">23</span></td>
+<td class="right"><span style="color:rgb(0,178,0)">23</span></td>
+</tr>
+<tr>
+<td><a href="#cost-blocks-on" onclick="show_table(document.getElementById('cost-blocks-on'));">blocks-on</a> (1)</td>
+<td class="right"><span style="color:rgb(0,0,178)">88</span></td>
+<td class="right"><span style="color:rgb(0,178,0)">80</span></td>
+<td class="right"><span style="color:rgb(0,178,0)">80</span></td>
+</tr>
+<tr>
+<td><a href="#cost-gripper" onclick="show_table(document.getElementById('cost-gripper'));">gripper</a> (1)</td>
+<td class="right"><span style="color:rgb(0,0,178)">79</span></td>
+<td class="right"><span style="color:rgb(0,178,0)">59</span></td>
+<td class="right"><span style="color:rgb(0,0,178)">79</span></td>
+</tr>
+<tr>
+<td><a href="#cost-reward" onclick="show_table(document.getElementById('cost-reward'));">reward</a> (1)</td>
+<td class="right"><span style="color:rgb(127,127,127)">5</span></td>
+<td class="right"><span style="color:rgb(127,127,127)">5</span></td>
+<td class="right"><span style="color:rgb(127,127,127)">5</span></td>
+</tr>
+<tr>
+<td><a href="#cost-spanner" onclick="show_table(document.getElementById('cost-spanner'));">spanner</a> (1)</td>
+<td class="right"><span style="color:rgb(127,127,127)">251</span></td>
+<td class="right"><span style="color:rgb(127,127,127)">251</span></td>
+<td class="right"><span style="color:rgb(127,127,127)">251</span></td>
+</tr>
+<tr>
+<td><a href="#cost-visitall" onclick="show_table(document.getElementById('cost-visitall'));">visitall</a> (1)</td>
+<td class="right"><span style="color:rgb(127,127,127)">48</span></td>
+<td class="right"><span style="color:rgb(127,127,127)">48</span></td>
+<td class="right"><span style="color:rgb(127,127,127)">48</span></td>
+</tr>
+<tr>
+<td><strong>Sum (6)</strong></td>
+<td class="right"><span style="color:rgb(0,0,178)">552</span></td>
+<td class="right"><span style="color:rgb(0,178,0)">466</span></td>
+<td class="right"><span style="color:rgb(0,178,83)">486</span></td>
+</tr>
+</table>
+
+<p>
+Only instances where all algorithms have a value for "cost" are considered. Each table entry gives the sum of "cost" for that domain. The bottom row reports the sum across all domains.
+</p>
+
+<section id="cost-blocks-clear">
+<h2>blocks-clear</h2>
+
+<button type="button" class="toggle-table" onclick="toggle_table(this)">Show table</button><p></p>
+
+<table class="tableborder" style="display:none">
+<tr>
+<th>cost</th>
+<th>siwr_<wbr>0</th>
+<th>siwr_<wbr>1</th>
+<th>siwr_<wbr>2</th>
+</tr>
+<tr>
+<td>p-51-0.pddl</td>
+<td class="right"><span style="color:rgb(0,0,178)">81</span></td>
+<td class="right"><span style="color:rgb(0,178,0)">23</span></td>
+<td class="right"><span style="color:rgb(0,178,0)">23</span></td>
+</tr>
+</table>
+
+</section>
+<section id="cost-blocks-on">
+<h2>blocks-on</h2>
+
+<button type="button" class="toggle-table" onclick="toggle_table(this)">Show table</button><p></p>
+
+<table class="tableborder" style="display:none">
+<tr>
+<th>cost</th>
+<th>siwr_<wbr>0</th>
+<th>siwr_<wbr>1</th>
+<th>siwr_<wbr>2</th>
+</tr>
+<tr>
+<td>p-51-0.pddl</td>
+<td class="right"><span style="color:rgb(0,0,178)">88</span></td>
+<td class="right"><span style="color:rgb(0,178,0)">80</span></td>
+<td class="right"><span style="color:rgb(0,178,0)">80</span></td>
+</tr>
+</table>
+
+</section>
+<section id="cost-childsnack">
+<h2>childsnack</h2>
+
+<button type="button" class="toggle-table" onclick="toggle_table(this)">Show table</button><p></p>
+
+<table class="tableborder" style="display:none">
+<tr>
+<th>cost</th>
+<th>siwr_<wbr>1</th>
+</tr>
+<tr>
+<td>p01.pddl</td>
+<td class="right"><span style="color:rgb(127,127,127)">18</span></td>
+</tr>
+</table>
+
+</section>
+<section id="cost-delivery">
+<h2>delivery</h2>
+
+<button type="button" class="toggle-table" onclick="toggle_table(this)">Show table</button><p></p>
+
+<table class="tableborder" style="display:none">
+<tr>
+<th>cost</th>
+<th>siwr_<wbr>1</th>
+<th>siwr_<wbr>2</th>
+</tr>
+<tr>
+<td>instance_3_2_0.pddl</td>
+<td class="right"><span style="color:rgb(0,178,0)">10</span></td>
+<td class="right"><span style="color:rgb(0,0,178)">12</span></td>
+</tr>
+</table>
+
+</section>
+<section id="cost-gripper">
+<h2>gripper</h2>
+
+<button type="button" class="toggle-table" onclick="toggle_table(this)">Show table</button><p></p>
+
+<table class="tableborder" style="display:none">
+<tr>
+<th>cost</th>
+<th>siwr_<wbr>0</th>
+<th>siwr_<wbr>1</th>
+<th>siwr_<wbr>2</th>
+</tr>
+<tr>
+<td>p01.pddl</td>
+<td class="right"><span style="color:rgb(0,0,178)">79</span></td>
+<td class="right"><span style="color:rgb(0,178,0)">59</span></td>
+<td class="right"><span style="color:rgb(0,0,178)">79</span></td>
+</tr>
+</table>
+
+</section>
+<section id="cost-miconic">
+<h2>miconic</h2>
+
+<button type="button" class="toggle-table" onclick="toggle_table(this)">Show table</button><p></p>
+
+<table class="tableborder" style="display:none">
+<tr>
+<th>cost</th>
+<th>siwr_<wbr>1</th>
+<th>siwr_<wbr>2</th>
+</tr>
+<tr>
+<td>p01.pddl</td>
+<td class="right"><span style="color:rgb(0,0,178)">74</span></td>
+<td class="right"><span style="color:rgb(0,178,0)">65</span></td>
+</tr>
+</table>
+
+</section>
+<section id="cost-reward">
+<h2>reward</h2>
+
+<button type="button" class="toggle-table" onclick="toggle_table(this)">Show table</button><p></p>
+
+<table class="tableborder" style="display:none">
+<tr>
+<th>cost</th>
+<th>siwr_<wbr>0</th>
+<th>siwr_<wbr>1</th>
+<th>siwr_<wbr>2</th>
+</tr>
+<tr>
+<td>instance_5x5_0.pddl</td>
+<td class="right"><span style="color:rgb(127,127,127)">5</span></td>
+<td class="right"><span style="color:rgb(127,127,127)">5</span></td>
+<td class="right"><span style="color:rgb(127,127,127)">5</span></td>
+</tr>
+</table>
+
+</section>
+<section id="cost-spanner">
+<h2>spanner</h2>
+
+<button type="button" class="toggle-table" onclick="toggle_table(this)">Show table</button><p></p>
+
+<table class="tableborder" style="display:none">
+<tr>
+<th>cost</th>
+<th>siwr_<wbr>0</th>
+<th>siwr_<wbr>1</th>
+<th>siwr_<wbr>2</th>
+</tr>
+<tr>
+<td>pfile01-001.pddl</td>
+<td class="right"><span style="color:rgb(127,127,127)">251</span></td>
+<td class="right"><span style="color:rgb(127,127,127)">251</span></td>
+<td class="right"><span style="color:rgb(127,127,127)">251</span></td>
+</tr>
+</table>
+
+</section>
+<section id="cost-visitall">
+<h2>visitall</h2>
+
+<button type="button" class="toggle-table" onclick="toggle_table(this)">Show table</button><p></p>
+
+<table class="tableborder" style="display:none">
+<tr>
+<th>cost</th>
+<th>siwr_<wbr>0</th>
+<th>siwr_<wbr>1</th>
+<th>siwr_<wbr>2</th>
+</tr>
+<tr>
+<td>p01.pddl</td>
+<td class="right"><span style="color:rgb(127,127,127)">48</span></td>
+<td class="right"><span style="color:rgb(127,127,127)">48</span></td>
+<td class="right"><span style="color:rgb(127,127,127)">48</span></td>
+</tr>
+</table>
+
+</section>
+</section>
+<section id="coverage">
+<h1>coverage</h1>
+
+<button type="button" class="toggle-table" onclick="toggle_table(this)">Show table</button><p></p>
+
+<table class="tableborder" style="display:none">
+<tr>
+<th>coverage</th>
+<th>siwr_<wbr>0</th>
+<th>siwr_<wbr>1</th>
+<th>siwr_<wbr>2</th>
+</tr>
+<tr>
+<td><a href="#coverage-blocks-clear" onclick="show_table(document.getElementById('coverage-blocks-clear'));">blocks-clear</a> (1)</td>
+<td class="right"><span style="color:rgb(127,127,127)">1</span></td>
+<td class="right"><span style="color:rgb(127,127,127)">1</span></td>
+<td class="right"><span style="color:rgb(127,127,127)">1</span></td>
+</tr>
+<tr>
+<td><a href="#coverage-blocks-on" onclick="show_table(document.getElementById('coverage-blocks-on'));">blocks-on</a> (1)</td>
+<td class="right"><span style="color:rgb(127,127,127)">1</span></td>
+<td class="right"><span style="color:rgb(127,127,127)">1</span></td>
+<td class="right"><span style="color:rgb(127,127,127)">1</span></td>
+</tr>
+<tr>
+<td><a href="#coverage-childsnack" onclick="show_table(document.getElementById('coverage-childsnack'));">childsnack</a> (0, 1, 0)</td>
+<td><span style="color:rgb(127,127,127)">None</span></td>
+<td class="right"><span style="color:rgb(0,178,0)">1</span></td>
+<td><span style="color:rgb(127,127,127)">None</span></td>
+</tr>
+<tr>
+<td><a href="#coverage-delivery" onclick="show_table(document.getElementById('coverage-delivery'));">delivery</a> (0, 1, 1)</td>
+<td><span style="color:rgb(127,127,127)">None</span></td>
+<td class="right"><span style="color:rgb(0,178,0)">1</span></td>
+<td class="right"><span style="color:rgb(0,178,0)">1</span></td>
+</tr>
+<tr>
+<td><a href="#coverage-gripper" onclick="show_table(document.getElementById('coverage-gripper'));">gripper</a> (1)</td>
+<td class="right"><span style="color:rgb(127,127,127)">1</span></td>
+<td class="right"><span style="color:rgb(127,127,127)">1</span></td>
+<td class="right"><span style="color:rgb(127,127,127)">1</span></td>
+</tr>
+<tr>
+<td><a href="#coverage-miconic" onclick="show_table(document.getElementById('coverage-miconic'));">miconic</a> (0, 1, 1)</td>
+<td><span style="color:rgb(127,127,127)">None</span></td>
+<td class="right"><span style="color:rgb(0,178,0)">1</span></td>
+<td class="right"><span style="color:rgb(0,178,0)">1</span></td>
+</tr>
+<tr>
+<td><a href="#coverage-reward" onclick="show_table(document.getElementById('coverage-reward'));">reward</a> (1)</td>
+<td class="right"><span style="color:rgb(127,127,127)">1</span></td>
+<td class="right"><span style="color:rgb(127,127,127)">1</span></td>
+<td class="right"><span style="color:rgb(127,127,127)">1</span></td>
+</tr>
+<tr>
+<td><a href="#coverage-spanner" onclick="show_table(document.getElementById('coverage-spanner'));">spanner</a> (1)</td>
+<td class="right"><span style="color:rgb(127,127,127)">1</span></td>
+<td class="right"><span style="color:rgb(127,127,127)">1</span></td>
+<td class="right"><span style="color:rgb(127,127,127)">1</span></td>
+</tr>
+<tr>
+<td><a href="#coverage-visitall" onclick="show_table(document.getElementById('coverage-visitall'));">visitall</a> (1)</td>
+<td class="right"><span style="color:rgb(127,127,127)">1</span></td>
+<td class="right"><span style="color:rgb(127,127,127)">1</span></td>
+<td class="right"><span style="color:rgb(127,127,127)">1</span></td>
+</tr>
+<tr>
+<td><strong>Sum (9)</strong></td>
+<td class="right"><span style="color:rgb(0,0,178)">6</span></td>
+<td class="right"><span style="color:rgb(0,178,0)">9</span></td>
+<td class="right"><span style="color:rgb(0,178,118)">8</span></td>
+</tr>
+</table>
+
+<p>
+The bottom row reports the sum across all domains.
+</p>
+
+<section id="coverage-blocks-clear">
+<h2>blocks-clear</h2>
+
+<button type="button" class="toggle-table" onclick="toggle_table(this)">Show table</button><p></p>
+
+<table class="tableborder" style="display:none">
+<tr>
+<th>coverage</th>
+<th>siwr_<wbr>0</th>
+<th>siwr_<wbr>1</th>
+<th>siwr_<wbr>2</th>
+</tr>
+<tr>
+<td>p-51-0.pddl</td>
+<td class="right"><span style="color:rgb(127,127,127)">1</span></td>
+<td class="right"><span style="color:rgb(127,127,127)">1</span></td>
+<td class="right"><span style="color:rgb(127,127,127)">1</span></td>
+</tr>
+</table>
+
+</section>
+<section id="coverage-blocks-on">
+<h2>blocks-on</h2>
+
+<button type="button" class="toggle-table" onclick="toggle_table(this)">Show table</button><p></p>
+
+<table class="tableborder" style="display:none">
+<tr>
+<th>coverage</th>
+<th>siwr_<wbr>0</th>
+<th>siwr_<wbr>1</th>
+<th>siwr_<wbr>2</th>
+</tr>
+<tr>
+<td>p-51-0.pddl</td>
+<td class="right"><span style="color:rgb(127,127,127)">1</span></td>
+<td class="right"><span style="color:rgb(127,127,127)">1</span></td>
+<td class="right"><span style="color:rgb(127,127,127)">1</span></td>
+</tr>
+</table>
+
+</section>
+<section id="coverage-childsnack">
+<h2>childsnack</h2>
+
+<button type="button" class="toggle-table" onclick="toggle_table(this)">Show table</button><p></p>
+
+<table class="tableborder" style="display:none">
+<tr>
+<th>coverage</th>
+<th>siwr_<wbr>1</th>
+</tr>
+<tr>
+<td>p01.pddl</td>
+<td class="right"><span style="color:rgb(127,127,127)">1</span></td>
+</tr>
+</table>
+
+</section>
+<section id="coverage-delivery">
+<h2>delivery</h2>
+
+<button type="button" class="toggle-table" onclick="toggle_table(this)">Show table</button><p></p>
+
+<table class="tableborder" style="display:none">
+<tr>
+<th>coverage</th>
+<th>siwr_<wbr>1</th>
+<th>siwr_<wbr>2</th>
+</tr>
+<tr>
+<td>instance_3_2_0.pddl</td>
+<td class="right"><span style="color:rgb(127,127,127)">1</span></td>
+<td class="right"><span style="color:rgb(127,127,127)">1</span></td>
+</tr>
+</table>
+
+</section>
+<section id="coverage-gripper">
+<h2>gripper</h2>
+
+<button type="button" class="toggle-table" onclick="toggle_table(this)">Show table</button><p></p>
+
+<table class="tableborder" style="display:none">
+<tr>
+<th>coverage</th>
+<th>siwr_<wbr>0</th>
+<th>siwr_<wbr>1</th>
+<th>siwr_<wbr>2</th>
+</tr>
+<tr>
+<td>p01.pddl</td>
+<td class="right"><span style="color:rgb(127,127,127)">1</span></td>
+<td class="right"><span style="color:rgb(127,127,127)">1</span></td>
+<td class="right"><span style="color:rgb(127,127,127)">1</span></td>
+</tr>
+</table>
+
+</section>
+<section id="coverage-miconic">
+<h2>miconic</h2>
+
+<button type="button" class="toggle-table" onclick="toggle_table(this)">Show table</button><p></p>
+
+<table class="tableborder" style="display:none">
+<tr>
+<th>coverage</th>
+<th>siwr_<wbr>1</th>
+<th>siwr_<wbr>2</th>
+</tr>
+<tr>
+<td>p01.pddl</td>
+<td class="right"><span style="color:rgb(127,127,127)">1</span></td>
+<td class="right"><span style="color:rgb(127,127,127)">1</span></td>
+</tr>
+</table>
+
+</section>
+<section id="coverage-reward">
+<h2>reward</h2>
+
+<button type="button" class="toggle-table" onclick="toggle_table(this)">Show table</button><p></p>
+
+<table class="tableborder" style="display:none">
+<tr>
+<th>coverage</th>
+<th>siwr_<wbr>0</th>
+<th>siwr_<wbr>1</th>
+<th>siwr_<wbr>2</th>
+</tr>
+<tr>
+<td>instance_5x5_0.pddl</td>
+<td class="right"><span style="color:rgb(127,127,127)">1</span></td>
+<td class="right"><span style="color:rgb(127,127,127)">1</span></td>
+<td class="right"><span style="color:rgb(127,127,127)">1</span></td>
+</tr>
+</table>
+
+</section>
+<section id="coverage-spanner">
+<h2>spanner</h2>
+
+<button type="button" class="toggle-table" onclick="toggle_table(this)">Show table</button><p></p>
+
+<table class="tableborder" style="display:none">
+<tr>
+<th>coverage</th>
+<th>siwr_<wbr>0</th>
+<th>siwr_<wbr>1</th>
+<th>siwr_<wbr>2</th>
+</tr>
+<tr>
+<td>pfile01-001.pddl</td>
+<td class="right"><span style="color:rgb(127,127,127)">1</span></td>
+<td class="right"><span style="color:rgb(127,127,127)">1</span></td>
+<td class="right"><span style="color:rgb(127,127,127)">1</span></td>
+</tr>
+</table>
+
+</section>
+<section id="coverage-visitall">
+<h2>visitall</h2>
+
+<button type="button" class="toggle-table" onclick="toggle_table(this)">Show table</button><p></p>
+
+<table class="tableborder" style="display:none">
+<tr>
+<th>coverage</th>
+<th>siwr_<wbr>0</th>
+<th>siwr_<wbr>1</th>
+<th>siwr_<wbr>2</th>
+</tr>
+<tr>
+<td>p01.pddl</td>
+<td class="right"><span style="color:rgb(127,127,127)">1</span></td>
+<td class="right"><span style="color:rgb(127,127,127)">1</span></td>
+<td class="right"><span style="color:rgb(127,127,127)">1</span></td>
+</tr>
+</table>
+
+</section>
+</section>
+<section id="error">
+<h1>error</h1>
+
+<section id="error-error-none">
+<h2>error-none</h2>
+
+<button type="button" class="toggle-table" onclick="toggle_table(this)">Show table</button><p></p>
+
+<table class="tableborder" style="display:none">
+<tr>
+<th>error-none</th>
+<th>siwr_<wbr>0</th>
+<th>siwr_<wbr>1</th>
+<th>siwr_<wbr>2</th>
+</tr>
+<tr>
+<td><a href="#error-blocks-clear" onclick="show_table(document.getElementById('error-blocks-clear'));">blocks-clear</a></td>
+<td class="right">1</td>
+<td class="right">1</td>
+<td class="right">1</td>
+</tr>
+<tr>
+<td><a href="#error-blocks-on" onclick="show_table(document.getElementById('error-blocks-on'));">blocks-on</a></td>
+<td class="right">1</td>
+<td class="right">1</td>
+<td class="right">1</td>
+</tr>
+<tr>
+<td><a href="#error-childsnack" onclick="show_table(document.getElementById('error-childsnack'));">childsnack</a></td>
+<td class="right">0</td>
+<td class="right">1</td>
+<td class="right">0</td>
+</tr>
+<tr>
+<td><a href="#error-delivery" onclick="show_table(document.getElementById('error-delivery'));">delivery</a></td>
+<td class="right">0</td>
+<td class="right">1</td>
+<td class="right">1</td>
+</tr>
+<tr>
+<td><a href="#error-gripper" onclick="show_table(document.getElementById('error-gripper'));">gripper</a></td>
+<td class="right">1</td>
+<td class="right">1</td>
+<td class="right">1</td>
+</tr>
+<tr>
+<td><a href="#error-miconic" onclick="show_table(document.getElementById('error-miconic'));">miconic</a></td>
+<td class="right">0</td>
+<td class="right">1</td>
+<td class="right">1</td>
+</tr>
+<tr>
+<td><a href="#error-reward" onclick="show_table(document.getElementById('error-reward'));">reward</a></td>
+<td class="right">1</td>
+<td class="right">1</td>
+<td class="right">1</td>
+</tr>
+<tr>
+<td><a href="#error-spanner" onclick="show_table(document.getElementById('error-spanner'));">spanner</a></td>
+<td class="right">1</td>
+<td class="right">1</td>
+<td class="right">1</td>
+</tr>
+<tr>
+<td><a href="#error-visitall" onclick="show_table(document.getElementById('error-visitall'));">visitall</a></td>
+<td class="right">1</td>
+<td class="right">1</td>
+<td class="right">1</td>
+</tr>
+<tr>
+<td><strong>Sum</strong></td>
+<td class="right">6</td>
+<td class="right">9</td>
+<td class="right">8</td>
+</tr>
+</table>
+
+</section>
+<section id="error-blocks-clear">
+<h2>blocks-clear</h2>
+
+<button type="button" class="toggle-table" onclick="toggle_table(this)">Show table</button><p></p>
+
+<table class="tableborder" style="display:none">
+<tr>
+<th>error</th>
+<th>siwr_<wbr>0</th>
+<th>siwr_<wbr>1</th>
+<th>siwr_<wbr>2</th>
+</tr>
+<tr>
+<td>p-51-0.pddl</td>
+<td>none</td>
+<td>none</td>
+<td>none</td>
+</tr>
+</table>
+
+</section>
+<section id="error-blocks-on">
+<h2>blocks-on</h2>
+
+<button type="button" class="toggle-table" onclick="toggle_table(this)">Show table</button><p></p>
+
+<table class="tableborder" style="display:none">
+<tr>
+<th>error</th>
+<th>siwr_<wbr>0</th>
+<th>siwr_<wbr>1</th>
+<th>siwr_<wbr>2</th>
+</tr>
+<tr>
+<td>p-51-0.pddl</td>
+<td>none</td>
+<td>none</td>
+<td>none</td>
+</tr>
+</table>
+
+</section>
+<section id="error-childsnack">
+<h2>childsnack</h2>
+
+<button type="button" class="toggle-table" onclick="toggle_table(this)">Show table</button><p></p>
+
+<table class="tableborder" style="display:none">
+<tr>
+<th>error</th>
+<th>siwr_<wbr>1</th>
+</tr>
+<tr>
+<td>p01.pddl</td>
+<td>none</td>
+</tr>
+</table>
+
+</section>
+<section id="error-delivery">
+<h2>delivery</h2>
+
+<button type="button" class="toggle-table" onclick="toggle_table(this)">Show table</button><p></p>
+
+<table class="tableborder" style="display:none">
+<tr>
+<th>error</th>
+<th>siwr_<wbr>1</th>
+<th>siwr_<wbr>2</th>
+</tr>
+<tr>
+<td>instance_3_2_0.pddl</td>
+<td>none</td>
+<td>none</td>
+</tr>
+</table>
+
+</section>
+<section id="error-gripper">
+<h2>gripper</h2>
+
+<button type="button" class="toggle-table" onclick="toggle_table(this)">Show table</button><p></p>
+
+<table class="tableborder" style="display:none">
+<tr>
+<th>error</th>
+<th>siwr_<wbr>0</th>
+<th>siwr_<wbr>1</th>
+<th>siwr_<wbr>2</th>
+</tr>
+<tr>
+<td>p01.pddl</td>
+<td>none</td>
+<td>none</td>
+<td>none</td>
+</tr>
+</table>
+
+</section>
+<section id="error-miconic">
+<h2>miconic</h2>
+
+<button type="button" class="toggle-table" onclick="toggle_table(this)">Show table</button><p></p>
+
+<table class="tableborder" style="display:none">
+<tr>
+<th>error</th>
+<th>siwr_<wbr>1</th>
+<th>siwr_<wbr>2</th>
+</tr>
+<tr>
+<td>p01.pddl</td>
+<td>none</td>
+<td>none</td>
+</tr>
+</table>
+
+</section>
+<section id="error-reward">
+<h2>reward</h2>
+
+<button type="button" class="toggle-table" onclick="toggle_table(this)">Show table</button><p></p>
+
+<table class="tableborder" style="display:none">
+<tr>
+<th>error</th>
+<th>siwr_<wbr>0</th>
+<th>siwr_<wbr>1</th>
+<th>siwr_<wbr>2</th>
+</tr>
+<tr>
+<td>instance_5x5_0.pddl</td>
+<td>none</td>
+<td>none</td>
+<td>none</td>
+</tr>
+</table>
+
+</section>
+<section id="error-spanner">
+<h2>spanner</h2>
+
+<button type="button" class="toggle-table" onclick="toggle_table(this)">Show table</button><p></p>
+
+<table class="tableborder" style="display:none">
+<tr>
+<th>error</th>
+<th>siwr_<wbr>0</th>
+<th>siwr_<wbr>1</th>
+<th>siwr_<wbr>2</th>
+</tr>
+<tr>
+<td>pfile01-001.pddl</td>
+<td>none</td>
+<td>none</td>
+<td>none</td>
+</tr>
+</table>
+
+</section>
+<section id="error-visitall">
+<h2>visitall</h2>
+
+<button type="button" class="toggle-table" onclick="toggle_table(this)">Show table</button><p></p>
+
+<table class="tableborder" style="display:none">
+<tr>
+<th>error</th>
+<th>siwr_<wbr>0</th>
+<th>siwr_<wbr>1</th>
+<th>siwr_<wbr>2</th>
+</tr>
+<tr>
+<td>p01.pddl</td>
+<td>none</td>
+<td>none</td>
+<td>none</td>
+</tr>
+</table>
+
+</section>
+</section>
+<section id="expanded">
+<h1>expanded</h1>
+
+<button type="button" class="toggle-table" onclick="toggle_table(this)">Show table</button><p></p>
+
+<table class="tableborder" style="display:none">
+<tr>
+<th>expanded</th>
+<th>siwr_<wbr>0</th>
+<th>siwr_<wbr>1</th>
+<th>siwr_<wbr>2</th>
+</tr>
+<tr>
+<td><a href="#expanded-blocks-clear" onclick="show_table(document.getElementById('expanded-blocks-clear'));">blocks-clear</a> (1)</td>
+<td class="right"><span style="color:rgb(0,178,0)">81</span></td>
+<td class="right"><span style="color:rgb(0,0,178)">614</span></td>
+<td class="right"><span style="color:rgb(0,0,178)">614</span></td>
+</tr>
+<tr>
+<td><a href="#expanded-blocks-on" onclick="show_table(document.getElementById('expanded-blocks-on'));">blocks-on</a> (1)</td>
+<td class="right"><span style="color:rgb(0,178,0)">88</span></td>
+<td class="right"><span style="color:rgb(0,0,178)">1008</span></td>
+<td class="right"><span style="color:rgb(0,178,47)">210</span></td>
+</tr>
+<tr>
+<td><a href="#expanded-gripper" onclick="show_table(document.getElementById('expanded-gripper'));">gripper</a> (1)</td>
+<td class="right"><span style="color:rgb(0,178,0)">79</span></td>
+<td class="right"><span style="color:rgb(0,178,0)">78</span></td>
+<td class="right"><span style="color:rgb(0,0,178)">4380</span></td>
+</tr>
+<tr>
+<td><a href="#expanded-reward" onclick="show_table(document.getElementById('expanded-reward'));">reward</a> (1)</td>
+<td class="right"><span style="color:rgb(0,178,0)">5</span></td>
+<td class="right"><span style="color:rgb(0,0,178)">13</span></td>
+<td class="right"><span style="color:rgb(0,0,178)">13</span></td>
+</tr>
+<tr>
+<td><a href="#expanded-spanner" onclick="show_table(document.getElementById('expanded-spanner'));">spanner</a> (1)</td>
+<td class="right"><span style="color:rgb(0,178,0)">251</span></td>
+<td class="right"><span style="color:rgb(0,0,178)">296</span></td>
+<td class="right"><span style="color:rgb(0,0,178)">296</span></td>
+</tr>
+<tr>
+<td><a href="#expanded-visitall" onclick="show_table(document.getElementById('expanded-visitall'));">visitall</a> (1)</td>
+<td class="right"><span style="color:rgb(127,127,127)">48</span></td>
+<td class="right"><span style="color:rgb(127,127,127)">48</span></td>
+<td class="right"><span style="color:rgb(127,127,127)">48</span></td>
+</tr>
+<tr>
+<td><strong>Sum (6)</strong></td>
+<td class="right"><span style="color:rgb(0,178,0)">552</span></td>
+<td class="right"><span style="color:rgb(0,178,107)">2057</span></td>
+<td class="right"><span style="color:rgb(0,0,178)">5561</span></td>
+</tr>
+</table>
+
+<p>
+Only instances where all algorithms have a value for "expanded" are considered. Each table entry gives the sum of "expanded" for that domain. The bottom row reports the sum across all domains.
+</p>
+
+<section id="expanded-blocks-clear">
+<h2>blocks-clear</h2>
+
+<button type="button" class="toggle-table" onclick="toggle_table(this)">Show table</button><p></p>
+
+<table class="tableborder" style="display:none">
+<tr>
+<th>expanded</th>
+<th>siwr_<wbr>0</th>
+<th>siwr_<wbr>1</th>
+<th>siwr_<wbr>2</th>
+</tr>
+<tr>
+<td>p-51-0.pddl</td>
+<td class="right"><span style="color:rgb(0,178,0)">81</span></td>
+<td class="right"><span style="color:rgb(0,0,178)">614</span></td>
+<td class="right"><span style="color:rgb(0,0,178)">614</span></td>
+</tr>
+</table>
+
+</section>
+<section id="expanded-blocks-on">
+<h2>blocks-on</h2>
+
+<button type="button" class="toggle-table" onclick="toggle_table(this)">Show table</button><p></p>
+
+<table class="tableborder" style="display:none">
+<tr>
+<th>expanded</th>
+<th>siwr_<wbr>0</th>
+<th>siwr_<wbr>1</th>
+<th>siwr_<wbr>2</th>
+</tr>
+<tr>
+<td>p-51-0.pddl</td>
+<td class="right"><span style="color:rgb(0,178,0)">88</span></td>
+<td class="right"><span style="color:rgb(0,0,178)">1008</span></td>
+<td class="right"><span style="color:rgb(0,178,47)">210</span></td>
+</tr>
+</table>
+
+</section>
+<section id="expanded-childsnack">
+<h2>childsnack</h2>
+
+<button type="button" class="toggle-table" onclick="toggle_table(this)">Show table</button><p></p>
+
+<table class="tableborder" style="display:none">
+<tr>
+<th>expanded</th>
+<th>siwr_<wbr>1</th>
+</tr>
+<tr>
+<td>p01.pddl</td>
+<td class="right"><span style="color:rgb(127,127,127)">35</span></td>
+</tr>
+</table>
+
+</section>
+<section id="expanded-delivery">
+<h2>delivery</h2>
+
+<button type="button" class="toggle-table" onclick="toggle_table(this)">Show table</button><p></p>
+
+<table class="tableborder" style="display:none">
+<tr>
+<th>expanded</th>
+<th>siwr_<wbr>1</th>
+<th>siwr_<wbr>2</th>
+</tr>
+<tr>
+<td>instance_3_2_0.pddl</td>
+<td class="right"><span style="color:rgb(0,178,0)">29</span></td>
+<td class="right"><span style="color:rgb(0,0,178)">106</span></td>
+</tr>
+</table>
+
+</section>
+<section id="expanded-gripper">
+<h2>gripper</h2>
+
+<button type="button" class="toggle-table" onclick="toggle_table(this)">Show table</button><p></p>
+
+<table class="tableborder" style="display:none">
+<tr>
+<th>expanded</th>
+<th>siwr_<wbr>0</th>
+<th>siwr_<wbr>1</th>
+<th>siwr_<wbr>2</th>
+</tr>
+<tr>
+<td>p01.pddl</td>
+<td class="right"><span style="color:rgb(0,178,0)">79</span></td>
+<td class="right"><span style="color:rgb(0,178,0)">78</span></td>
+<td class="right"><span style="color:rgb(0,0,178)">4380</span></td>
+</tr>
+</table>
+
+</section>
+<section id="expanded-miconic">
+<h2>miconic</h2>
+
+<button type="button" class="toggle-table" onclick="toggle_table(this)">Show table</button><p></p>
+
+<table class="tableborder" style="display:none">
+<tr>
+<th>expanded</th>
+<th>siwr_<wbr>1</th>
+<th>siwr_<wbr>2</th>
+</tr>
+<tr>
+<td>p01.pddl</td>
+<td class="right"><span style="color:rgb(0,178,0)">116</span></td>
+<td class="right"><span style="color:rgb(0,0,178)">1927</span></td>
+</tr>
+</table>
+
+</section>
+<section id="expanded-reward">
+<h2>reward</h2>
+
+<button type="button" class="toggle-table" onclick="toggle_table(this)">Show table</button><p></p>
+
+<table class="tableborder" style="display:none">
+<tr>
+<th>expanded</th>
+<th>siwr_<wbr>0</th>
+<th>siwr_<wbr>1</th>
+<th>siwr_<wbr>2</th>
+</tr>
+<tr>
+<td>instance_5x5_0.pddl</td>
+<td class="right"><span style="color:rgb(0,178,0)">5</span></td>
+<td class="right"><span style="color:rgb(0,0,178)">13</span></td>
+<td class="right"><span style="color:rgb(0,0,178)">13</span></td>
+</tr>
+</table>
+
+</section>
+<section id="expanded-spanner">
+<h2>spanner</h2>
+
+<button type="button" class="toggle-table" onclick="toggle_table(this)">Show table</button><p></p>
+
+<table class="tableborder" style="display:none">
+<tr>
+<th>expanded</th>
+<th>siwr_<wbr>0</th>
+<th>siwr_<wbr>1</th>
+<th>siwr_<wbr>2</th>
+</tr>
+<tr>
+<td>pfile01-001.pddl</td>
+<td class="right"><span style="color:rgb(0,178,0)">251</span></td>
+<td class="right"><span style="color:rgb(0,0,178)">296</span></td>
+<td class="right"><span style="color:rgb(0,0,178)">296</span></td>
+</tr>
+</table>
+
+</section>
+<section id="expanded-visitall">
+<h2>visitall</h2>
+
+<button type="button" class="toggle-table" onclick="toggle_table(this)">Show table</button><p></p>
+
+<table class="tableborder" style="display:none">
+<tr>
+<th>expanded</th>
+<th>siwr_<wbr>0</th>
+<th>siwr_<wbr>1</th>
+<th>siwr_<wbr>2</th>
+</tr>
+<tr>
+<td>p01.pddl</td>
+<td class="right"><span style="color:rgb(127,127,127)">48</span></td>
+<td class="right"><span style="color:rgb(127,127,127)">48</span></td>
+<td class="right"><span style="color:rgb(127,127,127)">48</span></td>
+</tr>
+</table>
+
+</section>
+</section>
+<section id="generated">
+<h1>generated</h1>
+
+<button type="button" class="toggle-table" onclick="toggle_table(this)">Show table</button><p></p>
+
+<table class="tableborder" style="display:none">
+<tr>
+<th>generated</th>
+<th>siwr_<wbr>0</th>
+<th>siwr_<wbr>1</th>
+<th>siwr_<wbr>2</th>
+</tr>
+<tr>
+<td><a href="#generated-blocks-clear" onclick="show_table(document.getElementById('generated-blocks-clear'));">blocks-clear</a> (1)</td>
+<td class="right"><span style="color:rgb(0,0,178)">1148.00</span></td>
+<td class="right"><span style="color:rgb(0,178,0)">643.00</span></td>
+<td class="right"><span style="color:rgb(0,178,0)">643.00</span></td>
+</tr>
+<tr>
+<td><a href="#generated-blocks-on" onclick="show_table(document.getElementById('generated-blocks-on'));">blocks-on</a> (1)</td>
+<td class="right"><span style="color:rgb(0,178,0)">1242.00</span></td>
+<td class="right"><span style="color:rgb(0,0,178)">32018.00</span></td>
+<td class="right"><span style="color:rgb(0,178,46)">5259.00</span></td>
+</tr>
+<tr>
+<td><a href="#generated-gripper" onclick="show_table(document.getElementById('generated-gripper'));">gripper</a> (1)</td>
+<td class="right"><span style="color:rgb(0,178,0)">389.00</span></td>
+<td class="right"><span style="color:rgb(0,178,9)">659.00</span></td>
+<td class="right"><span style="color:rgb(0,0,178)">10751.00</span></td>
+</tr>
+<tr>
+<td><a href="#generated-reward" onclick="show_table(document.getElementById('generated-reward'));">reward</a> (1)</td>
+<td class="right"><span style="color:rgb(0,178,0)">18.00</span></td>
+<td class="right"><span style="color:rgb(0,0,178)">21.00</span></td>
+<td class="right"><span style="color:rgb(0,0,178)">21.00</span></td>
+</tr>
+<tr>
+<td><a href="#generated-spanner" onclick="show_table(document.getElementById('generated-spanner'));">spanner</a> (1)</td>
+<td class="right"><span style="color:rgb(0,178,0)">603.00</span></td>
+<td class="right"><span style="color:rgb(0,0,178)">642.00</span></td>
+<td class="right"><span style="color:rgb(0,0,178)">642.00</span></td>
+</tr>
+<tr>
+<td><a href="#generated-visitall" onclick="show_table(document.getElementById('generated-visitall'));">visitall</a> (1)</td>
+<td class="right"><span style="color:rgb(127,127,127)">164.00</span></td>
+<td class="right"><span style="color:rgb(127,127,127)">164.00</span></td>
+<td class="right"><span style="color:rgb(127,127,127)">164.00</span></td>
+</tr>
+<tr>
+<td><strong>Geometric mean (6)</strong></td>
+<td class="right"><span style="color:rgb(0,178,0)">315.55</span></td>
+<td class="right"><span style="color:rgb(0,104,178)">557.42</span></td>
+<td class="right"><span style="color:rgb(0,0,178)">656.94</span></td>
+</tr>
+</table>
+
+<p>
+Only instances where all algorithms have a value for "generated" are considered. Each table entry gives the geometric mean of "generated" for that domain. The bottom row reports the geometric mean across all domains.
+</p>
+
+<section id="generated-blocks-clear">
+<h2>blocks-clear</h2>
+
+<button type="button" class="toggle-table" onclick="toggle_table(this)">Show table</button><p></p>
+
+<table class="tableborder" style="display:none">
+<tr>
+<th>generated</th>
+<th>siwr_<wbr>0</th>
+<th>siwr_<wbr>1</th>
+<th>siwr_<wbr>2</th>
+</tr>
+<tr>
+<td>p-51-0.pddl</td>
+<td class="right"><span style="color:rgb(0,0,178)">1148</span></td>
+<td class="right"><span style="color:rgb(0,178,0)">643</span></td>
+<td class="right"><span style="color:rgb(0,178,0)">643</span></td>
+</tr>
+</table>
+
+</section>
+<section id="generated-blocks-on">
+<h2>blocks-on</h2>
+
+<button type="button" class="toggle-table" onclick="toggle_table(this)">Show table</button><p></p>
+
+<table class="tableborder" style="display:none">
+<tr>
+<th>generated</th>
+<th>siwr_<wbr>0</th>
+<th>siwr_<wbr>1</th>
+<th>siwr_<wbr>2</th>
+</tr>
+<tr>
+<td>p-51-0.pddl</td>
+<td class="right"><span style="color:rgb(0,178,0)">1242</span></td>
+<td class="right"><span style="color:rgb(0,0,178)">32018</span></td>
+<td class="right"><span style="color:rgb(0,178,46)">5259</span></td>
+</tr>
+</table>
+
+</section>
+<section id="generated-childsnack">
+<h2>childsnack</h2>
+
+<button type="button" class="toggle-table" onclick="toggle_table(this)">Show table</button><p></p>
+
+<table class="tableborder" style="display:none">
+<tr>
+<th>generated</th>
+<th>siwr_<wbr>1</th>
+</tr>
+<tr>
+<td>p01.pddl</td>
+<td class="right"><span style="color:rgb(127,127,127)">150</span></td>
+</tr>
+</table>
+
+</section>
+<section id="generated-delivery">
+<h2>delivery</h2>
+
+<button type="button" class="toggle-table" onclick="toggle_table(this)">Show table</button><p></p>
+
+<table class="tableborder" style="display:none">
+<tr>
+<th>generated</th>
+<th>siwr_<wbr>1</th>
+<th>siwr_<wbr>2</th>
+</tr>
+<tr>
+<td>instance_3_2_0.pddl</td>
+<td class="right"><span style="color:rgb(0,178,0)">60</span></td>
+<td class="right"><span style="color:rgb(0,0,178)">158</span></td>
+</tr>
+</table>
+
+</section>
+<section id="generated-gripper">
+<h2>gripper</h2>
+
+<button type="button" class="toggle-table" onclick="toggle_table(this)">Show table</button><p></p>
+
+<table class="tableborder" style="display:none">
+<tr>
+<th>generated</th>
+<th>siwr_<wbr>0</th>
+<th>siwr_<wbr>1</th>
+<th>siwr_<wbr>2</th>
+</tr>
+<tr>
+<td>p01.pddl</td>
+<td class="right"><span style="color:rgb(0,178,0)">389</span></td>
+<td class="right"><span style="color:rgb(0,178,9)">659</span></td>
+<td class="right"><span style="color:rgb(0,0,178)">10751</span></td>
+</tr>
+</table>
+
+</section>
+<section id="generated-miconic">
+<h2>miconic</h2>
+
+<button type="button" class="toggle-table" onclick="toggle_table(this)">Show table</button><p></p>
+
+<table class="tableborder" style="display:none">
+<tr>
+<th>generated</th>
+<th>siwr_<wbr>1</th>
+<th>siwr_<wbr>2</th>
+</tr>
+<tr>
+<td>p01.pddl</td>
+<td class="right"><span style="color:rgb(0,178,0)">743</span></td>
+<td class="right"><span style="color:rgb(0,0,178)">4924</span></td>
+</tr>
+</table>
+
+</section>
+<section id="generated-reward">
+<h2>reward</h2>
+
+<button type="button" class="toggle-table" onclick="toggle_table(this)">Show table</button><p></p>
+
+<table class="tableborder" style="display:none">
+<tr>
+<th>generated</th>
+<th>siwr_<wbr>0</th>
+<th>siwr_<wbr>1</th>
+<th>siwr_<wbr>2</th>
+</tr>
+<tr>
+<td>instance_5x5_0.pddl</td>
+<td class="right"><span style="color:rgb(0,178,0)">18</span></td>
+<td class="right"><span style="color:rgb(0,0,178)">21</span></td>
+<td class="right"><span style="color:rgb(0,0,178)">21</span></td>
+</tr>
+</table>
+
+</section>
+<section id="generated-spanner">
+<h2>spanner</h2>
+
+<button type="button" class="toggle-table" onclick="toggle_table(this)">Show table</button><p></p>
+
+<table class="tableborder" style="display:none">
+<tr>
+<th>generated</th>
+<th>siwr_<wbr>0</th>
+<th>siwr_<wbr>1</th>
+<th>siwr_<wbr>2</th>
+</tr>
+<tr>
+<td>pfile01-001.pddl</td>
+<td class="right"><span style="color:rgb(0,178,0)">603</span></td>
+<td class="right"><span style="color:rgb(0,0,178)">642</span></td>
+<td class="right"><span style="color:rgb(0,0,178)">642</span></td>
+</tr>
+</table>
+
+</section>
+<section id="generated-visitall">
+<h2>visitall</h2>
+
+<button type="button" class="toggle-table" onclick="toggle_table(this)">Show table</button><p></p>
+
+<table class="tableborder" style="display:none">
+<tr>
+<th>generated</th>
+<th>siwr_<wbr>0</th>
+<th>siwr_<wbr>1</th>
+<th>siwr_<wbr>2</th>
+</tr>
+<tr>
+<td>p01.pddl</td>
+<td class="right"><span style="color:rgb(127,127,127)">164</span></td>
+<td class="right"><span style="color:rgb(127,127,127)">164</span></td>
+<td class="right"><span style="color:rgb(127,127,127)">164</span></td>
+</tr>
+</table>
+
+</section>
+</section>
+<section id="not_i_reachable">
+<h1>not_i_reachable</h1>
+
+<button type="button" class="toggle-table" onclick="toggle_table(this)">Show table</button><p></p>
+
+<table class="tableborder" style="display:none">
+<tr>
+<th>not_<wbr>i_<wbr>reachable</th>
+<th>siwr_<wbr>0</th>
+<th>siwr_<wbr>1</th>
+<th>siwr_<wbr>2</th>
+</tr>
+<tr>
+<td><a href="#not_i_reachable-blocks-clear" onclick="show_table(document.getElementById('not_i_reachable-blocks-clear'));">blocks-clear</a> (1)</td>
+<td class="right"><span style="color:rgb(127,127,127)">0</span></td>
+<td class="right"><span style="color:rgb(127,127,127)">0</span></td>
+<td class="right"><span style="color:rgb(127,127,127)">0</span></td>
+</tr>
+<tr>
+<td><a href="#not_i_reachable-blocks-on" onclick="show_table(document.getElementById('not_i_reachable-blocks-on'));">blocks-on</a> (1)</td>
+<td class="right"><span style="color:rgb(127,127,127)">0</span></td>
+<td class="right"><span style="color:rgb(127,127,127)">0</span></td>
+<td class="right"><span style="color:rgb(127,127,127)">0</span></td>
+</tr>
+<tr>
+<td><a href="#not_i_reachable-childsnack" onclick="show_table(document.getElementById('not_i_reachable-childsnack'));">childsnack</a> (0, 1, 0)</td>
+<td><span style="color:rgb(127,127,127)">None</span></td>
+<td class="right"><span style="color:rgb(0,178,0)">0</span></td>
+<td><span style="color:rgb(127,127,127)">None</span></td>
+</tr>
+<tr>
+<td><a href="#not_i_reachable-delivery" onclick="show_table(document.getElementById('not_i_reachable-delivery'));">delivery</a> (0, 1, 1)</td>
+<td><span style="color:rgb(127,127,127)">None</span></td>
+<td class="right"><span style="color:rgb(0,178,0)">0</span></td>
+<td class="right"><span style="color:rgb(0,178,0)">0</span></td>
+</tr>
+<tr>
+<td><a href="#not_i_reachable-gripper" onclick="show_table(document.getElementById('not_i_reachable-gripper'));">gripper</a> (1)</td>
+<td class="right"><span style="color:rgb(127,127,127)">0</span></td>
+<td class="right"><span style="color:rgb(127,127,127)">0</span></td>
+<td class="right"><span style="color:rgb(127,127,127)">0</span></td>
+</tr>
+<tr>
+<td><a href="#not_i_reachable-miconic" onclick="show_table(document.getElementById('not_i_reachable-miconic'));">miconic</a> (0, 1, 1)</td>
+<td><span style="color:rgb(127,127,127)">None</span></td>
+<td class="right"><span style="color:rgb(0,178,0)">0</span></td>
+<td class="right"><span style="color:rgb(0,178,0)">0</span></td>
+</tr>
+<tr>
+<td><a href="#not_i_reachable-reward" onclick="show_table(document.getElementById('not_i_reachable-reward'));">reward</a> (1)</td>
+<td class="right"><span style="color:rgb(127,127,127)">0</span></td>
+<td class="right"><span style="color:rgb(127,127,127)">0</span></td>
+<td class="right"><span style="color:rgb(127,127,127)">0</span></td>
+</tr>
+<tr>
+<td><a href="#not_i_reachable-spanner" onclick="show_table(document.getElementById('not_i_reachable-spanner'));">spanner</a> (1)</td>
+<td class="right"><span style="color:rgb(127,127,127)">0</span></td>
+<td class="right"><span style="color:rgb(127,127,127)">0</span></td>
+<td class="right"><span style="color:rgb(127,127,127)">0</span></td>
+</tr>
+<tr>
+<td><a href="#not_i_reachable-visitall" onclick="show_table(document.getElementById('not_i_reachable-visitall'));">visitall</a> (1)</td>
+<td class="right"><span style="color:rgb(127,127,127)">0</span></td>
+<td class="right"><span style="color:rgb(127,127,127)">0</span></td>
+<td class="right"><span style="color:rgb(127,127,127)">0</span></td>
+</tr>
+<tr>
+<td><strong>Sum (9)</strong></td>
+<td class="right"><span style="color:rgb(127,127,127)">0</span></td>
+<td class="right"><span style="color:rgb(127,127,127)">0</span></td>
+<td class="right"><span style="color:rgb(127,127,127)">0</span></td>
+</tr>
+</table>
+
+<p>
+The bottom row reports the sum across all domains.
+</p>
+
+<section id="not_i_reachable-blocks-clear">
+<h2>blocks-clear</h2>
+
+<button type="button" class="toggle-table" onclick="toggle_table(this)">Show table</button><p></p>
+
+<table class="tableborder" style="display:none">
+<tr>
+<th>not_<wbr>i_<wbr>reachable</th>
+<th>siwr_<wbr>0</th>
+<th>siwr_<wbr>1</th>
+<th>siwr_<wbr>2</th>
+</tr>
+<tr>
+<td>p-51-0.pddl</td>
+<td class="right"><span style="color:rgb(127,127,127)">0</span></td>
+<td class="right"><span style="color:rgb(127,127,127)">0</span></td>
+<td class="right"><span style="color:rgb(127,127,127)">0</span></td>
+</tr>
+</table>
+
+</section>
+<section id="not_i_reachable-blocks-on">
+<h2>blocks-on</h2>
+
+<button type="button" class="toggle-table" onclick="toggle_table(this)">Show table</button><p></p>
+
+<table class="tableborder" style="display:none">
+<tr>
+<th>not_<wbr>i_<wbr>reachable</th>
+<th>siwr_<wbr>0</th>
+<th>siwr_<wbr>1</th>
+<th>siwr_<wbr>2</th>
+</tr>
+<tr>
+<td>p-51-0.pddl</td>
+<td class="right"><span style="color:rgb(127,127,127)">0</span></td>
+<td class="right"><span style="color:rgb(127,127,127)">0</span></td>
+<td class="right"><span style="color:rgb(127,127,127)">0</span></td>
+</tr>
+</table>
+
+</section>
+<section id="not_i_reachable-childsnack">
+<h2>childsnack</h2>
+
+<button type="button" class="toggle-table" onclick="toggle_table(this)">Show table</button><p></p>
+
+<table class="tableborder" style="display:none">
+<tr>
+<th>not_<wbr>i_<wbr>reachable</th>
+<th>siwr_<wbr>1</th>
+</tr>
+<tr>
+<td>p01.pddl</td>
+<td class="right"><span style="color:rgb(127,127,127)">0</span></td>
+</tr>
+</table>
+
+</section>
+<section id="not_i_reachable-delivery">
+<h2>delivery</h2>
+
+<button type="button" class="toggle-table" onclick="toggle_table(this)">Show table</button><p></p>
+
+<table class="tableborder" style="display:none">
+<tr>
+<th>not_<wbr>i_<wbr>reachable</th>
+<th>siwr_<wbr>1</th>
+<th>siwr_<wbr>2</th>
+</tr>
+<tr>
+<td>instance_3_2_0.pddl</td>
+<td class="right"><span style="color:rgb(127,127,127)">0</span></td>
+<td class="right"><span style="color:rgb(127,127,127)">0</span></td>
+</tr>
+</table>
+
+</section>
+<section id="not_i_reachable-gripper">
+<h2>gripper</h2>
+
+<button type="button" class="toggle-table" onclick="toggle_table(this)">Show table</button><p></p>
+
+<table class="tableborder" style="display:none">
+<tr>
+<th>not_<wbr>i_<wbr>reachable</th>
+<th>siwr_<wbr>0</th>
+<th>siwr_<wbr>1</th>
+<th>siwr_<wbr>2</th>
+</tr>
+<tr>
+<td>p01.pddl</td>
+<td class="right"><span style="color:rgb(127,127,127)">0</span></td>
+<td class="right"><span style="color:rgb(127,127,127)">0</span></td>
+<td class="right"><span style="color:rgb(127,127,127)">0</span></td>
+</tr>
+</table>
+
+</section>
+<section id="not_i_reachable-miconic">
+<h2>miconic</h2>
+
+<button type="button" class="toggle-table" onclick="toggle_table(this)">Show table</button><p></p>
+
+<table class="tableborder" style="display:none">
+<tr>
+<th>not_<wbr>i_<wbr>reachable</th>
+<th>siwr_<wbr>1</th>
+<th>siwr_<wbr>2</th>
+</tr>
+<tr>
+<td>p01.pddl</td>
+<td class="right"><span style="color:rgb(127,127,127)">0</span></td>
+<td class="right"><span style="color:rgb(127,127,127)">0</span></td>
+</tr>
+</table>
+
+</section>
+<section id="not_i_reachable-reward">
+<h2>reward</h2>
+
+<button type="button" class="toggle-table" onclick="toggle_table(this)">Show table</button><p></p>
+
+<table class="tableborder" style="display:none">
+<tr>
+<th>not_<wbr>i_<wbr>reachable</th>
+<th>siwr_<wbr>0</th>
+<th>siwr_<wbr>1</th>
+<th>siwr_<wbr>2</th>
+</tr>
+<tr>
+<td>instance_5x5_0.pddl</td>
+<td class="right"><span style="color:rgb(127,127,127)">0</span></td>
+<td class="right"><span style="color:rgb(127,127,127)">0</span></td>
+<td class="right"><span style="color:rgb(127,127,127)">0</span></td>
+</tr>
+</table>
+
+</section>
+<section id="not_i_reachable-spanner">
+<h2>spanner</h2>
+
+<button type="button" class="toggle-table" onclick="toggle_table(this)">Show table</button><p></p>
+
+<table class="tableborder" style="display:none">
+<tr>
+<th>not_<wbr>i_<wbr>reachable</th>
+<th>siwr_<wbr>0</th>
+<th>siwr_<wbr>1</th>
+<th>siwr_<wbr>2</th>
+</tr>
+<tr>
+<td>pfile01-001.pddl</td>
+<td class="right"><span style="color:rgb(127,127,127)">0</span></td>
+<td class="right"><span style="color:rgb(127,127,127)">0</span></td>
+<td class="right"><span style="color:rgb(127,127,127)">0</span></td>
+</tr>
+</table>
+
+</section>
+<section id="not_i_reachable-visitall">
+<h2>visitall</h2>
+
+<button type="button" class="toggle-table" onclick="toggle_table(this)">Show table</button><p></p>
+
+<table class="tableborder" style="display:none">
+<tr>
+<th>not_<wbr>i_<wbr>reachable</th>
+<th>siwr_<wbr>0</th>
+<th>siwr_<wbr>1</th>
+<th>siwr_<wbr>2</th>
+</tr>
+<tr>
+<td>p01.pddl</td>
+<td class="right"><span style="color:rgb(127,127,127)">0</span></td>
+<td class="right"><span style="color:rgb(127,127,127)">0</span></td>
+<td class="right"><span style="color:rgb(127,127,127)">0</span></td>
+</tr>
+</table>
+
+</section>
+</section>
+<section id="pruned">
+<h1>pruned</h1>
+
+<button type="button" class="toggle-table" onclick="toggle_table(this)">Show table</button><p></p>
+
+<table class="tableborder" style="display:none">
+<tr>
+<th>pruned</th>
+<th>siwr_<wbr>0</th>
+<th>siwr_<wbr>1</th>
+<th>siwr_<wbr>2</th>
+</tr>
+<tr>
+<td><a href="#pruned-blocks-clear" onclick="show_table(document.getElementById('pruned-blocks-clear'));">blocks-clear</a> (1)</td>
+<td class="right"><span style="color:rgb(0,178,0)">0</span></td>
+<td class="right"><span style="color:rgb(0,0,178)">6534</span></td>
+<td class="right"><span style="color:rgb(0,0,178)">6534</span></td>
+</tr>
+<tr>
+<td><a href="#pruned-blocks-on" onclick="show_table(document.getElementById('pruned-blocks-on'));">blocks-on</a> (1)</td>
+<td class="right"><span style="color:rgb(0,178,0)">0</span></td>
+<td class="right"><span style="color:rgb(0,178,0)">0</span></td>
+<td class="right"><span style="color:rgb(0,0,178)">2070</span></td>
+</tr>
+<tr>
+<td><a href="#pruned-gripper" onclick="show_table(document.getElementById('pruned-gripper'));">gripper</a> (1)</td>
+<td class="right"><span style="color:rgb(0,178,0)">0</span></td>
+<td class="right"><span style="color:rgb(0,178,0)">38</span></td>
+<td class="right"><span style="color:rgb(0,0,178)">17510</span></td>
+</tr>
+<tr>
+<td><a href="#pruned-reward" onclick="show_table(document.getElementById('pruned-reward'));">reward</a> (1)</td>
+<td class="right"><span style="color:rgb(127,127,127)">0</span></td>
+<td class="right"><span style="color:rgb(127,127,127)">0</span></td>
+<td class="right"><span style="color:rgb(127,127,127)">0</span></td>
+</tr>
+<tr>
+<td><a href="#pruned-spanner" onclick="show_table(document.getElementById('pruned-spanner'));">spanner</a> (1)</td>
+<td class="right"><span style="color:rgb(127,127,127)">0</span></td>
+<td class="right"><span style="color:rgb(127,127,127)">0</span></td>
+<td class="right"><span style="color:rgb(127,127,127)">0</span></td>
+</tr>
+<tr>
+<td><a href="#pruned-visitall" onclick="show_table(document.getElementById('pruned-visitall'));">visitall</a> (1)</td>
+<td class="right"><span style="color:rgb(127,127,127)">0</span></td>
+<td class="right"><span style="color:rgb(127,127,127)">0</span></td>
+<td class="right"><span style="color:rgb(127,127,127)">0</span></td>
+</tr>
+<tr>
+<td><strong>Sum (6)</strong></td>
+<td class="right"><span style="color:rgb(0,178,0)">0</span></td>
+<td class="right"><span style="color:rgb(0,178,89)">6572</span></td>
+<td class="right"><span style="color:rgb(0,0,178)">26114</span></td>
+</tr>
+</table>
+
+<p>
+Only instances where all algorithms have a value for "pruned" are considered. Each table entry gives the sum of "pruned" for that domain. The bottom row reports the sum across all domains.
+</p>
+
+<section id="pruned-blocks-clear">
+<h2>blocks-clear</h2>
+
+<button type="button" class="toggle-table" onclick="toggle_table(this)">Show table</button><p></p>
+
+<table class="tableborder" style="display:none">
+<tr>
+<th>pruned</th>
+<th>siwr_<wbr>0</th>
+<th>siwr_<wbr>1</th>
+<th>siwr_<wbr>2</th>
+</tr>
+<tr>
+<td>p-51-0.pddl</td>
+<td class="right"><span style="color:rgb(0,178,0)">0</span></td>
+<td class="right"><span style="color:rgb(0,0,178)">6534</span></td>
+<td class="right"><span style="color:rgb(0,0,178)">6534</span></td>
+</tr>
+</table>
+
+</section>
+<section id="pruned-blocks-on">
+<h2>blocks-on</h2>
+
+<button type="button" class="toggle-table" onclick="toggle_table(this)">Show table</button><p></p>
+
+<table class="tableborder" style="display:none">
+<tr>
+<th>pruned</th>
+<th>siwr_<wbr>0</th>
+<th>siwr_<wbr>1</th>
+<th>siwr_<wbr>2</th>
+</tr>
+<tr>
+<td>p-51-0.pddl</td>
+<td class="right"><span style="color:rgb(0,178,0)">0</span></td>
+<td class="right"><span style="color:rgb(0,178,0)">0</span></td>
+<td class="right"><span style="color:rgb(0,0,178)">2070</span></td>
+</tr>
+</table>
+
+</section>
+<section id="pruned-childsnack">
+<h2>childsnack</h2>
+
+<button type="button" class="toggle-table" onclick="toggle_table(this)">Show table</button><p></p>
+
+<table class="tableborder" style="display:none">
+<tr>
+<th>pruned</th>
+<th>siwr_<wbr>1</th>
+</tr>
+<tr>
+<td>p01.pddl</td>
+<td class="right"><span style="color:rgb(127,127,127)">271</span></td>
+</tr>
+</table>
+
+</section>
+<section id="pruned-delivery">
+<h2>delivery</h2>
+
+<button type="button" class="toggle-table" onclick="toggle_table(this)">Show table</button><p></p>
+
+<table class="tableborder" style="display:none">
+<tr>
+<th>pruned</th>
+<th>siwr_<wbr>1</th>
+<th>siwr_<wbr>2</th>
+</tr>
+<tr>
+<td>instance_3_2_0.pddl</td>
+<td class="right"><span style="color:rgb(0,178,0)">16</span></td>
+<td class="right"><span style="color:rgb(0,0,178)">17</span></td>
+</tr>
+</table>
+
+</section>
+<section id="pruned-gripper">
+<h2>gripper</h2>
+
+<button type="button" class="toggle-table" onclick="toggle_table(this)">Show table</button><p></p>
+
+<table class="tableborder" style="display:none">
+<tr>
+<th>pruned</th>
+<th>siwr_<wbr>0</th>
+<th>siwr_<wbr>1</th>
+<th>siwr_<wbr>2</th>
+</tr>
+<tr>
+<td>p01.pddl</td>
+<td class="right"><span style="color:rgb(0,178,0)">0</span></td>
+<td class="right"><span style="color:rgb(0,178,0)">38</span></td>
+<td class="right"><span style="color:rgb(0,0,178)">17510</span></td>
+</tr>
+</table>
+
+</section>
+<section id="pruned-miconic">
+<h2>miconic</h2>
+
+<button type="button" class="toggle-table" onclick="toggle_table(this)">Show table</button><p></p>
+
+<table class="tableborder" style="display:none">
+<tr>
+<th>pruned</th>
+<th>siwr_<wbr>1</th>
+<th>siwr_<wbr>2</th>
+</tr>
+<tr>
+<td>p01.pddl</td>
+<td class="right"><span style="color:rgb(0,178,0)">117</span></td>
+<td class="right"><span style="color:rgb(0,0,178)">7467</span></td>
+</tr>
+</table>
+
+</section>
+<section id="pruned-reward">
+<h2>reward</h2>
+
+<button type="button" class="toggle-table" onclick="toggle_table(this)">Show table</button><p></p>
+
+<table class="tableborder" style="display:none">
+<tr>
+<th>pruned</th>
+<th>siwr_<wbr>0</th>
+<th>siwr_<wbr>1</th>
+<th>siwr_<wbr>2</th>
+</tr>
+<tr>
+<td>instance_5x5_0.pddl</td>
+<td class="right"><span style="color:rgb(127,127,127)">0</span></td>
+<td class="right"><span style="color:rgb(127,127,127)">0</span></td>
+<td class="right"><span style="color:rgb(127,127,127)">0</span></td>
+</tr>
+</table>
+
+</section>
+<section id="pruned-spanner">
+<h2>spanner</h2>
+
+<button type="button" class="toggle-table" onclick="toggle_table(this)">Show table</button><p></p>
+
+<table class="tableborder" style="display:none">
+<tr>
+<th>pruned</th>
+<th>siwr_<wbr>0</th>
+<th>siwr_<wbr>1</th>
+<th>siwr_<wbr>2</th>
+</tr>
+<tr>
+<td>pfile01-001.pddl</td>
+<td class="right"><span style="color:rgb(127,127,127)">0</span></td>
+<td class="right"><span style="color:rgb(127,127,127)">0</span></td>
+<td class="right"><span style="color:rgb(127,127,127)">0</span></td>
+</tr>
+</table>
+
+</section>
+<section id="pruned-visitall">
+<h2>visitall</h2>
+
+<button type="button" class="toggle-table" onclick="toggle_table(this)">Show table</button><p></p>
+
+<table class="tableborder" style="display:none">
+<tr>
+<th>pruned</th>
+<th>siwr_<wbr>0</th>
+<th>siwr_<wbr>1</th>
+<th>siwr_<wbr>2</th>
+</tr>
+<tr>
+<td>p01.pddl</td>
+<td class="right"><span style="color:rgb(127,127,127)">0</span></td>
+<td class="right"><span style="color:rgb(127,127,127)">0</span></td>
+<td class="right"><span style="color:rgb(127,127,127)">0</span></td>
+</tr>
+</table>
+
+</section>
+</section>
+<section id="run_dir">
+<h1>run_dir</h1>
+
+<p>
+Domain-wise reports only support numeric attributes, but run_dir has type str.
+</p>
+
+<section id="run_dir-blocks-clear">
+<h2>blocks-clear</h2>
+
+<button type="button" class="toggle-table" onclick="toggle_table(this)">Show table</button><p></p>
+
+<table class="tableborder" style="display:none">
+<tr>
+<th>run_<wbr>dir</th>
+<th>siwr_<wbr>0</th>
+<th>siwr_<wbr>1</th>
+<th>siwr_<wbr>2</th>
+</tr>
+<tr>
+<td>p-51-0.pddl</td>
+<td>runs-00001-00100/00001</td>
+<td>runs-00001-00100/00002</td>
+<td>runs-00001-00100/00003</td>
+</tr>
+</table>
+
+</section>
+<section id="run_dir-blocks-on">
+<h2>blocks-on</h2>
+
+<button type="button" class="toggle-table" onclick="toggle_table(this)">Show table</button><p></p>
+
+<table class="tableborder" style="display:none">
+<tr>
+<th>run_<wbr>dir</th>
+<th>siwr_<wbr>0</th>
+<th>siwr_<wbr>1</th>
+<th>siwr_<wbr>2</th>
+</tr>
+<tr>
+<td>p-51-0.pddl</td>
+<td>runs-00001-00100/00004</td>
+<td>runs-00001-00100/00005</td>
+<td>runs-00001-00100/00006</td>
+</tr>
+</table>
+
+</section>
+<section id="run_dir-childsnack">
+<h2>childsnack</h2>
+
+<button type="button" class="toggle-table" onclick="toggle_table(this)">Show table</button><p></p>
+
+<table class="tableborder" style="display:none">
+<tr>
+<th>run_<wbr>dir</th>
+<th>siwr_<wbr>1</th>
+</tr>
+<tr>
+<td>p01.pddl</td>
+<td>runs-00001-00100/00007</td>
+</tr>
+</table>
+
+</section>
+<section id="run_dir-delivery">
+<h2>delivery</h2>
+
+<button type="button" class="toggle-table" onclick="toggle_table(this)">Show table</button><p></p>
+
+<table class="tableborder" style="display:none">
+<tr>
+<th>run_<wbr>dir</th>
+<th>siwr_<wbr>1</th>
+<th>siwr_<wbr>2</th>
+</tr>
+<tr>
+<td>instance_3_2_0.pddl</td>
+<td>runs-00001-00100/00008</td>
+<td>runs-00001-00100/00009</td>
+</tr>
+</table>
+
+</section>
+<section id="run_dir-gripper">
+<h2>gripper</h2>
+
+<button type="button" class="toggle-table" onclick="toggle_table(this)">Show table</button><p></p>
+
+<table class="tableborder" style="display:none">
+<tr>
+<th>run_<wbr>dir</th>
+<th>siwr_<wbr>0</th>
+<th>siwr_<wbr>1</th>
+<th>siwr_<wbr>2</th>
+</tr>
+<tr>
+<td>p01.pddl</td>
+<td>runs-00001-00100/00010</td>
+<td>runs-00001-00100/00011</td>
+<td>runs-00001-00100/00012</td>
+</tr>
+</table>
+
+</section>
+<section id="run_dir-miconic">
+<h2>miconic</h2>
+
+<button type="button" class="toggle-table" onclick="toggle_table(this)">Show table</button><p></p>
+
+<table class="tableborder" style="display:none">
+<tr>
+<th>run_<wbr>dir</th>
+<th>siwr_<wbr>1</th>
+<th>siwr_<wbr>2</th>
+</tr>
+<tr>
+<td>p01.pddl</td>
+<td>runs-00001-00100/00013</td>
+<td>runs-00001-00100/00014</td>
+</tr>
+</table>
+
+</section>
+<section id="run_dir-reward">
+<h2>reward</h2>
+
+<button type="button" class="toggle-table" onclick="toggle_table(this)">Show table</button><p></p>
+
+<table class="tableborder" style="display:none">
+<tr>
+<th>run_<wbr>dir</th>
+<th>siwr_<wbr>0</th>
+<th>siwr_<wbr>1</th>
+<th>siwr_<wbr>2</th>
+</tr>
+<tr>
+<td>instance_5x5_0.pddl</td>
+<td>runs-00001-00100/00015</td>
+<td>runs-00001-00100/00016</td>
+<td>runs-00001-00100/00017</td>
+</tr>
+</table>
+
+</section>
+<section id="run_dir-spanner">
+<h2>spanner</h2>
+
+<button type="button" class="toggle-table" onclick="toggle_table(this)">Show table</button><p></p>
+
+<table class="tableborder" style="display:none">
+<tr>
+<th>run_<wbr>dir</th>
+<th>siwr_<wbr>0</th>
+<th>siwr_<wbr>1</th>
+<th>siwr_<wbr>2</th>
+</tr>
+<tr>
+<td>pfile01-001.pddl</td>
+<td>runs-00001-00100/00018</td>
+<td>runs-00001-00100/00019</td>
+<td>runs-00001-00100/00020</td>
+</tr>
+</table>
+
+</section>
+<section id="run_dir-visitall">
+<h2>visitall</h2>
+
+<button type="button" class="toggle-table" onclick="toggle_table(this)">Show table</button><p></p>
+
+<table class="tableborder" style="display:none">
+<tr>
+<th>run_<wbr>dir</th>
+<th>siwr_<wbr>0</th>
+<th>siwr_<wbr>1</th>
+<th>siwr_<wbr>2</th>
+</tr>
+<tr>
+<td>p01.pddl</td>
+<td>runs-00001-00100/00021</td>
+<td>runs-00001-00100/00022</td>
+<td>runs-00001-00100/00023</td>
+</tr>
+</table>
+
+</section>
+</section>
+<section id="total_time">
+<h1>total_time</h1>
+
+<button type="button" class="toggle-table" onclick="toggle_table(this)">Show table</button><p></p>
+
+<table class="tableborder" style="display:none">
+<tr>
+<th>total_<wbr>time</th>
+<th>siwr_<wbr>0</th>
+<th>siwr_<wbr>1</th>
+<th>siwr_<wbr>2</th>
+</tr>
+<tr>
+<td><a href="#total_time-blocks-clear" onclick="show_table(document.getElementById('total_time-blocks-clear'));">blocks-clear</a> (1)</td>
+<td class="right"><span style="color:rgb(0,0,178)">1.21</span></td>
+<td class="right"><span style="color:rgb(0,118,178)">1.09</span></td>
+<td class="right"><span style="color:rgb(0,178,0)">0.85</span></td>
+</tr>
+<tr>
+<td><a href="#total_time-blocks-on" onclick="show_table(document.getElementById('total_time-blocks-on'));">blocks-on</a> (1)</td>
+<td class="right"><span style="color:rgb(0,178,0)">0.89</span></td>
+<td class="right"><span style="color:rgb(0,0,178)">1.23</span></td>
+<td class="right"><span style="color:rgb(0,178,42)">0.93</span></td>
+</tr>
+<tr>
+<td><a href="#total_time-childsnack" onclick="show_table(document.getElementById('total_time-childsnack'));">childsnack</a> (0, 1, 0)</td>
+<td><span style="color:rgb(127,127,127)">None</span></td>
+<td class="right"><span style="color:rgb(0,178,0)">0.39</span></td>
+<td><span style="color:rgb(127,127,127)">None</span></td>
+</tr>
+<tr>
+<td><a href="#total_time-delivery" onclick="show_table(document.getElementById('total_time-delivery'));">delivery</a> (0, 1, 1)</td>
+<td><span style="color:rgb(127,127,127)">None</span></td>
+<td class="right"><span style="color:rgb(0,178,0)">0.39</span></td>
+<td class="right"><span style="color:rgb(0,0,178)">0.41</span></td>
+</tr>
+<tr>
+<td><a href="#total_time-gripper" onclick="show_table(document.getElementById('total_time-gripper'));">gripper</a> (1)</td>
+<td class="right"><span style="color:rgb(0,178,0)">0.39</span></td>
+<td class="right"><span style="color:rgb(0,178,178)">0.43</span></td>
+<td class="right"><span style="color:rgb(0,0,178)">0.47</span></td>
+</tr>
+<tr>
+<td><a href="#total_time-miconic" onclick="show_table(document.getElementById('total_time-miconic'));">miconic</a> (0, 1, 1)</td>
+<td><span style="color:rgb(127,127,127)">None</span></td>
+<td class="right"><span style="color:rgb(0,0,178)">0.43</span></td>
+<td class="right"><span style="color:rgb(0,178,0)">0.39</span></td>
+</tr>
+<tr>
+<td><a href="#total_time-reward" onclick="show_table(document.getElementById('total_time-reward'));">reward</a> (1)</td>
+<td class="right"><span style="color:rgb(0,178,0)">0.41</span></td>
+<td class="right"><span style="color:rgb(0,178,0)">0.41</span></td>
+<td class="right"><span style="color:rgb(0,0,178)">0.45</span></td>
+</tr>
+<tr>
+<td><a href="#total_time-spanner" onclick="show_table(document.getElementById('total_time-spanner'));">spanner</a> (1)</td>
+<td class="right"><span style="color:rgb(0,178,129)">1.24</span></td>
+<td class="right"><span style="color:rgb(0,0,178)">1.45</span></td>
+<td class="right"><span style="color:rgb(0,178,0)">1.12</span></td>
+</tr>
+<tr>
+<td><a href="#total_time-visitall" onclick="show_table(document.getElementById('total_time-visitall'));">visitall</a> (1)</td>
+<td class="right"><span style="color:rgb(0,0,178)">0.40</span></td>
+<td class="right"><span style="color:rgb(0,178,0)">0.37</span></td>
+<td class="right"><span style="color:rgb(0,178,0)">0.37</span></td>
+</tr>
+<tr>
+<td><strong>Sum (9)</strong></td>
+<td class="right"><span style="color:rgb(0,178,0)">4.54</span></td>
+<td class="right"><span style="color:rgb(0,0,178)">6.19</span></td>
+<td class="right"><span style="color:rgb(0,178,97)">4.99</span></td>
+</tr>
+</table>
+
+<p>
+The bottom row reports the sum across all domains.
+</p>
+
+<section id="total_time-blocks-clear">
+<h2>blocks-clear</h2>
+
+<button type="button" class="toggle-table" onclick="toggle_table(this)">Show table</button><p></p>
+
+<table class="tableborder" style="display:none">
+<tr>
+<th>total_<wbr>time</th>
+<th>siwr_<wbr>0</th>
+<th>siwr_<wbr>1</th>
+<th>siwr_<wbr>2</th>
+</tr>
+<tr>
+<td>p-51-0.pddl</td>
+<td class="right"><span style="color:rgb(0,0,178)">1.21</span></td>
+<td class="right"><span style="color:rgb(0,118,178)">1.09</span></td>
+<td class="right"><span style="color:rgb(0,178,0)">0.85</span></td>
+</tr>
+</table>
+
+</section>
+<section id="total_time-blocks-on">
+<h2>blocks-on</h2>
+
+<button type="button" class="toggle-table" onclick="toggle_table(this)">Show table</button><p></p>
+
+<table class="tableborder" style="display:none">
+<tr>
+<th>total_<wbr>time</th>
+<th>siwr_<wbr>0</th>
+<th>siwr_<wbr>1</th>
+<th>siwr_<wbr>2</th>
+</tr>
+<tr>
+<td>p-51-0.pddl</td>
+<td class="right"><span style="color:rgb(0,178,0)">0.89</span></td>
+<td class="right"><span style="color:rgb(0,0,178)">1.23</span></td>
+<td class="right"><span style="color:rgb(0,178,42)">0.93</span></td>
+</tr>
+</table>
+
+</section>
+<section id="total_time-childsnack">
+<h2>childsnack</h2>
+
+<button type="button" class="toggle-table" onclick="toggle_table(this)">Show table</button><p></p>
+
+<table class="tableborder" style="display:none">
+<tr>
+<th>total_<wbr>time</th>
+<th>siwr_<wbr>1</th>
+</tr>
+<tr>
+<td>p01.pddl</td>
+<td class="right"><span style="color:rgb(127,127,127)">0.39</span></td>
+</tr>
+</table>
+
+</section>
+<section id="total_time-delivery">
+<h2>delivery</h2>
+
+<button type="button" class="toggle-table" onclick="toggle_table(this)">Show table</button><p></p>
+
+<table class="tableborder" style="display:none">
+<tr>
+<th>total_<wbr>time</th>
+<th>siwr_<wbr>1</th>
+<th>siwr_<wbr>2</th>
+</tr>
+<tr>
+<td>instance_3_2_0.pddl</td>
+<td class="right"><span style="color:rgb(0,178,0)">0.39</span></td>
+<td class="right"><span style="color:rgb(0,0,178)">0.41</span></td>
+</tr>
+</table>
+
+</section>
+<section id="total_time-gripper">
+<h2>gripper</h2>
+
+<button type="button" class="toggle-table" onclick="toggle_table(this)">Show table</button><p></p>
+
+<table class="tableborder" style="display:none">
+<tr>
+<th>total_<wbr>time</th>
+<th>siwr_<wbr>0</th>
+<th>siwr_<wbr>1</th>
+<th>siwr_<wbr>2</th>
+</tr>
+<tr>
+<td>p01.pddl</td>
+<td class="right"><span style="color:rgb(0,178,0)">0.39</span></td>
+<td class="right"><span style="color:rgb(0,178,178)">0.43</span></td>
+<td class="right"><span style="color:rgb(0,0,178)">0.47</span></td>
+</tr>
+</table>
+
+</section>
+<section id="total_time-miconic">
+<h2>miconic</h2>
+
+<button type="button" class="toggle-table" onclick="toggle_table(this)">Show table</button><p></p>
+
+<table class="tableborder" style="display:none">
+<tr>
+<th>total_<wbr>time</th>
+<th>siwr_<wbr>1</th>
+<th>siwr_<wbr>2</th>
+</tr>
+<tr>
+<td>p01.pddl</td>
+<td class="right"><span style="color:rgb(0,0,178)">0.43</span></td>
+<td class="right"><span style="color:rgb(0,178,0)">0.39</span></td>
+</tr>
+</table>
+
+</section>
+<section id="total_time-reward">
+<h2>reward</h2>
+
+<button type="button" class="toggle-table" onclick="toggle_table(this)">Show table</button><p></p>
+
+<table class="tableborder" style="display:none">
+<tr>
+<th>total_<wbr>time</th>
+<th>siwr_<wbr>0</th>
+<th>siwr_<wbr>1</th>
+<th>siwr_<wbr>2</th>
+</tr>
+<tr>
+<td>instance_5x5_0.pddl</td>
+<td class="right"><span style="color:rgb(0,178,0)">0.41</span></td>
+<td class="right"><span style="color:rgb(0,178,0)">0.41</span></td>
+<td class="right"><span style="color:rgb(0,0,178)">0.45</span></td>
+</tr>
+</table>
+
+</section>
+<section id="total_time-spanner">
+<h2>spanner</h2>
+
+<button type="button" class="toggle-table" onclick="toggle_table(this)">Show table</button><p></p>
+
+<table class="tableborder" style="display:none">
+<tr>
+<th>total_<wbr>time</th>
+<th>siwr_<wbr>0</th>
+<th>siwr_<wbr>1</th>
+<th>siwr_<wbr>2</th>
+</tr>
+<tr>
+<td>pfile01-001.pddl</td>
+<td class="right"><span style="color:rgb(0,178,129)">1.24</span></td>
+<td class="right"><span style="color:rgb(0,0,178)">1.45</span></td>
+<td class="right"><span style="color:rgb(0,178,0)">1.12</span></td>
+</tr>
+</table>
+
+</section>
+<section id="total_time-visitall">
+<h2>visitall</h2>
+
+<button type="button" class="toggle-table" onclick="toggle_table(this)">Show table</button><p></p>
+
+<table class="tableborder" style="display:none">
+<tr>
+<th>total_<wbr>time</th>
+<th>siwr_<wbr>0</th>
+<th>siwr_<wbr>1</th>
+<th>siwr_<wbr>2</th>
+</tr>
+<tr>
+<td>p01.pddl</td>
+<td class="right"><span style="color:rgb(0,0,178)">0.40</span></td>
+<td class="right"><span style="color:rgb(0,178,0)">0.37</span></td>
+<td class="right"><span style="color:rgb(0,178,0)">0.37</span></td>
+</tr>
+</table>
+
+</section>
+</section>
+<section id="width_average">
+<h1>width_average</h1>
+
+<button type="button" class="toggle-table" onclick="toggle_table(this)">Show table</button><p></p>
+
+<table class="tableborder" style="display:none">
+<tr>
+<th>width_<wbr>average</th>
+<th>siwr_<wbr>0</th>
+<th>siwr_<wbr>1</th>
+<th>siwr_<wbr>2</th>
+</tr>
+<tr>
+<td><a href="#width_average-blocks-clear" onclick="show_table(document.getElementById('width_average-blocks-clear'));">blocks-clear</a> (1)</td>
+<td class="right"><span style="color:rgb(0,178,0)">0.00</span></td>
+<td class="right"><span style="color:rgb(0,0,178)">1.00</span></td>
+<td class="right"><span style="color:rgb(0,0,178)">1.00</span></td>
+</tr>
+<tr>
+<td><a href="#width_average-blocks-on" onclick="show_table(document.getElementById('width_average-blocks-on'));">blocks-on</a> (1)</td>
+<td class="right"><span style="color:rgb(0,178,0)">0.00</span></td>
+<td class="right"><span style="color:rgb(0,0,178)">1.00</span></td>
+<td class="right"><span style="color:rgb(0,10,178)">0.97</span></td>
+</tr>
+<tr>
+<td><a href="#width_average-childsnack" onclick="show_table(document.getElementById('width_average-childsnack'));">childsnack</a> (0, 1, 0)</td>
+<td><span style="color:rgb(127,127,127)">None</span></td>
+<td class="right"><span style="color:rgb(0,178,0)">0.20</span></td>
+<td><span style="color:rgb(127,127,127)">None</span></td>
+</tr>
+<tr>
+<td><a href="#width_average-delivery" onclick="show_table(document.getElementById('width_average-delivery'));">delivery</a> (0, 1, 1)</td>
+<td><span style="color:rgb(127,127,127)">None</span></td>
+<td class="right"><span style="color:rgb(0,178,0)">1.00</span></td>
+<td class="right"><span style="color:rgb(0,0,178)">1.67</span></td>
+</tr>
+<tr>
+<td><a href="#width_average-gripper" onclick="show_table(document.getElementById('width_average-gripper'));">gripper</a> (1)</td>
+<td class="right"><span style="color:rgb(0,178,0)">0.00</span></td>
+<td class="right"><span style="color:rgb(0,178,83)">0.47</span></td>
+<td class="right"><span style="color:rgb(0,0,178)">2.00</span></td>
+</tr>
+<tr>
+<td><a href="#width_average-miconic" onclick="show_table(document.getElementById('width_average-miconic'));">miconic</a> (0, 1, 1)</td>
+<td><span style="color:rgb(127,127,127)">None</span></td>
+<td class="right"><span style="color:rgb(0,178,0)">0.37</span></td>
+<td class="right"><span style="color:rgb(0,0,178)">2.00</span></td>
+</tr>
+<tr>
+<td><a href="#width_average-reward" onclick="show_table(document.getElementById('width_average-reward'));">reward</a> (1)</td>
+<td class="right"><span style="color:rgb(0,178,0)">0.00</span></td>
+<td class="right"><span style="color:rgb(0,0,178)">1.00</span></td>
+<td class="right"><span style="color:rgb(0,0,178)">1.00</span></td>
+</tr>
+<tr>
+<td><a href="#width_average-spanner" onclick="show_table(document.getElementById('width_average-spanner'));">spanner</a> (1)</td>
+<td class="right"><span style="color:rgb(0,178,0)">0.00</span></td>
+<td class="right"><span style="color:rgb(0,0,178)">0.23</span></td>
+<td class="right"><span style="color:rgb(0,0,178)">0.23</span></td>
+</tr>
+<tr>
+<td><a href="#width_average-visitall" onclick="show_table(document.getElementById('width_average-visitall'));">visitall</a> (1)</td>
+<td class="right"><span style="color:rgb(127,127,127)">0.00</span></td>
+<td class="right"><span style="color:rgb(127,127,127)">0.00</span></td>
+<td class="right"><span style="color:rgb(127,127,127)">0.00</span></td>
+</tr>
+<tr>
+<td><strong>Arithmetic mean (9)</strong></td>
+<td class="right"><span style="color:rgb(0,178,0)">0.00</span></td>
+<td class="right"><span style="color:rgb(0,167,178)">0.59</span></td>
+<td class="right"><span style="color:rgb(0,0,178)">1.11</span></td>
+</tr>
+</table>
+
+<p>
+The bottom row reports the arithmetic mean across all domains.
+</p>
+
+<section id="width_average-blocks-clear">
+<h2>blocks-clear</h2>
+
+<button type="button" class="toggle-table" onclick="toggle_table(this)">Show table</button><p></p>
+
+<table class="tableborder" style="display:none">
+<tr>
+<th>width_<wbr>average</th>
+<th>siwr_<wbr>0</th>
+<th>siwr_<wbr>1</th>
+<th>siwr_<wbr>2</th>
+</tr>
+<tr>
+<td>p-51-0.pddl</td>
+<td class="right"><span style="color:rgb(0,178,0)">0.00</span></td>
+<td class="right"><span style="color:rgb(0,0,178)">1.00</span></td>
+<td class="right"><span style="color:rgb(0,0,178)">1.00</span></td>
+</tr>
+</table>
+
+</section>
+<section id="width_average-blocks-on">
+<h2>blocks-on</h2>
+
+<button type="button" class="toggle-table" onclick="toggle_table(this)">Show table</button><p></p>
+
+<table class="tableborder" style="display:none">
+<tr>
+<th>width_<wbr>average</th>
+<th>siwr_<wbr>0</th>
+<th>siwr_<wbr>1</th>
+<th>siwr_<wbr>2</th>
+</tr>
+<tr>
+<td>p-51-0.pddl</td>
+<td class="right"><span style="color:rgb(0,178,0)">0.00</span></td>
+<td class="right"><span style="color:rgb(0,0,178)">1.00</span></td>
+<td class="right"><span style="color:rgb(0,10,178)">0.97</span></td>
+</tr>
+</table>
+
+</section>
+<section id="width_average-childsnack">
+<h2>childsnack</h2>
+
+<button type="button" class="toggle-table" onclick="toggle_table(this)">Show table</button><p></p>
+
+<table class="tableborder" style="display:none">
+<tr>
+<th>width_<wbr>average</th>
+<th>siwr_<wbr>1</th>
+</tr>
+<tr>
+<td>p01.pddl</td>
+<td class="right"><span style="color:rgb(127,127,127)">0.20</span></td>
+</tr>
+</table>
+
+</section>
+<section id="width_average-delivery">
+<h2>delivery</h2>
+
+<button type="button" class="toggle-table" onclick="toggle_table(this)">Show table</button><p></p>
+
+<table class="tableborder" style="display:none">
+<tr>
+<th>width_<wbr>average</th>
+<th>siwr_<wbr>1</th>
+<th>siwr_<wbr>2</th>
+</tr>
+<tr>
+<td>instance_3_2_0.pddl</td>
+<td class="right"><span style="color:rgb(0,178,0)">1.00</span></td>
+<td class="right"><span style="color:rgb(0,0,178)">1.67</span></td>
+</tr>
+</table>
+
+</section>
+<section id="width_average-gripper">
+<h2>gripper</h2>
+
+<button type="button" class="toggle-table" onclick="toggle_table(this)">Show table</button><p></p>
+
+<table class="tableborder" style="display:none">
+<tr>
+<th>width_<wbr>average</th>
+<th>siwr_<wbr>0</th>
+<th>siwr_<wbr>1</th>
+<th>siwr_<wbr>2</th>
+</tr>
+<tr>
+<td>p01.pddl</td>
+<td class="right"><span style="color:rgb(0,178,0)">0.00</span></td>
+<td class="right"><span style="color:rgb(0,178,83)">0.47</span></td>
+<td class="right"><span style="color:rgb(0,0,178)">2.00</span></td>
+</tr>
+</table>
+
+</section>
+<section id="width_average-miconic">
+<h2>miconic</h2>
+
+<button type="button" class="toggle-table" onclick="toggle_table(this)">Show table</button><p></p>
+
+<table class="tableborder" style="display:none">
+<tr>
+<th>width_<wbr>average</th>
+<th>siwr_<wbr>1</th>
+<th>siwr_<wbr>2</th>
+</tr>
+<tr>
+<td>p01.pddl</td>
+<td class="right"><span style="color:rgb(0,178,0)">0.37</span></td>
+<td class="right"><span style="color:rgb(0,0,178)">2.00</span></td>
+</tr>
+</table>
+
+</section>
+<section id="width_average-reward">
+<h2>reward</h2>
+
+<button type="button" class="toggle-table" onclick="toggle_table(this)">Show table</button><p></p>
+
+<table class="tableborder" style="display:none">
+<tr>
+<th>width_<wbr>average</th>
+<th>siwr_<wbr>0</th>
+<th>siwr_<wbr>1</th>
+<th>siwr_<wbr>2</th>
+</tr>
+<tr>
+<td>instance_5x5_0.pddl</td>
+<td class="right"><span style="color:rgb(0,178,0)">0.00</span></td>
+<td class="right"><span style="color:rgb(0,0,178)">1.00</span></td>
+<td class="right"><span style="color:rgb(0,0,178)">1.00</span></td>
+</tr>
+</table>
+
+</section>
+<section id="width_average-spanner">
+<h2>spanner</h2>
+
+<button type="button" class="toggle-table" onclick="toggle_table(this)">Show table</button><p></p>
+
+<table class="tableborder" style="display:none">
+<tr>
+<th>width_<wbr>average</th>
+<th>siwr_<wbr>0</th>
+<th>siwr_<wbr>1</th>
+<th>siwr_<wbr>2</th>
+</tr>
+<tr>
+<td>pfile01-001.pddl</td>
+<td class="right"><span style="color:rgb(0,178,0)">0.00</span></td>
+<td class="right"><span style="color:rgb(0,0,178)">0.23</span></td>
+<td class="right"><span style="color:rgb(0,0,178)">0.23</span></td>
+</tr>
+</table>
+
+</section>
+<section id="width_average-visitall">
+<h2>visitall</h2>
+
+<button type="button" class="toggle-table" onclick="toggle_table(this)">Show table</button><p></p>
+
+<table class="tableborder" style="display:none">
+<tr>
+<th>width_<wbr>average</th>
+<th>siwr_<wbr>0</th>
+<th>siwr_<wbr>1</th>
+<th>siwr_<wbr>2</th>
+</tr>
+<tr>
+<td>p01.pddl</td>
+<td class="right"><span style="color:rgb(127,127,127)">0.00</span></td>
+<td class="right"><span style="color:rgb(127,127,127)">0.00</span></td>
+<td class="right"><span style="color:rgb(127,127,127)">0.00</span></td>
+</tr>
+</table>
+
+</section>
+</section>
+<section id="width_maximum">
+<h1>width_maximum</h1>
+
+<button type="button" class="toggle-table" onclick="toggle_table(this)">Show table</button><p></p>
+
+<table class="tableborder" style="display:none">
+<tr>
+<th>width_<wbr>maximum</th>
+<th>siwr_<wbr>0</th>
+<th>siwr_<wbr>1</th>
+<th>siwr_<wbr>2</th>
+</tr>
+<tr>
+<td><a href="#width_maximum-blocks-clear" onclick="show_table(document.getElementById('width_maximum-blocks-clear'));">blocks-clear</a> (1)</td>
+<td class="right"><span style="color:rgb(0,178,0)">0</span></td>
+<td class="right"><span style="color:rgb(0,0,178)">1</span></td>
+<td class="right"><span style="color:rgb(0,0,178)">1</span></td>
+</tr>
+<tr>
+<td><a href="#width_maximum-blocks-on" onclick="show_table(document.getElementById('width_maximum-blocks-on'));">blocks-on</a> (1)</td>
+<td class="right"><span style="color:rgb(0,178,0)">0</span></td>
+<td class="right"><span style="color:rgb(0,0,178)">1</span></td>
+<td class="right"><span style="color:rgb(0,0,178)">1</span></td>
+</tr>
+<tr>
+<td><a href="#width_maximum-childsnack" onclick="show_table(document.getElementById('width_maximum-childsnack'));">childsnack</a> (0, 1, 0)</td>
+<td><span style="color:rgb(127,127,127)">None</span></td>
+<td class="right"><span style="color:rgb(0,178,0)">1</span></td>
+<td><span style="color:rgb(127,127,127)">None</span></td>
+</tr>
+<tr>
+<td><a href="#width_maximum-delivery" onclick="show_table(document.getElementById('width_maximum-delivery'));">delivery</a> (0, 1, 1)</td>
+<td><span style="color:rgb(127,127,127)">None</span></td>
+<td class="right"><span style="color:rgb(0,178,0)">1</span></td>
+<td class="right"><span style="color:rgb(0,0,178)">2</span></td>
+</tr>
+<tr>
+<td><a href="#width_maximum-gripper" onclick="show_table(document.getElementById('width_maximum-gripper'));">gripper</a> (1)</td>
+<td class="right"><span style="color:rgb(0,178,0)">0</span></td>
+<td class="right"><span style="color:rgb(0,178,178)">1</span></td>
+<td class="right"><span style="color:rgb(0,0,178)">2</span></td>
+</tr>
+<tr>
+<td><a href="#width_maximum-miconic" onclick="show_table(document.getElementById('width_maximum-miconic'));">miconic</a> (0, 1, 1)</td>
+<td><span style="color:rgb(127,127,127)">None</span></td>
+<td class="right"><span style="color:rgb(0,178,0)">1</span></td>
+<td class="right"><span style="color:rgb(0,0,178)">2</span></td>
+</tr>
+<tr>
+<td><a href="#width_maximum-reward" onclick="show_table(document.getElementById('width_maximum-reward'));">reward</a> (1)</td>
+<td class="right"><span style="color:rgb(0,178,0)">0</span></td>
+<td class="right"><span style="color:rgb(0,0,178)">1</span></td>
+<td class="right"><span style="color:rgb(0,0,178)">1</span></td>
+</tr>
+<tr>
+<td><a href="#width_maximum-spanner" onclick="show_table(document.getElementById('width_maximum-spanner'));">spanner</a> (1)</td>
+<td class="right"><span style="color:rgb(0,178,0)">0</span></td>
+<td class="right"><span style="color:rgb(0,0,178)">1</span></td>
+<td class="right"><span style="color:rgb(0,0,178)">1</span></td>
+</tr>
+<tr>
+<td><a href="#width_maximum-visitall" onclick="show_table(document.getElementById('width_maximum-visitall'));">visitall</a> (1)</td>
+<td class="right"><span style="color:rgb(127,127,127)">0</span></td>
+<td class="right"><span style="color:rgb(127,127,127)">0</span></td>
+<td class="right"><span style="color:rgb(127,127,127)">0</span></td>
+</tr>
+<tr>
+<td><strong>Sum (9)</strong></td>
+<td class="right"><span style="color:rgb(0,178,0)">0</span></td>
+<td class="right"><span style="color:rgb(0,71,178)">8</span></td>
+<td class="right"><span style="color:rgb(0,0,178)">10</span></td>
+</tr>
+</table>
+
+<p>
+The bottom row reports the sum across all domains.
+</p>
+
+<section id="width_maximum-blocks-clear">
+<h2>blocks-clear</h2>
+
+<button type="button" class="toggle-table" onclick="toggle_table(this)">Show table</button><p></p>
+
+<table class="tableborder" style="display:none">
+<tr>
+<th>width_<wbr>maximum</th>
+<th>siwr_<wbr>0</th>
+<th>siwr_<wbr>1</th>
+<th>siwr_<wbr>2</th>
+</tr>
+<tr>
+<td>p-51-0.pddl</td>
+<td class="right"><span style="color:rgb(0,178,0)">0</span></td>
+<td class="right"><span style="color:rgb(0,0,178)">1</span></td>
+<td class="right"><span style="color:rgb(0,0,178)">1</span></td>
+</tr>
+</table>
+
+</section>
+<section id="width_maximum-blocks-on">
+<h2>blocks-on</h2>
+
+<button type="button" class="toggle-table" onclick="toggle_table(this)">Show table</button><p></p>
+
+<table class="tableborder" style="display:none">
+<tr>
+<th>width_<wbr>maximum</th>
+<th>siwr_<wbr>0</th>
+<th>siwr_<wbr>1</th>
+<th>siwr_<wbr>2</th>
+</tr>
+<tr>
+<td>p-51-0.pddl</td>
+<td class="right"><span style="color:rgb(0,178,0)">0</span></td>
+<td class="right"><span style="color:rgb(0,0,178)">1</span></td>
+<td class="right"><span style="color:rgb(0,0,178)">1</span></td>
+</tr>
+</table>
+
+</section>
+<section id="width_maximum-childsnack">
+<h2>childsnack</h2>
+
+<button type="button" class="toggle-table" onclick="toggle_table(this)">Show table</button><p></p>
+
+<table class="tableborder" style="display:none">
+<tr>
+<th>width_<wbr>maximum</th>
+<th>siwr_<wbr>1</th>
+</tr>
+<tr>
+<td>p01.pddl</td>
+<td class="right"><span style="color:rgb(127,127,127)">1</span></td>
+</tr>
+</table>
+
+</section>
+<section id="width_maximum-delivery">
+<h2>delivery</h2>
+
+<button type="button" class="toggle-table" onclick="toggle_table(this)">Show table</button><p></p>
+
+<table class="tableborder" style="display:none">
+<tr>
+<th>width_<wbr>maximum</th>
+<th>siwr_<wbr>1</th>
+<th>siwr_<wbr>2</th>
+</tr>
+<tr>
+<td>instance_3_2_0.pddl</td>
+<td class="right"><span style="color:rgb(0,178,0)">1</span></td>
+<td class="right"><span style="color:rgb(0,0,178)">2</span></td>
+</tr>
+</table>
+
+</section>
+<section id="width_maximum-gripper">
+<h2>gripper</h2>
+
+<button type="button" class="toggle-table" onclick="toggle_table(this)">Show table</button><p></p>
+
+<table class="tableborder" style="display:none">
+<tr>
+<th>width_<wbr>maximum</th>
+<th>siwr_<wbr>0</th>
+<th>siwr_<wbr>1</th>
+<th>siwr_<wbr>2</th>
+</tr>
+<tr>
+<td>p01.pddl</td>
+<td class="right"><span style="color:rgb(0,178,0)">0</span></td>
+<td class="right"><span style="color:rgb(0,178,178)">1</span></td>
+<td class="right"><span style="color:rgb(0,0,178)">2</span></td>
+</tr>
+</table>
+
+</section>
+<section id="width_maximum-miconic">
+<h2>miconic</h2>
+
+<button type="button" class="toggle-table" onclick="toggle_table(this)">Show table</button><p></p>
+
+<table class="tableborder" style="display:none">
+<tr>
+<th>width_<wbr>maximum</th>
+<th>siwr_<wbr>1</th>
+<th>siwr_<wbr>2</th>
+</tr>
+<tr>
+<td>p01.pddl</td>
+<td class="right"><span style="color:rgb(0,178,0)">1</span></td>
+<td class="right"><span style="color:rgb(0,0,178)">2</span></td>
+</tr>
+</table>
+
+</section>
+<section id="width_maximum-reward">
+<h2>reward</h2>
+
+<button type="button" class="toggle-table" onclick="toggle_table(this)">Show table</button><p></p>
+
+<table class="tableborder" style="display:none">
+<tr>
+<th>width_<wbr>maximum</th>
+<th>siwr_<wbr>0</th>
+<th>siwr_<wbr>1</th>
+<th>siwr_<wbr>2</th>
+</tr>
+<tr>
+<td>instance_5x5_0.pddl</td>
+<td class="right"><span style="color:rgb(0,178,0)">0</span></td>
+<td class="right"><span style="color:rgb(0,0,178)">1</span></td>
+<td class="right"><span style="color:rgb(0,0,178)">1</span></td>
+</tr>
+</table>
+
+</section>
+<section id="width_maximum-spanner">
+<h2>spanner</h2>
+
+<button type="button" class="toggle-table" onclick="toggle_table(this)">Show table</button><p></p>
+
+<table class="tableborder" style="display:none">
+<tr>
+<th>width_<wbr>maximum</th>
+<th>siwr_<wbr>0</th>
+<th>siwr_<wbr>1</th>
+<th>siwr_<wbr>2</th>
+</tr>
+<tr>
+<td>pfile01-001.pddl</td>
+<td class="right"><span style="color:rgb(0,178,0)">0</span></td>
+<td class="right"><span style="color:rgb(0,0,178)">1</span></td>
+<td class="right"><span style="color:rgb(0,0,178)">1</span></td>
+</tr>
+</table>
+
+</section>
+<section id="width_maximum-visitall">
+<h2>visitall</h2>
+
+<button type="button" class="toggle-table" onclick="toggle_table(this)">Show table</button><p></p>
+
+<table class="tableborder" style="display:none">
+<tr>
+<th>width_<wbr>maximum</th>
+<th>siwr_<wbr>0</th>
+<th>siwr_<wbr>1</th>
+<th>siwr_<wbr>2</th>
+</tr>
+<tr>
+<td>p01.pddl</td>
+<td class="right"><span style="color:rgb(127,127,127)">0</span></td>
+<td class="right"><span style="color:rgb(127,127,127)">0</span></td>
+<td class="right"><span style="color:rgb(127,127,127)">0</span></td>
+</tr>
+</table>
+
+</section>
+</section>
+</div>
+</article></body></html>

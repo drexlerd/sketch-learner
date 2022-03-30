@@ -1,0 +1,7 @@
+(:policy
+(:boolean_features "b_empty(c_primitive(empty,0))")
+(:numerical_features "n_count(c_equal(r_primitive(at,0,1),r_primitive(at_g,0,1)))")
+(:rule (:conditions ) (:effects (:e_n_inc 0)))
+(:rule (:conditions (:c_b_neg 0) (:c_n_gt 0)) (:effects (:e_b_pos 0) (:e_n_bot 0)))
+)
+
