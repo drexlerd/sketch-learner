@@ -1,5 +1,0 @@
-(:policy
-(:boolean_features )
-(:numerical_features "n_count(c_primitive(reward,0))")
-(:rule (:conditions ) (:effects (:e_n_dec 0)))
-)
