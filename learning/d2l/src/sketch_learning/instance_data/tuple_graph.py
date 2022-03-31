@@ -190,34 +190,3 @@ class TupleGraphMinimizer:
         self.num_generated += len(t_idx_to_s_idxs)
         self.num_pruned += len(tuple_graph.t_idx_to_s_idxs) - len(t_idx_to_s_idxs)
         return TupleGraph(tuple_graph.root_idx, t_idxs_by_distance, tuple_graph.s_idxs_by_distance, t_idx_to_s_idxs, tuple_graph.width)
-
-class TupleGraphRelaxer:
-    """ Restrict the tuple graph to those tuples for which
-        all underlying states lie on optimal paths. """
-    def __init__(self):
-        self.num_generated = 0
-        self.num_pruned = 0
-
-    def relax(self, tuple_graph: TupleGraph, goal_distances: List[int]):
-        if tuple_graph is None:
-            return None
-        opt_states = set()
-        for d in range(len(tuple_graph.s_idxs_by_distance)):
-            s_idxs = tuple_graph.s_idxs_by_distance[d]
-            for s_idx in s_idxs:
-                assert goal_distances[tuple_graph.root_idx] <= d + goal_distances[s_idx]
-                if goal_distances[tuple_graph.root_idx] == d + goal_distances[s_idx]:
-                    opt_states.add(s_idx)
-        t_idxs_by_distance = []
-        t_idx_to_s_idxs = dict()
-        for t_idxs in tuple_graph.t_idxs_by_distance:
-            selected_t_idxs = []
-            for t_idx in t_idxs:
-                if tuple_graph.t_idx_to_s_idxs[t_idx].issubset(opt_states):
-                    self.num_generated += 1
-                    selected_t_idxs.append(t_idx)
-                    t_idx_to_s_idxs[t_idx] = tuple_graph.t_idx_to_s_idxs[t_idx]
-                else:
-                    self.num_pruned += 1
-            t_idxs_by_distance.append(selected_t_idxs)
-        return TupleGraph(tuple_graph.root_idx, t_idxs_by_distance, tuple_graph.s_idxs_by_distance, t_idx_to_s_idxs, tuple_graph.width)

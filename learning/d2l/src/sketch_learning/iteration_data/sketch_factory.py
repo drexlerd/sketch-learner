@@ -27,11 +27,7 @@ class Sketch:
             if tg is None:
                 continue  # no tuple graph indicates that we don't care about the information of this state.
             bounded = False
-            if self.width == 0:
-                low = 1
-            else:
-                low = 0
-            for d in range(low, len(tg.s_idxs_by_distance)):
+            for d in range(1, len(tg.s_idxs_by_distance)):
                 for t_idx in tg.t_idxs_by_distance[d]:  # check if t_idxs is a subgoal
                     subgoal = True
                     assert tg.t_idx_to_s_idxs[t_idx]

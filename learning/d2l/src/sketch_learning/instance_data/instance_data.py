@@ -8,7 +8,7 @@ from tarski.io import PDDLReader
 from ..util.command import execute, read_file
 from ..util.naming import filename_core
 from .transition_system import TransitionSystemFactory, TransitionSystem
-from .tuple_graph import TupleGraph, TupleGraphFactory, TupleGraphMinimizer, TupleGraphRelaxer
+from .tuple_graph import TupleGraph, TupleGraphFactory, TupleGraphMinimizer
 from .return_codes import ReturnCode
 from ..domain_data.domain_data import DomainData
 
@@ -50,8 +50,6 @@ class InstanceDataFactory:
         tuple_graph_factory = TupleGraphFactory(
             config, instance_info, transition_system)
         tuple_graph_minimizer = TupleGraphMinimizer()
-        #for state in transition_system.states_by_index:
-        #    print(str(state))
         tuple_graphs_by_state_index = [tuple_graph_minimizer.minimize(tuple_graph_factory.make_tuple_graph(config, i)) for i in range(
             transition_system.get_num_states())]
         print("Tuple graph minimizer:")

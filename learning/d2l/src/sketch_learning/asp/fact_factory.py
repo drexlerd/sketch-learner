@@ -57,11 +57,7 @@ class ASPFactFactory:
                 distance += 1
             # We include (root_idx,root_idx,0) s.t. the asp constraints disallow self loops of the sketch in the training instances.
             assert [root_state_idx] == tuple_graph.s_idxs_by_distance[0]
-            if tuple_graph.width == 0:
-                low = 1
-            else:
-                low = 0
-            for d in range(low, len(tuple_graph.s_idxs_by_distance)):
+            for d in range(1, len(tuple_graph.s_idxs_by_distance)):
                 for target_idx in tuple_graph.s_idxs_by_distance[d]:
                     builder.add_state_distance(instance_idx, root_state_idx, target_idx, d)
 
