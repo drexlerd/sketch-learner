@@ -27,11 +27,18 @@ class TupleGraph:
         does not work because it is asymmetric, i.e., tuple with fewer underlying states
         can be extended into successor tuple with more underlying states and vice versa.
     """
-    root_idx: int
-    t_idxs_by_distance: List[List[int]]
-    s_idxs_by_distance: List[List[int]]
-    t_idx_to_s_idxs: Dict[int, MutableSet]
-    width: int
+    def __init__(self,
+        root_idx: int,
+        t_idxs_by_distance: List[List[int]],
+        s_idxs_by_distance: List[List[int]],
+        t_idx_to_s_idxs: Dict[int, MutableSet],
+        width: int):
+        self.root_idx = root_idx
+        self.t_idxs_by_distance = t_idxs_by_distance
+        self.s_idxs_by_distance = s_idxs_by_distance
+        self.t_idx_to_s_idxs = t_idx_to_s_idxs
+        self.width = width
+        assert len(s_idxs_by_distance) == len(t_idxs_by_distance)
 
     def exists_admissible_chain_for(self, s_idxs : MutableSet[int]):
         """ Returns true iff there exists an admissible chain for s_idxs. """
@@ -142,7 +149,7 @@ class TupleGraphFactory:
                         marked_t_idxs_by_distance.append(marked_t_idxs)
                 d += 1
         assert d > 1
-        return TupleGraph(source_index, t_idxs_by_distance, s_idxs_by_distance[:d], t_idx_to_s_idxs, self.width)
+        return TupleGraph(source_index, marked_t_idxs_by_distance, s_idxs_by_distance[:len(marked_t_idxs_by_distance)], t_idx_to_s_idxs, self.width)
 
     def print_statistics(self):
         print(f"Generated tuple graph nodes: {self.generated_nodes}")
