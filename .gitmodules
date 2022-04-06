@@ -1,3 +1,6 @@
-[submodule "learning/d2l"]
-	path = learning/d2l
-	url = git@github.com:drexlerd/d2l.git
+[submodule "learning/d2l/libs/dlplan"]
+	path = learning/d2l/libs/dlplan
+	url = git@github.com:rleap-project/dlplan.git
+[submodule "learning/d2l/libs/tarski"]
+	path = learning/d2l/libs/tarski
+	url = git@github.com:drexlerd/tarski.git
