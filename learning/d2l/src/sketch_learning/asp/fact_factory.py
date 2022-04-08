@@ -53,13 +53,14 @@ class ASPFactFactory:
                     builder.add_tuple_distance(instance_idx, root_state_idx, t_idx, d)
                     builder.add_tuple(instance_idx, root_state_idx, t_idx)
                     for s_idx in tuple_graph.t_idx_to_s_idxs[t_idx]:
+                        # TODO (abstraction): add abstract state index
                         builder.add_contain(instance_idx, root_state_idx, s_idx, t_idx)
                 d += 1
-            # We include (root_idx,root_idx,0) s.t. the asp constraints disallow self loops of the sketch in the training instances.
             assert [root_state_idx] == tuple_graph.s_idxs_by_distance[0]
             d = 1
             for s_idxs in tuple_graph.s_idxs_by_distance[d:]:
                 for s_idx in s_idxs:
+                    # TODO (abstraction): add abstract state index and distance
                     builder.add_state_distance(instance_idx, root_state_idx, s_idx, d)
                 d += 1
 
