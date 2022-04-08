@@ -32,7 +32,7 @@ RUN curl -SL http://github.com/potassco/clingo/releases/download/v5.2.2/clingo-5
 # First build C++ code
 ADD . planner
 RUN cd planner \
-    && git submodule update --init \
+    #&& git submodule update --init \
     && cmake -DCMAKE_BUILD_TYPE=Release -S . -B build \
     && cmake --build build -j4
 
