@@ -20,7 +20,8 @@ class TupleGraphExt:
     t_idxs_by_distance: List[List[int]]
     r_idxs_by_distance: List[List[int]]
     t_idx_to_r_idxs: Dict[int, MutableSet[int]]
-    r_idx_to_deadend_distance: Dict[int, int]
+    # TODO:
+    # r_idx_to_deadend_distance: Dict[int, int]
     width: int
 
     def print(self):
@@ -73,7 +74,7 @@ class TupleGraphExtFactory:
                     state_pair = (root_idx, s_idx)
                     r_idx = state_pair_to_rule_idx[state_pair]
                     t_idx_to_r_idxs[t_idx].add(r_idx)
-        return TupleGraphExt(root_idx, tuple_graph.t_idxs_by_distance, r_idxs_by_distance, t_idx_to_r_idxs)
+        return TupleGraphExt(root_idx, tuple_graph.t_idxs_by_distance, r_idxs_by_distance, t_idx_to_r_idxs, tuple_graph.width)
 
 
 class TerminationGraphFactory:
