@@ -18,6 +18,7 @@ from .domain_data.domain_data import DomainDataFactory, DomainData
 from .iteration_data.iteration_data import IterationData
 from .iteration_data.feature_data import FeatureDataFactory, FeatureData
 from .iteration_data.sketch_factory import SketchFactory
+from .iteration_data.equivalence_data import EquivalenceDataFactory
 from .asp.fact_factory import ASPFactFactory
 from .asp.answer_set_parser import AnswerSetParser, AnswerSetParser_ExitCode
 
@@ -65,26 +66,7 @@ def run(config, data, rng):
 
         # 1.2. Generate feature pool
         feature_data = FeatureDataFactory().generate_feature_data(config, domain_data, selected_instance_datas)
-        # Partition states_by_distance in tuplegraph rooted at r into equivalence classes ~.
-        # s ~ s' iff forall f:change(f, r, s) = change(f, r, s')
-        # In this case sufficient to consider only one closest state of each equivalence class
-        # w.l.o.g. let s be this state, then good(r, s) iff good(r, s')
-        for i in range(len(selected_instance_datas)):
-            instance = selected_instance_datas[i]
-            numerical_feature_valuations = feature_data.numerical_feature_valuations[i]
-            boolean_feature_valuations = feature_data.boolean_feature_valuations[i]
-            for tg in instance.tuple_graphs_by_state_index:
-                equivalence = defaultdict(set)
-                if tg is None: continue
-                for s_idxs in tg.s_idxs_by_distance:
-                    for s_idx in s_idxs:
-                        key = tuple(numerical_feature_valuations[s_idx] + boolean_feature_valuations[s_idx])
-                        equivalence[key].add(s_idx)
-                # print(equivalence)
-                num_states_in_tg = sum([len(s_idxs) for s_idxs in tg.s_idxs_by_distance])
-                num_equivalences = len(equivalence)
-                if num_states_in_tg > num_equivalences:
-                    print(f"Num states: {num_states_in_tg}, equivalences: {num_equivalences}")
+        equivalence_data = EquivalenceDataFactory().make_equivalence_class_data(selected_instance_datas, feature_data)
         # 1.3. Generate asp facts
         facts = ASPFactFactory().make_asp_facts(selected_instance_datas, feature_data)
         write_file(iteration_data.facts_file, facts)

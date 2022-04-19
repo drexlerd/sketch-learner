@@ -31,7 +31,7 @@ class TupleGraph:
         root_idx: int,
         t_idxs_by_distance: List[List[int]],
         s_idxs_by_distance: List[List[int]],
-        t_idx_to_s_idxs: Dict[int, MutableSet],
+        t_idx_to_s_idxs: Dict[int, MutableSet[int]],
         width: int):
         self.root_idx = root_idx
         self.t_idxs_by_distance = t_idxs_by_distance
