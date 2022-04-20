@@ -1,7 +1,7 @@
-from .fact import Fact
+from ..fact import Fact
 
 
-class BooleanFeature(Fact):
+class Boolean(Fact):
     """ Defines a boolean feature. """
     def __init__(self, f_idx):
         super().__init__("boolean")

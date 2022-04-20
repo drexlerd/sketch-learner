@@ -1,8 +1,8 @@
-from .fact import Fact
+from ..fact import Fact
 
 
-class FeatureComplexity(Fact):
-    """ Defines the feature valuation in a given state. """
+class Complexity(Fact):
+    """ Defines the feature complexity. """
     def __init__(self, f_idx, f_complexity):
         super().__init__("complexity")
         self.f_idx = f_idx

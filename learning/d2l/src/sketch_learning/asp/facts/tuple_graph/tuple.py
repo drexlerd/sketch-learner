@@ -1,4 +1,4 @@
-from .fact import Fact
+from ..fact import Fact
 
 class Tuple(Fact):
     """ Defines all the tuples that are part of the tuple graph for a given state. """

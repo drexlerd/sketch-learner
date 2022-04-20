@@ -1,7 +1,7 @@
-from .fact import Fact
+from ..fact import Fact
 
 
-class NumericalFeature(Fact):
+class Numerical(Fact):
     """ Defines a numerical feature. """
     def __init__(self, f_idx):
         super().__init__("numerical")

@@ -1,10 +1,12 @@
 import dlplan
+import math
 from typing import Dict, List, MutableSet, Tuple
 from dataclasses import dataclass, field
 from collections import defaultdict
 
 from ..instance_data.instance_data import InstanceData
 from ..instance_data.tuple_graph import TupleGraph
+from ..instance_data.transition_system import TransitionSystem
 from ..iteration_data.feature_data import FeatureData
 
 
@@ -20,14 +22,14 @@ class TupleGraphExt:
     t_idxs_by_distance: List[List[int]]
     r_idxs_by_distance: List[List[int]]
     t_idx_to_r_idxs: Dict[int, MutableSet[int]]
-    # TODO:
-    # r_idx_to_deadend_distance: Dict[int, int]
+    r_idx_to_deadend_distance: Dict[int, int]
     width: int
 
     def print(self):
         print(self.t_idxs_by_distance)
         print(self.r_idxs_by_distance)
         print(self.t_idx_to_r_idxs)
+        print(self.r_idx_to_deadend_distance)
 
 
 @dataclass
@@ -55,18 +57,25 @@ class InstanceDataExt:
 
 
 class TupleGraphExtFactory:
-    def make_tuple_graph_ext(self, tuple_graph: TupleGraph, state_pair_to_rule_idx: Dict[Tuple[int, int], int]):
+    def make_tuple_graph_ext(self, tuple_graph: TupleGraph, transition_system: TransitionSystem, state_pair_to_rule_idx: Dict[Tuple[int, int], int]):
         if tuple_graph is None:
             return None
         root_idx = tuple_graph.root_idx
         r_idxs_by_distance = []
+        r_idx_to_deadend_distance = dict()
+        d = 0
         for layer in tuple_graph.s_idxs_by_distance:
             r_idxs = []
             for s_idx in layer:
                 state_pair = (root_idx, s_idx)
                 r_idx = state_pair_to_rule_idx[state_pair]
                 r_idxs.append(r_idx)
+                if transition_system.is_deadend(s_idx):
+                    # the first time we write r_idx = d, d is smallest value.
+                    if r_idx not in r_idx_to_deadend_distance:
+                        r_idx_to_deadend_distance[r_idx] = d
             r_idxs_by_distance.append(r_idxs)
+            d += 1
         t_idx_to_r_idxs = defaultdict(set)
         for t_idxs in tuple_graph.t_idxs_by_distance:
             for t_idx in t_idxs:
@@ -74,7 +83,7 @@ class TupleGraphExtFactory:
                     state_pair = (root_idx, s_idx)
                     r_idx = state_pair_to_rule_idx[state_pair]
                     t_idx_to_r_idxs[t_idx].add(r_idx)
-        return TupleGraphExt(root_idx, tuple_graph.t_idxs_by_distance, r_idxs_by_distance, t_idx_to_r_idxs, tuple_graph.width)
+        return TupleGraphExt(root_idx, tuple_graph.t_idxs_by_distance, r_idxs_by_distance, t_idx_to_r_idxs, r_idx_to_deadend_distance, tuple_graph.width)
 
 
 class TerminationGraphFactory:
@@ -97,13 +106,6 @@ class TerminationGraphFactory:
                             transitions[r_idx_1].add(r_idx_2)
         return TerminationGraph(nodes, loops, transitions)
 
-# Strategy 1:
-# States s, s' with same feature valuation are in same abstract state A, i.e.,
-# alpha(s) maps state to abstract state
-# s, s' in A if for all f : f(s) = f(s')
-# - abstract state A unsolvable if deadend state s is in A
-# - termination is defined on abstract states
-# - abstract state A is part of S*(s,t) if there exists state s' in A and s' in S*(s,t)
 
 @dataclass
 class EquivalenceData:
@@ -192,7 +194,7 @@ class EquivalenceDataFactory:
                         state_pair = (root_idx, s_idx)
                         rule_idx_to_state_pairs[rule_idx].append(state_pair)
                         state_pair_to_rule_idx[state_pair] = rule_idx
-                tuple_graph_ext = TupleGraphExtFactory().make_tuple_graph_ext(tg, state_pair_to_rule_idx)
+                tuple_graph_ext = TupleGraphExtFactory().make_tuple_graph_ext(tg, instance.transition_system, state_pair_to_rule_idx)
                 tuple_graph_ext_by_state_index.append(tuple_graph_ext)
             termination_graph = TerminationGraphFactory().make_termination_graph(rule_idx_to_state_pairs)
             selected_instance_datas_ext.append(InstanceDataExt(tuple_graph_ext_by_state_index, termination_graph))
@@ -200,4 +202,4 @@ class EquivalenceDataFactory:
         print(f"Num state pairs: {count_state_pairs}")
         print(f"Num rules: {len(rules)}")
 
-        return EquivalenceData(selected_instance_datas_ext, selected_instance_datas_ext)
+        return EquivalenceData(rules, selected_instance_datas_ext)

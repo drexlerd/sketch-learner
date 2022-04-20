@@ -1,4 +1,4 @@
-from .fact import Fact
+from ..fact import Fact
 
 
 class Feature(Fact):

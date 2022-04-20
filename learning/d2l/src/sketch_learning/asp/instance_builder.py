@@ -1,77 +1,98 @@
 import logging
-from .facts.alive import Alive
-from .facts.initial import Initial
-from .facts.goal import Goal
-from .facts.nongoal import NonGoal
-from .facts.solvable import Solvable
-from .facts.unsolvable import Unsolvable
-from .facts.state_distance import StateDistance
-from .facts.exceed import Exceed
-from .facts.tuple import Tuple
-from .facts.tuple_distance import TupleDistance
-from .facts.contain import Contain
-from .facts.feature import Feature
-from .facts.boolean_feature import BooleanFeature
-from .facts.numerical_feature import NumericalFeature
-from .facts.boolean_feature_valuation import BooleanFeatureValuation
-from .facts.numerical_feature_valuation import NumericalFeatureValuation
-from .facts.feature_complexity import FeatureComplexity
+from .facts.feature_data.boolean import Boolean
+from .facts.feature_data.complexity import Complexity
+from .facts.feature_data.feature import Feature
+from .facts.feature_data.numerical import Numerical
+from .facts.rules.conditions import C_EQ, C_GT, C_NEG, C_POS
+from .facts.rules.effects import E_BOT, E_DEC, E_INC, E_NEG, E_POS
+from .facts.termination_graph.termination_edge import TerminationEdge
+from .facts.termination_graph.termination_node import TerminationNode
+from .facts.tuple_graph.contain import Contain
+from .facts.tuple_graph.deadend_distance import DeadendDistance
+from .facts.tuple_graph.equivalence import Equivalence
+from .facts.tuple_graph.exceed import Exceed
+from .facts.tuple_graph.tuple import Tuple
+from .facts.tuple_graph.tuple_distance import TupleDistance
 
 
 class ASPInstanceBuilder:
     """ Builder for the instance file of an ASP containing facts. """
     def __init__(self):
-        # transition system
-        self.initials = [] # deprecated
-        self.alives = []
-        self.goals = []  # deprecated
-        self.nongoals = []  # deprecated
-        self.solvables = []
-        self.unsolvables = []
-        # finite pairwise distances
-        self.state_distances = []
-        # tuple graph
+        # feature facts
+        self.features = []
+        self.booleans = []
+        self.numericals = []
+        self.complexities = []
+        # rules facts
+        self.conditions = []
+        self.effects = []
+        # termination graph facts
+        self.termination_nodes = []
+        self.termination_edges = []
+        # tuple graph facts
         self.exceeds = []
         self.tuples = []
-        self.tuple_distances = []
+        self.equivalences = []
         self.contains = []
-        # features
-        self.features = []
-        self.boolean_features = []
-        self.numerical_features = []
-        self.boolean_feature_valuations = []
-        self.numerical_feature_valuations = []
-        self.feature_complexities = []
-
+        self.t_distances = []
+        self.d_distances = []
         # The total number of facts added
         self.num_facts = 0
 
-    def add_initial(self, instance_idx, s_idx):
-        self.initials.append(Initial(instance_idx, s_idx))
+    def add_boolean_feature(self, f_idx, complexity):
+        self.features.append(Feature(f_idx))
+        self.booleans.append(Boolean(f_idx))
+        self.complexities.append(Complexity(f_idx, complexity))
+        self.num_facts += 3
+
+    def add_numerical_feature(self, f_idx, complexity):
+        self.features.append(Feature(f_idx))
+        self.numericals.append(Numerical(f_idx))
+        self.complexities.append(Complexity(f_idx, complexity))
+        self.num_facts += 3
+
+    def add_c_eq(self, r_idx, f_idx):
+        self.conditions.append(C_EQ(r_idx, f_idx))
         self.num_facts += 1
 
-    def add_alive(self, instance_idx, s_idx):
-        self.alives.append(Alive(instance_idx, s_idx))
+    def add_c_gt(self, r_idx, f_idx):
+        self.conditions.append(C_GT(r_idx, f_idx))
         self.num_facts += 1
 
-    def add_goal(self, instance_idx, s_idx):
-        self.goals.append(Goal(instance_idx, s_idx))
+    def add_c_pos(self, r_idx, f_idx):
+        self.conditions.append(C_POS(r_idx, f_idx))
         self.num_facts += 1
 
-    def add_nongoal(self, instance_idx, s_idx):
-        self.nongoals.append(NonGoal(instance_idx, s_idx))
+    def add_c_neg(self, r_idx, f_idx):
+        self.conditions.append(C_NEG(r_idx, f_idx))
         self.num_facts += 1
 
-    def add_solvable(self, instance_idx, s_idx):
-        self.solvables.append(Solvable(instance_idx, s_idx))
+    def add_e_inc(self, r_idx, f_idx):
+        self.effects.append(E_INC(r_idx, f_idx))
         self.num_facts += 1
 
-    def add_unsolvable(self, instance_idx, s_idx):
-        self.unsolvables.append(Unsolvable(instance_idx, s_idx))
+    def add_e_dec(self, r_idx, f_idx):
+        self.effects.append(E_DEC(r_idx, f_idx))
         self.num_facts += 1
 
-    def add_state_distance(self, instance_idx, source_idx, target_idx, distance):
-        self.state_distances.append(StateDistance(instance_idx, source_idx, target_idx, distance))
+    def add_e_pos(self, r_idx, f_idx):
+        self.effects.append(E_POS(r_idx, f_idx))
+        self.num_facts += 1
+
+    def add_e_neg(self, r_idx, f_idx):
+        self.effects.append(E_NEG(r_idx, f_idx))
+        self.num_facts += 1
+
+    def add_e_bot(self, r_idx, f_idx):
+        self.effects.append(E_BOT(r_idx, f_idx))
+        self.num_facts += 1
+
+    def add_termination_node(self, instance_idx, r_idx):
+        self.termination_nodes.append(TerminationNode(instance_idx, r_idx))
+        self.num_facts += 1
+
+    def add_termination_edge(self, instance_idx, r_idx_source, r_idx_target):
+        self.termination_edges.append(TerminationEdge(instance_idx, r_idx_source, r_idx_target))
         self.num_facts += 1
 
     def add_exceed(self, instance_idx, s_idx):
@@ -82,65 +103,52 @@ class ASPInstanceBuilder:
         self.tuples.append(Tuple(instance_idx, root_idx, t_idx))
         self.num_facts += 1
 
+    def add_equivalence(self, r_idx):
+        self.equivalences.append(Equivalence(r_idx))
+        self.num_facts += 1
+
+    def add_contain(self, instance_idx, root_idx, t_idx, r_idx):
+        self.contains.append(Contain(instance_idx, root_idx, t_idx, r_idx))
+        self.num_facts += 1
+
     def add_tuple_distance(self, instance_idx, root_idx, t_idx, distance):
-        self.tuple_distances.append(TupleDistance(instance_idx, root_idx, t_idx, distance))
+        self.t_distances.append(TupleDistance(instance_idx, root_idx, t_idx, distance))
         self.num_facts += 1
 
-    def add_contain(self, instance_idx, root_idx, s_idx, t_idx):
-        self.contains.append(Contain(instance_idx, root_idx, s_idx, t_idx))
+    def add_deadend_distance(self, instance_idx, root_idx, r_idx, distance):
+        self.d_distances.append(DeadendDistance(instance_idx, root_idx, r_idx, distance))
         self.num_facts += 1
 
-    def add_boolean_feature(self, f_idx, complexity):
-        self.features.append(Feature(f_idx))
-        self.boolean_features.append(BooleanFeature(f_idx))
-        self.feature_complexities.append(FeatureComplexity(f_idx, complexity))
-        self.num_facts += 1
-
-    def add_numerical_feature(self, f_idx, complexity):
-        self.features.append(Feature(f_idx))
-        self.numerical_features.append(NumericalFeature(f_idx))
-        self.feature_complexities.append(FeatureComplexity(f_idx, complexity))
-        self.num_facts += 1
-
-    def add_boolean_feature_valuation(self, instance_idx, f_idx, s_idx, f_valuation):
-        self.boolean_feature_valuations.append(BooleanFeatureValuation(instance_idx, f_idx, s_idx, f_valuation))
-        self.num_facts += 1
-
-    def add_numerical_feature_valuation(self, instance_idx, f_idx, s_idx, f_valuation):
-        self.numerical_feature_valuations.append(NumericalFeatureValuation(instance_idx, f_idx, s_idx, f_valuation))
-        self.num_facts += 1
 
     def log_stats(self):
         logging.info(f"Generated {self.num_facts} facts:\n\
-solvables: {len(self.solvables)}\n\
-unsolvables: {len(self.unsolvables)}\n\
-exceeds: {len(self.exceeds)}\n\
-state_distances: {len(self.state_distances)}\n\
-tuples: {len(self.tuples)}\n\
-tuple_distances: {len(self.tuple_distances)}\n\
-contains: {len(self.contains)}\n\
 features: {len(self.features)}\n\
-boolean_features: {len(self.boolean_features)}\n\
-numerical_features: {len(self.numerical_features)}\n\
-feature_complexity: {len(self.feature_complexities)}\n\
-boolean_feature_valuations: {len(self.boolean_feature_valuations)}\n\
-numerical_feature_valuations: {len(self.numerical_feature_valuations)}")
+booleans: {len(self.booleans)}\n\
+numericals: {len(self.numericals)}\n\
+complexities: {len(self.complexities)}\n\
+conditions: {len(self.conditions)}\n\
+effects: {len(self.effects)}\n\
+termination_nodes: {len(self.termination_nodes)}\n\
+termination_edges: {len(self.termination_edges)}\n\
+exceeds: {len(self.exceeds)}\n\
+tuples: {len(self.tuples)}\n\
+equivalences: {len(self.equivalences)}\n\
+contains: {len(self.contains)}\n\
+t_distances: {len(self.t_distances)}\n\
+d_distances: {len(self.d_distances)}")
 
     def __str__(self):
-        return "".join([str(initial) for initial in self.initials]) + \
-               "".join([str(alive) for alive in self.alives]) + \
-               "".join([str(goal) for goal in self.goals]) + \
-               "".join([str(nongoal) for nongoal in self.nongoals]) + \
-               "".join([str(solvable) for solvable in self.solvables]) + \
-               "".join([str(unsolvable) for unsolvable in self.unsolvables]) + \
-               "".join([str(exceed) for exceed in self.exceeds]) + \
-               "".join([str(state_distance) for state_distance in self.state_distances]) + \
-               "".join([str(tuple) for tuple in self.tuples]) + \
-               "".join([str(tuple_distance) for tuple_distance in self.tuple_distances]) + \
-               "".join([str(contain) for contain in self.contains]) + \
-               "".join([str(feature) for feature in self.features]) + \
-               "".join([str(boolean_feature) for boolean_feature in self.boolean_features]) + \
-               "".join([str(numerical_feature) for numerical_feature in self.numerical_features]) + \
-               "".join([str(feature_complexity) for feature_complexity in self.feature_complexities]) + \
-               "".join([str(feature_valuation) for feature_valuation in self.boolean_feature_valuations]) + \
-               "".join([str(feature_valuation) for feature_valuation in self.numerical_feature_valuations])
+        return "".join([str(x) for x in self.features]) + \
+               "".join([str(x) for x in self.booleans]) + \
+               "".join([str(x) for x in self.numericals]) + \
+               "".join([str(x) for x in self.complexities]) + \
+               "".join([str(x) for x in self.conditions]) + \
+               "".join([str(x) for x in self.effects]) + \
+               "".join([str(x) for x in self.termination_nodes]) + \
+               "".join([str(x) for x in self.termination_edges]) + \
+               "".join([str(x) for x in self.exceeds]) + \
+               "".join([str(x) for x in self.tuples]) + \
+               "".join([str(x) for x in self.equivalences]) + \
+               "".join([str(x) for x in self.contains]) + \
+               "".join([str(x) for x in self.t_distances]) + \
+               "".join([str(x) for x in self.d_distances])

@@ -68,7 +68,7 @@ def run(config, data, rng):
         feature_data = FeatureDataFactory().generate_feature_data(config, domain_data, selected_instance_datas)
         equivalence_data = EquivalenceDataFactory().make_equivalence_class_data(selected_instance_datas, feature_data)
         # 1.3. Generate asp facts
-        facts = ASPFactFactory().make_asp_facts(selected_instance_datas, feature_data)
+        facts = ASPFactFactory().make_asp_facts(selected_instance_datas, feature_data, equivalence_data)
         write_file(iteration_data.facts_file, facts)
         asp_construction_timer.stop()
 
