@@ -52,11 +52,9 @@ class ASPFactFactory:
                 if try_parse(r"\(:e_n_dec (\d+)\)", effect_str, r_idx, len(feature_data.boolean_features), builder.add_e_dec): continue
                 if try_parse(r"\(:e_n_bot (\d+)\)", effect_str, r_idx, len(feature_data.boolean_features), builder.add_e_bot): continue
 
-
     def _add_instance_facts(self, instance_idx: int, builder: ASPInstanceBuilder, instance_data: InstanceData, feature_data: FeatureData, equivalence_data: EquivalenceData):
         self._add_tuple_graph_facts(instance_idx, builder, equivalence_data.instance_datas_ext[instance_idx].tuple_graph_ext_by_state_index)
         self._add_termination_graph_facts(instance_idx, builder, equivalence_data.instance_datas_ext[instance_idx].termination_graph)
-
 
     def _add_tuple_graph_facts(self, instance_idx: int, builder: ASPInstanceBuilder, tuple_graphs_by_state_index: List[TupleGraphExt]):
         for root_idx in range(len(tuple_graphs_by_state_index)):
