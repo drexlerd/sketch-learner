@@ -44,11 +44,16 @@ e_satisfied(R, F, C) :- e_unk(R, F), feature(F), rule(R), equivalence(C).
 % Require unsolvable states S' as close as subgoal to not be assigned to any rule.
 :- D <= D', d_distance(I, S, C, D), t_distance(I, S, T, D'), subgoal(I, S, T), assign(_, C).
 
+% Define ``good`` state pairs similar to equivalence classes
+{ good(I, S, S') } :- equivalence_contains(I, C, S, S').
+:- { assign(R, C) : rule(R), equivalence(C) } = 0, good(I, S, S'), equivalence_contains(I, C, S, S').
+:- { assign(R, C) : rule(R), equivalence(C) } != 0, not good(I, S, S'), equivalence_contains(I, C, S, S').
+
 % (Termination): Sketch must define strict partial order over R-reachable states
 % Source of this formulation: https://users.aalto.fi/~rintanj1/papers/GebserJR14kr.pdf
-order(I, C, C') :- termination_node(I, C), termination_node(I, C'), assign(_, C), order(I, C').
-order(I, C) :- termination_node(I, C), order(I, C, C') : assign(_, C), termination_edge(I, C, C').
-:- termination_node(I, C), not order(I, C).
+order(I, S, S') :- solvable(I, S), solvable(I, S'), good(I, S, S'), order(I, S').
+order(I, S) :- solvable(I, S), order(I, S, S') : good(I, S, S'), solvable(I, S), solvable(I, S').
+:- solvable(I, S), not order(I, S).
 
 % Display
 #show rule/1.

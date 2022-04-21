@@ -4,6 +4,8 @@ import re
 from typing import List
 from dataclasses import dataclass
 
+from sketch_learning.instance_data.transition_system import TransitionSystem
+
 from ..instance_data.instance_data import InstanceData
 from ..iteration_data.feature_data import FeatureData
 from ..iteration_data.equivalence_data import EquivalenceData, TupleGraphExt, TerminationGraph
@@ -55,6 +57,7 @@ class ASPFactFactory:
     def _add_instance_facts(self, instance_idx: int, builder: ASPInstanceBuilder, instance_data: InstanceData, feature_data: FeatureData, equivalence_data: EquivalenceData):
         self._add_tuple_graph_facts(instance_idx, builder, equivalence_data.instance_datas_ext[instance_idx].tuple_graph_ext_by_state_index)
         self._add_termination_graph_facts(instance_idx, builder, equivalence_data.instance_datas_ext[instance_idx].termination_graph)
+        self._add_transition_system_facts(instance_idx, builder, instance_data.transition_system)
 
     def _add_tuple_graph_facts(self, instance_idx: int, builder: ASPInstanceBuilder, tuple_graphs_by_state_index: List[TupleGraphExt]):
         for root_idx in range(len(tuple_graphs_by_state_index)):
@@ -74,9 +77,12 @@ class ASPFactFactory:
             for r_idx, d in tuple_graph.r_idx_to_deadend_distance.items():
                 builder.add_deadend_distance(instance_idx, root_idx, r_idx, d)
 
-    def _add_termination_graph_facts(self, instance_idx, builder: ASPInstanceBuilder, termination_graph: TerminationGraph):
-        for r_idx in termination_graph.nodes:
-            builder.add_termination_node(instance_idx, r_idx)
-        for r_idx_source, r_idxs_target in termination_graph.transitions.items():
-            for r_idx_target in r_idxs_target:
-                builder.add_termination_edge(instance_idx, r_idx_source, r_idx_target)
+    def _add_termination_graph_facts(self, instance_idx: int, builder: ASPInstanceBuilder, termination_graph: TerminationGraph):
+        for r_idx, state_pairs in termination_graph.rule_idx_to_state_pairs.items():
+            for state_pair in state_pairs:
+                builder.add_equivalence_contains(instance_idx, r_idx, state_pair[0], state_pair[1])
+
+    def _add_transition_system_facts(self, instance_idx: int, builder: ASPInstanceBuilder, transition_system: TransitionSystem):
+        for s_idx in range(transition_system.get_num_states()):
+            if not transition_system.is_deadend(s_idx):
+                builder.add_solvable(instance_idx, s_idx)

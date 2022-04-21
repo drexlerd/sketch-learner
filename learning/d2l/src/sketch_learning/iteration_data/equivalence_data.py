@@ -40,14 +40,10 @@ class TerminationGraph:
     and E is set edges where there is an edge from [(s,s')] to [(t, t')] if s' = t
     and s,s',t,t' come from instance I.
     """
-    nodes: List[int]
-    loops: MutableSet[int]
-    transitions: Dict[int, MutableSet[int]]
+    rule_idx_to_state_pairs: Dict[int, List[Tuple[int, int]]]
 
     def print(self):
-        print(self.nodes)
-        print(self.loops)
-        print(self.transitions)
+        print(self.rule_idx_to_state_pairs)
 
 
 @dataclass
@@ -88,23 +84,7 @@ class TupleGraphExtFactory:
 
 class TerminationGraphFactory:
     def make_termination_graph(self, rule_idx_to_state_pairs: Dict[int, Tuple[int, int]]):
-        nodes = list(rule_idx_to_state_pairs.keys())
-        # compute self loops, such r_idxs must be classified as bad
-        loops = set()
-        for r_idx, state_pairs in rule_idx_to_state_pairs.items():
-            for state_pair in state_pairs:
-                if reversed(state_pair) in state_pairs:
-                    loops.add(r_idx)
-        # compute transitions, such that transitions classified as good should not close a cycle
-        transitions = defaultdict(set)
-        for r_idx_1, state_pairs_1 in rule_idx_to_state_pairs.items():
-            for r_idx_2, state_pairs_2 in rule_idx_to_state_pairs.items():
-                if r_idx_1 == r_idx_2: continue  # we handled loops before
-                for state_pair_1 in state_pairs_1:
-                    for state_pair_2 in state_pairs_2:
-                        if state_pair_1[1] == state_pair_2[0]:
-                            transitions[r_idx_1].add(r_idx_2)
-        return TerminationGraph(nodes, loops, transitions)
+        return TerminationGraph(rule_idx_to_state_pairs)
 
 
 @dataclass

@@ -32,7 +32,12 @@ def experiments():
 
     exps["small"] = update_dict(
         strips_base,
-        instances=training_instances()[:5],
+        instances=training_instances(),
+    )
+
+    exps["single"] = update_dict(
+        strips_base,
+        instances=['p-3-3-3-1'],
     )
     return exps
 
