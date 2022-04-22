@@ -15,6 +15,12 @@ class FeatureData:
     boolean_feature_valuations: List[List[List[bool]]]
     numerical_feature_valuations: List[List[List[int]]]
 
+    def print(self):
+        print(self.boolean_features)
+        print(self.numerical_features)
+        print(self.boolean_feature_valuations)
+        print(self.numerical_feature_valuations)
+
 
 class FeatureDataFactory:
     def generate_feature_data(self, config, domain_data : DomainData, instance_datas : List[InstanceData]) -> FeatureData:

@@ -16,7 +16,7 @@ class Sketch:
 
     def solves(self, instance_data: InstanceData):
         """ Returns True iff the sketch solves the transition system, i.e.,
-            (1) is terminating, and (2) P[s] has correctly bounded width. """
+            (1) is terminating, and (2) P[s] has correctly bounded s-width. """
         # 1. Check if the width of all subproblems is bounded
         # we clear the in to be able to reuse cache with instance specific indexing scheme.
         self.policy.clear_cache()
@@ -57,13 +57,17 @@ class Sketch:
             for d in range(1, closest_subgoal_tuple[i] + 1):
                 for s_idx in tg.s_idxs_by_distance[d]:
                     target_state = instance_data.transition_system.states_by_index[s_idx]
-                    if self.policy.evaluate_lazy(i, dlplan_state, s_idx, target_state) is not None:
+                    satisfied_rule = self.policy.evaluate_lazy(i, dlplan_state, s_idx, target_state)
+                    if satisfied_rule is not None:
                         if instance_data.transition_system.is_deadend(s_idx) and d <= closest_subgoal_tuple[i]:
                             print(f"Sketch leads to unsolvable state: {str(target_state)}")
                             return False
                         subgoals[i].add(s_idx)
+                        # print(satisfied_rule.str())
+                        # print(f"{i}->{s_idx}")
                         break
         expanded_global = set(subgoals.keys())
+        # print(subgoals)
         while expanded_global:
             # The depth-first search is the iterative version where the current path is explicit in the stack.
             # https://en.wikipedia.org/wiki/Depth-first_search
@@ -77,10 +81,11 @@ class Sketch:
                 try:
                     target_idx = next(iterator)
                     if target_idx in s_idxs_on_path:
+                        # print(stack)
                         print("Sketch cycles")
                         for s_idx in s_idxs_on_path:
-                            print(str(instance_data.transition_system.states_by_index[s_idx]))
-                        print(str(instance_data.transition_system.states_by_index[target_idx]))
+                            print(f"{s_idx} {str(instance_data.transition_system.states_by_index[s_idx])}")
+                        print(f"{target_idx} {str(instance_data.transition_system.states_by_index[target_idx])}")
                         return False
                     if target_idx not in frontier:
                         frontier.add(target_idx)
