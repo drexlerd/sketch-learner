@@ -36,8 +36,10 @@ def run(config, data, rng):
             print(f"Instance is trivially solvable.")
         elif return_code == ReturnCode.UNSOLVABLE:
             print(f"Instance is unsolvable.")
-        elif return_code == ReturnCode.EXHAUSTED_RESOURCES:
+        elif return_code == ReturnCode.EXHAUSTED_SIZE_LIMIT:
             print(f"Instance is too large. Maximum number of allowed states is: {config.max_states_per_instance}.")
+        elif return_code == ReturnCode.EXHAUSTED_TIME_LIMIT:
+            print(f"Instance is too large. Time limit is: {config.sse_time_limit}")
     instance_datas = sorted(instance_datas, key=lambda x : x.transition_system.get_num_states())
     data_preprocessing_timer.stop()
 

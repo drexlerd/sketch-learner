@@ -71,7 +71,7 @@ class TransitionSystemFactory:
         backward_transitions = compute_inverse_transitions(forward_transitions)
         goal_distances = self._compute_goal_distances(dlplan_states, goals, backward_transitions)
         deadends = compute_deadends(goal_distances)
-        return TransitionSystem(dlplan_states, forward_transitions, backward_transitions, deadends, goals, goal_distances), ReturnCode.SOLVABLE
+        return TransitionSystem(dlplan_states, forward_transitions, backward_transitions, deadends, goals, goal_distances)
 
     def _normalize_atom_name(self, name):
         tmp = name.replace('()', '').replace(')', '').replace('(', ',')

@@ -1,6 +1,7 @@
 import logging
 import dlplan
 import re
+import subprocess
 from typing import List
 from dataclasses import dataclass
 from enum import Enum
@@ -30,19 +31,24 @@ class InstanceData:
 class InstanceDataFactory:
     def make_instance_data(self, config, instance_information, domain_data):
         logging.info(f"Constructing InstanceData for filename {instance_information.name}")
-        execute([config.sse_location / "fast-downward.py", domain_data.domain_filename, instance_information.instance_filename, "--translate-options", "--dump-static-atoms", "--dump-predicates", "--dump-goal-atoms", "--search-options", "--search", "dump_reachable_search_space()"], stdout=instance_information.state_space_filename, timeout=config.sse_time_limit, cwd=instance_information.workspace)
+
+        try:
+            execute([config.sse_location / "fast-downward.py", domain_data.domain_filename, instance_information.instance_filename, "--translate-options", "--dump-static-atoms", "--dump-predicates", "--dump-goal-atoms", "--search-options", "--search", "dump_reachable_search_space()"], stdout=instance_information.state_space_filename, timeout=config.sse_time_limit, cwd=instance_information.workspace)
+        except subprocess.TimeoutExpired:
+            return None, ReturnCode.EXHAUSTED_TIME_LIMIT
+
         instance_info = dlplan.InstanceInfo(domain_data.vocabulary_info)
         dlplan_states, goals, forward_transitions = parse_state_space(instance_info, instance_information.workspace / "state_space.txt")
         parse_goal_atoms(instance_info, instance_information.workspace / "goal-atoms.txt")
         parse_static_atoms(instance_info, instance_information.workspace / "static-atoms.txt")
         if len(goals) == 0:
             return None, ReturnCode.UNSOLVABLE
-        if len(goals) == len(dlplan_states):
+        elif len(goals) == len(dlplan_states):
             return None, ReturnCode.TRIVIALLY_SOLVABLE
+        elif len(dlplan_states) > config.max_states_per_instance:
+            return None, ReturnCode.EXHAUSTED_SIZE_LIMIT
 
-        transition_system, return_code = TransitionSystemFactory().parse_transition_system(dlplan_states, goals, forward_transitions)
-        if return_code != ReturnCode.SOLVABLE:
-            return None, return_code
+        transition_system = TransitionSystemFactory().parse_transition_system(dlplan_states, goals, forward_transitions)
         tuple_graphs_by_state_index = self._make_tuple_graphs(config, instance_info, transition_system)
         return InstanceData(instance_information.instance_filename, domain_data, transition_system, tuple_graphs_by_state_index), ReturnCode.SOLVABLE
 

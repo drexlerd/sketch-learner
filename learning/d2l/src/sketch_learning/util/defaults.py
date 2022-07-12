@@ -24,7 +24,7 @@ def generate_experiment(expid, domain_dir, domain, **kwargs):
         asp_problem_location=(BASEDIR / "src/sketch_learning/asp/problem.lp"),
 
         sse_location=(BASEDIR / "libs" / "scorpion"),
-        sse_time_limit=1.0,
+        sse_time_limit=5,
 
         # Sketch settings
         tuple_graph_if_width_exceeds=False,
