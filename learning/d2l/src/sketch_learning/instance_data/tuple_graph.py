@@ -151,10 +151,6 @@ class TupleGraphFactory:
         assert d > 1
         return TupleGraph(source_index, marked_t_idxs_by_distance, s_idxs_by_distance[:len(marked_t_idxs_by_distance)], t_idx_to_s_idxs, self.width)
 
-    def print_statistics(self):
-        print(f"Generated tuple graph nodes: {self.generated_nodes}")
-        print(f"Pruned tuple graph nodes by equivalence: {self.pruned_nodes_by_equivalence}")
-
 
 class TupleGraphMinimizer:
     """ Restrict the tuple graph to minimal elements according to the partial ordering "<",

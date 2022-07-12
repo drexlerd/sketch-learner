@@ -66,88 +66,19 @@ class TransitionSystemFactory:
     def __init__(self):
         pass
 
-    def parse_transition_system(self, instance_info, state_space_filename):
-        states = dict()
-        forward_transitions = defaultdict(set)
-        backward_transitions = defaultdict(set)
-        deadends = set()
-        goals = set()
-
-        # Parse the header
-        nlines = 0  # The number of useful lines processed
-        static_atoms = []
-        dynamic_atoms = []
-        goal_atoms = []
-        for line in read_file(state_space_filename):
-            nlines += 1
-            if line.startswith('(S)'):
-                atom_name = line[4:]
-                static_atoms.append(atom_name)
-            elif line.startswith('(V)'):
-                atom_name = line[4:]
-                dynamic_atoms.append(atom_name)
-            elif line.startswith('(G)'):
-                atom_name = line[4:]
-                if atom_name != "NOT-CONJUNCTIVE":
-                    goal_atoms.append(atom_name)
-            elif line.startswith('Unable to fully explore state space with max_expansions:'):
-                return None, ReturnCode.EXHAUSTED_RESOURCES
-
-        atom_name_to_dlplan_atom = dict()
-        # add dynamic atoms first
-        for atom_name in dynamic_atoms:
-            normalized_atom_name = self._normalize_atom_name(atom_name)
-            dlplan_atom = instance_info.add_atom(normalized_atom_name[0], normalized_atom_name[1:])
-            atom_name_to_dlplan_atom[atom_name] = dlplan_atom
-        for atom_name in static_atoms:
-            normalized_atom_name = self._normalize_atom_name(atom_name)
-            instance_info.add_static_atom(normalized_atom_name[0], normalized_atom_name[1:])
-        for atom_name in goal_atoms:
-            normalized_atom_name = self._normalize_atom_name(atom_name)
-            instance_info.add_static_atom(normalized_atom_name[0] + "_g", normalized_atom_name[1:])
-
-        # Parse the body
-        for line in read_file(state_space_filename):
-            if line.startswith('(E)'):  # An edge, with format "(E) 5 12"
-                pid, cid = (int(x) for x in line[4:].split(' '))
-                if pid == cid:
-                    # we prune self loops because they can be skipped in a search anyways.
-                    continue
-                forward_transitions[pid].add(cid)
-                backward_transitions[cid].add(pid)
-                nlines += 1
-
-            elif line.startswith('(N)'):  # A node
-                # Format "(N) <id> <type> <space-separated-atom-list>", e.g.:
-                # (N) 12 G
-                elems = line[4:].split(' ')
-                sid = int(elems[0])
-                if elems[1] == 'G':  # The state is a goal state
-                    goals.add(sid)
-                if elems[1] == 'D':  # The state is a dead-end
-                    deadends.add(sid)
-
-                state_atoms = []
-                for atom_name in elems[2:]:
-                    dlplan_atom = atom_name_to_dlplan_atom[atom_name]
-                    state_atoms.append(dlplan_atom)
-                states[sid] = dlplan.State(instance_info, state_atoms)
-        states_by_index = [None for i in range(len(states))]
-        for s_idx, state in states.items():
-            states_by_index[s_idx] = state
-        if len(goals) == 0:
-            return None, ReturnCode.UNSOLVABLE
-        if len(goals) == len(states_by_index):
-            return None, ReturnCode.TRIVIALLY_SOLVABLE
-
-        goal_distances = self._compute_goal_distances(states_by_index, goals, backward_transitions)
-        return TransitionSystem(states_by_index, forward_transitions, backward_transitions, deadends, goals, goal_distances), ReturnCode.SOLVABLE
+    def parse_transition_system(self, dlplan_states, goals, forward_transitions):
+        # Compute backward transitions and deadends
+        backward_transitions = compute_inverse_transitions(forward_transitions)
+        goal_distances = self._compute_goal_distances(dlplan_states, goals, backward_transitions)
+        deadends = compute_deadends(goal_distances)
+        return TransitionSystem(dlplan_states, forward_transitions, backward_transitions, deadends, goals, goal_distances), ReturnCode.SOLVABLE
 
     def _normalize_atom_name(self, name):
         tmp = name.replace('()', '').replace(')', '').replace('(', ',')
         if "=" in tmp:  # We have a functional atom
             tmp = tmp.replace("=", ',')
         return tmp.split(',')
+
 
     def _compute_goal_distances(self, states_by_index, goals, backward_transitions):
         distances = [math.inf for _ in states_by_index]
@@ -164,3 +95,19 @@ class TransitionSystemFactory:
                     distances[succ_idx] = curr_distance + 1
                     queue.append(succ_idx)
         return distances
+
+
+def compute_inverse_transitions(transitions):
+    inverse_transitions = defaultdict(set)
+    for source_idx, outgoing_transitions in transitions.items():
+        for target_idx in outgoing_transitions:
+            inverse_transitions[target_idx].add(source_idx)
+    return inverse_transitions
+
+
+def compute_deadends(goal_distances):
+    deadends = set()
+    for state_idx, distance in enumerate(goal_distances):
+        if distance == math.inf:
+            deadends.add(state_idx)
+    return deadends

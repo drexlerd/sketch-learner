@@ -2,7 +2,7 @@
 """
 
 from .command import create_experiment_workspace
-from ..driver import Experiment, BENCHMARK_DIR, BASEDIR
+from ..driver import Bunch, Experiment, BENCHMARK_DIR, BASEDIR
 from ..steps import generate_pipeline
 
 
@@ -23,7 +23,8 @@ def generate_experiment(expid, domain_dir, domain, **kwargs):
         # The location of the asp problem file
         asp_problem_location=(BASEDIR / "src/sketch_learning/asp/problem.lp"),
 
-        sse_location=(BASEDIR / "libs" / "sse" / "sse.sif"),
+        sse_location=(BASEDIR / "libs" / "scorpion"),
+        sse_time_limit=1.0,
 
         # Sketch settings
         tuple_graph_if_width_exceeds=False,
@@ -48,7 +49,7 @@ def generate_experiment(expid, domain_dir, domain, **kwargs):
 
     # root level 0 directory for experimental data
     parameters['experiment_dir'] = parameters['workspace'] / f"{expid.replace(':', '_')}_{parameters['width']}_{parameters['max_sketch_rules']}_{parameters['complexity']}"
-    create_experiment_workspace(parameters["experiment_dir"], rm_if_existed=False)
+    create_experiment_workspace(parameters["experiment_dir"], rm_if_existed=True)
 
     # level 1 directory for experimental data of each iteration
     parameters["iterations_dir"] = parameters["experiment_dir"] / "iterations"
@@ -58,11 +59,15 @@ def generate_experiment(expid, domain_dir, domain, **kwargs):
     parameters["sketch_file"] = parameters['experiment_dir'] / "sketch.txt"
 
     # Initialize instances
-    parameters["instance_filenames"] = []
+    parameters["instance_informations"] = []
     for name in parameters["instances"]:
-        parameters["instance_filenames"].append(BENCHMARK_DIR / domain_dir / f"{name}.pddl")
-
-    parameters["state_space_filename"] = parameters['experiment_dir'] / "state_space.txt"
+        instance_information = dict()
+        instance_information["instance_filename"] = BENCHMARK_DIR / domain_dir / f"{name}.pddl"
+        instance_information["workspace"] = parameters["experiment_dir"] / "preprocessing" / name
+        create_experiment_workspace(instance_information["workspace"], rm_if_existed=True)
+        instance_information["state_space_filename"] = parameters["experiment_dir"] / "preprocessing" / name / "state_space.txt"
+        instance_information["name"] = name
+        parameters["instance_informations"].append(Bunch(instance_information))
 
     steps = generate_pipeline(**parameters)
     return Experiment(steps, parameters)
