@@ -31,12 +31,14 @@ class TupleGraph:
         root_idx: int,
         t_idxs_by_distance: List[List[int]],
         s_idxs_by_distance: List[List[int]],
-        t_idx_to_s_idxs: Dict[int, MutableSet],
+        t_idx_to_s_idxs: Dict[int, MutableSet[int]],
+        s_idx_to_t_idxs: Dict[int, MutableSet[int]],
         width: int):
         self.root_idx = root_idx
-        self.t_idxs_by_distance = t_idxs_by_distance
-        self.s_idxs_by_distance = s_idxs_by_distance
+        self.t_idxs_by_distance = t_idxs_by_distance  # only includes tuples that make it into the tuple graph
+        self.s_idxs_by_distance = s_idxs_by_distance  # all states that are at most the distances of farthest tuple in the tuple graph
         self.t_idx_to_s_idxs = t_idx_to_s_idxs
+        self.s_idx_to_t_idxs = s_idx_to_t_idxs
         self.width = width
         assert len(s_idxs_by_distance) == len(t_idxs_by_distance)
 
@@ -83,10 +85,12 @@ class TupleGraphFactory:
         # we use state indices also for tuples for simplicity
         t_idxs_by_distance = [[source_index], list(self.transition_system.forward_transitions[source_index])]
         t_idx_to_s_idxs = defaultdict(set)
+        s_idx_to_t_idxs = defaultdict(set)
         t_idx_to_s_idxs[source_index].add(source_index)
         for suc_index in self.transition_system.forward_transitions[source_index]:
             t_idx_to_s_idxs[suc_index].add(suc_index)
-        return TupleGraph(source_index, t_idxs_by_distance, s_idxs_by_distance, t_idx_to_s_idxs, self.width)
+            s_idx_to_t_idxs[suc_index].add(suc_index)
+        return TupleGraph(source_index, t_idxs_by_distance, s_idxs_by_distance, t_idx_to_s_idxs, s_idx_to_t_idxs, self.width)
 
     def _make_tuple_graph_for_width_greater_0(self, source_index):
         """ Constructing tuple graph for width greater 0 as defined in the literature. """
@@ -102,6 +106,8 @@ class TupleGraphFactory:
         s_idxs_by_distance = self.transition_system.compute_states_by_distance(source_index)
         # tuples t by distance that make it into the tuple graph.
         marked_t_idxs_by_distance = []
+        marked_t_idx_to_s_idxs = defaultdict(set)
+        marked_s_idx_to_t_idxs = defaultdict(set)
         d = 0
         for layer in s_idxs_by_distance:
             # find novel tuples for current state layer
@@ -147,9 +153,13 @@ class TupleGraphFactory:
                         break  # nothing to keep extending
                     else:
                         marked_t_idxs_by_distance.append(marked_t_idxs)
+                        for t_idx in marked_t_idxs:
+                            marked_t_idx_to_s_idxs[t_idx] = t_idx_to_s_idxs[t_idx]
+                            for s_idx in t_idx_to_s_idxs[t_idx]:
+                                marked_s_idx_to_t_idxs[s_idx].add(t_idx)
                 d += 1
         assert d > 1
-        return TupleGraph(source_index, marked_t_idxs_by_distance, s_idxs_by_distance[:len(marked_t_idxs_by_distance)], t_idx_to_s_idxs, self.width)
+        return TupleGraph(source_index, marked_t_idxs_by_distance, s_idxs_by_distance[:len(marked_t_idxs_by_distance)], marked_t_idx_to_s_idxs, marked_s_idx_to_t_idxs, self.width)
 
 
 class TupleGraphMinimizer:
@@ -184,12 +194,14 @@ class TupleGraphMinimizer:
                     selected_s_idxs.add(canonical_s_idxs)
                     selected_t_idx.add(t_idx)
         t_idxs_by_distance = []
-        t_idx_to_s_idxs = dict()
         for t_idxs in tuple_graph.t_idxs_by_distance:
             t_idxs_by_distance.append([t_idx for t_idx in t_idxs if t_idx in selected_t_idx])
         t_idx_to_s_idxs = dict()
+        s_idx_to_t_idxs = defaultdict(set)
         for t_idx in selected_t_idx:
             t_idx_to_s_idxs[t_idx] = tuple_graph.t_idx_to_s_idxs[t_idx]
+            for s_idx in t_idx_to_s_idxs[t_idx]:
+                s_idx_to_t_idxs[s_idx].add(t_idx)
         self.num_generated += len(t_idx_to_s_idxs)
         self.num_pruned += len(tuple_graph.t_idx_to_s_idxs) - len(t_idx_to_s_idxs)
-        return TupleGraph(tuple_graph.root_idx, t_idxs_by_distance, tuple_graph.s_idxs_by_distance, t_idx_to_s_idxs, tuple_graph.width)
+        return TupleGraph(tuple_graph.root_idx, t_idxs_by_distance, tuple_graph.s_idxs_by_distance, t_idx_to_s_idxs, s_idx_to_t_idxs, tuple_graph.width)

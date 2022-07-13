@@ -36,7 +36,6 @@ class ASPInstanceBuilder:
         self.tuple_distances = []
         self.contains = []
         # features
-        self.features = []
         self.boolean_features = []
         self.numerical_features = []
         self.boolean_feature_valuations = []
@@ -91,16 +90,12 @@ class ASPInstanceBuilder:
         self.num_facts += 1
 
     def add_boolean_feature(self, f_idx, complexity):
-        self.features.append(Feature(f_idx))
-        self.boolean_features.append(BooleanFeature(f_idx))
-        self.feature_complexities.append(FeatureComplexity(f_idx, complexity))
-        self.num_facts += 1
+        self.boolean_features.append(BooleanFeature(f_idx, complexity))
+        self.num_facts += 3
 
     def add_numerical_feature(self, f_idx, complexity):
-        self.features.append(Feature(f_idx))
-        self.numerical_features.append(NumericalFeature(f_idx))
-        self.feature_complexities.append(FeatureComplexity(f_idx, complexity))
-        self.num_facts += 1
+        self.numerical_features.append(NumericalFeature(f_idx, complexity))
+        self.num_facts += 3
 
     def add_boolean_feature_valuation(self, instance_idx, f_idx, s_idx, f_valuation):
         self.boolean_feature_valuations.append(BooleanFeatureValuation(instance_idx, f_idx, s_idx, f_valuation))

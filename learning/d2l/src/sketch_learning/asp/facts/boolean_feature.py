@@ -3,9 +3,12 @@ from .fact import Fact
 
 class BooleanFeature(Fact):
     """ Defines a boolean feature. """
-    def __init__(self, f_idx):
-        super().__init__("boolean")
-        self.f_idx = f_idx
+    def __init__(self, idx, complexity):
+        self.idx = idx
+        self.complexity = complexity
 
     def __str__(self):
-        return f"{self.name}({self.f_idx}).\n"
+        return f"\
+boolean(b{self.idx}).\n\
+feature(b{self.idx}).\n\
+complexity(b{self.idx},{self.complexity}.\n"
