@@ -47,21 +47,22 @@ class ASPFactFactory:
                 # width is bounded or deadend
                 continue
             builder.add_exceed(instance_idx, root_state_idx)
-            d = 1
-            for t_idxs in tuple_graph.t_idxs_by_distance[d:]:
-                for t_idx in t_idxs:
+            for d in range(1, len(tuple_graph.t_idxs_by_distance)):
+                for t_idx in tuple_graph.t_idxs_by_distance[d]:
                     builder.add_tuple_distance(instance_idx, root_state_idx, t_idx, d)
                     builder.add_tuple(instance_idx, root_state_idx, t_idx)
                     for s_idx in tuple_graph.t_idx_to_s_idxs[t_idx]:
                         builder.add_contain(instance_idx, root_state_idx, s_idx, t_idx)
-                d += 1
             # We include (root_idx,root_idx,0) s.t. the asp constraints disallow self loops of the sketch in the training instances.
             assert [root_state_idx] == tuple_graph.s_idxs_by_distance[0]
-            d = 1
-            for s_idxs in tuple_graph.s_idxs_by_distance[d:]:
-                for s_idx in s_idxs:
+            if tuple_graph.width == 0:
+                low = 1  # filter transitions instead
+            else:
+                low = 0
+            for d in range(low, len(tuple_graph.s_idxs_by_distance)):
+                for s_idx in tuple_graph.s_idxs_by_distance[d]:
                     builder.add_state_distance(instance_idx, root_state_idx, s_idx, d)
-                d += 1
+
 
     def _add_feature_data_facts(self, instance_idx: int, builder: ASPInstanceBuilder, feature_data: FeatureData):
         for s_idx in range(len(feature_data.boolean_feature_valuations[instance_idx])):

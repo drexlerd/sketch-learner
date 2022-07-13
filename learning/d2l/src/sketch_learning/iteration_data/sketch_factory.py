@@ -27,7 +27,11 @@ class Sketch:
             if tg is None:
                 continue  # no tuple graph indicates that we don't care about the information of this state.
             bounded = False
-            for d in range(1, len(tg.s_idxs_by_distance)):
+            if tg.width == 0:
+                low = 1  # filter transitions instead
+            else:
+                low = 0
+            for d in range(low, len(tg.s_idxs_by_distance)):
                 for t_idx in tg.t_idxs_by_distance[d]:  # check if t_idxs is a subgoal
                     subgoal = True
                     assert tg.t_idx_to_s_idxs[t_idx]
@@ -54,7 +58,11 @@ class Sketch:
             tg = instance_data.tuple_graphs_by_state_index[i]
             if tg is None:
                 continue  # no tuple graph indicates that we don't care about the information of this state.
-            for d in range(1, closest_subgoal_tuple[i] + 1):
+            if tg.width == 0:
+                low = 1  # filter transitions instead
+            else:
+                low = 0
+            for d in range(low, closest_subgoal_tuple[i] + 1):
                 for s_idx in tg.s_idxs_by_distance[d]:
                     target_state = instance_data.transition_system.states_by_index[s_idx]
                     if self.policy.evaluate_lazy(i, dlplan_state, s_idx, target_state) is not None:
