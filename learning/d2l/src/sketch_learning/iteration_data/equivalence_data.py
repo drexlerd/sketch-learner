@@ -62,8 +62,8 @@ class EquivalenceDataFactory:
                     low = 1
                 else:
                     low = 0
-                for d in range(low, len(tg.s_idxs_by_distance)):
-                    for target_idx in tg.s_idxs_by_distance[d]:
+                for s_idxs in tg.s_idxs_by_distance:
+                    for target_idx in s_idxs:
                         # add conditions
                         conditions = []
                         for n_idx in range(len(numerical_features)):
