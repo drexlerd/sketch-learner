@@ -16,7 +16,7 @@ from .instance_data.instance_data import InstanceDataFactory, InstanceData
 from .instance_data.return_codes import ReturnCode
 from .domain_data.domain_data import DomainDataFactory, DomainData
 from .iteration_data.iteration_data import IterationData
-from .iteration_data.feature_data import FeatureDataFactory, FeatureData
+from .iteration_data.feature_data import FeatureDataFactory
 from .iteration_data.sketch_factory import SketchFactory
 from .iteration_data.equivalence_data import EquivalenceDataFactory
 from .asp.fact_factory import ASPFactFactory
@@ -67,10 +67,10 @@ def run(config, data, rng):
         print("\n".join([str(selected_instance.instance_filename) for selected_instance in selected_instance_datas]))
 
         # 1.2. Generate feature pool
-        feature_data = FeatureDataFactory().generate_feature_data(config, domain_data, selected_instance_datas)
-        equivalence_data = EquivalenceDataFactory().make_equivalence_class_data(selected_instance_datas, feature_data)
+        domain_feature_data, instance_feature_datas = FeatureDataFactory().generate_feature_data(config, domain_data, selected_instance_datas)
+        equivalence_data = EquivalenceDataFactory().make_equivalence_class_data(selected_instance_datas, domain_feature_data, instance_feature_datas)
         # 1.3. Generate asp facts
-        facts = ASPFactFactory().make_asp_facts(selected_instance_datas, feature_data, equivalence_data)
+        facts = ASPFactFactory().make_asp_facts(selected_instance_datas, domain_feature_data, instance_feature_datas, equivalence_data)
         write_file(iteration_data.facts_file, facts)
         asp_construction_timer.stop()
 
@@ -86,7 +86,7 @@ def run(config, data, rng):
             logging.info("UNSATISFIABLE! No sketch was found.")
             return ExitCode.Unsatisfiable, None
 
-        sketch = SketchFactory().make_sketch(answer_set_datas[-1], feature_data, config.width)
+        sketch = SketchFactory().make_sketch(answer_set_datas[-1], domain_feature_data, config.width)
         logging.info("Learned the following sketch:")
         print(sketch.policy.str())
         with open(iteration_data.sketch_file, "w") as file:
@@ -116,7 +116,7 @@ def run(config, data, rng):
     print(f"Number of training instances: {len(instance_datas)}")
     print(f"Number of training instances included in the ASP: {len(selected_instance_datas)}")
     print(f"Number of states included in the ASP: {sum([len(instance_data.transition_system.states_by_index) for instance_data in selected_instance_datas])}")
-    print(f"Number of features in the pool: {len(feature_data.boolean_features) + len(feature_data.numerical_features)}")
+    print(f"Number of features in the pool: {len(domain_feature_data.boolean_features) + len(domain_feature_data.numerical_features)}")
     print(f"Numer of rules in policy sketch: {len(sketch.policy.get_rules())}")
     print(f"Number of features selected by policy sketch: {len(sketch.policy.get_boolean_features()) + len(sketch.policy.get_numerical_features())}")
     print(f"Maximum feature complexity of selected feature: {max([0] + [boolean_feature.get_boolean().compute_complexity() for boolean_feature in sketch.policy.get_boolean_features()] + [numerical_feature.get_numerical().compute_complexity() for numerical_feature in sketch.policy.get_numerical_features()])}")

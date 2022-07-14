@@ -34,12 +34,12 @@ def generate_experiment(expid, domain_dir, domain, **kwargs):
         complexity=8,
         time_limit=3600,
         feature_limit=10000,
-        num_threads_feature_generator=8,
+        num_threads_feature_generator=1,
         generate_concept_distance_numerical=False,
         debug_features=[],
 
         # Clingo
-        clingo_arguments=["--parallel-mode=32,split"],
+        clingo_arguments=["--parallel-mode=1,split"],
 
         quiet=False,
         random_seed=0,

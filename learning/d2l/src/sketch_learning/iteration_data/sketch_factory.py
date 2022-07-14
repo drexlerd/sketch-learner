@@ -5,7 +5,7 @@ from typing import Dict, List, MutableSet
 from dataclasses import dataclass, field
 from collections import defaultdict
 from ..asp.answer_set_parser import AnswerSetData
-from .feature_data import FeatureData
+from .feature_data import DomainFeatureData
 from ..instance_data.instance_data import InstanceData
 
 
@@ -98,25 +98,25 @@ class Sketch:
 
 
 class SketchFactory:
-    def make_sketch(self, answer_set_data: AnswerSetData, feature_data: FeatureData, width: int):
+    def make_sketch(self, answer_set_data: AnswerSetData, domain_feature_data: DomainFeatureData, width: int):
         """ Parses set of facts into dlplan.Policy """
         policy_builder = dlplan.PolicyBuilder()
-        f_idx_to_policy_feature = self._add_features(policy_builder, answer_set_data, feature_data)
+        f_idx_to_policy_feature = self._add_features(policy_builder, answer_set_data, domain_feature_data)
         self._add_rules(policy_builder, answer_set_data, f_idx_to_policy_feature)
         return Sketch(policy_builder.get_result(), width)
 
 
-    def _add_features(self, policy_builder: dlplan.PolicyBuilder, answer_set_data: AnswerSetData, feature_data: FeatureData):
+    def _add_features(self, policy_builder: dlplan.PolicyBuilder, answer_set_data: AnswerSetData, domain_feature_data: DomainFeatureData):
         f_idx_to_policy_feature = dict()
         for fact in answer_set_data.facts:
             matches = re.findall(r"select\((\d+)\)", fact)
             if matches:
                 assert len(matches) == 1
                 f_idx = int(matches[0])
-                if f_idx < len(feature_data.boolean_features):
-                    policy_feature = policy_builder.add_boolean_feature(feature_data.boolean_features[f_idx])
+                if f_idx < len(domain_feature_data.boolean_features):
+                    policy_feature = policy_builder.add_boolean_feature(domain_feature_data.boolean_features[f_idx])
                 else:
-                    policy_feature = policy_builder.add_numerical_feature(feature_data.numerical_features[f_idx - len(feature_data.boolean_features)])
+                    policy_feature = policy_builder.add_numerical_feature(domain_feature_data.numerical_features[f_idx - len(domain_feature_data.boolean_features)])
                 f_idx_to_policy_feature[f_idx] = policy_feature
         return f_idx_to_policy_feature
 
