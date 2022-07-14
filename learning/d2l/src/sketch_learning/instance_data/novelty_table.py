@@ -3,7 +3,6 @@ import itertools
 
 class NoveltyTable:
     """ The novelty table tracks novelty status of tuples.
-
         An example for width=2, num_dynamic_atoms=2:
         Function f:|A|x|A|->N maps 2-tuples of atoms to an index.
         f a0 a1
@@ -13,7 +12,7 @@ class NoveltyTable:
         3  1  1
     """
     def __init__(self, width, num_dynamic_atoms):
-        self.table = set()
+        self.table = [False for _ in range(num_dynamic_atoms ** width)]
         self.width = width
         self.num_dynamic_atoms = num_dynamic_atoms
         self.dimensions = [num_dynamic_atoms ** i for i in range(width)]
@@ -22,11 +21,7 @@ class NoveltyTable:
         """ Compute all tuple indices for a state """
         assert all([atom_idx in range(self.num_dynamic_atoms) for atom_idx in atom_idxs])
         t_idxs = set()
-        # Trick that allows us to compute t -> t_idx -> t
-        # for t with len(t) < self.width
-        if len(atom_idxs) < self.width:
-            min_atom_idx = min(atom_idxs)
-            atom_idxs.extend([min_atom_idx for _ in range(self.width - len(atom_idxs))])
+        atom_idxs = self._pad_atom_ixs(atom_idxs)
         assert len(atom_idxs) >= self.width
         for t in itertools.combinations(atom_idxs, self.width):
             t = tuple(sorted(t))  # canonical representation
@@ -46,18 +41,27 @@ class NoveltyTable:
 
     def mark_as_not_novel(self, t_idxs):
         """ Marks all tuple indices as not novel. """
-        self.table.update(t_idxs)
+        for t_idx in t_idxs:
+            self.table[t_idx] = True
+
+    def _pad_atom_ixs(self, atom_idxs):
+        """ To be able to compute tuples of size k
+        we need to pad atom_idxs to size k. """
+        # Trick that allows us to compute t -> t_idx -> t
+        # for t with len(t) < self.width
+        if len(atom_idxs) < self.width:
+            min_atom_idx = min(atom_idxs)
+            atom_idxs.extend([min_atom_idx for _ in range(self.width - len(atom_idxs))])
+        return atom_idxs
 
     def _is_novel(self, t_idx):
         """ Returns true iff the tuple is novel. """
-        if t_idx not in self.table:
-            return True
-        return False
+        return not self.table[t_idx]
 
     def _tuple2idx(self, t):
         """ General version for tuples of arbitrary size (taken from LAPKT) """
         assert len(t) == self.width
-        assert all(t[i] <= t[i + 1] for i in range(len(t) - 1))
+        assert t == sorted(t)
         idx = 0
         for i in range(self.width):
             atom_idx = t[i]
@@ -72,7 +76,3 @@ class NoveltyTable:
             t_idx -= atom_idx * self.dimensions[i]
             atom_idxs.append(atom_idx)
         return tuple(sorted(atom_idxs))
-
-
-
-
