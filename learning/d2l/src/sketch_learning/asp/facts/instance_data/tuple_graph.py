@@ -20,5 +20,6 @@ class TupleGraphFactFactory():
             facts.append(f"d_distance({instance_idx},{tuple_graph_ext.root_idx},{r_idx},{d}).")
         for r_idx, s_idxs in tuple_graph_ext.r_idx_to_s_idxs.items():
             for s_idx in s_idxs:
+                if tuple_graph_ext.width == 0 and s_idx in tuple_graph_ext.s_idxs_by_distance[0]: continue
                 facts.append(f"equivalence_contains({instance_idx},{r_idx},{tuple_graph_ext.root_idx},{s_idx}).")
         return facts

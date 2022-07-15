@@ -33,10 +33,10 @@ class TupleGraph:
 
     def print(self):
         print(f"Tuple graph for state {self.root_idx} and width {self.width}")
-        print(self.t_idxs_by_distance)
-        print(self.s_idxs_by_distance)
-        print(self.t_idx_to_s_idxs)
-        print(self.s_idx_to_t_idxs)
+        print(f"t_idxs_by_distance: {self.t_idxs_by_distance}")
+        print(f"s_idxs_by_distance: {self.s_idxs_by_distance}")
+        print(f"t_idx_to_s_idxs: {self.t_idx_to_s_idxs}")
+        print(f"s_idx_to_t_idxs: {self.s_idx_to_t_idxs}")
 
 
 class TupleGraphFactory:
@@ -96,6 +96,10 @@ class TupleGraphFactory:
                 # part (1) of definition:
                 # all tuples of the initial state make it into the tuple graph.
                 marked_t_idxs_by_distance.append(novel_t_idxs_in_current_layer)
+                for t_idx in novel_t_idxs_in_current_layer:
+                    marked_t_idx_to_s_idxs[t_idx] = t_idx_to_s_idxs[t_idx]
+                    for s_idx in t_idx_to_s_idxs[t_idx]:
+                        marked_s_idx_to_t_idxs[s_idx].add(t_idx)
             else:
                 # part (2) of definition:
                 # must extend all optimal plans

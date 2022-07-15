@@ -13,34 +13,41 @@
 { e_dec(R, F); e_inc(R, F); e_unk(R, F); e_bot(R, F) } = 1 :- rule(R), numerical(F).
 { e_pos(R, F); e_neg(R, F); e_unk(R, F); e_bot(R, F) } = 1 :- rule(R), boolean(F).
 
-% :- { e_dec(R, F) : rule(R) } = 0, numerical(F).
+% Define equivalence class C and rule R have same feature condition on F
+c_satisfied(R, F, C) :- c_eq(R, F), c_eq_fixed(C, F), numerical(F), rule(R), equivalence(C).
+c_satisfied(R, F, C) :- c_gt(R, F), c_gt_fixed(C, F), numerical(F), rule(R), equivalence(C).
+c_satisfied(R, F, C) :- c_pos(R, F), c_pos_fixed(C, F), boolean(F), rule(R), equivalence(C).
+c_satisfied(R, F, C) :- c_neg(R, F), c_neg_fixed(C, F), boolean(F), rule(R), equivalence(C).
+c_satisfied(R, F, C) :- c_unk(R, F), feature(F), rule(R), equivalence(C).
 
-% Define satisfied feature conditions
-c_satisfied(R, F, I, S) :- { c_eq(R, F) : V = 0; c_gt(R, F) : V > 0; c_pos(R, F) : V = 1; c_neg(R, F) : V = 0; c_unk(R, F) } = 1,
-    rule(R), feature_valuation(F, I, S, V), s_distance(I, S, S', _).
-% Define satisfied feature effects
-e_satisfied(R, F, I, S, S') :- { e_dec(R, F) : V > V'; e_inc(R, F) : V < V'; e_pos(R, F) : V' = 1; e_neg(R, F) : V' = 0; e_bot(R, F) : V = V'; e_unk(R, F) } = 1,
-    rule(R), feature_valuation(F, I, S, V), feature_valuation(F, I, S', V'), s_distance(I, S, S', _).
+e_satisfied(R, F, C) :- e_dec(R, F), e_dec_fixed(C, F), numerical(F), rule(R), equivalence(C).
+e_satisfied(R, F, C) :- e_inc(R, F), e_inc_fixed(C, F), numerical(F), rule(R), equivalence(C).
+e_satisfied(R, F, C) :- e_pos(R, F), e_pos_fixed(C, F), boolean(F), rule(R), equivalence(C).
+e_satisfied(R, F, C) :- e_neg(R, F), e_neg_fixed(C, F), boolean(F), rule(R), equivalence(C).
+e_satisfied(R, F, C) :- e_bot(R, F), e_bot_fixed(C, F), feature(F), rule(R), equivalence(C).
+e_satisfied(R, F, C) :- e_pos(R, F), c_pos_fixed(C, F), e_bot_fixed(C, F), feature(F), rule(R), equivalence(C).
+e_satisfied(R, F, C) :- e_neg(R, F), c_neg_fixed(C, F), e_bot_fixed(C, F), feature(F), rule(R), equivalence(C).
+e_satisfied(R, F, C) :- e_unk(R, F), feature(F), rule(R), equivalence(C).
 
-% Generate assignment of state pair to rule.
-{ assign(R, I, S, S') } :- rule(R), s_distance(I, S, S', _).
-% Require that good state pair satisfies all feature conditions and effects of the assigned rule
-:- { not c_satisfied(R, F, I, S); not e_satisfied(R, F, I, S, S') } != 0, select(F), assign(R, I, S, S').
-% Require that bad state pair has at least one unsatisfied feature condition or feature effect for every rule.
-:- { not c_satisfied(R, F, I, S) : select(F); not e_satisfied(R, F, I, S, S') : select(F) } = 0, rule(R), s_distance(I, S, S', _), not assign(R, I, S, S').
+% Define assignment of equivalence class to rule
+good(C) :- { feature(F) : not c_satisfied(R, F, C), select(F);
+     feature(F) : not e_satisfied(R, F, C), select(F) } = 0, rule(R), equivalence(C).
 
-% Define subgoal for each solvable state for which the width exceeds.
-{ subgoal(I, S, T) : tuple(I, S, T) } = 1 :- solvable(I, S), exceed(I, S).
+% Define exactly one subgoal for each solvable state for which the width exceeds.
+{ subgoal(I, S, T) : tuple(I, S, T) } = 1 :- exceed(I, S).
 
-% Require that all states S' underlying a tuple T are a subgoal states in the subproblem P[S], effectively bounding the width of P[S]
-:- { assign(R, I, S, S') : rule(R) } = 0, subgoal(I, S, T), contain(I, S, T, S').
+% Require that all equivalence classes C underlying a tuple T of subproblem P[S] are good, effectively bounding the width of P[S]
+:- { good(C) } = 0, subgoal(I, S, T), contain(I, S, T, C).
 % Require unsolvable states S' as close as subgoal to not be assigned to any rule.
-:- D <= D', s_distance(I, S, S', D), t_distance(I, S, T, D'), subgoal(I, S, T), assign(_, I, S, S'), solvable(I, S), unsolvable(I, S').
+:- D <= D', d_distance(I, S, C, D), t_distance(I, S, T, D'), subgoal(I, S, T), good(C).
+
+% Define ``good`` state pairs similar to equivalence classes
+good(I, S, S') :- { good(C) } != 0, equivalence_contains(I, C, S, S').
 
 % (Termination): Sketch must define strict partial order over R-reachable states
 % Source of this formulation: https://users.aalto.fi/~rintanj1/papers/GebserJR14kr.pdf
-order(I, S, S') :- solvable(I, S), solvable(I, S'), assign(_, I, S, S'), order(I, S').
-order(I, S) :- solvable(I, S), order(I, S, S') : assign(_, I, S, S'), solvable(I, S), solvable(I, S').
+order(I, S, S') :- solvable(I, S), solvable(I, S'), good(I, S, S'), order(I, S').
+order(I, S) :- solvable(I, S), order(I, S, S') : good(I, S, S'), solvable(I, S), solvable(I, S').
 :- solvable(I, S), not order(I, S).
 
 % Display
@@ -48,6 +55,7 @@ order(I, S) :- solvable(I, S), order(I, S, S') : assign(_, I, S, S'), solvable(I
 #show select/1.
 #show numerical/1.
 #show boolean/1.
+#show good/3.
 #show c_eq/2.
 #show c_gt/2.
 #show c_unk/2.

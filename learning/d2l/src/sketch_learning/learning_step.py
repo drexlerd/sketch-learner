@@ -110,7 +110,6 @@ def run(config, data, rng):
         if all_solved:
             break
         i += 1
-        # exit(1)
 
     print("Incremental search statistics:")
     print(f"Number of training instances: {len(instance_datas)}")

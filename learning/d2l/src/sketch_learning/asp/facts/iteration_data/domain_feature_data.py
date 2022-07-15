@@ -11,5 +11,5 @@ class DomainFeatureDataFactFactory():
         for f_idx, numerical in enumerate(domain_feature_data.numerical_features):
             facts.append(f"numerical(n{f_idx}).")
             facts.append(f"feature(n{f_idx}).")
-            facts.append(f"complexity(n{f_idx},{boolean.compute_complexity()}).")
+            facts.append(f"complexity(n{f_idx},{numerical.compute_complexity()}).")
         return facts

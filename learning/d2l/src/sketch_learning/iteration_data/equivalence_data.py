@@ -21,6 +21,7 @@ class TupleGraphExt:
     root_idx: int
     width: int
     t_idxs_by_distance: List[List[int]]
+    s_idxs_by_distance: List[List[int]]
     r_idxs_by_distance: List[List[int]]
     t_idx_to_r_idxs: Dict[int, MutableSet[int]]
     r_idx_to_t_idxs: Dict[int, MutableSet[int]]
@@ -29,12 +30,13 @@ class TupleGraphExt:
 
     def print(self):
         print("Tuple graph extension state {self.root_idx} and width {self.width}")
-        print(self.t_idxs_by_distance)
-        print(self.r_idxs_by_distance)
-        print(self.r_idx_to_t_idxs)
-        print(self.r_idx_to_s_idxs)
-        print(self.t_idx_to_r_idxs)
-        print(self.r_idx_to_deadend_distance)
+        print(f"t_idxs_by_distance: {self.t_idxs_by_distance}")
+        print(f"s_idxs_by_distance: {self.s_idxs_by_distance}")
+        print(f"r_idxs_by_distance: {self.r_idxs_by_distance}")
+        print(f"t_idx_to_r_idxs: {self.t_idx_to_r_idxs}")
+        print(f"t_idx_to_r_idxs: {self.r_idx_to_t_idxs}")
+        print(f"r_idx_to_t_idxs: {self.r_idx_to_s_idxs}")
+        print(f"r_idx_to_deadend_distance: {self.r_idx_to_deadend_distance}")
 
 
 @dataclass
@@ -66,7 +68,7 @@ class TupleGraphExtFactory:
                     r_idx = s_idx_to_r_idx[s_idx]
                     t_idx_to_r_idxs[t_idx].add(r_idx)
                     r_idx_to_t_idxs[r_idx].add(t_idx)
-        return TupleGraphExt(root_idx, tuple_graph.width, tuple_graph.t_idxs_by_distance, r_idxs_by_distance, t_idx_to_r_idxs, r_idx_to_t_idxs, r_idx_to_s_idxs, r_idx_to_deadend_distance)
+        return TupleGraphExt(root_idx, tuple_graph.width, tuple_graph.t_idxs_by_distance, tuple_graph.s_idxs_by_distance, r_idxs_by_distance, t_idx_to_r_idxs, r_idx_to_t_idxs, r_idx_to_s_idxs, r_idx_to_deadend_distance)
 
 
 @dataclass
@@ -111,8 +113,8 @@ class EquivalenceDataFactory:
                 conditions = self._make_conditions(policy_builder, tg.root_idx, policy_boolean_features, policy_numerical_features, instance_feature_data)
                 # add effects
                 for s_idxs in tg.s_idxs_by_distance:
-                    count_state_pairs += len(s_idxs)
                     for target_idx in s_idxs:
+                        count_state_pairs += 1
                         effects = self._make_effects(policy_builder, tg.root_idx, target_idx, policy_boolean_features, policy_numerical_features, instance_feature_data)
                         # add rule
                         rule = policy_builder.add_rule(conditions, effects)

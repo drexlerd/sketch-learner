@@ -5,7 +5,6 @@ from typing import Dict, List, MutableSet
 from dataclasses import dataclass, field
 from collections import defaultdict, OrderedDict
 
-from simplejson import OrderedDict
 from ..asp.answer_set_parser import AnswerSetData
 from .feature_data import DomainFeatureData
 from ..instance_data.instance_data import InstanceData
@@ -29,7 +28,11 @@ class Sketch:
             if tg is None:
                 continue  # no tuple graph indicates that we don't care about the information of this state.
             bounded = False
-            for d in range(1, len(tg.s_idxs_by_distance)):
+            if tg.width == 0:
+                low = 1
+            else:
+                low = 0
+            for d in range(low, len(tg.s_idxs_by_distance)):
                 for t_idx in tg.t_idxs_by_distance[d]:  # check if t_idxs is a subgoal
                     subgoal = True
                     assert tg.t_idx_to_s_idxs[t_idx]
@@ -56,7 +59,11 @@ class Sketch:
             tg = instance_data.tuple_graphs_by_state_index[i]
             if tg is None:
                 continue  # no tuple graph indicates that we don't care about the information of this state.
-            for d in range(1, closest_subgoal_tuple[i] + 1):
+            if tg.width == 0:
+                low = 1
+            else:
+                low = 0
+            for d in range(low, closest_subgoal_tuple[i] + 1):
                 for s_idx in tg.s_idxs_by_distance[d]:
                     target_state = instance_data.transition_system.states_by_index[s_idx]
                     satisfied_rule = self.policy.evaluate_lazy(i, dlplan_state, s_idx, target_state)
@@ -109,8 +116,8 @@ class SketchFactory:
 
 
     def _add_features(self, policy_builder: dlplan.PolicyBuilder, answer_set_data: AnswerSetData, domain_feature_data: DomainFeatureData):
-        f_idx_to_boolean_policy_feature = OrderedDict()
-        f_idx_to_numerical_policy_feature = OrderedDict()
+        f_idx_to_boolean_policy_feature = dict()
+        f_idx_to_numerical_policy_feature = dict()
         for fact in answer_set_data.facts:
             matches = re.findall(r"select\(([bn])(\d+)\)", fact)
             if matches:
@@ -120,10 +127,10 @@ class SketchFactory:
                 if f_type == "b":
                     f_idx_to_boolean_policy_feature[f_idx] = policy_builder.add_boolean_feature(domain_feature_data.boolean_features[f_idx])
                 elif f_type == "n":
-                    f_idx_to_numerical_policy_feature[f_idx] = policy_builder.add_numerical_feature(domain_feature_data.numerical_features[f_idx - len(domain_feature_data.boolean_features)])
+                    f_idx_to_numerical_policy_feature[f_idx] = policy_builder.add_numerical_feature(domain_feature_data.numerical_features[f_idx])
                 else:
                     raise Exception("Cannot parse feature {fact}")
-        return f_idx_to_boolean_policy_feature.values(), f_idx_to_numerical_policy_feature.values()
+        return f_idx_to_boolean_policy_feature, f_idx_to_numerical_policy_feature
 
     def _add_rules(self, policy_builder: dlplan.PolicyBuilder, answer_set_data: AnswerSetData, boolean_policy_features, numerical_policy_features):
         rules = dict()
