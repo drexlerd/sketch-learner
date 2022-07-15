@@ -1,10 +1,4 @@
 import logging
-from .facts.feature_data.boolean import Boolean
-from .facts.feature_data.complexity import Complexity
-from .facts.feature_data.feature import Feature
-from .facts.feature_data.numerical import Numerical
-from .facts.rules.conditions import C_EQ, C_GT, C_NEG, C_POS
-from .facts.rules.effects import E_BOT, E_DEC, E_INC, E_NEG, E_POS
 from .facts.termination_graph.termination_edge import TerminationEdge
 from .facts.termination_graph.termination_node import TerminationNode
 from .facts.termination_graph.termination_loop import TerminationLoop
@@ -44,54 +38,6 @@ class ASPInstanceBuilder:
         self.d_distances = []
         # The total number of facts added
         self.num_facts = 0
-
-    def add_boolean_feature(self, f_idx, complexity):
-        self.features.append(Feature(f_idx))
-        self.booleans.append(Boolean(f_idx))
-        self.complexities.append(Complexity(f_idx, complexity))
-        self.num_facts += 3
-
-    def add_numerical_feature(self, f_idx, complexity):
-        self.features.append(Feature(f_idx))
-        self.numericals.append(Numerical(f_idx))
-        self.complexities.append(Complexity(f_idx, complexity))
-        self.num_facts += 3
-
-    def add_c_eq(self, r_idx, f_idx):
-        self.conditions.append(C_EQ(r_idx, f_idx))
-        self.num_facts += 1
-
-    def add_c_gt(self, r_idx, f_idx):
-        self.conditions.append(C_GT(r_idx, f_idx))
-        self.num_facts += 1
-
-    def add_c_pos(self, r_idx, f_idx):
-        self.conditions.append(C_POS(r_idx, f_idx))
-        self.num_facts += 1
-
-    def add_c_neg(self, r_idx, f_idx):
-        self.conditions.append(C_NEG(r_idx, f_idx))
-        self.num_facts += 1
-
-    def add_e_inc(self, r_idx, f_idx):
-        self.effects.append(E_INC(r_idx, f_idx))
-        self.num_facts += 1
-
-    def add_e_dec(self, r_idx, f_idx):
-        self.effects.append(E_DEC(r_idx, f_idx))
-        self.num_facts += 1
-
-    def add_e_pos(self, r_idx, f_idx):
-        self.effects.append(E_POS(r_idx, f_idx))
-        self.num_facts += 1
-
-    def add_e_neg(self, r_idx, f_idx):
-        self.effects.append(E_NEG(r_idx, f_idx))
-        self.num_facts += 1
-
-    def add_e_bot(self, r_idx, f_idx):
-        self.effects.append(E_BOT(r_idx, f_idx))
-        self.num_facts += 1
 
     def add_termination_node(self, instance_idx, r_idx):
         self.termination_nodes.append(TerminationNode(instance_idx, r_idx))

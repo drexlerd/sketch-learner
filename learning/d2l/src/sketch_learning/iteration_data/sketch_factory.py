@@ -3,7 +3,9 @@ import dlplan
 import copy
 from typing import Dict, List, MutableSet
 from dataclasses import dataclass, field
-from collections import defaultdict
+from collections import defaultdict, OrderedDict
+
+from simplejson import OrderedDict
 from ..asp.answer_set_parser import AnswerSetData
 from .feature_data import DomainFeatureData
 from ..instance_data.instance_data import InstanceData
@@ -101,26 +103,29 @@ class SketchFactory:
     def make_sketch(self, answer_set_data: AnswerSetData, domain_feature_data: DomainFeatureData, width: int):
         """ Parses set of facts into dlplan.Policy """
         policy_builder = dlplan.PolicyBuilder()
-        f_idx_to_policy_feature = self._add_features(policy_builder, answer_set_data, domain_feature_data)
-        self._add_rules(policy_builder, answer_set_data, f_idx_to_policy_feature)
+        boolean_policy_features, numerical_policy_features = self._add_features(policy_builder, answer_set_data, domain_feature_data)
+        self._add_rules(policy_builder, answer_set_data, boolean_policy_features, numerical_policy_features)
         return Sketch(policy_builder.get_result(), width)
 
 
     def _add_features(self, policy_builder: dlplan.PolicyBuilder, answer_set_data: AnswerSetData, domain_feature_data: DomainFeatureData):
-        f_idx_to_policy_feature = dict()
+        f_idx_to_boolean_policy_feature = OrderedDict()
+        f_idx_to_numerical_policy_feature = OrderedDict()
         for fact in answer_set_data.facts:
-            matches = re.findall(r"select\((\d+)\)", fact)
+            matches = re.findall(r"select\(([bn])(\d+)\)", fact)
             if matches:
                 assert len(matches) == 1
-                f_idx = int(matches[0])
-                if f_idx < len(domain_feature_data.boolean_features):
-                    policy_feature = policy_builder.add_boolean_feature(domain_feature_data.boolean_features[f_idx])
+                f_type = matches[0][0]
+                f_idx = int(matches[0][1])
+                if f_type == "b":
+                    f_idx_to_boolean_policy_feature[f_idx] = policy_builder.add_boolean_feature(domain_feature_data.boolean_features[f_idx])
+                elif f_type == "n":
+                    f_idx_to_numerical_policy_feature[f_idx] = policy_builder.add_numerical_feature(domain_feature_data.numerical_features[f_idx - len(domain_feature_data.boolean_features)])
                 else:
-                    policy_feature = policy_builder.add_numerical_feature(domain_feature_data.numerical_features[f_idx - len(domain_feature_data.boolean_features)])
-                f_idx_to_policy_feature[f_idx] = policy_feature
-        return f_idx_to_policy_feature
+                    raise Exception("Cannot parse feature {fact}")
+        return f_idx_to_boolean_policy_feature.values(), f_idx_to_numerical_policy_feature.values()
 
-    def _add_rules(self, policy_builder: dlplan.PolicyBuilder, answer_set_data: AnswerSetData, f_idx_to_policy_feature):
+    def _add_rules(self, policy_builder: dlplan.PolicyBuilder, answer_set_data: AnswerSetData, boolean_policy_features, numerical_policy_features):
         rules = dict()
         for fact in answer_set_data.facts:
             matches = re.findall(r"rule\((\d+)\)", fact)
@@ -129,15 +134,16 @@ class SketchFactory:
                 r_key = int(matches[0])
                 rules[r_key] = [[], []]  # conditions and effects
         for fact in answer_set_data.facts:
-            self._try_parse_condition(r"c_eq\((\d+),(\d+)\)", fact, rules, policy_builder.add_eq_condition, f_idx_to_policy_feature)
-            self._try_parse_condition(r"c_gt\((\d+),(\d+)\)", fact, rules, policy_builder.add_gt_condition, f_idx_to_policy_feature)
-            self._try_parse_condition(r"c_pos\((\d+),(\d+)\)", fact, rules, policy_builder.add_pos_condition, f_idx_to_policy_feature)
-            self._try_parse_condition(r"c_neg\((\d+),(\d+)\)", fact, rules, policy_builder.add_neg_condition, f_idx_to_policy_feature)
-            self._try_parse_effect(r"e_inc\((\d+),(\d+)\)", fact, rules, policy_builder.add_inc_effect, f_idx_to_policy_feature)
-            self._try_parse_effect(r"e_dec\((\d+),(\d+)\)", fact, rules, policy_builder.add_dec_effect, f_idx_to_policy_feature)
-            self._try_parse_effect(r"e_pos\((\d+),(\d+)\)", fact, rules, policy_builder.add_pos_effect, f_idx_to_policy_feature)
-            self._try_parse_effect(r"e_neg\((\d+),(\d+)\)", fact, rules, policy_builder.add_neg_effect, f_idx_to_policy_feature)
-            self._try_parse_effect(r"e_bot\((\d+),(\d+)\)", fact, rules, policy_builder.add_bot_effect, f_idx_to_policy_feature)
+            self._try_parse_condition(r"c_eq\((\d+),n(\d+)\)", fact, rules, policy_builder.add_eq_condition, numerical_policy_features)
+            self._try_parse_condition(r"c_gt\((\d+),n(\d+)\)", fact, rules, policy_builder.add_gt_condition, numerical_policy_features)
+            self._try_parse_condition(r"c_pos\((\d+),b(\d+)\)", fact, rules, policy_builder.add_pos_condition, boolean_policy_features)
+            self._try_parse_condition(r"c_neg\((\d+),b(\d+)\)", fact, rules, policy_builder.add_neg_condition, boolean_policy_features)
+            self._try_parse_effect(r"e_inc\((\d+),n(\d+)\)", fact, rules, policy_builder.add_inc_effect, numerical_policy_features)
+            self._try_parse_effect(r"e_dec\((\d+),n(\d+)\)", fact, rules, policy_builder.add_dec_effect, numerical_policy_features)
+            self._try_parse_effect(r"e_bot\((\d+),n(\d+)\)", fact, rules, policy_builder.add_bot_effect, numerical_policy_features)
+            self._try_parse_effect(r"e_pos\((\d+),b(\d+)\)", fact, rules, policy_builder.add_pos_effect, boolean_policy_features)
+            self._try_parse_effect(r"e_neg\((\d+),b(\d+)\)", fact, rules, policy_builder.add_neg_effect, boolean_policy_features)
+            self._try_parse_effect(r"e_bot\((\d+),b(\d+)\)", fact, rules, policy_builder.add_bot_effect, boolean_policy_features)
         for _, (conditions, effects) in rules.items():
             policy_builder.add_rule(conditions, effects)
 

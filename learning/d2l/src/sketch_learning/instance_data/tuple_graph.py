@@ -76,6 +76,40 @@ class TupleGraphFactory:
             s_idx_to_t_idxs[suc_index].add(suc_index)
         return TupleGraph(source_index, t_idxs_by_distance, s_idxs_by_distance, t_idx_to_s_idxs, s_idx_to_t_idxs, self.width)
 
+    def _make_tuple_graph_for_width_greater_0(self, source_index):
+        """ Constructing tuple graph for width greater 0 as defined in the literature. """
+        novelty_table = NoveltyTable(self.width, self.num_dynamic_atoms)
+        # states s[pi] by distance for optimal plan pi in Pi^*(t).
+        s_idxs_by_distance = self.transition_system.compute_states_by_distance(source_index)
+        # information of tuples during computation
+        t_idx_to_s_idxs = defaultdict(set)
+        s_idx_to_t_idxs = dict()
+        # information of tuples that make it into the tuple graph
+        marked_t_idxs_by_distance = []
+        marked_t_idx_to_s_idxs = defaultdict(set)
+        marked_s_idx_to_t_idxs = defaultdict(set)
+        for d, s_idxs_in_layer in enumerate(s_idxs_by_distance):
+            novel_t_idxs_in_current_layer = self._find_novel_tuples_in_layer(s_idxs_in_layer, novelty_table, t_idx_to_s_idxs, s_idx_to_t_idxs)
+            novelty_table.mark_as_not_novel(novel_t_idxs_in_current_layer)
+            if not novel_t_idxs_in_current_layer: break  # no more novel tuples
+            if d == 0:
+                # part (1) of definition:
+                # all tuples of the initial state make it into the tuple graph.
+                marked_t_idxs_by_distance.append(novel_t_idxs_in_current_layer)
+            else:
+                # part (2) of definition:
+                # must extend all optimal plans
+                marked_t_idxs_in_current_layer = self._extend_optimal_plans(marked_t_idxs_by_distance[d-1], novel_t_idxs_in_current_layer, t_idx_to_s_idxs, s_idx_to_t_idxs)
+                if not marked_t_idxs_in_current_layer: break  # nothing to keep extending
+                # store information of marked tuples
+                marked_t_idxs_by_distance.append(marked_t_idxs_in_current_layer)
+                for t_idx in marked_t_idxs_in_current_layer:
+                    marked_t_idx_to_s_idxs[t_idx] = t_idx_to_s_idxs[t_idx]
+                    for s_idx in t_idx_to_s_idxs[t_idx]:
+                        marked_s_idx_to_t_idxs[s_idx].add(t_idx)
+        assert d > 1
+        return TupleGraph(source_index, marked_t_idxs_by_distance, s_idxs_by_distance[:len(marked_t_idxs_by_distance)], marked_t_idx_to_s_idxs, marked_s_idx_to_t_idxs, self.width)
+
     def _find_novel_tuples_in_layer(self, s_idxs_in_layer: List[int], novelty_table: NoveltyTable, t_idx_to_s_idxs, s_idx_to_t_idxs) -> List[int]:
         """ Given a list of states `s_idxs_in_layer`
             return all tuple indices that are novel in at least one state.  """
@@ -113,42 +147,6 @@ class TupleGraphFactory:
                     # all optimal plans for ti can be extended into an optimal plan for tj
                     marked_t_idxs.add(tj_idx)
         return marked_t_idxs
-
-    def _make_tuple_graph_for_width_greater_0(self, source_index):
-        """ Constructing tuple graph for width greater 0 as defined in the literature. """
-        novelty_table = NoveltyTable(self.width, self.num_dynamic_atoms)
-        # states s[pi] by distance for optimal plan pi in Pi^*(t).
-        s_idxs_by_distance = self.transition_system.compute_states_by_distance(source_index)
-        # information of tuples during computation
-        t_idx_to_s_idxs = defaultdict(set)
-        s_idx_to_t_idxs = dict()
-        # information of tuples that make it into the tuple graph
-        marked_t_idxs_by_distance = []
-        marked_t_idx_to_s_idxs = defaultdict(set)
-        marked_s_idx_to_t_idxs = defaultdict(set)
-        d = 0
-        for s_idxs_in_layer in s_idxs_by_distance:
-            novel_t_idxs_in_current_layer = self._find_novel_tuples_in_layer(s_idxs_in_layer, novelty_table, t_idx_to_s_idxs, s_idx_to_t_idxs)
-            if not novel_t_idxs_in_current_layer: break  # no more novel tuples
-            novelty_table.mark_as_not_novel(novel_t_idxs_in_current_layer)
-            if d == 0:
-                # part (1) of definition:
-                # all tuples of the initial state make it into the tuple graph.
-                marked_t_idxs_by_distance.append(novel_t_idxs_in_current_layer)
-            else:
-                # part (2) of definition:
-                # must extend all optimal plans
-                marked_t_idxs_in_current_layer = self._extend_optimal_plans(marked_t_idxs_by_distance[d-1], novel_t_idxs_in_current_layer, t_idx_to_s_idxs, s_idx_to_t_idxs)
-                if not marked_t_idxs_in_current_layer: break  # nothing to keep extending
-                # store information of marked tuples
-                marked_t_idxs_by_distance.append(marked_t_idxs_in_current_layer)
-                for t_idx in marked_t_idxs_in_current_layer:
-                    marked_t_idx_to_s_idxs[t_idx] = t_idx_to_s_idxs[t_idx]
-                    for s_idx in t_idx_to_s_idxs[t_idx]:
-                        marked_s_idx_to_t_idxs[s_idx].add(t_idx)
-            d += 1
-        assert d > 1
-        return TupleGraph(source_index, marked_t_idxs_by_distance, s_idxs_by_distance[:len(marked_t_idxs_by_distance)], marked_t_idx_to_s_idxs, marked_s_idx_to_t_idxs, self.width)
 
 
 class TupleGraphMinimizer:
