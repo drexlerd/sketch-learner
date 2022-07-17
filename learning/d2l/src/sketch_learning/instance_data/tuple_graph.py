@@ -111,7 +111,7 @@ class TupleGraphFactory:
                     marked_t_idx_to_s_idxs[t_idx] = t_idx_to_s_idxs[t_idx]
                     for s_idx in t_idx_to_s_idxs[t_idx]:
                         marked_s_idx_to_t_idxs[s_idx].add(t_idx)
-        assert d > 1
+        assert d > 0
         return TupleGraph(source_index, marked_t_idxs_by_distance, s_idxs_by_distance[:len(marked_t_idxs_by_distance)], marked_t_idx_to_s_idxs, marked_s_idx_to_t_idxs, self.width)
 
     def _find_novel_tuples_in_layer(self, s_idxs_in_layer: List[int], novelty_table: NoveltyTable, t_idx_to_s_idxs, s_idx_to_t_idxs) -> List[int]:
