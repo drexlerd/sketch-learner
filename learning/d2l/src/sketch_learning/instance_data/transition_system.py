@@ -56,6 +56,27 @@ class TransitionSystem:
                     distances[succ_idx] = curr_cost + 1
         return [list(l) for l in layers.values()]
 
+    def compute_optimal_transitions_to_states(self, target_idxs: List[int]):
+        distances = dict()
+        queue = deque()
+        for target_idx in target_idxs:
+            distances[target_idx] = 0
+            queue.append(target_idx)
+        optimal_forward_transitions = defaultdict(set)
+        optimal_backward_transitions = defaultdict(set)
+        while queue:
+            target_idx = queue.popleft()
+            target_cost = distances.get(target_idx)
+            for source_idx in self.backward_transitions[target_idx]:
+                alt_distance = target_cost + 1
+                if alt_distance < distances.get(source_idx, math.inf):
+                    distances[source_idx] = alt_distance
+                    queue.append(source_idx)
+                if alt_distance == distances.get(source_idx):
+                    optimal_forward_transitions[source_idx].add(target_idx)
+                    optimal_backward_transitions[target_idx].add(source_idx)
+        return optimal_forward_transitions, optimal_backward_transitions
+
     def print_statistics(self):
         print(f"Num states: {len(self.states_by_index)}")
         print(f"Num transitions: {sum([len(transitions) for transitions in self.forward_transitions.values()])}")

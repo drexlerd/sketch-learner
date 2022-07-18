@@ -70,23 +70,32 @@ def run(config, data, rng):
         domain_feature_data, instance_feature_datas = FeatureDataFactory().generate_feature_data(config, domain_data, selected_instance_datas)
         equivalence_data = EquivalenceDataFactory().make_equivalence_class_data(selected_instance_datas, domain_feature_data, instance_feature_datas)
         # 1.3. Generate asp facts
-        facts = ASPFactFactory().make_asp_facts(selected_instance_datas, domain_feature_data, instance_feature_datas, equivalence_data)
-        write_file(iteration_data.facts_file, facts)
-        asp_construction_timer.stop()
+        is_consistent = False
+        while not is_consistent:
+            facts = ASPFactFactory().make_asp_facts(selected_instance_datas, domain_feature_data, instance_feature_datas, equivalence_data)
+            write_file(iteration_data.facts_file, facts)
+            asp_construction_timer.stop()
 
-        # 1.5. Learn the sketch
-        learning_timer.resume()
-        execute(["clingo", iteration_data.facts_file, config.asp_problem_location, "-c", f"max_sketch_rules={config.max_sketch_rules}"] + config.clingo_arguments, stdout=iteration_data.answer_set_file)
-        learning_timer.stop()
+            # 1.5. Learn the sketch
+            learning_timer.resume()
+            execute(["clingo", iteration_data.facts_file, config.asp_problem_location, "-c", f"max_sketch_rules={config.max_sketch_rules}"] + config.clingo_arguments, stdout=iteration_data.answer_set_file)
+            learning_timer.stop()
 
-        # 1.6. Parse the sketch from the answer set
-        answer_set_file_content = read_file(iteration_data.answer_set_file)
-        answer_set_datas, exitcode = AnswerSetParser().parse(answer_set_file_content)
-        if exitcode == AnswerSetParser_ExitCode.Unsatisfiable:
-            logging.info("UNSATISFIABLE! No sketch was found.")
-            return ExitCode.Unsatisfiable, None
+            # 1.6. Parse the sketch from the answer set
+            answer_set_file_content = read_file(iteration_data.answer_set_file)
+            answer_set_datas, exitcode = AnswerSetParser().parse(answer_set_file_content)
+            if exitcode == AnswerSetParser_ExitCode.Unsatisfiable:
+                logging.info("UNSATISFIABLE! No sketch was found.")
+                return ExitCode.Unsatisfiable, None
 
-        sketch = SketchFactory().make_sketch(answer_set_datas[-1], domain_feature_data, config.width)
+            sketch = SketchFactory().make_sketch(answer_set_datas[-1], domain_feature_data, config.width)
+            all_consistent = True
+            for instance_data in selected_instance_datas:
+                is_instance_consistent, consistency_facts = sketch.verify_consistency(instance_data)
+                if not is_instance_consistent: all_consistent = False
+            is_consistent = all_consistent
+
+
         logging.info("Learned the following sketch:")
         print(sketch.policy.str())
         with open(iteration_data.sketch_file, "w") as file:

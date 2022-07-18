@@ -23,6 +23,7 @@ class InstanceData:
     domain_data: DomainData
     transition_system: TransitionSystem
     tuple_graphs_by_state_index: List[TupleGraph]
+    minimized_tuple_graphs_by_state_index: List[TupleGraph]
 
     def print_statistics(self):
         self.transition_system.print_statistics()
@@ -49,8 +50,8 @@ class InstanceDataFactory:
             return None, ReturnCode.EXHAUSTED_SIZE_LIMIT
 
         transition_system = TransitionSystemFactory().parse_transition_system(dlplan_states, goals, forward_transitions)
-        tuple_graphs_by_state_index = self._make_tuple_graphs(config, instance_info, transition_system)
-        return InstanceData(instance_information.instance_filename, domain_data, transition_system, tuple_graphs_by_state_index), ReturnCode.SOLVABLE
+        tuple_graphs_by_state_index, minimized_tuple_graphs_by_state_index = self._make_tuple_graphs(config, instance_info, transition_system)
+        return InstanceData(instance_information.instance_filename, domain_data, transition_system, tuple_graphs_by_state_index, minimized_tuple_graphs_by_state_index), ReturnCode.SOLVABLE
 
 
     def _make_tuple_graphs(self,
@@ -60,12 +61,13 @@ class InstanceDataFactory:
         tuple_graph_factory = TupleGraphFactory(
             config, instance_info, transition_system)
         tuple_graph_minimizer = TupleGraphMinimizer()
-        tuple_graphs_by_state_index = [tuple_graph_minimizer.minimize(tuple_graph_factory.make_tuple_graph(config, i)) for i in range(
+        tuple_graphs_by_state_index = [tuple_graph_factory.make_tuple_graph(config, i) for i in range(
             transition_system.get_num_states())]
+        minimized_tuple_graphs_by_state_index = [tuple_graph_minimizer.minimize(tuple_graph) for tuple_graph in tuple_graphs_by_state_index]
         print("Tuple graph minimizer:")
         print(f"Num generated subgoal tuples: {tuple_graph_minimizer.num_generated}")
         print(f"Num pruned subgoal tuples: {tuple_graph_minimizer.num_pruned}")
-        return tuple_graphs_by_state_index
+        return tuple_graphs_by_state_index, minimized_tuple_graphs_by_state_index
 
 
 def normalize_atom_name(name: str):

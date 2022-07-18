@@ -103,7 +103,7 @@ class EquivalenceDataFactory:
         instance_datas_ext = []
         for instance_data, instance_feature_data in zip(instance_datas, instance_feature_datas):
             tuple_graph_ext_by_state_index = []
-            for tg in instance_data.tuple_graphs_by_state_index:
+            for tg in instance_data.minimized_tuple_graphs_by_state_index:  # we use minimized tuple graph to prune dominated constraints
                 if tg is None:
                     tuple_graph_ext_by_state_index.append(None)
                     continue

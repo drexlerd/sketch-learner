@@ -1,9 +1,9 @@
 import re
 import dlplan
-import copy
+import math
 from typing import Dict, List, MutableSet
 from dataclasses import dataclass, field
-from collections import defaultdict, OrderedDict
+from collections import defaultdict, OrderedDict, deque
 
 from ..asp.answer_set_parser import AnswerSetData
 from .feature_data import DomainFeatureData
@@ -15,18 +15,16 @@ class Sketch:
         self.policy = policy
         self.width = width
 
-    def solves(self, instance_data: InstanceData):
-        """ Returns True iff the sketch solves the transition system, i.e.,
-            (1) is terminating, and (2) P[s] has correctly bounded s-width. """
-        # 1. Check if the width of all subproblems is bounded
-        # we clear the in to be able to reuse cache with instance specific indexing scheme.
+    def _verify_bounded_width(self, instance_data: InstanceData):
+        """ Check whether the width of all subproblems is bounded.
+        """
         self.policy.clear_cache()
-        closest_subgoal_tuple = dict()
-        for i in range(instance_data.transition_system.get_num_states()):
-            dlplan_state = instance_data.transition_system.states_by_index[i]
-            tg = instance_data.tuple_graphs_by_state_index[i]
-            if tg is None:
-                continue  # no tuple graph indicates that we don't care about the information of this state.
+        closest_subgoal_states = defaultdict(set)
+        closest_subgoal_tuples = defaultdict(set)
+        for root_idx in range(instance_data.transition_system.get_num_states()):
+            dlplan_state = instance_data.transition_system.states_by_index[root_idx]
+            tg = instance_data.tuple_graphs_by_state_index[root_idx]
+            if tg is None: continue  # no tuple graph indicates that we don't care about the information of this state.
             bounded = False
             if tg.width == 0:
                 low = 1
@@ -38,50 +36,33 @@ class Sketch:
                     assert tg.t_idx_to_s_idxs[t_idx]
                     for s_idx in tg.t_idx_to_s_idxs[t_idx]:
                         target_state = instance_data.transition_system.states_by_index[s_idx]
-                        if self.policy.evaluate_lazy(i, dlplan_state, s_idx, target_state) is None:
+                        if self.policy.evaluate_lazy(root_idx, dlplan_state, s_idx, target_state) is None:
                             subgoal = False
-                            break
+                        else:
+                            closest_subgoal_states[tg.root_idx].add(s_idx)
+                            if instance_data.transition_system.is_deadend(s_idx):
+                                print(f"Sketch leads to unsolvable state: {str(target_state)}")
+                                return [], [], False
                     if subgoal:
+                        closest_subgoal_tuples[tg.root_idx].add(t_idx)
                         bounded = True
-                        break
                 if bounded:
-                    closest_subgoal_tuple[i] = d
                     break
             if not bounded:
                 print(f"Sketch fails to solve state: {str(dlplan_state)}")
-                return False
-        # 2. Check whether there is a cycle in the compatible state pairs
-        # We use DFS because we know that every state is reachable from the initial state
-        # We create a forward graph from compatible state pairs to check for termination
-        subgoals = defaultdict(set)
-        for i in range(instance_data.transition_system.get_num_states()):
-            dlplan_state = instance_data.transition_system.states_by_index[i]
-            tg = instance_data.tuple_graphs_by_state_index[i]
-            if tg is None:
-                continue  # no tuple graph indicates that we don't care about the information of this state.
-            if tg.width == 0:
-                low = 1
-            else:
-                low = 0
-            for d in range(low, closest_subgoal_tuple[i] + 1):
-                for s_idx in tg.s_idxs_by_distance[d]:
-                    target_state = instance_data.transition_system.states_by_index[s_idx]
-                    satisfied_rule = self.policy.evaluate_lazy(i, dlplan_state, s_idx, target_state)
-                    if satisfied_rule is not None:
-                        if instance_data.transition_system.is_deadend(s_idx) and d <= closest_subgoal_tuple[i]:
-                            print(f"Sketch leads to unsolvable state: {str(target_state)}")
-                            return False
-                        subgoals[i].add(s_idx)
-                        # print(satisfied_rule.str())
-                        # print(f"{i}->{s_idx}")
-                        break
-        expanded_global = set(subgoals.keys())
-        # print(subgoals)
-        while expanded_global:
+                return [], [], False
+        return closest_subgoal_states, closest_subgoal_tuples, True
+
+    def _verify_acyclicity(self, instance_data: InstanceData, closest_subgoal_states: Dict[int, int]):
+        """ Check whether there is a cycle in the compatible state pairs
+            We use DFS because we know that every state is reachable from the initial state
+            We create a forward graph from compatible state pairs to check for termination
+        """
+        for root_idx in range(instance_data.transition_system.get_num_states()):
+            if instance_data.tuple_graphs_by_state_index[root_idx] is None: continue
             # The depth-first search is the iterative version where the current path is explicit in the stack.
             # https://en.wikipedia.org/wiki/Depth-first_search
-            root_idx = expanded_global.pop()
-            stack = [(root_idx, iter(subgoals[root_idx]))]
+            stack = [(root_idx, iter(closest_subgoal_states[root_idx]))]
             s_idxs_on_path = {root_idx,}
             frontier = set()  # the generated states, to ensure that they are only added once to the stack
             while stack:
@@ -98,11 +79,70 @@ class Sketch:
                         return False
                     if target_idx not in frontier:
                         frontier.add(target_idx)
-                        stack.append((target_idx, iter(subgoals[target_idx])))
+                        stack.append((target_idx, iter(closest_subgoal_states[target_idx])))
                 except StopIteration:
                     s_idxs_on_path.discard(source_idx)
                     stack.pop(-1)
-                    expanded_global.discard(source_idx)
+        return True
+
+    def verify_consistency(self, instance_data: InstanceData):
+        """
+        """
+        is_consistent = True
+        consistency_facts = []
+        # 1. compute subgoal tuples for each state
+        closest_subgoal_states, closest_subgoal_tuples, has_bounded_width = self._verify_bounded_width(instance_data)
+        # 2. For each state s with subgoal tuples T check whether every state s'
+        #    that is on an optimal path from s to T with subgoal tuples T'
+        #    holds that T' subseteq T
+        for state in instance_data.transition_system.states_by_index:
+            print(str(state))
+        for root_idx in range(instance_data.transition_system.get_num_states()):
+            if instance_data.tuple_graphs_by_state_index[root_idx] is None: continue
+            optimal_forward_transitions, _ = instance_data.transition_system.compute_optimal_transitions_to_states(closest_subgoal_states[root_idx])
+            # filter only transitions on optimal paths to subgoal
+            relevant_optimal_forward_transitions = defaultdict(set)
+            alive_s_idxs_on_optimal_paths = set()
+            distances = dict()
+            queue = deque()
+            distances[root_idx] = 0
+            queue.append(root_idx)
+            while queue:
+                source_idx = queue.popleft()
+                source_cost = distances.get(source_idx)
+                for target_idx in optimal_forward_transitions[source_idx]:
+                    alt_distance = source_cost + 1
+                    if alt_distance < distances.get(target_idx, math.inf):
+                        distances[target_idx] = alt_distance
+                        queue.append(target_idx)
+                    if alt_distance == distances.get(target_idx):
+                        if target_idx not in closest_subgoal_states[source_idx]:
+                            alive_s_idxs_on_optimal_paths.add(target_idx)
+                        relevant_optimal_forward_transitions[source_idx].add(target_idx)
+            print(alive_s_idxs_on_optimal_paths)
+            for alive_s_idx in alive_s_idxs_on_optimal_paths:
+                if not (closest_subgoal_tuples[root_idx].issubset(closest_subgoal_tuples[alive_s_idx]) or \
+                        closest_subgoal_tuples[root_idx] == closest_subgoal_tuples[alive_s_idx]):
+                    print(closest_subgoal_tuples[root_idx])
+                    print(closest_subgoal_tuples[alive_s_idx])
+                    exit(1)
+                #print(closest_subgoal_tuples[alive_s_idx])
+                #print(closest_subgoal_states[alive_s_idx])
+            #print(root_idx)
+            #print(closest_subgoal_states[root_idx])
+            #print(optimal_forward_transitions)
+            #print(relevant_optimal_forward_transitions)
+            #print(alive_s_idxs_on_optimal_paths)
+            #print()
+        return is_consistent, consistency_facts
+
+    def solves(self, instance_data: InstanceData):
+        """ Returns True iff the sketch solves the transition system, i.e.,
+            (1) is terminating, and (2) P[s] has correctly bounded s-width. """
+        closest_subgoal_states, closest_subgoal_tuples, has_bounded_width = self._verify_bounded_width(instance_data)
+        if not has_bounded_width: return False
+        is_acyclic = self._verify_acyclicity(instance_data, closest_subgoal_states)
+        if not is_acyclic: return False
         return True
 
 
