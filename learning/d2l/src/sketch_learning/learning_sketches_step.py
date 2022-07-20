@@ -49,7 +49,7 @@ def run(config, data, rng):
 
         # 1.2. Generate feature pool
         domain_feature_data, instance_feature_datas = FeatureDataFactory().generate_feature_data(config, domain_data, selected_instance_datas)
-        instance_state_pair_datas = StatePairDataFactory().make_state_pairs_from_tuple_graphs(instance_datas)
+        instance_state_pair_datas = StatePairDataFactory().make_state_pairs_from_tuple_graphs(selected_instance_datas)
         rule_equivalence_data, instance_state_pair_equivalence_datas = StatePairEquivalenceDataFactory().make_equivalence_data(instance_state_pair_datas, domain_feature_data, instance_feature_datas)
         instance_tuple_graph_equivalence_datas = TupleGraphEquivalenceDataFactory().make_equivalence_data(selected_instance_datas, instance_state_pair_equivalence_datas)
 

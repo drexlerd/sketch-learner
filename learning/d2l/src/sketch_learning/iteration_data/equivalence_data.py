@@ -16,9 +16,11 @@ class StatePairEquivalenceData:
     r_idx_to_state_pairs: Dict[int, MutableSet[Tuple[int, int]]]
     state_pair_to_r_idx: Dict[Tuple[int, int], int]
 
+
 @dataclass
 class RuleEquivalenceData:
     rules: List[dlplan.Rule]
+
 
 @dataclass
 class TupleGraphEquivalenceData:
@@ -92,48 +94,6 @@ class StatePairEquivalenceDataFactory:
                 state_pair_to_r_idx[state_pair] = r_idx
             instance_state_pair_equivalence_datas.append(StatePairEquivalenceData(r_idx_to_state_pairs, state_pair_to_r_idx))
         return RuleEquivalenceData(rules), instance_state_pair_equivalence_datas
-
-    #def make_equivalence_class_data(self, instance_datas: List[InstanceData], domain_feature_data: DomainFeatureData, instance_feature_datas: List[InstanceFeatureData]):
-    #    policy_builder = dlplan.PolicyBuilder()
-    #    policy_boolean_features = [policy_builder.add_boolean_feature(b) for b in domain_feature_data.boolean_features]
-    #    policy_numerical_features = [policy_builder.add_numerical_feature(n) for n in domain_feature_data.numerical_features]
-    #    rules = []
-    #    rule_repr_to_idx = dict()
-    #    count_state_pairs = 0
-    #    instance_datas_ext = []
-    #    for instance_data, instance_feature_data in zip(instance_datas, instance_feature_datas):
-    #        tuple_graph_ext_by_state_index = []
-    #        for tg in instance_data.minimized_tuple_graphs_by_state_index:  # we use minimized tuple graph to prune dominated constraints
-    #            if tg is None:
-    #                tuple_graph_ext_by_state_index.append(None)
-    #                continue
-    #            r_idx_to_s_idxs = defaultdict(list)
-    #            s_idx_to_r_idx = dict()
-    #            # add conditions
-    #            conditions = self._make_conditions(policy_builder, tg.root_idx, policy_boolean_features, policy_numerical_features, instance_feature_data)
-    #            # add effects
-    #            for s_idxs in tg.s_idxs_by_distance:
-    #                for target_idx in s_idxs:
-    #                    count_state_pairs += 1
-    #                    effects = self._make_effects(policy_builder, tg.root_idx, target_idx, policy_boolean_features, policy_numerical_features, instance_feature_data)
-    #                    # add rule
-    #                    rule = policy_builder.add_rule(conditions, effects)
-    #                    rule_repr = rule.compute_repr()
-    #                    if rule_repr in rule_repr_to_idx:
-    #                        r_idx = rule_repr_to_idx[rule_repr]
-    #                    else:
-    #                        r_idx = len(rules)
-    #                        rule_repr_to_idx[rule_repr] = r_idx
-    #                        rules.append(rule)
-    #                    r_idx_to_s_idxs[r_idx].append(target_idx)
-    #                    s_idx_to_r_idx[target_idx] = r_idx
-    #            tuple_graph_ext = TupleGraphExtFactory().make_tuple_graph_ext(tg, instance_data.transition_system, s_idx_to_r_idx, r_idx_to_s_idxs)
-    #            tuple_graph_ext_by_state_index.append(tuple_graph_ext)
-    #        instance_datas_ext.append(InstanceDataExt(tuple_graph_ext_by_state_index))
-    #    assert count_state_pairs >= len(rules)
-    #    print(f"Num state pairs: {count_state_pairs}")
-    #    print(f"Num rules: {len(rules)}")
-    #    return EquivalenceData(rules, instance_datas_ext)
 
     def _make_conditions(self, policy_builder: dlplan.PolicyBuilder, source_idx: int, policy_boolean_features, policy_numerical_features, instance_feature_data):
         """ Create conditions over all features that are satisfied in source_idx """
