@@ -17,7 +17,8 @@ from .domain_data.domain_data import DomainData
 from .iteration_data.iteration_data import IterationData
 from .iteration_data.feature_data import FeatureDataFactory
 from .iteration_data.sketch_factory import SketchFactory
-from .iteration_data.equivalence_data import EquivalenceDataFactory
+from .iteration_data.equivalence_data import StatePairEquivalenceDataFactory, TupleGraphEquivalenceDataFactory
+from .iteration_data.state_pair_data import StatePairDataFactory
 from .asp.fact_factory import ASPFactFactory
 from .asp.answer_set_parser import AnswerSetParser, AnswerSetParser_ExitCode
 from .preprocessing import preprocess_instances
@@ -48,12 +49,15 @@ def run(config, data, rng):
 
         # 1.2. Generate feature pool
         domain_feature_data, instance_feature_datas = FeatureDataFactory().generate_feature_data(config, domain_data, selected_instance_datas)
-        equivalence_data = EquivalenceDataFactory().make_equivalence_class_data(selected_instance_datas, domain_feature_data, instance_feature_datas)
+        instance_state_pair_datas = StatePairDataFactory().make_state_pairs_from_tuple_graphs(instance_datas)
+        rule_equivalence_data, instance_state_pair_equivalence_datas = StatePairEquivalenceDataFactory().make_equivalence_data(instance_state_pair_datas, domain_feature_data, instance_feature_datas)
+        instance_tuple_graph_equivalence_datas = TupleGraphEquivalenceDataFactory().make_equivalence_data(selected_instance_datas, instance_state_pair_equivalence_datas)
+
         # 1.3. Generate asp facts
         is_consistent = False
         consistency_facts = []
         while not is_consistent:
-            facts = ASPFactFactory().make_asp_facts(selected_instance_datas, domain_feature_data, instance_feature_datas, equivalence_data)
+            facts = ASPFactFactory().make_asp_facts(selected_instance_datas, domain_feature_data, rule_equivalence_data, instance_state_pair_equivalence_datas, instance_tuple_graph_equivalence_datas)
             facts.extend(consistency_facts)
             write_file(iteration_data.facts_file, "\n".join(facts))
             asp_construction_timer.stop()

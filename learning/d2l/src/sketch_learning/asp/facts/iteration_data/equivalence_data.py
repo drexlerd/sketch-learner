@@ -1,12 +1,12 @@
 import re
-from ....iteration_data.equivalence_data import EquivalenceData
+from ....iteration_data.equivalence_data import RuleEquivalenceData, StatePairEquivalenceData
 from ....iteration_data.feature_data import DomainFeatureData
 
 
 class EquivalenceDataFactFactory():
-    def make_facts(self, equivalence_data: EquivalenceData, domain_feature_data: DomainFeatureData):
+    def make_facts(self, rule_equivalence_data: RuleEquivalenceData, domain_feature_data: DomainFeatureData):
         facts = []
-        for r_idx, rule in enumerate(equivalence_data.rules):
+        for r_idx, rule in enumerate(rule_equivalence_data.rules):
             facts.append(f"equivalence({r_idx}).")
             for condition in rule.get_conditions():
                 condition_str = condition.str()
