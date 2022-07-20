@@ -85,7 +85,7 @@ class Sketch:
                     stack.pop(-1)
         return True
 
-    def verify_consistency(self, instance_data: InstanceData):
+    def verify_consistency(self, instance_idx: int, instance_data: InstanceData):
         """
         """
         is_consistent = True
@@ -125,6 +125,10 @@ class Sketch:
                         closest_subgoal_tuples[root_idx] == closest_subgoal_tuples[alive_s_idx]):
                     print(closest_subgoal_tuples[root_idx])
                     print(closest_subgoal_tuples[alive_s_idx])
+                    # if cst[r] > cst[a] then we must ensure the opposite, i.e., cst[r] <= cst[a]
+                    # Hence, for all t in cst[r]: if subgoal(r, t) then subgoal(a, t)
+                    for t_idx in closest_subgoal_tuples[root_idx]:
+                        consistency_facts.append(f"consisteny({instance_idx},{root_idx},{alive_s_idx},{t_idx}).")
                     exit(1)
                 #print(closest_subgoal_tuples[alive_s_idx])
                 #print(closest_subgoal_states[alive_s_idx])

@@ -31,7 +31,7 @@ class Step:
         raise NotImplementedError()
 
 
-class LearningStep(Step):
+class LearningSketchesStep(Step):
     """ Incrementally learns a sketch by considering more and more instances """
     def process_config(self, config):
         return config  # By default, we do nothing
@@ -48,11 +48,33 @@ class LearningStep(Step):
     def get_step_runner(self):
         """Implement what is to be done
         """
-        from . import learning_step
-        return learning_step.run
+        from . import learning_sketches_step
+        return learning_sketches_step.run
+
+
+class LearningHierarchiesStep(Step):
+    """ Incrementally learns a sketch by considering more and more instances """
+    def process_config(self, config):
+        return config  # By default, we do nothing
+
+    def get_required_attributes(self):
+        return []
+
+    def get_required_data(self):
+        return []
+
+    def description(self):
+        return "Incremental learning module"
+
+    def get_step_runner(self):
+        """Implement what is to be done
+        """
+        from . import learning_hierarchies_step
+        return learning_hierarchies_step.run
 
 
 def generate_pipeline(pipeline, **kwargs):
+    print(pipeline)
     pipeline = DEFAULT_PIPELINES[pipeline] if isinstance(pipeline, str) else pipeline
     pipeline, config = generate_pipeline_from_list(pipeline, **kwargs)
     return pipeline
@@ -69,7 +91,10 @@ def generate_pipeline_from_list(elements, **kwargs):
 
 
 DEFAULT_PIPELINES = dict(
-    pipeline=[
-        LearningStep
+    sketches_pipeline=[
+        LearningSketchesStep
     ],
+    hierarchies_pipeline=[
+        LearningHierarchiesStep
+    ]
 )

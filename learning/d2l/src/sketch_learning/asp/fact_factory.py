@@ -23,4 +23,4 @@ class ASPFactFactory:
             facts.extend(TransitionSystemFactFactory().make_facts(instance_idx, instance_data.transition_system))
             for tuple_graph_ext in equivalence_data.instance_data_exts[instance_idx].tuple_graph_ext_by_state_index:
                 facts.extend(TupleGraphFactFactory().make_facts(instance_idx, tuple_graph_ext))
-        return "\n".join(sorted(facts))
+        return sorted(facts)

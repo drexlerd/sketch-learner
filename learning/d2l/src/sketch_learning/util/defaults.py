@@ -9,7 +9,7 @@ from ..steps import generate_pipeline
 def generate_experiment(expid, domain_dir, domain, **kwargs):
     """ """
     defaults = dict(
-        pipeline="d2l_pipeline",
+        pipeline="sketches_pipeline",
 
         # The overall time limit in seconds
         timeout=6*24*60*60,
@@ -39,7 +39,7 @@ def generate_experiment(expid, domain_dir, domain, **kwargs):
         debug_features=[],
 
         # Clingo
-        clingo_arguments=["--parallel-mode=1,split"],
+        clingo_arguments=["--parallel-mode=16,split"],
 
         quiet=False,
         random_seed=0,

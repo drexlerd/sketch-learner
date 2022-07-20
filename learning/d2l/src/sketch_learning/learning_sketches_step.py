@@ -12,39 +12,19 @@ from .returncodes import ExitCode
 from .util.command import execute, write_file, read_file, create_experiment_workspace
 from .util.timer import Timer, CountDownTimer
 
-from .instance_data.instance_data import InstanceDataFactory, InstanceData
-from .instance_data.return_codes import ReturnCode
-from .domain_data.domain_data import DomainDataFactory, DomainData
+from .instance_data.instance_data import InstanceData
+from .domain_data.domain_data import DomainData
 from .iteration_data.iteration_data import IterationData
 from .iteration_data.feature_data import FeatureDataFactory
 from .iteration_data.sketch_factory import SketchFactory
 from .iteration_data.equivalence_data import EquivalenceDataFactory
 from .asp.fact_factory import ASPFactFactory
 from .asp.answer_set_parser import AnswerSetParser, AnswerSetParser_ExitCode
-
+from .preprocessing import preprocess_instances
 
 
 def run(config, data, rng):
-    data_preprocessing_timer = Timer(True)
-    data_preprocessing_timer.resume()
-    domain_data = DomainDataFactory().make_domain_data(config)
-    instance_datas = []
-    for instance_information in config.instance_informations:
-        instance_data, return_code = InstanceDataFactory().make_instance_data(config, instance_information, domain_data)
-        if return_code == ReturnCode.SOLVABLE:
-            assert instance_data is not None
-            instance_data.print_statistics()
-            instance_datas.append(instance_data)
-        elif return_code == ReturnCode.TRIVIALLY_SOLVABLE:
-            print(f"Instance is trivially solvable.")
-        elif return_code == ReturnCode.UNSOLVABLE:
-            print(f"Instance is unsolvable.")
-        elif return_code == ReturnCode.EXHAUSTED_SIZE_LIMIT:
-            print(f"Instance is too large. Maximum number of allowed states is: {config.max_states_per_instance}.")
-        elif return_code == ReturnCode.EXHAUSTED_TIME_LIMIT:
-            print(f"Instance is too large. Time limit is: {config.sse_time_limit}")
-    instance_datas = sorted(instance_datas, key=lambda x : x.transition_system.get_num_states())
-    data_preprocessing_timer.stop()
+    domain_data, instance_datas = preprocess_instances(config)
 
     # Iteration index
     i = 0
@@ -71,9 +51,11 @@ def run(config, data, rng):
         equivalence_data = EquivalenceDataFactory().make_equivalence_class_data(selected_instance_datas, domain_feature_data, instance_feature_datas)
         # 1.3. Generate asp facts
         is_consistent = False
+        consistency_facts = []
         while not is_consistent:
             facts = ASPFactFactory().make_asp_facts(selected_instance_datas, domain_feature_data, instance_feature_datas, equivalence_data)
-            write_file(iteration_data.facts_file, facts)
+            facts.extend(consistency_facts)
+            write_file(iteration_data.facts_file, "\n".join(facts))
             asp_construction_timer.stop()
 
             # 1.5. Learn the sketch
@@ -90,8 +72,9 @@ def run(config, data, rng):
 
             sketch = SketchFactory().make_sketch(answer_set_datas[-1], domain_feature_data, config.width)
             all_consistent = True
-            for instance_data in selected_instance_datas:
-                is_instance_consistent, consistency_facts = sketch.verify_consistency(instance_data)
+            for instance_idx, instance_data in enumerate(selected_instance_datas):
+                is_instance_consistent, instance_consistency_facts = sketch.verify_consistency(instance_idx, instance_data)
+                consistency_facts.extend(instance_consistency_facts)
                 if not is_instance_consistent: all_consistent = False
             is_consistent = all_consistent
 
@@ -128,7 +111,6 @@ def run(config, data, rng):
     print(f"Numer of rules in policy sketch: {len(sketch.policy.get_rules())}")
     print(f"Number of features selected by policy sketch: {len(sketch.policy.get_boolean_features()) + len(sketch.policy.get_numerical_features())}")
     print(f"Maximum feature complexity of selected feature: {max([0] + [boolean_feature.get_boolean().compute_complexity() for boolean_feature in sketch.policy.get_boolean_features()] + [numerical_feature.get_numerical().compute_complexity() for numerical_feature in sketch.policy.get_numerical_features()])}")
-    print(f"Total time spent on data preprocessing: {data_preprocessing_timer.get_elapsed_sec():02}s")
     print(f"Total time spent on constructing ASP facts: {asp_construction_timer.get_elapsed_sec():02}")
     print(f"Total time spent on grounding and solving ASP: {learning_timer.get_elapsed_sec():02}s")
     print(f"Total time spent on validation: {validation_timer.get_elapsed_sec():02}s")
