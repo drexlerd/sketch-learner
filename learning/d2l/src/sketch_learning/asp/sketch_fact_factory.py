@@ -14,7 +14,7 @@ from .facts.instance_data.tuple_graph import TupleGraphFactFactory
 from .facts.instance_data.transition_system import TransitionSystemFactFactory
 
 
-class ASPFactFactory:
+class SketchFactFactory:
     def make_asp_facts(self, instance_datas: List[InstanceData], domain_feature_data: DomainFeatureData, rule_equivalence_data: RuleEquivalenceData, instance_state_pair_equivalence_datas: List[StatePairEquivalenceData], instance_tuple_graph_equivalence_datas: List[TupleGraphEquivalenceData]):
         facts = []
         facts.extend(DomainFeatureDataFactFactory().make_facts(domain_feature_data))

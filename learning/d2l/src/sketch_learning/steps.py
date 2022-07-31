@@ -74,7 +74,6 @@ class LearningHierarchiesStep(Step):
 
 
 def generate_pipeline(pipeline, **kwargs):
-    print(pipeline)
     pipeline = DEFAULT_PIPELINES[pipeline] if isinstance(pipeline, str) else pipeline
     pipeline, config = generate_pipeline_from_list(pipeline, **kwargs)
     return pipeline

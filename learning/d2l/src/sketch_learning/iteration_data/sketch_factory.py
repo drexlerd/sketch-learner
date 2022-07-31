@@ -18,7 +18,7 @@ class Sketch:
     def _verify_bounded_width(self, instance_data: InstanceData):
         """ Check whether the width of all subproblems is bounded.
         """
-        self.policy.clear_cache()
+        evaluation_context = dlplan.EvaluationCache(len(self.policy.get_boolean_features()), len(self.policy.get_numerical_features()))
         closest_subgoal_states = defaultdict(set)
         closest_subgoal_tuples = defaultdict(set)
         for root_idx in range(instance_data.transition_system.get_num_states()):
@@ -26,6 +26,7 @@ class Sketch:
             tg = instance_data.tuple_graphs_by_state_index[root_idx]
             if tg is None: continue  # no tuple graph indicates that we don't care about the information of this state.
             bounded = False
+            source_context = dlplan.EvaluationContext(root_idx, dlplan_state, evaluation_context)
             if tg.width == 0:
                 low = 1
             else:
@@ -36,7 +37,8 @@ class Sketch:
                     assert tg.t_idx_to_s_idxs[t_idx]
                     for s_idx in tg.t_idx_to_s_idxs[t_idx]:
                         target_state = instance_data.transition_system.states_by_index[s_idx]
-                        if self.policy.evaluate_lazy(root_idx, dlplan_state, s_idx, target_state) is None:
+                        target_context = dlplan.EvaluationContext(s_idx, target_state, evaluation_context)
+                        if self.policy.evaluate_lazy(source_context, target_context) is None:
                             subgoal = False
                         else:
                             closest_subgoal_states[tg.root_idx].add(s_idx)

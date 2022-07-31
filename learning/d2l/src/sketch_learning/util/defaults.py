@@ -56,7 +56,12 @@ def generate_experiment(expid, domain_dir, domain, **kwargs):
 
     parameters["domain_filename"] = BENCHMARK_DIR / domain_dir / f"{domain}.pddl"
 
-    parameters["sketch_file"] = parameters['experiment_dir'] / "sketch.txt"
+    parameters["output_sketch_filename"] = parameters['experiment_dir'] / "sketch.txt"
+
+    width = parameters["width"]
+    parameters["input_sketch_filename"] = BASEDIR / "sketches" / domain_dir / f"{domain_dir}_{width}.txt"
+
+    print(parameters["input_sketch_filename"])
 
     # Initialize instances
     parameters["instance_informations"] = []

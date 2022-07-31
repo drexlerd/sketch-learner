@@ -31,21 +31,20 @@ class TupleGraphEquivalenceData:
 
 
 class TupleGraphEquivalenceDataFactory:
-    def make_equivalence_data(self, instance_datas: List[InstanceData], instance_state_pair_equivalence_datas: List[StatePairEquivalenceData]):
-        instance_tuple_graph_equivalence_datas = []
-        for instance_data, instance_state_pair_equivalence_data in zip(instance_datas, instance_state_pair_equivalence_datas):
-            instance_tuple_graph_equivalence_data = []
+    def make_equivalence_data(self, instance_datas: List[InstanceData], state_pair_equivalence_datas: List[StatePairEquivalenceData]):
+        tuple_graph_equivalence_datas = []
+        for instance_data, state_pair_equivalence_data in zip(instance_datas, state_pair_equivalence_datas):
+            tuple_graph_equivalence_data = []
             for tuple_graph in instance_data.tuple_graphs_by_state_index:
                 if tuple_graph is None:
-                    instance_tuple_graph_equivalence_data.append(None)
+                    tuple_graph_equivalence_data.append(None)
                     continue
-                root_idx = tuple_graph.root_idx
                 r_idxs_by_distance = []
                 r_idx_to_deadend_distance = dict()
                 for d, layer in enumerate(tuple_graph.s_idxs_by_distance):
                     r_idxs = []
                     for s_idx in layer:
-                        r_idx = instance_state_pair_equivalence_data.state_pair_to_r_idx[(tuple_graph.root_idx, s_idx)]
+                        r_idx = state_pair_equivalence_data.state_pair_to_r_idx[(tuple_graph.root_idx, s_idx)]
                         r_idxs.append(r_idx)
                         if instance_data.transition_system.is_deadend(s_idx):
                             # the first time we write r_idx = d, d is smallest value.
@@ -56,26 +55,26 @@ class TupleGraphEquivalenceDataFactory:
                 for t_idxs in tuple_graph.t_idxs_by_distance:
                     for t_idx in t_idxs:
                         for s_idx in tuple_graph.t_idx_to_s_idxs[t_idx]:
-                            r_idx = instance_state_pair_equivalence_data.state_pair_to_r_idx[(tuple_graph.root_idx, s_idx)]
+                            r_idx = state_pair_equivalence_data.state_pair_to_r_idx[(tuple_graph.root_idx, s_idx)]
                             t_idx_to_r_idxs[t_idx].add(r_idx)
                             r_idx_to_t_idxs[r_idx].add(t_idx)
-                instance_tuple_graph_equivalence_data.append(TupleGraphEquivalenceData(r_idxs_by_distance, t_idx_to_r_idxs, r_idx_to_t_idxs, r_idx_to_deadend_distance))
-            instance_tuple_graph_equivalence_datas.append(instance_tuple_graph_equivalence_data)
-        return instance_tuple_graph_equivalence_datas
+                tuple_graph_equivalence_data.append(TupleGraphEquivalenceData(r_idxs_by_distance, t_idx_to_r_idxs, r_idx_to_t_idxs, r_idx_to_deadend_distance))
+            tuple_graph_equivalence_datas.append(tuple_graph_equivalence_data)
+        return tuple_graph_equivalence_datas
 
 
 class StatePairEquivalenceDataFactory:
-    def make_equivalence_data(self, instance_state_pair_datas: List[StatePairData], domain_feature_data: DomainFeatureData, instance_feature_datas: List[InstanceFeatureData]):
+    def make_equivalence_data(self, state_pair_datas: List[StatePairData], domain_feature_data: DomainFeatureData, instance_feature_datas: List[InstanceFeatureData]):
         policy_builder = dlplan.PolicyBuilder()
         policy_boolean_features = [policy_builder.add_boolean_feature(b) for b in domain_feature_data.boolean_features]
         policy_numerical_features = [policy_builder.add_numerical_feature(n) for n in domain_feature_data.numerical_features]
         rules = []
         rule_repr_to_idx = dict()
-        instance_state_pair_equivalence_datas = []
-        for instance_feature_data, instance_state_pair_data in zip(instance_feature_datas, instance_state_pair_datas):
+        state_pair_equivalence_datas = []
+        for instance_feature_data, state_pair_data in zip(instance_feature_datas, state_pair_datas):
             r_idx_to_state_pairs = defaultdict(list)
             state_pair_to_r_idx = dict()
-            for source_idx, target_idx in instance_state_pair_data.state_pairs:
+            for source_idx, target_idx in state_pair_data.state_pairs:
                 # add conditions
                 conditions = self._make_conditions(policy_builder, source_idx, policy_boolean_features, policy_numerical_features, instance_feature_data)
                 # add effects
@@ -92,8 +91,8 @@ class StatePairEquivalenceDataFactory:
                 state_pair = (source_idx, target_idx)
                 r_idx_to_state_pairs[r_idx].append(state_pair)
                 state_pair_to_r_idx[state_pair] = r_idx
-            instance_state_pair_equivalence_datas.append(StatePairEquivalenceData(r_idx_to_state_pairs, state_pair_to_r_idx))
-        return RuleEquivalenceData(rules), instance_state_pair_equivalence_datas
+            state_pair_equivalence_datas.append(StatePairEquivalenceData(r_idx_to_state_pairs, state_pair_to_r_idx))
+        return RuleEquivalenceData(rules), state_pair_equivalence_datas
 
     def _make_conditions(self, policy_builder: dlplan.PolicyBuilder, source_idx: int, policy_boolean_features, policy_numerical_features, instance_feature_data):
         """ Create conditions over all features that are satisfied in source_idx """

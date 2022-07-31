@@ -20,5 +20,6 @@ class TupleGraphFactFactory():
             facts.add(f"d_distance({instance_idx},{tuple_graph.root_idx},{r_idx},{d}).")
         for r_idx, state_pairs in state_pair_equivalence_data.r_idx_to_state_pairs.items():
             for (source_idx, target_idx) in state_pairs:
+                if tuple_graph.width == 0 and source_idx == target_idx: continue
                 facts.add(f"equivalence_contains({instance_idx},{r_idx},{source_idx},{target_idx}).")
         return list(facts)

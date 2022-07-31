@@ -19,7 +19,7 @@ from .iteration_data.feature_data import FeatureDataFactory
 from .iteration_data.sketch_factory import SketchFactory
 from .iteration_data.equivalence_data import StatePairEquivalenceDataFactory, TupleGraphEquivalenceDataFactory
 from .iteration_data.state_pair_data import StatePairDataFactory
-from .asp.fact_factory import ASPFactFactory
+from .asp.sketch_fact_factory import SketchFactFactory
 from .asp.answer_set_parser import AnswerSetParser, AnswerSetParser_ExitCode
 from .preprocessing import preprocess_instances
 
@@ -49,15 +49,15 @@ def run(config, data, rng):
 
         # 1.2. Generate feature pool
         domain_feature_data, instance_feature_datas = FeatureDataFactory().generate_feature_data(config, domain_data, selected_instance_datas)
-        instance_state_pair_datas = StatePairDataFactory().make_state_pairs_from_tuple_graphs(selected_instance_datas)
-        rule_equivalence_data, instance_state_pair_equivalence_datas = StatePairEquivalenceDataFactory().make_equivalence_data(instance_state_pair_datas, domain_feature_data, instance_feature_datas)
-        instance_tuple_graph_equivalence_datas = TupleGraphEquivalenceDataFactory().make_equivalence_data(selected_instance_datas, instance_state_pair_equivalence_datas)
+        state_pair_datas = StatePairDataFactory().make_state_pairs_from_tuple_graphs(selected_instance_datas)
+        rule_equivalence_data, state_pair_equivalence_datas = StatePairEquivalenceDataFactory().make_equivalence_data(state_pair_datas, domain_feature_data, instance_feature_datas)
+        tuple_graph_equivalence_datas = TupleGraphEquivalenceDataFactory().make_equivalence_data(selected_instance_datas, state_pair_equivalence_datas)
 
         # 1.3. Generate asp facts
         is_consistent = False
         consistency_facts = []
         while not is_consistent:
-            facts = ASPFactFactory().make_asp_facts(selected_instance_datas, domain_feature_data, rule_equivalence_data, instance_state_pair_equivalence_datas, instance_tuple_graph_equivalence_datas)
+            facts = SketchFactFactory().make_asp_facts(selected_instance_datas, domain_feature_data, rule_equivalence_data, state_pair_equivalence_datas, tuple_graph_equivalence_datas)
             facts.extend(consistency_facts)
             write_file(iteration_data.facts_file, "\n".join(facts))
             asp_construction_timer.stop()
@@ -82,10 +82,9 @@ def run(config, data, rng):
                 if not is_instance_consistent: all_consistent = False
             is_consistent = all_consistent
 
-
         logging.info("Learned the following sketch:")
         print(sketch.policy.str())
-        with open(iteration_data.sketch_file, "w") as file:
+        with open(iteration_data.output_sketch_file, "w") as file:
             file.write(dlplan.PolicyWriter().write(sketch.policy))
 
         # Step 2: try the sketch on all instances until there are
@@ -120,7 +119,7 @@ def run(config, data, rng):
     print(f"Total time spent on validation: {validation_timer.get_elapsed_sec():02}s")
     print("Resulting sketch:")
     print(sketch.policy.str())
-    with open(config.sketch_file, "w") as file:
+    with open(config.output_sketch_filename, "w") as file:
             file.write(dlplan.PolicyWriter().write(sketch.policy))
 
     return ExitCode.Success, None
@@ -134,5 +133,5 @@ def initialize_iteration_data(config, i):
     iteration_data.iteration_dir = iteration_dir
     iteration_data.facts_file = iteration_dir / "facts.lp"
     iteration_data.answer_set_file = iteration_dir / "answer_set.txt"
-    iteration_data.sketch_file = iteration_dir / "sketch.txt"
+    iteration_data.output_sketch_file = iteration_dir / "sketch.txt"
     return iteration_data
