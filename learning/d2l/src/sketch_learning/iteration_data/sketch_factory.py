@@ -1,6 +1,7 @@
 import re
 import dlplan
 import math
+from clingo import Model
 from typing import Dict, List, MutableSet
 from dataclasses import dataclass, field
 from collections import defaultdict, OrderedDict, deque
@@ -153,17 +154,23 @@ class Sketch:
 
 
 class SketchFactory:
-    def make_sketch(self, answer_set_data: AnswerSetData, domain_feature_data: DomainFeatureData, width: int):
+    def make_sketch(self, model: Model, domain_feature_data: DomainFeatureData, width: int):
         """ Parses set of facts into dlplan.Policy """
         policy_builder = dlplan.PolicyBuilder()
-        boolean_policy_features, numerical_policy_features = self._add_features(policy_builder, answer_set_data, domain_feature_data)
-        self._add_rules(policy_builder, answer_set_data, boolean_policy_features, numerical_policy_features)
+        boolean_policy_features, numerical_policy_features = self._add_features(policy_builder, model, domain_feature_data)
+        self._add_rules(policy_builder, model, boolean_policy_features, numerical_policy_features)
         return Sketch(policy_builder.get_result(), width)
 
 
-    def _add_features(self, policy_builder: dlplan.PolicyBuilder, answer_set_data: AnswerSetData, domain_feature_data: DomainFeatureData):
+    def _add_features(self, policy_builder: dlplan.PolicyBuilder, model: Model, domain_feature_data: DomainFeatureData):
         f_idx_to_boolean_policy_feature = dict()
         f_idx_to_numerical_policy_feature = dict()
+        for symbol in model.symbols(shown=True):
+            #print(symbol)
+            #print(symbol.name)
+            #print(symbol.arguments)
+            if symbol.name == "select":
+                print(symbol)
         for fact in answer_set_data.facts:
             matches = re.findall(r"select\(([bn])(\d+)\)", fact)
             if matches:
@@ -178,7 +185,7 @@ class SketchFactory:
                     raise Exception("Cannot parse feature {fact}")
         return f_idx_to_boolean_policy_feature, f_idx_to_numerical_policy_feature
 
-    def _add_rules(self, policy_builder: dlplan.PolicyBuilder, answer_set_data: AnswerSetData, boolean_policy_features, numerical_policy_features):
+    def _add_rules(self, policy_builder: dlplan.PolicyBuilder, model: Model, boolean_policy_features, numerical_policy_features):
         rules = dict()
         for fact in answer_set_data.facts:
             matches = re.findall(r"rule\((\d+)\)", fact)

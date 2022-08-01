@@ -60,16 +60,9 @@ def run(config, data, rng):
             sketch_asp_factory = SketchASPFactory(config)
             facts = sketch_asp_factory.make_facts(selected_instance_datas, domain_feature_data, rule_equivalence_data, state_pair_equivalence_datas, tuple_graph_equivalence_datas)
             sketch_asp_factory.ground(facts)
-            sketch_asp_factory.solve()
-
-            # 1.6. Parse the sketch from the answer set
-            answer_set_file_content = read_file(iteration_data.answer_set_file)
-            answer_set_datas, exitcode = AnswerSetParser().parse(answer_set_file_content)
-            if exitcode == AnswerSetParser_ExitCode.Unsatisfiable:
-                logging.info("UNSATISFIABLE! No sketch was found.")
-                return ExitCode.Unsatisfiable, None
-
-            sketch = SketchFactory().make_sketch(answer_set_datas[-1], domain_feature_data, config.width)
+            model = sketch_asp_factory.solve()
+            print(model.symbols(shown=True))
+            sketch = SketchFactory().make_sketch(model, domain_feature_data, config.width)
             all_consistent = True
             for instance_idx, instance_data in enumerate(selected_instance_datas):
                 is_instance_consistent, instance_consistency_facts = sketch.verify_consistency(instance_idx, instance_data)
