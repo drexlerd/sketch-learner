@@ -42,7 +42,6 @@ def run(config, data, rng):
         logging.info(f"Iteration: {i}")
         # 1.0: Initialize iteration directory
         iteration_data = initialize_iteration_data(config, i)
-        asp_construction_timer.resume()
         selected_instance_datas.append(instance_data)
 
         print(f"Number of selected instances: {len(selected_instance_datas)}")
@@ -58,17 +57,10 @@ def run(config, data, rng):
         is_consistent = False
         consistency_facts = []
         while not is_consistent:
-            facts = SketchFactFactory().make_asp_facts(selected_instance_datas, domain_feature_data, rule_equivalence_data, state_pair_equivalence_datas, tuple_graph_equivalence_datas)
-            facts.extend(consistency_facts)
-            write_file(iteration_data.facts_file, "\n".join(facts))
-            asp_construction_timer.stop()
-
-            sketch_asp_factory = SketchASPFactory(str(config.asp_problem_location))
-
-            # 1.5. Learn the sketch
-            learning_timer.resume()
-            execute(["clingo", iteration_data.facts_file, config.asp_problem_location, "-c", f"max_sketch_rules={config.max_sketch_rules}"] + config.clingo_arguments, stdout=iteration_data.answer_set_file)
-            learning_timer.stop()
+            sketch_asp_factory = SketchASPFactory(config)
+            facts = sketch_asp_factory.make_facts(selected_instance_datas, domain_feature_data, rule_equivalence_data, state_pair_equivalence_datas, tuple_graph_equivalence_datas)
+            sketch_asp_factory.ground(facts)
+            sketch_asp_factory.solve()
 
             # 1.6. Parse the sketch from the answer set
             answer_set_file_content = read_file(iteration_data.answer_set_file)
