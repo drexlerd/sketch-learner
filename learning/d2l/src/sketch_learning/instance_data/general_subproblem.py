@@ -41,49 +41,48 @@ class GeneralSubproblemFactory:
     def make_generalized_subproblems(self, instance_data: InstanceData, sketch: dlplan.Policy, rule: dlplan.Rule):
         for s_idx, state in enumerate(instance_data.transition_system.states_by_index):
             print(s_idx, str(state))
+        final_expanded_states = set()
+        final_generated_states = set()
+        final_forward_transitions = defaultdict(set)
         for root_idx in range(instance_data.transition_system.get_num_states()):
-            if instance_data.tuple_graphs_by_state_index[root_idx] is None: continue
-            subgoal_states = self._compute_subgoal_states_in_generalized_subproblem(instance_data, root_idx, sketch, rule)
-            print(subgoal_states)
-            expanded_states, generated_states, relevant_forward_transitions = self._compute_transitions_in_generalized_subproblem(instance_data, root_idx, subgoal_states)
+            closest_subgoal_states = self._compute_closest_subgoal_states(instance_data, root_idx, sketch, rule)
+            if not closest_subgoal_states:
+                continue
+            expanded_states, generated_states, relevant_forward_transitions = self._compute_transitions_to_closest_subgoal_states(instance_data, root_idx, closest_subgoal_states)
+            final_expanded_states.update(expanded_states)
+            final_generated_states.update(generated_states)
+            for source_idx, transitions in relevant_forward_transitions.items():
+                final_forward_transitions[source_idx].add(frozenset(transitions))
+            print(root_idx)
+            print(closest_subgoal_states)
             print(relevant_forward_transitions)
+        print(final_forward_transitions)
+        # TODO: compute minimal transition sets to reduce number of constraints
         return []
 
-    def _compute_subgoal_states_in_generalized_subproblem(self, instance_data: InstanceData, root_idx: int, sketch: dlplan.Policy, rule: dlplan.Rule, include_closer=False):
-        """ Compute the closest subgoal states that bound the width. """
+    def _compute_closest_subgoal_states(self, instance_data: InstanceData, root_idx: int, sketch: dlplan.Policy, rule: dlplan.Rule):
         evaluation_cache = dlplan.EvaluationCache(len(sketch.get_boolean_features()), len(sketch.get_numerical_features()))
         root_context = dlplan.EvaluationContext(root_idx, instance_data.transition_system.states_by_index[root_idx], evaluation_cache)
-        tuple_graph = instance_data.tuple_graphs_by_state_index[root_idx]
-        bounded = False
-        closest_subgoal_states = set()
-        for t_idxs in tuple_graph.t_idxs_by_distance:
-            if not include_closer:
-                closest_subgoal_states = set()
-            for t_idx in t_idxs:
-                is_subgoal_tuple = True
-                for s_idx in tuple_graph.t_idx_to_s_idxs[t_idx]:
-                    target_context = dlplan.EvaluationContext(s_idx, instance_data.transition_system.states_by_index[s_idx], evaluation_cache)
-                    if instance_data.transition_system.is_goal(s_idx) or \
-                        (rule.evaluate_conditions(root_context) and
-                         rule.evaluate_effects(root_context, target_context)):
-                        closest_subgoal_states.add(s_idx)
-                    else:
-                        is_subgoal_tuple = False
-                if is_subgoal_tuple:
-                    bounded = True
-            if bounded:
-                break
-        if not bounded:
-            raise Exception("Width of subproblem is not bounded correctly.")
-        return closest_subgoal_states
+        if not rule.evaluate_conditions(root_context):
+            return set()
+        layers = instance_data.transition_system.compute_states_by_distance(root_idx)
+        for layer in layers:
+            closest_subgoal_states = set()
+            for target_idx in layer:
+                target_context = dlplan.EvaluationContext(target_idx, instance_data.transition_system.states_by_index[target_idx], evaluation_cache)
+                if rule.evaluate_effects(root_context, target_context):
+                    closest_subgoal_states.add(target_idx)
+            if closest_subgoal_states:
+                return closest_subgoal_states
+        return set()
 
-    def _compute_transitions_in_generalized_subproblem(self, instance_data: InstanceData, initial_state: int, subgoal_states: MutableSet[int]):
+    def _compute_transitions_to_closest_subgoal_states(self, instance_data: InstanceData, root_idx: int, closest_subgoal_states: MutableSet[int]):
         """ Compute set of transitions starting at states reached optimally from the initial states. """
         # 1. backward from subgoal states: compute optimal/not optimal transitions
         queue = deque()
         distances = dict()
         forward_transitions = defaultdict(set)
-        for target_idx in subgoal_states:
+        for target_idx in closest_subgoal_states:
             queue.append(target_idx)
             distances[target_idx] = 0
         while queue:
@@ -103,12 +102,12 @@ class GeneralSubproblemFactory:
         expanded_states = set()
         generated_states = set()
         relevant_forward_transitions = defaultdict(set)
-        assert instance_data.transition_system.is_alive(initial_state)
-        queue.append(initial_state)
-        generated_states.add(initial_state)
+        assert instance_data.transition_system.is_alive(root_idx)
+        queue.append(root_idx)
+        generated_states.add(root_idx)
         while queue:
             source_idx = queue.popleft()
-            if source_idx in subgoal_states:
+            if source_idx in closest_subgoal_states:
                 continue
             expanded_states.add(source_idx)
             relevant_forward_transitions[source_idx] = forward_transitions[source_idx]
