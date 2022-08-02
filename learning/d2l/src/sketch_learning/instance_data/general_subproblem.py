@@ -57,6 +57,22 @@ class GeneralSubproblemFactory:
             print(closest_subgoal_states)
             print(relevant_forward_transitions)
         print(final_forward_transitions)
+        # TODO: filter minimal elements
+        result_forward_transitions = defaultdict(set)
+        for root_idx, transitionss in final_forward_transitions.items():
+            prec = defaultdict(set)
+            for transitions_1 in transitionss:
+                for transitions_2 in transitionss:
+                    if transitions_1.issubset(transitions_2):
+                        prec[transitions_2].add(transitions_1)
+            for transitions, transitionss in prec.items():
+                if len(transitionss) == 0:
+                    result_forward_transitions[root_idx].add(transitions)
+        print()
+        print(final_forward_transitions)
+        print(result_forward_transitions)
+        print()
+
         # TODO: compute minimal transition sets to reduce number of constraints
         return []
 
