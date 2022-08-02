@@ -73,4 +73,6 @@ class FeatureDataFactory:
             for numerical_feature in numerical_features:
                 n_per_state.append(numerical_feature.evaluate(dlplan_state))
             numerical_feature_valuations[s_idx] = n_per_state
+        for s_idx, state in enumerate(instance_data.transition_system.states_by_index):
+            print(s_idx, str(state), numerical_feature_valuations[s_idx])
         return InstanceFeatureData(boolean_feature_valuations, numerical_feature_valuations)

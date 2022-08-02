@@ -15,7 +15,6 @@ def experiments():
     )
 
     exps["debug"] = update_dict(
-        # instances
         strips_base,
         domain_dir="blocks_4",
         instances=training_instances_4(),
@@ -28,31 +27,30 @@ def experiments():
     )
 
     exps["small"] = update_dict(
-        # instances
         strips_base,
         domain_dir="blocks_4",
         instances=training_instances_4(),
     )
 
     exps["clear"] = update_dict(
-        # imnstances
         strips_base,
         domain_dir="blocks_4_clear",
         instances=training_instances_4_fixed_goal(),
     )
 
     exps["on"] = update_dict(
-        # imnstances
         strips_base,
+        pipeline="sketches_pipeline",
         domain_dir="blocks_4_on",
+        debug_features=["n_count(c_equal(r_primitive(on,0,1),r_primitive(on_g,0,1)))"],
         instances=training_instances_4_fixed_goal(),
     )
     return exps
 
 
 def training_instances_4():
-    return [f"p-{i}-{j}" for i in range(3, 6) for j in range(0,200)]
+    return [f"p-{i}-{j}" for i in range(2, 6) for j in range(0,200)]
 
 def training_instances_4_fixed_goal():
     """ For fixed goal we do not need to use random seeds. """
-    return [f"p-{i}-0" for i in range(3, 6)]
+    return [f"p-{i}-0" for i in range(3, 4)]

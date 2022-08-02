@@ -74,7 +74,7 @@ def normalize_atom_name(name: str):
     tmp = name.replace('()', '').replace(')', '').replace('(', ',')
     if "=" in tmp:  # We have a functional atom
         tmp = tmp.replace("=", ',')
-    return tmp.split(',')
+    return [x.strip() for x in tmp.split(',')]
 
 
 def parse_static_atoms(instance_info: dlplan.InstanceInfo, filename: str):

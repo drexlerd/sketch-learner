@@ -34,9 +34,6 @@ def run(config, data, rng):
     instance_data = instance_datas[0]
     selected_instance_datas = []
     largest_unsolved_instance_idx = 0
-    asp_construction_timer = Timer(True)
-    learning_timer = Timer(True)
-    validation_timer = Timer(True)
     timer = CountDownTimer(config.timeout)
     while not timer.is_expired():
         logging.info(f"Iteration: {i}")
@@ -61,7 +58,7 @@ def run(config, data, rng):
             facts = sketch_asp_factory.make_facts(selected_instance_datas, domain_feature_data, rule_equivalence_data, state_pair_equivalence_datas, tuple_graph_equivalence_datas)
             sketch_asp_factory.ground(facts)
             model = sketch_asp_factory.solve()
-            print(model.symbols(shown=True))
+            sketch_asp_factory.print_statistics()
             sketch = SketchFactory().make_sketch(model, domain_feature_data, config.width)
             all_consistent = True
             for instance_idx, instance_data in enumerate(selected_instance_datas):
@@ -72,13 +69,10 @@ def run(config, data, rng):
 
         logging.info("Learned the following sketch:")
         print(sketch.policy.str())
-        with open(iteration_data.output_sketch_file, "w") as file:
-            file.write(dlplan.PolicyWriter().write(sketch.policy))
 
         # Step 2: try the sketch on all instances until there are
         # (1) either no more instances then we return the sketch, or
         # (2) the sketch fails then we add the instance and do another iteration.
-        validation_timer.resume()
         all_solved = True
         assert all([sketch.solves(instance_data) for instance_data in selected_instance_datas])
         for j in range(len(instance_datas)):
@@ -89,7 +83,6 @@ def run(config, data, rng):
                     largest_unsolved_instance_idx = j
                     selected_instance_datas = []
                 break
-        validation_timer.stop()
         if all_solved:
             break
         i += 1
@@ -99,12 +92,9 @@ def run(config, data, rng):
     print(f"Number of training instances included in the ASP: {len(selected_instance_datas)}")
     print(f"Number of states included in the ASP: {sum([len(instance_data.transition_system.states_by_index) for instance_data in selected_instance_datas])}")
     print(f"Number of features in the pool: {len(domain_feature_data.boolean_features) + len(domain_feature_data.numerical_features)}")
-    print(f"Numer of rules in policy sketch: {len(sketch.policy.get_rules())}")
-    print(f"Number of features selected by policy sketch: {len(sketch.policy.get_boolean_features()) + len(sketch.policy.get_numerical_features())}")
-    print(f"Maximum feature complexity of selected feature: {max([0] + [boolean_feature.get_boolean().compute_complexity() for boolean_feature in sketch.policy.get_boolean_features()] + [numerical_feature.get_numerical().compute_complexity() for numerical_feature in sketch.policy.get_numerical_features()])}")
-    print(f"Total time spent on constructing ASP facts: {asp_construction_timer.get_elapsed_sec():02}")
-    print(f"Total time spent on grounding and solving ASP: {learning_timer.get_elapsed_sec():02}s")
-    print(f"Total time spent on validation: {validation_timer.get_elapsed_sec():02}s")
+    print(f"Numer of sketch rules: {len(sketch.policy.get_rules())}")
+    print(f"Number of selected features: {len(sketch.policy.get_boolean_features()) + len(sketch.policy.get_numerical_features())}")
+    print(f"Maximum complexity of selected feature: {max([0] + [boolean_feature.get_boolean().compute_complexity() for boolean_feature in sketch.policy.get_boolean_features()] + [numerical_feature.get_numerical().compute_complexity() for numerical_feature in sketch.policy.get_numerical_features()])}")
     print("Resulting sketch:")
     print(sketch.policy.str())
     with open(config.output_sketch_filename, "w") as file:

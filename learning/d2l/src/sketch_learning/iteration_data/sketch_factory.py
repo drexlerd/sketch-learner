@@ -19,7 +19,7 @@ class Sketch:
     def _verify_bounded_width(self, instance_data: InstanceData):
         """ Check whether the width of all subproblems is bounded.
         """
-        evaluation_context = dlplan.EvaluationCache(len(self.policy.get_boolean_features()), len(self.policy.get_numerical_features()))
+        evaluation_cache = dlplan.EvaluationCache(len(self.policy.get_boolean_features()), len(self.policy.get_numerical_features()))
         closest_subgoal_states = defaultdict(set)
         closest_subgoal_tuples = defaultdict(set)
         for root_idx in range(instance_data.transition_system.get_num_states()):
@@ -27,25 +27,27 @@ class Sketch:
             tg = instance_data.tuple_graphs_by_state_index[root_idx]
             if tg is None: continue  # no tuple graph indicates that we don't care about the information of this state.
             bounded = False
-            source_context = dlplan.EvaluationContext(root_idx, dlplan_state, evaluation_context)
+            source_context = dlplan.EvaluationContext(root_idx, dlplan_state, evaluation_cache)
             if tg.width == 0:
                 low = 1
             else:
                 low = 0
             for d in range(low, len(tg.s_idxs_by_distance)):
                 for t_idx in tg.t_idxs_by_distance[d]:  # check if t_idxs is a subgoal
+                    if root_idx == 1 and d == 3: print(t_idx)
                     subgoal = True
                     assert tg.t_idx_to_s_idxs[t_idx]
                     for s_idx in tg.t_idx_to_s_idxs[t_idx]:
                         target_state = instance_data.transition_system.states_by_index[s_idx]
-                        target_context = dlplan.EvaluationContext(s_idx, target_state, evaluation_context)
-                        if self.policy.evaluate_lazy(source_context, target_context) is None:
-                            subgoal = False
-                        else:
+                        target_context = dlplan.EvaluationContext(s_idx, target_state, evaluation_cache)
+                        if self.policy.evaluate_lazy(source_context, target_context) is not None \
+                            or instance_data.transition_system.is_goal(s_idx):
                             closest_subgoal_states[tg.root_idx].add(s_idx)
                             if instance_data.transition_system.is_deadend(s_idx):
                                 print(f"Sketch leads to unsolvable state: {str(target_state)}")
                                 return [], [], False
+                        else:
+                            subgoal = False
                     if subgoal:
                         closest_subgoal_tuples[tg.root_idx].add(t_idx)
                         bounded = True
@@ -98,14 +100,14 @@ class Sketch:
         # 2. For each state s with subgoal tuples T check whether every state s'
         #    that is on an optimal path from s to T with subgoal tuples T'
         #    holds that T' subseteq T
-        for state in instance_data.transition_system.states_by_index:
-            print(str(state))
+        for s_idx, state in enumerate(instance_data.transition_system.states_by_index):
+            print(s_idx, str(state))
         for root_idx in range(instance_data.transition_system.get_num_states()):
             if instance_data.tuple_graphs_by_state_index[root_idx] is None: continue
             optimal_forward_transitions, _ = instance_data.transition_system.compute_optimal_transitions_to_states(closest_subgoal_states[root_idx])
             # filter only transitions on optimal paths to subgoal
             relevant_optimal_forward_transitions = defaultdict(set)
-            alive_s_idxs_on_optimal_paths = set()
+            alive_s_idxs_on_optimal_paths = {root_idx}
             distances = dict()
             queue = deque()
             distances[root_idx] = 0
@@ -122,7 +124,7 @@ class Sketch:
                         if target_idx not in closest_subgoal_states[source_idx]:
                             alive_s_idxs_on_optimal_paths.add(target_idx)
                         relevant_optimal_forward_transitions[source_idx].add(target_idx)
-            print(alive_s_idxs_on_optimal_paths)
+            print(root_idx, closest_subgoal_states, alive_s_idxs_on_optimal_paths, relevant_optimal_forward_transitions)
             for alive_s_idx in alive_s_idxs_on_optimal_paths:
                 if not (closest_subgoal_tuples[root_idx].issubset(closest_subgoal_tuples[alive_s_idx]) or \
                         closest_subgoal_tuples[root_idx] == closest_subgoal_tuples[alive_s_idx]):
@@ -131,7 +133,8 @@ class Sketch:
                     # if cst[r] > cst[a] then we must ensure the opposite, i.e., cst[r] <= cst[a]
                     # Hence, for all t in cst[r]: if subgoal(r, t) then subgoal(a, t)
                     for t_idx in closest_subgoal_tuples[root_idx]:
-                        consistency_facts.append(f"consisteny({instance_idx},{root_idx},{alive_s_idx},{t_idx}).")
+                        consistency_facts.append(("consisteny", [instance_idx, root_idx, alive_s_idx, t_idx]))
+                    print("inconsistent")
                     exit(1)
                 #print(closest_subgoal_tuples[alive_s_idx])
                 #print(closest_subgoal_states[alive_s_idx])
@@ -157,70 +160,54 @@ class SketchFactory:
     def make_sketch(self, model: Model, domain_feature_data: DomainFeatureData, width: int):
         """ Parses set of facts into dlplan.Policy """
         policy_builder = dlplan.PolicyBuilder()
-        boolean_policy_features, numerical_policy_features = self._add_features(policy_builder, model, domain_feature_data)
-        self._add_rules(policy_builder, model, boolean_policy_features, numerical_policy_features)
+        f_idx_to_policy_feature = self._add_features(policy_builder, model, domain_feature_data)
+        self._add_rules(policy_builder, model, f_idx_to_policy_feature)
         return Sketch(policy_builder.get_result(), width)
 
 
     def _add_features(self, policy_builder: dlplan.PolicyBuilder, model: Model, domain_feature_data: DomainFeatureData):
-        f_idx_to_boolean_policy_feature = dict()
-        f_idx_to_numerical_policy_feature = dict()
+        f_idx_to_policy_feature = dict()
         for symbol in model.symbols(shown=True):
-            #print(symbol)
-            #print(symbol.name)
-            #print(symbol.arguments)
             if symbol.name == "select":
-                print(symbol)
-        for fact in answer_set_data.facts:
-            matches = re.findall(r"select\(([bn])(\d+)\)", fact)
-            if matches:
-                assert len(matches) == 1
-                f_type = matches[0][0]
-                f_idx = int(matches[0][1])
-                if f_type == "b":
-                    f_idx_to_boolean_policy_feature[f_idx] = policy_builder.add_boolean_feature(domain_feature_data.boolean_features[f_idx])
-                elif f_type == "n":
-                    f_idx_to_numerical_policy_feature[f_idx] = policy_builder.add_numerical_feature(domain_feature_data.numerical_features[f_idx])
+                f_idx = symbol.arguments[0].number
+                if f_idx < len(domain_feature_data.boolean_features):
+                    f_idx_to_policy_feature[f_idx] = policy_builder.add_boolean_feature(domain_feature_data.boolean_features[f_idx])
                 else:
-                    raise Exception("Cannot parse feature {fact}")
-        return f_idx_to_boolean_policy_feature, f_idx_to_numerical_policy_feature
+                    f_idx_to_policy_feature[f_idx] = policy_builder.add_numerical_feature(domain_feature_data.numerical_features[f_idx - len(domain_feature_data.boolean_features)])
+        return f_idx_to_policy_feature
 
-    def _add_rules(self, policy_builder: dlplan.PolicyBuilder, model: Model, boolean_policy_features, numerical_policy_features):
+    def _add_rules(self, policy_builder: dlplan.PolicyBuilder, model: Model, f_idx_to_policy_feature):
         rules = dict()
-        for fact in answer_set_data.facts:
-            matches = re.findall(r"rule\((\d+)\)", fact)
-            if matches:
-                assert len(matches) == 1
-                r_key = int(matches[0])
-                rules[r_key] = [[], []]  # conditions and effects
-        for fact in answer_set_data.facts:
-            self._try_parse_condition(r"c_eq\((\d+),n(\d+)\)", fact, rules, policy_builder.add_eq_condition, numerical_policy_features)
-            self._try_parse_condition(r"c_gt\((\d+),n(\d+)\)", fact, rules, policy_builder.add_gt_condition, numerical_policy_features)
-            self._try_parse_condition(r"c_pos\((\d+),b(\d+)\)", fact, rules, policy_builder.add_pos_condition, boolean_policy_features)
-            self._try_parse_condition(r"c_neg\((\d+),b(\d+)\)", fact, rules, policy_builder.add_neg_condition, boolean_policy_features)
-            self._try_parse_effect(r"e_inc\((\d+),n(\d+)\)", fact, rules, policy_builder.add_inc_effect, numerical_policy_features)
-            self._try_parse_effect(r"e_dec\((\d+),n(\d+)\)", fact, rules, policy_builder.add_dec_effect, numerical_policy_features)
-            self._try_parse_effect(r"e_bot\((\d+),n(\d+)\)", fact, rules, policy_builder.add_bot_effect, numerical_policy_features)
-            self._try_parse_effect(r"e_pos\((\d+),b(\d+)\)", fact, rules, policy_builder.add_pos_effect, boolean_policy_features)
-            self._try_parse_effect(r"e_neg\((\d+),b(\d+)\)", fact, rules, policy_builder.add_neg_effect, boolean_policy_features)
-            self._try_parse_effect(r"e_bot\((\d+),b(\d+)\)", fact, rules, policy_builder.add_bot_effect, boolean_policy_features)
+        for symbol in model.symbols(shown=True):
+            if symbol.name == "rule":
+                r_idx = symbol.arguments[0].number
+                rules[r_idx] = [[], []]  # conditions and effects
+        for symbol in model.symbols(shown=True):
+            try:
+                r_idx = symbol.arguments[0].number
+                f_idx = symbol.arguments[1].number
+            except IndexError:
+                continue
+            if f_idx not in f_idx_to_policy_feature: continue
+            if symbol.name == "c_eq":
+                rules[r_idx][0].append(policy_builder.add_eq_condition(f_idx_to_policy_feature[f_idx]))
+            elif symbol.name == "c_gt":
+                rules[r_idx][0].append(policy_builder.add_gt_condition(f_idx_to_policy_feature[f_idx]))
+            elif symbol.name == "c_pos":
+                rules[r_idx][0].append(policy_builder.add_pos_condition(f_idx_to_policy_feature[f_idx]))
+            elif symbol.name == "c_neg":
+                rules[r_idx][0].append(policy_builder.add_neg_condition(f_idx_to_policy_feature[f_idx]))
+            elif symbol.name == "e_inc":
+                rules[r_idx][1].append(policy_builder.add_inc_effect(f_idx_to_policy_feature[f_idx]))
+            elif symbol.name == "e_dec":
+                rules[r_idx][1].append(policy_builder.add_dec_effect(f_idx_to_policy_feature[f_idx]))
+            elif symbol.name == "e_bot":
+                rules[r_idx][1].append(policy_builder.add_bot_effect(f_idx_to_policy_feature[f_idx]))
+            elif symbol.name == "e_pos":
+                rules[r_idx][1].append(policy_builder.add_pos_effect(f_idx_to_policy_feature[f_idx]))
+            elif symbol.name == "e_neg":
+                rules[r_idx][1].append(policy_builder.add_neg_effect(f_idx_to_policy_feature[f_idx]))
+            elif symbol.name == "e_bot":
+                rules[r_idx][1].append(policy_builder.add_bot_effect(f_idx_to_policy_feature[f_idx]))
         for _, (conditions, effects) in rules.items():
             policy_builder.add_rule(conditions, effects)
-
-    def _try_parse_condition(self, regex, fact, rules, policy_builder_func, f_idx_to_policy_feature):
-        matches = re.findall(regex, fact)
-        if matches:
-            assert len(matches) == 1
-            r_key = int(matches[0][0])
-            f_idx = int(matches[0][1])
-            if f_idx in f_idx_to_policy_feature:
-                rules[r_key][0].append(policy_builder_func(f_idx_to_policy_feature[f_idx]))
-
-    def _try_parse_effect(self, regex, fact, rules, policy_builder_func, f_idx_to_policy_feature):
-        matches = re.findall(regex, fact)
-        if matches:
-            assert len(matches) == 1
-            r_key = int(matches[0][0])
-            f_idx = int(matches[0][1])
-            if f_idx in f_idx_to_policy_feature:
-                rules[r_key][1].append(policy_builder_func(f_idx_to_policy_feature[f_idx]))
