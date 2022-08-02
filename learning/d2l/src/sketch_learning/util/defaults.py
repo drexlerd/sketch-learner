@@ -51,17 +51,13 @@ def generate_experiment(expid, domain_dir, domain, **kwargs):
     parameters['experiment_dir'] = parameters['workspace'] / f"{expid.replace(':', '_')}_{parameters['width']}_{parameters['max_sketch_rules']}_{parameters['complexity']}"
     create_experiment_workspace(parameters["experiment_dir"], rm_if_existed=False)
 
-    # level 1 directory for experimental data of each iteration
+    # level 1 directory to store information of each iteration
     parameters["iterations_dir"] = parameters["experiment_dir"] / "iterations"
 
     parameters["domain_filename"] = BENCHMARK_DIR / domain_dir / f"{domain}.pddl"
 
-    parameters["output_sketch_filename"] = parameters['experiment_dir'] / "sketch.txt"
-
     width = parameters["width"]
-    parameters["input_sketch_filename"] = BASEDIR / "sketches" / domain_dir / f"{domain_dir}_{width}.txt"
-
-    print(parameters["input_sketch_filename"])
+    parameters["sketch_filename"] = BASEDIR / "sketches" / domain_dir / f"{domain_dir}_{width}.txt"
 
     # Initialize instances
     parameters["instance_informations"] = []

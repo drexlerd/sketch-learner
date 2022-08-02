@@ -26,16 +26,12 @@ class Transition:
 @dataclass
 class GeneralSubproblem:
     instance_data: InstanceData
-    initial_state: int
-    subgoal_states: MutableSet[int]  # closest G + G_r(s)
-    forward_transitions: Dict[int, MutableSet[Transition]]
-    expanded_states: MutableSet[int]  # must have some good transition
-    generated_states: MutableSet[int]  # used for feature generation
+    forward_transitions: Dict[int, List[MutableSet[Transition]]]  # there can be disjunctive sets of optimal transitions for a state
+    expanded_states: MutableSet[int]
+    generated_states: MutableSet[int]
 
     def print(self):
         print("Generalized subproblem:")
-        print(f"    Initial state: {self.initial_state}")
-        print(f"    Subgoal states: {self.subgoal_states}")
         print(f"    Forward transitions: {self.forward_transitions}")
         print(f"    Expanded states: {self.expanded_states}")
         print(f"    Generated states: {self.generated_states}")
@@ -43,19 +39,20 @@ class GeneralSubproblem:
 
 class GeneralSubproblemFactory:
     def make_generalized_subproblems(self, instance_data: InstanceData, sketch: dlplan.Policy, rule: dlplan.Rule):
-        sketch.clear_cache()
-        generalized_subproblems = []
+        for s_idx, state in enumerate(instance_data.transition_system.states_by_index):
+            print(s_idx, str(state))
         for root_idx in range(instance_data.transition_system.get_num_states()):
-            tuple_graph = instance_data.tuple_graphs_by_state_index[root_idx]
-            if tuple_graph is None: continue
-            subgoal_states = self._compute_subgoal_states_in_generalized_subproblem(instance_data, root_idx, sketch)
+            if instance_data.tuple_graphs_by_state_index[root_idx] is None: continue
+            subgoal_states = self._compute_subgoal_states_in_generalized_subproblem(instance_data, root_idx, sketch, rule)
+            print(subgoal_states)
             expanded_states, generated_states, relevant_forward_transitions = self._compute_transitions_in_generalized_subproblem(instance_data, root_idx, subgoal_states)
-            generalized_subproblems.append(GeneralSubproblem(instance_data, root_idx, subgoal_states, relevant_forward_transitions, expanded_states, generated_states))
-        return generalized_subproblems
+            print(relevant_forward_transitions)
+        return []
 
-    def _compute_subgoal_states_in_generalized_subproblem(self, instance_data: InstanceData, root_idx: int, sketch: dlplan.Policy, include_closer=False):
+    def _compute_subgoal_states_in_generalized_subproblem(self, instance_data: InstanceData, root_idx: int, sketch: dlplan.Policy, rule: dlplan.Rule, include_closer=False):
         """ Compute the closest subgoal states that bound the width. """
-        root = instance_data.transition_system.states_by_index[root_idx]
+        evaluation_cache = dlplan.EvaluationCache(len(sketch.get_boolean_features()), len(sketch.get_numerical_features()))
+        root_context = dlplan.EvaluationContext(root_idx, instance_data.transition_system.states_by_index[root_idx], evaluation_cache)
         tuple_graph = instance_data.tuple_graphs_by_state_index[root_idx]
         bounded = False
         closest_subgoal_states = set()
@@ -65,8 +62,10 @@ class GeneralSubproblemFactory:
             for t_idx in t_idxs:
                 is_subgoal_tuple = True
                 for s_idx in tuple_graph.t_idx_to_s_idxs[t_idx]:
+                    target_context = dlplan.EvaluationContext(s_idx, instance_data.transition_system.states_by_index[s_idx], evaluation_cache)
                     if instance_data.transition_system.is_goal(s_idx) or \
-                        sketch.evaluate_lazy(root_idx, root, s_idx, instance_data.transition_system.states_by_index[s_idx]) is not None:
+                        (rule.evaluate_conditions(root_context) and
+                         rule.evaluate_effects(root_context, target_context)):
                         closest_subgoal_states.add(s_idx)
                     else:
                         is_subgoal_tuple = False

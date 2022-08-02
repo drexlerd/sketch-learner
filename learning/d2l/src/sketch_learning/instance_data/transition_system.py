@@ -32,6 +32,9 @@ class TransitionSystem:
     def is_goal(self, state_index: int):
         return state_index in self.goals
 
+    def is_alive(self, state_index: int):
+        return not self.is_goal(state_index) and not self.is_deadend(state_index)
+
     def compute_states_by_distance(self, source: int):
         """ Perform BFS to partition states layerwise. """
         layers = OrderedDict()
