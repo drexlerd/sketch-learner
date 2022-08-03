@@ -25,6 +25,7 @@ def run(config, data, rng):
     for r_idx, rule in enumerate(sketch.get_rules()):
         i = 0
         selected_instance_idxs = [0]
+        largest_unsolved_instance_idx = 0
         timer = CountDownTimer(config.timeout)
         while not timer.is_expired():
             logging.info(f"Iteration: {i}")
@@ -53,8 +54,12 @@ def run(config, data, rng):
             for instance_idx, (instance_data, general_subproblem) in enumerate(zip(instance_datas, general_subproblem_datas_by_rule[r_idx])):
                 if not policy.solves(instance_data, general_subproblem):
                     print("Policy fails to solve: ", instance_idx)
-                    selected_instance_idxs.append(instance_idx)
                     all_solved = False
+                    if instance_idx > largest_unsolved_instance_idx:
+                        largest_unsolved_instance_idx = instance_idx
+                        selected_instance_idxs = [instance_idx]
+                    else:
+                        selected_instance_idxs.append(instance_idx)
                     break
             if all_solved:
                 print("Policy solves all general subproblems!")

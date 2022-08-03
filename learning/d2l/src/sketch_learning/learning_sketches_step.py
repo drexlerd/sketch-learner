@@ -30,13 +30,12 @@ def run(config, data, rng):
     domain_data, instance_datas = preprocess_instances(config)
 
     i = 0
-    instance_data = instance_datas[0]
-    selected_instance_datas = []
+    selected_instance_idxs = [0]
     largest_unsolved_instance_idx = 0
     timer = CountDownTimer(config.timeout)
     while not timer.is_expired():
         logging.info(f"Iteration: {i}")
-        selected_instance_datas.append(instance_data)
+        selected_instance_datas = [instance_datas[instance_idx] for instance_idx in selected_instance_idxs]
         print(f"Number of selected instances: {len(selected_instance_datas)}")
         for selected_instance_data in selected_instance_datas:
             print(str(selected_instance_data.instance_filename), selected_instance_data.transition_system.get_num_states())
@@ -76,13 +75,14 @@ def run(config, data, rng):
         # (2) the sketch fails then we add the instance and do another iteration.
         all_solved = True
         assert all([sketch.solves(instance_data) for instance_data in selected_instance_datas])
-        for j in range(len(instance_datas)):
-            instance_data = instance_datas[j]
+        for instance_idx, instance_data in enumerate(instance_datas):
             if not sketch.solves(instance_data):
                 all_solved = False
-                if j > largest_unsolved_instance_idx:
-                    largest_unsolved_instance_idx = j
-                    selected_instance_datas = []
+                if instance_idx > largest_unsolved_instance_idx:
+                    largest_unsolved_instance_idx = instance_idx
+                    selected_instance_idxs = [instance_idx]
+                else:
+                    selected_instance_idxs.append(instance_idx)
                 break
         if all_solved:
             break
