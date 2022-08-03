@@ -37,14 +37,14 @@ def run(config, data, rng):
         logging.info(f"Iteration: {i}")
         selected_instance_datas.append(instance_data)
         print(f"Number of selected instances: {len(selected_instance_datas)}")
-        print("\n".join([str(selected_instance.instance_filename) for selected_instance in selected_instance_datas]))
+        for selected_instance_data in selected_instance_datas:
+            print(str(selected_instance_data.instance_filename), selected_instance_data.transition_system.get_num_states())
 
         # 1.2. Generate feature pool
         state_pair_datas = StatePairDataFactory().make_state_pairs_from_tuple_graphs(selected_instance_datas)
         dlplan_states = []
-        for instance_data, state_pair_data in zip(selected_instance_datas, state_pair_datas):
-            #dlplan_states.extend([instance_data.transition_system.states_by_index[s_idx] for s_idx in state_pair_data.states])
-            dlplan_states.extend(instance_data.transition_system.states_by_index)
+        for selected_instance_data, state_pair_data in zip(selected_instance_datas, state_pair_datas):
+            dlplan_states.extend([selected_instance_data.transition_system.states_by_index[s_idx] for s_idx in state_pair_data.states])
         domain_feature_data = DomainFeatureDataFactory().make_domain_feature_data(config, domain_data, dlplan_states)
         instance_feature_datas = InstanceFeatureDataFactory().make_instance_feature_datas(selected_instance_datas, domain_feature_data)
         rule_equivalence_data, state_pair_equivalence_datas = StatePairEquivalenceDataFactory().make_equivalence_data(state_pair_datas, domain_feature_data, instance_feature_datas)
