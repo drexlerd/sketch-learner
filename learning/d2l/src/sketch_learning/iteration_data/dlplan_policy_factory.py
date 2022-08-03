@@ -6,7 +6,6 @@ from typing import Dict, List, MutableSet
 from dataclasses import dataclass, field
 from collections import defaultdict, OrderedDict, deque
 
-from ..asp.answer_set_parser import AnswerSetData
 from .feature_data import DomainFeatureData
 from ..instance_data.instance_data import InstanceData
 

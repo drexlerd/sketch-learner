@@ -22,7 +22,6 @@ from .iteration_data.state_pair_equivalence_data import StatePairEquivalenceData
 from .iteration_data.tuple_graph_equivalence_data import  TupleGraphEquivalenceDataFactory
 from .iteration_data.state_pair_data import StatePairDataFactory
 from .asp.sketch_asp_factory import SketchASPFactory
-from .asp.answer_set_parser import AnswerSetParser, AnswerSetParser_ExitCode
 from .preprocessing import preprocess_instances
 
 

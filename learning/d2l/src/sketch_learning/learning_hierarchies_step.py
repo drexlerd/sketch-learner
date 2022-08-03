@@ -22,7 +22,7 @@ def run(config, data, rng):
         general_subproblem_data = GeneralSubproblemDataFactory().make_general_subproblems(instance_datas, sketch, rule)
         general_subproblem_datas_by_rule.append(general_subproblem_data)
 
-    for r_idx, rule in enumerate(sketch.get_rules()):
+    for rule_idx, rule in enumerate(sketch.get_rules()):
         i = 0
         selected_instance_idxs = [0]
         largest_unsolved_instance_idx = 0
@@ -30,7 +30,7 @@ def run(config, data, rng):
         while not timer.is_expired():
             logging.info(f"Iteration: {i}")
             selected_instance_datas = [instance_datas[instance_idx] for instance_idx in selected_instance_idxs]
-            selected_general_subproblem_datas = [general_subproblem_datas_by_rule[r_idx][instance_idx] for instance_idx in selected_instance_idxs]
+            selected_general_subproblem_datas = [general_subproblem_datas_by_rule[rule_idx][instance_idx] for instance_idx in selected_instance_idxs]
             state_pair_datas = StatePairDataFactory().make_state_pairs_from_general_subproblems(selected_general_subproblem_datas)
             dlplan_states = []
             for selected_instance_data, state_pair_data in zip(selected_instance_datas, state_pair_datas):
@@ -51,7 +51,7 @@ def run(config, data, rng):
                 assert policy.solves(selected_instance_data, general_subproblem_data)
 
             all_solved = True
-            for instance_idx, (instance_data, general_subproblem) in enumerate(zip(instance_datas, general_subproblem_datas_by_rule[r_idx])):
+            for instance_idx, (instance_data, general_subproblem) in enumerate(zip(instance_datas, general_subproblem_datas_by_rule[rule_idx])):
                 if not policy.solves(instance_data, general_subproblem):
                     print("Policy fails to solve: ", instance_idx)
                     all_solved = False
