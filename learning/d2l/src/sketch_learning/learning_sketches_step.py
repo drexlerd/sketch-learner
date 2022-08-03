@@ -19,7 +19,6 @@ from .iteration_data.feature_data import DomainFeatureDataFactory, InstanceFeatu
 from .iteration_data.sketch_factory import SketchFactory
 from .iteration_data.equivalence_data import StatePairEquivalenceDataFactory, TupleGraphEquivalenceDataFactory
 from .iteration_data.state_pair_data import StatePairDataFactory
-from .asp.sketch_fact_factory import SketchFactFactory
 from .asp.sketch_asp_factory import SketchASPFactory
 from .asp.answer_set_parser import AnswerSetParser, AnswerSetParser_ExitCode
 from .preprocessing import preprocess_instances

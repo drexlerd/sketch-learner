@@ -3,16 +3,16 @@ from clingo import Control, Symbol, String, Number, TruthValue, HeuristicType, M
 from typing import List, Dict, Tuple
 
 from ..instance_data.instance_data import InstanceData
+from ..instance_data.general_subproblem import GeneralSubproblemData
 from ..iteration_data.feature_data import DomainFeatureData, InstanceFeatureData
 from ..iteration_data.equivalence_data import RuleEquivalenceData, StatePairEquivalenceData, TupleGraphEquivalenceData
 
 from .facts.iteration_data.domain_feature_data import DomainFeatureDataFactFactory
 from .facts.iteration_data.equivalence_data import EquivalenceDataFactFactory
 from .facts.instance_data.tuple_graph import TupleGraphFactFactory
-from .facts.instance_data.transition_system import TransitionSystemFactFactory
+from .facts.instance_data.general_subproblem import GeneralSubproblemDataFactFactory
 
-
-class SketchASPFactory:
+class PolicyASPFactory:
     def __init__(self, config):
         self.ctl = Control(arguments=["-c", f"max_sketch_rules={config.max_sketch_rules}"] + config.clingo_arguments)
         self.ctl.add("boolean", ["b"], "boolean(b).")
@@ -31,25 +31,18 @@ class SketchASPFactory:
         self.ctl.add("e_bot_fixed", ["r", "f"], "e_bot_fixed(r,f).")
         self.ctl.add("equivalence", ["r"], "equivalence(r).")
 
-        self.ctl.add("equivalence_contains", ["i","s1", "s2", "r"], "equivalence_contains(i,s1,s2,r).")
-        self.ctl.add("solvable", ["i", "s"], "solvable(i,s).")
-        self.ctl.add("exceed", ["i", "s"], "exceed(i,s).")
-        self.ctl.add("t_distance", ["i", "s", "t", "d"], "t_distance(i,s,t,d).")
-        self.ctl.add("tuple", ["i", "s", "t"], "tuple(i,s,t).")
-        self.ctl.add("contain", ["i", "s", "t", "r"], "contain(i,s,t,r).")
-        self.ctl.add("d_distance", ["i", "s", "r", "d"], "d_distance(i,s,r,d).")
-        self.ctl.add("consistency", ["i", "s1", "s2", "t"], "consistency(i,s1,s2,t).")
-        self.ctl.load(str(config.asp_sketch_location))
+        self.ctl.add("expanded", ["i", "s"], "solvable(i,s).")
+        self.ctl.add("subproblem", ["i", "s", "g"], "subproblem(i,s,g).")
+        self.ctl.add("optimal_equivalence", ["i", "g", "c", "s1", "s2"], "optimal_equivalence(i,g,c,s1,s2).")
+        self.ctl.add("suboptimal_equivalence", ["i", "g", "c", "s1", "s2"], "suboptimal_equivalence(i,g,c,s1,s2).")
+        self.ctl.load(str(config.asp_policy_location))
 
-    def make_facts(self, instance_datas: List[InstanceData], domain_feature_data: DomainFeatureData, rule_equivalence_data: RuleEquivalenceData, state_pair_equivalence_datas: List[StatePairEquivalenceData], tuple_graph_equivalence_datas: List[TupleGraphEquivalenceData]):
-        """ Make facts from data in an interation. """
+    def make_facts(self, instance_datas: List[InstanceData], domain_feature_data: DomainFeatureData, rule_equivalence_data: RuleEquivalenceData, state_pair_equivalence_datas: List[StatePairEquivalenceData], general_subproblem_datas: List[GeneralSubproblemData]):
         facts = []
         facts.extend(DomainFeatureDataFactFactory().make_facts(domain_feature_data))
         facts.extend(EquivalenceDataFactFactory().make_facts(rule_equivalence_data, domain_feature_data))
-        for instance_idx, (instance_data, state_pair_equivalence_data, tuple_graph_equivalence_data) in enumerate(zip(instance_datas, state_pair_equivalence_datas, tuple_graph_equivalence_datas)):
-            facts.extend(TransitionSystemFactFactory().make_facts(instance_idx, instance_data.transition_system))
-            for tuple_graph, tuple_graph_equivalence_data in zip(instance_data.tuple_graphs_by_state_index, tuple_graph_equivalence_data):
-                facts.extend(TupleGraphFactFactory().make_facts(instance_idx, tuple_graph, state_pair_equivalence_data, tuple_graph_equivalence_data))
+        for instance_idx, (instance_data, state_pair_equivalence_data, general_subproblem_data) in enumerate(zip(instance_datas, state_pair_equivalence_datas, general_subproblem_datas)):
+            facts.extend(GeneralSubproblemDataFactFactory().make_facts(instance_idx, state_pair_equivalence_data, general_subproblem_data))
         return facts
 
     def ground(self, facts=[]):
@@ -74,3 +67,4 @@ class SketchASPFactory:
         print("Total time: ", self.ctl.statistics["summary"]["times"]["total"])
         print("CPU time: ", self.ctl.statistics["summary"]["times"]["cpu"])
         print("Solve time: ", self.ctl.statistics["summary"]["times"]["solve"])
+

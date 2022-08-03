@@ -56,8 +56,8 @@ class TupleGraphFactory:
 
     def make_tuple_graph(self, config, source_index: int):
         if self.transition_system.is_goal(source_index) \
-            or self.transition_system.is_deadend(source_index) \
-            or config.tuple_graph_if_width_exceeds: return None
+            or self.transition_system.is_deadend(source_index):
+            return None
         if self.width == 0:
             return self._make_tuple_graph_for_width_0(source_index)
         else:

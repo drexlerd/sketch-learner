@@ -13,8 +13,19 @@ from ..iteration_data.state_pair_data import StatePairData
 
 @dataclass
 class StatePairEquivalenceData:
+    """
+    StatePairEquivalenceData maps state pairs to rules over the feature pool F.
+
+    This creates an abstraction of the state pairs that allows
+    reducing the number of constraints in the propositonal encoding.
+    """
     r_idx_to_state_pairs: Dict[int, MutableSet[Tuple[int, int]]]
     state_pair_to_r_idx: Dict[Tuple[int, int], int]
+
+    def print(self):
+        print("StatePairEquivalenceData:")
+        print("    r_idx_to_state_pairs: ", self.r_idx_to_state_pairs)
+        print("    state_pair_to_r_idx: ", self.state_pair_to_r_idx)
 
 
 @dataclass
@@ -24,6 +35,12 @@ class RuleEquivalenceData:
 
 @dataclass
 class TupleGraphEquivalenceData:
+    """
+    TupleGraphEquivalenceData maps tuple information to rules over the feature pool F of a subproblem.
+
+    This is necessary for constructing the constraints in the propositional encoding
+    relevant to bound the width of the subproblem.
+    """
     r_idxs_by_distance: List[List[int]]
     t_idx_to_r_idxs: Dict[int, MutableSet[int]]
     r_idx_to_t_idxs: Dict[int, MutableSet[int]]
@@ -74,7 +91,9 @@ class StatePairEquivalenceDataFactory:
         for instance_feature_data, state_pair_data in zip(instance_feature_datas, state_pair_datas):
             r_idx_to_state_pairs = defaultdict(list)
             state_pair_to_r_idx = dict()
-            for source_idx, target_idx in state_pair_data.state_pairs:
+            for state_pair in state_pair_data.state_pairs:
+                source_idx = state_pair.source_idx
+                target_idx = state_pair.target_idx
                 # add conditions
                 conditions = self._make_conditions(policy_builder, source_idx, policy_boolean_features, policy_numerical_features, instance_feature_data)
                 # add effects

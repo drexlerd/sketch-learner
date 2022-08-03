@@ -24,7 +24,7 @@ class Transition:
 
 
 @dataclass
-class GeneralSubproblem:
+class GeneralSubproblemData:
     forward_transitions: Dict[int, List[MutableSet[Transition]]]  # there can be disjunctive sets of optimal transitions for a state
     expanded_states: MutableSet[int]
     generated_states: MutableSet[int]
@@ -36,12 +36,7 @@ class GeneralSubproblem:
         print(f"    Generated states: {self.generated_states}")
 
 
-@dataclass
-class GeneralSubproblemData:
-    general_subproblems: List[GeneralSubproblem]
-
-
-class GeneralSubproblemFactory:
+class GeneralSubproblemDataFactory:
     def make_general_subproblems(self, instance_datas: List[InstanceData], sketch: dlplan.Policy, rule: dlplan.Rule):
         general_subproblem_datas = []
         for instance_data in instance_datas:
@@ -74,7 +69,7 @@ class GeneralSubproblemFactory:
                 if len(prec[transitions]) == 0 and transitions not in selected_transitions:
                     result_forward_transitions[root_idx].add(transitions)
                     selected_transitions.add(transitions)
-        return GeneralSubproblem(forward_transitions, expanded_states, generated_states)
+        return GeneralSubproblemData(forward_transitions, expanded_states, generated_states)
 
     def _compute_closest_subgoal_states(self, instance_data: InstanceData, root_idx: int, sketch: dlplan.Policy, rule: dlplan.Rule):
         evaluation_cache = dlplan.EvaluationCache(len(sketch.get_boolean_features()), len(sketch.get_numerical_features()))
