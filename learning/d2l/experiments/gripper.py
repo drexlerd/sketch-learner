@@ -45,7 +45,7 @@ def experiments():
     exps["hierarchy_single"] = update_dict(
         strips_base,
         pipeline="hierarchies_pipeline",
-        instances=['p-2-0'],
+        instances=['p-1-0', 'p-2-0', 'p-3-0'],
     )
     return exps
 

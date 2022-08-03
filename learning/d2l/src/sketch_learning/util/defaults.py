@@ -40,7 +40,7 @@ def generate_experiment(expid, domain_dir, domain, **kwargs):
         debug_features=[],
 
         # Clingo
-        clingo_arguments=["--parallel-mode=16,split"],
+        clingo_arguments=["--parallel-mode=3,split"],
 
         quiet=False,
         random_seed=0,

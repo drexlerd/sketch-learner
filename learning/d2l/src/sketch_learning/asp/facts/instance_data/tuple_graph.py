@@ -1,6 +1,7 @@
 from clingo import String, Number
 
-from ....iteration_data.equivalence_data import TupleGraphEquivalenceData, StatePairEquivalenceData
+from ....iteration_data.state_pair_equivalence_data import StatePairEquivalenceData
+from ....iteration_data.tuple_graph_equivalence_data import TupleGraphEquivalenceData
 from ....instance_data.tuple_graph import TupleGraph
 
 class TupleGraphFactFactory():

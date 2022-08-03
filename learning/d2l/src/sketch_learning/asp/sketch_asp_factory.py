@@ -4,7 +4,8 @@ from typing import List, Dict, Tuple
 
 from ..instance_data.instance_data import InstanceData
 from ..iteration_data.feature_data import DomainFeatureData, InstanceFeatureData
-from ..iteration_data.equivalence_data import RuleEquivalenceData, StatePairEquivalenceData, TupleGraphEquivalenceData
+from ..iteration_data.state_pair_equivalence_data import RuleEquivalenceData, StatePairEquivalenceData
+from ..iteration_data.tuple_graph_equivalence_data import TupleGraphEquivalenceData
 
 from .facts.iteration_data.domain_feature_data import DomainFeatureDataFactFactory
 from .facts.iteration_data.equivalence_data import EquivalenceDataFactFactory

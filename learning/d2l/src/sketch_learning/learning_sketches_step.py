@@ -16,8 +16,10 @@ from .instance_data.instance_data import InstanceData
 from .domain_data.domain_data import DomainData
 from .iteration_data.iteration_data import IterationData
 from .iteration_data.feature_data import DomainFeatureDataFactory, InstanceFeatureDataFactory
-from .iteration_data.sketch_factory import SketchFactory
-from .iteration_data.equivalence_data import StatePairEquivalenceDataFactory, TupleGraphEquivalenceDataFactory
+from .iteration_data.dlplan_policy_factory import DlplanPolicyFactory
+from .iteration_data.sketch import Sketch
+from .iteration_data.state_pair_equivalence_data import StatePairEquivalenceDataFactory
+from .iteration_data.tuple_graph_equivalence_data import  TupleGraphEquivalenceDataFactory
 from .iteration_data.state_pair_data import StatePairDataFactory
 from .asp.sketch_asp_factory import SketchASPFactory
 from .asp.answer_set_parser import AnswerSetParser, AnswerSetParser_ExitCode
@@ -58,7 +60,7 @@ def run(config, data, rng):
             sketch_asp_factory.ground(facts)
             model = sketch_asp_factory.solve()
             sketch_asp_factory.print_statistics()
-            sketch = SketchFactory().make_sketch(model, domain_feature_data, config.width)
+            sketch = Sketch(DlplanPolicyFactory().make_dlplan_policy_from_answer_set(model, domain_feature_data), config.width)
             all_consistent = True
             for instance_idx, instance_data in enumerate(selected_instance_datas):
                 is_instance_consistent, instance_consistency_facts = sketch.verify_consistency(instance_idx, instance_data)

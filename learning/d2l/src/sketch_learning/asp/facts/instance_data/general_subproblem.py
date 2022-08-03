@@ -1,5 +1,5 @@
 from ....instance_data.general_subproblem import GeneralSubproblemData
-from ....iteration_data.equivalence_data import StatePairEquivalenceData
+from ....iteration_data.state_pair_equivalence_data import StatePairEquivalenceData
 from clingo import String, Number
 
 
