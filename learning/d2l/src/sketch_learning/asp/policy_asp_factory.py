@@ -31,7 +31,7 @@ class PolicyASPFactory:
         self.ctl.add("e_bot_fixed", ["r", "f"], "e_bot_fixed(r,f).")
         self.ctl.add("equivalence", ["r"], "equivalence(r).")
 
-        self.ctl.add("expanded", ["i", "s"], "solvable(i,s).")
+        self.ctl.add("expanded", ["i", "g", "s"], "expanded(i,g,s).")
         self.ctl.add("subproblem", ["i", "s", "g"], "subproblem(i,s,g).")
         self.ctl.add("optimal_equivalence", ["i", "g", "c", "s1", "s2"], "optimal_equivalence(i,g,c,s1,s2).")
         self.ctl.add("suboptimal_equivalence", ["i", "g", "c", "s1", "s2"], "suboptimal_equivalence(i,g,c,s1,s2).")

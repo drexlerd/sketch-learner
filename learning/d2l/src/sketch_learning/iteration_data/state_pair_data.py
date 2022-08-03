@@ -56,7 +56,6 @@ class StatePairDataFactory:
         state_pair_datas = []
         states = set()
         for general_subproblem_data in general_subproblem_datas:
-            general_subproblem_data.print()
             state_pairs = set()
             for _, transitionss in general_subproblem_data.forward_transitions.items():
                 for transitions in transitionss:

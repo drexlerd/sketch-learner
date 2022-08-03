@@ -34,10 +34,10 @@ good(C) :- { feature(F) : not c_satisfied(R, F, C), select(F);
      feature(F) : not e_satisfied(R, F, C), select(F) } = 0, rule(R), equivalence(C).
 
 % Require one good equivalence class for each expanded state in G of P
-:- { good(C) : optimal_equivalence(I, G, C, S, S') } = 0, expanded(I, G, S).
+:- { good(C) : optimal_equivalence(I, G, C, S, _) } = 0, expanded(I, G, S).
 
 % Require suboptimal transitions to be bad, that includes those to deadends
-:- good(C), suboptimal_equivalence(I, G, C, S, S'), expanded(I, G, S).
+:- good(C), suboptimal_equivalence(I, G, C, S, _), expanded(I, G, S).
 
 % Display
 #show rule/1.
