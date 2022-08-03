@@ -15,7 +15,7 @@ from .util.timer import Timer, CountDownTimer
 from .instance_data.instance_data import InstanceData
 from .domain_data.domain_data import DomainData
 from .iteration_data.iteration_data import IterationData
-from .iteration_data.feature_data import FeatureDataFactory
+from .iteration_data.feature_data import DomainFeatureDataFactory, InstanceFeatureDataFactory
 from .iteration_data.sketch_factory import SketchFactory
 from .iteration_data.equivalence_data import StatePairEquivalenceDataFactory, TupleGraphEquivalenceDataFactory
 from .iteration_data.state_pair_data import StatePairDataFactory
@@ -28,25 +28,25 @@ from .preprocessing import preprocess_instances
 def run(config, data, rng):
     domain_data, instance_datas = preprocess_instances(config)
 
-    # Iteration index
     i = 0
-    # Choose the first instance
     instance_data = instance_datas[0]
     selected_instance_datas = []
     largest_unsolved_instance_idx = 0
     timer = CountDownTimer(config.timeout)
     while not timer.is_expired():
         logging.info(f"Iteration: {i}")
-        # 1.0: Initialize iteration directory
-        iteration_data = initialize_iteration_data(config, i)
         selected_instance_datas.append(instance_data)
-
         print(f"Number of selected instances: {len(selected_instance_datas)}")
         print("\n".join([str(selected_instance.instance_filename) for selected_instance in selected_instance_datas]))
 
         # 1.2. Generate feature pool
-        domain_feature_data, instance_feature_datas = FeatureDataFactory().generate_feature_data(config, domain_data, selected_instance_datas)
         state_pair_datas = StatePairDataFactory().make_state_pairs_from_tuple_graphs(selected_instance_datas)
+        dlplan_states = []
+        for instance_data, state_pair_data in zip(selected_instance_datas, state_pair_datas):
+            #dlplan_states.extend([instance_data.transition_system.states_by_index[s_idx] for s_idx in state_pair_data.states])
+            dlplan_states.extend(instance_data.transition_system.states_by_index)
+        domain_feature_data = DomainFeatureDataFactory().make_domain_feature_data(config, domain_data, dlplan_states)
+        instance_feature_datas = InstanceFeatureDataFactory().make_instance_feature_datas(selected_instance_datas, domain_feature_data)
         rule_equivalence_data, state_pair_equivalence_datas = StatePairEquivalenceDataFactory().make_equivalence_data(state_pair_datas, domain_feature_data, instance_feature_datas)
         tuple_graph_equivalence_datas = TupleGraphEquivalenceDataFactory().make_equivalence_data(selected_instance_datas, state_pair_equivalence_datas)
 
@@ -97,8 +97,6 @@ def run(config, data, rng):
     print(f"Maximum complexity of selected feature: {max([0] + [boolean_feature.get_boolean().compute_complexity() for boolean_feature in sketch.policy.get_boolean_features()] + [numerical_feature.get_numerical().compute_complexity() for numerical_feature in sketch.policy.get_numerical_features()])}")
     print("Resulting sketch:")
     print(sketch.policy.str())
-    with open(config.output_sketch_filename, "w") as file:
-            file.write(dlplan.PolicyWriter().write(sketch.policy))
 
     return ExitCode.Success, None
 

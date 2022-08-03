@@ -36,7 +36,7 @@ def experiments():
         instances=['p-2-0'],
     )
 
-    exps["hierarchies_small"] = update_dict(
+    exps["hierarchy_small"] = update_dict(
         strips_base,
         pipeline="hierarchies_pipeline",
         instances=training_instances(),
