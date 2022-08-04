@@ -48,6 +48,7 @@ class GeneralSubproblemDataFactory:
         generated_states = set()
         forward_transitions = defaultdict(set)
         for root_idx in range(instance_data.transition_system.get_num_states()):
+            if not instance_data.transition_system.is_alive(root_idx): continue
             closest_subgoal_states = self._compute_closest_subgoal_states(instance_data, root_idx, sketch, rule)
             if not closest_subgoal_states: continue
             relevant_expanded_states, relevant_generated_states, relevant_forward_transitions = self._compute_transitions_to_closest_subgoal_states(instance_data, root_idx, closest_subgoal_states)
@@ -90,21 +91,11 @@ class GeneralSubproblemDataFactory:
     def _compute_transitions_to_closest_subgoal_states(self, instance_data: InstanceData, root_idx: int, closest_subgoal_states: MutableSet[int]):
         """ Compute set of transitions starting at states reached optimally from the initial states. """
         # 1. backward from subgoal states: compute optimal/not optimal transitions
-        queue = deque()
-        distances = dict()
+        distances = instance_data.transition_system.compute_distances_to_states(closest_subgoal_states)
         forward_transitions = defaultdict(set)
-        for target_idx in closest_subgoal_states:
-            queue.append(target_idx)
-            distances[target_idx] = 0
-        while queue:
-            target_idx = queue.popleft()
-            target_cost = distances[target_idx]
-            for source_idx in instance_data.transition_system.backward_transitions[target_idx]:
-                source_cost = distances.get(source_idx, math.inf)
-                if target_cost + 1 < source_cost:
-                    queue.append(source_idx)
-                    distances[source_idx] = target_cost + 1
-                if distances[source_idx] == distances[target_idx] + 1:
+        for source_idx, target_idxs in instance_data.transition_system.forward_transitions.items():
+            for target_idx in target_idxs:
+                if distances.get(source_idx, math.inf) == distances.get(target_idx, math.inf) + 1:
                     forward_transitions[source_idx].add(Transition(source_idx, target_idx, True))
                 else:
                     forward_transitions[source_idx].add(Transition(source_idx, target_idx, False))

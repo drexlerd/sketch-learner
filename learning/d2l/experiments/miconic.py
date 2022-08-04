@@ -4,7 +4,6 @@ from sketch_learning.util.misc import update_dict
 def experiments():
     base = dict(
         domain_dir="miconic",
-        pipeline="pipeline",
     )
 
     exps = dict()
@@ -14,10 +13,10 @@ def experiments():
         domain="domain",
     )
 
-    exps["debug"] = update_dict(
+    exps["sketch_debug"] = update_dict(
         strips_base,
+        pipeline="sketch_pipeline",
         instances=training_instances(),
-        # for debugging we allow adding features directly into the pipeline
         debug_features=["n_count(c_primitive(boarded,0))",  # 2
                         "n_count(c_some(r_primitive(origin,0,1),c_top))",  # 4
                         "n_count(c_all(r_primitive(origin,0,1),c_primitive(lift-at,0)))",  # 4
@@ -25,15 +24,30 @@ def experiments():
         ],
     )
 
-    exps["small_dist"] = update_dict(
+    exps["sketch"] = update_dict(
         strips_base,
+        pipeline="sketch_pipeline",
+        instances=training_instances(),
+    )
+
+    exps["sketch_dist"] = update_dict(
+        strips_base,
+        pipeline="sketch_pipeline",
         instances=training_instances(),
         generate_concept_distance_numerical=True
     )
 
-    exps["small"] = update_dict(
+    exps["hierarchy"] = update_dict(
         strips_base,
+        pipeline="hierarchy_pipeline",
         instances=training_instances(),
+    )
+
+    exps["hierarchy_dist"] = update_dict(
+        strips_base,
+        pipeline="hierarchy_pipeline",
+        instances=training_instances(),
+        generate_concept_distance_numerical=True
     )
     return exps
 

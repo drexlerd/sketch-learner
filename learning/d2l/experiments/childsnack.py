@@ -4,8 +4,6 @@ from sketch_learning.util.misc import update_dict
 def experiments():
     base = dict(
         domain_dir="childsnack",
-        pipeline="pipeline",
-        test_instances=[],
     )
 
     exps = dict()
@@ -15,11 +13,10 @@ def experiments():
         domain="domain",
     )
 
-    exps["debug"] = update_dict(
-        # instances
+    exps["sketch_debug"] = update_dict(
         strips_base,
+        pipeline="sketch_pipeline",
         instances=training_instances(),
-        # for debugging we allow adding features directly into the pipeline
         debug_features=["n_count(c_and(c_primitive(allergic_gluten,0),c_not(c_primitive(served,0))))",  # 5
                         "n_count(c_and(c_primitive(not_allergic_gluten,0),c_not(c_primitive(served,0))))",  # 5
                         "b_empty(c_and(c_primitive(at_kitchen_sandwich,0), c_primitive(no_gluten_sandwich,0)))",  # 4
@@ -28,9 +25,15 @@ def experiments():
                         "b_empty(c_primitive(ontray,0))"],
     )
 
-    exps["small"] = update_dict(
-        # instances
+    exps["sketch"] = update_dict(
         strips_base,
+        pipeline="sketch_pipeline",
+        instances=training_instances(),
+    )
+
+    exps["hierarchy"] = update_dict(
+        strips_base,
+        pipeline="hierarchy_pipeline",
         instances=training_instances(),
     )
     return exps

@@ -52,7 +52,7 @@ class StatePairDataFactory:
             state_pair_datas.append(StatePairData(state_pairs, list(states)))
         return state_pair_datas
 
-    def make_state_pairs_from_general_subproblems(self, general_subproblem_datas: List[GeneralSubproblemData]):
+    def make_state_pairs_from_general_subproblem_datas(self, general_subproblem_datas: List[GeneralSubproblemData]):
         state_pair_datas = []
         states = set()
         for general_subproblem_data in general_subproblem_datas:

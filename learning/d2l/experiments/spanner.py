@@ -4,7 +4,6 @@ from sketch_learning.util.misc import update_dict
 def experiments():
     base = dict(
         domain_dir="spanner",
-        pipeline="pipeline",
     )
 
     exps = dict()
@@ -14,31 +13,42 @@ def experiments():
         domain="domain",
     )
 
-    exps["debug"] = update_dict(
+    exps["sketch_debug"] = update_dict(
         strips_base,
+        pipeline="sketch_pipeline",
         instances=training_instances(),
-        # for debugging we allow adding features directly into the pipeline
         debug_features=["n_count(c_and(c_primitive(tightened_g,0),c_not(c_primitive(tightened,0))))",  # 4
                         "n_count(r_primitive(at,0,1))",  # 2
                         "b_empty(c_some(r_primitive(at,0,1),c_all(r_inverse(r_primitive(at,0,1)),c_primitive(man,0)))))"  # 7
         ],
     )
 
-    exps["small_dist"] = update_dict(
+    exps["sketch"] = update_dict(
         strips_base,
+        pipeline="sketch_pipeline",
+        instances=training_instances(),
+    )
+
+    exps["sketch_dist"] = update_dict(
+        strips_base,
+        pipeline="sketch_pipeline",
         instances=training_instances(),
         generate_concept_distance_numerical=True
     )
 
-    exps["small"] = update_dict(
+    exps["hierarchy"] = update_dict(
         strips_base,
+        pipeline="hierarchy_pipeline",
         instances=training_instances(),
     )
 
-    exps["single"] = update_dict(
+    exps["hierarchy_dist"] = update_dict(
         strips_base,
-        instances=['p-3-3-3-1'],
+        pipeline="hierarchy_pipeline",
+        instances=training_instances(),
+        generate_concept_distance_numerical=True
     )
+
     return exps
 
 

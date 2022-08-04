@@ -90,10 +90,10 @@ def generate_pipeline_from_list(elements, **kwargs):
 
 
 DEFAULT_PIPELINES = dict(
-    sketches_pipeline=[
+    sketch_pipeline=[
         LearningSketchesStep
     ],
-    hierarchies_pipeline=[
+    hierarchy_pipeline=[
         LearningHierarchiesStep
     ]
 )

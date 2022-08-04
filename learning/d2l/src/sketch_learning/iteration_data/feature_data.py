@@ -10,6 +10,7 @@ from ..domain_data.domain_data import DomainData
 
 @dataclass
 class DomainFeatureData:
+    """ DomainFeatureData stores all novel Boolean and Numerical features for a set of dlplan states. """
     boolean_features: List[dlplan.Boolean]
     numerical_features: List[dlplan.Numerical]
 
@@ -21,6 +22,7 @@ class DomainFeatureData:
 
 @dataclass
 class InstanceFeatureData:
+    """ InstanceFeatureData stores feature valuations for each state in an instance. """
     boolean_feature_valuations: Dict[int, List[bool]]
     numerical_feature_valuations: Dict[int, List[int]]
 

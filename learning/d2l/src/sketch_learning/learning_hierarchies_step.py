@@ -17,10 +17,15 @@ def run(config, data, rng):
     sketch = dlplan.PolicyReader().read("\n".join(read_file(config.sketch_filename)), domain_data.syntactic_element_factory)
     print(sketch.compute_repr())
     general_subproblem_datas_by_rule = []
+    state_pair_datas_by_rule = []
     for rule in sketch.get_rules():
         print(rule.compute_repr())
-        general_subproblem_data = GeneralSubproblemDataFactory().make_general_subproblems(instance_datas, sketch, rule)
-        general_subproblem_datas_by_rule.append(general_subproblem_data)
+        general_subproblem_datas = GeneralSubproblemDataFactory().make_general_subproblems(instance_datas, sketch, rule)
+        #for general_subproblem_data in general_subproblem_datas:
+        #    general_subproblem_data.print()
+        general_subproblem_datas_by_rule.append(general_subproblem_datas)
+        state_pair_datas = StatePairDataFactory().make_state_pairs_from_general_subproblem_datas(general_subproblem_datas)
+        state_pair_datas_by_rule.append(state_pair_datas)
 
     for rule_idx, rule in enumerate(sketch.get_rules()):
         i = 0
@@ -30,14 +35,21 @@ def run(config, data, rng):
         while not timer.is_expired():
             logging.info(f"Iteration: {i}")
             selected_instance_datas = [instance_datas[instance_idx] for instance_idx in selected_instance_idxs]
+            print(f"Number of selected instances: {len(selected_instance_datas)}")
+            for selected_instance_data in selected_instance_datas:
+                print(str(selected_instance_data.instance_filename), selected_instance_data.transition_system.get_num_states())
             selected_general_subproblem_datas = [general_subproblem_datas_by_rule[rule_idx][instance_idx] for instance_idx in selected_instance_idxs]
-            state_pair_datas = StatePairDataFactory().make_state_pairs_from_general_subproblems(selected_general_subproblem_datas)
+            for general_subproblem_data in selected_general_subproblem_datas:
+                general_subproblem_data.print()
+            selected_state_pair_datas = [state_pair_datas_by_rule[rule_idx][instance_idx] for instance_idx in selected_instance_idxs]
             dlplan_states = []
-            for selected_instance_data, state_pair_data in zip(selected_instance_datas, state_pair_datas):
-                dlplan_states.extend([selected_instance_data.transition_system.states_by_index[s_idx] for s_idx in state_pair_data.states])
+            for selected_instance_data, selected_state_pair_data in zip(selected_instance_datas, selected_state_pair_datas):
+                dlplan_states.extend([selected_instance_data.transition_system.states_by_index[s_idx] for s_idx in selected_state_pair_data.states])
             domain_feature_data = DomainFeatureDataFactory().make_domain_feature_data(config, domain_data, dlplan_states)
             instance_feature_datas = InstanceFeatureDataFactory().make_instance_feature_datas(selected_instance_datas, domain_feature_data)
-            rule_equivalence_data, state_pair_equivalence_datas = StatePairEquivalenceDataFactory().make_equivalence_data(state_pair_datas, domain_feature_data, instance_feature_datas)
+            #for instance_feature_data in instance_feature_datas:
+            #    instance_feature_data.print()
+            rule_equivalence_data, state_pair_equivalence_datas = StatePairEquivalenceDataFactory().make_equivalence_data(selected_state_pair_datas, domain_feature_data, instance_feature_datas)
 
             policy_asp_factory = PolicyASPFactory(config)
             facts = PolicyASPFactory(config).make_facts(selected_instance_datas, domain_feature_data, rule_equivalence_data, state_pair_equivalence_datas, selected_general_subproblem_datas)

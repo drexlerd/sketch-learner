@@ -35,6 +35,22 @@ class TransitionSystem:
     def is_alive(self, state_index: int):
         return not self.is_goal(state_index) and not self.is_deadend(state_index)
 
+    def compute_distances_to_states(self, states: List[int]) -> Dict[int, int]:
+        queue = deque()
+        distances = dict()
+        for target_idx in states:
+            queue.append(target_idx)
+            distances[target_idx] = 0
+        while queue:
+            target_idx = queue.popleft()
+            target_cost = distances[target_idx]
+            for source_idx in self.backward_transitions[target_idx]:
+                source_cost = distances.get(source_idx, math.inf)
+                if target_cost + 1 < source_cost:
+                    queue.append(source_idx)
+                    distances[source_idx] = target_cost + 1
+        return distances
+
     def compute_states_by_distance(self, source: int):
         """ Perform BFS to partition states layerwise. """
         layers = OrderedDict()

@@ -18,7 +18,6 @@ class DlplanPolicyFactory:
         self._add_rules(policy_builder, model, f_idx_to_policy_feature)
         return policy_builder.get_result()
 
-
     def _add_features(self, policy_builder: dlplan.PolicyBuilder, model: Model, domain_feature_data: DomainFeatureData):
         f_idx_to_policy_feature = dict()
         for symbol in model.symbols(shown=True):
