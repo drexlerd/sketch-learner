@@ -51,16 +51,11 @@ class PolicyASPFactory:
         self.ctl.ground(facts)  # ground a set of facts
 
     def solve(self):
+        last_model = None
         with self.ctl.solve(yield_=True) as solve_handle:
-            while not solve_handle.get().exhausted:
-                model = solve_handle.model()
-                solve_handle.resume()
-            if solve_handle.get().exhausted: print("exhausted")
-            if solve_handle.get().interrupted: print("interrupted")
-            if solve_handle.get().satisfiable: print("satisfiable")
-            if solve_handle.get().unknown: print("unknown")
-            if solve_handle.get().unsatisfiable: print("unsatisfiable")
-            return model
+            for model in solve_handle:
+                last_model = model
+        return last_model
 
     def print_statistics(self):
         print("Clingo statistics:")
