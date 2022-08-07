@@ -39,8 +39,8 @@ def run(config, data, rng):
             for selected_instance_data in selected_instance_datas:
                 print(str(selected_instance_data.instance_filename), selected_instance_data.transition_system.get_num_states())
             selected_general_subproblem_datas = [general_subproblem_datas_by_rule[rule_idx][instance_idx] for instance_idx in selected_instance_idxs]
-            for general_subproblem_data in selected_general_subproblem_datas:
-                general_subproblem_data.print()
+            #for general_subproblem_data in selected_general_subproblem_datas:
+            #    general_subproblem_data.print()
             selected_state_pair_datas = [state_pair_datas_by_rule[rule_idx][instance_idx] for instance_idx in selected_instance_idxs]
             dlplan_states = []
             for selected_instance_data, selected_state_pair_data in zip(selected_instance_datas, selected_state_pair_datas):

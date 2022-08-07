@@ -55,6 +55,7 @@ class PolicyASPFactory:
         with self.ctl.solve(yield_=True) as solve_handle:
             for model in solve_handle:
                 last_model = model
+                solve_result = solve_handle.get()
         return last_model
 
     def print_statistics(self):
