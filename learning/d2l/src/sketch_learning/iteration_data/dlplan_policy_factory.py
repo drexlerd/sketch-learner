@@ -1,7 +1,7 @@
 import re
 import dlplan
 import math
-from clingo import Model
+from clingo import Symbol
 from typing import Dict, List, MutableSet
 from dataclasses import dataclass, field
 from collections import defaultdict, OrderedDict, deque
@@ -11,16 +11,16 @@ from ..instance_data.instance_data import InstanceData
 
 
 class DlplanPolicyFactory:
-    def make_dlplan_policy_from_answer_set(self, model: Model, domain_feature_data: DomainFeatureData):
+    def make_dlplan_policy_from_answer_set(self, symbols: List[Symbol], domain_feature_data: DomainFeatureData):
         """ Parses set of facts into dlplan.Policy """
         policy_builder = dlplan.PolicyBuilder()
-        f_idx_to_policy_feature = self._add_features(policy_builder, model, domain_feature_data)
-        self._add_rules(policy_builder, model, f_idx_to_policy_feature)
+        f_idx_to_policy_feature = self._add_features(policy_builder, symbols, domain_feature_data)
+        self._add_rules(policy_builder, symbols, f_idx_to_policy_feature)
         return policy_builder.get_result()
 
-    def _add_features(self, policy_builder: dlplan.PolicyBuilder, model: Model, domain_feature_data: DomainFeatureData):
+    def _add_features(self, policy_builder: dlplan.PolicyBuilder, symbols: List[Symbol], domain_feature_data: DomainFeatureData):
         f_idx_to_policy_feature = dict()
-        for symbol in model.symbols(shown=True):
+        for symbol in symbols:
             if symbol.name == "select":
                 f_idx = symbol.arguments[0].number
                 if f_idx < len(domain_feature_data.boolean_features):
@@ -29,13 +29,13 @@ class DlplanPolicyFactory:
                     f_idx_to_policy_feature[f_idx] = policy_builder.add_numerical_feature(domain_feature_data.numerical_features[f_idx - len(domain_feature_data.boolean_features)])
         return f_idx_to_policy_feature
 
-    def _add_rules(self, policy_builder: dlplan.PolicyBuilder, model: Model, f_idx_to_policy_feature):
+    def _add_rules(self, policy_builder: dlplan.PolicyBuilder, symbols: List[Symbol], f_idx_to_policy_feature):
         rules = dict()
-        for symbol in model.symbols(shown=True):
+        for symbol in symbols:
             if symbol.name == "rule":
                 r_idx = symbol.arguments[0].number
                 rules[r_idx] = [[], []]  # conditions and effects
-        for symbol in model.symbols(shown=True):
+        for symbol in symbols:
             try:
                 r_idx = symbol.arguments[0].number
                 f_idx = symbol.arguments[1].number

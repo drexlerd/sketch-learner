@@ -51,12 +51,12 @@ class PolicyASPFactory:
         self.ctl.ground(facts)  # ground a set of facts
 
     def solve(self):
-        last_model = None
         with self.ctl.solve(yield_=True) as solve_handle:
+            last_model = None
             for model in solve_handle:
                 last_model = model
                 solve_result = solve_handle.get()
-        return last_model
+            return last_model.symbols(shown=True)
 
     def print_statistics(self):
         print("Clingo statistics:")

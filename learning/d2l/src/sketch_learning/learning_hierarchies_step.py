@@ -54,9 +54,9 @@ def run(config, data, rng):
             policy_asp_factory = PolicyASPFactory(config)
             facts = PolicyASPFactory(config).make_facts(selected_instance_datas, domain_feature_data, rule_equivalence_data, state_pair_equivalence_datas, selected_general_subproblem_datas)
             policy_asp_factory.ground(facts)
-            model = policy_asp_factory.solve()
+            symbols = policy_asp_factory.solve()
             policy_asp_factory.print_statistics()
-            policy = Policy(DlplanPolicyFactory().make_dlplan_policy_from_answer_set(model, domain_feature_data))
+            policy = Policy(DlplanPolicyFactory().make_dlplan_policy_from_answer_set(symbols, domain_feature_data))
             print("Learned policy:")
             print(policy.policy.compute_repr())
             for selected_instance_data, general_subproblem_data in zip(selected_instance_datas, selected_general_subproblem_datas):
