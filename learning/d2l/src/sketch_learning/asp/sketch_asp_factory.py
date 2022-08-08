@@ -3,6 +3,7 @@ from clingo import Control, Symbol, String, Number, TruthValue, HeuristicType, M
 from typing import List, Dict, Tuple
 
 from ..instance_data.instance_data import InstanceData
+from ..instance_data.tuple_graph import TupleGraphData
 from ..iteration_data.feature_data import DomainFeatureData, InstanceFeatureData
 from ..iteration_data.state_pair_equivalence_data import RuleEquivalenceData, StatePairEquivalenceData
 from ..iteration_data.tuple_graph_equivalence_data import TupleGraphEquivalenceData
@@ -42,14 +43,14 @@ class SketchASPFactory:
         self.ctl.add("consistency", ["i", "s1", "s2", "t"], "consistency(i,s1,s2,t).")
         self.ctl.load(str(config.asp_sketch_location))
 
-    def make_facts(self, instance_datas: List[InstanceData], domain_feature_data: DomainFeatureData, rule_equivalence_data: RuleEquivalenceData, state_pair_equivalence_datas: List[StatePairEquivalenceData], tuple_graph_equivalence_datas: List[TupleGraphEquivalenceData]):
+    def make_facts(self, instance_datas: List[InstanceData], tuple_graph_datas: List[TupleGraphData], domain_feature_data: DomainFeatureData, rule_equivalence_data: RuleEquivalenceData, state_pair_equivalence_datas: List[StatePairEquivalenceData], tuple_graph_equivalence_datas: List[TupleGraphEquivalenceData]):
         """ Make facts from data in an interation. """
         facts = []
         facts.extend(DomainFeatureDataFactFactory().make_facts(domain_feature_data))
         facts.extend(EquivalenceDataFactFactory().make_facts(rule_equivalence_data, domain_feature_data))
-        for instance_idx, (instance_data, state_pair_equivalence_data, tuple_graph_equivalence_data) in enumerate(zip(instance_datas, state_pair_equivalence_datas, tuple_graph_equivalence_datas)):
+        for instance_idx, (instance_data, state_pair_equivalence_data, tuple_graph_data, tuple_graph_equivalence_data) in enumerate(zip(instance_datas, state_pair_equivalence_datas, tuple_graph_datas, tuple_graph_equivalence_datas)):
             facts.extend(TransitionSystemFactFactory().make_facts(instance_idx, instance_data.transition_system))
-            for tuple_graph, tuple_graph_equivalence_data in zip(instance_data.tuple_graphs_by_state_index, tuple_graph_equivalence_data):
+            for tuple_graph, tuple_graph_equivalence_data in zip(tuple_graph_data.tuple_graphs_by_state_index, tuple_graph_equivalence_data):
                 facts.extend(TupleGraphFactFactory().make_facts(instance_idx, tuple_graph, state_pair_equivalence_data, tuple_graph_equivalence_data))
         return facts
 

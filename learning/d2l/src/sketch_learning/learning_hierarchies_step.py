@@ -28,6 +28,7 @@ def run(config, data, rng):
         state_pair_datas = StatePairDataFactory().make_state_pairs_from_general_subproblem_datas(general_subproblem_datas)
         state_pair_datas_by_rule.append(state_pair_datas)
 
+    solution_policies = []
     for rule_idx, rule in enumerate(sketch.get_rules()):
         i = 0
         selected_instance_idxs = [0]
@@ -57,8 +58,9 @@ def run(config, data, rng):
             policy_asp_factory.ground(facts)
             symbols, returncode = policy_asp_factory.solve()
             policy_asp_factory.print_statistics()
-            if returncode in [ClingoExitCode.EXHAUSTED, ClingoExitCode.UNSATISFIABLE]:
+            if returncode in [ClingoExitCode.UNSATISFIABLE]:
                 print("No policy exists that solves all geneneral subproblems!")
+                solution_policies.append(None)
                 break
             policy = Policy(DlplanPolicyFactory().make_dlplan_policy_from_answer_set(symbols, domain_feature_data))
             print("Learned policy:")
@@ -79,6 +81,18 @@ def run(config, data, rng):
                     break
             if all_solved:
                 print("Policy solves all general subproblems!")
+                solution_policies.append(policy)
                 break
             i += 1
+
+    print("================================================================================")
+    print("Summary:")
+    print("================================================================================")
+    print("Input sketch:")
+    print(sketch.compute_repr())
+    print("Learned policies by rule:")
+    for rule_idx, rule in enumerate(sketch.get_rules()):
+        print(rule_idx, rule.compute_repr())
+        if solution_policies[rule_idx] is not None:
+            print(solution_policies[rule_idx].policy.compute_repr())
     return ExitCode.Success, None

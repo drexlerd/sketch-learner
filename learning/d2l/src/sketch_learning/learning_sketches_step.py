@@ -13,6 +13,7 @@ from .util.command import execute, write_file, read_file, create_experiment_work
 from .util.timer import Timer, CountDownTimer
 
 from .instance_data.instance_data import InstanceData
+from .instance_data.tuple_graph import TupleGraphDataFactory
 from .domain_data.domain_data import DomainData
 from .iteration_data.iteration_data import IterationData
 from .iteration_data.feature_data import DomainFeatureDataFactory, InstanceFeatureDataFactory
@@ -27,6 +28,7 @@ from .preprocessing import preprocess_instances
 
 def run(config, data, rng):
     domain_data, instance_datas = preprocess_instances(config)
+    tuple_graph_datas = TupleGraphDataFactory().make_tuple_graph_datas(config, instance_datas)
 
     i = 0
     selected_instance_idxs = [0]
@@ -35,33 +37,34 @@ def run(config, data, rng):
     while not timer.is_expired():
         logging.info(f"Iteration: {i}")
         selected_instance_datas = [instance_datas[instance_idx] for instance_idx in selected_instance_idxs]
+        selected_tuple_graph_datas = [tuple_graph_datas[instance_idx] for instance_idx in selected_instance_idxs]
         print(f"Number of selected instances: {len(selected_instance_datas)}")
         for selected_instance_data in selected_instance_datas:
             print(str(selected_instance_data.instance_filename), selected_instance_data.transition_system.get_num_states())
 
         # 1.2. Generate feature pool
-        state_pair_datas = StatePairDataFactory().make_state_pairs_from_tuple_graphs(selected_instance_datas)
+        state_pair_datas = StatePairDataFactory().make_state_pairs_from_tuple_graphs(selected_tuple_graph_datas)
         dlplan_states = []
         for selected_instance_data, state_pair_data in zip(selected_instance_datas, state_pair_datas):
             dlplan_states.extend([selected_instance_data.transition_system.states_by_index[s_idx] for s_idx in state_pair_data.states])
         domain_feature_data = DomainFeatureDataFactory().make_domain_feature_data(config, domain_data, dlplan_states)
         instance_feature_datas = InstanceFeatureDataFactory().make_instance_feature_datas(selected_instance_datas, domain_feature_data)
         rule_equivalence_data, state_pair_equivalence_datas = StatePairEquivalenceDataFactory().make_equivalence_data(state_pair_datas, domain_feature_data, instance_feature_datas)
-        tuple_graph_equivalence_datas = TupleGraphEquivalenceDataFactory().make_equivalence_data(selected_instance_datas, state_pair_equivalence_datas)
+        tuple_graph_equivalence_datas = TupleGraphEquivalenceDataFactory().make_equivalence_data(selected_instance_datas, selected_tuple_graph_datas, state_pair_equivalence_datas)
 
         # 1.3. Generate asp facts
         is_consistent = False
         consistency_facts = []
         while not is_consistent:
             sketch_asp_factory = SketchASPFactory(config)
-            facts = sketch_asp_factory.make_facts(selected_instance_datas, domain_feature_data, rule_equivalence_data, state_pair_equivalence_datas, tuple_graph_equivalence_datas)
+            facts = sketch_asp_factory.make_facts(selected_instance_datas, selected_tuple_graph_datas, domain_feature_data, rule_equivalence_data, state_pair_equivalence_datas, tuple_graph_equivalence_datas)
             sketch_asp_factory.ground(facts)
             symbols = sketch_asp_factory.solve()
             sketch_asp_factory.print_statistics()
             sketch = Sketch(DlplanPolicyFactory().make_dlplan_policy_from_answer_set(symbols, domain_feature_data), config.width)
             all_consistent = True
-            for instance_idx, instance_data in enumerate(selected_instance_datas):
-                is_instance_consistent, instance_consistency_facts = sketch.verify_consistency(instance_idx, instance_data)
+            for instance_idx, (instance_data, tuple_graph_data) in enumerate(zip(selected_instance_datas, selected_tuple_graph_datas)):
+                is_instance_consistent, instance_consistency_facts = sketch.verify_consistency(instance_idx, instance_data, tuple_graph_data)
                 consistency_facts.extend(instance_consistency_facts)
                 if not is_instance_consistent: all_consistent = False
             is_consistent = all_consistent
@@ -73,9 +76,9 @@ def run(config, data, rng):
         # (1) either no more instances then we return the sketch, or
         # (2) the sketch fails then we add the instance and do another iteration.
         all_solved = True
-        assert all([sketch.solves(instance_data) for instance_data in selected_instance_datas])
-        for instance_idx, instance_data in enumerate(instance_datas):
-            if not sketch.solves(instance_data):
+        assert all([sketch.solves(instance_data, tuple_graph_data) for instance_data, tuple_graph_data in zip(selected_instance_datas, selected_tuple_graph_datas)])
+        for instance_idx, (instance_data, tuple_graph_data) in enumerate(zip(instance_datas, tuple_graph_datas)):
+            if not sketch.solves(instance_data, tuple_graph_data):
                 all_solved = False
                 if instance_idx > largest_unsolved_instance_idx:
                     largest_unsolved_instance_idx = instance_idx

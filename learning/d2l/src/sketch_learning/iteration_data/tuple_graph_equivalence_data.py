@@ -7,7 +7,7 @@ from collections import defaultdict
 from .state_pair_equivalence_data import StatePairEquivalenceData
 
 from ..instance_data.instance_data import InstanceData
-from ..instance_data.tuple_graph import TupleGraph
+from ..instance_data.tuple_graph import TupleGraph, TupleGraphData
 from ..instance_data.transition_system import TransitionSystem
 from ..iteration_data.feature_data import DomainFeatureData, InstanceFeatureData
 from ..iteration_data.state_pair_data import StatePairData
@@ -28,11 +28,11 @@ class TupleGraphEquivalenceData:
 
 
 class TupleGraphEquivalenceDataFactory:
-    def make_equivalence_data(self, instance_datas: List[InstanceData], state_pair_equivalence_datas: List[StatePairEquivalenceData]):
+    def make_equivalence_data(self, instance_datas: List[InstanceData], tuple_graph_datas: List[TupleGraphData], state_pair_equivalence_datas: List[StatePairEquivalenceData]):
         tuple_graph_equivalence_datas = []
-        for instance_data, state_pair_equivalence_data in zip(instance_datas, state_pair_equivalence_datas):
+        for instance_data, tuple_graph_data, state_pair_equivalence_data in zip(instance_datas, tuple_graph_datas, state_pair_equivalence_datas):
             tuple_graph_equivalence_data = []
-            for tuple_graph in instance_data.tuple_graphs_by_state_index:
+            for tuple_graph in tuple_graph_data.tuple_graphs_by_state_index:
                 if tuple_graph is None:
                     tuple_graph_equivalence_data.append(None)
                     continue

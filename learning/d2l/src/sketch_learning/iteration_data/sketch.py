@@ -6,6 +6,8 @@ from typing import Dict, List, MutableSet
 from dataclasses import dataclass, field
 from collections import defaultdict, OrderedDict, deque
 
+from sketch_learning.instance_data.tuple_graph import TupleGraphData
+
 from ..instance_data.instance_data import InstanceData
 
 
@@ -14,7 +16,7 @@ class Sketch:
         self.policy = policy
         self.width = width
 
-    def _verify_bounded_width(self, instance_data: InstanceData):
+    def _verify_bounded_width(self, instance_data: InstanceData, tuple_graph_data: TupleGraphData):
         """ Check whether the width of all subproblems is bounded.
         """
         evaluation_cache = dlplan.EvaluationCache(len(self.policy.get_boolean_features()), len(self.policy.get_numerical_features()))
@@ -22,7 +24,7 @@ class Sketch:
         closest_subgoal_tuples = defaultdict(set)
         for root_idx in range(instance_data.transition_system.get_num_states()):
             dlplan_state = instance_data.transition_system.states_by_index[root_idx]
-            tg = instance_data.tuple_graphs_by_state_index[root_idx]
+            tg = tuple_graph_data.tuple_graphs_by_state_index[root_idx]
             if tg is None: continue  # no tuple graph indicates that we don't care about the information of this state.
             bounded = False
             source_context = dlplan.EvaluationContext(root_idx, dlplan_state, evaluation_cache)
@@ -56,13 +58,13 @@ class Sketch:
                 return [], [], False
         return closest_subgoal_states, closest_subgoal_tuples, True
 
-    def _verify_acyclicity(self, instance_data: InstanceData, closest_subgoal_states: Dict[int, int]):
+    def _verify_acyclicity(self, instance_data: InstanceData, tuple_graph_data: TupleGraphData, closest_subgoal_states: Dict[int, int]):
         """ Check whether there is a cycle in the compatible state pairs
             We use DFS because we know that every state is reachable from the initial state
             We create a forward graph from compatible state pairs to check for termination
         """
         for root_idx in range(instance_data.transition_system.get_num_states()):
-            if instance_data.tuple_graphs_by_state_index[root_idx] is None: continue
+            if tuple_graph_data.tuple_graphs_by_state_index[root_idx] is None: continue
             # The depth-first search is the iterative version where the current path is explicit in the stack.
             # https://en.wikipedia.org/wiki/Depth-first_search
             stack = [(root_idx, iter(closest_subgoal_states[root_idx]))]
@@ -88,20 +90,20 @@ class Sketch:
                     stack.pop(-1)
         return True
 
-    def verify_consistency(self, instance_idx: int, instance_data: InstanceData):
+    def verify_consistency(self, instance_idx: int, instance_data: InstanceData, tuple_graph_data: TupleGraphData):
         """
         """
         is_consistent = True
         consistency_facts = []
         # 1. compute subgoal tuples for each state
-        closest_subgoal_states, closest_subgoal_tuples, has_bounded_width = self._verify_bounded_width(instance_data)
+        closest_subgoal_states, closest_subgoal_tuples, has_bounded_width = self._verify_bounded_width(instance_data, tuple_graph_data)
         # 2. For each state s with subgoal tuples T check whether every state s'
         #    that is on an optimal path from s to T with subgoal tuples T'
         #    holds that T' subseteq T
         for s_idx, state in enumerate(instance_data.transition_system.states_by_index):
             print(s_idx, str(state))
         for root_idx in range(instance_data.transition_system.get_num_states()):
-            if instance_data.tuple_graphs_by_state_index[root_idx] is None: continue
+            if tuple_graph_data.tuple_graphs_by_state_index[root_idx] is None: continue
             optimal_forward_transitions, _ = instance_data.transition_system.compute_optimal_transitions_to_states(closest_subgoal_states[root_idx])
             # filter only transitions on optimal paths to subgoal
             relevant_optimal_forward_transitions = defaultdict(set)
@@ -147,11 +149,11 @@ class Sketch:
             #print()
         return is_consistent, consistency_facts
 
-    def solves(self, instance_data: InstanceData):
+    def solves(self, instance_data: InstanceData, tuple_graph_data: TupleGraphData):
         """ Returns True iff the sketch solves the transition system, i.e.,
             (1) is terminating, and (2) P[s] has correctly bounded s-width. """
-        closest_subgoal_states, closest_subgoal_tuples, has_bounded_width = self._verify_bounded_width(instance_data)
+        closest_subgoal_states, closest_subgoal_tuples, has_bounded_width = self._verify_bounded_width(instance_data, tuple_graph_data)
         if not has_bounded_width: return False
-        is_acyclic = self._verify_acyclicity(instance_data, closest_subgoal_states)
+        is_acyclic = self._verify_acyclicity(instance_data, tuple_graph_data, closest_subgoal_states)
         if not is_acyclic: return False
         return True

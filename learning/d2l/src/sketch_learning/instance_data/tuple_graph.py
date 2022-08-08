@@ -3,6 +3,7 @@ from collections import defaultdict
 from typing import Dict, List, MutableSet
 from dataclasses import dataclass, field
 
+from .instance_data import InstanceData
 from .transition_system import TransitionSystem
 from .novelty_table import NoveltyTable
 
@@ -41,20 +42,19 @@ class TupleGraph:
 
 class TupleGraphFactory:
     def __init__(self,
-        config,
-        instance_info: dlplan.InstanceInfo,
-        transition_system: TransitionSystem):
-        self.transition_system = transition_system
-        self.width = config.width
+        width: int,
+        instance_data: InstanceData):
+        self.transition_system = instance_data.transition_system
+        self.width = width
         # dynamic atoms must follow indexing scheme to make the tuple index computation work.
-        dynamic_dlplan_atoms = [atom for atom in instance_info.get_atoms() if not atom.get_is_static()]
+        dynamic_dlplan_atoms = [atom for atom in instance_data.instance_info.get_atoms() if not atom.get_is_static()]
         assert all([atom.get_index() in range(len(dynamic_dlplan_atoms)) for atom in dynamic_dlplan_atoms])
         self.num_dynamic_atoms = len(dynamic_dlplan_atoms)
         # we only care about atom indices in each state.
-        self.dynamic_atoms_per_state_index = [[atom_idx for atom_idx in dlplan_state.get_atom_idxs() if not instance_info.get_atom(atom_idx).get_is_static()]
-            for dlplan_state in transition_system.states_by_index]
+        self.dynamic_atoms_per_state_index = [[atom_idx for atom_idx in dlplan_state.get_atom_idxs() if not instance_data.instance_info.get_atom(atom_idx).get_is_static()]
+            for dlplan_state in instance_data.transition_system.states_by_index]
 
-    def make_tuple_graph(self, config, source_index: int):
+    def make_tuple_graph(self, source_index: int):
         if self.transition_system.is_goal(source_index) \
             or self.transition_system.is_deadend(source_index):
             return None
@@ -208,3 +208,28 @@ class TupleGraphMinimizer:
         selected_t_idxs = self._compute_unique_maximal_elements_according_to_ordering(tuple_graph, succ_order)
         tuple_graph = self._restrict_tuple_graph_according_to_unique_maximal_elements(tuple_graph, selected_t_idxs)
         return tuple_graph
+
+
+
+@dataclass
+class TupleGraphData:
+    tuple_graphs_by_state_index: List[TupleGraph]
+    minimized_tuple_graphs_by_state_index: List[TupleGraph]
+
+
+class TupleGraphDataFactory:
+    def make_tuple_graph_datas(self,
+        config,
+        instance_datas: List[InstanceData]):
+        tuple_graph_datas = []
+        for instance_data in instance_datas:
+            tuple_graph_factory = TupleGraphFactory(config.width, instance_data)
+            tuple_graph_minimizer = TupleGraphMinimizer()
+            tuple_graphs_by_state_index = [tuple_graph_factory.make_tuple_graph(i) for i in range(
+                instance_data.transition_system.get_num_states())]
+            minimized_tuple_graphs_by_state_index = [tuple_graph_minimizer.minimize(tuple_graph) for tuple_graph in tuple_graphs_by_state_index]
+            print("Tuple graph minimizer:")
+            print(f"Num generated subgoal tuples: {tuple_graph_minimizer.num_generated}")
+            print(f"Num pruned subgoal tuples: {tuple_graph_minimizer.num_pruned}")
+            tuple_graph_datas.append(TupleGraphData(tuple_graphs_by_state_index, minimized_tuple_graphs_by_state_index))
+        return tuple_graph_datas

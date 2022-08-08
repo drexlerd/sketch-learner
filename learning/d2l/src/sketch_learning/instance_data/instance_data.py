@@ -11,7 +11,6 @@ from typing import Dict, MutableSet
 from ..util.command import execute, read_file
 from ..util.naming import filename_core
 from .transition_system import TransitionSystemFactory, TransitionSystem
-from .tuple_graph import TupleGraph, TupleGraphFactory, TupleGraphMinimizer
 from .return_codes import ReturnCode
 from ..domain_data.domain_data import DomainData
 
@@ -22,8 +21,7 @@ class InstanceData:
     instance_filename: str
     domain_data: DomainData
     transition_system: TransitionSystem
-    tuple_graphs_by_state_index: List[TupleGraph]
-    minimized_tuple_graphs_by_state_index: List[TupleGraph]
+    instance_info: dlplan.InstanceInfo
 
     def print_statistics(self):
         self.transition_system.print_statistics()
@@ -50,24 +48,7 @@ class InstanceDataFactory:
             return None, ReturnCode.EXHAUSTED_SIZE_LIMIT
 
         transition_system = TransitionSystemFactory().parse_transition_system(dlplan_states, goals, forward_transitions)
-        tuple_graphs_by_state_index, minimized_tuple_graphs_by_state_index = self._make_tuple_graphs(config, instance_info, transition_system)
-        return InstanceData(instance_information.instance_filename, domain_data, transition_system, tuple_graphs_by_state_index, minimized_tuple_graphs_by_state_index), ReturnCode.SOLVABLE
-
-
-    def _make_tuple_graphs(self,
-        config,
-        instance_info: dlplan.InstanceInfo,
-        transition_system: TransitionSystem):
-        tuple_graph_factory = TupleGraphFactory(
-            config, instance_info, transition_system)
-        tuple_graph_minimizer = TupleGraphMinimizer()
-        tuple_graphs_by_state_index = [tuple_graph_factory.make_tuple_graph(config, i) for i in range(
-            transition_system.get_num_states())]
-        minimized_tuple_graphs_by_state_index = [tuple_graph_minimizer.minimize(tuple_graph) for tuple_graph in tuple_graphs_by_state_index]
-        print("Tuple graph minimizer:")
-        print(f"Num generated subgoal tuples: {tuple_graph_minimizer.num_generated}")
-        print(f"Num pruned subgoal tuples: {tuple_graph_minimizer.num_pruned}")
-        return tuple_graphs_by_state_index, minimized_tuple_graphs_by_state_index
+        return InstanceData(instance_information.instance_filename, domain_data, transition_system, instance_info), ReturnCode.SOLVABLE
 
 
 def normalize_atom_name(name: str):

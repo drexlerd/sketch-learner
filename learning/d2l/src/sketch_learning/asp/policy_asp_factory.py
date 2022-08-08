@@ -61,8 +61,6 @@ class PolicyASPFactory:
                 solve_result = solve_handle.get()
             if solve_handle.get().unsatisfiable:
                 return [], ClingoExitCode.UNSATISFIABLE
-            elif solve_handle.get().exhausted:
-                return [], ClingoExitCode.EXHAUSTED
             else:
                 return last_model.symbols(shown=True), ClingoExitCode.SATISFIABLE
 

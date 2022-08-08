@@ -4,6 +4,8 @@ from typing import Dict, List, MutableSet, Tuple
 from dataclasses import dataclass, field
 from collections import defaultdict
 
+from sketch_learning.instance_data.tuple_graph import TupleGraphData
+
 from ..instance_data.instance_data import InstanceData
 from ..instance_data.general_subproblem import GeneralSubproblemData
 
@@ -37,12 +39,12 @@ class StatePairData:
 
 
 class StatePairDataFactory:
-    def make_state_pairs_from_tuple_graphs(self, instance_datas: List[InstanceData]):
+    def make_state_pairs_from_tuple_graphs(self, tuple_graph_datas: List[TupleGraphData]):
         state_pair_datas = []
         states = set()
-        for instance_data in instance_datas:
+        for tuple_graph_data in tuple_graph_datas:
             state_pairs = []
-            for tuple_graph in instance_data.tuple_graphs_by_state_index:
+            for tuple_graph in tuple_graph_data.tuple_graphs_by_state_index:
                 if tuple_graph is None: continue
                 for target_idxs in tuple_graph.s_idxs_by_distance:
                     for target_idx in target_idxs:
