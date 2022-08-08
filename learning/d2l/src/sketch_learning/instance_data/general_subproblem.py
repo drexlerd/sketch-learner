@@ -29,18 +29,23 @@ class GeneralSubproblemData:
     expanded_states: MutableSet[int]
     generated_states: MutableSet[int]
 
+    def is_consistent(self):
+        return all([(len(transitions) == 1) for transitions in self.forward_transitions.values()])
+
     def print(self):
         print("Generalized subproblem:")
-        print(f"    Forward transitions: {self.forward_transitions}")
-        print(f"    Expanded states: {self.expanded_states}")
-        print(f"    Generated states: {self.generated_states}")
+        print("    Forward transitions:", self.forward_transitions)
+        print("    Expanded states:", self.expanded_states)
+        print("    Generated states:", self.generated_states)
+        print("    Consistent: ", self.is_consistent())
 
 
 class GeneralSubproblemDataFactory:
     def make_general_subproblems(self, instance_datas: List[InstanceData], sketch: dlplan.Policy, rule: dlplan.Rule):
         general_subproblem_datas = []
         for instance_data in instance_datas:
-            general_subproblem_datas.append(self.make_general_subproblem(instance_data, sketch, rule))
+            general_subproblem_data = self.make_general_subproblem(instance_data, sketch, rule)
+            general_subproblem_datas.append(general_subproblem_data)
         return general_subproblem_datas
 
     def make_general_subproblem(self, instance_data: InstanceData, sketch: dlplan.Policy, rule: dlplan.Rule):

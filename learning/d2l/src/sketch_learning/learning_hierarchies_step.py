@@ -30,6 +30,8 @@ def run(config, data, rng):
 
     solution_policies = []
     for rule_idx, rule in enumerate(sketch.get_rules()):
+        print("Rule:", rule_idx, rule.compute_repr())
+        print("Subproblem consistency:", all([general_subproblem_data.is_consistent() for general_subproblem_data in general_subproblem_datas_by_rule[rule_idx]]))
         i = 0
         selected_instance_idxs = [0]
         largest_unsolved_instance_idx = 0
@@ -92,7 +94,8 @@ def run(config, data, rng):
     print(sketch.compute_repr())
     print("Learned policies by rule:")
     for rule_idx, rule in enumerate(sketch.get_rules()):
-        print(rule_idx, rule.compute_repr())
+        print("Rule", rule_idx, rule.compute_repr())
+        print("Subproblem consistency:", all([general_subproblem_data.is_consistent() for general_subproblem_data in general_subproblem_datas_by_rule[rule_idx]]))
         if solution_policies[rule_idx] is not None:
             print(solution_policies[rule_idx].policy.compute_repr())
     return ExitCode.Success, None
