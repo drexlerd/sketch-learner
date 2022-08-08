@@ -36,6 +36,7 @@ class TupleGraphEquivalenceDataFactory:
                 if tuple_graph is None:
                     tuple_graph_equivalence_data.append(None)
                     continue
+                # rule distances, deadend rule distances
                 r_idxs_by_distance = []
                 r_idx_to_deadend_distance = dict()
                 for d, layer in enumerate(tuple_graph.s_idxs_by_distance):
@@ -47,6 +48,7 @@ class TupleGraphEquivalenceDataFactory:
                             # the first time we write r_idx = d, d is smallest value.
                             r_idx_to_deadend_distance[r_idx] = min(r_idx_to_deadend_distance.get(r_idx, math.inf), d)
                     r_idxs_by_distance.append(r_idxs)
+                # map tuple to rules and vice versa
                 t_idx_to_r_idxs = defaultdict(set)
                 r_idx_to_t_idxs = defaultdict(set)
                 for t_idxs in tuple_graph.t_idxs_by_distance:

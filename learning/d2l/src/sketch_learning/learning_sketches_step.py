@@ -56,9 +56,9 @@ def run(config, data, rng):
             sketch_asp_factory = SketchASPFactory(config)
             facts = sketch_asp_factory.make_facts(selected_instance_datas, domain_feature_data, rule_equivalence_data, state_pair_equivalence_datas, tuple_graph_equivalence_datas)
             sketch_asp_factory.ground(facts)
-            model = sketch_asp_factory.solve()
+            symbols = sketch_asp_factory.solve()
             sketch_asp_factory.print_statistics()
-            sketch = Sketch(DlplanPolicyFactory().make_dlplan_policy_from_answer_set(model, domain_feature_data), config.width)
+            sketch = Sketch(DlplanPolicyFactory().make_dlplan_policy_from_answer_set(symbols, domain_feature_data), config.width)
             all_consistent = True
             for instance_idx, instance_data in enumerate(selected_instance_datas):
                 is_instance_consistent, instance_consistency_facts = sketch.verify_consistency(instance_idx, instance_data)

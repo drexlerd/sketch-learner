@@ -122,12 +122,17 @@ class Sketch:
                         if target_idx not in closest_subgoal_states[source_idx]:
                             alive_s_idxs_on_optimal_paths.add(target_idx)
                         relevant_optimal_forward_transitions[source_idx].add(target_idx)
-            print(root_idx, closest_subgoal_states, alive_s_idxs_on_optimal_paths, relevant_optimal_forward_transitions)
             for alive_s_idx in alive_s_idxs_on_optimal_paths:
                 if not (closest_subgoal_tuples[root_idx].issubset(closest_subgoal_tuples[alive_s_idx]) or \
                         closest_subgoal_tuples[root_idx] == closest_subgoal_tuples[alive_s_idx]):
+                    print(root_idx)
+                    print(alive_s_idx)
+                    print("Subgoal tuples")
                     print(closest_subgoal_tuples[root_idx])
                     print(closest_subgoal_tuples[alive_s_idx])
+                    print("Subgoal states")
+                    print(closest_subgoal_states[root_idx])
+                    print(closest_subgoal_states[alive_s_idx])
                     # if cst[r] > cst[a] then we must ensure the opposite, i.e., cst[r] <= cst[a]
                     # Hence, for all t in cst[r]: if subgoal(r, t) then subgoal(a, t)
                     for t_idx in closest_subgoal_tuples[root_idx]:

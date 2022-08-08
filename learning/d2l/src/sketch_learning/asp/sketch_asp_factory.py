@@ -59,15 +59,11 @@ class SketchASPFactory:
 
     def solve(self):
         with self.ctl.solve(yield_=True) as solve_handle:
-            while not solve_handle.get().exhausted:
-                model = solve_handle.model()
-                solve_handle.resume()
-            if solve_handle.get().exhausted: print("exhausted")
-            if solve_handle.get().interrupted: print("interrupted")
-            if solve_handle.get().satisfiable: print("satisfiable")
-            if solve_handle.get().unknown: print("unknown")
-            if solve_handle.get().unsatisfiable: print("unsatisfiable")
-            return model
+            last_model = None
+            for model in solve_handle:
+                last_model = model
+                solve_result = solve_handle.get()
+            return last_model.symbols(shown=True)
 
     def print_statistics(self):
         print("Clingo statistics:")
