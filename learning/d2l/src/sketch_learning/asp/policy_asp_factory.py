@@ -13,6 +13,9 @@ from .facts.iteration_data.equivalence_data import EquivalenceDataFactFactory
 from .facts.instance_data.tuple_graph import TupleGraphFactFactory
 from .facts.instance_data.general_subproblem import GeneralSubproblemDataFactFactory
 
+from .returncodes import ClingoExitCode
+
+
 class PolicyASPFactory:
     def __init__(self, config):
         self.ctl = Control(arguments=["-c", f"max_sketch_rules={config.max_sketch_rules}"] + config.clingo_arguments)
@@ -56,7 +59,12 @@ class PolicyASPFactory:
             for model in solve_handle:
                 last_model = model
                 solve_result = solve_handle.get()
-            return last_model.symbols(shown=True)
+            if solve_handle.get().unsatisfiable:
+                return [], ClingoExitCode.UNSATISFIABLE
+            elif solve_handle.get().exhausted:
+                return [], ClingoExitCode.EXHAUSTED
+            else:
+                return last_model.symbols(shown=True), ClingoExitCode.SATISFIABLE
 
     def print_statistics(self):
         print("Clingo statistics:")

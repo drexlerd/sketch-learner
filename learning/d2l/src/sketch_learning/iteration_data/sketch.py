@@ -125,13 +125,11 @@ class Sketch:
             for alive_s_idx in alive_s_idxs_on_optimal_paths:
                 if not (closest_subgoal_tuples[root_idx].issubset(closest_subgoal_tuples[alive_s_idx]) or \
                         closest_subgoal_tuples[root_idx] == closest_subgoal_tuples[alive_s_idx]):
-                    print(root_idx)
-                    print(alive_s_idx)
-                    print("Subgoal tuples")
+                    print("root_idx", root_idx)
                     print(closest_subgoal_tuples[root_idx])
-                    print(closest_subgoal_tuples[alive_s_idx])
-                    print("Subgoal states")
                     print(closest_subgoal_states[root_idx])
+                    print("alive_s_idx", alive_s_idx)
+                    print(closest_subgoal_tuples[alive_s_idx])
                     print(closest_subgoal_states[alive_s_idx])
                     # if cst[r] > cst[a] then we must ensure the opposite, i.e., cst[r] <= cst[a]
                     # Hence, for all t in cst[r]: if subgoal(r, t) then subgoal(a, t)

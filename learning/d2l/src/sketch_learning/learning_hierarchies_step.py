@@ -1,6 +1,7 @@
 import dlplan
 import logging
 from .returncodes import ExitCode
+from .asp.returncodes import ClingoExitCode
 from .preprocessing import preprocess_instances
 from .util.command import execute, write_file, read_file, create_experiment_workspace
 from .instance_data.general_subproblem import GeneralSubproblemDataFactory
@@ -54,8 +55,11 @@ def run(config, data, rng):
             policy_asp_factory = PolicyASPFactory(config)
             facts = PolicyASPFactory(config).make_facts(selected_instance_datas, domain_feature_data, rule_equivalence_data, state_pair_equivalence_datas, selected_general_subproblem_datas)
             policy_asp_factory.ground(facts)
-            symbols = policy_asp_factory.solve()
+            symbols, returncode = policy_asp_factory.solve()
             policy_asp_factory.print_statistics()
+            if returncode in [ClingoExitCode.EXHAUSTED, ClingoExitCode.UNSATISFIABLE]:
+                print("No policy exists that solves all geneneral subproblems!")
+                break
             policy = Policy(DlplanPolicyFactory().make_dlplan_policy_from_answer_set(symbols, domain_feature_data))
             print("Learned policy:")
             print(policy.policy.compute_repr())
