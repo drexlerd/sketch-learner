@@ -54,6 +54,12 @@ class SketchASPFactory:
                 facts.extend(TupleGraphFactFactory().make_facts(instance_idx, tuple_graph, state_pair_equivalence_data, tuple_graph_equivalence_data))
         return facts
 
+    def make_consistency_facts(self, consistency_facts: List[Tuple]):
+        facts = []
+        for instance_idx, root_idx, alive_s_idx, t_idx in consistency_facts:
+            facts.append(("consistency", [Number(instance_idx), Number(root_idx), Number(alive_s_idx), Number(t_idx)]))
+        return facts
+
     def ground(self, facts=[]):
         facts.append(("base", []))
         self.ctl.ground(facts)  # ground a set of facts

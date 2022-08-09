@@ -44,19 +44,12 @@ class TupleGraphFactory:
     def __init__(self,
         width: int,
         instance_data: InstanceData):
-        self.transition_system = instance_data.transition_system
+        self.instance_data = instance_data
         self.width = width
-        # dynamic atoms must follow indexing scheme to make the tuple index computation work.
-        dynamic_dlplan_atoms = [atom for atom in instance_data.instance_info.get_atoms() if not atom.get_is_static()]
-        assert all([atom.get_index() in range(len(dynamic_dlplan_atoms)) for atom in dynamic_dlplan_atoms])
-        self.num_dynamic_atoms = len(dynamic_dlplan_atoms)
-        # we only care about atom indices in each state.
-        self.dynamic_atoms_per_state_index = [[atom_idx for atom_idx in dlplan_state.get_atom_idxs() if not instance_data.instance_info.get_atom(atom_idx).get_is_static()]
-            for dlplan_state in instance_data.transition_system.states_by_index]
 
     def make_tuple_graph(self, source_index: int):
-        if self.transition_system.is_goal(source_index) \
-            or self.transition_system.is_deadend(source_index):
+        if self.instance_data.transition_system.is_goal(source_index) \
+            or self.instance_data.transition_system.is_deadend(source_index):
             return None
         if self.width == 0:
             return self._make_tuple_graph_for_width_0(source_index)
@@ -65,22 +58,22 @@ class TupleGraphFactory:
 
     def _make_tuple_graph_for_width_0(self, source_index: int):
         """ Special case where each 1-step successor can be a subgoal. """
-        s_idxs_by_distance = [[source_index], list(self.transition_system.forward_transitions[source_index])]
+        s_idxs_by_distance = [[source_index], list(self.instance_data.transition_system.forward_transitions[source_index])]
         # we use state indices also for tuples for simplicity
-        t_idxs_by_distance = [[source_index], list(self.transition_system.forward_transitions[source_index])]
+        t_idxs_by_distance = [[source_index], list(self.instance_data.transition_system.forward_transitions[source_index])]
         t_idx_to_s_idxs = defaultdict(set)
         s_idx_to_t_idxs = defaultdict(set)
         t_idx_to_s_idxs[source_index].add(source_index)
-        for suc_index in self.transition_system.forward_transitions[source_index]:
+        for suc_index in self.instance_data.transition_system.forward_transitions[source_index]:
             t_idx_to_s_idxs[suc_index].add(suc_index)
             s_idx_to_t_idxs[suc_index].add(suc_index)
         return TupleGraph(source_index, t_idxs_by_distance, s_idxs_by_distance, t_idx_to_s_idxs, s_idx_to_t_idxs, self.width)
 
     def _make_tuple_graph_for_width_greater_0(self, source_index):
         """ Constructing tuple graph for width greater 0 as defined in the literature. """
-        novelty_table = NoveltyTable(self.width, self.num_dynamic_atoms)
+        novelty_table = NoveltyTable(self.width, self.instance_data.instance_info.get_atoms())
         # states s[pi] by distance for optimal plan pi in Pi^*(t).
-        s_idxs_by_distance = self.transition_system.compute_states_by_distance(source_index)
+        s_idxs_by_distance = self.instance_data.transition_system.compute_states_by_distance(source_index)
         # information of tuples during computation
         t_idx_to_s_idxs = defaultdict(set)
         s_idx_to_t_idxs = dict()
@@ -119,7 +112,8 @@ class TupleGraphFactory:
             return all tuple indices that are novel in at least one state.  """
         t_idxs = set()  # the novel tuples with distance d
         for s_idx in s_idxs_in_layer:
-            t_idxs_for_s_idx = novelty_table.compute_novel_t_idxs(self.dynamic_atoms_per_state_index[s_idx])
+            atom_idxs = self.instance_data.transition_system.states_by_index[s_idx].get_atom_idxs()
+            t_idxs_for_s_idx = novelty_table.compute_novel_t_idxs(atom_idxs)
             if t_idxs_for_s_idx:
                 # S*(s, t)
                 s_idx_to_t_idxs[s_idx] = t_idxs_for_s_idx
@@ -140,7 +134,7 @@ class TupleGraphFactory:
         extended = defaultdict(set)
         for ti_idx in marked_t_idxs_in_previous_layer:
             for si_idx in t_idx_to_s_idxs[ti_idx]:
-                for sj_idx in self.transition_system.forward_transitions[si_idx]:
+                for sj_idx in self.instance_data.transition_system.forward_transitions[si_idx]:
                     for tj_idx in s_idx_to_t_idxs.get(sj_idx, []):
                         # optimal plan that ends in si_idx underlying ti is
                         # extended into optimal plan that ends in sj_idx underlying tj

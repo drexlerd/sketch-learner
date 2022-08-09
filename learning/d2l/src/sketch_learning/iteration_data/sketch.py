@@ -34,7 +34,6 @@ class Sketch:
                 low = 0
             for d in range(low, len(tg.s_idxs_by_distance)):
                 for t_idx in tg.t_idxs_by_distance[d]:  # check if t_idxs is a subgoal
-                    if root_idx == 1 and d == 3: print(t_idx)
                     subgoal = True
                     assert tg.t_idx_to_s_idxs[t_idx]
                     for s_idx in tg.t_idx_to_s_idxs[t_idx]:
@@ -107,26 +106,20 @@ class Sketch:
             optimal_forward_transitions, _ = instance_data.transition_system.compute_optimal_transitions_to_states(closest_subgoal_states[root_idx])
             # filter only transitions on optimal paths to subgoal
             relevant_optimal_forward_transitions = defaultdict(set)
-            alive_s_idxs_on_optimal_paths = {root_idx}
-            distances = dict()
+            alive_s_idxs_on_optimal_paths = set()
             queue = deque()
-            distances[root_idx] = 0
             queue.append(root_idx)
             while queue:
                 source_idx = queue.popleft()
-                source_cost = distances.get(source_idx)
+                relevant_optimal_forward_transitions[source_idx] = optimal_forward_transitions[source_idx]
+                alive_s_idxs_on_optimal_paths.add(source_idx)
                 for target_idx in optimal_forward_transitions[source_idx]:
-                    alt_distance = source_cost + 1
-                    if alt_distance < distances.get(target_idx, math.inf):
-                        distances[target_idx] = alt_distance
-                        queue.append(target_idx)
-                    if alt_distance == distances.get(target_idx):
-                        if target_idx not in closest_subgoal_states[source_idx]:
-                            alive_s_idxs_on_optimal_paths.add(target_idx)
-                        relevant_optimal_forward_transitions[source_idx].add(target_idx)
+                    queue.append(target_idx)
             for alive_s_idx in alive_s_idxs_on_optimal_paths:
                 if not (closest_subgoal_tuples[root_idx].issubset(closest_subgoal_tuples[alive_s_idx]) or \
                         closest_subgoal_tuples[root_idx] == closest_subgoal_tuples[alive_s_idx]):
+                    print("Inconsistent")
+                    is_consistent = False
                     print("root_idx", root_idx)
                     print(closest_subgoal_tuples[root_idx])
                     print(closest_subgoal_states[root_idx])
@@ -136,9 +129,7 @@ class Sketch:
                     # if cst[r] > cst[a] then we must ensure the opposite, i.e., cst[r] <= cst[a]
                     # Hence, for all t in cst[r]: if subgoal(r, t) then subgoal(a, t)
                     for t_idx in closest_subgoal_tuples[root_idx]:
-                        consistency_facts.append(("consisteny", [instance_idx, root_idx, alive_s_idx, t_idx]))
-                    print("inconsistent")
-                    exit(1)
+                        consistency_facts.append([instance_idx, root_idx, alive_s_idx, t_idx])
                 #print(closest_subgoal_tuples[alive_s_idx])
                 #print(closest_subgoal_states[alive_s_idx])
             #print(root_idx)

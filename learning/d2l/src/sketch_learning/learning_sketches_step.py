@@ -63,11 +63,11 @@ def run(config, data, rng):
             sketch_asp_factory.print_statistics()
             sketch = Sketch(DlplanPolicyFactory().make_dlplan_policy_from_answer_set(symbols, domain_feature_data), config.width)
             all_consistent = True
-            for instance_idx, (instance_data, tuple_graph_data) in enumerate(zip(selected_instance_datas, selected_tuple_graph_datas)):
-                is_instance_consistent, instance_consistency_facts = sketch.verify_consistency(instance_idx, instance_data, tuple_graph_data)
-                consistency_facts.extend(instance_consistency_facts)
-                if not is_instance_consistent: all_consistent = False
-            is_consistent = all_consistent
+            #for instance_idx, (instance_data, tuple_graph_data) in enumerate(zip(selected_instance_datas, selected_tuple_graph_datas)):
+            #    is_instance_consistent, instance_consistency_facts = sketch.verify_consistency(instance_idx, instance_data, tuple_graph_data)
+            #    consistency_facts.extend(instance_consistency_facts)
+            #    if not is_instance_consistent: all_consistent = False
+            is_consistent = True
 
         logging.info("Learned the following sketch:")
         print(sketch.policy.str())

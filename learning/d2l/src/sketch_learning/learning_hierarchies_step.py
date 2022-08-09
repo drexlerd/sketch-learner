@@ -30,6 +30,7 @@ def run(config, data, rng):
 
     solution_policies = []
     for rule_idx, rule in enumerate(sketch.get_rules()):
+        if rule_idx == 0: continue
         print("Rule:", rule_idx, rule.compute_repr())
         print("Subproblem consistency:", all([general_subproblem_data.is_consistent() for general_subproblem_data in general_subproblem_datas_by_rule[rule_idx]]))
         i = 0

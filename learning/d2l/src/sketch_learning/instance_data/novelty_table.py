@@ -1,4 +1,5 @@
 import itertools
+from typing import List
 
 
 class NoveltyTable:
@@ -11,15 +12,16 @@ class NoveltyTable:
         2  1  0
         3  1  1
     """
-    def __init__(self, width, num_dynamic_atoms):
-        self.table = [False for _ in range(num_dynamic_atoms ** width)]
+    def __init__(self, width, atoms):
         self.width = width
-        self.num_dynamic_atoms = num_dynamic_atoms
-        self.dimensions = [num_dynamic_atoms ** i for i in range(width)]
+        self.atom = atoms
+        self.num_atoms = len(atoms)
+        self.table = [False for _ in range(self.num_atoms ** width)]
+        self.dimensions = [self.num_atoms ** i for i in range(width)]
 
-    def compute_t_idxs(self, atom_idxs):
+    def compute_t_idxs(self, atom_idxs: List[int]):
         """ Compute all tuple indices for a state """
-        assert all([atom_idx in range(self.num_dynamic_atoms) for atom_idx in atom_idxs])
+        assert all([atom_idx in range(self.num_atoms) for atom_idx in atom_idxs])
         t_idxs = set()
         atom_idxs = self._pad_atom_ixs(atom_idxs)
         assert len(atom_idxs) >= self.width
@@ -29,9 +31,9 @@ class NoveltyTable:
             t_idxs.add(self._tuple2idx(sorted(t)))
         return t_idxs
 
-    def compute_novel_t_idxs(self, atom_idxs):
+    def compute_novel_t_idxs(self, atom_idxs: List[int]):
         """ Compute all tuple indices for a state that are novel. """
-        assert all([atom_idx in range(self.num_dynamic_atoms) for atom_idx in atom_idxs])
+        assert all([atom_idx in range(self.num_atoms) for atom_idx in atom_idxs])
         t_idxs = self.compute_t_idxs(atom_idxs)
         novel_t_idxs = set()
         for t_idx in t_idxs:
