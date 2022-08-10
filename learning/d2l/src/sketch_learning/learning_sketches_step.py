@@ -35,7 +35,9 @@ def run(config, data, rng):
     largest_unsolved_instance_idx = 0
     timer = CountDownTimer(config.timeout)
     while not timer.is_expired():
-        logging.info(f"Iteration: {i}")
+        print("================================================================================")
+        logging.info(f"Iteration instance selection: {i}")
+        print("================================================================================")
         selected_instance_datas = [instance_datas[instance_idx] for instance_idx in selected_instance_idxs]
         selected_tuple_graph_datas = [tuple_graph_datas[instance_idx] for instance_idx in selected_instance_idxs]
         print(f"Number of selected instances: {len(selected_instance_datas)}")
@@ -52,25 +54,34 @@ def run(config, data, rng):
         rule_equivalence_data, state_pair_equivalence_datas = StatePairEquivalenceDataFactory().make_equivalence_data(state_pair_datas, domain_feature_data, instance_feature_datas)
         tuple_graph_equivalence_datas = TupleGraphEquivalenceDataFactory().make_equivalence_data(selected_instance_datas, selected_tuple_graph_datas, state_pair_equivalence_datas)
 
-        # 1.3. Generate asp facts
-        is_consistent = False
+        # 1.3. Create and solve ASP
+        sketch_asp_factory = SketchASPFactory(config)
+        facts = sketch_asp_factory.make_facts(selected_instance_datas, selected_tuple_graph_datas, domain_feature_data, rule_equivalence_data, state_pair_equivalence_datas, tuple_graph_equivalence_datas)
         consistency_facts = []
-        while not is_consistent:
-            sketch_asp_factory = SketchASPFactory(config)
-            facts = sketch_asp_factory.make_facts(selected_instance_datas, selected_tuple_graph_datas, domain_feature_data, rule_equivalence_data, state_pair_equivalence_datas, tuple_graph_equivalence_datas)
+        j = 0
+        while True:
+            print("================================================================================")
+            logging.info(f"Iteration consistency: {j}")
+            print("================================================================================")
             sketch_asp_factory.ground(facts)
             symbols = sketch_asp_factory.solve()
             sketch_asp_factory.print_statistics()
             sketch = Sketch(DlplanPolicyFactory().make_dlplan_policy_from_answer_set(symbols, domain_feature_data), config.width)
+            logging.info("Learned the following sketch:")
+            print(sketch.policy.str())
             all_consistent = True
-            #for instance_idx, (instance_data, tuple_graph_data) in enumerate(zip(selected_instance_datas, selected_tuple_graph_datas)):
-            #    is_instance_consistent, instance_consistency_facts = sketch.verify_consistency(instance_idx, instance_data, tuple_graph_data)
-            #    consistency_facts.extend(instance_consistency_facts)
-            #    if not is_instance_consistent: all_consistent = False
-            is_consistent = True
-
-        logging.info("Learned the following sketch:")
-        print(sketch.policy.str())
+            for instance_idx, (instance_data, tuple_graph_data) in enumerate(zip(selected_instance_datas, selected_tuple_graph_datas)):
+                new_consistency_facts = sketch.verify_consistency(instance_idx, instance_data, tuple_graph_data)
+                consistency_facts.extend(new_consistency_facts)
+                if new_consistency_facts: all_consistent = False
+            if all_consistent:
+                break
+            else:
+                sketch_asp_factory = SketchASPFactory(config)
+                facts = []
+                facts.extend(sketch_asp_factory.make_facts(selected_instance_datas, selected_tuple_graph_datas, domain_feature_data, rule_equivalence_data, state_pair_equivalence_datas, tuple_graph_equivalence_datas))
+                facts.extend(consistency_facts)
+            j += 1
 
         # Step 2: try the sketch on all instances until there are
         # (1) either no more instances then we return the sketch, or
@@ -90,24 +101,24 @@ def run(config, data, rng):
             break
         i += 1
 
-    print("Incremental search statistics:")
-    print(f"Number of training instances: {len(instance_datas)}")
-    print(f"Number of training instances included in the ASP: {len(selected_instance_datas)}")
-    print(f"Number of states included in the ASP: {sum([len(instance_data.transition_system.states_by_index) for instance_data in selected_instance_datas])}")
-    print(f"Number of features in the pool: {len(domain_feature_data.boolean_features) + len(domain_feature_data.numerical_features)}")
-    print(f"Numer of sketch rules: {len(sketch.policy.get_rules())}")
-    print(f"Number of selected features: {len(sketch.policy.get_boolean_features()) + len(sketch.policy.get_numerical_features())}")
-    print(f"Maximum complexity of selected feature: {max([0] + [boolean_feature.get_boolean().compute_complexity() for boolean_feature in sketch.policy.get_boolean_features()] + [numerical_feature.get_numerical().compute_complexity() for numerical_feature in sketch.policy.get_numerical_features()])}")
+    print("================================================================================")
+    print("Summary: ")
+    print("================================================================================")
+    print("Number of training instances:", len(instance_datas))
+    print("Number of training instances included in the ASP:", len(selected_instance_datas))
+    print("Number of states included in the ASP:", sum([len(instance_data.transition_system.states_by_index) for instance_data in selected_instance_datas]))
+    print("Number of features in the pool:", len(domain_feature_data.boolean_features) + len(domain_feature_data.numerical_features))
+    print("Numer of sketch rules:", len(sketch.policy.get_rules()))
+    print("Number of selected features:", len(sketch.policy.get_boolean_features()) + len(sketch.policy.get_numerical_features()))
+    print("Maximum complexity of selected feature:", max([0] + [boolean_feature.get_boolean().compute_complexity() for boolean_feature in sketch.policy.get_boolean_features()] + [numerical_feature.get_numerical().compute_complexity() for numerical_feature in sketch.policy.get_numerical_features()]))
     print("Resulting sketch:")
     print(sketch.policy.str())
-
     return ExitCode.Success, None
 
 
 def initialize_iteration_data(config, i):
     iteration_dir = config["iterations_dir"] / str(i)
     create_experiment_workspace(iteration_dir, rm_if_existed=True)
-
     iteration_data = IterationData()
     iteration_data.iteration_dir = iteration_dir
     iteration_data.facts_file = iteration_dir / "facts.lp"

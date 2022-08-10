@@ -25,7 +25,7 @@ def experiments():
                         ],  # 2
     )
 
-    exps["sketch_small"] = update_dict(
+    exps["sketch"] = update_dict(
         strips_base,
         pipeline="sketch_pipeline",
         domain_dir="blocks_4",
@@ -43,11 +43,6 @@ def experiments():
         strips_base,
         pipeline="sketch_pipeline",
         domain_dir="blocks_4_on",
-        debug_features=["n_count(c_primitive(clear,0))",  # 2
-                        "n_count(c_all(r_transitive_closure(r_primitive(on,0,1)),c_equal(r_primitive(on_g,0,1),r_primitive(on,0,1))))",  # 7
-                        "n_count(c_equal(r_primitive(on_g,0,1),r_primitive(on,0,1)))",  # 4
-                        "b_empty(c_primitive(holding,0))"
-                        ],  # 2
         instances=training_instances_4_fixed_goal(),
     )
 

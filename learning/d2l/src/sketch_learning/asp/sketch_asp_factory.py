@@ -40,7 +40,8 @@ class SketchASPFactory:
         self.ctl.add("tuple", ["i", "s", "t"], "tuple(i,s,t).")
         self.ctl.add("contain", ["i", "s", "t", "r"], "contain(i,s,t,r).")
         self.ctl.add("d_distance", ["i", "s", "r", "d"], "d_distance(i,s,r,d).")
-        self.ctl.add("consistency", ["i", "s1", "s2", "t"], "consistency(i,s1,s2,t).")
+        self.ctl.add("subgoal_implication", ["i", "s1", "s2", "t"], "subgoal_implication(i,s1,s2,t).")
+        self.ctl.add("r_distance", ["i", "s", "r", "d"], "r_distance(i,s,r,d).")
         self.ctl.load(str(config.asp_sketch_location))
 
     def make_facts(self, instance_datas: List[InstanceData], tuple_graph_datas: List[TupleGraphData], domain_feature_data: DomainFeatureData, rule_equivalence_data: RuleEquivalenceData, state_pair_equivalence_datas: List[StatePairEquivalenceData], tuple_graph_equivalence_datas: List[TupleGraphEquivalenceData]):
@@ -52,12 +53,6 @@ class SketchASPFactory:
             facts.extend(TransitionSystemFactFactory().make_facts(instance_idx, instance_data.transition_system))
             for tuple_graph, tuple_graph_equivalence_data in zip(tuple_graph_data.tuple_graphs_by_state_index, tuple_graph_equivalence_data):
                 facts.extend(TupleGraphFactFactory().make_facts(instance_idx, tuple_graph, state_pair_equivalence_data, tuple_graph_equivalence_data))
-        return facts
-
-    def make_consistency_facts(self, consistency_facts: List[Tuple]):
-        facts = []
-        for instance_idx, root_idx, alive_s_idx, t_idx in consistency_facts:
-            facts.append(("consistency", [Number(instance_idx), Number(root_idx), Number(alive_s_idx), Number(t_idx)]))
         return facts
 
     def ground(self, facts=[]):

@@ -21,6 +21,8 @@ class TupleGraphFactFactory():
                     facts.append(("contain", [Number(instance_idx), Number(tuple_graph.root_idx), Number(t_idx), Number(r_idx)]))
         for r_idx, d in tuple_graph_equivalence_data.r_idx_to_deadend_distance.items():
             facts.append(("d_distance", [Number(instance_idx), Number(tuple_graph.root_idx), Number(r_idx), Number(d)]))
+        for r_idx, d in tuple_graph_equivalence_data.r_idx_to_distance.items():
+            facts.append(("r_distance", [Number(instance_idx), Number(tuple_graph.root_idx), Number(r_idx), Number(d)]))
         for r_idx, state_pairs in state_pair_equivalence_data.r_idx_to_state_pairs.items():
             for (source_idx, target_idx) in state_pairs:
                 if tuple_graph.width == 0 and source_idx == target_idx: continue

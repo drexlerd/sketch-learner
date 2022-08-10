@@ -1,7 +1,7 @@
 import re
 import dlplan
 import math
-from clingo import Model
+from clingo import Symbol, Number
 from typing import Dict, List, MutableSet
 from dataclasses import dataclass, field
 from collections import defaultdict, OrderedDict, deque
@@ -92,53 +92,34 @@ class Sketch:
     def verify_consistency(self, instance_idx: int, instance_data: InstanceData, tuple_graph_data: TupleGraphData):
         """
         """
-        is_consistent = True
-        consistency_facts = []
+        facts = []
         # 1. compute subgoal tuples for each state
         closest_subgoal_states, closest_subgoal_tuples, has_bounded_width = self._verify_bounded_width(instance_data, tuple_graph_data)
-        # 2. For each state s with subgoal tuples T check whether every state s'
-        #    that is on an optimal path from s to T with subgoal tuples T'
-        #    holds that T' subseteq T
-        for s_idx, state in enumerate(instance_data.transition_system.states_by_index):
-            print(s_idx, str(state))
         for root_idx in range(instance_data.transition_system.get_num_states()):
             if tuple_graph_data.tuple_graphs_by_state_index[root_idx] is None: continue
             optimal_forward_transitions, _ = instance_data.transition_system.compute_optimal_transitions_to_states(closest_subgoal_states[root_idx])
             # filter only transitions on optimal paths to subgoal
             relevant_optimal_forward_transitions = defaultdict(set)
+            # subgoal states itself can have arbitrary other subgoals again
+            # cycling between two subgoals is already permitted by sketch acyclicity.
             alive_s_idxs_on_optimal_paths = set()
             queue = deque()
             queue.append(root_idx)
             while queue:
                 source_idx = queue.popleft()
                 relevant_optimal_forward_transitions[source_idx] = optimal_forward_transitions[source_idx]
-                alive_s_idxs_on_optimal_paths.add(source_idx)
-                for target_idx in optimal_forward_transitions[source_idx]:
+                for target_idx in relevant_optimal_forward_transitions[source_idx]:
+                    alive_s_idxs_on_optimal_paths.add(source_idx)
                     queue.append(target_idx)
             for alive_s_idx in alive_s_idxs_on_optimal_paths:
                 if not (closest_subgoal_tuples[root_idx].issubset(closest_subgoal_tuples[alive_s_idx]) or \
                         closest_subgoal_tuples[root_idx] == closest_subgoal_tuples[alive_s_idx]):
-                    print("Inconsistent")
-                    is_consistent = False
-                    print("root_idx", root_idx)
-                    print(closest_subgoal_tuples[root_idx])
-                    print(closest_subgoal_states[root_idx])
-                    print("alive_s_idx", alive_s_idx)
-                    print(closest_subgoal_tuples[alive_s_idx])
-                    print(closest_subgoal_states[alive_s_idx])
                     # if cst[r] > cst[a] then we must ensure the opposite, i.e., cst[r] <= cst[a]
                     # Hence, for all t in cst[r]: if subgoal(r, t) then subgoal(a, t)
+                    # subgoal disagreement
                     for t_idx in closest_subgoal_tuples[root_idx]:
-                        consistency_facts.append([instance_idx, root_idx, alive_s_idx, t_idx])
-                #print(closest_subgoal_tuples[alive_s_idx])
-                #print(closest_subgoal_states[alive_s_idx])
-            #print(root_idx)
-            #print(closest_subgoal_states[root_idx])
-            #print(optimal_forward_transitions)
-            #print(relevant_optimal_forward_transitions)
-            #print(alive_s_idxs_on_optimal_paths)
-            #print()
-        return is_consistent, consistency_facts
+                        facts.append(("subgoal_implication", [Number(instance_idx), Number(root_idx), Number(alive_s_idx), Number(t_idx)]))
+        return facts
 
     def solves(self, instance_data: InstanceData, tuple_graph_data: TupleGraphData):
         """ Returns True iff the sketch solves the transition system, i.e.,

@@ -34,17 +34,19 @@ good(C) :- { feature(F) : not c_satisfied(R, F, C), select(F);
      feature(F) : not e_satisfied(R, F, C), select(F) } = 0, rule(R), equivalence(C).
 
 % Define exactly one subgoal for each solvable state for which the width exceeds.
-{ subgoal(I, S, T) : tuple(I, S, T) } != 0 :- exceed(I, S).
+{ subgoal(I, S, T) : tuple(I, S, T) } = 1 :- exceed(I, S).
 
 % Require that all equivalence classes C underlying a tuple T of subproblem P[S] are good, effectively bounding the width of P[S]
 :- not good(C), subgoal(I, S, T), contain(I, S, T, C).
 % Require unsolvable states S' as close as subgoal to not be assigned to any rule.
 :- D <= D', d_distance(I, S, C, D), t_distance(I, S, T, D'), subgoal(I, S, T), good(C).
+% (Optimal-width): Require solvable states S' closer than subgoal to not be assigned to any rule.
+:- D < D', r_distance(I, S, C, D), t_distance(I, S, T, D'), subgoal(I, S, T), good(C).
 
 % Define ``good`` state pairs similar to equivalence classes
 good(I, S, S') :- good(C), equivalence_contains(I, C, S, S').
 
-subgoal(I, S, T) :- subgoal(I, S', T), consistency(I, S, S', T).
+subgoal(I, S', T) :- subgoal(I, S, T), subgoal_implication(I, S, S', T).
 
 % (Termination): Sketch must define strict partial order over R-reachable states
 % Source of this formulation: https://users.aalto.fi/~rintanj1/papers/GebserJR14kr.pdf
@@ -53,7 +55,7 @@ order(I, S) :- solvable(I, S), order(I, S, S') : good(I, S, S'), solvable(I, S),
 :- solvable(I, S), not order(I, S).
 
 % Display
-#show consistency/4.
+#show subgoal_implication/4.
 #show subgoal/3.
 #show rule/1.
 #show select/1.

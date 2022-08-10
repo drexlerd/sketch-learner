@@ -113,7 +113,7 @@ class TupleGraphFactory:
         t_idxs = set()  # the novel tuples with distance d
         for s_idx in s_idxs_in_layer:
             atom_idxs = self.instance_data.transition_system.states_by_index[s_idx].get_atom_idxs()
-            t_idxs_for_s_idx = novelty_table.compute_novel_t_idxs(atom_idxs)
+            t_idxs_for_s_idx = novelty_table.compute_novel_tuples(atom_idxs)
             if t_idxs_for_s_idx:
                 # S*(s, t)
                 s_idx_to_t_idxs[s_idx] = t_idxs_for_s_idx
