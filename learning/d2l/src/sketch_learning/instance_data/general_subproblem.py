@@ -42,6 +42,12 @@ class GeneralSubproblemData:
 
 class GeneralSubproblemDataFactory:
     def make_general_subproblems(self, instance_datas: List[InstanceData], sketch: dlplan.Policy, rule: dlplan.Rule):
+        """
+        Step 1: Compute closest subgoal state pairs E_s [(s,s_1),(s,s_2),...] for each state s.
+                The induced graph G = (S,E) where E = union_{s in S} E_s
+                contains a goal path for every alive state.
+        Step 2: What subproblems to solve suboptimally?
+        """
         general_subproblem_datas = []
         for instance_data in instance_datas:
             general_subproblem_data = self.make_general_subproblem(instance_data, sketch, rule)

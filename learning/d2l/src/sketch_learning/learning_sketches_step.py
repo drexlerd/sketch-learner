@@ -57,31 +57,12 @@ def run(config, data, rng):
         # 1.3. Create and solve ASP
         sketch_asp_factory = SketchASPFactory(config)
         facts = sketch_asp_factory.make_facts(selected_instance_datas, selected_tuple_graph_datas, domain_feature_data, rule_equivalence_data, state_pair_equivalence_datas, tuple_graph_equivalence_datas)
-        consistency_facts = []
-        j = 0
-        while True:
-            print("================================================================================")
-            logging.info(f"Iteration consistency: {j}")
-            print("================================================================================")
-            sketch_asp_factory.ground(facts)
-            symbols = sketch_asp_factory.solve()
-            sketch_asp_factory.print_statistics()
-            sketch = Sketch(DlplanPolicyFactory().make_dlplan_policy_from_answer_set(symbols, domain_feature_data), config.width)
-            logging.info("Learned the following sketch:")
-            print(sketch.policy.str())
-            all_consistent = True
-            for instance_idx, (instance_data, tuple_graph_data) in enumerate(zip(selected_instance_datas, selected_tuple_graph_datas)):
-                new_consistency_facts = sketch.verify_consistency(instance_idx, instance_data, tuple_graph_data)
-                consistency_facts.extend(new_consistency_facts)
-                if new_consistency_facts: all_consistent = False
-            if all_consistent:
-                break
-            else:
-                sketch_asp_factory = SketchASPFactory(config)
-                facts = []
-                facts.extend(sketch_asp_factory.make_facts(selected_instance_datas, selected_tuple_graph_datas, domain_feature_data, rule_equivalence_data, state_pair_equivalence_datas, tuple_graph_equivalence_datas))
-                facts.extend(consistency_facts)
-            j += 1
+        sketch_asp_factory.ground(facts)
+        symbols = sketch_asp_factory.solve()
+        sketch_asp_factory.print_statistics()
+        sketch = Sketch(DlplanPolicyFactory().make_dlplan_policy_from_answer_set(symbols, domain_feature_data), config.width)
+        logging.info("Learned the following sketch:")
+        print(sketch.policy.str())
 
         # Step 2: try the sketch on all instances until there are
         # (1) either no more instances then we return the sketch, or

@@ -6,11 +6,13 @@ from dataclasses import dataclass, field
 from .instance_data import InstanceData
 from .transition_system import TransitionSystem
 from .novelty_table import NoveltyTable
+from .novelty_base import NoveltyBase
 
 
 @dataclass
 class TupleGraph:
     def __init__(self,
+        novelty_base: NoveltyBase,
         root_idx: int,
         t_idxs_by_distance: List[List[int]],
         s_idxs_by_distance: List[List[int]],
@@ -18,6 +20,7 @@ class TupleGraph:
         s_idx_to_t_idxs: Dict[int, MutableSet[int]],
         width: int):
         assert len(s_idxs_by_distance) == len(t_idxs_by_distance)
+        self.novelty_base = novelty_base
         self.root_idx = root_idx
         self.width = width
         self.t_idxs_by_distance = t_idxs_by_distance
@@ -31,6 +34,9 @@ class TupleGraph:
             if all(s_idx in s_idxs for s_idx in s_idxs_2):
                 return True
         return False
+
+    def t_idx_to_dlplan_atoms(self, t_idx: int):
+        pass
 
     def print(self):
         print(f"Tuple graph for state {self.root_idx} and width {self.width}")
@@ -58,6 +64,7 @@ class TupleGraphFactory:
 
     def _make_tuple_graph_for_width_0(self, source_index: int):
         """ Special case where each 1-step successor can be a subgoal. """
+        novelty_base = NoveltyBase(self.width, self.instance_data.instance_info.get_atoms())
         s_idxs_by_distance = [[source_index], list(self.instance_data.transition_system.forward_transitions[source_index])]
         # we use state indices also for tuples for simplicity
         t_idxs_by_distance = [[source_index], list(self.instance_data.transition_system.forward_transitions[source_index])]
@@ -67,11 +74,12 @@ class TupleGraphFactory:
         for suc_index in self.instance_data.transition_system.forward_transitions[source_index]:
             t_idx_to_s_idxs[suc_index].add(suc_index)
             s_idx_to_t_idxs[suc_index].add(suc_index)
-        return TupleGraph(source_index, t_idxs_by_distance, s_idxs_by_distance, t_idx_to_s_idxs, s_idx_to_t_idxs, self.width)
+        return TupleGraph(novelty_base, source_index, t_idxs_by_distance, s_idxs_by_distance, t_idx_to_s_idxs, s_idx_to_t_idxs, self.width)
 
     def _make_tuple_graph_for_width_greater_0(self, source_index):
         """ Constructing tuple graph for width greater 0 as defined in the literature. """
-        novelty_table = NoveltyTable(self.width, self.instance_data.instance_info.get_atoms())
+        novelty_base = NoveltyBase(self.width, self.instance_data.instance_info.get_atoms())
+        novelty_table = NoveltyTable(novelty_base)
         # states s[pi] by distance for optimal plan pi in Pi^*(t).
         s_idxs_by_distance = self.instance_data.transition_system.compute_states_by_distance(source_index)
         # information of tuples during computation
@@ -105,7 +113,7 @@ class TupleGraphFactory:
                     for s_idx in t_idx_to_s_idxs[t_idx]:
                         marked_s_idx_to_t_idxs[s_idx].add(t_idx)
         assert d > 0
-        return TupleGraph(source_index, marked_t_idxs_by_distance, s_idxs_by_distance[:len(marked_t_idxs_by_distance)], marked_t_idx_to_s_idxs, marked_s_idx_to_t_idxs, self.width)
+        return TupleGraph(novelty_base, source_index, marked_t_idxs_by_distance, s_idxs_by_distance[:len(marked_t_idxs_by_distance)], marked_t_idx_to_s_idxs, marked_s_idx_to_t_idxs, self.width)
 
     def _find_novel_tuples_in_layer(self, s_idxs_in_layer: List[int], novelty_table: NoveltyTable, t_idx_to_s_idxs, s_idx_to_t_idxs) -> List[int]:
         """ Given a list of states `s_idxs_in_layer`
@@ -194,7 +202,7 @@ class TupleGraphMinimizer:
                 s_idx_to_t_idxs[s_idx].add(t_idx)
         self.num_generated += len(t_idx_to_s_idxs)
         self.num_pruned += len(tuple_graph.t_idx_to_s_idxs) - len(t_idx_to_s_idxs)
-        return TupleGraph(tuple_graph.root_idx, t_idxs_by_distance, tuple_graph.s_idxs_by_distance, t_idx_to_s_idxs, s_idx_to_t_idxs, tuple_graph.width)
+        return TupleGraph(tuple_graph.novelty_base, tuple_graph.root_idx, t_idxs_by_distance, tuple_graph.s_idxs_by_distance, t_idx_to_s_idxs, s_idx_to_t_idxs, tuple_graph.width)
 
     def minimize(self, tuple_graph: TupleGraph):
         if tuple_graph is None: return None
