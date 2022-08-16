@@ -34,8 +34,8 @@ class StatePairData:
     The reason is that we do not care about the transition labels
     and just the state pair.
     """
+    general_subproblem_data: GeneralSubproblemData
     state_pairs: List[StatePair]
-    states: List[int]
 
 
 class StatePairDataFactory:
@@ -56,14 +56,10 @@ class StatePairDataFactory:
 
     def make_state_pairs_from_general_subproblem_datas(self, general_subproblem_datas: List[GeneralSubproblemData]):
         state_pair_datas = []
-        states = set()
         for general_subproblem_data in general_subproblem_datas:
             state_pairs = set()
-            for _, transitionss in general_subproblem_data.forward_transitions.items():
-                for transitions in transitionss:
-                    for transition in transitions:
-                        state_pairs.add(StatePair(transition.source_idx, transition.target_idx))
-                        states.add(transition.source_idx)
-                        states.add(transition.target_idx)
-            state_pair_datas.append(StatePairData(list(state_pairs), list(states)))
+            for _, transitions in general_subproblem_data.forward_transitions.items():
+                for transition in transitions:
+                    state_pairs.add(StatePair(transition.source_idx, transition.target_idx))
+            state_pair_datas.append(StatePairData(general_subproblem_data, list(state_pairs)))
         return state_pair_datas

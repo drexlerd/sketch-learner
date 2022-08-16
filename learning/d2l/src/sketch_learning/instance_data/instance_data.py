@@ -18,6 +18,7 @@ from ..domain_data.domain_data import DomainData
 @dataclass
 class InstanceData:
     """ """
+    id: int
     instance_filename: str
     domain_data: DomainData
     transition_system: TransitionSystem
@@ -28,7 +29,7 @@ class InstanceData:
 
 
 class InstanceDataFactory:
-    def make_instance_data(self, config, instance_information, domain_data):
+    def make_instance_data(self, config, instance_idx, instance_information, domain_data):
         logging.info(f"Constructing InstanceData for filename {instance_information.name}")
 
         try:
@@ -48,7 +49,7 @@ class InstanceDataFactory:
             return None, ReturnCode.EXHAUSTED_SIZE_LIMIT
 
         transition_system = TransitionSystemFactory().parse_transition_system(dlplan_states, goals, forward_transitions)
-        return InstanceData(instance_information.instance_filename, domain_data, transition_system, instance_info), ReturnCode.SOLVABLE
+        return InstanceData(instance_idx, instance_information.instance_filename, domain_data, transition_system, instance_info), ReturnCode.SOLVABLE
 
 
 def normalize_atom_name(name: str):

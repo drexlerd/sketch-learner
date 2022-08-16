@@ -1,12 +1,14 @@
 import dlplan
 import math
 
+from enum import Enum
 from typing import List, MutableSet, Dict
 from dataclasses import dataclass, field
 from collections import defaultdict, OrderedDict, deque
 
 from .return_codes import ReturnCode
 from ..util.command import read_file
+
 
 class TransitionSystem:
     def __init__(self,

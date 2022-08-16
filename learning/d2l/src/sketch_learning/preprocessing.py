@@ -11,7 +11,7 @@ def preprocess_instances(config, ):
     domain_data = DomainDataFactory().make_domain_data(config)
     instance_datas = []
     for instance_information in config.instance_informations:
-        instance_data, return_code = InstanceDataFactory().make_instance_data(config, instance_information, domain_data)
+        instance_data, return_code = InstanceDataFactory().make_instance_data(config, len(instance_datas), instance_information, domain_data)
         if return_code == ReturnCode.SOLVABLE:
             assert instance_data is not None
             instance_data.print_statistics()

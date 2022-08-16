@@ -16,24 +16,19 @@ from .util.timer import Timer, CountDownTimer
 def run(config, data, rng):
     domain_data, instance_datas = preprocess_instances(config)
     sketch = dlplan.PolicyReader().read("\n".join(read_file(config.sketch_filename)), domain_data.syntactic_element_factory)
-    print(sketch.compute_repr())
     general_subproblem_datas_by_rule = []
     state_pair_datas_by_rule = []
-    for rule in sketch.get_rules():
-        print(rule.compute_repr())
-        general_subproblem_datas = GeneralSubproblemDataFactory().make_general_subproblems(instance_datas, sketch, rule)
-        #for general_subproblem_data in general_subproblem_datas:
-        #    general_subproblem_data.print()
-        general_subproblem_datas_by_rule.append(general_subproblem_datas)
+    for rule_idx, rule in enumerate(sketch.get_rules()):
+        general_subproblem_datas = GeneralSubproblemDataFactory().make_general_subproblems(config, instance_datas, sketch, rule)
         state_pair_datas = StatePairDataFactory().make_state_pairs_from_general_subproblem_datas(general_subproblem_datas)
+        general_subproblem_datas_by_rule.append(general_subproblem_datas)
         state_pair_datas_by_rule.append(state_pair_datas)
 
     solution_policies = []
     for rule_idx, rule in enumerate(sketch.get_rules()):
-        if rule_idx == 0: continue
         print("Rule:", rule_idx, rule.compute_repr())
-        print("Subproblem consistency:", all([general_subproblem_data.is_consistent() for general_subproblem_data in general_subproblem_datas_by_rule[rule_idx]]))
         i = 0
+        # TODO: iterate subproblems instead of the instance_datas
         selected_instance_idxs = [0]
         largest_unsolved_instance_idx = 0
         timer = CountDownTimer(config.timeout)
