@@ -68,9 +68,6 @@ class SubproblemData:
 
 class SubproblemDataFactory:
     def make_subproblems(self, config, instance_datas: List[InstanceData], rule: SketchRule):
-        """
-        TODO: we want to compute new InstanceData that contains a new InstanceInfo
-        """
         subproblem_datas = []
         for instance_data in instance_datas:
             #rule_dir = config.instance_informations[instance_data.id].workspace / f"rule_{rule.id}"
@@ -97,11 +94,10 @@ class SubproblemDataFactory:
         for subproblem_data in subproblem_datas:
             subproblem_instance_data = InstanceDataFactory().reparse_instance_data(subproblem_data.instance_data)
             # add static seed atoms for initial state
-            print(str(subproblem_instance_data.transition_system.states_by_index[subproblem_data.root_idx]))
             for atom_idx in subproblem_instance_data.transition_system.states_by_index[subproblem_data.root_idx].get_atom_idxs():
                 atom = subproblem_instance_data.instance_info.get_atom(atom_idx)
-                new_atom = subproblem_instance_data.instance_info.add_static_atom(atom.get_predicate().get_name() + "_r", [object.get_name() for object in atom.get_objects()])
-                print(new_atom)
+                subproblem_instance_data.instance_info.add_static_atom(atom.get_predicate().get_name() + "_r", [object.get_name() for object in atom.get_objects()])
+            print([str(atom) for atom in subproblem_instance_data.instance_info.get_static_atoms()])
             exit(1)
             subproblem_instance_datas.append(subproblem_instance_data)
         return subproblem_instance_datas

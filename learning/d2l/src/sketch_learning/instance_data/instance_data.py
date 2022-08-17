@@ -53,6 +53,13 @@ class InstanceDataFactory:
         return InstanceData(instance_idx, instance_information, domain_data, transition_system, instance_info), ReturnCode.SOLVABLE
 
     def reparse_instance_data(self, instance_data: InstanceData):
+        """
+        This function allows to reparse an existing state space
+        and construct objects from it that are independent of other InstanceData.
+
+        This is useful in cases where we need a new dlplan InstanceInfo
+        because we want to add seed predicates and seed static atoms.
+        """
         logging.info(f"Reparsing InstanceData for filename {instance_data.instance_information.name}")
         instance_idx = instance_data.id
         instance_information = instance_data.instance_information
