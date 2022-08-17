@@ -23,20 +23,26 @@ def run(config, data, rng):
     sketch = Sketch(dlplan.PolicyReader().read("\n".join(read_file(config.sketch_filename)), domain_data.syntactic_element_factory), config.width)
     subproblem_datas_by_rule = []
     state_pair_datas_by_rule = []
-    for sketch_rule in sketch.get_rules():
-        subproblem_datas = SubproblemDataFactory().make_subproblems(config, instance_datas, sketch_rule)
+    instance_datas_by_rule = []
+    for rule in sketch.get_rules():
+        print("Sketch rule:", rule.dlplan_rule.compute_repr())
+        subproblem_datas = SubproblemDataFactory().make_subproblems(config, instance_datas, rule)
+        # TODO: create instance datas for each subproblem to be able to create seed features from static atoms
+        # that hold in initial state of subproblem
+        subproblem_instance_datas = SubproblemDataFactory().make_subproblem_instance_datas(config, subproblem_datas)
         state_pair_datas = StatePairDataFactory().make_state_pairs_from_subproblem_datas(subproblem_datas)
         subproblem_datas_by_rule.append(subproblem_datas)
         state_pair_datas_by_rule.append(state_pair_datas)
+        instance_datas_by_rule.append([subproblem_data.instance_data for subproblem_data in subproblem_datas])
 
     solution_policies = []
     for rule in sketch.get_rules():
-        print("Rule:", rule.dlplan_rule.compute_repr())
+        print("Sketch rule:", rule.dlplan_rule.compute_repr())
         i = 0
         # TODO: iterate subproblems instead of the instance_datas
         subproblem_datas = subproblem_datas_by_rule[rule.id]
+        instance_datas = instance_datas_by_rule[rule.id]
         state_pair_datas = state_pair_datas_by_rule[rule.id]
-        instance_datas = [subproblem_data.instance_data for subproblem_data in subproblem_datas]
         selected_subproblem_idxs = [0]
         largest_unsolved_subproblem_idx = 0
         timer = CountDownTimer(config.timeout)
@@ -48,7 +54,6 @@ def run(config, data, rng):
             print(f"Number of selected subproblems: {len(selected_subproblem_datas)}")
             selected_state_pair_datas = [state_pair_datas[subproblem_idx] for subproblem_idx in selected_subproblem_idxs]
             selected_instance_datas = [instance_datas[subproblem_idx] for subproblem_idx in selected_subproblem_idxs]
-
             dlplan_states = collect_dlplan_states(selected_subproblem_datas)
             domain_feature_data = DomainFeatureDataFactory().make_domain_feature_data(config, domain_data, dlplan_states)
             sketch_feature_data = SketchFeatureDataFactory().make_sketch_feature_data(sketch)

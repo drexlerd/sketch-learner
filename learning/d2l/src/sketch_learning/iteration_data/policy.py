@@ -21,11 +21,11 @@ class Policy:
                     if transition.optimal:
                         has_good_optimal_transitions = True
                     else:
-                        print(subproblem_data.instance_data.instance_filename)
+                        print(subproblem_data.instance_data.instance_information.instance_filename)
                         print("Suboptimal transition is marked as good: ", str(root_dlplan_state), "->", str(target_dlplan_state))
                         return False
             if not has_good_optimal_transitions:
-                print(subproblem_data.instance_data.instance_filename)
+                print(subproblem_data.instance_data.instance_information.instance_filename)
                 print("Expanded state has no good optimal transition: ", str(root_dlplan_state))
                 return False
         return True

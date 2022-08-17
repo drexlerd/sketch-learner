@@ -13,13 +13,14 @@ from ..util.naming import filename_core
 from .transition_system import TransitionSystemFactory, TransitionSystem
 from .return_codes import ReturnCode
 from ..domain_data.domain_data import DomainData
+from ..driver import Bunch
 
 
 @dataclass
 class InstanceData:
     """ """
     id: int
-    instance_filename: str
+    instance_information: Bunch
     domain_data: DomainData
     transition_system: TransitionSystem
     instance_info: dlplan.InstanceInfo
@@ -49,7 +50,21 @@ class InstanceDataFactory:
             return None, ReturnCode.EXHAUSTED_SIZE_LIMIT
 
         transition_system = TransitionSystemFactory().parse_transition_system(dlplan_states, goals, forward_transitions)
-        return InstanceData(instance_idx, instance_information.instance_filename, domain_data, transition_system, instance_info), ReturnCode.SOLVABLE
+        return InstanceData(instance_idx, instance_information, domain_data, transition_system, instance_info), ReturnCode.SOLVABLE
+
+    def reparse_instance_data(self, instance_data: InstanceData):
+        logging.info(f"Reparsing InstanceData for filename {instance_data.instance_information.name}")
+        instance_idx = instance_data.id
+        instance_information = instance_data.instance_information
+        domain_data = instance_data.domain_data
+
+        instance_info = dlplan.InstanceInfo(domain_data.vocabulary_info)
+        dlplan_states, goals, forward_transitions = parse_state_space(instance_info, instance_information.workspace / "state_space.txt")
+        parse_goal_atoms(instance_info, instance_information.workspace / "goal-atoms.txt")
+        parse_static_atoms(instance_info, instance_information.workspace / "static-atoms.txt")
+        transition_system = TransitionSystemFactory().parse_transition_system(dlplan_states, goals, forward_transitions)
+        return InstanceData(instance_idx, instance_information, domain_data, transition_system, instance_info)
+
 
 
 def normalize_atom_name(name: str):

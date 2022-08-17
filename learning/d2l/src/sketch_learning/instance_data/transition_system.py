@@ -12,12 +12,14 @@ from ..util.command import read_file
 
 class TransitionSystem:
     def __init__(self,
+        initial_state_index: int,
         states_by_index: List[dlplan.State],
         forward_transitions: Dict[int, List[int]],
         backward_transitions: Dict[int, List[int]],
         deadends: MutableSet[int],
         goals: MutableSet[int],
         goal_distances: List[int]):
+        self.initial_state_index = initial_state_index
         self.states_by_index = states_by_index
         self.forward_transitions = forward_transitions
         self.backward_transitions = backward_transitions
@@ -113,7 +115,7 @@ class TransitionSystemFactory:
         backward_transitions = compute_inverse_transitions(forward_transitions)
         goal_distances = self._compute_goal_distances(dlplan_states, goals, backward_transitions)
         deadends = compute_deadends(goal_distances)
-        return TransitionSystem(dlplan_states, forward_transitions, backward_transitions, deadends, goals, goal_distances)
+        return TransitionSystem(0, dlplan_states, forward_transitions, backward_transitions, deadends, goals, goal_distances)
 
     def _normalize_atom_name(self, name):
         tmp = name.replace('()', '').replace(')', '').replace('(', ',')

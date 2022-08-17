@@ -12,7 +12,7 @@ from collections import deque
 from ..util.command import execute, write_file, read_file, create_experiment_workspace
 from ..iteration_data.sketch import SketchRule
 
-from .instance_data import InstanceData
+from .instance_data import InstanceData, InstanceDataFactory
 from .return_codes import ReturnCode
 
 
@@ -69,10 +69,7 @@ class SubproblemData:
 class SubproblemDataFactory:
     def make_subproblems(self, config, instance_datas: List[InstanceData], rule: SketchRule):
         """
-        Step 1: Compute closest subgoal state pairs E_s [(s,s_1),(s,s_2),...] for each state s.
-                The induced graph G = (S,E) where E = union_{s in S} E_s
-                contains a goal path for every alive state.
-        Step 2: What subproblems to solve suboptimally?
+        TODO: we want to compute new InstanceData that contains a new InstanceInfo
         """
         subproblem_datas = []
         for instance_data in instance_datas:
@@ -94,6 +91,20 @@ class SubproblemDataFactory:
         for subproblem_idx, subproblem_data in enumerate(subproblem_datas):
             subproblem_data.id = subproblem_idx
         return subproblem_datas
+
+    def make_subproblem_instance_datas(self, config, subproblem_datas: List[SubproblemData]):
+        subproblem_instance_datas = []
+        for subproblem_data in subproblem_datas:
+            subproblem_instance_data = InstanceDataFactory().reparse_instance_data(subproblem_data.instance_data)
+            # add static seed atoms for initial state
+            print(str(subproblem_instance_data.transition_system.states_by_index[subproblem_data.root_idx]))
+            for atom_idx in subproblem_instance_data.transition_system.states_by_index[subproblem_data.root_idx].get_atom_idxs():
+                atom = subproblem_instance_data.instance_info.get_atom(atom_idx)
+                new_atom = subproblem_instance_data.instance_info.add_static_atom(atom.get_predicate().get_name() + "_r", [object.get_name() for object in atom.get_objects()])
+                print(new_atom)
+            exit(1)
+            subproblem_instance_datas.append(subproblem_instance_data)
+        return subproblem_instance_datas
 
     def _compute_closest_subgoal_states(self, instance_data: InstanceData, root_idx: int, rule: SketchRule):
         evaluation_cache = dlplan.EvaluationCache(len(rule.sketch.dlplan_policy.get_boolean_features()), len(rule.sketch.dlplan_policy.get_numerical_features()))
