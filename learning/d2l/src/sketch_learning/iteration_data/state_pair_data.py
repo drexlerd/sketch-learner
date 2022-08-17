@@ -7,7 +7,7 @@ from collections import defaultdict
 from sketch_learning.instance_data.tuple_graph import TupleGraphData
 
 from ..instance_data.instance_data import InstanceData
-from ..instance_data.general_subproblem import GeneralSubproblemData
+from ..instance_data.subproblem import SubproblemData
 
 
 @dataclass
@@ -34,7 +34,7 @@ class StatePairData:
     The reason is that we do not care about the transition labels
     and just the state pair.
     """
-    general_subproblem_data: GeneralSubproblemData
+    subproblem_data: SubproblemData  # parent ptr
     state_pairs: List[StatePair]
 
 
@@ -54,12 +54,12 @@ class StatePairDataFactory:
             state_pair_datas.append(StatePairData(state_pairs, list(states)))
         return state_pair_datas
 
-    def make_state_pairs_from_general_subproblem_datas(self, general_subproblem_datas: List[GeneralSubproblemData]):
+    def make_state_pairs_from_subproblem_datas(self, subproblem_datas: List[SubproblemData]):
         state_pair_datas = []
-        for general_subproblem_data in general_subproblem_datas:
+        for subproblem_data in subproblem_datas:
             state_pairs = set()
-            for _, transitions in general_subproblem_data.forward_transitions.items():
+            for _, transitions in subproblem_data.forward_transitions.items():
                 for transition in transitions:
                     state_pairs.add(StatePair(transition.source_idx, transition.target_idx))
-            state_pair_datas.append(StatePairData(general_subproblem_data, list(state_pairs)))
+            state_pair_datas.append(StatePairData(subproblem_data, list(state_pairs)))
         return state_pair_datas

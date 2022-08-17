@@ -1,8 +1,11 @@
 import logging
 import dlplan
 
+from abc import ABC, abstractmethod
 from typing import Dict, List, MutableSet, Tuple
 from dataclasses import dataclass, field
+
+from .sketch import Sketch
 
 from ..instance_data.instance_data import InstanceData
 from ..domain_data.domain_data import DomainData
@@ -74,3 +77,19 @@ class InstanceFeatureDataFactory:
                 n_per_state.append(numerical_feature.evaluate(dlplan_state))
             numerical_feature_valuations[s_idx] = n_per_state
         return InstanceFeatureData(boolean_feature_valuations, numerical_feature_valuations)
+
+
+@dataclass
+class SketchFeatureData:
+    """ SketchFeatureData stores seed features based on effects of sketch. """
+    boolean_features: List[dlplan.Boolean]
+    numerical_features: List[dlplan.Numerical]
+
+    def print(self):
+        print("Sketch feature data:")
+        print(f"    Boolean features: {self.boolean_features}")
+        print(f"    Numerical features: {self.numerical_features}")
+
+class SketchFeatureDataFactory:
+    def make_sketch_feature_data(self, sketch: Sketch):
+        return SketchFeatureData(sketch.dlplan_policy.get_boolean_features(), sketch.dlplan_policy.get_numerical_features())

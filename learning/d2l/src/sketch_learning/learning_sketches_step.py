@@ -62,7 +62,7 @@ def run(config, data, rng):
         sketch_asp_factory.print_statistics()
         sketch = Sketch(DlplanPolicyFactory().make_dlplan_policy_from_answer_set(symbols, domain_feature_data), config.width)
         logging.info("Learned the following sketch:")
-        print(sketch.policy.str())
+        print(sketch.dlplan_policy.str())
 
         # Step 2: try the sketch on all instances until there are
         # (1) either no more instances then we return the sketch, or
@@ -89,11 +89,11 @@ def run(config, data, rng):
     print("Number of training instances included in the ASP:", len(selected_instance_datas))
     print("Number of states included in the ASP:", sum([len(instance_data.transition_system.states_by_index) for instance_data in selected_instance_datas]))
     print("Number of features in the pool:", len(domain_feature_data.boolean_features) + len(domain_feature_data.numerical_features))
-    print("Numer of sketch rules:", len(sketch.policy.get_rules()))
-    print("Number of selected features:", len(sketch.policy.get_boolean_features()) + len(sketch.policy.get_numerical_features()))
-    print("Maximum complexity of selected feature:", max([0] + [boolean_feature.get_boolean().compute_complexity() for boolean_feature in sketch.policy.get_boolean_features()] + [numerical_feature.get_numerical().compute_complexity() for numerical_feature in sketch.policy.get_numerical_features()]))
+    print("Numer of sketch rules:", len(sketch.dlplan_policy.get_rules()))
+    print("Number of selected features:", len(sketch.dlplan_policy.get_boolean_features()) + len(sketch.dlplan_policy.get_numerical_features()))
+    print("Maximum complexity of selected feature:", max([0] + [boolean_feature.get_boolean().compute_complexity() for boolean_feature in sketch.dlplan_policy.get_boolean_features()] + [numerical_feature.get_numerical().compute_complexity() for numerical_feature in sketch.dlplan_policy.get_numerical_features()]))
     print("Resulting sketch:")
-    print(sketch.policy.str())
+    print(sketch.dlplan_policy.str())
     return ExitCode.Success, None
 
 

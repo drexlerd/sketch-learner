@@ -3,7 +3,7 @@ from clingo import Control, Symbol, String, Number, TruthValue, HeuristicType, M
 from typing import List, Dict, Tuple
 
 from ..instance_data.instance_data import InstanceData
-from ..instance_data.general_subproblem import GeneralSubproblemData
+from ..instance_data.subproblem import SubproblemData
 from ..iteration_data.feature_data import DomainFeatureData, InstanceFeatureData
 from ..iteration_data.state_pair_equivalence_data import RuleEquivalenceData, StatePairEquivalenceData
 from ..iteration_data.tuple_graph_equivalence_data import TupleGraphEquivalenceData
@@ -11,7 +11,7 @@ from ..iteration_data.tuple_graph_equivalence_data import TupleGraphEquivalenceD
 from .facts.iteration_data.domain_feature_data import DomainFeatureDataFactFactory
 from .facts.iteration_data.equivalence_data import EquivalenceDataFactFactory
 from .facts.instance_data.tuple_graph import TupleGraphFactFactory
-from .facts.instance_data.general_subproblem import GeneralSubproblemDataFactFactory
+from .facts.instance_data.general_subproblem import SubproblemDataFactFactory
 
 from .returncodes import ClingoExitCode
 
@@ -35,18 +35,17 @@ class PolicyASPFactory:
         self.ctl.add("e_bot_fixed", ["r", "f"], "e_bot_fixed(r,f).")
         self.ctl.add("equivalence", ["r"], "equivalence(r).")
 
-        self.ctl.add("expanded", ["i", "g", "s"], "expanded(i,g,s).")
-        self.ctl.add("subproblem", ["i", "s", "g"], "subproblem(i,s,g).")
-        self.ctl.add("optimal_equivalence", ["i", "g", "c", "s1", "s2"], "optimal_equivalence(i,g,c,s1,s2).")
-        self.ctl.add("suboptimal_equivalence", ["i", "g", "c", "s1", "s2"], "suboptimal_equivalence(i,g,c,s1,s2).")
+        self.ctl.add("expanded", ["i", "s"], "expanded(i,s).")
+        self.ctl.add("optimal_equivalence", ["i", "c", "s1", "s2"], "optimal_equivalence(i,c,s1,s2).")
+        self.ctl.add("suboptimal_equivalence", ["i", "c", "s1", "s2"], "suboptimal_equivalence(i,c,s1,s2).")
         self.ctl.load(str(config.asp_policy_location))
 
-    def make_facts(self, instance_datas: List[InstanceData], domain_feature_data: DomainFeatureData, rule_equivalence_data: RuleEquivalenceData, state_pair_equivalence_datas: List[StatePairEquivalenceData], general_subproblem_datas: List[GeneralSubproblemData]):
+    def make_facts(self, domain_feature_data: DomainFeatureData, rule_equivalence_data: RuleEquivalenceData, state_pair_equivalence_datas: List[StatePairEquivalenceData], subproblem_datas: List[SubproblemData]):
         facts = []
         facts.extend(DomainFeatureDataFactFactory().make_facts(domain_feature_data))
         facts.extend(EquivalenceDataFactFactory().make_facts(rule_equivalence_data, domain_feature_data))
-        for instance_idx, (instance_data, state_pair_equivalence_data, general_subproblem_data) in enumerate(zip(instance_datas, state_pair_equivalence_datas, general_subproblem_datas)):
-            facts.extend(GeneralSubproblemDataFactFactory().make_facts(instance_idx, state_pair_equivalence_data, general_subproblem_data))
+        for state_pair_equivalence_data, general_subproblem_data in zip(state_pair_equivalence_datas, subproblem_datas):
+            facts.extend(SubproblemDataFactFactory().make_facts(state_pair_equivalence_data, general_subproblem_data))
         return facts
 
     def ground(self, facts=[]):

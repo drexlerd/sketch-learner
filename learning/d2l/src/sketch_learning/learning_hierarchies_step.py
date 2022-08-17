@@ -1,58 +1,63 @@
 import dlplan
 import logging
+
+from typing import Dict, List, MutableSet, Tuple
+from dataclasses import dataclass, field
+
 from .returncodes import ExitCode
 from .asp.returncodes import ClingoExitCode
 from .preprocessing import preprocess_instances
 from .util.command import execute, write_file, read_file, create_experiment_workspace
-from .instance_data.general_subproblem import GeneralSubproblemDataFactory
+from .instance_data.subproblem import SubproblemData, SubproblemDataFactory
 from .iteration_data.state_pair_data import StatePairDataFactory
-from .iteration_data.feature_data import DomainFeatureDataFactory, InstanceFeatureDataFactory
+from .iteration_data.feature_data import DomainFeatureDataFactory, InstanceFeatureDataFactory, SketchFeatureDataFactory
 from .iteration_data.state_pair_equivalence_data import StatePairEquivalenceDataFactory
 from .iteration_data.dlplan_policy_factory import DlplanPolicyFactory
 from .iteration_data.policy import Policy
+from .iteration_data.sketch import Sketch
 from .asp.policy_asp_factory import PolicyASPFactory
 from .util.timer import Timer, CountDownTimer
 
 def run(config, data, rng):
     domain_data, instance_datas = preprocess_instances(config)
-    sketch = dlplan.PolicyReader().read("\n".join(read_file(config.sketch_filename)), domain_data.syntactic_element_factory)
-    general_subproblem_datas_by_rule = []
+    sketch = Sketch(dlplan.PolicyReader().read("\n".join(read_file(config.sketch_filename)), domain_data.syntactic_element_factory), config.width)
+    subproblem_datas_by_rule = []
     state_pair_datas_by_rule = []
-    for rule_idx, rule in enumerate(sketch.get_rules()):
-        general_subproblem_datas = GeneralSubproblemDataFactory().make_general_subproblems(config, instance_datas, sketch, rule)
-        state_pair_datas = StatePairDataFactory().make_state_pairs_from_general_subproblem_datas(general_subproblem_datas)
-        general_subproblem_datas_by_rule.append(general_subproblem_datas)
+    for sketch_rule in sketch.get_rules():
+        subproblem_datas = SubproblemDataFactory().make_subproblems(config, instance_datas, sketch_rule)
+        state_pair_datas = StatePairDataFactory().make_state_pairs_from_subproblem_datas(subproblem_datas)
+        subproblem_datas_by_rule.append(subproblem_datas)
         state_pair_datas_by_rule.append(state_pair_datas)
 
     solution_policies = []
-    for rule_idx, rule in enumerate(sketch.get_rules()):
-        print("Rule:", rule_idx, rule.compute_repr())
+    for rule in sketch.get_rules():
+        print("Rule:", rule.dlplan_rule.compute_repr())
         i = 0
         # TODO: iterate subproblems instead of the instance_datas
-        selected_instance_idxs = [0]
-        largest_unsolved_instance_idx = 0
+        subproblem_datas = subproblem_datas_by_rule[rule.id]
+        state_pair_datas = state_pair_datas_by_rule[rule.id]
+        instance_datas = [subproblem_data.instance_data for subproblem_data in subproblem_datas]
+        selected_subproblem_idxs = [0]
+        largest_unsolved_subproblem_idx = 0
         timer = CountDownTimer(config.timeout)
         while not timer.is_expired():
+            print("================================================================================")
             logging.info(f"Iteration: {i}")
-            selected_instance_datas = [instance_datas[instance_idx] for instance_idx in selected_instance_idxs]
-            print(f"Number of selected instances: {len(selected_instance_datas)}")
-            for selected_instance_data in selected_instance_datas:
-                print(str(selected_instance_data.instance_filename), selected_instance_data.transition_system.get_num_states())
-            selected_general_subproblem_datas = [general_subproblem_datas_by_rule[rule_idx][instance_idx] for instance_idx in selected_instance_idxs]
-            #for general_subproblem_data in selected_general_subproblem_datas:
-            #    general_subproblem_data.print()
-            selected_state_pair_datas = [state_pair_datas_by_rule[rule_idx][instance_idx] for instance_idx in selected_instance_idxs]
-            dlplan_states = []
-            for selected_instance_data, selected_state_pair_data in zip(selected_instance_datas, selected_state_pair_datas):
-                dlplan_states.extend([selected_instance_data.transition_system.states_by_index[s_idx] for s_idx in selected_state_pair_data.states])
+            print("================================================================================")
+            selected_subproblem_datas = [subproblem_datas[subproblem_idx] for subproblem_idx in selected_subproblem_idxs]
+            print(f"Number of selected subproblems: {len(selected_subproblem_datas)}")
+            selected_state_pair_datas = [state_pair_datas[subproblem_idx] for subproblem_idx in selected_subproblem_idxs]
+            selected_instance_datas = [instance_datas[subproblem_idx] for subproblem_idx in selected_subproblem_idxs]
+
+            dlplan_states = collect_dlplan_states(selected_subproblem_datas)
             domain_feature_data = DomainFeatureDataFactory().make_domain_feature_data(config, domain_data, dlplan_states)
+            sketch_feature_data = SketchFeatureDataFactory().make_sketch_feature_data(sketch)
+            sketch_feature_data.print()
             instance_feature_datas = InstanceFeatureDataFactory().make_instance_feature_datas(selected_instance_datas, domain_feature_data)
-            #for instance_feature_data in instance_feature_datas:
-            #    instance_feature_data.print()
             rule_equivalence_data, state_pair_equivalence_datas = StatePairEquivalenceDataFactory().make_equivalence_data(selected_state_pair_datas, domain_feature_data, instance_feature_datas)
 
             policy_asp_factory = PolicyASPFactory(config)
-            facts = PolicyASPFactory(config).make_facts(selected_instance_datas, domain_feature_data, rule_equivalence_data, state_pair_equivalence_datas, selected_general_subproblem_datas)
+            facts = PolicyASPFactory(config).make_facts(domain_feature_data, rule_equivalence_data, state_pair_equivalence_datas, selected_subproblem_datas)
             policy_asp_factory.ground(facts)
             symbols, returncode = policy_asp_factory.solve()
             policy_asp_factory.print_statistics()
@@ -62,20 +67,20 @@ def run(config, data, rng):
                 break
             policy = Policy(DlplanPolicyFactory().make_dlplan_policy_from_answer_set(symbols, domain_feature_data))
             print("Learned policy:")
-            print(policy.policy.compute_repr())
-            for selected_instance_data, general_subproblem_data in zip(selected_instance_datas, selected_general_subproblem_datas):
-                assert policy.solves(selected_instance_data, general_subproblem_data)
+            print(policy.dlplan_policy.compute_repr())
+            for general_subproblem_data in selected_subproblem_datas:
+                assert policy.solves(general_subproblem_data)
 
             all_solved = True
-            for instance_idx, (instance_data, general_subproblem) in enumerate(zip(instance_datas, general_subproblem_datas_by_rule[rule_idx])):
-                if not policy.solves(instance_data, general_subproblem):
-                    print("Policy fails to solve: ", instance_idx)
+            for general_subproblem in subproblem_datas:
+                if not policy.solves(general_subproblem):
+                    print("Policy fails to solve: ", general_subproblem.id)
                     all_solved = False
-                    if instance_idx > largest_unsolved_instance_idx:
-                        largest_unsolved_instance_idx = instance_idx
-                        selected_instance_idxs = [instance_idx]
+                    if general_subproblem.id > largest_unsolved_subproblem_idx:
+                        largest_unsolved_subproblem_idx = general_subproblem.id
+                        selected_subproblem_idxs = [general_subproblem.id]
                     else:
-                        selected_instance_idxs.append(instance_idx)
+                        selected_subproblem_idxs.append(general_subproblem.id)
                     break
             if all_solved:
                 print("Policy solves all general subproblems!")
@@ -87,11 +92,17 @@ def run(config, data, rng):
     print("Summary:")
     print("================================================================================")
     print("Input sketch:")
-    print(sketch.compute_repr())
+    print(sketch.dlplan_policy.compute_repr())
     print("Learned policies by rule:")
-    for rule_idx, rule in enumerate(sketch.get_rules()):
-        print("Rule", rule_idx, rule.compute_repr())
-        print("Subproblem consistency:", all([general_subproblem_data.is_consistent() for general_subproblem_data in general_subproblem_datas_by_rule[rule_idx]]))
-        if solution_policies[rule_idx] is not None:
-            print(solution_policies[rule_idx].policy.compute_repr())
+    for rule in sketch.get_rules():
+        print("Rule", rule.id, rule.dlplan_rule.compute_repr())
+        if solution_policies[rule.id] is not None:
+            print(solution_policies[rule.id].dlplan_policy.compute_repr())
     return ExitCode.Success, None
+
+
+def collect_dlplan_states(subproblem_datas: List[SubproblemData]):
+    dlplan_states = set()
+    for subproblem_data in subproblem_datas:
+        dlplan_states.update(set([subproblem_data.instance_data.transition_system.states_by_index[s_idx] for s_idx in subproblem_data.generated_states]))
+    return list(dlplan_states)

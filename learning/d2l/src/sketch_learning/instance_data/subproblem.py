@@ -10,8 +10,20 @@ from dataclasses import dataclass, field
 from collections import deque
 
 from ..util.command import execute, write_file, read_file, create_experiment_workspace
+from ..iteration_data.sketch import SketchRule
+
 from .instance_data import InstanceData
 from .return_codes import ReturnCode
+
+
+class SubproblemJsonEncoder(json.JSONEncoder):
+    def default(self, obj):
+        if isinstance(obj, Transition):
+            return [obj.source_idx, obj.target_idx, obj.optimal]
+        elif isinstance(obj, set):
+            return list(obj)
+        else:
+            return json.JSONEncoder.default(self, obj)
 
 
 @dataclass
@@ -28,51 +40,72 @@ class Transition:
 
 
 @dataclass
-class GeneralSubproblemData:
+class SubproblemData:
     id: int
+    instance_data: InstanceData
+    root_idx: int
     forward_transitions: Dict[int, MutableSet[Transition]]
     expanded_states: MutableSet[int]
     generated_states: MutableSet[int]
 
     def print(self):
-        print("Generalized subproblem:")
+        print("Subproblem:")
+        print("    Root index:", self.root_idx)
         print("    Forward transitions:", self.forward_transitions)
         print("    Expanded states:", self.expanded_states)
         print("    Generated states:", self.generated_states)
 
+    def dump_json(self, filename):
+        with open(filename, "w") as file:
+            data = {
+                "root_idx": self.root_idx,
+                "forward_transitions": self.forward_transitions,
+                "expanded_states": self.expanded_states,
+                "generated_states": self.generated_states
+            }
+            json.dump(data, file, indent=4, cls=SubproblemJsonEncoder)
 
-class GeneralSubproblemDataFactory:
-    def make_general_subproblems(self, config, instance_datas: List[InstanceData], sketch: dlplan.Policy, rule: dlplan.Rule):
+
+class SubproblemDataFactory:
+    def make_subproblems(self, config, instance_datas: List[InstanceData], rule: SketchRule):
         """
         Step 1: Compute closest subgoal state pairs E_s [(s,s_1),(s,s_2),...] for each state s.
                 The induced graph G = (S,E) where E = union_{s in S} E_s
                 contains a goal path for every alive state.
         Step 2: What subproblems to solve suboptimally?
         """
-        general_subproblem_datas = []
+        subproblem_datas = []
         for instance_data in instance_datas:
+            #rule_dir = config.instance_informations[instance_data.id].workspace / f"rule_{rule.id}"
+            #create_experiment_workspace(rule_dir, True)
             for root_idx in range(instance_data.transition_system.get_num_states()):
                 if not instance_data.transition_system.is_alive(root_idx):
                     continue
-                closest_subgoal_states = self._compute_closest_subgoal_states(instance_data, root_idx, sketch, rule)
+                closest_subgoal_states = self._compute_closest_subgoal_states(instance_data, root_idx, rule)
                 if not closest_subgoal_states:
                     continue
                 expanded_states, generated_states, forward_transitions = self._compute_transitions_to_closest_subgoal_states(instance_data, root_idx, closest_subgoal_states)
-                general_subproblem_data = GeneralSubproblemData(len(general_subproblem_datas), forward_transitions, expanded_states, generated_states)
-                general_subproblem_datas.append(general_subproblem_data)
-        return general_subproblem_datas
+                # filename = rule_dir / f"subproblem_{subproblem_data.id}.json"
+                subproblem_data = SubproblemData(len(subproblem_datas), instance_data, root_idx, forward_transitions, expanded_states, generated_states)
+                # general_subproblem_data.dump_json(filename)
+                subproblem_datas.append(subproblem_data)
+        # sort by number of generated states and fix the broken indexing scheme
+        sorted(subproblem_datas, key=lambda x : len(x.generated_states))
+        for subproblem_idx, subproblem_data in enumerate(subproblem_datas):
+            subproblem_data.id = subproblem_idx
+        return subproblem_datas
 
-    def _compute_closest_subgoal_states(self, instance_data: InstanceData, root_idx: int, sketch: dlplan.Policy, rule: dlplan.Rule):
-        evaluation_cache = dlplan.EvaluationCache(len(sketch.get_boolean_features()), len(sketch.get_numerical_features()))
+    def _compute_closest_subgoal_states(self, instance_data: InstanceData, root_idx: int, rule: SketchRule):
+        evaluation_cache = dlplan.EvaluationCache(len(rule.sketch.dlplan_policy.get_boolean_features()), len(rule.sketch.dlplan_policy.get_numerical_features()))
         root_context = dlplan.EvaluationContext(root_idx, instance_data.transition_system.states_by_index[root_idx], evaluation_cache)
-        if not rule.evaluate_conditions(root_context):
+        if not rule.dlplan_rule.evaluate_conditions(root_context):
             return set()
         layers = instance_data.transition_system.compute_states_by_distance(root_idx)
         for layer in layers:
             closest_subgoal_states = set()
             for target_idx in layer:
                 target_context = dlplan.EvaluationContext(target_idx, instance_data.transition_system.states_by_index[target_idx], evaluation_cache)
-                if rule.evaluate_effects(root_context, target_context):
+                if rule.dlplan_rule.evaluate_effects(root_context, target_context):
                     closest_subgoal_states.add(target_idx)
             if closest_subgoal_states:
                 return closest_subgoal_states
@@ -109,4 +142,4 @@ class GeneralSubproblemDataFactory:
                 if transition.optimal and target_idx not in generated_states:
                     queue.append(target_idx)
                 generated_states.add(target_idx)
-        return expanded_states, generated_states, forward_transitions
+        return expanded_states, generated_states, relevant_forward_transitions

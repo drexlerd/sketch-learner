@@ -11,15 +11,29 @@ from sketch_learning.instance_data.tuple_graph import TupleGraphData
 from ..instance_data.instance_data import InstanceData
 
 
+class SketchRule:
+    def __init__(self, sketch, rule_idx: int, dlplan_rule: dlplan.Rule):
+        self.sketch = sketch  # parent ptr
+        self.id = rule_idx
+        self.dlplan_rule = dlplan_rule
+
+
 class Sketch:
-    def __init__(self, policy: dlplan.Policy, width: int):
-        self.policy = policy
+    def __init__(self, dlplan_policy: dlplan.Policy, width: int):
+        self.dlplan_policy = dlplan_policy
         self.width = width
 
-    def _verify_bounded_width(self, instance_data: InstanceData, tuple_graph_data: TupleGraphData):
-        """ Check whether the width of all subproblems is bounded.
+    def get_rules(self):
         """
-        evaluation_cache = dlplan.EvaluationCache(len(self.policy.get_boolean_features()), len(self.policy.get_numerical_features()))
+        Attach an index and sketch parent ptr to dlplan rules.
+        """
+        return [SketchRule(self, rule_idx, dlplan_rule) for rule_idx, dlplan_rule in enumerate(self.dlplan_policy.get_rules())]
+
+    def _verify_bounded_width(self, instance_data: InstanceData, tuple_graph_data: TupleGraphData):
+        """
+        Check whether the width of all subproblems is bounded.
+        """
+        evaluation_cache = dlplan.EvaluationCache(len(self.dlplan_policy.get_boolean_features()), len(self.dlplan_policy.get_numerical_features()))
         closest_subgoal_states = defaultdict(set)
         closest_subgoal_tuples = defaultdict(set)
         for root_idx in range(instance_data.transition_system.get_num_states()):
@@ -39,7 +53,7 @@ class Sketch:
                     for s_idx in tg.t_idx_to_s_idxs[t_idx]:
                         target_state = instance_data.transition_system.states_by_index[s_idx]
                         target_context = dlplan.EvaluationContext(s_idx, target_state, evaluation_cache)
-                        if self.policy.evaluate_lazy(source_context, target_context) is not None \
+                        if self.dlplan_policy.evaluate_lazy(source_context, target_context) is not None \
                             or instance_data.transition_system.is_goal(s_idx):
                             closest_subgoal_states[tg.root_idx].add(s_idx)
                             if instance_data.transition_system.is_deadend(s_idx):
