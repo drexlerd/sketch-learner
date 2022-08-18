@@ -7,7 +7,7 @@
 #SBATCH --mail-user=dominik.drexler@liu.se
 
 DOMAIN=childsnack
-EXPERIMENT=sketch
+EXPERIMENT=hierarchy
 WIDTH=1
 MAX_SKETCH_RULES=6
 COMPLEXITY=8
