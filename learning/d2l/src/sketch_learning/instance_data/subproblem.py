@@ -97,8 +97,6 @@ class SubproblemDataFactory:
             for atom_idx in subproblem_instance_data.transition_system.states_by_index[subproblem_data.root_idx].get_atom_idxs():
                 atom = subproblem_instance_data.instance_info.get_atom(atom_idx)
                 subproblem_instance_data.instance_info.add_static_atom(atom.get_predicate().get_name() + "_r", [object.get_name() for object in atom.get_objects()])
-            print([str(atom) for atom in subproblem_instance_data.instance_info.get_static_atoms()])
-            exit(1)
             subproblem_instance_datas.append(subproblem_instance_data)
         return subproblem_instance_datas
 

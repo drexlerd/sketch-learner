@@ -29,19 +29,16 @@ def run(config, data, rng):
     for rule in sketch.get_rules():
         print("Sketch rule:", rule.dlplan_rule.compute_repr())
         subproblem_datas = SubproblemDataFactory().make_subproblems(config, instance_datas, rule)
-        # TODO: create instance datas for each subproblem to be able to create seed features from static atoms
-        # that hold in initial state of subproblem
         subproblem_instance_datas = SubproblemDataFactory().make_subproblem_instance_datas(config, subproblem_datas)
         state_pair_datas = StatePairDataFactory().make_state_pairs_from_subproblem_datas(subproblem_datas)
         subproblem_datas_by_rule.append(subproblem_datas)
         state_pair_datas_by_rule.append(state_pair_datas)
-        instance_datas_by_rule.append([subproblem_data.instance_data for subproblem_data in subproblem_datas])
+        instance_datas_by_rule.append(subproblem_instance_datas)
 
     solution_policies = []
     for rule in sketch.get_rules():
         print("Sketch rule:", rule.dlplan_rule.compute_repr())
         i = 0
-        # TODO: iterate subproblems instead of the instance_datas
         subproblem_datas = subproblem_datas_by_rule[rule.id]
         instance_datas = instance_datas_by_rule[rule.id]
         state_pair_datas = state_pair_datas_by_rule[rule.id]
@@ -75,19 +72,18 @@ def run(config, data, rng):
             policy = Policy(DlplanPolicyFactory().make_dlplan_policy_from_answer_set(symbols, domain_feature_data))
             print("Learned policy:")
             print(policy.dlplan_policy.compute_repr())
-            for general_subproblem_data in selected_subproblem_datas:
-                assert policy.solves(general_subproblem_data)
+            assert all([policy.solves(subproblem_data, instance_data) for subproblem_data, instance_data in zip(selected_subproblem_datas, selected_instance_datas)])
 
             all_solved = True
-            for general_subproblem in subproblem_datas:
-                if not policy.solves(general_subproblem):
-                    print("Policy fails to solve: ", general_subproblem.id)
+            for subproblem_data, instance_data in zip(subproblem_datas, instance_datas):
+                if not policy.solves(subproblem_data, instance_data):
+                    print("Policy fails to solve: ", subproblem_data.id)
                     all_solved = False
-                    if general_subproblem.id > largest_unsolved_subproblem_idx:
-                        largest_unsolved_subproblem_idx = general_subproblem.id
-                        selected_subproblem_idxs = [general_subproblem.id]
+                    if subproblem_data.id > largest_unsolved_subproblem_idx:
+                        largest_unsolved_subproblem_idx = subproblem_data.id
+                        selected_subproblem_idxs = [subproblem_data.id]
                     else:
-                        selected_subproblem_idxs.append(general_subproblem.id)
+                        selected_subproblem_idxs.append(subproblem_data.id)
                     break
             if all_solved:
                 print("Policy solves all general subproblems!")
