@@ -90,6 +90,10 @@ class SubproblemDataFactory:
         return subproblem_datas
 
     def make_subproblem_instance_datas(self, config, subproblem_datas: List[SubproblemData]):
+        """
+        Copies the subproblems InstanceData and then adds seed predicates
+        and static seed atoms for the initial state.
+        """
         subproblem_instance_datas = []
         for subproblem_data in subproblem_datas:
             subproblem_instance_data = InstanceDataFactory().reparse_instance_data(subproblem_data.instance_data)
