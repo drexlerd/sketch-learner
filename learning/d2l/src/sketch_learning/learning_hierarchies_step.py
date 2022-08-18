@@ -53,8 +53,8 @@ def run(config, data, rng):
             print(f"Number of selected subproblems: {len(selected_subproblem_datas)}")
             selected_state_pair_datas = [state_pair_datas[subproblem_idx] for subproblem_idx in selected_subproblem_idxs]
             selected_instance_datas = [instance_datas[subproblem_idx] for subproblem_idx in selected_subproblem_idxs]
-            dlplan_states = collect_dlplan_states(selected_subproblem_datas, selected_instance_datas)
-            domain_feature_data = DomainFeatureDataFactory().make_domain_feature_data(config, domain_data, dlplan_states)
+            dlplan_state_pairs = collect_dlplan_state_pairs(selected_subproblem_datas, selected_instance_datas)
+            domain_feature_data = DomainFeatureDataFactory().make_domain_feature_data(config, domain_data, dlplan_state_pairs)
             sketch_feature_data = SketchFeatureDataFactory().make_sketch_feature_data(sketch)
             sketch_feature_data.print()
             instance_feature_datas = InstanceFeatureDataFactory().make_instance_feature_datas(selected_instance_datas, domain_feature_data)
@@ -104,8 +104,9 @@ def run(config, data, rng):
     return ExitCode.Success, None
 
 
-def collect_dlplan_states(subproblem_datas: List[SubproblemData], instance_datas: List[InstanceData]):
-    dlplan_states = set()
+def collect_dlplan_state_pairs(subproblem_datas: List[SubproblemData], instance_datas: List[InstanceData]):
+    dlplan_state_pairs = set()
     for subproblem_data, instance_data in zip(subproblem_datas, instance_datas):
-        dlplan_states.update(set([instance_data.transition_system.states_by_index[s_idx] for s_idx in subproblem_data.generated_states]))
-    return list(dlplan_states)
+        dlplan_seed_state = instance_data.transition_system.states_by_index[subproblem_data.root_idx]
+        dlplan_state_pairs.update(set([(dlplan_seed_state, instance_data.transition_system.states_by_index[s_idx]) for s_idx in subproblem_data.generated_states]))
+    return list(dlplan_state_pairs)
