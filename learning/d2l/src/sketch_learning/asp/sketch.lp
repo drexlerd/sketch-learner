@@ -46,7 +46,6 @@ good(C) :- { feature(F) : not c_satisfied(R, F, C), select(F);
 % Define ``good`` state pairs similar to equivalence classes
 good(I, S, S') :- good(C), equivalence_contains(I, C, S, S').
 
-subgoal(I, S', T) :- subgoal(I, S, T), subgoal_implication(I, S, S', T).
 
 % (Termination): Sketch must define strict partial order over R-reachable states
 % Source of this formulation: https://users.aalto.fi/~rintanj1/papers/GebserJR14kr.pdf

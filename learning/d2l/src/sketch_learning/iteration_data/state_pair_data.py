@@ -29,7 +29,6 @@ class StatePairData:
         (1) all state pairs for that can be pi-compatible, and
         (2) all states that are part of a state pair in (1)
 
-
     This allows a common interface for computing sketches or policies.
     The reason is that we do not care about the transition labels
     and just the state pair.

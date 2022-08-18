@@ -40,7 +40,6 @@ class SketchASPFactory:
         self.ctl.add("tuple", ["i", "s", "t"], "tuple(i,s,t).")
         self.ctl.add("contain", ["i", "s", "t", "r"], "contain(i,s,t,r).")
         self.ctl.add("d_distance", ["i", "s", "r", "d"], "d_distance(i,s,r,d).")
-        self.ctl.add("subgoal_implication", ["i", "s1", "s2", "t"], "subgoal_implication(i,s1,s2,t).")
         self.ctl.add("r_distance", ["i", "s", "r", "d"], "r_distance(i,s,r,d).")
         self.ctl.load(str(config.asp_sketch_location))
 
