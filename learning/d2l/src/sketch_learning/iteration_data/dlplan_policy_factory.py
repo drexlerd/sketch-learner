@@ -1,13 +1,8 @@
-import re
 import dlplan
-import math
 from clingo import Symbol
-from typing import Dict, List, MutableSet
-from dataclasses import dataclass, field
-from collections import defaultdict, OrderedDict, deque
+from typing import  List
 
-from .feature_data import DomainFeatureData
-from ..instance_data.instance_data import InstanceData
+from .domain_feature_data import DomainFeatureData
 
 
 class DlplanPolicyFactory:

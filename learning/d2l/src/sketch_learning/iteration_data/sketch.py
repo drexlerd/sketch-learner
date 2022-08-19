@@ -6,7 +6,7 @@ from typing import Dict, List, MutableSet
 from dataclasses import dataclass, field
 from collections import defaultdict, OrderedDict, deque
 
-from sketch_learning.instance_data.tuple_graph import TupleGraphData
+from sketch_learning.instance_data.tuple_graph_data import TupleGraphData
 
 from ..instance_data.instance_data import InstanceData
 

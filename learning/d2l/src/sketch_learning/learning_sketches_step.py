@@ -12,16 +12,14 @@ from .returncodes import ExitCode
 from .util.command import execute, write_file, read_file, create_experiment_workspace
 from .util.timer import Timer, CountDownTimer
 
-from .instance_data.instance_data import InstanceData
-from .instance_data.tuple_graph import TupleGraphDataFactory
-from .domain_data.domain_data import DomainData
-from .iteration_data.iteration_data import IterationData
-from .iteration_data.feature_data import DomainFeatureDataFactory, InstanceFeatureDataFactory
+from .instance_data.tuple_graph_data_factory import TupleGraphDataFactory
+from .iteration_data.domain_feature_data_factory import DomainFeatureDataFactory
+from .iteration_data.instance_feature_data_factory import InstanceFeatureDataFactory
 from .iteration_data.dlplan_policy_factory import DlplanPolicyFactory
 from .iteration_data.sketch import Sketch
-from .iteration_data.state_pair_equivalence_data import StatePairEquivalenceDataFactory
-from .iteration_data.tuple_graph_equivalence_data import  TupleGraphEquivalenceDataFactory
-from .iteration_data.state_pair_data import StatePairDataFactory
+from .iteration_data.state_pair_equivalence_data_factory import StatePairEquivalenceDataFactory
+from .iteration_data.tuple_graph_equivalence_data_factory import  TupleGraphEquivalenceDataFactory
+from .iteration_data.state_pair_data_factory import StatePairDataFactory
 from .asp.sketch_asp_factory import SketchASPFactory
 from .preprocessing import preprocess_instances
 
@@ -96,13 +94,3 @@ def run(config, data, rng):
     print(sketch.dlplan_policy.str())
     return ExitCode.Success, None
 
-
-def initialize_iteration_data(config, i):
-    iteration_dir = config["iterations_dir"] / str(i)
-    create_experiment_workspace(iteration_dir, rm_if_existed=True)
-    iteration_data = IterationData()
-    iteration_data.iteration_dir = iteration_dir
-    iteration_data.facts_file = iteration_dir / "facts.lp"
-    iteration_data.answer_set_file = iteration_dir / "answer_set.txt"
-    iteration_data.output_sketch_file = iteration_dir / "sketch.txt"
-    return iteration_data

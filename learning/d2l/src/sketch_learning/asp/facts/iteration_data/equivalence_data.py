@@ -1,8 +1,8 @@
 import re
 from clingo import String, Number
 
-from ....iteration_data.state_pair_equivalence_data import RuleEquivalenceData, StatePairEquivalenceData
-from ....iteration_data.feature_data import DomainFeatureData
+from ....iteration_data.state_pair_equivalence_data import RuleEquivalenceData
+from ....iteration_data.domain_feature_data import DomainFeatureData
 
 
 class EquivalenceDataFactFactory():

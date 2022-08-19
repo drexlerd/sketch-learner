@@ -1,10 +1,11 @@
-from clingo import Control, Symbol, String, Number, TruthValue, HeuristicType, Model, SolveResult
+from clingo import Control
 
-from typing import List, Dict, Tuple
+from typing import List
 
 from ..instance_data.instance_data import InstanceData
-from ..instance_data.tuple_graph import TupleGraphData
-from ..iteration_data.feature_data import DomainFeatureData, InstanceFeatureData
+from ..instance_data.tuple_graph_data import TupleGraphData
+from ..iteration_data.domain_feature_data import DomainFeatureData
+from ..iteration_data.instance_feature_data import InstanceFeatureData
 from ..iteration_data.state_pair_equivalence_data import RuleEquivalenceData, StatePairEquivalenceData
 from ..iteration_data.tuple_graph_equivalence_data import TupleGraphEquivalenceData
 
