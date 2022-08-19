@@ -1,13 +1,12 @@
 import dlplan
 import logging
 
-from typing import Dict, List, MutableSet, Tuple
-from dataclasses import dataclass, field
+from typing import  List
 
 from .returncodes import ExitCode
 from .asp.returncodes import ClingoExitCode
-from .preprocessing import preprocess_instances
 from .util.command import read_file
+from .domain_data.domain_data_factory import DomainDataFactory
 from .instance_data.instance_data import InstanceData
 from .instance_data.instance_data_factory import InstanceDataFactory
 from .instance_data.subproblem import SubproblemData
@@ -22,8 +21,10 @@ from .iteration_data.sketch import Sketch
 from .asp.policy_asp_factory import PolicyASPFactory
 from .util.timer import CountDownTimer
 
+
 def run(config, data, rng):
-    domain_data, instance_datas = preprocess_instances(config)
+    domain_data = DomainDataFactory().make_domain_data(config)
+    instance_datas = InstanceDataFactory().make_instance_datas(config, domain_data)
     sketch = Sketch(dlplan.PolicyReader().read("\n".join(read_file(config.sketch_filename)), domain_data.syntactic_element_factory), config.width)
     subproblem_datas_by_rule = []
     for rule in sketch.get_rules():
@@ -49,8 +50,8 @@ def run(config, data, rng):
             selected_instance_datas = [InstanceDataFactory().make_instance_data_from_subproblem_data(subproblem_datas[subproblem_idx]) for subproblem_idx in selected_subproblem_idxs]
             dlplan_state_pairs = collect_dlplan_state_pairs(selected_subproblem_datas, selected_instance_datas)
             domain_feature_data = DomainFeatureDataFactory().make_domain_feature_data(config, domain_data, dlplan_state_pairs)
-            instance_feature_datas = InstanceFeatureDataFactory().make_instance_feature_datas(selected_instance_datas, domain_feature_data)
-            rule_equivalence_data, state_pair_equivalence_datas = StatePairEquivalenceDataFactory().make_equivalence_data(selected_state_pair_datas, domain_feature_data, instance_feature_datas)
+            instance_feature_datas = [InstanceFeatureDataFactory().make_instance_feature_data(selected_instance_data, domain_feature_data) for selected_instance_data in selected_instance_datas]
+            rule_equivalence_data, state_pair_equivalence_datas = StatePairEquivalenceDataFactory().make_equivalence_datas(selected_state_pair_datas, domain_feature_data, instance_feature_datas)
 
             policy_asp_factory = PolicyASPFactory(config)
             facts = PolicyASPFactory(config).make_facts(domain_feature_data, rule_equivalence_data, state_pair_equivalence_datas, selected_subproblem_datas)

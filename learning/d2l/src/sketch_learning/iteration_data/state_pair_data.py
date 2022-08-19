@@ -27,5 +27,4 @@ class StatePairData:
     The reason is that we do not care about the transition labels
     and just the state pair.
     """
-    subproblem_data: SubproblemData  # parent ptr
     state_pairs: List[StatePair]

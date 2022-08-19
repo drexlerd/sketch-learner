@@ -34,66 +34,27 @@ class TransitionSystem:
     def is_alive(self, state_index: int):
         return not self.is_goal(state_index) and not self.is_deadend(state_index)
 
-    def compute_distances_to_states(self, states: List[int]) -> Dict[int, int]:
-        queue = deque()
-        distances = dict()
-        for target_idx in states:
-            queue.append(target_idx)
-            distances[target_idx] = 0
-        while queue:
-            target_idx = queue.popleft()
-            target_cost = distances[target_idx]
-            for source_idx in self.backward_transitions[target_idx]:
-                source_cost = distances.get(source_idx, math.inf)
-                if target_cost + 1 < source_cost:
-                    queue.append(source_idx)
-                    distances[source_idx] = target_cost + 1
-        return distances
-
-    def compute_states_by_distance(self, source: int):
-        """ Perform BFS to partition states layerwise. """
+    def partition_states_by_distance(self, states: List[int], stop_upon_goal: bool = False) -> List[List[int]]:
+        """ Perform BFS to partition states by their distance. """
         layers = OrderedDict()
         queue = deque()
-        queue.append(source)
         distances = dict()
-        distances[source] = 0
+        for state in states:
+            queue.append(state)
+            distances[state] = 0
         while queue:
             curr_idx = queue.popleft()
             curr_cost = distances[curr_idx]
             layer = layers.setdefault(curr_cost, set())
             layer.add(curr_idx)
-            # Stop upon reaching a goal:
-            # Notice that we cannot stop upon reaching an deadend state since
-            # those states contribute to novelty of states on goal paths.
-            if curr_idx in self.goals: continue
+            if stop_upon_goal and self.is_goal(curr_idx): continue
             for succ_idx in self.forward_transitions[curr_idx]:
                 succ_cost = distances.get(succ_idx, math.inf)
                 if curr_cost + 1 < succ_cost:
                     if succ_idx not in distances:
                         queue.append(succ_idx)
                     distances[succ_idx] = curr_cost + 1
-        return [list(l) for l in layers.values()]
-
-    def compute_optimal_transitions_to_states(self, target_idxs: List[int]):
-        distances = dict()
-        queue = deque()
-        for target_idx in target_idxs:
-            distances[target_idx] = 0
-            queue.append(target_idx)
-        optimal_forward_transitions = defaultdict(set)
-        optimal_backward_transitions = defaultdict(set)
-        while queue:
-            target_idx = queue.popleft()
-            target_cost = distances.get(target_idx)
-            for source_idx in self.backward_transitions[target_idx]:
-                alt_distance = target_cost + 1
-                if alt_distance < distances.get(source_idx, math.inf):
-                    distances[source_idx] = alt_distance
-                    queue.append(source_idx)
-                if alt_distance == distances.get(source_idx):
-                    optimal_forward_transitions[source_idx].add(target_idx)
-                    optimal_backward_transitions[target_idx].add(source_idx)
-        return optimal_forward_transitions, optimal_backward_transitions
+        return [list(l) for l in layers.values()], distances
 
     def print_statistics(self):
         print(f"Num states: {len(self.states_by_index)}")

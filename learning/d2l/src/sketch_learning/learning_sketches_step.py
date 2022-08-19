@@ -1,17 +1,8 @@
-from operator import eq
-import sys
-import os
-import shutil
 import logging
-import dlplan
 
-from collections import defaultdict
-from pathlib import Path
-
-from .returncodes import ExitCode
-from .util.command import execute, write_file, read_file, create_experiment_workspace
-from .util.timer import Timer, CountDownTimer
-
+from .asp.sketch_asp_factory import SketchASPFactory
+from .domain_data.domain_data_factory import DomainDataFactory
+from .instance_data.instance_data_factory import InstanceDataFactory
 from .instance_data.tuple_graph_data_factory import TupleGraphDataFactory
 from .iteration_data.domain_feature_data_factory import DomainFeatureDataFactory
 from .iteration_data.instance_feature_data_factory import InstanceFeatureDataFactory
@@ -20,13 +11,14 @@ from .iteration_data.sketch import Sketch
 from .iteration_data.state_pair_equivalence_data_factory import StatePairEquivalenceDataFactory
 from .iteration_data.tuple_graph_equivalence_data_factory import  TupleGraphEquivalenceDataFactory
 from .iteration_data.state_pair_data_factory import StatePairDataFactory
-from .asp.sketch_asp_factory import SketchASPFactory
-from .preprocessing import preprocess_instances
+from .returncodes import ExitCode
+from .util.timer import CountDownTimer
 
 
 def run(config, data, rng):
-    domain_data, instance_datas = preprocess_instances(config)
-    tuple_graph_datas = TupleGraphDataFactory().make_tuple_graph_datas(config, instance_datas)
+    domain_data = DomainDataFactory().make_domain_data(config)
+    instance_datas = InstanceDataFactory().make_instance_datas(config, domain_data)
+    tuple_graph_datas = TupleGraphDataFactory(config.width).make_tuple_graph_datas(instance_datas)
 
     i = 0
     selected_instance_idxs = [0]
@@ -37,20 +29,18 @@ def run(config, data, rng):
         logging.info(f"Iteration instance selection: {i}")
         print("================================================================================")
         selected_instance_datas = [instance_datas[instance_idx] for instance_idx in selected_instance_idxs]
-        selected_tuple_graph_datas = [tuple_graph_datas[instance_idx] for instance_idx in selected_instance_idxs]
         print(f"Number of selected instances: {len(selected_instance_datas)}")
         for selected_instance_data in selected_instance_datas:
             print(str(selected_instance_data.instance_information.instance_filename), selected_instance_data.transition_system.get_num_states())
-
-        # 1.2. Generate feature pool
-        state_pair_datas = StatePairDataFactory().make_state_pairs_from_tuple_graphs(selected_tuple_graph_datas)
+        selected_tuple_graph_datas = [tuple_graph_datas[instance_idx] for instance_idx in selected_instance_idxs]
+        state_pair_datas = [StatePairDataFactory().make_state_pairs_from_tuple_graph_data(tuple_graph_data) for tuple_graph_data in selected_tuple_graph_datas]
         dlplan_states = []
         for selected_instance_data in selected_instance_datas:
-            dlplan_states.extend(selected_instance_data.transition_system.states_by_index)
+            dlplan_states.extend([(selected_instance_data.transition_system.states_by_index[0], selected_instance_data.transition_system.states_by_index[s_idx]) for s_idx in range(selected_instance_data.transition_system.get_num_states())])
         domain_feature_data = DomainFeatureDataFactory().make_domain_feature_data(config, domain_data, dlplan_states)
-        instance_feature_datas = InstanceFeatureDataFactory().make_instance_feature_datas(selected_instance_datas, domain_feature_data)
-        rule_equivalence_data, state_pair_equivalence_datas = StatePairEquivalenceDataFactory().make_equivalence_data(state_pair_datas, domain_feature_data, instance_feature_datas)
-        tuple_graph_equivalence_datas = TupleGraphEquivalenceDataFactory().make_equivalence_data(selected_instance_datas, selected_tuple_graph_datas, state_pair_equivalence_datas)
+        instance_feature_datas = [InstanceFeatureDataFactory().make_instance_feature_data(instance_data, domain_feature_data) for instance_data in selected_instance_datas]
+        rule_equivalence_data, state_pair_equivalence_datas = StatePairEquivalenceDataFactory().make_equivalence_datas(state_pair_datas, domain_feature_data, instance_feature_datas)
+        tuple_graph_equivalence_datas = [TupleGraphEquivalenceDataFactory().make_equivalence_data(instance_data, tuple_graph_data, state_pair_equivalence_data) for instance_data, tuple_graph_data, state_pair_equivalence_data in zip(selected_instance_datas, selected_tuple_graph_datas, state_pair_equivalence_datas)]
 
         # 1.3. Create and solve ASP
         sketch_asp_factory = SketchASPFactory(config)

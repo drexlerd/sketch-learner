@@ -13,6 +13,25 @@ from .return_codes import ReturnCode
 
 
 class InstanceDataFactory:
+    def make_instance_datas(self, config, domain_data):
+        instance_datas = []
+        for instance_information in config.instance_informations:
+            instance_data, return_code = InstanceDataFactory().make_instance_data(config, len(instance_datas), instance_information, domain_data)
+            if return_code == ReturnCode.SOLVABLE:
+                assert instance_data is not None
+                instance_data.print_statistics()
+                instance_datas.append(instance_data)
+            elif return_code == ReturnCode.TRIVIALLY_SOLVABLE:
+                print(f"Instance is trivially solvable.")
+            elif return_code == ReturnCode.UNSOLVABLE:
+                print(f"Instance is unsolvable.")
+            elif return_code == ReturnCode.EXHAUSTED_SIZE_LIMIT:
+                print(f"Instance is too large. Maximum number of allowed states is: {config.max_states_per_instance}.")
+            elif return_code == ReturnCode.EXHAUSTED_TIME_LIMIT:
+                print(f"Instance is too large. Time limit is: {config.sse_time_limit}")
+        instance_datas = sorted(instance_datas, key=lambda x : x.transition_system.get_num_states())
+        return instance_datas
+
     def make_instance_data(self, config, instance_idx, instance_information, domain_data):
         try:
             execute([config.sse_location / "fast-downward.py", domain_data.domain_filename, instance_information.instance_filename, "--translate-options", "--dump-static-atoms", "--dump-predicates", "--dump-goal-atoms", "--search-options", "--search", "dump_reachable_search_space()"], stdout=instance_information.state_space_filename, timeout=config.sse_time_limit, cwd=instance_information.workspace)

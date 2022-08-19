@@ -54,7 +54,6 @@ order(I, S) :- solvable(I, S), order(I, S, S') : good(I, S, S'), solvable(I, S),
 :- solvable(I, S), not order(I, S).
 
 % Display
-#show subgoal_implication/4.
 #show subgoal/3.
 #show rule/1.
 #show select/1.

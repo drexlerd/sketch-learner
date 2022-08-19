@@ -9,7 +9,7 @@ from .state_pair_data import StatePairData
 
 
 class StatePairEquivalenceDataFactory:
-    def make_equivalence_data(self, state_pair_datas: List[StatePairData], domain_feature_data: DomainFeatureData, instance_feature_datas: List[InstanceFeatureData]):
+    def make_equivalence_datas(self, state_pair_datas: List[StatePairData], domain_feature_data: DomainFeatureData, instance_feature_datas: List[InstanceFeatureData]):
         policy_builder = dlplan.PolicyBuilder()
         policy_boolean_features = [policy_builder.add_boolean_feature(b) for b in domain_feature_data.boolean_features]
         policy_numerical_features = [policy_builder.add_numerical_feature(n) for n in domain_feature_data.numerical_features]

@@ -51,7 +51,7 @@ class SketchASPFactory:
         facts.extend(EquivalenceDataFactFactory().make_facts(rule_equivalence_data, domain_feature_data))
         for instance_idx, (instance_data, state_pair_equivalence_data, tuple_graph_data, tuple_graph_equivalence_data) in enumerate(zip(instance_datas, state_pair_equivalence_datas, tuple_graph_datas, tuple_graph_equivalence_datas)):
             facts.extend(TransitionSystemFactFactory().make_facts(instance_idx, instance_data.transition_system))
-            for tuple_graph, tuple_graph_equivalence_data in zip(tuple_graph_data.tuple_graphs_by_state_index, tuple_graph_equivalence_data):
+            for tuple_graph, tuple_graph_equivalence_data in zip(tuple_graph_data.tuple_graphs_by_state_index, tuple_graph_equivalence_data.tuple_graph_equivalence_by_state_index):
                 facts.extend(TupleGraphFactFactory().make_facts(instance_idx, tuple_graph, state_pair_equivalence_data, tuple_graph_equivalence_data))
         return facts
 
