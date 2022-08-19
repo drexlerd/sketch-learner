@@ -38,7 +38,7 @@ class SubproblemDataFactory:
         root_context = dlplan.EvaluationContext(root_idx, instance_data.transition_system.states_by_index[root_idx], evaluation_cache)
         if not rule.dlplan_rule.evaluate_conditions(root_context):
             return set()
-        layers, _ = instance_data.transition_system.partition_states_by_distance(states=[root_idx], stop_upon_goal=False)
+        layers, _ = instance_data.transition_system.partition_states_by_distance(states=[root_idx], forward=True, stop_upon_goal=False)
         for layer in layers:
             closest_subgoal_states = set()
             for target_idx in layer:
@@ -52,15 +52,19 @@ class SubproblemDataFactory:
     def _compute_transitions_to_closest_subgoal_states(self, instance_data: InstanceData, root_idx: int, closest_subgoal_states: MutableSet[int]):
         """ Compute set of transitions starting at states reached optimally from the initial states. """
         # 1. backward from subgoal states: compute optimal/not optimal transitions
-        state_layers, distances = instance_data.transition_system.partition_states_by_distance(states=list(closest_subgoal_states), stop_upon_goal=False)
+        state_layers, distances = instance_data.transition_system.partition_states_by_distance(states=list(closest_subgoal_states), forward=False, stop_upon_goal=False)
+        if root_idx == 0: print(distances)
         forward_transitions = defaultdict(set)
         for source_idx, target_idxs in instance_data.transition_system.forward_transitions.items():
+            source_cost = distances.get(source_idx, math.inf)
             for target_idx in target_idxs:
-                if distances.get(source_idx, math.inf) == distances.get(target_idx, math.inf) + 1:
+                target_cost = distances.get(target_idx, math.inf)
+                if source_cost == target_cost + 1:
                     forward_transitions[source_idx].add(Transition(source_idx, target_idx, True))
                 else:
                     forward_transitions[source_idx].add(Transition(source_idx, target_idx, False))
         # 2. forward from initial state: move along optimal transitions and collect them, and also collect not optimal 1-step transitions.
+        if root_idx == 0: print(forward_transitions)
         queue = deque()
         expanded_states = set()
         generated_states = set()
@@ -70,6 +74,7 @@ class SubproblemDataFactory:
         generated_states.add(root_idx)
         while queue:
             source_idx = queue.popleft()
+            if root_idx == 0: print(source_idx)
             if source_idx in closest_subgoal_states:
                 continue
             expanded_states.add(source_idx)
@@ -80,4 +85,5 @@ class SubproblemDataFactory:
                 if transition.optimal and target_idx not in generated_states:
                     queue.append(target_idx)
                 generated_states.add(target_idx)
+        if root_idx == 0: print(relevant_forward_transitions)
         return expanded_states, generated_states, relevant_forward_transitions

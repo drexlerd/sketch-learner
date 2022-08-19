@@ -10,7 +10,7 @@ def experiments():
 
     strips_base = update_dict(
         base,
-        domain="domain",
+        domain="domain-with-fix",
     )
 
     exps["sketch_debug"] = update_dict(
@@ -53,4 +53,4 @@ def experiments():
 
 
 def training_instances():
-    return [f"p-{num_floors}-{num_passengers}-{seed}" for num_floors in range(2,5) for num_passengers in range(2,5) for seed in range(0,100)]
+    return [f"p-{num_floors}-{num_passengers}-{seed}" for num_floors in range(2,5) for num_passengers in range(2,5) for seed in range(0,5)]

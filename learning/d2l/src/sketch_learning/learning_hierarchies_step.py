@@ -50,7 +50,6 @@ def run(config, data, rng):
         timer = CountDownTimer(config.timeout)
         while not timer.is_expired():
             logging.info(colored(f"Iteration: {i}", "red", "on_grey"))
-            print(selected_subproblem_idxs)
             selected_subproblem_datas = [subproblem_datas[subproblem_idx] for subproblem_idx in selected_subproblem_idxs]
             print(f"Number of selected subproblems: {len(selected_subproblem_datas)}")
 

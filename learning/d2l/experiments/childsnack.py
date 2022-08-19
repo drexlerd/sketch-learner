@@ -40,4 +40,4 @@ def experiments():
 
 
 def training_instances():
-    return [f"p-{children}-{constraintness}-{gluten_factor}-{trays}-{seed}" for children in range(2,6) for constraintness in [1.0] for gluten_factor in [0.0, 0.5, 1.0] for trays in range(1,3) for seed in range(0,5)]
+    return [f"p-{children}-{constraintness}-{gluten_factor}-{trays}-{seed}" for children in range(2,4) for constraintness in [1.0] for gluten_factor in [0.0, 0.5, 1.0] for trays in range(1,3) for seed in range(0,5)]
