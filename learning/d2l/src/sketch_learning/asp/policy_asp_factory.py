@@ -66,7 +66,7 @@ class PolicyASPFactory:
 
     def print_statistics(self):
         print("Clingo statistics:")
-        print(self.ctl.statistics)
+        #print(self.ctl.statistics)
         print("Total time: ", self.ctl.statistics["summary"]["times"]["total"])
         print("CPU time: ", self.ctl.statistics["summary"]["times"]["cpu"])
         print("Solve time: ", self.ctl.statistics["summary"]["times"]["solve"])
