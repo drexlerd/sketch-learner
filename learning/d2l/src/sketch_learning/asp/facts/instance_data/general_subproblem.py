@@ -1,10 +1,12 @@
+from re import sub
 from ....instance_data.subproblem import SubproblemData
+from ....iteration_data.instance_feature_data import InstanceFeatureData
 from ....iteration_data.state_pair_equivalence_data import StatePairEquivalenceData
 from clingo import String, Number
 
 
 class SubproblemDataFactFactory():
-    def make_facts(self, state_pair_equivalence_data: StatePairEquivalenceData, subproblem_data: SubproblemData):
+    def make_facts(self, state_pair_equivalence_data: StatePairEquivalenceData, subproblem_data: SubproblemData, instance_feature_data: InstanceFeatureData):
         facts = []
         for root_idx, transitions in subproblem_data.forward_transitions.items():
             facts.append(("expanded", [Number(subproblem_data.id), Number(root_idx)]))
@@ -14,5 +16,13 @@ class SubproblemDataFactFactory():
                     facts.append(("optimal_equivalence", [Number(subproblem_data.id), Number(r_idx), Number(transition.source_idx), Number(transition.target_idx)]))
                 else:
                     facts.append(("suboptimal_equivalence", [Number(subproblem_data.id), Number(r_idx), Number(transition.source_idx), Number(transition.target_idx)]))
-        subproblem_data.print()
+        for s_idx in subproblem_data.expanded_states:
+            facts.append(("nongoal", [Number(subproblem_data.id), Number(s_idx)]))
+        for s_idx in subproblem_data.goal_states:
+            facts.append(("goal", [Number(subproblem_data.id), Number(s_idx)]))
+        for s_idx in subproblem_data.generated_states:
+            for f_idx, f_val in enumerate(instance_feature_data.boolean_feature_valuations[s_idx]):
+                facts.append(("value", [Number(subproblem_data.id), Number(s_idx), Number(f_idx), Number(f_val)]))
+            for f_idx, f_val in enumerate(instance_feature_data.numerical_feature_valuations[s_idx]):
+                facts.append(("value", [Number(subproblem_data.id), Number(s_idx), Number(f_idx + len(instance_feature_data.boolean_feature_valuations[s_idx])), Number(f_val)]))
         return list(facts)

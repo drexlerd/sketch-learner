@@ -2,15 +2,24 @@ import dlplan
 from clingo import Symbol
 from typing import  List
 
+from sketch_learning.iteration_data.state_pair_equivalence_data import RuleEquivalenceData
+
 from .domain_feature_data import DomainFeatureData
 
 
 class DlplanPolicyFactory:
     def make_dlplan_policy_from_answer_set(self, symbols: List[Symbol], domain_feature_data: DomainFeatureData):
-        """ Parses set of facts into dlplan.Policy """
+        """ Parses set of facts from ASP that contains rules into dlplan.Policy """
         policy_builder = dlplan.PolicyBuilder()
         f_idx_to_policy_feature = self._add_features(policy_builder, symbols, domain_feature_data)
         self._add_rules(policy_builder, symbols, f_idx_to_policy_feature)
+        return policy_builder.get_result()
+
+    def make_dlplan_policy_from_answer_set_d2(self, symbols: List[Symbol], domain_feature_data: DomainFeatureData, rule_equivalence_data: RuleEquivalenceData):
+        """ Parses set of facts from ASP that contains D2 constraints into dlplan.Policy """
+        policy_builder = dlplan.PolicyBuilder()
+        f_idx_to_policy_feature = self._add_features(policy_builder, symbols, domain_feature_data)
+        self._add_rules_d2(policy_builder, symbols, f_idx_to_policy_feature, rule_equivalence_data)
         return policy_builder.get_result()
 
     def _add_features(self, policy_builder: dlplan.PolicyBuilder, symbols: List[Symbol], domain_feature_data: DomainFeatureData):
@@ -56,6 +65,43 @@ class DlplanPolicyFactory:
             elif symbol.name == "e_neg":
                 rules[r_idx][1].append(policy_builder.add_neg_effect(f_idx_to_policy_feature[f_idx]))
             elif symbol.name == "e_bot":
+                rules[r_idx][1].append(policy_builder.add_bot_effect(f_idx_to_policy_feature[f_idx]))
+        for _, (conditions, effects) in rules.items():
+            policy_builder.add_rule(conditions, effects)
+
+    def _add_rules_d2(self, policy_builder: dlplan.PolicyBuilder, symbols: List[Symbol], f_idx_to_policy_feature, rule_equivalence_data: RuleEquivalenceData):
+        rules = dict()
+        for symbol in symbols:
+            if symbol.name == "good":
+                r_idx = symbol.arguments[0].number
+                rules[r_idx] = [[], []]  # conditions and effects
+        for symbol in symbols:
+            try:
+                r_idx = symbol.arguments[0].number
+                f_idx = symbol.arguments[1].number
+            except IndexError:
+                continue
+            if r_idx not in rules: continue
+            if f_idx not in f_idx_to_policy_feature: continue
+            if symbol.name == "c_eq_fixed":
+                rules[r_idx][0].append(policy_builder.add_eq_condition(f_idx_to_policy_feature[f_idx]))
+            elif symbol.name == "c_gt_fixed":
+                rules[r_idx][0].append(policy_builder.add_gt_condition(f_idx_to_policy_feature[f_idx]))
+            elif symbol.name == "c_pos_fixed":
+                rules[r_idx][0].append(policy_builder.add_pos_condition(f_idx_to_policy_feature[f_idx]))
+            elif symbol.name == "c_neg_fixed":
+                rules[r_idx][0].append(policy_builder.add_neg_condition(f_idx_to_policy_feature[f_idx]))
+            elif symbol.name == "e_inc_fixed":
+                rules[r_idx][1].append(policy_builder.add_inc_effect(f_idx_to_policy_feature[f_idx]))
+            elif symbol.name == "e_dec_fixed":
+                rules[r_idx][1].append(policy_builder.add_dec_effect(f_idx_to_policy_feature[f_idx]))
+            elif symbol.name == "e_bot_fixed":
+                rules[r_idx][1].append(policy_builder.add_bot_effect(f_idx_to_policy_feature[f_idx]))
+            elif symbol.name == "e_pos_fixed":
+                rules[r_idx][1].append(policy_builder.add_pos_effect(f_idx_to_policy_feature[f_idx]))
+            elif symbol.name == "e_neg_fixed":
+                rules[r_idx][1].append(policy_builder.add_neg_effect(f_idx_to_policy_feature[f_idx]))
+            elif symbol.name == "e_bot_fixed":
                 rules[r_idx][1].append(policy_builder.add_bot_effect(f_idx_to_policy_feature[f_idx]))
         for _, (conditions, effects) in rules.items():
             policy_builder.add_rule(conditions, effects)

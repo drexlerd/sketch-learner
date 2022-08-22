@@ -25,6 +25,7 @@ class SubproblemData:
     forward_transitions: Dict[int, MutableSet[Transition]]
     expanded_states: MutableSet[int]
     generated_states: MutableSet[int]
+    goal_states: MutableSet[int]
 
     def print(self):
         print("Subproblem:")
@@ -32,3 +33,4 @@ class SubproblemData:
         print("    Forward transitions:", self.forward_transitions)
         print("    Expanded states:", self.expanded_states)
         print("    Generated states:", self.generated_states)
+        print("    Goal states:", self.goal_states)

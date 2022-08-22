@@ -52,6 +52,7 @@ def run(config, data, rng):
             logging.info(colored(f"Iteration: {i}", "red", "on_grey"))
             selected_subproblem_datas = [subproblem_datas[subproblem_idx] for subproblem_idx in selected_subproblem_idxs]
             print(f"Number of selected subproblems: {len(selected_subproblem_datas)}")
+            print(f"Selected subproblem indices:", selected_subproblem_idxs)
 
             logging.info(colored(f"Initializing StatePairDatas...", "blue", "on_grey"))
             selected_state_pair_datas = [StatePairDataFactory().make_state_pairs_from_subproblem_data(subproblem_datas[subproblem_idx]) for subproblem_idx in selected_subproblem_idxs]
@@ -77,7 +78,7 @@ def run(config, data, rng):
 
             logging.info(colored(f"Initializing Logic Program...", "blue", "on_grey"))
             policy_asp_factory = PolicyASPFactory(config)
-            facts = PolicyASPFactory(config).make_facts(domain_feature_data, rule_equivalence_data, state_pair_equivalence_datas, selected_subproblem_datas)
+            facts = PolicyASPFactory(config).make_facts(domain_feature_data, rule_equivalence_data, state_pair_equivalence_datas, selected_subproblem_datas, instance_feature_datas)
             policy_asp_factory.ground(facts)
             logging.info(colored(f"..done", "blue", "on_grey"))
 
@@ -90,7 +91,8 @@ def run(config, data, rng):
                 print(colored("No policy exists that solves all geneneral subproblems!", "red", "on_grey"))
                 solution_policies.append(None)
                 break
-            policy = Policy(DlplanPolicyFactory().make_dlplan_policy_from_answer_set(symbols, domain_feature_data))
+            # policy = Policy(DlplanPolicyFactory().make_dlplan_policy_from_answer_set(symbols, domain_feature_data))
+            policy = Policy(DlplanPolicyFactory().make_dlplan_policy_from_answer_set_d2(symbols, domain_feature_data, rule_equivalence_data))
             print("Learned policy:")
             print(policy.dlplan_policy.compute_repr())
 

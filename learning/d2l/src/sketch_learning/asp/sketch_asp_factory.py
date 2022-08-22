@@ -22,6 +22,7 @@ class SketchASPFactory:
         self.ctl.add("numerical", ["n"], "numerical(n).")
         self.ctl.add("feature", ["f"], "feature(f).")
         self.ctl.add("complexity", ["f", "c"], "complexity(f, c).")
+        self.ctl.add("value", ["i","s","f","v"], "value(i,s,f,v).")
         self.ctl.add("c_pos_fixed", ["r", "f"], "c_pos_fixed(r,f).")
         self.ctl.add("c_neg_fixed", ["r", "f"], "c_neg_fixed(r,f).")
         self.ctl.add("c_gt_fixed", ["r", "f"], "c_gt_fixed(r,f).")
@@ -33,6 +34,8 @@ class SketchASPFactory:
         self.ctl.add("e_dec_fixed", ["r", "f"], "e_dec_fixed(r,f).")
         self.ctl.add("e_bot_fixed", ["r", "f"], "e_bot_fixed(r,f).")
         self.ctl.add("equivalence", ["r"], "equivalence(r).")
+        self.ctl.add("goal", ["i", "s"], "goal(i,s).")
+        self.ctl.add("nongoal", ["i", "s"], "nongoal(i,s).")
 
         self.ctl.add("equivalence_contains", ["i","s1", "s2", "r"], "equivalence_contains(i,s1,s2,r).")
         self.ctl.add("solvable", ["i", "s"], "solvable(i,s).")
