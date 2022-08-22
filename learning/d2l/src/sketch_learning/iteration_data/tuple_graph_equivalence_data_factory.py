@@ -2,16 +2,16 @@ import math
 from typing import List
 from collections import defaultdict
 
-from .state_pair_equivalence_data import StatePairEquivalenceData
-from .tuple_graph_equivalence_data import TupleGraphEquivalenceData
+from .state_pair_equivalence import StatePairEquivalence
 from .tuple_graph_equivalence import TupleGraphEquivalence
+from .tuple_graph_equivalence_data import TupleGraphEquivalenceData
 
 from ..instance_data.instance_data import InstanceData
 from ..instance_data.tuple_graph_data import TupleGraphData
 
 
-class TupleGraphEquivalenceDataFactory:
-    def make_equivalence_data(self, instance_data: InstanceData, tuple_graph_data: TupleGraphData, state_pair_equivalence_data: StatePairEquivalenceData):
+class TupleGraphEquivalenceFactory:
+    def make_equivalence_datas(self, instance_data: InstanceData, tuple_graph_data: TupleGraphData, state_pair_equivalence_data: StatePairEquivalence):
         tuple_graph_equivalences = []
         for tuple_graph in tuple_graph_data.tuple_graphs_by_state_index:
             if tuple_graph is None:

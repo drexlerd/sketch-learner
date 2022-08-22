@@ -10,7 +10,7 @@ class InstanceFeatureDataFactory:
     def make_instance_feature_data(self, instance_data: InstanceData, domain_feature_data: DomainFeatureData) -> Tuple[DomainFeatureData, List[InstanceFeatureData]]:
         boolean_feature_valuations = dict()
         numerical_feature_valuations = dict()
-        for s_idx, dlplan_state in enumerate(instance_data.transition_system.states_by_index):
+        for s_idx, dlplan_state in instance_data.transition_system.s_idx_to_dlplan_state.items():
             b_per_state = []
             for boolean_feature in domain_feature_data.boolean_features:
                 b_per_state.append(boolean_feature.evaluate(dlplan_state))

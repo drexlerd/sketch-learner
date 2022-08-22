@@ -2,7 +2,7 @@ import dlplan
 from clingo import Symbol
 from typing import  List
 
-from sketch_learning.iteration_data.state_pair_equivalence_data import RuleEquivalenceData
+from sketch_learning.iteration_data.state_pair_equivalence import RuleEquivalences
 
 from .domain_feature_data import DomainFeatureData
 
@@ -15,7 +15,7 @@ class DlplanPolicyFactory:
         self._add_rules(policy_builder, symbols, f_idx_to_policy_feature)
         return policy_builder.get_result()
 
-    def make_dlplan_policy_from_answer_set_d2(self, symbols: List[Symbol], domain_feature_data: DomainFeatureData, rule_equivalence_data: RuleEquivalenceData):
+    def make_dlplan_policy_from_answer_set_d2(self, symbols: List[Symbol], domain_feature_data: DomainFeatureData, rule_equivalence_data: RuleEquivalences):
         """ Parses set of facts from ASP that contains D2 constraints into dlplan.Policy """
         policy_builder = dlplan.PolicyBuilder()
         f_idx_to_policy_feature = self._add_features(policy_builder, symbols, domain_feature_data)
@@ -69,7 +69,7 @@ class DlplanPolicyFactory:
         for _, (conditions, effects) in rules.items():
             policy_builder.add_rule(conditions, effects)
 
-    def _add_rules_d2(self, policy_builder: dlplan.PolicyBuilder, symbols: List[Symbol], f_idx_to_policy_feature, rule_equivalence_data: RuleEquivalenceData):
+    def _add_rules_d2(self, policy_builder: dlplan.PolicyBuilder, symbols: List[Symbol], f_idx_to_policy_feature, rule_equivalence_data: RuleEquivalences):
         rules = dict()
         for symbol in symbols:
             if symbol.name == "good":

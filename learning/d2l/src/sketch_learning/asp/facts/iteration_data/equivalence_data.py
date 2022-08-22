@@ -1,12 +1,12 @@
 import re
 from clingo import String, Number
 
-from ....iteration_data.state_pair_equivalence_data import RuleEquivalenceData
+from ....iteration_data.state_pair_equivalence import RuleEquivalences
 from ....iteration_data.domain_feature_data import DomainFeatureData
 
 
 class EquivalenceDataFactFactory():
-    def make_facts(self, rule_equivalence_data: RuleEquivalenceData, domain_feature_data: DomainFeatureData):
+    def make_facts(self, rule_equivalence_data: RuleEquivalences, domain_feature_data: DomainFeatureData):
         facts = []
         for r_idx, rule in enumerate(rule_equivalence_data.rules):
             facts.append(("equivalence", [Number(r_idx)]))

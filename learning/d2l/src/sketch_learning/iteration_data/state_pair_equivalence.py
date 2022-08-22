@@ -4,9 +4,9 @@ from dataclasses import dataclass
 
 
 @dataclass
-class StatePairEquivalenceData:
+class StatePairEquivalence:
     """
-    StatePairEquivalenceData maps state pairs to rules over the feature pool F.
+    StatePairEquivalence maps state pairs to rules over the feature pool F.
 
     This creates an abstraction of the state pairs that allows
     reducing the number of constraints in the propositonal encoding.
@@ -15,11 +15,11 @@ class StatePairEquivalenceData:
     state_pair_to_r_idx: Dict[Tuple[int, int], int]
 
     def print(self):
-        print("StatePairEquivalenceData:")
+        print("StatePairEquivalence:")
         print("    r_idx_to_state_pairs: ", self.r_idx_to_state_pairs)
         print("    state_pair_to_r_idx: ", self.state_pair_to_r_idx)
 
 
 @dataclass
-class RuleEquivalenceData:
+class RuleEquivalences:
     rules: List[dlplan.Rule]

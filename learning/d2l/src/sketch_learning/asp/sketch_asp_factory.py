@@ -6,7 +6,7 @@ from ..instance_data.instance_data import InstanceData
 from ..instance_data.tuple_graph_data import TupleGraphData
 from ..iteration_data.domain_feature_data import DomainFeatureData
 from ..iteration_data.instance_feature_data import InstanceFeatureData
-from ..iteration_data.state_pair_equivalence_data import RuleEquivalenceData, StatePairEquivalenceData
+from ..iteration_data.state_pair_equivalence import RuleEquivalences, StatePairEquivalence
 from ..iteration_data.tuple_graph_equivalence_data import TupleGraphEquivalenceData
 
 from .facts.iteration_data.domain_feature_data import DomainFeatureDataFactFactory
@@ -47,7 +47,7 @@ class SketchASPFactory:
         self.ctl.add("r_distance", ["i", "s", "r", "d"], "r_distance(i,s,r,d).")
         self.ctl.load(str(config.asp_sketch_location))
 
-    def make_facts(self, instance_datas: List[InstanceData], tuple_graph_datas: List[TupleGraphData], domain_feature_data: DomainFeatureData, rule_equivalence_data: RuleEquivalenceData, state_pair_equivalence_datas: List[StatePairEquivalenceData], tuple_graph_equivalence_datas: List[TupleGraphEquivalenceData]):
+    def make_facts(self, instance_datas: List[InstanceData], tuple_graph_datas: List[TupleGraphData], domain_feature_data: DomainFeatureData, rule_equivalence_data: RuleEquivalences, state_pair_equivalence_datas: List[StatePairEquivalence], tuple_graph_equivalence_datas: List[TupleGraphEquivalenceData]):
         """ Make facts from data in an interation. """
         facts = []
         facts.extend(DomainFeatureDataFactFactory().make_facts(domain_feature_data))

@@ -8,6 +8,7 @@ from typing import Dict, MutableSet
 from ..util.command import execute, read_file
 
 from .instance_data import InstanceData
+from .subproblem import Subproblem
 from .transition_system_factory import TransitionSystemFactory
 from .return_codes import ReturnCode
 
@@ -52,17 +53,21 @@ class InstanceDataFactory:
         transition_system = TransitionSystemFactory().parse_transition_system(dlplan_states, goals, forward_transitions)
         return InstanceData(instance_idx, instance_information, domain_data, transition_system, instance_info), ReturnCode.SOLVABLE
 
-    def make_instance_data_from_subproblem_data(self, subproblem_data):
+    def make_instance_data_from_subproblem(self, subproblem):
         """
         Copies the subproblems InstanceData and then adds seed predicates
         and static seed atoms for the initial state.
         """
-        subproblem_instance_data = self.reparse_instance_data(subproblem_data.instance_data)
+        subproblem_instance_data = self.reparse_instance_data(subproblem.instance_data)
+        # TODO: restrict InstanceData to only relevant part of the subproblem.
         # add static seed atoms for initial state
-        for atom_idx in subproblem_instance_data.transition_system.states_by_index[subproblem_data.root_idx].get_atom_idxs():
+        for atom_idx in subproblem_instance_data.transition_system.s_idx_to_dlplan_state[subproblem.root_idx].get_atom_idxs():
             atom = subproblem_instance_data.instance_info.get_atom(atom_idx)
             subproblem_instance_data.instance_info.add_static_atom(atom.get_predicate().get_name() + "_r", [object.get_name() for object in atom.get_objects()])
         return subproblem_instance_data
+
+    def restrict_instance_data(self, instance_data: InstanceData, subproblem_data: Subproblem):
+        pass
 
     def reparse_instance_data(self, instance_data: InstanceData):
         """
@@ -117,7 +122,6 @@ def parse_state_space(instance_info: dlplan.InstanceInfo, filename: str):
             parse_state_line(instance_info, line, atom_idx_to_dlplan_atom, dlplan_states, goals)
         elif line.startswith("T "):
             parse_transition_line(line, forward_transitions)
-    dlplan_states = list(dlplan_states.values())
     return dlplan_states, goals, forward_transitions
 
 

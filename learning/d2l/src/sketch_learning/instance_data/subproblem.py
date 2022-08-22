@@ -18,7 +18,7 @@ class Transition:
 
 
 @dataclass
-class SubproblemData:
+class Subproblem:
     id: int
     instance_data: InstanceData
     root_idx: int

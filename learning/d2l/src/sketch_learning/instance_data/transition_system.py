@@ -8,14 +8,14 @@ from collections import defaultdict, deque, OrderedDict
 class TransitionSystem:
     def __init__(self,
         initial_state_index: int,
-        states_by_index: List[dlplan.State],
+        s_idx_to_dlplan_state: Dict[int, dlplan.State],
         forward_transitions: Dict[int, List[int]],
         backward_transitions: Dict[int, List[int]],
         deadends: MutableSet[int],
         goals: MutableSet[int],
         goal_distances: List[int]):
         self.initial_state_index = initial_state_index
-        self.states_by_index = states_by_index
+        self.s_idx_to_dlplan_state = s_idx_to_dlplan_state
         self.forward_transitions = forward_transitions
         self.backward_transitions = backward_transitions
         self.deadends = deadends
@@ -23,7 +23,7 @@ class TransitionSystem:
         self.goal_distances = goal_distances
 
     def get_num_states(self):
-        return len(self.states_by_index)
+        return len(self.s_idx_to_dlplan_state.items())
 
     def is_deadend(self, state_index: int):
         return state_index in self.deadends
@@ -61,7 +61,7 @@ class TransitionSystem:
         return [list(l) for l in layers.values()], distances
 
     def print_statistics(self):
-        print(f"Num states: {len(self.states_by_index)}")
+        print(f"Num states: {len(self.s_idx_to_dlplan_state)}")
         print(f"Num transitions: {sum([len(transitions) for transitions in self.forward_transitions.values()])}")
         print(f"Num deadends: {len(self.deadends)}")
         print(f"Num goals: {len(self.goals)}")

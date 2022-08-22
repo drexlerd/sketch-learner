@@ -13,9 +13,9 @@ from .iteration_data.domain_feature_data_factory import DomainFeatureDataFactory
 from .iteration_data.instance_feature_data_factory import InstanceFeatureDataFactory
 from .iteration_data.dlplan_policy_factory import DlplanPolicyFactory
 from .iteration_data.sketch import Sketch
-from .iteration_data.state_pair_equivalence_data_factory import StatePairEquivalenceDataFactory
-from .iteration_data.tuple_graph_equivalence_data_factory import  TupleGraphEquivalenceDataFactory
-from .iteration_data.state_pair_data_factory import StatePairDataFactory
+from .iteration_data.state_pair_equivalence_factory import StatePairEquivalenceFactory
+from .iteration_data.tuple_graph_equivalence_data_factory import  TupleGraphEquivalenceFactory
+from .iteration_data.state_pair_data_factory import StatePairFactory
 from .returncodes import ExitCode
 from .util.timer import CountDownTimer
 
@@ -30,7 +30,7 @@ def run(config, data, rng):
     logging.info(colored(f"..done", "green", "on_grey"))
 
     logging.info(colored(f"Initializing TupleGraphDatas...", "green", "on_grey"))
-    tuple_graph_datas = TupleGraphDataFactory(config.width).make_tuple_graph_datas(instance_datas)
+    tuple_graphs_by_instance_data = TupleGraphDataFactory(config.width).make_tuple_graph_datas(instance_datas)
     logging.info(colored(f"..done", "green", "on_grey"))
 
     i = 0
@@ -42,10 +42,10 @@ def run(config, data, rng):
         print(f"Number of selected instances: {len(selected_instance_datas)}")
         for selected_instance_data in selected_instance_datas:
             print(str(selected_instance_data.instance_information.instance_filename), selected_instance_data.transition_system.get_num_states())
-        selected_tuple_graph_datas = [tuple_graph_datas[instance_idx] for instance_idx in selected_instance_idxs]
+        tuple_graphs_by_selected_instance = [tuple_graphs_by_instance_data[instance_idx] for instance_idx in selected_instance_idxs]
 
-        logging.info(colored(f"Initializing StatePairDatas...", "blue", "on_grey"))
-        state_pair_datas = [StatePairDataFactory().make_state_pairs_from_tuple_graph_data(tuple_graph_data) for tuple_graph_data in selected_tuple_graph_datas]
+        logging.info(colored(f"Initializing StatePairs...", "blue", "on_grey"))
+        state_pairs_by_selected_instance = [StatePairFactory().make_state_pairs_from_tuple_graph_data(tuple_graph_data) for tuple_graph_data in tuple_graphs_by_selected_instance]
         logging.info(colored(f"..done", "blue", "on_grey"))
 
         logging.info(colored(f"Initializing DomainFeatureData...", "blue", "on_grey"))
@@ -57,20 +57,20 @@ def run(config, data, rng):
         logging.info(colored(f"..done", "blue", "on_grey"))
 
         logging.info(colored(f"Initializing InstanceFeatureDatas...", "blue", "on_grey"))
-        instance_feature_datas = [InstanceFeatureDataFactory().make_instance_feature_data(instance_data, domain_feature_data) for instance_data in selected_instance_datas]
+        instance_feature_datas_by_selected_instance = [InstanceFeatureDataFactory().make_instance_feature_data(instance_data, domain_feature_data) for instance_data in selected_instance_datas]
         logging.info(colored(f"..done", "blue", "on_grey"))
 
         logging.info(colored(f"Initializing StatePairEquivalenceDatas...", "blue", "on_grey"))
-        rule_equivalence_data, state_pair_equivalence_datas = StatePairEquivalenceDataFactory().make_equivalence_datas(state_pair_datas, domain_feature_data, instance_feature_datas)
+        rule_equivalences, state_pair_equivalences_by_selected_instance = StatePairEquivalenceFactory().make_state_pair_equivalences(domain_feature_data, state_pairs_by_selected_instance, instance_feature_datas_by_selected_instance)
         logging.info(colored(f"..done", "blue", "on_grey"))
 
         logging.info(colored(f"Initializing TupleGraphEquivalenceDatas...", "blue", "on_grey"))
-        tuple_graph_equivalence_datas = [TupleGraphEquivalenceDataFactory().make_equivalence_data(instance_data, tuple_graph_data, state_pair_equivalence_data) for instance_data, tuple_graph_data, state_pair_equivalence_data in zip(selected_instance_datas, selected_tuple_graph_datas, state_pair_equivalence_datas)]
+        tuple_graph_equivalence_datas_by_selected_instance = [TupleGraphEquivalenceFactory().make_equivalence_datas(instance_data, tuple_graph_data, state_pair_equivalence_data) for instance_data, tuple_graph_data, state_pair_equivalence_data in zip(selected_instance_datas, tuple_graphs_by_selected_instance, state_pair_equivalences_by_selected_instance)]
         logging.info(colored(f"..done", "blue", "on_grey"))
 
         logging.info(colored(f"Initializing Logic Program...", "blue", "on_grey"))
         sketch_asp_factory = SketchASPFactory(config)
-        facts = sketch_asp_factory.make_facts(selected_instance_datas, selected_tuple_graph_datas, domain_feature_data, rule_equivalence_data, state_pair_equivalence_datas, tuple_graph_equivalence_datas)
+        facts = sketch_asp_factory.make_facts(selected_instance_datas, tuple_graphs_by_selected_instance, domain_feature_data, rule_equivalences, state_pair_equivalences_by_selected_instance, tuple_graph_equivalence_datas_by_selected_instance)
         sketch_asp_factory.ground(facts)
         logging.info(colored(f"..done", "blue", "on_grey"))
 
@@ -84,8 +84,8 @@ def run(config, data, rng):
         print(sketch.dlplan_policy.str())
 
         logging.info(colored(f"Verifying learned sketch...", "blue", "on_grey"))
-        assert all([sketch.solves(instance_data, tuple_graph_data) for instance_data, tuple_graph_data in zip(selected_instance_datas, selected_tuple_graph_datas)])
-        all_solved, selected_instance_idxs = verify_sketch(sketch, instance_datas, tuple_graph_datas, selected_instance_idxs)
+        assert all([sketch.solves(instance_data, tuple_graph_data) for instance_data, tuple_graph_data in zip(selected_instance_datas, tuple_graphs_by_selected_instance)])
+        all_solved, selected_instance_idxs = verify_sketch(sketch, instance_datas, tuple_graphs_by_instance_data, selected_instance_idxs)
         logging.info(colored(f"..done", "blue", "on_grey"))
 
         if all_solved:

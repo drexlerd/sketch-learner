@@ -1,12 +1,12 @@
 from re import sub
-from ....instance_data.subproblem import SubproblemData
+from ....instance_data.subproblem import Subproblem
 from ....iteration_data.instance_feature_data import InstanceFeatureData
-from ....iteration_data.state_pair_equivalence_data import StatePairEquivalenceData
+from ....iteration_data.state_pair_equivalence import StatePairEquivalence
 from clingo import String, Number
 
 
-class SubproblemDataFactFactory():
-    def make_facts(self, state_pair_equivalence_data: StatePairEquivalenceData, subproblem_data: SubproblemData, instance_feature_data: InstanceFeatureData):
+class SubproblemFactFactory():
+    def make_facts(self, state_pair_equivalence_data: StatePairEquivalence, subproblem_data: Subproblem, instance_feature_data: InstanceFeatureData):
         facts = []
         for root_idx, transitions in subproblem_data.forward_transitions.items():
             facts.append(("expanded", [Number(subproblem_data.id), Number(root_idx)]))

@@ -1,11 +1,12 @@
 from clingo import String, Number
 
-from ....iteration_data.state_pair_equivalence_data import StatePairEquivalenceData
+from ....iteration_data.state_pair_equivalence import StatePairEquivalence
 from ....iteration_data.tuple_graph_equivalence_data import TupleGraphEquivalenceData
 from ....instance_data.tuple_graph import TupleGraph
 
+
 class TupleGraphFactFactory():
-    def make_facts(self, instance_idx: int, tuple_graph: TupleGraph, state_pair_equivalence_data: StatePairEquivalenceData, tuple_graph_equivalence_data: TupleGraphEquivalenceData):
+    def make_facts(self, instance_idx: int, tuple_graph: TupleGraph, state_pair_equivalence_data: StatePairEquivalence, tuple_graph_equivalence_data: TupleGraphEquivalenceData):
         if tuple_graph is None: return []
         facts = []
         facts.append(("exceed", [Number(instance_idx), Number(tuple_graph.root_idx)]))

@@ -4,13 +4,13 @@ import math
 from collections import defaultdict, deque
 from typing import List, MutableSet
 
-from .subproblem import Transition, SubproblemData
+from .subproblem import Transition, Subproblem
 from .instance_data import InstanceData
 
 from ..iteration_data.sketch import SketchRule
 
 
-class SubproblemDataFactory:
+class SubproblemFactory:
     def make_subproblems(self, instance_datas: List[InstanceData], rule: SketchRule):
         subproblem_datas = []
         for instance_data in instance_datas:
@@ -31,18 +31,18 @@ class SubproblemDataFactory:
         if not closest_subgoal_states:
             return None
         expanded_states, generated_states, forward_transitions = self._compute_transitions_to_closest_subgoal_states(instance_data, root_idx, closest_subgoal_states)
-        return SubproblemData(subproblem_idx, instance_data, root_idx, forward_transitions, expanded_states, generated_states, closest_subgoal_states)
+        return Subproblem(subproblem_idx, instance_data, root_idx, forward_transitions, expanded_states, generated_states, closest_subgoal_states)
 
     def _compute_closest_subgoal_states(self, instance_data: InstanceData, root_idx: int, rule: SketchRule):
         evaluation_cache = dlplan.EvaluationCache(len(rule.sketch.dlplan_policy.get_boolean_features()), len(rule.sketch.dlplan_policy.get_numerical_features()))
-        root_context = dlplan.EvaluationContext(root_idx, instance_data.transition_system.states_by_index[root_idx], evaluation_cache)
+        root_context = dlplan.EvaluationContext(root_idx, instance_data.transition_system.s_idx_to_dlplan_state[root_idx], evaluation_cache)
         if not rule.dlplan_rule.evaluate_conditions(root_context):
             return set()
         layers, _ = instance_data.transition_system.partition_states_by_distance(states=[root_idx], forward=True, stop_upon_goal=False)
         for layer in layers:
             closest_subgoal_states = set()
             for target_idx in layer:
-                target_context = dlplan.EvaluationContext(target_idx, instance_data.transition_system.states_by_index[target_idx], evaluation_cache)
+                target_context = dlplan.EvaluationContext(target_idx, instance_data.transition_system.s_idx_to_dlplan_state[target_idx], evaluation_cache)
                 if rule.dlplan_rule.evaluate_effects(root_context, target_context):
                     closest_subgoal_states.add(target_idx)
             if closest_subgoal_states:
