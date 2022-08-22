@@ -40,34 +40,31 @@ class InstanceDataFactory:
             return None, ReturnCode.EXHAUSTED_TIME_LIMIT
 
         instance_info = dlplan.InstanceInfo(domain_data.vocabulary_info)
-        dlplan_states, goals, forward_transitions = parse_state_space(instance_info, instance_information.workspace / "state_space.txt")
+        s_idx_to_dlplan_state, goals, forward_transitions = parse_state_space(instance_info, instance_information.workspace / "state_space.txt")
         parse_goal_atoms(instance_info, instance_information.workspace / "goal-atoms.txt")
         parse_static_atoms(instance_info, instance_information.workspace / "static-atoms.txt")
         if len(goals) == 0:
             return None, ReturnCode.UNSOLVABLE
-        elif len(goals) == len(dlplan_states):
+        elif len(goals) == len(s_idx_to_dlplan_state):
             return None, ReturnCode.TRIVIALLY_SOLVABLE
-        elif len(dlplan_states) > config.max_states_per_instance:
+        elif len(s_idx_to_dlplan_state) > config.max_states_per_instance:
             return None, ReturnCode.EXHAUSTED_SIZE_LIMIT
 
-        transition_system = TransitionSystemFactory().parse_transition_system(dlplan_states, goals, forward_transitions)
+        transition_system = TransitionSystemFactory().parse_transition_system(s_idx_to_dlplan_state, goals, forward_transitions)
         return InstanceData(instance_idx, instance_information, domain_data, transition_system, instance_info), ReturnCode.SOLVABLE
 
-    def make_instance_data_from_subproblem(self, subproblem):
+    def make_instance_data_from_subproblem(self, subproblem: Subproblem):
         """
         Copies the subproblems InstanceData and then adds seed predicates
         and static seed atoms for the initial state.
         """
+        # Get a modifiable copy of the InstanceData
         subproblem_instance_data = self.reparse_instance_data(subproblem.instance_data)
-        # TODO: restrict InstanceData to only relevant part of the subproblem.
         # add static seed atoms for initial state
         for atom_idx in subproblem_instance_data.transition_system.s_idx_to_dlplan_state[subproblem.root_idx].get_atom_idxs():
             atom = subproblem_instance_data.instance_info.get_atom(atom_idx)
             subproblem_instance_data.instance_info.add_static_atom(atom.get_predicate().get_name() + "_r", [object.get_name() for object in atom.get_objects()])
         return subproblem_instance_data
-
-    def restrict_instance_data(self, instance_data: InstanceData, subproblem_data: Subproblem):
-        pass
 
     def reparse_instance_data(self, instance_data: InstanceData):
         """

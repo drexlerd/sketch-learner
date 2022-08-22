@@ -42,12 +42,12 @@ class PolicyASPFactory:
         self.ctl.add("change", ["f", "r", "v"], "change(f,r,v).")
         self.ctl.load(str(config.asp_policy_location))
 
-    def make_facts(self, domain_feature_data: DomainFeatureData, rule_equivalence_data: RuleEquivalences, state_pair_equivalence_datas: List[StatePairEquivalence], subproblem_datas: List[Subproblem], instance_feature_datas: List[InstanceFeatureData]):
+    def make_facts(self, domain_feature_data: DomainFeatureData, rule_equivalence_data: RuleEquivalences, state_pair_equivalences: List[StatePairEquivalence], subproblem_datas: List[Subproblem], instance_feature_datas: List[InstanceFeatureData]):
         facts = []
         facts.extend(DomainFeatureDataFactFactory().make_facts(domain_feature_data))
         facts.extend(EquivalenceDataFactFactory().make_facts(rule_equivalence_data, domain_feature_data))
-        for state_pair_equivalence_data, general_subproblem_data, instance_feature_data in zip(state_pair_equivalence_datas, subproblem_datas, instance_feature_datas):
-            facts.extend(SubproblemFactFactory().make_facts(state_pair_equivalence_data, general_subproblem_data, instance_feature_data))
+        for state_pair_equivalence, subproblem, instance_feature_data in zip(state_pair_equivalences, subproblem_datas, instance_feature_datas):
+            facts.extend(SubproblemFactFactory().make_facts(state_pair_equivalence, subproblem, instance_feature_data))
         return facts
 
     def ground(self, facts=[]):

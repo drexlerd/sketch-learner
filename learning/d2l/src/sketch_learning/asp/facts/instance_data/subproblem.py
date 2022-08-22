@@ -9,6 +9,7 @@ class SubproblemFactFactory():
     def make_facts(self, state_pair_equivalence_data: StatePairEquivalence, subproblem_data: Subproblem, instance_feature_data: InstanceFeatureData):
         facts = []
         for root_idx, transitions in subproblem_data.forward_transitions.items():
+            assert root_idx in subproblem_data.expanded_states
             facts.append(("expanded", [Number(subproblem_data.id), Number(root_idx)]))
             for transition in transitions:
                 r_idx = state_pair_equivalence_data.state_pair_to_r_idx[(transition.source_idx, transition.target_idx)]
@@ -18,6 +19,7 @@ class SubproblemFactFactory():
                     facts.append(("suboptimal_equivalence", [Number(subproblem_data.id), Number(r_idx), Number(transition.source_idx), Number(transition.target_idx)]))
         for s_idx in subproblem_data.expanded_states:
             facts.append(("nongoal", [Number(subproblem_data.id), Number(s_idx)]))
+        assert subproblem_data.goal_states
         for s_idx in subproblem_data.goal_states:
             facts.append(("goal", [Number(subproblem_data.id), Number(s_idx)]))
         for s_idx in subproblem_data.generated_states:

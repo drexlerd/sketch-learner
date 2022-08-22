@@ -1,17 +1,18 @@
 import math
 
 from collections import defaultdict, deque
+from typing import List
 
 from .transition_system import TransitionSystem
 
 
 class TransitionSystemFactory:
-    def parse_transition_system(self, dlplan_states, goals, forward_transitions):
+    def parse_transition_system(self, s_idx_to_dlplan_state, goals, forward_transitions):
         # Compute backward transitions and deadends
         backward_transitions = compute_inverse_transitions(forward_transitions)
-        goal_distances = self._compute_goal_distances(dlplan_states, goals, backward_transitions)
+        goal_distances = self._compute_goal_distances(s_idx_to_dlplan_state, goals, backward_transitions)
         deadends = compute_deadends(goal_distances)
-        return TransitionSystem(0, dlplan_states, forward_transitions, backward_transitions, deadends, goals, goal_distances)
+        return TransitionSystem(0, s_idx_to_dlplan_state, forward_transitions, backward_transitions, deadends, goals, goal_distances)
 
     def _normalize_atom_name(self, name):
         tmp = name.replace('()', '').replace(')', '').replace('(', ',')
@@ -19,9 +20,8 @@ class TransitionSystemFactory:
             tmp = tmp.replace("=", ',')
         return tmp.split(',')
 
-
-    def _compute_goal_distances(self, states_by_index, goals, backward_transitions):
-        distances = [math.inf for _ in states_by_index]
+    def _compute_goal_distances(self, s_idx_to_dlplan_state, goals, backward_transitions):
+        distances = [math.inf for _ in s_idx_to_dlplan_state]
         queue = deque()
         for goal in goals:
             distances[goal] = 0

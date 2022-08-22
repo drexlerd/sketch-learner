@@ -6,9 +6,9 @@ from ....iteration_data.domain_feature_data import DomainFeatureData
 
 
 class EquivalenceDataFactFactory():
-    def make_facts(self, rule_equivalence_data: RuleEquivalences, domain_feature_data: DomainFeatureData):
+    def make_facts(self, rule_equivalences: RuleEquivalences, domain_feature_data: DomainFeatureData):
         facts = []
-        for r_idx, rule in enumerate(rule_equivalence_data.rules):
+        for r_idx, rule in enumerate(rule_equivalences.rules):
             facts.append(("equivalence", [Number(r_idx)]))
             for condition in rule.get_conditions():
                 condition_str = condition.str()

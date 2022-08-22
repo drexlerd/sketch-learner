@@ -1,3 +1,4 @@
+from re import sub
 import dlplan
 import logging
 
@@ -43,10 +44,13 @@ def run(config, data, rng):
 
     solution_policies = []
     for rule in sketch.get_rules():
+        print("Sketch:")
+        print(sketch.dlplan_policy.compute_repr())
         print("Sketch rule:", rule.dlplan_rule.compute_repr())
         i = 0
         subproblems = subproblems_by_rule[rule.id]
         selected_subproblem_idxs = [0]
+        # selected_subproblem_idxs = [182, 0, 1, 12, 14, 8, 25, 4, 36, 46, 37, 60]
         timer = CountDownTimer(config.timeout)
         while not timer.is_expired():
             logging.info(colored(f"Iteration: {i}", "red", "on_grey"))
@@ -85,7 +89,6 @@ def run(config, data, rng):
             logging.info(colored(f"Solving Logic Program...", "blue", "on_grey"))
             symbols, returncode = policy_asp_factory.solve()
             logging.info(colored(f"..done", "blue", "on_grey"))
-
             policy_asp_factory.print_statistics()
             if returncode in [ClingoExitCode.UNSATISFIABLE]:
                 print(colored("No policy exists that solves all geneneral subproblems!", "red", "on_grey"))
@@ -113,6 +116,8 @@ def run(config, data, rng):
         print("Rule", rule.id, rule.dlplan_rule.compute_repr())
         if solution_policies[rule.id] is not None:
             print(solution_policies[rule.id].dlplan_policy.compute_repr())
+        else:
+            print("No policy found.")
     return ExitCode.Success, None
 
 
