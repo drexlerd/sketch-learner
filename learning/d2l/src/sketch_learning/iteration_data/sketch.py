@@ -37,7 +37,7 @@ class Sketch:
         closest_subgoal_states = defaultdict(set)
         closest_subgoal_tuples = defaultdict(set)
         for root_idx in range(instance_data.transition_system.get_num_states()):
-            dlplan_state = instance_data.transition_system.states_by_index[root_idx]
+            dlplan_state = instance_data.transition_system.s_idx_to_dlplan_state[root_idx]
             tg = tuple_graph_data.tuple_graphs_by_state_index[root_idx]
             if tg is None: continue  # no tuple graph indicates that we don't care about the information of this state.
             bounded = False
@@ -51,7 +51,7 @@ class Sketch:
                     subgoal = True
                     assert tg.t_idx_to_s_idxs[t_idx]
                     for s_idx in tg.t_idx_to_s_idxs[t_idx]:
-                        target_state = instance_data.transition_system.states_by_index[s_idx]
+                        target_state = instance_data.transition_system.s_idx_to_dlplan_state[s_idx]
                         target_context = dlplan.EvaluationContext(s_idx, target_state, evaluation_cache)
                         if self.dlplan_policy.evaluate_lazy(source_context, target_context) is not None \
                             or instance_data.transition_system.is_goal(s_idx):
@@ -92,8 +92,8 @@ class Sketch:
                         # print(stack)
                         print("Sketch cycles")
                         for s_idx in s_idxs_on_path:
-                            print(f"{s_idx} {str(instance_data.transition_system.states_by_index[s_idx])}")
-                        print(f"{target_idx} {str(instance_data.transition_system.states_by_index[target_idx])}")
+                            print(f"{s_idx} {str(instance_data.transition_system.s_idx_to_dlplan_state[s_idx])}")
+                        print(f"{target_idx} {str(instance_data.transition_system.s_idx_to_dlplan_state[target_idx])}")
                         return False
                     if target_idx not in frontier:
                         frontier.add(target_idx)

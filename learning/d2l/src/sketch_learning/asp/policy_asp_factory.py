@@ -35,11 +35,11 @@ class PolicyASPFactory:
         self.ctl.add("equivalence", ["r"], "equivalence(r).")
         self.ctl.add("goal", ["i", "s"], "goal(i,s).")
         self.ctl.add("nongoal", ["i", "s"], "nongoal(i,s).")
+        self.ctl.add("change", ["f", "r", "v"], "change(f,r,v).")
 
         self.ctl.add("expanded", ["i", "s"], "expanded(i,s).")
         self.ctl.add("optimal_equivalence", ["i", "c", "s1", "s2"], "optimal_equivalence(i,c,s1,s2).")
         self.ctl.add("suboptimal_equivalence", ["i", "c", "s1", "s2"], "suboptimal_equivalence(i,c,s1,s2).")
-        self.ctl.add("change", ["f", "r", "v"], "change(f,r,v).")
         self.ctl.load(str(config.asp_policy_location))
 
     def make_facts(self, domain_feature_data: DomainFeatureData, rule_equivalence_data: RuleEquivalences, state_pair_equivalences: List[StatePairEquivalence], subproblem_datas: List[Subproblem], instance_feature_datas: List[InstanceFeatureData]):

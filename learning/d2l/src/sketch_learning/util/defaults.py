@@ -21,7 +21,7 @@ def generate_experiment(expid, domain_dir, domain, **kwargs):
         max_states_per_instance=2000,
 
         # The location of the asp problem file
-        asp_sketch_location=(BASEDIR / "src/sketch_learning/asp/sketch.lp"),
+        asp_sketch_location=(BASEDIR / "src/sketch_learning/asp/sketch_d2.lp"),
         asp_policy_location=(BASEDIR / "src/sketch_learning/asp/policy_d2.lp"),
 
         sse_location=(BASEDIR / "libs" / "scorpion"),

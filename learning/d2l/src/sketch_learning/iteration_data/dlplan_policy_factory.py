@@ -15,11 +15,11 @@ class DlplanPolicyFactory:
         self._add_rules(policy_builder, symbols, f_idx_to_policy_feature)
         return policy_builder.get_result()
 
-    def make_dlplan_policy_from_answer_set_d2(self, symbols: List[Symbol], domain_feature_data: DomainFeatureData, rule_equivalence_data: RuleEquivalences):
+    def make_dlplan_policy_from_answer_set_d2(self, symbols: List[Symbol], domain_feature_data: DomainFeatureData, rule_equivalences: RuleEquivalences):
         """ Parses set of facts from ASP that contains D2 constraints into dlplan.Policy """
         policy_builder = dlplan.PolicyBuilder()
         f_idx_to_policy_feature = self._add_features(policy_builder, symbols, domain_feature_data)
-        self._add_rules_d2(policy_builder, symbols, f_idx_to_policy_feature, rule_equivalence_data)
+        self._add_rules_d2(policy_builder, symbols, f_idx_to_policy_feature, rule_equivalences)
         return policy_builder.get_result()
 
     def _add_features(self, policy_builder: dlplan.PolicyBuilder, symbols: List[Symbol], domain_feature_data: DomainFeatureData):

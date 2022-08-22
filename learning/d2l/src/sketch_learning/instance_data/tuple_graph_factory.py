@@ -78,7 +78,7 @@ class TupleGraphFactory:
             return all tuple indices that are novel in at least one state.  """
         t_idxs = set()  # the novel tuples with distance d
         for s_idx in s_idxs_in_layer:
-            atom_idxs = instance_data.transition_system.states_by_index[s_idx].get_atom_idxs()
+            atom_idxs = instance_data.transition_system.s_idx_to_dlplan_state[s_idx].get_atom_idxs()
             t_idxs_for_s_idx = novelty_table.compute_novel_tuples(atom_idxs)
             if t_idxs_for_s_idx:
                 # S*(s, t)

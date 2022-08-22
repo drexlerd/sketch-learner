@@ -51,7 +51,7 @@ def run(config, data, rng):
         logging.info(colored(f"Initializing DomainFeatureData...", "blue", "on_grey"))
         dlplan_state_pairs = []
         for selected_instance_data in selected_instance_datas:
-            dlplan_state_pairs.extend([(selected_instance_data.transition_system.states_by_index[0], selected_instance_data.transition_system.states_by_index[s_idx]) for s_idx in range(selected_instance_data.transition_system.get_num_states())])
+            dlplan_state_pairs.extend([(selected_instance_data.transition_system.s_idx_to_dlplan_state[0], dlplan_state) for dlplan_state in selected_instance_data.transition_system.s_idx_to_dlplan_state.values()])
         print("Number of dlplan state pairs:", len(dlplan_state_pairs))
         domain_feature_data = DomainFeatureDataFactory().make_domain_feature_data(config, domain_data, dlplan_state_pairs)
         logging.info(colored(f"..done", "blue", "on_grey"))
@@ -70,7 +70,7 @@ def run(config, data, rng):
 
         logging.info(colored(f"Initializing Logic Program...", "blue", "on_grey"))
         sketch_asp_factory = SketchASPFactory(config)
-        facts = sketch_asp_factory.make_facts(selected_instance_datas, tuple_graphs_by_selected_instance, domain_feature_data, rule_equivalences, state_pair_equivalences_by_selected_instance, tuple_graph_equivalence_datas_by_selected_instance)
+        facts = sketch_asp_factory.make_facts(selected_instance_datas, tuple_graphs_by_selected_instance, domain_feature_data, rule_equivalences, state_pair_equivalences_by_selected_instance, tuple_graph_equivalence_datas_by_selected_instance, instance_feature_datas_by_selected_instance)
         sketch_asp_factory.ground(facts)
         logging.info(colored(f"..done", "blue", "on_grey"))
 
@@ -79,7 +79,7 @@ def run(config, data, rng):
         logging.info(colored(f"..done", "blue", "on_grey"))
 
         sketch_asp_factory.print_statistics()
-        sketch = Sketch(DlplanPolicyFactory().make_dlplan_policy_from_answer_set(symbols, domain_feature_data), config.width)
+        sketch = Sketch(DlplanPolicyFactory().make_dlplan_policy_from_answer_set_d2(symbols, domain_feature_data, rule_equivalences), config.width)
         logging.info("Learned the following sketch:")
         print(sketch.dlplan_policy.str())
 
@@ -95,7 +95,7 @@ def run(config, data, rng):
     logging.info(colored("Summary:", "green"))
     print("Number of training instances:", len(instance_datas))
     print("Number of training instances included in the ASP:", len(selected_instance_datas))
-    print("Number of states included in the ASP:", sum([len(instance_data.transition_system.states_by_index) for instance_data in selected_instance_datas]))
+    print("Number of states included in the ASP:", sum([instance_data.transition_system.get_num_states() for instance_data in selected_instance_datas]))
     print("Number of features in the pool:", len(domain_feature_data.boolean_features) + len(domain_feature_data.numerical_features))
     print("Numer of sketch rules:", len(sketch.dlplan_policy.get_rules()))
     print("Number of selected features:", len(sketch.dlplan_policy.get_boolean_features()) + len(sketch.dlplan_policy.get_numerical_features()))
