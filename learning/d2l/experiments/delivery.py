@@ -49,8 +49,19 @@ def experiments():
         instances=training_instances(),
         generate_concept_distance_numerical=True
     )
+
+    exps["hierarchy_dist_minimal"] = update_dict(
+        strips_base,
+        pipeline="hierarchy_pipeline",
+        instances=training_instances_minimal(),
+        generate_concept_distance_numerical=True
+    )
     return exps
 
 
 def training_instances():
     return [f"instance_2_{j}_{k}" for k in range(0,5) for j in range(1,3)]
+
+
+def training_instances_minimal():
+    return ["instance_2_2_0"]

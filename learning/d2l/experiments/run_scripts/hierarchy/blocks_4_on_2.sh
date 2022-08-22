@@ -7,7 +7,7 @@
 #SBATCH --mail-user=dominik.drexler@liu.se
 
 DOMAIN=blocks_4
-EXPERIMENT=hierarchy_on
+EXPERIMENT=hierarchy_on_minimal
 WIDTH=2
 MAX_SKETCH_RULES=6
 COMPLEXITY=8

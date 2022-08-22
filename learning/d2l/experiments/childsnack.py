@@ -36,8 +36,18 @@ def experiments():
         pipeline="hierarchy_pipeline",
         instances=training_instances(),
     )
+
+    exps["hierarchy_minimal"] = update_dict(
+        strips_base,
+        pipeline="hierarchy_pipeline",
+        instances=training_instances_minimal(),
+    )
     return exps
 
 
 def training_instances():
     return [f"p-{children}-{constraintness}-{gluten_factor}-{trays}-{seed}" for children in range(2,4) for constraintness in [1.0] for gluten_factor in [0.0, 0.5, 1.0] for trays in range(1,3) for seed in range(0,5)]
+
+
+def training_instances_minimal():
+    return ["p-2-1.0-1.0-1-0", "p-2-1.0-0.0-1-0", "p-2-1.0-0.5-1-0"]

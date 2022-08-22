@@ -46,7 +46,7 @@ def experiments():
         instances=training_instances_4_fixed_goal(),
     )
 
-    exps["hierarchy_small"] = update_dict(
+    exps["hierarchy"] = update_dict(
         strips_base,
         pipeline="hierarchy_pipeline",
         domain_dir="blocks_4",
@@ -60,11 +60,25 @@ def experiments():
         instances=training_instances_4_fixed_goal(),
     )
 
+    exps["hierarchy_clear_minimal"] = update_dict(
+        strips_base,
+        pipeline="hierarchy_pipeline",
+        domain_dir="blocks_4_clear",
+        instances=training_instances_4_fixed_goal_minimal(),
+    )
+
     exps["hierarchy_on"] = update_dict(
         strips_base,
         pipeline="hierarchy_pipeline",
         domain_dir="blocks_4_on",
         instances=training_instances_4_fixed_goal(),
+    )
+
+    exps["hierarchy_on_minimal"] = update_dict(
+        strips_base,
+        pipeline="hierarchy_pipeline",
+        domain_dir="blocks_4_on",
+        instances=training_instances_4_fixed_goal_minimal(),
     )
     return exps
 
@@ -75,3 +89,7 @@ def training_instances_4():
 def training_instances_4_fixed_goal():
     """ For fixed goal we do not need to use random seeds. """
     return [f"p-{i}-0" for i in range(3, 4)]
+
+def training_instances_4_fixed_goal_minimal():
+    """ The training instances that were required to learn a sketch. """
+    return ["p-3-0"]

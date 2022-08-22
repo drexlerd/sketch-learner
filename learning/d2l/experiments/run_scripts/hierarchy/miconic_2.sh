@@ -7,7 +7,7 @@
 #SBATCH --mail-user=dominik.drexler@liu.se
 
 DOMAIN=miconic
-EXPERIMENT=hierarchy
+EXPERIMENT=hierarchy_minimal
 WIDTH=2
 MAX_SKETCH_RULES=6
 COMPLEXITY=8

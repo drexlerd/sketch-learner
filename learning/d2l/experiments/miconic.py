@@ -43,14 +43,17 @@ def experiments():
         instances=training_instances(),
     )
 
-    exps["hierarchy_dist"] = update_dict(
+    exps["hierarchy_minimal"] = update_dict(
         strips_base,
         pipeline="hierarchy_pipeline",
-        instances=training_instances(),
-        generate_concept_distance_numerical=True
+        instances=training_instances_minimal(),
     )
     return exps
 
 
 def training_instances():
     return [f"p-{num_floors}-{num_passengers}-{seed}" for num_floors in range(2,5) for num_passengers in range(2,5) for seed in range(0,5)]
+
+
+def training_instances_minimal():
+    return ["p-2-2-0"]
