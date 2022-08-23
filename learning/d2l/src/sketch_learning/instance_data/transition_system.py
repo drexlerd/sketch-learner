@@ -12,15 +12,13 @@ class TransitionSystem:
         forward_transitions: Dict[int, List[int]],
         backward_transitions: Dict[int, List[int]],
         deadends: MutableSet[int],
-        goals: MutableSet[int],
-        goal_distances: List[int]):
+        goals: MutableSet[int]):
         self.initial_state_index = initial_state_index
         self.s_idx_to_dlplan_state = s_idx_to_dlplan_state
         self.forward_transitions = forward_transitions
         self.backward_transitions = backward_transitions
         self.deadends = deadends
         self.goals = goals
-        self.goal_distances = goal_distances
 
     def get_num_states(self):
         return len(self.s_idx_to_dlplan_state.items())

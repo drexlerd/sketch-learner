@@ -41,9 +41,9 @@ class SketchASPFactory:
         self.ctl.add("equivalence_contains", ["i","s1", "s2", "r"], "equivalence_contains(i,s1,s2,r).")
         self.ctl.add("solvable", ["i", "s"], "solvable(i,s).")
         self.ctl.add("exceed", ["i", "s"], "exceed(i,s).")
-        self.ctl.add("t_distance", ["i", "s", "t", "d"], "t_distance(i,s,t,d).")
         self.ctl.add("tuple", ["i", "s", "t"], "tuple(i,s,t).")
         self.ctl.add("contain", ["i", "s", "t", "r"], "contain(i,s,t,r).")
+        self.ctl.add("t_distance", ["i", "s", "t", "d"], "t_distance(i,s,t,d).")
         self.ctl.add("d_distance", ["i", "s", "r", "d"], "d_distance(i,s,r,d).")
         self.ctl.add("r_distance", ["i", "s", "r", "d"], "r_distance(i,s,r,d).")
         self.ctl.load(str(config.asp_sketch_location))
@@ -73,7 +73,6 @@ class SketchASPFactory:
 
     def print_statistics(self):
         print("Clingo statistics:")
-        #print(self.ctl.statistics)
         print("Total time: ", self.ctl.statistics["summary"]["times"]["total"])
         print("CPU time: ", self.ctl.statistics["summary"]["times"]["cpu"])
         print("Solve time: ", self.ctl.statistics["summary"]["times"]["solve"])

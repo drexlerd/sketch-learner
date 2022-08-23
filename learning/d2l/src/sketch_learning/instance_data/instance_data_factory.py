@@ -58,13 +58,16 @@ class InstanceDataFactory:
         Copies the subproblems InstanceData and then adds seed predicates
         and static seed atoms for the initial state.
         """
-        # Get a modifiable copy of the InstanceData
-        subproblem_instance_data = self.reparse_instance_data(subproblem.instance_data)
-        # add static seed atoms for initial state
-        for atom_idx in subproblem_instance_data.transition_system.s_idx_to_dlplan_state[subproblem.root_idx].get_atom_idxs():
-            atom = subproblem_instance_data.instance_info.get_atom(atom_idx)
-            subproblem_instance_data.instance_info.add_static_atom(atom.get_predicate().get_name() + "_r", [object.get_name() for object in atom.get_objects()])
-        return subproblem_instance_data
+        # Get a copy of the InstanceData
+        instance_data = self.reparse_instance_data(subproblem.instance_data)
+        # Create a transition system that reflects the subproblem
+        transition_system = TransitionSystemFactory().restrict_transition_system_by_subproblem(instance_data.transition_system, subproblem)
+        instance_data.transition_system = transition_system
+        # Add static seed atoms for initial state
+        for atom_idx in instance_data.transition_system.s_idx_to_dlplan_state[subproblem.root_idx].get_atom_idxs():
+            atom = instance_data.instance_info.get_atom(atom_idx)
+            instance_data.instance_info.add_static_atom(atom.get_predicate().get_name() + "_r", [object.get_name() for object in atom.get_objects()])
+        return instance_data
 
     def reparse_instance_data(self, instance_data: InstanceData):
         """

@@ -29,3 +29,7 @@ class Policy:
                 print("Expanded state has no good optimal transition: ", str(root_dlplan_state))
                 return False
         return True
+
+    def compute_unsatisfied_d2_facts(self):
+        """ TODO: we want to incrementally add D2 constraints. """
+        pass

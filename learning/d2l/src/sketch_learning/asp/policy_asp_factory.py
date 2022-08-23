@@ -37,7 +37,7 @@ class PolicyASPFactory:
         self.ctl.add("nongoal", ["i", "s"], "nongoal(i,s).")
         self.ctl.add("change", ["f", "r", "v"], "change(f,r,v).")
 
-        self.ctl.add("expanded", ["i", "s"], "expanded(i,s).")
+        self.ctl.add("expanded", ["i", "s"], "expanded(i,s).")  # basically alive states
         self.ctl.add("optimal_equivalence", ["i", "c", "s1", "s2"], "optimal_equivalence(i,c,s1,s2).")
         self.ctl.add("suboptimal_equivalence", ["i", "c", "s1", "s2"], "suboptimal_equivalence(i,c,s1,s2).")
         self.ctl.load(str(config.asp_policy_location))

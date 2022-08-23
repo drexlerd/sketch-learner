@@ -6,6 +6,7 @@ from typing import List, MutableSet
 
 from .subproblem import Transition, Subproblem
 from .instance_data import InstanceData
+from .instance_data_factory import InstanceDataFactory
 
 from ..iteration_data.sketch import SketchRule
 
@@ -31,6 +32,8 @@ class SubproblemFactory:
         if not closest_subgoal_states:
             return None
         expanded_states, generated_states, forward_transitions = self._compute_transitions_to_closest_subgoal_states(instance_data, root_idx, closest_subgoal_states)
+        subproblem = Subproblem(subproblem_idx, instance_data, root_idx, forward_transitions, expanded_states, generated_states, closest_subgoal_states)
+        instance_data = InstanceDataFactory().make_instance_data_from_subproblem(subproblem)
         return Subproblem(subproblem_idx, instance_data, root_idx, forward_transitions, expanded_states, generated_states, closest_subgoal_states)
 
     def _compute_closest_subgoal_states(self, instance_data: InstanceData, root_idx: int, rule: SketchRule):
