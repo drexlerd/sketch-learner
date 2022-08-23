@@ -25,22 +25,22 @@ from .util.timer import CountDownTimer
 
 
 def run(config, data, rng):
-    logging.info(colored(f"Initializing DomainData...", "green", "on_grey"))
+    logging.info(colored(f"Initializing DomainData...", "blue", "on_grey"))
     domain_data = DomainDataFactory().make_domain_data(config)
-    logging.info(colored(f"..done", "green", "on_grey"))
+    logging.info(colored(f"..done", "blue", "on_grey"))
 
-    logging.info(colored(f"Initializing InstanceDatas...", "green", "on_grey"))
+    logging.info(colored(f"Initializing InstanceDatas...", "blue", "on_grey"))
     instance_datas = InstanceDataFactory().make_instance_datas(config, domain_data)
-    logging.info(colored(f"..done", "green", "on_grey"))
+    logging.info(colored(f"..done", "blue", "on_grey"))
 
-    logging.info(colored(f"Initializing Sketch and Subproblems...", "green", "on_grey"))
+    logging.info(colored(f"Initializing Sketch and Subproblems...", "blue", "on_grey"))
     sketch = Sketch(dlplan.PolicyReader().read("\n".join(read_file(config.sketch_filename)), domain_data.syntactic_element_factory), config.width)
     subproblems_by_rule = []
     for rule in sketch.get_rules():
         print("Sketch rule:", rule.dlplan_rule.compute_repr())
         subproblems = SubproblemFactory().make_subproblems(instance_datas, rule)
         subproblems_by_rule.append(subproblems)
-    logging.info(colored(f"..done", "green", "on_grey"))
+    logging.info(colored(f"..done", "blue", "on_grey"))
 
     solution_policies = []
     for rule in sketch.get_rules():
@@ -50,7 +50,6 @@ def run(config, data, rng):
         i = 0
         subproblems = subproblems_by_rule[rule.id]
         selected_subproblem_idxs = [0]
-        # selected_subproblem_idxs = [182, 0, 1, 12, 14, 8, 25, 4, 36, 46, 37, 60]
         timer = CountDownTimer(config.timeout)
         while not timer.is_expired():
             logging.info(colored(f"Iteration: {i}", "red", "on_grey"))
@@ -59,7 +58,8 @@ def run(config, data, rng):
             print(f"Selected subproblem indices:", selected_subproblem_idxs)
 
             logging.info(colored(f"Initializing StatePairs...", "blue", "on_grey"))
-            state_pairs_by_selected_subproblem = [StatePairFactory().make_state_pairs_from_subproblem(subproblems[subproblem_idx]) for subproblem_idx in selected_subproblem_idxs]
+            state_pair_factory = StatePairFactory()
+            state_pairs_by_selected_subproblem = [state_pair_factory.make_state_pairs_from_subproblem(subproblems[subproblem_idx]) for subproblem_idx in selected_subproblem_idxs]
             logging.info(colored(f"..done", "blue", "on_grey"))
 
             logging.info(colored(f"Initializing SubProblem InstanceDatas...", "green", "on_grey"))
@@ -67,9 +67,8 @@ def run(config, data, rng):
             logging.info(colored(f"..done", "blue", "on_grey"))
 
             logging.info(colored(f"Initializing DomainFeatureData...", "blue", "on_grey"))
-            dlplan_state_pairs = collect_dlplan_state_pairs(selected_subproblems, instance_datas_by_selected_subproblem)
-            print("Number of dlplan state pairs:", len(dlplan_state_pairs))
-            domain_feature_data = DomainFeatureDataFactory().make_domain_feature_data(config, domain_data, dlplan_state_pairs)
+            domain_feature_data_factory = DomainFeatureDataFactory()
+            domain_feature_data = domain_feature_data_factory.make_domain_feature_data_from_subproblems(config, domain_data, selected_subproblems, instance_datas_by_selected_subproblem)
             logging.info(colored(f"..done", "blue", "on_grey"))
 
             logging.info(colored(f"Initializing InstanceFeatureDatas...", "blue", "on_grey"))
@@ -77,7 +76,8 @@ def run(config, data, rng):
             logging.info(colored(f"..done", "blue", "on_grey"))
 
             logging.info(colored(f"Initializing StatePairEquivalenceDatas...", "blue", "on_grey"))
-            rule_equivalences, state_pair_equivalences_by_selected_subproblem = StatePairEquivalenceFactory().make_state_pair_equivalences(domain_feature_data, state_pairs_by_selected_subproblem, instance_feature_datas_by_selected_subproblem)
+            state_pair_equivalence_factory = StatePairEquivalenceFactory()
+            rule_equivalences, state_pair_equivalences_by_selected_subproblem = state_pair_equivalence_factory.make_state_pair_equivalences(domain_feature_data, state_pairs_by_selected_subproblem, instance_feature_datas_by_selected_subproblem)
             logging.info(colored(f"..done", "blue", "on_grey"))
 
             logging.info(colored(f"Initializing Logic Program...", "blue", "on_grey"))
@@ -94,7 +94,6 @@ def run(config, data, rng):
                 print(colored("No policy exists that solves all geneneral subproblems!", "red", "on_grey"))
                 solution_policies.append(None)
                 break
-            # policy = Policy(DlplanPolicyFactory().make_dlplan_policy_from_answer_set(symbols, domain_feature_data))
             policy = Policy(DlplanPolicyFactory().make_dlplan_policy_from_answer_set_d2(symbols, domain_feature_data, rule_equivalences))
             print("Learned policy:")
             print(policy.dlplan_policy.compute_repr())
@@ -102,13 +101,19 @@ def run(config, data, rng):
             assert all([policy.solves(subproblem_data, instance_data) for subproblem_data, instance_data in zip(selected_subproblems, instance_datas_by_selected_subproblem)])
 
             all_solved, selected_subproblem_idxs = verify_policy(policy, subproblems, selected_subproblem_idxs)
+
+            logging.info(colored("Iteration summary:", "yellow", "on_grey"))
+            state_pair_factory.statistics.print()
+            domain_feature_data_factory.statistics.print()
+            state_pair_equivalence_factory.statistics.print()
+
             if all_solved:
                 print(colored("Policy solves all general subproblems!", "red", "on_grey"))
                 solution_policies.append(policy)
                 break
             i += 1
 
-    logging.info(colored("Summary:", "green"))
+    logging.info(colored("Summary:", "yellow", "on_grey"))
     print("Input sketch:")
     print(sketch.dlplan_policy.compute_repr())
     print("Learned policies by rule:")
@@ -119,14 +124,6 @@ def run(config, data, rng):
         else:
             print("No policy found.")
     return ExitCode.Success, None
-
-
-def collect_dlplan_state_pairs(subproblem_datas: List[Subproblem], instance_datas: List[InstanceData]):
-    dlplan_state_pairs = set()
-    for subproblem_data, instance_data in zip(subproblem_datas, instance_datas):
-        dlplan_seed_state = instance_data.transition_system.s_idx_to_dlplan_state[subproblem_data.root_idx]
-        dlplan_state_pairs.update(set([(dlplan_seed_state, instance_data.transition_system.s_idx_to_dlplan_state[s_idx]) for s_idx in subproblem_data.generated_states]))
-    return list(dlplan_state_pairs)
 
 
 def verify_policy(policy: Policy, subproblem_datas: List[Subproblem], selected_subproblem_idxs: List[int]):

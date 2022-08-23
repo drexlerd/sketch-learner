@@ -21,17 +21,17 @@ from .util.timer import CountDownTimer
 
 
 def run(config, data, rng):
-    logging.info(colored(f"Initializing DomainData...", "green", "on_grey"))
+    logging.info(colored(f"Initializing DomainData...", "blue", "on_grey"))
     domain_data = DomainDataFactory().make_domain_data(config)
-    logging.info(colored(f"..done", "green", "on_grey"))
+    logging.info(colored(f"..done", "blue", "on_grey"))
 
-    logging.info(colored(f"Initializing InstanceDatas...", "green", "on_grey"))
+    logging.info(colored(f"Initializing InstanceDatas...", "blue", "on_grey"))
     instance_datas = InstanceDataFactory().make_instance_datas(config, domain_data)
-    logging.info(colored(f"..done", "green", "on_grey"))
+    logging.info(colored(f"..done", "blue", "on_grey"))
 
-    logging.info(colored(f"Initializing TupleGraphDatas...", "green", "on_grey"))
+    logging.info(colored(f"Initializing TupleGraphDatas...", "blue", "on_grey"))
     tuple_graphs_by_instance_data = TupleGraphDataFactory(config.width).make_tuple_graph_datas(instance_datas)
-    logging.info(colored(f"..done", "green", "on_grey"))
+    logging.info(colored(f"..done", "blue", "on_grey"))
 
     i = 0
     selected_instance_idxs = [0]
@@ -45,15 +45,13 @@ def run(config, data, rng):
         tuple_graphs_by_selected_instance = [tuple_graphs_by_instance_data[instance_idx] for instance_idx in selected_instance_idxs]
 
         logging.info(colored(f"Initializing StatePairs...", "blue", "on_grey"))
-        state_pairs_by_selected_instance = [StatePairFactory().make_state_pairs_from_tuple_graph_data(tuple_graph_data) for tuple_graph_data in tuple_graphs_by_selected_instance]
+        state_pair_factory = StatePairFactory()
+        state_pairs_by_selected_instance = [state_pair_factory.make_state_pairs_from_tuple_graph_data(tuple_graph_data) for tuple_graph_data in tuple_graphs_by_selected_instance]
         logging.info(colored(f"..done", "blue", "on_grey"))
 
         logging.info(colored(f"Initializing DomainFeatureData...", "blue", "on_grey"))
-        dlplan_state_pairs = []
-        for selected_instance_data in selected_instance_datas:
-            dlplan_state_pairs.extend([(selected_instance_data.transition_system.s_idx_to_dlplan_state[0], dlplan_state) for dlplan_state in selected_instance_data.transition_system.s_idx_to_dlplan_state.values()])
-        print("Number of dlplan state pairs:", len(dlplan_state_pairs))
-        domain_feature_data = DomainFeatureDataFactory().make_domain_feature_data(config, domain_data, dlplan_state_pairs)
+        domain_feature_data_factory = DomainFeatureDataFactory()
+        domain_feature_data = domain_feature_data_factory.make_domain_feature_data_from_instances(config, domain_data, selected_instance_datas)
         logging.info(colored(f"..done", "blue", "on_grey"))
 
         logging.info(colored(f"Initializing InstanceFeatureDatas...", "blue", "on_grey"))
@@ -61,7 +59,8 @@ def run(config, data, rng):
         logging.info(colored(f"..done", "blue", "on_grey"))
 
         logging.info(colored(f"Initializing StatePairEquivalenceDatas...", "blue", "on_grey"))
-        rule_equivalences, state_pair_equivalences_by_selected_instance = StatePairEquivalenceFactory().make_state_pair_equivalences(domain_feature_data, state_pairs_by_selected_instance, instance_feature_datas_by_selected_instance)
+        state_pair_equivalence_factory = StatePairEquivalenceFactory()
+        rule_equivalences, state_pair_equivalences_by_selected_instance = state_pair_equivalence_factory.make_state_pair_equivalences(domain_feature_data, state_pairs_by_selected_instance, instance_feature_datas_by_selected_instance)
         logging.info(colored(f"..done", "blue", "on_grey"))
 
         logging.info(colored(f"Initializing TupleGraphEquivalenceDatas...", "blue", "on_grey"))
@@ -88,11 +87,16 @@ def run(config, data, rng):
         all_solved, selected_instance_idxs = verify_sketch(sketch, instance_datas, tuple_graphs_by_instance_data, selected_instance_idxs)
         logging.info(colored(f"..done", "blue", "on_grey"))
 
+        logging.info(colored("Iteration summary:", "yellow", "on_grey"))
+        state_pair_factory.statistics.print()
+        domain_feature_data_factory.statistics.print()
+        state_pair_equivalence_factory.statistics.print()
+
         if all_solved:
             break
         i += 1
 
-    logging.info(colored("Summary:", "green"))
+    logging.info(colored("Summary:", "green", "on_grey"))
     print("Number of training instances:", len(instance_datas))
     print("Number of training instances included in the ASP:", len(selected_instance_datas))
     print("Number of states included in the ASP:", sum([instance_data.transition_system.get_num_states() for instance_data in selected_instance_datas]))

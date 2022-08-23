@@ -1,6 +1,8 @@
 import dlplan
-from typing import List
+
 from collections import defaultdict
+from dataclasses import dataclass
+from typing import List
 
 from .state_pair_equivalence import RuleEquivalences, StatePairEquivalence
 from .domain_feature_data import DomainFeatureData
@@ -8,7 +10,21 @@ from .instance_feature_data import InstanceFeatureData
 from .state_pair import StatePair
 
 
+@dataclass
+class StatePairEquivalenceStatistics:
+    num_equivalences: int = 0
+
+    def increase_num_equivalences(self, num: int):
+        self.num_equivalences += num
+
+    def print(self):
+        print("Num equivalences:", self.num_equivalences)
+
+
 class StatePairEquivalenceFactory:
+    def __init__(self):
+        self.statistics = StatePairEquivalenceStatistics()
+
     def make_state_pair_equivalences(self, domain_feature_data: DomainFeatureData, state_pairs_by_subproblem: List[List[StatePair]], instance_feature_datas_by_subproblem: List[InstanceFeatureData]):
         policy_builder = dlplan.PolicyBuilder()
         policy_boolean_features = [policy_builder.add_boolean_feature(b) for b in domain_feature_data.boolean_features]
@@ -39,6 +55,7 @@ class StatePairEquivalenceFactory:
                 r_idx_to_state_pairs[r_idx].append(state_pair)
                 state_pair_to_r_idx[state_pair] = r_idx
             state_pair_equivalences.append(StatePairEquivalence(r_idx_to_state_pairs, state_pair_to_r_idx))
+        self.statistics.increase_num_equivalences(len(rules))
         return RuleEquivalences(rules), state_pair_equivalences
 
     def _make_conditions(self, policy_builder: dlplan.PolicyBuilder, source_idx: int, policy_boolean_features, policy_numerical_features, instance_feature_data):
