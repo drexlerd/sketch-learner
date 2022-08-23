@@ -59,6 +59,10 @@ class DomainDataFactory:
         feature_generator = dlplan.FeatureGenerator()
         if not config.generate_concept_distance_numerical:
             feature_generator.set_generate_concept_distance_numerical(False)
+        if not config.generate_seed_feature_dec_boolean:
+            feature_generator.set_generate_seed_feature_dec_boolean(False)
+        if not config.generate_seed_feature_inc_boolean:
+            feature_generator.set_generate_seed_feature_inc_boolean(False)
         feature_generator.set_generate_inclusion_boolean(False)
         feature_generator.set_generate_diff_concept(False)
         feature_generator.set_generate_or_concept(False)

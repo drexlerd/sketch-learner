@@ -36,7 +36,11 @@ def generate_experiment(expid, domain_dir, domain, **kwargs):
         time_limit=3600,
         feature_limit=10000,
         num_threads_feature_generator=1,
+
+        generate_seed_feature_dec_boolean=False,
+        generate_seed_feature_inc_boolean=False,
         generate_concept_distance_numerical=False,
+
         debug_features=[],
 
         # Clingo
