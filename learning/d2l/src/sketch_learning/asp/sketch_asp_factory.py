@@ -3,11 +3,11 @@ from clingo import Control
 from typing import List
 
 from ..instance_data.instance_data import InstanceData
-from ..instance_data.tuple_graph_data import TupleGraphData
+from ..instance_data.tuple_graph import TupleGraph
 from ..iteration_data.domain_feature_data import DomainFeatureData
 from ..iteration_data.instance_feature_data import InstanceFeatureData
 from ..iteration_data.state_pair_equivalence import RuleEquivalences, StatePairEquivalence
-from ..iteration_data.tuple_graph_equivalence_data import TupleGraphEquivalenceData
+from ..iteration_data.tuple_graph_equivalence import TupleGraphEquivalence
 
 from .facts.iteration_data.domain_feature_data import DomainFeatureDataFactFactory
 from .facts.iteration_data.equivalence_data import EquivalenceDataFactFactory
@@ -48,15 +48,15 @@ class SketchASPFactory:
         self.ctl.add("r_distance", ["i", "s", "r", "d"], "r_distance(i,s,r,d).")
         self.ctl.load(str(config.asp_sketch_location))
 
-    def make_facts(self, instance_datas: List[InstanceData], tuple_graph_datas: List[TupleGraphData], domain_feature_data: DomainFeatureData, rule_equivalence_data: RuleEquivalences, state_pair_equivalence_datas: List[StatePairEquivalence], tuple_graph_equivalence_datas: List[TupleGraphEquivalenceData], instance_feature_datas: List[InstanceFeatureData]):
+    def make_facts(self, instance_datas: List[InstanceData], tuple_graphs_by_instance: List[List[TupleGraph]], domain_feature_data: DomainFeatureData, rule_equivalence_data: RuleEquivalences, state_pair_equivalence_datas: List[StatePairEquivalence], tuple_graph_equivalences_by_instance: List[List[TupleGraphEquivalence]], instance_feature_datas: List[InstanceFeatureData]):
         """ Make facts from data in an interation. """
         facts = []
         facts.extend(DomainFeatureDataFactFactory().make_facts(domain_feature_data))
         facts.extend(EquivalenceDataFactFactory().make_facts(rule_equivalence_data, domain_feature_data))
-        for instance_idx, (instance_data, state_pair_equivalence_data, tuple_graph_data, tuple_graph_equivalence_data, instance_feature_data) in enumerate(zip(instance_datas, state_pair_equivalence_datas, tuple_graph_datas, tuple_graph_equivalence_datas, instance_feature_datas)):
+        for instance_idx, (instance_data, state_pair_equivalence_data, tuple_graphs, tuple_graph_equivalences, instance_feature_data) in enumerate(zip(instance_datas, state_pair_equivalence_datas, tuple_graphs_by_instance, tuple_graph_equivalences_by_instance, instance_feature_datas)):
             facts.extend(TransitionSystemFactFactory().make_facts(instance_idx, instance_data.transition_system, instance_feature_data))
-            for tuple_graph, tuple_graph_equivalence_data in zip(tuple_graph_data.tuple_graphs_by_state_index, tuple_graph_equivalence_data.tuple_graph_equivalence_by_state_index):
-                facts.extend(TupleGraphFactFactory().make_facts(instance_idx, tuple_graph, state_pair_equivalence_data, tuple_graph_equivalence_data))
+            for tuple_graph, tuple_graph_equivalences in zip(tuple_graphs, tuple_graph_equivalences):
+                facts.extend(TupleGraphFactFactory().make_facts(instance_idx, tuple_graph, state_pair_equivalence_data, tuple_graph_equivalences))
         return facts
 
     def ground(self, facts=[]):

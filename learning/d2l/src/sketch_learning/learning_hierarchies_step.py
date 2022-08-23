@@ -13,7 +13,7 @@ from .instance_data.instance_data import InstanceData
 from .instance_data.instance_data_factory import InstanceDataFactory
 from .instance_data.subproblem import Subproblem
 from .instance_data.subproblem_factory import SubproblemFactory
-from .iteration_data.state_pair_data_factory import StatePairFactory
+from .iteration_data.state_pair_factory import StatePairFactory
 from .iteration_data.state_pair_classifier_factory import StatePairClassifierFactory
 from .iteration_data.domain_feature_data_factory import DomainFeatureDataFactory
 from .iteration_data.instance_feature_data_factory import InstanceFeatureDataFactory
@@ -36,38 +36,38 @@ def run(config, data, rng):
 
     logging.info(colored(f"Initializing Sketch and Subproblems...", "blue", "on_grey"))
     sketch = Sketch(dlplan.PolicyReader().read("\n".join(read_file(config.sketch_filename)), domain_data.syntactic_element_factory), config.width)
-    subproblems_by_rule = []
-    # TODO: Instead of a subproblem we want to obtain an InstanceData + TransitionClassifier
-    for rule in sketch.get_rules():
-        print("Sketch rule:", rule.dlplan_rule.compute_repr())
-        subproblems = SubproblemFactory().make_subproblems(instance_datas, rule)
-        subproblems_by_rule.append(subproblems)
-    logging.info(colored(f"..done", "blue", "on_grey"))
 
     solution_policies = []
     for rule in sketch.get_rules():
         print("Sketch:")
         print(sketch.dlplan_policy.compute_repr())
         print("Sketch rule:", rule.dlplan_rule.compute_repr())
+
+        logging.info(colored(f"Initializing Sketch and Subproblems...", "blue", "on_grey"))
+        subproblems = SubproblemFactory().make_subproblems(instance_datas, rule)
+        logging.info(colored(f"..done", "blue", "on_grey"))
+
+        logging.info(colored(f"Initializing StatePairs...", "blue", "on_grey"))
+        state_pair_factory = StatePairFactory()
+        state_pairs_by_subproblem = [state_pair_factory.make_state_pairs_from_subproblem(subproblem) for subproblem in subproblems]
+        logging.info(colored(f"..done", "blue", "on_grey"))
+
+        logging.info(colored(f"Initializing SubProblem InstanceDatas...", "blue", "on_grey"))
+        instance_datas_by_subproblem = [InstanceDataFactory().make_instance_data_from_subproblem(subproblem) for subproblem in subproblems]
+        logging.info(colored(f"..done", "blue", "on_grey"))
+
+        # TODO: add state pair classifier
+
         i = 0
-        subproblems = subproblems_by_rule[rule.id]
         selected_subproblem_idxs = [0]
         timer = CountDownTimer(config.timeout)
         while not timer.is_expired():
             logging.info(colored(f"Iteration: {i}", "red", "on_grey"))
             selected_subproblems = [subproblems[subproblem_idx] for subproblem_idx in selected_subproblem_idxs]
+            state_pairs_by_selected_subproblem = [state_pairs_by_subproblem[subproblem_idx] for subproblem_idx in selected_subproblem_idxs]
+            instance_datas_by_selected_subproblem = [instance_datas_by_subproblem[subproblem_idx] for subproblem_idx in selected_subproblem_idxs]
             print(f"Number of selected subproblems: {len(selected_subproblems)}")
             print(f"Selected subproblem indices:", selected_subproblem_idxs)
-
-            logging.info(colored(f"Initializing StatePairs...", "blue", "on_grey"))
-            state_pair_factory = StatePairFactory()
-            state_pairs_by_selected_subproblem = [state_pair_factory.make_state_pairs_from_subproblem(subproblem) for subproblem in selected_subproblems]
-            logging.info(colored(f"..done", "blue", "on_grey"))
-
-            logging.info(colored(f"Initializing SubProblem InstanceDatas...", "green", "on_grey"))
-            instance_datas_by_selected_subproblem = [InstanceDataFactory().make_instance_data_from_subproblem(subproblem) for subproblem in selected_subproblems]
-            # state_pairs_classifier_by_selected_subproblem = [StatePairClassifierFactory().make_state_pair_classifier_from_subproblem(subproblem) for subproblem in selected_subproblems]
-            logging.info(colored(f"..done", "blue", "on_grey"))
 
             logging.info(colored(f"Initializing DomainFeatureData...", "blue", "on_grey"))
             domain_feature_data_factory = DomainFeatureDataFactory()

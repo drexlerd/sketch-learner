@@ -6,7 +6,7 @@ from typing import Dict, List, MutableSet
 from dataclasses import dataclass, field
 from collections import defaultdict, OrderedDict, deque
 
-from sketch_learning.instance_data.tuple_graph_data import TupleGraphData
+from ..instance_data.tuple_graph import TupleGraph
 
 from ..instance_data.instance_data import InstanceData
 
@@ -29,7 +29,7 @@ class Sketch:
         """
         return [SketchRule(self, rule_idx, dlplan_rule) for rule_idx, dlplan_rule in enumerate(self.dlplan_policy.get_rules())]
 
-    def _verify_bounded_width(self, instance_data: InstanceData, tuple_graph_data: TupleGraphData):
+    def _verify_bounded_width(self, instance_data: InstanceData, tuple_graphs: List[TupleGraph]):
         """
         Check whether the width of all subproblems is bounded.
         """
@@ -38,7 +38,7 @@ class Sketch:
         closest_subgoal_tuples = defaultdict(set)
         for root_idx in range(instance_data.transition_system.get_num_states()):
             dlplan_state = instance_data.transition_system.s_idx_to_dlplan_state[root_idx]
-            tg = tuple_graph_data.tuple_graphs_by_state_index[root_idx]
+            tg = tuple_graphs[root_idx]
             if tg is None: continue  # no tuple graph indicates that we don't care about the information of this state.
             bounded = False
             source_context = dlplan.EvaluationContext(root_idx, dlplan_state, evaluation_cache)
@@ -71,13 +71,13 @@ class Sketch:
                 return [], [], False
         return closest_subgoal_states, closest_subgoal_tuples, True
 
-    def _verify_acyclicity(self, instance_data: InstanceData, tuple_graph_data: TupleGraphData, closest_subgoal_states: Dict[int, int]):
+    def _verify_acyclicity(self, instance_data: InstanceData, tuple_graphs: List[TupleGraph], closest_subgoal_states: Dict[int, int]):
         """ Check whether there is a cycle in the compatible state pairs
             We use DFS because we know that every state is reachable from the initial state
             We create a forward graph from compatible state pairs to check for termination
         """
         for root_idx in range(instance_data.transition_system.get_num_states()):
-            if tuple_graph_data.tuple_graphs_by_state_index[root_idx] is None: continue
+            if tuple_graphs[root_idx] is None: continue
             # The depth-first search is the iterative version where the current path is explicit in the stack.
             # https://en.wikipedia.org/wiki/Depth-first_search
             stack = [(root_idx, iter(closest_subgoal_states[root_idx]))]
@@ -103,11 +103,11 @@ class Sketch:
                     stack.pop(-1)
         return True
 
-    def solves(self, instance_data: InstanceData, tuple_graph_data: TupleGraphData):
+    def solves(self, instance_data: InstanceData, tuple_graphs: List[TupleGraph]):
         """ Returns True iff the sketch solves the transition system, i.e.,
             (1) is terminating, and (2) P[s] has correctly bounded s-width. """
-        closest_subgoal_states, closest_subgoal_tuples, has_bounded_width = self._verify_bounded_width(instance_data, tuple_graph_data)
+        closest_subgoal_states, closest_subgoal_tuples, has_bounded_width = self._verify_bounded_width(instance_data, tuple_graphs)
         if not has_bounded_width: return False
-        is_acyclic = self._verify_acyclicity(instance_data, tuple_graph_data, closest_subgoal_states)
+        is_acyclic = self._verify_acyclicity(instance_data, tuple_graphs, closest_subgoal_states)
         if not is_acyclic: return False
         return True

@@ -4,16 +4,15 @@ from collections import defaultdict
 
 from .state_pair_equivalence import StatePairEquivalence
 from .tuple_graph_equivalence import TupleGraphEquivalence
-from .tuple_graph_equivalence_data import TupleGraphEquivalenceData
 
 from ..instance_data.instance_data import InstanceData
-from ..instance_data.tuple_graph_data import TupleGraphData
+from ..instance_data.tuple_graph import TupleGraph
 
 
 class TupleGraphEquivalenceFactory:
-    def make_equivalence_datas(self, instance_data: InstanceData, tuple_graph_data: TupleGraphData, state_pair_equivalence_data: StatePairEquivalence):
+    def make_tuple_graph_equivalence_datas(self, instance_data: InstanceData, tuple_graphs: List[TupleGraph], state_pair_equivalence_data: StatePairEquivalence):
         tuple_graph_equivalences = []
-        for tuple_graph in tuple_graph_data.tuple_graphs_by_state_index:
+        for tuple_graph in tuple_graphs:
             if tuple_graph is None:
                 tuple_graph_equivalences.append(None)
                 continue
@@ -41,4 +40,4 @@ class TupleGraphEquivalenceFactory:
                         t_idx_to_r_idxs[t_idx].add(r_idx)
                         r_idx_to_t_idxs[r_idx].add(t_idx)
             tuple_graph_equivalences.append(TupleGraphEquivalence(r_idxs_by_distance, t_idx_to_r_idxs, r_idx_to_t_idxs, r_idx_to_deadend_distance, r_idx_to_distance))
-        return TupleGraphEquivalenceData(tuple_graph_equivalences)
+        return tuple_graph_equivalences

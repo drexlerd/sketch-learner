@@ -7,15 +7,15 @@ from .asp.sketch_asp_factory import SketchASPFactory
 from .domain_data.domain_data_factory import DomainDataFactory
 from .instance_data.instance_data import InstanceData
 from .instance_data.instance_data_factory import InstanceDataFactory
-from .instance_data.tuple_graph_data import TupleGraphData
-from .instance_data.tuple_graph_data_factory import TupleGraphDataFactory
+from .instance_data.tuple_graph import TupleGraph
+from .instance_data.tuple_graph_factory import TupleGraphFactory
 from .iteration_data.domain_feature_data_factory import DomainFeatureDataFactory
 from .iteration_data.instance_feature_data_factory import InstanceFeatureDataFactory
 from .iteration_data.dlplan_policy_factory import DlplanPolicyFactory
 from .iteration_data.sketch import Sketch
 from .iteration_data.state_pair_equivalence_factory import StatePairEquivalenceFactory
 from .iteration_data.tuple_graph_equivalence_data_factory import  TupleGraphEquivalenceFactory
-from .iteration_data.state_pair_data_factory import StatePairFactory
+from .iteration_data.state_pair_factory import StatePairFactory
 from .returncodes import ExitCode
 from .util.timer import CountDownTimer
 
@@ -29,9 +29,16 @@ def run(config, data, rng):
     instance_datas = InstanceDataFactory().make_instance_datas(config, domain_data)
     logging.info(colored(f"..done", "blue", "on_grey"))
 
-    logging.info(colored(f"Initializing TupleGraphDatas...", "blue", "on_grey"))
-    tuple_graphs_by_instance_data = TupleGraphDataFactory(config.width).make_tuple_graph_datas(instance_datas)
+    logging.info(colored(f"Initializing TupleGraphs...", "blue", "on_grey"))
+    tuple_graphs_by_instance = TupleGraphFactory(config.width).make_tuple_graphs(instance_datas)
     logging.info(colored(f"..done", "blue", "on_grey"))
+
+    logging.info(colored(f"Initializing StatePairs...", "blue", "on_grey"))
+    state_pair_factory = StatePairFactory()
+    state_pairs_by_instance = [state_pair_factory.make_state_pairs_from_tuple_graph_data(tuple_graph_data) for tuple_graph_data in tuple_graphs_by_instance]
+    logging.info(colored(f"..done", "blue", "on_grey"))
+
+    # TODO: add state pair classifier
 
     i = 0
     selected_instance_idxs = [0]
@@ -39,15 +46,11 @@ def run(config, data, rng):
     while not timer.is_expired():
         logging.info(colored(f"Iteration: {i}", "red", "on_grey"))
         selected_instance_datas = [instance_datas[instance_idx] for instance_idx in selected_instance_idxs]
+        state_pairs_by_selected_instance = [state_pairs_by_instance[instance_idx] for instance_idx in selected_instance_idxs]
         print(f"Number of selected instances: {len(selected_instance_datas)}")
         for selected_instance_data in selected_instance_datas:
             print(str(selected_instance_data.instance_information.instance_filename), selected_instance_data.transition_system.get_num_states())
-        tuple_graphs_by_selected_instance = [tuple_graphs_by_instance_data[instance_idx] for instance_idx in selected_instance_idxs]
-
-        logging.info(colored(f"Initializing StatePairs...", "blue", "on_grey"))
-        state_pair_factory = StatePairFactory()
-        state_pairs_by_selected_instance = [state_pair_factory.make_state_pairs_from_tuple_graph_data(tuple_graph_data) for tuple_graph_data in tuple_graphs_by_selected_instance]
-        logging.info(colored(f"..done", "blue", "on_grey"))
+        tuple_graphs_by_selected_instance = [tuple_graphs_by_instance[instance_idx] for instance_idx in selected_instance_idxs]
 
         logging.info(colored(f"Initializing DomainFeatureData...", "blue", "on_grey"))
         domain_feature_data_factory = DomainFeatureDataFactory()
@@ -63,13 +66,13 @@ def run(config, data, rng):
         rule_equivalences, state_pair_equivalences_by_selected_instance = state_pair_equivalence_factory.make_state_pair_equivalences(domain_feature_data, state_pairs_by_selected_instance, instance_feature_datas_by_selected_instance)
         logging.info(colored(f"..done", "blue", "on_grey"))
 
-        logging.info(colored(f"Initializing TupleGraphEquivalenceDatas...", "blue", "on_grey"))
-        tuple_graph_equivalence_datas_by_selected_instance = [TupleGraphEquivalenceFactory().make_equivalence_datas(instance_data, tuple_graph_data, state_pair_equivalence_data) for instance_data, tuple_graph_data, state_pair_equivalence_data in zip(selected_instance_datas, tuple_graphs_by_selected_instance, state_pair_equivalences_by_selected_instance)]
+        logging.info(colored(f"Initializing TupleGraphEquivalences...", "blue", "on_grey"))
+        tuple_graph_equivalences_by_selected_instance = [TupleGraphEquivalenceFactory().make_tuple_graph_equivalence_datas(instance_data, tuple_graph_data, state_pair_equivalence_data) for instance_data, tuple_graph_data, state_pair_equivalence_data in zip(selected_instance_datas, tuple_graphs_by_selected_instance, state_pair_equivalences_by_selected_instance)]
         logging.info(colored(f"..done", "blue", "on_grey"))
 
         logging.info(colored(f"Initializing Logic Program...", "blue", "on_grey"))
         sketch_asp_factory = SketchASPFactory(config)
-        facts = sketch_asp_factory.make_facts(selected_instance_datas, tuple_graphs_by_selected_instance, domain_feature_data, rule_equivalences, state_pair_equivalences_by_selected_instance, tuple_graph_equivalence_datas_by_selected_instance, instance_feature_datas_by_selected_instance)
+        facts = sketch_asp_factory.make_facts(selected_instance_datas, tuple_graphs_by_selected_instance, domain_feature_data, rule_equivalences, state_pair_equivalences_by_selected_instance, tuple_graph_equivalences_by_selected_instance, instance_feature_datas_by_selected_instance)
         sketch_asp_factory.ground(facts)
         logging.info(colored(f"..done", "blue", "on_grey"))
 
@@ -84,7 +87,7 @@ def run(config, data, rng):
 
         logging.info(colored(f"Verifying learned sketch...", "blue", "on_grey"))
         assert all([sketch.solves(instance_data, tuple_graph_data) for instance_data, tuple_graph_data in zip(selected_instance_datas, tuple_graphs_by_selected_instance)])
-        all_solved, selected_instance_idxs = verify_sketch(sketch, instance_datas, tuple_graphs_by_instance_data, selected_instance_idxs)
+        all_solved, selected_instance_idxs = verify_sketch(sketch, instance_datas, tuple_graphs_by_instance, selected_instance_idxs)
         logging.info(colored(f"..done", "blue", "on_grey"))
 
         logging.info(colored("Iteration summary:", "yellow", "on_grey"))
@@ -109,10 +112,10 @@ def run(config, data, rng):
     return ExitCode.Success, None
 
 
-def verify_sketch(sketch: Sketch, instance_datas: List[InstanceData], tuple_graph_datas: List[TupleGraphData], selected_instance_idxs: List[int]):
+def verify_sketch(sketch: Sketch, instance_datas: List[InstanceData], tuple_graphs_by_instance: List[List[TupleGraph]], selected_instance_idxs: List[int]):
     all_solved = True
-    for instance_idx, (instance_data, tuple_graph_data) in enumerate(zip(instance_datas, tuple_graph_datas)):
-        if not sketch.solves(instance_data, tuple_graph_data):
+    for instance_idx, (instance_data, tuple_graphs) in enumerate(zip(instance_datas, tuple_graphs_by_instance)):
+        if not sketch.solves(instance_data, tuple_graphs):
             all_solved = False
             if instance_idx > max(selected_instance_idxs):
                 selected_instance_idxs = [instance_idx]
