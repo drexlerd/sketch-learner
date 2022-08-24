@@ -13,8 +13,8 @@ from .instance_data.instance_data import InstanceData
 from .instance_data.instance_data_factory import InstanceDataFactory
 from .instance_data.subproblem import Subproblem
 from .instance_data.subproblem_factory import SubproblemFactory
-from .iteration_data.state_pair_factory import StatePairFactory
-from .iteration_data.state_pair_classifier_factory import StatePairClassifierFactory
+from .instance_data.state_pair_factory import StatePairFactory
+from .instance_data.state_pair_classifier_factory import StatePairClassifierFactory
 from .iteration_data.domain_feature_data_factory import DomainFeatureDataFactory
 from .iteration_data.instance_feature_data_factory import InstanceFeatureDataFactory
 from .iteration_data.state_pair_equivalence_factory import StatePairEquivalenceFactory
@@ -34,8 +34,9 @@ def run(config, data, rng):
     instance_datas = InstanceDataFactory().make_instance_datas(config, domain_data)
     logging.info(colored(f"..done", "blue", "on_grey"))
 
-    logging.info(colored(f"Initializing Sketch and Subproblems...", "blue", "on_grey"))
+    logging.info(colored(f"Initializing Sketch...", "blue", "on_grey"))
     sketch = Sketch(dlplan.PolicyReader().read("\n".join(read_file(config.sketch_filename)), domain_data.syntactic_element_factory), config.width)
+    logging.info(colored(f"..done", "blue", "on_grey"))
 
     solution_policies = []
     for rule in sketch.get_rules():
@@ -43,20 +44,22 @@ def run(config, data, rng):
         print(sketch.dlplan_policy.compute_repr())
         print("Sketch rule:", rule.dlplan_rule.compute_repr())
 
-        logging.info(colored(f"Initializing Sketch and Subproblems...", "blue", "on_grey"))
+        logging.info(colored(f"Initializing Subproblems...", "blue", "on_grey"))
+        # compute subgoals
         subproblems = SubproblemFactory().make_subproblems(instance_datas, rule)
-        logging.info(colored(f"..done", "blue", "on_grey"))
-
-        logging.info(colored(f"Initializing StatePairs...", "blue", "on_grey"))
-        state_pair_factory = StatePairFactory()
-        state_pairs_by_subproblem = [state_pair_factory.make_state_pairs_from_subproblem(subproblem) for subproblem in subproblems]
         logging.info(colored(f"..done", "blue", "on_grey"))
 
         logging.info(colored(f"Initializing SubProblem InstanceDatas...", "blue", "on_grey"))
         instance_datas_by_subproblem = [InstanceDataFactory().make_instance_data_from_subproblem(subproblem) for subproblem in subproblems]
         logging.info(colored(f"..done", "blue", "on_grey"))
 
-        # TODO: add state pair classifier
+        # compute state pairs that must be classified, i.e., those coming from transitions in reachable parts towards subgoal
+        logging.info(colored(f"Initializing StatePairs...", "blue", "on_grey"))
+        state_pairs_by_instance = [StatePairFactory().make_state_pairs_from_instance_data(instance_data) for instance_data in instance_datas]
+        logging.info(colored(f"..done", "blue", "on_grey"))
+
+        # classify state pairs according to delta optimality
+        state_pair_classifier_by_subproblem = [StatePairClassifierFactory().make_state_pair_classifier(instance_data, state_pairs, delta=1) for subproblem in zip(subproblems)]
 
         i = 0
         selected_subproblem_idxs = [0]

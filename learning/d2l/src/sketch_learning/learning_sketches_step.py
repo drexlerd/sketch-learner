@@ -15,8 +15,8 @@ from .iteration_data.dlplan_policy_factory import DlplanPolicyFactory
 from .iteration_data.sketch import Sketch
 from .iteration_data.state_pair_equivalence_factory import StatePairEquivalenceFactory
 from .iteration_data.tuple_graph_equivalence_data_factory import  TupleGraphEquivalenceFactory
-from .iteration_data.state_pair_factory import StatePairFactory
-from .iteration_data.state_pair_classifier_factory import StatePairClassifierFactory
+from .instance_data.state_pair_factory import StatePairFactory
+from .instance_data.state_pair_classifier_factory import StatePairClassifierFactory
 from .returncodes import ExitCode
 from .util.timer import CountDownTimer
 

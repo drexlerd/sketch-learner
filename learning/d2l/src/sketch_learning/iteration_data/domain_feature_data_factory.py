@@ -37,6 +37,7 @@ class DomainFeatureDataFactory:
         self.statistics = DomainFeatureDataStatistics()
 
     def make_domain_feature_data_from_subproblems(self, config, domain_data: DomainData, subproblem_datas: List[Subproblem], instance_datas: List[InstanceData]):
+        # collect all state pairs that are not classified as UNKNOWN
         dlplan_state_pairs = set()
         for subproblem_data, instance_data in zip(subproblem_datas, instance_datas):
             dlplan_seed_state = instance_data.transition_system.s_idx_to_dlplan_state[subproblem_data.root_idx]

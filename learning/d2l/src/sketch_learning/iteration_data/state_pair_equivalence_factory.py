@@ -7,7 +7,8 @@ from typing import List
 from .state_pair_equivalence import RuleEquivalences, StatePairEquivalence
 from .domain_feature_data import DomainFeatureData
 from .instance_feature_data import InstanceFeatureData
-from .state_pair import StatePair
+
+from ..instance_data.state_pair import StatePair
 
 
 @dataclass

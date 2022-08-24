@@ -14,7 +14,6 @@ from ..iteration_data.sketch import SketchRule
 class SubproblemFactory:
     def make_subproblems(self, instance_datas: List[InstanceData], rule: SketchRule):
         subproblem_datas = []
-        transition_classifier_by_instance = []
         for instance_data in instance_datas:
             for root_idx in range(instance_data.transition_system.get_num_states()):
                 subproblem_data = self.make_subproblem(instance_data, rule, root_idx, len(subproblem_datas))
