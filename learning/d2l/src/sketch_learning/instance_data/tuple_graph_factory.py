@@ -13,16 +13,10 @@ class TupleGraphFactory:
     def __init__(self, width: int):
         self.width = width
 
-    def make_tuple_graphs(self, instance_datas: List[InstanceData]):
-        tuple_graph_minimizer = TupleGraphMinimizer()
-        tuple_graphs_by_instance = []
-        for instance_data in instance_datas:
-            tuple_graphs = [self.make_tuple_graph(instance_data, i) for i in range(
-                instance_data.transition_system.get_num_states())]
-            # minimized_tuple_graphs_by_state_index = [tuple_graph_minimizer.minimize(tuple_graph) for tuple_graph in tuple_graphs_by_state_index]
-            tuple_graphs_by_instance.append(tuple_graphs)
-        # tuple_graph_minimizer.statistics.print()
-        return tuple_graphs_by_instance
+    def make_tuple_graphs(self, instance_data: InstanceData):
+        tuple_graphs = [self.make_tuple_graph(instance_data, i) for i in range(
+            instance_data.transition_system.get_num_states())]
+        return tuple_graphs
 
     def make_tuple_graph(self, instance_data: InstanceData, source_index: int):
         if instance_data.transition_system.is_goal(source_index) \
