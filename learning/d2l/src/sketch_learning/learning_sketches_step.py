@@ -39,8 +39,9 @@ def run(config, data, rng):
     state_pairs_by_instance = [state_pair_factory.make_state_pairs_from_tuple_graphs(tuple_graphs) for tuple_graphs in tuple_graphs_by_instance]
     logging.info(colored(f"..done", "blue", "on_grey"))
 
-    # TODO: add state pair classifier
-    # state_pair_classifier_by_instance = [StatePairClassifierFactory().make_transition_classifier(instance_data, state_pairs, delta=1) for instance_data, state_pairs in zip(instance_datas, state_pairs_by_instance)]
+    logging.info(colored(f"Initializing StatePairClassifiers...", "blue", "on_grey"))
+    state_pair_classifiers_by_instance = [StatePairClassifierFactory(config.delta).make_state_pair_classifier(instance_data, state_pairs) for instance_data, state_pairs in zip(instance_datas, state_pairs_by_instance)]
+    logging.info(colored(f"..done", "blue", "on_grey"))
 
     i = 0
     selected_instance_idxs = [0]
@@ -48,7 +49,7 @@ def run(config, data, rng):
     while not timer.is_expired():
         logging.info(colored(f"Iteration: {i}", "red", "on_grey"))
         selected_instance_datas = [instance_datas[instance_idx] for instance_idx in selected_instance_idxs]
-        state_pairs_by_selected_instance = [state_pairs_by_instance[instance_idx] for instance_idx in selected_instance_idxs]
+        state_pair_classifiers_by_selected_instance = [state_pair_classifiers_by_instance[instance_idx] for instance_idx in selected_instance_idxs]
         print(f"Number of selected instances: {len(selected_instance_datas)}")
         for selected_instance_data in selected_instance_datas:
             print(str(selected_instance_data.instance_information.instance_filename), selected_instance_data.transition_system.get_num_states())
@@ -65,7 +66,7 @@ def run(config, data, rng):
 
         logging.info(colored(f"Initializing StatePairEquivalenceDatas...", "blue", "on_grey"))
         state_pair_equivalence_factory = StatePairEquivalenceFactory()
-        domain_rule_equivalences, state_pair_equivalences_by_selected_instance = state_pair_equivalence_factory.make_state_pair_equivalences(domain_feature_data, state_pairs_by_selected_instance, instance_feature_datas_by_selected_instance)
+        rule_equivalences, state_pair_equivalences_by_selected_instance = state_pair_equivalence_factory.make_state_pair_equivalences(domain_feature_data, state_pair_classifiers_by_selected_instance, instance_feature_datas_by_selected_instance)
         logging.info(colored(f"..done", "blue", "on_grey"))
 
         logging.info(colored(f"Initializing TupleGraphEquivalences...", "blue", "on_grey"))
@@ -74,7 +75,7 @@ def run(config, data, rng):
 
         logging.info(colored(f"Initializing Logic Program...", "blue", "on_grey"))
         sketch_asp_factory = SketchASPFactory(config)
-        facts = sketch_asp_factory.make_facts(selected_instance_datas, tuple_graphs_by_selected_instance, domain_feature_data, domain_rule_equivalences, state_pair_equivalences_by_selected_instance, tuple_graph_equivalences_by_selected_instance, instance_feature_datas_by_selected_instance)
+        facts = sketch_asp_factory.make_facts(domain_feature_data, rule_equivalences, selected_instance_datas, tuple_graphs_by_selected_instance, tuple_graph_equivalences_by_selected_instance, state_pair_equivalences_by_selected_instance, state_pair_classifiers_by_selected_instance, instance_feature_datas_by_selected_instance)
         sketch_asp_factory.ground(facts)
         logging.info(colored(f"..done", "blue", "on_grey"))
 
@@ -83,7 +84,7 @@ def run(config, data, rng):
         logging.info(colored(f"..done", "blue", "on_grey"))
 
         sketch_asp_factory.print_statistics()
-        sketch = Sketch(DlplanPolicyFactory().make_dlplan_policy_from_answer_set_d2(symbols, domain_feature_data, domain_rule_equivalences), config.width)
+        sketch = Sketch(DlplanPolicyFactory().make_dlplan_policy_from_answer_set_d2(symbols, domain_feature_data, rule_equivalences), config.width)
         logging.info("Learned the following sketch:")
         print(sketch.dlplan_policy.str())
 

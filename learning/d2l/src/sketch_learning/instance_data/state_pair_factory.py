@@ -19,6 +19,8 @@ class StatePairFactoryStatistics:
 
 
 class StatePairFactory:
+    """ StatePairFactory determines the set of state pairs that we want to classify.
+        Note that """
     def __init__(self):
         self.statistics = StatePairFactoryStatistics()
 
@@ -30,12 +32,4 @@ class StatePairFactory:
                 for target_idx in target_idxs:
                     state_pairs.append(StatePair(tuple_graph.root_idx, target_idx, distance))
                     self.statistics.increment_num_state_pairs()
-        return state_pairs
-
-    def make_state_pairs_from_subproblem(self, subproblems: Subproblem):
-        state_pairs = []
-        for _, transitions in subproblems.forward_transitions.items():
-            for transition in transitions:
-                state_pairs.append(StatePair(transition.source_idx, transition.target_idx, 1))
-                self.statistics.increment_num_state_pairs()
         return state_pairs

@@ -3,13 +3,17 @@ from clingo import Control
 from typing import List, Dict, Tuple
 
 from ..instance_data.subproblem import Subproblem
+from ..instance_data.instance_data import InstanceData
+from ..instance_data.state_pair_classifier import StatePairClassifier
 from ..iteration_data.domain_feature_data import DomainFeatureData
 from ..iteration_data.instance_feature_data import InstanceFeatureData
 from ..iteration_data.state_pair_equivalence import RuleEquivalences, StatePairEquivalence
 
+from .facts.instance_data.transition_system import TransitionSystemFactFactory
+from .facts.instance_data.state_pair_classifier import StatePairClassifierFactFactory
 from .facts.iteration_data.domain_feature_data import DomainFeatureDataFactFactory
 from .facts.iteration_data.equivalence_data import EquivalenceDataFactFactory
-from .facts.instance_data.subproblem import SubproblemFactFactory
+from .facts.iteration_data.instance_feature_data import InstanceFeatureDataFactFactory
 
 from .returncodes import ClingoExitCode
 
@@ -42,12 +46,15 @@ class PolicyASPFactory:
         self.ctl.add("suboptimal_equivalence", ["i", "c", "s1", "s2"], "suboptimal_equivalence(i,c,s1,s2).")
         self.ctl.load(str(config.asp_policy_location))
 
-    def make_facts(self, domain_feature_data: DomainFeatureData, rule_equivalence_data: RuleEquivalences, state_pair_equivalences: List[StatePairEquivalence], subproblem_datas: List[Subproblem], instance_feature_datas: List[InstanceFeatureData]):
+    def make_facts(self, domain_feature_data: DomainFeatureData, rule_equivalences: RuleEquivalences, instance_datas: List[InstanceData], state_pair_equivalences_by_instance: List[StatePairEquivalence], state_pair_classifiers_by_instance: List[StatePairClassifier], instance_feature_datas_by_instance: List[InstanceFeatureData]):
         facts = []
         facts.extend(DomainFeatureDataFactFactory().make_facts(domain_feature_data))
-        facts.extend(EquivalenceDataFactFactory().make_facts(rule_equivalence_data, domain_feature_data))
-        for state_pair_equivalence, subproblem, instance_feature_data in zip(state_pair_equivalences, subproblem_datas, instance_feature_datas):
-            facts.extend(SubproblemFactFactory().make_facts(state_pair_equivalence, subproblem, instance_feature_data))
+        facts.extend(EquivalenceDataFactFactory().make_facts(rule_equivalences, domain_feature_data))
+        for state_pair_equivalence, instance_data, state_pair_classifier, instance_feature_data in zip(state_pair_equivalences_by_instance, instance_datas, state_pair_classifiers_by_instance, instance_feature_datas_by_instance):
+            facts.extend(TransitionSystemFactFactory().make_facts(instance_data.id, instance_data.transition_system, state_pair_classifier))
+            facts.extend(InstanceFeatureDataFactFactory().make_facts(instance_data.id, instance_feature_data, state_pair_classifier))
+            facts.extend(StatePairClassifierFactFactory().make_facts(instance_data.id, state_pair_classifier, state_pair_equivalence))
+            pass
         return facts
 
     def ground(self, facts=[]):

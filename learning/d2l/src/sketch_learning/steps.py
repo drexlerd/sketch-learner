@@ -1,6 +1,7 @@
 import os
 import sys
 import copy
+import math
 
 
 class Step:
@@ -34,6 +35,7 @@ class Step:
 class LearningSketchesStep(Step):
     """ Incrementally learns a sketch by considering more and more instances """
     def process_config(self, config):
+        config["delta"] = math.inf
         return config  # By default, we do nothing
 
     def get_required_attributes(self):
@@ -57,6 +59,7 @@ class LearningHierarchiesStep(Step):
     def process_config(self, config):
         config["generate_seed_feature_dec_boolean"] = True
         config["generate_seed_feature_inc_boolean"] = True
+        config["delta"] = 1.0
         return config  # By default, we do nothing
 
     def get_required_attributes(self):

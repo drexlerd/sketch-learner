@@ -9,6 +9,7 @@ from .domain_feature_data import DomainFeatureData
 from ..domain_data.domain_data import DomainData
 from ..instance_data.instance_data import InstanceData
 from ..instance_data.subproblem import Subproblem
+from ..instance_data.state_pair_classifier import StatePairClassifier
 
 
 @dataclass
@@ -36,17 +37,17 @@ class DomainFeatureDataFactory:
     def __init__(self):
         self.statistics = DomainFeatureDataStatistics()
 
-    def make_domain_feature_data_from_subproblems(self, config, domain_data: DomainData, subproblem_datas: List[Subproblem], instance_datas: List[InstanceData]):
+    def make_domain_feature_data_from_subproblems(self, config, domain_data: DomainData, instance_datas: List[InstanceData], state_pair_classifiers_by_instance: List[StatePairClassifier]):
         # collect all state pairs that are not classified as UNKNOWN
         dlplan_state_pairs = set()
-        for subproblem_data, instance_data in zip(subproblem_datas, instance_datas):
-            dlplan_seed_state = instance_data.transition_system.s_idx_to_dlplan_state[subproblem_data.root_idx]
-            dlplan_state_pairs.update(set([(dlplan_seed_state, instance_data.transition_system.s_idx_to_dlplan_state[s_idx]) for s_idx in subproblem_data.generated_states]))
+        for instance_data, state_pair_classifier in zip(instance_datas, state_pair_classifiers_by_instance):
+            dlplan_seed_state = instance_data.transition_system.s_idx_to_dlplan_state[instance_data.transition_system.initial_s_idx]
+            dlplan_state_pairs.update(set([(dlplan_seed_state, instance_data.transition_system.s_idx_to_dlplan_state[s_idx]) for s_idx in state_pair_classifier.generated_s_idxs]))
         return self.make_domain_feature_data(config, domain_data, list(dlplan_state_pairs))
 
-    def make_domain_feature_data_from_instances(self, config, domain_data: DomainData, selected_instance_datas: List[InstanceData]):
+    def make_domain_feature_data_from_instances(self, config, domain_data: DomainData, instance_datas: List[InstanceData]):
         dlplan_state_pairs = []
-        for selected_instance_data in selected_instance_datas:
+        for selected_instance_data in instance_datas:
             dlplan_state_pairs.extend([(selected_instance_data.transition_system.s_idx_to_dlplan_state[0], dlplan_state) for dlplan_state in selected_instance_data.transition_system.s_idx_to_dlplan_state.values()])
         return self.make_domain_feature_data(config, domain_data, dlplan_state_pairs)
 

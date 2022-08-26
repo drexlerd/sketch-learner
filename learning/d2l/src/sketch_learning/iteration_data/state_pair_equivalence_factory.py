@@ -9,6 +9,7 @@ from .domain_feature_data import DomainFeatureData
 from .instance_feature_data import InstanceFeatureData
 
 from ..instance_data.state_pair import StatePair
+from ..instance_data.state_pair_classifier import StatePairClassifier
 
 
 @dataclass
@@ -31,18 +32,18 @@ class StatePairEquivalenceFactory:
     def __init__(self):
         self.statistics = StatePairEquivalenceStatistics()
 
-    def make_state_pair_equivalences(self, domain_feature_data: DomainFeatureData, state_pairs_by_subproblem: List[List[StatePair]], instance_feature_datas_by_subproblem: List[InstanceFeatureData]):
+    def make_state_pair_equivalences(self, domain_feature_data: DomainFeatureData, state_pair_classifiers_by_instance: List[StatePairClassifier], instance_feature_datas_by_instance: List[InstanceFeatureData]):
         policy_builder = dlplan.PolicyBuilder()
         policy_boolean_features = [policy_builder.add_boolean_feature(b) for b in domain_feature_data.boolean_features]
         policy_numerical_features = [policy_builder.add_numerical_feature(n) for n in domain_feature_data.numerical_features]
         rules = []
         rule_repr_to_idx = dict()
         state_pair_equivalences = []
-        for state_pairs, instance_feature_data in zip(state_pairs_by_subproblem, instance_feature_datas_by_subproblem):
+        for state_pair_classifier, instance_feature_data in zip(state_pair_classifiers_by_instance, instance_feature_datas_by_instance):
             self.statistics.increment_num_state_pairs()
             r_idx_to_state_pairs = defaultdict(list)
             state_pair_to_r_idx = dict()
-            for state_pair in state_pairs:
+            for state_pair in state_pair_classifier.state_pair_to_classification.keys():
                 source_idx = state_pair.source_idx
                 target_idx = state_pair.target_idx
                 # add conditions

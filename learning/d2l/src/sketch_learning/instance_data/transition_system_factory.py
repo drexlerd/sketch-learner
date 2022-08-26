@@ -9,12 +9,12 @@ from .transition_system import TransitionSystem
 
 
 class TransitionSystemFactory:
-    def parse_transition_system(self, s_idx_to_dlplan_state, goals, forward_transitions):
+    def parse_transition_system(self, s_idx_to_dlplan_state, goals, forward_transitions, initial_s_idx=0):
         # Compute backward transitions and deadends
         backward_transitions = compute_inverse_transitions(forward_transitions)
         goal_distances = self._compute_goal_distances(s_idx_to_dlplan_state, goals, backward_transitions)
         deadends = compute_deadends(goal_distances)
-        return TransitionSystem(0, s_idx_to_dlplan_state, forward_transitions, backward_transitions, deadends, goals)
+        return TransitionSystem(initial_s_idx, s_idx_to_dlplan_state, forward_transitions, backward_transitions, deadends, goals)
 
     def restrict_transition_system_by_subproblem(self, transition_system: TransitionSystem, subproblem: Subproblem) -> TransitionSystem:
         generated_states = set(subproblem.generated_states)
@@ -22,7 +22,7 @@ class TransitionSystemFactory:
         deadends = set()
         for s_idx in generated_states:
             s_idx_to_dlplan_state[s_idx] = transition_system.s_idx_to_dlplan_state[s_idx]
-            if s_idx in transition_system.deadends:
+            if s_idx in transition_system.deadend_s_idxs:
                 deadends.add(s_idx)
         forward_transitions = defaultdict(set)
         backward_transitions = defaultdict(set)
@@ -34,13 +34,7 @@ class TransitionSystemFactory:
                     continue
                 forward_transitions[source_idx].add(target_idx)
                 backward_transitions[target_idx].add(source_idx)
-        return TransitionSystem(transition_system.initial_state_index, s_idx_to_dlplan_state, forward_transitions, backward_transitions, deadends, subproblem.goal_states)
-
-    def _normalize_atom_name(self, name):
-        tmp = name.replace('()', '').replace(')', '').replace('(', ',')
-        if "=" in tmp:  # We have a functional atom
-            tmp = tmp.replace("=", ',')
-        return tmp.split(',')
+        return TransitionSystem(transition_system.initial_s_idx, s_idx_to_dlplan_state, forward_transitions, backward_transitions, deadends, subproblem.goal_states)
 
     def _compute_goal_distances(self, s_idx_to_dlplan_state, goals, backward_transitions):
         distances = [math.inf for _ in s_idx_to_dlplan_state]

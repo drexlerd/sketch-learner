@@ -37,6 +37,9 @@ def generate_experiment(expid, domain_dir, domain, **kwargs):
         feature_limit=10000,
         num_threads_feature_generator=1,
 
+        # degree of suboptimality
+        delta=1.0,
+
         generate_seed_feature_dec_boolean=False,
         generate_seed_feature_inc_boolean=False,
         generate_concept_distance_numerical=False,
