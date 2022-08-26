@@ -41,6 +41,7 @@ def run(config, data, rng):
 
     logging.info(colored(f"Initializing StatePairClassifiers...", "blue", "on_grey"))
     state_pair_classifiers_by_instance = [StatePairClassifierFactory(config.delta).make_state_pair_classifier(instance_data, state_pairs) for instance_data, state_pairs in zip(instance_datas, state_pairs_by_instance)]
+    # state_pairs_by_instance = [state_pair_classifier.source_idx_to_state_pairs.keys() for state_pair_classifier in state_pair_classifiers_by_instance]
     logging.info(colored(f"..done", "blue", "on_grey"))
 
     i = 0

@@ -58,13 +58,13 @@ def run(config, data, rng):
         state_pairs_by_instance = []
         for instance_data, tuple_graphs in zip(instance_datas, tuple_graphs_by_instance):
             for s_idx in instance_data.transition_system.s_idx_to_dlplan_state.keys():
-                instance_data, return_code = InstanceDataFactory().make_subproblem_instance_data(len(subproblem_instance_datas), instance_data, s_idx, rule)
+                subproblem_instance_data, return_code = InstanceDataFactory().make_subproblem_instance_data(len(subproblem_instance_datas), instance_data, s_idx, rule)
                 if return_code == ReturnCode.UNSOLVABLE:
                     continue
                 state_pairs = StatePairFactory().make_state_pairs_from_tuple_graphs(tuple_graphs)
-                state_pair_classifier = StatePairClassifierFactory(config.delta).make_state_pair_classifier(instance_data, state_pairs)
+                state_pair_classifier = StatePairClassifierFactory(config.delta).make_state_pair_classifier(subproblem_instance_data, state_pairs)
 
-                subproblem_instance_datas.append(instance_data)
+                subproblem_instance_datas.append(subproblem_instance_data)
                 state_pair_classifiers_by_instance.append(state_pair_classifier)
                 state_pairs_by_instance.append(state_pair_classifier.state_pair_to_classification.keys())
                 # TODO: restrict transition system to relevant parts to reduce overhead later

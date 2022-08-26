@@ -59,9 +59,10 @@ class SketchASPFactory:
         for instance_idx, (instance_data, tuple_graphs, tuple_graph_equivalences, state_pair_equivalence, state_pair_classifier, instance_feature_data) in enumerate(zip(instance_datas, tuple_graphs_by_instance, tuple_graph_equivalences_by_instance, state_pair_equivalence_datas, state_pair_classifiers_by_instance, instance_feature_datas)):
             facts.extend(TransitionSystemFactFactory().make_facts(instance_idx, instance_data.transition_system, state_pair_classifier))
             facts.extend(StatePairClassifierFactFactory().make_facts(instance_idx, state_pair_classifier, state_pair_equivalence))
-            facts.extend(InstanceFeatureDataFactFactory().make_facts(instance_data.id, instance_feature_data, state_pair_classifier))
+            facts.extend(InstanceFeatureDataFactFactory().make_facts(instance_idx, instance_feature_data, state_pair_classifier))
             for tuple_graph, tuple_graph_equivalences in zip(tuple_graphs, tuple_graph_equivalences):
                 facts.extend(TupleGraphFactFactory().make_facts(instance_idx, tuple_graph, state_pair_equivalence, tuple_graph_equivalences))
+                pass
         return facts
 
     def ground(self, facts=[]):
