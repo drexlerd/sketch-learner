@@ -29,6 +29,9 @@ class Sketch:
         """
         return [SketchRule(self, rule_idx, dlplan_rule) for rule_idx, dlplan_rule in enumerate(self.dlplan_policy.get_rules())]
 
+    def verify_d2(self):
+        pass
+
     def _verify_bounded_width(self, instance_data: InstanceData, tuple_graphs: List[TupleGraph]):
         """
         Check whether the width of all subproblems is bounded.

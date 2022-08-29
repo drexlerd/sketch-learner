@@ -83,25 +83,25 @@ class DlplanPolicyFactory:
                 continue
             if r_idx not in rules: continue
             if f_idx not in f_idx_to_policy_feature: continue
-            if symbol.name == "c_eq_fixed":
+            if symbol.name == "c_n_eq":
                 rules[r_idx][0].append(policy_builder.add_eq_condition(f_idx_to_policy_feature[f_idx]))
-            elif symbol.name == "c_gt_fixed":
+            elif symbol.name == "c_n_gt":
                 rules[r_idx][0].append(policy_builder.add_gt_condition(f_idx_to_policy_feature[f_idx]))
-            elif symbol.name == "c_pos_fixed":
+            elif symbol.name == "c_b_pos":
                 rules[r_idx][0].append(policy_builder.add_pos_condition(f_idx_to_policy_feature[f_idx]))
-            elif symbol.name == "c_neg_fixed":
+            elif symbol.name == "c_b_neg":
                 rules[r_idx][0].append(policy_builder.add_neg_condition(f_idx_to_policy_feature[f_idx]))
-            elif symbol.name == "e_inc_fixed":
+            elif symbol.name == "e_n_inc":
                 rules[r_idx][1].append(policy_builder.add_inc_effect(f_idx_to_policy_feature[f_idx]))
-            elif symbol.name == "e_dec_fixed":
+            elif symbol.name == "e_n_dec":
                 rules[r_idx][1].append(policy_builder.add_dec_effect(f_idx_to_policy_feature[f_idx]))
-            elif symbol.name == "e_bot_fixed":
+            elif symbol.name == "e_n_bot":
                 rules[r_idx][1].append(policy_builder.add_bot_effect(f_idx_to_policy_feature[f_idx]))
-            elif symbol.name == "e_pos_fixed":
+            elif symbol.name == "e_b_pos":
                 rules[r_idx][1].append(policy_builder.add_pos_effect(f_idx_to_policy_feature[f_idx]))
-            elif symbol.name == "e_neg_fixed":
+            elif symbol.name == "e_b_neg":
                 rules[r_idx][1].append(policy_builder.add_neg_effect(f_idx_to_policy_feature[f_idx]))
-            elif symbol.name == "e_bot_fixed":
+            elif symbol.name == "e_b_bot":
                 rules[r_idx][1].append(policy_builder.add_bot_effect(f_idx_to_policy_feature[f_idx]))
         for _, (conditions, effects) in rules.items():
             policy_builder.add_rule(conditions, effects)

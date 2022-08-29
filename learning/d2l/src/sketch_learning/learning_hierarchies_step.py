@@ -61,8 +61,11 @@ def run(config, data, rng):
                 subproblem_instance_data, return_code = InstanceDataFactory().make_subproblem_instance_data(len(subproblem_instance_datas), instance_data, s_idx, rule)
                 if return_code == ReturnCode.UNSOLVABLE:
                     continue
+
                 state_pairs = StatePairFactory().make_state_pairs_from_tuple_graphs(tuple_graphs)
                 state_pair_classifier = StatePairClassifierFactory(config.delta).make_state_pair_classifier(subproblem_instance_data, state_pairs)
+                # TODO: set of state pairs is closed but it should not be
+                # TODO: reduce state pairs to those reachable delta optimal from initial state
 
                 subproblem_instance_datas.append(subproblem_instance_data)
                 state_pair_classifiers_by_instance.append(state_pair_classifier)

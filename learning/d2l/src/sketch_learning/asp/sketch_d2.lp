@@ -14,10 +14,10 @@
 % Require unsolvable states S' as close as subgoal to not be assigned to any rule.
 :- D <= D', d_distance(I, S, C, D), t_distance(I, S, T, D'), subgoal(I, S, T), good(C).
 % (Optimal-width): Require solvable states S' closer than subgoal to not be assigned to any rule.
-:- D < D', r_distance(I, S, C, D), t_distance(I, S, T, D'), subgoal(I, S, T), good(C).
+% :- D < D', r_distance(I, S, C, D), t_distance(I, S, T, D'), subgoal(I, S, T), good(C).
 
 % D2-separation
-:- good(C), not good(C'), equivalence(C), equivalence(C'), { feature(F) : select(F), change(F, C, V), change(F, C', V'), V != V' } = 0.
+:- good(C), not good(C'), d2_separate(C, C'), equivalence(C), equivalence(C'), { feature(F) : select(F), change(F, C, V), change(F, C', V'), V != V' } = 0.
 
 % Goal-separation
 :- nongoal(I, S), goal(I, S'), { feature(F) : select(F), value(I, S, F, V), value(I, S', F, V'), V != V' } = 0.
@@ -35,12 +35,13 @@ order(I, S) :- solvable(I, S), order(I, S, S') : good(I, S, S'), solvable(I, S),
 #show numerical/1.
 #show boolean/1.
 #show good/1.
-#show c_eq_fixed/2.
-#show c_gt_fixed/2.
-#show c_pos_fixed/2.
-#show c_neg_fixed/2.
-#show e_pos_fixed/2.
-#show e_neg_fixed/2.
-#show e_dec_fixed/2.
-#show e_inc_fixed/2.
-#show e_bot_fixed/2.
+#show c_n_eq/2.
+#show c_n_gt/2.
+#show c_b_pos/2.
+#show c_b_neg/2.
+#show e_b_pos/2.
+#show e_b_neg/2.
+#show e_b_bot/2.
+#show e_n_dec/2.
+#show e_n_inc/2.
+#show e_n_bot/2.

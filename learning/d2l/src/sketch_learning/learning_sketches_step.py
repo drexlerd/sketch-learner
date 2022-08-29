@@ -41,7 +41,6 @@ def run(config, data, rng):
 
     logging.info(colored(f"Initializing StatePairClassifiers...", "blue", "on_grey"))
     state_pair_classifiers_by_instance = [StatePairClassifierFactory(config.delta).make_state_pair_classifier(instance_data, state_pairs) for instance_data, state_pairs in zip(instance_datas, state_pairs_by_instance)]
-    # state_pairs_by_instance = [state_pair_classifier.source_idx_to_state_pairs.keys() for state_pair_classifier in state_pair_classifiers_by_instance]
     logging.info(colored(f"..done", "blue", "on_grey"))
 
     i = 0
@@ -49,6 +48,7 @@ def run(config, data, rng):
     timer = CountDownTimer(config.timeout)
     while not timer.is_expired():
         logging.info(colored(f"Iteration: {i}", "red", "on_grey"))
+        d2_facts = set()
         selected_instance_datas = [instance_datas[instance_idx] for instance_idx in selected_instance_idxs]
         state_pair_classifiers_by_selected_instance = [state_pair_classifiers_by_instance[instance_idx] for instance_idx in selected_instance_idxs]
         print(f"Number of selected instances: {len(selected_instance_datas)}")
@@ -77,6 +77,10 @@ def run(config, data, rng):
         logging.info(colored(f"Initializing Logic Program...", "blue", "on_grey"))
         sketch_asp_factory = SketchASPFactory(config)
         facts = sketch_asp_factory.make_facts(domain_feature_data, rule_equivalences, selected_instance_datas, tuple_graphs_by_selected_instance, tuple_graph_equivalences_by_selected_instance, state_pair_equivalences_by_selected_instance, state_pair_classifiers_by_selected_instance, instance_feature_datas_by_selected_instance)
+        d2_facts.update(sketch_asp_factory.make_initial_d2_facts(state_pair_classifiers_by_selected_instance, state_pair_equivalences_by_selected_instance))
+        print("Number of initial D2 facts:", len(d2_facts))
+        print("Number of D2 facts:", len(d2_facts), "of", len(rule_equivalences.rules) ** 2)
+        facts.extend(list(d2_facts))
         sketch_asp_factory.ground(facts)
         logging.info(colored(f"..done", "blue", "on_grey"))
 
@@ -88,6 +92,31 @@ def run(config, data, rng):
         sketch = Sketch(DlplanPolicyFactory().make_dlplan_policy_from_answer_set_d2(symbols, domain_feature_data, rule_equivalences), config.width)
         logging.info("Learned the following sketch:")
         print(sketch.dlplan_policy.str())
+
+        # Iteratively add D2-separation constraints
+        while True:
+            logging.info(colored(f"Initializing Logic Program...", "blue", "on_grey"))
+            sketch_asp_factory = SketchASPFactory(config)
+            facts = sketch_asp_factory.make_facts(domain_feature_data, rule_equivalences, selected_instance_datas, tuple_graphs_by_selected_instance, tuple_graph_equivalences_by_selected_instance, state_pair_equivalences_by_selected_instance, state_pair_classifiers_by_selected_instance, instance_feature_datas_by_selected_instance)
+            unsatisfied_d2_facts = sketch_asp_factory.make_unsatisfied_d2_facts(symbols, rule_equivalences)
+            d2_facts.update(unsatisfied_d2_facts)
+            facts.extend(list(d2_facts))
+            print("Number of unsatisfied D2 facts:", len(unsatisfied_d2_facts))
+            print("Number of D2 facts:", len(d2_facts), "of", len(rule_equivalences.rules) ** 2)
+            if not unsatisfied_d2_facts:
+                break
+
+            sketch_asp_factory.ground(facts)
+            logging.info(colored(f"..done", "blue", "on_grey"))
+
+            logging.info(colored(f"Solving Logic Program...", "blue", "on_grey"))
+            symbols = sketch_asp_factory.solve()
+            logging.info(colored(f"..done", "blue", "on_grey"))
+
+            sketch_asp_factory.print_statistics()
+            sketch = Sketch(DlplanPolicyFactory().make_dlplan_policy_from_answer_set_d2(symbols, domain_feature_data, rule_equivalences), config.width)
+            logging.info("Learned the following sketch:")
+            print(sketch.dlplan_policy.str())
 
         logging.info(colored(f"Verifying learned sketch...", "blue", "on_grey"))
         assert all([sketch.solves(instance_data, tuple_graphs) for instance_data, tuple_graphs in zip(selected_instance_datas, tuple_graphs_by_selected_instance)])

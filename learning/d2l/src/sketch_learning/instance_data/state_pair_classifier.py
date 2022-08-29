@@ -21,3 +21,10 @@ class StatePairClassifier:
 
     def classify(self, state_pair: StatePair):
         return self.state_pair_to_classification[state_pair]
+
+    def print(self):
+        print("StatePairClassifier:")
+        print("    state_pair_to_classification:", self.state_pair_to_classification)
+        print("    source_idx_to_state_pairs:", self.source_idx_to_state_pairs)
+        print("    expanded_s_idxs:", self.expanded_s_idxs)
+        print("    generated_s_idxs:", self.generated_s_idxs)
