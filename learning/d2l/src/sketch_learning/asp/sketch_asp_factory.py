@@ -41,6 +41,7 @@ class SketchASPFactory:
         self.ctl.add("goal", ["i", "s"], "goal(i,s).")
         self.ctl.add("nongoal", ["i", "s"], "nongoal(i,s).")
         self.ctl.add("change", ["f", "r", "v"], "change(f,r,v).")
+        self.ctl.add("looping_equivalences", ["r"], "looping_equivalences(r).")
 
         self.ctl.add("equivalence_contains", ["i","s1", "s2", "r"], "equivalence_contains(i,s1,s2,r).")
         self.ctl.add("solvable", ["i", "s"], "solvable(i,s).")
@@ -64,7 +65,6 @@ class SketchASPFactory:
             facts.extend(InstanceFeatureDataFactFactory().make_facts(instance_idx, instance_feature_data, state_pair_classifier))
             for tuple_graph, tuple_graph_equivalences in zip(tuple_graphs, tuple_graph_equivalences):
                 facts.extend(TupleGraphFactFactory().make_facts(instance_idx, tuple_graph, state_pair_equivalence, tuple_graph_equivalences))
-                pass
         return facts
 
     def make_initial_d2_facts(self, state_pair_classifiers_by_instance: List[StatePairClassifier], state_pair_equivalences_by_instance: List[StatePairEquivalence]):

@@ -14,7 +14,8 @@
 % Require unsolvable states S' as close as subgoal to not be assigned to any rule.
 :- D <= D', d_distance(I, S, C, D), t_distance(I, S, T, D'), subgoal(I, S, T), good(C).
 % (Optimal-width): Require solvable states S' closer than subgoal to not be assigned to any rule.
-% :- D < D', r_distance(I, S, C, D), t_distance(I, S, T, D'), subgoal(I, S, T), good(C).
+%:- D < D', r_distance(I, S, C, D), t_distance(I, S, T, D'), subgoal(I, S, T), good(C).
+:- looping_equivalences(C), good(C).
 
 % D2-separation
 :- good(C), not good(C'), d2_separate(C, C'), equivalence(C), equivalence(C'), { feature(F) : select(F), change(F, C, V), change(F, C', V'), V != V' } = 0.

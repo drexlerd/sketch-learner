@@ -14,8 +14,7 @@ class TupleGraphFactory:
         self.width = width
 
     def make_tuple_graphs(self, instance_data: InstanceData):
-        tuple_graphs = [self.make_tuple_graph(instance_data, i) for i in range(
-            instance_data.transition_system.get_num_states())]
+        tuple_graphs = [self.make_tuple_graph(instance_data, source_idx) for source_idx in instance_data.transition_system.s_idx_to_dlplan_state.keys()]
         return tuple_graphs
 
     def make_tuple_graph(self, instance_data: InstanceData, source_index: int):

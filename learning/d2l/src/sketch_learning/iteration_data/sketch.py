@@ -39,17 +39,13 @@ class Sketch:
         evaluation_cache = dlplan.EvaluationCache(len(self.dlplan_policy.get_boolean_features()), len(self.dlplan_policy.get_numerical_features()))
         closest_subgoal_states = defaultdict(set)
         closest_subgoal_tuples = defaultdict(set)
-        for root_idx in range(instance_data.transition_system.get_num_states()):
+        for root_idx in instance_data.transition_system.s_idx_to_dlplan_state.keys():
             dlplan_state = instance_data.transition_system.s_idx_to_dlplan_state[root_idx]
             tg = tuple_graphs[root_idx]
             if tg is None: continue  # no tuple graph indicates that we don't care about the information of this state.
             bounded = False
             source_context = dlplan.EvaluationContext(root_idx, dlplan_state, evaluation_cache)
-            if tg.width == 0:
-                low = 1
-            else:
-                low = 0
-            for d in range(low, len(tg.s_idxs_by_distance)):
+            for d in range(len(tg.s_idxs_by_distance)):
                 for t_idx in tg.t_idxs_by_distance[d]:  # check if t_idxs is a subgoal
                     subgoal = True
                     assert tg.t_idx_to_s_idxs[t_idx]
@@ -79,7 +75,7 @@ class Sketch:
             We use DFS because we know that every state is reachable from the initial state
             We create a forward graph from compatible state pairs to check for termination
         """
-        for root_idx in range(instance_data.transition_system.get_num_states()):
+        for root_idx in instance_data.transition_system.s_idx_to_dlplan_state.keys():
             if tuple_graphs[root_idx] is None: continue
             # The depth-first search is the iterative version where the current path is explicit in the stack.
             # https://en.wikipedia.org/wiki/Depth-first_search
@@ -93,6 +89,7 @@ class Sketch:
                     target_idx = next(iterator)
                     if target_idx in s_idxs_on_path:
                         # print(stack)
+                        tuple_graphs[root_idx].print()
                         print("Sketch cycles")
                         for s_idx in s_idxs_on_path:
                             print(f"{s_idx} {str(instance_data.transition_system.s_idx_to_dlplan_state[s_idx])}")
