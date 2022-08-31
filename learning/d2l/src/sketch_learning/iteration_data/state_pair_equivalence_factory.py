@@ -60,7 +60,6 @@ class StatePairEquivalenceFactory:
                     rule_repr_to_idx[rule_repr] = r_idx
                     rules.append(rule)
                     self.statistics.increment_num_equivalences()
-                state_pair = (source_idx, target_idx)
                 r_idx_to_state_pairs[r_idx].append(state_pair)
                 state_pair_to_r_idx[state_pair] = r_idx
             state_pair_equivalences.append(StatePairEquivalence(r_idx_to_state_pairs, state_pair_to_r_idx))

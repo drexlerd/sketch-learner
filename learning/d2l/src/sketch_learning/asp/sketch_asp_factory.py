@@ -74,7 +74,7 @@ class SketchASPFactory:
             for s_idx, state_pairs in state_pair_classifier.source_idx_to_state_pairs.items():
                 equivalences = set()
                 for state_pair in state_pairs:
-                    equivalences.add(state_pair_equivalence.state_pair_to_r_idx[(state_pair.source_idx, state_pair.target_idx)])
+                    equivalences.add(state_pair_equivalence.state_pair_to_r_idx[state_pair])
                 for i, eq_1 in enumerate(equivalences):
                     for j, eq_2 in enumerate(equivalences):
                         if i < j:

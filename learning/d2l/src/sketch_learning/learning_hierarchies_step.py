@@ -70,7 +70,6 @@ def run(config, data, rng):
                 subproblem_instance_datas.append(subproblem_instance_data)
                 state_pair_classifiers_by_instance.append(state_pair_classifier)
                 state_pairs_by_instance.append(state_pair_classifier.state_pair_to_classification.keys())
-                # TODO: restrict transition system to relevant parts to reduce overhead later
         logging.info(colored(f"..done", "blue", "on_grey"))
 
         i = 0

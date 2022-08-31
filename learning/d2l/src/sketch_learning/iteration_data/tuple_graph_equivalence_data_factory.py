@@ -7,6 +7,7 @@ from .tuple_graph_equivalence import TupleGraphEquivalence
 
 from ..instance_data.instance_data import InstanceData
 from ..instance_data.tuple_graph import TupleGraph
+from ..instance_data.state_pair import StatePair
 
 
 class TupleGraphEquivalenceFactory:
@@ -25,7 +26,7 @@ class TupleGraphEquivalenceFactory:
             for distance, layer in enumerate(tuple_graph.s_idxs_by_distance):
                 r_idxs = set()
                 for s_idx in layer:
-                    r_idx = state_pair_equivalence_data.state_pair_to_r_idx[(tuple_graph.root_idx, s_idx)]
+                    r_idx = state_pair_equivalence_data.state_pair_to_r_idx[StatePair(tuple_graph.root_idx, s_idx, distance)]
                     r_idxs.add(r_idx)
                     if instance_data.transition_system.is_deadend(s_idx):
                         # the first time we write r_idx = d, d is smallest value.
@@ -41,7 +42,7 @@ class TupleGraphEquivalenceFactory:
             for distance, t_idxs in enumerate(tuple_graph.t_idxs_by_distance):
                 for t_idx in t_idxs:
                     for s_idx in tuple_graph.t_idx_to_s_idxs[t_idx]:
-                        r_idx = state_pair_equivalence_data.state_pair_to_r_idx[(tuple_graph.root_idx, s_idx)]
+                        r_idx = state_pair_equivalence_data.state_pair_to_r_idx[StatePair(tuple_graph.root_idx, s_idx, distance)]
                         t_idx_to_r_idxs[t_idx].add(r_idx)
                         r_idx_to_t_idxs[r_idx].add(t_idx)
             tuple_graph_equivalences.append(TupleGraphEquivalence(r_idxs_by_distance, t_idx_to_r_idxs, r_idx_to_t_idxs, r_idx_to_deadend_distance, r_idx_to_distance))
