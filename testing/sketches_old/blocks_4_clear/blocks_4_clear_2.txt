@@ -1,0 +1,5 @@
+(:policy
+(:boolean_features "b_empty(c_and(c_primitive(clear,0),c_primitive(clear_g,0)))")
+(:numerical_features )
+(:rule (:conditions (:c_b_pos 0)) (:effects (:e_b_neg 0)))
+)
