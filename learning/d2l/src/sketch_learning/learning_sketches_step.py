@@ -15,7 +15,6 @@ from .iteration_data.dlplan_policy_factory import DlplanPolicyFactory
 from .iteration_data.sketch import Sketch
 from .iteration_data.state_pair_equivalence_factory import StatePairEquivalenceFactory
 from .iteration_data.tuple_graph_equivalence_data_factory import  TupleGraphEquivalenceFactory
-from .instance_data.state_pair_factory import StatePairFactory
 from .instance_data.state_pair_classifier_factory import StatePairClassifierFactory
 from .returncodes import ExitCode
 from .util.timer import CountDownTimer
@@ -34,13 +33,8 @@ def run(config, data, rng):
     tuple_graphs_by_instance = [TupleGraphFactory(config.width).make_tuple_graphs(instance_data) for instance_data in instance_datas]
     logging.info(colored(f"..done", "blue", "on_grey"))
 
-    logging.info(colored(f"Initializing StatePairs...", "blue", "on_grey"))
-    state_pair_factory = StatePairFactory()
-    state_pairs_by_instance = [state_pair_factory.make_state_pairs_from_tuple_graphs(tuple_graphs) for tuple_graphs in tuple_graphs_by_instance]
-    logging.info(colored(f"..done", "blue", "on_grey"))
-
     logging.info(colored(f"Initializing StatePairClassifiers...", "blue", "on_grey"))
-    state_pair_classifiers_by_instance = [StatePairClassifierFactory(config.delta).make_state_pair_classifier(instance_data, state_pairs) for instance_data, state_pairs in zip(instance_datas, state_pairs_by_instance)]
+    state_pair_classifiers_by_instance = [StatePairClassifierFactory(config.delta).make_state_pair_classifier(instance_data, tuple_graphs) for instance_data, tuple_graphs in zip(instance_datas, tuple_graphs_by_instance)]
     logging.info(colored(f"..done", "blue", "on_grey"))
 
     i = 0

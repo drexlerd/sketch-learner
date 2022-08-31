@@ -10,7 +10,6 @@ from sketch_learning.iteration_data.sketch import SketchRule
 from ..util.command import execute, read_file
 
 from .instance_data import InstanceData
-from .subproblem import Subproblem
 from .transition_system_factory import TransitionSystemFactory
 from .return_codes import ReturnCode
 
@@ -62,13 +61,11 @@ class InstanceDataFactory:
         instance_data.transition_system.goal_s_idxs = goals
         if len(goals) == 0:
             return None, ReturnCode.UNSOLVABLE
-
-        transition_system = TransitionSystemFactory().parse_transition_system(instance_data.transition_system.s_idx_to_dlplan_state, goals, instance_data.transition_system.forward_transitions, root_idx)
         # Add static seed atoms for initial state
-        for atom_idx in transition_system.s_idx_to_dlplan_state[root_idx].get_atom_idxs():
+        for atom_idx in instance_data.transition_system.s_idx_to_dlplan_state[root_idx].get_atom_idxs():
             atom = instance_data.instance_info.get_atom(atom_idx)
             instance_data.instance_info.add_static_atom(atom.get_predicate().get_name() + "_r", [object.get_name() for object in atom.get_objects()])
-        return InstanceData(subproblem_idx, instance_data.instance_information, instance_data.domain_data, transition_system, instance_data.instance_info), ReturnCode.SOLVABLE
+        return InstanceData(subproblem_idx, instance_data.instance_information, instance_data.domain_data, instance_data.transition_system, instance_data.instance_info), ReturnCode.SOLVABLE
 
     def _compute_closest_subgoal_states(self, instance_data: InstanceData, root_idx: int, rule: SketchRule):
         evaluation_cache = dlplan.EvaluationCache(len(rule.sketch.dlplan_policy.get_boolean_features()), len(rule.sketch.dlplan_policy.get_numerical_features()))

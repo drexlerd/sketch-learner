@@ -13,12 +13,10 @@ from .util.command import read_file
 from .domain_data.domain_data_factory import DomainDataFactory
 from .instance_data.instance_data import InstanceData
 from .instance_data.instance_data_factory import InstanceDataFactory
-from .instance_data.subproblem import Subproblem
-from .instance_data.subproblem_factory import SubproblemFactory
-from .instance_data.state_pair_factory import StatePairFactory
 from .instance_data.state_pair_classifier import StatePairClassifier
 from .instance_data.state_pair_classifier_factory import StatePairClassifierFactory
 from .instance_data.tuple_graph_factory import TupleGraphFactory
+from .instance_data.transition_system_factory import TransitionSystemFactory
 from .iteration_data.domain_feature_data_factory import DomainFeatureDataFactory
 from .iteration_data.instance_feature_data_factory import InstanceFeatureDataFactory
 from .iteration_data.state_pair_equivalence_factory import StatePairEquivalenceFactory
@@ -39,7 +37,7 @@ def run(config, data, rng):
     logging.info(colored(f"..done", "blue", "on_grey"))
 
     logging.info(colored(f"Initializing TupleGraphs...", "blue", "on_grey"))
-    tuple_graphs_by_instance = [TupleGraphFactory(0).make_tuple_graphs(instance_data) for instance_data in instance_datas]
+    tuple_graphs_by_instance = [TupleGraphFactory(width=0).make_tuple_graphs(instance_data) for instance_data in instance_datas]
     logging.info(colored(f"..done", "blue", "on_grey"))
 
     logging.info(colored(f"Initializing Sketch...", "blue", "on_grey"))
@@ -55,21 +53,18 @@ def run(config, data, rng):
         logging.info(colored(f"Initializing Subproblems...", "blue", "on_grey"))
         subproblem_instance_datas = []
         state_pair_classifiers_by_instance = []
-        state_pairs_by_instance = []
         for instance_data, tuple_graphs in zip(instance_datas, tuple_graphs_by_instance):
             for s_idx in instance_data.transition_system.s_idx_to_dlplan_state.keys():
                 subproblem_instance_data, return_code = InstanceDataFactory().make_subproblem_instance_data(len(subproblem_instance_datas), instance_data, s_idx, rule)
                 if return_code == ReturnCode.UNSOLVABLE:
                     continue
-
-                state_pairs = StatePairFactory().make_state_pairs_from_tuple_graphs(tuple_graphs)
-                state_pair_classifier = StatePairClassifierFactory(config.delta).make_state_pair_classifier(subproblem_instance_data, state_pairs)
-                # TODO: set of state pairs is closed but it should not be
-                # TODO: reduce state pairs to those reachable delta optimal from initial state
+                # Classify delta optimal vs not delta optimal state pairs
+                state_pair_classifier = StatePairClassifierFactory(config.delta).make_state_pair_classifier(subproblem_instance_data, tuple_graphs, reachable_from_init=True)
+                # Free memory by restricting transition system to relevant parts.
+                subproblem_instance_data.transition_system = TransitionSystemFactory().restrict_transition_system_by_state_classifier(subproblem_instance_data.transition_system, state_pair_classifier)
 
                 subproblem_instance_datas.append(subproblem_instance_data)
                 state_pair_classifiers_by_instance.append(state_pair_classifier)
-                state_pairs_by_instance.append(state_pair_classifier.state_pair_to_classification.keys())
         logging.info(colored(f"..done", "blue", "on_grey"))
 
         i = 0

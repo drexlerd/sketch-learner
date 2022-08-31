@@ -1,8 +1,6 @@
 from typing import List
 from dataclasses import dataclass
 
-from ..instance_data.subproblem import Subproblem
-
 
 @dataclass
 class StatePair:

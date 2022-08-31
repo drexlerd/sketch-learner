@@ -30,9 +30,6 @@ class TupleGraph:
                 return True
         return False
 
-    def t_idx_to_dlplan_atoms(self, t_idx: int):
-        pass
-
     def print(self):
         print(f"Tuple graph for state {self.root_idx} and width {self.width}")
         print(f"t_idxs_by_distance: {self.t_idxs_by_distance}")

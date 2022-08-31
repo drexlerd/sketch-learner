@@ -2,7 +2,6 @@ from clingo import Control
 
 from typing import List, Dict, Tuple
 
-from ..instance_data.subproblem import Subproblem
 from ..instance_data.instance_data import InstanceData
 from ..instance_data.state_pair_classifier import StatePairClassifier
 from ..iteration_data.domain_feature_data import DomainFeatureData

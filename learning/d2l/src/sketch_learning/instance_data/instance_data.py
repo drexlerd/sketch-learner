@@ -17,3 +17,4 @@ class InstanceData:
 
     def print_statistics(self):
         pass
+

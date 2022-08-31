@@ -4,7 +4,6 @@ import math
 from typing import Dict, List, MutableSet
 from collections import defaultdict, deque, OrderedDict
 
-
 class TransitionSystem:
     def __init__(self,
         initial_s_idx: int,

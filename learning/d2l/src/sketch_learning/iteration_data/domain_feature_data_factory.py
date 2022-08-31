@@ -8,7 +8,6 @@ from .domain_feature_data import DomainFeatureData
 
 from ..domain_data.domain_data import DomainData
 from ..instance_data.instance_data import InstanceData
-from ..instance_data.subproblem import Subproblem
 from ..instance_data.state_pair_classifier import StatePairClassifier
 
 

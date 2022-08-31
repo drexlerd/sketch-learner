@@ -6,9 +6,9 @@
 
 { good(C) } :- equivalence(C).
 % All suboptimal transitions are bad
-:- good(C), suboptimal_equivalence(I, C, S, _), expanded(I, S).
+:- good(C), not_delta_optimal(I, C, S, _), expanded(I, S).
 % At least one good optimal transiton
-:- { good(C) : optimal_equivalence(I, C, S, _) } = 0, expanded(I, S).
+:- { good(C) : delta_optimal(I, C, S, _) } = 0, expanded(I, S).
 
 % D2-separation
 :- good(C), not good(C'), equivalence(C), equivalence(C'), { feature(F) : select(F), change(F, C, V), change(F, C', V'), V != V' } = 0.

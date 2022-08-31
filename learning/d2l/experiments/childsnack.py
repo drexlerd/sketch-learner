@@ -43,7 +43,7 @@ def experiments():
     exps["sketch_minimal"] = update_dict(
         strips_base,
         pipeline="sketch_pipeline",
-        instances=training_instances_minimal()[:3],
+        instances=training_instances_minimal(),
         debug_features=["n_count(c_and(c_primitive(allergic_gluten,0),c_not(c_primitive(served,0))))",  # 5
                         "b_empty(c_and(c_primitive(allergic_gluten,0),c_not(c_primitive(served,0))))",  # 5
                         "n_count(c_and(c_primitive(not_allergic_gluten,0),c_not(c_primitive(served,0))))",  # 5
@@ -86,4 +86,5 @@ def training_instances():
 
 
 def training_instances_minimal():
+    # return ["p-3-1.0-0.5-1-0"]
     return ["p-2-1.0-1.0-1-0", "p-2-1.0-0.0-1-0", "p-2-1.0-0.5-1-0"]
