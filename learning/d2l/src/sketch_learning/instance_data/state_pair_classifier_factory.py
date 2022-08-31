@@ -15,9 +15,9 @@ class StatePairClassifierFactory:
         assert delta >= 1
         self.delta = delta
 
-    def make_state_pair_classifier(self, instance_data: InstanceData, state_pairs: List[StatePair]):
+    def make_state_pair_classifier(self, instance_data: InstanceData, state_pairs: List[StatePair], reachable_from_init=False):
         transition_system = instance_data.transition_system
-        _, goal_distances = transition_system.partition_states_by_distance(instance_data.transition_system.goal_s_idxs, forward=False, stop_upon_goal=False)
+        _, goal_distances = transition_system.partition_states_by_distance(transition_system.goal_s_idxs, forward=False, stop_upon_goal=False)
 
         source_idx_to_state_pairs = defaultdict(set)
         for state_pair in state_pairs:

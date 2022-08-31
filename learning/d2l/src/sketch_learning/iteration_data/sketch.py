@@ -45,7 +45,7 @@ class Sketch:
             if tg is None: continue  # no tuple graph indicates that we don't care about the information of this state.
             bounded = False
             source_context = dlplan.EvaluationContext(root_idx, dlplan_state, evaluation_cache)
-            for d in range(len(tg.s_idxs_by_distance)):
+            for d in range(1, len(tg.s_idxs_by_distance)):
                 for t_idx in tg.t_idxs_by_distance[d]:  # check if t_idxs is a subgoal
                     subgoal = True
                     assert tg.t_idx_to_s_idxs[t_idx]

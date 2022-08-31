@@ -20,6 +20,8 @@ class TupleGraphEquivalenceFactory:
             r_idxs_by_distance = []
             r_idx_to_deadend_distance = dict()
             r_idx_to_distance = dict()
+            #print("Root state")
+            #print(instance_data.transition_system.s_idx_to_dlplan_state[tuple_graph.root_idx])
             for distance, layer in enumerate(tuple_graph.s_idxs_by_distance):
                 r_idxs = set()
                 for s_idx in layer:
@@ -27,9 +29,12 @@ class TupleGraphEquivalenceFactory:
                     r_idxs.add(r_idx)
                     if instance_data.transition_system.is_deadend(s_idx):
                         # the first time we write r_idx = d, d is smallest value.
+                        #print(tuple_graph.root_idx, s_idx, distance, r_idx)
+                        #print(instance_data.transition_system.s_idx_to_dlplan_state[s_idx])
                         r_idx_to_deadend_distance[r_idx] = min(r_idx_to_deadend_distance.get(r_idx, math.inf), distance)
                     r_idx_to_distance[r_idx] = min(r_idx_to_distance.get(r_idx, math.inf), distance)
                 r_idxs_by_distance.append(r_idxs)
+            #print()
             # map tuple to rules and vice versa
             t_idx_to_r_idxs = defaultdict(set)
             r_idx_to_t_idxs = defaultdict(set)
