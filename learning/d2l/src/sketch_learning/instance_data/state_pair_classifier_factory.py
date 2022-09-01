@@ -27,7 +27,6 @@ class StatePairClassifierFactory:
             for distance, target_idxs in enumerate(tuple_graph.s_idxs_by_distance):
                 for target_idx in target_idxs:
                     state_pairs.append(StatePair(tuple_graph.root_idx, target_idx, distance))
-                    assert distance <= 1
         source_idx_to_state_pairs = defaultdict(set)
         for state_pair in state_pairs:
             source_idx_to_state_pairs[state_pair.source_idx].add(state_pair)
