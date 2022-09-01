@@ -3,6 +3,8 @@ import logging
 from termcolor import colored
 from typing import List
 
+from sketch_learning.asp.returncodes import ClingoExitCode
+
 from .asp.sketch_asp_factory import SketchASPFactory
 from .domain_data.domain_data_factory import DomainDataFactory
 from .instance_data.instance_data import InstanceData
@@ -42,7 +44,6 @@ def run(config, data, rng):
     timer = CountDownTimer(config.timeout)
     while not timer.is_expired():
         logging.info(colored(f"Iteration: {i}", "red", "on_grey"))
-        d2_facts = set()
         selected_instance_datas = [instance_datas[instance_idx] for instance_idx in selected_instance_idxs]
         state_pair_classifiers_by_selected_instance = [state_pair_classifiers_by_instance[instance_idx] for instance_idx in selected_instance_idxs]
         print(f"Number of selected instances: {len(selected_instance_datas)}")
@@ -71,7 +72,7 @@ def run(config, data, rng):
         logging.info(colored(f"Initializing Logic Program...", "blue", "on_grey"))
         sketch_asp_factory = SketchASPFactory(config)
         facts = sketch_asp_factory.make_facts(domain_feature_data, rule_equivalences, selected_instance_datas, tuple_graphs_by_selected_instance, tuple_graph_equivalences_by_selected_instance, state_pair_equivalences_by_selected_instance, state_pair_classifiers_by_selected_instance, instance_feature_datas_by_selected_instance)
-        d2_facts.update(sketch_asp_factory.make_initial_d2_facts(state_pair_classifiers_by_selected_instance, state_pair_equivalences_by_selected_instance))
+        d2_facts = sketch_asp_factory.make_initial_d2_facts(state_pair_classifiers_by_selected_instance, state_pair_equivalences_by_selected_instance)
         print("Number of initial D2 facts:", len(d2_facts))
         print("Number of D2 facts:", len(d2_facts), "of", len(rule_equivalences.rules) ** 2)
         facts.extend(list(d2_facts))
@@ -79,9 +80,12 @@ def run(config, data, rng):
         logging.info(colored(f"..done", "blue", "on_grey"))
 
         logging.info(colored(f"Solving Logic Program...", "blue", "on_grey"))
-        symbols = sketch_asp_factory.solve()
+        symbols, returncode = sketch_asp_factory.solve()
         logging.info(colored(f"..done", "blue", "on_grey"))
 
+        if returncode == ClingoExitCode.UNSATISFIABLE:
+            print("ASP is unsatisfiable!")
+            return ExitCode.Unsatisfiable, None
         sketch_asp_factory.print_statistics()
         sketch = Sketch(DlplanPolicyFactory().make_dlplan_policy_from_answer_set_d2(symbols, domain_feature_data, rule_equivalences), config.width)
         logging.info("Learned the following sketch:")
@@ -99,14 +103,16 @@ def run(config, data, rng):
             print("Number of D2 facts:", len(d2_facts), "of", len(rule_equivalences.rules) ** 2)
             if not unsatisfied_d2_facts:
                 break
-
             sketch_asp_factory.ground(facts)
             logging.info(colored(f"..done", "blue", "on_grey"))
 
             logging.info(colored(f"Solving Logic Program...", "blue", "on_grey"))
-            symbols = sketch_asp_factory.solve()
+            symbols, returncode = sketch_asp_factory.solve()
             logging.info(colored(f"..done", "blue", "on_grey"))
 
+            if returncode == ClingoExitCode.UNSATISFIABLE:
+                print("ASP is unsatisfiable!")
+                return ExitCode.Unsatisfiable, None
             sketch_asp_factory.print_statistics()
             sketch = Sketch(DlplanPolicyFactory().make_dlplan_policy_from_answer_set_d2(symbols, domain_feature_data, rule_equivalences), config.width)
             logging.info("Learned the following sketch:")

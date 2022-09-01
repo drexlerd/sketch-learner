@@ -15,4 +15,6 @@ class TransitionSystemFactFactory():
                 facts.append(("goal", [Number(instance_idx), Number(s_idx)]))
             else:
                 facts.append(("nongoal", [Number(instance_idx), Number(s_idx)]))
+            if transition_system.is_alive(s_idx):
+                facts.append(("alive", [Number(instance_idx), Number(s_idx)]))
         return list(facts)

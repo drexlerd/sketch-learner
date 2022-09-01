@@ -95,6 +95,10 @@ def run(config, data, rng):
             logging.info(colored(f"Initializing Logic Program...", "blue", "on_grey"))
             policy_asp_factory = PolicyASPFactory(config)
             facts = PolicyASPFactory(config).make_facts(domain_feature_data, rule_equivalences, selected_instance_data, state_pair_equivalences_by_selected_instance, state_pair_classifiers_by_selected_instance, instance_feature_datas_by_selected_instance)
+            d2_facts = policy_asp_factory.make_initial_d2_facts(state_pair_classifiers_by_selected_instance, state_pair_equivalences_by_selected_instance)
+            print("Number of initial D2 facts:", len(d2_facts))
+            print("Number of D2 facts:", len(d2_facts), "of", len(rule_equivalences.rules) ** 2)
+            facts.extend(list(d2_facts))
             policy_asp_factory.ground(facts)
             logging.info(colored(f"..done", "blue", "on_grey"))
 
@@ -110,9 +114,43 @@ def run(config, data, rng):
             print("Learned policy:")
             print(policy.dlplan_policy.compute_repr())
 
-            assert all([policy.solves(instance_data, state_pair_classifier) for instance_data, state_pair_classifier in zip(selected_instance_data, state_pair_classifiers_by_selected_instance)])
+            # Iteratively add D2-separation constraints
+            satisfiable = True
+            while True:
+                logging.info(colored(f"Initializing Logic Program...", "blue", "on_grey"))
+                policy_asp_factory = PolicyASPFactory(config)
+                facts = PolicyASPFactory(config).make_facts(domain_feature_data, rule_equivalences, selected_instance_data, state_pair_equivalences_by_selected_instance, state_pair_classifiers_by_selected_instance, instance_feature_datas_by_selected_instance)
+                unsatisfied_d2_facts = policy_asp_factory.make_unsatisfied_d2_facts(symbols, rule_equivalences)
+                d2_facts.update(unsatisfied_d2_facts)
+                facts.extend(list(d2_facts))
+                print("Number of unsatisfied D2 facts:", len(unsatisfied_d2_facts))
+                print("Number of D2 facts:", len(d2_facts), "of", len(rule_equivalences.rules) ** 2)
+                if not unsatisfied_d2_facts:
+                    break
+                policy_asp_factory.ground(facts)
+                logging.info(colored(f"..done", "blue", "on_grey"))
 
+                logging.info(colored(f"Solving Logic Program...", "blue", "on_grey"))
+                symbols, returncode = policy_asp_factory.solve()
+                logging.info(colored(f"..done", "blue", "on_grey"))
+
+                if returncode in [ClingoExitCode.UNSATISFIABLE]:
+                    satisfiable = False
+                    break
+                policy_asp_factory.print_statistics()
+                policy = Policy(DlplanPolicyFactory().make_dlplan_policy_from_answer_set_d2(symbols, domain_feature_data, rule_equivalences))
+                logging.info("Learned the following sketch:")
+                print(sketch.dlplan_policy.str())
+
+            if not satisfiable:
+                print(colored("No policy exists that solves all geneneral subproblems!", "red", "on_grey"))
+                solution_policies.append(None)
+                break
+
+            logging.info(colored(f"Verifying learned policy...", "blue", "on_grey"))
+            assert all([policy.solves(instance_data, state_pair_classifier) for instance_data, state_pair_classifier in zip(selected_instance_data, state_pair_classifiers_by_selected_instance)])
             all_solved, selected_instance_idxs = verify_policy(policy, subproblem_instance_datas, state_pair_classifiers_by_instance, selected_instance_idxs)
+            logging.info(colored(f"..done", "blue", "on_grey"))
 
             logging.info(colored("Iteration summary:", "yellow", "on_grey"))
             domain_feature_data_factory.statistics.print()
