@@ -1,5 +1,8 @@
 #include "../../include/dlplan/core.h"
 
+#include <sstream>
+#include <iostream>
+
 
 namespace dlplan::core {
 
@@ -34,10 +37,6 @@ int Predicate::get_index() const {
 
 int Predicate::get_arity() const {
     return m_arity;
-}
-
-std::string Predicate::str() const {
-    return m_name + " " + std::to_string(m_arity);
 }
 
 }

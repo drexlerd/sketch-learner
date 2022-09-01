@@ -65,6 +65,7 @@ def run(config, data, rng):
 
                 subproblem_instance_datas.append(subproblem_instance_data)
                 state_pair_classifiers_by_instance.append(state_pair_classifier)
+        print("Number of subproblems:", len(subproblem_instance_datas))
         logging.info(colored(f"..done", "blue", "on_grey"))
 
         i = 0

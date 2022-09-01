@@ -1,0 +1,1 @@
+../../../../../benchmarks/gripper/domain.pddl

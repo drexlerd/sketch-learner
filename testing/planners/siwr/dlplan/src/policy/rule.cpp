@@ -19,16 +19,17 @@ static std::vector<pT> sort(const std::vector<pT>& set) {
         result.begin(),
         result.end(),
         [](const auto& l, const auto& r){
+            if (l->get_base_feature()->get_index() != r->get_base_feature()->get_index()) return l->get_base_feature()->get_index() < r->get_base_feature()->get_index();
             return l->compute_repr() < r->compute_repr();
         });
     return result;
 }
 
 Rule::Rule(
-    std::shared_ptr<const PolicyRoot> root,
     std::vector<std::shared_ptr<const BaseCondition>>&& conditions,
-    std::vector<std::shared_ptr<const BaseEffect>>&& effects)
-    : m_root(root), m_conditions(std::move(conditions)), m_effects(std::move(effects)) { }
+    std::vector<std::shared_ptr<const BaseEffect>>&& effects,
+    int index)
+    : m_conditions(std::move(conditions)), m_effects(std::move(effects)), m_index(index) { }
 
 Rule::Rule(Rule&& other) = default;
 
@@ -92,8 +93,20 @@ std::string Rule::str() const {
     return ss.str();
 }
 
-std::shared_ptr<const PolicyRoot> Rule::get_root() const {
-    return m_root;
+void Rule::set_index(int index) {
+    m_index = index;
+}
+
+int Rule::get_index() const {
+    return m_index;
+}
+
+std::vector<std::shared_ptr<const BaseCondition>> Rule::get_conditions() const {
+    return m_conditions;
+}
+
+std::vector<std::shared_ptr<const BaseEffect>> Rule::get_effects() const {
+    return m_effects;
 }
 
 }

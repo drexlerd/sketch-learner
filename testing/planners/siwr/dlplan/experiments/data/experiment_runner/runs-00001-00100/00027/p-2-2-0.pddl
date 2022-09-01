@@ -1,0 +1,1 @@
+../../../../../benchmarks/miconic/p-2-2-0.pddl

@@ -80,8 +80,16 @@ public:
 		do{
 			if ( this->verbose() )
 				std::cout << std::endl << "{" << gsize << "/" << this->m_goal_candidates.size() << "/" << this->m_goals_achieved.size() << "}:IW(" << this->bound() << ") -> ";
-			end = this->do_search();
+            if (this->bound() == 0) {
+				// check 1-step successors.
+				end = this->do_search_iw_0();
+			} else if (this->bound() > 0) {
+				// run usual IW(k) searches with k=1,2.
+				end = this->do_search();
+			}
+			// end = this->do_search();
 			m_pruned_sum_B_count += this->pruned_by_bound();
+
 
 			if ( end == NULL ) {
 
@@ -92,8 +100,9 @@ public:
 				 * If no state has been pruned by bound, then IW is in a dead-end,
 				 * return NO-PLAN
 				 */
-				if( this->pruned_by_bound() == 0)
+				if( this->bound() > 0 && this->pruned_by_bound() == 0) {
 					return false;
+				}
 
 				new_init_state = new State( this->problem().task() );
 				new_init_state->set( this->m_root->state()->fluent_vec() );

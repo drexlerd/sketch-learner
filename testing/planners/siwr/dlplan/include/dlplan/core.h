@@ -7,10 +7,14 @@
 #include <unordered_set>
 #include <unordered_map>
 
-#include "pimpl.h"
 #include "types.h"
-#include "dynamic_bitset.h"
-#include "phmap.h"
+
+#include "phmap/phmap.h"
+
+#include "utils/pimpl.h"
+#include "utils/dynamic_bitset.h"
+#include "utils/cache.h"
+
 
 
 namespace dlplan::core {
@@ -20,6 +24,7 @@ class VocabularyInfoImpl;
 class SyntacticElementFactory;
 class InstanceInfo;
 class VocabularyInfo;
+class State;
 namespace element {
     template<typename T>
     class Element;
@@ -28,6 +33,8 @@ namespace element {
     class Numerical;
     class Boolean;
 }
+
+using StatePairs = std::vector<std::pair<State, State>>;
 
 class ConceptDenotationFlatSet {
 private:
@@ -104,14 +111,14 @@ public:
 class ConceptDenotationBitset {
 private:
     int m_num_objects;
-    dynamic_bitset::DynamicBitset<unsigned> m_data;
+    utils::DynamicBitset<unsigned> m_data;
 
 public:
     // Special iterator for bitset representing set of integers
     class const_iterator {
         public:
             using iterator_category = std::forward_iterator_tag;
-            using value_type        = dynamic_bitset::DynamicBitset<unsigned>;
+            using value_type        = utils::DynamicBitset<unsigned>;
             using const_reference   = const value_type&;
 
             const_iterator(const_reference data, int num_objects, bool end=false);
@@ -168,14 +175,14 @@ using ConceptDenotation = ConceptDenotationBitset;
 class RoleDenotationBitset {
 private:
     int m_num_objects;
-    dynamic_bitset::DynamicBitset<unsigned> m_data;
+    utils::DynamicBitset<unsigned> m_data;
 
 public:
     // Special iterator for bitset representing set of pairs of ints.
     class const_iterator {
         public:
             using iterator_category = std::forward_iterator_tag;
-            using value_type        = dynamic_bitset::DynamicBitset<unsigned>;
+            using value_type        = utils::DynamicBitset<unsigned>;
             using const_reference   = const value_type&;
 
             const_iterator(const_reference data, int num_objects, bool end=false);
@@ -249,8 +256,6 @@ public:
     bool operator==(const Constant& other) const;
     bool operator!=(const Constant& other) const;
 
-    std::string str() const;
-
     int get_index() const;
     const std::string& get_name() const;
 };
@@ -277,8 +282,6 @@ public:
 
     bool operator==(const Predicate& other) const;
     bool operator!=(const Predicate& other) const;
-
-    std::string str() const;
 
     /**
      * Getters.
@@ -309,8 +312,6 @@ public:
 
     bool operator==(const Object& other) const;
     bool operator!=(const Object& other) const;
-
-    std::string str() const;
 
     int get_index() const;
     const std::string& get_name() const;
@@ -345,12 +346,10 @@ public:
     bool operator==(const Atom& other) const;
     bool operator!=(const Atom& other) const;
 
-    std::string str() const;
-
     /**
      * Getters.
      */
-    const std::string& get_name() const;
+    std::string get_name() const;
     int get_index() const;
     const Predicate& get_predicate() const;
     const std::vector<Object>& get_objects() const;
@@ -366,12 +365,17 @@ class State {
 private:
     std::shared_ptr<const InstanceInfo> m_instance_info;
     Index_Vec m_atom_idxs;
+    int m_index;
 
-    phmap::flat_hash_map<int, std::vector<int>> m_per_predicate_idx_static_atom_idxs;
+    phmap::flat_hash_map<int, std::vector<int>> m_per_predicate_idx_atom_idxs;
 
 public:
-    State(std::shared_ptr<const InstanceInfo> instance_info, const std::vector<Atom>& atoms);
-    State(std::shared_ptr<const InstanceInfo> instance_info, const Index_Vec& atom_idxs);
+    State(std::shared_ptr<const InstanceInfo> instance_info, const std::vector<Atom>& atoms, int index=-1);
+    /**
+     * Expert interface to construct states without the overhead
+     * of copying Atoms but instead working on indices directly.
+     */
+    State(std::shared_ptr<const InstanceInfo> instance_info, const Index_Vec& atom_idxs, int index=-1);
     State(const State& other);
     State& operator=(const State& other);
     State(State&& other);
@@ -385,14 +389,19 @@ public:
      * Computes string-like representation of the state.
      */
     std::string str() const;
+
+    /**
+     * Compute a 64-Bit hash value.
+     */
+    size_t compute_hash() const;
+
     /**
      * Getters.
      */
     std::shared_ptr<const InstanceInfo> get_instance_info() const;
     const Index_Vec& get_atom_idxs() const;
-    const phmap::flat_hash_map<int, std::vector<int>>& get_per_predicate_idx_static_atom_idxs() const;
-
-    size_t compute_hash() const;
+    int get_index() const;
+    const phmap::flat_hash_map<int, std::vector<int>>& get_per_predicate_idx_atom_idxs() const;
 };
 
 
@@ -401,7 +410,7 @@ public:
  */
 class VocabularyInfo {
 private:
-    pimpl<VocabularyInfoImpl> m_pImpl;
+    utils::pimpl<VocabularyInfoImpl> m_pImpl;
 
 public:
     VocabularyInfo();
@@ -425,8 +434,6 @@ public:
     int get_constant_idx(const std::string& name) const;
     const Constant& get_constant(int index) const;
     const std::vector<Constant>& get_constants() const;
-
-    size_t compute_hash() const;
 };
 
 
@@ -435,11 +442,11 @@ public:
  */
 class InstanceInfo {
 private:
-    pimpl<InstanceInfoImpl> m_pImpl;
+    utils::pimpl<InstanceInfoImpl> m_pImpl;
 
 public:
     InstanceInfo() = delete;
-    InstanceInfo(std::shared_ptr<const VocabularyInfo> vocabulary_info);
+    InstanceInfo(std::shared_ptr<const VocabularyInfo> vocabulary_info, int index=-1);
     InstanceInfo(const InstanceInfo& other);
     InstanceInfo& operator=(const InstanceInfo& other);
     InstanceInfo(InstanceInfo&& other);
@@ -447,20 +454,25 @@ public:
     ~InstanceInfo();
 
     /**
-     * Adds an atom that may have varying evaluation depending on the state.
+     * Alternative 1 to add atoms.
      */
-    const Atom& add_atom(const std::string& name, const Name_Vec& object_names, bool negated=false);
+    const Object& add_object(const std::string& object_name);
+    const Atom& add_atom(const Predicate& predicate, const std::vector<Object>& objects);
+    const Atom& add_static_atom(const Predicate& predicate, const std::vector<Object>& objects);
 
     /**
-     * Adds an atom that remains true forever.
+     * Alternative 2 to add atoms.
      */
-    const Atom& add_static_atom(const std::string& name, const Name_Vec& object_names);
+    const Atom& add_atom(const std::string& predicate_name, const Name_Vec& object_names);
+    const Atom& add_static_atom(const std::string& predicate_name, const Name_Vec& object_names);
 
     /**
      * Getters.
      */
+    int get_index() const;
     bool exists_atom(const Atom& atom) const;
     const std::vector<Atom>& get_atoms() const;
+    const std::vector<Atom>& get_static_atoms() const;
     const Atom& get_atom(int index) const;
     int get_atom_idx(const std::string& name) const;
     bool exists_object(const Object& object) const;
@@ -470,31 +482,26 @@ public:
     int get_object_idx(const std::string& name) const;
     int get_num_objects() const;
     std::shared_ptr<const VocabularyInfo> get_vocabulary_info() const;
-    const Index_Vec& get_static_atom_idxs() const;
     const phmap::flat_hash_map<int, std::vector<int>>& get_per_predicate_idx_static_atom_idxs() const;
     const ConceptDenotation& get_top_concept() const;
     const RoleDenotation& get_top_role() const;
 };
 
 
-/**
- * Abstract base class of any Element.
- */
-template<typename T>
-class Element {
+class BaseElement : public utils::Cachable {
+protected:
 protected:
     std::shared_ptr<const VocabularyInfo> m_vocabulary_info;
+    /**
+     * Index can be used for external caching.
+     */
+    int m_index;
 
 protected:
-    Element(std::shared_ptr<const VocabularyInfo> vocabulary_info);
+    BaseElement(std::shared_ptr<const VocabularyInfo> vocabulary_info, int index=-1);
 
 public:
-    virtual ~Element();
-
-    /**
-     * Evaluates the element for a state given as a vector of atom indices.
-     */
-    virtual T evaluate(const State& state) const = 0;
+    virtual ~BaseElement();
 
     /**
      * Returns the complexity of the element
@@ -508,9 +515,32 @@ public:
     virtual std::string compute_repr() const = 0;
 
     /**
+     * Setters.
+     */
+    void set_index(int index);
+
+    /**
      * Getters.
      */
+    int get_index() const;
     std::shared_ptr<const VocabularyInfo> get_vocabulary_info() const;
+};
+
+/**
+ * Abstract base class of any Element.
+ */
+template<typename T>
+class Element : public BaseElement {
+protected:
+    Element(std::shared_ptr<const VocabularyInfo> vocabulary_info, int index=-1);
+
+public:
+    ~Element() override;
+
+    /**
+     * Evaluates the element for a state given as a vector of atom indices.
+     */
+    virtual T evaluate(const State& state) const = 0;
 };
 
 
@@ -521,7 +551,7 @@ class Concept : public Element<ConceptDenotation> {
 private:
     std::shared_ptr<const element::Concept> m_element;
 
-    Concept(std::shared_ptr<const VocabularyInfo> vocabulary_info, std::shared_ptr<const element::Concept>&& concept);
+    Concept(std::shared_ptr<const VocabularyInfo> vocabulary_info, std::shared_ptr<const element::Concept>&& concept, int index=-1);
     friend class SyntacticElementFactoryImpl;
 
 public:
@@ -548,7 +578,7 @@ class Role : public Element<RoleDenotation> {
 private:
     std::shared_ptr<const element::Role> m_element;
 
-    Role(std::shared_ptr<const VocabularyInfo> vocabulary_info, std::shared_ptr<const element::Role>&& role);
+    Role(std::shared_ptr<const VocabularyInfo> vocabulary_info, std::shared_ptr<const element::Role>&& role, int index=-1);
     friend class SyntacticElementFactoryImpl;
 
 public:
@@ -575,7 +605,7 @@ class Numerical : public Element<int> {
 private:
     std::shared_ptr<const element::Numerical> m_element;
 
-    Numerical(std::shared_ptr<const VocabularyInfo> vocabulary_info, std::shared_ptr<const element::Numerical>&& numerical);
+    Numerical(std::shared_ptr<const VocabularyInfo> vocabulary_info, std::shared_ptr<const element::Numerical>&& numerical, int index=-1);
     friend class SyntacticElementFactoryImpl;
 
 public:
@@ -602,7 +632,7 @@ class Boolean : public Element<bool> {
 private:
     std::shared_ptr<const element::Boolean> m_element;
 
-    Boolean(std::shared_ptr<const VocabularyInfo> vocabulary_info, std::shared_ptr<const element::Boolean>&& boolean);
+    Boolean(std::shared_ptr<const VocabularyInfo> vocabulary_info, std::shared_ptr<const element::Boolean>&& boolean, int index=-1);
     friend class SyntacticElementFactoryImpl;
 
 public:
@@ -627,7 +657,7 @@ public:
  */
 class SyntacticElementFactory {
 private:
-    pimpl<SyntacticElementFactoryImpl> m_pImpl;
+    utils::pimpl<SyntacticElementFactoryImpl> m_pImpl;
 
 public:
     SyntacticElementFactory(std::shared_ptr<const VocabularyInfo> vocabulary_info);
@@ -643,79 +673,84 @@ public:
      * Returns a Concept if the description is correct.
      * If description is incorrect, throw an error with human readable information.
      */
-    Concept parse_concept(const std::string &description);
+    Concept parse_concept(const std::string &description, int index=-1);
 
     /**
      * Returns a Role if the description is correct.
      * If description is incorrect, throw an error with human readable information.
      */
-    Role parse_role(const std::string &description);
+    Role parse_role(const std::string &description, int index=-1);
 
     /**
      * Returns a Numerical if the description is correct.
      * If description is incorrect, throw an error with human readable information.
      */
-    Numerical parse_numerical(const std::string &description);
+    Numerical parse_numerical(const std::string &description, int index=-1);
 
     /**
      * Returns a Boolean if the description is correct.
      * If description is incorrect, throw an error with human readable information.
      */
-    Boolean parse_boolean(const std::string &description);
+    Boolean parse_boolean(const std::string &description, int index=-1);
 
 
-    Boolean make_empty_boolean(const Concept& concept);
-    Boolean make_empty_boolean(const Role& role);
-    Boolean make_concept_inclusion_boolean(const Concept& concept_left, const Concept& concept_right);
-    Boolean make_role_inclusion_boolean(const Role& role_left, const Role& role_right);
-    Boolean make_nullary_boolean(const Predicate& predicate);
+    Boolean make_empty_boolean(const Concept& concept, int index=-1);
+    Boolean make_empty_boolean(const Role& role, int index=-1);
+    Boolean make_concept_inclusion_boolean(const Concept& concept_left, const Concept& concept_right, int index=-1);
+    Boolean make_role_inclusion_boolean(const Role& role_left, const Role& role_right, int index=-1);
+    Boolean make_nullary_boolean(const Predicate& predicate, int index=-1);
 
-    Concept make_all_concept(const Role& role, const Concept& concept);
-    Concept make_and_concept(const Concept& concept_left, const Concept& concept_right);
-    Concept make_bot_concept();
-    Concept make_diff_concept(const Concept& concept_left, const Concept& concept_right);
-    Concept make_equal_concept(const Role& role_left, const Role& role_right);
-    Concept make_not_concept(const Concept& concept);
-    Concept make_one_of_concept(const Constant& constant);
-    Concept make_or_concept(const Concept& concept_left, const Concept& concept_right);
-    Concept make_projection_concept(const Role& role, int pos);
-    Concept make_primitive_concept(const Predicate& predicate, int pos);
-    Concept make_some_concept(const Role& role, const Concept& concept);
-    Concept make_subset_concept(const Role& role_left, const Role& role_right);
-    Concept make_top_concept();
+    Concept make_all_concept(const Role& role, const Concept& concept, int index=-1);
+    Concept make_and_concept(const Concept& concept_left, const Concept& concept_right, int index=-1);
+    Concept make_bot_concept(int index=-1);
+    Concept make_diff_concept(const Concept& concept_left, const Concept& concept_right, int index=-1);
+    Concept make_equal_concept(const Role& role_left, const Role& role_right, int index=-1);
+    Concept make_not_concept(const Concept& concept, int index=-1);
+    Concept make_one_of_concept(const Constant& constant, int index=-1);
+    Concept make_or_concept(const Concept& concept_left, const Concept& concept_right, int index=-1);
+    Concept make_projection_concept(const Role& role, int pos, int index=-1);
+    Concept make_primitive_concept(const Predicate& predicate, int pos, int index=-1);
+    Concept make_some_concept(const Role& role, const Concept& concept, int index=-1);
+    Concept make_subset_concept(const Role& role_left, const Role& role_right, int index=-1);
+    Concept make_top_concept(int index=-1);
 
-    Numerical make_concept_distance(const Concept& concept_from, const Role& role, const Concept& concept_to);
-    Numerical make_count(const Concept& concept);
-    Numerical make_count(const Role& role);
-    Numerical make_role_distance(const Role& role_from, const Role& role, const Role& role_to);
-    Numerical make_sum_concept_distance(const Concept& concept_from, const Role& role, const Concept& concept_to);
-    Numerical make_sum_role_distance(const Role& role_from, const Role& role, const Role& role_to);
+    Numerical make_concept_distance(const Concept& concept_from, const Role& role, const Concept& concept_to, int index=-1);
+    Numerical make_count(const Concept& concept, int index=-1);
+    Numerical make_count(const Role& role, int index=-1);
+    Numerical make_role_distance(const Role& role_from, const Role& role, const Role& role_to, int index=-1);
+    Numerical make_sum_concept_distance(const Concept& concept_from, const Role& role, const Concept& concept_to, int index=-1);
+    Numerical make_sum_role_distance(const Role& role_from, const Role& role, const Role& role_to, int index=-1);
 
-    Role make_and_role(const Role& role_left, const Role& role_right);
-    Role make_compose_role(const Role& role_left, const Role& role_right);
-    Role make_diff_role(const Role& role_left, const Role& role_right);
-    Role make_identity_role(const Concept& concept);
-    Role make_inverse_role(const Role& role);
-    Role make_not_role(const Role& role);
-    Role make_or_role(const Role& role_left, const Role& role_right);
-    Role make_primitive_role(const Predicate& predicate, int pos_1, int pos_2);
-    Role make_restrict_role(const Role& role, const Concept& concept);
-    Role make_top_role();
-    Role make_transitive_closure(const Role& role);
-    Role make_transitive_reflexive_closure(const Role& role);
+    Role make_and_role(const Role& role_left, const Role& role_right, int index=-1);
+    Role make_compose_role(const Role& role_left, const Role& role_right, int index=-1);
+    Role make_diff_role(const Role& role_left, const Role& role_right, int index=-1);
+    Role make_identity_role(const Concept& concept, int index=-1);
+    Role make_inverse_role(const Role& role, int index=-1);
+    Role make_not_role(const Role& role, int index=-1);
+    Role make_or_role(const Role& role_left, const Role& role_right, int index=-1);
+    Role make_primitive_role(const Predicate& predicate, int pos_1, int pos_2, int index=-1);
+    Role make_restrict_role(const Role& role, const Concept& concept, int index=-1);
+    Role make_top_role(int index=-1);
+    Role make_transitive_closure(const Role& role, int index=-1);
+    Role make_transitive_reflexive_closure(const Role& role, int index=-1);
 };
 
 }
 
-#include "core.tpp"
-
 namespace std {
-    template <>
-    struct hash<dlplan::core::State> {
-        std::size_t operator()(const dlplan::core::State& state) const {
+    /**
+     * We provide custom specialization of std::hash that are injected in the namespace std
+     * to be able to use standard hash containers.
+     * https://en.cppreference.com/w/cpp/utility/hash
+     */
+    template<> struct hash<dlplan::core::State> {
+        std::size_t operator()(const dlplan::core::State& state) const noexcept {
             return state.compute_hash();
         }
     };
 }
+
+
+#include "core.tpp"
 
 #endif

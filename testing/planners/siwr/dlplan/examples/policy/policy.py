@@ -11,13 +11,14 @@ def main():
     builder = dlplan.PolicyBuilder()
     b = builder.add_boolean_feature(boolean)
     n = builder.add_numerical_feature(numerical)
-    b_neg_condition_0 = builder.add_b_neg_condition(b)
-    b_bot_effect_0 = builder.add_b_bot_effect(b)
-    n_gt_condition_0 = builder.add_n_gt_condition(n)
-    n_dec_effect_0 = builder.add_n_dec_effect(n)
+    print(type(b))
+    b_neg_condition_0 = builder.add_neg_condition(b)
+    b_bot_effect_0 = builder.add_bot_effect(b)
+    n_gt_condition_0 = builder.add_gt_condition(n)
+    n_dec_effect_0 = builder.add_dec_effect(n)
     r = builder.add_rule(
-        {b_neg_condition_0, n_gt_condition_0},
-        {b_bot_effect_0, n_dec_effect_0}
+        [b_neg_condition_0, n_gt_condition_0],
+        [b_bot_effect_0, n_dec_effect_0]
     )
     policy = builder.get_result()
 
@@ -25,14 +26,19 @@ def main():
     a0 = instance_info.add_atom("unary", ["A"])
     a1 = instance_info.add_atom("unary", ["B"])
 
-    s0 = dlplan.State(instance_info, [])
-    s1 = dlplan.State(instance_info, [a0])
-    s2 = dlplan.State(instance_info, [a0, a1])
+    s0 = dlplan.State(instance_info, [], 0)
+    s1 = dlplan.State(instance_info, [a0], 1)
+    s2 = dlplan.State(instance_info, [a0, a1], 2)
 
-    assert policy.evaluate_lazy(2, s2, 1, s1)
-    assert not policy.evaluate_lazy(2, s2, 0, s0)
-    assert not policy.evaluate_lazy(1, s1, 2, s2)
-    assert not policy.evaluate_lazy(0, s0, 2, s2)
+    evaluation_cache = dlplan.EvaluationCache(len(policy.get_boolean_features()), len(policy.get_numerical_features()))
+    s0_context = dlplan.EvaluationContext(s0, evaluation_cache)
+    s1_context = dlplan.EvaluationContext(s1, evaluation_cache)
+    s2_context = dlplan.EvaluationContext(s2, evaluation_cache)
+
+    assert policy.evaluate_lazy(s2_context, s1_context)
+    assert not policy.evaluate_lazy(s2_context, s0_context)
+    assert not policy.evaluate_lazy(s1_context, s2_context)
+    assert not policy.evaluate_lazy(s0_context, s2_context)
 
     print("Write policy:")
     print(policy.compute_repr())

@@ -17,12 +17,7 @@ class VocabularyInfoImpl;
 class InstanceInfoImpl {
 private:
     std::shared_ptr<const VocabularyInfo> m_vocabulary_info;
-
-    /**
-     * Indices of static atoms, i.e., atoms that do not change and remain true forever.
-     */
-    Index_Vec m_static_atom_idxs;
-    phmap::flat_hash_map<int, std::vector<int>> m_per_predicate_idx_static_atom_idxs;
+    int m_index;
 
     /**
      * All atoms.
@@ -30,6 +25,10 @@ private:
      */
     std::unordered_map<std::string, unsigned> m_atom_name_to_atom_idx;
     std::vector<Atom> m_atoms;
+
+    std::unordered_map<std::string, unsigned> m_static_atom_name_to_static_atom_idx;
+    std::vector<Atom> m_static_atoms;
+    phmap::flat_hash_map<int, std::vector<int>> m_per_predicate_idx_static_atom_idxs;
 
     /**
      * All objects.
@@ -42,27 +41,28 @@ private:
     mutable ConceptDenotation m_top_concept;
     mutable RoleDenotation m_top_role;
 
-    const Atom& add_atom(const std::string &predicate_name, const Name_Vec &object_names, bool negated, bool is_static);
+    const Atom& add_atom(const std::string &predicate_name, const Name_Vec &object_names, bool is_static);
+    const Atom& add_atom(const Predicate& predicate, const std::vector<Object>& objects, bool is_static);
 
 public:
-    explicit InstanceInfoImpl(std::shared_ptr<const VocabularyInfo> vocabulary_info);
+    explicit InstanceInfoImpl(std::shared_ptr<const VocabularyInfo> vocabulary_info, int index=-1);
     ~InstanceInfoImpl() = default;
 
-    /**
-     * Adds an atom that may have varying evaluation depending on the state.
-     */
-    const Atom& add_atom(const std::string &predicate_name, const Name_Vec &object_names, bool negated);
+    const Object& add_object(const std::string& object_name);
 
-    /**
-     * Adds an atom that remains true forever.
-     */
+    const Atom& add_atom(const Predicate& predicate, const std::vector<Object>& objects);
+    const Atom& add_static_atom(const Predicate& predicate, const std::vector<Object>& objects);
+
+    const Atom& add_atom(const std::string &predicate_name, const Name_Vec &object_names);
     const Atom& add_static_atom(const std::string& predicate_name, const Name_Vec& object_names);
 
     /**
      * Getters
      */
+    int get_index() const;
     bool exists_atom(const Atom& atom) const;
     const std::vector<Atom>& get_atoms() const;
+    const std::vector<Atom>& get_static_atoms() const;
     const Atom& get_atom(int atom_idx) const;
     int get_atom_idx(const std::string& name) const;
     bool exists_object(const Object& object) const;
@@ -72,7 +72,6 @@ public:
     int get_object_idx(const std::string& object_name) const;
     int get_num_objects() const;
     std::shared_ptr<const VocabularyInfo> get_vocabulary_info() const;
-    const Index_Vec& get_static_atom_idxs() const;
     const phmap::flat_hash_map<int, std::vector<int>>& get_per_predicate_idx_static_atom_idxs() const;
     const ConceptDenotation& get_top_concept() const;
     const RoleDenotation& get_top_role() const;

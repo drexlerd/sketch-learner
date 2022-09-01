@@ -44,10 +44,13 @@ def experiments():
     exps["hierarchy_dist"] = update_dict(
         strips_base,
         pipeline="hierarchy_pipeline",
-        instances=training_instances(),
+        instances=instances(),
         generate_concept_distance_numerical=True
     )
     return exps
+
+def instances():
+    return ["p-2-1.0-3-0"]
 
 def training_instances():
     return [f"p-{unavail}-{pct}-{grid_size}-{seed}" for unavail in range(1,3) for pct in [0.5,1.0] for grid_size in range(2,4) for seed in range(0,50) ]

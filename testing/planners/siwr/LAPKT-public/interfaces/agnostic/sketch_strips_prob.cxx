@@ -131,7 +131,7 @@ namespace aptk
                 atom_idxs.push_back(dlplan_atom_idx);
 			}
 		}
-		return dlplan::core::State(m_instance_info, atom_idxs);
+		return dlplan::core::State(m_instance_info, atom_idxs, state->index());
 	}
 
 	dlplan::core::State Sketch_STRIPS_Problem::get_default_state() const {

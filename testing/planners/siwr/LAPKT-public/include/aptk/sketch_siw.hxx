@@ -32,6 +32,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #include <action.hxx>
 
 #include <dlplan/policy.h>
+#include <dlplan/evaluator.h>
 
 
 namespace aptk {
@@ -52,8 +53,9 @@ public:
 	Sketch_SIW( const Search_Model& search_problem )
 		: brfs::IW<Search_Model, aptk::agnostic::Novelty<Search_Model, Search_Node>>( search_problem ),
 		  m_pruned_sum_B_count(0), m_sum_B_count(0), m_max_B_count( 0 ), m_iw_calls(0), m_max_bound( std::numeric_limits<unsigned>::max() ), m_closed_goal_states( NULL ),
-		  m_dlplan_initial_state(static_cast<const Sketch_STRIPS_Problem*>(&search_problem.task())->get_default_state()) {
-		m_sketch_problem = static_cast<const Sketch_STRIPS_Problem*>(&search_problem.task());
+		  m_sketch_problem(static_cast<const Sketch_STRIPS_Problem*>(&search_problem.task())),
+		  m_sketch(static_cast<const Sketch_STRIPS_Problem*>(&search_problem.task())->sketch()),
+		  m_evaluation_cache(dlplan::evaluator::EvaluationCache(0, 0)) {
 	}
 
 	virtual ~Sketch_SIW() {
@@ -76,10 +78,11 @@ public:
 		new_init_state = new State( this->problem().task(), 0 );
 		new_init_state->set( this->m_root->state()->fluent_vec() );
 
-        m_sketch = &m_sketch_problem->sketch();
+		m_evaluation_cache = dlplan::evaluator::EvaluationCache(m_sketch.get_boolean_features().size(), m_sketch.get_numerical_features().size());
+        dlplan::core::State dlplan_initial_state = m_sketch_problem->from_lapkt_state(new_init_state);
+		m_initial_state_context = new dlplan::evaluator::EvaluationContext(dlplan_initial_state, m_evaluation_cache);
 
-        m_dlplan_initial_state = m_sketch_problem->from_lapkt_state(new_init_state);
-		m_rules = m_sketch->evaluate_conditions_eager(0, m_dlplan_initial_state);
+		m_rules = m_sketch.evaluate_conditions_eager(*m_initial_state_context);
 		m_lapkt_initial_state = new_init_state;
 
 		// count the number of sketch rules applied s.t. we can terminate in the case of a cycle
@@ -89,11 +92,9 @@ public:
 			if (this->bound() == 0) {
 				// check 1-step successors.
 				end = this->do_search_iw_0();
-				//std::cout << "iw0" << std::endl;
 			} else if (this->bound() > 0) {
 				// run usual IW(k) searches with k=1,2.
 				end = this->do_search();
-				//std::cout << "iw1" << std::endl;
 			}
 			//end = this->do_search();
 			m_pruned_sum_B_count += this->pruned_by_bound();
@@ -204,22 +205,25 @@ public:
 		}
 		//std::cout << "goal check" << std::endl;
 		dlplan::core::State dlplan_target_state = m_sketch_problem->from_lapkt_state(s);
+		dlplan::evaluator::EvaluationContext* target_state_context = new dlplan::evaluator::EvaluationContext(dlplan_target_state, m_evaluation_cache);
 		//std::cout << m_lapkt_initial_state->index() << " " << s->index() << std::endl;
-		const auto satisfied_rule = m_sketch->evaluate_effects_lazy(m_lapkt_initial_state->index(), m_dlplan_initial_state, s->index(), dlplan_target_state, m_rules);
+		const auto satisfied_rule = m_sketch.evaluate_effects_lazy(*m_initial_state_context, *target_state_context, m_rules);
 		if (satisfied_rule) {
 			// detect cycle in same state, i.e., no progress
-			if (this->root() != n) {
+			//if (this->root() != n) {
 				m_key_applied_rule = satisfied_rule->compute_repr();
-				m_dlplan_initial_state = std::move(dlplan_target_state);
+				delete m_initial_state_context;
+				m_initial_state_context = target_state_context;
 				m_lapkt_initial_state = s;
 				// after refreshing the caches we can start with evaluation.
-				m_rules = m_sketch->evaluate_conditions_eager(m_lapkt_initial_state->index(), m_dlplan_initial_state);
+				m_rules = m_sketch.evaluate_conditions_eager(*m_initial_state_context);
 				close_goal_state( n );
 				return true;
-			}
+			//}
 		}
 		/* 2. Check whether s is an overall goal of the problem. */
 		if (this->problem().goal(*s)) {
+			delete m_initial_state_context;
 		    close_goal_state( n );
 		    return true;
 		}
@@ -283,10 +287,11 @@ protected:
 
 	// sketch related information
 	const Sketch_STRIPS_Problem* m_sketch_problem;
-	dlplan::policy::Policy* m_sketch;
+	dlplan::policy::Policy m_sketch;
+	dlplan::evaluator::EvaluationCache m_evaluation_cache;
 
     State* m_lapkt_initial_state;
-	dlplan::core::State m_dlplan_initial_state;
+	dlplan::evaluator::EvaluationContext* m_initial_state_context;
 	std::vector<std::shared_ptr<const dlplan::policy::Rule>> m_rules;
 
 	std::string m_key_applied_rule;

@@ -71,7 +71,7 @@ private:
     static std::unordered_map<std::string, EXPRESSION_TYPE> m_element_name_to_expression_type;
 
 public:
-    VocabularyInfoImpl() = default;
+    VocabularyInfoImpl();
     ~VocabularyInfoImpl() = default;
 
     const Predicate& add_predicate(const std::string &name, int arity);
@@ -91,8 +91,6 @@ public:
     int get_constant_idx(const std::string& name) const;
     const Constant& get_constant(int constant_idx) const;
     const std::vector<Constant>& get_constants() const;
-
-    size_t compute_hash() const;
 
     static bool exists_element_name(const std::string& name);
     static EXPRESSION_TYPE element_name_to_expression_type(const std::string &name);

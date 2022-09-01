@@ -27,6 +27,7 @@ class StatePairClassifierFactory:
             for distance, target_idxs in enumerate(tuple_graph.s_idxs_by_distance):
                 for target_idx in target_idxs:
                     state_pairs.append(StatePair(tuple_graph.root_idx, target_idx, distance))
+                    assert distance <= 1
         source_idx_to_state_pairs = defaultdict(set)
         for state_pair in state_pairs:
             source_idx_to_state_pairs[state_pair.source_idx].add(state_pair)
@@ -39,7 +40,11 @@ class StatePairClassifierFactory:
         for state_pair in state_pairs:
             source_goal_distance = goal_distances.get(state_pair.source_idx, math.inf)
             target_goal_distance = goal_distances.get(state_pair.target_idx, math.inf)
-            if self.delta * source_goal_distance < target_goal_distance + state_pair.distance:
+            # self loops
+            if state_pair.source_idx == state_pair.target_idx:
+                state_pair_to_classification[state_pair] = StatePairClassification.NOT_DELTA_OPTIMAL
+            # best case path over state pair is worse than delta optimal worse case cost of source
+            elif self.delta * source_goal_distance < target_goal_distance + state_pair.distance:
                 state_pair_to_classification[state_pair] = StatePairClassification.NOT_DELTA_OPTIMAL
                 delta_deadends.add(state_pair.target_idx)
             else:
