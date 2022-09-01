@@ -44,7 +44,7 @@ def experiments():
     exps["hierarchy_dist"] = update_dict(
         strips_base,
         pipeline="hierarchy_pipeline",
-        instances=instances(),
+        instances=training_instances(),
         generate_concept_distance_numerical=True
     )
     return exps
