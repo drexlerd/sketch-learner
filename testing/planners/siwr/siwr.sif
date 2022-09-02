@@ -49,17 +49,17 @@ From: ubuntu:20.04
 	cp -r /LAPKT-public/planners/siwr/fd /siwr/fd
 
 	## Remove packages unneeded for running the planner.
-    apt-get -y autoremove cmake \
-        build-essential \
-        ca-certificates \
-        xutils-dev \
-        scons \
-        gcc-multilib \
-        flex \
-        bison \
-        g++-multilib \
-        g++
-    rm -rf /var/lib/apt/lists/*
+    #apt-get -y autoremove cmake \
+    #    build-essential \
+    #    ca-certificates \
+    #    xutils-dev \
+    #    scons \
+    #    gcc-multilib \
+    #    flex \
+    #    bison \
+    #    g++-multilib \
+    #    g++
+    #rm -rf /var/lib/apt/lists/*
 
 	# Cleanup trash
 	rm -rf /dlplan
