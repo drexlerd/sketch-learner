@@ -14,6 +14,7 @@
 namespace dlplan::policy {
 class RuleImpl;
 class PolicyImpl;
+class PolicyBuilder;
 class PolicyBuilderImpl;
 class PolicyReaderImpl;
 class PolicyWriterImpl;
@@ -41,11 +42,16 @@ public:
     BaseCondition& operator=(BaseCondition&& other);
     virtual ~BaseCondition();
 
-    virtual bool evaluate(evaluator::EvaluationContext& source_context) const = 0;
+    virtual bool evaluate(const core::State& source_state, evaluator::EvaluationCache& cache) const = 0;
 
     virtual std::string compute_repr() const = 0;
 
     std::string str() const;
+
+    /**
+     * Adds the condition to the policy builder and returns it
+     */
+    virtual std::shared_ptr<const BaseCondition> visit(PolicyBuilder& policy_builder) const = 0;
 
     /**
      * Setters.
@@ -81,11 +87,16 @@ public:
     BaseEffect& operator=(BaseEffect&& other);
     virtual ~BaseEffect();
 
-    virtual bool evaluate(evaluator::EvaluationContext& source_context, evaluator::EvaluationContext& target_context) const = 0;
+    virtual bool evaluate(const core::State& source_state, const core::State& target_state, evaluator::EvaluationCache& cache) const = 0;
 
     virtual std::string compute_repr() const = 0;
 
     std::string str() const;
+
+    /**
+     * Adds the effect to the policy builder and returns it
+     */
+    virtual std::shared_ptr<const BaseEffect> visit(PolicyBuilder& policy_builder) const = 0;
 
     /**
      * Setters.
@@ -126,12 +137,17 @@ public:
     Rule& operator=(Rule&& other);
     ~Rule();
 
-    bool evaluate_conditions(evaluator::EvaluationContext& source_context) const;
-    bool evaluate_effects(evaluator::EvaluationContext& source_context, evaluator::EvaluationContext& target_context) const;
+    bool evaluate_conditions(const core::State& source_state, evaluator::EvaluationCache& cache) const;
+    bool evaluate_effects(const core::State& source_state, const core::State& target_state, evaluator::EvaluationCache& cache) const;
 
     std::string compute_repr() const;
 
     std::string str() const;
+
+    /**
+     * Adds the rule to the policy builder and returns it
+     */
+    virtual std::shared_ptr<const Rule> visit(PolicyBuilder& policy_builder) const;
 
     /**
      * Setters.
@@ -172,13 +188,13 @@ public:
     /**
      * Approach 1: naive approach to evaluate (s,s')
      */
-    std::shared_ptr<const Rule> evaluate_lazy(evaluator::EvaluationContext& source_context, evaluator::EvaluationContext& target_context);
+    std::shared_ptr<const Rule> evaluate_lazy(const core::State& source_state, const core::State& target_state, evaluator::EvaluationCache& cache);
 
     /**
      * Approach 2: optimized approach for evaluating pairs with similar source state s, i.e., (s,s1), (s,s2), ..., (s,sn)
      */
-    std::vector<std::shared_ptr<const Rule>> evaluate_conditions_eager(evaluator::EvaluationContext& source_context);
-    std::shared_ptr<const Rule> evaluate_effects_lazy(evaluator::EvaluationContext& source_context, evaluator::EvaluationContext& target_context, const std::vector<std::shared_ptr<const Rule>>& rules);
+    std::vector<std::shared_ptr<const Rule>> evaluate_conditions_eager(const core::State& source_state, evaluator::EvaluationCache& cache);
+    std::shared_ptr<const Rule> evaluate_effects_lazy(const core::State& source_state, const core::State& target_state, const std::vector<std::shared_ptr<const Rule>>& rules, evaluator::EvaluationCache& cache);
 
     std::string compute_repr() const;
 
@@ -252,6 +268,7 @@ public:
     PolicyMinimizer& operator=(PolicyMinimizer&& other);
     ~PolicyMinimizer();
 
+    Policy minimize_greedy(const Policy& policy) const;
     Policy minimize_greedy(const Policy& policy, const core::StatePairs& true_state_pairs, const core::StatePairs& false_state_pairs) const;
 };
 

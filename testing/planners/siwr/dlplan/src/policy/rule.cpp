@@ -37,16 +37,16 @@ Rule& Rule::operator=(Rule&& other) = default;
 
 Rule::~Rule() = default;
 
-bool Rule::evaluate_conditions(evaluator::EvaluationContext& source_context) const {
+bool Rule::evaluate_conditions(const core::State& source_state, evaluator::EvaluationCache& cache) const {
     for (const auto& condition : m_conditions) {
-        if (!condition->evaluate(source_context)) return false;
+        if (!condition->evaluate(source_state, cache)) return false;
     }
     return true;
 }
 
-bool Rule::evaluate_effects(evaluator::EvaluationContext& source_context, evaluator::EvaluationContext& target_context) const {
+bool Rule::evaluate_effects(const core::State& source_state, const core::State& target_state, evaluator::EvaluationCache& cache) const {
     for (const auto& effect : m_effects) {
-        if (!effect->evaluate(source_context, target_context)) return false;
+        if (!effect->evaluate(source_state, target_state, cache)) return false;
     }
     return true;
 }
@@ -91,6 +91,20 @@ std::string Rule::str() const {
     }
     ss << "))";
     return ss.str();
+}
+
+std::shared_ptr<const Rule> Rule::visit(PolicyBuilder& policy_builder) const {
+    std::vector<std::shared_ptr<const BaseCondition>> conditions;
+    conditions.reserve(m_conditions.size());
+    for (const auto& condition : m_conditions) {
+        conditions.push_back(condition->visit(policy_builder));
+    }
+    std::vector<std::shared_ptr<const BaseEffect>> effects;
+    effects.reserve(m_effects.size());
+    for (const auto& effect : m_effects) {
+        effects.push_back(effect->visit(policy_builder));
+    }
+    return policy_builder.add_rule(std::move(conditions), std::move(effects));
 }
 
 void Rule::set_index(int index) {
