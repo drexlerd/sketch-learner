@@ -63,6 +63,14 @@ class TransitionSystem:
                     distances[succ_idx] = curr_cost + 1
         return [list(l) for l in layers.values()], distances
 
+    def print(self):
+        print("initial_s_idx:", self.initial_s_idx)
+        print("s_idx_to_dlplan_state:", "\n".join([f"{s_idx}: {str(dlplan_state)}" for s_idx, dlplan_state in self.s_idx_to_dlplan_state.items()]))
+        print("forward_transitions:", self.forward_transitions)
+        print("backward_transitions:", self.backward_transitions)
+        print("deadend_s_idxs:", self.deadend_s_idxs)
+        print("goal_s_idxs:", self.goal_s_idxs)
+
     def print_statistics(self):
         print(f"Num states: {len(self.s_idx_to_dlplan_state)}")
         print(f"Num transitions: {sum([len(transitions) for transitions in self.forward_transitions.values()])}")

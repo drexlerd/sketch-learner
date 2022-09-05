@@ -62,6 +62,8 @@ def run(config, data, rng):
                 state_pair_classifier = StatePairClassifierFactory(config.delta).make_state_pair_classifier(subproblem_instance_data, tuple_graphs, reachable_from_init=True)
                 # Free memory by restricting transition system to relevant parts.
                 subproblem_instance_data.transition_system = TransitionSystemFactory().restrict_transition_system_by_state_classifier(subproblem_instance_data.transition_system, state_pair_classifier)
+                if subproblem_instance_data.transition_system.is_deadend(subproblem_instance_data.transition_system.initial_s_idx):
+                    continue
 
                 subproblem_instance_datas.append(subproblem_instance_data)
                 state_pair_classifiers_by_instance.append(state_pair_classifier)
@@ -113,6 +115,9 @@ def run(config, data, rng):
             policy = Policy(DlplanPolicyFactory().make_dlplan_policy_from_answer_set_d2(symbols, domain_feature_data, rule_equivalences))
             print("Learned policy:")
             print(policy.dlplan_policy.compute_repr())
+
+            for instance_data in selected_instance_data:
+                instance_data.transition_system.print()
 
             # Iteratively add D2-separation constraints
             satisfiable = True
