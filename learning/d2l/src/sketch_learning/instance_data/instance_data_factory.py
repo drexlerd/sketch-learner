@@ -66,9 +66,9 @@ class InstanceDataFactory:
         if root_idx == 5:
             instance_data.transition_system.print()
         # Add static seed atoms for initial state
-        for atom_idx in instance_data.transition_system.s_idx_to_dlplan_state[root_idx].get_atom_idxs():
-            atom = instance_data.instance_info.get_atom(atom_idx)
-            instance_data.instance_info.add_static_atom(atom.get_predicate().get_name() + "_r", [object.get_name() for object in atom.get_objects()])
+        # for atom_idx in instance_data.transition_system.s_idx_to_dlplan_state[root_idx].get_atom_idxs():
+        #    atom = instance_data.instance_info.get_atom(atom_idx)
+        #    instance_data.instance_info.add_static_atom(atom.get_predicate().get_name() + "_r", [object.get_name() for object in atom.get_objects()])
         return InstanceData(subproblem_idx, instance_data.instance_information, instance_data.domain_data, instance_data.transition_system, instance_data.instance_info), ReturnCode.SOLVABLE
 
     def _compute_closest_subgoal_states(self, instance_data: InstanceData, root_idx: int, rule: SketchRule):

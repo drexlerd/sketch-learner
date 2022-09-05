@@ -83,6 +83,7 @@ def run(config, data, rng):
             logging.info(colored(f"Initializing DomainFeatureData...", "blue", "on_grey"))
             domain_feature_data_factory = DomainFeatureDataFactory()
             domain_feature_data = domain_feature_data_factory.make_domain_feature_data_from_subproblems(config, domain_data, selected_instance_data, state_pair_classifiers_by_selected_instance)
+            domain_feature_data_factory.statistics.print()
             logging.info(colored(f"..done", "blue", "on_grey"))
 
             logging.info(colored(f"Initializing InstanceFeatureDatas...", "blue", "on_grey"))

@@ -42,7 +42,7 @@ class DomainDataFactory:
             # we allow respective goal versions
             vocabulary_info.add_predicate(str(predicate.name) + "_g", predicate.arity)
             # we allow respective seed versions
-            vocabulary_info.add_predicate(str(predicate.name) + "_r", predicate.arity)
+            # vocabulary_info.add_predicate(str(predicate.name) + "_r", predicate.arity)
         # Add constants
         for constant in tarski_constants:
             vocabulary_info.add_constant(str(constant.name))
