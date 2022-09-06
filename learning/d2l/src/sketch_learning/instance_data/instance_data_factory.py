@@ -61,10 +61,6 @@ class InstanceDataFactory:
         instance_data.transition_system.goal_s_idxs = goals
         if len(goals) == 0:
             return None, ReturnCode.UNSOLVABLE
-        if instance_data.transition_system.is_deadend(instance_data.transition_system.initial_s_idx):
-            return None, ReturnCode.UNSOLVABLE
-        if root_idx == 5:
-            instance_data.transition_system.print()
         # Add static seed atoms for initial state
         # for atom_idx in instance_data.transition_system.s_idx_to_dlplan_state[root_idx].get_atom_idxs():
         #    atom = instance_data.instance_info.get_atom(atom_idx)
