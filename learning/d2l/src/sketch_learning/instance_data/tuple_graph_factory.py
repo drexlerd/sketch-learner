@@ -14,13 +14,13 @@ class TupleGraphFactory:
         self.width = width
 
     def make_tuple_graphs(self, instance_data: InstanceData):
-        tuple_graphs = [self.make_tuple_graph(instance_data, source_idx) for source_idx in instance_data.transition_system.s_idx_to_dlplan_state.keys()]
+        tuple_graphs = dict()
+        for s_idx in instance_data.transition_system.s_idx_to_dlplan_state.keys():
+            if instance_data.transition_system.is_alive(s_idx):
+                tuple_graphs[s_idx] = self.make_tuple_graph(instance_data, s_idx)
         return tuple_graphs
 
     def make_tuple_graph(self, instance_data: InstanceData, source_index: int):
-        if instance_data.transition_system.is_goal(source_index) \
-            or instance_data.transition_system.is_deadend(source_index):
-            return None
         if self.width == 0:
             return self._make_tuple_graph_for_width_0(instance_data, source_index)
         else:

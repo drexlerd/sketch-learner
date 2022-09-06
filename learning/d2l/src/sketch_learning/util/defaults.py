@@ -39,6 +39,7 @@ def generate_experiment(expid, domain_dir, domain, **kwargs):
 
         # degree of suboptimality
         delta=1.0,
+        reachable_from_init=True,
 
         generate_seed_feature_dec_boolean=False,
         generate_seed_feature_inc_boolean=False,

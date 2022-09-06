@@ -3,7 +3,11 @@ import math
 from collections import deque, defaultdict
 from enum import Enum
 from os import stat
+from re import S
 from typing import List, Dict, Tuple
+
+from .transition_system import TransitionSystem
+from .transition_system_factory import compute_deadends, compute_goal_distances
 
 from .instance_data import InstanceData
 from .state_pair import StatePair
@@ -16,26 +20,31 @@ class StatePairClassifierFactory:
         assert delta >= 1
         self.delta = delta
 
-    def make_state_pair_classifier(self, instance_data: InstanceData, tuple_graphs: List[TupleGraph], reachable_from_init=False):
+    def make_state_pair_classifier(self, config, instance_data: InstanceData, tuple_graphs: List[TupleGraph], ):
         transition_system = instance_data.transition_system
-        _, goal_distances = transition_system.partition_states_by_distance(transition_system.goal_s_idxs, forward=False, stop_upon_goal=False)
-
         # Compute relevant state pairs
         state_pairs = []
-        for tuple_graph in tuple_graphs:
-            if tuple_graph is None: continue
+        state_pair_to_distance = dict()
+        source_idx_to_state_pairs = defaultdict(set)
+        target_idx_to_state_pairs = defaultdict(set)
+        for s_idx in transition_system.s_idx_to_dlplan_state.keys():
+            if not transition_system.is_alive(s_idx):
+                continue
+            assert tuple_graphs[s_idx] is not None
+            tuple_graph = tuple_graphs[s_idx]
             for distance, target_idxs in enumerate(tuple_graph.s_idxs_by_distance):
                 for target_idx in target_idxs:
-                    state_pairs.append(StatePair(tuple_graph.root_idx, target_idx, distance))
-        source_idx_to_state_pairs = defaultdict(set)
-        for state_pair in state_pairs:
-            source_idx_to_state_pairs[state_pair.source_idx].add(state_pair)
+                    state_pair = StatePair(tuple_graph.root_idx, target_idx)
+                    state_pairs.append(state_pair)
+                    state_pair_to_distance[state_pair] = distance
+                    source_idx_to_state_pairs[tuple_graph.root_idx].add(state_pair)
+                    target_idx_to_state_pairs[target_idx].add(state_pair)
 
         # Classify state pairs
         state_pair_to_classification = dict()
         expanded_s_idxs = set()
         generated_s_idxs = set()
-        delta_deadends = set()
+        _, goal_distances = transition_system.partition_states_by_distance(transition_system.goal_s_idxs, forward=False, stop_upon_goal=False)
         for state_pair in state_pairs:
             source_goal_distance = goal_distances.get(state_pair.source_idx, math.inf)
             target_goal_distance = goal_distances.get(state_pair.target_idx, math.inf)
@@ -43,45 +52,62 @@ class StatePairClassifierFactory:
             if state_pair.source_idx == state_pair.target_idx:
                 state_pair_to_classification[state_pair] = StatePairClassification.NOT_DELTA_OPTIMAL
             # best case path over state pair is worse than delta optimal worse case cost of source
-            elif self.delta * source_goal_distance < target_goal_distance + state_pair.distance:
+            elif self.delta * source_goal_distance < target_goal_distance + state_pair_to_distance[state_pair]:
                 state_pair_to_classification[state_pair] = StatePairClassification.NOT_DELTA_OPTIMAL
-                delta_deadends.add(state_pair.target_idx)
             else:
                 state_pair_to_classification[state_pair] = StatePairClassification.DELTA_OPTIMAL
                 expanded_s_idxs.add(state_pair.source_idx)
                 generated_s_idxs.add(state_pair.source_idx)
                 generated_s_idxs.add(state_pair.target_idx)
 
-        # Filter state pairs
-        if reachable_from_init:
-            source_idx_to_state_pairs_2 = dict()
-            queue = deque()
-            state_pair_to_classification_2 = dict()
-            expanded_s_idxs_2 = set()
-            generated_s_idxs_2 = set()
-            delta_deadends_2 = set()
-            queue.append(transition_system.initial_s_idx)
-            generated_s_idxs_2.add(transition_system.initial_s_idx)
-            while queue:
-                source_idx = queue.popleft()
-                has_delta_optimal = not all([state_pair_to_classification[state_pair] == StatePairClassification.NOT_DELTA_OPTIMAL for state_pair in source_idx_to_state_pairs[source_idx] if state_pair.distance > 0])
-                if has_delta_optimal:
-                    source_idx_to_state_pairs_2[source_idx] = source_idx_to_state_pairs[source_idx]
-                    for state_pair in source_idx_to_state_pairs[source_idx]:
-                        state_pair_to_classification_2[state_pair] = state_pair_to_classification[state_pair]
-                        expanded_s_idxs_2.add(source_idx)
-                        if state_pair.target_idx not in generated_s_idxs_2:
-                            generated_s_idxs_2.add(state_pair.target_idx)
-                            if state_pair_to_classification[state_pair] == StatePairClassification.DELTA_OPTIMAL:
-                                queue.append(state_pair.target_idx)
-                else:
-                    delta_deadends_2.add(source_idx)
-            # Set modified versions
-            source_idx_to_state_pairs = source_idx_to_state_pairs_2
-            state_pair_to_classification = state_pair_to_classification_2
-            expanded_s_idxs = expanded_s_idxs_2
-            generated_s_idxs = generated_s_idxs_2
-            delta_deadends = delta_deadends_2
+        # Restrict to reachable parts
+        source_idx_to_state_pairs_2 = dict()
+        state_pair_to_classification_2 = dict()
+        expanded_s_idxs_2 = set()
+        generated_s_idxs_2 = set()
+        queue = deque()
+        queue.append(transition_system.initial_s_idx)
+        generated_s_idxs_2.add(transition_system.initial_s_idx)
+        while queue:
+            source_idx = queue.popleft()
+            has_delta_optimal = not all([state_pair_to_classification[state_pair] == StatePairClassification.NOT_DELTA_OPTIMAL for state_pair in source_idx_to_state_pairs[source_idx] if state_pair_to_distance[state_pair] > 0])
+            if has_delta_optimal:
+                source_idx_to_state_pairs_2[source_idx] = source_idx_to_state_pairs[source_idx]
+                for state_pair in source_idx_to_state_pairs[source_idx]:
+                    state_pair_to_classification_2[state_pair] = state_pair_to_classification[state_pair]
+                    expanded_s_idxs_2.add(source_idx)
+                    if state_pair.target_idx not in generated_s_idxs_2:
+                        generated_s_idxs_2.add(state_pair.target_idx)
+                        if state_pair_to_classification[state_pair] == StatePairClassification.DELTA_OPTIMAL:
+                            queue.append(state_pair.target_idx)
+        # Set modified versions
+        source_idx_to_state_pairs = source_idx_to_state_pairs_2
+        state_pair_to_classification = state_pair_to_classification_2
+        expanded_s_idxs = expanded_s_idxs_2
+        generated_s_idxs = generated_s_idxs_2
 
-        state_pair_classifier = StatePairClassifier(self.delta, state_pair_to_classification, source_idx_to_state_pairs, list(expanded_s_idxs), list(generated_s_idxs))
+        # Restrict transition system to reachable parts of states.
+        s_idx_to_dlplan_state = dict()
+        for s_idx in generated_s_idxs:
+            s_idx_to_dlplan_state[s_idx] = transition_system.s_idx_to_dlplan_state[s_idx]
+        forward_transitions = defaultdict(set)
+        backward_transitions = defaultdict(set)
+        for source_idx, target_idxs in transition_system.forward_transitions.items():
+            if source_idx not in expanded_s_idxs:
+                continue
+            for target_idx in target_idxs:
+                forward_transitions[source_idx].add(target_idx)
+                backward_transitions[target_idx].add(source_idx)
+        goal_distances = compute_goal_distances(s_idx_to_dlplan_state, transition_system.goal_s_idxs, backward_transitions)
+        deadend_s_idxs = compute_deadends(goal_distances)
+        assert transition_system.initial_s_idx in generated_s_idxs
+        instance_data.transition_system = TransitionSystem(
+            transition_system.initial_s_idx,
+            s_idx_to_dlplan_state,
+            forward_transitions,
+            backward_transitions,
+            deadend_s_idxs,
+            transition_system.goal_s_idxs)
+
+        state_pair_classifier = StatePairClassifier(self.delta, state_pair_to_classification, state_pair_to_distance, source_idx_to_state_pairs, list(expanded_s_idxs), list(generated_s_idxs))
         return state_pair_classifier

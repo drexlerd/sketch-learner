@@ -11,9 +11,10 @@ class StatePairClassification(Enum):
 
 class StatePairClassifier:
     """ """
-    def __init__(self, delta, state_pair_to_classification: Dict[StatePair, StatePairClassification], source_idx_to_state_pairs: Dict[int, MutableSet[StatePair]], expanded_s_idxs: List[int], generated_s_idxs: List[int]):
+    def __init__(self, delta, state_pair_to_classification: Dict[StatePair, StatePairClassification], state_pair_to_distance: Dict[StatePair, int], source_idx_to_state_pairs: Dict[int, MutableSet[StatePair]], expanded_s_idxs: List[int], generated_s_idxs: List[int]):
         self.delta = delta
         self.state_pair_to_classification = state_pair_to_classification
+        self.state_pair_to_distance = state_pair_to_distance
         self.source_idx_to_state_pairs = source_idx_to_state_pairs
         self.expanded_s_idxs = expanded_s_idxs  # DELTA_OPTIMAL reachable with outgoing DELTA_OPTIMAL state pair
         self.generated_s_idxs = generated_s_idxs  # DELTA_OPTIMAL reachable

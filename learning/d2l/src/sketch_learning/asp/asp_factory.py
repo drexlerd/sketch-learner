@@ -47,7 +47,7 @@ class ASPFactory:
         self.ctl.add("delta_optimal", ["i", "c", "s1", "s2"], "delta_optimal(i,c,s1,s2).")
         self.ctl.add("not_delta_optimal", ["i", "c", "s1", "s2"], "not_delta_optimal(i,c,s1,s2).")
 
-    def make_facts(self, domain_feature_data: DomainFeatureData, rule_equivalences: RuleEquivalences, instance_datas: List[InstanceData], state_pair_equivalences_by_instance: List[StatePairEquivalence], state_pair_classifiers_by_instance: List[StatePairClassifier], instance_feature_datas_by_instance: List[InstanceFeatureData]):
+    def make_facts(self, domain_feature_data: DomainFeatureData, rule_equivalences: RuleEquivalences, instance_datas: List[InstanceData], tuple_graphs_by_instance: List[List[TupleGraph]], tuple_graph_equivalences_by_instance: List[List[TupleGraphEquivalence]], state_pair_equivalences_by_instance: List[StatePairEquivalence], state_pair_classifiers_by_instance: List[StatePairClassifier], instance_feature_datas_by_instance: List[InstanceFeatureData]):
         facts = []
         facts.extend(DomainFeatureDataFactFactory().make_facts(domain_feature_data))
         facts.extend(EquivalenceDataFactFactory().make_facts(rule_equivalences, domain_feature_data))
@@ -99,7 +99,6 @@ class ASPFactory:
                 rule_to_feature_to_effect[r_idx][f_idx] = effect
         facts = set()
         for good in good_equivalences:
-            # print("good:", good, rule_equivalences.rules[good].compute_repr())
             for bad in bad_equivalences:
                 # there must exist a selected feature that distinguishes them
                 exists_distinguishing_feature = False
@@ -115,9 +114,7 @@ class ASPFactory:
                         exists_distinguishing_feature = True
                         break
                 if not exists_distinguishing_feature:
-                    #print("bad:", bad, rule_equivalences.rules[bad].compute_repr())
                     facts.add(("d2_separate", (Number(good), Number(bad))))
-            # print()
         return facts
 
     def ground(self, facts=[]):

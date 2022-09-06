@@ -2,6 +2,7 @@ import logging
 
 from termcolor import colored
 from typing import List
+from sketch_learning.asp.policy_asp_factory import PolicyASPFactory
 
 from sketch_learning.asp.returncodes import ClingoExitCode
 
@@ -18,6 +19,7 @@ from .iteration_data.sketch import Sketch
 from .iteration_data.state_pair_equivalence_factory import StatePairEquivalenceFactory
 from .iteration_data.tuple_graph_equivalence_data_factory import  TupleGraphEquivalenceFactory
 from .instance_data.state_pair_classifier_factory import StatePairClassifierFactory
+from .instance_data.state_pair_classifier import StatePairClassifier
 from .returncodes import ExitCode
 from .util.timer import CountDownTimer
 
@@ -36,24 +38,47 @@ def run(config, data, rng):
     logging.info(colored(f"..done", "blue", "on_grey"))
 
     logging.info(colored(f"Initializing StatePairClassifiers...", "blue", "on_grey"))
-    state_pair_classifiers_by_instance = [StatePairClassifierFactory(config.delta).make_state_pair_classifier(instance_data, tuple_graphs) for instance_data, tuple_graphs in zip(instance_datas, tuple_graphs_by_instance)]
+    state_pair_classifiers_by_instance = [StatePairClassifierFactory(config.delta).make_state_pair_classifier(config, instance_data, tuple_graphs) for instance_data, tuple_graphs in zip(instance_datas, tuple_graphs_by_instance)]
     logging.info(colored(f"..done", "blue", "on_grey"))
 
+    sketch = learn_sketch(config, domain_data, instance_datas, tuple_graphs_by_instance, state_pair_classifiers_by_instance, make_sketch_asp_factory)
+
+    return ExitCode.Success, None
+
+
+def verify_sketch(sketch: Sketch, instance_datas: List[InstanceData], tuple_graphs_by_instance: List[List[TupleGraph]], state_pair_classifiers_by_instance: List[StatePairClassifier], selected_instance_idxs: List[int]):
+    all_solved = True
+    for instance_idx, (instance_data, tuple_graphs, state_pair_classifier) in enumerate(zip(instance_datas, tuple_graphs_by_instance, state_pair_classifiers_by_instance)):
+        if not sketch.solves(instance_data, tuple_graphs, state_pair_classifier):
+            all_solved = False
+            if instance_idx > max(selected_instance_idxs):
+                selected_instance_idxs = [instance_idx]
+            else:
+                selected_instance_idxs.append(instance_idx)
+            break
+    return all_solved, selected_instance_idxs
+
+
+def make_sketch_asp_factory(config):
+    return SketchASPFactory(config)
+
+
+def learn_sketch(config, domain_data, instance_datas, tuple_graphs_by_instance, state_pair_classifiers_by_instance, make_asp_factory):
     i = 0
     selected_instance_idxs = [0]
     timer = CountDownTimer(config.timeout)
     while not timer.is_expired():
         logging.info(colored(f"Iteration: {i}", "red", "on_grey"))
-        selected_instance_datas = [instance_datas[instance_idx] for instance_idx in selected_instance_idxs]
-        state_pair_classifiers_by_selected_instance = [state_pair_classifiers_by_instance[instance_idx] for instance_idx in selected_instance_idxs]
+        selected_instance_datas = [instance_datas[subproblem_idx] for subproblem_idx in selected_instance_idxs]
+        tuple_graphs_by_selected_instance = [tuple_graphs_by_instance[subproblem_idx] for subproblem_idx in selected_instance_idxs]
+        state_pair_classifiers_by_selected_instance = [state_pair_classifiers_by_instance[subproblem_idx] for subproblem_idx in selected_instance_idxs]
         print(f"Number of selected instances: {len(selected_instance_datas)}")
-        for selected_instance_data in selected_instance_datas:
-            print(str(selected_instance_data.instance_information.instance_filename), selected_instance_data.transition_system.get_num_states())
-        tuple_graphs_by_selected_instance = [tuple_graphs_by_instance[instance_idx] for instance_idx in selected_instance_idxs]
+        print(f"Indices of selected instances:", selected_instance_idxs)
 
         logging.info(colored(f"Initializing DomainFeatureData...", "blue", "on_grey"))
         domain_feature_data_factory = DomainFeatureDataFactory()
-        domain_feature_data = domain_feature_data_factory.make_domain_feature_data_from_instances(config, domain_data, selected_instance_datas)
+        domain_feature_data = domain_feature_data_factory.make_domain_feature_data_from_subproblems(config, domain_data, selected_instance_datas, state_pair_classifiers_by_selected_instance)
+        domain_feature_data_factory.statistics.print()
         logging.info(colored(f"..done", "blue", "on_grey"))
 
         logging.info(colored(f"Initializing InstanceFeatureDatas...", "blue", "on_grey"))
@@ -69,58 +94,63 @@ def run(config, data, rng):
         tuple_graph_equivalences_by_selected_instance = [TupleGraphEquivalenceFactory().make_tuple_graph_equivalence_datas(instance_data, tuple_graphs, state_pair_equivalences) for instance_data, tuple_graphs, state_pair_equivalences in zip(selected_instance_datas, tuple_graphs_by_selected_instance, state_pair_equivalences_by_selected_instance)]
         logging.info(colored(f"..done", "blue", "on_grey"))
 
-        logging.info(colored(f"Initializing Logic Program...", "blue", "on_grey"))
-        sketch_asp_factory = SketchASPFactory(config)
-        facts = sketch_asp_factory.make_facts(domain_feature_data, rule_equivalences, selected_instance_datas, tuple_graphs_by_selected_instance, tuple_graph_equivalences_by_selected_instance, state_pair_equivalences_by_selected_instance, state_pair_classifiers_by_selected_instance, instance_feature_datas_by_selected_instance)
-        d2_facts = sketch_asp_factory.make_initial_d2_facts(state_pair_classifiers_by_selected_instance, state_pair_equivalences_by_selected_instance)
+        asp_factory = make_asp_factory(config)
+        facts = asp_factory.make_facts(domain_feature_data, rule_equivalences, selected_instance_datas, tuple_graphs_by_selected_instance, tuple_graph_equivalences_by_selected_instance, state_pair_equivalences_by_selected_instance, state_pair_classifiers_by_selected_instance, instance_feature_datas_by_selected_instance)
+        d2_facts = asp_factory.make_initial_d2_facts(state_pair_classifiers_by_selected_instance, state_pair_equivalences_by_selected_instance)
         print("Number of initial D2 facts:", len(d2_facts))
         print("Number of D2 facts:", len(d2_facts), "of", len(rule_equivalences.rules) ** 2)
         facts.extend(list(d2_facts))
-        sketch_asp_factory.ground(facts)
+
+        logging.info(colored(f"Grounding Logic Program...", "blue", "on_grey"))
+        asp_factory.ground(facts)
         logging.info(colored(f"..done", "blue", "on_grey"))
 
         logging.info(colored(f"Solving Logic Program...", "blue", "on_grey"))
-        symbols, returncode = sketch_asp_factory.solve()
+        symbols, returncode = asp_factory.solve()
         logging.info(colored(f"..done", "blue", "on_grey"))
-
-        if returncode == ClingoExitCode.UNSATISFIABLE:
-            print("ASP is unsatisfiable!")
-            return ExitCode.Unsatisfiable, None
-        sketch_asp_factory.print_statistics()
-        sketch = Sketch(DlplanPolicyFactory().make_dlplan_policy_from_answer_set_d2(symbols, domain_feature_data, rule_equivalences), config.width)
-        logging.info("Learned the following sketch:")
-        print(sketch.dlplan_policy.str())
+        asp_factory.print_statistics()
+        if returncode in [ClingoExitCode.UNSATISFIABLE]:
+            print(colored("ASP is UNSAT", "red", "on_grey"))
+            print(colored("No sketch exists that solves all geneneral subproblems!", "red", "on_grey"))
+            return None
+        sketch = Sketch(DlplanPolicyFactory().make_dlplan_policy_from_answer_set_d2(symbols, domain_feature_data, rule_equivalences), width=0)
+        print("Learned sketch:")
+        print(sketch.dlplan_policy.compute_repr())
 
         # Iteratively add D2-separation constraints
         while True:
-            logging.info(colored(f"Initializing Logic Program...", "blue", "on_grey"))
-            sketch_asp_factory = SketchASPFactory(config)
-            facts = sketch_asp_factory.make_facts(domain_feature_data, rule_equivalences, selected_instance_datas, tuple_graphs_by_selected_instance, tuple_graph_equivalences_by_selected_instance, state_pair_equivalences_by_selected_instance, state_pair_classifiers_by_selected_instance, instance_feature_datas_by_selected_instance)
-            unsatisfied_d2_facts = sketch_asp_factory.make_unsatisfied_d2_facts(symbols, rule_equivalences)
+            asp_factory = make_asp_factory(config)
+            facts = asp_factory.make_facts(domain_feature_data, rule_equivalences, selected_instance_datas, tuple_graphs_by_selected_instance, tuple_graph_equivalences_by_selected_instance, state_pair_equivalences_by_selected_instance, state_pair_classifiers_by_selected_instance, instance_feature_datas_by_selected_instance)
+            unsatisfied_d2_facts = asp_factory.make_unsatisfied_d2_facts(symbols, rule_equivalences)
             d2_facts.update(unsatisfied_d2_facts)
             facts.extend(list(d2_facts))
             print("Number of unsatisfied D2 facts:", len(unsatisfied_d2_facts))
             print("Number of D2 facts:", len(d2_facts), "of", len(rule_equivalences.rules) ** 2)
             if not unsatisfied_d2_facts:
                 break
-            sketch_asp_factory.ground(facts)
+
+            logging.info(colored(f"Grounding Logic Program...", "blue", "on_grey"))
+            asp_factory.ground(facts)
             logging.info(colored(f"..done", "blue", "on_grey"))
 
             logging.info(colored(f"Solving Logic Program...", "blue", "on_grey"))
-            symbols, returncode = sketch_asp_factory.solve()
+            symbols, returncode = asp_factory.solve()
             logging.info(colored(f"..done", "blue", "on_grey"))
 
-            if returncode == ClingoExitCode.UNSATISFIABLE:
-                print("ASP is unsatisfiable!")
-                return ExitCode.Unsatisfiable, None
-            sketch_asp_factory.print_statistics()
-            sketch = Sketch(DlplanPolicyFactory().make_dlplan_policy_from_answer_set_d2(symbols, domain_feature_data, rule_equivalences), config.width)
+            if returncode in [ClingoExitCode.UNSATISFIABLE]:
+                print(colored("ASP is UNSAT", "red", "on_grey"))
+                print(colored("No sketch exists that solves all geneneral subproblems!", "red", "on_grey"))
+                return None
+            asp_factory.print_statistics()
+            sketch = Sketch(DlplanPolicyFactory().make_dlplan_policy_from_answer_set_d2(symbols, domain_feature_data, rule_equivalences), width=0)
             logging.info("Learned the following sketch:")
             print(sketch.dlplan_policy.str())
+            if all([sketch.solves(instance_data, tuple_graphs, state_pair_classifier) for instance_data, tuple_graphs, state_pair_classifier in zip(instance_datas, tuple_graphs_by_instance, state_pair_classifiers_by_instance)]):
+                break
 
         logging.info(colored(f"Verifying learned sketch...", "blue", "on_grey"))
-        assert all([sketch.solves(instance_data, tuple_graphs) for instance_data, tuple_graphs in zip(selected_instance_datas, tuple_graphs_by_selected_instance)])
-        all_solved, selected_instance_idxs = verify_sketch(sketch, instance_datas, tuple_graphs_by_instance, selected_instance_idxs)
+        assert all([sketch.solves(instance_data, tuple_graphs, state_pair_classifier) for instance_data, tuple_graphs, state_pair_classifier in zip(selected_instance_datas, tuple_graphs_by_selected_instance, state_pair_classifiers_by_selected_instance)])
+        all_solved, selected_instance_idxs = verify_sketch(sketch, instance_datas, tuple_graphs_by_instance, state_pair_classifiers_by_instance, selected_instance_idxs)
         logging.info(colored(f"..done", "blue", "on_grey"))
 
         logging.info(colored("Iteration summary:", "yellow", "on_grey"))
@@ -128,6 +158,7 @@ def run(config, data, rng):
         state_pair_equivalence_factory.statistics.print()
 
         if all_solved:
+            print(colored("Policy solves all general subproblems!", "red", "on_grey"))
             break
         i += 1
 
@@ -141,17 +172,4 @@ def run(config, data, rng):
     print("Maximum complexity of selected feature:", max([0] + [boolean_feature.get_boolean().compute_complexity() for boolean_feature in sketch.dlplan_policy.get_boolean_features()] + [numerical_feature.get_numerical().compute_complexity() for numerical_feature in sketch.dlplan_policy.get_numerical_features()]))
     print("Resulting sketch:")
     print(sketch.dlplan_policy.str())
-    return ExitCode.Success, None
-
-
-def verify_sketch(sketch: Sketch, instance_datas: List[InstanceData], tuple_graphs_by_instance: List[List[TupleGraph]], selected_instance_idxs: List[int]):
-    all_solved = True
-    for instance_idx, (instance_data, tuple_graphs) in enumerate(zip(instance_datas, tuple_graphs_by_instance)):
-        if not sketch.solves(instance_data, tuple_graphs):
-            all_solved = False
-            if instance_idx > max(selected_instance_idxs):
-                selected_instance_idxs = [instance_idx]
-            else:
-                selected_instance_idxs.append(instance_idx)
-            break
-    return all_solved, selected_instance_idxs
+    return sketch
