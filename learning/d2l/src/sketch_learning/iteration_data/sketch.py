@@ -150,3 +150,9 @@ class Sketch:
         if not self._verify_goal_separating_features(instance_data):
             return False
         return True
+
+    def print(self):
+        print(self.dlplan_policy.compute_repr())
+        print("Numer of sketch rules:", len(self.dlplan_policy.get_rules()))
+        print("Number of selected features:", len(self.dlplan_policy.get_boolean_features()) + len(self.dlplan_policy.get_numerical_features()))
+        print("Maximum complexity of selected feature:", max([0] + [boolean_feature.compute_complexity() for boolean_feature in self.dlplan_policy.get_boolean_features()] + [numerical_feature.compute_complexity() for numerical_feature in self.dlplan_policy.get_numerical_features()]))

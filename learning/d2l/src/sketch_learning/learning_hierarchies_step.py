@@ -96,7 +96,7 @@ def run(config, data, rng):
         print("Rule", rule.id, rule.dlplan_rule.compute_repr())
         if solution_policies[rule.id] is not None:
             print("Resulting policy:")
-            print(solution_policies[rule.id].dlplan_policy.compute_repr())
+            print(solution_policies[rule.id].print())
         else:
             print("No policy found.")
     print()
@@ -105,7 +105,7 @@ def run(config, data, rng):
         print("Rule", rule.id, rule.dlplan_rule.compute_repr())
         if structurally_minimized_solution_policies[rule.id] is not None:
             print("Resulting structurally minimized sketch:")
-            print(structurally_minimized_solution_policies[rule.id].dlplan_policy.compute_repr())
+            print(structurally_minimized_solution_policies[rule.id].print())
         else:
             print("No policy found.")
     print()
@@ -114,7 +114,7 @@ def run(config, data, rng):
         print("Rule", rule.id, rule.dlplan_rule.compute_repr())
         if empirically_minimized_solution_policies[rule.id] is not None:
             print("Resulting empirically minimized sketch:")
-            print(empirically_minimized_solution_policies[rule.id].dlplan_policy.compute_repr())
+            print(empirically_minimized_solution_policies[rule.id].print())
         else:
             print("No policy found.")
     return ExitCode.Success, None
