@@ -36,6 +36,7 @@ class LearningSketchesStep(Step):
     """ Incrementally learns a sketch by considering more and more instances """
     def process_config(self, config):
         config["delta"] = math.inf
+        config["reachable_from_init"] = False
         return config  # By default, we do nothing
 
     def get_required_attributes(self):

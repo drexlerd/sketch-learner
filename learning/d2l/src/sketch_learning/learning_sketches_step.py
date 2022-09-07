@@ -75,6 +75,9 @@ def learn_sketch(config, domain_data, instance_datas, tuple_graphs_by_instance, 
         print(f"Number of selected instances: {len(selected_instance_datas)}")
         print(f"Indices of selected instances:", selected_instance_idxs)
 
+        for selected_instance_data in selected_instance_datas:
+            selected_instance_data.transition_system.print()
+
         logging.info(colored(f"Initializing DomainFeatureData...", "blue", "on_grey"))
         domain_feature_data_factory = DomainFeatureDataFactory()
         domain_feature_data = domain_feature_data_factory.make_domain_feature_data_from_subproblems(config, domain_data, selected_instance_datas, state_pair_classifiers_by_selected_instance)
@@ -119,6 +122,9 @@ def learn_sketch(config, domain_data, instance_datas, tuple_graphs_by_instance, 
 
         # Iteratively add D2-separation constraints
         while True:
+            if all([sketch.solves(instance_data, tuple_graphs, state_pair_classifier) for instance_data, tuple_graphs, state_pair_classifier in zip(instance_datas, tuple_graphs_by_instance, state_pair_classifiers_by_instance)]):
+                break
+
             asp_factory = make_asp_factory(config)
             facts = asp_factory.make_facts(domain_feature_data, rule_equivalences, selected_instance_datas, tuple_graphs_by_selected_instance, tuple_graph_equivalences_by_selected_instance, state_pair_equivalences_by_selected_instance, state_pair_classifiers_by_selected_instance, instance_feature_datas_by_selected_instance)
             unsatisfied_d2_facts = asp_factory.make_unsatisfied_d2_facts(symbols, rule_equivalences)
@@ -145,8 +151,6 @@ def learn_sketch(config, domain_data, instance_datas, tuple_graphs_by_instance, 
             sketch = Sketch(DlplanPolicyFactory().make_dlplan_policy_from_answer_set_d2(symbols, domain_feature_data, rule_equivalences), width=0)
             logging.info("Learned the following sketch:")
             print(sketch.dlplan_policy.str())
-            if all([sketch.solves(instance_data, tuple_graphs, state_pair_classifier) for instance_data, tuple_graphs, state_pair_classifier in zip(instance_datas, tuple_graphs_by_instance, state_pair_classifiers_by_instance)]):
-                break
 
         logging.info(colored(f"Verifying learned sketch...", "blue", "on_grey"))
         assert all([sketch.solves(instance_data, tuple_graphs, state_pair_classifier) for instance_data, tuple_graphs, state_pair_classifier in zip(selected_instance_datas, tuple_graphs_by_selected_instance, state_pair_classifiers_by_selected_instance)])
@@ -158,7 +162,7 @@ def learn_sketch(config, domain_data, instance_datas, tuple_graphs_by_instance, 
         state_pair_equivalence_factory.statistics.print()
 
         if all_solved:
-            print(colored("Policy solves all general subproblems!", "red", "on_grey"))
+            print(colored("Sketch solves all instances!", "red", "on_grey"))
             break
         i += 1
 

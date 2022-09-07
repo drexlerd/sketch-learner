@@ -12,7 +12,6 @@ from ..instance_data.state_pair import StatePair
 
 class TupleGraphEquivalenceFactory:
     def make_tuple_graph_equivalence_datas(self, instance_data: InstanceData, tuple_graphs: List[TupleGraph], state_pair_equivalence_data: StatePairEquivalence):
-        instance_data.transition_system.print()
         tuple_graph_equivalences = dict()
         for root_idx, tuple_graph in tuple_graphs.items():
             # rule distances, deadend rule distances

@@ -4,6 +4,9 @@ import math
 from typing import Dict, List, MutableSet
 from collections import defaultdict, deque, OrderedDict
 
+from .transition_system_utils import compute_deadends, compute_goal_distances, compute_inverse_transitions
+
+
 class TransitionSystem:
     def __init__(self,
         initial_s_idx: int,
@@ -13,6 +16,31 @@ class TransitionSystem:
         deadend_s_idxs: MutableSet[int],
         goal_s_idxs: MutableSet[int]):
         self.initial_s_idx = initial_s_idx
+        self.s_idx_to_dlplan_state = s_idx_to_dlplan_state
+        self.forward_transitions = forward_transitions
+        self.backward_transitions = backward_transitions
+        self.deadend_s_idxs = deadend_s_idxs
+        self.goal_s_idxs = goal_s_idxs
+
+    def restrict_to_subset_of_states(self, expanded_s_idxs: MutableSet[int], generated_s_idxs: MutableSet[int]):
+        """
+        Restrict transition system to reachable parts of states.
+        """
+        s_idx_to_dlplan_state = dict()
+        for s_idx in generated_s_idxs:
+            s_idx_to_dlplan_state[s_idx] = self.s_idx_to_dlplan_state[s_idx]
+        forward_transitions = defaultdict(set)
+        backward_transitions = defaultdict(set)
+        for source_idx, target_idxs in self.forward_transitions.items():
+            if source_idx not in expanded_s_idxs:
+                continue
+            for target_idx in target_idxs:
+                forward_transitions[source_idx].add(target_idx)
+                backward_transitions[target_idx].add(source_idx)
+        goal_s_idxs = self.goal_s_idxs.intersection(generated_s_idxs)
+        goal_distances = compute_goal_distances(s_idx_to_dlplan_state, self.goal_s_idxs, backward_transitions)
+        deadend_s_idxs = compute_deadends(goal_distances)
+        # set members
         self.s_idx_to_dlplan_state = s_idx_to_dlplan_state
         self.forward_transitions = forward_transitions
         self.backward_transitions = backward_transitions
@@ -33,6 +61,12 @@ class TransitionSystem:
 
     def is_alive(self, state_index: int):
         return not self.is_goal(state_index) and not self.is_deadend(state_index)
+
+    def is_solvable(self):
+        return self.initial_s_idx not in self.deadend_s_idxs
+
+    def is_trivially_solvable(self):
+        return all([self.is_goal(s_idx) for s_idx in self.s_idx_to_dlplan_state.keys()])
 
     def partition_states_by_distance(self, states: List[int], forward=True, stop_upon_goal: bool = False, stop_upon_initial: bool = False) -> List[List[int]]:
         """ Perform BFS to partition states by their distance. """

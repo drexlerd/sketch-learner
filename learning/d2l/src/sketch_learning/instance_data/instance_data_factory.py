@@ -1,5 +1,6 @@
 import logging
 import dlplan
+import math
 import re
 import subprocess
 from collections import OrderedDict, defaultdict
@@ -10,6 +11,7 @@ from sketch_learning.iteration_data.sketch import SketchRule
 from ..util.command import execute, read_file
 
 from .instance_data import InstanceData
+from .transition_system_utils import compute_goal_distances ,compute_deadends
 from .transition_system_factory import TransitionSystemFactory
 from .return_codes import ReturnCode
 
@@ -51,21 +53,23 @@ class InstanceDataFactory:
         elif len(s_idx_to_dlplan_state) > config.max_states_per_instance:
             return None, ReturnCode.EXHAUSTED_SIZE_LIMIT
 
-        transition_system = TransitionSystemFactory().parse_transition_system(s_idx_to_dlplan_state, goals, forward_transitions)
+        transition_system = TransitionSystemFactory().make_transition_system(s_idx_to_dlplan_state, goals, forward_transitions)
         return InstanceData(instance_idx, instance_information, domain_data, transition_system, instance_info), ReturnCode.SOLVABLE
 
     def make_subproblem_instance_data(self, subproblem_idx: int, instance_data: InstanceData, root_idx: int, rule: SketchRule):
         instance_data = self.reparse_instance_data(instance_data)
-        instance_data.transition_system.initial_s_idx = root_idx
-        goals = self._compute_closest_subgoal_states(instance_data, root_idx, rule)
-        instance_data.transition_system.goal_s_idxs = goals
-        if len(goals) == 0:
-            return None, ReturnCode.UNSOLVABLE
+        transition_system = instance_data.transition_system
+        transition_system.initial_s_idx = root_idx
+        goal_s_idxs = self._compute_closest_subgoal_states(instance_data, root_idx, rule)
+        transition_system.goal_s_idxs = goal_s_idxs
+        goal_distances = compute_goal_distances(transition_system.s_idx_to_dlplan_state, goal_s_idxs, transition_system.backward_transitions)
+        deadend_s_idxs = compute_deadends(goal_distances)
+        transition_system.deadend_s_idxs = deadend_s_idxs
         # Add static seed atoms for initial state
         # for atom_idx in instance_data.transition_system.s_idx_to_dlplan_state[root_idx].get_atom_idxs():
         #    atom = instance_data.instance_info.get_atom(atom_idx)
         #    instance_data.instance_info.add_static_atom(atom.get_predicate().get_name() + "_r", [object.get_name() for object in atom.get_objects()])
-        return InstanceData(subproblem_idx, instance_data.instance_information, instance_data.domain_data, instance_data.transition_system, instance_data.instance_info), ReturnCode.SOLVABLE
+        return InstanceData(subproblem_idx, instance_data.instance_information, instance_data.domain_data, instance_data.transition_system, instance_data.instance_info)
 
     def _compute_closest_subgoal_states(self, instance_data: InstanceData, root_idx: int, rule: SketchRule):
         evaluation_cache = dlplan.EvaluationCache(len(rule.sketch.dlplan_policy.get_boolean_features()), len(rule.sketch.dlplan_policy.get_numerical_features()))
@@ -99,7 +103,7 @@ class InstanceDataFactory:
         dlplan_states, goals, forward_transitions = parse_state_space(instance_info, instance_information.workspace / "state_space.txt")
         parse_goal_atoms(instance_info, instance_information.workspace / "goal-atoms.txt")
         parse_static_atoms(instance_info, instance_information.workspace / "static-atoms.txt")
-        transition_system = TransitionSystemFactory().parse_transition_system(dlplan_states, goals, forward_transitions)
+        transition_system = TransitionSystemFactory().make_transition_system(dlplan_states, goals, forward_transitions)
         return InstanceData(instance_idx, instance_information, domain_data, transition_system, instance_info)
 
 
