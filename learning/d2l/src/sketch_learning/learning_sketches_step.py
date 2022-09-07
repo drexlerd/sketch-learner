@@ -88,45 +88,23 @@ def learn_sketch(config, domain_data, instance_datas, tuple_graphs_by_instance, 
         tuple_graph_equivalences_by_selected_instance = [TupleGraphEquivalenceFactory().make_tuple_graph_equivalence_datas(instance_data, tuple_graphs, state_pair_equivalences) for instance_data, tuple_graphs, state_pair_equivalences in zip(selected_instance_datas, tuple_graphs_by_selected_instance, state_pair_equivalences_by_selected_instance)]
         logging.info(colored(f"..done", "blue", "on_grey"))
 
-        asp_factory = make_asp_factory(config)
-        facts = asp_factory.make_facts(domain_feature_data, rule_equivalences, selected_instance_datas, tuple_graphs_by_selected_instance, tuple_graph_equivalences_by_selected_instance, state_pair_equivalences_by_selected_instance, state_pair_classifiers_by_selected_instance, instance_feature_datas_by_selected_instance)
-        d2_facts = asp_factory.make_initial_d2_facts(state_pair_classifiers_by_selected_instance, state_pair_equivalences_by_selected_instance)
-        print("Number of initial D2 facts:", len(d2_facts))
-        print("Number of D2 facts:", len(d2_facts), "of", len(rule_equivalences.rules) ** 2)
-        facts.extend(list(d2_facts))
-
-        logging.info(colored(f"Grounding Logic Program...", "blue", "on_grey"))
-        asp_factory.ground(facts)
-        logging.info(colored(f"..done", "blue", "on_grey"))
-
-        logging.info(colored(f"Solving Logic Program...", "blue", "on_grey"))
-        symbols, returncode = asp_factory.solve()
-        logging.info(colored(f"..done", "blue", "on_grey"))
-        asp_factory.print_statistics()
-        if returncode in [ClingoExitCode.UNSATISFIABLE]:
-            print(colored("ASP is UNSAT", "red", "on_grey"))
-            print(colored("No sketch exists that solves all geneneral subproblems!", "red", "on_grey"))
-            return None
-        sketch = Sketch(DlplanPolicyFactory().make_dlplan_policy_from_answer_set_d2(symbols, domain_feature_data, rule_equivalences), width=0)
-        print("Learned sketch:")
-        print(sketch.dlplan_policy.compute_repr())
-
         # Iteratively add D2-separation constraints
+        d2_facts = set()
+        j = 0
         while True:
-            if compute_smallest_unsolved_instance(sketch, instance_datas, tuple_graphs_by_instance, state_pair_classifiers_by_instance) is None:
-                # Stop adding D2-separation constraints
-                # if sketch solves all training instances by luck
-                break
-
             asp_factory = make_asp_factory(config)
             facts = asp_factory.make_facts(domain_feature_data, rule_equivalences, selected_instance_datas, tuple_graphs_by_selected_instance, tuple_graph_equivalences_by_selected_instance, state_pair_equivalences_by_selected_instance, state_pair_classifiers_by_selected_instance, instance_feature_datas_by_selected_instance)
-            unsatisfied_d2_facts = asp_factory.make_unsatisfied_d2_facts(symbols, rule_equivalences)
-            d2_facts.update(unsatisfied_d2_facts)
-            facts.extend(list(d2_facts))
-            print("Number of unsatisfied D2 facts:", len(unsatisfied_d2_facts))
+            if j == 0:
+                d2_facts.update(asp_factory.make_initial_d2_facts(state_pair_classifiers_by_selected_instance, state_pair_equivalences_by_selected_instance))
+                print("Number of initial D2 facts:", len(d2_facts))
+            elif j > 0:
+                unsatisfied_d2_facts = asp_factory.make_unsatisfied_d2_facts(symbols, rule_equivalences)
+                d2_facts.update(unsatisfied_d2_facts)
+                print("Number of unsatisfied D2 facts:", len(unsatisfied_d2_facts))
+                if not unsatisfied_d2_facts:
+                    break
             print("Number of D2 facts:", len(d2_facts), "of", len(rule_equivalences.rules) ** 2)
-            if not unsatisfied_d2_facts:
-                break
+            facts.extend(list(d2_facts))
 
             logging.info(colored(f"Grounding Logic Program...", "blue", "on_grey"))
             asp_factory.ground(facts)
@@ -144,6 +122,11 @@ def learn_sketch(config, domain_data, instance_datas, tuple_graphs_by_instance, 
             sketch = Sketch(DlplanPolicyFactory().make_dlplan_policy_from_answer_set_d2(symbols, domain_feature_data, rule_equivalences), width=0)
             logging.info("Learned the following sketch:")
             print(sketch.dlplan_policy.str())
+            if compute_smallest_unsolved_instance(sketch, instance_datas, tuple_graphs_by_instance, state_pair_classifiers_by_instance) is None:
+                # Stop adding D2-separation constraints
+                # if sketch solves all training instances by luck
+                break
+            j += 1
 
         logging.info(colored(f"Verifying learned sketch...", "blue", "on_grey"))
         assert compute_smallest_unsolved_instance(sketch, selected_instance_datas, tuple_graphs_by_selected_instance, state_pair_classifiers_by_selected_instance) is None
