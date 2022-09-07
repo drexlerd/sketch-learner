@@ -90,6 +90,7 @@ def learn_sketch(config, domain_data, instance_datas, tuple_graphs_by_instance, 
 
         # Iteratively add D2-separation constraints
         d2_facts = set()
+        symbols = None
         j = 0
         while True:
             asp_factory = make_asp_factory(config)
@@ -101,8 +102,6 @@ def learn_sketch(config, domain_data, instance_datas, tuple_graphs_by_instance, 
                 unsatisfied_d2_facts = asp_factory.make_unsatisfied_d2_facts(symbols, rule_equivalences)
                 d2_facts.update(unsatisfied_d2_facts)
                 print("Number of unsatisfied D2 facts:", len(unsatisfied_d2_facts))
-                if not unsatisfied_d2_facts:
-                    break
             print("Number of D2 facts:", len(d2_facts), "of", len(rule_equivalences.rules) ** 2)
             facts.extend(list(d2_facts))
 
@@ -122,7 +121,7 @@ def learn_sketch(config, domain_data, instance_datas, tuple_graphs_by_instance, 
             sketch = Sketch(DlplanPolicyFactory().make_dlplan_policy_from_answer_set_d2(symbols, domain_feature_data, rule_equivalences), width=0)
             logging.info("Learned the following sketch:")
             print(sketch.dlplan_policy.str())
-            if compute_smallest_unsolved_instance(sketch, instance_datas, tuple_graphs_by_instance, state_pair_classifiers_by_instance) is None:
+            if compute_smallest_unsolved_instance(sketch, selected_instance_datas, tuple_graphs_by_selected_instance, state_pair_classifiers_by_selected_instance) is None:
                 # Stop adding D2-separation constraints
                 # if sketch solves all training instances by luck
                 break
