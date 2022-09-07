@@ -41,6 +41,8 @@ def run(config, data, rng):
     logging.info(colored(f"..done", "blue", "on_grey"))
 
     solution_policies = []
+    structurally_minimized_solution_policies = []
+    empirically_minimized_solution_policies = []
     for rule in sketch.get_rules():
         print("Sketch:")
         print(sketch.dlplan_policy.compute_repr())
@@ -81,7 +83,10 @@ def run(config, data, rng):
         print("Number of subproblems:", len(subproblem_instance_datas))
         logging.info(colored(f"..done", "blue", "on_grey"))
 
-        solution_policies.append(learn_sketch(config, domain_data, subproblem_instance_datas, tuple_graphs_by_instance, state_pair_classifiers_by_instance, make_policy_asp_factory))
+        sketch, structurally_minimized_sketch, empirically_minimized_sketch = learn_sketch(config, domain_data, subproblem_instance_datas, tuple_graphs_by_instance, state_pair_classifiers_by_instance, make_policy_asp_factory)
+        solution_policies.append(sketch)
+        structurally_minimized_solution_policies.append(structurally_minimized_sketch)
+        empirically_minimized_solution_policies.append(empirically_minimized_sketch)
 
     logging.info(colored("Summary:", "yellow", "on_grey"))
     print("Input sketch:")
@@ -90,7 +95,26 @@ def run(config, data, rng):
     for rule in sketch.get_rules():
         print("Rule", rule.id, rule.dlplan_rule.compute_repr())
         if solution_policies[rule.id] is not None:
+            print("Resulting policy:")
             print(solution_policies[rule.id].dlplan_policy.compute_repr())
+        else:
+            print("No policy found.")
+    print()
+    print("Learned structurally minimized policies by rule:")
+    for rule in sketch.get_rules():
+        print("Rule", rule.id, rule.dlplan_rule.compute_repr())
+        if structurally_minimized_solution_policies[rule.id] is not None:
+            print("Resulting structurally minimized sketch:")
+            print(structurally_minimized_solution_policies[rule.id].dlplan_policy.compute_repr())
+        else:
+            print("No policy found.")
+    print()
+    print("Learned empirically minimized policies by rule:")
+    for rule in sketch.get_rules():
+        print("Rule", rule.id, rule.dlplan_rule.compute_repr())
+        if empirically_minimized_solution_policies[rule.id] is not None:
+            print("Resulting empirically minimized sketch:")
+            print(empirically_minimized_solution_policies[rule.id].dlplan_policy.compute_repr())
         else:
             print("No policy found.")
     return ExitCode.Success, None

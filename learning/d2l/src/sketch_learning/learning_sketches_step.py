@@ -1,4 +1,5 @@
 import logging
+import dlplan
 
 from termcolor import colored
 from typing import List
@@ -22,6 +23,7 @@ from .instance_data.state_pair_classifier_factory import StatePairClassifierFact
 from .instance_data.state_pair_classifier import StatePairClassifier
 from .returncodes import ExitCode
 from .util.timer import CountDownTimer
+from .util.command import write_file
 
 
 def run(config, data, rng):
@@ -41,7 +43,28 @@ def run(config, data, rng):
     state_pair_classifiers_by_instance = [StatePairClassifierFactory(config.delta).make_state_pair_classifier(config, instance_data, tuple_graphs) for instance_data, tuple_graphs in zip(instance_datas, tuple_graphs_by_instance)]
     logging.info(colored(f"..done", "blue", "on_grey"))
 
-    sketch = learn_sketch(config, domain_data, instance_datas, tuple_graphs_by_instance, state_pair_classifiers_by_instance, make_sketch_asp_factory)
+    for instance_data, state_pair_classifier in zip(instance_datas, state_pair_classifiers_by_instance):
+        # Restrict transition system to subset of states
+        instance_data.transition_system.restrict_to_subset_of_states(
+            state_pair_classifier.expanded_s_idxs,
+            state_pair_classifier.generated_s_idxs)
+        if not instance_data.transition_system.is_solvable() or \
+            instance_data.transition_system.is_trivially_solvable():
+            print("Did not filter unsolvable or trivially solvable instance")
+            exit(1)
+
+    sketch, structurally_minimized_sketch, empirically_minimized_sketch = learn_sketch(config, domain_data, instance_datas, tuple_graphs_by_instance, state_pair_classifiers_by_instance, make_sketch_asp_factory)
+
+    print("Summary:")
+    print("Resulting sketch:")
+    print(sketch.dlplan_policy.str())
+    write_file(config.experiment_dir / f"{config.domain_dir}_{config.width}.txt", sketch.dlplan_policy.compute_repr())
+    print("Resulting structurally minimized sketch:")
+    print(structurally_minimized_sketch.dlplan_policy.str())
+    write_file(config.experiment_dir / f"{config.domain_dir}_{config.width}_structurally_minimized.txt", structurally_minimized_sketch.dlplan_policy.compute_repr())
+    print("Resulting empirically minimized sketch:")
+    print(empirically_minimized_sketch.dlplan_policy.str())
+    write_file(config.experiment_dir / f"{config.domain_dir}_{config.width}_empirically_minimized.txt", empirically_minimized_sketch.dlplan_policy.compute_repr())
 
     return ExitCode.Success, None
 
@@ -116,7 +139,7 @@ def learn_sketch(config, domain_data, instance_datas, tuple_graphs_by_instance, 
             if returncode in [ClingoExitCode.UNSATISFIABLE]:
                 print(colored("ASP is UNSAT", "red", "on_grey"))
                 print(colored("No sketch exists that solves all geneneral subproblems!", "red", "on_grey"))
-                return None
+                return None, None, None
             asp_factory.print_statistics()
             sketch = Sketch(DlplanPolicyFactory().make_dlplan_policy_from_answer_set_d2(symbols, domain_feature_data, rule_equivalences), width=0)
             logging.info("Learned the following sketch:")
@@ -153,7 +176,22 @@ def learn_sketch(config, domain_data, instance_datas, tuple_graphs_by_instance, 
     print("Number of features in the pool:", len(domain_feature_data.boolean_features) + len(domain_feature_data.numerical_features))
     print("Numer of sketch rules:", len(sketch.dlplan_policy.get_rules()))
     print("Number of selected features:", len(sketch.dlplan_policy.get_boolean_features()) + len(sketch.dlplan_policy.get_numerical_features()))
-    print("Maximum complexity of selected feature:", max([0] + [boolean_feature.get_boolean().compute_complexity() for boolean_feature in sketch.dlplan_policy.get_boolean_features()] + [numerical_feature.get_numerical().compute_complexity() for numerical_feature in sketch.dlplan_policy.get_numerical_features()]))
+    print("Maximum complexity of selected feature:", max([0] + [boolean_feature.compute_complexity() for boolean_feature in sketch.dlplan_policy.get_boolean_features()] + [numerical_feature.compute_complexity() for numerical_feature in sketch.dlplan_policy.get_numerical_features()]))
     print("Resulting sketch:")
     print(sketch.dlplan_policy.str())
-    return sketch
+    print("Resulting structurally minimized sketch:")
+    structurally_minimized_sketch = Sketch(dlplan.PolicyMinimizer().minimize(sketch.dlplan_policy), sketch.width)
+    print(structurally_minimized_sketch.dlplan_policy.str())
+    print("Resulting empirically minimized sketch:")
+    dlplan_state_pairs = []
+    for instance_idx in selected_instance_idxs:
+        instance_data = instance_datas[instance_idx]
+        state_pair_classifier = state_pair_classifiers_by_instance[instance_idx]
+        dlplan_state_pairs.extend([[
+            instance_data.transition_system.s_idx_to_dlplan_state[state_pair.source_idx],
+            instance_data.transition_system.s_idx_to_dlplan_state[state_pair.target_idx]] for state_pair in state_pair_classifier.state_pair_to_classification.keys()])
+    true_state_pairs = [state_pair for state_pair in dlplan_state_pairs if sketch.dlplan_policy.evaluate_lazy(state_pair[0], state_pair[1])]
+    false_state_pairs = [state_pair for state_pair in dlplan_state_pairs if not sketch.dlplan_policy.evaluate_lazy(state_pair[0], state_pair[1])]
+    empirically_minimized_sketch = Sketch(dlplan.PolicyMinimizer().minimize(sketch.dlplan_policy, true_state_pairs, false_state_pairs), sketch.width)
+    print(empirically_minimized_sketch.dlplan_policy.str())
+    return sketch, structurally_minimized_sketch, empirically_minimized_sketch

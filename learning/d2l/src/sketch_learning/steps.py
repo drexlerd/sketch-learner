@@ -58,8 +58,6 @@ class LearningSketchesStep(Step):
 class LearningHierarchiesStep(Step):
     """ Incrementally learns a sketch by considering more and more instances """
     def process_config(self, config):
-        config["generate_seed_feature_dec_boolean"] = False
-        config["generate_seed_feature_inc_boolean"] = False
         config["delta"] = 1.0
         return config  # By default, we do nothing
 

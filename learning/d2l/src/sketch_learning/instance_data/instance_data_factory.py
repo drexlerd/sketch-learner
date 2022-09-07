@@ -73,15 +73,15 @@ class InstanceDataFactory:
 
     def _compute_closest_subgoal_states(self, instance_data: InstanceData, root_idx: int, rule: SketchRule):
         evaluation_cache = dlplan.EvaluationCache(len(rule.sketch.dlplan_policy.get_boolean_features()), len(rule.sketch.dlplan_policy.get_numerical_features()))
-        root_context = dlplan.EvaluationContext(root_idx, instance_data.transition_system.s_idx_to_dlplan_state[root_idx], evaluation_cache)
-        if not rule.dlplan_rule.evaluate_conditions(root_context):
+        source_state = instance_data.transition_system.s_idx_to_dlplan_state[root_idx]
+        if not rule.dlplan_rule.evaluate_conditions(source_state, evaluation_cache):
             return set()
         layers, _ = instance_data.transition_system.partition_states_by_distance(states=[root_idx], forward=True, stop_upon_goal=False)
         for layer in layers:
             closest_subgoal_states = set()
             for target_idx in layer:
-                target_context = dlplan.EvaluationContext(target_idx, instance_data.transition_system.s_idx_to_dlplan_state[target_idx], evaluation_cache)
-                if rule.dlplan_rule.evaluate_effects(root_context, target_context):
+                target_state = instance_data.transition_system.s_idx_to_dlplan_state[target_idx]
+                if rule.dlplan_rule.evaluate_effects(source_state, target_state, evaluation_cache):
                     closest_subgoal_states.add(target_idx)
             if closest_subgoal_states:
                 return closest_subgoal_states
@@ -172,7 +172,7 @@ def parse_state_line(instance_info: dlplan.InstanceInfo, line: str, atom_idx_to_
     state_idx = indices[0]
     atom_idxs = indices[1:]
     dlplan_atoms = [atom_idx_to_dlplan_atom[atom_idx] for atom_idx in atom_idxs if atom_idx in atom_idx_to_dlplan_atom]
-    dlplan_state = dlplan.State(instance_info, dlplan_atoms)
+    dlplan_state = dlplan.State(instance_info, dlplan_atoms, state_idx)
     states[state_idx] = dlplan_state
     if line.startswith("G "):
         goals.add(state_idx)

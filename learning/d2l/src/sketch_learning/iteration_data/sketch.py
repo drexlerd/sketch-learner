@@ -55,19 +55,17 @@ class Sketch:
         for root_idx in transition_system.s_idx_to_dlplan_state.keys():
             if not transition_system.is_alive(root_idx):
                 continue
-            dlplan_state = transition_system.s_idx_to_dlplan_state[root_idx]
             tuple_graph = tuple_graphs[root_idx]
             assert tuple_graph is not None
             bounded = False
-            source_context = dlplan.EvaluationContext(root_idx, dlplan_state, evaluation_cache)
+            source_state = instance_data.transition_system.s_idx_to_dlplan_state[root_idx]
             for t_idxs in tuple_graph.t_idxs_by_distance:
                 for t_idx in t_idxs:
                     subgoal = True
                     assert tuple_graph.t_idx_to_s_idxs[t_idx]
                     for s_idx in tuple_graph.t_idx_to_s_idxs[t_idx]:
                         target_state = instance_data.transition_system.s_idx_to_dlplan_state[s_idx]
-                        target_context = dlplan.EvaluationContext(s_idx, target_state, evaluation_cache)
-                        if self.dlplan_policy.evaluate_lazy(source_context, target_context) is not None:
+                        if self.dlplan_policy.evaluate_lazy(source_state, target_state) is not None:
                             root_idx_to_closest_subgoal_s_idxs[tuple_graph.root_idx].add(s_idx)
                             if instance_data.transition_system.is_deadend(s_idx):
                                 print(colored(f"Sketch leads to an unsolvable state", "red", "on_grey"))
@@ -82,7 +80,7 @@ class Sketch:
                     break
             if not bounded:
                 print(colored(f"Sketch fails to bound width of a state", "red", "on_grey"))
-                print(str(dlplan_state))
+                print(str(source_state))
                 return [], [], False
         return root_idx_to_closest_subgoal_s_idxs, root_idx_to_closest_subgoal_t_idxs, True
 
@@ -119,12 +117,11 @@ class Sketch:
         """
         Returns True iff sketch features separate goal from nongoal states.
         """
-        evaluation_cache = dlplan.EvaluationCache(len(self.dlplan_policy.get_boolean_features()), len(self.dlplan_policy.get_numerical_features()))
         transition_system = instance_data.transition_system
         dlplan_policy_features = self.dlplan_policy.get_boolean_features() + self.dlplan_policy.get_numerical_features()
         s_idx_to_feature_valuations = dict()
         for s_idx, dlplan_state in transition_system.s_idx_to_dlplan_state.items():
-            s_idx_to_feature_valuations[s_idx] = tuple([feature.evaluate(dlplan.EvaluationContext(s_idx, dlplan_state, evaluation_cache)) for feature in dlplan_policy_features])
+            s_idx_to_feature_valuations[s_idx] = tuple([feature.evaluate(dlplan_state) for feature in dlplan_policy_features])
         transition_system = instance_data.transition_system
         for s_idx_1, dlplan_state_1 in transition_system.s_idx_to_dlplan_state.items():
             for s_idx_2, dlplan_state_2 in transition_system.s_idx_to_dlplan_state.items():

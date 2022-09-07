@@ -37,12 +37,10 @@ class DomainFeatureDataFactory:
         self.statistics = DomainFeatureDataStatistics()
 
     def make_domain_feature_data_from_subproblems(self, config, domain_data: DomainData, instance_datas: List[InstanceData], state_pair_classifiers_by_instance: List[StatePairClassifier]):
-        # collect all state pairs that are not classified as UNKNOWN
-        dlplan_state_pairs = set()
+        dlplan_states = set()
         for instance_data, state_pair_classifier in zip(instance_datas, state_pair_classifiers_by_instance):
-            dlplan_seed_state = instance_data.transition_system.s_idx_to_dlplan_state[instance_data.transition_system.initial_s_idx]
-            dlplan_state_pairs.update(set([(dlplan_seed_state, instance_data.transition_system.s_idx_to_dlplan_state[s_idx]) for s_idx in state_pair_classifier.generated_s_idxs]))
-        return self.make_domain_feature_data(config, domain_data, list(dlplan_state_pairs))
+            dlplan_states.update([dlplan_state for dlplan_state in instance_data.transition_system.s_idx_to_dlplan_state.values()])
+        return self.make_domain_feature_data(config, domain_data, list(dlplan_states))
 
     def make_domain_feature_data_from_instances(self, config, domain_data: DomainData, instance_datas: List[InstanceData]):
         dlplan_state_pairs = []

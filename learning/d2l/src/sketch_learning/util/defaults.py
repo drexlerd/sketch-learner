@@ -41,8 +41,6 @@ def generate_experiment(expid, domain_dir, domain, **kwargs):
         delta=1.0,
         reachable_from_init=True,
 
-        generate_seed_feature_dec_boolean=False,
-        generate_seed_feature_inc_boolean=False,
         generate_concept_distance_numerical=False,
 
         debug_features=[],
@@ -55,6 +53,8 @@ def generate_experiment(expid, domain_dir, domain, **kwargs):
     )
 
     parameters = {**defaults, **kwargs}  # Copy defaults, overwrite with user-specified parameters
+
+    parameters["domain_dir"] = domain_dir
 
     # root level 0 directory for experimental data
     parameters['experiment_dir'] = parameters['workspace'] / f"{expid.replace(':', '_')}_{parameters['width']}_{parameters['max_sketch_rules']}_{parameters['complexity']}"
