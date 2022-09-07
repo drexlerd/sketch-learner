@@ -46,17 +46,11 @@ def run(config, data, rng):
     return ExitCode.Success, None
 
 
-def verify_sketch(sketch: Sketch, instance_datas: List[InstanceData], tuple_graphs_by_instance: List[List[TupleGraph]], state_pair_classifiers_by_instance: List[StatePairClassifier], selected_instance_idxs: List[int]):
-    all_solved = True
-    for instance_idx, (instance_data, tuple_graphs, state_pair_classifier) in enumerate(zip(instance_datas, tuple_graphs_by_instance, state_pair_classifiers_by_instance)):
+def compute_smallest_unsolved_instance(sketch: Sketch, instance_datas: List[InstanceData], tuple_graphs_by_instance: List[List[TupleGraph]], state_pair_classifiers_by_instance: List[StatePairClassifier]):
+    for instance_data, tuple_graphs, state_pair_classifier in zip(instance_datas, tuple_graphs_by_instance, state_pair_classifiers_by_instance):
         if not sketch.solves(instance_data, tuple_graphs, state_pair_classifier):
-            all_solved = False
-            if instance_idx > max(selected_instance_idxs):
-                selected_instance_idxs = [instance_idx]
-            else:
-                selected_instance_idxs.append(instance_idx)
-            break
-    return all_solved, selected_instance_idxs
+            return instance_data
+    return None
 
 
 def make_sketch_asp_factory(config):
@@ -74,9 +68,6 @@ def learn_sketch(config, domain_data, instance_datas, tuple_graphs_by_instance, 
         state_pair_classifiers_by_selected_instance = [state_pair_classifiers_by_instance[subproblem_idx] for subproblem_idx in selected_instance_idxs]
         print(f"Number of selected instances: {len(selected_instance_datas)}")
         print(f"Indices of selected instances:", selected_instance_idxs)
-
-        for selected_instance_data in selected_instance_datas:
-            selected_instance_data.transition_system.print()
 
         logging.info(colored(f"Initializing DomainFeatureData...", "blue", "on_grey"))
         domain_feature_data_factory = DomainFeatureDataFactory()
@@ -122,7 +113,9 @@ def learn_sketch(config, domain_data, instance_datas, tuple_graphs_by_instance, 
 
         # Iteratively add D2-separation constraints
         while True:
-            if all([sketch.solves(instance_data, tuple_graphs, state_pair_classifier) for instance_data, tuple_graphs, state_pair_classifier in zip(instance_datas, tuple_graphs_by_instance, state_pair_classifiers_by_instance)]):
+            if compute_smallest_unsolved_instance(sketch, instance_datas, tuple_graphs_by_instance, state_pair_classifiers_by_instance) is None:
+                # Stop adding D2-separation constraints
+                # if sketch solves all training instances by luck
                 break
 
             asp_factory = make_asp_factory(config)
@@ -153,17 +146,22 @@ def learn_sketch(config, domain_data, instance_datas, tuple_graphs_by_instance, 
             print(sketch.dlplan_policy.str())
 
         logging.info(colored(f"Verifying learned sketch...", "blue", "on_grey"))
-        assert all([sketch.solves(instance_data, tuple_graphs, state_pair_classifier) for instance_data, tuple_graphs, state_pair_classifier in zip(selected_instance_datas, tuple_graphs_by_selected_instance, state_pair_classifiers_by_selected_instance)])
-        all_solved, selected_instance_idxs = verify_sketch(sketch, instance_datas, tuple_graphs_by_instance, state_pair_classifiers_by_instance, selected_instance_idxs)
+        assert compute_smallest_unsolved_instance(sketch, selected_instance_datas, tuple_graphs_by_selected_instance, state_pair_classifiers_by_selected_instance) is None
+        smallest_unsolved_instance = compute_smallest_unsolved_instance(sketch, instance_datas, tuple_graphs_by_instance, state_pair_classifiers_by_instance)
         logging.info(colored(f"..done", "blue", "on_grey"))
 
         logging.info(colored("Iteration summary:", "yellow", "on_grey"))
         domain_feature_data_factory.statistics.print()
         state_pair_equivalence_factory.statistics.print()
 
-        if all_solved:
+        if smallest_unsolved_instance is None:
             print(colored("Sketch solves all instances!", "red", "on_grey"))
             break
+        else:
+            if smallest_unsolved_instance.id > max(selected_instance_idxs):
+                selected_instance_idxs = [smallest_unsolved_instance.id]
+            else:
+                selected_instance_idxs.append(smallest_unsolved_instance.id)
         i += 1
 
     logging.info(colored("Summary:", "green", "on_grey"))

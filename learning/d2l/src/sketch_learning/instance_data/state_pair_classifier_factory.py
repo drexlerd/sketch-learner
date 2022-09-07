@@ -61,7 +61,8 @@ class StatePairClassifierFactory:
                 generated_s_idxs.add(state_pair.target_idx)
 
         # Restrict to backward reachable parts
-        # Every previous alive state remains alive.
+        # Every previous alive state remains alive
+        # for all delta >= 1
 
         # Restrict to forward reachable parts
         if config.reachable_from_init:
