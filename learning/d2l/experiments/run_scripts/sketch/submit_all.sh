@@ -8,11 +8,11 @@ sbatch -A snic2022-5-341 blocks_4_on_0.sh
 sbatch -A snic2022-5-341 blocks_4_on_1.sh
 sbatch -A snic2022-5-341 blocks_4_on_2.sh
 
-# sbatch -A snic2022-5-341 childsnack_0.sh
-# sbatch -A snic2022-5-341 childsnack_1.sh
-# sbatch -A snic2022-5-341 childsnack_2.sh
+sbatch -A snic2022-5-341 childsnack_0.sh
+sbatch -A snic2022-5-341 childsnack_1.sh
+sbatch -A snic2022-5-341 childsnack_2.sh
 
-# sbatch -A snic2022-5-341 delivery_0.sh
+sbatch -A snic2022-5-341 delivery_0.sh
 sbatch -A snic2022-5-341 delivery_1.sh
 sbatch -A snic2022-5-341 delivery_2.sh
 
