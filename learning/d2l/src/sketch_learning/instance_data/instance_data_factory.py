@@ -33,7 +33,10 @@ class InstanceDataFactory:
                 print(f"Instance is too large. Maximum number of allowed states is: {config.max_states_per_instance}.")
             elif return_code == ReturnCode.EXHAUSTED_TIME_LIMIT:
                 print(f"Instance is too large. Time limit is: {config.sse_time_limit}")
+        # Sort the instances according to size and fix the indices afterwards
         instance_datas = sorted(instance_datas, key=lambda x : x.transition_system.get_num_states())
+        for instance_idx, instance_data in enumerate(instance_datas):
+            instance_data.id = instance_idx
         return instance_datas
 
     def make_instance_data(self, config, instance_idx, instance_information, domain_data):

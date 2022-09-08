@@ -2,6 +2,7 @@ from re import sub
 import dlplan
 import logging
 
+from collections import OrderedDict
 from typing import  List
 from termcolor import colored
 
@@ -80,6 +81,7 @@ def run(config, data, rng):
                 subproblem_instance_datas.append(subproblem_instance_data)
                 tuple_graphs_by_instance.append(tuple_graphs)
                 state_pair_classifiers_by_instance.append(state_pair_classifier)
+        subproblem_instance_datas, tuple_graphs_by_instance, state_pair_classifiers_by_instance = sort_subproblems_by_size(subproblem_instance_datas, tuple_graphs_by_instance, state_pair_classifiers_by_instance)
         print("Number of subproblems:", len(subproblem_instance_datas))
         logging.info(colored(f"..done", "blue", "on_grey"))
 
@@ -96,7 +98,7 @@ def run(config, data, rng):
         print("Rule", rule.id, rule.dlplan_rule.compute_repr())
         if solution_policies[rule.id] is not None:
             print("Resulting policy:")
-            print(solution_policies[rule.id].print())
+            solution_policies[rule.id].print()
         else:
             print("No policy found.")
     print()
@@ -105,7 +107,7 @@ def run(config, data, rng):
         print("Rule", rule.id, rule.dlplan_rule.compute_repr())
         if structurally_minimized_solution_policies[rule.id] is not None:
             print("Resulting structurally minimized sketch:")
-            print(structurally_minimized_solution_policies[rule.id].print())
+            structurally_minimized_solution_policies[rule.id].print()
         else:
             print("No policy found.")
     print()
@@ -114,7 +116,7 @@ def run(config, data, rng):
         print("Rule", rule.id, rule.dlplan_rule.compute_repr())
         if empirically_minimized_solution_policies[rule.id] is not None:
             print("Resulting empirically minimized sketch:")
-            print(empirically_minimized_solution_policies[rule.id].print())
+            empirically_minimized_solution_policies[rule.id].print()
         else:
             print("No policy found.")
     return ExitCode.Success, None
@@ -124,5 +126,13 @@ def make_policy_asp_factory(config):
     return PolicyASPFactory(config)
 
 
-
-
+def sort_subproblems_by_size(instance_datas, tuple_graphs_by_instance, state_pair_classifiers_by_instance):
+    new_instance_datas = sorted(instance_datas, key=lambda x : x.transition_system.get_num_states())
+    new_tuple_graphs_by_instance = [None for _ in range(len(new_instance_datas))]
+    new_state_pair_classifiers_by_instance = [None for _ in range(len(new_instance_datas))]
+    for new_instance_idx, instance_data in enumerate(new_instance_datas):
+        old_instance_idx = instance_data.id
+        instance_data.id = new_instance_idx
+        new_tuple_graphs_by_instance[new_instance_idx] = tuple_graphs_by_instance[old_instance_idx]
+        new_state_pair_classifiers_by_instance[new_instance_idx] = state_pair_classifiers_by_instance[old_instance_idx]
+    return new_instance_datas, new_tuple_graphs_by_instance, new_state_pair_classifiers_by_instance

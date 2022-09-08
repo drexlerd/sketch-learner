@@ -31,7 +31,7 @@ def experiments():
     exps["sketch_dist"] = update_dict(
         strips_base,
         pipeline="sketch_pipeline",
-        instances=training_instances(),
+        instances=training_instances()[:30],
         generate_concept_distance_numerical=True
     )
 
