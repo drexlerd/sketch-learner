@@ -1,14 +1,14 @@
 #!/bin/bash
 #
-#SBATCH -J blocks4c_1_6_8
+#SBATCH -J blocks3_0_6_8
 #SBATCH -t 3-00:00:00
 #SBATCH -C fat --exclusive
 #SBATCH --mail-type=FAIL
 #SBATCH --mail-user=dominik.drexler@liu.se
 
-DOMAIN=blocks_4
-EXPERIMENT=sketch_clear
-WIDTH=1
+DOMAIN=blocks_3
+EXPERIMENT=sketch
+WIDTH=0
 MAX_SKETCH_RULES=6
 COMPLEXITY=8
 

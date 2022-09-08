@@ -1,5 +1,13 @@
 #!/bin/bash
 
+sbatch -A snic2022-5-341 blocks_3_0.sh
+sbatch -A snic2022-5-341 blocks_3_1.sh
+sbatch -A snic2022-5-341 blocks_3_2.sh
+
+sbatch -A snic2022-5-341 blocks_4_0.sh
+sbatch -A snic2022-5-341 blocks_4_1.sh
+sbatch -A snic2022-5-341 blocks_4_2.sh
+
 sbatch -A snic2022-5-341 blocks_4_clear_0.sh
 sbatch -A snic2022-5-341 blocks_4_clear_1.sh
 sbatch -A snic2022-5-341 blocks_4_clear_2.sh

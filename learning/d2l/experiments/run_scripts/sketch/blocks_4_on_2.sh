@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-#SBATCH -J blocks4_2_6_8
+#SBATCH -J blocks4o_2_6_8
 #SBATCH -t 3-00:00:00
 #SBATCH -C fat --exclusive
 #SBATCH --mail-type=FAIL

@@ -94,7 +94,7 @@ def learn_sketch(config, domain_data, instance_datas, tuple_graphs_by_instance, 
 
         logging.info(colored(f"Initializing DomainFeatureData...", "blue", "on_grey"))
         domain_feature_data_factory = DomainFeatureDataFactory()
-        domain_feature_data = domain_feature_data_factory.make_domain_feature_data_from_subproblems(config, domain_data, selected_instance_datas, state_pair_classifiers_by_selected_instance)
+        domain_feature_data = domain_feature_data_factory.make_domain_feature_data_from_instance_datas(config, domain_data, selected_instance_datas)
         domain_feature_data_factory.statistics.print()
         logging.info(colored(f"..done", "blue", "on_grey"))
 
@@ -143,7 +143,7 @@ def learn_sketch(config, domain_data, instance_datas, tuple_graphs_by_instance, 
             asp_factory.print_statistics()
             sketch = Sketch(DlplanPolicyFactory().make_dlplan_policy_from_answer_set_d2(symbols, domain_feature_data, rule_equivalences), width=0)
             logging.info("Learned the following sketch:")
-            print(sketch.print())
+            sketch.print()
             if compute_smallest_unsolved_instance(sketch, selected_instance_datas, tuple_graphs_by_selected_instance, state_pair_classifiers_by_selected_instance) is None:
                 # Stop adding D2-separation constraints
                 # if sketch solves all training instances by luck

@@ -159,6 +159,8 @@ def parse_fact_line(instance_info: dlplan.InstanceInfo, line: str, atom_idx_to_d
     normalized_atom = normalize_atom_name(atom_name)
     if normalized_atom[0].startswith("dummy"):
         return
+    elif normalized_atom[0].startswith("new-axiom@"):
+        return
     dlplan_atom = instance_info.add_atom(normalized_atom[0], normalized_atom[1:])
     atom_idx_to_dlplan_atom[atom_idx] = dlplan_atom
 
