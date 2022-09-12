@@ -1,7 +1,0 @@
-(:policy
-(:boolean_features )
-(:numerical_features "n_count(c_primitive(carry,0))" "n_count(c_all(r_primitive(at,0,1),c_one_of(rooma)))")
-(:rule (:conditions (:c_n_eq 0) (:c_n_gt 1)) (:effects (:e_n_inc 0) (:e_n_bot 1)))
-(:rule (:conditions (:c_n_gt 0) (:c_n_gt 1)) (:effects (:e_n_inc 0) (:e_n_bot 1)))
-(:rule (:conditions (:c_n_gt 0) (:c_n_gt 1)) (:effects (:e_n_dec 0) (:e_n_dec 1)))
-)
