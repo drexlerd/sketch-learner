@@ -54,12 +54,12 @@ def run(config, data, rng):
         state_pair_classifiers_by_instance = []
         tuple_graphs_by_instance = []
         for instance_data in instance_datas:
-            for s_idx in instance_data.transition_system.s_idx_to_dlplan_state.keys():
-                if not instance_data.transition_system.is_solvable():
+            for s_idx in range(instance_data.state_space.get_num_states()):
+                if not instance_data.state_space.is_solvable():
                     # we do not want to solve subproblems that are deadends in the original problem
                     continue
                 subproblem_instance_data = InstanceDataFactory().make_subproblem_instance_data(len(subproblem_instance_datas), instance_data, s_idx, rule)
-                if not subproblem_instance_data.transition_system.is_solvable():
+                if not subproblem_instance_data.state_space.is_solvable():
                     continue
 
                 # Create tuple graph for subproblem instance
@@ -69,11 +69,12 @@ def run(config, data, rng):
                 state_pair_classifier = StatePairClassifierFactory(config.delta).make_state_pair_classifier(config, subproblem_instance_data, tuple_graphs)
 
                 # Restrict transition system to subset of states
-                subproblem_instance_data.transition_system.restrict_to_subset_of_states(
-                    state_pair_classifier.expanded_s_idxs,
-                    state_pair_classifier.generated_s_idxs)
-                if not subproblem_instance_data.transition_system.is_solvable() or \
-                    subproblem_instance_data.transition_system.is_trivially_solvable():
+                all_states = set([i for i in range(subproblem_instance_data.state_space.get_num_states())])
+                pruned_states = all_states.difference(set(state_pair_classifier.generated_s_idxs))
+                subproblem_instance_data.state_space.prune_states(pruned_states)
+
+                if not subproblem_instance_data.state_space.is_solvable() or \
+                    subproblem_instance_data.state_space.is_trivially_solvable():
                     continue
                 # Re-create tuple graphs are restricting transition system
                 tuple_graphs = TupleGraphFactory(width=0).make_tuple_graphs(subproblem_instance_data)

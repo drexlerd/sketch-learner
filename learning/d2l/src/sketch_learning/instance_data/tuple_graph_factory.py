@@ -38,13 +38,13 @@ class TupleGraphFactory:
     def _make_tuple_graph_for_width_0(self, instance_data: InstanceData, source_index: int):
         """ Special case where each 1-step successor can be a subgoal. """
         novelty_base = NoveltyBase(self.width, instance_data.state_space.get_instance_info().get_atoms())
-        s_idxs_by_distance = [[source_index], list(instance_data.transition_system.forward_transitions[source_index])]
+        s_idxs_by_distance = [[source_index], list(instance_data.state_space.get_forward_successor_state_indices(source_index))]
         # we use state indices also for tuples for simplicity
-        t_idxs_by_distance = [[source_index], list(instance_data.transition_system.forward_transitions[source_index])]
+        t_idxs_by_distance = [[source_index], list(instance_data.state_space.get_forward_successor_state_indices(source_index))]
         t_idx_to_s_idxs = defaultdict(set)
         s_idx_to_t_idxs = defaultdict(set)
         t_idx_to_s_idxs[source_index].add(source_index)
-        for suc_index in instance_data.transition_system.forward_transitions[source_index]:
+        for suc_index in instance_data.state_space.get_forward_successor_state_indices(source_index):
             t_idx_to_s_idxs[suc_index].add(suc_index)
             s_idx_to_t_idxs[suc_index].add(suc_index)
         return TupleGraph(novelty_base, source_index, t_idxs_by_distance, s_idxs_by_distance, t_idx_to_s_idxs, s_idx_to_t_idxs, self.width)

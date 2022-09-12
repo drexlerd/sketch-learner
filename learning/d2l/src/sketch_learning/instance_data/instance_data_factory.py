@@ -1,4 +1,5 @@
 import logging
+import copy
 import dlplan
 import math
 import re
@@ -30,19 +31,13 @@ class InstanceDataFactory:
         return instance_datas
 
     def make_subproblem_instance_data(self, subproblem_idx: int, instance_data: InstanceData, root_idx: int, rule: SketchRule):
-        instance_data = self.reparse_instance_data(instance_data)
-        transition_system = instance_data.transition_system
-        transition_system.initial_s_idx = root_idx
-        goal_s_idxs = self._compute_closest_subgoal_states(instance_data, root_idx, rule)
-        transition_system.goal_s_idxs = goal_s_idxs
-        goal_distances = compute_goal_distances(transition_system.s_idx_to_dlplan_state, goal_s_idxs, transition_system.backward_transitions)
-        deadend_s_idxs = compute_deadends(goal_distances)
-        transition_system.deadend_s_idxs = deadend_s_idxs
+        state_space_copy = copy.deepcopy(instance_data.state_space)
+        state_space_copy.set_initial_state_index(root_idx)
         # Add static seed atoms for initial state
         # for atom_idx in instance_data.transition_system.s_idx_to_dlplan_state[root_idx].get_atom_idxs():
         #    atom = instance_data.instance_info.get_atom(atom_idx)
         #    instance_data.instance_info.add_static_atom(atom.get_predicate().get_name() + "_r", [object.get_name() for object in atom.get_objects()])
-        return InstanceData(subproblem_idx, instance_data.instance_information, instance_data.domain_data, instance_data.transition_system, instance_data.instance_info)
+        return InstanceData(subproblem_idx, instance_data.instance_information, instance_data.domain_data, state_space_copy)
 
     def _compute_closest_subgoal_states(self, instance_data: InstanceData, root_idx: int, rule: SketchRule):
         evaluation_cache = dlplan.EvaluationCache(len(rule.sketch.dlplan_policy.get_boolean_features()), len(rule.sketch.dlplan_policy.get_numerical_features()))
