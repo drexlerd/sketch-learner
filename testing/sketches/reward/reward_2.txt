@@ -1,5 +1,6 @@
 (:policy
-(:boolean_features "b_empty(c_primitive(picked,0))")
-(:numerical_features )
-(:rule (:conditions (:c_b_pos 0)) (:effects (:e_b_neg 0)))
+(:boolean_features )
+(:numerical_features "n_count(c_primitive(picked,0))")
+(:rule (:conditions (:c_n_eq 0)) (:effects (:e_n_inc 0)))
+(:rule (:conditions (:c_n_gt 0)) (:effects (:e_n_inc 0)))
 )
