@@ -1,4 +1,4 @@
-from collections import defaultdict
+from collections import defaultdict, OrderedDict
 from typing import List
 
 from .instance_data import InstanceData
@@ -9,14 +9,23 @@ from .tuple_graph import TupleGraph
 from .tuple_graph_minimizer import TupleGraphMinimizer
 
 
+def partition_states_by_distance(distances):
+    max_distance = max(distances)
+    s_idxs_by_distance = [[] for _ in range(max_distance + 1)]
+    for s_idx in range(len(distances)):
+        distance = distances[s_idx]
+        s_idxs_by_distance[distance].append(s_idx)
+    return s_idxs_by_distance
+
+
 class TupleGraphFactory:
     def __init__(self, width: int):
         self.width = width
 
     def make_tuple_graphs(self, instance_data: InstanceData):
         tuple_graphs = dict()
-        for s_idx in instance_data.transition_system.s_idx_to_dlplan_state.keys():
-            if instance_data.transition_system.is_alive(s_idx):
+        for s_idx in range(instance_data.state_space.get_num_states()):
+            if instance_data.state_space.is_alive(s_idx):
                 tuple_graphs[s_idx] = self.make_tuple_graph(instance_data, s_idx)
         return tuple_graphs
 
@@ -28,7 +37,7 @@ class TupleGraphFactory:
 
     def _make_tuple_graph_for_width_0(self, instance_data: InstanceData, source_index: int):
         """ Special case where each 1-step successor can be a subgoal. """
-        novelty_base = NoveltyBase(self.width, instance_data.instance_info.get_atoms())
+        novelty_base = NoveltyBase(self.width, instance_data.state_space.get_instance_info().get_atoms())
         s_idxs_by_distance = [[source_index], list(instance_data.transition_system.forward_transitions[source_index])]
         # we use state indices also for tuples for simplicity
         t_idxs_by_distance = [[source_index], list(instance_data.transition_system.forward_transitions[source_index])]
@@ -42,10 +51,11 @@ class TupleGraphFactory:
 
     def _make_tuple_graph_for_width_greater_0(self, instance_data: InstanceData, source_index: int):
         """ Constructing tuple graph for width greater 0 as defined in the literature. """
-        novelty_base = NoveltyBase(self.width, instance_data.instance_info.get_atoms())
+        novelty_base = NoveltyBase(self.width, instance_data.state_space.get_instance_info().get_atoms())
         novelty_table = NoveltyTable(novelty_base)
         # states s[pi] by distance for optimal plan pi in Pi^*(t).
-        s_idxs_by_distance, _ = instance_data.transition_system.partition_states_by_distance(states=[source_index], forward=True, stop_upon_goal=True)
+        distances = instance_data.state_space.compute_distances({source_index}, True)
+        s_idxs_by_distance = partition_states_by_distance(distances)
         # information of tuples during computation
         t_idx_to_s_idxs = defaultdict(set)
         s_idx_to_t_idxs = dict()
@@ -84,7 +94,7 @@ class TupleGraphFactory:
             return all tuple indices that are novel in at least one state.  """
         t_idxs = set()  # the novel tuples with distance d
         for s_idx in s_idxs_in_layer:
-            atom_idxs = instance_data.transition_system.s_idx_to_dlplan_state[s_idx].get_atom_idxs()
+            atom_idxs = instance_data.state_space.get_state_ref(s_idx).get_atom_idxs()
             t_idxs_for_s_idx = novelty_table.compute_novel_tuples(atom_idxs)
             if t_idxs_for_s_idx:
                 # S*(s, t)
@@ -106,7 +116,7 @@ class TupleGraphFactory:
         extended = defaultdict(set)
         for ti_idx in marked_t_idxs_in_previous_layer:
             for si_idx in t_idx_to_s_idxs[ti_idx]:
-                for sj_idx in instance_data.transition_system.forward_transitions[si_idx]:
+                for sj_idx in instance_data.state_space.get_forward_successor_state_indices(si_idx):
                     for tj_idx in s_idx_to_t_idxs.get(sj_idx, []):
                         # optimal plan that ends in si_idx underlying ti is
                         # extended into optimal plan that ends in sj_idx underlying tj

@@ -39,7 +39,7 @@ class DomainFeatureDataFactory:
     def make_domain_feature_data_from_instance_datas(self, config, domain_data: DomainData, instance_datas: List[InstanceData]):
         dlplan_states = set()
         for instance_data in instance_datas:
-            dlplan_states.update([dlplan_state for dlplan_state in instance_data.transition_system.s_idx_to_dlplan_state.values()])
+            dlplan_states.update([dlplan_state for dlplan_state in instance_data.state_space.get_states_ref()])
         return self.make_domain_feature_data(config, domain_data, list(dlplan_states))
 
     def make_domain_feature_data(self, config, domain_data: DomainData, dlplan_states: List[dlplan.State]):

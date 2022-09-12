@@ -13,8 +13,8 @@ from ..iteration_data.instance_feature_data import InstanceFeatureData
 from ..iteration_data.state_pair_equivalence import RuleEquivalences, StatePairEquivalence
 from ..iteration_data.tuple_graph_equivalence import TupleGraphEquivalence
 
+from .facts.instance_data.instance_data import InstanceDataFactFactory
 from .facts.instance_data.tuple_graph import TupleGraphFactFactory
-from .facts.instance_data.transition_system import TransitionSystemFactFactory
 from .facts.instance_data.state_pair_classifier import StatePairClassifierFactFactory
 from .facts.iteration_data.domain_feature_data import DomainFeatureDataFactFactory
 from .facts.iteration_data.equivalence_data import EquivalenceDataFactFactory
@@ -52,7 +52,7 @@ class ASPFactory:
         facts.extend(DomainFeatureDataFactFactory().make_facts(domain_feature_data))
         facts.extend(EquivalenceDataFactFactory().make_facts(rule_equivalences, domain_feature_data))
         for state_pair_equivalence, instance_data, state_pair_classifier, instance_feature_data in zip(state_pair_equivalences_by_instance, instance_datas, state_pair_classifiers_by_instance, instance_feature_datas_by_instance):
-            facts.extend(TransitionSystemFactFactory().make_facts(instance_data.id, instance_data.transition_system, state_pair_classifier))
+            facts.extend(InstanceDataFactFactory().make_facts(instance_data))
             facts.extend(InstanceFeatureDataFactFactory().make_facts(instance_data.id, instance_feature_data, state_pair_classifier))
             facts.extend(StatePairClassifierFactFactory().make_facts(instance_data.id, state_pair_classifier, state_pair_equivalence))
         return facts

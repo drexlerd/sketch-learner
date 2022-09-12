@@ -23,7 +23,7 @@ class TupleGraphEquivalenceFactory:
                 for s_idx in layer:
                     r_idx = state_pair_equivalence_data.state_pair_to_r_idx[StatePair(tuple_graph.root_idx, s_idx)]
                     r_idxs.add(r_idx)
-                    if instance_data.transition_system.is_deadend(s_idx):
+                    if instance_data.state_space.is_deadend(s_idx):
                         # the first time we write r_idx = d, d is smallest value.
                         r_idx_to_deadend_distance[r_idx] = min(r_idx_to_deadend_distance.get(r_idx, math.inf), distance)
                     r_idx_to_distance[r_idx] = min(r_idx_to_distance.get(r_idx, math.inf), distance)

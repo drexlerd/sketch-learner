@@ -20,44 +20,14 @@ class InstanceDataFactory:
     def make_instance_datas(self, config, domain_data):
         instance_datas = []
         for instance_information in config.instance_informations:
-            instance_data, return_code = InstanceDataFactory().make_instance_data(config, len(instance_datas), instance_information, domain_data)
-            if return_code == ReturnCode.SOLVABLE:
-                assert instance_data is not None
-                instance_data.print_statistics()
-                instance_datas.append(instance_data)
-            elif return_code == ReturnCode.TRIVIALLY_SOLVABLE:
-                print(f"Instance is trivially solvable.")
-            elif return_code == ReturnCode.UNSOLVABLE:
-                print(f"Instance is unsolvable.")
-            elif return_code == ReturnCode.EXHAUSTED_SIZE_LIMIT:
-                print(f"Instance is too large. Maximum number of allowed states is: {config.max_states_per_instance}.")
-            elif return_code == ReturnCode.EXHAUSTED_TIME_LIMIT:
-                print(f"Instance is too large. Time limit is: {config.sse_time_limit}")
+            state_space = dlplan.StateSpaceGenerator().generate_state_space(str(domain_data.domain_filename), str(instance_information.instance_filename), domain_data.vocabulary_info)
+            if state_space.is_solvable():
+                instance_datas.append(InstanceData(len(instance_datas), instance_information, domain_data, state_space))
         # Sort the instances according to size and fix the indices afterwards
-        instance_datas = sorted(instance_datas, key=lambda x : x.transition_system.get_num_states())
+        instance_datas = sorted(instance_datas, key=lambda x : x.state_space.get_num_states())
         for instance_idx, instance_data in enumerate(instance_datas):
             instance_data.id = instance_idx
         return instance_datas
-
-    def make_instance_data(self, config, instance_idx, instance_information, domain_data):
-        try:
-            execute([config.sse_location / "fast-downward.py", domain_data.domain_filename, instance_information.instance_filename, "--translate-options", "--dump-static-atoms", "--dump-predicates", "--dump-goal-atoms", "--search-options", "--search", "dump_reachable_search_space()"], stdout=instance_information.state_space_filename, timeout=config.sse_time_limit, cwd=instance_information.workspace)
-        except subprocess.TimeoutExpired:
-            return None, ReturnCode.EXHAUSTED_TIME_LIMIT
-
-        instance_info = dlplan.InstanceInfo(domain_data.vocabulary_info)
-        s_idx_to_dlplan_state, goals, forward_transitions = parse_state_space(instance_info, instance_information.workspace / "state_space.txt")
-        parse_goal_atoms(instance_info, instance_information.workspace / "goal-atoms.txt")
-        parse_static_atoms(instance_info, instance_information.workspace / "static-atoms.txt")
-        if len(goals) == 0:
-            return None, ReturnCode.UNSOLVABLE
-        elif len(goals) == len(s_idx_to_dlplan_state):
-            return None, ReturnCode.TRIVIALLY_SOLVABLE
-        elif len(s_idx_to_dlplan_state) > config.max_states_per_instance:
-            return None, ReturnCode.EXHAUSTED_SIZE_LIMIT
-
-        transition_system = TransitionSystemFactory().make_transition_system(s_idx_to_dlplan_state, goals, forward_transitions)
-        return InstanceData(instance_idx, instance_information, domain_data, transition_system, instance_info), ReturnCode.SOLVABLE
 
     def make_subproblem_instance_data(self, subproblem_idx: int, instance_data: InstanceData, root_idx: int, rule: SketchRule):
         instance_data = self.reparse_instance_data(instance_data)

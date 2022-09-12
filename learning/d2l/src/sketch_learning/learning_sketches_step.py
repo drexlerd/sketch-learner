@@ -45,11 +45,11 @@ def run(config, data, rng):
 
     for instance_data, state_pair_classifier in zip(instance_datas, state_pair_classifiers_by_instance):
         # Restrict transition system to subset of states
-        instance_data.transition_system.restrict_to_subset_of_states(
-            state_pair_classifier.expanded_s_idxs,
-            state_pair_classifier.generated_s_idxs)
-        if not instance_data.transition_system.is_solvable() or \
-            instance_data.transition_system.is_trivially_solvable():
+        all_states = set([i for i in range(instance_data.state_space.get_num_states())])
+        pruned_states = all_states.difference(set(state_pair_classifier.generated_s_idxs))
+        instance_data.state_space.prune_states(pruned_states)
+        if not instance_data.state_space.is_solvable() or \
+            instance_data.state_space.is_trivially_solvable():  # remove not
             print("Did not filter unsolvable or trivially solvable instance")
             exit(1)
 

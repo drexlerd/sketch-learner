@@ -21,14 +21,14 @@ class StatePairClassifierFactory:
         self.delta = delta
 
     def make_state_pair_classifier(self, config, instance_data: InstanceData, tuple_graphs: List[TupleGraph]):
-        transition_system = instance_data.transition_system
+        state_space = instance_data.state_space
         # Compute relevant state pairs
         state_pairs = []
         state_pair_to_distance = dict()
         source_idx_to_state_pairs = defaultdict(set)
         target_idx_to_state_pairs = defaultdict(set)
-        for s_idx in transition_system.s_idx_to_dlplan_state.keys():
-            if not transition_system.is_alive(s_idx):
+        for s_idx in range(state_space.get_num_states()):
+            if not state_space.is_alive(s_idx):
                 continue
             assert tuple_graphs[s_idx] is not None
             tuple_graph = tuple_graphs[s_idx]
@@ -44,10 +44,13 @@ class StatePairClassifierFactory:
         state_pair_to_classification = dict()
         expanded_s_idxs = set()
         generated_s_idxs = set()
-        _, goal_distances = transition_system.partition_states_by_distance(transition_system.goal_s_idxs, forward=False, stop_upon_goal=False)
+        goal_distances = state_space.compute_distances(state_space.get_goal_state_indices_ref(), False)
         for state_pair in state_pairs:
-            source_goal_distance = goal_distances.get(state_pair.source_idx, math.inf)
-            target_goal_distance = goal_distances.get(state_pair.target_idx, math.inf)
+            source_goal_distance = goal_distances[state_pair.source_idx]
+            target_goal_distance = goal_distances[state_pair.target_idx]
+            # what value will INF be?
+            assert source_goal_distance < 100000000
+            assert target_goal_distance < 100000000
             # self loops
             if state_pair.source_idx == state_pair.target_idx:
                 state_pair_to_classification[state_pair] = StatePairClassification.NOT_DELTA_OPTIMAL
@@ -71,8 +74,8 @@ class StatePairClassifierFactory:
             expanded_s_idxs_2 = set()
             generated_s_idxs_2 = set()
             queue = deque()
-            queue.append(transition_system.initial_s_idx)
-            generated_s_idxs_2.add(transition_system.initial_s_idx)
+            queue.append(state_space.get_initial_state_index())
+            generated_s_idxs_2.add(state_space.get_initial_state_index())
             while queue:
                 source_idx = queue.popleft()
                 has_delta_optimal = not all([state_pair_to_classification[state_pair] == StatePairClassification.NOT_DELTA_OPTIMAL for state_pair in source_idx_to_state_pairs[source_idx] if state_pair_to_distance[state_pair] > 0])
