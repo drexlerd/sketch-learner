@@ -37,7 +37,7 @@ class Sketch:
             for s_idx in closest_subgoal_s_idxs:
                 if state_pair_classifier.classify(StatePair(root_idx, s_idx)) == StatePairClassification.NOT_DELTA_OPTIMAL:
                     print(colored(f"Not delta optimal state pair is classified as good.", "red", "on_grey"))
-                    print("state pair:", f"{str(instance_data.transition_system.s_idx_to_dlplan_state[root_idx])} -> {str(instance_data.transition_system.s_idx_to_dlplan_state[s_idx])}")
+                    print("state pair:", f"{str(instance_data.state_space.get_state_ref(root_idx))} -> {str(instance_data.state_space.get_state_ref(s_idx))}")
                     return False
         return True
 
@@ -51,23 +51,23 @@ class Sketch:
         evaluation_cache = dlplan.EvaluationCache(len(self.dlplan_policy.get_boolean_features()), len(self.dlplan_policy.get_numerical_features()))
         root_idx_to_closest_subgoal_s_idxs = defaultdict(set)
         root_idx_to_closest_subgoal_t_idxs = defaultdict(set)
-        transition_system = instance_data.transition_system
-        for root_idx in transition_system.s_idx_to_dlplan_state.keys():
-            if not transition_system.is_alive(root_idx):
+        state_space = instance_data.state_space
+        for root_idx in range(state_space.get_num_states()):
+            if not state_space.is_alive(root_idx):
                 continue
             tuple_graph = tuple_graphs[root_idx]
             assert tuple_graph is not None
             bounded = False
-            source_state = instance_data.transition_system.s_idx_to_dlplan_state[root_idx]
+            source_state = state_space.get_state_ref(root_idx)
             for t_idxs in tuple_graph.t_idxs_by_distance:
                 for t_idx in t_idxs:
                     subgoal = True
                     assert tuple_graph.t_idx_to_s_idxs[t_idx]
                     for s_idx in tuple_graph.t_idx_to_s_idxs[t_idx]:
-                        target_state = instance_data.transition_system.s_idx_to_dlplan_state[s_idx]
+                        target_state = state_space.get_state_ref(s_idx)
                         if self.dlplan_policy.evaluate_lazy(source_state, target_state) is not None:
                             root_idx_to_closest_subgoal_s_idxs[tuple_graph.root_idx].add(s_idx)
-                            if instance_data.transition_system.is_deadend(s_idx):
+                            if state_space.is_deadend(s_idx):
                                 print(colored(f"Sketch leads to an unsolvable state", "red", "on_grey"))
                                 print(str(target_state))
                                 return [], [], False
@@ -88,7 +88,7 @@ class Sketch:
         """
         Returns True iff sketch is acyclic, i.e., no infinite trajectories s1,s2,... are possible.
         """
-        for root_idx in instance_data.transition_system.s_idx_to_dlplan_state.keys():
+        for root_idx in range(instance_data.state_space.get_num_states()):
             # The depth-first search is the iterative version where the current path is explicit in the stack.
             # https://en.wikipedia.org/wiki/Depth-first_search
             stack = [(root_idx, iter(root_idx_to_closest_subgoal_s_idxs[root_idx]))]
@@ -102,8 +102,8 @@ class Sketch:
                     if target_idx in s_idxs_on_path:
                         print(colored("Sketch cycles", "red", "on_grey"))
                         for s_idx in s_idxs_on_path:
-                            print(f"{s_idx} {str(instance_data.transition_system.s_idx_to_dlplan_state[s_idx])}")
-                        print(f"{target_idx} {str(instance_data.transition_system.s_idx_to_dlplan_state[target_idx])}")
+                            print(f"{s_idx} {str(instance_data.state_space.get_state_ref(s_idx))}")
+                        print(f"{target_idx} {str(instance_data.state_space.get_state_ref(target_idx))}")
                         return False
                     if target_idx not in frontier:
                         frontier.add(target_idx)
@@ -117,19 +117,18 @@ class Sketch:
         """
         Returns True iff sketch features separate goal from nongoal states.
         """
-        transition_system = instance_data.transition_system
+        state_space = instance_data.state_space
         dlplan_policy_features = self.dlplan_policy.get_boolean_features() + self.dlplan_policy.get_numerical_features()
         s_idx_to_feature_valuations = dict()
-        for s_idx, dlplan_state in transition_system.s_idx_to_dlplan_state.items():
-            s_idx_to_feature_valuations[s_idx] = tuple([feature.evaluate(dlplan_state) for feature in dlplan_policy_features])
-        transition_system = instance_data.transition_system
-        for s_idx_1, dlplan_state_1 in transition_system.s_idx_to_dlplan_state.items():
-            for s_idx_2, dlplan_state_2 in transition_system.s_idx_to_dlplan_state.items():
-                if (transition_system.is_goal(s_idx_1) and not transition_system.is_goal(s_idx_2)):
+        for s_idx in range(state_space.get_num_states()):
+            s_idx_to_feature_valuations[s_idx] = tuple([feature.evaluate(state_space.get_state_ref(s_idx)) for feature in dlplan_policy_features])
+        for s_idx_1 in range(state_space.get_num_states()):
+            for s_idx_2 in range(state_space.get_num_states()):
+                if (state_space.is_goal(s_idx_1) and not state_space.is_goal(s_idx_2)):
                     if (s_idx_to_feature_valuations[s_idx_1] == s_idx_to_feature_valuations[s_idx_2]):
                         print(colored("Selected features do not separate goals from non goals.", "red", "on_grey"))
-                        print("Goal state:", str(dlplan_state_1), s_idx_to_feature_valuations[s_idx_1])
-                        print("Nongoal state:", str(dlplan_state_2), s_idx_to_feature_valuations[s_idx_2])
+                        print("Goal state:", str(state_space.get_state_ref(s_idx_1)), s_idx_to_feature_valuations[s_idx_1])
+                        print("Nongoal state:", str(state_space.get_state_ref(s_idx_2)), s_idx_to_feature_valuations[s_idx_2])
                         return False
         return True
 

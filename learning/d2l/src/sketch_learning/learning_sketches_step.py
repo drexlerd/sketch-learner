@@ -174,7 +174,7 @@ def learn_sketch(config, domain_data, instance_datas, tuple_graphs_by_instance, 
     logging.info(colored("Summary:", "green", "on_grey"))
     print("Number of training instances:", len(instance_datas))
     print("Number of training instances included in the ASP:", len(selected_instance_datas))
-    print("Number of states included in the ASP:", sum([instance_data.transition_system.get_num_states() for instance_data in selected_instance_datas]))
+    print("Number of states included in the ASP:", sum([instance_data.state_space.get_num_states() for instance_data in selected_instance_datas]))
     print("Number of features in the pool:", len(domain_feature_data.boolean_features) + len(domain_feature_data.numerical_features))
     print("Resulting sketch:")
     sketch.print()
@@ -187,8 +187,8 @@ def learn_sketch(config, domain_data, instance_datas, tuple_graphs_by_instance, 
         instance_data = instance_datas[instance_idx]
         state_pair_classifier = state_pair_classifiers_by_instance[instance_idx]
         dlplan_state_pairs.extend([[
-            instance_data.transition_system.s_idx_to_dlplan_state[state_pair.source_idx],
-            instance_data.transition_system.s_idx_to_dlplan_state[state_pair.target_idx]] for state_pair in state_pair_classifier.state_pair_to_classification.keys()])
+            instance_data.state_space.get_state_ref(state_pair.source_idx),
+            instance_data.state_space.get_state_ref(state_pair.target_idx)] for state_pair in state_pair_classifier.state_pair_to_classification.keys()])
     true_state_pairs = [state_pair for state_pair in dlplan_state_pairs if structurally_minimized_sketch.dlplan_policy.evaluate_lazy(state_pair[0], state_pair[1])]
     false_state_pairs = [state_pair for state_pair in dlplan_state_pairs if not structurally_minimized_sketch.dlplan_policy.evaluate_lazy(state_pair[0], state_pair[1])]
     empirically_minimized_sketch = Sketch(dlplan.PolicyMinimizer().minimize(structurally_minimized_sketch.dlplan_policy, true_state_pairs, false_state_pairs), sketch.width)
