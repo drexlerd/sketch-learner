@@ -48,7 +48,7 @@ class Sketch:
         evaluation_cache = dlplan.EvaluationCache(len(self.dlplan_policy.get_boolean_features()), len(self.dlplan_policy.get_numerical_features()))
         root_idx_to_closest_subgoal_s_idxs = defaultdict(set)
         root_idx_to_closest_subgoal_t_idxs = defaultdict(set)
-        for root_idx in instance_data.state_space.get_state_indices():
+        for root_idx in instance_data.state_pair_classifier.expanded_s_idxs:
             if root_idx not in instance_data.tuple_graphs:
                 continue
             tuple_graph = instance_data.tuple_graphs[root_idx]

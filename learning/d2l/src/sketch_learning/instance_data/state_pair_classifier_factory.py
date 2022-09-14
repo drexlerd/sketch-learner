@@ -35,6 +35,7 @@ class StatePairClassifierFactory:
         expanded_s_idxs = set()
         generated_s_idxs = set()
         goal_distances = instance_data.goal_distance_information.get_goal_distances()
+
         for state_pair in state_pairs:
             source_goal_distance = goal_distances.get(state_pair.source_idx, math.inf)
             target_goal_distance = goal_distances.get(state_pair.target_idx, math.inf)

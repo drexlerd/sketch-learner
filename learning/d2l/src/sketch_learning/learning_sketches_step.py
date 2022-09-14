@@ -87,6 +87,8 @@ def learn_sketch(config, domain_data, instance_datas, make_asp_factory):
     timer = CountDownTimer(config.timeout)
     while not timer.is_expired():
         logging.info(colored(f"Iteration: {i}", "red", "on_grey"))
+        print([instance_data.id for instance_data in instance_datas])
+        print(selected_instance_idxs)
         selected_instance_datas = [instance_datas[subproblem_idx] for subproblem_idx in selected_instance_idxs]
         print(f"Number of selected instances: {len(selected_instance_datas)}")
         print(f"Indices of selected instances:", selected_instance_idxs)
@@ -164,12 +166,12 @@ def learn_sketch(config, domain_data, instance_datas, make_asp_factory):
             print(colored("Sketch solves all instances!", "red", "on_grey"))
             break
         else:
-            print(smallest_unsolved_instance.id)
-            print(selected_instance_idxs)
             if smallest_unsolved_instance.id > max(selected_instance_idxs):
                 selected_instance_idxs = [smallest_unsolved_instance.id]
             else:
                 selected_instance_idxs.append(smallest_unsolved_instance.id)
+            print("Smallest unsolved instance:", smallest_unsolved_instance.id)
+            print("Selected instances:", selected_instance_idxs)
         i += 1
 
     logging.info(colored("Summary:", "green", "on_grey"))
