@@ -1,13 +1,10 @@
 import dlplan
 from termcolor import colored
-from clingo import Symbol, Number
-from typing import Dict, List, MutableSet
-from dataclasses import dataclass, field
-from collections import defaultdict, OrderedDict, deque
+from typing import Dict, MutableSet
+from collections import defaultdict
 
-from ..instance_data.tuple_graph import TupleGraph
 from ..instance_data.state_pair import StatePair
-from ..instance_data.state_pair_classifier import StatePairClassifier, StatePairClassification
+from ..instance_data.state_pair_classifier import StatePairClassification
 from ..instance_data.instance_data import InstanceData
 
 
@@ -29,19 +26,19 @@ class Sketch:
         """
         return [SketchRule(self, rule_idx, dlplan_rule) for rule_idx, dlplan_rule in enumerate(self.dlplan_policy.get_rules())]
 
-    def _verify_delta_optimality(self, instance_data: InstanceData, state_pair_classifier: StatePairClassifier, root_idx_to_closest_subgoal_s_idxs: Dict[int, MutableSet[int]]):
+    def _verify_delta_optimality(self, instance_data: InstanceData, root_idx_to_closest_subgoal_s_idxs: Dict[int, MutableSet[int]]):
         """
         Returns True iff sketch only classifies delta optimal state pairs as good.
         """
         for root_idx, closest_subgoal_s_idxs in root_idx_to_closest_subgoal_s_idxs.items():
             for s_idx in closest_subgoal_s_idxs:
-                if state_pair_classifier.classify(StatePair(root_idx, s_idx)) == StatePairClassification.NOT_DELTA_OPTIMAL:
+                if instance_data.state_pair_classifier.classify(StatePair(root_idx, s_idx)) == StatePairClassification.NOT_DELTA_OPTIMAL:
                     print(colored(f"Not delta optimal state pair is classified as good.", "red", "on_grey"))
                     print("state pair:", f"{str(instance_data.state_information.get_state(root_idx))} -> {str(instance_data.state_information.get_state(s_idx))}")
                     return False
         return True
 
-    def _verify_bounded_width(self, instance_data: InstanceData, tuple_graphs: List[TupleGraph]):
+    def _verify_bounded_width(self, instance_data: InstanceData):
         """
         Returns three parts:
             (1) the closest subgoal states for every alive state,
@@ -52,9 +49,9 @@ class Sketch:
         root_idx_to_closest_subgoal_s_idxs = defaultdict(set)
         root_idx_to_closest_subgoal_t_idxs = defaultdict(set)
         for root_idx in instance_data.state_space.get_state_indices():
-            if not instance_data.goal_distance_information.is_alive(root_idx):
+            if root_idx not in instance_data.tuple_graphs:
                 continue
-            tuple_graph = tuple_graphs[root_idx]
+            tuple_graph = instance_data.tuple_graphs[root_idx]
             assert tuple_graph is not None
             bounded = False
             source_state = instance_data.state_information.get_state(root_idx)
@@ -64,7 +61,7 @@ class Sketch:
                     assert tuple_graph.t_idx_to_s_idxs[t_idx]
                     for s_idx in tuple_graph.t_idx_to_s_idxs[t_idx]:
                         target_state = instance_data.state_information.get_state(s_idx)
-                        if self.dlplan_policy.evaluate_lazy(source_state, target_state) is not None:
+                        if self.dlplan_policy.evaluate_lazy(source_state, target_state, evaluation_cache) is not None:
                             root_idx_to_closest_subgoal_s_idxs[tuple_graph.root_idx].add(s_idx)
                             if instance_data.goal_distance_information.is_deadend(s_idx):
                                 print(colored(f"Sketch leads to an unsolvable state", "red", "on_grey"))
@@ -101,8 +98,8 @@ class Sketch:
                     if target_idx in s_idxs_on_path:
                         print(colored("Sketch cycles", "red", "on_grey"))
                         for s_idx in s_idxs_on_path:
-                            print(f"{s_idx} {str(instance_data.state_space.get_state_ref(s_idx))}")
-                        print(f"{target_idx} {str(instance_data.state_space.get_state_ref(target_idx))}")
+                            print(f"{s_idx} {str(instance_data.state_information.get_state(s_idx))}")
+                        print(f"{target_idx} {str(instance_data.state_information.get_state(target_idx))}")
                         return False
                     if target_idx not in frontier:
                         frontier.add(target_idx)
@@ -116,33 +113,32 @@ class Sketch:
         """
         Returns True iff sketch features separate goal from nongoal states.
         """
-        state_space = instance_data.state_space
         dlplan_policy_features = self.dlplan_policy.get_boolean_features() + self.dlplan_policy.get_numerical_features()
         s_idx_to_feature_valuations = dict()
-        for s_idx in range(state_space.get_num_states()):
+        for s_idx in instance_data.state_space.get_state_indices():
             s_idx_to_feature_valuations[s_idx] = tuple([feature.evaluate(instance_data.state_information.get_state(s_idx)) for feature in dlplan_policy_features])
-        for s_idx_1 in range(state_space.get_num_states()):
-            for s_idx_2 in range(state_space.get_num_states()):
+        for s_idx_1 in instance_data.state_space.get_state_indices():
+            for s_idx_2 in instance_data.state_space.get_state_indices():
                 if (instance_data.goal_distance_information.is_goal(s_idx_1) and \
                     not instance_data.goal_distance_information.is_goal(s_idx_2)):
                     if (s_idx_to_feature_valuations[s_idx_1] == s_idx_to_feature_valuations[s_idx_2]):
                         print(colored("Selected features do not separate goals from non goals.", "red", "on_grey"))
-                        print("Goal state:", str(state_space.get_state_ref(s_idx_1)), s_idx_to_feature_valuations[s_idx_1])
-                        print("Nongoal state:", str(state_space.get_state_ref(s_idx_2)), s_idx_to_feature_valuations[s_idx_2])
+                        print("Goal state:", str(instance_data.state_information.get_state(s_idx_1)), s_idx_to_feature_valuations[s_idx_1])
+                        print("Nongoal state:", str(instance_data.state_information.get_state(s_idx_2)), s_idx_to_feature_valuations[s_idx_2])
                         return False
         return True
 
-    def solves(self, instance_data: InstanceData, tuple_graphs: List[TupleGraph], state_pair_classifier: StatePairClassifier):
+    def solves(self, instance_data: InstanceData):
         """
         Returns True iff the sketch solves the instance, i.e.,
             (1) subproblems have bounded width,
             (2) sketch only classifies delta optimal state pairs as good,
             (3) sketch is acyclic, and
             (4) sketch features separate goals from nongoal states. """
-        root_idx_to_closest_subgoal_s_idxs, root_idx_to_closest_subgoal_t_idxs, has_bounded_width = self._verify_bounded_width(instance_data, tuple_graphs)
+        root_idx_to_closest_subgoal_s_idxs, root_idx_to_closest_subgoal_t_idxs, has_bounded_width = self._verify_bounded_width(instance_data)
         if not has_bounded_width:
             return False
-        if not self._verify_delta_optimality(instance_data, state_pair_classifier, root_idx_to_closest_subgoal_s_idxs):
+        if not self._verify_delta_optimality(instance_data, root_idx_to_closest_subgoal_s_idxs):
             return False
         if not self._verify_acyclicity(instance_data, root_idx_to_closest_subgoal_s_idxs):
             return False

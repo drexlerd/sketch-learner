@@ -1,4 +1,4 @@
-from collections import defaultdict, OrderedDict
+from collections import defaultdict
 from typing import List
 
 from .instance_data import InstanceData
@@ -6,14 +6,11 @@ from .novelty_base import NoveltyBase
 from .novelty_table import NoveltyTable
 from .tuple_graph import TupleGraph
 
-from .tuple_graph_minimizer import TupleGraphMinimizer
-
 
 def partition_states_by_distance(distances):
-    max_distance = max(distances)
+    max_distance = max(distances.keys())
     s_idxs_by_distance = [[] for _ in range(max_distance + 1)]
-    for s_idx in range(len(distances)):
-        distance = distances[s_idx]
+    for s_idx, distance in distances.items():
         s_idxs_by_distance[distance].append(s_idx)
     return s_idxs_by_distance
 

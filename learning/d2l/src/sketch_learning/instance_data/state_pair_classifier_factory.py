@@ -1,18 +1,10 @@
 import math
 
 from collections import deque, defaultdict
-from enum import Enum
-from os import stat
-from re import S
-from typing import List, Dict, Tuple
-
-from .transition_system import TransitionSystem
-from .transition_system_factory import compute_deadends, compute_goal_distances
 
 from .instance_data import InstanceData
 from .state_pair import StatePair
 from .state_pair_classifier import StatePairClassification, StatePairClassifier
-from .tuple_graph import TupleGraph
 
 
 class StatePairClassifierFactory:
@@ -20,7 +12,7 @@ class StatePairClassifierFactory:
         assert delta >= 1
         self.delta = delta
 
-    def make_state_pair_classifier(self, config, instance_data: InstanceData, tuple_graphs: List[TupleGraph]):
+    def make_state_pair_classifier(self, config, instance_data: InstanceData):
         # Compute relevant state pairs
         state_pairs = []
         state_pair_to_distance = dict()
@@ -29,8 +21,8 @@ class StatePairClassifierFactory:
         for s_idx in instance_data.state_space.get_state_indices():
             if not instance_data.goal_distance_information.is_alive(s_idx):
                 continue
-            assert tuple_graphs[s_idx] is not None
-            tuple_graph = tuple_graphs[s_idx]
+            assert instance_data.tuple_graphs[s_idx] is not None
+            tuple_graph = instance_data.tuple_graphs[s_idx]
             for distance, target_idxs in enumerate(tuple_graph.s_idxs_by_distance):
                 for target_idx in target_idxs:
                     state_pair = StatePair(tuple_graph.root_idx, target_idx)
@@ -38,18 +30,17 @@ class StatePairClassifierFactory:
                     state_pair_to_distance[state_pair] = distance
                     source_idx_to_state_pairs[tuple_graph.root_idx].add(state_pair)
                     target_idx_to_state_pairs[target_idx].add(state_pair)
-
         # Classify state pairs
         state_pair_to_classification = dict()
         expanded_s_idxs = set()
         generated_s_idxs = set()
         goal_distances = instance_data.goal_distance_information.get_goal_distances()
         for state_pair in state_pairs:
-            source_goal_distance = goal_distances[state_pair.source_idx]
-            target_goal_distance = goal_distances[state_pair.target_idx]
+            source_goal_distance = goal_distances.get(state_pair.source_idx, math.inf)
+            target_goal_distance = goal_distances.get(state_pair.target_idx, math.inf)
             # what value will INF be?
-            assert source_goal_distance < 100000000
-            assert target_goal_distance < 100000000
+            assert source_goal_distance != math.inf or source_goal_distance < 100000000
+            assert source_goal_distance != math.inf or target_goal_distance < 100000000
             # self loops
             if state_pair.source_idx == state_pair.target_idx:
                 state_pair_to_classification[state_pair] = StatePairClassification.NOT_DELTA_OPTIMAL

@@ -6,10 +6,8 @@ from typing import List
 
 from .state_pair_equivalence import RuleEquivalences, StatePairEquivalence
 from .domain_feature_data import DomainFeatureData
-from .instance_feature_data import InstanceFeatureData
 
-from ..instance_data.state_pair import StatePair
-from ..instance_data.state_pair_classifier import StatePairClassifier
+from ..instance_data.instance_data import InstanceData
 
 
 @dataclass
@@ -32,24 +30,24 @@ class StatePairEquivalenceFactory:
     def __init__(self):
         self.statistics = StatePairEquivalenceStatistics()
 
-    def make_state_pair_equivalences(self, domain_feature_data: DomainFeatureData, state_pair_classifiers_by_instance: List[StatePairClassifier], instance_feature_datas_by_instance: List[InstanceFeatureData]):
+    def make_state_pair_equivalences(self, domain_feature_data: DomainFeatureData, instance_datas: List[InstanceData]):
         policy_builder = dlplan.PolicyBuilder()
         policy_boolean_features = [policy_builder.add_boolean_feature(b) for b in domain_feature_data.boolean_features]
         policy_numerical_features = [policy_builder.add_numerical_feature(n) for n in domain_feature_data.numerical_features]
         rules = []
         rule_repr_to_idx = dict()
         state_pair_equivalences = []
-        for state_pair_classifier, instance_feature_data in zip(state_pair_classifiers_by_instance, instance_feature_datas_by_instance):
+        for instance_data in instance_datas:
             self.statistics.increment_num_state_pairs()
             r_idx_to_state_pairs = defaultdict(list)
             state_pair_to_r_idx = dict()
-            for state_pair in state_pair_classifier.state_pair_to_classification.keys():
+            for state_pair in instance_data.state_pair_classifier.state_pair_to_classification.keys():
                 source_idx = state_pair.source_idx
                 target_idx = state_pair.target_idx
                 # add conditions
-                conditions = self._make_conditions(policy_builder, source_idx, policy_boolean_features, policy_numerical_features, instance_feature_data)
+                conditions = self._make_conditions(policy_builder, source_idx, policy_boolean_features, policy_numerical_features, instance_data.instance_feature_data)
                 # add effects
-                effects = self._make_effects(policy_builder, source_idx, target_idx, policy_boolean_features, policy_numerical_features, instance_feature_data)
+                effects = self._make_effects(policy_builder, source_idx, target_idx, policy_boolean_features, policy_numerical_features, instance_data.instance_feature_data)
                 # add rule
                 rule = policy_builder.add_rule(conditions, effects)
                 rule_repr = rule.compute_repr()
@@ -62,8 +60,8 @@ class StatePairEquivalenceFactory:
                     self.statistics.increment_num_equivalences()
                 r_idx_to_state_pairs[r_idx].append(state_pair)
                 state_pair_to_r_idx[state_pair] = r_idx
-            state_pair_equivalences.append(StatePairEquivalence(r_idx_to_state_pairs, state_pair_to_r_idx))
-        return RuleEquivalences(rules), state_pair_equivalences
+            instance_data.state_pair_equivalence = StatePairEquivalence(r_idx_to_state_pairs, state_pair_to_r_idx)
+        return RuleEquivalences(rules)
 
     def _make_conditions(self, policy_builder: dlplan.PolicyBuilder, source_idx: int, policy_boolean_features, policy_numerical_features, instance_feature_data):
         """ Create conditions over all features that are satisfied in source_idx """

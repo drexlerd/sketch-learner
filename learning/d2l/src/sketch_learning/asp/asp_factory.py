@@ -6,15 +6,10 @@ from typing import List
 from .returncodes import ClingoExitCode
 
 from ..instance_data.instance_data import InstanceData
-from ..instance_data.tuple_graph import TupleGraph
-from ..instance_data.state_pair_classifier import StatePairClassifier
 from ..iteration_data.domain_feature_data import DomainFeatureData
-from ..iteration_data.instance_feature_data import InstanceFeatureData
-from ..iteration_data.state_pair_equivalence import RuleEquivalences, StatePairEquivalence
-from ..iteration_data.tuple_graph_equivalence import TupleGraphEquivalence
+from ..iteration_data.state_pair_equivalence import RuleEquivalences
 
 from .facts.instance_data.instance_data import InstanceDataFactFactory
-from .facts.instance_data.tuple_graph import TupleGraphFactFactory
 from .facts.instance_data.state_pair_classifier import StatePairClassifierFactFactory
 from .facts.iteration_data.domain_feature_data import DomainFeatureDataFactFactory
 from .facts.iteration_data.equivalence_data import EquivalenceDataFactFactory
@@ -47,24 +42,24 @@ class ASPFactory:
         self.ctl.add("delta_optimal", ["i", "c", "s1", "s2"], "delta_optimal(i,c,s1,s2).")
         self.ctl.add("not_delta_optimal", ["i", "c", "s1", "s2"], "not_delta_optimal(i,c,s1,s2).")
 
-    def make_facts(self, domain_feature_data: DomainFeatureData, rule_equivalences: RuleEquivalences, instance_datas: List[InstanceData], tuple_graphs_by_instance: List[List[TupleGraph]], tuple_graph_equivalences_by_instance: List[List[TupleGraphEquivalence]], state_pair_equivalences_by_instance: List[StatePairEquivalence], state_pair_classifiers_by_instance: List[StatePairClassifier], instance_feature_datas_by_instance: List[InstanceFeatureData]):
+    def make_facts(self, domain_feature_data: DomainFeatureData, rule_equivalences: RuleEquivalences, instance_datas: List[InstanceData]):
         facts = []
         facts.extend(DomainFeatureDataFactFactory().make_facts(domain_feature_data))
         facts.extend(EquivalenceDataFactFactory().make_facts(rule_equivalences, domain_feature_data))
-        for state_pair_equivalence, instance_data, state_pair_classifier, instance_feature_data in zip(state_pair_equivalences_by_instance, instance_datas, state_pair_classifiers_by_instance, instance_feature_datas_by_instance):
+        for instance_data in instance_datas:
             facts.extend(InstanceDataFactFactory().make_facts(instance_data))
-            facts.extend(InstanceFeatureDataFactFactory().make_facts(instance_data.id, instance_feature_data, state_pair_classifier))
-            facts.extend(StatePairClassifierFactFactory().make_facts(instance_data.id, state_pair_classifier, state_pair_equivalence))
+            facts.extend(InstanceFeatureDataFactFactory().make_facts(instance_data))
+            facts.extend(StatePairClassifierFactFactory().make_facts(instance_data))
         return facts
 
-    def make_initial_d2_facts(self, state_pair_classifiers_by_instance: List[StatePairClassifier], state_pair_equivalences_by_instance: List[StatePairEquivalence]):
+    def make_initial_d2_facts(self, instance_datas: List[InstanceData]):
         """ T_0 facts """
         facts = set()
-        for state_pair_classifier, state_pair_equivalence in zip(state_pair_classifiers_by_instance, state_pair_equivalences_by_instance):
-            for s_idx, state_pairs in state_pair_classifier.source_idx_to_state_pairs.items():
+        for instance_data in instance_datas:
+            for s_idx, state_pairs in instance_data.state_pair_classifier.source_idx_to_state_pairs.items():
                 equivalences = set()
                 for state_pair in state_pairs:
-                    equivalences.add(state_pair_equivalence.state_pair_to_r_idx[state_pair])
+                    equivalences.add(instance_data.state_pair_equivalence.state_pair_to_r_idx[state_pair])
                 for i, eq_1 in enumerate(equivalences):
                     for j, eq_2 in enumerate(equivalences):
                         if i < j:

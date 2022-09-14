@@ -1,17 +1,10 @@
-from clingo import Control, Number, Symbol
-
-from collections import defaultdict
 from typing import List
 
 from .asp_factory import ASPFactory
 
 from ..instance_data.instance_data import InstanceData
-from ..instance_data.tuple_graph import TupleGraph
-from ..instance_data.state_pair_classifier import StatePairClassifier
 from ..iteration_data.domain_feature_data import DomainFeatureData
-from ..iteration_data.instance_feature_data import InstanceFeatureData
-from ..iteration_data.state_pair_equivalence import RuleEquivalences, StatePairEquivalence
-from ..iteration_data.tuple_graph_equivalence import TupleGraphEquivalence
+from ..iteration_data.state_pair_equivalence import RuleEquivalences
 
 from .facts.instance_data.tuple_graph import TupleGraphFactFactory
 
@@ -28,10 +21,10 @@ class SketchASPFactory(ASPFactory):
         self.ctl.add("r_distance", ["i", "s", "r", "d"], "r_distance(i,s,r,d).")
         self.ctl.load(str(config.asp_sketch_location))
 
-    def make_facts(self, domain_feature_data: DomainFeatureData, rule_equivalences: RuleEquivalences, instance_datas: List[InstanceData], tuple_graphs_by_instance: List[List[TupleGraph]], tuple_graph_equivalences_by_instance: List[List[TupleGraphEquivalence]], state_pair_equivalences_by_instance: List[StatePairEquivalence], state_pair_classifiers_by_instance: List[StatePairClassifier], instance_feature_datas_by_instance: List[InstanceFeatureData]):
+    def make_facts(self, domain_feature_data: DomainFeatureData, rule_equivalences: RuleEquivalences, instance_datas: List[InstanceData]):
         """ Make facts from data in an interation. """
-        facts = super().make_facts(domain_feature_data, rule_equivalences, instance_datas, tuple_graphs_by_instance, tuple_graph_equivalences_by_instance, state_pair_equivalences_by_instance, state_pair_classifiers_by_instance, instance_feature_datas_by_instance)
-        for instance_data, tuple_graphs, tuple_graph_equivalences, state_pair_equivalence in zip(instance_datas, tuple_graphs_by_instance, tuple_graph_equivalences_by_instance, state_pair_equivalences_by_instance):
-            for root_idx in tuple_graphs.keys():
-                facts.extend(TupleGraphFactFactory().make_facts(instance_data.id, tuple_graphs[root_idx], state_pair_equivalence, tuple_graph_equivalences[root_idx]))
+        facts = super().make_facts(domain_feature_data, rule_equivalences, instance_datas)
+        for instance_data in instance_datas:
+            for s_idx in instance_data.state_space.get_state_indices():
+                facts.extend(TupleGraphFactFactory().make_facts(instance_data, s_idx))
         return facts

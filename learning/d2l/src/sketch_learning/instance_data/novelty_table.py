@@ -1,7 +1,4 @@
-import dlplan
-import itertools
 from typing import List
-from dataclasses import dataclass
 
 from .novelty_base import NoveltyBase
 
@@ -39,4 +36,3 @@ class NoveltyTable():
         """ Marks all tuple indices as not novel. """
         for t_idx in t_idxs:
             self.table[t_idx] = True
-

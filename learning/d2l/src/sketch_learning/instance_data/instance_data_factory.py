@@ -9,21 +9,23 @@ from typing import Dict, MutableSet
 
 from sketch_learning.iteration_data.sketch import SketchRule
 
-from ..util.command import execute, read_file
+from ..util.command import read_file
 
 from .instance_data import InstanceData
-from .transition_system_utils import compute_goal_distances ,compute_deadends
-from .transition_system_factory import TransitionSystemFactory
-from .return_codes import ReturnCode
 
 
 class InstanceDataFactory:
     def make_instance_datas(self, config, domain_data):
         instance_datas = []
         for instance_information in config.instance_informations:
-            state_space = dlplan.StateSpaceGenerator().generate_state_space(str(domain_data.domain_filename), str(instance_information.instance_filename), domain_data.vocabulary_info)
+            logging.info(f"Constructing InstanceData for filename {instance_information.instance_filename}")
+            exitcode = dlplan.StateSpaceGenerator().generate_state_space(str(domain_data.domain_filename), str(instance_information.instance_filename))
+            state_space = dlplan.StateSpaceReader().read(domain_data.vocabulary_info)
             goal_distance_information = state_space.compute_goal_distance_information()
-            if goal_distance_information.is_solvable():
+            if not goal_distance_information.is_solvable() or \
+                goal_distance_information.is_trivially_solvable():
+                continue
+            elif goal_distance_information.is_solvable():
                 state_information = state_space.compute_state_information()
                 instance_datas.append(InstanceData(len(instance_datas), instance_information, domain_data, state_space, goal_distance_information, state_information))
         # Sort the instances according to size and fix the indices afterwards

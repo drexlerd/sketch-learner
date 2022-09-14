@@ -2,11 +2,7 @@ import logging
 import dlplan
 import tarski
 
-from typing import List
 from dataclasses import dataclass
-
-from tarski.io import PDDLReader
-
 
 
 @dataclass

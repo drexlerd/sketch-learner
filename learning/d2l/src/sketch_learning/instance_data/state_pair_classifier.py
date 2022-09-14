@@ -1,5 +1,5 @@
 from enum import Enum
-from typing import Dict, Tuple, List, MutableSet
+from typing import Dict, List, MutableSet
 
 from .state_pair import StatePair
 

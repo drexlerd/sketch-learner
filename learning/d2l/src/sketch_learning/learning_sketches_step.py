@@ -36,24 +36,25 @@ def run(config, data, rng):
     logging.info(colored(f"..done", "blue", "on_grey"))
 
     logging.info(colored(f"Initializing TupleGraphs...", "blue", "on_grey"))
-    tuple_graphs_by_instance = [TupleGraphFactory(config.width).make_tuple_graphs(instance_data) for instance_data in instance_datas]
+    for instance_data in instance_datas:
+        instance_data.tuple_graphs = TupleGraphFactory(config.width).make_tuple_graphs(instance_data)
     logging.info(colored(f"..done", "blue", "on_grey"))
 
     logging.info(colored(f"Initializing StatePairClassifiers...", "blue", "on_grey"))
-    state_pair_classifiers_by_instance = [StatePairClassifierFactory(config.delta).make_state_pair_classifier(config, instance_data, tuple_graphs) for instance_data, tuple_graphs in zip(instance_datas, tuple_graphs_by_instance)]
+    for instance_data in instance_datas:
+        instance_data.state_pair_classifier = StatePairClassifierFactory(config.delta).make_state_pair_classifier(config, instance_data)
     logging.info(colored(f"..done", "blue", "on_grey"))
 
-    for instance_data, state_pair_classifier in zip(instance_datas, state_pair_classifiers_by_instance):
+    for instance_data in instance_datas:
         # Restrict state space to subset of states
-        instance_data.state_space.print()
-        instance_data.state_space = dlplan.StateSpace(instance_data.state_space, state_pair_classifier.expanded_s_idxs, state_pair_classifier.generated_s_idxs)
+        instance_data.state_space = dlplan.StateSpace(instance_data.state_space, instance_data.state_pair_classifier.expanded_s_idxs, instance_data.state_pair_classifier.generated_s_idxs)
         instance_data.goal_distance_information = instance_data.state_space.compute_goal_distance_information()
         if not instance_data.goal_distance_information.is_solvable() or \
             instance_data.goal_distance_information.is_trivially_solvable():  # remove not
             print("Did not filter unsolvable or trivially solvable instance")
             exit(1)
 
-    sketch, structurally_minimized_sketch, empirically_minimized_sketch = learn_sketch(config, domain_data, instance_datas, tuple_graphs_by_instance, state_pair_classifiers_by_instance, make_sketch_asp_factory)
+    sketch, structurally_minimized_sketch, empirically_minimized_sketch = learn_sketch(config, domain_data, instance_datas, make_sketch_asp_factory)
 
     print("Summary:")
     print("Resulting sketch:")
@@ -69,9 +70,9 @@ def run(config, data, rng):
     return ExitCode.Success, None
 
 
-def compute_smallest_unsolved_instance(sketch: Sketch, instance_datas: List[InstanceData], tuple_graphs_by_instance: List[List[TupleGraph]], state_pair_classifiers_by_instance: List[StatePairClassifier]):
-    for instance_data, tuple_graphs, state_pair_classifier in zip(instance_datas, tuple_graphs_by_instance, state_pair_classifiers_by_instance):
-        if not sketch.solves(instance_data, tuple_graphs, state_pair_classifier):
+def compute_smallest_unsolved_instance(sketch: Sketch, instance_datas: List[InstanceData]):
+    for instance_data in instance_datas:
+        if not sketch.solves(instance_data):
             return instance_data
     return None
 
@@ -80,15 +81,13 @@ def make_sketch_asp_factory(config):
     return SketchASPFactory(config)
 
 
-def learn_sketch(config, domain_data, instance_datas, tuple_graphs_by_instance, state_pair_classifiers_by_instance, make_asp_factory):
+def learn_sketch(config, domain_data, instance_datas, make_asp_factory):
     i = 0
     selected_instance_idxs = [0]
     timer = CountDownTimer(config.timeout)
     while not timer.is_expired():
         logging.info(colored(f"Iteration: {i}", "red", "on_grey"))
         selected_instance_datas = [instance_datas[subproblem_idx] for subproblem_idx in selected_instance_idxs]
-        tuple_graphs_by_selected_instance = [tuple_graphs_by_instance[subproblem_idx] for subproblem_idx in selected_instance_idxs]
-        state_pair_classifiers_by_selected_instance = [state_pair_classifiers_by_instance[subproblem_idx] for subproblem_idx in selected_instance_idxs]
         print(f"Number of selected instances: {len(selected_instance_datas)}")
         print(f"Indices of selected instances:", selected_instance_idxs)
 
@@ -99,16 +98,18 @@ def learn_sketch(config, domain_data, instance_datas, tuple_graphs_by_instance, 
         logging.info(colored(f"..done", "blue", "on_grey"))
 
         logging.info(colored(f"Initializing InstanceFeatureDatas...", "blue", "on_grey"))
-        instance_feature_datas_by_selected_instance = [InstanceFeatureDataFactory().make_instance_feature_data(instance_data, domain_feature_data) for instance_data in selected_instance_datas]
+        for instance_data in selected_instance_datas:
+            instance_data.instance_feature_data = InstanceFeatureDataFactory().make_instance_feature_data(instance_data, domain_feature_data)
         logging.info(colored(f"..done", "blue", "on_grey"))
 
         logging.info(colored(f"Initializing StatePairEquivalenceDatas...", "blue", "on_grey"))
         state_pair_equivalence_factory = StatePairEquivalenceFactory()
-        rule_equivalences, state_pair_equivalences_by_selected_instance = state_pair_equivalence_factory.make_state_pair_equivalences(domain_feature_data, state_pair_classifiers_by_selected_instance, instance_feature_datas_by_selected_instance)
+        rule_equivalences = state_pair_equivalence_factory.make_state_pair_equivalences(domain_feature_data, selected_instance_datas)
         logging.info(colored(f"..done", "blue", "on_grey"))
 
         logging.info(colored(f"Initializing TupleGraphEquivalences...", "blue", "on_grey"))
-        tuple_graph_equivalences_by_selected_instance = [TupleGraphEquivalenceFactory().make_tuple_graph_equivalence_datas(instance_data, tuple_graphs, state_pair_equivalences) for instance_data, tuple_graphs, state_pair_equivalences in zip(selected_instance_datas, tuple_graphs_by_selected_instance, state_pair_equivalences_by_selected_instance)]
+        for instance_data in selected_instance_datas:
+            instance_data.tuple_graph_equivalences = TupleGraphEquivalenceFactory().make_tuple_graph_equivalence_datas(instance_data)
         logging.info(colored(f"..done", "blue", "on_grey"))
 
         # Iteratively add D2-separation constraints
@@ -117,9 +118,9 @@ def learn_sketch(config, domain_data, instance_datas, tuple_graphs_by_instance, 
         j = 0
         while True:
             asp_factory = make_asp_factory(config)
-            facts = asp_factory.make_facts(domain_feature_data, rule_equivalences, selected_instance_datas, tuple_graphs_by_selected_instance, tuple_graph_equivalences_by_selected_instance, state_pair_equivalences_by_selected_instance, state_pair_classifiers_by_selected_instance, instance_feature_datas_by_selected_instance)
+            facts = asp_factory.make_facts(domain_feature_data, rule_equivalences, selected_instance_datas)
             if j == 0:
-                d2_facts.update(asp_factory.make_initial_d2_facts(state_pair_classifiers_by_selected_instance, state_pair_equivalences_by_selected_instance))
+                d2_facts.update(asp_factory.make_initial_d2_facts(selected_instance_datas))
                 print("Number of initial D2 facts:", len(d2_facts))
             elif j > 0:
                 unsatisfied_d2_facts = asp_factory.make_unsatisfied_d2_facts(symbols, rule_equivalences)
@@ -144,15 +145,15 @@ def learn_sketch(config, domain_data, instance_datas, tuple_graphs_by_instance, 
             sketch = Sketch(DlplanPolicyFactory().make_dlplan_policy_from_answer_set_d2(symbols, domain_feature_data, rule_equivalences), width=0)
             logging.info("Learned the following sketch:")
             sketch.print()
-            if compute_smallest_unsolved_instance(sketch, selected_instance_datas, tuple_graphs_by_selected_instance, state_pair_classifiers_by_selected_instance) is None:
+            if compute_smallest_unsolved_instance(sketch, selected_instance_datas) is None:
                 # Stop adding D2-separation constraints
                 # if sketch solves all training instances by luck
                 break
             j += 1
 
         logging.info(colored(f"Verifying learned sketch...", "blue", "on_grey"))
-        assert compute_smallest_unsolved_instance(sketch, selected_instance_datas, tuple_graphs_by_selected_instance, state_pair_classifiers_by_selected_instance) is None
-        smallest_unsolved_instance = compute_smallest_unsolved_instance(sketch, instance_datas, tuple_graphs_by_instance, state_pair_classifiers_by_instance)
+        assert compute_smallest_unsolved_instance(sketch, selected_instance_datas) is None
+        smallest_unsolved_instance = compute_smallest_unsolved_instance(sketch, instance_datas)
         logging.info(colored(f"..done", "blue", "on_grey"))
 
         logging.info(colored("Iteration summary:", "yellow", "on_grey"))
@@ -183,12 +184,10 @@ def learn_sketch(config, domain_data, instance_datas, tuple_graphs_by_instance, 
     structurally_minimized_sketch.print()
     print("Resulting empirically minimized sketch:")
     dlplan_state_pairs = []
-    for instance_idx in selected_instance_idxs:
-        instance_data = instance_datas[instance_idx]
-        state_pair_classifier = state_pair_classifiers_by_instance[instance_idx]
+    for instance_data in selected_instance_datas:
         dlplan_state_pairs.extend([[
             instance_data.state_information.get_state(state_pair.source_idx),
-            instance_data.state_information.get_state(state_pair.target_idx)] for state_pair in state_pair_classifier.state_pair_to_classification.keys()])
+            instance_data.state_information.get_state(state_pair.target_idx)] for state_pair in instance_data.state_pair_classifier.state_pair_to_classification.keys()])
     true_state_pairs = [state_pair for state_pair in dlplan_state_pairs if structurally_minimized_sketch.dlplan_policy.evaluate_lazy(state_pair[0], state_pair[1])]
     false_state_pairs = [state_pair for state_pair in dlplan_state_pairs if not structurally_minimized_sketch.dlplan_policy.evaluate_lazy(state_pair[0], state_pair[1])]
     empirically_minimized_sketch = Sketch(dlplan.PolicyMinimizer().minimize(structurally_minimized_sketch.dlplan_policy, true_state_pairs, false_state_pairs), sketch.width)
