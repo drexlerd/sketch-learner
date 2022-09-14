@@ -44,12 +44,12 @@ def run(config, data, rng):
     logging.info(colored(f"..done", "blue", "on_grey"))
 
     for instance_data, state_pair_classifier in zip(instance_datas, state_pair_classifiers_by_instance):
-        # Restrict transition system to subset of states
-        all_states = set([i for i in range(instance_data.state_space.get_num_states())])
-        pruned_states = all_states.difference(set(state_pair_classifier.generated_s_idxs))
-        instance_data.state_space.prune_states(pruned_states)
-        if not instance_data.state_space.is_solvable() or \
-            instance_data.state_space.is_trivially_solvable():  # remove not
+        # Restrict state space to subset of states
+        instance_data.state_space.print()
+        instance_data.state_space = dlplan.StateSpace(instance_data.state_space, state_pair_classifier.expanded_s_idxs, state_pair_classifier.generated_s_idxs)
+        instance_data.goal_distance_information = instance_data.state_space.compute_goal_distance_information()
+        if not instance_data.goal_distance_information.is_solvable() or \
+            instance_data.goal_distance_information.is_trivially_solvable():  # remove not
             print("Did not filter unsolvable or trivially solvable instance")
             exit(1)
 
@@ -187,8 +187,8 @@ def learn_sketch(config, domain_data, instance_datas, tuple_graphs_by_instance, 
         instance_data = instance_datas[instance_idx]
         state_pair_classifier = state_pair_classifiers_by_instance[instance_idx]
         dlplan_state_pairs.extend([[
-            instance_data.state_space.get_state_ref(state_pair.source_idx),
-            instance_data.state_space.get_state_ref(state_pair.target_idx)] for state_pair in state_pair_classifier.state_pair_to_classification.keys()])
+            instance_data.state_information.get_state(state_pair.source_idx),
+            instance_data.state_information.get_state(state_pair.target_idx)] for state_pair in state_pair_classifier.state_pair_to_classification.keys()])
     true_state_pairs = [state_pair for state_pair in dlplan_state_pairs if structurally_minimized_sketch.dlplan_policy.evaluate_lazy(state_pair[0], state_pair[1])]
     false_state_pairs = [state_pair for state_pair in dlplan_state_pairs if not structurally_minimized_sketch.dlplan_policy.evaluate_lazy(state_pair[0], state_pair[1])]
     empirically_minimized_sketch = Sketch(dlplan.PolicyMinimizer().minimize(structurally_minimized_sketch.dlplan_policy, true_state_pairs, false_state_pairs), sketch.width)

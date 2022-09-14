@@ -21,14 +21,13 @@ class StatePairClassifierFactory:
         self.delta = delta
 
     def make_state_pair_classifier(self, config, instance_data: InstanceData, tuple_graphs: List[TupleGraph]):
-        state_space = instance_data.state_space
         # Compute relevant state pairs
         state_pairs = []
         state_pair_to_distance = dict()
         source_idx_to_state_pairs = defaultdict(set)
         target_idx_to_state_pairs = defaultdict(set)
-        for s_idx in range(state_space.get_num_states()):
-            if not state_space.is_alive(s_idx):
+        for s_idx in instance_data.state_space.get_state_indices():
+            if not instance_data.goal_distance_information.is_alive(s_idx):
                 continue
             assert tuple_graphs[s_idx] is not None
             tuple_graph = tuple_graphs[s_idx]
@@ -44,7 +43,7 @@ class StatePairClassifierFactory:
         state_pair_to_classification = dict()
         expanded_s_idxs = set()
         generated_s_idxs = set()
-        goal_distances = state_space.compute_distances(state_space.get_goal_state_indices_ref(), False)
+        goal_distances = instance_data.goal_distance_information.get_goal_distances()
         for state_pair in state_pairs:
             source_goal_distance = goal_distances[state_pair.source_idx]
             target_goal_distance = goal_distances[state_pair.target_idx]
@@ -74,8 +73,8 @@ class StatePairClassifierFactory:
             expanded_s_idxs_2 = set()
             generated_s_idxs_2 = set()
             queue = deque()
-            queue.append(state_space.get_initial_state_index())
-            generated_s_idxs_2.add(state_space.get_initial_state_index())
+            queue.append(instance_data.state_space.get_initial_state_index())
+            generated_s_idxs_2.add(instance_data.state_space.get_initial_state_index())
             while queue:
                 source_idx = queue.popleft()
                 has_delta_optimal = not all([state_pair_to_classification[state_pair] == StatePairClassification.NOT_DELTA_OPTIMAL for state_pair in source_idx_to_state_pairs[source_idx] if state_pair_to_distance[state_pair] > 0])
@@ -94,5 +93,5 @@ class StatePairClassifierFactory:
             expanded_s_idxs = expanded_s_idxs_2
             generated_s_idxs = generated_s_idxs_2
 
-        state_pair_classifier = StatePairClassifier(self.delta, state_pair_to_classification, state_pair_to_distance, source_idx_to_state_pairs, list(expanded_s_idxs), list(generated_s_idxs))
+        state_pair_classifier = StatePairClassifier(self.delta, state_pair_to_classification, state_pair_to_distance, source_idx_to_state_pairs, expanded_s_idxs, generated_s_idxs)
         return state_pair_classifier

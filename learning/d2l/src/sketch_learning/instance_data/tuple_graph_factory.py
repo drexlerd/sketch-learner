@@ -24,8 +24,8 @@ class TupleGraphFactory:
 
     def make_tuple_graphs(self, instance_data: InstanceData):
         tuple_graphs = dict()
-        for s_idx in range(instance_data.state_space.get_num_states()):
-            if instance_data.state_space.is_alive(s_idx):
+        for s_idx in instance_data.state_space.get_state_indices():
+            if instance_data.goal_distance_information.is_alive(s_idx):
                 tuple_graphs[s_idx] = self.make_tuple_graph(instance_data, s_idx)
         return tuple_graphs
 
@@ -94,7 +94,7 @@ class TupleGraphFactory:
             return all tuple indices that are novel in at least one state.  """
         t_idxs = set()  # the novel tuples with distance d
         for s_idx in s_idxs_in_layer:
-            atom_idxs = instance_data.state_space.get_state_ref(s_idx).get_atom_idxs()
+            atom_idxs = instance_data.state_information.get_state(s_idx).get_atom_idxs()
             t_idxs_for_s_idx = novelty_table.compute_novel_tuples(atom_idxs)
             if t_idxs_for_s_idx:
                 # S*(s, t)
