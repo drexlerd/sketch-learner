@@ -34,7 +34,7 @@ def generate_experiment(expid, domain_dir, domain, **kwargs):
         # Feature generator settings
         complexity=8,
         time_limit=3600,
-        feature_limit=10000,
+        feature_limit=1000000,
         num_threads_feature_generator=1,
 
         # degree of suboptimality
