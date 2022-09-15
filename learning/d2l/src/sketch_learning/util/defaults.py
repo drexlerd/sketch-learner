@@ -24,18 +24,11 @@ def generate_experiment(expid, domain_dir, domain, **kwargs):
         asp_sketch_location=(BASEDIR / "src/sketch_learning/asp/sketch_d2.lp"),
         asp_policy_location=(BASEDIR / "src/sketch_learning/asp/policy_d2.lp"),
 
-        sse_location=(BASEDIR / "libs" / "scorpion"),
-        sse_time_limit=5,
-
-        # Sketch settings
-        tuple_graph_if_width_exceeds=False,
-        max_sketch_rules=6,
-
         # Feature generator settings
         complexity=8,
         time_limit=3600,
         feature_limit=1000000,
-        num_threads_feature_generator=1,
+        num_threads_feature_generator=8,
 
         # degree of suboptimality
         delta=1.0,
@@ -57,7 +50,7 @@ def generate_experiment(expid, domain_dir, domain, **kwargs):
     parameters["domain_dir"] = domain_dir
 
     # root level 0 directory for experimental data
-    parameters['experiment_dir'] = parameters['workspace'] / f"{expid.replace(':', '_')}_{parameters['width']}_{parameters['max_sketch_rules']}_{parameters['complexity']}"
+    parameters['experiment_dir'] = parameters['workspace'] / f"{expid.replace(':', '_')}_{parameters['width']}_{parameters['complexity']}"
     create_experiment_workspace(parameters["experiment_dir"], rm_if_existed=False)
 
     # level 1 directory to store information of each iteration

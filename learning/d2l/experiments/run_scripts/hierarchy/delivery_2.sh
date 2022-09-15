@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-#SBATCH -J delivery_2_6_8
+#SBATCH -J delivery_2_12
 #SBATCH -t 3-00:00:00
 #SBATCH -C fat --exclusive
 #SBATCH --mail-type=FAIL
@@ -9,11 +9,10 @@
 DOMAIN=delivery
 EXPERIMENT=hierarchy_dist
 WIDTH=2
-MAX_SKETCH_RULES=6
-COMPLEXITY=15
+COMPLEXITY=12
 
-EXPERIMENT_NAME=${DOMAIN}_${EXPERIMENT}_${WIDTH}_${MAX_SKETCH_RULES}_${COMPLEXITY}
+EXPERIMENT_NAME=${DOMAIN}_${EXPERIMENT}_${WIDTH}_${COMPLEXITY}
 
 # Run a single task in the foreground.
 mkdir -p ${D2L_PATH}/workspace/${EXPERIMENT_NAME}
-./../../run.py ${DOMAIN}:${EXPERIMENT} -w ${WIDTH} -r ${MAX_SKETCH_RULES} -c ${COMPLEXITY} > "${D2L_PATH}/workspace/${EXPERIMENT_NAME}/run.log"
+./../../run.py ${DOMAIN}:${EXPERIMENT} -w ${WIDTH} -c ${COMPLEXITY} > "${D2L_PATH}/workspace/${EXPERIMENT_NAME}/run.log"

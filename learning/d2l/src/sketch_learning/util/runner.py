@@ -33,7 +33,7 @@ def report_and_exit(msg):
     sys.exit(-1)
 
 
-def do(expid, steps=None, workspace=None, show_steps_only=False, width=None, max_sketch_rules=None, complexity=None):
+def do(expid, steps=None, workspace=None, show_steps_only=False, width=None, complexity=None):
     name_parts = expid.split(":")
     if len(name_parts) != 2:
         report_and_exit(f'Wrong experiment ID syntax "{expid}". Expected format <domain>:<experiment_name>')
@@ -57,8 +57,6 @@ def do(expid, steps=None, workspace=None, show_steps_only=False, width=None, max
         parameters["workspace"] = workspace
     if width is not None:
         parameters["width"] = width
-    if max_sketch_rules is not None:
-        parameters["max_sketch_rules"] = max_sketch_rules
     if complexity is not None:
         parameters["complexity"] = complexity
 
@@ -75,4 +73,4 @@ def do(expid, steps=None, workspace=None, show_steps_only=False, width=None, max
 
 def run():
     args = setup_argparser().parse_args(sys.argv[1:])
-    do(args.exp_id, args.steps, args.workspace, args.show, args.width, args.max_sketch_rules, args.complexity)
+    do(args.exp_id, args.steps, args.workspace, args.show, args.width, args.complexity)

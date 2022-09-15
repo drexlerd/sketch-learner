@@ -90,7 +90,6 @@ def setup_argparser():
                              ' already run and skip them). By default, run them all.')
 
     parser.add_argument('-w', '--width', default=None, type=int, help='upper bound on the width')
-    parser.add_argument('-r', '--max_sketch_rules', default=None, type=int, help='upper bound on the number of sketch rules')
     parser.add_argument('-c', '--complexity', default=None, type=int, help='upper bound on the feature complexity')
 
     return parser
