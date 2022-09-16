@@ -33,7 +33,7 @@ def report_and_exit(msg):
     sys.exit(-1)
 
 
-def do(expid, steps=None, workspace=None, show_steps_only=False, width=None, complexity=None):
+def do(expid, steps=None, workspace=None, show_steps_only=False, width=None, concept_complexity_limit=None, role_complexity_limit=None, boolean_complexity_limit=None, numerical_complexity_limit=None):
     name_parts = expid.split(":")
     if len(name_parts) != 2:
         report_and_exit(f'Wrong experiment ID syntax "{expid}". Expected format <domain>:<experiment_name>')
@@ -57,8 +57,14 @@ def do(expid, steps=None, workspace=None, show_steps_only=False, width=None, com
         parameters["workspace"] = workspace
     if width is not None:
         parameters["width"] = width
-    if complexity is not None:
-        parameters["complexity"] = complexity
+    if concept_complexity_limit is not None:
+        parameters["concept_complexity_limit"] = concept_complexity_limit
+    if role_complexity_limit is not None:
+        parameters["role_complexity_limit"] = role_complexity_limit
+    if boolean_complexity_limit is not None:
+        parameters["boolean_complexity_limit"] = boolean_complexity_limit
+    if numerical_complexity_limit is not None:
+        parameters["numerical_complexity_limit"] = numerical_complexity_limit
 
     experiment = generate_experiment(expid, **parameters)
 
@@ -73,4 +79,12 @@ def do(expid, steps=None, workspace=None, show_steps_only=False, width=None, com
 
 def run():
     args = setup_argparser().parse_args(sys.argv[1:])
-    do(args.exp_id, args.steps, args.workspace, args.show, args.width, args.complexity)
+    do(args.exp_id,
+        args.steps,
+        args.workspace,
+        args.show,
+        args.width,
+        args.concept_complexity_limit,
+        args.role_complexity_limit,
+        args.boolean_complexity_limit,
+        args.numerical_complexity_limit)

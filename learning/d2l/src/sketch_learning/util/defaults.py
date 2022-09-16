@@ -28,7 +28,10 @@ def generate_experiment(expid, domain_dir, domain, **kwargs):
         asp_policy_location=(BASEDIR / "src/sketch_learning/asp/policy_d2.lp"),
 
         # Feature generator settings
-        complexity=8,
+        concept_complexity_limit=9,
+        role_complexity_limit=9,
+        boolean_complexity_limit=10,
+        numerical_complexity_limit=10,
         time_limit=3600,
         feature_limit=1000000,
         num_threads_feature_generator=8,
@@ -53,11 +56,11 @@ def generate_experiment(expid, domain_dir, domain, **kwargs):
     parameters["domain_dir"] = domain_dir
 
     # root level 0 directory for experimental data
-    parameters['experiment_dir'] = parameters['workspace'] / f"{expid.replace(':', '_')}_{parameters['width']}_{parameters['complexity']}"
+    parameters['experiment_dir'] = parameters['workspace'] / f"{expid.replace(':', '_')}_{parameters['width']}_{parameters['concept_complexity_limit']}_{parameters['role_complexity_limit']}_{parameters['boolean_complexity_limit']}_{parameters['numerical_complexity_limit']}"
+    create_experiment_workspace(parameters["experiment_dir"], rm_if_existed=False)
     change_working_directory(parameters['experiment_dir'])
     create_sym_link(Path(os.environ['DLPLAN_ROOT_DIR']) / "libs/scorpion/fast-downward.py", parameters['experiment_dir'] / "fast-downward.py", overwrite=True)
 
-    create_experiment_workspace(parameters["experiment_dir"], rm_if_existed=False)
 
     # level 1 directory to store information of each iteration
     parameters["iterations_dir"] = parameters["experiment_dir"] / "iterations"

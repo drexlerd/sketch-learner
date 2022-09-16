@@ -60,7 +60,7 @@ class DomainFeatureDataFactory:
         else:
             # Generate features
             feature_generator = domain_data.feature_generator
-            feature_reprs = feature_generator.generate(syntactic_element_factory, config.complexity, config.time_limit, config.feature_limit, config.num_threads_feature_generator, dlplan_states)
+            feature_reprs = feature_generator.generate(syntactic_element_factory, config.concept_complexity_limit, config.role_complexity_limit, config.boolean_complexity_limit, config.numerical_complexity_limit, config.time_limit, config.feature_limit, config.num_threads_feature_generator, dlplan_states)
             numerical_features = [syntactic_element_factory.parse_numerical(repr) for repr in feature_reprs if repr.startswith("n_")]
             boolean_features = [syntactic_element_factory.parse_boolean(repr) for repr in feature_reprs if repr.startswith("b_")]
         return boolean_features, numerical_features
