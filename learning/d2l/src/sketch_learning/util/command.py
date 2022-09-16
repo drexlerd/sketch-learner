@@ -3,7 +3,6 @@ import os
 import shutil
 import subprocess
 
-
 def count_file_lines(filename):  # Might be a bit faster with a call to "wc -l"
     i = 0
     with open(filename) as f:
@@ -28,6 +27,11 @@ def write_file(filename, content):
     """ """
     with open(filename, "w") as f:
         f.write(content)
+
+
+def change_working_directory(path):
+    print("Changing working directory: ", path)
+    os.chdir(path)
 
 
 def execute(command, **kwargs):

@@ -1,7 +1,10 @@
 """ Module description: initialize workspace and domain config, instance configs
 """
 
-from .command import create_experiment_workspace
+import os
+from pathlib import Path
+
+from .command import create_experiment_workspace, change_working_directory
 from ..driver import Bunch, Experiment, BENCHMARK_DIR, BASEDIR
 from ..steps import generate_pipeline
 
@@ -51,6 +54,8 @@ def generate_experiment(expid, domain_dir, domain, **kwargs):
 
     # root level 0 directory for experimental data
     parameters['experiment_dir'] = parameters['workspace'] / f"{expid.replace(':', '_')}_{parameters['width']}_{parameters['complexity']}"
+    change_working_directory(parameters['experiment_dir'])
+
     create_experiment_workspace(parameters["experiment_dir"], rm_if_existed=False)
 
     # level 1 directory to store information of each iteration
@@ -60,6 +65,8 @@ def generate_experiment(expid, domain_dir, domain, **kwargs):
 
     width = parameters["width"]
     parameters["sketch_filename"] = BASEDIR / "sketches" / domain_dir / f"{domain_dir}_{width}.txt"
+
+    parameters["scorpion_dir"] = Path(os.environ['DLPLAN_ROOT_DIR']) / "libs/scorpion/fast-downward.py"
 
     # Initialize instances
     parameters["instance_informations"] = []

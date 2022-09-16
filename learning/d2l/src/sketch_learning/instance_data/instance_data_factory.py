@@ -9,7 +9,7 @@ class InstanceDataFactory:
         instance_datas = []
         for instance_information in config.instance_informations:
             logging.info(f"Constructing InstanceData for filename {instance_information.instance_filename}")
-            exitcode = dlplan.StateSpaceGenerator().generate_state_space(str(domain_data.domain_filename), str(instance_information.instance_filename))
+            exitcode = dlplan.StateSpaceGenerator().generate_state_space(str(domain_data.domain_filename), str(instance_information.instance_filename), str(config.scorpion_dir))
             state_space = dlplan.StateSpaceReader().read(domain_data.vocabulary_info)
             goal_distance_information = state_space.compute_goal_distance_information()
             if not goal_distance_information.is_solvable() or \
