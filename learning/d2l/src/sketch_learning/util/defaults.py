@@ -4,7 +4,7 @@
 import os
 from pathlib import Path
 
-from .command import create_experiment_workspace, change_working_directory
+from .command import create_experiment_workspace, change_working_directory, create_sym_link
 from ..driver import Bunch, Experiment, BENCHMARK_DIR, BASEDIR
 from ..steps import generate_pipeline
 
@@ -55,6 +55,7 @@ def generate_experiment(expid, domain_dir, domain, **kwargs):
     # root level 0 directory for experimental data
     parameters['experiment_dir'] = parameters['workspace'] / f"{expid.replace(':', '_')}_{parameters['width']}_{parameters['complexity']}"
     change_working_directory(parameters['experiment_dir'])
+    create_sym_link(Path(os.environ['DLPLAN_ROOT_DIR']) / "libs/scorpion/fast-downward.py", parameters['experiment_dir'] / "fast-downward.py", overwrite=True)
 
     create_experiment_workspace(parameters["experiment_dir"], rm_if_existed=False)
 
@@ -66,7 +67,6 @@ def generate_experiment(expid, domain_dir, domain, **kwargs):
     width = parameters["width"]
     parameters["sketch_filename"] = BASEDIR / "sketches" / domain_dir / f"{domain_dir}_{width}.txt"
 
-    parameters["scorpion_dir"] = Path(os.environ['DLPLAN_ROOT_DIR']) / "libs/scorpion/fast-downward.py"
 
     # Initialize instances
     parameters["instance_informations"] = []
