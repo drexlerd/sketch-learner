@@ -51,7 +51,7 @@ class TupleGraphFactory:
         novelty_base = NoveltyBase(self.width, instance_data.state_space.get_instance_info().get_atoms())
         novelty_table = NoveltyTable(novelty_base)
         # states s[pi] by distance for optimal plan pi in Pi^*(t).
-        distances = instance_data.state_space.compute_distances({source_index}, True)
+        distances = instance_data.state_space.compute_distances({source_index}, True, False)
         s_idxs_by_distance = partition_states_by_distance(distances)
         # information of tuples during computation
         t_idx_to_s_idxs = defaultdict(set)
