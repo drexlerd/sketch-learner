@@ -10,7 +10,7 @@ class InstanceDataFactory:
         for instance_information in config.instance_informations:
             logging.info(f"Constructing InstanceData for filename {instance_information.instance_filename}")
             exitcode = dlplan.StateSpaceGenerator().generate_state_space(str(domain_data.domain_filename), str(instance_information.instance_filename))
-            state_space = dlplan.StateSpaceReader().read(domain_data.vocabulary_info)
+            state_space = dlplan.StateSpaceReader().read(domain_data.vocabulary_info, len(instance_datas))
             goal_distance_information = state_space.compute_goal_distance_information()
             if not goal_distance_information.is_solvable() or \
                 goal_distance_information.is_trivially_solvable():
@@ -22,4 +22,5 @@ class InstanceDataFactory:
         instance_datas = sorted(instance_datas, key=lambda x : x.state_space.get_num_states())
         for instance_idx, instance_data in enumerate(instance_datas):
             instance_data.id = instance_idx
+            instance_data.state_space.get_instance_info().set_index(instance_idx)
         return instance_datas

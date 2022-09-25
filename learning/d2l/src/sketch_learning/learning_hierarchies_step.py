@@ -29,17 +29,17 @@ from .learning_sketches_step import learn_sketch
 
 
 def compute_closest_subgoal_states(instance_data: InstanceData, root_idx: int, rule: SketchRule):
-    evaluation_cache = dlplan.EvaluationCache(len(rule.sketch.dlplan_policy.get_boolean_features()), len(rule.sketch.dlplan_policy.get_numerical_features()))
+    caches = dlplan.DenotationsCaches()
     source_state = instance_data.state_information.get_state(root_idx)
     if not rule.dlplan_rule.evaluate_conditions(source_state):
         return set()
-    distances = instance_data.state_space.compute_distances({root_idx}, True)
+    distances = instance_data.state_space.compute_distances({root_idx}, True, False)
     layers = partition_states_by_distance(distances)
     for layer in layers:
         closest_subgoal_states = set()
         for target_idx in layer:
             target_state = instance_data.state_information.get_state(target_idx)
-            if rule.dlplan_rule.evaluate_effects(source_state, target_state, evaluation_cache):
+            if rule.dlplan_rule.evaluate_effects(source_state, target_state, caches):
                 closest_subgoal_states.add(target_idx)
         if closest_subgoal_states:
             return closest_subgoal_states
@@ -112,6 +112,7 @@ def run(config, data, rng):
         subproblem_instance_datas = sorted(subproblem_instance_datas, key=lambda x : x.state_space.get_num_states())
         for instance_idx, instance_data in enumerate(subproblem_instance_datas):
             instance_data.id = instance_idx
+            instance_data.state_space.get_instance_info().set_index(instance_idx)
         print("Number of subproblems:", len(subproblem_instance_datas))
         logging.info(colored(f"..done", "blue", "on_grey"))
 
