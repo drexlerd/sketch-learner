@@ -86,12 +86,13 @@ def learn_sketch(config, domain_data, instance_datas, make_asp_factory):
     selected_instance_idxs = [0]
     timer = CountDownTimer(config.timeout)
     while not timer.is_expired():
+        print()
         logging.info(colored(f"Iteration: {i}", "red", "on_grey"))
-        print([instance_data.id for instance_data in instance_datas])
-        print(selected_instance_idxs)
         selected_instance_datas = [instance_datas[subproblem_idx] for subproblem_idx in selected_instance_idxs]
         print(f"Number of selected instances: {len(selected_instance_datas)}")
-        print(f"Indices of selected instances:", selected_instance_idxs)
+        print(f"Selected instances:")
+        for instance_data in selected_instance_datas:
+            print("    id:", instance_data.id, "name:", instance_data.instance_information.name)
 
         logging.info(colored(f"Initializing DomainFeatureData...", "blue", "on_grey"))
         domain_feature_data_factory = DomainFeatureDataFactory()

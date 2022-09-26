@@ -34,7 +34,8 @@ class Sketch:
             for s_idx in closest_subgoal_s_idxs:
                 if instance_data.state_pair_classifier.classify(StatePair(root_idx, s_idx)) == StatePairClassification.NOT_DELTA_OPTIMAL:
                     print(colored(f"Not delta optimal state pair is classified as good.", "red", "on_grey"))
-                    print("state pair:", f"{str(instance_data.state_information.get_state(root_idx))} -> {str(instance_data.state_information.get_state(s_idx))}")
+                    print("Instance:", instance_data.id, instance_data.instance_information.name)
+                    print("State pair:", f"{str(instance_data.state_information.get_state(root_idx))} -> {str(instance_data.state_information.get_state(s_idx))}")
                     return False
         return True
 
@@ -65,7 +66,8 @@ class Sketch:
                             root_idx_to_closest_subgoal_s_idxs[tuple_graph.root_idx].add(s_idx)
                             if instance_data.goal_distance_information.is_deadend(s_idx):
                                 print(colored(f"Sketch leads to an unsolvable state", "red", "on_grey"))
-                                print(str(target_state))
+                                print("Instance:", instance_data.id, instance_data.instance_information.name)
+                                print("Target_state:", target_state.get_index(), str(target_state))
                                 return [], [], False
                         else:
                             subgoal = False
@@ -76,7 +78,8 @@ class Sketch:
                     break
             if not bounded:
                 print(colored(f"Sketch fails to bound width of a state", "red", "on_grey"))
-                print(str(source_state))
+                print("Instance:", instance_data.id, instance_data.instance_information.name)
+                print("Source_state:", source_state.get_index(), str(source_state))
                 return [], [], False
         return root_idx_to_closest_subgoal_s_idxs, root_idx_to_closest_subgoal_t_idxs, True
 
@@ -97,6 +100,7 @@ class Sketch:
                     target_idx = next(iterator)
                     if target_idx in s_idxs_on_path:
                         print(colored("Sketch cycles", "red", "on_grey"))
+                        print("Instance:", instance_data.id, instance_data.instance_information.name)
                         for s_idx in s_idxs_on_path:
                             print(f"{s_idx} {str(instance_data.state_information.get_state(s_idx))}")
                         print(f"{target_idx} {str(instance_data.state_information.get_state(target_idx))}")
@@ -123,6 +127,7 @@ class Sketch:
                     not instance_data.goal_distance_information.is_goal(s_idx_2)):
                     if (s_idx_to_feature_valuations[s_idx_1] == s_idx_to_feature_valuations[s_idx_2]):
                         print(colored("Selected features do not separate goals from non goals.", "red", "on_grey"))
+                        print("Instance:", instance_data.id, instance_data.instance_information.name)
                         print("Goal state:", str(instance_data.state_information.get_state(s_idx_1)), s_idx_to_feature_valuations[s_idx_1])
                         print("Nongoal state:", str(instance_data.state_information.get_state(s_idx_2)), s_idx_to_feature_valuations[s_idx_2])
                         return False
