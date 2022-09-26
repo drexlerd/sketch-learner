@@ -21,7 +21,7 @@ def generate_experiment(expid, domain_dir, domain, **kwargs):
         workspace=BASEDIR / 'workspace',
 
         # The maximum states that we allows in each complete state space.
-        max_states_per_instance=1000,
+        max_states_per_instance=2000,
 
         # The location of the asp problem file
         asp_sketch_location=(BASEDIR / "src/sketch_learning/asp/sketch_d2.lp"),
