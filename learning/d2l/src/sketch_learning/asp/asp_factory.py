@@ -1,3 +1,5 @@
+import re
+
 from clingo import Control, Number, Symbol
 
 from collections import defaultdict
@@ -7,13 +9,9 @@ from .returncodes import ClingoExitCode
 
 from ..instance_data.instance_data import InstanceData
 from ..iteration_data.domain_feature_data import DomainFeatureData
-from ..iteration_data.state_pair_equivalence import RuleEquivalences
-
-from .facts.instance_data.instance_data import InstanceDataFactFactory
-from .facts.instance_data.state_pair_classifier import StatePairClassifierFactFactory
-from .facts.iteration_data.domain_feature_data import DomainFeatureDataFactFactory
-from .facts.iteration_data.equivalence_data import EquivalenceDataFactFactory
-from .facts.iteration_data.instance_feature_data import InstanceFeatureDataFactFactory
+from ..iteration_data.state_equivalence import DomainStateEquivalence
+from ..iteration_data.state_pair_equivalence import DomainStatePairEquivalence
+from ..instance_data.state_pair_classifier import StatePairClassification
 
 
 class ASPFactory:
@@ -24,7 +22,10 @@ class ASPFactory:
         self.ctl.add("numerical", ["n"], "numerical(n).")
         self.ctl.add("feature", ["f"], "feature(f).")
         self.ctl.add("complexity", ["f", "c"], "complexity(f,c).")
-        self.ctl.add("value", ["i","s","f","v"], "value(i,s,f,v).")
+        self.ctl.add("value", ["d","f","v"], "value(d,f,v).")
+        self.ctl.add("state_class", ["d"], "state_class(d).")
+        self.ctl.add("goal_state_class", ["d"], "goal_state_class(d).")
+        self.ctl.add("nongoal_state_class", ["d"], "nongoal_state_class(d).")
         # transition system
         self.ctl.add("solvable", ["i", "s"], "solvable(i,s).")
         self.ctl.add("goal", ["i", "s"], "goal(i,s).")
@@ -42,14 +43,87 @@ class ASPFactory:
         self.ctl.add("delta_optimal", ["i", "c", "s1", "s2"], "delta_optimal(i,c,s1,s2).")
         self.ctl.add("not_delta_optimal", ["i", "c", "s1", "s2"], "not_delta_optimal(i,c,s1,s2).")
 
-    def make_facts(self, domain_feature_data: DomainFeatureData, rule_equivalences: RuleEquivalences, instance_datas: List[InstanceData]):
+    def make_facts(self, domain_feature_data: DomainFeatureData, domain_state_equivalence: DomainStateEquivalence, domain_state_pair_equivalence: DomainStatePairEquivalence, instance_datas: List[InstanceData]):
         facts = []
-        facts.extend(DomainFeatureDataFactFactory().make_facts(domain_feature_data))
-        facts.extend(EquivalenceDataFactFactory().make_facts(rule_equivalences, domain_feature_data))
+        # feature facts
+        for f_idx, boolean in enumerate(domain_feature_data.boolean_features):
+            facts.append(("boolean", [Number(f_idx)]))
+            facts.append(("feature", [Number(f_idx)]))
+            facts.append(("complexity", [Number(f_idx), Number(boolean.compute_complexity())]))
+        for f_idx, numerical in enumerate(domain_feature_data.numerical_features):
+            facts.append(("numerical", [Number(f_idx + len(domain_feature_data.boolean_features))]))
+            facts.append(("feature", [Number(f_idx + len(domain_feature_data.boolean_features))]))
+            facts.append(("complexity", [Number(f_idx + len(domain_feature_data.boolean_features)), Number(numerical.compute_complexity())]))
+        # state pair facts
+        for r_idx, rule in enumerate(domain_state_pair_equivalence.rules):
+            facts.append(("equivalence", [Number(r_idx)]))
+            for condition in rule.get_conditions():
+                condition_str = condition.str()
+                result = re.findall(r"\(.* (\d+)\)", condition_str)
+                assert len(result) == 1
+                f_idx = int(result[0])
+                if condition_str.startswith("(:c_b_pos"):
+                    facts.append(("feature_condition", [Number(f_idx), Number(r_idx), Number(0)]))
+                elif condition_str.startswith("(:c_b_neg"):
+                    facts.append(("feature_condition", [Number(f_idx), Number(r_idx), Number(1)]))
+                elif condition_str.startswith("(:c_n_gt"):
+                    facts.append(("feature_condition", [Number(f_idx + len(domain_feature_data.boolean_features)), Number(r_idx), Number(2)]))
+                elif condition_str.startswith("(:c_n_eq"):
+                    facts.append(("feature_condition", [Number(f_idx + len(domain_feature_data.boolean_features)), Number(r_idx), Number(3)]))
+                else:
+                    raise Exception(f"Cannot parse condition {condition_str}")
+            for effect in rule.get_effects():
+                effect_str = effect.str()
+                result = re.findall(r"\(.* (\d+)\)", effect_str)
+                assert len(result) == 1
+                f_idx = int(result[0])
+                if effect_str.startswith("(:e_b_pos"):
+                    facts.append(("feature_effect", [Number(f_idx), Number(r_idx), Number(0)]))
+                elif effect_str.startswith("(:e_b_neg"):
+                    facts.append(("feature_effect", [Number(f_idx), Number(r_idx), Number(1)]))
+                elif effect_str.startswith("(:e_b_bot"):
+                    facts.append(("feature_effect", [Number(f_idx), Number(r_idx), Number(2)]))
+                elif effect_str.startswith("(:e_n_inc"):
+                    facts.append(("feature_effect", [Number(f_idx + len(domain_feature_data.boolean_features)), Number(r_idx), Number(3)]))
+                elif effect_str.startswith("(:e_n_dec"):
+                    facts.append(("feature_effect", [Number(f_idx + len(domain_feature_data.boolean_features)), Number(r_idx), Number(4)]))
+                elif effect_str.startswith("(:e_n_bot"):
+                    facts.append(("feature_effect", [Number(f_idx + len(domain_feature_data.boolean_features)), Number(r_idx), Number(5)]))
+                else:
+                    raise Exception(f"Cannot parse effect {effect_str}")
+        # state equivalence facts
+        for feature_valuations, state_class_idx in domain_state_equivalence.feature_valuation_to_state_class_idx.items():
+            facts.append(("state_class", [Number(state_class_idx)]))
+            for f_idx, f_val in enumerate(feature_valuations.boolean_feature_valuations):
+                facts.append(("value", [Number(state_class_idx), Number(f_idx), Number(f_val)]))
+            for f_idx, f_val in enumerate(feature_valuations.numerical_feature_valuations):
+                facts.append(("value", [Number(state_class_idx), Number(f_idx + len(feature_valuations.boolean_feature_valuations)), Number(f_val)]))
+        for state_class_idx in domain_state_equivalence.goal_state_class_idxs:
+            facts.append(("goal_state_class", [Number(state_class_idx)]))
+        for state_class_idx in domain_state_equivalence.nongoal_state_class_idxs:
+            facts.append(("nongoal_state_class", [Number(state_class_idx)]))
+
         for instance_data in instance_datas:
-            facts.extend(InstanceDataFactFactory().make_facts(instance_data))
-            facts.extend(InstanceFeatureDataFactFactory().make_facts(instance_data))
-            facts.extend(StatePairClassifierFactFactory().make_facts(instance_data))
+            # instance facts
+            instance_idx = instance_data.id
+            for s_idx in instance_data.state_space.get_state_indices():
+                if not instance_data.goal_distance_information.is_deadend(s_idx):
+                    facts.append(("solvable", [Number(instance_idx), Number(s_idx)]))
+                if instance_data.goal_distance_information.is_goal(s_idx):
+                    facts.append(("goal", [Number(instance_idx), Number(s_idx)]))
+                else:
+                    facts.append(("nongoal", [Number(instance_idx), Number(s_idx)]))
+                if instance_data.goal_distance_information.is_alive(s_idx):
+                    facts.append(("alive", [Number(instance_idx), Number(s_idx)]))
+            # delta optimality
+            for state_pair, classification in instance_data.state_pair_classifier.state_pair_to_classification.items():
+                r_idx = instance_data.state_pair_equivalence.state_pair_to_r_idx[state_pair]
+                if classification == StatePairClassification.DELTA_OPTIMAL:
+                    facts.append(("delta_optimal", [Number(instance_data.id), Number(r_idx), Number(state_pair.source_idx), Number(state_pair.target_idx)]))
+                elif classification == StatePairClassification.NOT_DELTA_OPTIMAL:
+                    facts.append(("not_delta_optimal", [Number(instance_data.id), Number(r_idx), Number(state_pair.source_idx), Number(state_pair.target_idx)]))
+                else:
+                    raise Exception("StatePairClassifierFactFactory::make_facts - unknown StatePairClassification")
         return facts
 
     def make_initial_d2_facts(self, instance_datas: List[InstanceData]):
@@ -66,7 +140,7 @@ class ASPFactory:
                             facts.add(("d2_separate", (Number(eq_1), Number(eq_2))))
         return facts
 
-    def make_unsatisfied_d2_facts(self, symbols: List[Symbol], rule_equivalences: RuleEquivalences):
+    def make_unsatisfied_d2_facts(self, symbols: List[Symbol], rule_equivalences: DomainStatePairEquivalence):
         # compute good and bad equivalences
         good_equivalences = set()
         for symbol in symbols:

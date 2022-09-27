@@ -26,9 +26,10 @@ class DomainFeatureDataStatistics:
         self.num_numerical_features += num
 
     def print(self):
-        print("Number of dlplan states:", self.num_dlplan_states)
-        print("Number of boolean features:", self.num_boolean_features)
-        print("Number of numerical features:", self.num_numerical_features)
+        print("DomainFeatureDataStatistics:")
+        print("    num_dlplan_states:", self.num_dlplan_states)
+        print("    num_boolean_features:", self.num_boolean_features)
+        print("    num_numerical_features:", self.num_numerical_features)
 
 
 class DomainFeatureDataFactory:

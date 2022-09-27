@@ -24,7 +24,7 @@ def generate_experiment(expid, domain_dir, domain, **kwargs):
         max_states_per_instance=2000,
 
         # The location of the asp problem file
-        asp_sketch_location=(BASEDIR / "src/sketch_learning/asp/sketch_d2.lp"),
+        asp_sketch_location=(BASEDIR / "src/sketch_learning/asp/sketch_d2l.lp"),
         asp_policy_location=(BASEDIR / "src/sketch_learning/asp/policy_d2.lp"),
 
         # Feature generator settings
@@ -59,7 +59,7 @@ def generate_experiment(expid, domain_dir, domain, **kwargs):
     parameters['experiment_dir'] = parameters['workspace'] / f"{expid.replace(':', '_')}_{parameters['width']}_{parameters['concept_complexity_limit']}_{parameters['role_complexity_limit']}_{parameters['boolean_complexity_limit']}_{parameters['numerical_complexity_limit']}"
     create_experiment_workspace(parameters["experiment_dir"], rm_if_existed=False)
     change_working_directory(parameters['experiment_dir'])
-    create_sym_link(Path(os.environ['SCORPION_DIR']) / "/fast-downward.py", parameters['experiment_dir'] / "fast-downward.py", overwrite=True)
+    create_sym_link(Path(os.environ['SCORPION_PATH']) / "fast-downward.py", parameters['experiment_dir'] / "fast-downward.py", overwrite=True)
 
 
     # level 1 directory to store information of each iteration

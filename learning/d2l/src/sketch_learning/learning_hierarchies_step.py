@@ -19,7 +19,7 @@ from .instance_data.state_pair_classifier import StatePairClassifier
 from .instance_data.state_pair_classifier_factory import StatePairClassifierFactory
 from .instance_data.tuple_graph_factory import TupleGraphFactory, partition_states_by_distance
 from .iteration_data.domain_feature_data_factory import DomainFeatureDataFactory
-from .iteration_data.instance_feature_data_factory import InstanceFeatureDataFactory
+from .iteration_data.feature_valuations_factory import FeatureValuationsFactory
 from .iteration_data.state_pair_equivalence_factory import StatePairEquivalenceFactory
 from .iteration_data.dlplan_policy_factory import DlplanPolicyFactory
 from .iteration_data.sketch import Sketch, SketchRule

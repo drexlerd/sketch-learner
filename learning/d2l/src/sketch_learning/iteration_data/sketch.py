@@ -128,8 +128,8 @@ class Sketch:
                     if (s_idx_to_feature_valuations[s_idx_1] == s_idx_to_feature_valuations[s_idx_2]):
                         print(colored("Selected features do not separate goals from non goals.", "red", "on_grey"))
                         print("Instance:", instance_data.id, instance_data.instance_information.name)
-                        print("Goal state:", str(instance_data.state_information.get_state(s_idx_1)), s_idx_to_feature_valuations[s_idx_1])
-                        print("Nongoal state:", str(instance_data.state_information.get_state(s_idx_2)), s_idx_to_feature_valuations[s_idx_2])
+                        print("Goal state:", s_idx_1, str(instance_data.state_information.get_state(s_idx_1)), s_idx_to_feature_valuations[s_idx_1])
+                        print("Nongoal state:", s_idx_2, str(instance_data.state_information.get_state(s_idx_2)), s_idx_to_feature_valuations[s_idx_2])
                         return False
         return True
 

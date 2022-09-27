@@ -4,7 +4,7 @@ from collections import defaultdict
 from dataclasses import dataclass
 from typing import List
 
-from .state_pair_equivalence import RuleEquivalences, StatePairEquivalence
+from .state_pair_equivalence import DomainStatePairEquivalence, InstanceStatePairEquivalence
 from .domain_feature_data import DomainFeatureData
 
 from ..instance_data.instance_data import InstanceData
@@ -22,8 +22,9 @@ class StatePairEquivalenceStatistics:
         self.num_equivalences += 1
 
     def print(self):
-        print("Num state pairs:", self.num_state_pairs)
-        print("Num equivalences:", self.num_equivalences)
+        print("StatePairEquivalenceStatistics:")
+        print("    num_state_pairs:", self.num_state_pairs)
+        print("    num_equivalences:", self.num_equivalences)
 
 
 class StatePairEquivalenceFactory:
@@ -36,66 +37,69 @@ class StatePairEquivalenceFactory:
         policy_numerical_features = [policy_builder.add_numerical_feature(n) for n in domain_feature_data.numerical_features]
         rules = []
         rule_repr_to_idx = dict()
-        state_pair_equivalences = []
         for instance_data in instance_datas:
-            self.statistics.increment_num_state_pairs()
-            r_idx_to_state_pairs = defaultdict(list)
+            r_idx_to_state_pairs = defaultdict(set)
             state_pair_to_r_idx = dict()
+            r_idx_to_state_class_pairs = defaultdict(set)
+            state_class_pair_to_r_idx = dict()
             for state_pair in instance_data.state_pair_classifier.state_pair_to_classification.keys():
+                self.statistics.increment_num_state_pairs()
                 source_idx = state_pair.source_idx
                 target_idx = state_pair.target_idx
                 # add conditions
-                conditions = self._make_conditions(policy_builder, source_idx, policy_boolean_features, policy_numerical_features, instance_data.instance_feature_data)
+                conditions = self._make_conditions(policy_builder, policy_boolean_features, policy_numerical_features, instance_data.feature_valuations[source_idx])
                 # add effects
-                effects = self._make_effects(policy_builder, source_idx, target_idx, policy_boolean_features, policy_numerical_features, instance_data.instance_feature_data)
+                effects = self._make_effects(policy_builder, policy_boolean_features, policy_numerical_features, instance_data.feature_valuations[source_idx], instance_data.feature_valuations[target_idx])
                 # add rule
                 rule = policy_builder.add_rule(conditions, effects)
                 rule_repr = rule.compute_repr()
                 if rule_repr in rule_repr_to_idx:
                     r_idx = rule_repr_to_idx[rule_repr]
                 else:
+                    self.statistics.increment_num_equivalences()
                     r_idx = len(rules)
                     rule_repr_to_idx[rule_repr] = r_idx
                     rules.append(rule)
-                    self.statistics.increment_num_equivalences()
-                r_idx_to_state_pairs[r_idx].append(state_pair)
+                r_idx_to_state_pairs[r_idx].add(state_pair)
                 state_pair_to_r_idx[state_pair] = r_idx
-            instance_data.state_pair_equivalence = StatePairEquivalence(r_idx_to_state_pairs, state_pair_to_r_idx)
-        return RuleEquivalences(rules)
+                state_class_pair = (instance_data.state_equivalence.s_idx_to_state_class_idx[state_pair.source_idx],
+                     instance_data.state_equivalence.s_idx_to_state_class_idx[state_pair.target_idx])
+                r_idx_to_state_class_pairs[r_idx].add(state_class_pair)
+                state_class_pair_to_r_idx[state_class_pair] = r_idx
+            instance_data.state_pair_equivalence = InstanceStatePairEquivalence(r_idx_to_state_pairs, state_pair_to_r_idx, r_idx_to_state_class_pairs, state_class_pair_to_r_idx)
+        return DomainStatePairEquivalence(rules)
 
-    def _make_conditions(self, policy_builder: dlplan.PolicyBuilder, source_idx: int, policy_boolean_features, policy_numerical_features, instance_feature_data):
+    def _make_conditions(self, policy_builder: dlplan.PolicyBuilder, policy_boolean_features, policy_numerical_features, feature_valuations):
         """ Create conditions over all features that are satisfied in source_idx """
         conditions = []
-        numerical_feature_valuations = instance_feature_data.numerical_feature_valuations
-        boolean_feature_valuations = instance_feature_data.boolean_feature_valuations
+        boolean_feature_valuations = feature_valuations.boolean_feature_valuations
+        numerical_feature_valuations = feature_valuations.numerical_feature_valuations
         for n_idx in range(len(policy_numerical_features)):
-            if numerical_feature_valuations[source_idx][n_idx] > 0:
+            if numerical_feature_valuations[n_idx] > 0:
                 conditions.append(policy_builder.add_gt_condition(policy_numerical_features[n_idx]))
             else:
                 conditions.append(policy_builder.add_eq_condition(policy_numerical_features[n_idx]))
         for b_idx in range(len(policy_boolean_features)):
-            if boolean_feature_valuations[source_idx][b_idx]:
+            if boolean_feature_valuations[b_idx]:
                 conditions.append(policy_builder.add_pos_condition(policy_boolean_features[b_idx]))
             else:
                 conditions.append(policy_builder.add_neg_condition(policy_boolean_features[b_idx]))
         return conditions
 
-    def _make_effects(self, policy_builder: dlplan.PolicyBuilder, source_idx: int, target_idx: int, policy_boolean_features, policy_numerical_features, instance_feature_data):
+    def _make_effects(self, policy_builder: dlplan.PolicyBuilder, policy_boolean_features, policy_numerical_features, source_feature_valuations, target_feature_valuations):
         """ Create effects over all features that are satisfied in (source_idx,target_idx) """
         effects = []
-        numerical_feature_valuations = instance_feature_data.numerical_feature_valuations
-        boolean_feature_valuations = instance_feature_data.boolean_feature_valuations
         for n_idx in range(len(policy_numerical_features)):
-            if instance_feature_data.numerical_feature_valuations[source_idx][n_idx] > numerical_feature_valuations[target_idx][n_idx]:
+            if source_feature_valuations.numerical_feature_valuations[n_idx] > target_feature_valuations.numerical_feature_valuations[n_idx]:
                 effects.append(policy_builder.add_dec_effect(policy_numerical_features[n_idx]))
-            elif numerical_feature_valuations[source_idx][n_idx] < numerical_feature_valuations[target_idx][n_idx]:
+            elif source_feature_valuations.numerical_feature_valuations[n_idx] < target_feature_valuations.numerical_feature_valuations[n_idx]:
                 effects.append(policy_builder.add_inc_effect(policy_numerical_features[n_idx]))
             else:
                 effects.append(policy_builder.add_bot_effect(policy_numerical_features[n_idx]))
         for b_idx in range(len(policy_boolean_features)):
-            if boolean_feature_valuations[source_idx][b_idx] and not boolean_feature_valuations[target_idx][b_idx]:
+            if source_feature_valuations.boolean_feature_valuations[b_idx] and not target_feature_valuations.boolean_feature_valuations[b_idx]:
                 effects.append(policy_builder.add_neg_effect(policy_boolean_features[b_idx]))
-            elif not boolean_feature_valuations[source_idx][b_idx] and boolean_feature_valuations[target_idx][b_idx]:
+            elif not source_feature_valuations.boolean_feature_valuations[b_idx] and target_feature_valuations.boolean_feature_valuations[b_idx]:
                 effects.append(policy_builder.add_pos_effect(policy_boolean_features[b_idx]))
             else:
                 effects.append(policy_builder.add_bot_effect(policy_boolean_features[b_idx]))

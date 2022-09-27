@@ -14,13 +14,13 @@ from .instance_data.instance_data_factory import InstanceDataFactory
 from .instance_data.tuple_graph import TupleGraph
 from .instance_data.tuple_graph_factory import TupleGraphFactory
 from .iteration_data.domain_feature_data_factory import DomainFeatureDataFactory
-from .iteration_data.instance_feature_data_factory import InstanceFeatureDataFactory
+from .iteration_data.feature_valuations_factory import FeatureValuationsFactory
 from .iteration_data.dlplan_policy_factory import DlplanPolicyFactory
 from .iteration_data.sketch import Sketch
 from .iteration_data.state_pair_equivalence_factory import StatePairEquivalenceFactory
 from .iteration_data.tuple_graph_equivalence_data_factory import  TupleGraphEquivalenceFactory
+from .iteration_data.state_equivalence_factory import StateEquivalenceFactory
 from .instance_data.state_pair_classifier_factory import StatePairClassifierFactory
-from .instance_data.state_pair_classifier import StatePairClassifier
 from .returncodes import ExitCode
 from .util.timer import CountDownTimer
 from .util.command import write_file
@@ -102,7 +102,12 @@ def learn_sketch(config, domain_data, instance_datas, make_asp_factory):
 
         logging.info(colored(f"Initializing InstanceFeatureDatas...", "blue", "on_grey"))
         for instance_data in selected_instance_datas:
-            instance_data.instance_feature_data = InstanceFeatureDataFactory().make_instance_feature_data(instance_data, domain_feature_data)
+            instance_data.feature_valuations = FeatureValuationsFactory().make_feature_valuations(instance_data, domain_feature_data)
+        logging.info(colored(f"..done", "blue", "on_grey"))
+
+        logging.info(colored(f"Initializing StateEquivalences...", "blue", "on_grey"))
+        state_equivalence_factory = StateEquivalenceFactory()
+        domain_state_equivalence = state_equivalence_factory.make_state_equivalences(domain_feature_data, selected_instance_datas)
         logging.info(colored(f"..done", "blue", "on_grey"))
 
         logging.info(colored(f"Initializing StatePairEquivalenceDatas...", "blue", "on_grey"))
@@ -121,7 +126,7 @@ def learn_sketch(config, domain_data, instance_datas, make_asp_factory):
         j = 0
         while True:
             asp_factory = make_asp_factory(config)
-            facts = asp_factory.make_facts(domain_feature_data, rule_equivalences, selected_instance_datas)
+            facts = asp_factory.make_facts(domain_feature_data, domain_state_equivalence, rule_equivalences, selected_instance_datas)
             if j == 0:
                 d2_facts.update(asp_factory.make_initial_d2_facts(selected_instance_datas))
                 print("Number of initial D2 facts:", len(d2_facts))
@@ -161,6 +166,7 @@ def learn_sketch(config, domain_data, instance_datas, make_asp_factory):
 
         logging.info(colored("Iteration summary:", "yellow", "on_grey"))
         domain_feature_data_factory.statistics.print()
+        state_equivalence_factory.statistics.print()
         state_pair_equivalence_factory.statistics.print()
 
         if smallest_unsolved_instance is None:
