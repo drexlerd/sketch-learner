@@ -48,8 +48,6 @@ class StateEquivalenceFactory:
                 s_idx_to_state_class_idx[s_idx] = state_class_idx
                 state_class_idx_to_s_idxs[state_class_idx].add(s_idx)
             instance_data.state_equivalence = InstanceStateEquivalence(s_idx_to_state_class_idx, state_class_idx_to_s_idxs)
-            instance_data.state_space.print()
-            instance_data.state_equivalence.print()
         goal_state_class_idxs = set()
         nongoal_state_class_idxs = set()
         mixed_state_class_idxs = set()
