@@ -5,6 +5,7 @@ from .instance_data import InstanceData
 from .novelty_base import NoveltyBase
 from .novelty_table import NoveltyTable
 from .tuple_graph import TupleGraph
+from .tuple_graph_minimizer import TupleGraphMinimizer
 
 
 def partition_states_by_distance(distances):
@@ -18,12 +19,13 @@ def partition_states_by_distance(distances):
 class TupleGraphFactory:
     def __init__(self, width: int):
         self.width = width
+        self.minimizer = TupleGraphMinimizer()
 
     def make_tuple_graphs(self, instance_data: InstanceData):
         tuple_graphs = dict()
         for s_idx in instance_data.state_space.get_state_indices():
             if instance_data.goal_distance_information.is_alive(s_idx):
-                tuple_graphs[s_idx] = self.make_tuple_graph(instance_data, s_idx)
+                tuple_graphs[s_idx] = self.minimizer.minimize(self.make_tuple_graph(instance_data, s_idx))
         return tuple_graphs
 
     def make_tuple_graph(self, instance_data: InstanceData, source_index: int):
@@ -52,7 +54,7 @@ class TupleGraphFactory:
         novelty_base = NoveltyBase(self.width, instance_data.state_space.get_instance_info().get_atoms())
         novelty_table = NoveltyTable(novelty_base)
         # states s[pi] by distance for optimal plan pi in Pi^*(t).
-        distances = instance_data.state_space.compute_distances({source_index}, True, False)
+        distances = instance_data.state_space.compute_distances({source_index}, True, True)
         s_idxs_by_distance = partition_states_by_distance(distances)
         # information of tuples during computation
         t_idx_to_s_idxs = defaultdict(set)

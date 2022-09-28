@@ -36,8 +36,10 @@ def run(config, data, rng):
     logging.info(colored(f"..done", "blue", "on_grey"))
 
     logging.info(colored(f"Initializing TupleGraphs...", "blue", "on_grey"))
+    tuple_graph_factory = TupleGraphFactory(config.width)
     for instance_data in instance_datas:
-        instance_data.tuple_graphs = TupleGraphFactory(config.width).make_tuple_graphs(instance_data)
+        instance_data.tuple_graphs = tuple_graph_factory.make_tuple_graphs(instance_data)
+    tuple_graph_factory.minimizer.statistics.print()
     logging.info(colored(f"..done", "blue", "on_grey"))
 
     logging.info(colored(f"Initializing StatePairClassifiers...", "blue", "on_grey"))
@@ -53,7 +55,6 @@ def run(config, data, rng):
             instance_data.goal_distance_information.is_trivially_solvable():  # remove not
             print("Did not filter unsolvable or trivially solvable instance")
             exit(1)
-
     sketch, structurally_minimized_sketch, empirically_minimized_sketch = learn_sketch(config, domain_data, instance_datas, make_sketch_asp_factory)
 
     print("Summary:")

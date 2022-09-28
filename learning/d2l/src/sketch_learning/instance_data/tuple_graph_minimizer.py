@@ -9,8 +9,9 @@ class Statistics:
     num_pruned: int = 0
 
     def print(self):
-        print("Number of generated tuples:", self.num_generated)
-        print("Number of pruned tuples:", self.num_pruned)
+        print("TupleGraphMinimizerStatistics:")
+        print("    Number of generated tuples:", self.num_generated)
+        print("    Number of pruned tuples:", self.num_pruned)
 
 
 class TupleGraphMinimizer:

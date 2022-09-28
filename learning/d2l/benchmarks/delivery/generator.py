@@ -138,7 +138,7 @@ def main():
     #                         domain_constants=[])
     for gridsize in [2,3]:
         for npacks in [1,2]:
-            for run in range(0, 10):
+            for run in range(0, 30):
                 problem = generate_domain(gridsize, npackages=npacks, add_fuel=False)
                 writer = FstripsWriter(problem)
                 writer.write(domain_filename=os.path.join(_CURRENT_DIR_, "domain.pddl"),  # We can overwrite the domain
