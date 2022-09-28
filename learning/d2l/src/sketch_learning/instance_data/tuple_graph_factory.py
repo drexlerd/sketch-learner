@@ -35,13 +35,14 @@ class TupleGraphFactory:
     def _make_tuple_graph_for_width_0(self, instance_data: InstanceData, source_index: int):
         """ Special case where each 1-step successor can be a subgoal. """
         novelty_base = NoveltyBase(self.width, instance_data.state_space.get_instance_info().get_atoms())
-        s_idxs_by_distance = [[source_index], list(instance_data.state_space.get_forward_successor_state_indices(source_index))]
+        forward_successors = instance_data.state_space.get_forward_successor_state_indices()
+        s_idxs_by_distance = [[source_index], forward_successors.get(source_index, [])]
         # we use state indices also for tuples for simplicity
-        t_idxs_by_distance = [[source_index], list(instance_data.state_space.get_forward_successor_state_indices(source_index))]
+        t_idxs_by_distance = [[source_index], forward_successors.get(source_index, [])]
         t_idx_to_s_idxs = defaultdict(set)
         s_idx_to_t_idxs = defaultdict(set)
         t_idx_to_s_idxs[source_index].add(source_index)
-        for suc_index in instance_data.state_space.get_forward_successor_state_indices(source_index):
+        for suc_index in forward_successors.get(source_index, []):
             t_idx_to_s_idxs[suc_index].add(suc_index)
             s_idx_to_t_idxs[suc_index].add(suc_index)
         return TupleGraph(novelty_base, source_index, t_idxs_by_distance, s_idxs_by_distance, t_idx_to_s_idxs, s_idx_to_t_idxs, self.width)
@@ -111,9 +112,10 @@ class TupleGraphFactory:
         """
         marked_t_idxs = set()
         extended = defaultdict(set)
+        forward_successors = instance_data.state_space.get_forward_successor_state_indices()
         for ti_idx in marked_t_idxs_in_previous_layer:
             for si_idx in t_idx_to_s_idxs[ti_idx]:
-                for sj_idx in instance_data.state_space.get_forward_successor_state_indices(si_idx):
+                for sj_idx in forward_successors.get(si_idx, []):
                     for tj_idx in s_idx_to_t_idxs.get(sj_idx, []):
                         # optimal plan that ends in si_idx underlying ti is
                         # extended into optimal plan that ends in sj_idx underlying tj
