@@ -36,4 +36,5 @@ class TupleGraphEquivalenceFactory:
                         t_idx_to_r_idxs[t_idx].add(r_idx)
                         r_idx_to_t_idxs[r_idx].add(t_idx)
             tuple_graph_equivalences[root_idx] = TupleGraphEquivalence(r_idxs_by_distance, t_idx_to_r_idxs, r_idx_to_t_idxs, r_idx_to_deadend_distance, r_idx_to_distance)
+        # TODO: we want to prune as many tuples from state_pair_class_contains
         return tuple_graph_equivalences

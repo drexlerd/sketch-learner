@@ -12,7 +12,7 @@ from ..iteration_data.state_equivalence import DomainStateEquivalence
 class SketchASPFactory(ASPFactory):
     def __init__(self, config):
         super().__init__(config)
-        self.ctl.add("equivalence_contains", ["r", "d1", "d2"], "equivalence_contains(r,d1,d2).")
+        self.ctl.add("state_pair_class_contains", ["r", "d1", "d2"], "state_pair_class_contains(r,d1,d2).")
         self.ctl.add("exceed", ["i", "s"], "exceed(i,s).")
         self.ctl.add("tuple", ["i", "s", "t"], "tuple(i,s,t).")
         self.ctl.add("contain", ["i", "s", "t", "r"], "contain(i,s,t,r).")
@@ -39,9 +39,7 @@ class SketchASPFactory(ASPFactory):
                     facts.append(("d_distance", [Number(instance_data.id), Number(tuple_graph.root_idx), Number(r_idx), Number(d)]))
                 for r_idx, d in tuple_graph_equivalence.r_idx_to_distance.items():
                     facts.append(("r_distance", [Number(instance_data.id), Number(tuple_graph.root_idx), Number(r_idx), Number(d)]))
-                    if d == 0:
-                        facts.append(("looping_equivalences", (Number(r_idx),)))
                 for r_idx, state_class_pairs in instance_data.state_pair_equivalence.r_idx_to_state_class_pairs.items():
                     for state_class_pair in state_class_pairs:
-                        facts.append(("equivalence_contains", [Number(r_idx), Number(state_class_pair[0]), Number(state_class_pair[1])]))
+                        facts.append(("state_pair_class_contains", [Number(r_idx), Number(state_class_pair[0]), Number(state_class_pair[1])]))
         return facts

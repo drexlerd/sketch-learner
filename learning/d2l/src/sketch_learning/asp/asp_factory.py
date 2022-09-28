@@ -35,11 +35,10 @@ class ASPFactory:
         # rule equivalences
         self.ctl.add("feature_condition", ["f", "r", "v"], "feature_condition(f,r,v).")
         self.ctl.add("feature_effect", ["f", "r", "v"], "feature_effect(f,r,v).")
-        self.ctl.add("equivalence", ["r"], "equivalence(r).")
+        self.ctl.add("state_pair_class", ["r"], "state_pair_class(r).")
         # d2-separation constraints
         self.ctl.add("d2_separate", ["r1", "r2"], "d2_separate(r1,r2).")
         # optimality
-        self.ctl.add("looping_equivalences", ["r"], "looping_equivalences(r).")  # we use delta optimal here instead
         self.ctl.add("delta_optimal", ["i", "c", "s1", "s2"], "delta_optimal(i,c,s1,s2).")
         self.ctl.add("not_delta_optimal", ["i", "c", "s1", "s2"], "not_delta_optimal(i,c,s1,s2).")
 
@@ -56,7 +55,7 @@ class ASPFactory:
             facts.append(("complexity", [Number(f_idx + len(domain_feature_data.boolean_features)), Number(numerical.compute_complexity())]))
         # state pair facts
         for r_idx, rule in enumerate(domain_state_pair_equivalence.rules):
-            facts.append(("equivalence", [Number(r_idx)]))
+            facts.append(("state_pair_class", [Number(r_idx)]))
             for condition in rule.get_conditions():
                 condition_str = condition.str()
                 result = re.findall(r"\(.* (\d+)\)", condition_str)
