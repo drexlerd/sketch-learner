@@ -33,7 +33,7 @@ def report_and_exit(msg):
     sys.exit(-1)
 
 
-def do(expid, steps=None, workspace=None, show_steps_only=False, width=None, concept_complexity_limit=None, role_complexity_limit=None, boolean_complexity_limit=None, numerical_complexity_limit=None):
+def do(expid, steps=None, workspace=None, show_steps_only=False, width=None, concept_complexity_limit=None, role_complexity_limit=None, boolean_complexity_limit=None, count_numerical_complexity_limit=None, distance_numerical_complexity_limit=None):
     name_parts = expid.split(":")
     if len(name_parts) != 2:
         report_and_exit(f'Wrong experiment ID syntax "{expid}". Expected format <domain>:<experiment_name>')
@@ -63,8 +63,10 @@ def do(expid, steps=None, workspace=None, show_steps_only=False, width=None, con
         parameters["role_complexity_limit"] = role_complexity_limit
     if boolean_complexity_limit is not None:
         parameters["boolean_complexity_limit"] = boolean_complexity_limit
-    if numerical_complexity_limit is not None:
-        parameters["numerical_complexity_limit"] = numerical_complexity_limit
+    if count_numerical_complexity_limit is not None:
+        parameters["count_numerical_complexity_limit"] = count_numerical_complexity_limit
+    if distance_numerical_complexity_limit is not None:
+        parameters["distance_numerical_complexity_limit"] = distance_numerical_complexity_limit
 
     experiment = generate_experiment(expid, **parameters)
 
@@ -87,4 +89,5 @@ def run():
         args.concept_complexity_limit,
         args.role_complexity_limit,
         args.boolean_complexity_limit,
-        args.numerical_complexity_limit)
+        args.count_numerical_complexity_limit,
+        args.distance_numerical_complexity_limit)

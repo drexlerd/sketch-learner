@@ -31,7 +31,8 @@ def generate_experiment(expid, domain_dir, domain, **kwargs):
         concept_complexity_limit=9,
         role_complexity_limit=9,
         boolean_complexity_limit=9,
-        numerical_complexity_limit=9,
+        count_numerical_complexity_limit=9,
+        distance_numerical_complexity_limit=15,
         time_limit=3600,
         feature_limit=1000000,
         num_threads_feature_generator=1,
@@ -56,7 +57,7 @@ def generate_experiment(expid, domain_dir, domain, **kwargs):
     parameters["domain_dir"] = domain_dir
 
     # root level 0 directory for experimental data
-    parameters['experiment_dir'] = parameters['workspace'] / f"{expid.replace(':', '_')}_{parameters['width']}_{parameters['concept_complexity_limit']}_{parameters['role_complexity_limit']}_{parameters['boolean_complexity_limit']}_{parameters['numerical_complexity_limit']}"
+    parameters['experiment_dir'] = parameters['workspace'] / f"{expid.replace(':', '_')}_{parameters['width']}_{parameters['concept_complexity_limit']}_{parameters['role_complexity_limit']}_{parameters['boolean_complexity_limit']}_{parameters['count_numerical_complexity_limit']}_{parameters['distance_numerical_complexity_limit']}"
     create_experiment_workspace(parameters["experiment_dir"], rm_if_existed=False)
     change_working_directory(parameters['experiment_dir'])
     create_sym_link(Path(os.environ['SCORPION_PATH']) / "fast-downward.py", parameters['experiment_dir'] / "fast-downward.py", overwrite=True)
