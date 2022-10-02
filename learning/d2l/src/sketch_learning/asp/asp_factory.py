@@ -16,7 +16,7 @@ from ..instance_data.state_pair_classifier import StatePairClassification
 
 class ASPFactory:
     def __init__(self, config):
-        self.ctl = Control(arguments=config.clingo_arguments)
+        self.ctl = Control(arguments=config.clingo_arguments + ["--opt-mode=optN"])
         # features
         self.ctl.add("boolean", ["b"], "boolean(b).")
         self.ctl.add("numerical", ["n"], "numerical(n).")
@@ -190,15 +190,22 @@ class ASPFactory:
         self.ctl.ground(facts)  # ground a set of facts
 
     def solve(self):
+        count_models = 0
+        symbols_by_model = []
+        cost_by_model = []
+        min_cost = float("INF")
         with self.ctl.solve(yield_=True) as solve_handle:
-            last_model = None
             for model in solve_handle:
-                last_model = model
-                solve_result = solve_handle.get()
+                count_models += 1
+                symbols_by_model.append(model.symbols(shown=True))
+                cost_by_model.append(model.cost[0])
+                min_cost = min(min_cost, model.cost[0])
+            print("Number of models:", count_models)
             if solve_handle.get().unsatisfiable:
                 return [], ClingoExitCode.UNSATISFIABLE
             else:
-                return last_model.symbols(shown=True), ClingoExitCode.SATISFIABLE
+                return [symbols for symbols, cost in zip(symbols_by_model, cost_by_model) if cost == min_cost], ClingoExitCode.SATISFIABLE
+                # return last_model.symbols(shown=True), ClingoExitCode.SATISFIABLE
 
     def print_statistics(self):
         print("Clingo statistics:")

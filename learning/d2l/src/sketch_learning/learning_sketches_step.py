@@ -143,43 +143,65 @@ def learn_sketch(config, domain_data, instance_datas, make_asp_factory):
             logging.info(colored(f"..done", "blue", "on_grey"))
 
             logging.info(colored(f"Solving Logic Program...", "blue", "on_grey"))
-            symbols, returncode = asp_factory.solve()
-            logging.info(colored(f"..done", "blue", "on_grey"))
-
+            symbols_by_model, returncode = asp_factory.solve()
+            # add d2 separating constraints according to first model
+            symbols = symbols_by_model[0]
             if returncode in [ClingoExitCode.UNSATISFIABLE]:
                 print(colored("ASP is UNSAT", "red", "on_grey"))
                 print(colored("No sketch exists that solves all geneneral subproblems!", "red", "on_grey"))
                 return None, None, None
+            sketch = Sketch(DlplanPolicyFactory().make_dlplan_policy_from_answer_set_d2(symbols, domain_feature_data, rule_equivalences), width=config.width)
+            logging.info(colored(f"..done", "blue", "on_grey"))
+
             asp_factory.print_statistics()
-            sketch = Sketch(DlplanPolicyFactory().make_dlplan_policy_from_answer_set_d2(symbols, domain_feature_data, rule_equivalences), width=0)
-            logging.info("Learned the following sketch:")
-            sketch.print()
+
             if compute_smallest_unsolved_instance(sketch, selected_instance_datas) is None:
-                # Stop adding D2-separation constraints
-                # if sketch solves all training instances by luck
                 break
             j += 1
 
         logging.info(colored(f"Verifying learned sketch...", "blue", "on_grey"))
-        assert compute_smallest_unsolved_instance(sketch, selected_instance_datas) is None
-        smallest_unsolved_instance = compute_smallest_unsolved_instance(sketch, instance_datas)
-        logging.info(colored(f"..done", "blue", "on_grey"))
-
+        # get all sketches that are d2 separating
+        sketches = []
+        unique_sketch_reprs = set()
+        for count, symbols in enumerate(symbols_by_model):
+            sketch = Sketch(DlplanPolicyFactory().make_dlplan_policy_from_answer_set_d2(symbols, domain_feature_data, rule_equivalences), width=config.width)
+            sketch_repr = sketch.dlplan_policy.compute_repr()
+            if sketch_repr not in unique_sketch_reprs:
+                unique_sketch_reprs.add(sketch_repr)
+                sketches.append(sketch)
+            if count % 100 == 0:
+                print(f"{count}/{len(symbols_by_model)} of which {len(sketches)} are proven unique.")
+        print("Number of learned sketches:", len(sketches))
+        print("Learned sketches:")
+        for sketch in sketches:
+            sketch.print()
+        # find smallest unsolved instance by any learned sketch
+        all_solved = False
+        smallest_unsolved_instance_id = len(instance_datas)
+        for sketch in sketches:
+            sketch_smallest_unsolved_instance = compute_smallest_unsolved_instance(sketch, instance_datas)
+            if sketch_smallest_unsolved_instance is None:
+                print(colored("Sketch solves all instances!", "red", "on_grey"))
+                all_solved = True
+                break
+            else:
+                smallest_unsolved_instance_id = min(
+                    smallest_unsolved_instance_id,
+                    sketch_smallest_unsolved_instance.id)
         logging.info(colored("Iteration summary:", "yellow", "on_grey"))
         domain_feature_data_factory.statistics.print()
         state_equivalence_factory.statistics.print()
         state_pair_equivalence_factory.statistics.print()
-
-        if smallest_unsolved_instance is None:
-            print(colored("Sketch solves all instances!", "red", "on_grey"))
+        logging.info(colored(f"..done", "blue", "on_grey"))
+        if all_solved:
             break
+
+        if smallest_unsolved_instance_id > max(selected_instance_idxs):
+            selected_instance_idxs = [smallest_unsolved_instance_id]
         else:
-            if smallest_unsolved_instance.id > max(selected_instance_idxs):
-                selected_instance_idxs = [smallest_unsolved_instance.id]
-            else:
-                selected_instance_idxs.append(smallest_unsolved_instance.id)
-            print("Smallest unsolved instance:", smallest_unsolved_instance.id)
-            print("Selected instances:", selected_instance_idxs)
+            selected_instance_idxs.append(smallest_unsolved_instance_id)
+        print("Smallest unsolved instance:", smallest_unsolved_instance_id)
+        print("Selected instances:", selected_instance_idxs)
         i += 1
 
     logging.info(colored("Summary:", "green", "on_grey"))
