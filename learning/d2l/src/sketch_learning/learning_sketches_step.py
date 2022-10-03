@@ -164,13 +164,17 @@ def learn_sketch(config, domain_data, instance_datas, make_asp_factory):
         sketches = []
         unique_sketch_reprs = set()
         for count, symbols in enumerate(symbols_by_model):
-            sketch = Sketch(DlplanPolicyFactory().make_dlplan_policy_from_answer_set_d2(symbols, domain_feature_data, rule_equivalences), width=config.width)
-            sketch_repr = sketch.dlplan_policy.compute_repr()
-            if sketch_repr not in unique_sketch_reprs:
-                unique_sketch_reprs.add(sketch_repr)
-                sketches.append(sketch)
             if count % 100 == 0:
                 print(f"{count}/{len(symbols_by_model)} of which {len(sketches)} are proven unique.")
+            sketch = Sketch(DlplanPolicyFactory().make_dlplan_policy_from_answer_set_d2(symbols, domain_feature_data, rule_equivalences), width=config.width)
+            if compute_smallest_unsolved_instance(sketch, selected_instance_datas) is not None:
+                continue
+            sketch_repr = sketch.dlplan_policy.compute_repr()
+            if sketch_repr not in unique_sketch_reprs:
+                print("")
+                unique_sketch_reprs.add(sketch_repr)
+                sketches.append(sketch)
+
         print("Number of learned sketches:", len(sketches))
         print("Learned sketches:")
         for sketch in sketches:

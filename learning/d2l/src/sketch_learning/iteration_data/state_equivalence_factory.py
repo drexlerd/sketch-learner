@@ -59,7 +59,7 @@ class StateEquivalenceFactory:
             else:
                 mixed_state_class_idxs.add(state_class_idx)
         # we want goal separating features
-        assert not mixed_state_class_idxs
+        # assert not mixed_state_class_idxs
         return DomainStateEquivalence(
             feature_valuation_to_state_class_idx,
             goal_state_class_idxs,

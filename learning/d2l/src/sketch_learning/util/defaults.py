@@ -25,14 +25,14 @@ def generate_experiment(expid, domain_dir, domain, **kwargs):
 
         # The location of the asp problem file
         asp_sketch_location=(BASEDIR / "src/sketch_learning/asp/sketch_d2l.lp"),
-        asp_policy_location=(BASEDIR / "src/sketch_learning/asp/policy_d2.lp"),
+        asp_policy_location=(BASEDIR / "src/sketch_learning/asp/policy_d2l.lp"),
 
         # Feature generator settings
         concept_complexity_limit=9,
         role_complexity_limit=9,
         boolean_complexity_limit=9,
         count_numerical_complexity_limit=9,
-        distance_numerical_complexity_limit=15,
+        distance_numerical_complexity_limit=9,
         time_limit=3600,
         feature_limit=1000000,
         num_threads_feature_generator=1,
