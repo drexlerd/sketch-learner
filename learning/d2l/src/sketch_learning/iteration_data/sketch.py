@@ -145,9 +145,9 @@ class Sketch:
             return False
         if not self._verify_delta_optimality(instance_data, root_idx_to_closest_subgoal_s_idxs):
             return False
-        if not self._verify_acyclicity(instance_data, root_idx_to_closest_subgoal_s_idxs):
-            return False
         if not self._verify_goal_separating_features(instance_data):
+            return False
+        if not self._verify_acyclicity(instance_data, root_idx_to_closest_subgoal_s_idxs):
             return False
         return True
 

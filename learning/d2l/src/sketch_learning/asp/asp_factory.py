@@ -190,22 +190,13 @@ class ASPFactory:
         self.ctl.ground(facts)  # ground a set of facts
 
     def solve(self):
-        count_models = 0
-        symbols_by_model = []
-        cost_by_model = []
-        min_cost = float("INF")
         with self.ctl.solve(yield_=True) as solve_handle:
             for model in solve_handle:
-                count_models += 1
-                symbols_by_model.append(model.symbols(shown=True))
-                cost_by_model.append(model.cost[0])
-                min_cost = min(min_cost, model.cost[0])
-            print("Number of models:", count_models)
+                if model.optimality_proven:
+                    return model.symbols(shown=True), ClingoExitCode.SATISFIABLE
             if solve_handle.get().unsatisfiable:
-                return [], ClingoExitCode.UNSATISFIABLE
-            else:
-                return [symbols for symbols, cost in zip(symbols_by_model, cost_by_model) if cost == min_cost], ClingoExitCode.SATISFIABLE
-                # return last_model.symbols(shown=True), ClingoExitCode.SATISFIABLE
+                return None, ClingoExitCode.UNSATISFIABLE
+            return None, ClingoExitCode.UNKNOWN
 
     def print_statistics(self):
         print("Clingo statistics:")

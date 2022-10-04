@@ -26,6 +26,7 @@ class TupleGraphFactory:
         for s_idx in instance_data.state_space.get_state_indices():
             if instance_data.goal_distance_information.is_alive(s_idx):
                 tuple_graphs[s_idx] = self.minimizer.minimize(self.make_tuple_graph(instance_data, s_idx))
+                # tuple_graphs[s_idx] = self.make_tuple_graph(instance_data, s_idx)
         return tuple_graphs
 
     def make_tuple_graph(self, instance_data: InstanceData, source_index: int):
