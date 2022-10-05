@@ -44,12 +44,10 @@ class StatePairEquivalenceFactory:
             state_class_pair_to_r_idx = dict()
             for state_pair in instance_data.state_pair_classifier.state_pair_to_classification.keys():
                 self.statistics.increment_num_state_pairs()
-                source_idx = state_pair.source_idx
-                target_idx = state_pair.target_idx
                 # add conditions
-                conditions = self._make_conditions(policy_builder, policy_boolean_features, policy_numerical_features, instance_data.feature_valuations[source_idx])
+                conditions = self._make_conditions(policy_builder, policy_boolean_features, policy_numerical_features, instance_data.feature_valuations[state_pair.source_idx])
                 # add effects
-                effects = self._make_effects(policy_builder, policy_boolean_features, policy_numerical_features, instance_data.feature_valuations[source_idx], instance_data.feature_valuations[target_idx])
+                effects = self._make_effects(policy_builder, policy_boolean_features, policy_numerical_features, instance_data.feature_valuations[state_pair.source_idx], instance_data.feature_valuations[state_pair.target_idx])
                 # add rule
                 rule = policy_builder.add_rule(conditions, effects)
                 rule_repr = rule.compute_repr()

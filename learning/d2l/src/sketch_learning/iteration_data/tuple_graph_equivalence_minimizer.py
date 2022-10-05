@@ -36,9 +36,10 @@ class TupleGraphEquivalenceMinimizer:
     Define tuple t in T^k(s) as satisfiable iff
     for all r in C(s, t) holds that deadend-dist(s, r) > dist(s, t).
 
-    Then we want to prune subgoal tuples that:
-      (1) are unsatisfiable,
-      (2) for which there exists
+    Then we want to prune subgoal tuples t that:
+      (1) is unsatisfiable,
+      (2) for which there exists a tuple t' with t' < t, and
+      (3) for which there exists a representative tuple t' with t ~ t'.
     """
     def __init__(self):
         self.statistics = TupleGraphEquivalenceMinimizerStatistics()

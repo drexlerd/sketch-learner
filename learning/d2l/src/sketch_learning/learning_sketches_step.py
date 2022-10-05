@@ -122,8 +122,8 @@ def learn_sketch(config, domain_data, instance_datas, make_asp_factory):
 
         logging.info(colored(f"Initializing TupleGraphEquivalenceMinimizer...", "blue", "on_grey"))
         tuple_graph_equivalence_minimizer = TupleGraphEquivalenceMinimizer()
-        for instance_data in selected_instance_datas:
-            tuple_graph_equivalence_minimizer.minimize(instance_data)
+        # for instance_data in selected_instance_datas:
+        #     tuple_graph_equivalence_minimizer.minimize(instance_data)
         logging.info(colored(f"..done", "blue", "on_grey"))
 
         # Iteratively add D2-separation constraints

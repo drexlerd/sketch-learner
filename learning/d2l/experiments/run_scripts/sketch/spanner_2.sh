@@ -1,7 +1,7 @@
 #!/bin/bash
 #
 #SBATCH -J spanner_2_9_9
-#SBATCH -t 3-00:00:00
+#SBATCH -t 1-00:00:00
 #SBATCH -C fat --exclusive
 #SBATCH --mail-type=FAIL
 #SBATCH --mail-user=dominik.drexler@liu.se
