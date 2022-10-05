@@ -30,4 +30,4 @@ def experiments():
 
 
 def training_instances_4():
-    return [f"p-{i}-{j}" for i in range(3, 6) for j in range(0,200)]
+    return [f"p-{i}-{j}" for i in range(2, 5) for j in range(0,200)]

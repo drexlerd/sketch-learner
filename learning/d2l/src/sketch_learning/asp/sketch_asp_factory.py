@@ -34,8 +34,10 @@ class SketchASPFactory(ASPFactory):
                     for t_idx in tuple_graph.t_idxs_by_distance[d]:
                         facts.append(("t_distance", [Number(instance_data.id), Number(tuple_graph.root_idx), Number(t_idx), Number(d)]))
                         facts.append(("tuple", [Number(instance_data.id), Number(tuple_graph.root_idx), Number(t_idx)]))
-                        for s_prime_idx in tuple_graph.t_idx_to_s_idxs[t_idx]:
-                            facts.append(("contain", [Number(instance_data.id), Number(tuple_graph.root_idx), Number(t_idx), Number(s_prime_idx)]))
+                        #for s_prime_idx in tuple_graph.t_idx_to_s_idxs[t_idx]:
+                        #    facts.append(("contain", [Number(instance_data.id), Number(tuple_graph.root_idx), Number(t_idx), Number(s_prime_idx)]))
+                        for r_idx in tuple_graph_equivalence.t_idx_to_r_idxs[t_idx]:
+                            facts.append(("contain", [Number(instance_data.id), Number(tuple_graph.root_idx), Number(t_idx), Number(r_idx)]))
                 for r_idx, d in tuple_graph_equivalence.r_idx_to_deadend_distance.items():
                     facts.append(("d_distance", [Number(instance_data.id), Number(tuple_graph.root_idx), Number(r_idx), Number(d)]))
                 for r_idx, d in tuple_graph_equivalence.r_idx_to_distance.items():

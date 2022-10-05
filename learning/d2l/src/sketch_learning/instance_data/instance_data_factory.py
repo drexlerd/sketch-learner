@@ -12,10 +12,13 @@ class InstanceDataFactory:
             exitcode = dlplan.StateSpaceGenerator().generate_state_space(str(domain_data.domain_filename), str(instance_information.instance_filename))
             state_space = dlplan.StateSpaceReader().read(domain_data.vocabulary_info, len(instance_datas))
             goal_distance_information = state_space.compute_goal_distance_information()
-            if not goal_distance_information.is_solvable() or \
-                goal_distance_information.is_trivially_solvable():
+            if not goal_distance_information.is_solvable():
+                # unsolvable instance
                 continue
-            elif goal_distance_information.is_solvable():
+            elif set(state_space.get_state_indices()) == set(state_space.get_goal_state_indices()):
+                # all states are goals
+                continue
+            else:
                 state_information = state_space.compute_state_information()
                 instance_datas.append(InstanceData(len(instance_datas), instance_information, domain_data, state_space, goal_distance_information, state_information))
         # Sort the instances according to size and fix the indices afterwards

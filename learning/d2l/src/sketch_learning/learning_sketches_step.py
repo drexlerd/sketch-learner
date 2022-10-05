@@ -50,10 +50,7 @@ def run(config, data, rng):
         # Restrict state space to subset of states
         instance_data.state_space = dlplan.StateSpace(instance_data.state_space, instance_data.state_pair_classifier.expanded_s_idxs, instance_data.state_pair_classifier.generated_s_idxs)
         instance_data.goal_distance_information = instance_data.state_space.compute_goal_distance_information()
-        if not instance_data.goal_distance_information.is_solvable() or \
-            instance_data.goal_distance_information.is_trivially_solvable():  # remove not
-            print("Did not filter unsolvable or trivially solvable instance")
-            exit(1)
+        instance_data.state_space.print()
     sketch, structurally_minimized_sketch, empirically_minimized_sketch = learn_sketch(config, domain_data, instance_datas, make_sketch_asp_factory)
 
     print("Summary:")
@@ -122,8 +119,8 @@ def learn_sketch(config, domain_data, instance_datas, make_asp_factory):
 
         logging.info(colored(f"Initializing TupleGraphEquivalenceMinimizer...", "blue", "on_grey"))
         tuple_graph_equivalence_minimizer = TupleGraphEquivalenceMinimizer()
-        # for instance_data in selected_instance_datas:
-        #     tuple_graph_equivalence_minimizer.minimize(instance_data)
+        for instance_data in selected_instance_datas:
+            tuple_graph_equivalence_minimizer.minimize(instance_data)
         logging.info(colored(f"..done", "blue", "on_grey"))
 
         # Iteratively add D2-separation constraints

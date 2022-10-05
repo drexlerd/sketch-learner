@@ -6,7 +6,8 @@
 (:init
 (on-table b1)
 (on-table b2)
-(on b3 b1)
+(on-table b3)
+(clear b1)
 (clear b2)
 (clear b3)
 )
