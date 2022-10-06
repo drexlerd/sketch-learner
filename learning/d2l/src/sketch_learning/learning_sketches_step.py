@@ -50,6 +50,7 @@ def run(config, data, rng):
         # Restrict state space to subset of states
         instance_data.state_space = dlplan.StateSpace(instance_data.state_space, instance_data.state_pair_classifier.expanded_s_idxs, instance_data.state_pair_classifier.generated_s_idxs)
         instance_data.goal_distance_information = instance_data.state_space.compute_goal_distance_information()
+
     sketch, structurally_minimized_sketch, empirically_minimized_sketch = learn_sketch(config, domain_data, instance_datas, make_sketch_asp_factory)
 
     print("Summary:")
