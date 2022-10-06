@@ -70,7 +70,7 @@ def experiments():
 
 
 def training_instances_4():
-    return [f"p-{i}-{j}" for i in range(2, 5) for j in range(0,20)]
+    return [f"p-{i}-{j}" for i in range(2, 5) for j in range(0,200)]
 
 def training_instances_4_fixed_goal():
     """ For fixed goal we do not need to use random seeds. """
