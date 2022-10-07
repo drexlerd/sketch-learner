@@ -37,23 +37,24 @@ def compute_closest_subgoal_states(instance_data: InstanceData, root_idx: int, r
     layers = [[root_idx]]
     distances = dict()
     distances[root_idx] = 0
-    distance = 0
     closest_subgoal_states = set()
+    prev_layer = layers[0]
     while True:
-        layer = []
-        for s_idx in layers[distance]:
+        next_layer = []
+        for s_idx in prev_layer:
             for s_prime_idx in forward_successors.get(s_idx, []):
                 if distances.get(s_prime_idx, math.inf) == math.inf:
-                    layer.append(s_prime_idx)
+                    next_layer.append(s_prime_idx)
                     distances[s_prime_idx] = distances[s_idx] + 1
                     target_state = instance_data.state_information.get_state(s_prime_idx)
                     if rule.dlplan_rule.evaluate_effects(source_state, target_state, caches):
                         closest_subgoal_states.add(s_prime_idx)
-        if not layer:
+        if not next_layer:
             break
-        layers.append(layer)
+        layers.append(next_layer)
         if closest_subgoal_states:
             break
+        prev_layer = next_layer
     return closest_subgoal_states
 
 

@@ -49,11 +49,7 @@ class Sketch:
         caches = dlplan.DenotationsCaches()
         root_idx_to_closest_subgoal_s_idxs = defaultdict(set)
         root_idx_to_closest_subgoal_t_idxs = defaultdict(set)
-        for root_idx in instance_data.state_pair_classifier.expanded_s_idxs:
-            if root_idx not in instance_data.tuple_graphs:
-                continue
-            tuple_graph = instance_data.tuple_graphs[root_idx]
-            assert tuple_graph is not None
+        for root_idx, tuple_graph in instance_data.tuple_graphs.items():
             bounded = False
             source_state = instance_data.state_information.get_state(root_idx)
             for t_idxs in tuple_graph.t_idxs_by_distance:
