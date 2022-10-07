@@ -2,8 +2,8 @@ from re import sub
 from turtle import color
 import dlplan
 import logging
+import math
 
-from collections import OrderedDict
 from typing import  List
 from termcolor import colored
 
@@ -33,17 +33,28 @@ def compute_closest_subgoal_states(instance_data: InstanceData, root_idx: int, r
     source_state = instance_data.state_information.get_state(root_idx)
     if not rule.dlplan_rule.evaluate_conditions(source_state):
         return set()
-    distances = instance_data.state_space.compute_distances({root_idx}, True, False)
-    layers = partition_states_by_distance(distances)
-    for layer in layers:
-        closest_subgoal_states = set()
-        for target_idx in layer:
-            target_state = instance_data.state_information.get_state(target_idx)
-            if rule.dlplan_rule.evaluate_effects(source_state, target_state, caches):
-                closest_subgoal_states.add(target_idx)
+    forward_successors = instance_data.state_space.get_forward_successor_state_indices()
+    layers = [[root_idx]]
+    distances = dict()
+    distances[root_idx] = 0
+    distance = 0
+    closest_subgoal_states = set()
+    while True:
+        layer = []
+        for s_idx in layers[distance]:
+            for s_prime_idx in forward_successors[s_idx]:
+                if distances.get(s_prime_idx, math.inf) == math.inf:
+                    layer.append(s_prime_idx)
+                    distances[s_prime_idx] = distances[s_idx] + 1
+                    target_state = instance_data.state_information.get_state(s_prime_idx)
+                    if rule.dlplan_rule.evaluate_effects(source_state, target_state, caches):
+                        closest_subgoal_states.add(s_prime_idx)
+        if not layer:
+            break
+        layers.append(layer)
         if closest_subgoal_states:
-            return closest_subgoal_states
-    return set()
+            break
+    return closest_subgoal_states
 
 
 def run(config, data, rng):
