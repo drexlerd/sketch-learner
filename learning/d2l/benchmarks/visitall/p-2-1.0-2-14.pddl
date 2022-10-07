@@ -1,3 +1,11 @@
+2
+3
+3
+2
+3
+2
+2
+0
 (define (problem grid-2)
 (:domain grid-visit-all)
 (:objects 
