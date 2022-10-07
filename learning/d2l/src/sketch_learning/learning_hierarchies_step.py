@@ -73,20 +73,20 @@ def run(config, data, rng):
             for s_idx in instance_data.state_space.get_state_indices():
                 old_initial_state_index = instance_data.state_space.get_initial_state_index()
                 old_goal_state_indices = instance_data.state_space.get_goal_state_indices()
+                old_state_information = instance_data.state_information
+                old_goal_distance_information = instance_data.goal_distance_information
                 instance_data.state_space.set_initial_state_index(s_idx)
                 subgoals = compute_closest_subgoal_states(instance_data, s_idx, rule)
+                if not subgoals:
+                    instance_data.state_space.set_initial_state_index(old_initial_state_index)
+                    continue
                 instance_data.state_space.set_goal_state_indices(subgoals)
                 instance_data.state_information = instance_data.state_space.compute_state_information()
                 instance_data.goal_distance_information = instance_data.state_space.compute_goal_distance_information()
                 instance_data.tuple_graphs = TupleGraphFactory(width=0).make_tuple_graphs(instance_data)
                 state_pair_classifier = StatePairClassifierFactory(config.delta).make_state_pair_classifier(config, instance_data)
-                state_space = dlplan.StateSpace(instance_data.state_space, state_pair_classifier.expanded_s_idxs, state_pair_classifier.generated_s_idxs)
-                # Reinitialize instance_data
-                instance_data.state_space.set_initial_state_index(old_initial_state_index)
-                instance_data.state_space.set_goal_state_indices(old_goal_state_indices)
-                instance_data.state_information = instance_data.state_space.compute_state_information()
-                instance_data.goal_distance_information = instance_data.state_space.compute_goal_distance_information()
                 # Construct subproblem_instance_data from acquired information
+                state_space = dlplan.StateSpace(instance_data.state_space, state_pair_classifier.expanded_s_idxs, state_pair_classifier.generated_s_idxs)
                 subproblem_instance_data = InstanceData(
                     len(subproblem_instance_datas),
                     instance_data.instance_information,
@@ -96,8 +96,13 @@ def run(config, data, rng):
                     state_space.compute_state_information(),
                     None,
                     state_pair_classifier)
+                # Reinitialize instance_data
+                instance_data.state_space.set_initial_state_index(old_initial_state_index)
+                instance_data.state_space.set_goal_state_indices(old_goal_state_indices)
+                instance_data.state_information = old_state_information
+                instance_data.goal_distance_information = old_goal_distance_information
+
                 subproblem_instance_data.tuple_graphs = TupleGraphFactory(width=0).make_tuple_graphs(subproblem_instance_data)
-                # assert not subproblem_instance_data.goal_distance_information.get_deadend_state_indices()
                 if not subproblem_instance_data.goal_distance_information.is_solvable() or \
                     subproblem_instance_data.goal_distance_information.is_trivially_solvable():
                     continue

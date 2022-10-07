@@ -7,29 +7,28 @@
 % Generate exactly one subgoal for each solvable state for which the width exceeds.
 { subgoal(I, S, T) : tuple(I, S, T) } = 1 :- exceed(I, S).
 % Generate good equivalence classes
-{ good(C) } :- equivalence(C).
+{ good(C) } :- state_pair_class(C).
 
 % Require that all equivalence classes C underlying a tuple T of subproblem P[S] are good, effectively bounding the width of P[S]
-:- not good(C), subgoal(I, S, T), contain(I, S, T, C).
+:- { good(C) : cover(I, S, C, S') } = 0, subgoal(I, S, T), contain(I, S, T, S').
 % Require unsolvable states S' as close as subgoal to not be assigned to any rule.
 :- D <= D', d_distance(I, S, C, D), t_distance(I, S, T, D'), subgoal(I, S, T), good(C).
 % (Optimal-width): Require solvable states S' closer than subgoal to not be assigned to any rule.
 :- D < D', r_distance(I, S, C, D), t_distance(I, S, T, D'), subgoal(I, S, T), good(C).
-:- looping_equivalences(C), good(C).
 
 % D2-separation
-:- good(C), not good(C'), d2_separate(C, C'), equivalence(C), equivalence(C'), { feature(F) : select(F), feature_effect(F, C, V), feature_effect(F, C', V'), V != V' } = 0, { feature(F) : select(F), feature_condition(F, C, V), feature_condition(F, C', V'), V != V' } = 0.
+:- good(C), not good(C'), d2_separate(C, C'), state_pair_class(C), state_pair_class(C'), { feature(F) : select(F), feature_effect(F, C, V), feature_effect(F, C', V'), V != V' } = 0, { feature(F) : select(F), feature_condition(F, C, V), feature_condition(F, C', V'), V != V' } = 0.
 
 % Goal-separation
-:- nongoal(I, S), goal(I, S'), { feature(F) : select(F), value(I, S, F, V), value(I, S', F, V'), V != V' } = 0.
+:- nongoal_state_class(D), goal_state_class(D'), { feature(F) : select(F), value(D, F, V), value(D', F, V'), V != V' } = 0.
 
-% Define ``good`` state pairs similar to equivalence classes
-good(I, S, S') :- good(C), equivalence_contains(I, C, S, S').
-% (Termination): Sketch must define strict partial order over R-reachable states
+% Define ``good`` pairs of state classes similar
+good(D, D') :- good(C), state_pair_class_contains(C, D, D').
+% (Termination): Sketch must define strict partial order over feature valuations
 % Source of this formulation: https://users.aalto.fi/~rintanj1/papers/GebserJR14kr.pdf
-order(I, S, S') :- solvable(I, S), solvable(I, S'), good(I, S, S'), order(I, S').
-order(I, S) :- solvable(I, S), order(I, S, S') : good(I, S, S'), solvable(I, S), solvable(I, S').
-:- solvable(I, S), not order(I, S).
+order(D, D') :- state_class(D), state_class(D'), good(D, D'), order(D').
+order(D) :- state_class(D), order(D, D') : good(D, D'), state_class(D), state_class(D').
+:- state_class(D), not order(D).
 
 % Display
 #show select/1.

@@ -40,6 +40,7 @@ def experiments():
     exps["hierarchy"] = update_dict(
         strips_base,
         pipeline="hierarchy_pipeline",
+        distance_numerical_complexity_limit=15,
         instances=training_instances(),
     )
 
