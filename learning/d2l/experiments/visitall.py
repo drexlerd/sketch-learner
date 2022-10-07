@@ -26,25 +26,29 @@ def experiments():
         strips_base,
         pipeline="sketch_pipeline",
         instances=training_instances(),
+        max_states_per_instance=5000,
     )
 
     exps["sketch_dist"] = update_dict(
         strips_base,
         pipeline="sketch_pipeline",
         instances=training_instances(),
+        max_states_per_instance=5000,
         generate_concept_distance_numerical=True
     )
 
     exps["hierarchy"] = update_dict(
         strips_base,
         pipeline="hierarchy_pipeline",
-        instances=training_instances()
+        instances=training_instances(),
+        max_states_per_instance=5000,
     )
 
     exps["hierarchy_dist"] = update_dict(
         strips_base,
         pipeline="hierarchy_pipeline",
         instances=training_instances(),
+        max_states_per_instance=5000,
         generate_concept_distance_numerical=True
     )
     return exps
@@ -53,4 +57,4 @@ def instances():
     return ["p-2-1.0-3-0"]
 
 def training_instances():
-    return [f"p-{unavail}-{pct}-{grid_size}-{seed}" for unavail in range(1,3) for pct in [0.5,1.0] for grid_size in range(2,4) for seed in range(0,50) ]
+    return [f"p-{unavail}-{pct}-{grid_size}-{seed}" for unavail in range(1,3) for pct in [0.5,1.0] for grid_size in range(2,5) for seed in range(0,10) ]

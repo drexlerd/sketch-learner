@@ -11,6 +11,8 @@ class InstanceDataFactory:
             logging.info(f"Constructing InstanceData for filename {instance_information.instance_filename}")
             exitcode = dlplan.StateSpaceGenerator().generate_state_space(str(domain_data.domain_filename), str(instance_information.instance_filename))
             state_space = dlplan.StateSpaceReader().read(domain_data.vocabulary_info, len(instance_datas))
+            if state_space.get_num_states() > config.max_states_per_instance:
+                continue
             goal_distance_information = state_space.compute_goal_distance_information()
             if not goal_distance_information.is_solvable():
                 # unsolvable instance
@@ -19,6 +21,7 @@ class InstanceDataFactory:
                 # all states are goals
                 continue
             else:
+                print("Num states:", state_space.get_num_states())
                 state_information = state_space.compute_state_information()
                 instance_datas.append(InstanceData(len(instance_datas), instance_information, domain_data, state_space, goal_distance_information, state_information))
         # Sort the instances according to size and fix the indices afterwards

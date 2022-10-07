@@ -42,7 +42,7 @@ def compute_closest_subgoal_states(instance_data: InstanceData, root_idx: int, r
     while True:
         layer = []
         for s_idx in layers[distance]:
-            for s_prime_idx in forward_successors[s_idx]:
+            for s_prime_idx in forward_successors.get(s_idx, []):
                 if distances.get(s_prime_idx, math.inf) == math.inf:
                     layer.append(s_prime_idx)
                     distances[s_prime_idx] = distances[s_idx] + 1

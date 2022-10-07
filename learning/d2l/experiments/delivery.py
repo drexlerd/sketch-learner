@@ -28,30 +28,43 @@ def experiments():
         strips_base,
         pipeline="sketch_pipeline",
         instances=training_instances(),
+        max_states_per_instance=5000,
     )
 
     exps["sketch_dist"] = update_dict(
         strips_base,
         pipeline="sketch_pipeline",
         instances=training_instances(),
-        generate_concept_distance_numerical=True
+        max_states_per_instance=5000,
+        generate_concept_distance_numerical=True,
+    )
+
+    exps["sketch_dist_test"] = update_dict(
+        strips_base,
+        pipeline="sketch_pipeline",
+        instances=["instance_3_2_0"],
+        max_states_per_instance=5000,
+        generate_concept_distance_numerical=True,
+        distance_numerical_complexity_limit=15,
     )
 
     exps["hierarchy"] = update_dict(
         strips_base,
         pipeline="hierarchy_pipeline",
-        distance_numerical_complexity_limit=15,
         instances=training_instances(),
+        max_states_per_instance=5000,
+        distance_numerical_complexity_limit=15,
     )
 
     exps["hierarchy_dist"] = update_dict(
         strips_base,
         pipeline="hierarchy_pipeline",
         instances=training_instances(),
-        generate_concept_distance_numerical=True
+        max_states_per_instance=5000,
+        generate_concept_distance_numerical=True,
     )
     return exps
 
 
 def training_instances():
-    return [f"instance_{i}_{j}_{k}" for i in range(2,4) for j in range(1,3) for k in range(0,30) ]
+    return [f"instance_{i}_{j}_{k}" for i in range(2,5) for j in range(1,3) for k in range(0,30) ]
