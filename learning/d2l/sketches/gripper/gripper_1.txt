@@ -5,4 +5,3 @@
 (:rule (:conditions (:c_n_gt 1) (:c_n_gt 0)) (:effects (:e_n_dec 1) (:e_n_bot 0)))
 (:rule (:conditions (:c_n_gt 1) (:c_n_gt 0)) (:effects (:e_n_inc 1) (:e_n_inc 0)))
 )
-
