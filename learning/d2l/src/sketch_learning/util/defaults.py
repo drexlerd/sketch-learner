@@ -60,8 +60,7 @@ def generate_experiment(expid, domain_dir, domain, **kwargs):
     parameters['experiment_dir'] = parameters['workspace'] / f"{expid.replace(':', '_')}_{parameters['width']}_{parameters['concept_complexity_limit']}_{parameters['role_complexity_limit']}_{parameters['boolean_complexity_limit']}_{parameters['count_numerical_complexity_limit']}_{parameters['distance_numerical_complexity_limit']}"
     create_experiment_workspace(parameters["experiment_dir"], rm_if_existed=False)
     change_working_directory(parameters['experiment_dir'])
-    create_sym_link(Path(os.environ['SCORPION_PATH']) / "fast-downward.py", parameters['experiment_dir'] / "fast-downward.py", overwrite=True)
-
+    create_sym_link(BASEDIR / Path("libs/dlplan/libs/scorpion") / Path("fast-downward.py"), parameters['experiment_dir'] / "fast-downward.py", overwrite=True)
 
     # level 1 directory to store information of each iteration
     parameters["iterations_dir"] = parameters["experiment_dir"] / "iterations"
