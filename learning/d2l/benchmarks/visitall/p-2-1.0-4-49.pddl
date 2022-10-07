@@ -1,6 +1,3 @@
-10
-4
-1
 (define (problem grid-4)
 (:domain grid-visit-all)
 (:objects 
