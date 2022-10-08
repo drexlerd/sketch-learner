@@ -4,32 +4,23 @@ import dlplan
 import logging
 import math
 
+from collections import defaultdict
 from typing import  List
 from termcolor import colored
 
-from .instance_data.return_codes import ReturnCode
-
 from .returncodes import ExitCode
-from .asp.returncodes import ClingoExitCode
 from .util.command import read_file
 from .domain_data.domain_data_factory import DomainDataFactory
 from .instance_data.instance_data import InstanceData
 from .instance_data.instance_data_factory import InstanceDataFactory
-from .instance_data.state_pair_classifier import StatePairClassifier
 from .instance_data.state_pair_classifier_factory import StatePairClassifierFactory
-from .instance_data.tuple_graph_factory import TupleGraphFactory, partition_states_by_distance
-from .iteration_data.domain_feature_data_factory import DomainFeatureDataFactory
-from .iteration_data.feature_valuations_factory import FeatureValuationsFactory
-from .iteration_data.state_pair_equivalence_factory import StatePairEquivalenceFactory
-from .iteration_data.dlplan_policy_factory import DlplanPolicyFactory
+from .instance_data.tuple_graph_factory import TupleGraphFactory
 from .iteration_data.sketch import Sketch, SketchRule
 from .asp.policy_asp_factory import PolicyASPFactory
-from .util.timer import CountDownTimer
 from .learning_sketches_step import learn_sketch
 
 
 def compute_closest_subgoal_states(instance_data: InstanceData, root_idx: int, rule: SketchRule):
-    caches = dlplan.DenotationsCaches()
     source_state = instance_data.state_information.get_state(root_idx)
     if not rule.dlplan_rule.evaluate_conditions(source_state):
         return set()
@@ -47,7 +38,7 @@ def compute_closest_subgoal_states(instance_data: InstanceData, root_idx: int, r
                     next_layer.append(s_prime_idx)
                     distances[s_prime_idx] = distances[s_idx] + 1
                     target_state = instance_data.state_information.get_state(s_prime_idx)
-                    if rule.dlplan_rule.evaluate_effects(source_state, target_state, caches):
+                    if rule.dlplan_rule.evaluate_effects(source_state, target_state, instance_data.denotations_caches):
                         closest_subgoal_states.add(s_prime_idx)
         if not next_layer:
             break
@@ -67,6 +58,14 @@ def run(config, data, rng):
     instance_datas = InstanceDataFactory().make_instance_datas(config, domain_data)
     logging.info(colored(f"..done", "blue", "on_grey"))
 
+    logging.info(colored(f"Initializing TupleGraphs...", "blue", "on_grey"))
+    tuple_graph_factory = TupleGraphFactory(width=0)
+    for instance_data in instance_datas:
+        instance_data.tuple_graphs = dict()
+        for s_idx in instance_data.state_space.get_state_indices():
+            instance_data.tuple_graphs[s_idx] = tuple_graph_factory.make_tuple_graph(instance_data, s_idx)
+    logging.info(colored(f"..done", "blue", "on_grey"))
+
     logging.info(colored(f"Initializing Sketch...", "blue", "on_grey"))
     sketch = Sketch(dlplan.PolicyReader().read("\n".join(read_file(config.sketch_filename)), domain_data.syntactic_element_factory), config.width)
     logging.info(colored(f"..done", "blue", "on_grey"))
@@ -82,44 +81,47 @@ def run(config, data, rng):
         logging.info(colored(f"Initializing Subproblems...", "blue", "on_grey"))
         subproblem_instance_datas = []
         for instance_data in instance_datas:
+            # for similar goal state we can have single goal distance information computation
+            subgoals_classes = defaultdict(set)
             for s_idx in instance_data.state_space.get_state_indices():
-                old_initial_state_index = instance_data.state_space.get_initial_state_index()
-                old_goal_state_indices = instance_data.state_space.get_goal_state_indices()
-                old_state_information = instance_data.state_information
-                old_goal_distance_information = instance_data.goal_distance_information
-                instance_data.state_space.set_initial_state_index(s_idx)
+                if not instance_data.goal_distance_information.is_alive(s_idx):
+                        continue
                 subgoals = compute_closest_subgoal_states(instance_data, s_idx, rule)
                 if not subgoals:
-                    instance_data.state_space.set_initial_state_index(old_initial_state_index)
                     continue
-                instance_data.state_space.set_goal_state_indices(subgoals)
-                instance_data.state_information = instance_data.state_space.compute_state_information()
+                subgoals_classes[tuple(sorted(list(subgoals)))].add(s_idx)
+            print("Num subgoal classes:", len(subgoals_classes))
+            print("Num states:", instance_data.state_space.get_num_states())
+
+            old_initial_state_index = instance_data.state_space.get_initial_state_index()
+            old_goal_state_indices = instance_data.state_space.get_goal_state_indices()
+            old_goal_distance_information = instance_data.goal_distance_information
+            for subgoals, s_idxs in subgoals_classes.items():
+                instance_data.state_space.set_goal_state_indices(set(subgoals))
                 instance_data.goal_distance_information = instance_data.state_space.compute_goal_distance_information()
-                instance_data.tuple_graphs = TupleGraphFactory(width=0).make_tuple_graphs(instance_data)
-                state_pair_classifier = StatePairClassifierFactory(config.delta).make_state_pair_classifier(config, instance_data)
-                # Construct subproblem_instance_data from acquired information
-                state_space = dlplan.StateSpace(instance_data.state_space, state_pair_classifier.expanded_s_idxs, state_pair_classifier.generated_s_idxs)
-                subproblem_instance_data = InstanceData(
-                    len(subproblem_instance_datas),
-                    instance_data.instance_information,
-                    instance_data.domain_data,
-                    state_space,
-                    state_space.compute_goal_distance_information(),
-                    state_space.compute_state_information(),
-                    None,
-                    state_pair_classifier)
-                # Reinitialize instance_data
-                instance_data.state_space.set_initial_state_index(old_initial_state_index)
+                for s_idx in s_idxs:
+                    instance_data.state_space.set_initial_state_index(s_idx)
+                    state_pair_classifier = StatePairClassifierFactory(config.delta).make_state_pair_classifier(config, instance_data)
+                    state_space = dlplan.StateSpace(instance_data.state_space, state_pair_classifier.expanded_s_idxs, state_pair_classifier.generated_s_idxs)
+                    subproblem_instance_data = InstanceData(
+                        len(subproblem_instance_datas),
+                        instance_data.instance_information,
+                        instance_data.domain_data,
+                        state_space,
+                        state_space.compute_goal_distance_information(),
+                        state_space.compute_state_information(),
+                        instance_data.denotations_caches,
+                        None,
+                        state_pair_classifier)
+                    if not subproblem_instance_data.goal_distance_information.is_solvable() or \
+                        subproblem_instance_data.goal_distance_information.is_trivially_solvable():
+                        continue
+                    subproblem_instance_data.tuple_graphs = {s_idx: instance_data.tuple_graphs[s_idx] for s_idx in subproblem_instance_data.state_space.get_state_indices() if subproblem_instance_data.goal_distance_information.is_alive(s_idx)}
+                    subproblem_instance_datas.append(subproblem_instance_data)
+                    instance_data.state_space.set_initial_state_index(old_initial_state_index)
                 instance_data.state_space.set_goal_state_indices(old_goal_state_indices)
-                instance_data.state_information = old_state_information
                 instance_data.goal_distance_information = old_goal_distance_information
 
-                subproblem_instance_data.tuple_graphs = TupleGraphFactory(width=0).make_tuple_graphs(subproblem_instance_data)
-                if not subproblem_instance_data.goal_distance_information.is_solvable() or \
-                    subproblem_instance_data.goal_distance_information.is_trivially_solvable():
-                    continue
-
-                subproblem_instance_datas.append(subproblem_instance_data)
         if not subproblem_instance_datas:
             print(colored("Sketch rule does not induce any subproblems!", "red", "on_grey"))
             solution_policies.append(None)

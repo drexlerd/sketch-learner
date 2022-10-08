@@ -46,7 +46,6 @@ class Sketch:
             (2) the closest subgoal tuples for every alive state, and
             (3) True if the width of every alive state is bounded.
         """
-        caches = dlplan.DenotationsCaches()
         root_idx_to_closest_subgoal_s_idxs = defaultdict(set)
         root_idx_to_closest_subgoal_t_idxs = defaultdict(set)
         for root_idx, tuple_graph in instance_data.tuple_graphs.items():
@@ -58,7 +57,7 @@ class Sketch:
                     assert tuple_graph.t_idx_to_s_idxs[t_idx]
                     for s_idx in tuple_graph.t_idx_to_s_idxs[t_idx]:
                         target_state = instance_data.state_information.get_state(s_idx)
-                        if self.dlplan_policy.evaluate_lazy(source_state, target_state, caches) is not None:
+                        if self.dlplan_policy.evaluate_lazy(source_state, target_state, instance_data.denotations_caches) is not None:
                             root_idx_to_closest_subgoal_s_idxs[tuple_graph.root_idx].add(s_idx)
                             if instance_data.goal_distance_information.is_deadend(s_idx):
                                 print(colored(f"Sketch leads to an unsolvable state", "red", "on_grey"))

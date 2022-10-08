@@ -21,6 +21,7 @@ class InstanceData:
     state_space: dlplan.StateSpace
     goal_distance_information: dlplan.GoalDistanceInformation = None
     state_information: dlplan.StateInformation = None
+    denotations_caches: dlplan.DenotationsCaches = None
     tuple_graphs: List[TupleGraph] = None
     state_pair_classifier: StatePairClassifier = None
     feature_valuations: List[FeatureValuation] = None

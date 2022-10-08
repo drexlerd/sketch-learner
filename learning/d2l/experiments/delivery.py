@@ -67,4 +67,4 @@ def experiments():
 
 
 def training_instances():
-    return [f"instance_{i}_{j}_{k}" for i in range(2,5) for j in range(1,3) for k in range(0,30) ]
+    return [f"instance_{i}_{j}_{k}" for i in range(2,5) for j in range(1,3) for k in range(0,10) ]
