@@ -121,7 +121,7 @@ def run(config, data, rng):
                     instance_data.state_space.set_initial_state_index(old_initial_state_index)
                 instance_data.state_space.set_goal_state_indices(old_goal_state_indices)
                 instance_data.goal_distance_information = old_goal_distance_information
-
+        # exit(1)
         if not subproblem_instance_datas:
             print(colored("Sketch rule does not induce any subproblems!", "red", "on_grey"))
             solution_policies.append(None)

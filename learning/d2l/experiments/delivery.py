@@ -61,6 +61,7 @@ def experiments():
         pipeline="hierarchy_pipeline",
         instances=training_instances(),
         max_states_per_instance=5000,
+        distance_numerical_complexity_limit=15,
         generate_concept_distance_numerical=True,
     )
     return exps
