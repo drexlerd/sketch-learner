@@ -74,6 +74,7 @@ class StatePairClassifierFactory:
                 if state_pair_to_classification[state_pair] in {StatePairClassification.DEADEND, StatePairClassification.SELF_LOOP, StatePairClassification.DELTA_OPTIMAL }:
                     state_pair_to_classification_2[state_pair] = state_pair_to_classification[state_pair]
                     source_idx_to_state_pairs_2[source_idx].add(state_pair)
+                    state_indices_2.add(state_pair.target_idx)
                 if state_pair_to_classification[state_pair] == StatePairClassification.DELTA_OPTIMAL:
                     if state_pair.target_idx not in visited:
                         queue.append(state_pair.target_idx)
