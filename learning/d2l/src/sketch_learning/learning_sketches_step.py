@@ -91,9 +91,6 @@ def learn_sketch(config, domain_data, instance_datas, make_asp_factory):
         print(f"Selected instances:")
         for instance_data in selected_instance_datas:
             print("    id:", instance_data.id, "name:", instance_data.instance_information.name)
-            instance_data.state_space.print()
-            print(instance_data.state_space.to_dot(0))
-            print(instance_data.state_space.to_dot(1))
 
         logging.info(colored(f"Initializing DomainFeatureData...", "blue", "on_grey"))
         domain_feature_data_factory = DomainFeatureDataFactory()

@@ -29,10 +29,12 @@ def compute_closest_subgoal_states(instance_data: InstanceData, root_idx: int, r
     distances = dict()
     distances[root_idx] = 0
     closest_subgoal_states = set()
+    closest_alive_states = set()
     prev_layer = layers[0]
     while True:
         next_layer = []
         for s_idx in prev_layer:
+            closest_alive_states.update(prev_layer)
             for s_prime_idx in forward_successors.get(s_idx, []):
                 if distances.get(s_prime_idx, math.inf) == math.inf:
                     next_layer.append(s_prime_idx)
@@ -46,7 +48,7 @@ def compute_closest_subgoal_states(instance_data: InstanceData, root_idx: int, r
         if closest_subgoal_states:
             break
         prev_layer = next_layer
-    return closest_subgoal_states
+    return closest_subgoal_states, closest_alive_states
 
 
 def run(config, data, rng):
@@ -86,7 +88,7 @@ def run(config, data, rng):
             for s_idx in instance_data.state_space.get_state_indices():
                 if not instance_data.goal_distance_information.is_alive(s_idx):
                         continue
-                subgoals = compute_closest_subgoal_states(instance_data, s_idx, rule)
+                subgoals, closest_alive_states = compute_closest_subgoal_states(instance_data, s_idx, rule)
                 if not subgoals:
                     continue
                 subgoals_classes[tuple(sorted(list(subgoals)))].add(s_idx)
@@ -102,7 +104,10 @@ def run(config, data, rng):
                 for s_idx in s_idxs:
                     instance_data.state_space.set_initial_state_index(s_idx)
                     state_pair_classifier = StatePairClassifierFactory(config.delta).make_state_pair_classifier(config, instance_data)
-                    state_space = dlplan.StateSpace(instance_data.state_space, state_pair_classifier.expanded_s_idxs, state_pair_classifier.generated_s_idxs)
+                    state_space = dlplan.StateSpace(
+                        instance_data.state_space,
+                        state_pair_classifier.state_indices,
+                        state_pair_classifier.state_indices)
                     subproblem_instance_data = InstanceData(
                         len(subproblem_instance_datas),
                         instance_data.instance_information,
@@ -116,12 +121,12 @@ def run(config, data, rng):
                     if not subproblem_instance_data.goal_distance_information.is_solvable() or \
                         subproblem_instance_data.goal_distance_information.is_trivially_solvable():
                         continue
-                    subproblem_instance_data.tuple_graphs = {s_idx: instance_data.tuple_graphs[s_idx] for s_idx in subproblem_instance_data.state_space.get_state_indices() if subproblem_instance_data.goal_distance_information.is_alive(s_idx)}
+                    # recompute tuple graph for restricted state space
+                    subproblem_instance_data.tuple_graphs = tuple_graph_factory.make_tuple_graphs(subproblem_instance_data)
                     subproblem_instance_datas.append(subproblem_instance_data)
                     instance_data.state_space.set_initial_state_index(old_initial_state_index)
                 instance_data.state_space.set_goal_state_indices(old_goal_state_indices)
                 instance_data.goal_distance_information = old_goal_distance_information
-        # exit(1)
         if not subproblem_instance_datas:
             print(colored("Sketch rule does not induce any subproblems!", "red", "on_grey"))
             solution_policies.append(None)
