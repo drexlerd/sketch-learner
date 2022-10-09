@@ -1,0 +1,1 @@
+../../../../../benchmarks/miconic/domain.pddl

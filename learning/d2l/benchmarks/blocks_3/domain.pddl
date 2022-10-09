@@ -1,5 +1,4 @@
 (define (domain blocksworld)
-(:requirements :typing)
 (:types block - object)
 (:predicates (clear ?x)
              (on-table ?x)

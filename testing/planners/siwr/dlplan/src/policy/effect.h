@@ -13,75 +13,91 @@ namespace evaluator {
 }
 namespace policy {
 
-template<typename T>
-class Effect : public BaseEffect {
+class BooleanEffect : public BaseEffect {
 protected:
-    const std::shared_ptr<const Feature<T>> m_feature;
+    const std::shared_ptr<const core::Boolean> m_boolean;
 
 protected:
-    Effect(std::shared_ptr<const PolicyRoot> root, std::shared_ptr<const Feature<T>> feature);
-
-public:
-    std::shared_ptr<const Feature<T>> get_feature() const;
+    BooleanEffect(std::shared_ptr<const core::Boolean> boolean);
 };
 
-class PositiveBooleanEffect : public Effect<bool> {
-public:
-    PositiveBooleanEffect(std::shared_ptr<const PolicyRoot> root, std::shared_ptr<const Feature<bool>> boolean_feature);
 
-    bool evaluate(evaluator::EvaluationContext& source_context, evaluator::EvaluationContext& target_context) const override;
+class NumericalEffect : public BaseEffect {
+protected:
+    const std::shared_ptr<const core::Numerical> m_numerical;
 
-    std::string compute_repr() const override;
+protected:
+    NumericalEffect(std::shared_ptr<const core::Numerical> numerical);
 };
 
-class NegativeBooleanEffect : public Effect<bool> {
-public:
-    NegativeBooleanEffect(std::shared_ptr<const PolicyRoot> root, std::shared_ptr<const Feature<bool>> boolean_feature);
 
-    bool evaluate(evaluator::EvaluationContext& source_context, evaluator::EvaluationContext& target_context) const override;
+class PositiveBooleanEffect : public BooleanEffect {
+public:
+    PositiveBooleanEffect(std::shared_ptr<const core::Boolean> boolean_feature);
+
+    bool evaluate(const core::State& source_state, const core::State& target_state, evaluator::EvaluationCache& cache) const override;
 
     std::string compute_repr() const override;
+
+    std::shared_ptr<const BaseEffect> visit(PolicyBuilder& policy_builder) const override;
 };
 
-class UnchangedBooleanEffect : public Effect<bool> {
+class NegativeBooleanEffect : public BooleanEffect {
 public:
-    UnchangedBooleanEffect(std::shared_ptr<const PolicyRoot> root, std::shared_ptr<const Feature<bool>> boolean_feature);
+    NegativeBooleanEffect(std::shared_ptr<const core::Boolean> boolean_feature);
 
-    bool evaluate(evaluator::EvaluationContext& source_context, evaluator::EvaluationContext& target_context) const override;
+    bool evaluate(const core::State& source_state, const core::State& target_state, evaluator::EvaluationCache& cache) const override;
 
     std::string compute_repr() const override;
+
+    std::shared_ptr<const BaseEffect> visit(PolicyBuilder& policy_builder) const override;
 };
 
-class IncrementNumericalEffect : public Effect<int> {
+class UnchangedBooleanEffect : public BooleanEffect {
 public:
-    IncrementNumericalEffect(std::shared_ptr<const PolicyRoot> root, std::shared_ptr<const Feature<int>> numerical_feature);
+    UnchangedBooleanEffect(std::shared_ptr<const core::Boolean> boolean_feature);
 
-    bool evaluate(evaluator::EvaluationContext& source_context, evaluator::EvaluationContext& target_context) const override;
+    bool evaluate(const core::State& source_state, const core::State& target_state, evaluator::EvaluationCache& cache) const override;
 
     std::string compute_repr() const override;
+
+    std::shared_ptr<const BaseEffect> visit(PolicyBuilder& policy_builder) const override;
 };
 
-class DecrementNumericalEffect : public Effect<int> {
+class IncrementNumericalEffect : public NumericalEffect {
 public:
-    DecrementNumericalEffect(std::shared_ptr<const PolicyRoot> root, std::shared_ptr<const Feature<int>> numerical_feature);
+    IncrementNumericalEffect(std::shared_ptr<const core::Numerical> numerical_feature);
 
-    bool evaluate(evaluator::EvaluationContext& source_context, evaluator::EvaluationContext& target_context) const override;
+    bool evaluate(const core::State& source_state, const core::State& target_state, evaluator::EvaluationCache& cache) const override;
 
     std::string compute_repr() const override;
+
+    std::shared_ptr<const BaseEffect> visit(PolicyBuilder& policy_builder) const override;
 };
 
-class UnchangedNumericalEffect : public Effect<int> {
+class DecrementNumericalEffect : public NumericalEffect {
 public:
-    UnchangedNumericalEffect(std::shared_ptr<const PolicyRoot> root, std::shared_ptr<const Feature<int>> numerical_feature);
+    DecrementNumericalEffect(std::shared_ptr<const core::Numerical> numerical_feature);
 
-    bool evaluate(evaluator::EvaluationContext& source_context, evaluator::EvaluationContext& target_context) const override;
+    bool evaluate(const core::State& source_state, const core::State& target_state, evaluator::EvaluationCache& cache) const override;
 
     std::string compute_repr() const override;
+
+    std::shared_ptr<const BaseEffect> visit(PolicyBuilder& policy_builder) const override;
+};
+
+class UnchangedNumericalEffect : public NumericalEffect {
+public:
+    UnchangedNumericalEffect(std::shared_ptr<const core::Numerical> numerical_feature);
+
+    bool evaluate(const core::State& source_state, const core::State& target_state, evaluator::EvaluationCache& cache) const override;
+
+    std::string compute_repr() const override;
+
+    std::shared_ptr<const BaseEffect> visit(PolicyBuilder& policy_builder) const override;
 };
 
 }
 }
-
-#include "effect.tpp"
 
 #endif

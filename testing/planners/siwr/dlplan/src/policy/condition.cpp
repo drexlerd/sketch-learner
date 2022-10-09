@@ -3,51 +3,75 @@
 
 namespace dlplan::policy {
 
-PositiveBooleanCondition::PositiveBooleanCondition(std::shared_ptr<const PolicyRoot> root, std::shared_ptr<const Feature<bool>> boolean_feature)
-    : Condition<bool>(root, boolean_feature) { }
+BooleanCondition::BooleanCondition(std::shared_ptr<const core::Boolean> boolean)
+    : BaseCondition(boolean), m_boolean(boolean) { }
 
-bool PositiveBooleanCondition::evaluate(evaluator::EvaluationContext& source_context) const {
-    return get_feature()->evaluate(source_context);
+
+NumericalCondition::NumericalCondition(std::shared_ptr<const core::Numerical> numerical)
+    : BaseCondition(numerical), m_numerical(numerical) { }
+
+
+PositiveBooleanCondition::PositiveBooleanCondition(std::shared_ptr<const core::Boolean> boolean_feature)
+    : BooleanCondition(boolean_feature) { }
+
+bool PositiveBooleanCondition::evaluate(const core::State& source_state, evaluator::EvaluationCache& cache) const {
+    return cache.retrieve_or_evaluate(*m_boolean, source_state);
 }
 
 std::string PositiveBooleanCondition::compute_repr() const {
-    return "(:c_b_pos " + std::to_string(get_feature()->get_index()) + ")";
+    return "(:c_b_pos " + std::to_string(m_boolean->get_index()) + ")";
+}
+
+std::shared_ptr<const BaseCondition> PositiveBooleanCondition::visit(PolicyBuilder& policy_builder) const {
+    return policy_builder.add_pos_condition(policy_builder.add_boolean_feature(*m_boolean));
 }
 
 
-NegativeBooleanCondition::NegativeBooleanCondition(std::shared_ptr<const PolicyRoot> root, std::shared_ptr<const Feature<bool>> boolean_feature)
-    : Condition<bool>(root, boolean_feature) { }
+NegativeBooleanCondition::NegativeBooleanCondition(std::shared_ptr<const core::Boolean> boolean_feature)
+    : BooleanCondition(boolean_feature) { }
 
-bool NegativeBooleanCondition::evaluate(evaluator::EvaluationContext& source_context) const {
-    return !get_feature()->evaluate(source_context);
+bool NegativeBooleanCondition::evaluate(const core::State& source_state, evaluator::EvaluationCache& cache) const {
+    return !cache.retrieve_or_evaluate(*m_boolean, source_state);
 }
 
 std::string NegativeBooleanCondition::compute_repr() const {
-    return "(:c_b_neg " + std::to_string(get_feature()->get_index()) + ")";
+    return "(:c_b_neg " + std::to_string(m_boolean->get_index()) + ")";
+}
+
+std::shared_ptr<const BaseCondition> NegativeBooleanCondition::visit(PolicyBuilder& policy_builder) const {
+    return policy_builder.add_neg_condition(policy_builder.add_boolean_feature(*m_boolean));
 }
 
 
-EqualNumericalCondition::EqualNumericalCondition(std::shared_ptr<const PolicyRoot> root, std::shared_ptr<const Feature<int>> numerical_feature)
-    : Condition<int>(root, numerical_feature) { }
+EqualNumericalCondition::EqualNumericalCondition(std::shared_ptr<const core::Numerical> numerical_feature)
+    : NumericalCondition(numerical_feature) { }
 
-bool EqualNumericalCondition::evaluate(evaluator::EvaluationContext& source_context) const {
-    return get_feature()->evaluate(source_context) == 0;
+bool EqualNumericalCondition::evaluate(const core::State& source_state, evaluator::EvaluationCache& cache) const {
+    return cache.retrieve_or_evaluate(*m_numerical, source_state) == 0;
 }
 
 std::string EqualNumericalCondition::compute_repr() const {
-    return "(:c_n_eq " + std::to_string(get_feature()->get_index()) + ")";
+    return "(:c_n_eq " + std::to_string(m_numerical->get_index()) + ")";
+}
+
+std::shared_ptr<const BaseCondition> EqualNumericalCondition::visit(PolicyBuilder& policy_builder) const {
+    return policy_builder.add_eq_condition(policy_builder.add_numerical_feature(*m_numerical));
 }
 
 
-GreaterNumericalCondition::GreaterNumericalCondition(std::shared_ptr<const PolicyRoot> root, std::shared_ptr<const Feature<int>> numerical_feature)
-    : Condition<int>(root, numerical_feature) { }
+GreaterNumericalCondition::GreaterNumericalCondition(std::shared_ptr<const core::Numerical> numerical_feature)
+    : NumericalCondition(numerical_feature) { }
 
-bool GreaterNumericalCondition::evaluate(evaluator::EvaluationContext& source_context) const {
-    return get_feature()->evaluate(source_context) > 0;
+bool GreaterNumericalCondition::evaluate(const core::State& source_state, evaluator::EvaluationCache& cache) const {
+    return cache.retrieve_or_evaluate(*m_numerical, source_state) > 0;
 }
 
 std::string GreaterNumericalCondition::compute_repr() const {
-    return "(:c_n_gt " + std::to_string(get_feature()->get_index()) + ")";
+    return "(:c_n_gt " + std::to_string(m_numerical->get_index()) + ")";
+}
+
+std::shared_ptr<const BaseCondition> GreaterNumericalCondition::visit(PolicyBuilder& policy_builder) const {
+    return policy_builder.add_gt_condition(policy_builder.add_numerical_feature(*m_numerical));
 }
 
 }

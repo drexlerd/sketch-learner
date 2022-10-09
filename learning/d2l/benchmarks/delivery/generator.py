@@ -22,7 +22,7 @@ def create_actions(problem, add_fuel):
     x = lang.variable("x", cell_t)
     f = lang.variable("from", cell_t)
     to = lang.variable("to", cell_t)
-    
+
     problem.action(name='pick-package', parameters=[t, p, x],
                    precondition=land(at(p, x), at(t, x), empty(t), flat=True),
                    effects=[
@@ -128,18 +128,17 @@ def generate_domain(gridsize, npackages, add_fuel=True):
 
 
 def main():
-
-    for gridsize in [3, 4, 5, 7, 9]:
-        for npacks in [2, 3]:
-            for run in range(0, 3):
-                problem = generate_domain(gridsize, npackages=npacks, add_fuel=False)
-                writer = FstripsWriter(problem)
-                writer.write(domain_filename=os.path.join(_CURRENT_DIR_, "domain.pddl"),  # We can overwrite the domain
-                             instance_filename=os.path.join(_CURRENT_DIR_, f"instance_{gridsize}_{npacks}_{run}.pddl"),
-                             domain_constants=[])
-    for gridsize in [2]:
+    #for gridsize in [3, 4, 5, 7, 9]:
+    #    for npacks in [2, 3]:
+    #        for run in range(0, 3):
+    #            problem = generate_domain(gridsize, npackages=npacks, add_fuel=False)
+    #            writer = FstripsWriter(problem)
+    #            writer.write(domain_filename=os.path.join(_CURRENT_DIR_, "domain.pddl"),  # We can overwrite the domain
+    #                         instance_filename=os.path.join(_CURRENT_DIR_, f"instance_{gridsize}_{npacks}_{run}.pddl"),
+    #                         domain_constants=[])
+    for gridsize in [2,3]:
         for npacks in [1,2]:
-            for run in range(0, 5):
+            for run in range(0, 30):
                 problem = generate_domain(gridsize, npackages=npacks, add_fuel=False)
                 writer = FstripsWriter(problem)
                 writer.write(domain_filename=os.path.join(_CURRENT_DIR_, "domain.pddl"),  # We can overwrite the domain

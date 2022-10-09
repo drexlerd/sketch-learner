@@ -4,7 +4,6 @@ from sketch_learning.util.misc import update_dict
 
 def experiments():
     base = dict(
-        pipeline="pipeline",
     )
 
     exps = dict()
@@ -14,12 +13,11 @@ def experiments():
         domain="domain",
     )
 
-    exps["debug"] = update_dict(
-        # instances
+    exps["sketch_debug"] = update_dict(
         strips_base,
+        pipeline="sketch_pipeline",
         domain_dir="blocks_4",
         instances=training_instances_4(),
-        # for debugging we allow adding features directly into the pipeline
         debug_features=["n_count(c_primitive(clear,0))",  # 2
                         "n_count(c_all(r_transitive_closure(r_primitive(on,0,1)),c_equal(r_primitive(on_g,0,1),r_primitive(on,0,1))))",  # 7
                         "n_count(c_equal(r_primitive(on_g,0,1),r_primitive(on,0,1)))",  # 4
@@ -27,23 +25,44 @@ def experiments():
                         ],  # 2
     )
 
-    exps["small"] = update_dict(
-        # instances
+    exps["sketch"] = update_dict(
         strips_base,
+        pipeline="sketch_pipeline",
         domain_dir="blocks_4",
         instances=training_instances_4(),
     )
 
-    exps["clear"] = update_dict(
-        # imnstances
+    exps["sketch_clear"] = update_dict(
         strips_base,
+        pipeline="sketch_pipeline",
         domain_dir="blocks_4_clear",
         instances=training_instances_4_fixed_goal(),
     )
 
-    exps["on"] = update_dict(
-        # imnstances
+    exps["sketch_on"] = update_dict(
         strips_base,
+        pipeline="sketch_pipeline",
+        domain_dir="blocks_4_on",
+        instances=training_instances_4_fixed_goal(),
+    )
+
+    exps["hierarchy"] = update_dict(
+        strips_base,
+        pipeline="hierarchy_pipeline",
+        domain_dir="blocks_4",
+        instances=training_instances_4(),
+    )
+
+    exps["hierarchy_clear"] = update_dict(
+        strips_base,
+        pipeline="hierarchy_pipeline",
+        domain_dir="blocks_4_clear",
+        instances=training_instances_4_fixed_goal(),
+    )
+
+    exps["hierarchy_on"] = update_dict(
+        strips_base,
+        pipeline="hierarchy_pipeline",
         domain_dir="blocks_4_on",
         instances=training_instances_4_fixed_goal(),
     )
@@ -51,8 +70,8 @@ def experiments():
 
 
 def training_instances_4():
-    return [f"p-{i}-{j}" for i in range(3, 6) for j in range(0,200)]
+    return [f"p-{i}-{j}" for i in range(2, 5) for j in range(0,200)]
 
 def training_instances_4_fixed_goal():
     """ For fixed goal we do not need to use random seeds. """
-    return [f"p-{i}-0" for i in range(3, 6)]
+    return [f"p-{i}-0" for i in range(2, 5)]

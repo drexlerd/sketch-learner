@@ -33,7 +33,7 @@ def report_and_exit(msg):
     sys.exit(-1)
 
 
-def do(expid, steps=None, workspace=None, show_steps_only=False, width=None, max_sketch_rules=None, complexity=None):
+def do(expid, steps=None, workspace=None, show_steps_only=False, width=None, concept_complexity_limit=None, role_complexity_limit=None, boolean_complexity_limit=None, count_numerical_complexity_limit=None, distance_numerical_complexity_limit=None):
     name_parts = expid.split(":")
     if len(name_parts) != 2:
         report_and_exit(f'Wrong experiment ID syntax "{expid}". Expected format <domain>:<experiment_name>')
@@ -57,10 +57,16 @@ def do(expid, steps=None, workspace=None, show_steps_only=False, width=None, max
         parameters["workspace"] = workspace
     if width is not None:
         parameters["width"] = width
-    if max_sketch_rules is not None:
-        parameters["max_sketch_rules"] = max_sketch_rules
-    if complexity is not None:
-        parameters["complexity"] = complexity
+    if concept_complexity_limit is not None:
+        parameters["concept_complexity_limit"] = concept_complexity_limit
+    if role_complexity_limit is not None:
+        parameters["role_complexity_limit"] = role_complexity_limit
+    if boolean_complexity_limit is not None:
+        parameters["boolean_complexity_limit"] = boolean_complexity_limit
+    if count_numerical_complexity_limit is not None:
+        parameters["count_numerical_complexity_limit"] = count_numerical_complexity_limit
+    if distance_numerical_complexity_limit is not None:
+        parameters["distance_numerical_complexity_limit"] = distance_numerical_complexity_limit
 
     experiment = generate_experiment(expid, **parameters)
 
@@ -75,4 +81,13 @@ def do(expid, steps=None, workspace=None, show_steps_only=False, width=None, max
 
 def run():
     args = setup_argparser().parse_args(sys.argv[1:])
-    do(args.exp_id, args.steps, args.workspace, args.show, args.width, args.max_sketch_rules, args.complexity)
+    do(args.exp_id,
+        args.steps,
+        args.workspace,
+        args.show,
+        args.width,
+        args.concept_complexity_limit,
+        args.role_complexity_limit,
+        args.boolean_complexity_limit,
+        args.count_numerical_complexity_limit,
+        args.distance_numerical_complexity_limit)

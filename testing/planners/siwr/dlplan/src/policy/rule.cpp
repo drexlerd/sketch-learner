@@ -19,16 +19,17 @@ static std::vector<pT> sort(const std::vector<pT>& set) {
         result.begin(),
         result.end(),
         [](const auto& l, const auto& r){
+            if (l->get_base_feature()->get_index() != r->get_base_feature()->get_index()) return l->get_base_feature()->get_index() < r->get_base_feature()->get_index();
             return l->compute_repr() < r->compute_repr();
         });
     return result;
 }
 
 Rule::Rule(
-    std::shared_ptr<const PolicyRoot> root,
     std::vector<std::shared_ptr<const BaseCondition>>&& conditions,
-    std::vector<std::shared_ptr<const BaseEffect>>&& effects)
-    : m_root(root), m_conditions(std::move(conditions)), m_effects(std::move(effects)) { }
+    std::vector<std::shared_ptr<const BaseEffect>>&& effects,
+    int index)
+    : m_conditions(std::move(conditions)), m_effects(std::move(effects)), m_index(index) { }
 
 Rule::Rule(Rule&& other) = default;
 
@@ -36,16 +37,16 @@ Rule& Rule::operator=(Rule&& other) = default;
 
 Rule::~Rule() = default;
 
-bool Rule::evaluate_conditions(evaluator::EvaluationContext& source_context) const {
+bool Rule::evaluate_conditions(const core::State& source_state, evaluator::EvaluationCache& cache) const {
     for (const auto& condition : m_conditions) {
-        if (!condition->evaluate(source_context)) return false;
+        if (!condition->evaluate(source_state, cache)) return false;
     }
     return true;
 }
 
-bool Rule::evaluate_effects(evaluator::EvaluationContext& source_context, evaluator::EvaluationContext& target_context) const {
+bool Rule::evaluate_effects(const core::State& source_state, const core::State& target_state, evaluator::EvaluationCache& cache) const {
     for (const auto& effect : m_effects) {
-        if (!effect->evaluate(source_context, target_context)) return false;
+        if (!effect->evaluate(source_state, target_state, cache)) return false;
     }
     return true;
 }
@@ -92,8 +93,34 @@ std::string Rule::str() const {
     return ss.str();
 }
 
-std::shared_ptr<const PolicyRoot> Rule::get_root() const {
-    return m_root;
+std::shared_ptr<const Rule> Rule::visit(PolicyBuilder& policy_builder) const {
+    std::vector<std::shared_ptr<const BaseCondition>> conditions;
+    conditions.reserve(m_conditions.size());
+    for (const auto& condition : m_conditions) {
+        conditions.push_back(condition->visit(policy_builder));
+    }
+    std::vector<std::shared_ptr<const BaseEffect>> effects;
+    effects.reserve(m_effects.size());
+    for (const auto& effect : m_effects) {
+        effects.push_back(effect->visit(policy_builder));
+    }
+    return policy_builder.add_rule(std::move(conditions), std::move(effects));
+}
+
+void Rule::set_index(int index) {
+    m_index = index;
+}
+
+int Rule::get_index() const {
+    return m_index;
+}
+
+std::vector<std::shared_ptr<const BaseCondition>> Rule::get_conditions() const {
+    return m_conditions;
+}
+
+std::vector<std::shared_ptr<const BaseEffect>> Rule::get_effects() const {
+    return m_effects;
 }
 
 }

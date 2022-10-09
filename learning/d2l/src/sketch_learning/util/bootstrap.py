@@ -90,8 +90,11 @@ def setup_argparser():
                              ' already run and skip them). By default, run them all.')
 
     parser.add_argument('-w', '--width', default=None, type=int, help='upper bound on the width')
-    parser.add_argument('-r', '--max_sketch_rules', default=None, type=int, help='upper bound on the number of sketch rules')
-    parser.add_argument('-c', '--complexity', default=None, type=int, help='upper bound on the feature complexity')
+    parser.add_argument('-cc', '--concept_complexity_limit', default=None, type=int, help='upper bound on the concept feature complexity')
+    parser.add_argument('-rc', '--role_complexity_limit', default=None, type=int, help='upper bound on the role feature complexity')
+    parser.add_argument('-bc', '--boolean_complexity_limit', default=None, type=int, help='upper bound on the boolean feature complexity')
+    parser.add_argument('-ncc', '--count_numerical_complexity_limit', default=None, type=int, help='upper bound on the numerical feature complexity')
+    parser.add_argument('-ndc', '--distance_numerical_complexity_limit', default=None, type=int, help='upper bound on the numerical feature complexity')
 
     return parser
 

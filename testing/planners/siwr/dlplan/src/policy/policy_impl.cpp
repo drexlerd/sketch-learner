@@ -12,15 +12,12 @@
 namespace dlplan::policy {
 
 Policy::Policy(
-    std::shared_ptr<const PolicyRoot> root,
-    std::vector<std::shared_ptr<const BooleanFeature>>&& boolean_features,
-    std::vector<std::shared_ptr<const NumericalFeature>>&& numerical_features,
-    std::vector<std::shared_ptr<const Rule>>&& rules)
-    : m_root(root),
-      m_boolean_features(std::move(boolean_features)),
-      m_numerical_features(std::move(numerical_features)),
-      m_rules(std::move(rules)),
-      m_cache(m_boolean_features.size(), m_numerical_features.size()) { }
+    const std::vector<std::shared_ptr<const core::Boolean>>& boolean_features,
+    const std::vector<std::shared_ptr<const core::Numerical>>& numerical_features,
+    const std::vector<std::shared_ptr<const Rule>>& rules)
+    : m_boolean_features(boolean_features),
+      m_numerical_features(numerical_features),
+      m_rules(rules) { }
 
 Policy::Policy(const Policy& other) = default;
 
@@ -33,42 +30,28 @@ Policy& Policy::operator=(Policy&& other) = default;
 Policy::~Policy() = default;
 
 
-std::shared_ptr<const Rule> Policy::evaluate_lazy(int source_index, const core::State& source, int target_index, const core::State& target) {
-    if (source_index < 0 || target_index < 0) {
-        throw std::runtime_error("Policy::evaluate_lazy: source or target index cannot be negative.");
-    }
-    evaluator::EvaluationContext source_context(source_index, source, m_cache);
-    evaluator::EvaluationContext target_context(target_index, target, m_cache);
+std::shared_ptr<const Rule> Policy::evaluate_lazy(const core::State& source_state, const core::State& target_state, evaluator::EvaluationCache& cache) {
     for (const auto& r : m_rules) {
-        if (r->evaluate_conditions(source_context) && r->evaluate_effects(source_context, target_context)) {
+        if (r->evaluate_conditions(source_state, cache) && r->evaluate_effects(source_state, target_state, cache)) {
             return r;
         }
     }
     return nullptr;
 }
 
-std::vector<std::shared_ptr<const Rule>> Policy::evaluate_conditions_eager(int source_index, const core::State& source) {
-    if (source_index < 0) {
-        throw std::runtime_error("Policy::evaluate_conditions_eager: source index cannot be negative.");
-    }
-    evaluator::EvaluationContext source_context(source_index, source, m_cache);
+std::vector<std::shared_ptr<const Rule>> Policy::evaluate_conditions_eager(const core::State& source_state, evaluator::EvaluationCache& cache) {
     std::vector<std::shared_ptr<const Rule>> result;
     for (const auto& r : m_rules) {
-        if (r->evaluate_conditions(source_context)) {
+        if (r->evaluate_conditions(source_state, cache)) {
             result.push_back(r);
         }
     }
     return result;
 }
 
-std::shared_ptr<const Rule> Policy::evaluate_effects_lazy(int source_index, const core::State& source, int target_index, const core::State& target, const std::vector<std::shared_ptr<const Rule>>& rules) {
-    if (source_index < 0 || target_index < 0) {
-        throw std::runtime_error("Policy::evaluate_effects_lazy: source or target index cannot be negative.");
-    }
-    evaluator::EvaluationContext source_context(source_index, source, m_cache);
-    evaluator::EvaluationContext target_context(target_index, target, m_cache);
+std::shared_ptr<const Rule> Policy::evaluate_effects_lazy(const core::State& source_state, const core::State& target_state, const std::vector<std::shared_ptr<const Rule>>& rules, evaluator::EvaluationCache& cache) {
     for (const auto& r : rules) {
-        if (r->evaluate_effects(source_context, target_context)) {
+        if (r->evaluate_effects(source_state, target_state, cache)) {
             return r;
         }
     }
@@ -126,15 +109,15 @@ std::string Policy::str() const {
     return ss.str();
 }
 
-std::shared_ptr<const PolicyRoot> Policy::get_root() const {
-    return m_root;
+std::vector<std::shared_ptr<const Rule>> Policy::get_rules() const {
+    return m_rules;
 }
 
-std::vector<std::shared_ptr<const BooleanFeature>> Policy::get_boolean_features() const {
+std::vector<std::shared_ptr<const core::Boolean>> Policy::get_boolean_features() const {
     return m_boolean_features;
 }
 
-std::vector<std::shared_ptr<const NumericalFeature>> Policy::get_numerical_features() const {
+std::vector<std::shared_ptr<const core::Numerical>> Policy::get_numerical_features() const {
     return m_numerical_features;
 }
 

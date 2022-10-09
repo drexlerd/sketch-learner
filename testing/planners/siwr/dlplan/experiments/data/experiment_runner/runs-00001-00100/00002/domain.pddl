@@ -1,0 +1,1 @@
+../../../../../benchmarks/blocksworld_3/domain.pddl

@@ -7,12 +7,13 @@
 (arm-empty)
 (on b1 b2)
 (on-table b2)
-(on b3 b1)
+(on-table b3)
+(clear b1)
 (clear b3)
 )
 (:goal
 (and
-(on b1 b2))
+(on b1 b3))
 )
 )
 

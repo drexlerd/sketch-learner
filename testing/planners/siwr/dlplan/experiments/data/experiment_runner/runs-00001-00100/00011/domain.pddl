@@ -1,0 +1,1 @@
+../../../../../benchmarks/childsnack/domain.pddl

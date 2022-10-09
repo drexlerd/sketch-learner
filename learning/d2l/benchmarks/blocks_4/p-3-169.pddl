@@ -6,14 +6,13 @@
 (:init
 (arm-empty)
 (on b1 b3)
-(on-table b2)
+(on b2 b1)
 (on-table b3)
-(clear b1)
 (clear b2)
 )
 (:goal
 (and
-(on b1 b2))
+(on b1 b3))
 )
 )
 
