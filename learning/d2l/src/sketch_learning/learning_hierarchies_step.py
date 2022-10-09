@@ -14,7 +14,7 @@ from .domain_data.domain_data_factory import DomainDataFactory
 from .instance_data.instance_data import InstanceData
 from .instance_data.instance_data_factory import InstanceDataFactory
 from .instance_data.state_pair_classifier_factory import StatePairClassifierFactory
-from .instance_data.tuple_graph_factory import TupleGraphFactory
+from .instance_data.tuple_graph_factory import TupleGraphFactory, partition_states_by_distance
 from .iteration_data.sketch import Sketch, SketchRule
 from .asp.policy_asp_factory import PolicyASPFactory
 from .learning_sketches_step import learn_sketch
@@ -29,12 +29,10 @@ def compute_closest_subgoal_states(instance_data: InstanceData, root_idx: int, r
     distances = dict()
     distances[root_idx] = 0
     closest_subgoal_states = set()
-    closest_alive_states = set()
     prev_layer = layers[0]
     while True:
         next_layer = []
         for s_idx in prev_layer:
-            closest_alive_states.update(prev_layer)
             for s_prime_idx in forward_successors.get(s_idx, []):
                 if distances.get(s_prime_idx, math.inf) == math.inf:
                     next_layer.append(s_prime_idx)
@@ -48,7 +46,7 @@ def compute_closest_subgoal_states(instance_data: InstanceData, root_idx: int, r
         if closest_subgoal_states:
             break
         prev_layer = next_layer
-    return closest_subgoal_states, closest_alive_states
+    return closest_subgoal_states
 
 
 def run(config, data, rng):
@@ -83,24 +81,46 @@ def run(config, data, rng):
         logging.info(colored(f"Initializing Subproblems...", "blue", "on_grey"))
         subproblem_instance_datas = []
         for instance_data in instance_datas:
-            # for similar goal state we can have single goal distance information computation
+            # 1. Compute all possible subgoal classes
             subgoals_classes = defaultdict(set)
             for s_idx in instance_data.state_space.get_state_indices():
                 if not instance_data.goal_distance_information.is_alive(s_idx):
-                        continue
-                subgoals, closest_alive_states = compute_closest_subgoal_states(instance_data, s_idx, rule)
-                if not subgoals:
                     continue
-                subgoals_classes[tuple(sorted(list(subgoals)))].add(s_idx)
+                closest_subgoal_states = compute_closest_subgoal_states(instance_data, s_idx, rule)
+                if not closest_subgoal_states:
+                    continue
+                subgoals_classes[tuple(sorted(list(closest_subgoal_states)))].add(s_idx)
             print("Num subgoal classes:", len(subgoals_classes))
             print("Num states:", instance_data.state_space.get_num_states())
 
+            # 2. Compute subproblems for each subgoal class
             old_initial_state_index = instance_data.state_space.get_initial_state_index()
             old_goal_state_indices = instance_data.state_space.get_goal_state_indices()
             old_goal_distance_information = instance_data.goal_distance_information
             for subgoals, s_idxs in subgoals_classes.items():
                 instance_data.state_space.set_goal_state_indices(set(subgoals))
                 instance_data.goal_distance_information = instance_data.state_space.compute_goal_distance_information()
+
+                # 2.1. Compute largest subproblems in a subgoal class.
+                selected_s_idxs = set()
+                # TODO: stop backward layer generation when all s_idxs are found
+                layers = partition_states_by_distance(instance_data.goal_distance_information.get_goal_distances())
+                marked_s_idxs = set()
+                for backward_layer in reversed(layers):
+                    backward_layer = set(backward_layer)
+                    for s_idx in backward_layer:
+                        if s_idx in s_idxs and not s_idx in marked_s_idxs:
+                            selected_s_idxs.add(s_idx)
+                            marked_s_idxs.add(s_idx)
+                        if s_idx in marked_s_idxs:
+                            for target_idx in instance_data.state_space.get_forward_successor_state_indices().get(s_idx, []):
+                                if target_idx not in backward_layer:
+                                    marked_s_idxs.add(target_idx)
+                # print("Subgoal class:", subgoals)
+                # print("Num initial states:", len(s_idxs))
+                # print("Num initial state classes:", len(selected_s_idxs))
+
+                # 2.2. Instantiate subproblem for initial state and subgoals.
                 for s_idx in s_idxs:
                     instance_data.state_space.set_initial_state_index(s_idx)
                     state_pair_classifier = StatePairClassifierFactory(config.delta).make_state_pair_classifier(config, instance_data)
@@ -118,15 +138,15 @@ def run(config, data, rng):
                         instance_data.denotations_caches,
                         None,
                         state_pair_classifier)
-                    if not subproblem_instance_data.goal_distance_information.is_solvable() or \
-                        subproblem_instance_data.goal_distance_information.is_trivially_solvable():
-                        continue
-                    # recompute tuple graph for restricted state space
-                    subproblem_instance_data.tuple_graphs = tuple_graph_factory.make_tuple_graphs(subproblem_instance_data)
-                    subproblem_instance_datas.append(subproblem_instance_data)
+                    if subproblem_instance_data.goal_distance_information.is_solvable() and \
+                        not subproblem_instance_data.goal_distance_information.is_trivially_solvable():
+                        # 2.2.1. Recompute tuple graph for restricted state space
+                        subproblem_instance_data.tuple_graphs = tuple_graph_factory.make_tuple_graphs(subproblem_instance_data)
+                        subproblem_instance_datas.append(subproblem_instance_data)
                     instance_data.state_space.set_initial_state_index(old_initial_state_index)
                 instance_data.state_space.set_goal_state_indices(old_goal_state_indices)
                 instance_data.goal_distance_information = old_goal_distance_information
+
         if not subproblem_instance_datas:
             print(colored("Sketch rule does not induce any subproblems!", "red", "on_grey"))
             solution_policies.append(None)

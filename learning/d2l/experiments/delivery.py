@@ -82,5 +82,5 @@ def experiments():
 
 
 def training_instances():
-    return [f"instance_4_2_0"]
+    # return [f"instance_2_1_2"]
     return [f"instance_{i}_{j}_{k}" for i in range(2,5) for j in range(1,3) for k in range(0,10) ]

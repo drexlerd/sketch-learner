@@ -75,8 +75,9 @@ class StatePairClassifierFactory:
                     state_pair_to_classification_2[state_pair] = state_pair_to_classification[state_pair]
                     source_idx_to_state_pairs_2[source_idx].add(state_pair)
                 if state_pair_to_classification[state_pair] == StatePairClassification.DELTA_OPTIMAL:
-                    queue.append(state_pair.target_idx)
-                    visited.add(state_pair.target_idx)
+                    if state_pair.target_idx not in visited:
+                        queue.append(state_pair.target_idx)
+                        visited.add(state_pair.target_idx)
         # add not delta optimal state pairs between state indices fragment
         for state_pair, classification in state_pair_to_classification.items():
             if classification == StatePairClassification.NOT_DELTA_OPTIMAL and \
