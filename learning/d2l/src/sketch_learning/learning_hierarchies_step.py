@@ -116,9 +116,9 @@ def run(config, data, rng):
                             for target_idx in instance_data.state_space.get_forward_successor_state_indices().get(s_idx, []):
                                 if target_idx not in backward_layer:
                                     marked_s_idxs.add(target_idx)
-                # print("Subgoal class:", subgoals)
-                # print("Num initial states:", len(s_idxs))
-                # print("Num initial state classes:", len(selected_s_idxs))
+                print("Subgoal class:", subgoals)
+                print("Num initial states:", len(s_idxs))
+                print("Num initial state classes:", len(selected_s_idxs))
 
                 # 2.2. Instantiate subproblem for initial state and subgoals.
                 for s_idx in s_idxs:
@@ -126,8 +126,8 @@ def run(config, data, rng):
                     state_pair_classifier = StatePairClassifierFactory(config.delta).make_state_pair_classifier(config, instance_data)
                     state_space = dlplan.StateSpace(
                         instance_data.state_space,
-                        state_pair_classifier.state_indices,
-                        state_pair_classifier.state_indices)
+                        state_pair_classifier.expanded_state_indices,
+                        state_pair_classifier.generated_state_indices)
                     subproblem_instance_data = InstanceData(
                         len(subproblem_instance_datas),
                         instance_data.instance_information,

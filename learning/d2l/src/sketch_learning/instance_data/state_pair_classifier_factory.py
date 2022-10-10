@@ -28,39 +28,35 @@ class StatePairClassifierFactory:
         goal_distance_information = instance_data.goal_distance_information
         goal_distances = goal_distance_information.get_goal_distances()
         state_pair_to_classification = dict()
-        state_indices = set()
+        expanded_state_indices = set()
+        generated_state_indices = set()
         source_idx_to_state_pairs = defaultdict(set)
         for source_idx in state_space.get_state_indices():
             if not goal_distance_information.is_alive(source_idx):
                 continue
             tuple_graph = instance_data.tuple_graphs[source_idx]
-            state_indices.add(source_idx)
+            expanded_state_indices.add(source_idx)
+            generated_state_indices.add(source_idx)
             source_cost = goal_distances.get(source_idx, math.inf)
             assert source_cost != math.inf
             for distance, target_idxs in enumerate(tuple_graph.s_idxs_by_distance):
                 for target_idx in target_idxs:
                     target_cost = goal_distances.get(target_idx, math.inf)
                     state_pair = StatePair(source_idx, target_idx)
-                    if goal_distance_information.is_deadend(target_idx):
-                        assert target_cost == math.inf
-                        state_pair_to_classification[state_pair] = StatePairClassification.DEADEND
-                        state_indices.add(target_idx)
-                        source_idx_to_state_pairs[source_idx].add(state_pair)
-                    elif source_idx == target_idx:
-                        state_pair_to_classification[state_pair] = StatePairClassification.SELF_LOOP
-                        state_indices.add(target_idx)
-                        source_idx_to_state_pairs[source_idx].add(state_pair)
-                    elif self.delta * source_cost < target_cost + distance:
+                    if source_idx == target_idx or \
+                        self.delta * source_cost < target_cost + distance:
                         state_pair_to_classification[state_pair] = StatePairClassification.NOT_DELTA_OPTIMAL
-                        # exclude delta suboptimal state change to alive state
+                        generated_state_indices.add(target_idx)
+                        source_idx_to_state_pairs[source_idx].add(state_pair)
                     else:
                         state_pair_to_classification[state_pair] = StatePairClassification.DELTA_OPTIMAL
-                        state_indices.add(target_idx)
+                        generated_state_indices.add(target_idx)
                         source_idx_to_state_pairs[source_idx].add(state_pair)
 
         # 2. Select relevant state pairs
         state_pair_to_classification_2 = dict()
-        state_indices_2 = set()
+        expanded_state_indices_2 = set()
+        generated_state_indices_2 = set()
         source_idx_to_state_pairs_2 = defaultdict(set)
         queue = deque()
         visited = set()
@@ -69,25 +65,23 @@ class StatePairClassifierFactory:
         visited.add(initial_state_index)
         while queue:
             source_idx = queue.popleft()
-            state_indices_2.add(source_idx)
+            if not goal_distance_information.is_alive(source_idx):
+                continue
+            has_delta_optimal_successor = not all([state_pair_to_classification[state_pair] != StatePairClassification.DELTA_OPTIMAL for state_pair in source_idx_to_state_pairs.get(source_idx, [])])
+            if not has_delta_optimal_successor:
+                continue
+            expanded_state_indices_2.add(source_idx)
             for state_pair in source_idx_to_state_pairs.get(source_idx, []):
-                if state_pair_to_classification[state_pair] in {StatePairClassification.DEADEND, StatePairClassification.SELF_LOOP, StatePairClassification.DELTA_OPTIMAL }:
-                    state_pair_to_classification_2[state_pair] = state_pair_to_classification[state_pair]
-                    source_idx_to_state_pairs_2[source_idx].add(state_pair)
-                    state_indices_2.add(state_pair.target_idx)
-                if state_pair_to_classification[state_pair] == StatePairClassification.DELTA_OPTIMAL:
-                    if state_pair.target_idx not in visited:
-                        queue.append(state_pair.target_idx)
-                        visited.add(state_pair.target_idx)
-        # add not delta optimal state pairs between state indices fragment
-        for state_pair, classification in state_pair_to_classification.items():
-            if classification == StatePairClassification.NOT_DELTA_OPTIMAL and \
-                state_pair.source_idx in state_indices_2 and state_pair.target_idx in state_indices_2:
                 state_pair_to_classification_2[state_pair] = state_pair_to_classification[state_pair]
                 source_idx_to_state_pairs_2[source_idx].add(state_pair)
+                generated_state_indices_2.add(state_pair.target_idx)
+                if state_pair_to_classification[state_pair] == StatePairClassification.DELTA_OPTIMAL:
+                    if state_pair.target_idx not in visited:
+                        visited.add(state_pair.target_idx)
+                        queue.append(state_pair.target_idx)
         state_pair_to_classification = state_pair_to_classification_2
-        state_indices = state_indices_2
+        expanded_state_indices = expanded_state_indices_2
+        generated_state_indices = generated_state_indices_2
         source_idx_to_state_pairs = source_idx_to_state_pairs_2
-
-        state_pair_classifier = StatePairClassifier(self.delta, state_pair_to_classification, source_idx_to_state_pairs, state_indices)
+        state_pair_classifier = StatePairClassifier(self.delta, state_pair_to_classification, source_idx_to_state_pairs, expanded_state_indices, generated_state_indices)
         return state_pair_classifier
