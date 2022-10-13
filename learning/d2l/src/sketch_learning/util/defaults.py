@@ -78,7 +78,6 @@ def generate_experiment(expid, domain_dir, domain, **kwargs):
         instance_information["instance_filename"] = BENCHMARK_DIR / domain_dir / f"{name}.pddl"
         instance_information["workspace"] = parameters["experiment_dir"] / "preprocessing" / name
         create_experiment_workspace(instance_information["workspace"], rm_if_existed=True)
-        instance_information["state_space_filename"] = parameters["experiment_dir"] / "preprocessing" / name / "state_space.txt"
         instance_information["name"] = name
         parameters["instance_informations"].append(Bunch(instance_information))
 

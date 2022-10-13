@@ -4,7 +4,6 @@ from typing import List
 
 from ..domain_data.domain_data import DomainData
 from .tuple_graph import TupleGraph
-from .state_pair_classifier import StatePairClassifier
 from ..iteration_data.feature_valuations import FeatureValuation
 from ..iteration_data.state_equivalence import InstanceStateEquivalence
 from ..iteration_data.state_pair_equivalence import InstanceStatePairEquivalence
@@ -23,7 +22,6 @@ class InstanceData:
     state_information: dlplan.StateInformation = None
     denotations_caches: dlplan.DenotationsCaches = None
     tuple_graphs: List[TupleGraph] = None
-    state_pair_classifier: StatePairClassifier = None
     feature_valuations: List[FeatureValuation] = None
     state_equivalence: InstanceStateEquivalence = None
     state_pair_equivalence: InstanceStatePairEquivalence = None

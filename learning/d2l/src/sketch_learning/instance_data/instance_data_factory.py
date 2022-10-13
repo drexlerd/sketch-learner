@@ -1,6 +1,8 @@
 import logging
 import dlplan
 
+from sketch_learning.util.command import write_file
+
 from .instance_data import InstanceData
 
 
@@ -23,6 +25,7 @@ class InstanceDataFactory:
             else:
                 print("Num states:", state_space.get_num_states())
                 state_information = state_space.compute_state_information()
+                write_file(instance_information.workspace / f"{instance_information.name}.dot", state_space.to_dot(1))
                 instance_datas.append(InstanceData(len(instance_datas), instance_information, domain_data, state_space, goal_distance_information, state_information, dlplan.DenotationsCaches()))
         # Sort the instances according to size and fix the indices afterwards
         instance_datas = sorted(instance_datas, key=lambda x : x.state_space.get_num_states())

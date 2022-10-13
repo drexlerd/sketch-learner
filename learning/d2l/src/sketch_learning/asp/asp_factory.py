@@ -7,11 +7,11 @@ from typing import List
 
 from .returncodes import ClingoExitCode
 
+from ..instance_data.state_pair import StatePair
 from ..instance_data.instance_data import InstanceData
 from ..iteration_data.domain_feature_data import DomainFeatureData
 from ..iteration_data.state_equivalence import DomainStateEquivalence
 from ..iteration_data.state_pair_equivalence import DomainStatePairEquivalence
-from ..instance_data.state_pair_classifier import StatePairClassification
 
 
 class ASPFactory:
@@ -38,9 +38,6 @@ class ASPFactory:
         self.ctl.add("state_pair_class", ["r"], "state_pair_class(r).")
         # d2-separation constraints
         self.ctl.add("d2_separate", ["r1", "r2"], "d2_separate(r1,r2).")
-        # optimality
-        self.ctl.add("delta_optimal", ["i", "c", "s1", "s2"], "delta_optimal(i,c,s1,s2).")
-        self.ctl.add("not_delta_optimal", ["i", "c", "s1", "s2"], "not_delta_optimal(i,c,s1,s2).")
 
     def make_facts(self, domain_feature_data: DomainFeatureData, domain_state_equivalence: DomainStateEquivalence, domain_state_pair_equivalence: DomainStatePairEquivalence, instance_datas: List[InstanceData]):
         facts = []
@@ -114,25 +111,38 @@ class ASPFactory:
                     facts.append(("nongoal", [Number(instance_idx), Number(s_idx)]))
                 if instance_data.goal_distance_information.is_alive(s_idx):
                     facts.append(("alive", [Number(instance_idx), Number(s_idx)]))
-            # delta optimality
-            for state_pair, classification in instance_data.state_pair_classifier.state_pair_to_classification.items():
-                r_idx = instance_data.state_pair_equivalence.state_pair_to_r_idx[state_pair]
-                if classification == StatePairClassification.DELTA_OPTIMAL:
-                    facts.append(("delta_optimal", [Number(instance_data.id), Number(r_idx), Number(state_pair.source_idx), Number(state_pair.target_idx)]))
-                elif classification == StatePairClassification.NOT_DELTA_OPTIMAL:
-                    facts.append(("not_delta_optimal", [Number(instance_data.id), Number(r_idx), Number(state_pair.source_idx), Number(state_pair.target_idx)]))
-                else:
-                    raise Exception("StatePairClassifierFactFactory::make_facts - unknown StatePairClassification")
+        # tuple graph facts
+        for instance_data in instance_datas:
+            for s_idx, tuple_graph in instance_data.tuple_graphs.items():
+                tuple_graph = instance_data.tuple_graphs[s_idx]
+                tuple_graph_equivalence = instance_data.tuple_graph_equivalences[s_idx]
+                facts.append(("exceed", [Number(instance_data.id), Number(tuple_graph.root_idx)]))
+                for d in range(len(tuple_graph.t_idxs_by_distance)):
+                    for t_idx in tuple_graph.t_idxs_by_distance[d]:
+                        facts.append(("t_distance", [Number(instance_data.id), Number(tuple_graph.root_idx), Number(t_idx), Number(d)]))
+                        facts.append(("tuple", [Number(instance_data.id), Number(tuple_graph.root_idx), Number(t_idx)]))
+                        for r_idx in tuple_graph_equivalence.t_idx_to_r_idxs[t_idx]:
+                            facts.append(("contain", [Number(instance_data.id), Number(tuple_graph.root_idx), Number(t_idx), Number(r_idx)]))
+                for r_idx, d in tuple_graph_equivalence.r_idx_to_deadend_distance.items():
+                    facts.append(("d_distance", [Number(instance_data.id), Number(tuple_graph.root_idx), Number(r_idx), Number(d)]))
+                for r_idx, d in tuple_graph_equivalence.r_idx_to_distance.items():
+                    facts.append(("r_distance", [Number(instance_data.id), Number(tuple_graph.root_idx), Number(r_idx), Number(d)]))
+                for r_idx, state_class_pairs in instance_data.state_pair_equivalence.r_idx_to_state_class_pairs.items():
+                    for state_class_pair in state_class_pairs:
+                        facts.append(("state_pair_class_contains", [Number(r_idx), Number(state_class_pair[0]), Number(state_class_pair[1])]))
+            for state_pair, r_idx in instance_data.state_pair_equivalence.state_pair_to_r_idx.items():
+                facts.append(("cover", [Number(instance_data.id), Number(state_pair.source_idx), Number(r_idx), Number(state_pair.target_idx)]))
         return facts
 
     def make_initial_d2_facts(self, instance_datas: List[InstanceData]):
         """ T_0 facts """
         facts = set()
         for instance_data in instance_datas:
-            for s_idx, state_pairs in instance_data.state_pair_classifier.source_idx_to_state_pairs.items():
+            for s_idx, tuple_graph in instance_data.tuple_graphs.items():
                 equivalences = set()
-                for state_pair in state_pairs:
-                    equivalences.add(instance_data.state_pair_equivalence.state_pair_to_r_idx[state_pair])
+                for s_prime_idxs in tuple_graph.s_idxs_by_distance:
+                    for s_prime_idx in s_prime_idxs:
+                        equivalences.add(instance_data.state_pair_equivalence.state_pair_to_r_idx[StatePair(s_idx, s_prime_idx)])
                 for i, eq_1 in enumerate(equivalences):
                     for j, eq_2 in enumerate(equivalences):
                         if i < j:

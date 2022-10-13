@@ -7,6 +7,7 @@ from typing import List
 from .state_pair_equivalence import DomainStatePairEquivalence, InstanceStatePairEquivalence
 from .domain_feature_data import DomainFeatureData
 
+from ..instance_data.state_pair import StatePair
 from ..instance_data.instance_data import InstanceData
 
 
@@ -42,28 +43,31 @@ class StatePairEquivalenceFactory:
             state_pair_to_r_idx = dict()
             r_idx_to_state_class_pairs = defaultdict(set)
             state_class_pair_to_r_idx = dict()
-            for state_pair in instance_data.state_pair_classifier.state_pair_to_classification.keys():
-                self.statistics.increment_num_state_pairs()
+            for s_idx, tuple_graph in instance_data.tuple_graphs.items():
                 # add conditions
-                conditions = self._make_conditions(policy_builder, policy_boolean_features, policy_numerical_features, instance_data.feature_valuations[state_pair.source_idx])
-                # add effects
-                effects = self._make_effects(policy_builder, policy_boolean_features, policy_numerical_features, instance_data.feature_valuations[state_pair.source_idx], instance_data.feature_valuations[state_pair.target_idx])
-                # add rule
-                rule = policy_builder.add_rule(conditions, effects)
-                rule_repr = rule.compute_repr()
-                if rule_repr in rule_repr_to_idx:
-                    r_idx = rule_repr_to_idx[rule_repr]
-                else:
-                    self.statistics.increment_num_equivalences()
-                    r_idx = len(rules)
-                    rule_repr_to_idx[rule_repr] = r_idx
-                    rules.append(rule)
-                r_idx_to_state_pairs[r_idx].add(state_pair)
-                state_pair_to_r_idx[state_pair] = r_idx
-                state_class_pair = (instance_data.state_equivalence.s_idx_to_state_class_idx[state_pair.source_idx],
-                     instance_data.state_equivalence.s_idx_to_state_class_idx[state_pair.target_idx])
-                r_idx_to_state_class_pairs[r_idx].add(state_class_pair)
-                state_class_pair_to_r_idx[state_class_pair] = r_idx
+                conditions = self._make_conditions(policy_builder, policy_boolean_features, policy_numerical_features, instance_data.feature_valuations[s_idx])
+                for s_prime_idxs in tuple_graph.s_idxs_by_distance:
+                    for s_prime_idx in s_prime_idxs:
+                        state_pair = StatePair(s_idx, s_prime_idx)
+                        self.statistics.increment_num_state_pairs()
+                        # add effects
+                        effects = self._make_effects(policy_builder, policy_boolean_features, policy_numerical_features, instance_data.feature_valuations[s_idx], instance_data.feature_valuations[s_prime_idx])
+                        # add rule
+                        rule = policy_builder.add_rule(conditions, effects)
+                        rule_repr = rule.compute_repr()
+                        if rule_repr in rule_repr_to_idx:
+                            r_idx = rule_repr_to_idx[rule_repr]
+                        else:
+                            self.statistics.increment_num_equivalences()
+                            r_idx = len(rules)
+                            rule_repr_to_idx[rule_repr] = r_idx
+                            rules.append(rule)
+                        r_idx_to_state_pairs[r_idx].add(state_pair)
+                        state_pair_to_r_idx[state_pair] = r_idx
+                        state_class_pair = (instance_data.state_equivalence.s_idx_to_state_class_idx[s_idx],
+                            instance_data.state_equivalence.s_idx_to_state_class_idx[s_prime_idx])
+                        r_idx_to_state_class_pairs[r_idx].add(state_class_pair)
+                        state_class_pair_to_r_idx[state_class_pair] = r_idx
             instance_data.state_pair_equivalence = InstanceStatePairEquivalence(r_idx_to_state_pairs, state_pair_to_r_idx, r_idx_to_state_class_pairs, state_class_pair_to_r_idx)
         return DomainStatePairEquivalence(rules)
 

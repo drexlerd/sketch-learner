@@ -18,10 +18,9 @@ from .iteration_data.feature_valuations_factory import FeatureValuationsFactory
 from .iteration_data.dlplan_policy_factory import DlplanPolicyFactory
 from .iteration_data.sketch import Sketch
 from .iteration_data.state_pair_equivalence_factory import StatePairEquivalenceFactory
-from .iteration_data.tuple_graph_equivalence_data_factory import TupleGraphEquivalenceFactory
+from .iteration_data.tuple_graph_equivalence_factory import TupleGraphEquivalenceFactory
 from .iteration_data.tuple_graph_equivalence_minimizer import TupleGraphEquivalenceMinimizer
 from .iteration_data.state_equivalence_factory import StateEquivalenceFactory
-from .instance_data.state_pair_classifier_factory import StatePairClassifierFactory
 from .returncodes import ExitCode
 from .util.timer import CountDownTimer
 from .util.command import write_file

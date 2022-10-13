@@ -4,40 +4,13 @@ from typing import Dict, MutableSet
 from collections import defaultdict
 
 from ..instance_data.state_pair import StatePair
-from ..instance_data.state_pair_classifier import StatePairClassification
 from ..instance_data.instance_data import InstanceData
-
-
-class SketchRule:
-    def __init__(self, sketch, rule_idx: int, dlplan_rule: dlplan.Rule):
-        self.sketch = sketch  # parent ptr
-        self.id = rule_idx
-        self.dlplan_rule = dlplan_rule
 
 
 class Sketch:
     def __init__(self, dlplan_policy: dlplan.Policy, width: int):
         self.dlplan_policy = dlplan_policy
         self.width = width
-
-    def get_rules(self):
-        """
-        Attach an index and sketch parent ptr to dlplan rules.
-        """
-        return [SketchRule(self, rule_idx, dlplan_rule) for rule_idx, dlplan_rule in enumerate(self.dlplan_policy.get_rules())]
-
-    def _verify_delta_optimality(self, instance_data: InstanceData, root_idx_to_closest_subgoal_s_idxs: Dict[int, MutableSet[int]]):
-        """
-        Returns True iff sketch only classifies delta optimal state pairs as good.
-        """
-        for root_idx, closest_subgoal_s_idxs in root_idx_to_closest_subgoal_s_idxs.items():
-            for s_idx in closest_subgoal_s_idxs:
-                if instance_data.state_pair_classifier.classify(StatePair(root_idx, s_idx)) == StatePairClassification.NOT_DELTA_OPTIMAL:
-                    print(colored(f"Not delta optimal state pair is classified as good.", "red", "on_grey"))
-                    print("Instance:", instance_data.id, instance_data.instance_information.name)
-                    print("State pair:", f"{str(instance_data.state_information.get_state(root_idx))} -> {str(instance_data.state_information.get_state(s_idx))}")
-                    return False
-        return True
 
     def _verify_bounded_width(self, instance_data: InstanceData):
         """
@@ -137,8 +110,6 @@ class Sketch:
             (4) sketch features separate goals from nongoal states. """
         root_idx_to_closest_subgoal_s_idxs, root_idx_to_closest_subgoal_t_idxs, has_bounded_width = self._verify_bounded_width(instance_data)
         if not has_bounded_width:
-            return False
-        if not self._verify_delta_optimality(instance_data, root_idx_to_closest_subgoal_s_idxs):
             return False
         # if not self._verify_goal_separating_features(instance_data):
         #     return False

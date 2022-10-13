@@ -58,7 +58,7 @@ class LearningSketchesStep(Step):
 class LearningHierarchiesStep(Step):
     """ Incrementally learns a sketch by considering more and more instances """
     def process_config(self, config):
-        config["delta"] = 1.0
+        # config["delta"] = 1.0
         return config  # By default, we do nothing
 
     def get_required_attributes(self):
