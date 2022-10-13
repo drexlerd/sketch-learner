@@ -27,6 +27,8 @@ class ASPFactory:
         self.ctl.add("goal_state_class", ["d"], "goal_state_class(d).")
         self.ctl.add("nongoal_state_class", ["d"], "nongoal_state_class(d).")
         # transition system
+        self.ctl.add("state", ["i", "s"], "state(i,s).")
+        self.ctl.add("initial", ["i", "s"], "initial(i,s).")
         self.ctl.add("solvable", ["i", "s"], "solvable(i,s).")
         self.ctl.add("goal", ["i", "s"], "goal(i,s).")
         self.ctl.add("nongoal", ["i", "s"], "nongoal(i,s).")
@@ -38,6 +40,15 @@ class ASPFactory:
         self.ctl.add("state_pair_class", ["r"], "state_pair_class(r).")
         # d2-separation constraints
         self.ctl.add("d2_separate", ["r1", "r2"], "d2_separate(r1,r2).")
+        # tuple graph
+        self.ctl.add("state_pair_class_contains", ["r", "d1", "d2"], "state_pair_class_contains(r,d1,d2).")
+        self.ctl.add("exceed", ["i", "s"], "exceed(i,s).")
+        self.ctl.add("tuple", ["i", "s", "t"], "tuple(i,s,t).")
+        self.ctl.add("contain", ["i", "s", "t", "r"], "contain(i,s,t,r).")
+        self.ctl.add("cover", ["i", "s1", "s2", "r"], "cover(i,s1,s2,r).")
+        self.ctl.add("t_distance", ["i", "s", "t", "d"], "t_distance(i,s,t,d).")
+        self.ctl.add("d_distance", ["i", "s", "r", "d"], "d_distance(i,s,r,d).")
+        self.ctl.add("r_distance", ["i", "s", "r", "d"], "r_distance(i,s,r,d).")
 
     def make_facts(self, domain_feature_data: DomainFeatureData, domain_state_equivalence: DomainStateEquivalence, domain_state_pair_equivalence: DomainStatePairEquivalence, instance_datas: List[InstanceData]):
         facts = []
@@ -102,7 +113,9 @@ class ASPFactory:
         for instance_data in instance_datas:
             # instance facts
             instance_idx = instance_data.id
+            facts.append(("initial", [Number(instance_idx), Number(instance_data.state_space.get_initial_state_index())]))
             for s_idx in instance_data.state_space.get_state_indices():
+                facts.append(("state", [Number(instance_idx), Number(s_idx)]))
                 if not instance_data.goal_distance_information.is_deadend(s_idx):
                     facts.append(("solvable", [Number(instance_idx), Number(s_idx)]))
                 if instance_data.goal_distance_information.is_goal(s_idx):
@@ -131,7 +144,7 @@ class ASPFactory:
                     for state_class_pair in state_class_pairs:
                         facts.append(("state_pair_class_contains", [Number(r_idx), Number(state_class_pair[0]), Number(state_class_pair[1])]))
             for state_pair, r_idx in instance_data.state_pair_equivalence.state_pair_to_r_idx.items():
-                facts.append(("cover", [Number(instance_data.id), Number(state_pair.source_idx), Number(r_idx), Number(state_pair.target_idx)]))
+                facts.append(("cover", [Number(instance_data.id), Number(state_pair.source_idx), Number(state_pair.target_idx), Number(r_idx)]))
         return facts
 
     def make_initial_d2_facts(self, instance_datas: List[InstanceData]):

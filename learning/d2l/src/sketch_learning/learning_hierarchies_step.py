@@ -178,7 +178,6 @@ def run(config, data, rng):
                     instance_data.state_space.set_initial_state_index(old_initial_state_index)
                 instance_data.state_space.set_goal_state_indices(old_goal_state_indices)
                 instance_data.goal_distance_information = old_goal_distance_information
-
         if not subproblem_instance_datas:
             print(colored("Sketch rule does not induce any subproblems!", "red", "on_grey"))
             solution_policies.append(None)
@@ -202,28 +201,28 @@ def run(config, data, rng):
     print(sketch.dlplan_policy.compute_repr())
     print("Learned policies by rule:")
     for rule in sketch.dlplan_policy.get_rules():
-        print("Rule", rule.id, rule.dlplan_rule.compute_repr())
-        if solution_policies[rule.id] is not None:
+        print("Rule", rule.get_index(), rule.compute_repr())
+        if solution_policies[rule.get_index()] is not None:
             print("Resulting policy:")
-            solution_policies[rule.id].print()
+            solution_policies[rule.get_index()].print()
         else:
             print("No policy found.")
     print()
     print("Learned structurally minimized policies by rule:")
     for rule in sketch.dlplan_policy.get_rules():
-        print("Rule", rule.id, rule.dlplan_rule.compute_repr())
-        if structurally_minimized_solution_policies[rule.id] is not None:
+        print("Rule", rule.get_index(), rule.compute_repr())
+        if structurally_minimized_solution_policies[rule.get_index()] is not None:
             print("Resulting structurally minimized sketch:")
-            structurally_minimized_solution_policies[rule.id].print()
+            structurally_minimized_solution_policies[rule.get_index()].print()
         else:
             print("No policy found.")
     print()
     print("Learned empirically minimized policies by rule:")
     for rule in sketch.dlplan_policy.get_rules():
-        print("Rule", rule.id, rule.dlplan_rule.compute_repr())
-        if empirically_minimized_solution_policies[rule.id] is not None:
+        print("Rule", rule.get_index(), rule.compute_repr())
+        if empirically_minimized_solution_policies[rule.get_index()] is not None:
             print("Resulting empirically minimized sketch:")
-            empirically_minimized_solution_policies[rule.id].print()
+            empirically_minimized_solution_policies[rule.get_index()].print()
         else:
             print("No policy found.")
     return ExitCode.Success, None

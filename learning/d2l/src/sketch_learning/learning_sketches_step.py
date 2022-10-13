@@ -107,34 +107,6 @@ def learn_sketch(config, domain_data, instance_datas, make_asp_factory):
         domain_state_equivalence = state_equivalence_factory.make_state_equivalences(domain_feature_data, selected_instance_datas)
         logging.info(colored(f"..done", "blue", "on_grey"))
 
-        # do forward search and collect 1 state from each equivalence class
-        #for instance_data in selected_instance_datas:
-        #    queue = deque()
-        #    distances = dict()
-        #    state_classes = set()
-        #    initial_s_idx = instance_data.state_space.get_initial_state_index()
-        #    queue.append(initial_s_idx)
-        #    distances[initial_s_idx] = 0
-        #    state_classes.add(instance_data.state_equivalence.s_idx_to_state_class_idx[initial_s_idx])
-        #    forward_successors = instance_data.state_space.get_forward_successor_state_indices()
-        #    generated_s_idxs = set()
-        #    expanded_s_idxs = set()
-        #    while queue:
-        #        s_idx = queue.popleft()
-        #        # compute tuple graph here
-        #        expanded_s_idxs.add(s_idx)
-        #        generated_s_idxs.add(s_idx)
-        #        for s_prime_idx in forward_successors.get(s_idx, []):
-        #            generated_s_idxs.add(s_prime_idx)
-        #            state_class = instance_data.state_equivalence.s_idx_to_state_class_idx[s_prime_idx]
-        #            if state_class not in state_classes:
-        #                state_classes.add(state_class)
-        #                distances[s_prime_idx] = distances[s_idx] + 1
-        #                queue.append(s_prime_idx)
-        #    instance_data.state_space = dlplan.StateSpace(instance_data.state_space, expanded_s_idxs, generated_s_idxs)
-        #    instance_data.goal_distance_information = instance_data.state_space.compute_goal_distance_information()
-        #    instance_data.state_information = instance_data.state_space.compute_state_information()
-
         logging.info(colored(f"Initializing StatePairEquivalenceDatas...", "blue", "on_grey"))
         state_pair_equivalence_factory = StatePairEquivalenceFactory()
         rule_equivalences = state_pair_equivalence_factory.make_state_pair_equivalences(domain_feature_data, selected_instance_datas)
@@ -226,9 +198,12 @@ def learn_sketch(config, domain_data, instance_datas, make_asp_factory):
     print("Resulting empirically minimized sketch:")
     dlplan_state_pairs = []
     for instance_data in selected_instance_datas:
-        dlplan_state_pairs.extend([[
-            instance_data.state_information.get_state(state_pair.source_idx),
-            instance_data.state_information.get_state(state_pair.target_idx)] for state_pair in instance_data.state_pair_classifier.state_pair_to_classification.keys()])
+        for s_idx, tuple_graph in instance_data.tuple_graphs.items():
+            for s_prime_idxs in tuple_graph.s_idxs_by_distance:
+                for s_prime_idx in s_prime_idxs:
+                    dlplan_state_pairs.append((
+                        instance_data.state_information.get_state(s_idx),
+                        instance_data.state_information.get_state(s_prime_idx)))
     true_state_pairs = [state_pair for state_pair in dlplan_state_pairs if structurally_minimized_sketch.dlplan_policy.evaluate_lazy(state_pair[0], state_pair[1])]
     false_state_pairs = [state_pair for state_pair in dlplan_state_pairs if not structurally_minimized_sketch.dlplan_policy.evaluate_lazy(state_pair[0], state_pair[1])]
     empirically_minimized_sketch = Sketch(dlplan.PolicyMinimizer().minimize(structurally_minimized_sketch.dlplan_policy, true_state_pairs, false_state_pairs), sketch.width)
