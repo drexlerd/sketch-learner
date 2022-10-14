@@ -13,10 +13,18 @@ from .util.command import read_file, write_file
 from .domain_data.domain_data_factory import DomainDataFactory
 from .instance_data.instance_data import InstanceData
 from .instance_data.instance_data_factory import InstanceDataFactory
-from .instance_data.tuple_graph_factory import TupleGraphFactory, partition_states_by_distance
+from .instance_data.tuple_graph_factory import TupleGraphFactory
 from .iteration_data.sketch import Sketch
 from .asp.policy_asp_factory import PolicyASPFactory
 from .learning_sketches_step import learn_sketch
+
+
+def partition_states_by_distance(distances):
+    max_distance = max(distances.values())
+    s_idxs_by_distance = [[] for _ in range(max_distance + 1)]
+    for s_idx, distance in distances.items():
+        s_idxs_by_distance[distance].append(s_idx)
+    return s_idxs_by_distance
 
 
 def compute_delta_optimal_states(instance_data: InstanceData, delta: float):
@@ -93,9 +101,7 @@ def run(config, data, rng):
     logging.info(colored(f"Initializing TupleGraphs...", "blue", "on_grey"))
     tuple_graph_factory = TupleGraphFactory(width=0)
     for instance_data in instance_datas:
-        instance_data.tuple_graphs = dict()
-        for s_idx in instance_data.state_space.get_state_indices():
-            instance_data.tuple_graphs[s_idx] = tuple_graph_factory.make_tuple_graph(instance_data, s_idx)
+        instance_data.tuple_graphs = tuple_graph_factory.make_tuple_graphs(instance_data)
     logging.info(colored(f"..done", "blue", "on_grey"))
 
     logging.info(colored(f"Initializing Sketch...", "blue", "on_grey"))
@@ -168,7 +174,7 @@ def run(config, data, rng):
                         state_space.compute_goal_distance_information(),
                         state_space.compute_state_information(),
                         instance_data.denotations_caches,
-                        None)
+                        instance_data.novelty_base)
                     if subproblem_instance_data.goal_distance_information.is_solvable() and \
                         not subproblem_instance_data.goal_distance_information.is_trivially_solvable():
                         # 2.2.1. Recompute tuple graph for restricted state space

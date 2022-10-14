@@ -1,12 +1,10 @@
+import dlplan
 import math
 
 from typing import Dict, List, MutableSet, Tuple
 from dataclasses import dataclass
 
-from ..instance_data.tuple_graph_minimizer import TupleGraphMinimizer
-
 from .tuple_graph_equivalence import TupleGraphEquivalence
-from ..instance_data.tuple_graph import TupleGraph
 from ..instance_data.instance_data import InstanceData
 
 @dataclass
@@ -49,12 +47,13 @@ class TupleGraphEquivalenceMinimizer:
             tuple_graph_equivalence = instance_data.tuple_graph_equivalences[s_idx]
             instance_data.tuple_graphs[s_idx] = self._minimize(tuple_graph, tuple_graph_equivalence)
 
-    def _minimize(self, tuple_graph: TupleGraph, tuple_graph_equivalence: TupleGraphEquivalence):
+    def _minimize(self, tuple_graph: dlplan.TupleGraph, tuple_graph_equivalence: TupleGraphEquivalence):
         representatives = set()
         selected_t_idxs = []
-        for distance, t_idxs in enumerate(tuple_graph.t_idxs_by_distance):
-            self.statistics.num_input_tuples += len(t_idxs)
-            for t_idx in t_idxs:
+        for distance, tuple_nodes in enumerate(tuple_graph.get_tuple_nodes_by_distance()):
+            self.statistics.num_input_tuples += len(tuple_nodes)
+            for tuple_node in tuple_nodes:
+                t_idx = tuple_node.get_tuple_index()
                 r_idxs = frozenset(tuple_graph_equivalence.t_idx_to_r_idxs[t_idx])
                 # 1. Check for satisfiability of tuple
                 satisfiable = True
@@ -74,9 +73,9 @@ class TupleGraphEquivalenceMinimizer:
                 representatives.add(r_idxs)
                 selected_t_idxs.append(t_idx)
         self.statistics.num_output_tuples += len(selected_t_idxs)
-        # print("Num subgoals:", len(tuple_graph_equivalence.t_idx_to_r_idxs))
-        # print("Num representative subgoals:", len(representatives))
-        # print("Representative r_idxs:", representatives)
-        # print("Representative subgoals:", selected_t_idxs)
+        print(tuple_graph.to_dot(1))
+        print("Num subgoals:", len(tuple_graph_equivalence.t_idx_to_r_idxs))
+        print("Num representative r_idxs:", len(representatives))
+        print("Representative r_idxs:", representatives)
+        print("Representative subgoals:", selected_t_idxs)
         return TupleGraphMinimizer().restrict_tuple_graph_according_to_t_idxs(tuple_graph, selected_t_idxs)
-

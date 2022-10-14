@@ -46,7 +46,7 @@ class StatePairEquivalenceFactory:
             for s_idx, tuple_graph in instance_data.tuple_graphs.items():
                 # add conditions
                 conditions = self._make_conditions(policy_builder, policy_boolean_features, policy_numerical_features, instance_data.feature_valuations[s_idx])
-                for s_prime_idxs in tuple_graph.s_idxs_by_distance:
+                for s_prime_idxs in tuple_graph.get_state_indices_by_distance():
                     for s_prime_idx in s_prime_idxs:
                         state_pair = StatePair(s_idx, s_prime_idx)
                         self.statistics.increment_num_state_pairs()

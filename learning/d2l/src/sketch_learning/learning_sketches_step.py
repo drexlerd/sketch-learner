@@ -11,7 +11,6 @@ from .asp.sketch_asp_factory import SketchASPFactory
 from .domain_data.domain_data_factory import DomainDataFactory
 from .instance_data.instance_data import InstanceData
 from .instance_data.instance_data_factory import InstanceDataFactory
-from .instance_data.tuple_graph import TupleGraph
 from .instance_data.tuple_graph_factory import TupleGraphFactory
 from .iteration_data.domain_feature_data_factory import DomainFeatureDataFactory
 from .iteration_data.feature_valuations_factory import FeatureValuationsFactory
