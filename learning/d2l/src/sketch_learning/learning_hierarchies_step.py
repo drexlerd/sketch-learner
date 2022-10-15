@@ -128,8 +128,8 @@ def run(config, data, rng):
                 if not closest_subgoal_states:
                     continue
                 subgoals_classes[tuple(sorted(list(closest_subgoal_states)))].add(s_idx)
-            print("Num subgoal classes:", len(subgoals_classes))
-            print("Num states:", instance_data.state_space.get_num_states())
+            # print("Num subgoal classes:", len(subgoals_classes))
+            # print("Num states:", instance_data.state_space.get_num_states())
 
             # 2. Compute subproblems for each subgoal class
             old_initial_state_index = instance_data.state_space.get_initial_state_index()
@@ -154,9 +154,9 @@ def run(config, data, rng):
                             for target_idx in instance_data.state_space.get_forward_successor_state_indices().get(s_idx, []):
                                 if target_idx not in backward_layer:
                                     marked_s_idxs.add(target_idx)
-                print("Subgoal class:", subgoals)
-                print("Num initial states:", len(s_idxs))
-                print("Num initial state classes:", len(selected_s_idxs))
+                # print("Subgoal class:", subgoals)
+                # print("Num initial states:", len(s_idxs))
+                # print("Num initial state classes:", len(selected_s_idxs))
 
                 # 2.2. Instantiate subproblem for initial state and subgoals.
                 for s_idx in s_idxs:
