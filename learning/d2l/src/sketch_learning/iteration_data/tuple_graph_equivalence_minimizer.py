@@ -108,6 +108,10 @@ class TupleGraphEquivalenceMinimizer:
             if t_idx in selected_t_idxs:
                 t_idx_to_r_idxs[t_idx] = [r_idx for r_idx in r_idxs if r_idx in representative_r_idxs]
         r_idx_to_deadend_distance = dict()
+        t_idx_to_distance = dict()
+        for t_idx, distance in tuple_graph_equivalence.t_idx_to_distance.items():
+            if t_idx in selected_t_idxs:
+                t_idx_to_distance[t_idx] = distance
         for r_idx, deadend_distance in tuple_graph_equivalence.r_idx_to_deadend_distance.items():
             if r_idx in selected_r_idxs:
                 r_idx_to_deadend_distance[r_idx] = deadend_distance
@@ -115,4 +119,4 @@ class TupleGraphEquivalenceMinimizer:
         for r_idx, distance in tuple_graph_equivalence.r_idx_to_distance.items():
             if r_idx in selected_r_idxs:
                 r_idx_to_distance[r_idx] = distance
-        return TupleGraphEquivalence(t_idx_to_r_idxs, r_idx_to_deadend_distance, r_idx_to_distance)
+        return TupleGraphEquivalence(t_idx_to_r_idxs, t_idx_to_distance, r_idx_to_deadend_distance, r_idx_to_distance)

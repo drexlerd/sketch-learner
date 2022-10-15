@@ -26,11 +26,13 @@ class TupleGraphEquivalenceFactory:
                     r_idx_to_distance[r_idx] = min(r_idx_to_distance.get(r_idx, math.inf), distance)
             # map tuple to rules and vice versa
             t_idx_to_r_idxs = defaultdict(set)
+            t_idx_to_distance = dict()
             for distance, tuple_nodes in enumerate(tuple_graph.get_tuple_nodes_by_distance()):
                 for tuple_node in tuple_nodes:
                     t_idx = tuple_node.get_tuple_index()
+                    t_idx_to_distance[t_idx] = distance
                     for s_idx in tuple_node.get_state_indices():
                         r_idx = instance_data.state_pair_equivalence.state_pair_to_r_idx[StatePair(tuple_graph.get_root_state_index(), s_idx)]
                         t_idx_to_r_idxs[t_idx].add(r_idx)
-            tuple_graph_equivalences[root_idx] = TupleGraphEquivalence(t_idx_to_r_idxs, r_idx_to_deadend_distance, r_idx_to_distance)
+            tuple_graph_equivalences[root_idx] = TupleGraphEquivalence(t_idx_to_r_idxs, t_idx_to_distance, r_idx_to_deadend_distance, r_idx_to_distance)
         return tuple_graph_equivalences

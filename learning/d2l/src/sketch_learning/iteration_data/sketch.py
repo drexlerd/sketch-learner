@@ -27,14 +27,14 @@ class Sketch:
             tuple_graph = instance_data.tuple_graphs[s_idx]
             source_state = instance_data.state_information.get_state(s_idx)
             bounded = False
-            for t_idxs in tuple_graph.t_idxs_by_distance:
-                for t_idx in t_idxs:
+            for tuple_nodes in tuple_graph.get_tuple_nodes_by_distance():
+                for tuple_node in tuple_nodes:
+                    t_idx = tuple_node.get_tuple_index()
                     subgoal = True
-                    assert tuple_graph.t_idx_to_s_idxs[t_idx]
-                    for s_prime_idx in tuple_graph.t_idx_to_s_idxs[t_idx]:
+                    for s_prime_idx in tuple_node.get_state_indices():
                         target_state = instance_data.state_information.get_state(s_prime_idx)
                         if self.dlplan_policy.evaluate_lazy(source_state, target_state, instance_data.denotations_caches) is not None:
-                            root_idx_to_closest_subgoal_s_idxs[tuple_graph.root_idx].add(s_prime_idx)
+                            root_idx_to_closest_subgoal_s_idxs[tuple_graph.get_root_state_index()].add(s_prime_idx)
                             if s_prime_idx not in r_reachable_states:
                                 r_reachable_states.add(s_prime_idx)
                                 queue.append(s_prime_idx)
@@ -47,12 +47,12 @@ class Sketch:
                             subgoal = False
                     if subgoal:
                         tuple_achieves_top_goal = True
-                        for s_prime_idx in tuple_graph.t_idx_to_s_idxs[t_idx]:
+                        for s_prime_idx in tuple_node.get_state_indices():
                             if not instance_data.goal_distance_information.is_goal(s_prime_idx):
                                 tuple_achieves_top_goal = False
                         if tuple_achieves_top_goal:
                             top_goal_achieved = True
-                        root_idx_to_closest_subgoal_t_idxs[tuple_graph.root_idx].add(t_idx)
+                        root_idx_to_closest_subgoal_t_idxs[tuple_graph.get_root_state_index()].add(t_idx)
                         bounded = True
                 if bounded:
                     break

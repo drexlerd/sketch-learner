@@ -198,7 +198,7 @@ def learn_sketch(config, domain_data, instance_datas, make_asp_factory):
     dlplan_state_pairs = []
     for instance_data in selected_instance_datas:
         for s_idx, tuple_graph in instance_data.tuple_graphs.items():
-            for s_prime_idxs in tuple_graph.s_idxs_by_distance:
+            for s_prime_idxs in tuple_graph.get_state_indices_by_distance():
                 for s_prime_idx in s_prime_idxs:
                     dlplan_state_pairs.append((
                         instance_data.state_information.get_state(s_idx),

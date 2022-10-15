@@ -11,5 +11,6 @@ class TupleGraphEquivalence:
     relevant to bound the width of the subproblem.
     """
     t_idx_to_r_idxs: Dict[int, MutableSet[int]]
+    t_idx_to_distance: Dict[int, int]
     r_idx_to_deadend_distance: Dict[int, int]
     r_idx_to_distance: Dict[int, int]
