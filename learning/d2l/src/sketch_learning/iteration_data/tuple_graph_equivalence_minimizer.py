@@ -1,6 +1,7 @@
 import dlplan
 import math
 
+from collections import defaultdict
 from typing import Dict, List, MutableSet, Tuple
 from dataclasses import dataclass
 
@@ -43,13 +44,16 @@ class TupleGraphEquivalenceMinimizer:
         self.statistics = TupleGraphEquivalenceMinimizerStatistics()
 
     def minimize(self, instance_data: InstanceData):
-        for s_idx, tuple_graph in instance_data.tuple_graphs.items():
+        tuple_graph_equivalences = dict()
+        for s_idx in instance_data.state_space.get_state_indices():
+            tuple_graph = instance_data.tuple_graphs[s_idx]
             tuple_graph_equivalence = instance_data.tuple_graph_equivalences[s_idx]
-            instance_data.tuple_graphs[s_idx] = self._minimize(tuple_graph, tuple_graph_equivalence)
+            tuple_graph_equivalences[s_idx] = self._minimize(tuple_graph, tuple_graph_equivalence)
+        return tuple_graph_equivalences
 
     def _minimize(self, tuple_graph: dlplan.TupleGraph, tuple_graph_equivalence: TupleGraphEquivalence):
-        representatives = set()
-        selected_t_idxs = []
+        # compute solvable tuple nodes
+        solvable_tuple_nodes = []
         for distance, tuple_nodes in enumerate(tuple_graph.get_tuple_nodes_by_distance()):
             self.statistics.num_input_tuples += len(tuple_nodes)
             for tuple_node in tuple_nodes:
@@ -63,19 +67,52 @@ class TupleGraphEquivalenceMinimizer:
                         break
                 if not satisfiable:
                     continue
-                # 2. Check for equivalence
-                if r_idxs in representatives:
+                solvable_tuple_nodes.append(tuple_node)
+        # compute order
+        order = defaultdict(set)
+        for tuple_node_1 in solvable_tuple_nodes:
+            t_idx_1 = tuple_node_1.get_tuple_index()
+            r_idxs_1 = frozenset(tuple_graph_equivalence.t_idx_to_r_idxs[t_idx_1])
+            for tuple_node_2 in solvable_tuple_nodes:
+                t_idx_2 = tuple_node_2.get_tuple_index()
+                r_idxs_2 = frozenset(tuple_graph_equivalence.t_idx_to_r_idxs[t_idx_2])
+                if t_idx_1 == t_idx_2:
                     continue
-                # 3. Check for partial order
-                for representative in representatives:
-                    if representative.issubset(r_idxs):
-                        continue
-                representatives.add(r_idxs)
-                selected_t_idxs.append(t_idx)
+                if r_idxs_1.issubset(r_idxs_2) and r_idxs_1 != r_idxs_2:
+                    # t_2 gets dominated by t_1
+                    order[t_idx_2].add(t_idx_1)
+        # select tuple nodes according to order
+        selected_t_idxs = set()
+        selected_r_idxs = set()
+        representative_r_idxs = set()
+        for tuple_nodes in tuple_graph.get_tuple_nodes_by_distance():
+            for tuple_node in tuple_nodes:
+                t_idx = tuple_node.get_tuple_index()
+                r_idxs = frozenset(tuple_graph_equivalence.t_idx_to_r_idxs[t_idx])
+                if order.get(t_idx, 0) != 0:
+                    continue
+                if r_idxs in representative_r_idxs:
+                    continue
+                representative_r_idxs.add(r_idxs)
+                # found tuple with minimal number of rules
+                selected_t_idxs.add(t_idx)
+                selected_r_idxs.update(r_idxs)
         self.statistics.num_output_tuples += len(selected_t_idxs)
-        print(tuple_graph.to_dot(1))
+        # print(tuple_graph.to_dot(1))
         print("Num subgoals:", len(tuple_graph_equivalence.t_idx_to_r_idxs))
-        print("Num representative r_idxs:", len(representatives))
-        print("Representative r_idxs:", representatives)
-        print("Representative subgoals:", selected_t_idxs)
-        return TupleGraphMinimizer().restrict_tuple_graph_according_to_t_idxs(tuple_graph, selected_t_idxs)
+        print("Num of selected subgoals:", len(selected_t_idxs))
+        print("Num rules:", len(tuple_graph_equivalence.r_idx_to_distance))
+        print("Num of selected rules:", len(selected_r_idxs))
+        t_idx_to_r_idxs = dict()
+        for t_idx, r_idxs in tuple_graph_equivalence.t_idx_to_r_idxs.items():
+            if t_idx in selected_t_idxs:
+                t_idx_to_r_idxs[t_idx] = [r_idx for r_idx in r_idxs if r_idx in representative_r_idxs]
+        r_idx_to_deadend_distance = dict()
+        for r_idx, deadend_distance in tuple_graph_equivalence.r_idx_to_deadend_distance.items():
+            if r_idx in selected_r_idxs:
+                r_idx_to_deadend_distance[r_idx] = deadend_distance
+        r_idx_to_distance = dict()
+        for r_idx, distance in tuple_graph_equivalence.r_idx_to_distance.items():
+            if r_idx in selected_r_idxs:
+                r_idx_to_distance[r_idx] = distance
+        return TupleGraphEquivalence(t_idx_to_r_idxs, r_idx_to_deadend_distance, r_idx_to_distance)

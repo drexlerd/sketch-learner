@@ -129,17 +129,17 @@ class ASPFactory:
             for s_idx, tuple_graph in instance_data.tuple_graphs.items():
                 tuple_graph = instance_data.tuple_graphs[s_idx]
                 tuple_graph_equivalence = instance_data.tuple_graph_equivalences[s_idx]
-                facts.append(("exceed", [Number(instance_data.id), Number(tuple_graph.root_idx)]))
+                facts.append(("exceed", [Number(instance_data.id), Number(tuple_graph.get_root_state_index())]))
                 for d in range(len(tuple_graph.t_idxs_by_distance)):
                     for t_idx in tuple_graph.t_idxs_by_distance[d]:
-                        facts.append(("t_distance", [Number(instance_data.id), Number(tuple_graph.root_idx), Number(t_idx), Number(d)]))
-                        facts.append(("tuple", [Number(instance_data.id), Number(tuple_graph.root_idx), Number(t_idx)]))
+                        facts.append(("t_distance", [Number(instance_data.id), Number(tuple_graph.get_root_state_index()), Number(t_idx), Number(d)]))
+                        facts.append(("tuple", [Number(instance_data.id), Number(tuple_graph.get_root_state_index()), Number(t_idx)]))
                         for r_idx in tuple_graph_equivalence.t_idx_to_r_idxs[t_idx]:
-                            facts.append(("contain", [Number(instance_data.id), Number(tuple_graph.root_idx), Number(t_idx), Number(r_idx)]))
+                            facts.append(("contain", [Number(instance_data.id), Number(tuple_graph.get_root_state_index()), Number(t_idx), Number(r_idx)]))
                 for r_idx, d in tuple_graph_equivalence.r_idx_to_deadend_distance.items():
-                    facts.append(("d_distance", [Number(instance_data.id), Number(tuple_graph.root_idx), Number(r_idx), Number(d)]))
+                    facts.append(("d_distance", [Number(instance_data.id), Number(tuple_graph.get_root_state_index()), Number(r_idx), Number(d)]))
                 for r_idx, d in tuple_graph_equivalence.r_idx_to_distance.items():
-                    facts.append(("r_distance", [Number(instance_data.id), Number(tuple_graph.root_idx), Number(r_idx), Number(d)]))
+                    facts.append(("r_distance", [Number(instance_data.id), Number(tuple_graph.get_root_state_index()), Number(r_idx), Number(d)]))
                 for r_idx, state_class_pairs in instance_data.state_pair_equivalence.r_idx_to_state_class_pairs.items():
                     for state_class_pair in state_class_pairs:
                         facts.append(("state_pair_class_contains", [Number(r_idx), Number(state_class_pair[0]), Number(state_class_pair[1])]))
