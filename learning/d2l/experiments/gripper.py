@@ -32,7 +32,7 @@ def experiments():
     exps["hierarchy"] = update_dict(
         strips_base,
         pipeline="hierarchy_pipeline",
-        instances=training_instances()[1:2],
+        instances=training_instances(),
         delta=2.0,
     )
     return exps
