@@ -10,8 +10,8 @@ class InstanceDataFactory:
     def make_instance_datas(self, config, domain_data):
         instance_datas = []
         for instance_information in config.instance_informations:
-            logging.info(f"Constructing InstanceData for filename {instance_information.instance_filename}")
-            exitcode = dlplan.StateSpaceGenerator().generate_state_space(str(domain_data.domain_filename), str(instance_information.instance_filename))
+            logging.info(f"Constructing InstanceData for filename {instance_information.filename}")
+            exitcode = dlplan.StateSpaceGenerator().generate_state_space(str(domain_data.domain_filename), str(instance_information.filename))
             state_space = dlplan.StateSpaceReader().read(domain_data.vocabulary_info, len(instance_datas))
             if state_space.get_num_states() > config.max_states_per_instance:
                 continue

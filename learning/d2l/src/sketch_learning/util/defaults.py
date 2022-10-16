@@ -7,6 +7,7 @@ from pathlib import Path
 from .command import create_experiment_workspace, change_working_directory, create_sym_link
 from ..driver import Bunch, Experiment, BENCHMARK_DIR, BASEDIR
 from ..steps import generate_pipeline
+from ..instance_data.instance_information import InstanceInformation
 
 
 def generate_experiment(expid, domain_dir, domain, **kwargs):
@@ -74,12 +75,12 @@ def generate_experiment(expid, domain_dir, domain, **kwargs):
     # Initialize instances
     parameters["instance_informations"] = []
     for name in parameters["instances"]:
-        instance_information = dict()
-        instance_information["instance_filename"] = BENCHMARK_DIR / domain_dir / f"{name}.pddl"
-        instance_information["workspace"] = parameters["experiment_dir"] / "preprocessing" / name
-        create_experiment_workspace(instance_information["workspace"], rm_if_existed=True)
-        instance_information["name"] = name
-        parameters["instance_informations"].append(Bunch(instance_information))
+        filename = BENCHMARK_DIR / domain_dir / f"{name}.pddl"
+        workspace = parameters["experiment_dir"] / "preprocessing" / name
+        parameters["instance_informations"].append(
+            InstanceInformation(name,
+            filename,
+            workspace))
 
     steps = generate_pipeline(**parameters)
     return Experiment(steps, parameters)
