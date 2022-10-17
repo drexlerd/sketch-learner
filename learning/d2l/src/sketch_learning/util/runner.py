@@ -33,7 +33,7 @@ def report_and_exit(msg):
     sys.exit(-1)
 
 
-def do(expid, steps=None, workspace=None, show_steps_only=False, width=None, concept_complexity_limit=None, role_complexity_limit=None, boolean_complexity_limit=None, count_numerical_complexity_limit=None, distance_numerical_complexity_limit=None):
+def do(expid, steps=None, workspace=None, show_steps_only=False, input_width=None, output_width=None, concept_complexity_limit=None, role_complexity_limit=None, boolean_complexity_limit=None, count_numerical_complexity_limit=None, distance_numerical_complexity_limit=None):
     name_parts = expid.split(":")
     if len(name_parts) != 2:
         report_and_exit(f'Wrong experiment ID syntax "{expid}". Expected format <domain>:<experiment_name>')
@@ -55,8 +55,10 @@ def do(expid, steps=None, workspace=None, show_steps_only=False, width=None, con
     # overwrite parameters given as arguments in the root call
     if workspace is not None:
         parameters["workspace"] = workspace
-    if width is not None:
-        parameters["width"] = width
+    if input_width is not None:
+        parameters["input_width"] = input_width
+    if output_width is not None:
+        parameters["output_width"] = output_width
     if concept_complexity_limit is not None:
         parameters["concept_complexity_limit"] = concept_complexity_limit
     if role_complexity_limit is not None:
@@ -85,7 +87,8 @@ def run():
         args.steps,
         args.workspace,
         args.show,
-        args.width,
+        args.input_width,
+        args.output_width,
         args.concept_complexity_limit,
         args.role_complexity_limit,
         args.boolean_complexity_limit,

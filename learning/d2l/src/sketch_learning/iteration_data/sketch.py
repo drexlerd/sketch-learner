@@ -74,14 +74,15 @@ class Sketch:
         for root_idx, tuple_graph in instance_data.tuple_graphs.items():
             bounded = False
             source_state = instance_data.state_information.get_state(root_idx)
-            for t_idxs in tuple_graph.t_idxs_by_distance:
-                for t_idx in t_idxs:
+            for tuple_nodes in tuple_graph.get_tuple_nodes_by_distance():
+                for tuple_node in tuple_nodes:
+                    t_idx = tuple_node.get_tuple_index()
                     subgoal = True
-                    assert tuple_graph.t_idx_to_s_idxs[t_idx]
-                    for s_idx in tuple_graph.t_idx_to_s_idxs[t_idx]:
+                    assert tuple_node.get_state_indices()
+                    for s_idx in tuple_node.get_state_indices():
                         target_state = instance_data.state_information.get_state(s_idx)
                         if self.dlplan_policy.evaluate_lazy(source_state, target_state, instance_data.denotations_caches) is not None:
-                            root_idx_to_closest_subgoal_s_idxs[tuple_graph.root_idx].add(s_idx)
+                            root_idx_to_closest_subgoal_s_idxs[tuple_graph.get_root_state_index()].add(s_idx)
                             if instance_data.goal_distance_information.is_deadend(s_idx):
                                 print(colored(f"Sketch leads to an unsolvable state", "red", "on_grey"))
                                 print("Instance:", instance_data.id, instance_data.instance_information.name)
@@ -90,7 +91,7 @@ class Sketch:
                         else:
                             subgoal = False
                     if subgoal:
-                        root_idx_to_closest_subgoal_t_idxs[tuple_graph.root_idx].add(t_idx)
+                        root_idx_to_closest_subgoal_t_idxs[tuple_graph.get_root_state_index()].add(t_idx)
                         bounded = True
                 if bounded:
                     break
@@ -153,7 +154,7 @@ class Sketch:
                         return False
         return True
 
-    def solves(self, instance_data: InstanceData):
+    def solves(self, config, instance_data: InstanceData):
         """
         Returns True iff the sketch solves the instance, i.e.,
             (1) subproblems have bounded width,
@@ -163,8 +164,9 @@ class Sketch:
         root_idx_to_closest_subgoal_s_idxs, root_idx_to_closest_subgoal_t_idxs, has_bounded_width = self._verify_bounded_width_2(instance_data)
         if not has_bounded_width:
             return False
-        # if not self._verify_goal_separating_features(instance_data):
-        #     return False
+        if config.goal_separation:
+            if not self._verify_goal_separating_features(instance_data):
+                return False
         if not self._verify_acyclicity(instance_data, root_idx_to_closest_subgoal_s_idxs):
             return False
         return True

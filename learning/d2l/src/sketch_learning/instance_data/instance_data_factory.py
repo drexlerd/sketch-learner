@@ -24,10 +24,13 @@ class InstanceDataFactory:
                 continue
             else:
                 print("Num states:", state_space.get_num_states())
+                novelty_base = dlplan.NoveltyBase(len(state_space.get_instance_info_ref().get_atoms()), max(1, config.output_width))
                 state_information = state_space.compute_state_information()
-                novelty_base = dlplan.NoveltyBase(len(state_space.get_instance_info_ref().get_atoms()), max(1, config.width))
-                write_file(instance_information.workspace / f"{instance_information.name}.dot", state_space.to_dot(1))
-                instance_datas.append(InstanceData(len(instance_datas), instance_information, domain_data, state_space, goal_distance_information, state_information, dlplan.DenotationsCaches(), novelty_base))
+                instance_data = InstanceData(len(instance_datas), domain_data, dlplan.DenotationsCaches(), novelty_base, instance_information)
+                instance_data.set_state_space(state_space)
+                instance_data.set_goal_distance_information(goal_distance_information)
+                instance_data.set_state_information(state_information)
+                instance_datas.append(instance_data)
         # Sort the instances according to size and fix the indices afterwards
         instance_datas = sorted(instance_datas, key=lambda x : x.state_space.get_num_states())
         for instance_idx, instance_data in enumerate(instance_datas):

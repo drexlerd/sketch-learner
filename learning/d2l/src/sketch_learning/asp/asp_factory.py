@@ -49,6 +49,8 @@ class ASPFactory:
         self.ctl.add("t_distance", ["i", "s", "t", "d"], "t_distance(i,s,t,d).")
         self.ctl.add("d_distance", ["i", "s", "r", "d"], "d_distance(i,s,r,d).")
         self.ctl.add("r_distance", ["i", "s", "r", "d"], "r_distance(i,s,r,d).")
+        self.ctl.load(str(config.asp_location))
+
 
     def make_facts(self, domain_feature_data: DomainFeatureData, domain_state_equivalence: DomainStateEquivalence, domain_state_pair_equivalence: DomainStatePairEquivalence, instance_datas: List[InstanceData]):
         facts = []
@@ -127,7 +129,7 @@ class ASPFactory:
         # tuple graph and state pair equivalence facts
         for instance_data in instance_datas:
             for s_idx, tuple_graph_equivalence in instance_data.tuple_graph_equivalences.items():
-                if instance_data.goal_distance_information.is_goal(s_idx):
+                if not instance_data.goal_distance_information.is_alive(s_idx):
                     continue
                 facts.append(("exceed", [Number(instance_data.id), Number(s_idx)]))
                 for t_idx, r_idxs in tuple_graph_equivalence.t_idx_to_r_idxs.items():

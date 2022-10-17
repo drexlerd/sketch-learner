@@ -36,8 +36,9 @@ class LearningSketchesStep(Step):
     """ Incrementally learns a sketch by considering more and more instances """
     def process_config(self, config):
         config["delta"] = math.inf
-        config["reachable_from_init"] = False
-        return config  # By default, we do nothing
+        config["goal_separation"] = True
+        config["asp_name"] = "sketch.lp"
+        return config
 
     def get_required_attributes(self):
         return []
@@ -58,8 +59,10 @@ class LearningSketchesStep(Step):
 class LearningHierarchiesStep(Step):
     """ Incrementally learns a sketch by considering more and more instances """
     def process_config(self, config):
-        # config["delta"] = 1.0
-        return config  # By default, we do nothing
+        config["delta"] = 2.0
+        config["goal_separation"] = False
+        config["asp_name"] = "policy.lp"
+        return config
 
     def get_required_attributes(self):
         return []
@@ -80,7 +83,7 @@ class LearningHierarchiesStep(Step):
 def generate_pipeline(pipeline, **kwargs):
     pipeline = DEFAULT_PIPELINES[pipeline] if isinstance(pipeline, str) else pipeline
     pipeline, config = generate_pipeline_from_list(pipeline, **kwargs)
-    return pipeline
+    return pipeline, config
 
 
 def generate_pipeline_from_list(elements, **kwargs):

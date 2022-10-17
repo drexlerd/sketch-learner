@@ -4,10 +4,11 @@ import dlplan
 from termcolor import colored
 from typing import List
 from collections import deque
+from sketch_learning.asp.asp_factory import ASPFactory
 
 from sketch_learning.asp.returncodes import ClingoExitCode
 
-from .asp.sketch_asp_factory import SketchASPFactory
+from .asp.asp_factory import ASPFactory
 from .domain_data.domain_data_factory import DomainDataFactory
 from .instance_data.instance_data import InstanceData
 from .instance_data.instance_data_factory import InstanceDataFactory
@@ -35,22 +36,12 @@ def run(config, data, rng):
     logging.info(colored(f"..done", "blue", "on_grey"))
 
     logging.info(colored(f"Initializing TupleGraphs...", "blue", "on_grey"))
-    tuple_graph_factory = TupleGraphFactory(config.width)
+    tuple_graph_factory = TupleGraphFactory(config.output_width)
     for instance_data in instance_datas:
         instance_data.tuple_graphs = tuple_graph_factory.make_tuple_graphs(instance_data)
     logging.info(colored(f"..done", "blue", "on_grey"))
 
-    logging.info(colored(f"Initializing StatePairClassifiers...", "blue", "on_grey"))
-    for instance_data in instance_datas:
-        instance_data.state_pair_classifier = StatePairClassifierFactory(config.delta).make_state_pair_classifier(config, instance_data)
-    logging.info(colored(f"..done", "blue", "on_grey"))
-
-    for instance_data in instance_datas:
-        # Restrict state space to subset of states
-        instance_data.state_space = dlplan.StateSpace(instance_data.state_space, instance_data.state_pair_classifier.state_indices, instance_data.state_pair_classifier.state_indices)
-        instance_data.goal_distance_information = instance_data.state_space.compute_goal_distance_information()
-
-    sketch, structurally_minimized_sketch, empirically_minimized_sketch = learn_sketch(config, domain_data, instance_datas, make_sketch_asp_factory)
+    sketch, structurally_minimized_sketch, empirically_minimized_sketch = learn_sketch(config, domain_data, instance_datas)
 
     print("Summary:")
     print("Resulting sketch:")
@@ -66,18 +57,15 @@ def run(config, data, rng):
     return ExitCode.Success, None
 
 
-def compute_smallest_unsolved_instance(sketch: Sketch, instance_datas: List[InstanceData]):
+def compute_smallest_unsolved_instance(config, sketch: Sketch, instance_datas: List[InstanceData]):
     for instance_data in instance_datas:
-        if not sketch.solves(instance_data):
+        if not sketch.solves(config, instance_data):
             return instance_data
     return None
 
 
-def make_sketch_asp_factory(config):
-    return SketchASPFactory(config)
 
-
-def learn_sketch(config, domain_data, instance_datas, make_asp_factory):
+def learn_sketch(config, domain_data, instance_datas):
     i = 0
     selected_instance_idxs = [0]
     timer = CountDownTimer(config.timeout)
@@ -127,7 +115,7 @@ def learn_sketch(config, domain_data, instance_datas, make_asp_factory):
         symbols = None
         j = 0
         while True:
-            asp_factory = make_asp_factory(config)
+            asp_factory = ASPFactory(config)
             facts = asp_factory.make_facts(domain_feature_data, domain_state_equivalence, rule_equivalences, selected_instance_datas)
             if j == 0:
                 d2_facts.update(asp_factory.make_initial_d2_facts(selected_instance_datas))
@@ -155,15 +143,15 @@ def learn_sketch(config, domain_data, instance_datas, make_asp_factory):
             sketch = Sketch(DlplanPolicyFactory().make_dlplan_policy_from_answer_set_d2(symbols, domain_feature_data, rule_equivalences), width=0)
             logging.info("Learned the following sketch:")
             sketch.print()
-            if compute_smallest_unsolved_instance(sketch, selected_instance_datas) is None:
+            if compute_smallest_unsolved_instance(config, sketch, selected_instance_datas) is None:
                 # Stop adding D2-separation constraints
                 # if sketch solves all training instances by luck
                 break
             j += 1
 
         logging.info(colored(f"Verifying learned sketch...", "blue", "on_grey"))
-        assert compute_smallest_unsolved_instance(sketch, selected_instance_datas) is None
-        smallest_unsolved_instance = compute_smallest_unsolved_instance(sketch, instance_datas)
+        assert compute_smallest_unsolved_instance(config, sketch, selected_instance_datas) is None
+        smallest_unsolved_instance = compute_smallest_unsolved_instance(config, sketch, instance_datas)
         logging.info(colored(f"..done", "blue", "on_grey"))
 
         logging.info(colored("Iteration summary:", "yellow", "on_grey"))

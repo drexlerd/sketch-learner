@@ -89,7 +89,8 @@ def setup_argparser():
                         help='Which of the experiment steps to run (e.g.: "3 4 5" will assume the first two steps were'
                              ' already run and skip them). By default, run them all.')
 
-    parser.add_argument('-w', '--width', default=None, type=int, help='upper bound on the width')
+    parser.add_argument('-in_w', '--input_width', default=None, type=int, help='Input related width parameter.')
+    parser.add_argument('-out_w', '--output_width', default=None, type=int, help='Output related width parameter.')
     parser.add_argument('-cc', '--concept_complexity_limit', default=None, type=int, help='upper bound on the concept feature complexity')
     parser.add_argument('-rc', '--role_complexity_limit', default=None, type=int, help='upper bound on the role feature complexity')
     parser.add_argument('-bc', '--boolean_complexity_limit', default=None, type=int, help='upper bound on the boolean feature complexity')
