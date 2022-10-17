@@ -98,7 +98,6 @@ class TupleGraphEquivalenceMinimizer:
                 selected_t_idxs.add(t_idx)
                 selected_r_idxs.update(r_idxs)
         self.statistics.num_output_tuples += len(selected_t_idxs)
-        # print(tuple_graph.to_dot(1))
         print("Num subgoals:", len(tuple_graph_equivalence.t_idx_to_r_idxs))
         print("Num of selected subgoals:", len(selected_t_idxs))
         print("Num rules:", len(tuple_graph_equivalence.r_idx_to_distance))
@@ -106,7 +105,8 @@ class TupleGraphEquivalenceMinimizer:
         t_idx_to_r_idxs = dict()
         for t_idx, r_idxs in tuple_graph_equivalence.t_idx_to_r_idxs.items():
             if t_idx in selected_t_idxs:
-                t_idx_to_r_idxs[t_idx] = [r_idx for r_idx in r_idxs if r_idx in representative_r_idxs]
+                assert r_idxs in representative_r_idxs
+                t_idx_to_r_idxs[t_idx] = r_idxs
         r_idx_to_deadend_distance = dict()
         t_idx_to_distance = dict()
         for t_idx, distance in tuple_graph_equivalence.t_idx_to_distance.items():

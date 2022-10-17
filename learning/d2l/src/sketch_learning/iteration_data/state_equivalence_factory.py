@@ -47,7 +47,7 @@ class StateEquivalenceFactory:
                 state_class_idx = feature_valuation_to_state_class_idx[feature_valuation]
                 s_idx_to_state_class_idx[s_idx] = state_class_idx
                 state_class_idx_to_s_idxs[state_class_idx].add(s_idx)
-            instance_data.state_equivalence = InstanceStateEquivalence(s_idx_to_state_class_idx, state_class_idx_to_s_idxs)
+            instance_data.set_state_equivalence(InstanceStateEquivalence(s_idx_to_state_class_idx, state_class_idx_to_s_idxs))
         goal_state_class_idxs = set()
         nongoal_state_class_idxs = set()
         mixed_state_class_idxs = set()

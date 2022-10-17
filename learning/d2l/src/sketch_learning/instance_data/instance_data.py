@@ -51,6 +51,12 @@ class InstanceData:
         for tuple_graph in tuple_graphs.values():
             write_file(self.instance_information.tuple_graph_workspace / f"{tuple_graph.get_root_state_index()}.dot", tuple_graph.to_dot(1))
 
+    def set_iteration_information(self, iteration_information: IterationInformation):
+        self.iteration_information = iteration_information
+        write_file(self.iteration_information.workspace / f"{self.instance_information.name}.dot", self.state_space.to_dot(1))
+        for tuple_graph in self.tuple_graphs.values():
+            write_file(self.iteration_information.tuple_graph_workspace / f"{tuple_graph.get_root_state_index()}.dot", tuple_graph.to_dot(1))
+
     def set_feature_valuations(self, feature_valuations: List[FeatureValuation]):
         """ Set feature valuations and writes them to files. """
         self.feature_valuations = feature_valuations

@@ -68,7 +68,7 @@ class StatePairEquivalenceFactory:
                             instance_data.state_equivalence.s_idx_to_state_class_idx[s_prime_idx])
                         r_idx_to_state_class_pairs[r_idx].add(state_class_pair)
                         state_class_pair_to_r_idx[state_class_pair] = r_idx
-            instance_data.state_pair_equivalence = InstanceStatePairEquivalence(r_idx_to_state_pairs, state_pair_to_r_idx, r_idx_to_state_class_pairs, state_class_pair_to_r_idx)
+            instance_data.set_state_pair_equivalence(InstanceStatePairEquivalence(r_idx_to_state_pairs, state_pair_to_r_idx, r_idx_to_state_class_pairs, state_class_pair_to_r_idx))
         return DomainStatePairEquivalence(rules)
 
     def _make_conditions(self, policy_builder: dlplan.PolicyBuilder, policy_boolean_features, policy_numerical_features, feature_valuations):

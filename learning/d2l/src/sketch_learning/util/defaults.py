@@ -67,11 +67,12 @@ def generate_experiment(expid, domain_dir, domain, **kwargs):
     parameters["instance_informations"] = []
     for name in parameters["instances"]:
         filename = BENCHMARK_DIR / domain_dir / f"{name}.pddl"
-        workspace = parameters["experiment_dir"] / "preprocessing" / name
+        workspace = parameters["experiment_dir"] / "input" / name
         parameters["instance_informations"].append(
-            InstanceInformation(name,
-            filename,
-            workspace))
+            InstanceInformation(
+                name,
+                filename,
+                workspace))
 
     steps, config = generate_pipeline(**parameters)
 

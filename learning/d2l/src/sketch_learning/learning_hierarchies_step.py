@@ -9,7 +9,7 @@ from typing import  List, FrozenSet, MutableSet
 from termcolor import colored
 
 from .returncodes import ExitCode
-from .util.command import read_file, write_file
+from .util.command import create_experiment_workspace, read_file, write_file
 from .domain_data.domain_data_factory import DomainDataFactory
 from .instance_data.instance_information import InstanceInformation
 from .instance_data.instance_data import InstanceData
@@ -151,10 +151,11 @@ def make_subproblems(config, instance_datas: List[InstanceData], rule: dlplan.Ru
                 if not goal_distance_information.is_solvable() or \
                     goal_distance_information.is_trivially_solvable():
                     continue
+                name = f"subproblem-{s_idx}-{'_'.join([str(i) for i in subgoals])}"
                 instance_information = InstanceInformation(
-                    instance_data.instance_information.name,
+                    name,
                     instance_data.instance_information.filename,
-                    instance_data.instance_information.workspace / f"subproblem-{s_idx}-{'_'.join([str(i) for i in subgoals])}")
+                    instance_data.instance_information.workspace / name)
                 state_information = state_space.compute_state_information()
                 subproblem_instance_data = InstanceData(
                     len(subproblem_instance_datas),
@@ -206,6 +207,11 @@ def run(config, data, rng):
         print(sketch.dlplan_policy.compute_repr())
         print("Sketch rule:", rule.get_index(), rule.compute_repr())
 
+        rule_workspace = config.experiment_dir / "output" / f"rule_{rule.get_index()}"
+        create_experiment_workspace(rule_workspace, rm_if_existed=True)
+        write_file(rule_workspace / "rule.txt", rule.compute_repr())
+        write_file(rule_workspace / "sketch.txt", sketch.dlplan_policy.compute_repr())
+
         logging.info(colored(f"Initializing Subproblems...", "blue", "on_grey"))
         subproblem_instance_datas = make_subproblems(config, instance_datas, rule)
         if not subproblem_instance_datas:
@@ -216,10 +222,13 @@ def run(config, data, rng):
             break
         logging.info(colored(f"..done", "blue", "on_grey"))
 
-        policy, structurally_minimized_policy, empirically_minimized_policy = learn_sketch(config, domain_data, subproblem_instance_datas)
+        policy, structurally_minimized_policy, empirically_minimized_policy = learn_sketch(config, domain_data, subproblem_instance_datas, config.experiment_dir / "learning" / f"rule_{rule.get_index()}")
         solution_policies.append(policy)
         structurally_minimized_solution_policies.append(structurally_minimized_policy)
         empirically_minimized_solution_policies.append(empirically_minimized_policy)
+        write_file(rule_workspace / "policy.txt", policy.dlplan_policy.compute_repr())
+        write_file(rule_workspace / "policy_structurally_minimized.txt", structurally_minimized_policy.dlplan_policy.compute_repr())
+        write_file(rule_workspace / "policy_empirically_minimized.txt", empirically_minimized_policy.dlplan_policy.compute_repr())
 
     logging.info(colored("Summary:", "yellow", "on_grey"))
     print("Input sketch:")

@@ -14,3 +14,10 @@ class TupleGraphEquivalence:
     t_idx_to_distance: Dict[int, int]
     r_idx_to_deadend_distance: Dict[int, int]
     r_idx_to_distance: Dict[int, int]
+
+    def print(self):
+        print("TupleGraphEquivalence:")
+        print("    t_idx_to_r_idxs:", self.t_idx_to_r_idxs)
+        print("    t_idx_to_distance:", self.t_idx_to_distance)
+        print("    r_idx_to_deadend_distance:", self.r_idx_to_deadend_distance)
+        print("    r_idx_to_distance:", self.r_idx_to_distance)

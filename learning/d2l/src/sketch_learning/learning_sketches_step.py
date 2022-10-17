@@ -11,6 +11,7 @@ from sketch_learning.asp.returncodes import ClingoExitCode
 from .asp.asp_factory import ASPFactory
 from .domain_data.domain_data_factory import DomainDataFactory
 from .instance_data.instance_data import InstanceData
+from .instance_data.iteration_information import IterationInformation
 from .instance_data.instance_data_factory import InstanceDataFactory
 from .instance_data.tuple_graph_factory import TupleGraphFactory
 from .iteration_data.domain_feature_data_factory import DomainFeatureDataFactory
@@ -23,7 +24,7 @@ from .iteration_data.tuple_graph_equivalence_minimizer import TupleGraphEquivale
 from .iteration_data.state_equivalence_factory import StateEquivalenceFactory
 from .returncodes import ExitCode
 from .util.timer import CountDownTimer
-from .util.command import write_file
+from .util.command import create_experiment_workspace, write_file
 
 
 def run(config, data, rng):
@@ -38,21 +39,21 @@ def run(config, data, rng):
     logging.info(colored(f"Initializing TupleGraphs...", "blue", "on_grey"))
     tuple_graph_factory = TupleGraphFactory(config.output_width)
     for instance_data in instance_datas:
-        instance_data.tuple_graphs = tuple_graph_factory.make_tuple_graphs(instance_data)
+        instance_data.set_tuple_graphs(tuple_graph_factory.make_tuple_graphs(instance_data))
     logging.info(colored(f"..done", "blue", "on_grey"))
 
-    sketch, structurally_minimized_sketch, empirically_minimized_sketch = learn_sketch(config, domain_data, instance_datas)
+    sketch, structurally_minimized_sketch, empirically_minimized_sketch = learn_sketch(config, domain_data, instance_datas, config.experiment_dir / "learning")
 
     print("Summary:")
     print("Resulting sketch:")
     sketch.print()
-    write_file(config.experiment_dir / f"{config.domain_dir}_{config.width}.txt", sketch.dlplan_policy.compute_repr())
+    write_file(config.experiment_dir / f"{config.domain_dir}_{config.output_width}.txt", sketch.dlplan_policy.compute_repr())
     print("Resulting structurally minimized sketch:")
     structurally_minimized_sketch.print()
-    write_file(config.experiment_dir / f"{config.domain_dir}_{config.width}_structurally_minimized.txt", structurally_minimized_sketch.dlplan_policy.compute_repr())
+    write_file(config.experiment_dir / f"{config.domain_dir}_{config.output_width}_structurally_minimized.txt", structurally_minimized_sketch.dlplan_policy.compute_repr())
     print("Resulting empirically minimized sketch:")
     empirically_minimized_sketch.print()
-    write_file(config.experiment_dir / f"{config.domain_dir}_{config.width}_empirically_minimized.txt", empirically_minimized_sketch.dlplan_policy.compute_repr())
+    write_file(config.experiment_dir / f"{config.domain_dir}_{config.output_width}_empirically_minimized.txt", empirically_minimized_sketch.dlplan_policy.compute_repr())
 
     return ExitCode.Success, None
 
@@ -65,11 +66,14 @@ def compute_smallest_unsolved_instance(config, sketch: Sketch, instance_datas: L
 
 
 
-def learn_sketch(config, domain_data, instance_datas):
+def learn_sketch(config, domain_data, instance_datas, workspace):
     i = 0
     selected_instance_idxs = [0]
     timer = CountDownTimer(config.timeout)
+    create_experiment_workspace(workspace, rm_if_existed=True)
     while not timer.is_expired():
+        iteration_directory = workspace / f"iteration_{i}"
+        create_experiment_workspace(iteration_directory)
         print()
         logging.info(colored(f"Iteration: {i}", "red", "on_grey"))
         selected_instance_datas = [instance_datas[subproblem_idx] for subproblem_idx in selected_instance_idxs]
@@ -77,6 +81,7 @@ def learn_sketch(config, domain_data, instance_datas):
         print(f"Selected instances:")
         for instance_data in selected_instance_datas:
             print("    id:", instance_data.id, "name:", instance_data.instance_information.name)
+            instance_data.set_iteration_information(IterationInformation(iteration_directory / instance_data.instance_information.name, instance_data.instance_information.name))
 
         logging.info(colored(f"Initializing DomainFeatureData...", "blue", "on_grey"))
         domain_feature_data_factory = DomainFeatureDataFactory()
@@ -86,7 +91,7 @@ def learn_sketch(config, domain_data, instance_datas):
 
         logging.info(colored(f"Initializing InstanceFeatureDatas...", "blue", "on_grey"))
         for instance_data in selected_instance_datas:
-            instance_data.feature_valuations = FeatureValuationsFactory().make_feature_valuations(instance_data, domain_feature_data)
+            instance_data.set_feature_valuations(FeatureValuationsFactory().make_feature_valuations(instance_data, domain_feature_data))
         logging.info(colored(f"..done", "blue", "on_grey"))
 
         logging.info(colored(f"Initializing StateEquivalences...", "blue", "on_grey"))
@@ -101,13 +106,13 @@ def learn_sketch(config, domain_data, instance_datas):
 
         logging.info(colored(f"Initializing TupleGraphEquivalences...", "blue", "on_grey"))
         for instance_data in selected_instance_datas:
-            instance_data.tuple_graph_equivalences = TupleGraphEquivalenceFactory().make_tuple_graph_equivalence_datas(instance_data)
+            instance_data.set_tuple_graph_equivalences(TupleGraphEquivalenceFactory().make_tuple_graph_equivalence_datas(instance_data))
         logging.info(colored(f"..done", "blue", "on_grey"))
 
         logging.info(colored(f"Initializing TupleGraphEquivalenceMinimizer...", "blue", "on_grey"))
         tuple_graph_equivalence_minimizer = TupleGraphEquivalenceMinimizer()
         for instance_data in selected_instance_datas:
-            instance_data.tuple_graph_equivalences = tuple_graph_equivalence_minimizer.minimize(instance_data)
+            instance_data.set_tuple_graph_equivalences(tuple_graph_equivalence_minimizer.minimize(instance_data))
         logging.info(colored(f"..done", "blue", "on_grey"))
 
         # Iteratively add D2-separation constraints
