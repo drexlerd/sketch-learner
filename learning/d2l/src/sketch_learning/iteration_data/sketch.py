@@ -100,10 +100,19 @@ class Sketch:
                 return [], [], False
         return root_idx_to_closest_subgoal_s_idxs, root_idx_to_closest_subgoal_t_idxs, True
 
-    def _verify_acyclicity(self, instance_data: InstanceData, root_idx_to_closest_subgoal_s_idxs: Dict[int, MutableSet[int]]):
+    def _verify_acyclicity(self, instance_data: InstanceData):
         """
         Returns True iff sketch is acyclic, i.e., no infinite trajectories s1,s2,... are possible.
         """
+        features = self.dlplan_policy.get_boolean_features() + self.dlplan_policy.get_numerical_features()
+        state_information = instance_data.state_information
+        # 1. Compute feature valuations F over Phi for each state
+        feature_valuation_to_s_idxs = defaultdict(set)
+        for s_idx in instance_data.state_space.get_state_indices():
+            feature_valuation = tuple([feature.evaluate(state_information.get_state(s_idx)) for feature in features])
+            feature_valuation_to_s_idxs[feature_valuation].add(s_idx)
+
+
         for root_idx in range(instance_data.state_space.get_num_states()):
             # The depth-first search is the iterative version where the current path is explicit in the stack.
             # https://en.wikipedia.org/wiki/Depth-first_search
