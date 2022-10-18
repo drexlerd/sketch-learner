@@ -27,6 +27,7 @@ class InstanceData:
     goal_distance_information: dlplan.GoalDistanceInformation = None
     state_information: dlplan.StateInformation = None
     tuple_graphs: List[dlplan.TupleGraph] = None
+    initial_s_idxs: List[int] = None  # in cases we need multiple initial states
     # Initialized in every iteration
     iteration_information = IterationInformation = None
     feature_valuations: List[FeatureValuation] = None
@@ -37,6 +38,7 @@ class InstanceData:
     def set_state_space(self, state_space: dlplan.StateSpace):
         """ Set state space and writes it to a file. """
         self.state_space = state_space
+        self.state_space.print()
         write_file(self.instance_information.workspace / f"{self.instance_information.name}.dot", state_space.to_dot(1))
 
     def set_goal_distance_information(self, goal_distance_information: dlplan.GoalDistanceInformation):
@@ -60,17 +62,21 @@ class InstanceData:
     def set_feature_valuations(self, feature_valuations: List[FeatureValuation]):
         """ Set feature valuations and writes them to files. """
         self.feature_valuations = feature_valuations
+        write_file(self.iteration_information.feature_valuations_workspace / "feature_valuations.txt", str(self.feature_valuations))
 
     def set_state_equivalence(self, state_equivalence: InstanceStateEquivalence):
         """ Set state equivalence and writes it to files. """
         self.state_equivalence = state_equivalence
+        write_file(self.iteration_information.state_equivalence_workspace / "state_equivalence.txt", str(self.state_equivalence))
 
     def set_state_pair_equivalence(self, state_pair_equivalence: InstanceStatePairEquivalence):
         """ Set state pair equivalence and writes it to files. """
         self.state_pair_equivalence = state_pair_equivalence
+        write_file(self.iteration_information.state_pair_equivalence_workspace / "state_pair_equivalence.txt", str(self.state_pair_equivalence))
 
     def set_tuple_graph_equivalences(self, tuple_graph_equivalences: List[TupleGraphEquivalence]):
         """ Set tuple graph equivalences and writes them to files. """
         self.tuple_graph_equivalences = tuple_graph_equivalences
+        write_file(self.iteration_information.tuple_graph_equivalences_workspace / "tuple_graph_equivalences.txt", str(self.tuple_graph_equivalences))
 
 

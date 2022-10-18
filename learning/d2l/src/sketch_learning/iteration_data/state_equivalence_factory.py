@@ -23,7 +23,7 @@ class StatePairEquivalenceStatistics:
         self.num_equivalences += 1
 
     def print(self):
-        print("StatePairEquivalenceStatistics:")
+        print("StateEquivalenceStatistics:")
         print("    num_states:", self.num_states)
         print("    num_equivalences:", self.num_equivalences)
 

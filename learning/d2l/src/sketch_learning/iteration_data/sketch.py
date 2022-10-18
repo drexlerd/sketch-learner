@@ -15,51 +15,49 @@ class Sketch:
     def _verify_bounded_width_2(self, instance_data: InstanceData):
         """
         """
-        root_idx_to_closest_subgoal_s_idxs = defaultdict(set)
-        root_idx_to_closest_subgoal_t_idxs = defaultdict(set)
-        r_reachable_states = set()
-        r_reachable_states.add(instance_data.state_space.get_initial_state_index())
-        queue = deque()
-        queue.append(instance_data.state_space.get_initial_state_index())
-        top_goal_achieved = False
-        while queue:
-            s_idx = queue.pop()
-            tuple_graph = instance_data.tuple_graphs[s_idx]
-            source_state = instance_data.state_information.get_state(s_idx)
-            bounded = False
-            for tuple_nodes in tuple_graph.get_tuple_nodes_by_distance():
-                for tuple_node in tuple_nodes:
-                    t_idx = tuple_node.get_tuple_index()
-                    subgoal = True
-                    for s_prime_idx in tuple_node.get_state_indices():
-                        target_state = instance_data.state_information.get_state(s_prime_idx)
-                        if self.dlplan_policy.evaluate_lazy(source_state, target_state, instance_data.denotations_caches) is not None:
-                            root_idx_to_closest_subgoal_s_idxs[tuple_graph.get_root_state_index()].add(s_prime_idx)
-                            if s_prime_idx not in r_reachable_states:
-                                r_reachable_states.add(s_prime_idx)
-                                queue.append(s_prime_idx)
-                            if instance_data.goal_distance_information.is_deadend(s_prime_idx):
-                                print(colored(f"Sketch leads to an unsolvable state.", "red", "on_grey"))
-                                print("Instance:", instance_data.id, instance_data.instance_information.name)
-                                print("Target_state:", target_state.get_index(), str(target_state))
-                                return [], [], False
-                        else:
-                            subgoal = False
-                    if subgoal:
-                        tuple_achieves_top_goal = True
+        for initial_s_idx in instance_data.initial_s_idxs:
+            r_reachable_states = set()
+            r_reachable_states.add(initial_s_idx)
+            queue = deque()
+            queue.append(initial_s_idx)
+            top_goal_achieved = False
+            while queue:
+                s_idx = queue.pop()
+                tuple_graph = instance_data.tuple_graphs[s_idx]
+                source_state = instance_data.state_information.get_state(s_idx)
+                bounded = False
+                for tuple_nodes in tuple_graph.get_tuple_nodes_by_distance():
+                    for tuple_node in tuple_nodes:
+                        t_idx = tuple_node.get_tuple_index()
+                        subgoal = True
                         for s_prime_idx in tuple_node.get_state_indices():
-                            if not instance_data.goal_distance_information.is_goal(s_prime_idx):
-                                tuple_achieves_top_goal = False
-                        if tuple_achieves_top_goal:
-                            top_goal_achieved = True
-                        root_idx_to_closest_subgoal_t_idxs[tuple_graph.get_root_state_index()].add(t_idx)
-                        bounded = True
-                if bounded:
-                    break
-        if not top_goal_achieved:
-            print(colored(f"Sketch does not achieve top goal.", "red", "on_grey"))
-            return [], [], False
-        return root_idx_to_closest_subgoal_s_idxs, root_idx_to_closest_subgoal_t_idxs, True
+                            target_state = instance_data.state_information.get_state(s_prime_idx)
+                            if self.dlplan_policy.evaluate_lazy(source_state, target_state, instance_data.denotations_caches) is not None:
+                                if s_prime_idx not in r_reachable_states:
+                                    r_reachable_states.add(s_prime_idx)
+                                    queue.append(s_prime_idx)
+                                if instance_data.goal_distance_information.is_deadend(s_prime_idx):
+                                    print(colored(f"Sketch leads to an unsolvable state.", "red", "on_grey"))
+                                    print("Instance:", instance_data.id, instance_data.instance_information.name)
+                                    print("Target_state:", target_state.get_index(), str(target_state))
+                                    return False
+                            else:
+                                subgoal = False
+                        if subgoal:
+                            tuple_achieves_top_goal = True
+                            for s_prime_idx in tuple_node.get_state_indices():
+                                if not instance_data.goal_distance_information.is_goal(s_prime_idx):
+                                    tuple_achieves_top_goal = False
+                            if tuple_achieves_top_goal:
+                                top_goal_achieved = True
+                            bounded = True
+                    if bounded:
+                        break
+            if not top_goal_achieved:
+                print(colored(f"Sketch does not achieve top goal.", "red", "on_grey"))
+                print(str(instance_data.state_information.get_state(instance_data.state_space.get_initial_state_index())))
+                return False
+        return True
 
 
     def _verify_bounded_width(self, instance_data: InstanceData):
@@ -161,13 +159,12 @@ class Sketch:
             (2) sketch only classifies delta optimal state pairs as good,
             (3) sketch is acyclic, and
             (4) sketch features separate goals from nongoal states. """
-        root_idx_to_closest_subgoal_s_idxs, root_idx_to_closest_subgoal_t_idxs, has_bounded_width = self._verify_bounded_width_2(instance_data)
-        if not has_bounded_width:
+        if not self._verify_bounded_width_2(instance_data):
             return False
         if config.goal_separation:
             if not self._verify_goal_separating_features(instance_data):
                 return False
-        if not self._verify_acyclicity(instance_data, root_idx_to_closest_subgoal_s_idxs):
+        if not self._verify_acyclicity(instance_data):
             return False
         return True
 

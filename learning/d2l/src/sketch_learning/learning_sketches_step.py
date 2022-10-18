@@ -81,6 +81,7 @@ def learn_sketch(config, domain_data, instance_datas, workspace):
         print(f"Selected instances:")
         for instance_data in selected_instance_datas:
             print("    id:", instance_data.id, "name:", instance_data.instance_information.name)
+            print("initial states:", instance_data.initial_s_idxs)
             instance_data.set_iteration_information(IterationInformation(iteration_directory / instance_data.instance_information.name, instance_data.instance_information.name))
 
         logging.info(colored(f"Initializing DomainFeatureData...", "blue", "on_grey"))

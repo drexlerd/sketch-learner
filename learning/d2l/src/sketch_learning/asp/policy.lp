@@ -10,7 +10,7 @@
 
 % initial state is R-reachable
 :- not r_reachable(I, S), initial(I, S).
-% require at least one outgoing good for each R reachable state.
+% require at least one outgoing good for each alive R-reachable state.
 :- { good(C) : cover(I, S, _, C) } = 0, r_reachable(I, S), alive(I, S).
 % require S' to be R-reachable if there is good state pair (S,S') from R-reachable state S.
 :- not r_reachable(I, S'), r_reachable(I, S), good(C), cover(I, S, S', C).
@@ -31,6 +31,9 @@ order(D) :- state_class(D), order(D, D') : good(D, D'), state_class(D), state_cl
 :- state_class(D), not order(D).
 
 % Display
+#show r_reachable/2.
+#show good/1.
+#show cover(I, S, S', C) : cover(I, S, S', C), r_reachable(I, S), good(C).
 #show select/1.
 #show numerical/1.
 #show boolean/1.

@@ -4,8 +4,9 @@ import dlplan
 import logging
 import math
 
-from collections import defaultdict
-from typing import  List, FrozenSet, MutableSet
+from copy import deepcopy
+from collections import defaultdict, deque, OrderedDict
+from typing import  List, FrozenSet, MutableSet, Dict
 from termcolor import colored
 
 from .returncodes import ExitCode
@@ -27,21 +28,18 @@ def partition_states_by_distance(distances):
     return s_idxs_by_distance
 
 
-def compute_delta_optimal_states(instance_data: InstanceData, delta: float):
+def compute_delta_optimal_states(instance_data: InstanceData, delta: float, s_idx: int, goal_distances: Dict[int, int]):
     state_space = instance_data.state_space
-    goal_distance_information = instance_data.goal_distance_information
-    goal_distances = goal_distance_information.get_goal_distances()
-    initial_state_index = instance_data.state_space.get_initial_state_index()
     state_indices = set()
-    state_indices.add(initial_state_index)
-    optimal_cost = goal_distances.get(initial_state_index, math.inf)
-    delta_optimal_cost = delta * optimal_cost
+    state_indices.add(s_idx)
+    optimal_cost = goal_distances.get(s_idx, math.inf)
     assert optimal_cost != math.inf
+    delta_optimal_cost = delta * optimal_cost
 
     visited = set()
     cur_layer = set()
-    visited.add(initial_state_index)
-    cur_layer.add(initial_state_index)
+    visited.add(s_idx)
+    cur_layer.add(s_idx)
     forward_successors = state_space.get_forward_successor_state_indices()
     distance = 0
     while cur_layer:
@@ -54,13 +52,13 @@ def compute_delta_optimal_states(instance_data: InstanceData, delta: float):
                     if distance + goal_distances.get(s_prime_idx, math.inf) <= delta_optimal_cost:
                         state_indices.add(s_prime_idx)
                         # Ensure that states are excluded that are only reachable through goal states.
-                        if not goal_distance_information.is_goal(s_prime_idx):
+                        if goal_distances.get(s_prime_idx, math.inf) != 0:
                             next_layer.add(s_prime_idx)
         cur_layer = next_layer
     return state_indices
 
 
-def compute_closest_subgoal_states(instance_data: InstanceData, root_idx: int, rule: dlplan.Rule):
+def compute_delta_optimal_subgoal_states(delta: float, instance_data: InstanceData, root_idx: int, rule: dlplan.Rule):
     source_state = instance_data.state_information.get_state(root_idx)
     if not rule.evaluate_conditions(source_state):
         return set()
@@ -68,8 +66,9 @@ def compute_closest_subgoal_states(instance_data: InstanceData, root_idx: int, r
     layers = [[root_idx]]
     distances = dict()
     distances[root_idx] = 0
-    closest_subgoal_states = set()
+    delta_optimal_subgoal_states = set()
     prev_layer = layers[0]
+    optimal_distance = None
     while True:
         next_layer = []
         for s_idx in prev_layer:
@@ -79,22 +78,24 @@ def compute_closest_subgoal_states(instance_data: InstanceData, root_idx: int, r
                     distances[s_prime_idx] = distances[s_idx] + 1
                     target_state = instance_data.state_information.get_state(s_prime_idx)
                     if rule.evaluate_effects(source_state, target_state, instance_data.denotations_caches):
-                        closest_subgoal_states.add(s_prime_idx)
+                        delta_optimal_subgoal_states.add(s_prime_idx)
         if not next_layer:
             break
         layers.append(next_layer)
-        if closest_subgoal_states:
-            break
         prev_layer = next_layer
-    return closest_subgoal_states
+        if optimal_distance is None and delta_optimal_subgoal_states:
+            optimal_distance = len(layers) - 1
+        elif optimal_distance is not None and len(layers) - 1 == delta * optimal_distance:
+            break
+    return delta_optimal_subgoal_states
 
 
-def compute_subgoal_class_to_initial_s_idxs(instance_data: InstanceData, rule: dlplan.Rule):
+def compute_subgoal_class_to_initial_s_idxs(delta: float, instance_data: InstanceData, rule: dlplan.Rule):
     subgoals_class_to_initial_s_idxs = defaultdict(set)
     for s_idx in instance_data.state_space.get_state_indices():
         if not instance_data.goal_distance_information.is_alive(s_idx):
             continue
-        closest_subgoal_states = compute_closest_subgoal_states(instance_data, s_idx, rule)
+        closest_subgoal_states = compute_delta_optimal_subgoal_states(delta, instance_data, s_idx, rule)
         if not closest_subgoal_states:
             continue
         subgoals_class_to_initial_s_idxs[tuple(sorted(list(closest_subgoal_states)))].add(s_idx)
@@ -123,55 +124,93 @@ def compute_initial_states_inducing_largest_subproblems(instance_data: InstanceD
     return selected_initial_s_idxs
 
 
-def make_subproblems(config, instance_datas: List[InstanceData], rule: dlplan.Rule):
+def make_subproblems(config, instance_datas: List[InstanceData], sketch: dlplan.Policy, rule: dlplan.Rule):
+    features = sketch.get_boolean_features() + sketch.get_numerical_features()
     subproblem_instance_datas = []
-    # 1. Compute all possible subgoal classes
     for instance_data in instance_datas:
-        subgoals_class_to_initial_s_idxs = compute_subgoal_class_to_initial_s_idxs(instance_data, rule)
-
-        # 2. Compute subproblems for each subgoal class
-        old_initial_state_index = instance_data.state_space.get_initial_state_index()
-        old_goal_state_indices = instance_data.state_space.get_goal_state_indices()
-        old_goal_distance_information = instance_data.goal_distance_information
-        for subgoals, initial_s_idxs in subgoals_class_to_initial_s_idxs.items():
-            instance_data.state_space.set_goal_state_indices(set(subgoals))
-            instance_data.goal_distance_information = instance_data.state_space.compute_goal_distance_information()
-            # 2.1. Compute largest subproblems in a subgoal class.
-            selected_initial_s_idxs = compute_initial_states_inducing_largest_subproblems(instance_data, initial_s_idxs, subgoals)
-
-            # 2.2. Instantiate subproblem for initial state and subgoals.
-            for s_idx in selected_initial_s_idxs:
-                instance_data.state_space.set_initial_state_index(s_idx)
-                state_indices = compute_delta_optimal_states(instance_data, config.delta)
-                state_space = dlplan.StateSpace(
-                    instance_data.state_space,
-                    state_indices,
-                    state_indices)
-                goal_distance_information = state_space.compute_goal_distance_information()
-                if not goal_distance_information.is_solvable() or \
-                    goal_distance_information.is_trivially_solvable():
+        state_space = instance_data.state_space
+        state_information = instance_data.state_information
+        # 1. Compute feature valuations F over Phi for each state
+        feature_valuation_to_s_idxs = defaultdict(set)
+        for s_idx in state_space.get_state_indices():
+            feature_valuation = tuple([feature.evaluate(state_information.get_state(s_idx)) for feature in features])
+            feature_valuation_to_s_idxs[feature_valuation].add(s_idx)
+        # 2. For each f in F with f satisfies C ...
+        for _, initial_s_idxs in feature_valuation_to_s_idxs.items():
+            # 2.1. Compute set of initial states, i.e., all s such that f(s) = f,
+            if not rule.evaluate_conditions(state_information.get_state(next(iter(initial_s_idxs))), instance_data.denotations_caches):
+                continue
+            # 2.2. Compute set of goal states, i.e., all s' such that (f(s), f(s')) satisfies E.
+            goal_s_idxs = set()
+            for _, target_s_idxs in feature_valuation_to_s_idxs.items():
+                if not rule.evaluate_effects(state_information.get_state(next(iter(initial_s_idxs))), state_information.get_state(next(iter(target_s_idxs))), instance_data.denotations_caches):
                     continue
-                name = f"subproblem-{s_idx}-{'_'.join([str(i) for i in subgoals])}"
-                instance_information = InstanceInformation(
-                    name,
-                    instance_data.instance_information.filename,
-                    instance_data.instance_information.workspace / name)
-                state_information = state_space.compute_state_information()
-                subproblem_instance_data = InstanceData(
-                    len(subproblem_instance_datas),
-                    instance_data.domain_data,
-                    instance_data.denotations_caches,
-                    instance_data.novelty_base,
-                    instance_information)
-                subproblem_instance_data.set_state_space(state_space)
-                subproblem_instance_data.set_goal_distance_information(goal_distance_information)
-                subproblem_instance_data.set_state_information(state_information)
-                # 2.2.1. Recompute tuple graph for restricted state space
-                subproblem_instance_data.set_tuple_graphs(TupleGraphFactory(width=0).make_tuple_graphs(subproblem_instance_data))
-                subproblem_instance_datas.append(subproblem_instance_data)
-                instance_data.state_space.set_initial_state_index(old_initial_state_index)
-            instance_data.state_space.set_goal_state_indices(old_goal_state_indices)
-            instance_data.goal_distance_information = old_goal_distance_information
+                goal_s_idxs.update(target_s_idxs)
+            if not goal_s_idxs:
+                continue
+            # 3. Compute goal distances of all initial states.
+            # Do backward search from goal states until all initial states are reached.
+            queue = deque()
+            goal_distances = dict()
+            for s_idx in goal_s_idxs:
+                queue.append(s_idx)
+                goal_distances[s_idx] = 0
+            backward_successors = state_space.get_backward_successor_state_indices()
+            unvisited_initial_s_idxs = deepcopy(initial_s_idxs)
+            while queue:
+                s_idx = queue.popleft()
+                s_cost = goal_distances[s_idx]
+                if not unvisited_initial_s_idxs:
+                    break
+                for s_prime_idx in backward_successors.get(s_idx, []):
+                    if s_prime_idx not in goal_distances:
+                        goal_distances[s_prime_idx] = s_cost + 1
+                        queue.append(s_prime_idx)
+                    try:
+                        unvisited_initial_s_idxs.remove(s_prime_idx)
+                    except KeyError:
+                        pass
+            # 4. Compute delta optimal forward reachable states.
+            ordered_initial_s_idxs = [x[0] for x in sorted([(s_idx, goal_distances.get(s_idx)) for s_idx in initial_s_idxs if goal_distances.get(s_idx, math.inf) != math.inf], key=lambda x: x[1])]
+            state_indices = set()
+            solvable_initial_s_idxs = set()
+            for initial_s_idx in ordered_initial_s_idxs:
+                solvable_initial_s_idxs.add(initial_s_idx)
+                state_indices.update(compute_delta_optimal_states(instance_data, config.delta, initial_s_idx, goal_distances))
+            # 6. Instantiate subproblem for initial state and subgoals.
+            subproblem_state_space = dlplan.StateSpace(
+                instance_data.state_space,
+                state_indices,
+                state_indices)
+            subproblem_state_space.set_goal_state_indices(goal_s_idxs.intersection(state_indices))
+            subproblem_goal_distance_information = subproblem_state_space.compute_goal_distance_information()
+            if not subproblem_goal_distance_information.is_solvable() or \
+                subproblem_goal_distance_information.is_trivially_solvable():
+                continue
+            name = f"{instance_data.instance_information.name}-{s_idx}"
+            subproblem_instance_information = InstanceInformation(
+                name,
+                instance_data.instance_information.filename,
+                instance_data.instance_information.workspace / f"rule_{rule.get_index()}" / name)
+            subproblem_state_information = subproblem_state_space.compute_state_information()
+            subproblem_instance_data = InstanceData(
+                len(subproblem_instance_datas),
+                instance_data.domain_data,
+                instance_data.denotations_caches,
+                instance_data.novelty_base,
+                subproblem_instance_information)
+            subproblem_instance_data.set_state_space(subproblem_state_space)
+            subproblem_instance_data.set_goal_distance_information(subproblem_goal_distance_information)
+            subproblem_instance_data.set_state_information(subproblem_state_information)
+            subproblem_instance_data.initial_s_idxs = solvable_initial_s_idxs
+            # 2.2.1. Recompute tuple graph for restricted state space
+            subproblem_instance_data.set_tuple_graphs(TupleGraphFactory(width=0).make_tuple_graphs(subproblem_instance_data))
+            subproblem_instance_datas.append(subproblem_instance_data)
+    return subproblem_instance_datas
+
+
+
+
     subproblem_instance_datas = sorted(subproblem_instance_datas, key=lambda x : x.state_space.get_num_states())
     for instance_idx, instance_data in enumerate(subproblem_instance_datas):
         instance_data.id = instance_idx
@@ -213,7 +252,7 @@ def run(config, data, rng):
         write_file(rule_workspace / "sketch.txt", sketch.dlplan_policy.compute_repr())
 
         logging.info(colored(f"Initializing Subproblems...", "blue", "on_grey"))
-        subproblem_instance_datas = make_subproblems(config, instance_datas, rule)
+        subproblem_instance_datas = make_subproblems(config, instance_datas, sketch.dlplan_policy, rule)
         if not subproblem_instance_datas:
             print(colored("Sketch rule does not induce any subproblems!", "red", "on_grey"))
             solution_policies.append(None)
@@ -229,7 +268,6 @@ def run(config, data, rng):
         write_file(rule_workspace / "policy.txt", policy.dlplan_policy.compute_repr())
         write_file(rule_workspace / "policy_structurally_minimized.txt", structurally_minimized_policy.dlplan_policy.compute_repr())
         write_file(rule_workspace / "policy_empirically_minimized.txt", empirically_minimized_policy.dlplan_policy.compute_repr())
-
     logging.info(colored("Summary:", "yellow", "on_grey"))
     print("Input sketch:")
     print(sketch.dlplan_policy.compute_repr())

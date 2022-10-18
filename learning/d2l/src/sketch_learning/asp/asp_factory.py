@@ -116,6 +116,8 @@ class ASPFactory:
             # instance facts
             instance_idx = instance_data.id
             facts.append(("initial", [Number(instance_idx), Number(instance_data.state_space.get_initial_state_index())]))
+            #for s_idx in instance_data.initial_s_idxs:
+            #    facts.append(("initial", [Number(instance_idx), Number(s_idx)]))
             for s_idx in instance_data.state_space.get_state_indices():
                 facts.append(("state", [Number(instance_idx), Number(s_idx)]))
                 if not instance_data.goal_distance_information.is_deadend(s_idx):
