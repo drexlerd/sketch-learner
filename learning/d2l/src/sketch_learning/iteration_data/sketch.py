@@ -15,6 +15,11 @@ class Sketch:
     def _verify_bounded_width_2(self, instance_data: InstanceData):
         """
         """
+        # 1. compute backward R-reachable states from goal states
+        # 2. compute forward R-reachable states from initial states and
+        #    2.1. whether there exists a closest subgoal for all R-reachable states,
+        #    2.2. check for optimal width
+        #    2.3. check if forward R-reachable state is also backward R-reachable
         for initial_s_idx in instance_data.initial_s_idxs:
             r_reachable_states = set()
             r_reachable_states.add(initial_s_idx)
@@ -104,6 +109,11 @@ class Sketch:
         """
         Returns True iff sketch is acyclic, i.e., no infinite trajectories s1,s2,... are possible.
         """
+        # TODO:
+        # 1. Compute graph G=(V,E) where nodes V are feature valuations
+        #    and edges E are transition between induced by rules
+        # 2. Check if G is acyclic
+
         features = self.dlplan_policy.get_boolean_features() + self.dlplan_policy.get_numerical_features()
         state_information = instance_data.state_information
         # 1. Compute feature valuations F over Phi for each state
