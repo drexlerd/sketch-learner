@@ -26,7 +26,7 @@ def experiments():
     exps["sketch"] = update_dict(
         strips_base,
         pipeline="sketch_pipeline",
-        instances=training_instances(),
+        instances=training_instances()[0:10],
     )
 
     exps["sketch_dist"] = update_dict(

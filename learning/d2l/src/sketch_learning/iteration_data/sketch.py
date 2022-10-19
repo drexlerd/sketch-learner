@@ -29,28 +29,29 @@ class Sketch:
             r_reachable_states.add(initial_s_idx)
         while queue:
             s_idx = queue.pop()
-            tuple_graph = instance_data.tuple_graphs[s_idx]
-            source_state = instance_data.state_information.get_state(s_idx)
             if instance_data.goal_distance_information.is_goal(s_idx):
                 continue
+            tuple_graph = instance_data.tuple_graphs[s_idx]
+            source_state = instance_data.state_information.get_state(s_idx)
             bounded = False
             min_compatible_distance = math.inf
-            for tuple_nodes in tuple_graph.get_tuple_nodes_by_distance():
-                for tuple_distance, tuple_node in enumerate(tuple_nodes):
+            for tuple_distance, tuple_nodes in enumerate(tuple_graph.get_tuple_nodes_by_distance()):
+                for tuple_node in tuple_nodes:
                     subgoal = True
                     for s_prime_idx in tuple_node.get_state_indices():
                         target_state = instance_data.state_information.get_state(s_prime_idx)
                         if self.dlplan_policy.evaluate_lazy(source_state, target_state, instance_data.denotations_caches) is not None:
+                            if instance_data.goal_distance_information.is_deadend(s_prime_idx):
+                                print(colored(f"Sketch leads to an unsolvable state.", "red", "on_grey"))
+                                print("Instance:", instance_data.id, instance_data.instance_information.name)
+                                print("Target_state:", source_state.get_index(), str(source_state))
+                                print("Target_state:", target_state.get_index(), str(target_state))
+                                return [], False
                             min_compatible_distance = min(min_compatible_distance, tuple_distance)
                             r_compatible_successors[s_idx].add(s_prime_idx)
                             if s_prime_idx not in r_reachable_states:
                                 r_reachable_states.add(s_prime_idx)
                                 queue.append(s_prime_idx)
-                            if instance_data.goal_distance_information.is_deadend(s_prime_idx):
-                                print(colored(f"Sketch leads to an unsolvable state.", "red", "on_grey"))
-                                print("Instance:", instance_data.id, instance_data.instance_information.name)
-                                print("Target_state:", target_state.get_index(), str(target_state))
-                                return [], False
                         else:
                             subgoal = False
                     if subgoal:
@@ -60,6 +61,8 @@ class Sketch:
                             print("Subgoal tuple distance:", tuple_distance)
                             return [], False
                         bounded = True
+                if bounded:
+                    break
             if not bounded:
                 print(colored(f"Sketch fails to bound width of a state", "red", "on_grey"))
                 print("Instance:", instance_data.id, instance_data.instance_information.name)

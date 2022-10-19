@@ -10,7 +10,6 @@ from ..domain_data.domain_data import DomainData
 from ..iteration_data.feature_valuations import FeatureValuation
 from ..iteration_data.state_pair_equivalence import InstanceStatePairEquivalence
 from ..iteration_data.tuple_graph_equivalence import TupleGraphEquivalence
-from ..driver import Bunch
 
 
 @dataclass
