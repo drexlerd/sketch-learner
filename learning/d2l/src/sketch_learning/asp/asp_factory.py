@@ -10,7 +10,6 @@ from .returncodes import ClingoExitCode
 from ..instance_data.state_pair import StatePair
 from ..instance_data.instance_data import InstanceData
 from ..iteration_data.domain_feature_data import DomainFeatureData
-from ..iteration_data.state_equivalence import DomainStateEquivalence
 from ..iteration_data.state_pair_equivalence import DomainStatePairEquivalence
 
 
@@ -22,11 +21,8 @@ class ASPFactory:
         self.ctl.add("numerical", ["n"], "numerical(n).")
         self.ctl.add("feature", ["f"], "feature(f).")
         self.ctl.add("complexity", ["f", "c"], "complexity(f,c).")
-        self.ctl.add("value", ["d","f","v"], "value(d,f,v).")
-        self.ctl.add("state_class", ["d"], "state_class(d).")
-        self.ctl.add("goal_state_class", ["d"], "goal_state_class(d).")
-        self.ctl.add("nongoal_state_class", ["d"], "nongoal_state_class(d).")
-        # transition system
+        self.ctl.add("value", ["i","s","f","v"], "value(i,s,f,v).")
+        # state space
         self.ctl.add("state", ["i", "s"], "state(i,s).")
         self.ctl.add("initial", ["i", "s"], "initial(i,s).")
         self.ctl.add("solvable", ["i", "s"], "solvable(i,s).")
@@ -41,8 +37,6 @@ class ASPFactory:
         # d2-separation constraints
         self.ctl.add("d2_separate", ["r1", "r2"], "d2_separate(r1,r2).")
         # tuple graph
-        self.ctl.add("state_pair_class_contains", ["r", "d1", "d2"], "state_pair_class_contains(r,d1,d2).")
-        self.ctl.add("exceed", ["i", "s"], "exceed(i,s).")
         self.ctl.add("tuple", ["i", "s", "t"], "tuple(i,s,t).")
         self.ctl.add("contain", ["i", "s", "t", "r"], "contain(i,s,t,r).")
         self.ctl.add("cover", ["i", "s1", "s2", "r"], "cover(i,s1,s2,r).")
@@ -52,9 +46,24 @@ class ASPFactory:
         self.ctl.load(str(config.asp_location))
 
 
-    def make_facts(self, domain_feature_data: DomainFeatureData, domain_state_equivalence: DomainStateEquivalence, domain_state_pair_equivalence: DomainStatePairEquivalence, instance_datas: List[InstanceData]):
+    def make_facts(self, domain_feature_data: DomainFeatureData, domain_state_pair_equivalence: DomainStatePairEquivalence, instance_datas: List[InstanceData]):
         facts = []
-        # feature facts
+        # State space facts
+        for instance_data in instance_datas:
+            instance_idx = instance_data.id
+            for s_idx in instance_data.initial_s_idxs:
+                facts.append(("initial", [Number(instance_idx), Number(s_idx)]))
+            for s_idx in instance_data.state_space.get_state_indices():
+                facts.append(("state", [Number(instance_idx), Number(s_idx)]))
+                if not instance_data.goal_distance_information.is_deadend(s_idx):
+                    facts.append(("solvable", [Number(instance_idx), Number(s_idx)]))
+                if instance_data.goal_distance_information.is_goal(s_idx):
+                    facts.append(("goal", [Number(instance_idx), Number(s_idx)]))
+                else:
+                    facts.append(("nongoal", [Number(instance_idx), Number(s_idx)]))
+                if instance_data.goal_distance_information.is_alive(s_idx):
+                    facts.append(("alive", [Number(instance_idx), Number(s_idx)]))
+        # Domain feature facts
         for f_idx, boolean in enumerate(domain_feature_data.boolean_features):
             facts.append(("boolean", [Number(f_idx)]))
             facts.append(("feature", [Number(f_idx)]))
@@ -63,7 +72,15 @@ class ASPFactory:
             facts.append(("numerical", [Number(f_idx + len(domain_feature_data.boolean_features))]))
             facts.append(("feature", [Number(f_idx + len(domain_feature_data.boolean_features))]))
             facts.append(("complexity", [Number(f_idx + len(domain_feature_data.boolean_features)), Number(numerical.compute_complexity())]))
-        # state pair facts
+        # Instance feature valuation facts
+        for instance_data in instance_datas:
+            for s_idx in instance_data.state_space.get_state_indices():
+                feature_valuation = instance_data.feature_valuations[s_idx]
+                for f_idx, f_val in enumerate(feature_valuation.boolean_feature_valuations):
+                    facts.append(("value", [Number(instance_data.id), Number(s_idx), Number(f_idx), Number(f_val)]))
+                for f_idx, f_val in enumerate(feature_valuation.numerical_feature_valuations):
+                    facts.append(("value", [Number(instance_data.id), Number(s_idx), Number(f_idx + len(feature_valuation.boolean_feature_valuations)), Number(f_val)]))
+        # State pair facts
         for r_idx, rule in enumerate(domain_state_pair_equivalence.rules):
             facts.append(("state_pair_class", [Number(r_idx)]))
             for condition in rule.get_conditions():
@@ -100,39 +117,15 @@ class ASPFactory:
                     facts.append(("feature_effect", [Number(f_idx + len(domain_feature_data.boolean_features)), Number(r_idx), Number(5)]))
                 else:
                     raise Exception(f"Cannot parse effect {effect_str}")
-        # state equivalence facts
-        for feature_valuations, state_class_idx in domain_state_equivalence.feature_valuation_to_state_class_idx.items():
-            facts.append(("state_class", [Number(state_class_idx)]))
-            for f_idx, f_val in enumerate(feature_valuations.boolean_feature_valuations):
-                facts.append(("value", [Number(state_class_idx), Number(f_idx), Number(f_val)]))
-            for f_idx, f_val in enumerate(feature_valuations.numerical_feature_valuations):
-                facts.append(("value", [Number(state_class_idx), Number(f_idx + len(feature_valuations.boolean_feature_valuations)), Number(f_val)]))
-        for state_class_idx in domain_state_equivalence.goal_state_class_idxs:
-            facts.append(("goal_state_class", [Number(state_class_idx)]))
-        for state_class_idx in domain_state_equivalence.nongoal_state_class_idxs:
-            facts.append(("nongoal_state_class", [Number(state_class_idx)]))
-
+        # State pair equivalence facts
         for instance_data in instance_datas:
-            # instance facts
-            instance_idx = instance_data.id
-            for s_idx in instance_data.initial_s_idxs:
-                facts.append(("initial", [Number(instance_idx), Number(s_idx)]))
-            for s_idx in instance_data.state_space.get_state_indices():
-                facts.append(("state", [Number(instance_idx), Number(s_idx)]))
-                if not instance_data.goal_distance_information.is_deadend(s_idx):
-                    facts.append(("solvable", [Number(instance_idx), Number(s_idx)]))
-                if instance_data.goal_distance_information.is_goal(s_idx):
-                    facts.append(("goal", [Number(instance_idx), Number(s_idx)]))
-                else:
-                    facts.append(("nongoal", [Number(instance_idx), Number(s_idx)]))
-                if instance_data.goal_distance_information.is_alive(s_idx):
-                    facts.append(("alive", [Number(instance_idx), Number(s_idx)]))
-        # tuple graph and state pair equivalence facts
+            for state_pair, r_idx in instance_data.state_pair_equivalence.state_pair_to_r_idx.items():
+                facts.append(("cover", [Number(instance_data.id), Number(state_pair.source_idx), Number(state_pair.target_idx), Number(r_idx)]))
+        # Tuple graph equivalence facts
         for instance_data in instance_datas:
             for s_idx, tuple_graph_equivalence in instance_data.tuple_graph_equivalences.items():
                 if not instance_data.goal_distance_information.is_alive(s_idx):
                     continue
-                facts.append(("exceed", [Number(instance_data.id), Number(s_idx)]))
                 for t_idx, r_idxs in tuple_graph_equivalence.t_idx_to_r_idxs.items():
                     facts.append(("tuple", [Number(instance_data.id), Number(s_idx), Number(t_idx)]))
                     for r_idx in r_idxs:
@@ -143,11 +136,6 @@ class ASPFactory:
                     facts.append(("d_distance", [Number(instance_data.id), Number(s_idx), Number(r_idx), Number(d)]))
                 for r_idx, d in tuple_graph_equivalence.r_idx_to_distance.items():
                     facts.append(("r_distance", [Number(instance_data.id), Number(s_idx), Number(r_idx), Number(d)]))
-                for r_idx, state_class_pairs in instance_data.state_pair_equivalence.r_idx_to_state_class_pairs.items():
-                    for state_class_pair in state_class_pairs:
-                        facts.append(("state_pair_class_contains", [Number(r_idx), Number(state_class_pair[0]), Number(state_class_pair[1])]))
-            for state_pair, r_idx in instance_data.state_pair_equivalence.state_pair_to_r_idx.items():
-                facts.append(("cover", [Number(instance_data.id), Number(state_pair.source_idx), Number(state_pair.target_idx), Number(r_idx)]))
         return facts
 
     def make_initial_d2_facts(self, instance_datas: List[InstanceData]):

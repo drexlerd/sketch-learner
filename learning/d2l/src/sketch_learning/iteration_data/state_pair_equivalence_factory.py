@@ -41,8 +41,6 @@ class StatePairEquivalenceFactory:
         for instance_data in instance_datas:
             r_idx_to_state_pairs = defaultdict(set)
             state_pair_to_r_idx = dict()
-            r_idx_to_state_class_pairs = defaultdict(set)
-            state_class_pair_to_r_idx = dict()
             for s_idx, tuple_graph in instance_data.tuple_graphs.items():
                 # add conditions
                 conditions = self._make_conditions(policy_builder, policy_boolean_features, policy_numerical_features, instance_data.feature_valuations[s_idx])
@@ -64,11 +62,7 @@ class StatePairEquivalenceFactory:
                             rules.append(rule)
                         r_idx_to_state_pairs[r_idx].add(state_pair)
                         state_pair_to_r_idx[state_pair] = r_idx
-                        state_class_pair = (instance_data.state_equivalence.s_idx_to_state_class_idx[s_idx],
-                            instance_data.state_equivalence.s_idx_to_state_class_idx[s_prime_idx])
-                        r_idx_to_state_class_pairs[r_idx].add(state_class_pair)
-                        state_class_pair_to_r_idx[state_class_pair] = r_idx
-            instance_data.set_state_pair_equivalence(InstanceStatePairEquivalence(r_idx_to_state_pairs, state_pair_to_r_idx, r_idx_to_state_class_pairs, state_class_pair_to_r_idx))
+            instance_data.set_state_pair_equivalence(InstanceStatePairEquivalence(r_idx_to_state_pairs, state_pair_to_r_idx))
         return DomainStatePairEquivalence(rules)
 
     def _make_conditions(self, policy_builder: dlplan.PolicyBuilder, policy_boolean_features, policy_numerical_features, feature_valuations):

@@ -24,7 +24,7 @@ class InstanceDataFactory:
                 continue
             else:
                 print("Num states:", state_space.get_num_states())
-                novelty_base = dlplan.NoveltyBase(len(state_space.get_instance_info_ref().get_atoms()), max(1, config.output_width))
+                novelty_base = dlplan.NoveltyBase(len(state_space.get_instance_info().get_atoms()), max(1, config.output_width))
                 state_information = state_space.compute_state_information()
                 instance_data = InstanceData(len(instance_datas), domain_data, dlplan.DenotationsCaches(), novelty_base, instance_information)
                 instance_data.set_state_space(state_space)

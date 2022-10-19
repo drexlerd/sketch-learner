@@ -5,7 +5,7 @@
 { select(F) } :- feature(F).
 
 % Generate exactly one subgoal for each solvable state for which the width exceeds.
-{ subgoal(I, S, T) : tuple(I, S, T) } = 1 :- exceed(I, S).
+{ subgoal(I, S, T) : tuple(I, S, T) } = 1 :- initial(I, S).
 % Generate good equivalence classes
 { good(C) } :- state_pair_class(C).
 
@@ -19,16 +19,17 @@
 % D2-separation
 :- good(C), not good(C'), d2_separate(C, C'), state_pair_class(C), state_pair_class(C'), { feature(F) : select(F), feature_effect(F, C, V), feature_effect(F, C', V'), V != V' } = 0, { feature(F) : select(F), feature_condition(F, C, V), feature_condition(F, C', V'), V != V' } = 0.
 
-% Goal-separation
-:- nongoal_state_class(D), goal_state_class(D'), { feature(F) : select(F), value(D, F, V), value(D', F, V'), V != V' } = 0.
+% Goal-separation no possible with current pool, because decrement can mean 2->0, 2->1
+% Hence one would need seed features that reflect feature change.
+:- nongoal(I, S), goal(I, S'), { feature(F) : select(F), value(I, S, F, V), value(I, S', F, V'), V != V' } = 0.
 
 % Define ``good`` pairs of state classes similar
-good(D, D') :- good(C), state_pair_class_contains(C, D, D').
+good(I, S, S') :- good(C), cover(I, S, S', C).
 % (Termination): Sketch must define strict partial order over R-reachable states
 % Source of this formulation: https://users.aalto.fi/~rintanj1/papers/GebserJR14kr.pdf
-order(D, D') :- state_class(D), state_class(D'), good(D, D'), order(D').
-order(D) :- state_class(D), order(D, D') : good(D, D'), state_class(D), state_class(D').
-:- state_class(D), not order(D).
+order(I, S, S') :- good(I, S, S'), order(I, S'), state(I, S), state(I, S').
+order(I, S) :- state(I, S), order(I, S, S') : good(I, S, S'), state(I, S), state(I, S').
+:- state(I, S), not order(I, S).
 
 % Display
 #show select/1.

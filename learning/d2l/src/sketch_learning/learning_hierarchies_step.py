@@ -5,8 +5,8 @@ import logging
 import math
 
 from copy import deepcopy
-from collections import defaultdict, deque, OrderedDict
-from typing import  List, FrozenSet, MutableSet, Dict
+from collections import defaultdict, deque
+from typing import  List, Dict
 from termcolor import colored
 
 from .returncodes import ExitCode
@@ -20,14 +20,6 @@ from .iteration_data.sketch import Sketch
 from .learning_sketches_step import learn_sketch
 
 
-def partition_states_by_distance(distances):
-    max_distance = max(distances.values())
-    s_idxs_by_distance = [[] for _ in range(max_distance + 1)]
-    for s_idx, distance in distances.items():
-        s_idxs_by_distance[distance].append(s_idx)
-    return s_idxs_by_distance
-
-
 def compute_delta_optimal_states(instance_data: InstanceData, delta: float, s_idx: int, goal_distances: Dict[int, int]):
     state_space = instance_data.state_space
     state_indices = set()
@@ -35,7 +27,6 @@ def compute_delta_optimal_states(instance_data: InstanceData, delta: float, s_id
     optimal_cost = goal_distances.get(s_idx, math.inf)
     assert optimal_cost != math.inf
     delta_optimal_cost = delta * optimal_cost
-
     visited = set()
     cur_layer = set()
     visited.add(s_idx)
@@ -56,72 +47,6 @@ def compute_delta_optimal_states(instance_data: InstanceData, delta: float, s_id
                             next_layer.add(s_prime_idx)
         cur_layer = next_layer
     return state_indices
-
-
-def compute_delta_optimal_subgoal_states(delta: float, instance_data: InstanceData, root_idx: int, rule: dlplan.Rule):
-    source_state = instance_data.state_information.get_state(root_idx)
-    if not rule.evaluate_conditions(source_state):
-        return set()
-    forward_successors = instance_data.state_space.get_forward_successor_state_indices()
-    layers = [[root_idx]]
-    distances = dict()
-    distances[root_idx] = 0
-    delta_optimal_subgoal_states = set()
-    prev_layer = layers[0]
-    optimal_distance = None
-    while True:
-        next_layer = []
-        for s_idx in prev_layer:
-            for s_prime_idx in forward_successors.get(s_idx, []):
-                if distances.get(s_prime_idx, math.inf) == math.inf:
-                    next_layer.append(s_prime_idx)
-                    distances[s_prime_idx] = distances[s_idx] + 1
-                    target_state = instance_data.state_information.get_state(s_prime_idx)
-                    if rule.evaluate_effects(source_state, target_state, instance_data.denotations_caches):
-                        delta_optimal_subgoal_states.add(s_prime_idx)
-        if not next_layer:
-            break
-        layers.append(next_layer)
-        prev_layer = next_layer
-        if optimal_distance is None and delta_optimal_subgoal_states:
-            optimal_distance = len(layers) - 1
-        elif optimal_distance is not None and len(layers) - 1 == delta * optimal_distance:
-            break
-    return delta_optimal_subgoal_states
-
-
-def compute_subgoal_class_to_initial_s_idxs(delta: float, instance_data: InstanceData, rule: dlplan.Rule):
-    subgoals_class_to_initial_s_idxs = defaultdict(set)
-    for s_idx in instance_data.state_space.get_state_indices():
-        if not instance_data.goal_distance_information.is_alive(s_idx):
-            continue
-        closest_subgoal_states = compute_delta_optimal_subgoal_states(delta, instance_data, s_idx, rule)
-        if not closest_subgoal_states:
-            continue
-        subgoals_class_to_initial_s_idxs[tuple(sorted(list(closest_subgoal_states)))].add(s_idx)
-    # print("Num subgoal classes:", len(subgoals_class_to_initial_s_idxs))
-    # print("Num states:", instance_data.state_space.get_num_states())
-    return subgoals_class_to_initial_s_idxs
-
-
-def compute_initial_states_inducing_largest_subproblems(instance_data: InstanceData, initial_s_idxs: MutableSet[int], subgoals: FrozenSet[int]):
-    selected_initial_s_idxs = set()
-    layers = partition_states_by_distance(instance_data.goal_distance_information.get_goal_distances())
-    marked_initial_s_idxs = set()
-    for backward_layer in reversed(layers):
-        backward_layer = set(backward_layer)
-        for s_idx in backward_layer:
-            if s_idx in initial_s_idxs and not s_idx in marked_initial_s_idxs:
-                selected_initial_s_idxs.add(s_idx)
-                marked_initial_s_idxs.add(s_idx)
-            if s_idx in marked_initial_s_idxs:
-                for target_idx in instance_data.state_space.get_forward_successor_state_indices().get(s_idx, []):
-                    if target_idx not in backward_layer:
-                        marked_initial_s_idxs.add(target_idx)
-    # print("Subgoal class:", subgoals)
-    # print("Num initial states:", len(initial_s_idxs))
-    # print("Num initial state classes:", len(selected_initial_s_idxs))
-    return selected_initial_s_idxs
 
 
 def make_subproblems(config, instance_datas: List[InstanceData], sketch: dlplan.Policy, rule: dlplan.Rule):
@@ -182,6 +107,7 @@ def make_subproblems(config, instance_datas: List[InstanceData], sketch: dlplan.
                 instance_data.state_space,
                 state_indices,
                 state_indices)
+            subproblem_state_space.set_initial_state_index(next(iter(ordered_initial_s_idxs)))
             subproblem_state_space.set_goal_state_indices(goal_s_idxs.intersection(state_indices))
             subproblem_goal_distance_information = subproblem_state_space.compute_goal_distance_information()
             if not subproblem_goal_distance_information.is_solvable() or \
@@ -206,11 +132,6 @@ def make_subproblems(config, instance_datas: List[InstanceData], sketch: dlplan.
             # 2.2.1. Recompute tuple graph for restricted state space
             subproblem_instance_data.set_tuple_graphs(TupleGraphFactory(width=0).make_tuple_graphs(subproblem_instance_data))
             subproblem_instance_datas.append(subproblem_instance_data)
-    return subproblem_instance_datas
-
-
-
-
     subproblem_instance_datas = sorted(subproblem_instance_datas, key=lambda x : x.state_space.get_num_states())
     for instance_idx, instance_data in enumerate(subproblem_instance_datas):
         instance_data.id = instance_idx
@@ -241,7 +162,7 @@ def run(config, data, rng):
     solution_policies = []
     structurally_minimized_solution_policies = []
     empirically_minimized_solution_policies = []
-    for rule in sketch.dlplan_policy.get_rules()[5:6]:
+    for rule in sketch.dlplan_policy.get_rules():
         print("Sketch:")
         print(sketch.dlplan_policy.compute_repr())
         print("Sketch rule:", rule.get_index(), rule.compute_repr())

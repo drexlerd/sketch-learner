@@ -64,7 +64,7 @@ def experiments():
         strips_base,
         pipeline="hierarchy_pipeline",
         domain_dir="blocks_4_on",
-        instances=training_instances_4_fixed_goal()[0:1],
+        instances=training_instances_4_fixed_goal(),
     )
     return exps
 

@@ -8,7 +8,6 @@ from .iteration_information import IterationInformation
 from ..util.command import write_file
 from ..domain_data.domain_data import DomainData
 from ..iteration_data.feature_valuations import FeatureValuation
-from ..iteration_data.state_equivalence import InstanceStateEquivalence
 from ..iteration_data.state_pair_equivalence import InstanceStatePairEquivalence
 from ..iteration_data.tuple_graph_equivalence import TupleGraphEquivalence
 from ..driver import Bunch
@@ -31,7 +30,6 @@ class InstanceData:
     # Initialized in every iteration
     iteration_information = IterationInformation = None
     feature_valuations: List[FeatureValuation] = None
-    state_equivalence: InstanceStateEquivalence = None
     state_pair_equivalence: InstanceStatePairEquivalence = None
     tuple_graph_equivalences: List[TupleGraphEquivalence] = None
 
@@ -62,11 +60,6 @@ class InstanceData:
         """ Set feature valuations and writes them to files. """
         self.feature_valuations = feature_valuations
         write_file(self.iteration_information.feature_valuations_workspace / "feature_valuations.txt", str(self.feature_valuations))
-
-    def set_state_equivalence(self, state_equivalence: InstanceStateEquivalence):
-        """ Set state equivalence and writes it to files. """
-        self.state_equivalence = state_equivalence
-        write_file(self.iteration_information.state_equivalence_workspace / "state_equivalence.txt", str(self.state_equivalence))
 
     def set_state_pair_equivalence(self, state_pair_equivalence: InstanceStatePairEquivalence):
         """ Set state pair equivalence and writes it to files. """

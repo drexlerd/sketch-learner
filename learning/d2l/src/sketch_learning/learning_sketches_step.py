@@ -3,7 +3,6 @@ import dlplan
 
 from termcolor import colored
 from typing import List
-from collections import deque
 from sketch_learning.asp.asp_factory import ASPFactory
 
 from sketch_learning.asp.returncodes import ClingoExitCode
@@ -21,7 +20,6 @@ from .iteration_data.sketch import Sketch
 from .iteration_data.state_pair_equivalence_factory import StatePairEquivalenceFactory
 from .iteration_data.tuple_graph_equivalence_factory import TupleGraphEquivalenceFactory
 from .iteration_data.tuple_graph_equivalence_minimizer import TupleGraphEquivalenceMinimizer
-from .iteration_data.state_equivalence_factory import StateEquivalenceFactory
 from .returncodes import ExitCode
 from .util.timer import CountDownTimer
 from .util.command import create_experiment_workspace, write_file
@@ -34,6 +32,8 @@ def run(config, data, rng):
 
     logging.info(colored(f"Initializing InstanceDatas...", "blue", "on_grey"))
     instance_datas = InstanceDataFactory().make_instance_datas(config, domain_data)
+    for instance_data in instance_datas:
+        instance_data.initial_s_idxs = [s_idx for s_idx in instance_data.state_space.get_state_indices() if instance_data.goal_distance_information.is_alive(s_idx)]
     logging.info(colored(f"..done", "blue", "on_grey"))
 
     logging.info(colored(f"Initializing TupleGraphs...", "blue", "on_grey"))
@@ -65,7 +65,6 @@ def compute_smallest_unsolved_instance(config, sketch: Sketch, instance_datas: L
     return None
 
 
-
 def learn_sketch(config, domain_data, instance_datas, workspace):
     i = 0
     selected_instance_idxs = [0]
@@ -95,11 +94,6 @@ def learn_sketch(config, domain_data, instance_datas, workspace):
             instance_data.set_feature_valuations(FeatureValuationsFactory().make_feature_valuations(instance_data, domain_feature_data))
         logging.info(colored(f"..done", "blue", "on_grey"))
 
-        logging.info(colored(f"Initializing StateEquivalences...", "blue", "on_grey"))
-        state_equivalence_factory = StateEquivalenceFactory()
-        domain_state_equivalence = state_equivalence_factory.make_state_equivalences(domain_feature_data, selected_instance_datas)
-        logging.info(colored(f"..done", "blue", "on_grey"))
-
         logging.info(colored(f"Initializing StatePairEquivalenceDatas...", "blue", "on_grey"))
         state_pair_equivalence_factory = StatePairEquivalenceFactory()
         rule_equivalences = state_pair_equivalence_factory.make_state_pair_equivalences(domain_feature_data, selected_instance_datas)
@@ -122,7 +116,7 @@ def learn_sketch(config, domain_data, instance_datas, workspace):
         j = 0
         while True:
             asp_factory = ASPFactory(config)
-            facts = asp_factory.make_facts(domain_feature_data, domain_state_equivalence, rule_equivalences, selected_instance_datas)
+            facts = asp_factory.make_facts(domain_feature_data, rule_equivalences, selected_instance_datas)
             if j == 0:
                 d2_facts.update(asp_factory.make_initial_d2_facts(selected_instance_datas))
                 print("Number of initial D2 facts:", len(d2_facts))
@@ -146,7 +140,7 @@ def learn_sketch(config, domain_data, instance_datas, workspace):
                 print(colored("No sketch exists that solves all geneneral subproblems!", "red", "on_grey"))
                 return None, None, None
             asp_factory.print_statistics()
-            sketch = Sketch(DlplanPolicyFactory().make_dlplan_policy_from_answer_set_d2(symbols, domain_feature_data, rule_equivalences), width=0)
+            sketch = Sketch(DlplanPolicyFactory().make_dlplan_policy_from_answer_set(symbols, domain_feature_data, rule_equivalences), width=0)
             logging.info("Learned the following sketch:")
             sketch.print()
             if compute_smallest_unsolved_instance(config, sketch, selected_instance_datas) is None:
@@ -162,7 +156,6 @@ def learn_sketch(config, domain_data, instance_datas, workspace):
 
         logging.info(colored("Iteration summary:", "yellow", "on_grey"))
         domain_feature_data_factory.statistics.print()
-        state_equivalence_factory.statistics.print()
         state_pair_equivalence_factory.statistics.print()
         tuple_graph_equivalence_minimizer.statistics.print()
 

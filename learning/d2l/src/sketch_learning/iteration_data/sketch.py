@@ -24,7 +24,6 @@ class Sketch:
         queue = deque()
         r_reachable_states = set()
         r_compatible_successors = defaultdict(set)
-        print(instance_data.initial_s_idxs)
         for initial_s_idx in instance_data.initial_s_idxs:
             queue.append(initial_s_idx)
             r_reachable_states.add(initial_s_idx)
@@ -43,17 +42,17 @@ class Sketch:
                         target_state = instance_data.state_information.get_state(s_prime_idx)
                         if self.dlplan_policy.evaluate_lazy(source_state, target_state, instance_data.denotations_caches) is not None:
                             min_compatible_distance = min(min_compatible_distance, tuple_distance)
+                            r_compatible_successors[s_idx].add(s_prime_idx)
                             if s_prime_idx not in r_reachable_states:
                                 r_reachable_states.add(s_prime_idx)
-                                r_compatible_successors[s_idx].add(s_prime_idx)
                                 queue.append(s_prime_idx)
                             if instance_data.goal_distance_information.is_deadend(s_prime_idx):
                                 print(colored(f"Sketch leads to an unsolvable state.", "red", "on_grey"))
                                 print("Instance:", instance_data.id, instance_data.instance_information.name)
                                 print("Target_state:", target_state.get_index(), str(target_state))
-                                return False
+                                return [], False
                         else:
-                            subgoal = [], False
+                            subgoal = False
                     if subgoal:
                         if require_optimal_width and min_compatible_distance < tuple_distance:
                             print(colored(f"Optimal width disproven.", "red", "on_grey"))
@@ -72,56 +71,31 @@ class Sketch:
         """
         Returns True iff sketch is acyclic, i.e., no infinite trajectories s1,s2,... are possible.
         """
-        # TODO:
-        # 1. Compute graph G=(V,E) where nodes V are feature valuations
-        #    and edges E are transition between induced by rules
-        # 2. Check if G is acyclic
-        features = self.dlplan_policy.get_boolean_features() + self.dlplan_policy.get_numerical_features()
-        state_information = instance_data.state_information
-        # 1. Compute feature valuations F over Phi for each state
-        valuation_to_index = dict()
-        index_to_valuation = dict()
-        s_idx_to_valuation_idx = dict()
-        for s_idx in instance_data.state_space.get_state_indices():
-            valuation = tuple([feature.evaluate(state_information.get_state(s_idx), instance_data.denotations_caches) for feature in features])
-            if valuation not in valuation_to_index:
-                valuation_index = len(valuation_to_index)
-                valuation_to_index[valuation] = valuation_index
-                index_to_valuation[valuation_index] = valuation
-            valuation_idx = valuation_to_index[valuation]
-            s_idx_to_valuation_idx[s_idx] = valuation_idx
-        print(s_idx_to_valuation_idx)
-        valuation_idx_successors = defaultdict(set)
-        print(r_compatible_successors)
-        for s_idx, s_prime_idxs in r_compatible_successors.items():
-            for s_prime_idx in s_prime_idxs:
-                valuation_idx_successors[s_idx_to_valuation_idx[s_idx]].add(s_idx_to_valuation_idx[s_prime_idx])
-        print(valuation_idx_successors)
-        for valuation_idx, successors in valuation_idx_successors.items():
+        for s_idx, successors in r_compatible_successors.items():
             # The depth-first search is the iterative version where the current path is explicit in the stack.
             # https://en.wikipedia.org/wiki/Depth-first_search
-            stack = [(valuation_idx, iter(successors))]
-            valuation_idxs_on_path = {valuation_idx,}
+            stack = [(s_idx, iter(successors))]
+            s_idxs_on_path = {s_idx,}
             frontier = set()  # the generated states, to ensure that they are only added once to the stack
             while stack:
                 source_idx, iterator = stack[-1]
-                valuation_idxs_on_path.add(source_idx)
+                s_idxs_on_path.add(source_idx)
                 try:
                     target_idx = next(iterator)
                     if instance_data.goal_distance_information.is_goal(target_idx):
                         continue
-                    if target_idx in valuation_idxs_on_path:
+                    if target_idx in s_idxs_on_path:
                         print(colored("Sketch cycles", "red", "on_grey"))
                         print("Instance:", instance_data.id, instance_data.instance_information.name)
-                        for valuation_idx in valuation_idxs_on_path:
-                            print(f"{valuation_idx} {index_to_valuation[valuation_idx]}")
-                        print(f"{target_idx} {index_to_valuation[target_idx]}")
+                        for s_idx in s_idxs_on_path:
+                            print(f"{s_idx} {str(instance_data.state_information.get_state(s_idx))}")
+                        print(f"{target_idx} {str(instance_data.state_information.get_state(target_idx))}")
                         return False
                     if target_idx not in frontier:
                         frontier.add(target_idx)
-                        stack.append((target_idx, iter(valuation_idx_successors[target_idx])))
+                        stack.append((target_idx, iter(r_compatible_successors.get(target_idx, []))))
                 except StopIteration:
-                    valuation_idxs_on_path.discard(source_idx)
+                    s_idxs_on_path.discard(source_idx)
                     stack.pop(-1)
         return True
 
