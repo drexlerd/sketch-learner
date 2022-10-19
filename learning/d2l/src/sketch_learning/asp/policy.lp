@@ -20,8 +20,10 @@
 
 % Goal-separation no possible with current pool, because decrement can mean 2->0, 2->1
 % Hence one would need seed features that reflect feature change.
-%:- nongoal_state_class(D), goal_state_class(D'), { feature(F) : select(F), value(D, F, V), value(D', F, V'), V != V' } = 0.
+%:- nongoal(S), goal(S'), { feature(F) : select(F), value(S, F, V), value(S', F, V'), V != V' } = 0.
 
+% TODO: depending on select features, state pair classes of multiple states fall together
+% effectively undirecte
 % Define ``good`` pairs of state classes similar
 good(D, D') :- good(C), state_pair_class_contains(C, D, D').
 % (Termination): Sketch must define strict partial order over R-reachable states
@@ -31,9 +33,7 @@ order(D) :- state_class(D), order(D, D') : good(D, D'), state_class(D), state_cl
 :- state_class(D), not order(D).
 
 % Display
-#show r_reachable/2.
 #show good/1.
-#show cover(I, S, S', C) : cover(I, S, S', C), r_reachable(I, S), good(C).
 #show select/1.
 #show numerical/1.
 #show boolean/1.

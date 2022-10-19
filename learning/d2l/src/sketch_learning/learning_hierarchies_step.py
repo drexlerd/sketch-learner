@@ -241,7 +241,7 @@ def run(config, data, rng):
     solution_policies = []
     structurally_minimized_solution_policies = []
     empirically_minimized_solution_policies = []
-    for rule in sketch.dlplan_policy.get_rules():
+    for rule in sketch.dlplan_policy.get_rules()[5:6]:
         print("Sketch:")
         print(sketch.dlplan_policy.compute_repr())
         print("Sketch rule:", rule.get_index(), rule.compute_repr())

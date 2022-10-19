@@ -1,4 +1,5 @@
 import dlplan
+import math
 from termcolor import colored
 from typing import Dict, MutableSet
 from collections import defaultdict, deque
@@ -12,100 +13,62 @@ class Sketch:
         self.dlplan_policy = dlplan_policy
         self.width = width
 
-    def _verify_bounded_width_2(self, instance_data: InstanceData):
+    def _verify_bounded_width(self, instance_data: InstanceData, require_optimal_width=False):
         """
+        Performs forward search over R-reachable states.
+        Initially, the R-reachable states are all initial states.
+        For each R-reachable state there must be a satisfied subgoal tuple.
+        If optimal width is required, we do not allow R-compatible states
+        that are closer than the closest satisfied subgoal tuple.
         """
-        # 1. compute backward R-reachable states from goal states
-        # 2. compute forward R-reachable states from initial states and
-        #    2.1. whether there exists a closest subgoal for all R-reachable states,
-        #    2.2. check for optimal width
-        #    2.3. check if forward R-reachable state is also backward R-reachable
+        queue = deque()
+        r_reachable_states = set()
+        r_compatible_successors = defaultdict(set)
+        print(instance_data.initial_s_idxs)
         for initial_s_idx in instance_data.initial_s_idxs:
-            r_reachable_states = set()
-            r_reachable_states.add(initial_s_idx)
-            queue = deque()
             queue.append(initial_s_idx)
-            top_goal_achieved = False
-            while queue:
-                s_idx = queue.pop()
-                tuple_graph = instance_data.tuple_graphs[s_idx]
-                source_state = instance_data.state_information.get_state(s_idx)
-                bounded = False
-                for tuple_nodes in tuple_graph.get_tuple_nodes_by_distance():
-                    for tuple_node in tuple_nodes:
-                        t_idx = tuple_node.get_tuple_index()
-                        subgoal = True
-                        for s_prime_idx in tuple_node.get_state_indices():
-                            target_state = instance_data.state_information.get_state(s_prime_idx)
-                            if self.dlplan_policy.evaluate_lazy(source_state, target_state, instance_data.denotations_caches) is not None:
-                                if s_prime_idx not in r_reachable_states:
-                                    r_reachable_states.add(s_prime_idx)
-                                    queue.append(s_prime_idx)
-                                if instance_data.goal_distance_information.is_deadend(s_prime_idx):
-                                    print(colored(f"Sketch leads to an unsolvable state.", "red", "on_grey"))
-                                    print("Instance:", instance_data.id, instance_data.instance_information.name)
-                                    print("Target_state:", target_state.get_index(), str(target_state))
-                                    return False
-                            else:
-                                subgoal = False
-                        if subgoal:
-                            tuple_achieves_top_goal = True
-                            for s_prime_idx in tuple_node.get_state_indices():
-                                if not instance_data.goal_distance_information.is_goal(s_prime_idx):
-                                    tuple_achieves_top_goal = False
-                            if tuple_achieves_top_goal:
-                                top_goal_achieved = True
-                            bounded = True
-                    if bounded:
-                        break
-            if not top_goal_achieved:
-                print(colored(f"Sketch does not achieve top goal.", "red", "on_grey"))
-                print(str(instance_data.state_information.get_state(instance_data.state_space.get_initial_state_index())))
-                return False
-        return True
-
-
-    def _verify_bounded_width(self, instance_data: InstanceData):
-        """
-        Returns three parts:
-            (1) the closest subgoal states for every alive state,
-            (2) the closest subgoal tuples for every alive state, and
-            (3) True if the width of every alive state is bounded.
-        """
-        root_idx_to_closest_subgoal_s_idxs = defaultdict(set)
-        root_idx_to_closest_subgoal_t_idxs = defaultdict(set)
-        for root_idx, tuple_graph in instance_data.tuple_graphs.items():
+            r_reachable_states.add(initial_s_idx)
+        while queue:
+            s_idx = queue.pop()
+            tuple_graph = instance_data.tuple_graphs[s_idx]
+            source_state = instance_data.state_information.get_state(s_idx)
+            if instance_data.goal_distance_information.is_goal(s_idx):
+                continue
             bounded = False
-            source_state = instance_data.state_information.get_state(root_idx)
+            min_compatible_distance = math.inf
             for tuple_nodes in tuple_graph.get_tuple_nodes_by_distance():
-                for tuple_node in tuple_nodes:
-                    t_idx = tuple_node.get_tuple_index()
+                for tuple_distance, tuple_node in enumerate(tuple_nodes):
                     subgoal = True
-                    assert tuple_node.get_state_indices()
-                    for s_idx in tuple_node.get_state_indices():
-                        target_state = instance_data.state_information.get_state(s_idx)
+                    for s_prime_idx in tuple_node.get_state_indices():
+                        target_state = instance_data.state_information.get_state(s_prime_idx)
                         if self.dlplan_policy.evaluate_lazy(source_state, target_state, instance_data.denotations_caches) is not None:
-                            root_idx_to_closest_subgoal_s_idxs[tuple_graph.get_root_state_index()].add(s_idx)
-                            if instance_data.goal_distance_information.is_deadend(s_idx):
-                                print(colored(f"Sketch leads to an unsolvable state", "red", "on_grey"))
+                            min_compatible_distance = min(min_compatible_distance, tuple_distance)
+                            if s_prime_idx not in r_reachable_states:
+                                r_reachable_states.add(s_prime_idx)
+                                r_compatible_successors[s_idx].add(s_prime_idx)
+                                queue.append(s_prime_idx)
+                            if instance_data.goal_distance_information.is_deadend(s_prime_idx):
+                                print(colored(f"Sketch leads to an unsolvable state.", "red", "on_grey"))
                                 print("Instance:", instance_data.id, instance_data.instance_information.name)
                                 print("Target_state:", target_state.get_index(), str(target_state))
-                                return [], [], False
+                                return False
                         else:
-                            subgoal = False
+                            subgoal = [], False
                     if subgoal:
-                        root_idx_to_closest_subgoal_t_idxs[tuple_graph.get_root_state_index()].add(t_idx)
+                        if require_optimal_width and min_compatible_distance < tuple_distance:
+                            print(colored(f"Optimal width disproven.", "red", "on_grey"))
+                            print("Min compatible distance:", min_compatible_distance)
+                            print("Subgoal tuple distance:", tuple_distance)
+                            return [], False
                         bounded = True
-                if bounded:
-                    break
             if not bounded:
                 print(colored(f"Sketch fails to bound width of a state", "red", "on_grey"))
                 print("Instance:", instance_data.id, instance_data.instance_information.name)
                 print("Source_state:", source_state.get_index(), str(source_state))
-                return [], [], False
-        return root_idx_to_closest_subgoal_s_idxs, root_idx_to_closest_subgoal_t_idxs, True
+                return [], False
+        return r_compatible_successors, True
 
-    def _verify_acyclicity(self, instance_data: InstanceData):
+    def _verify_acyclicity(self, instance_data: InstanceData, r_compatible_successors: Dict[int, int]):
         """
         Returns True iff sketch is acyclic, i.e., no infinite trajectories s1,s2,... are possible.
         """
@@ -113,41 +76,52 @@ class Sketch:
         # 1. Compute graph G=(V,E) where nodes V are feature valuations
         #    and edges E are transition between induced by rules
         # 2. Check if G is acyclic
-
         features = self.dlplan_policy.get_boolean_features() + self.dlplan_policy.get_numerical_features()
         state_information = instance_data.state_information
         # 1. Compute feature valuations F over Phi for each state
-        feature_valuation_to_s_idxs = defaultdict(set)
+        valuation_to_index = dict()
+        index_to_valuation = dict()
+        s_idx_to_valuation_idx = dict()
         for s_idx in instance_data.state_space.get_state_indices():
-            feature_valuation = tuple([feature.evaluate(state_information.get_state(s_idx)) for feature in features])
-            feature_valuation_to_s_idxs[feature_valuation].add(s_idx)
-
-
-        for root_idx in range(instance_data.state_space.get_num_states()):
+            valuation = tuple([feature.evaluate(state_information.get_state(s_idx), instance_data.denotations_caches) for feature in features])
+            if valuation not in valuation_to_index:
+                valuation_index = len(valuation_to_index)
+                valuation_to_index[valuation] = valuation_index
+                index_to_valuation[valuation_index] = valuation
+            valuation_idx = valuation_to_index[valuation]
+            s_idx_to_valuation_idx[s_idx] = valuation_idx
+        print(s_idx_to_valuation_idx)
+        valuation_idx_successors = defaultdict(set)
+        print(r_compatible_successors)
+        for s_idx, s_prime_idxs in r_compatible_successors.items():
+            for s_prime_idx in s_prime_idxs:
+                valuation_idx_successors[s_idx_to_valuation_idx[s_idx]].add(s_idx_to_valuation_idx[s_prime_idx])
+        print(valuation_idx_successors)
+        for valuation_idx, successors in valuation_idx_successors.items():
             # The depth-first search is the iterative version where the current path is explicit in the stack.
             # https://en.wikipedia.org/wiki/Depth-first_search
-            stack = [(root_idx, iter(root_idx_to_closest_subgoal_s_idxs[root_idx]))]
-            s_idxs_on_path = {root_idx,}
+            stack = [(valuation_idx, iter(successors))]
+            valuation_idxs_on_path = {valuation_idx,}
             frontier = set()  # the generated states, to ensure that they are only added once to the stack
             while stack:
                 source_idx, iterator = stack[-1]
-                s_idxs_on_path.add(source_idx)
+                valuation_idxs_on_path.add(source_idx)
                 try:
                     target_idx = next(iterator)
                     if instance_data.goal_distance_information.is_goal(target_idx):
                         continue
-                    if target_idx in s_idxs_on_path:
+                    if target_idx in valuation_idxs_on_path:
                         print(colored("Sketch cycles", "red", "on_grey"))
                         print("Instance:", instance_data.id, instance_data.instance_information.name)
-                        for s_idx in s_idxs_on_path:
-                            print(f"{s_idx} {str(instance_data.state_information.get_state(s_idx))}")
-                        print(f"{target_idx} {str(instance_data.state_information.get_state(target_idx))}")
+                        for valuation_idx in valuation_idxs_on_path:
+                            print(f"{valuation_idx} {index_to_valuation[valuation_idx]}")
+                        print(f"{target_idx} {index_to_valuation[target_idx]}")
                         return False
                     if target_idx not in frontier:
                         frontier.add(target_idx)
-                        stack.append((target_idx, iter(root_idx_to_closest_subgoal_s_idxs[target_idx])))
+                        stack.append((target_idx, iter(valuation_idx_successors[target_idx])))
                 except StopIteration:
-                    s_idxs_on_path.discard(source_idx)
+                    valuation_idxs_on_path.discard(source_idx)
                     stack.pop(-1)
         return True
 
@@ -178,12 +152,13 @@ class Sketch:
             (2) sketch only classifies delta optimal state pairs as good,
             (3) sketch is acyclic, and
             (4) sketch features separate goals from nongoal states. """
-        if not self._verify_bounded_width_2(instance_data):
+        r_compatible_successors, bounded_width = self._verify_bounded_width(instance_data)
+        if not bounded_width:
             return False
         if config.goal_separation:
             if not self._verify_goal_separating_features(instance_data):
                 return False
-        if not self._verify_acyclicity(instance_data):
+        if not self._verify_acyclicity(instance_data, r_compatible_successors):
             return False
         return True
 
