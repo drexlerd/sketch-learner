@@ -54,10 +54,14 @@ def make_subproblems(config, instance_datas: List[InstanceData], sketch: dlplan.
     subproblem_instance_datas = []
     for instance_data in instance_datas:
         state_space = instance_data.state_space
+        goal_distance_information = instance_data.goal_distance_information
         state_information = instance_data.state_information
         # 1. Compute feature valuations F over Phi for each state
         feature_valuation_to_s_idxs = defaultdict(set)
         for s_idx in state_space.get_state_indices():
+            if goal_distance_information.is_deadend(s_idx):
+                # Ignore deadends from original instance as potential initial states
+                continue
             feature_valuation = tuple([feature.evaluate(state_information.get_state(s_idx)) for feature in features])
             feature_valuation_to_s_idxs[feature_valuation].add(s_idx)
         # 2. For each f in F with f satisfies C ...
@@ -97,6 +101,9 @@ def make_subproblems(config, instance_datas: List[InstanceData], sketch: dlplan.
                         pass
             # 4. Compute delta optimal forward reachable states.
             ordered_initial_s_idxs = [x[0] for x in sorted([(s_idx, goal_distances.get(s_idx)) for s_idx in initial_s_idxs if goal_distances.get(s_idx, math.inf) != math.inf], key=lambda x: x[1])]
+            if not ordered_initial_s_idxs:
+                # No initial states exist in the subproblem because they are not reachable from the subgoals
+                continue
             state_indices = set()
             solvable_initial_s_idxs = set()
             for initial_s_idx in ordered_initial_s_idxs:
@@ -110,9 +117,6 @@ def make_subproblems(config, instance_datas: List[InstanceData], sketch: dlplan.
             subproblem_state_space.set_initial_state_index(next(iter(ordered_initial_s_idxs)))
             subproblem_state_space.set_goal_state_indices(goal_s_idxs.intersection(state_indices))
             subproblem_goal_distance_information = subproblem_state_space.compute_goal_distance_information()
-            if not subproblem_goal_distance_information.is_solvable() or \
-                subproblem_goal_distance_information.is_trivially_solvable():
-                continue
             name = f"{instance_data.instance_information.name}-{s_idx}"
             subproblem_instance_information = InstanceInformation(
                 name,
