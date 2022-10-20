@@ -12,7 +12,7 @@ class TupleGraphEquivalenceFactory:
     def make_tuple_graph_equivalence_datas(self, instance_data: InstanceData):
         tuple_graph_equivalences = dict()
         for root_idx, tuple_graph in instance_data.tuple_graphs.items():
-            if not instance_data.goal_distance_information.is_alive(root_idx):
+            if instance_data.goal_distance_information.is_deadend(root_idx):
                 continue
             # rule distances, deadend rule distances
             r_idx_to_deadend_distance = dict()

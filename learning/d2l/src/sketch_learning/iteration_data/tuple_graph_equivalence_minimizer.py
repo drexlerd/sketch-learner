@@ -46,7 +46,7 @@ class TupleGraphEquivalenceMinimizer:
     def minimize(self, instance_data: InstanceData):
         tuple_graph_equivalences = dict()
         for s_idx in instance_data.state_space.get_state_indices():
-            if not instance_data.goal_distance_information.is_alive(s_idx):
+            if instance_data.goal_distance_information.is_deadend(s_idx):
                 continue
             tuple_graph = instance_data.tuple_graphs[s_idx]
             tuple_graph_equivalence = instance_data.tuple_graph_equivalences[s_idx]

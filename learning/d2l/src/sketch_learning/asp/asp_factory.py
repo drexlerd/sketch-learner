@@ -34,6 +34,7 @@ class ASPFactory:
         self.ctl.add("feature_condition", ["f", "r", "v"], "feature_condition(f,r,v).")
         self.ctl.add("feature_effect", ["f", "r", "v"], "feature_effect(f,r,v).")
         self.ctl.add("state_pair_class", ["r"], "state_pair_class(r).")
+        self.ctl.add("bad_state_pair_class", ["r"], "bad_state_pair_class(r).")
         # d2-separation constraints
         self.ctl.add("d2_separate", ["r1", "r2"], "d2_separate(r1,r2).")
         # tuple graph
@@ -143,8 +144,6 @@ class ASPFactory:
         facts = set()
         for instance_data in instance_datas:
             for s_idx, tuple_graph in instance_data.tuple_graphs.items():
-                if not instance_data.goal_distance_information.is_alive(s_idx):
-                    continue
                 equivalences = set()
                 for s_prime_idxs in tuple_graph.get_state_indices_by_distance():
                     for s_prime_idx in s_prime_idxs:

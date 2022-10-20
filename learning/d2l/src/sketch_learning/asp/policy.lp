@@ -14,6 +14,8 @@
 :- { good(C) : cover(I, S, _, C) } = 0, r_reachable(I, S), alive(I, S).
 % require S' to be R-reachable if there is good state pair (S,S') from R-reachable state S.
 :- not r_reachable(I, S'), r_reachable(I, S), good(C), cover(I, S, S', C).
+% Require that goal feature valuations are minimal
+:- good(C), cover(I, S, _, C), goal(I, S).
 
 % D2-separation
 :- good(C), not good(C'), d2_separate(C, C'), state_pair_class(C), state_pair_class(C'), { feature(F) : select(F), feature_effect(F, C, V), feature_effect(F, C', V'), V != V' } = 0, { feature(F) : select(F), feature_condition(F, C, V), feature_condition(F, C', V'), V != V' } = 0.
