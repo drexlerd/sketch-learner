@@ -61,7 +61,7 @@ class DomainDataFactory:
         feature_generator.set_generate_or_concept(False)
         feature_generator.set_generate_projection_concept(False)
         feature_generator.set_generate_subset_concept(False)
-        feature_generator.set_generate_and_role(False)
+        # feature_generator.set_generate_and_role(False)
         feature_generator.set_generate_compose_role(False)
         feature_generator.set_generate_diff_role(False)
         feature_generator.set_generate_identity_role(False)

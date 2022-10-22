@@ -44,6 +44,8 @@ def experiments():
         pipeline="sketch_pipeline",
         domain_dir="blocks_4_on",
         instances=training_instances_4_fixed_goal(),
+        #debug_features=["n_count(r_and(r_primitive(on_g,0,1), r_primitive(on,0,1)))",  # 4
+        #],
     )
 
     exps["hierarchy"] = update_dict(
