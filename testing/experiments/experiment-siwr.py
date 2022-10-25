@@ -104,32 +104,31 @@ MEMORY_LIMIT = 8000
 for planner, _ in IMAGES:
     for task in suites.build_suite(BENCHMARKS_DIR, SUITE):
         for w in range(0,3):
-            sketch_name = f"{task.domain}_{w}.txt"
-            sketch_filename = SKETCHES_DIR / task.domain / sketch_name
-            if not sketch_filename.is_file(): continue
-
-
-            run = exp.add_run()
-            run.add_resource("domain", task.domain_file, "domain.pddl")
-            run.add_resource("problem", task.problem_file, "problem.pddl")
-            run.add_resource("sketch", sketch_filename)
-            run.add_command(
-                "run-planner",
-                [
-                    "{run_singularity}",
-                    f"{{{planner}}}",
-                    "{domain}",
-                    "{problem}",
-                    "{sketch}",
-                    "sas_plan",
-                ],
-                time_limit=TIME_LIMIT,
-                memory_limit=MEMORY_LIMIT,
-            )
-            run.set_property("domain", task.domain)
-            run.set_property("problem", task.problem)
-            run.set_property("algorithm", f"{planner}_{w}")
-            run.set_property("id", [f"{planner}_{w}", task.domain, task.problem])
+            for suffix in ["", "_structurally_minimized"]:
+                sketch_name = f"{task.domain}_{w}{suffix}.txt"
+                sketch_filename = SKETCHES_DIR / task.domain / sketch_name
+                if not sketch_filename.is_file(): continue
+                run = exp.add_run()
+                run.add_resource("domain", task.domain_file, "domain.pddl")
+                run.add_resource("problem", task.problem_file, "problem.pddl")
+                run.add_resource("sketch", sketch_filename)
+                run.add_command(
+                    "run-planner",
+                    [
+                        "{run_singularity}",
+                        f"{{{planner}}}",
+                        "{domain}",
+                        "{problem}",
+                        "{sketch}",
+                        "sas_plan",
+                    ],
+                    time_limit=TIME_LIMIT,
+                    memory_limit=MEMORY_LIMIT,
+                )
+                run.set_property("domain", task.domain)
+                run.set_property("problem", task.problem)
+                run.set_property("algorithm", f"{planner}_{w}{suffix}")
+                run.set_property("id", [f"{planner}_{w}{suffix}", task.domain, task.problem])
 
 report = os.path.join(exp.eval_dir, f"{exp.name}.html")
 exp.add_report(BaseReport(attributes=ATTRIBUTES), outfile=report)
