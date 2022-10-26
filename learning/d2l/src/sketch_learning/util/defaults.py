@@ -61,7 +61,8 @@ def generate_experiment(expid, domain_dir, domain, **kwargs):
     # level 1 directory to store information of each iteration
     parameters["iterations_dir"] = parameters["experiment_dir"] / "iterations"
     parameters["domain_filename"] = BENCHMARK_DIR / domain_dir / f"{domain}.pddl"
-    parameters["sketch_filename"] = BASEDIR / "sketches" / domain_dir / f"{domain_dir}_{parameters['input_width']}.txt"
+    # parameters["sketch_filename"] = BASEDIR / "sketches" / domain_dir / f"{domain_dir}_{parameters['input_width']}.txt"
+    parameters["sketch_filename"] = BASEDIR / "sketches" / domain_dir / f"{domain_dir}_{parameters['input_width']}_structurally_minimized.txt"
 
     # Initialize instances
     parameters["instance_informations"] = []
