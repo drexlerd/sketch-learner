@@ -104,7 +104,7 @@ MEMORY_LIMIT = 8000
 for planner, _ in IMAGES:
     for task in suites.build_suite(BENCHMARKS_DIR, SUITE):
         for w in range(0,3):
-            for suffix in ["", "_structurally_minimized"]:
+            for suffix in ["", "_structurally_minimized", "_empirically_minimized"]:
                 sketch_name = f"{task.domain}_{w}{suffix}.txt"
                 sketch_filename = SKETCHES_DIR / task.domain / sketch_name
                 if not sketch_filename.is_file(): continue
