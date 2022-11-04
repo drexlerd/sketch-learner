@@ -34,8 +34,8 @@ class StatePairEquivalenceFactory:
 
     def make_state_pair_equivalences(self, domain_feature_data: DomainFeatureData, instance_datas: List[InstanceData]):
         policy_builder = dlplan.PolicyBuilder()
-        policy_boolean_features = [policy_builder.add_boolean_feature(b) for b in domain_feature_data.boolean_features]
-        policy_numerical_features = [policy_builder.add_numerical_feature(n) for n in domain_feature_data.numerical_features]
+        policy_boolean_features = [policy_builder.add_boolean_feature(b.dlplan_feature) for b in domain_feature_data.boolean_features.features_by_index]
+        policy_numerical_features = [policy_builder.add_numerical_feature(n.dlplan_feature) for n in domain_feature_data.numerical_features.features_by_index]
         rules = []
         rule_repr_to_idx = dict()
         for instance_data in instance_datas:

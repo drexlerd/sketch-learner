@@ -138,7 +138,7 @@ def learn_sketch(config, domain_data, instance_datas, workspace):
             if returncode in [ClingoExitCode.UNSATISFIABLE]:
                 print(colored("ASP is UNSAT", "red", "on_grey"))
                 print(colored("No sketch exists that solves all geneneral subproblems!", "red", "on_grey"))
-                return None, None, None
+                exit(1)
             asp_factory.print_statistics()
             sketch = Sketch(DlplanPolicyFactory().make_dlplan_policy_from_answer_set(symbols, domain_feature_data, rule_equivalences), width=0)
             logging.info("Learned the following sketch:")
@@ -175,23 +175,10 @@ def learn_sketch(config, domain_data, instance_datas, workspace):
     print("Number of training instances:", len(instance_datas))
     print("Number of training instances included in the ASP:", len(selected_instance_datas))
     print("Number of states included in the ASP:", sum([instance_data.state_space.get_num_states() for instance_data in selected_instance_datas]))
-    print("Number of features in the pool:", len(domain_feature_data.boolean_features) + len(domain_feature_data.numerical_features))
+    print("Number of features in the pool:", len(domain_feature_data.boolean_features.features_by_index) + len(domain_feature_data.numerical_features.features_by_index))
     print("Resulting sketch:")
     sketch.print()
-    print("Resulting structurally minimized sketch:")
-    structurally_minimized_sketch = Sketch(dlplan.PolicyMinimizer().minimize(sketch.dlplan_policy), sketch.width)
-    structurally_minimized_sketch.print()
-    print("Resulting empirically minimized sketch:")
-    dlplan_state_pairs = []
-    for instance_data in selected_instance_datas:
-        for s_idx, tuple_graph in instance_data.tuple_graphs.items():
-            for s_prime_idxs in tuple_graph.get_state_indices_by_distance():
-                for s_prime_idx in s_prime_idxs:
-                    dlplan_state_pairs.append((
-                        instance_data.state_information.get_state(s_idx),
-                        instance_data.state_information.get_state(s_prime_idx)))
-    true_state_pairs = [state_pair for state_pair in dlplan_state_pairs if structurally_minimized_sketch.dlplan_policy.evaluate_lazy(state_pair[0], state_pair[1])]
-    false_state_pairs = [state_pair for state_pair in dlplan_state_pairs if not structurally_minimized_sketch.dlplan_policy.evaluate_lazy(state_pair[0], state_pair[1])]
-    empirically_minimized_sketch = Sketch(dlplan.PolicyMinimizer().minimize(structurally_minimized_sketch.dlplan_policy, true_state_pairs, false_state_pairs), sketch.width)
-    empirically_minimized_sketch.print()
-    return sketch, structurally_minimized_sketch, empirically_minimized_sketch
+    print("Resulting sketch minimized:")
+    sketch_minimized = Sketch(dlplan.PolicyMinimizer().minimize(sketch.dlplan_policy), sketch.width)
+    sketch_minimized.print()
+    return sketch, sketch_minimized

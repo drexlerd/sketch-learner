@@ -17,6 +17,8 @@ from .instance_data.instance_data import InstanceData
 from .instance_data.instance_data_factory import InstanceDataFactory
 from .instance_data.tuple_graph_factory import TupleGraphFactory
 from .iteration_data.sketch import Sketch
+from .iteration_data.hierarchical_sketch import HierarchicalSketch
+from .iteration_data.domain_feature_data import Features, Feature
 from .learning_sketches_step import learn_sketch
 
 
@@ -99,25 +101,26 @@ def make_subproblems(config, instance_datas: List[InstanceData], sketch: dlplan.
                         unvisited_initial_s_idxs.remove(s_prime_idx)
                     except KeyError:
                         pass
-            # 4. Compute delta optimal forward reachable states.
-            ordered_initial_s_idxs = [x[0] for x in sorted([(s_idx, goal_distances.get(s_idx)) for s_idx in initial_s_idxs if goal_distances.get(s_idx, math.inf) != math.inf], key=lambda x: x[1])]
-            if not ordered_initial_s_idxs:
-                # No initial states exist in the subproblem because they are not reachable from the subgoals
+            max_distance_initial_s_idx = None
+            max_distance = 0
+            for initial_s_idx in initial_s_idxs:
+                distance = goal_distances.get(initial_s_idx, math.inf)
+                if distance > max_distance and distance != math.inf:
+                    max_distance = distance
+                    max_distance_initial_s_idx = initial_s_idx
+            if max_distance_initial_s_idx is None:
                 continue
-            state_indices = set()
-            solvable_initial_s_idxs = set()
-            for initial_s_idx in ordered_initial_s_idxs:
-                solvable_initial_s_idxs.add(initial_s_idx)
-                state_indices.update(compute_delta_optimal_states(instance_data, config.delta, initial_s_idx, goal_distances))
+            initial_s_idx = max_distance_initial_s_idx
+            state_indices = compute_delta_optimal_states(instance_data, config.delta, initial_s_idx, goal_distances)
             # 6. Instantiate subproblem for initial state and subgoals.
             subproblem_state_space = dlplan.StateSpace(
                 instance_data.state_space,
                 state_indices,
                 state_indices)
-            subproblem_state_space.set_initial_state_index(next(iter(ordered_initial_s_idxs)))
+            subproblem_state_space.set_initial_state_index(initial_s_idx)
             subproblem_state_space.set_goal_state_indices(goal_s_idxs.intersection(state_indices))
             subproblem_goal_distance_information = subproblem_state_space.compute_goal_distance_information()
-            name = f"{instance_data.instance_information.name}-{s_idx}"
+            name = f"{instance_data.instance_information.name}-{initial_s_idx}"
             subproblem_instance_information = InstanceInformation(
                 name,
                 instance_data.instance_information.filename,
@@ -132,7 +135,7 @@ def make_subproblems(config, instance_datas: List[InstanceData], sketch: dlplan.
             subproblem_instance_data.set_state_space(subproblem_state_space)
             subproblem_instance_data.set_goal_distance_information(subproblem_goal_distance_information)
             subproblem_instance_data.set_state_information(subproblem_state_information)
-            subproblem_instance_data.initial_s_idxs = solvable_initial_s_idxs
+            subproblem_instance_data.initial_s_idxs = {initial_s_idx}
             # 2.2.1. Recompute tuple graph for restricted state space
             subproblem_instance_data.set_tuple_graphs(TupleGraphFactory(width=0).make_tuple_graphs(subproblem_instance_data))
             subproblem_instance_datas.append(subproblem_instance_data)
@@ -140,8 +143,18 @@ def make_subproblems(config, instance_datas: List[InstanceData], sketch: dlplan.
     for instance_idx, instance_data in enumerate(subproblem_instance_datas):
         instance_data.id = instance_idx
         instance_data.state_space.get_instance_info().set_index(instance_idx)
+    print("Number of problems:", len(instance_datas))
     print("Number of subproblems:", len(subproblem_instance_datas))
+    print("Highest number of states in problem:", max([instance_data.state_space.get_num_states() for instance_data in instance_datas]))
+    print("Highest number of states in subproblem:", max([instance_data.state_space.get_num_states() for instance_data in subproblem_instance_datas]))
     return subproblem_instance_datas
+
+
+def add_zero_cost_features(domain_data, sketch: Sketch):
+    for boolean_feature in sketch.dlplan_policy.get_boolean_features():
+        domain_data.zero_cost_boolean_features.add_feature(Feature(boolean_feature, 0))
+    for numerical_feature in sketch.dlplan_policy.get_numerical_features():
+        domain_data.zero_cost_numerical_features.add_feature(Feature(numerical_feature, 0))
 
 
 def run(config, data, rng):
@@ -161,53 +174,35 @@ def run(config, data, rng):
 
     logging.info(colored(f"Initializing Sketch...", "blue", "on_grey"))
     sketch = Sketch(dlplan.PolicyReader().read("\n".join(read_file(config.sketch_filename)), domain_data.syntactic_element_factory), config.input_width)
+    add_zero_cost_features(domain_data, sketch)
     logging.info(colored(f"..done", "blue", "on_grey"))
 
-    solution_policies = []
-    structurally_minimized_solution_policies = []
+    hierarchical_sketch = HierarchicalSketch(sketch, config.experiment_dir / "output" / "hierarchical_sketch")
+    hierarchical_sketch_minimized = HierarchicalSketch(sketch, config.experiment_dir / "output" / "hierarchical_sketch_minimized")
     for rule in sketch.dlplan_policy.get_rules():
         print("Sketch:")
         print(sketch.dlplan_policy.compute_repr())
         print("Sketch rule:", rule.get_index(), rule.compute_repr())
-
-        rule_workspace = config.experiment_dir / "output" / f"rule_{rule.get_index()}"
-        create_experiment_workspace(rule_workspace, rm_if_existed=True)
-        write_file(rule_workspace / "rule.txt", rule.compute_repr())
-        write_file(rule_workspace / "sketch.txt", sketch.dlplan_policy.compute_repr())
+        rule_policy_builder = dlplan.PolicyBuilder()
+        rule.copy_to_builder(rule_policy_builder)
+        rule_hierarchical_sketch = hierarchical_sketch.add_child(Sketch(rule_policy_builder.get_result(), sketch.width), f"rule_{rule.get_index()}")
+        rule_hierarchical_sketch_minimized = hierarchical_sketch_minimized.add_child(Sketch(rule_policy_builder.get_result(), sketch.width), f"rule_{rule.get_index()}")
 
         logging.info(colored(f"Initializing Subproblems...", "blue", "on_grey"))
         subproblem_instance_datas = make_subproblems(config, instance_datas, sketch.dlplan_policy, rule)
         if not subproblem_instance_datas:
             print(colored("Sketch rule does not induce any subproblems!", "red", "on_grey"))
-            solution_policies.append(None)
-            structurally_minimized_solution_policies.append(None)
             break
         logging.info(colored(f"..done", "blue", "on_grey"))
 
-        policy, structurally_minimized_policy, empirically_minimized_policy = learn_sketch(config, domain_data, subproblem_instance_datas, config.experiment_dir / "learning" / f"rule_{rule.get_index()}")
-        solution_policies.append(policy)
-        structurally_minimized_solution_policies.append(structurally_minimized_policy)
-        write_file(rule_workspace / "policy.txt", policy.dlplan_policy.compute_repr())
-        write_file(rule_workspace / "policy_structurally_minimized.txt", structurally_minimized_policy.dlplan_policy.compute_repr())
-    logging.info(colored("Summary:", "yellow", "on_grey"))
-    print(colored(f"Input sketch:", "green", "on_grey"))
-    print(sketch.dlplan_policy.compute_repr())
-    print(colored(f"Learned policies by rule:", "green", "on_grey"))
-    for rule in sketch.dlplan_policy.get_rules():
-        print(colored(f"Sketch rule: {rule.get_index()} {rule.compute_repr()}", "green", "on_grey"))
+        policy, policy_minimized = learn_sketch(config, domain_data, subproblem_instance_datas, config.experiment_dir / "learning" / f"rule_{rule.get_index()}")
+        add_zero_cost_features(domain_data, policy)
 
-        if solution_policies[rule.get_index()] is not None:
-            print("Resulting policy:")
-            solution_policies[rule.get_index()].print()
-        else:
-            print("No policy found.")
-    print()
-    print(colored(f"Learned structurally minimized policies by rule:", "green", "on_grey"))
-    for rule in sketch.dlplan_policy.get_rules():
-        print(colored(f"Sketch rule: {rule.get_index()} {rule.compute_repr()}", "green", "on_grey"))
-        if structurally_minimized_solution_policies[rule.get_index()] is not None:
-            print("Resulting structurally minimized sketch:")
-            structurally_minimized_solution_policies[rule.get_index()].print()
-        else:
-            print("No policy found.")
+        rule_hierarchical_sketch.add_child(policy, f"rule_0")
+        rule_hierarchical_sketch_minimized.add_child(policy_minimized, f"rule_0")
+    logging.info(colored("Summary:", "yellow", "on_grey"))
+    logging.info(colored("Hierarchical sketch:", "green", "on_grey"))
+    hierarchical_sketch.print()
+    logging.info(colored("Hierarchical sketch minimized:", "green", "on_grey"))
+    hierarchical_sketch_minimized.print()
     return ExitCode.Success, None

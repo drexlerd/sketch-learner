@@ -15,10 +15,10 @@ class DlplanPolicyFactory:
         for symbol in symbols:
             if symbol.name == "select":
                 f_idx = symbol.arguments[0].number
-                if f_idx < len(domain_feature_data.boolean_features):
-                    selected_feature_reprs.add(domain_feature_data.boolean_features[f_idx].compute_repr())
+                if f_idx < len(domain_feature_data.boolean_features.features_by_index):
+                    selected_feature_reprs.add(domain_feature_data.boolean_features.features_by_index[f_idx].dlplan_feature.compute_repr())
                 else:
-                    selected_feature_reprs.add(domain_feature_data.numerical_features[f_idx - len(domain_feature_data.boolean_features)].compute_repr())
+                    selected_feature_reprs.add(domain_feature_data.numerical_features.features_by_index[f_idx - len(domain_feature_data.boolean_features.features_by_index)].dlplan_feature.compute_repr())
         for symbol in symbols:
             if symbol.name == "good":
                 r_idx = symbol.arguments[0].number

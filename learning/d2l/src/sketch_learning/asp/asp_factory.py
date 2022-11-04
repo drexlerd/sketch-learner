@@ -65,14 +65,14 @@ class ASPFactory:
                 if instance_data.goal_distance_information.is_alive(s_idx):
                     facts.append(("alive", [Number(instance_idx), Number(s_idx)]))
         # Domain feature facts
-        for f_idx, boolean in enumerate(domain_feature_data.boolean_features):
+        for f_idx, boolean in enumerate(domain_feature_data.boolean_features.features_by_index):
             facts.append(("boolean", [Number(f_idx)]))
             facts.append(("feature", [Number(f_idx)]))
-            facts.append(("complexity", [Number(f_idx), Number(boolean.compute_complexity())]))
-        for f_idx, numerical in enumerate(domain_feature_data.numerical_features):
-            facts.append(("numerical", [Number(f_idx + len(domain_feature_data.boolean_features))]))
-            facts.append(("feature", [Number(f_idx + len(domain_feature_data.boolean_features))]))
-            facts.append(("complexity", [Number(f_idx + len(domain_feature_data.boolean_features)), Number(numerical.compute_complexity())]))
+            facts.append(("complexity", [Number(f_idx), Number(boolean.complexity)]))
+        for f_idx, numerical in enumerate(domain_feature_data.numerical_features.features_by_index):
+            facts.append(("numerical", [Number(f_idx + len(domain_feature_data.boolean_features.features_by_index))]))
+            facts.append(("feature", [Number(f_idx + len(domain_feature_data.boolean_features.features_by_index))]))
+            facts.append(("complexity", [Number(f_idx + len(domain_feature_data.boolean_features.features_by_index)), Number(numerical.complexity)]))
         # Instance feature valuation facts
         for instance_data in instance_datas:
             for s_idx in instance_data.state_space.get_state_indices():
@@ -94,9 +94,9 @@ class ASPFactory:
                 elif condition_str.startswith("(:c_b_neg"):
                     facts.append(("feature_condition", [Number(f_idx), Number(r_idx), Number(1)]))
                 elif condition_str.startswith("(:c_n_gt"):
-                    facts.append(("feature_condition", [Number(f_idx + len(domain_feature_data.boolean_features)), Number(r_idx), Number(2)]))
+                    facts.append(("feature_condition", [Number(f_idx + len(domain_feature_data.boolean_features.features_by_index)), Number(r_idx), Number(2)]))
                 elif condition_str.startswith("(:c_n_eq"):
-                    facts.append(("feature_condition", [Number(f_idx + len(domain_feature_data.boolean_features)), Number(r_idx), Number(3)]))
+                    facts.append(("feature_condition", [Number(f_idx + len(domain_feature_data.boolean_features.features_by_index)), Number(r_idx), Number(3)]))
                 else:
                     raise Exception(f"Cannot parse condition {condition_str}")
             for effect in rule.get_effects():
@@ -111,11 +111,11 @@ class ASPFactory:
                 elif effect_str.startswith("(:e_b_bot"):
                     facts.append(("feature_effect", [Number(f_idx), Number(r_idx), Number(2)]))
                 elif effect_str.startswith("(:e_n_inc"):
-                    facts.append(("feature_effect", [Number(f_idx + len(domain_feature_data.boolean_features)), Number(r_idx), Number(3)]))
+                    facts.append(("feature_effect", [Number(f_idx + len(domain_feature_data.boolean_features.features_by_index)), Number(r_idx), Number(3)]))
                 elif effect_str.startswith("(:e_n_dec"):
-                    facts.append(("feature_effect", [Number(f_idx + len(domain_feature_data.boolean_features)), Number(r_idx), Number(4)]))
+                    facts.append(("feature_effect", [Number(f_idx + len(domain_feature_data.boolean_features.features_by_index)), Number(r_idx), Number(4)]))
                 elif effect_str.startswith("(:e_n_bot"):
-                    facts.append(("feature_effect", [Number(f_idx + len(domain_feature_data.boolean_features)), Number(r_idx), Number(5)]))
+                    facts.append(("feature_effect", [Number(f_idx + len(domain_feature_data.boolean_features.features_by_index)), Number(r_idx), Number(5)]))
                 else:
                     raise Exception(f"Cannot parse effect {effect_str}")
         # State pair equivalence facts

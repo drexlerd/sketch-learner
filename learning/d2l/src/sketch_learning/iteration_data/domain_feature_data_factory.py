@@ -4,7 +4,7 @@ import dlplan
 from dataclasses import dataclass
 from typing import  List, Tuple
 
-from .domain_feature_data import DomainFeatureData
+from .domain_feature_data import DomainFeatureData, Feature
 
 from ..domain_data.domain_data import DomainData
 from ..instance_data.instance_data import InstanceData
@@ -47,7 +47,16 @@ class DomainFeatureDataFactory:
         self.statistics.increase_num_dlplan_states(len(dlplan_states))
         self.statistics.increase_num_boolean_features(len(boolean_features))
         self.statistics.increase_num_numerical_features(len(numerical_features))
-        return DomainFeatureData(boolean_features, numerical_features)
+        domain_feature_data = DomainFeatureData()
+        for boolean_feature in boolean_features:
+            domain_feature_data.boolean_features.add_feature(Feature(boolean_feature, boolean_feature.compute_complexity()))
+        for numerical_feature in numerical_features:
+            domain_feature_data.numerical_features.add_feature(Feature(numerical_feature, numerical_feature.compute_complexity()))
+        for zero_cost_boolean_feature in domain_data.zero_cost_boolean_features.features_by_index:
+            domain_feature_data.boolean_features.add_feature(zero_cost_boolean_feature)
+        for zero_cost_numerical_feature in domain_data.zero_cost_numerical_features.features_by_index:
+            domain_feature_data.numerical_features.add_feature(zero_cost_numerical_feature)
+        return domain_feature_data
 
     def _generate_features(self, config, domain_data: DomainData, dlplan_states: List[dlplan.State]) -> Tuple[List[dlplan.Boolean], List[dlplan.Numerical]]:
         """ Generate features and their evaluations

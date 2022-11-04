@@ -38,8 +38,6 @@ def generate_experiment(expid, domain_dir, domain, **kwargs):
         delta=1.0,
         goal_separation=False,
 
-        generate_concept_distance_numerical=False,
-
         debug_features=[],
 
         # Clingo
