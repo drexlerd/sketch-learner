@@ -52,20 +52,20 @@ class InstanceData:
     def set_iteration_information(self, iteration_information: IterationInformation):
         self.iteration_information = iteration_information
         write_file(self.iteration_information.workspace / f"{self.instance_information.name}.dot", self.state_space.to_dot(1))
-        for tuple_graph in self.tuple_graphs.values():
-            write_file(self.iteration_information.tuple_graph_workspace / f"{tuple_graph.get_root_state_index()}.dot", tuple_graph.to_dot(1))
+        # for tuple_graph in self.tuple_graphs.values():
+        #     write_file(self.iteration_information.tuple_graph_workspace / f"{tuple_graph.get_root_state_index()}.dot", tuple_graph.to_dot(1))
 
     def set_feature_valuations(self, feature_valuations: List[FeatureValuation]):
         """ Set feature valuations and writes them to files. """
         self.feature_valuations = feature_valuations
-        write_file(self.iteration_information.feature_valuations_workspace / "feature_valuations.txt", str(self.feature_valuations))
+        # write_file(self.iteration_information.feature_valuations_workspace / "feature_valuations.txt", str(self.feature_valuations))
 
     def set_state_pair_equivalence(self, state_pair_equivalence: InstanceStatePairEquivalence):
         """ Set state pair equivalence and writes it to files. """
         self.state_pair_equivalence = state_pair_equivalence
-        write_file(self.iteration_information.state_pair_equivalence_workspace / "state_pair_equivalence.txt", str(self.state_pair_equivalence))
+        # write_file(self.iteration_information.state_pair_equivalence_workspace / "state_pair_equivalence.txt", str(self.state_pair_equivalence))
 
     def set_tuple_graph_equivalences(self, tuple_graph_equivalences: List[TupleGraphEquivalence]):
         """ Set tuple graph equivalences and writes them to files. """
         self.tuple_graph_equivalences = tuple_graph_equivalences
-        write_file(self.iteration_information.tuple_graph_equivalences_workspace / "tuple_graph_equivalences.txt", str(self.tuple_graph_equivalences))
+        # write_file(self.iteration_information.tuple_graph_equivalences_workspace / "tuple_graph_equivalences.txt", str(self.tuple_graph_equivalences))
