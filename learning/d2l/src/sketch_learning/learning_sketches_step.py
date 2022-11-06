@@ -42,7 +42,7 @@ def run(config, data, rng):
         instance_data.set_tuple_graphs(tuple_graph_factory.make_tuple_graphs(instance_data))
     logging.info(colored(f"..done", "blue", "on_grey"))
 
-    sketch, structurally_minimized_sketch, empirically_minimized_sketch = learn_sketch(config, domain_data, instance_datas, config.experiment_dir / "learning")
+    sketch, structurally_minimized_sketch = learn_sketch(config, domain_data, instance_datas, config.experiment_dir / "learning")
 
     print("Summary:")
     print("Resulting sketch:")
@@ -51,10 +51,6 @@ def run(config, data, rng):
     print("Resulting structurally minimized sketch:")
     structurally_minimized_sketch.print()
     write_file(config.experiment_dir / f"{config.domain_dir}_{config.output_width}_structurally_minimized.txt", structurally_minimized_sketch.dlplan_policy.compute_repr())
-    print("Resulting empirically minimized sketch:")
-    empirically_minimized_sketch.print()
-    write_file(config.experiment_dir / f"{config.domain_dir}_{config.output_width}_empirically_minimized.txt", empirically_minimized_sketch.dlplan_policy.compute_repr())
-
     return ExitCode.Success, None
 
 
