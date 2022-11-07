@@ -67,6 +67,7 @@ def make_subproblems(config, instance_datas: List[InstanceData], sketch: dlplan.
             feature_valuation = tuple([feature.evaluate(state_information.get_state(s_idx)) for feature in features])
             feature_valuation_to_s_idxs[feature_valuation].add(s_idx)
         # 2. For each f in F with f satisfies C ...
+        global_deadends = goal_distance_information.get_deadend_state_indices()
         for _, initial_s_idxs in feature_valuation_to_s_idxs.items():
             # 2.1. Compute set of initial states, i.e., all s such that f(s) = f,
             if not rule.evaluate_conditions(state_information.get_state(next(iter(initial_s_idxs))), instance_data.denotations_caches):
@@ -79,6 +80,8 @@ def make_subproblems(config, instance_datas: List[InstanceData], sketch: dlplan.
                 goal_s_idxs.update(target_s_idxs)
             if not goal_s_idxs:
                 continue
+            # TODO use global deadends correctly
+            # goal_s_idxs.difference_update(global_deadends)
             # 3. Compute goal distances of all initial states.
             # Do backward search from goal states until all initial states are reached.
             queue = deque()
