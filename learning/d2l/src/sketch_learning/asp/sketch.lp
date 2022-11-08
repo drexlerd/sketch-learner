@@ -16,7 +16,7 @@
 % (Optimal-width): Require solvable states S' closer than subgoal to not be assigned to any rule.
 :- D < D', r_distance(I, S, C, D), t_distance(I, S, T, D'), subgoal(I, S, T), good(C).
 % Require that goal feature valuations are minimal
-:- good(C), cover(I, S, _, C), goal(I, S).
+:- good(C), cover(I, S, S', C), nongoal(I, S), goal(I, S).
 
 % D2-separation
 :- good(C), not good(C'), d2_separate(C, C'), state_pair_class(C), state_pair_class(C'), { feature(F) : select(F), feature_effect(F, C, V), feature_effect(F, C', V'), V != V' } = 0, { feature(F) : select(F), feature_condition(F, C, V), feature_condition(F, C', V'), V != V' } = 0.

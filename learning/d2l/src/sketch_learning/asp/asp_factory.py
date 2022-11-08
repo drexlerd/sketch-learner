@@ -26,6 +26,7 @@ class ASPFactory:
         self.ctl.add("state", ["i", "s"], "state(i,s).")
         self.ctl.add("initial", ["i", "s"], "initial(i,s).")
         self.ctl.add("solvable", ["i", "s"], "solvable(i,s).")
+        self.ctl.add("unsolvable", ["i", "s"], "unsolvable(i,s).")
         self.ctl.add("goal", ["i", "s"], "goal(i,s).")
         self.ctl.add("nongoal", ["i", "s"], "nongoal(i,s).")
         self.ctl.add("alive", ["i", "s"], "alive(i,s).")
@@ -58,6 +59,8 @@ class ASPFactory:
                 facts.append(("state", [Number(instance_idx), Number(s_idx)]))
                 if not instance_data.goal_distance_information.is_deadend(s_idx):
                     facts.append(("solvable", [Number(instance_idx), Number(s_idx)]))
+                else:
+                    facts.append(("unsolvable", [Number(instance_idx), Number(s_idx)]))
                 if instance_data.goal_distance_information.is_goal(s_idx):
                     facts.append(("goal", [Number(instance_idx), Number(s_idx)]))
                 else:

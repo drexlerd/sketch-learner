@@ -40,6 +40,9 @@ class Sketch:
                     subgoal = True
                     for s_prime_idx in tuple_node.get_state_indices():
                         target_state = instance_data.state_information.get_state(s_prime_idx)
+                        #print(source_state, "->", target_state, ":", self.dlplan_policy.evaluate_lazy(source_state, target_state, instance_data.denotations_caches))
+                        #print([numerical.evaluate(source_state) for numerical in self.dlplan_policy.get_numerical_features()])
+                        #print([numerical.evaluate(target_state) for numerical in self.dlplan_policy.get_numerical_features()])
                         if self.dlplan_policy.evaluate_lazy(source_state, target_state, instance_data.denotations_caches) is not None:
                             if instance_data.goal_distance_information.is_deadend(s_prime_idx):
                                 print(colored(f"Sketch leads to an unsolvable state.", "red", "on_grey"))

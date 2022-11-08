@@ -24,6 +24,7 @@ from .learning_sketches_step import learn_sketch
 
 def compute_delta_optimal_states(instance_data: InstanceData, delta: float, s_idx: int, goal_distances: Dict[int, int]):
     state_space = instance_data.state_space
+    state_indices_generated = set()
     state_indices = set()
     state_indices.add(s_idx)
     optimal_cost = goal_distances.get(s_idx, math.inf)
@@ -47,8 +48,11 @@ def compute_delta_optimal_states(instance_data: InstanceData, delta: float, s_id
                         # Ensure that states are excluded that are only reachable through goal states.
                         if goal_distances.get(s_prime_idx, math.inf) != 0:
                             next_layer.add(s_prime_idx)
+                    else:
+                        state_indices_generated.add(s_prime_idx)
         cur_layer = next_layer
-    return state_indices
+    state_indices_generated.update(state_indices)
+    return state_indices, state_indices_generated
 
 
 def make_subproblems(config, instance_datas: List[InstanceData], sketch: dlplan.Policy, rule: dlplan.Rule):
@@ -80,8 +84,6 @@ def make_subproblems(config, instance_datas: List[InstanceData], sketch: dlplan.
                 goal_s_idxs.update(target_s_idxs)
             if not goal_s_idxs:
                 continue
-            # TODO use global deadends correctly
-            # goal_s_idxs.difference_update(global_deadends)
             # 3. Compute goal distances of all initial states.
             # Do backward search from goal states until all initial states are reached.
             queue = deque()
@@ -114,14 +116,25 @@ def make_subproblems(config, instance_datas: List[InstanceData], sketch: dlplan.
             if max_distance_initial_s_idx is None:
                 continue
             initial_s_idx = max_distance_initial_s_idx
-            state_indices = compute_delta_optimal_states(instance_data, config.delta, initial_s_idx, goal_distances)
+            state_indices, state_indices_generated = compute_delta_optimal_states(instance_data, config.delta, initial_s_idx, goal_distances)
+            # Collect successor deadends
+            forward_successors = state_space.get_forward_successor_state_indices()
+            additional_deadends = set()
+            for s_idx in state_indices:
+                for s_prime_idx in forward_successors.get(s_idx, []):
+                    if goal_distance_information.is_deadend(s_prime_idx):
+                        additional_deadends.add(s_prime_idx)
+            state_indices.update(additional_deadends)
+            state_indices_generated.update(additional_deadends)
             # 6. Instantiate subproblem for initial state and subgoals.
             subproblem_state_space = dlplan.StateSpace(
                 instance_data.state_space,
                 state_indices,
-                state_indices)
+                state_indices_generated)
             subproblem_state_space.set_initial_state_index(initial_s_idx)
-            subproblem_state_space.set_goal_state_indices(goal_s_idxs.intersection(state_indices))
+            goal_s_idxs.intersection_update(state_indices)
+            goal_s_idxs.difference_update(global_deadends)
+            subproblem_state_space.set_goal_state_indices(goal_s_idxs)
             subproblem_goal_distance_information = subproblem_state_space.compute_goal_distance_information()
             name = f"{instance_data.instance_information.name}-{initial_s_idx}"
             subproblem_instance_information = InstanceInformation(
