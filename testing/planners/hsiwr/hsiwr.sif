@@ -50,7 +50,7 @@ From: ubuntu:20.04
     ## Install scorpion
 	git clone https://github.com/drexlerd/scorpion.git
 	cd /scorpion
-	git checkout 8325f4604220063ca28bcae3b5fba600f97e9197
+	git checkout 5a6df16c6931a7d13a2b3bd48a8581e2479cc1d9
 	./build.py
 	cd /
 
