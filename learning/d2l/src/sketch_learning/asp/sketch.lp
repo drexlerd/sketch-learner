@@ -23,7 +23,7 @@
 
 % Goal-separation no possible with current pool, because decrement can mean 2->0, 2->1
 % Hence one would need seed features that reflect feature change.
-:- nongoal(I, S), goal(I, S'), { feature(F) : select(F), value(I, S, F, V), value(I, S', F, V'), V != V' } = 0.
+:- nongoal(I', S), goal(I, S'), { feature(F) : select(F), value(I', S, F, V), value(I, S', F, V'), V != V' } = 0.
 
 % Define ``good`` pairs of state classes similar
 good(I, S, S') :- good(C), cover(I, S, S', C).
