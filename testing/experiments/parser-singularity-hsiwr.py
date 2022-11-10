@@ -13,7 +13,8 @@ def try_delete(map, key):
 
 
 def coverage(content, props):
-    props["coverage"] = int("cost" in props)
+    print(content)
+    props["coverage"] = int("cost" in props and "valid_plan_value" in props)
 
 
 def error(content, props):
@@ -31,6 +32,8 @@ def main():
     parser.add_pattern("expanded", r".+ Expanded (\d+) state\(s\).\n", type=int)
     parser.add_pattern("generated", r".+ Generated (\d+) state\(s\).\n", type=int)
     parser.add_pattern("total_time", r".+ Total time: (.+)s\n", type=float)
+    parser.add_pattern("valid_plan_value", r"Final value: (\d+) \n", type=int)
+    parser.add_function(coverage)
     parser.parse()
 
 if __name__ == "__main__":
