@@ -33,7 +33,6 @@ def experiments():
         strips_base,
         pipeline="hierarchy_pipeline",
         instances=training_instances(),
-        delta=2.0,
     )
     return exps
 

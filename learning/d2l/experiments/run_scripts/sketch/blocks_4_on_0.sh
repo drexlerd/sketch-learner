@@ -1,7 +1,7 @@
 #!/bin/bash
 #
-#SBATCH -J blocks4o_0_9_9
-#SBATCH -t 1-00:00:00
+#SBATCH -J blocks4o_0_9_9_9_9
+#SBATCH -t 0-12:00:00
 #SBATCH -C fat --exclusive
 #SBATCH --mail-type=FAIL
 #SBATCH --mail-user=dominik.drexler@liu.se

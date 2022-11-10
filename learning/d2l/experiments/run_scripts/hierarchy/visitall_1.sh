@@ -1,13 +1,13 @@
 #!/bin/bash
 #
-#SBATCH -J visitall_1_8
-#SBATCH -t 1-00:00:00
+#SBATCH -J visitall_1_9_9_9_9
+#SBATCH -t 0-12:00:00
 #SBATCH -C fat --exclusive
 #SBATCH --mail-type=FAIL
 #SBATCH --mail-user=dominik.drexler@liu.se
 
 DOMAIN=visitall
-EXPERIMENT=hierarchy_dist
+EXPERIMENT=hierarchy
 INPUT_WIDTH=1
 OUTPUT_WIDTH=0
 CONCEPT_COMPLEXITY=9

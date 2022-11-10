@@ -1,13 +1,13 @@
 #!/bin/bash
 #
-#SBATCH -J delivery_0_9_15
-#SBATCH -t 3-00:00:00
+#SBATCH -J delivery_0_9_9_9_15
+#SBATCH -t 0-12:00:00
 #SBATCH -C fat --exclusive
 #SBATCH --mail-type=FAIL
 #SBATCH --mail-user=dominik.drexler@liu.se
 
 DOMAIN=delivery
-EXPERIMENT=sketch_dist
+EXPERIMENT=sketch
 INPUT_WIDTH=0
 OUTPUT_WIDTH=0
 CONCEPT_COMPLEXITY=9

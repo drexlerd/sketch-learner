@@ -29,14 +29,6 @@ def experiments():
         max_states_per_instance=5000,
     )
 
-    exps["sketch_dist"] = update_dict(
-        strips_base,
-        pipeline="sketch_pipeline",
-        instances=training_instances(),
-        max_states_per_instance=5000,
-        generate_concept_distance_numerical=True
-    )
-
     exps["hierarchy"] = update_dict(
         strips_base,
         pipeline="hierarchy_pipeline",
@@ -44,13 +36,6 @@ def experiments():
         max_states_per_instance=5000,
     )
 
-    exps["hierarchy_dist"] = update_dict(
-        strips_base,
-        pipeline="hierarchy_pipeline",
-        instances=training_instances(),
-        max_states_per_instance=5000,
-        generate_concept_distance_numerical=True
-    )
     return exps
 
 def instances():

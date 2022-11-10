@@ -1,13 +1,13 @@
 #!/bin/bash
 #
-#SBATCH -J delivery_2_12
-#SBATCH -t 1-00:00:00
+#SBATCH -J delivery_2_9_9_9_15
+#SBATCH -t 0-12:00:00
 #SBATCH -C fat --exclusive
 #SBATCH --mail-type=FAIL
 #SBATCH --mail-user=dominik.drexler@liu.se
 
 DOMAIN=delivery
-EXPERIMENT=hierarchy_dist
+EXPERIMENT=hierarchy
 INPUT_WIDTH=2
 OUTPUT_WIDTH=0
 CONCEPT_COMPLEXITY=9
