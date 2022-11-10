@@ -49,9 +49,9 @@ class DomainFeatureDataFactory:
         self.statistics.increase_num_numerical_features(len(numerical_features))
         domain_feature_data = DomainFeatureData()
         for boolean_feature in boolean_features:
-            domain_feature_data.boolean_features.add_feature(Feature(boolean_feature, boolean_feature.compute_complexity()))
+            domain_feature_data.boolean_features.add_feature(Feature(boolean_feature, boolean_feature.compute_complexity() + 1))
         for numerical_feature in numerical_features:
-            domain_feature_data.numerical_features.add_feature(Feature(numerical_feature, numerical_feature.compute_complexity()))
+            domain_feature_data.numerical_features.add_feature(Feature(numerical_feature, numerical_feature.compute_complexity() + 1))
         for zero_cost_boolean_feature in domain_data.zero_cost_boolean_features.features_by_index:
             domain_feature_data.boolean_features.add_feature(zero_cost_boolean_feature)
         for zero_cost_numerical_feature in domain_data.zero_cost_numerical_features.features_by_index:

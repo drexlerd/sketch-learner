@@ -11,6 +11,7 @@ from termcolor import colored
 
 from .returncodes import ExitCode
 from .util.command import create_experiment_workspace, read_file, write_file
+from .util.clock import Clock
 from .domain_data.domain_data_factory import DomainDataFactory
 from .instance_data.instance_information import InstanceInformation
 from .instance_data.instance_data import InstanceData
@@ -143,12 +144,14 @@ def make_subproblems(config, instance_datas: List[InstanceData], sketch: dlplan.
 
 def add_zero_cost_features(domain_data, sketch: Sketch):
     for boolean_feature in sketch.dlplan_policy.get_boolean_features():
-        domain_data.zero_cost_boolean_features.add_feature(Feature(boolean_feature, 0))
+        domain_data.zero_cost_boolean_features.add_feature(Feature(boolean_feature, 1))
     for numerical_feature in sketch.dlplan_policy.get_numerical_features():
-        domain_data.zero_cost_numerical_features.add_feature(Feature(numerical_feature, 0))
+        domain_data.zero_cost_numerical_features.add_feature(Feature(numerical_feature, 1))
 
 
 def run(config, data, rng):
+    preprocessing_clock = Clock("PREPROCESSING")
+    preprocessing_clock.set_start()
     logging.info(colored(f"Initializing DomainData...", "blue", "on_grey"))
     domain_data = DomainDataFactory().make_domain_data(config)
     logging.info(colored(f"..done", "blue", "on_grey"))
@@ -167,7 +170,10 @@ def run(config, data, rng):
     sketch = Sketch(dlplan.PolicyReader().read("\n".join(read_file(config.sketch_filename)), domain_data.syntactic_element_factory), config.input_width)
     add_zero_cost_features(domain_data, sketch)
     logging.info(colored(f"..done", "blue", "on_grey"))
+    preprocessing_clock.set_end()
 
+    learning_clock = Clock("LEARNING")
+    learning_clock.set_start()
     hierarchical_sketch = HierarchicalSketch(sketch, config.experiment_dir / "output" / "hierarchical_sketch")
     hierarchical_sketch_minimized = HierarchicalSketch(sketch, config.experiment_dir / "output" / "hierarchical_sketch_minimized")
     for rule in sketch.dlplan_policy.get_rules():
@@ -191,9 +197,14 @@ def run(config, data, rng):
 
         rule_hierarchical_sketch.add_child(policy, f"rule_0")
         rule_hierarchical_sketch_minimized.add_child(policy_minimized, f"rule_0")
+    learning_clock.set_end()
+
     logging.info(colored("Summary:", "yellow", "on_grey"))
     logging.info(colored("Hierarchical sketch:", "green", "on_grey"))
     hierarchical_sketch.print()
     logging.info(colored("Hierarchical sketch minimized:", "green", "on_grey"))
     hierarchical_sketch_minimized.print()
+
+    preprocessing_clock.print()
+    learning_clock.print()
     return ExitCode.Success, None

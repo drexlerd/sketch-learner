@@ -23,9 +23,12 @@ from .iteration_data.tuple_graph_equivalence_minimizer import TupleGraphEquivale
 from .returncodes import ExitCode
 from .util.timer import CountDownTimer
 from .util.command import create_experiment_workspace, write_file
+from .util.clock import Clock
 
 
 def run(config, data, rng):
+    preprocessing_clock = Clock("PREPROCESSING")
+    preprocessing_clock.set_start()
     logging.info(colored(f"Initializing DomainData...", "blue", "on_grey"))
     domain_data = DomainDataFactory().make_domain_data(config)
     logging.info(colored(f"..done", "blue", "on_grey"))
@@ -41,8 +44,12 @@ def run(config, data, rng):
     for instance_data in instance_datas:
         instance_data.set_tuple_graphs(tuple_graph_factory.make_tuple_graphs(instance_data))
     logging.info(colored(f"..done", "blue", "on_grey"))
+    preprocessing_clock.set_end()
 
+    learning_clock = Clock("LEARNING")
+    learning_clock.set_start()
     sketch, structurally_minimized_sketch = learn_sketch(config, domain_data, instance_datas, config.experiment_dir / "learning")
+    learning_clock.set_end()
 
     print("Summary:")
     print("Resulting sketch:")
@@ -51,6 +58,9 @@ def run(config, data, rng):
     print("Resulting structurally minimized sketch:")
     structurally_minimized_sketch.print()
     write_file(config.experiment_dir / f"{config.domain_dir}_{config.output_width}_structurally_minimized.txt", structurally_minimized_sketch.dlplan_policy.compute_repr())
+
+    preprocessing_clock.print()
+    learning_clock.print()
     return ExitCode.Success, None
 
 

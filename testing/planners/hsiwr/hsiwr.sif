@@ -50,12 +50,12 @@ From: ubuntu:20.04
     ## Install scorpion
 	git clone https://github.com/drexlerd/scorpion.git
 	cd /scorpion
-	git checkout 5a6df16c6931a7d13a2b3bd48a8581e2479cc1d9
+	git checkout 7b53ca0e553852d55ade554857aebe7cdc5c509e
 	./build.py
 	cd /
 
 	ln -frs /scorpion/fast-downward.py /fast-downward.py
-	ln -frs /scorpion/run_planner.py /run_planner.py
+	ln -frs /scorpion/hsiwr.py /hsiwr.py
 
 %runscript
     DOMAINFILE=$1
@@ -63,7 +63,7 @@ From: ubuntu:20.04
 	DCK=$3
 	PLANFILE=$4
 
-    /run_planner.py --fd_file /fast-downward.py --domain_file $DOMAINFILE --instance_file $PROBLEMFILE --hierarchical_sketch_dir $DCK --plan-file $PLANFILE
+    /hsiwr.py --fd_file /fast-downward.py --domain_file $DOMAINFILE --instance_file $PROBLEMFILE --hierarchical_sketch_dir $DCK --plan-file $PLANFILE
 
 ## Update the following fields with meta data about your submission.
 ## Please use the same field names and use only one line for each value.
