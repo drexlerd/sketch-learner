@@ -10,12 +10,9 @@ class IterationInformation:
         self.state_equivalence_workspace = workspace / "state_equivalence"
         self.state_pair_equivalence_workspace = workspace / "state_pair_equivalence"
         self.tuple_graph_equivalences_workspace = workspace / "tuple_graph_equivalences"
-        create_experiment_workspace(self.workspace, rm_if_existed)
-        create_experiment_workspace(self.tuple_graph_workspace, rm_if_existed)
-        create_experiment_workspace(self.feature_valuations_workspace, rm_if_existed)
-        create_experiment_workspace(self.state_equivalence_workspace, rm_if_existed)
-        create_experiment_workspace(self.state_pair_equivalence_workspace, rm_if_existed)
-        create_experiment_workspace(self.tuple_graph_equivalences_workspace, rm_if_existed)
-
-
-
+        #create_experiment_workspace(self.workspace, rm_if_existed)
+        #create_experiment_workspace(self.tuple_graph_workspace, rm_if_existed)
+        #create_experiment_workspace(self.feature_valuations_workspace, rm_if_existed)
+        #create_experiment_workspace(self.state_equivalence_workspace, rm_if_existed)
+        #create_experiment_workspace(self.state_pair_equivalence_workspace, rm_if_existed)
+        #create_experiment_workspace(self.tuple_graph_equivalences_workspace, rm_if_existed)

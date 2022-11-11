@@ -124,6 +124,8 @@ class ASPFactory:
         # State pair equivalence facts
         for instance_data in instance_datas:
             for state_pair, r_idx in instance_data.state_pair_equivalence.state_pair_to_r_idx.items():
+                if not instance_data.goal_distance_information.is_alive(state_pair.source_idx):
+                    continue
                 facts.append(("cover", [Number(instance_data.id), Number(state_pair.source_idx), Number(state_pair.target_idx), Number(r_idx)]))
         # Tuple graph equivalence facts
         for instance_data in instance_datas:
