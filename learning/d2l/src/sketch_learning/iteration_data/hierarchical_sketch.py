@@ -27,3 +27,21 @@ class HierarchicalSketch:
         print(self.sketch.dlplan_policy.compute_repr())
         for child in self.children:
             child.print_rec(level+1)
+
+    def collect_features(self):
+        features = []
+        if self.children:
+            for child in self.children:
+                features.extend(child.collect_features())
+        features.extend(self.sketch.dlplan_policy.get_boolean_features())
+        features.extend(self.sketch.dlplan_policy.get_numerical_features())
+        return features
+
+    def collect_rules(self):
+        rules = []
+        if self.children:
+            for child in self.children:
+                rules.extend(self.collect_rules())
+        rules.extend(self.sketch.dlplan_policy.get_rules())
+        return rules
+

@@ -1,5 +1,5 @@
 (:policy
 (:boolean_features )
-(:numerical_features "n_count(c_primitive(empty,0))" "n_count(r_and(r_primitive(at,0,1),r_primitive(at_g,0,1)))")
-(:rule (:conditions (:c_n_gt 0)) (:effects (:e_n_dec 0) (:e_n_bot 1)))
+(:numerical_features "n_count(r_and(r_primitive(at,0,1),r_primitive(at_g,0,1)))" "n_count(r_primitive(at,0,1))")
+(:rule (:conditions (:c_n_gt 1)) (:effects (:e_n_inc 1) (:e_n_inc 0)))
 )
