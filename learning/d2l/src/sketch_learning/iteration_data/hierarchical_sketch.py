@@ -19,8 +19,10 @@ class HierarchicalSketch:
         return child
 
     def print(self):
-        level = 0
-        self.print_rec(level)
+        self.print_rec(level=0)
+        print("Num features:", len(set([feature.compute_repr() for feature in self.collect_features()])))
+        print("Max feature complexity", max([feature.compute_complexity() for feature in self.collect_features()]))
+        print("Num rules:", len(set([rule.compute_repr() for rule in self.collect_rules()])))
 
     def print_rec(self, level):
         print(colored("    " * level + f"Level {level} sketch:", "green", "on_grey"))
@@ -41,7 +43,7 @@ class HierarchicalSketch:
         rules = []
         if self.children:
             for child in self.children:
-                rules.extend(self.collect_rules())
+                rules.extend(child.collect_rules())
         rules.extend(self.sketch.dlplan_policy.get_rules())
         return rules
 

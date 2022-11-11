@@ -1,7 +1,7 @@
 #!/bin/bash
 #
 #SBATCH -J delivery_0_9_9_9_15
-#SBATCH -t 0-12:00:00
+#SBATCH -t 0-3:00:00
 #SBATCH -C fat --exclusive
 #SBATCH --mail-type=FAIL
 #SBATCH --mail-user=dominik.drexler@liu.se

@@ -48,7 +48,7 @@ def run(config, data, rng):
 
     learning_clock = Clock("LEARNING")
     learning_clock.set_start()
-    sketch, structurally_minimized_sketch, num_training_instances, num_selected_training_instances, num_states_in_selected_training_instances, num_features_in_pool = learn_sketch(config, domain_data, instance_datas, config.experiment_dir / "learning")
+    sketch, structurally_minimized_sketch, num_selected_training_instances, num_states_in_selected_training_instances, max_states_in_selected_training_instance, num_features_in_pool = learn_sketch(config, domain_data, instance_datas, config.experiment_dir / "learning")
     learning_clock.set_end()
 
     print("Summary:")
@@ -59,9 +59,10 @@ def run(config, data, rng):
     structurally_minimized_sketch.print()
     write_file(config.experiment_dir / f"{config.domain_dir}_{config.output_width}_structurally_minimized.txt", structurally_minimized_sketch.dlplan_policy.compute_repr())
 
-    print("Number of training instances:", num_training_instances)
-    print("Number of training instances included in the ASP:", num_selected_training_instances)
-    print("Number of states included in the ASP:", num_states_in_selected_training_instances)
+    print("Number of training instances:", len(instance_datas))
+    print("Number of selected training instances:", num_selected_training_instances)
+    print("Number of states in selected training instances:", num_states_in_selected_training_instances)
+    print("Max number of states in selected training instance:", max_states_in_selected_training_instance)
     print("Number of features in the pool:", num_features_in_pool)
     preprocessing_clock.print()
     learning_clock.print()
@@ -184,17 +185,16 @@ def learn_sketch(config, domain_data, instance_datas, workspace):
         i += 1
 
     logging.info(colored("Summary:", "green", "on_grey"))
-    num_training_instances = len(instance_datas)
     num_selected_training_instances = len(selected_instance_datas)
     num_states_in_selected_training_instances = sum([instance_data.state_space.get_num_states() for instance_data in selected_instance_datas])
+    max_states_in_selected_training_instance = max([instance_data.state_space.get_num_states() for instance_data in selected_instance_datas])
     num_features_in_pool = len(domain_feature_data.boolean_features.features_by_index) + len(domain_feature_data.numerical_features.features_by_index)
-    print("Number of training instances:", num_training_instances)
-    print("Number of training instances included in the ASP:", num_selected_training_instances)
-    print("Number of states included in the ASP:", num_states_in_selected_training_instances)
+    print("Number of selected training instances:", num_selected_training_instances)
+    print("Number of states in selected training instances", num_states_in_selected_training_instances)
     print("Number of features in the pool:", num_features_in_pool)
     print("Resulting sketch:")
     sketch.print()
     print("Resulting sketch minimized:")
     sketch_minimized = Sketch(dlplan.PolicyMinimizer().minimize(sketch.dlplan_policy), sketch.width)
     sketch_minimized.print()
-    return sketch, sketch_minimized, num_training_instances, num_selected_training_instances, num_states_in_selected_training_instances, num_features_in_pool
+    return sketch, sketch_minimized, num_selected_training_instances, num_states_in_selected_training_instances, max_states_in_selected_training_instance, num_features_in_pool

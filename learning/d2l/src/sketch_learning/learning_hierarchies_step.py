@@ -172,6 +172,11 @@ def run(config, data, rng):
     logging.info(colored(f"..done", "blue", "on_grey"))
     preprocessing_clock.set_end()
 
+    sum_subproblem_instance_datas = 0
+    max_num_selected_training_instances = 0
+    max_num_states_in_selected_training_instances = 0
+    max_num_features_in_pool = 0
+
     learning_clock = Clock("LEARNING")
     learning_clock.set_start()
     hierarchical_sketch = HierarchicalSketch(sketch, config.experiment_dir / "output" / "hierarchical_sketch")
@@ -192,8 +197,12 @@ def run(config, data, rng):
             break
         logging.info(colored(f"..done", "blue", "on_grey"))
 
-        policy, policy_minimized = learn_sketch(config, domain_data, subproblem_instance_datas, config.experiment_dir / "learning" / f"rule_{rule.get_index()}")
+        policy, policy_minimized, num_selected_training_instances, num_states_in_selected_training_instances, max_states_in_selected_training_instance, num_features_in_pool = learn_sketch(config, domain_data, subproblem_instance_datas, config.experiment_dir / "learning" / f"rule_{rule.get_index()}")
         add_zero_cost_features(domain_data, policy)
+        max_num_selected_training_instances = max(max_num_selected_training_instances, num_selected_training_instances)
+        max_num_states_in_selected_training_instances = max(max_num_states_in_selected_training_instances, num_states_in_selected_training_instances)
+        max_num_features_in_pool = max(max_num_features_in_pool, num_features_in_pool)
+        sum_subproblem_instance_datas += len(subproblem_instance_datas)
 
         rule_hierarchical_sketch.add_child(policy, f"rule_0")
         rule_hierarchical_sketch_minimized.add_child(policy_minimized, f"rule_0")
@@ -202,15 +211,14 @@ def run(config, data, rng):
     logging.info(colored("Summary:", "yellow", "on_grey"))
     logging.info(colored("Hierarchical sketch:", "green", "on_grey"))
     hierarchical_sketch.print()
-    print("Num features:", len(set([feature.compute_repr() for feature in hierarchical_sketch.collect_features()])))
-    print("Max feature complexity", max([feature.compute_complexity() for feature in hierarchical_sketch.collect_features()]))
-    print("Num rules:", len(set([rule.compute_repr() for rule in hierarchical_sketch.collect_rules()])))
     logging.info(colored("Hierarchical sketch minimized:", "green", "on_grey"))
     hierarchical_sketch_minimized.print()
-    print("Num features:", len(set([feature.compute_repr() for feature in hierarchical_sketch_minimized.collect_features()])))
-    print("Max feature complexity", max([feature.compute_complexity() for feature in hierarchical_sketch_minimized.collect_features()]))
-    print("Num rules:", len(set([rule.compute_repr() for rule in hierarchical_sketch_minimized.collect_rules()])))
 
+    print("Sum of number of subproblems per rule:", len(instance_datas))
+    print("Max number of selected training instances:", max_num_selected_training_instances)
+    print("Max number of states in selected training instances:", max_num_states_in_selected_training_instances)
+    print("Max number of states in selected training instance:", max_states_in_selected_training_instance)
+    print("Max number of features in the pool:", max_num_features_in_pool)
     preprocessing_clock.print()
     learning_clock.print()
     return ExitCode.Success, None
