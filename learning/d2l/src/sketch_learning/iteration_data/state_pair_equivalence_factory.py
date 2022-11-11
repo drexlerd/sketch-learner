@@ -42,7 +42,7 @@ class StatePairEquivalenceFactory:
             r_idx_to_state_pairs = defaultdict(set)
             state_pair_to_r_idx = dict()
             for s_idx, tuple_graph in instance_data.tuple_graphs.items():
-                if instance_data.goal_distance_information.is_deadend(s_idx):
+                if not instance_data.goal_distance_information.is_alive(s_idx):
                     continue
                 # add conditions
                 conditions = self._make_conditions(policy_builder, policy_boolean_features, policy_numerical_features, instance_data.feature_valuations[s_idx])
