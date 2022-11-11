@@ -172,10 +172,11 @@ def run(config, data, rng):
     logging.info(colored(f"..done", "blue", "on_grey"))
     preprocessing_clock.set_end()
 
-    sum_subproblem_instance_datas = 0
-    max_num_selected_training_instances = 0
-    max_num_states_in_selected_training_instances = 0
-    max_num_features_in_pool = 0
+    num_subproblems_by_rule = []
+    num_selected_training_instances_by_rule = []
+    sum_num_states_in_selected_training_instances_by_rule = []
+    max_num_states_in_selected_training_instances_by_rule = []
+    num_features_in_pool_by_rule = []
 
     learning_clock = Clock("LEARNING")
     learning_clock.set_start()
@@ -192,17 +193,18 @@ def run(config, data, rng):
 
         logging.info(colored(f"Initializing Subproblems...", "blue", "on_grey"))
         subproblem_instance_datas = make_subproblems(config, instance_datas, sketch.dlplan_policy, rule)
+        num_subproblems_by_rule.append(len(subproblem_instance_datas))
         if not subproblem_instance_datas:
             print(colored("Sketch rule does not induce any subproblems!", "red", "on_grey"))
             break
         logging.info(colored(f"..done", "blue", "on_grey"))
 
-        policy, policy_minimized, num_selected_training_instances, num_states_in_selected_training_instances, max_states_in_selected_training_instance, num_features_in_pool = learn_sketch(config, domain_data, subproblem_instance_datas, config.experiment_dir / "learning" / f"rule_{rule.get_index()}")
+        policy, policy_minimized, num_selected_training_instances, sum_num_states_in_selected_training_instances, max_num_states_in_selected_training_instances, num_features_in_pool = learn_sketch(config, domain_data, subproblem_instance_datas, config.experiment_dir / "learning" / f"rule_{rule.get_index()}")
         add_zero_cost_features(domain_data, policy)
-        max_num_selected_training_instances = max(max_num_selected_training_instances, num_selected_training_instances)
-        max_num_states_in_selected_training_instances = max(max_num_states_in_selected_training_instances, num_states_in_selected_training_instances)
-        max_num_features_in_pool = max(max_num_features_in_pool, num_features_in_pool)
-        sum_subproblem_instance_datas += len(subproblem_instance_datas)
+        num_selected_training_instances_by_rule.append(num_selected_training_instances)
+        sum_num_states_in_selected_training_instances_by_rule.append(sum_num_states_in_selected_training_instances)
+        max_num_states_in_selected_training_instances_by_rule.append(max_num_states_in_selected_training_instances)
+        num_features_in_pool_by_rule.append(num_features_in_pool)
 
         rule_hierarchical_sketch.add_child(policy, f"rule_0")
         rule_hierarchical_sketch_minimized.add_child(policy_minimized, f"rule_0")
@@ -214,11 +216,19 @@ def run(config, data, rng):
     logging.info(colored("Hierarchical sketch minimized:", "green", "on_grey"))
     hierarchical_sketch_minimized.print()
 
-    print("Sum of number of subproblems per rule:", len(instance_datas))
-    print("Max number of selected training instances:", max_num_selected_training_instances)
-    print("Max number of states in selected training instances:", max_num_states_in_selected_training_instances)
-    print("Max number of states in selected training instance:", max_states_in_selected_training_instance)
-    print("Max number of features in the pool:", max_num_features_in_pool)
+    print("Number of subproblems by rule:", num_subproblems_by_rule)
+    print("Sum of number of subproblems by rule:", sum(num_subproblems_by_rule))
+
+    print("Number of selected training instances by rule:", num_selected_training_instances_by_rule)
+    print("Sum of number of states in selected training instances by rule:", sum_num_states_in_selected_training_instances_by_rule)
+    print("Max of number of states in selected training instances by rule:", max_num_states_in_selected_training_instances_by_rule)
+    print("Number of features in the pool by rule:", num_features_in_pool_by_rule)
+
+    print("Max of number of selected training instances by rule:", max(num_selected_training_instances_by_rule))
+    print("Max of sum of number of states in selected training instances by rule:", max(sum_num_states_in_selected_training_instances_by_rule))
+    print("Max of max of number of states in selected training instances by rule:", max(max_num_states_in_selected_training_instances_by_rule))
+    print("Max of number of features in the pool by rule:", max(num_features_in_pool_by_rule))
+
     preprocessing_clock.print()
     learning_clock.print()
     return ExitCode.Success, None

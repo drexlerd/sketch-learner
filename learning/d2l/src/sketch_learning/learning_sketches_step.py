@@ -186,15 +186,16 @@ def learn_sketch(config, domain_data, instance_datas, workspace):
 
     logging.info(colored("Summary:", "green", "on_grey"))
     num_selected_training_instances = len(selected_instance_datas)
-    num_states_in_selected_training_instances = sum([instance_data.state_space.get_num_states() for instance_data in selected_instance_datas])
-    max_states_in_selected_training_instance = max([instance_data.state_space.get_num_states() for instance_data in selected_instance_datas])
+    sum_num_states_in_selected_training_instances = sum([instance_data.state_space.get_num_states() for instance_data in selected_instance_datas])
+    max_num_states_in_selected_training_instances = max([instance_data.state_space.get_num_states() for instance_data in selected_instance_datas])
     num_features_in_pool = len(domain_feature_data.boolean_features.features_by_index) + len(domain_feature_data.numerical_features.features_by_index)
     print("Number of selected training instances:", num_selected_training_instances)
-    print("Number of states in selected training instances", num_states_in_selected_training_instances)
+    print("Sum of number of states in selected training instances:", sum_num_states_in_selected_training_instances)
+    print("Max of number of states in selected training instances:", max_num_states_in_selected_training_instances)
     print("Number of features in the pool:", num_features_in_pool)
     print("Resulting sketch:")
     sketch.print()
     print("Resulting sketch minimized:")
     sketch_minimized = Sketch(dlplan.PolicyMinimizer().minimize(sketch.dlplan_policy), sketch.width)
     sketch_minimized.print()
-    return sketch, sketch_minimized, num_selected_training_instances, num_states_in_selected_training_instances, max_states_in_selected_training_instance, num_features_in_pool
+    return sketch, sketch_minimized, num_selected_training_instances, sum_num_states_in_selected_training_instances, max_num_states_in_selected_training_instances, num_features_in_pool
