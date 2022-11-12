@@ -126,8 +126,8 @@ for planner, _ in IMAGES:
             )
             run.set_property("domain", task.domain)
             run.set_property("problem", task.problem)
-            run.set_property("algorithm", f"width_{w}")
-            run.set_property("id", [f"{task.domain}_{w}.txt", task.domain, task.problem])
+            run.set_property("algorithm", f"{planner}_{w}")
+            run.set_property("id", [f"{planner}_{w}.txt", task.domain, task.problem])
 
 report = os.path.join(exp.eval_dir, f"{exp.name}.html")
 exp.add_report(BaseReport(attributes=ATTRIBUTES), outfile=report)
