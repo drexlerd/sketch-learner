@@ -54,7 +54,7 @@ ATTRIBUTES = [
 DIR = Path(__file__).resolve().parent
 BENCHMARKS_DIR = DIR.parent.parent / "testing"/ "benchmarks"
 if project.REMOTE:
-    SUITE = ["blocks_4_clear", "blocks_4_on", "childsnack", "delivery", "gripper", "miconic", "reward", "spanner", "visitall"]
+    SUITE = ["blocks_4_clear", "blocks_4_on", "delivery", "gripper", "miconic", "reward", "spanner", "visitall"]
     ENV = project.TetralithEnvironment(
         email="dominik.drexler@liu.se",
         extra_options="#SBATCH --account=snic2022-5-341",
