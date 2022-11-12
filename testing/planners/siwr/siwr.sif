@@ -1,10 +1,9 @@
 Bootstrap: docker
 From: ubuntu:20.04
 
-%files
-   ## Copy subdirectory into the root directory of the container
-   $PWD/dlplan /dlplan
-   $PWD/LAPKT-public /LAPKT-public
+%environment
+    ## Add runtime library search paths
+    export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/usr/local/lib/dlplan/"
 
 %post
     ## Add info for tzdata
@@ -22,70 +21,54 @@ From: ubuntu:20.04
 	gcc-multilib \
 	flex \
 	bison \
-	python2.7 \
-	python-dev \
+	python3 \
+	python3-dev \
+	python3-pip \
 	libboost-dev \
 	libjudy-dev \
 	libboost-python-dev \
 	libboost-program-options-dev \
 	g++-multilib \
-	g++
+	g++ \
+	git-all
 
-    ## Install dlplan
-	cd /dlplan/
+    ## Install python packages
+	pip install pathlib
+
+    ## Install DLPlan
+	git clone https://github.com/rleap-project/dlplan.git
+	cd /dlplan
+	git checkout fbe9e01c7d930a7c965729e01f428b8e416b7dea
 	cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr/local/ -S . -B build/
 	cmake --build build -j4
 	cmake --install build
-	cd ../
+	cd /
 
-	## Install SIWR
-	cd /LAPKT-public/planners/siwr/
+    ## Add DLPlan to compile time linker
+	export LIBRARY_PATH="$LD_LIBRARY_PATH:/usr/local/lib/dlplan/"
+
+    ## Install scorpion
+	git clone https://github.com/drexlerd/scorpion.git
+	cd /scorpion
+	git checkout 210661130552f675e8c3f821ae160249e9a86a0c
 	./build.py
+	cd /
 
-	# Copy planner files into separate subdirectory
-    mkdir /siwr
-	cp /LAPKT-public/planners/siwr/siwr.py /siwr/siwr.py
-	cp /LAPKT-public/planners/siwr/libsiwr.so /siwr/libsiwr.so
-	cp -r /LAPKT-public/planners/siwr/fd /siwr/fd
-
-	## Remove packages unneeded for running the planner.
-    apt-get -y autoremove cmake \
-        build-essential \
-        ca-certificates \
-        xutils-dev \
-        scons \
-        gcc-multilib \
-        flex \
-        bison \
-        g++-multilib \
-        g++
-    rm -rf /var/lib/apt/lists/*
-
-	# Cleanup trash
-	rm -rf /dlplan
-	rm -rf /LAPKT-public
+	ln -frs /scorpion/fast-downward.py /fast-downward.py
+	ln -frs /scorpion/siwr.py /siwr.py
 
 %runscript
-    ## The runscript is called whenever the container is used to solve
-    ## an instance.
-
-	## We need to make sure that libaries are found.
-    export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/usr/local/lib/dlplan/"
-
     DOMAINFILE=$1
     PROBLEMFILE=$2
-	SKETCHFILE=$3
-    PLANFILE=$4
+	DCK=$3
+	WIDTH=$4
+	PLANFILE=$5
 
-    ## Call your planner using FD-parser.
-    /siwr/siwr.py $DOMAINFILE $PROBLEMFILE $SKETCHFILE $PLANFILE
+    /siwr.py --fd_file /fast-downward.py --domain_file $DOMAINFILE --instance_file $PROBLEMFILE --sketch_file $DCK --width $WIDTH --plan_file $PLANFILE
 
 ## Update the following fields with meta data about your submission.
 ## Please use the same field names and use only one line for each value.
 %labels
-Name        LAPKT-SIWR
-Description SIWR implemented with LAPKT
-Authors     Dominik Drexler <dominik.drexler@liu.se> and Jendrik Seipp <jendrik.seipp@liu.se> and Hector Geffner <hector.geffner@upf.edu>
-SupportsDerivedPredicates no
-SupportsQuantifiedPreconditions yes
-SupportsQuantifiedEffects yes
+Name        HSIWR
+Description HSIWR implemented in FastDownward with DLPlan
+Authors     Dominik Drexler <dominik.drexler@liu.se>

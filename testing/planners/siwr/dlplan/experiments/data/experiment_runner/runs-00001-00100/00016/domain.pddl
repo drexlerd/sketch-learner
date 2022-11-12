@@ -1,1 +1,0 @@
-../../../../../benchmarks/delivery/domain.pddl

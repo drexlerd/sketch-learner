@@ -44,8 +44,10 @@ class BaseReport(AbsoluteReport):
 
 ATTRIBUTES = [
     "run_dir",
+    "length",
     "cost",
     Attribute(name="coverage", absolute=True, min_wins=False),
+    Attribute(name="valid_plan_value", absolute=True, min_wins=False),
     "error",
     "expanded",
     "generated",
@@ -61,7 +63,7 @@ DIR = Path(__file__).resolve().parent
 BENCHMARKS_DIR = DIR.parent.parent / "testing"/ "benchmarks"
 print(BENCHMARKS_DIR)
 if project.REMOTE:
-    SUITE = ["blocks_4_clear", "blocks_4_on", "childsnack", "delivery", "gripper", "miconic", "reward", "spanner", "visitall"]
+    SUITE = ["blocks_4_clear", "blocks_4_on", "delivery", "gripper", "miconic", "reward", "spanner", "visitall"]
     ENV = project.TetralithEnvironment(
         email="dominik.drexler@liu.se",
         extra_options="#SBATCH --account=snic2022-5-341",
@@ -79,7 +81,7 @@ exp.add_step("build", exp.build)
 exp.add_step("start", exp.start_runs)
 exp.add_parse_again_step()
 exp.add_fetcher(name="fetch")
-exp.add_parser("parser-singularity-siw-siwr.py")
+exp.add_parser("parser-singularity-hsiwr.py")
 
 IMAGES_DIR = DIR.parent.parent / "testing" / "planners"
 print(IMAGES_DIR)
@@ -103,32 +105,32 @@ TIME_LIMIT = 1800
 MEMORY_LIMIT = 8000
 for planner, _ in IMAGES:
     for task in suites.build_suite(BENCHMARKS_DIR, SUITE):
-        for w in range(0,3):
-            for suffix in ["", "_structurally_minimized", "_empirically_minimized"]:
-                sketch_name = f"{task.domain}_{w}{suffix}.txt"
-                sketch_filename = SKETCHES_DIR / task.domain / sketch_name
-                if not sketch_filename.is_file(): continue
-                run = exp.add_run()
-                run.add_resource("domain", task.domain_file, "domain.pddl")
-                run.add_resource("problem", task.problem_file, "problem.pddl")
-                run.add_resource("sketch", sketch_filename)
-                run.add_command(
-                    "run-planner",
-                    [
-                        "{run_singularity}",
-                        f"{{{planner}}}",
-                        "{domain}",
-                        "{problem}",
-                        "{sketch}",
-                        "sas_plan",
-                    ],
-                    time_limit=TIME_LIMIT,
-                    memory_limit=MEMORY_LIMIT,
-                )
-                run.set_property("domain", task.domain)
-                run.set_property("problem", task.problem)
-                run.set_property("algorithm", f"{planner}_{w}{suffix}")
-                run.set_property("id", [f"{planner}_{w}{suffix}", task.domain, task.problem])
+        for w in range(0,1):
+            sketch_name = f"{task.domain}_{w}_structurally_minimized.txt"
+            sketch_filename = SKETCHES_DIR / task.domain / sketch_name
+            if not sketch_filename.is_file(): continue
+            run = exp.add_run()
+            run.add_resource("domain", task.domain_file, "domain.pddl")
+            run.add_resource("problem", task.problem_file, "problem.pddl")
+            run.add_resource("sketch", sketch_filename)
+            run.add_command(
+                "run-planner",
+                [
+                    "{run_singularity}",
+                    f"{{{planner}}}",
+                    "{domain}",
+                    "{problem}",
+                    "{sketch}",
+                    w,
+                    "sas_plan",
+                ],
+                time_limit=TIME_LIMIT,
+                memory_limit=MEMORY_LIMIT,
+            )
+            run.set_property("domain", task.domain)
+            run.set_property("problem", task.problem)
+            run.set_property("algorithm", f"{planner}_{w}")
+            run.set_property("id", [f"{planner}_{w}", task.domain, task.problem])
 
 report = os.path.join(exp.eval_dir, f"{exp.name}.html")
 exp.add_report(BaseReport(attributes=ATTRIBUTES), outfile=report)

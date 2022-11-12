@@ -1,9 +1,0 @@
-(:policy
-(:boolean_features )
-(:numerical_features "n_count(c_diff(c_projection(r_diff(r_primitive(stored_g,0,1),r_primitive(stored,0,1)), 0),c_some(r_primitive(ready-to-load,0,2),c_primitive(next,0))))"
-                     "n_count(c_diff(c_projection(r_diff(r_primitive(stored_g,0,1),r_primitive(stored,0,1)), 0),c_some(r_primitive(loaded,0,2),c_primitive(next,0))))"
-                     "n_sum_role_distance(r_primitive(stored_g,0,1),r_primitive(next,0,1),r_primitive(stored,0,1))")
-(:rule (:conditions (:c_n_gt 0)) (:effects (:e_n_dec 0) (:e_n_bot 1) (:e_n_bot 2)))
-(:rule (:conditions (:c_n_gt 1)) (:effects (:e_n_dec 1) (:e_n_bot 2)))
-(:rule (:conditions (:c_n_gt 2)) (:effects (:e_n_dec 2)))
-)

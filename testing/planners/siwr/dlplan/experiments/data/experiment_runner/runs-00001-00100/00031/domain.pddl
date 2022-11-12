@@ -1,1 +1,0 @@
-../../../../../benchmarks/reward/domain.pddl

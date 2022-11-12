@@ -1,1 +1,0 @@
-../../../../../benchmarks/blocksworld_3/p-3-0.pddl

@@ -1,2 +1,0 @@
-add_executable(policy_ex policy.cpp)
-target_link_libraries(policy_ex dlplanpolicy dlplancore)

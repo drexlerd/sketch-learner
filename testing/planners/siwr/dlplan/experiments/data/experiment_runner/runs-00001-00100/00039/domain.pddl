@@ -1,1 +1,0 @@
-../../../../../benchmarks/visitall/domain.pddl

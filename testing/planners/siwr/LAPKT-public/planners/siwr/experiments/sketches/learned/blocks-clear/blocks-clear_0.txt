@@ -1,6 +1,0 @@
-(:policy
-(:boolean_features "b_nullary(arm-empty)")
-(:numerical_features "n_count(c_primitive(on,0))")
-(:rule (:conditions ) (:effects (:e_b_pos 0) (:e_n_bot 0)))
-(:rule (:conditions (:c_n_gt 0)) (:effects (:e_b_neg 0) (:e_n_dec 0)))
-)

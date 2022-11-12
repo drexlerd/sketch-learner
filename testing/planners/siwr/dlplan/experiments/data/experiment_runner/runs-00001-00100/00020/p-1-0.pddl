@@ -1,1 +1,0 @@
-../../../../../benchmarks/gripper/p-1-0.pddl
