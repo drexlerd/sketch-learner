@@ -71,11 +71,10 @@ def fetch_algorithm(exp, expname, algo, new_algo=None):
 
 fetch_algorithm(exp, "experiment-dual-bfws", "dual_bfws", "dual_bfws")
 fetch_algorithm(exp, "experiment-lama-first", "lama_first", "lama_first")
-fetch_algorithm(exp, "experiment-siw", "siw", "siw")
+fetch_algorithm(exp, "experiment-hsiwr", "hsiwr_1", "hsiwr_1")
+fetch_algorithm(exp, "experiment-hsiwr", "hsiwr_2", "hsiwr_2")
 fetch_algorithm(exp, "experiment-siwr", "siwr_0", "siwr_0")
-fetch_algorithm(exp, "experiment-siwr", "siwr_1", "siwr_1")
-fetch_algorithm(exp, "experiment-siwr", "siwr_2", "siwr_2")
 
 report = os.path.join(exp.eval_dir, f"{exp.name}.html")
-exp.add_report(BaseReport(attributes=ATTRIBUTES, filter_algorithm=["siw", "siwr_0", "siwr_1", "siwr_2", "lama_first", "dual_bfws"]), outfile=report)
+exp.add_report(BaseReport(attributes=ATTRIBUTES, filter_algorithm=["siwr_0", "hsiwr_1", "hsiwr_2", "lama_first", "dual_bfws"]), outfile=report)
 exp.run_steps()

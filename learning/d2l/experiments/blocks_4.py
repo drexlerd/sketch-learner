@@ -74,4 +74,4 @@ def training_instances_4():
 
 def training_instances_4_fixed_goal():
     """ For fixed goal we do not need to use random seeds. """
-    return [f"p-{i}-0" for i in range(2, 5)]
+    return [f"p-{i}-0" for i in range(2, 8)]
