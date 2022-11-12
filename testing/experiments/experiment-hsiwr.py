@@ -70,7 +70,6 @@ if project.REMOTE:
         memory_per_cpu="8G")
 else:
     SUITE = ["blocks_4_clear:p-51-0.pddl", "blocks_4_on:p-51-0.pddl", "delivery:instance_3_2_0.pddl", "gripper:p01.pddl", "miconic:p01.pddl", "reward:instance_5x5_0.pddl", "spanner:pfile01-001.pddl", "visitall:p01.pddl"]
-    SUITE = ["blocks_4_clear:p-51-0.pddl", "blocks_4_on:p-51-0.pddl", "gripper:p01.pddl", "miconic:p01.pddl", "reward:instance_5x5_0.pddl", "visitall:p01.pddl"]
 
     ENV = project.LocalEnvironment(processes=4)
 SKETCHES_DIR = DIR.parent.parent / "testing" / "sketches_hierarchical"
