@@ -126,6 +126,7 @@ def make_subproblems(config, instance_datas: List[InstanceData], sketch: dlplan.
                 subproblem_instance_data.set_goal_distance_information(subproblem_goal_distance_information)
                 subproblem_instance_data.set_state_information(subproblem_state_information)
                 subproblem_instance_data.initial_s_idxs = {initial_s_idx}
+                subproblem_instance_data.initial_s_idxs = [s_idx for s_idx in state_indices if s_idx in initial_s_idxs]
                 # 2.2.1. Recompute tuple graph for restricted state space
                 subproblem_instance_data.set_tuple_graphs(TupleGraphFactory(width=0).make_tuple_graphs(subproblem_instance_data))
                 subproblem_instance_datas.append(subproblem_instance_data)
