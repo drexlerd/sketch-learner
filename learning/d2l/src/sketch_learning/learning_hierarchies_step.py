@@ -70,7 +70,7 @@ def make_subproblems(config, instance_datas: List[InstanceData], sketch: dlplan.
             feature_valuation_to_s_idxs[feature_valuation].add(s_idx)
         # 2. For each f in F with f satisfies C ...
         global_deadends = goal_distance_information.get_deadend_state_indices()
-        covered_initial_s_idxs = set()
+        # covered_initial_s_idxs = set()
         for _, initial_s_idxs in feature_valuation_to_s_idxs.items():
             # 2.1. Compute set of initial states, i.e., all s such that f(s) = f,
             if not rule.evaluate_conditions(state_information.get_state(next(iter(initial_s_idxs))), instance_data.denotations_caches):
@@ -96,8 +96,8 @@ def make_subproblems(config, instance_datas: List[InstanceData], sketch: dlplan.
                 if distance > max_distance and distance != math.inf:
                     max_distance = distance
             for initial_s_idx in initial_s_idxs:
-                if initial_s_idx in covered_initial_s_idxs:
-                    continue
+                #if initial_s_idx in covered_initial_s_idxs:
+                #    continue
                 name = f"{instance_data.instance_information.name}-{initial_s_idx}"
                 distance = instance_data.goal_distance_information.get_goal_distances().get(initial_s_idx, math.inf)
                 if distance != max_distance:
@@ -110,7 +110,7 @@ def make_subproblems(config, instance_datas: List[InstanceData], sketch: dlplan.
                     if initial_s_prime_idx in state_indices_opt:
                         subproblem_initial_s_idxs.add(initial_s_prime_idx)
                 assert initial_s_idx in subproblem_initial_s_idxs
-                covered_initial_s_idxs.update(subproblem_initial_s_idxs)
+                #covered_initial_s_idxs.update(subproblem_initial_s_idxs)
                 fringe_state_indices.update(state_indices)
                 # 6. Instantiate subproblem for initial state and subgoals.
                 subproblem_state_space = dlplan.StateSpace(
