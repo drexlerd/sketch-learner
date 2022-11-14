@@ -94,6 +94,8 @@ def make_subproblems(config, instance_datas: List[InstanceData], sketch: dlplan.
             for initial_s_idx in sorted_initial_s_idxs:
                 if initial_s_idx in covered_initial_s_idxs:
                     continue
+                if instance_data.goal_distance_information.is_deadend(initial_s_idx):
+                    continue
                 name = f"{instance_data.instance_information.name}-{initial_s_idx}"
                 state_indices, fringe_state_indices = compute_delta_optimal_states(instance_data, config.delta, initial_s_idx, instance_data.goal_distance_information.get_goal_distances())
                 state_indices_opt, fringe_state_indices_opt = compute_delta_optimal_states(instance_data, 1, initial_s_idx, instance_data.goal_distance_information.get_goal_distances())
