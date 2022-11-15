@@ -149,6 +149,8 @@ class ASPFactory:
         facts = set()
         for instance_data in instance_datas:
             for s_idx, tuple_graph in instance_data.tuple_graphs.items():
+                if not instance_data.goal_distance_information.is_alive(s_idx):
+                    continue
                 equivalences = set()
                 for s_prime_idxs in tuple_graph.get_state_indices_by_distance():
                     for s_prime_idx in s_prime_idxs:

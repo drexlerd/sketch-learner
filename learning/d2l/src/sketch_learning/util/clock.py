@@ -7,6 +7,7 @@ class Clock:
         self.name = name
         self.start = None
         self.end = None
+        self.accumulated = 0
 
     def used_memory(self):
         return performance.memory_usage()
@@ -21,8 +22,8 @@ class Clock:
     def set_start(self):
         self.start = self.elapsed_time()
 
-    def set_end(self):
-        self.end = self.elapsed_time()
+    def set_accumulate(self):
+        self.accumulated += self.elapsed_time() - self.start
 
     def print(self):
-        print("RESOURCES FOR {}: {:.2f} CPU sec - {:.2f} MB".format(self.name, self.end - self.start, self.used_memory()))
+        print("RESOURCES FOR {}: {:.2f} CPU sec - {:.2f} MB".format(self.name, self.accumulated, self.used_memory()))

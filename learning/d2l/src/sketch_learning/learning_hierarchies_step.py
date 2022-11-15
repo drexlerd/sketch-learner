@@ -63,7 +63,7 @@ def make_subproblems(config, instance_datas: List[InstanceData], sketch: dlplan.
         # 1. Compute feature valuations F over Phi for each state
         feature_valuation_to_s_idxs = defaultdict(set)
         for s_idx in state_space.get_state_indices():
-            if goal_distance_information.is_deadend(s_idx):
+            if not goal_distance_information.is_alive(s_idx):
                 # Ignore deadends from original instance as potential initial states
                 continue
             feature_valuation = tuple([feature.evaluate(state_information.get_state(s_idx)) for feature in features])
@@ -94,7 +94,7 @@ def make_subproblems(config, instance_datas: List[InstanceData], sketch: dlplan.
             for initial_s_idx in sorted_initial_s_idxs:
                 if initial_s_idx in covered_initial_s_idxs:
                     continue
-                if instance_data.goal_distance_information.is_deadend(initial_s_idx):
+                if not instance_data.goal_distance_information.is_alive(initial_s_idx):
                     continue
                 name = f"{instance_data.instance_information.name}-{initial_s_idx}"
                 state_indices, fringe_state_indices = compute_delta_optimal_states(instance_data, config.delta, initial_s_idx, instance_data.goal_distance_information.get_goal_distances())
@@ -103,15 +103,16 @@ def make_subproblems(config, instance_datas: List[InstanceData], sketch: dlplan.
                 subproblem_initial_s_idxs = set()
                 for initial_s_prime_idx in initial_s_idxs:
                     if initial_s_prime_idx in state_indices_opt:
+                        if initial_s_prime_idx in goal_s_idxs:
+                            continue
                         subproblem_initial_s_idxs.add(initial_s_prime_idx)
                 assert initial_s_idx in subproblem_initial_s_idxs
                 covered_initial_s_idxs.update(subproblem_initial_s_idxs)
-                fringe_state_indices.update(state_indices)
                 # 6. Instantiate subproblem for initial state and subgoals.
                 subproblem_state_space = dlplan.StateSpace(
                     instance_data.state_space,
                     state_indices,
-                    fringe_state_indices)
+                    state_indices.union(fringe_state_indices))
                 subproblem_state_space.set_initial_state_index(initial_s_idx)
                 subproblem_state_space.set_goal_state_indices(goal_s_idxs.intersection(state_indices).difference(global_deadends))
                 subproblem_goal_distance_information = subproblem_state_space.compute_goal_distance_information()
@@ -177,7 +178,7 @@ def run(config, data, rng):
     sketch = Sketch(dlplan.PolicyReader().read("\n".join(read_file(config.sketch_filename)), domain_data.syntactic_element_factory), config.input_width)
     add_zero_cost_features(domain_data, sketch)
     logging.info(colored(f"..done", "blue", "on_grey"))
-    preprocessing_clock.set_end()
+    preprocessing_clock.set_accumulate()
 
     num_subproblems_by_rule = []
     num_selected_training_instances_by_rule = []
@@ -186,7 +187,6 @@ def run(config, data, rng):
     num_features_in_pool_by_rule = []
 
     learning_clock = Clock("LEARNING")
-    learning_clock.set_start()
     hierarchical_sketch = HierarchicalSketch(sketch, config.experiment_dir / "output" / "hierarchical_sketch")
     hierarchical_sketch_minimized = HierarchicalSketch(sketch, config.experiment_dir / "output" / "hierarchical_sketch_minimized")
     for rule in sketch.dlplan_policy.get_rules():
@@ -199,13 +199,16 @@ def run(config, data, rng):
         rule_hierarchical_sketch_minimized = hierarchical_sketch_minimized.add_child(Sketch(rule_policy_builder.get_result(), sketch.width), f"rule_{rule.get_index()}")
 
         logging.info(colored(f"Initializing Subproblems...", "blue", "on_grey"))
+        preprocessing_clock.set_start()
         subproblem_instance_datas = make_subproblems(config, instance_datas, sketch.dlplan_policy, rule)
         num_subproblems_by_rule.append(len(subproblem_instance_datas))
+        preprocessing_clock.set_accumulate()
         if not subproblem_instance_datas:
             print(colored("Sketch rule does not induce any subproblems!", "red", "on_grey"))
             break
         logging.info(colored(f"..done", "blue", "on_grey"))
 
+        learning_clock.set_start()
         policy, policy_minimized, num_selected_training_instances, sum_num_states_in_selected_training_instances, max_num_states_in_selected_training_instances, num_features_in_pool = learn_sketch(config, domain_data, subproblem_instance_datas, config.experiment_dir / "learning" / f"rule_{rule.get_index()}")
         add_zero_cost_features(domain_data, policy)
         num_selected_training_instances_by_rule.append(num_selected_training_instances)
@@ -215,7 +218,7 @@ def run(config, data, rng):
 
         rule_hierarchical_sketch.add_child(policy, f"rule_0")
         rule_hierarchical_sketch_minimized.add_child(policy_minimized, f"rule_0")
-    learning_clock.set_end()
+        learning_clock.set_accumulate()
 
     logging.info(colored("Summary:", "yellow", "on_grey"))
     logging.info(colored("Hierarchical sketch:", "green", "on_grey"))

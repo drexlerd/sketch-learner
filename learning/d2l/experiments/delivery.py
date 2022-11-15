@@ -29,14 +29,14 @@ def experiments():
         strips_base,
         pipeline="sketch_pipeline",
         instances=training_instances(),
-        max_states_per_instance=5000,
+        max_states_per_instance=2000,
     )
 
     exps["hierarchy"] = update_dict(
         strips_base,
         pipeline="hierarchy_pipeline",
         instances=training_instances(),
-        max_states_per_instance=5000,
+        max_states_per_instance=2000,
     )
     return exps
 

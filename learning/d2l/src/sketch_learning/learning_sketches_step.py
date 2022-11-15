@@ -44,12 +44,12 @@ def run(config, data, rng):
     for instance_data in instance_datas:
         instance_data.set_tuple_graphs(tuple_graph_factory.make_tuple_graphs(instance_data))
     logging.info(colored(f"..done", "blue", "on_grey"))
-    preprocessing_clock.set_end()
+    preprocessing_clock.set_accumulate()
 
     learning_clock = Clock("LEARNING")
     learning_clock.set_start()
     sketch, structurally_minimized_sketch, num_selected_training_instances, num_states_in_selected_training_instances, max_states_in_selected_training_instance, num_features_in_pool = learn_sketch(config, domain_data, instance_datas, config.experiment_dir / "learning")
-    learning_clock.set_end()
+    learning_clock.set_accumulate()
 
     print("Summary:")
     print("Resulting sketch:")
@@ -189,6 +189,10 @@ def learn_sketch(config, domain_data, instance_datas, workspace):
     sum_num_states_in_selected_training_instances = sum([instance_data.state_space.get_num_states() for instance_data in selected_instance_datas])
     max_num_states_in_selected_training_instances = max([instance_data.state_space.get_num_states() for instance_data in selected_instance_datas])
     num_features_in_pool = len(domain_feature_data.boolean_features.features_by_index) + len(domain_feature_data.numerical_features.features_by_index)
+    print("Boolean features:")
+    print("\n".join(feature.dlplan_feature.compute_repr() for feature in domain_feature_data.boolean_features.features_by_index))
+    print("Numerical features:")
+    print("\n".join(feature.dlplan_feature.compute_repr() for feature in domain_feature_data.numerical_features.features_by_index))
     print("Number of selected training instances:", num_selected_training_instances)
     print("Sum of number of states in selected training instances:", sum_num_states_in_selected_training_instances)
     print("Max of number of states in selected training instances:", max_num_states_in_selected_training_instances)
