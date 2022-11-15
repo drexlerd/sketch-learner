@@ -90,8 +90,6 @@ def make_subproblems(config, instance_datas: List[InstanceData], sketch: dlplan.
             # sort initial states by distance
             sorted_initial_s_idxs = sorted(initial_s_idxs, key=lambda x : -instance_data.goal_distance_information.get_goal_distances().get(x, math.inf))
             for initial_s_idx in sorted_initial_s_idxs:
-                #if initial_s_idx not in {631, 7737, 7744}:
-                #    continue
                 if initial_s_idx in covered_initial_s_idxs:
                     continue
                 if not instance_data.goal_distance_information.is_alive(initial_s_idx):
@@ -103,6 +101,9 @@ def make_subproblems(config, instance_datas: List[InstanceData], sketch: dlplan.
                 subproblem_initial_s_idxs = set()
                 for initial_s_prime_idx in initial_s_idxs:
                     if initial_s_prime_idx in state_indices_opt:
+                        # exlclude initial states that are goal because we cannot require good state pair class for it
+                        if initial_s_prime_idx in goal_s_idxs:
+                            continue
                         subproblem_initial_s_idxs.add(initial_s_prime_idx)
                 assert initial_s_idx in subproblem_initial_s_idxs
                 # print(subproblem_initial_s_idxs)
@@ -147,7 +148,6 @@ def make_subproblems(config, instance_datas: List[InstanceData], sketch: dlplan.
     print("Number of subproblems:", len(subproblem_instance_datas))
     print("Highest number of states in problem:", max([instance_data.state_space.get_num_states() for instance_data in instance_datas]))
     print("Highest number of states in subproblem:", max([instance_data.state_space.get_num_states() for instance_data in subproblem_instance_datas]))
-    # exit(1)
     return subproblem_instance_datas
 
 
