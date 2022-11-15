@@ -35,7 +35,7 @@ def experiments():
         strips_base,
         pipeline="hierarchy_pipeline",
         instances=training_instances(),
-        max_states_per_instance=2000,
+        max_states_per_instance=5000,
     )
 
     exps["hierarchy_debug"] = update_dict(
