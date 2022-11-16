@@ -1,8 +1,0 @@
-(:policy
-(:boolean_features "b_empty(c_some(r_primitive(at,0,1),c_one_of(rooma)))")
-(:numerical_features "n_count(c_and(c_one_of(rooma),c_primitive(at-robby,0)))" "n_count(r_primitive(carry,0,1))")
-(:rule (:conditions (:c_n_eq 1) (:c_b_neg 0) (:c_n_eq 0)) (:effects (:e_n_bot 1) (:e_b_bot 0) (:e_n_inc 0)))
-(:rule (:conditions (:c_n_eq 1) (:c_b_neg 0) (:c_n_gt 0)) (:effects (:e_n_inc 1) (:e_n_bot 0)))
-(:rule (:conditions (:c_n_gt 1) (:c_n_eq 0)) (:effects (:e_n_dec 1) (:e_b_bot 0) (:e_n_bot 0)))
-(:rule (:conditions (:c_n_gt 1) (:c_n_gt 0)) (:effects (:e_n_bot 1) (:e_b_bot 0) (:e_n_dec 0)))
-)

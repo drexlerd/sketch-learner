@@ -138,6 +138,9 @@ def make_subproblems(config, instance_datas: List[InstanceData], sketch: dlplan.
                 subproblem_instance_datas.append(subproblem_instance_data)
             instance_data.state_space.set_goal_state_indices(old_goal_state_indices)
             instance_data.goal_distance_information = old_goal_distance_information
+        print("covered initial states", len(covered_initial_s_idxs))
+        print(instance_data.state_space.get_num_states())
+        print(instance_data.state_space.get_goal_state_indices())
     subproblem_instance_datas = sorted(subproblem_instance_datas, key=lambda x : x.state_space.get_num_states())
     for instance_idx, instance_data in enumerate(subproblem_instance_datas):
         instance_data.id = instance_idx

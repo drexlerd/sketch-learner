@@ -1,5 +1,0 @@
-(:policy
-(:boolean_features )
-(:numerical_features "n_concept_distance(c_primitive(clear_g,0),r_primitive(on,0,1),c_primitive(clear,0))")
-(:rule (:conditions (:c_n_eq 0)) (:effects (:e_n_bot 0)))
-)

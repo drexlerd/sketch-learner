@@ -103,6 +103,8 @@ def make_subproblems(config, instance_datas: List[InstanceData], sketch: dlplan.
                 for initial_s_prime_idx in initial_s_idxs:
                     if initial_s_prime_idx in state_indices_opt:
                         if initial_s_prime_idx in goal_s_idxs:
+                            # goal state in subproblem can still be initial state in other subproblem, e.g.,
+                            # having delivered one package
                             continue
                         subproblem_initial_s_idxs.add(initial_s_prime_idx)
                 assert initial_s_idx in subproblem_initial_s_idxs
