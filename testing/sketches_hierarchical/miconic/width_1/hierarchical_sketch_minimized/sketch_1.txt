@@ -1,6 +1,0 @@
-(:policy
-(:boolean_features )
-(:numerical_features "n_count(c_primitive(served,0))" "n_count(r_primitive(origin,0,1))")
-(:rule (:conditions (:c_n_gt 1)) (:effects (:e_n_bot 0) (:e_n_dec 1)))
-(:rule (:conditions ) (:effects (:e_n_bot 1) (:e_n_inc 0)))
-)
