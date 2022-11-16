@@ -29,7 +29,7 @@ class Sketch:
             r_reachable_states.add(initial_s_idx)
         while queue:
             s_idx = queue.pop()
-            if instance_data.goal_distance_information.is_goal(s_idx):
+            if not instance_data.goal_distance_information.is_alive(s_idx):
                 continue
             tuple_graph = instance_data.tuple_graphs[s_idx]
             source_state = instance_data.state_information.get_state(s_idx)
