@@ -106,7 +106,10 @@ def make_subproblems(config, instance_datas: List[InstanceData], sketch: dlplan.
                             # goal state in subproblem can still be initial state in other subproblem, e.g.,
                             # having delivered one package
                             continue
+                        if not instance_data.goal_distance_information.is_alive(initial_s_prime_idx):
+                            continue
                         subproblem_initial_s_idxs.add(initial_s_prime_idx)
+                # subproblem_initial_s_idxs = {initial_s_idx}
                 assert initial_s_idx in subproblem_initial_s_idxs
                 covered_initial_s_idxs.update(subproblem_initial_s_idxs)
                 # 6. Instantiate subproblem for initial state and subgoals.
@@ -133,7 +136,8 @@ def make_subproblems(config, instance_datas: List[InstanceData], sketch: dlplan.
                 subproblem_instance_data.set_state_space(subproblem_state_space)
                 subproblem_instance_data.set_goal_distance_information(subproblem_goal_distance_information)
                 subproblem_instance_data.set_state_information(subproblem_state_information)
-                subproblem_instance_data.initial_s_idxs = subproblem_initial_s_idxs
+                subproblem_instance_data.initial_s_idxs = subproblem_initial_s_idxs.difference(global_deadends)
+                assert all([subproblem_goal_distance_information.is_alive(initial_s_idx) for initial_s_idx in subproblem_instance_data.initial_s_idxs])
                 # subproblem_instance_data.initial_s_idxs = [s_idx for s_idx in state_indices if s_idx in initial_s_idxs]
                 # 2.2.1. Recompute tuple graph for restricted state space
                 subproblem_instance_data.set_tuple_graphs(TupleGraphFactory(width=0).make_tuple_graphs(subproblem_instance_data))
