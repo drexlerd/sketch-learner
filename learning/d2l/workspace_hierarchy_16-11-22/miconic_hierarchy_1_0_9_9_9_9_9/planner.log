@@ -1,0 +1,1743 @@
+INFO     planner time limit: None
+INFO     planner memory limit: None
+
+INFO     Running translator.
+INFO     translator stdin: None
+INFO     translator time limit: None
+INFO     translator memory limit: None
+INFO     translator command line string: /proj/ssiw/projects/code/sketch-learner/.venv/bin/python3 /proj/ssiw/projects/code/sketch-learner/learning/d2l/libs/dlplan/libs/scorpion/builds/release/bin/translate/translate.py /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/miconic/domain-with-fix.pddl /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/miconic/p-4-4-4.pddl --dump-predicates --dump-constants --dump-static-atoms --dump-goal-atoms --sas-file output.sas
+Parsing...
+Problem miconic: mixed-f4-p4-u0-v0-d0-a0-n0-a0-b0-n0-f0 [:strips]
+Types:
+  object
+  passenger
+  floor
+Constants:
+Objects:
+  p0: passenger
+  p1: passenger
+  p2: passenger
+  p3: passenger
+  f0: floor
+  f1: floor
+  f2: floor
+  f3: floor
+Predicates:
+  origin(?person: passenger, ?floor: floor)
+  destin(?person: passenger, ?floor: floor)
+  above(?floor1: floor, ?floor2: floor)
+  boarded(?person: passenger)
+  not-boarded(?person: passenger)
+  served(?person: passenger)
+  not-served(?person: passenger)
+  lift-at(?floor: floor)
+  =(?x: object, ?y: object)
+Functions:
+Init:
+  Atom origin(p0, f3)
+  Atom destin(p3, f0)
+  Atom destin(p2, f2)
+  Atom origin(p2, f3)
+  Atom destin(p0, f1)
+  Atom lift-at(f0)
+  Atom above(f0, f3)
+  Atom origin(p1, f0)
+  Atom above(f1, f2)
+  Atom origin(p3, f3)
+  Atom above(f0, f2)
+  Atom above(f2, f3)
+  Atom destin(p1, f3)
+  Atom above(f0, f1)
+  Atom above(f1, f3)
+  Atom =(p0, p0)
+  Atom =(p1, p1)
+  Atom =(p2, p2)
+  Atom =(p3, p3)
+  Atom =(f0, f0)
+  Atom =(f1, f1)
+  Atom =(f2, f2)
+  Atom =(f3, f3)
+Goal:
+  Conjunction
+    Atom served(p0)
+    Atom served(p1)
+    Atom served(p2)
+    Atom served(p3)
+Actions:
+board(?f: floor, ?p: passenger)
+Precondition:
+  Conjunction
+    Atom lift-at(?f)
+    Atom origin(?p, ?f)
+Effects:
+  Atom boarded(?p)
+  NegatedAtom origin(?p, ?f)
+Cost:
+  None
+depart(?f: floor, ?p: passenger)
+Precondition:
+  Conjunction
+    Atom lift-at(?f)
+    Atom destin(?p, ?f)
+    Atom boarded(?p)
+Effects:
+  NegatedAtom boarded(?p)
+  Atom served(?p)
+Cost:
+  None
+up(?f1: floor, ?f2: floor)
+Precondition:
+  Conjunction
+    Atom lift-at(?f1)
+    Atom above(?f1, ?f2)
+Effects:
+  Atom lift-at(?f2)
+  NegatedAtom lift-at(?f1)
+Cost:
+  None
+down(?f1: floor, ?f2: floor)
+Precondition:
+  Conjunction
+    Atom lift-at(?f1)
+    Atom above(?f2, ?f1)
+Effects:
+  Atom lift-at(?f2)
+  NegatedAtom lift-at(?f1)
+Cost:
+  None
+Parsing: [0.000s CPU, 0.003s wall-clock]
+<pddl.conditions.Conjunction object at 0x2afabad4b070>
+Atom served(p0)
+Atom served(p1)
+Atom served(p2)
+Atom served(p3)
+Normalizing task... [0.000s CPU, 0.000s wall-clock]
+Instantiating...
+Generating Datalog program... [0.000s CPU, 0.000s wall-clock]
+Normalizing Datalog program...
+Normalizing Datalog program: [0.000s CPU, 0.001s wall-clock]
+Preparing model... [0.000s CPU, 0.000s wall-clock]
+Generated 18 rules.
+Computing model... [0.000s CPU, 0.001s wall-clock]
+71 relevant atoms
+40 auxiliary atoms
+111 final queue length
+120 total queue pushes
+Completing instantiation... [0.000s CPU, 0.000s wall-clock]
+Instantiating: [0.000s CPU, 0.003s wall-clock]
+Computing fact groups...
+Finding invariants...
+9 initial candidates
+Finding invariants: [0.000s CPU, 0.001s wall-clock]
+Checking invariant weight... [0.000s CPU, 0.000s wall-clock]
+Instantiating groups... [0.000s CPU, 0.000s wall-clock]
+Collecting mutex groups... [0.000s CPU, 0.000s wall-clock]
+Choosing groups...
+0 uncovered facts
+Choosing groups: [0.000s CPU, 0.000s wall-clock]
+Building translation key... [0.000s CPU, 0.000s wall-clock]
+Computing fact groups: [0.000s CPU, 0.001s wall-clock]
+Building STRIPS to SAS dictionary... [0.000s CPU, 0.000s wall-clock]
+Building dictionary for full mutex groups... [0.000s CPU, 0.000s wall-clock]
+Building mutex information...
+Building mutex information: [0.000s CPU, 0.000s wall-clock]
+Translating task...
+Processing axioms...
+Simplifying axioms... [0.000s CPU, 0.000s wall-clock]
+Translator axioms removed by simplifying: 0
+Computing negative axioms... [0.000s CPU, 0.000s wall-clock]
+Processing axioms: [0.000s CPU, 0.000s wall-clock]
+Translating task: [0.000s CPU, 0.000s wall-clock]
+0 effect conditions simplified
+0 implied preconditions added
+Detecting unreachable propositions...
+0 operators removed
+0 axioms removed
+5 propositions removed
+Detecting unreachable propositions: [0.000s CPU, 0.000s wall-clock]
+Reordering and filtering variables...
+5 of 5 variables necessary.
+0 of 9 mutex groups necessary.
+20 of 20 operators necessary.
+0 of 0 axiom rules necessary.
+Reordering and filtering variables: [0.000s CPU, 0.000s wall-clock]
+Translator variables: 5
+Translator derived variables: 0
+Translator facts: 16
+Translator goal facts: 4
+Translator mutex groups: 0
+Translator total mutex groups size: 0
+Translator operators: 20
+Translator axioms: 0
+Translator task size: 93
+Translator peak memory: 149308 KB
+Writing output... [0.000s CPU, 0.001s wall-clock]
+Done! [0.000s CPU, 0.011s wall-clock]
+translate exit code: 0
+
+INFO     Running search (release).
+INFO     search stdin: output.sas
+INFO     search time limit: None
+INFO     search memory limit: None
+INFO     search command line string: /proj/ssiw/projects/code/sketch-learner/learning/d2l/libs/dlplan/libs/scorpion/builds/release/bin/downward --search 'dump_reachable_search_space()' --internal-plan-file sas_plan < output.sas
+[t=0.000141065s, 18620 KB] reading input...
+[t=0.000753452s, 18628 KB] done reading input!
+[t=0.00587636s, 19020 KB] Building successor generator...done!
+[t=0.0062004s, 19020 KB] peak memory difference for successor generator creation: 0 KB
+[t=0.00627755s, 19020 KB] time for successor generation creation: 5.7918e-05s
+[t=0.0063707s, 19020 KB] Variables: 5
+[t=0.0064491s, 19020 KB] FactPairs: 16
+[t=0.00652368s, 19020 KB] Bytes per state: 4
+[t=0.00690154s, 19020 KB] Dumping the reachable state space...
+# F (fact): [fact ID] [name]
+# G (goal state): [goal state ID] [fact ID 1] [fact ID 2] ...
+# N (non-goal state): [non-goal state ID] [fact ID 1] [fact ID 2] ...
+# T (transition): [source state ID] [target state ID]
+# The initial state has ID 0.
+F 0 lift-at(f0)
+F 1 lift-at(f1)
+F 2 lift-at(f2)
+F 3 lift-at(f3)
+F 4 boarded(p3)
+F 5 origin(p3,f3)
+F 6 served(p3)
+F 7 boarded(p2)
+F 8 origin(p2,f3)
+F 9 served(p2)
+F 10 boarded(p1)
+F 11 origin(p1,f0)
+F 12 served(p1)
+F 13 boarded(p0)
+F 14 origin(p0,f3)
+F 15 served(p0)
+N 0 0 5 8 11 14
+T 0 1
+T 0 2
+T 0 3
+T 0 4
+N 1 1 5 8 11 14
+T 1 0
+T 1 2
+T 1 3
+N 2 2 5 8 11 14
+T 2 0
+T 2 1
+T 2 3
+N 3 3 5 8 11 14
+T 3 0
+T 3 1
+T 3 2
+T 3 5
+T 3 6
+T 3 7
+N 4 0 5 8 10 14
+T 4 8
+T 4 9
+T 4 10
+N 5 3 4 8 11 14
+T 5 11
+T 5 12
+T 5 13
+T 5 14
+T 5 15
+N 6 3 5 7 11 14
+T 6 16
+T 6 17
+T 6 18
+T 6 14
+T 6 19
+N 7 3 5 8 11 13
+T 7 20
+T 7 21
+T 7 22
+T 7 15
+T 7 19
+N 8 1 5 8 10 14
+T 8 4
+T 8 9
+T 8 10
+N 9 2 5 8 10 14
+T 9 4
+T 9 8
+T 9 10
+N 10 3 5 8 10 14
+T 10 4
+T 10 8
+T 10 9
+T 10 23
+T 10 24
+T 10 25
+T 10 26
+N 11 0 4 8 11 14
+T 11 12
+T 11 13
+T 11 5
+T 11 27
+T 11 28
+N 12 1 4 8 11 14
+T 12 11
+T 12 13
+T 12 5
+N 13 2 4 8 11 14
+T 13 11
+T 13 12
+T 13 5
+N 14 3 4 7 11 14
+T 14 29
+T 14 30
+T 14 31
+T 14 32
+N 15 3 4 8 11 13
+T 15 33
+T 15 34
+T 15 35
+T 15 32
+N 16 0 5 7 11 14
+T 16 17
+T 16 18
+T 16 6
+T 16 36
+N 17 1 5 7 11 14
+T 17 16
+T 17 18
+T 17 6
+N 18 2 5 7 11 14
+T 18 16
+T 18 17
+T 18 6
+T 18 37
+N 19 3 5 7 11 13
+T 19 38
+T 19 39
+T 19 40
+T 19 32
+N 20 0 5 8 11 13
+T 20 21
+T 20 22
+T 20 7
+T 20 41
+N 21 1 5 8 11 13
+T 21 20
+T 21 22
+T 21 7
+T 21 42
+N 22 2 5 8 11 13
+T 22 20
+T 22 21
+T 22 7
+N 23 3 4 8 10 14
+T 23 28
+T 23 43
+T 23 44
+T 23 45
+T 23 46
+T 23 47
+N 24 3 5 7 10 14
+T 24 36
+T 24 48
+T 24 49
+T 24 45
+T 24 50
+T 24 51
+N 25 3 5 8 12 14
+T 25 52
+T 25 53
+T 25 54
+T 25 46
+T 25 50
+T 25 55
+N 26 3 5 8 10 13
+T 26 41
+T 26 56
+T 26 57
+T 26 47
+T 26 51
+T 26 55
+N 27 0 6 8 11 14
+T 27 58
+T 27 59
+T 27 60
+T 27 61
+N 28 0 4 8 10 14
+T 28 43
+T 28 44
+T 28 23
+T 28 61
+N 29 0 4 7 11 14
+T 29 30
+T 29 31
+T 29 14
+T 29 62
+T 29 63
+N 30 1 4 7 11 14
+T 30 29
+T 30 31
+T 30 14
+N 31 2 4 7 11 14
+T 31 29
+T 31 30
+T 31 14
+T 31 64
+N 32 3 4 7 11 13
+T 32 65
+T 32 66
+T 32 67
+N 33 0 4 8 11 13
+T 33 34
+T 33 35
+T 33 15
+T 33 68
+T 33 69
+N 34 1 4 8 11 13
+T 34 33
+T 34 35
+T 34 15
+T 34 70
+N 35 2 4 8 11 13
+T 35 33
+T 35 34
+T 35 15
+N 36 0 5 7 10 14
+T 36 48
+T 36 49
+T 36 24
+N 37 2 5 9 11 14
+T 37 71
+T 37 72
+T 37 73
+N 38 0 5 7 11 13
+T 38 39
+T 38 40
+T 38 19
+T 38 74
+N 39 1 5 7 11 13
+T 39 38
+T 39 40
+T 39 19
+T 39 75
+N 40 2 5 7 11 13
+T 40 38
+T 40 39
+T 40 19
+T 40 76
+N 41 0 5 8 10 13
+T 41 56
+T 41 57
+T 41 26
+N 42 1 5 8 11 15
+T 42 77
+T 42 78
+T 42 79
+N 43 1 4 8 10 14
+T 43 28
+T 43 44
+T 43 23
+N 44 2 4 8 10 14
+T 44 28
+T 44 43
+T 44 23
+N 45 3 4 7 10 14
+T 45 63
+T 45 80
+T 45 81
+T 45 82
+T 45 83
+N 46 3 4 8 12 14
+T 46 84
+T 46 85
+T 46 86
+T 46 82
+T 46 87
+N 47 3 4 8 10 13
+T 47 69
+T 47 88
+T 47 89
+T 47 83
+T 47 87
+N 48 1 5 7 10 14
+T 48 36
+T 48 49
+T 48 24
+N 49 2 5 7 10 14
+T 49 36
+T 49 48
+T 49 24
+T 49 90
+N 50 3 5 7 12 14
+T 50 91
+T 50 92
+T 50 93
+T 50 82
+T 50 94
+N 51 3 5 7 10 13
+T 51 74
+T 51 95
+T 51 96
+T 51 83
+T 51 94
+N 52 0 5 8 12 14
+T 52 53
+T 52 54
+T 52 25
+N 53 1 5 8 12 14
+T 53 52
+T 53 54
+T 53 25
+N 54 2 5 8 12 14
+T 54 52
+T 54 53
+T 54 25
+N 55 3 5 8 12 13
+T 55 97
+T 55 98
+T 55 99
+T 55 87
+T 55 94
+N 56 1 5 8 10 13
+T 56 41
+T 56 57
+T 56 26
+T 56 100
+N 57 2 5 8 10 13
+T 57 41
+T 57 56
+T 57 26
+N 58 1 6 8 11 14
+T 58 27
+T 58 59
+T 58 60
+N 59 2 6 8 11 14
+T 59 27
+T 59 58
+T 59 60
+N 60 3 6 8 11 14
+T 60 27
+T 60 58
+T 60 59
+T 60 101
+T 60 102
+N 61 0 6 8 10 14
+T 61 103
+T 61 104
+T 61 105
+N 62 0 6 7 11 14
+T 62 106
+T 62 107
+T 62 101
+T 62 108
+N 63 0 4 7 10 14
+T 63 80
+T 63 81
+T 63 45
+T 63 108
+N 64 2 4 9 11 14
+T 64 109
+T 64 110
+T 64 111
+N 65 0 4 7 11 13
+T 65 66
+T 65 67
+T 65 32
+T 65 112
+T 65 113
+N 66 1 4 7 11 13
+T 66 65
+T 66 67
+T 66 32
+T 66 114
+N 67 2 4 7 11 13
+T 67 65
+T 67 66
+T 67 32
+T 67 115
+N 68 0 6 8 11 13
+T 68 116
+T 68 117
+T 68 102
+T 68 118
+N 69 0 4 8 10 13
+T 69 88
+T 69 89
+T 69 47
+T 69 118
+N 70 1 4 8 11 15
+T 70 119
+T 70 120
+T 70 121
+N 71 0 5 9 11 14
+T 71 72
+T 71 37
+T 71 73
+T 71 122
+N 72 1 5 9 11 14
+T 72 71
+T 72 37
+T 72 73
+N 73 3 5 9 11 14
+T 73 71
+T 73 72
+T 73 37
+T 73 111
+T 73 123
+N 74 0 5 7 10 13
+T 74 95
+T 74 96
+T 74 51
+N 75 1 5 7 11 15
+T 75 124
+T 75 125
+T 75 126
+N 76 2 5 9 11 13
+T 76 127
+T 76 128
+T 76 123
+N 77 0 5 8 11 15
+T 77 42
+T 77 78
+T 77 79
+T 77 129
+N 78 2 5 8 11 15
+T 78 77
+T 78 42
+T 78 79
+N 79 3 5 8 11 15
+T 79 77
+T 79 42
+T 79 78
+T 79 121
+T 79 126
+N 80 1 4 7 10 14
+T 80 63
+T 80 81
+T 80 45
+N 81 2 4 7 10 14
+T 81 63
+T 81 80
+T 81 45
+T 81 130
+N 82 3 4 7 12 14
+T 82 131
+T 82 132
+T 82 133
+T 82 134
+N 83 3 4 7 10 13
+T 83 113
+T 83 135
+T 83 136
+T 83 134
+N 84 0 4 8 12 14
+T 84 85
+T 84 86
+T 84 46
+T 84 137
+N 85 1 4 8 12 14
+T 85 84
+T 85 86
+T 85 46
+N 86 2 4 8 12 14
+T 86 84
+T 86 85
+T 86 46
+N 87 3 4 8 12 13
+T 87 138
+T 87 139
+T 87 140
+T 87 134
+N 88 1 4 8 10 13
+T 88 69
+T 88 89
+T 88 47
+T 88 141
+N 89 2 4 8 10 13
+T 89 69
+T 89 88
+T 89 47
+N 90 2 5 9 10 14
+T 90 122
+T 90 142
+T 90 143
+N 91 0 5 7 12 14
+T 91 92
+T 91 93
+T 91 50
+N 92 1 5 7 12 14
+T 92 91
+T 92 93
+T 92 50
+N 93 2 5 7 12 14
+T 93 91
+T 93 92
+T 93 50
+T 93 144
+N 94 3 5 7 12 13
+T 94 145
+T 94 146
+T 94 147
+T 94 134
+N 95 1 5 7 10 13
+T 95 74
+T 95 96
+T 95 51
+T 95 148
+N 96 2 5 7 10 13
+T 96 74
+T 96 95
+T 96 51
+T 96 149
+N 97 0 5 8 12 13
+T 97 98
+T 97 99
+T 97 55
+N 98 1 5 8 12 13
+T 98 97
+T 98 99
+T 98 55
+T 98 150
+N 99 2 5 8 12 13
+T 99 97
+T 99 98
+T 99 55
+N 100 1 5 8 10 15
+T 100 129
+T 100 151
+T 100 152
+N 101 3 6 7 11 14
+T 101 62
+T 101 106
+T 101 107
+T 101 153
+N 102 3 6 8 11 13
+T 102 68
+T 102 116
+T 102 117
+T 102 153
+N 103 1 6 8 10 14
+T 103 61
+T 103 104
+T 103 105
+N 104 2 6 8 10 14
+T 104 61
+T 104 103
+T 104 105
+N 105 3 6 8 10 14
+T 105 61
+T 105 103
+T 105 104
+T 105 154
+T 105 155
+T 105 156
+N 106 1 6 7 11 14
+T 106 62
+T 106 107
+T 106 101
+N 107 2 6 7 11 14
+T 107 62
+T 107 106
+T 107 101
+T 107 157
+N 108 0 6 7 10 14
+T 108 158
+T 108 159
+T 108 154
+N 109 0 4 9 11 14
+T 109 110
+T 109 64
+T 109 111
+T 109 160
+T 109 161
+N 110 1 4 9 11 14
+T 110 109
+T 110 64
+T 110 111
+N 111 3 4 9 11 14
+T 111 109
+T 111 110
+T 111 64
+T 111 162
+N 112 0 6 7 11 13
+T 112 163
+T 112 164
+T 112 153
+T 112 165
+N 113 0 4 7 10 13
+T 113 135
+T 113 136
+T 113 83
+T 113 165
+N 114 1 4 7 11 15
+T 114 166
+T 114 167
+T 114 168
+N 115 2 4 9 11 13
+T 115 169
+T 115 170
+T 115 162
+N 116 1 6 8 11 13
+T 116 68
+T 116 117
+T 116 102
+T 116 171
+N 117 2 6 8 11 13
+T 117 68
+T 117 116
+T 117 102
+N 118 0 6 8 10 13
+T 118 172
+T 118 173
+T 118 156
+N 119 0 4 8 11 15
+T 119 70
+T 119 120
+T 119 121
+T 119 174
+T 119 175
+N 120 2 4 8 11 15
+T 120 119
+T 120 70
+T 120 121
+N 121 3 4 8 11 15
+T 121 119
+T 121 70
+T 121 120
+T 121 168
+N 122 0 5 9 10 14
+T 122 142
+T 122 90
+T 122 143
+N 123 3 5 9 11 13
+T 123 127
+T 123 128
+T 123 76
+T 123 162
+N 124 0 5 7 11 15
+T 124 75
+T 124 125
+T 124 126
+T 124 176
+N 125 2 5 7 11 15
+T 125 124
+T 125 75
+T 125 126
+T 125 177
+N 126 3 5 7 11 15
+T 126 124
+T 126 75
+T 126 125
+T 126 168
+N 127 0 5 9 11 13
+T 127 128
+T 127 76
+T 127 123
+T 127 178
+N 128 1 5 9 11 13
+T 128 127
+T 128 76
+T 128 123
+T 128 179
+N 129 0 5 8 10 15
+T 129 100
+T 129 151
+T 129 152
+N 130 2 4 9 10 14
+T 130 161
+T 130 180
+T 130 181
+N 131 0 4 7 12 14
+T 131 132
+T 131 133
+T 131 82
+T 131 182
+N 132 1 4 7 12 14
+T 132 131
+T 132 133
+T 132 82
+N 133 2 4 7 12 14
+T 133 131
+T 133 132
+T 133 82
+T 133 183
+N 134 3 4 7 12 13
+T 134 184
+T 134 185
+T 134 186
+N 135 1 4 7 10 13
+T 135 113
+T 135 136
+T 135 83
+T 135 187
+N 136 2 4 7 10 13
+T 136 113
+T 136 135
+T 136 83
+T 136 188
+N 137 0 6 8 12 14
+T 137 189
+T 137 190
+T 137 155
+N 138 0 4 8 12 13
+T 138 139
+T 138 140
+T 138 87
+T 138 191
+N 139 1 4 8 12 13
+T 139 138
+T 139 140
+T 139 87
+T 139 192
+N 140 2 4 8 12 13
+T 140 138
+T 140 139
+T 140 87
+N 141 1 4 8 10 15
+T 141 175
+T 141 193
+T 141 194
+N 142 1 5 9 10 14
+T 142 122
+T 142 90
+T 142 143
+N 143 3 5 9 10 14
+T 143 122
+T 143 142
+T 143 90
+T 143 181
+T 143 195
+T 143 196
+N 144 2 5 9 12 14
+T 144 197
+T 144 198
+T 144 195
+N 145 0 5 7 12 13
+T 145 146
+T 145 147
+T 145 94
+N 146 1 5 7 12 13
+T 146 145
+T 146 147
+T 146 94
+T 146 199
+N 147 2 5 7 12 13
+T 147 145
+T 147 146
+T 147 94
+T 147 200
+N 148 1 5 7 10 15
+T 148 176
+T 148 201
+T 148 202
+N 149 2 5 9 10 13
+T 149 178
+T 149 203
+T 149 196
+N 150 1 5 8 12 15
+T 150 204
+T 150 205
+T 150 206
+N 151 2 5 8 10 15
+T 151 129
+T 151 100
+T 151 152
+N 152 3 5 8 10 15
+T 152 129
+T 152 100
+T 152 151
+T 152 194
+T 152 202
+T 152 206
+N 153 3 6 7 11 13
+T 153 112
+T 153 163
+T 153 164
+N 154 3 6 7 10 14
+T 154 108
+T 154 158
+T 154 159
+T 154 207
+T 154 208
+N 155 3 6 8 12 14
+T 155 137
+T 155 189
+T 155 190
+T 155 207
+T 155 209
+N 156 3 6 8 10 13
+T 156 118
+T 156 172
+T 156 173
+T 156 208
+T 156 209
+N 157 2 6 9 11 14
+T 157 160
+T 157 210
+T 157 211
+N 158 1 6 7 10 14
+T 158 108
+T 158 159
+T 158 154
+N 159 2 6 7 10 14
+T 159 108
+T 159 158
+T 159 154
+T 159 212
+N 160 0 6 9 11 14
+T 160 210
+T 160 157
+T 160 211
+T 160 213
+N 161 0 4 9 10 14
+T 161 180
+T 161 130
+T 161 181
+T 161 213
+N 162 3 4 9 11 13
+T 162 169
+T 162 170
+T 162 115
+N 163 1 6 7 11 13
+T 163 112
+T 163 164
+T 163 153
+T 163 214
+N 164 2 6 7 11 13
+T 164 112
+T 164 163
+T 164 153
+T 164 215
+N 165 0 6 7 10 13
+T 165 216
+T 165 217
+T 165 208
+N 166 0 4 7 11 15
+T 166 114
+T 166 167
+T 166 168
+T 166 218
+T 166 219
+N 167 2 4 7 11 15
+T 167 166
+T 167 114
+T 167 168
+T 167 220
+N 168 3 4 7 11 15
+T 168 166
+T 168 114
+T 168 167
+N 169 0 4 9 11 13
+T 169 170
+T 169 115
+T 169 162
+T 169 221
+T 169 222
+N 170 1 4 9 11 13
+T 170 169
+T 170 115
+T 170 162
+T 170 223
+N 171 1 6 8 11 15
+T 171 174
+T 171 224
+T 171 225
+N 172 1 6 8 10 13
+T 172 118
+T 172 173
+T 172 156
+T 172 226
+N 173 2 6 8 10 13
+T 173 118
+T 173 172
+T 173 156
+N 174 0 6 8 11 15
+T 174 171
+T 174 224
+T 174 225
+T 174 227
+N 175 0 4 8 10 15
+T 175 141
+T 175 193
+T 175 194
+T 175 227
+N 176 0 5 7 10 15
+T 176 148
+T 176 201
+T 176 202
+N 177 2 5 9 11 15
+T 177 228
+T 177 179
+T 177 229
+N 178 0 5 9 10 13
+T 178 203
+T 178 149
+T 178 196
+N 179 1 5 9 11 15
+T 179 228
+T 179 177
+T 179 229
+N 180 1 4 9 10 14
+T 180 161
+T 180 130
+T 180 181
+N 181 3 4 9 10 14
+T 181 161
+T 181 180
+T 181 130
+T 181 230
+T 181 231
+N 182 0 6 7 12 14
+T 182 232
+T 182 233
+T 182 207
+N 183 2 4 9 12 14
+T 183 234
+T 183 235
+T 183 230
+N 184 0 4 7 12 13
+T 184 185
+T 184 186
+T 184 134
+T 184 236
+N 185 1 4 7 12 13
+T 185 184
+T 185 186
+T 185 134
+T 185 237
+N 186 2 4 7 12 13
+T 186 184
+T 186 185
+T 186 134
+T 186 238
+N 187 1 4 7 10 15
+T 187 219
+T 187 239
+T 187 240
+N 188 2 4 9 10 13
+T 188 222
+T 188 241
+T 188 231
+N 189 1 6 8 12 14
+T 189 137
+T 189 190
+T 189 155
+N 190 2 6 8 12 14
+T 190 137
+T 190 189
+T 190 155
+N 191 0 6 8 12 13
+T 191 242
+T 191 243
+T 191 209
+N 192 1 4 8 12 15
+T 192 244
+T 192 245
+T 192 246
+N 193 2 4 8 10 15
+T 193 175
+T 193 141
+T 193 194
+N 194 3 4 8 10 15
+T 194 175
+T 194 141
+T 194 193
+T 194 240
+T 194 246
+N 195 3 5 9 12 14
+T 195 197
+T 195 198
+T 195 144
+T 195 230
+T 195 247
+N 196 3 5 9 10 13
+T 196 178
+T 196 203
+T 196 149
+T 196 231
+T 196 247
+N 197 0 5 9 12 14
+T 197 198
+T 197 144
+T 197 195
+N 198 1 5 9 12 14
+T 198 197
+T 198 144
+T 198 195
+N 199 1 5 7 12 15
+T 199 248
+T 199 249
+T 199 250
+N 200 2 5 9 12 13
+T 200 251
+T 200 252
+T 200 247
+N 201 2 5 7 10 15
+T 201 176
+T 201 148
+T 201 202
+T 201 253
+N 202 3 5 7 10 15
+T 202 176
+T 202 148
+T 202 201
+T 202 240
+T 202 250
+N 203 1 5 9 10 13
+T 203 178
+T 203 149
+T 203 196
+T 203 254
+N 204 0 5 8 12 15
+T 204 150
+T 204 205
+T 204 206
+N 205 2 5 8 12 15
+T 205 204
+T 205 150
+T 205 206
+N 206 3 5 8 12 15
+T 206 204
+T 206 150
+T 206 205
+T 206 246
+T 206 250
+N 207 3 6 7 12 14
+T 207 182
+T 207 232
+T 207 233
+T 207 255
+N 208 3 6 7 10 13
+T 208 165
+T 208 216
+T 208 217
+T 208 255
+N 209 3 6 8 12 13
+T 209 191
+T 209 242
+T 209 243
+T 209 255
+N 210 1 6 9 11 14
+T 210 160
+T 210 157
+T 210 211
+N 211 3 6 9 11 14
+T 211 160
+T 211 210
+T 211 157
+T 211 256
+N 212 2 6 9 10 14
+T 212 213
+T 212 257
+T 212 258
+N 213 0 6 9 10 14
+T 213 257
+T 213 212
+T 213 258
+N 214 1 6 7 11 15
+T 214 218
+T 214 259
+T 214 260
+N 215 2 6 9 11 13
+T 215 221
+T 215 261
+T 215 256
+N 216 1 6 7 10 13
+T 216 165
+T 216 217
+T 216 208
+T 216 262
+N 217 2 6 7 10 13
+T 217 165
+T 217 216
+T 217 208
+T 217 263
+N 218 0 6 7 11 15
+T 218 214
+T 218 259
+T 218 260
+T 218 264
+N 219 0 4 7 10 15
+T 219 187
+T 219 239
+T 219 240
+T 219 264
+N 220 2 4 9 11 15
+T 220 265
+T 220 223
+T 220 266
+N 221 0 6 9 11 13
+T 221 261
+T 221 215
+T 221 256
+T 221 267
+N 222 0 4 9 10 13
+T 222 241
+T 222 188
+T 222 231
+T 222 267
+N 223 1 4 9 11 15
+T 223 265
+T 223 220
+T 223 266
+N 224 2 6 8 11 15
+T 224 174
+T 224 171
+T 224 225
+N 225 3 6 8 11 15
+T 225 174
+T 225 171
+T 225 224
+T 225 260
+N 226 1 6 8 10 15
+T 226 227
+T 226 268
+T 226 269
+N 227 0 6 8 10 15
+T 227 226
+T 227 268
+T 227 269
+N 228 0 5 9 11 15
+T 228 179
+T 228 177
+T 228 229
+T 228 270
+N 229 3 5 9 11 15
+T 229 228
+T 229 179
+T 229 177
+T 229 266
+N 230 3 4 9 12 14
+T 230 234
+T 230 235
+T 230 183
+T 230 271
+N 231 3 4 9 10 13
+T 231 222
+T 231 241
+T 231 188
+T 231 271
+N 232 1 6 7 12 14
+T 232 182
+T 232 233
+T 232 207
+N 233 2 6 7 12 14
+T 233 182
+T 233 232
+T 233 207
+T 233 272
+N 234 0 4 9 12 14
+T 234 235
+T 234 183
+T 234 230
+T 234 273
+N 235 1 4 9 12 14
+T 235 234
+T 235 183
+T 235 230
+N 236 0 6 7 12 13
+T 236 274
+T 236 275
+T 236 255
+N 237 1 4 7 12 15
+T 237 276
+T 237 277
+T 237 278
+N 238 2 4 9 12 13
+T 238 279
+T 238 280
+T 238 271
+N 239 2 4 7 10 15
+T 239 219
+T 239 187
+T 239 240
+T 239 281
+N 240 3 4 7 10 15
+T 240 219
+T 240 187
+T 240 239
+T 240 278
+N 241 1 4 9 10 13
+T 241 222
+T 241 188
+T 241 231
+T 241 282
+N 242 1 6 8 12 13
+T 242 191
+T 242 243
+T 242 209
+T 242 283
+N 243 2 6 8 12 13
+T 243 191
+T 243 242
+T 243 209
+N 244 0 4 8 12 15
+T 244 192
+T 244 245
+T 244 246
+T 244 284
+N 245 2 4 8 12 15
+T 245 244
+T 245 192
+T 245 246
+N 246 3 4 8 12 15
+T 246 244
+T 246 192
+T 246 245
+T 246 278
+N 247 3 5 9 12 13
+T 247 251
+T 247 252
+T 247 200
+T 247 271
+N 248 0 5 7 12 15
+T 248 199
+T 248 249
+T 248 250
+N 249 2 5 7 12 15
+T 249 248
+T 249 199
+T 249 250
+T 249 285
+N 250 3 5 7 12 15
+T 250 248
+T 250 199
+T 250 249
+T 250 278
+N 251 0 5 9 12 13
+T 251 252
+T 251 200
+T 251 247
+N 252 1 5 9 12 13
+T 252 251
+T 252 200
+T 252 247
+T 252 286
+N 253 2 5 9 10 15
+T 253 270
+T 253 254
+T 253 287
+N 254 1 5 9 10 15
+T 254 270
+T 254 253
+T 254 287
+N 255 3 6 7 12 13
+T 255 236
+T 255 274
+T 255 275
+N 256 3 6 9 11 13
+T 256 221
+T 256 261
+T 256 215
+N 257 1 6 9 10 14
+T 257 213
+T 257 212
+T 257 258
+N 258 3 6 9 10 14
+T 258 213
+T 258 257
+T 258 212
+T 258 288
+T 258 289
+N 259 2 6 7 11 15
+T 259 218
+T 259 214
+T 259 260
+T 259 290
+N 260 3 6 7 11 15
+T 260 218
+T 260 214
+T 260 259
+N 261 1 6 9 11 13
+T 261 221
+T 261 215
+T 261 256
+T 261 291
+N 262 1 6 7 10 15
+T 262 264
+T 262 292
+T 262 293
+N 263 2 6 9 10 13
+T 263 267
+T 263 294
+T 263 289
+N 264 0 6 7 10 15
+T 264 262
+T 264 292
+T 264 293
+N 265 0 4 9 11 15
+T 265 223
+T 265 220
+T 265 266
+T 265 295
+T 265 296
+N 266 3 4 9 11 15
+T 266 265
+T 266 223
+T 266 220
+N 267 0 6 9 10 13
+T 267 294
+T 267 263
+T 267 289
+N 268 2 6 8 10 15
+T 268 227
+T 268 226
+T 268 269
+N 269 3 6 8 10 15
+T 269 227
+T 269 226
+T 269 268
+T 269 293
+T 269 297
+N 270 0 5 9 10 15
+T 270 254
+T 270 253
+T 270 287
+N 271 3 4 9 12 13
+T 271 279
+T 271 280
+T 271 238
+N 272 2 6 9 12 14
+T 272 273
+T 272 298
+T 272 288
+N 273 0 6 9 12 14
+T 273 298
+T 273 272
+T 273 288
+N 274 1 6 7 12 13
+T 274 236
+T 274 275
+T 274 255
+T 274 299
+N 275 2 6 7 12 13
+T 275 236
+T 275 274
+T 275 255
+T 275 300
+N 276 0 4 7 12 15
+T 276 237
+T 276 277
+T 276 278
+T 276 301
+N 277 2 4 7 12 15
+T 277 276
+T 277 237
+T 277 278
+T 277 302
+N 278 3 4 7 12 15
+T 278 276
+T 278 237
+T 278 277
+N 279 0 4 9 12 13
+T 279 280
+T 279 238
+T 279 271
+T 279 303
+N 280 1 4 9 12 13
+T 280 279
+T 280 238
+T 280 271
+T 280 304
+N 281 2 4 9 10 15
+T 281 296
+T 281 282
+T 281 305
+N 282 1 4 9 10 15
+T 282 296
+T 282 281
+T 282 305
+N 283 1 6 8 12 15
+T 283 284
+T 283 306
+T 283 297
+N 284 0 6 8 12 15
+T 284 283
+T 284 306
+T 284 297
+N 285 2 5 9 12 15
+T 285 307
+T 285 286
+T 285 308
+N 286 1 5 9 12 15
+T 286 307
+T 286 285
+T 286 308
+N 287 3 5 9 10 15
+T 287 270
+T 287 254
+T 287 253
+T 287 305
+T 287 308
+N 288 3 6 9 12 14
+T 288 273
+T 288 298
+T 288 272
+T 288 309
+N 289 3 6 9 10 13
+T 289 267
+T 289 294
+T 289 263
+T 289 309
+N 290 2 6 9 11 15
+T 290 295
+T 290 291
+T 290 310
+N 291 1 6 9 11 15
+T 291 295
+T 291 290
+T 291 310
+N 292 2 6 7 10 15
+T 292 264
+T 292 262
+T 292 293
+T 292 311
+N 293 3 6 7 10 15
+T 293 264
+T 293 262
+T 293 292
+T 293 312
+N 294 1 6 9 10 13
+T 294 267
+T 294 263
+T 294 289
+T 294 313
+N 295 0 6 9 11 15
+T 295 291
+T 295 290
+T 295 310
+T 295 314
+N 296 0 4 9 10 15
+T 296 282
+T 296 281
+T 296 305
+T 296 314
+N 297 3 6 8 12 15
+T 297 284
+T 297 283
+T 297 306
+T 297 312
+N 298 1 6 9 12 14
+T 298 273
+T 298 272
+T 298 288
+N 299 1 6 7 12 15
+T 299 301
+T 299 315
+T 299 312
+N 300 2 6 9 12 13
+T 300 303
+T 300 316
+T 300 309
+N 301 0 6 7 12 15
+T 301 299
+T 301 315
+T 301 312
+N 302 2 4 9 12 15
+T 302 317
+T 302 304
+T 302 318
+N 303 0 6 9 12 13
+T 303 316
+T 303 300
+T 303 309
+N 304 1 4 9 12 15
+T 304 317
+T 304 302
+T 304 318
+N 305 3 4 9 10 15
+T 305 296
+T 305 282
+T 305 281
+T 305 318
+N 306 2 6 8 12 15
+T 306 284
+T 306 283
+T 306 297
+N 307 0 5 9 12 15
+T 307 286
+T 307 285
+T 307 308
+N 308 3 5 9 12 15
+T 308 307
+T 308 286
+T 308 285
+T 308 318
+N 309 3 6 9 12 13
+T 309 303
+T 309 316
+T 309 300
+N 310 3 6 9 11 15
+T 310 295
+T 310 291
+T 310 290
+N 311 2 6 9 10 15
+T 311 314
+T 311 313
+T 311 319
+N 312 3 6 7 12 15
+T 312 301
+T 312 299
+T 312 315
+N 313 1 6 9 10 15
+T 313 314
+T 313 311
+T 313 319
+N 314 0 6 9 10 15
+T 314 313
+T 314 311
+T 314 319
+N 315 2 6 7 12 15
+T 315 301
+T 315 299
+T 315 312
+T 315 320
+N 316 1 6 9 12 13
+T 316 303
+T 316 300
+T 316 309
+T 316 321
+N 317 0 4 9 12 15
+T 317 304
+T 317 302
+T 317 318
+T 317 322
+N 318 3 4 9 12 15
+T 318 317
+T 318 304
+T 318 302
+N 319 3 6 9 10 15
+T 319 314
+T 319 313
+T 319 311
+T 319 323
+G 320 2 6 9 12 15
+T 320 322
+T 320 321
+T 320 323
+G 321 1 6 9 12 15
+T 321 322
+T 321 320
+T 321 323
+G 322 0 6 9 12 15
+T 322 321
+T 322 320
+T 322 323
+G 323 3 6 9 12 15
+T 323 322
+T 323 321
+T 323 320
+[t=0.0122757s, 19020 KB] Finished dumping the reachable state space.
+[t=0.0124085s, 19020 KB] Actual search time: 0.005159s
+[t=0.0124711s, 19020 KB] Expanded 324 state(s).
+[t=0.0124711s, 19020 KB] Reopened 0 state(s).
+[t=0.0124711s, 19020 KB] Evaluated 0 state(s).
+[t=0.0124711s, 19020 KB] Evaluations: 0
+[t=0.0124711s, 19020 KB] Generated 1189 state(s).
+[t=0.0124711s, 19020 KB] Dead ends: 0 state(s).
+[t=0.0124711s, 19020 KB] Number of registered states: 324
+[t=0.0124711s, 19020 KB] Closed list load factor: 324/511 = 0.634051
+[t=0.0124711s, 19020 KB] Search time: 0.00557195s
+[t=0.0124711s, 19020 KB] Total time: 0.0124711s
+Search stopped without finding a solution.
+Peak memory: 19020 KB
+Remove intermediate file output.sas
+search exit code: 12
+
+Driver aborting after search
+INFO     Planner time: 0.17s

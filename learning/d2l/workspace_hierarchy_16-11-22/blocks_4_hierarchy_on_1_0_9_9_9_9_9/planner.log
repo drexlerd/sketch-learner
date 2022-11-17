@@ -1,0 +1,616 @@
+INFO     planner time limit: None
+INFO     planner memory limit: None
+
+INFO     Running translator.
+INFO     translator stdin: None
+INFO     translator time limit: None
+INFO     translator memory limit: None
+INFO     translator command line string: /proj/ssiw/projects/code/sketch-learner/.venv/bin/python3 /proj/ssiw/projects/code/sketch-learner/learning/d2l/libs/dlplan/libs/scorpion/builds/release/bin/translate/translate.py /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/blocks_4_on/domain.pddl /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/blocks_4_on/p-4-0.pddl --dump-predicates --dump-constants --dump-static-atoms --dump-goal-atoms --sas-file output.sas
+Parsing...
+Problem blocksworld: bw-rand-4 [:strips]
+Types:
+  object
+Constants:
+Objects:
+  b1: object
+  b2: object
+  b3: object
+  b4: object
+Predicates:
+  clear(?x: object)
+  on-table(?x: object)
+  arm-empty()
+  holding(?x: object)
+  on(?x: object, ?y: object)
+  =(?x: object, ?y: object)
+Functions:
+Init:
+  Atom arm-empty()
+  Atom on(b2, b1)
+  Atom on(b1, b3)
+  Atom clear(b2)
+  Atom on(b3, b4)
+  Atom on-table(b4)
+  Atom =(b1, b1)
+  Atom =(b2, b2)
+  Atom =(b3, b3)
+  Atom =(b4, b4)
+Goal:
+  Atom on(b1, b2)
+Actions:
+pickup(?ob: object)
+Precondition:
+  Conjunction
+    Atom clear(?ob)
+    Atom on-table(?ob)
+    Atom arm-empty()
+Effects:
+  Atom holding(?ob)
+  NegatedAtom clear(?ob)
+  NegatedAtom on-table(?ob)
+  NegatedAtom arm-empty()
+Cost:
+  None
+putdown(?ob: object)
+Precondition:
+  Atom holding(?ob)
+Effects:
+  Atom clear(?ob)
+  Atom arm-empty()
+  Atom on-table(?ob)
+  NegatedAtom holding(?ob)
+Cost:
+  None
+stack(?ob: object, ?underob: object)
+Precondition:
+  Conjunction
+    Atom clear(?underob)
+    Atom holding(?ob)
+Effects:
+  Atom arm-empty()
+  Atom clear(?ob)
+  Atom on(?ob, ?underob)
+  NegatedAtom clear(?underob)
+  NegatedAtom holding(?ob)
+Cost:
+  None
+unstack(?ob: object, ?underob: object)
+Precondition:
+  Conjunction
+    Atom on(?ob, ?underob)
+    Atom clear(?ob)
+    Atom arm-empty()
+Effects:
+  Atom holding(?ob)
+  Atom clear(?underob)
+  NegatedAtom on(?ob, ?underob)
+  NegatedAtom clear(?ob)
+  NegatedAtom arm-empty()
+Cost:
+  None
+Parsing: [0.000s CPU, 0.003s wall-clock]
+Atom on(b1, b2)
+Normalizing task... [0.000s CPU, 0.000s wall-clock]
+Instantiating...
+Generating Datalog program... [0.000s CPU, 0.000s wall-clock]
+Normalizing Datalog program...
+Normalizing Datalog program: [0.000s CPU, 0.001s wall-clock]
+Preparing model... [0.000s CPU, 0.000s wall-clock]
+Generated 21 rules.
+Computing model... [0.010s CPU, 0.001s wall-clock]
+78 relevant atoms
+52 auxiliary atoms
+130 final queue length
+203 total queue pushes
+Completing instantiation... [0.000s CPU, 0.001s wall-clock]
+Instantiating: [0.010s CPU, 0.003s wall-clock]
+Computing fact groups...
+Finding invariants...
+10 initial candidates
+Finding invariants: [0.000s CPU, 0.003s wall-clock]
+Checking invariant weight... [0.000s CPU, 0.000s wall-clock]
+Instantiating groups... [0.000s CPU, 0.000s wall-clock]
+Collecting mutex groups... [0.000s CPU, 0.000s wall-clock]
+Choosing groups...
+5 uncovered facts
+Choosing groups: [0.000s CPU, 0.000s wall-clock]
+Building translation key... [0.000s CPU, 0.000s wall-clock]
+Computing fact groups: [0.000s CPU, 0.003s wall-clock]
+Building STRIPS to SAS dictionary... [0.000s CPU, 0.000s wall-clock]
+Building dictionary for full mutex groups... [0.000s CPU, 0.000s wall-clock]
+Building mutex information...
+Building mutex information: [0.000s CPU, 0.000s wall-clock]
+Translating task...
+Processing axioms...
+Simplifying axioms... [0.000s CPU, 0.000s wall-clock]
+Translator axioms removed by simplifying: 0
+Computing negative axioms... [0.000s CPU, 0.000s wall-clock]
+Processing axioms: [0.000s CPU, 0.000s wall-clock]
+Translating task: [0.000s CPU, 0.001s wall-clock]
+44 effect conditions simplified
+0 implied preconditions added
+Detecting unreachable propositions...
+0 operators removed
+0 axioms removed
+8 propositions removed
+Detecting unreachable propositions: [0.000s CPU, 0.001s wall-clock]
+Reordering and filtering variables...
+9 of 9 variables necessary.
+5 of 9 mutex groups necessary.
+32 of 32 operators necessary.
+0 of 0 axiom rules necessary.
+Reordering and filtering variables: [0.000s CPU, 0.000s wall-clock]
+Translator variables: 9
+Translator derived variables: 0
+Translator facts: 30
+Translator goal facts: 1
+Translator mutex groups: 5
+Translator total mutex groups size: 25
+Translator operators: 32
+Translator axioms: 0
+Translator task size: 293
+Translator peak memory: 149308 KB
+Writing output... [0.000s CPU, 0.001s wall-clock]
+Done! [0.010s CPU, 0.014s wall-clock]
+translate exit code: 0
+
+INFO     Running search (release).
+INFO     search stdin: output.sas
+INFO     search time limit: None
+INFO     search memory limit: None
+INFO     search command line string: /proj/ssiw/projects/code/sketch-learner/learning/d2l/libs/dlplan/libs/scorpion/builds/release/bin/downward --search 'dump_reachable_search_space()' --internal-plan-file sas_plan < output.sas
+[t=0.000192308s, 18620 KB] reading input...
+[t=0.00143693s, 18628 KB] done reading input!
+[t=0.00700139s, 19024 KB] Building successor generator...done!
+[t=0.00734267s, 19024 KB] peak memory difference for successor generator creation: 0 KB
+[t=0.00741518s, 19024 KB] time for successor generation creation: 8.1886e-05s
+[t=0.00750196s, 19024 KB] Variables: 9
+[t=0.00757668s, 19024 KB] FactPairs: 30
+[t=0.00764666s, 19024 KB] Bytes per state: 4
+[t=0.00801247s, 19024 KB] Dumping the reachable state space...
+# F (fact): [fact ID] [name]
+# G (goal state): [goal state ID] [fact ID 1] [fact ID 2] ...
+# N (non-goal state): [non-goal state ID] [fact ID 1] [fact ID 2] ...
+# T (transition): [source state ID] [target state ID]
+# The initial state has ID 0.
+F 0 holding(b2)
+F 1 on(b2,b1)
+F 2 on(b2,b3)
+F 3 on(b2,b4)
+F 4 on-table(b2)
+F 5 holding(b3)
+F 6 on(b3,b1)
+F 7 on(b3,b2)
+F 8 on(b3,b4)
+F 9 on-table(b3)
+F 10 holding(b4)
+F 11 on(b4,b1)
+F 12 on(b4,b2)
+F 13 on(b4,b3)
+F 14 on-table(b4)
+F 15 clear(b2)
+F 16 clear(b3)
+F 17 clear(b4)
+F 18 arm-empty()
+F 19 clear(b1)
+F 20 holding(b1)
+F 21 on(b1,b2)
+F 22 on(b1,b3)
+F 23 on(b1,b4)
+F 24 on-table(b1)
+N 0 1 8 14 15 18 22
+T 0 1
+N 1 0 8 14 19 22
+T 1 2
+T 1 0
+N 2 4 8 14 15 18 19 22
+T 2 1
+T 2 3
+N 3 4 8 14 15 16 20
+T 3 4
+T 3 2
+T 3 5
+G 4 4 8 14 16 18 19 21
+T 4 6
+T 4 3
+N 5 4 8 14 15 16 18 19 24
+T 5 7
+T 5 8
+T 5 3
+G 6 4 5 14 17 19 21
+T 6 9
+T 6 4
+T 6 10
+N 7 0 8 14 16 19 24
+T 7 5
+T 7 11
+T 7 12
+N 8 4 5 14 15 17 19 24
+T 8 13
+T 8 14
+T 8 5
+T 8 15
+G 9 4 9 14 16 17 18 19 21
+T 9 6
+T 9 16
+T 9 17
+G 10 4 6 14 16 17 18 21
+T 10 6
+T 10 18
+N 11 2 8 14 15 18 19 24
+T 11 7
+T 11 19
+N 12 1 8 14 15 16 18 24
+T 12 7
+T 12 20
+N 13 4 9 14 15 16 17 18 19 24
+T 13 21
+T 13 8
+T 13 22
+T 13 17
+N 14 4 7 14 16 17 18 19 24
+T 14 8
+T 14 23
+T 14 24
+N 15 4 6 14 15 16 17 18 24
+T 15 25
+T 15 8
+T 15 26
+G 16 4 9 10 16 19 21
+T 16 9
+T 16 27
+T 16 28
+N 17 4 9 14 15 16 17 20
+T 17 9
+T 17 29
+T 17 30
+T 17 13
+G 18 4 6 10 16 21
+T 18 10
+T 18 31
+N 19 2 8 14 15 20
+T 19 32
+T 19 11
+N 20 1 5 14 15 17 24
+T 20 33
+T 20 34
+T 20 12
+N 21 0 9 14 16 17 19 24
+T 21 13
+T 21 35
+T 21 36
+T 21 33
+N 22 4 9 10 15 16 19 24
+T 22 13
+T 22 37
+T 22 38
+T 22 39
+N 23 4 7 10 16 19 24
+T 23 14
+T 23 40
+T 23 41
+N 24 4 7 14 16 17 20
+T 24 42
+T 24 43
+T 24 14
+N 25 0 6 14 16 17 24
+T 25 15
+T 25 44
+T 25 45
+N 26 4 6 10 15 16 24
+T 26 15
+T 26 46
+T 26 47
+G 27 4 9 13 17 18 19 21
+T 27 16
+T 27 48
+G 28 4 9 11 16 17 18 21
+T 28 49
+T 28 16
+N 29 4 9 14 15 17 18 19 22
+T 29 50
+T 29 51
+T 29 17
+N 30 4 9 14 15 16 18 19 23
+T 30 52
+T 30 53
+T 30 17
+G 31 4 6 13 17 18 21
+T 31 18
+G 32 2 8 14 18 19 21
+T 32 19
+N 33 1 9 14 15 16 17 18 24
+T 33 21
+T 33 20
+T 33 54
+N 34 1 7 14 16 17 18 24
+T 34 20
+T 34 55
+N 35 2 9 14 15 17 18 19 24
+T 35 21
+T 35 56
+T 35 57
+N 36 3 9 14 15 16 18 19 24
+T 36 21
+T 36 58
+T 36 59
+N 37 4 9 12 16 17 18 19 24
+T 37 60
+T 37 22
+T 37 61
+N 38 4 9 13 15 17 18 19 24
+T 38 62
+T 38 22
+T 38 48
+N 39 4 9 11 15 16 17 18 24
+T 39 63
+T 39 64
+T 39 22
+N 40 4 7 13 17 18 19 24
+T 40 23
+T 40 65
+N 41 4 7 11 16 17 18 24
+T 41 64
+T 41 23
+N 42 4 7 14 17 18 19 22
+T 42 66
+T 42 24
+N 43 4 7 14 16 18 19 23
+T 43 53
+T 43 24
+N 44 2 6 14 15 17 18 24
+T 44 25
+T 44 67
+N 45 3 6 14 15 16 18 24
+T 45 25
+T 45 58
+N 46 4 6 12 16 17 18 24
+T 46 60
+T 46 26
+N 47 4 6 13 15 17 18 24
+T 47 68
+T 47 26
+N 48 4 9 13 15 17 20
+T 48 27
+T 48 69
+T 48 38
+G 49 4 5 11 17 21
+T 49 28
+T 49 70
+N 50 0 9 14 17 19 22
+T 50 29
+T 50 71
+T 50 72
+N 51 4 9 10 15 19 22
+T 51 29
+T 51 73
+T 51 74
+N 52 0 9 14 16 19 23
+T 52 30
+T 52 75
+T 52 76
+N 53 4 5 14 15 19 23
+T 53 30
+T 53 43
+T 53 77
+N 54 1 9 10 15 16 24
+T 54 33
+T 54 78
+T 54 79
+N 55 1 7 10 16 24
+T 55 34
+T 55 80
+N 56 2 9 10 15 19 24
+T 56 35
+T 56 81
+T 56 82
+N 57 2 9 14 15 17 20
+T 57 83
+T 57 75
+T 57 35
+N 58 3 5 14 15 19 24
+T 58 36
+T 58 84
+T 58 45
+N 59 3 9 14 15 16 20
+T 59 85
+T 59 71
+T 59 36
+N 60 4 5 12 17 19 24
+T 60 37
+T 60 86
+T 60 46
+N 61 4 9 12 16 17 20
+T 61 73
+T 61 87
+T 61 37
+N 62 0 9 13 17 19 24
+T 62 38
+T 62 88
+T 62 79
+N 63 0 9 11 16 17 24
+T 63 39
+T 63 82
+T 63 89
+N 64 4 5 11 15 17 24
+T 64 39
+T 64 41
+T 64 90
+N 65 4 7 13 17 20
+T 65 91
+T 65 40
+N 66 4 7 10 19 22
+T 66 42
+T 66 92
+N 67 2 6 10 15 24
+T 67 44
+T 67 93
+N 68 0 6 13 17 24
+T 68 47
+T 68 94
+N 69 4 9 13 15 18 19 23
+T 69 95
+T 69 48
+G 70 4 8 11 16 18 21
+T 70 49
+N 71 3 9 14 15 18 19 22
+T 71 50
+T 71 59
+N 72 1 9 14 15 17 18 22
+T 72 50
+T 72 96
+N 73 4 9 12 17 18 19 22
+T 73 51
+T 73 61
+N 74 4 9 11 15 17 18 22
+T 74 97
+T 74 51
+N 75 2 9 14 15 18 19 23
+T 75 52
+T 75 57
+N 76 1 9 14 15 16 18 23
+T 76 52
+T 76 98
+N 77 4 6 14 15 16 18 23
+T 77 99
+T 77 53
+N 78 1 9 12 16 17 18 24
+T 78 100
+T 78 54
+N 79 1 9 13 15 17 18 24
+T 79 62
+T 79 54
+N 80 1 7 13 17 18 24
+T 80 55
+N 81 2 9 12 17 18 19 24
+T 81 56
+T 81 101
+N 82 2 9 11 15 17 18 24
+T 82 63
+T 82 56
+G 83 2 9 14 17 18 19 21
+T 83 102
+T 83 57
+N 84 3 7 14 16 18 19 24
+T 84 58
+T 84 103
+G 85 3 9 14 16 18 19 21
+T 85 104
+T 85 59
+N 86 4 8 12 16 18 19 24
+T 86 60
+T 86 105
+N 87 4 9 12 16 18 19 23
+T 87 106
+T 87 61
+N 88 3 9 13 15 18 19 24
+T 88 62
+T 88 107
+N 89 3 9 11 15 16 18 24
+T 89 63
+T 89 108
+N 90 4 8 11 15 16 18 24
+T 90 109
+T 90 64
+N 91 4 7 13 18 19 23
+T 91 65
+N 92 4 7 11 17 18 22
+T 92 66
+N 93 2 6 12 17 18 24
+T 93 67
+N 94 3 6 13 15 18 24
+T 94 68
+N 95 0 9 13 19 23
+T 95 69
+T 95 110
+N 96 1 9 10 15 22
+T 96 72
+T 96 111
+N 97 0 9 11 17 22
+T 97 74
+T 97 112
+N 98 1 5 14 15 23
+T 98 76
+T 98 113
+N 99 0 6 14 16 23
+T 99 77
+T 99 114
+N 100 1 5 12 17 24
+T 100 78
+T 100 115
+N 101 2 9 12 17 20
+T 101 116
+T 101 81
+G 102 2 9 10 19 21
+T 102 83
+T 102 117
+N 103 3 7 14 16 20
+T 103 118
+T 103 84
+G 104 3 5 14 19 21
+T 104 85
+T 104 119
+N 105 4 8 12 16 20
+T 105 120
+T 105 86
+N 106 4 5 12 19 23
+T 106 87
+T 106 121
+N 107 3 9 13 15 20
+T 107 122
+T 107 88
+N 108 3 5 11 15 24
+T 108 89
+T 108 123
+N 109 0 8 11 16 24
+T 109 90
+T 109 124
+N 110 1 9 13 15 18 23
+T 110 95
+N 111 1 9 12 17 18 22
+T 111 96
+N 112 3 9 11 15 18 22
+T 112 97
+N 113 1 7 14 16 18 23
+T 113 98
+N 114 2 6 14 15 18 23
+T 114 99
+N 115 1 8 12 16 18 24
+T 115 100
+N 116 2 9 12 18 19 23
+T 116 101
+G 117 2 9 11 17 18 21
+T 117 102
+N 118 3 7 14 18 19 22
+T 118 103
+G 119 3 6 14 16 18 21
+T 119 104
+N 120 4 8 12 18 19 22
+T 120 105
+N 121 4 6 12 16 18 23
+T 121 106
+G 122 3 9 13 18 19 21
+T 122 107
+N 123 3 7 11 16 18 24
+T 123 108
+N 124 2 8 11 15 18 24
+T 124 109
+[t=0.0103898s, 19024 KB] Finished dumping the reachable state space.
+[t=0.0105573s, 19024 KB] Actual search time: 0.00221257s
+[t=0.0106435s, 19024 KB] Expanded 125 state(s).
+[t=0.0106435s, 19024 KB] Reopened 0 state(s).
+[t=0.0106435s, 19024 KB] Evaluated 0 state(s).
+[t=0.0106435s, 19024 KB] Evaluations: 0
+[t=0.0106435s, 19024 KB] Generated 273 state(s).
+[t=0.0106435s, 19024 KB] Dead ends: 0 state(s).
+[t=0.0106435s, 19024 KB] Number of registered states: 125
+[t=0.0106435s, 19024 KB] Closed list load factor: 125/255 = 0.490196
+[t=0.0106435s, 19024 KB] Search time: 0.0026327s
+[t=0.0106435s, 19024 KB] Total time: 0.0106435s
+Search stopped without finding a solution.
+Peak memory: 19024 KB
+Remove intermediate file output.sas
+search exit code: 12
+
+Driver aborting after search
+INFO     Planner time: 0.16s
