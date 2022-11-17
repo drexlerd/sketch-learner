@@ -2,7 +2,7 @@
 #
 #SBATCH -J childsnack_1_8
 #SBATCH -t 7-00:00:00
-#SBATCH -C fat --exclusive
+#SBATCH -C thin --exclusive
 #SBATCH --mail-type=FAIL
 #SBATCH --mail-user=dominik.drexler@liu.se
 
