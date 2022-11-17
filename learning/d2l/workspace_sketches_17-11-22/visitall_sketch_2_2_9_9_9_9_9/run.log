@@ -1,0 +1,559 @@
+Changing working directory:  /proj/ssiw/projects/code/sketch-learner/learning/d2l/workspace/visitall_sketch_2_2_9_9_9_9_9
+Creating sym link: /proj/ssiw/projects/code/sketch-learner/learning/d2l/libs/dlplan/libs/scorpion/fast-downward.py /proj/ssiw/projects/code/sketch-learner/learning/d2l/workspace/visitall_sketch_2_2_9_9_9_9_9/fast-downward.py
+================================================================================
+SLTP v.0.2.0
+================================================================================
+================================================================================
+(pid: 68362) STARTING STEP #1: Incremental learning module
+================================================================================
+2022-11-17 12:13:38 INFO     [40m[34mInitializing DomainData...[0m
+2022-11-17 12:13:38 INFO     Constructing DomainData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/visitall/domain.pddl
+2022-11-17 12:13:38 INFO     [40m[34m..done[0m
+2022-11-17 12:13:38 INFO     [40m[34mInitializing InstanceDatas...[0m
+2022-11-17 12:13:38 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/visitall/p-1-0.5-2-0.pddl
+2022-11-17 12:13:39 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/visitall/p-1-0.5-2-1.pddl
+2022-11-17 12:13:39 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/visitall/p-1-0.5-2-2.pddl
+Num states: 6
+2022-11-17 12:13:40 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/visitall/p-1-0.5-2-3.pddl
+Num states: 6
+2022-11-17 12:13:40 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/visitall/p-1-0.5-2-4.pddl
+Num states: 4
+2022-11-17 12:13:40 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/visitall/p-1-0.5-2-5.pddl
+2022-11-17 12:13:40 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/visitall/p-1-0.5-2-6.pddl
+Num states: 4
+2022-11-17 12:13:40 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/visitall/p-1-0.5-2-7.pddl
+Num states: 8
+2022-11-17 12:13:41 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/visitall/p-1-0.5-2-8.pddl
+Num states: 5
+2022-11-17 12:13:41 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/visitall/p-1-0.5-2-9.pddl
+Num states: 6
+2022-11-17 12:13:41 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/visitall/p-1-0.5-3-0.pddl
+Num states: 44
+2022-11-17 12:13:41 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/visitall/p-1-0.5-3-1.pddl
+Num states: 44
+2022-11-17 12:13:41 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/visitall/p-1-0.5-3-2.pddl
+Num states: 79
+2022-11-17 12:13:42 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/visitall/p-1-0.5-3-3.pddl
+Num states: 130
+2022-11-17 12:13:42 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/visitall/p-1-0.5-3-4.pddl
+Num states: 38
+2022-11-17 12:13:42 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/visitall/p-1-0.5-3-5.pddl
+Num states: 130
+2022-11-17 12:13:42 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/visitall/p-1-0.5-3-6.pddl
+Num states: 71
+2022-11-17 12:13:42 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/visitall/p-1-0.5-3-7.pddl
+Num states: 83
+2022-11-17 12:13:43 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/visitall/p-1-0.5-3-8.pddl
+Num states: 25
+2022-11-17 12:13:43 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/visitall/p-1-0.5-3-9.pddl
+Num states: 71
+2022-11-17 12:13:43 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/visitall/p-1-0.5-4-0.pddl
+Num states: 400
+2022-11-17 12:13:43 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/visitall/p-1-0.5-4-1.pddl
+Num states: 400
+2022-11-17 12:13:43 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/visitall/p-1-0.5-4-2.pddl
+Num states: 337
+2022-11-17 12:13:44 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/visitall/p-1-0.5-4-3.pddl
+Num states: 2164
+2022-11-17 12:13:44 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/visitall/p-1-0.5-4-4.pddl
+Num states: 2592
+2022-11-17 12:13:44 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/visitall/p-1-0.5-4-5.pddl
+Num states: 400
+2022-11-17 12:13:44 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/visitall/p-1-0.5-4-6.pddl
+Num states: 716
+2022-11-17 12:13:45 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/visitall/p-1-0.5-4-7.pddl
+Num states: 204
+2022-11-17 12:13:45 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/visitall/p-1-0.5-4-8.pddl
+Num states: 2303
+2022-11-17 12:13:45 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/visitall/p-1-0.5-4-9.pddl
+2022-11-17 12:13:45 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/visitall/p-1-1.0-2-0.pddl
+Num states: 8
+2022-11-17 12:13:45 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/visitall/p-1-1.0-2-1.pddl
+Num states: 8
+2022-11-17 12:13:46 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/visitall/p-1-1.0-2-2.pddl
+Num states: 6
+2022-11-17 12:13:46 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/visitall/p-1-1.0-2-3.pddl
+Num states: 6
+2022-11-17 12:13:46 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/visitall/p-1-1.0-2-4.pddl
+Num states: 6
+2022-11-17 12:13:46 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/visitall/p-1-1.0-2-5.pddl
+Num states: 6
+2022-11-17 12:13:46 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/visitall/p-1-1.0-2-6.pddl
+Num states: 6
+2022-11-17 12:13:47 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/visitall/p-1-1.0-2-7.pddl
+Num states: 8
+2022-11-17 12:13:47 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/visitall/p-1-1.0-2-8.pddl
+Num states: 8
+2022-11-17 12:13:47 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/visitall/p-1-1.0-2-9.pddl
+Num states: 6
+2022-11-17 12:13:47 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/visitall/p-1-1.0-3-0.pddl
+Num states: 148
+2022-11-17 12:13:47 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/visitall/p-1-1.0-3-1.pddl
+Num states: 148
+2022-11-17 12:13:48 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/visitall/p-1-1.0-3-2.pddl
+Num states: 272
+2022-11-17 12:13:48 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/visitall/p-1-1.0-3-3.pddl
+Num states: 344
+2022-11-17 12:13:48 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/visitall/p-1-1.0-3-4.pddl
+Num states: 260
+2022-11-17 12:13:48 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/visitall/p-1-1.0-3-5.pddl
+Num states: 344
+2022-11-17 12:13:48 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/visitall/p-1-1.0-3-6.pddl
+Num states: 151
+2022-11-17 12:13:49 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/visitall/p-1-1.0-3-7.pddl
+Num states: 148
+2022-11-17 12:13:49 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/visitall/p-1-1.0-3-8.pddl
+Num states: 148
+2022-11-17 12:13:49 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/visitall/p-1-1.0-3-9.pddl
+Num states: 272
+2022-11-17 12:13:49 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/visitall/p-1-1.0-4-0.pddl
+2022-11-17 12:13:50 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/visitall/p-1-1.0-4-1.pddl
+2022-11-17 12:13:51 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/visitall/p-1-1.0-4-2.pddl
+2022-11-17 12:13:51 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/visitall/p-1-1.0-4-3.pddl
+2022-11-17 12:13:52 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/visitall/p-1-1.0-4-4.pddl
+2022-11-17 12:13:52 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/visitall/p-1-1.0-4-5.pddl
+2022-11-17 12:13:53 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/visitall/p-1-1.0-4-6.pddl
+2022-11-17 12:13:53 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/visitall/p-1-1.0-4-7.pddl
+2022-11-17 12:13:54 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/visitall/p-1-1.0-4-8.pddl
+2022-11-17 12:13:55 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/visitall/p-1-1.0-4-9.pddl
+2022-11-17 12:13:55 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/visitall/p-2-0.5-2-0.pddl
+Num states: 3
+2022-11-17 12:13:55 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/visitall/p-2-0.5-2-1.pddl
+Num states: 3
+2022-11-17 12:13:55 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/visitall/p-2-0.5-2-2.pddl
+Num states: 3
+2022-11-17 12:13:56 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/visitall/p-2-0.5-2-3.pddl
+2022-11-17 12:13:56 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/visitall/p-2-0.5-2-4.pddl
+2022-11-17 12:13:56 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/visitall/p-2-0.5-2-5.pddl
+2022-11-17 12:13:56 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/visitall/p-2-0.5-2-6.pddl
+2022-11-17 12:13:56 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/visitall/p-2-0.5-2-7.pddl
+2022-11-17 12:13:57 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/visitall/p-2-0.5-2-8.pddl
+Num states: 3
+2022-11-17 12:13:57 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/visitall/p-2-0.5-2-9.pddl
+Num states: 3
+2022-11-17 12:13:57 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/visitall/p-2-0.5-3-0.pddl
+Num states: 51
+2022-11-17 12:13:57 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/visitall/p-2-0.5-3-1.pddl
+Num states: 51
+2022-11-17 12:13:57 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/visitall/p-2-0.5-3-2.pddl
+Num states: 25
+2022-11-17 12:13:58 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/visitall/p-2-0.5-3-3.pddl
+Num states: 32
+2022-11-17 12:13:58 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/visitall/p-2-0.5-3-4.pddl
+Num states: 37
+2022-11-17 12:13:58 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/visitall/p-2-0.5-3-5.pddl
+Num states: 29
+2022-11-17 12:13:58 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/visitall/p-2-0.5-3-6.pddl
+2022-11-17 12:13:58 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/visitall/p-2-0.5-3-7.pddl
+Num states: 12
+2022-11-17 12:13:59 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/visitall/p-2-0.5-3-8.pddl
+Num states: 12
+2022-11-17 12:13:59 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/visitall/p-2-0.5-3-9.pddl
+Num states: 28
+2022-11-17 12:13:59 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/visitall/p-2-0.5-4-0.pddl
+Num states: 352
+2022-11-17 12:13:59 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/visitall/p-2-0.5-4-1.pddl
+Num states: 352
+2022-11-17 12:13:59 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/visitall/p-2-0.5-4-2.pddl
+Num states: 405
+2022-11-17 12:14:00 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/visitall/p-2-0.5-4-3.pddl
+Num states: 1056
+2022-11-17 12:14:00 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/visitall/p-2-0.5-4-4.pddl
+Num states: 864
+2022-11-17 12:14:00 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/visitall/p-2-0.5-4-5.pddl
+Num states: 119
+2022-11-17 12:14:00 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/visitall/p-2-0.5-4-6.pddl
+Num states: 500
+2022-11-17 12:14:01 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/visitall/p-2-0.5-4-7.pddl
+Num states: 192
+2022-11-17 12:14:01 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/visitall/p-2-0.5-4-8.pddl
+Num states: 547
+2022-11-17 12:14:01 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/visitall/p-2-0.5-4-9.pddl
+Num states: 2138
+2022-11-17 12:14:01 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/visitall/p-2-1.0-2-0.pddl
+Num states: 3
+2022-11-17 12:14:01 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/visitall/p-2-1.0-2-1.pddl
+Num states: 3
+2022-11-17 12:14:02 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/visitall/p-2-1.0-2-2.pddl
+Num states: 3
+2022-11-17 12:14:02 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/visitall/p-2-1.0-2-3.pddl
+Num states: 3
+2022-11-17 12:14:02 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/visitall/p-2-1.0-2-4.pddl
+Num states: 3
+2022-11-17 12:14:02 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/visitall/p-2-1.0-2-5.pddl
+2022-11-17 12:14:02 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/visitall/p-2-1.0-2-6.pddl
+2022-11-17 12:14:03 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/visitall/p-2-1.0-2-7.pddl
+2022-11-17 12:14:03 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/visitall/p-2-1.0-2-8.pddl
+Num states: 3
+2022-11-17 12:14:03 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/visitall/p-2-1.0-2-9.pddl
+Num states: 3
+2022-11-17 12:14:03 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/visitall/p-2-1.0-3-0.pddl
+Num states: 60
+2022-11-17 12:14:03 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/visitall/p-2-1.0-3-1.pddl
+Num states: 60
+2022-11-17 12:14:04 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/visitall/p-2-1.0-3-2.pddl
+Num states: 28
+2022-11-17 12:14:04 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/visitall/p-2-1.0-3-3.pddl
+Num states: 60
+2022-11-17 12:14:04 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/visitall/p-2-1.0-3-4.pddl
+Num states: 92
+2022-11-17 12:14:04 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/visitall/p-2-1.0-3-5.pddl
+Num states: 70
+2022-11-17 12:14:04 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/visitall/p-2-1.0-3-6.pddl
+2022-11-17 12:14:05 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/visitall/p-2-1.0-3-7.pddl
+Num states: 48
+2022-11-17 12:14:05 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/visitall/p-2-1.0-3-8.pddl
+Num states: 28
+2022-11-17 12:14:05 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/visitall/p-2-1.0-3-9.pddl
+Num states: 57
+2022-11-17 12:14:05 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/visitall/p-2-1.0-4-0.pddl
+2022-11-17 12:14:06 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/visitall/p-2-1.0-4-1.pddl
+2022-11-17 12:14:06 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/visitall/p-2-1.0-4-2.pddl
+2022-11-17 12:14:06 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/visitall/p-2-1.0-4-3.pddl
+2022-11-17 12:14:07 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/visitall/p-2-1.0-4-4.pddl
+2022-11-17 12:14:07 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/visitall/p-2-1.0-4-5.pddl
+Num states: 4164
+2022-11-17 12:14:07 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/visitall/p-2-1.0-4-6.pddl
+2022-11-17 12:14:08 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/visitall/p-2-1.0-4-7.pddl
+2022-11-17 12:14:08 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/visitall/p-2-1.0-4-8.pddl
+2022-11-17 12:14:08 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/visitall/p-2-1.0-4-9.pddl
+2022-11-17 12:14:09 INFO     [40m[34m..done[0m
+2022-11-17 12:14:09 INFO     [40m[34mInitializing TupleGraphs...[0m
+2022-11-17 12:14:38 INFO     [40m[34m..done[0m
+
+2022-11-17 12:14:38 INFO     [40m[31mIteration: 0[0m
+Number of selected instances: 1
+Selected instances:
+    id: 0 name: p-2-0.5-2-0
+initial states: [0]
+2022-11-17 12:14:38 INFO     [40m[34mInitializing DomainFeatureData...[0m
+[t=62.3841s, 2272300 KB] Started generating base features of complexity 1.
+[t=62.3844s, 2272300 KB] Complexity 1:
+    b_nullary: 0
+    c_one_of: 0
+    c_top: 1
+    c_bot: 1
+    c_primitive: 2
+    r_primitive: 2
+    c_and: 0
+    c_not: 0
+    c_equal: 0
+    c_some: 0
+    c_all: 0
+    r_restrict: 0
+    r_and: 0
+    r_inverse: 0
+    r_transitive_closure: 0
+    b_empty: 0
+    n_count: 0
+    n_concept_distance: 0
+[t=62.3845s, 2272300 KB] Finished generating base features.
+[t=62.3845s, 2272300 KB] Started generating composite features. 
+[t=62.3847s, 2272300 KB] Complexity 2:
+Total concept elements: 6
+Total role elements: 3
+Total numerical elements: 4
+Total boolean elements: 2
+    b_nullary: 0
+    c_one_of: 0
+    c_top: 1
+    c_bot: 1
+    c_primitive: 2
+    r_primitive: 2
+    c_and: 0
+    c_not: 2
+    c_equal: 0
+    c_some: 0
+    c_all: 0
+    r_restrict: 0
+    r_and: 0
+    r_inverse: 0
+    r_transitive_closure: 1
+    b_empty: 2
+    n_count: 4
+    n_concept_distance: 0
+[t=62.385s, 2272300 KB] Complexity 3:
+Total concept elements: 7
+Total role elements: 5
+Total numerical elements: 6
+Total boolean elements: 3
+    b_nullary: 0
+    c_one_of: 0
+    c_top: 1
+    c_bot: 1
+    c_primitive: 2
+    r_primitive: 2
+    c_and: 0
+    c_not: 2
+    c_equal: 0
+    c_some: 1
+    c_all: 0
+    r_restrict: 2
+    r_and: 0
+    r_inverse: 0
+    r_transitive_closure: 1
+    b_empty: 3
+    n_count: 6
+    n_concept_distance: 0
+[t=62.3853s, 2272300 KB] Complexity 4:
+Total concept elements: 10
+Total role elements: 7
+Total numerical elements: 7
+Total boolean elements: 3
+    b_nullary: 0
+    c_one_of: 0
+    c_top: 1
+    c_bot: 1
+    c_primitive: 2
+    r_primitive: 2
+    c_and: 1
+    c_not: 3
+    c_equal: 0
+    c_some: 1
+    c_all: 1
+    r_restrict: 2
+    r_and: 0
+    r_inverse: 2
+    r_transitive_closure: 1
+    b_empty: 3
+    n_count: 6
+    n_concept_distance: 1
+[t=62.3857s, 2272300 KB] Complexity 5:
+Total concept elements: 14
+Total role elements: 7
+Total numerical elements: 11
+Total boolean elements: 4
+    b_nullary: 0
+    c_one_of: 0
+    c_top: 1
+    c_bot: 1
+    c_primitive: 2
+    r_primitive: 2
+    c_and: 2
+    c_not: 5
+    c_equal: 0
+    c_some: 1
+    c_all: 2
+    r_restrict: 2
+    r_and: 0
+    r_inverse: 2
+    r_transitive_closure: 1
+    b_empty: 4
+    n_count: 8
+    n_concept_distance: 3
+[t=62.3862s, 2272300 KB] Complexity 6:
+Total concept elements: 14
+Total role elements: 7
+Total numerical elements: 14
+Total boolean elements: 4
+    b_nullary: 0
+    c_one_of: 0
+    c_top: 1
+    c_bot: 1
+    c_primitive: 2
+    r_primitive: 2
+    c_and: 2
+    c_not: 5
+    c_equal: 0
+    c_some: 1
+    c_all: 2
+    r_restrict: 2
+    r_and: 0
+    r_inverse: 2
+    r_transitive_closure: 1
+    b_empty: 4
+    n_count: 10
+    n_concept_distance: 4
+[t=62.3868s, 2272300 KB] Complexity 7:
+Total concept elements: 15
+Total role elements: 7
+Total numerical elements: 15
+Total boolean elements: 4
+    b_nullary: 0
+    c_one_of: 0
+    c_top: 1
+    c_bot: 1
+    c_primitive: 2
+    r_primitive: 2
+    c_and: 3
+    c_not: 5
+    c_equal: 0
+    c_some: 1
+    c_all: 2
+    r_restrict: 2
+    r_and: 0
+    r_inverse: 2
+    r_transitive_closure: 1
+    b_empty: 4
+    n_count: 10
+    n_concept_distance: 5
+[t=62.3872s, 2272300 KB] Complexity 8:
+Total concept elements: 16
+Total role elements: 10
+Total numerical elements: 15
+Total boolean elements: 4
+    b_nullary: 0
+    c_one_of: 0
+    c_top: 1
+    c_bot: 1
+    c_primitive: 2
+    r_primitive: 2
+    c_and: 3
+    c_not: 6
+    c_equal: 0
+    c_some: 1
+    c_all: 2
+    r_restrict: 2
+    r_and: 3
+    r_inverse: 2
+    r_transitive_closure: 1
+    b_empty: 4
+    n_count: 10
+    n_concept_distance: 5
+[t=62.3877s, 2272300 KB] Complexity 9:
+Total concept elements: 16
+Total role elements: 10
+Total numerical elements: 15
+Total boolean elements: 4
+    b_nullary: 0
+    c_one_of: 0
+    c_top: 1
+    c_bot: 1
+    c_primitive: 2
+    r_primitive: 2
+    c_and: 3
+    c_not: 6
+    c_equal: 0
+    c_some: 1
+    c_all: 2
+    r_restrict: 2
+    r_and: 3
+    r_inverse: 2
+    r_transitive_closure: 1
+    b_empty: 4
+    n_count: 10
+    n_concept_distance: 5
+[t=62.3878s, 2272300 KB] Finished generating composite features.
+DomainFeatureDataStatistics:
+    num_dlplan_states: 3
+    num_boolean_features: 4
+    num_numerical_features: 15
+2022-11-17 12:14:38 INFO     [40m[34m..done[0m
+2022-11-17 12:14:38 INFO     [40m[34mInitializing InstanceFeatureDatas...[0m
+2022-11-17 12:14:38 INFO     [40m[34m..done[0m
+2022-11-17 12:14:38 INFO     [40m[34mInitializing StatePairEquivalenceDatas...[0m
+2022-11-17 12:14:38 INFO     [40m[34m..done[0m
+2022-11-17 12:14:38 INFO     [40m[34mInitializing TupleGraphEquivalences...[0m
+2022-11-17 12:14:38 INFO     [40m[34m..done[0m
+2022-11-17 12:14:38 INFO     [40m[34mInitializing TupleGraphEquivalenceMinimizer...[0m
+Num subgoals: 3
+Num of selected subgoals: 2
+Num rules: 2
+Num of selected rules: 2
+2022-11-17 12:14:38 INFO     [40m[34m..done[0m
+Number of initial D2 facts: 1
+Number of D2 facts: 1 of 4
+2022-11-17 12:14:38 INFO     [40m[34mGrounding Logic Program...[0m
+2022-11-17 12:14:38 INFO     [40m[34m..done[0m
+2022-11-17 12:14:38 INFO     [40m[34mSolving Logic Program...[0m
+2022-11-17 12:14:38 INFO     [40m[34m..done[0m
+Clingo statistics:
+Total time:  0.015421867370605469
+CPU time:  0.0322050000000047
+Solve time:  0.005815982818603516
+2022-11-17 12:14:38 INFO     Learned the following sketch:
+(:policy
+(:boolean_features )
+(:numerical_features "n_count(c_primitive(visited,0))")
+(:rule (:conditions (:c_n_gt 0)) (:effects (:e_n_inc 0)))
+)
+Numer of sketch rules: 1
+Number of selected features: 1
+Maximum complexity of selected feature: 2
+2022-11-17 12:14:38 INFO     [40m[34mVerifying learned sketch...[0m
+2022-11-17 12:14:56 INFO     [40m[34m..done[0m
+2022-11-17 12:14:56 INFO     [40m[33mIteration summary:[0m
+DomainFeatureDataStatistics:
+    num_dlplan_states: 3
+    num_boolean_features: 4
+    num_numerical_features: 15
+StatePairEquivalenceStatistics:
+    num_state_pairs: 3
+    num_equivalences: 2
+TupleGraphEquivalenceMinimizerStatistics:
+    Number of input tuples: 3
+    Number of output tuples: 2
+[40m[31mSketch solves all instances![0m
+2022-11-17 12:14:56 INFO     [40m[32mSummary:[0m
+Boolean features:
+b_empty(c_top)
+b_empty(c_bot)
+b_empty(c_not(c_primitive(visited,0)))
+b_empty(c_and(c_not(c_primitive(at-robot,0)),c_primitive(visited,0)))
+Numerical features:
+n_count(c_top)
+n_count(c_bot)
+n_count(c_primitive(at-robot,0))
+n_count(c_primitive(visited,0))
+n_count(c_not(c_primitive(visited,0)))
+n_count(r_transitive_closure(r_primitive(connected,0,1)))
+n_concept_distance(c_primitive(at-robot,0),r_primitive(connected,0,1),c_bot)
+n_count(c_and(c_not(c_primitive(at-robot,0)),c_primitive(visited,0)))
+n_count(c_all(r_transitive_closure(r_primitive(connected,0,1)),c_primitive(visited,0)))
+n_concept_distance(c_primitive(at-robot,0),r_primitive(connected,0,1),c_not(c_primitive(visited,0)))
+n_concept_distance(c_not(c_primitive(at-robot,0)),r_primitive(connected_g,0,1),c_primitive(visited,0))
+n_count(c_not(c_and(c_not(c_primitive(at-robot,0)),c_primitive(visited,0))))
+n_count(c_not(c_all(r_transitive_closure(r_primitive(connected,0,1)),c_primitive(visited,0))))
+n_concept_distance(c_not(c_primitive(at-robot,0)),r_primitive(connected,0,1),c_not(c_primitive(visited,0)))
+n_concept_distance(c_primitive(at-robot,0),r_restrict(r_primitive(connected,0,1),c_primitive(visited,0)),c_not(c_primitive(at-robot,0)))
+Number of selected training instances: 1
+Sum of number of states in selected training instances: 3
+Max of number of states in selected training instances: 3
+Number of features in the pool: 19
+Resulting sketch:
+(:policy
+(:boolean_features )
+(:numerical_features "n_count(c_primitive(visited,0))")
+(:rule (:conditions (:c_n_gt 0)) (:effects (:e_n_inc 0)))
+)
+Numer of sketch rules: 1
+Number of selected features: 1
+Maximum complexity of selected feature: 2
+Resulting sketch minimized:
+(:policy
+(:boolean_features )
+(:numerical_features "n_count(c_primitive(visited,0))")
+(:rule (:conditions (:c_n_gt 0)) (:effects (:e_n_inc 0)))
+)
+Numer of sketch rules: 1
+Number of selected features: 1
+Maximum complexity of selected feature: 2
+Summary:
+Resulting sketch:
+(:policy
+(:boolean_features )
+(:numerical_features "n_count(c_primitive(visited,0))")
+(:rule (:conditions (:c_n_gt 0)) (:effects (:e_n_inc 0)))
+)
+Numer of sketch rules: 1
+Number of selected features: 1
+Maximum complexity of selected feature: 2
+Resulting structurally minimized sketch:
+(:policy
+(:boolean_features )
+(:numerical_features "n_count(c_primitive(visited,0))")
+(:rule (:conditions (:c_n_gt 0)) (:effects (:e_n_inc 0)))
+)
+Numer of sketch rules: 1
+Number of selected features: 1
+Maximum complexity of selected feature: 2
+Number of training instances: 87
+Number of selected training instances: 1
+Number of states in selected training instances: 3
+Max number of states in selected training instance: 3
+Number of features in the pool: 19
+RESOURCES FOR PREPROCESSING: 62.12 CPU sec - 990.24 MB
+RESOURCES FOR LEARNING: 17.25 CPU sec - 990.24 MB
+================================================================================
+END OF STEP #1: Incremental learning module. 80.99 CPU sec - 990.25 MB
+================================================================================

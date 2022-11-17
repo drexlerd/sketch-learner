@@ -1,0 +1,1628 @@
+Changing working directory:  /proj/ssiw/projects/code/sketch-learner/learning/d2l/workspace/reward_sketch_1_1_9_9_9_9_9
+Creating sym link: /proj/ssiw/projects/code/sketch-learner/learning/d2l/libs/dlplan/libs/scorpion/fast-downward.py /proj/ssiw/projects/code/sketch-learner/learning/d2l/workspace/reward_sketch_1_1_9_9_9_9_9/fast-downward.py
+================================================================================
+SLTP v.0.2.0
+================================================================================
+================================================================================
+(pid: 186574) STARTING STEP #1: Incremental learning module
+================================================================================
+2022-11-17 12:11:57 INFO     [40m[34mInitializing DomainData...[0m
+2022-11-17 12:11:57 INFO     Constructing DomainData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/reward/domain.pddl
+2022-11-17 12:11:57 INFO     [40m[34m..done[0m
+2022-11-17 12:11:57 INFO     [40m[34mInitializing InstanceDatas...[0m
+2022-11-17 12:11:57 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/reward/instance_2x2_0.pddl
+Num states: 16
+2022-11-17 12:11:57 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/reward/instance_3x3_0.pddl
+Num states: 32
+2022-11-17 12:11:58 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/reward/instance_2x2_1.pddl
+Num states: 8
+2022-11-17 12:11:58 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/reward/instance_3x3_1.pddl
+Num states: 16
+2022-11-17 12:11:58 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/reward/instance_2x2_2.pddl
+Num states: 8
+2022-11-17 12:11:58 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/reward/instance_3x3_2.pddl
+Num states: 64
+2022-11-17 12:11:58 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/reward/instance_2x2_3.pddl
+Num states: 8
+2022-11-17 12:11:59 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/reward/instance_3x3_3.pddl
+Num states: 36
+2022-11-17 12:11:59 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/reward/instance_2x2_4.pddl
+Num states: 12
+2022-11-17 12:11:59 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/reward/instance_3x3_4.pddl
+Num states: 48
+2022-11-17 12:11:59 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/reward/instance_2x2_5.pddl
+Num states: 6
+2022-11-17 12:11:59 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/reward/instance_3x3_5.pddl
+Num states: 18
+2022-11-17 12:12:00 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/reward/instance_2x2_6.pddl
+Num states: 12
+2022-11-17 12:12:00 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/reward/instance_3x3_6.pddl
+Num states: 36
+2022-11-17 12:12:00 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/reward/instance_2x2_7.pddl
+Num states: 16
+2022-11-17 12:12:00 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/reward/instance_3x3_7.pddl
+Num states: 72
+2022-11-17 12:12:00 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/reward/instance_2x2_8.pddl
+Num states: 16
+2022-11-17 12:12:01 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/reward/instance_3x3_8.pddl
+Num states: 56
+2022-11-17 12:12:01 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/reward/instance_2x2_9.pddl
+Num states: 16
+2022-11-17 12:12:01 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/reward/instance_3x3_9.pddl
+Num states: 36
+2022-11-17 12:12:01 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/reward/instance_2x2_10.pddl
+Num states: 8
+2022-11-17 12:12:01 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/reward/instance_3x3_10.pddl
+Num states: 36
+2022-11-17 12:12:02 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/reward/instance_2x2_11.pddl
+Num states: 12
+2022-11-17 12:12:02 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/reward/instance_3x3_11.pddl
+Num states: 14
+2022-11-17 12:12:02 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/reward/instance_2x2_12.pddl
+Num states: 8
+2022-11-17 12:12:02 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/reward/instance_3x3_12.pddl
+Num states: 16
+2022-11-17 12:12:02 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/reward/instance_2x2_13.pddl
+Num states: 8
+2022-11-17 12:12:03 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/reward/instance_3x3_13.pddl
+Num states: 56
+2022-11-17 12:12:03 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/reward/instance_2x2_14.pddl
+Num states: 16
+2022-11-17 12:12:03 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/reward/instance_3x3_14.pddl
+Num states: 64
+2022-11-17 12:12:03 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/reward/instance_2x2_15.pddl
+Num states: 16
+2022-11-17 12:12:03 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/reward/instance_3x3_15.pddl
+Num states: 64
+2022-11-17 12:12:04 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/reward/instance_2x2_16.pddl
+Num states: 8
+2022-11-17 12:12:04 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/reward/instance_3x3_16.pddl
+Num states: 28
+2022-11-17 12:12:04 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/reward/instance_2x2_17.pddl
+Num states: 16
+2022-11-17 12:12:04 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/reward/instance_3x3_17.pddl
+Num states: 36
+2022-11-17 12:12:04 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/reward/instance_2x2_18.pddl
+Num states: 16
+2022-11-17 12:12:05 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/reward/instance_3x3_18.pddl
+Num states: 14
+2022-11-17 12:12:05 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/reward/instance_2x2_19.pddl
+Num states: 12
+2022-11-17 12:12:05 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/reward/instance_3x3_19.pddl
+Num states: 14
+2022-11-17 12:12:05 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/reward/instance_2x2_20.pddl
+Num states: 16
+2022-11-17 12:12:05 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/reward/instance_3x3_20.pddl
+Num states: 32
+2022-11-17 12:12:06 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/reward/instance_2x2_21.pddl
+Num states: 6
+2022-11-17 12:12:06 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/reward/instance_3x3_21.pddl
+Num states: 14
+2022-11-17 12:12:06 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/reward/instance_2x2_22.pddl
+Num states: 8
+2022-11-17 12:12:06 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/reward/instance_3x3_22.pddl
+Num states: 64
+2022-11-17 12:12:06 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/reward/instance_2x2_23.pddl
+Num states: 6
+2022-11-17 12:12:07 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/reward/instance_3x3_23.pddl
+Num states: 64
+2022-11-17 12:12:07 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/reward/instance_2x2_24.pddl
+Num states: 16
+2022-11-17 12:12:07 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/reward/instance_3x3_24.pddl
+Num states: 64
+2022-11-17 12:12:07 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/reward/instance_2x2_25.pddl
+Num states: 6
+2022-11-17 12:12:07 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/reward/instance_3x3_25.pddl
+Num states: 16
+2022-11-17 12:12:08 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/reward/instance_2x2_26.pddl
+Num states: 6
+2022-11-17 12:12:08 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/reward/instance_3x3_26.pddl
+Num states: 18
+2022-11-17 12:12:08 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/reward/instance_2x2_27.pddl
+Num states: 16
+2022-11-17 12:12:08 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/reward/instance_3x3_27.pddl
+Num states: 14
+2022-11-17 12:12:08 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/reward/instance_2x2_28.pddl
+Num states: 6
+2022-11-17 12:12:09 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/reward/instance_3x3_28.pddl
+Num states: 14
+2022-11-17 12:12:09 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/reward/instance_2x2_29.pddl
+Num states: 16
+2022-11-17 12:12:09 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/reward/instance_3x3_29.pddl
+Num states: 32
+2022-11-17 12:12:09 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/reward/instance_2x2_30.pddl
+Num states: 6
+2022-11-17 12:12:09 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/reward/instance_3x3_30.pddl
+Num states: 18
+2022-11-17 12:12:10 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/reward/instance_2x2_31.pddl
+Num states: 16
+2022-11-17 12:12:10 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/reward/instance_3x3_31.pddl
+Num states: 64
+2022-11-17 12:12:10 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/reward/instance_2x2_32.pddl
+Num states: 6
+2022-11-17 12:12:10 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/reward/instance_3x3_32.pddl
+Num states: 56
+2022-11-17 12:12:10 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/reward/instance_2x2_33.pddl
+Num states: 6
+2022-11-17 12:12:11 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/reward/instance_3x3_33.pddl
+Num states: 64
+2022-11-17 12:12:11 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/reward/instance_2x2_34.pddl
+Num states: 16
+2022-11-17 12:12:11 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/reward/instance_3x3_34.pddl
+Num states: 28
+2022-11-17 12:12:11 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/reward/instance_2x2_35.pddl
+Num states: 12
+2022-11-17 12:12:11 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/reward/instance_3x3_35.pddl
+Num states: 36
+2022-11-17 12:12:12 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/reward/instance_2x2_36.pddl
+Num states: 12
+2022-11-17 12:12:12 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/reward/instance_3x3_36.pddl
+Num states: 64
+2022-11-17 12:12:12 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/reward/instance_2x2_37.pddl
+Num states: 12
+2022-11-17 12:12:12 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/reward/instance_3x3_37.pddl
+Num states: 32
+2022-11-17 12:12:12 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/reward/instance_2x2_38.pddl
+Num states: 12
+2022-11-17 12:12:13 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/reward/instance_3x3_38.pddl
+Num states: 18
+2022-11-17 12:12:13 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/reward/instance_2x2_39.pddl
+Num states: 16
+2022-11-17 12:12:13 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/reward/instance_3x3_39.pddl
+Num states: 16
+2022-11-17 12:12:13 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/reward/instance_2x2_40.pddl
+Num states: 6
+2022-11-17 12:12:13 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/reward/instance_3x3_40.pddl
+Num states: 36
+2022-11-17 12:12:14 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/reward/instance_2x2_41.pddl
+Num states: 8
+2022-11-17 12:12:14 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/reward/instance_3x3_41.pddl
+Num states: 64
+2022-11-17 12:12:14 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/reward/instance_2x2_42.pddl
+Num states: 6
+2022-11-17 12:12:14 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/reward/instance_3x3_42.pddl
+Num states: 32
+2022-11-17 12:12:14 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/reward/instance_2x2_43.pddl
+Num states: 6
+2022-11-17 12:12:15 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/reward/instance_3x3_43.pddl
+Num states: 28
+2022-11-17 12:12:15 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/reward/instance_2x2_44.pddl
+Num states: 12
+2022-11-17 12:12:15 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/reward/instance_3x3_44.pddl
+Num states: 32
+2022-11-17 12:12:15 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/reward/instance_2x2_45.pddl
+Num states: 16
+2022-11-17 12:12:15 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/reward/instance_3x3_45.pddl
+Num states: 16
+2022-11-17 12:12:16 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/reward/instance_2x2_46.pddl
+Num states: 6
+2022-11-17 12:12:16 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/reward/instance_3x3_46.pddl
+Num states: 64
+2022-11-17 12:12:16 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/reward/instance_2x2_47.pddl
+Num states: 6
+2022-11-17 12:12:16 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/reward/instance_3x3_47.pddl
+Num states: 18
+2022-11-17 12:12:16 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/reward/instance_2x2_48.pddl
+Num states: 16
+2022-11-17 12:12:17 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/reward/instance_3x3_48.pddl
+Num states: 36
+2022-11-17 12:12:17 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/reward/instance_2x2_49.pddl
+Num states: 6
+2022-11-17 12:12:17 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/reward/instance_3x3_49.pddl
+Num states: 36
+2022-11-17 12:12:17 INFO     [40m[34m..done[0m
+2022-11-17 12:12:17 INFO     [40m[34mInitializing TupleGraphs...[0m
+2022-11-17 12:12:17 INFO     [40m[34m..done[0m
+
+2022-11-17 12:12:17 INFO     [40m[31mIteration: 0[0m
+Number of selected instances: 1
+Selected instances:
+    id: 0 name: instance_2x2_5
+initial states: [0, 1, 2]
+2022-11-17 12:12:17 INFO     [40m[34mInitializing DomainFeatureData...[0m
+[t=20.439s, 1330104 KB] Started generating base features of complexity 1.
+[t=20.4397s, 1330104 KB] Complexity 1:
+    b_nullary: 0
+    c_one_of: 0
+    c_top: 1
+    c_bot: 1
+    c_primitive: 5
+    r_primitive: 2
+    c_and: 0
+    c_not: 0
+    c_equal: 0
+    c_some: 0
+    c_all: 0
+    r_restrict: 0
+    r_and: 0
+    r_inverse: 0
+    r_transitive_closure: 0
+    b_empty: 0
+    n_count: 0
+    n_concept_distance: 0
+[t=20.4399s, 1330104 KB] Finished generating base features.
+[t=20.44s, 1330104 KB] Started generating composite features. 
+[t=20.4404s, 1330104 KB] Complexity 2:
+Total concept elements: 12
+Total role elements: 3
+Total numerical elements: 7
+Total boolean elements: 4
+    b_nullary: 0
+    c_one_of: 0
+    c_top: 1
+    c_bot: 1
+    c_primitive: 5
+    r_primitive: 2
+    c_and: 0
+    c_not: 5
+    c_equal: 0
+    c_some: 0
+    c_all: 0
+    r_restrict: 0
+    r_and: 0
+    r_inverse: 0
+    r_transitive_closure: 1
+    b_empty: 4
+    n_count: 7
+    n_concept_distance: 0
+[t=20.4418s, 1330104 KB] Complexity 3:
+Total concept elements: 20
+Total role elements: 8
+Total numerical elements: 10
+Total boolean elements: 4
+    b_nullary: 0
+    c_one_of: 0
+    c_top: 1
+    c_bot: 1
+    c_primitive: 5
+    r_primitive: 2
+    c_and: 3
+    c_not: 5
+    c_equal: 0
+    c_some: 4
+    c_all: 1
+    r_restrict: 5
+    r_and: 0
+    r_inverse: 0
+    r_transitive_closure: 1
+    b_empty: 4
+    n_count: 10
+    n_concept_distance: 0
+[t=20.4438s, 1330104 KB] Complexity 4:
+Total concept elements: 37
+Total role elements: 13
+Total numerical elements: 26
+Total boolean elements: 7
+    b_nullary: 0
+    c_one_of: 0
+    c_top: 1
+    c_bot: 1
+    c_primitive: 5
+    r_primitive: 2
+    c_and: 12
+    c_not: 11
+    c_equal: 0
+    c_some: 6
+    c_all: 1
+    r_restrict: 5
+    r_and: 0
+    r_inverse: 5
+    r_transitive_closure: 1
+    b_empty: 7
+    n_count: 17
+    n_concept_distance: 9
+[t=20.4478s, 1330104 KB] Complexity 5:
+Total concept elements: 63
+Total role elements: 13
+Total numerical elements: 45
+Total boolean elements: 12
+    b_nullary: 0
+    c_one_of: 0
+    c_top: 1
+    c_bot: 1
+    c_primitive: 5
+    r_primitive: 2
+    c_and: 18
+    c_not: 20
+    c_equal: 0
+    c_some: 11
+    c_all: 7
+    r_restrict: 5
+    r_and: 0
+    r_inverse: 5
+    r_transitive_closure: 1
+    b_empty: 12
+    n_count: 30
+    n_concept_distance: 15
+[t=20.4532s, 1330104 KB] Complexity 6:
+Total concept elements: 106
+Total role elements: 13
+Total numerical elements: 71
+Total boolean elements: 12
+    b_nullary: 0
+    c_one_of: 0
+    c_top: 1
+    c_bot: 1
+    c_primitive: 5
+    r_primitive: 2
+    c_and: 40
+    c_not: 37
+    c_equal: 0
+    c_some: 14
+    c_all: 8
+    r_restrict: 5
+    r_and: 0
+    r_inverse: 5
+    r_transitive_closure: 1
+    b_empty: 12
+    n_count: 48
+    n_concept_distance: 23
+[t=20.4612s, 1330104 KB] Complexity 7:
+Total concept elements: 179
+Total role elements: 16
+Total numerical elements: 110
+Total boolean elements: 14
+    b_nullary: 0
+    c_one_of: 0
+    c_top: 1
+    c_bot: 1
+    c_primitive: 5
+    r_primitive: 2
+    c_and: 76
+    c_not: 58
+    c_equal: 0
+    c_some: 24
+    c_all: 14
+    r_restrict: 5
+    r_and: 3
+    r_inverse: 5
+    r_transitive_closure: 1
+    b_empty: 14
+    n_count: 75
+    n_concept_distance: 35
+[t=20.4717s, 1330104 KB] Complexity 8:
+Total concept elements: 265
+Total role elements: 28
+Total numerical elements: 150
+Total boolean elements: 14
+    b_nullary: 0
+    c_one_of: 0
+    c_top: 1
+    c_bot: 1
+    c_primitive: 5
+    r_primitive: 2
+    c_and: 124
+    c_not: 92
+    c_equal: 0
+    c_some: 24
+    c_all: 18
+    r_restrict: 5
+    r_and: 12
+    r_inverse: 8
+    r_transitive_closure: 1
+    b_empty: 14
+    n_count: 105
+    n_concept_distance: 45
+[t=20.4902s, 1330104 KB] Complexity 9:
+Total concept elements: 399
+Total role elements: 28
+Total numerical elements: 188
+Total boolean elements: 14
+    b_nullary: 0
+    c_one_of: 0
+    c_top: 1
+    c_bot: 1
+    c_primitive: 5
+    r_primitive: 2
+    c_and: 215
+    c_not: 127
+    c_equal: 0
+    c_some: 26
+    c_all: 24
+    r_restrict: 5
+    r_and: 12
+    r_inverse: 8
+    r_transitive_closure: 1
+    b_empty: 14
+    n_count: 135
+    n_concept_distance: 53
+[t=20.4904s, 1330104 KB] Finished generating composite features.
+DomainFeatureDataStatistics:
+    num_dlplan_states: 6
+    num_boolean_features: 14
+    num_numerical_features: 188
+2022-11-17 12:12:17 INFO     [40m[34m..done[0m
+2022-11-17 12:12:17 INFO     [40m[34mInitializing InstanceFeatureDatas...[0m
+2022-11-17 12:12:17 INFO     [40m[34m..done[0m
+2022-11-17 12:12:17 INFO     [40m[34mInitializing StatePairEquivalenceDatas...[0m
+2022-11-17 12:12:17 INFO     [40m[34m..done[0m
+2022-11-17 12:12:17 INFO     [40m[34mInitializing TupleGraphEquivalences...[0m
+2022-11-17 12:12:17 INFO     [40m[34m..done[0m
+2022-11-17 12:12:17 INFO     [40m[34mInitializing TupleGraphEquivalenceMinimizer...[0m
+Num subgoals: 5
+Num of selected subgoals: 3
+Num rules: 3
+Num of selected rules: 3
+Num subgoals: 5
+Num of selected subgoals: 3
+Num rules: 3
+Num of selected rules: 3
+Num subgoals: 5
+Num of selected subgoals: 3
+Num rules: 3
+Num of selected rules: 3
+2022-11-17 12:12:17 INFO     [40m[34m..done[0m
+Number of initial D2 facts: 6
+Number of D2 facts: 6 of 36
+2022-11-17 12:12:17 INFO     [40m[34mGrounding Logic Program...[0m
+2022-11-17 12:12:17 INFO     [40m[34m..done[0m
+2022-11-17 12:12:17 INFO     [40m[34mSolving Logic Program...[0m
+2022-11-17 12:12:17 INFO     [40m[34m..done[0m
+Clingo statistics:
+Total time:  0.04943203926086426
+CPU time:  0.09305399999999997
+Solve time:  0.008921146392822266
+2022-11-17 12:12:17 INFO     Learned the following sketch:
+(:policy
+(:boolean_features "b_empty(c_primitive(picked,0))")
+(:numerical_features )
+(:rule (:conditions (:c_b_pos 0)) (:effects (:e_b_bot 0)))
+(:rule (:conditions (:c_b_pos 0)) (:effects (:e_b_neg 0)))
+)
+Numer of sketch rules: 2
+Number of selected features: 1
+Maximum complexity of selected feature: 2
+[40m[31mSketch cycles[0m
+Instance: 0 instance_2x2_5
+2 (instance index=0, state index=2, atoms={at(c_1_1), reward(c_0_1)})
+2 (instance index=0, state index=2, atoms={at(c_1_1), reward(c_0_1)})
+Number of unsatisfied D2 facts: 4
+Number of D2 facts: 10 of 36
+2022-11-17 12:12:18 INFO     [40m[34mGrounding Logic Program...[0m
+2022-11-17 12:12:18 INFO     [40m[34m..done[0m
+2022-11-17 12:12:18 INFO     [40m[34mSolving Logic Program...[0m
+2022-11-17 12:12:18 INFO     [40m[34m..done[0m
+Clingo statistics:
+Total time:  0.08067703247070312
+CPU time:  0.1125799999999999
+Solve time:  0.004345893859863281
+2022-11-17 12:12:18 INFO     Learned the following sketch:
+(:policy
+(:boolean_features "b_empty(c_primitive(picked,0))")
+(:numerical_features )
+(:rule (:conditions (:c_b_pos 0)) (:effects (:e_b_neg 0)))
+)
+Numer of sketch rules: 1
+Number of selected features: 1
+Maximum complexity of selected feature: 2
+2022-11-17 12:12:18 INFO     [40m[34mVerifying learned sketch...[0m
+[40m[31mSketch fails to bound width of a state[0m
+Instance: 24 instance_2x2_4
+Source_state: 9 (instance index=24, state index=9, atoms={at(c_0_0), picked(c_1_1), reward(c_1_0)})
+2022-11-17 12:12:18 INFO     [40m[34m..done[0m
+2022-11-17 12:12:18 INFO     [40m[33mIteration summary:[0m
+DomainFeatureDataStatistics:
+    num_dlplan_states: 6
+    num_boolean_features: 14
+    num_numerical_features: 188
+StatePairEquivalenceStatistics:
+    num_state_pairs: 12
+    num_equivalences: 6
+TupleGraphEquivalenceMinimizerStatistics:
+    Number of input tuples: 15
+    Number of output tuples: 9
+Smallest unsolved instance: 24
+Selected instances: [24]
+
+2022-11-17 12:12:18 INFO     [40m[31mIteration: 1[0m
+Number of selected instances: 1
+Selected instances:
+    id: 24 name: instance_2x2_4
+initial states: [0, 1, 2, 3, 4, 5, 6, 7, 9]
+2022-11-17 12:12:18 INFO     [40m[34mInitializing DomainFeatureData...[0m
+[t=20.6836s, 3457260 KB] Started generating base features of complexity 1.
+[t=20.6837s, 3457260 KB] Complexity 1:
+    b_nullary: 0
+    c_one_of: 0
+    c_top: 1
+    c_bot: 1
+    c_primitive: 5
+    r_primitive: 2
+    c_and: 0
+    c_not: 0
+    c_equal: 0
+    c_some: 0
+    c_all: 0
+    r_restrict: 0
+    r_and: 0
+    r_inverse: 0
+    r_transitive_closure: 0
+    b_empty: 0
+    n_count: 0
+    n_concept_distance: 0
+[t=20.6838s, 3457260 KB] Finished generating base features.
+[t=20.6838s, 3457260 KB] Started generating composite features. 
+[t=20.684s, 3457260 KB] Complexity 2:
+Total concept elements: 12
+Total role elements: 3
+Total numerical elements: 8
+Total boolean elements: 4
+    b_nullary: 0
+    c_one_of: 0
+    c_top: 1
+    c_bot: 1
+    c_primitive: 5
+    r_primitive: 2
+    c_and: 0
+    c_not: 5
+    c_equal: 0
+    c_some: 0
+    c_all: 0
+    r_restrict: 0
+    r_and: 0
+    r_inverse: 0
+    r_transitive_closure: 1
+    b_empty: 4
+    n_count: 8
+    n_concept_distance: 0
+[t=20.6846s, 3457260 KB] Complexity 3:
+Total concept elements: 19
+Total role elements: 8
+Total numerical elements: 11
+Total boolean elements: 4
+    b_nullary: 0
+    c_one_of: 0
+    c_top: 1
+    c_bot: 1
+    c_primitive: 5
+    r_primitive: 2
+    c_and: 3
+    c_not: 5
+    c_equal: 0
+    c_some: 3
+    c_all: 1
+    r_restrict: 5
+    r_and: 0
+    r_inverse: 0
+    r_transitive_closure: 1
+    b_empty: 4
+    n_count: 11
+    n_concept_distance: 0
+[t=20.6855s, 3457260 KB] Complexity 4:
+Total concept elements: 36
+Total role elements: 13
+Total numerical elements: 24
+Total boolean elements: 7
+    b_nullary: 0
+    c_one_of: 0
+    c_top: 1
+    c_bot: 1
+    c_primitive: 5
+    r_primitive: 2
+    c_and: 13
+    c_not: 10
+    c_equal: 0
+    c_some: 5
+    c_all: 1
+    r_restrict: 5
+    r_and: 0
+    r_inverse: 5
+    r_transitive_closure: 1
+    b_empty: 7
+    n_count: 17
+    n_concept_distance: 7
+[t=20.6872s, 3457260 KB] Complexity 5:
+Total concept elements: 82
+Total role elements: 13
+Total numerical elements: 42
+Total boolean elements: 12
+    b_nullary: 0
+    c_one_of: 0
+    c_top: 1
+    c_bot: 1
+    c_primitive: 5
+    r_primitive: 2
+    c_and: 34
+    c_not: 22
+    c_equal: 0
+    c_some: 10
+    c_all: 9
+    r_restrict: 5
+    r_and: 0
+    r_inverse: 5
+    r_transitive_closure: 1
+    b_empty: 12
+    n_count: 29
+    n_concept_distance: 13
+[t=20.6906s, 3457260 KB] Complexity 6:
+Total concept elements: 160
+Total role elements: 13
+Total numerical elements: 84
+Total boolean elements: 22
+    b_nullary: 0
+    c_one_of: 0
+    c_top: 1
+    c_bot: 1
+    c_primitive: 5
+    r_primitive: 2
+    c_and: 70
+    c_not: 54
+    c_equal: 0
+    c_some: 13
+    c_all: 16
+    r_restrict: 5
+    r_and: 0
+    r_inverse: 5
+    r_transitive_closure: 1
+    b_empty: 22
+    n_count: 61
+    n_concept_distance: 23
+[t=20.6987s, 3457260 KB] Complexity 7:
+Total concept elements: 320
+Total role elements: 16
+Total numerical elements: 169
+Total boolean elements: 27
+    b_nullary: 0
+    c_one_of: 0
+    c_top: 1
+    c_bot: 1
+    c_primitive: 5
+    r_primitive: 2
+    c_and: 163
+    c_not: 92
+    c_equal: 0
+    c_some: 33
+    c_all: 25
+    r_restrict: 5
+    r_and: 3
+    r_inverse: 5
+    r_transitive_closure: 1
+    b_empty: 27
+    n_count: 117
+    n_concept_distance: 52
+[t=20.7153s, 3457260 KB] Complexity 8:
+Total concept elements: 656
+Total role elements: 43
+Total numerical elements: 306
+Total boolean elements: 47
+    b_nullary: 0
+    c_one_of: 0
+    c_top: 1
+    c_bot: 1
+    c_primitive: 5
+    r_primitive: 2
+    c_and: 381
+    c_not: 190
+    c_equal: 0
+    c_some: 44
+    c_all: 34
+    r_restrict: 5
+    r_and: 27
+    r_inverse: 8
+    r_transitive_closure: 1
+    b_empty: 47
+    n_count: 208
+    n_concept_distance: 98
+[t=20.7541s, 3457260 KB] Complexity 9:
+Total concept elements: 1317
+Total role elements: 43
+Total numerical elements: 578
+Total boolean elements: 87
+    b_nullary: 0
+    c_one_of: 0
+    c_top: 1
+    c_bot: 1
+    c_primitive: 5
+    r_primitive: 2
+    c_and: 729
+    c_not: 407
+    c_equal: 0
+    c_some: 82
+    c_all: 92
+    r_restrict: 5
+    r_and: 27
+    r_inverse: 8
+    r_transitive_closure: 1
+    b_empty: 87
+    n_count: 387
+    n_concept_distance: 191
+[t=20.7542s, 3457260 KB] Finished generating composite features.
+DomainFeatureDataStatistics:
+    num_dlplan_states: 12
+    num_boolean_features: 87
+    num_numerical_features: 578
+2022-11-17 12:12:18 INFO     [40m[34m..done[0m
+2022-11-17 12:12:18 INFO     [40m[34mInitializing InstanceFeatureDatas...[0m
+2022-11-17 12:12:18 INFO     [40m[34m..done[0m
+2022-11-17 12:12:18 INFO     [40m[34mInitializing StatePairEquivalenceDatas...[0m
+2022-11-17 12:12:18 INFO     [40m[34m..done[0m
+2022-11-17 12:12:18 INFO     [40m[34mInitializing TupleGraphEquivalences...[0m
+2022-11-17 12:12:18 INFO     [40m[34m..done[0m
+2022-11-17 12:12:18 INFO     [40m[34mInitializing TupleGraphEquivalenceMinimizer...[0m
+Num subgoals: 7
+Num of selected subgoals: 5
+Num rules: 7
+Num of selected rules: 5
+Num subgoals: 7
+Num of selected subgoals: 5
+Num rules: 7
+Num of selected rules: 5
+Num subgoals: 7
+Num of selected subgoals: 5
+Num rules: 6
+Num of selected rules: 5
+Num subgoals: 6
+Num of selected subgoals: 4
+Num rules: 4
+Num of selected rules: 4
+Num subgoals: 6
+Num of selected subgoals: 4
+Num rules: 4
+Num of selected rules: 4
+Num subgoals: 6
+Num of selected subgoals: 4
+Num rules: 4
+Num of selected rules: 4
+Num subgoals: 6
+Num of selected subgoals: 4
+Num rules: 5
+Num of selected rules: 4
+Num subgoals: 6
+Num of selected subgoals: 4
+Num rules: 4
+Num of selected rules: 4
+Num subgoals: 6
+Num of selected subgoals: 4
+Num rules: 4
+Num of selected rules: 4
+2022-11-17 12:12:18 INFO     [40m[34m..done[0m
+Number of initial D2 facts: 97
+Number of D2 facts: 97 of 2025
+2022-11-17 12:12:18 INFO     [40m[34mGrounding Logic Program...[0m
+2022-11-17 12:12:19 INFO     [40m[34m..done[0m
+2022-11-17 12:12:19 INFO     [40m[34mSolving Logic Program...[0m
+2022-11-17 12:12:19 INFO     [40m[34m..done[0m
+Clingo statistics:
+Total time:  0.8310449123382568
+CPU time:  1.0630510000000002
+Solve time:  0.02954697608947754
+2022-11-17 12:12:19 INFO     Learned the following sketch:
+(:policy
+(:boolean_features )
+(:numerical_features "n_count(c_primitive(reward,0))")
+(:rule (:conditions (:c_n_gt 0)) (:effects (:e_n_bot 0)))
+(:rule (:conditions (:c_n_gt 0)) (:effects (:e_n_dec 0)))
+)
+Numer of sketch rules: 2
+Number of selected features: 1
+Maximum complexity of selected feature: 2
+[40m[31mSketch cycles[0m
+Instance: 24 instance_2x2_4
+9 (instance index=24, state index=9, atoms={at(c_0_0), picked(c_1_1), reward(c_1_0)})
+9 (instance index=24, state index=9, atoms={at(c_0_0), picked(c_1_1), reward(c_1_0)})
+Number of unsatisfied D2 facts: 130
+Number of D2 facts: 227 of 2025
+2022-11-17 12:12:20 INFO     [40m[34mGrounding Logic Program...[0m
+2022-11-17 12:12:21 INFO     [40m[34m..done[0m
+2022-11-17 12:12:21 INFO     [40m[34mSolving Logic Program...[0m
+2022-11-17 12:12:21 INFO     [40m[34m..done[0m
+Clingo statistics:
+Total time:  1.85748291015625
+CPU time:  2.4958679999999998
+Solve time:  0.04048490524291992
+2022-11-17 12:12:21 INFO     Learned the following sketch:
+(:policy
+(:boolean_features )
+(:numerical_features "n_count(c_primitive(reward,0))")
+(:rule (:conditions (:c_n_gt 0)) (:effects (:e_n_bot 0)))
+(:rule (:conditions (:c_n_gt 0)) (:effects (:e_n_dec 0)))
+)
+Numer of sketch rules: 2
+Number of selected features: 1
+Maximum complexity of selected feature: 2
+[40m[31mSketch cycles[0m
+Instance: 24 instance_2x2_4
+9 (instance index=24, state index=9, atoms={at(c_0_0), picked(c_1_1), reward(c_1_0)})
+9 (instance index=24, state index=9, atoms={at(c_0_0), picked(c_1_1), reward(c_1_0)})
+Number of unsatisfied D2 facts: 104
+Number of D2 facts: 331 of 2025
+2022-11-17 12:12:22 INFO     [40m[34mGrounding Logic Program...[0m
+2022-11-17 12:12:23 INFO     [40m[34m..done[0m
+2022-11-17 12:12:23 INFO     [40m[34mSolving Logic Program...[0m
+2022-11-17 12:12:23 INFO     [40m[34m..done[0m
+Clingo statistics:
+Total time:  2.0645580291748047
+CPU time:  2.660499999999999
+Solve time:  0.0479428768157959
+2022-11-17 12:12:23 INFO     Learned the following sketch:
+(:policy
+(:boolean_features )
+(:numerical_features "n_count(c_primitive(picked,0))")
+(:rule (:conditions (:c_n_eq 0)) (:effects (:e_n_bot 0)))
+(:rule (:conditions (:c_n_eq 0)) (:effects (:e_n_inc 0)))
+(:rule (:conditions (:c_n_gt 0)) (:effects (:e_n_inc 0)))
+)
+Numer of sketch rules: 3
+Number of selected features: 1
+Maximum complexity of selected feature: 2
+[40m[31mSketch cycles[0m
+Instance: 24 instance_2x2_4
+2 (instance index=24, state index=2, atoms={at(c_1_1), reward(c_1_1), reward(c_1_0)})
+2 (instance index=24, state index=2, atoms={at(c_1_1), reward(c_1_1), reward(c_1_0)})
+Number of unsatisfied D2 facts: 14
+Number of D2 facts: 345 of 2025
+2022-11-17 12:12:25 INFO     [40m[34mGrounding Logic Program...[0m
+2022-11-17 12:12:25 INFO     [40m[34m..done[0m
+2022-11-17 12:12:25 INFO     [40m[34mSolving Logic Program...[0m
+2022-11-17 12:12:25 INFO     [40m[34m..done[0m
+Clingo statistics:
+Total time:  1.9803249835968018
+CPU time:  2.5928640000000005
+Solve time:  0.042842864990234375
+2022-11-17 12:12:26 INFO     Learned the following sketch:
+(:policy
+(:boolean_features )
+(:numerical_features "n_count(c_primitive(picked,0))")
+(:rule (:conditions (:c_n_eq 0)) (:effects (:e_n_inc 0)))
+(:rule (:conditions (:c_n_gt 0)) (:effects (:e_n_bot 0)))
+(:rule (:conditions (:c_n_gt 0)) (:effects (:e_n_inc 0)))
+)
+Numer of sketch rules: 3
+Number of selected features: 1
+Maximum complexity of selected feature: 2
+[40m[31mSketch cycles[0m
+Instance: 24 instance_2x2_4
+9 (instance index=24, state index=9, atoms={at(c_0_0), picked(c_1_1), reward(c_1_0)})
+9 (instance index=24, state index=9, atoms={at(c_0_0), picked(c_1_1), reward(c_1_0)})
+Number of unsatisfied D2 facts: 38
+Number of D2 facts: 383 of 2025
+2022-11-17 12:12:27 INFO     [40m[34mGrounding Logic Program...[0m
+2022-11-17 12:12:28 INFO     [40m[34m..done[0m
+2022-11-17 12:12:28 INFO     [40m[34mSolving Logic Program...[0m
+2022-11-17 12:12:28 INFO     [40m[34m..done[0m
+Clingo statistics:
+Total time:  2.3291661739349365
+CPU time:  3.316599
+Solve time:  0.0581209659576416
+2022-11-17 12:12:28 INFO     Learned the following sketch:
+(:policy
+(:boolean_features )
+(:numerical_features "n_count(c_primitive(reward,0))")
+(:rule (:conditions (:c_n_gt 0)) (:effects (:e_n_dec 0)))
+)
+Numer of sketch rules: 1
+Number of selected features: 1
+Maximum complexity of selected feature: 2
+2022-11-17 12:12:28 INFO     [40m[34mVerifying learned sketch...[0m
+2022-11-17 12:12:28 INFO     [40m[34m..done[0m
+2022-11-17 12:12:28 INFO     [40m[33mIteration summary:[0m
+DomainFeatureDataStatistics:
+    num_dlplan_states: 12
+    num_boolean_features: 87
+    num_numerical_features: 578
+StatePairEquivalenceStatistics:
+    num_state_pairs: 45
+    num_equivalences: 45
+TupleGraphEquivalenceMinimizerStatistics:
+    Number of input tuples: 57
+    Number of output tuples: 39
+[40m[31mSketch solves all instances![0m
+2022-11-17 12:12:28 INFO     [40m[32mSummary:[0m
+Boolean features:
+b_empty(c_top)
+b_empty(c_bot)
+b_empty(c_primitive(reward,0))
+b_empty(c_primitive(picked,0))
+b_empty(c_and(c_primitive(at,0),c_primitive(reward,0)))
+b_empty(c_and(c_primitive(at,0),c_primitive(picked,0)))
+b_empty(c_and(c_primitive(at,0),c_primitive(picked_g,0)))
+b_empty(c_and(c_not(c_primitive(reward,0)),c_primitive(at,0)))
+b_empty(c_and(c_not(c_primitive(picked,0)),c_primitive(at,0)))
+b_empty(c_and(c_not(c_primitive(picked_g,0)),c_primitive(at,0)))
+b_empty(c_and(c_not(c_primitive(at,0)),c_primitive(reward,0)))
+b_empty(c_and(c_not(c_primitive(at,0)),c_primitive(picked,0)))
+b_empty(c_and(c_primitive(at,0),c_some(r_primitive(adjacent,0,1),c_primitive(reward,0))))
+b_empty(c_and(c_primitive(at,0),c_some(r_primitive(adjacent,0,1),c_primitive(picked,0))))
+b_empty(c_and(c_all(r_primitive(adjacent,0,1),c_primitive(unblocked,0)),c_primitive(at,0)))
+b_empty(c_and(c_primitive(reward,0),c_some(r_primitive(adjacent,0,1),c_primitive(reward,0))))
+b_empty(c_and(c_primitive(reward,0),c_some(r_primitive(adjacent,0,1),c_primitive(picked,0))))
+b_empty(c_and(c_all(r_primitive(adjacent,0,1),c_primitive(unblocked,0)),c_primitive(reward,0)))
+b_empty(c_and(c_primitive(picked,0),c_some(r_primitive(adjacent,0,1),c_primitive(picked,0))))
+b_empty(c_and(c_all(r_primitive(adjacent,0,1),c_primitive(unblocked,0)),c_primitive(picked,0)))
+b_empty(c_all(r_restrict(r_primitive(adjacent,0,1),c_primitive(reward,0)),c_primitive(at,0)))
+b_empty(c_all(r_restrict(r_primitive(adjacent,0,1),c_primitive(picked,0)),c_primitive(at,0)))
+b_empty(c_and(c_not(c_all(r_primitive(adjacent,0,1),c_primitive(unblocked,0))),c_primitive(at,0)))
+b_empty(c_and(c_not(c_some(r_primitive(adjacent,0,1),c_primitive(at,0))),c_primitive(reward,0)))
+b_empty(c_and(c_not(c_all(r_primitive(adjacent,0,1),c_primitive(unblocked,0))),c_primitive(reward,0)))
+b_empty(c_and(c_not(c_some(r_primitive(adjacent,0,1),c_primitive(at,0))),c_primitive(picked,0)))
+b_empty(c_and(c_not(c_all(r_primitive(adjacent,0,1),c_primitive(unblocked,0))),c_primitive(picked,0)))
+b_empty(c_and(c_and(c_primitive(reward,0),c_some(r_primitive(adjacent,0,1),c_primitive(reward,0))),c_primitive(at,0)))
+b_empty(c_and(c_and(c_primitive(reward,0),c_some(r_primitive(adjacent,0,1),c_primitive(picked,0))),c_primitive(at,0)))
+b_empty(c_and(c_and(c_all(r_primitive(adjacent,0,1),c_primitive(unblocked,0)),c_primitive(reward,0)),c_primitive(at,0)))
+b_empty(c_and(c_and(c_primitive(picked,0),c_some(r_primitive(adjacent,0,1),c_primitive(reward,0))),c_primitive(at,0)))
+b_empty(c_and(c_and(c_primitive(picked,0),c_some(r_primitive(adjacent,0,1),c_primitive(picked,0))),c_primitive(at,0)))
+b_empty(c_and(c_and(c_all(r_primitive(adjacent,0,1),c_primitive(unblocked,0)),c_primitive(picked,0)),c_primitive(at,0)))
+b_empty(c_and(c_and(c_primitive(picked_g,0),c_some(r_primitive(adjacent,0,1),c_primitive(reward,0))),c_primitive(at,0)))
+b_empty(c_and(c_and(c_primitive(picked_g,0),c_some(r_primitive(adjacent,0,1),c_primitive(picked,0))),c_primitive(at,0)))
+b_empty(c_and(c_all(r_restrict(r_primitive(adjacent,0,1),c_primitive(unblocked,0)),c_primitive(reward,0)),c_primitive(at,0)))
+b_empty(c_and(c_all(r_restrict(r_primitive(adjacent,0,1),c_primitive(unblocked,0)),c_primitive(picked,0)),c_primitive(at,0)))
+b_empty(c_and(c_all(r_restrict(r_primitive(adjacent,0,1),c_primitive(at,0)),c_primitive(picked,0)),c_primitive(reward,0)))
+b_empty(c_and(c_all(r_restrict(r_primitive(adjacent,0,1),c_primitive(reward,0)),c_primitive(at,0)),c_primitive(reward,0)))
+b_empty(c_and(c_all(r_restrict(r_primitive(adjacent,0,1),c_primitive(unblocked,0)),c_primitive(at,0)),c_primitive(reward,0)))
+b_empty(c_and(c_all(r_restrict(r_primitive(adjacent,0,1),c_primitive(unblocked,0)),c_primitive(picked,0)),c_primitive(reward,0)))
+b_empty(c_and(c_all(r_restrict(r_primitive(adjacent,0,1),c_primitive(picked,0)),c_primitive(at,0)),c_primitive(reward,0)))
+b_empty(c_and(c_all(r_restrict(r_primitive(adjacent,0,1),c_primitive(at,0)),c_primitive(reward,0)),c_primitive(picked,0)))
+b_empty(c_and(c_all(r_restrict(r_primitive(adjacent,0,1),c_primitive(reward,0)),c_primitive(at,0)),c_primitive(picked,0)))
+b_empty(c_and(c_all(r_restrict(r_primitive(adjacent,0,1),c_primitive(unblocked,0)),c_primitive(at,0)),c_primitive(picked,0)))
+b_empty(c_and(c_all(r_restrict(r_primitive(adjacent,0,1),c_primitive(unblocked,0)),c_primitive(reward,0)),c_primitive(picked,0)))
+b_empty(c_and(c_all(r_restrict(r_primitive(adjacent,0,1),c_primitive(picked,0)),c_primitive(at,0)),c_primitive(picked,0)))
+b_empty(c_and(c_and(c_not(c_all(r_primitive(adjacent,0,1),c_primitive(unblocked,0))),c_primitive(reward,0)),c_primitive(at,0)))
+b_empty(c_and(c_and(c_not(c_all(r_primitive(adjacent,0,1),c_primitive(unblocked,0))),c_primitive(picked,0)),c_primitive(at,0)))
+b_empty(c_and(c_and(c_not(c_all(r_primitive(adjacent,0,1),c_primitive(unblocked,0))),c_primitive(picked_g,0)),c_primitive(at,0)))
+b_empty(c_and(c_and(c_primitive(picked_g,0),c_some(r_transitive_closure(r_primitive(adjacent,0,1)),c_primitive(reward,0))),c_primitive(at,0)))
+b_empty(c_and(c_and(c_primitive(picked_g,0),c_some(r_transitive_closure(r_primitive(adjacent,0,1)),c_primitive(picked,0))),c_primitive(at,0)))
+b_empty(c_and(c_and(c_not(c_primitive(reward,0)),c_some(r_primitive(adjacent,0,1),c_primitive(reward,0))),c_primitive(at,0)))
+b_empty(c_and(c_and(c_not(c_primitive(reward,0)),c_some(r_primitive(adjacent,0,1),c_primitive(picked,0))),c_primitive(at,0)))
+b_empty(c_and(c_and(c_not(c_primitive(picked,0)),c_some(r_primitive(adjacent,0,1),c_primitive(reward,0))),c_primitive(at,0)))
+b_empty(c_and(c_and(c_not(c_primitive(picked,0)),c_some(r_primitive(adjacent,0,1),c_primitive(picked,0))),c_primitive(at,0)))
+b_empty(c_and(c_and(c_not(c_primitive(picked_g,0)),c_some(r_primitive(adjacent,0,1),c_primitive(reward,0))),c_primitive(at,0)))
+b_empty(c_and(c_and(c_not(c_primitive(picked_g,0)),c_some(r_primitive(adjacent,0,1),c_primitive(picked,0))),c_primitive(at,0)))
+b_empty(c_and(c_not(c_and(c_primitive(reward,0),c_some(r_primitive(adjacent,0,1),c_primitive(reward,0)))),c_primitive(at,0)))
+b_empty(c_and(c_not(c_and(c_primitive(reward,0),c_some(r_primitive(adjacent,0,1),c_primitive(picked,0)))),c_primitive(at,0)))
+b_empty(c_and(c_not(c_and(c_all(r_primitive(adjacent,0,1),c_primitive(unblocked,0)),c_primitive(reward,0))),c_primitive(at,0)))
+b_empty(c_and(c_not(c_and(c_primitive(picked,0),c_some(r_primitive(adjacent,0,1),c_primitive(reward,0)))),c_primitive(at,0)))
+b_empty(c_and(c_not(c_and(c_primitive(picked,0),c_some(r_primitive(adjacent,0,1),c_primitive(picked,0)))),c_primitive(at,0)))
+b_empty(c_and(c_not(c_and(c_all(r_primitive(adjacent,0,1),c_primitive(unblocked,0)),c_primitive(picked,0))),c_primitive(at,0)))
+b_empty(c_and(c_not(c_and(c_primitive(picked_g,0),c_some(r_primitive(adjacent,0,1),c_primitive(reward,0)))),c_primitive(at,0)))
+b_empty(c_and(c_not(c_and(c_primitive(picked_g,0),c_some(r_primitive(adjacent,0,1),c_primitive(picked,0)))),c_primitive(at,0)))
+b_empty(c_and(c_not(c_all(r_restrict(r_primitive(adjacent,0,1),c_primitive(unblocked,0)),c_primitive(reward,0))),c_primitive(at,0)))
+b_empty(c_and(c_not(c_all(r_restrict(r_primitive(adjacent,0,1),c_primitive(unblocked,0)),c_primitive(picked,0))),c_primitive(at,0)))
+b_empty(c_and(c_all(r_inverse(r_restrict(r_primitive(adjacent,0,1),c_primitive(reward,0))),c_primitive(unblocked,0)),c_primitive(at,0)))
+b_empty(c_and(c_all(r_inverse(r_restrict(r_primitive(adjacent,0,1),c_primitive(picked,0))),c_primitive(unblocked,0)),c_primitive(at,0)))
+b_empty(c_and(c_all(r_inverse(r_restrict(r_primitive(adjacent,0,1),c_primitive(picked_g,0))),c_primitive(unblocked,0)),c_primitive(at,0)))
+b_empty(c_and(c_and(c_not(c_primitive(at,0)),c_some(r_primitive(adjacent,0,1),c_primitive(picked,0))),c_primitive(reward,0)))
+b_empty(c_and(c_not(c_and(c_all(r_primitive(adjacent,0,1),c_primitive(unblocked,0)),c_primitive(at,0))),c_primitive(reward,0)))
+b_empty(c_and(c_not(c_some(r_primitive(adjacent,0,1),c_and(c_primitive(at,0),c_primitive(picked,0)))),c_primitive(reward,0)))
+b_empty(c_and(c_not(c_all(r_restrict(r_primitive(adjacent,0,1),c_primitive(unblocked,0)),c_primitive(at,0))),c_primitive(reward,0)))
+b_empty(c_and(c_not(c_all(r_restrict(r_primitive(adjacent,0,1),c_primitive(picked,0)),c_primitive(at,0))),c_primitive(reward,0)))
+b_empty(c_and(c_all(r_inverse(r_restrict(r_primitive(adjacent,0,1),c_primitive(at,0))),c_primitive(unblocked,0)),c_primitive(reward,0)))
+b_empty(c_and(c_and(c_not(c_primitive(at,0)),c_some(r_primitive(adjacent,0,1),c_primitive(picked,0))),c_primitive(unblocked,0)))
+b_empty(c_and(c_not(c_and(c_all(r_primitive(adjacent,0,1),c_primitive(unblocked,0)),c_primitive(at,0))),c_primitive(picked,0)))
+b_empty(c_and(c_not(c_some(r_primitive(adjacent,0,1),c_and(c_primitive(at,0),c_primitive(reward,0)))),c_primitive(picked,0)))
+b_empty(c_and(c_all(r_inverse(r_restrict(r_primitive(adjacent,0,1),c_primitive(at,0))),c_primitive(unblocked,0)),c_primitive(picked,0)))
+b_empty(c_and(c_all(r_restrict(r_primitive(adjacent,0,1),c_primitive(at,0)),c_primitive(reward,0)),c_not(c_primitive(unblocked,0))))
+b_empty(c_and(c_all(r_restrict(r_primitive(adjacent,0,1),c_primitive(at,0)),c_primitive(picked,0)),c_not(c_primitive(unblocked,0))))
+b_empty(c_and(c_all(r_restrict(r_primitive(adjacent,0,1),c_primitive(reward,0)),c_primitive(at,0)),c_not(c_primitive(unblocked,0))))
+b_empty(c_and(c_all(r_restrict(r_primitive(adjacent,0,1),c_primitive(picked,0)),c_primitive(at,0)),c_not(c_primitive(unblocked,0))))
+b_empty(c_not(c_some(r_primitive(adjacent,0,1),c_and(c_not(c_primitive(at,0)),c_not(c_primitive(reward,0))))))
+b_empty(c_not(c_some(r_primitive(adjacent,0,1),c_and(c_not(c_primitive(at,0)),c_not(c_primitive(picked,0))))))
+Numerical features:
+n_count(c_top)
+n_count(c_bot)
+n_count(c_primitive(at,0))
+n_count(c_primitive(reward,0))
+n_count(c_primitive(unblocked,0))
+n_count(c_primitive(picked,0))
+n_count(c_primitive(picked_g,0))
+n_count(r_primitive(adjacent,0,1))
+n_count(c_not(c_primitive(reward,0)))
+n_count(c_not(c_primitive(picked,0)))
+n_count(r_transitive_closure(r_primitive(adjacent,0,1)))
+n_count(c_and(c_primitive(at,0),c_primitive(reward,0)))
+n_count(c_and(c_primitive(at,0),c_primitive(picked,0)))
+n_count(c_and(c_primitive(at,0),c_primitive(picked_g,0)))
+n_count(c_some(r_primitive(adjacent,0,1),c_primitive(reward,0)))
+n_count(c_some(r_primitive(adjacent,0,1),c_primitive(picked,0)))
+n_count(r_restrict(r_primitive(adjacent,0,1),c_primitive(unblocked,0)))
+n_concept_distance(c_primitive(at,0),r_primitive(adjacent,0,1),c_bot)
+n_concept_distance(c_primitive(at,0),r_primitive(adjacent,0,1),c_primitive(reward,0))
+n_concept_distance(c_primitive(at,0),r_primitive(adjacent,0,1),c_primitive(picked,0))
+n_concept_distance(c_primitive(at,0),r_primitive(adjacent,0,1),c_primitive(picked_g,0))
+n_concept_distance(c_primitive(at,0),r_primitive(adjacent_g,0,1),c_primitive(reward,0))
+n_concept_distance(c_primitive(at,0),r_primitive(adjacent_g,0,1),c_primitive(picked,0))
+n_concept_distance(c_primitive(at,0),r_primitive(adjacent_g,0,1),c_primitive(picked_g,0))
+n_count(c_and(c_not(c_primitive(reward,0)),c_primitive(at,0)))
+n_count(c_and(c_not(c_primitive(picked,0)),c_primitive(at,0)))
+n_count(c_and(c_not(c_primitive(at,0)),c_primitive(reward,0)))
+n_count(c_and(c_not(c_primitive(reward,0)),c_primitive(unblocked,0)))
+n_count(c_and(c_not(c_primitive(picked,0)),c_primitive(unblocked,0)))
+n_count(c_and(c_not(c_primitive(at,0)),c_primitive(picked,0)))
+n_count(c_and(c_not(c_primitive(at,0)),c_primitive(picked_g,0)))
+n_count(c_not(c_and(c_primitive(at,0),c_primitive(reward,0))))
+n_count(c_not(c_and(c_primitive(at,0),c_primitive(picked,0))))
+n_count(c_not(c_and(c_primitive(at,0),c_primitive(picked_g,0))))
+n_count(c_some(r_transitive_closure(r_primitive(adjacent,0,1)),c_primitive(reward,0)))
+n_count(c_some(r_transitive_closure(r_primitive(adjacent,0,1)),c_primitive(picked,0)))
+n_concept_distance(c_primitive(at,0),r_primitive(adjacent,0,1),c_not(c_primitive(unblocked,0)))
+n_concept_distance(c_primitive(at,0),r_primitive(adjacent_g,0,1),c_not(c_primitive(reward,0)))
+n_concept_distance(c_primitive(at,0),r_primitive(adjacent_g,0,1),c_not(c_primitive(picked,0)))
+n_concept_distance(c_primitive(at,0),r_primitive(adjacent_g,0,1),c_not(c_primitive(picked_g,0)))
+n_concept_distance(c_not(c_primitive(unblocked,0)),r_primitive(adjacent,0,1),c_primitive(reward,0))
+n_concept_distance(c_not(c_primitive(unblocked,0)),r_primitive(adjacent,0,1),c_primitive(picked,0))
+n_count(c_and(c_primitive(at,0),c_some(r_primitive(adjacent,0,1),c_primitive(reward,0))))
+n_count(c_and(c_primitive(at,0),c_some(r_primitive(adjacent,0,1),c_primitive(picked,0))))
+n_count(c_and(c_all(r_primitive(adjacent,0,1),c_primitive(unblocked,0)),c_primitive(at,0)))
+n_count(c_and(c_primitive(reward,0),c_some(r_primitive(adjacent,0,1),c_primitive(reward,0))))
+n_count(c_and(c_primitive(reward,0),c_some(r_primitive(adjacent,0,1),c_primitive(picked,0))))
+n_count(c_and(c_all(r_primitive(adjacent,0,1),c_primitive(unblocked,0)),c_primitive(reward,0)))
+n_count(c_and(c_primitive(unblocked,0),c_some(r_primitive(adjacent,0,1),c_primitive(reward,0))))
+n_count(c_and(c_primitive(unblocked,0),c_some(r_primitive(adjacent,0,1),c_primitive(picked,0))))
+n_count(c_and(c_primitive(picked,0),c_some(r_primitive(adjacent,0,1),c_primitive(picked,0))))
+n_count(c_and(c_all(r_primitive(adjacent,0,1),c_primitive(unblocked,0)),c_primitive(picked,0)))
+n_count(c_and(c_not(c_primitive(at,0)),c_not(c_primitive(reward,0))))
+n_count(c_and(c_not(c_primitive(at,0)),c_not(c_primitive(picked,0))))
+n_count(c_and(c_not(c_primitive(at,0)),c_not(c_primitive(picked_g,0))))
+n_count(c_not(c_and(c_not(c_primitive(reward,0)),c_primitive(at,0))))
+n_count(c_not(c_and(c_not(c_primitive(picked,0)),c_primitive(at,0))))
+n_count(c_not(c_and(c_not(c_primitive(picked_g,0)),c_primitive(at,0))))
+n_count(c_not(c_and(c_not(c_primitive(at,0)),c_primitive(reward,0))))
+n_count(c_not(c_and(c_not(c_primitive(at,0)),c_primitive(picked,0))))
+n_count(c_not(c_and(c_not(c_primitive(at,0)),c_primitive(picked_g,0))))
+n_count(c_not(c_some(r_transitive_closure(r_primitive(adjacent,0,1)),c_primitive(reward,0))))
+n_count(c_not(c_some(r_transitive_closure(r_primitive(adjacent,0,1)),c_primitive(picked,0))))
+n_count(c_some(r_primitive(adjacent,0,1),c_and(c_primitive(at,0),c_primitive(reward,0))))
+n_count(c_some(r_primitive(adjacent,0,1),c_and(c_primitive(at,0),c_primitive(picked,0))))
+n_count(c_some(r_primitive(adjacent,0,1),c_and(c_primitive(at,0),c_primitive(picked_g,0))))
+n_count(c_all(r_restrict(r_primitive(adjacent,0,1),c_primitive(at,0)),c_primitive(reward,0)))
+n_count(c_all(r_restrict(r_primitive(adjacent,0,1),c_primitive(at,0)),c_primitive(picked,0)))
+n_count(c_all(r_restrict(r_primitive(adjacent,0,1),c_primitive(at,0)),c_primitive(picked_g,0)))
+n_count(c_all(r_restrict(r_primitive(adjacent,0,1),c_primitive(reward,0)),c_primitive(at,0)))
+n_count(c_all(r_restrict(r_primitive(adjacent,0,1),c_primitive(unblocked,0)),c_primitive(at,0)))
+n_count(c_all(r_restrict(r_primitive(adjacent,0,1),c_primitive(unblocked,0)),c_primitive(reward,0)))
+n_count(c_all(r_restrict(r_primitive(adjacent,0,1),c_primitive(unblocked,0)),c_primitive(picked,0)))
+n_count(c_all(r_restrict(r_primitive(adjacent,0,1),c_primitive(picked,0)),c_primitive(at,0)))
+n_concept_distance(c_primitive(at,0),r_restrict(r_primitive(adjacent,0,1),c_primitive(reward,0)),c_primitive(reward,0))
+n_concept_distance(c_primitive(at,0),r_restrict(r_primitive(adjacent,0,1),c_primitive(reward,0)),c_primitive(picked_g,0))
+n_concept_distance(c_primitive(at,0),r_restrict(r_primitive(adjacent,0,1),c_primitive(picked,0)),c_primitive(picked,0))
+n_concept_distance(c_primitive(at,0),r_restrict(r_primitive(adjacent,0,1),c_primitive(picked,0)),c_primitive(picked_g,0))
+n_concept_distance(c_primitive(at,0),r_primitive(adjacent,0,1),c_some(r_primitive(adjacent,0,1),c_primitive(reward,0)))
+n_concept_distance(c_primitive(at,0),r_primitive(adjacent,0,1),c_some(r_primitive(adjacent,0,1),c_primitive(picked,0)))
+n_concept_distance(c_primitive(at,0),r_primitive(adjacent,0,1),c_all(r_primitive(adjacent,0,1),c_primitive(unblocked,0)))
+n_concept_distance(c_primitive(at,0),r_primitive(adjacent_g,0,1),c_some(r_primitive(adjacent,0,1),c_primitive(reward,0)))
+n_concept_distance(c_primitive(at,0),r_primitive(adjacent_g,0,1),c_some(r_primitive(adjacent,0,1),c_primitive(picked,0)))
+n_concept_distance(c_primitive(at,0),r_primitive(adjacent_g,0,1),c_all(r_primitive(adjacent,0,1),c_primitive(unblocked,0)))
+n_count(c_and(c_primitive(at,0),c_some(r_transitive_closure(r_primitive(adjacent,0,1)),c_primitive(reward,0))))
+n_count(c_and(c_primitive(at,0),c_some(r_transitive_closure(r_primitive(adjacent,0,1)),c_primitive(picked,0))))
+n_count(c_and(c_not(c_some(r_primitive(adjacent,0,1),c_primitive(at,0))),c_primitive(reward,0)))
+n_count(c_and(c_not(c_all(r_primitive(adjacent,0,1),c_primitive(unblocked,0))),c_primitive(reward,0)))
+n_count(c_and(c_not(c_and(c_primitive(at,0),c_primitive(reward,0))),c_primitive(unblocked,0)))
+n_count(c_and(c_not(c_and(c_primitive(at,0),c_primitive(picked,0))),c_primitive(unblocked,0)))
+n_count(c_and(c_not(c_and(c_primitive(at,0),c_primitive(picked_g,0))),c_primitive(unblocked,0)))
+n_count(c_and(c_not(c_some(r_primitive(adjacent,0,1),c_primitive(at,0))),c_primitive(unblocked,0)))
+n_count(c_and(c_primitive(unblocked,0),c_some(r_transitive_closure(r_primitive(adjacent,0,1)),c_primitive(reward,0))))
+n_count(c_and(c_primitive(unblocked,0),c_some(r_transitive_closure(r_primitive(adjacent,0,1)),c_primitive(picked,0))))
+n_count(c_and(c_not(c_some(r_primitive(adjacent,0,1),c_primitive(at,0))),c_primitive(picked,0)))
+n_count(c_and(c_not(c_all(r_primitive(adjacent,0,1),c_primitive(unblocked,0))),c_primitive(picked,0)))
+n_count(c_and(c_not(c_and(c_primitive(at,0),c_primitive(reward,0))),c_primitive(picked_g,0)))
+n_count(c_and(c_not(c_and(c_primitive(at,0),c_primitive(picked,0))),c_primitive(picked_g,0)))
+n_count(c_and(c_primitive(picked_g,0),c_some(r_transitive_closure(r_primitive(adjacent,0,1)),c_primitive(reward,0))))
+n_count(c_and(c_primitive(picked_g,0),c_some(r_transitive_closure(r_primitive(adjacent,0,1)),c_primitive(picked,0))))
+n_count(c_and(c_not(c_primitive(at,0)),c_some(r_primitive(adjacent,0,1),c_primitive(reward,0))))
+n_count(c_and(c_not(c_primitive(at,0)),c_some(r_primitive(adjacent,0,1),c_primitive(picked,0))))
+n_count(c_and(c_not(c_primitive(reward,0)),c_some(r_primitive(adjacent,0,1),c_primitive(at,0))))
+n_count(c_and(c_not(c_primitive(reward,0)),c_some(r_primitive(adjacent,0,1),c_primitive(picked,0))))
+n_count(c_and(c_all(r_primitive(adjacent,0,1),c_primitive(unblocked,0)),c_not(c_primitive(reward,0))))
+n_count(c_and(c_not(c_primitive(picked,0)),c_some(r_primitive(adjacent,0,1),c_primitive(at,0))))
+n_count(c_and(c_not(c_primitive(picked,0)),c_some(r_primitive(adjacent,0,1),c_primitive(reward,0))))
+n_count(c_and(c_all(r_primitive(adjacent,0,1),c_primitive(unblocked,0)),c_not(c_primitive(picked,0))))
+n_count(c_not(c_and(c_primitive(at,0),c_some(r_primitive(adjacent,0,1),c_primitive(reward,0)))))
+n_count(c_not(c_and(c_primitive(at,0),c_some(r_primitive(adjacent,0,1),c_primitive(picked,0)))))
+n_count(c_not(c_and(c_all(r_primitive(adjacent,0,1),c_primitive(unblocked,0)),c_primitive(at,0))))
+n_count(c_not(c_and(c_primitive(reward,0),c_some(r_primitive(adjacent,0,1),c_primitive(reward,0)))))
+n_count(c_not(c_and(c_primitive(reward,0),c_some(r_primitive(adjacent,0,1),c_primitive(picked,0)))))
+n_count(c_not(c_and(c_all(r_primitive(adjacent,0,1),c_primitive(unblocked,0)),c_primitive(reward,0))))
+n_count(c_not(c_and(c_primitive(unblocked,0),c_some(r_primitive(adjacent,0,1),c_primitive(at,0)))))
+n_count(c_not(c_and(c_primitive(unblocked,0),c_some(r_primitive(adjacent,0,1),c_primitive(reward,0)))))
+n_count(c_not(c_and(c_primitive(unblocked,0),c_some(r_primitive(adjacent,0,1),c_primitive(picked,0)))))
+n_count(c_not(c_and(c_primitive(picked,0),c_some(r_primitive(adjacent,0,1),c_primitive(picked,0)))))
+n_count(c_not(c_and(c_all(r_primitive(adjacent,0,1),c_primitive(unblocked,0)),c_primitive(picked,0))))
+n_count(c_not(c_and(c_not(c_primitive(at,0)),c_not(c_primitive(reward,0)))))
+n_count(c_not(c_and(c_not(c_primitive(at,0)),c_not(c_primitive(picked,0)))))
+n_count(c_not(c_some(r_primitive(adjacent,0,1),c_and(c_primitive(at,0),c_primitive(reward,0)))))
+n_count(c_not(c_some(r_primitive(adjacent,0,1),c_and(c_primitive(at,0),c_primitive(picked,0)))))
+n_count(c_not(c_some(r_primitive(adjacent,0,1),c_and(c_primitive(at,0),c_primitive(picked_g,0)))))
+n_count(c_not(c_all(r_restrict(r_primitive(adjacent,0,1),c_primitive(at,0)),c_primitive(reward,0))))
+n_count(c_not(c_all(r_restrict(r_primitive(adjacent,0,1),c_primitive(at,0)),c_primitive(picked,0))))
+n_count(c_not(c_all(r_restrict(r_primitive(adjacent,0,1),c_primitive(at,0)),c_primitive(picked_g,0))))
+n_count(c_not(c_all(r_restrict(r_primitive(adjacent,0,1),c_primitive(reward,0)),c_primitive(at,0))))
+n_count(c_not(c_all(r_restrict(r_primitive(adjacent,0,1),c_primitive(unblocked,0)),c_primitive(at,0))))
+n_count(c_not(c_all(r_restrict(r_primitive(adjacent,0,1),c_primitive(unblocked,0)),c_primitive(reward,0))))
+n_count(c_not(c_all(r_restrict(r_primitive(adjacent,0,1),c_primitive(unblocked,0)),c_primitive(picked,0))))
+n_count(c_not(c_all(r_restrict(r_primitive(adjacent,0,1),c_primitive(picked,0)),c_primitive(at,0))))
+n_count(c_some(r_transitive_closure(r_primitive(adjacent,0,1)),c_and(c_primitive(at,0),c_primitive(reward,0))))
+n_count(c_some(r_transitive_closure(r_primitive(adjacent,0,1)),c_and(c_primitive(at,0),c_primitive(picked,0))))
+n_count(c_some(r_transitive_closure(r_primitive(adjacent,0,1)),c_and(c_primitive(at,0),c_primitive(picked_g,0))))
+n_count(c_all(r_primitive(adjacent,0,1),c_and(c_not(c_primitive(reward,0)),c_primitive(unblocked,0))))
+n_count(c_all(r_primitive(adjacent,0,1),c_and(c_not(c_primitive(picked,0)),c_primitive(unblocked,0))))
+n_count(c_all(r_inverse(r_restrict(r_primitive(adjacent,0,1),c_primitive(at,0))),c_primitive(unblocked,0)))
+n_count(c_all(r_inverse(r_restrict(r_primitive(adjacent,0,1),c_primitive(reward,0))),c_primitive(unblocked,0)))
+n_count(c_all(r_inverse(r_restrict(r_primitive(adjacent,0,1),c_primitive(picked,0))),c_primitive(unblocked,0)))
+n_concept_distance(c_primitive(at,0),r_restrict(r_primitive(adjacent,0,1),c_primitive(reward,0)),c_not(c_primitive(at,0)))
+n_concept_distance(c_primitive(at,0),r_restrict(r_primitive(adjacent,0,1),c_primitive(reward,0)),c_not(c_primitive(picked,0)))
+n_concept_distance(c_primitive(at,0),r_restrict(r_primitive(adjacent,0,1),c_primitive(unblocked,0)),c_not(c_primitive(reward,0)))
+n_concept_distance(c_primitive(at,0),r_restrict(r_primitive(adjacent,0,1),c_primitive(unblocked,0)),c_not(c_primitive(picked,0)))
+n_concept_distance(c_primitive(at,0),r_restrict(r_primitive(adjacent,0,1),c_primitive(unblocked,0)),c_not(c_primitive(picked_g,0)))
+n_concept_distance(c_primitive(at,0),r_restrict(r_primitive(adjacent,0,1),c_primitive(picked,0)),c_not(c_primitive(at,0)))
+n_concept_distance(c_primitive(at,0),r_restrict(r_primitive(adjacent,0,1),c_primitive(picked,0)),c_not(c_primitive(reward,0)))
+n_concept_distance(c_not(c_primitive(unblocked,0)),r_restrict(r_primitive(adjacent,0,1),c_primitive(at,0)),c_primitive(at,0))
+n_concept_distance(c_not(c_primitive(unblocked,0)),r_restrict(r_primitive(adjacent,0,1),c_primitive(at,0)),c_primitive(reward,0))
+n_concept_distance(c_not(c_primitive(unblocked,0)),r_restrict(r_primitive(adjacent,0,1),c_primitive(at,0)),c_primitive(picked,0))
+n_concept_distance(c_not(c_primitive(unblocked,0)),r_restrict(r_primitive(adjacent,0,1),c_primitive(at,0)),c_primitive(picked_g,0))
+n_concept_distance(c_not(c_primitive(unblocked,0)),r_restrict(r_primitive(adjacent,0,1),c_primitive(reward,0)),c_primitive(at,0))
+n_concept_distance(c_not(c_primitive(unblocked,0)),r_restrict(r_primitive(adjacent,0,1),c_primitive(reward,0)),c_primitive(reward,0))
+n_concept_distance(c_not(c_primitive(unblocked,0)),r_restrict(r_primitive(adjacent,0,1),c_primitive(picked,0)),c_primitive(at,0))
+n_concept_distance(c_not(c_primitive(unblocked,0)),r_restrict(r_primitive(adjacent,0,1),c_primitive(picked,0)),c_primitive(unblocked,0))
+n_concept_distance(c_not(c_primitive(unblocked,0)),r_restrict(r_primitive(adjacent,0,1),c_primitive(picked_g,0)),c_primitive(at,0))
+n_concept_distance(c_primitive(at,0),r_primitive(adjacent,0,1),c_and(c_not(c_primitive(at,0)),c_primitive(reward,0)))
+n_concept_distance(c_primitive(at,0),r_primitive(adjacent,0,1),c_and(c_not(c_primitive(at,0)),c_primitive(picked,0)))
+n_concept_distance(c_primitive(at,0),r_primitive(adjacent,0,1),c_some(r_transitive_closure(r_primitive(adjacent,0,1)),c_primitive(reward,0)))
+n_concept_distance(c_primitive(at,0),r_primitive(adjacent,0,1),c_some(r_transitive_closure(r_primitive(adjacent,0,1)),c_primitive(picked,0)))
+n_concept_distance(c_primitive(at,0),r_primitive(adjacent_g,0,1),c_not(c_all(r_primitive(adjacent,0,1),c_primitive(unblocked,0))))
+n_concept_distance(c_not(c_primitive(unblocked,0)),r_primitive(adjacent,0,1),c_and(c_primitive(at,0),c_primitive(reward,0)))
+n_concept_distance(c_not(c_primitive(unblocked,0)),r_primitive(adjacent,0,1),c_and(c_primitive(at,0),c_primitive(picked,0)))
+n_concept_distance(c_not(c_primitive(unblocked,0)),r_primitive(adjacent,0,1),c_some(r_primitive(adjacent,0,1),c_primitive(reward,0)))
+n_concept_distance(c_not(c_primitive(unblocked,0)),r_primitive(adjacent,0,1),c_some(r_primitive(adjacent,0,1),c_primitive(picked,0)))
+n_concept_distance(c_not(c_primitive(unblocked,0)),r_primitive(adjacent_g,0,1),c_some(r_primitive(adjacent,0,1),c_primitive(reward,0)))
+n_concept_distance(c_not(c_primitive(unblocked,0)),r_primitive(adjacent_g,0,1),c_some(r_primitive(adjacent,0,1),c_primitive(picked,0)))
+n_concept_distance(c_and(c_not(c_primitive(picked_g,0)),c_primitive(unblocked,0)),r_primitive(adjacent,0,1),c_primitive(reward,0))
+n_concept_distance(c_and(c_not(c_primitive(picked_g,0)),c_primitive(unblocked,0)),r_primitive(adjacent,0,1),c_primitive(picked,0))
+n_count(c_and(c_and(c_primitive(reward,0),c_some(r_primitive(adjacent,0,1),c_primitive(reward,0))),c_primitive(at,0)))
+n_count(c_and(c_and(c_primitive(reward,0),c_some(r_primitive(adjacent,0,1),c_primitive(picked,0))),c_primitive(at,0)))
+n_count(c_and(c_and(c_all(r_primitive(adjacent,0,1),c_primitive(unblocked,0)),c_primitive(reward,0)),c_primitive(at,0)))
+n_count(c_and(c_and(c_primitive(picked,0),c_some(r_primitive(adjacent,0,1),c_primitive(reward,0))),c_primitive(at,0)))
+n_count(c_and(c_and(c_primitive(picked,0),c_some(r_primitive(adjacent,0,1),c_primitive(picked,0))),c_primitive(at,0)))
+n_count(c_and(c_and(c_all(r_primitive(adjacent,0,1),c_primitive(unblocked,0)),c_primitive(picked,0)),c_primitive(at,0)))
+n_count(c_and(c_and(c_primitive(picked_g,0),c_some(r_primitive(adjacent,0,1),c_primitive(reward,0))),c_primitive(at,0)))
+n_count(c_and(c_and(c_primitive(picked_g,0),c_some(r_primitive(adjacent,0,1),c_primitive(picked,0))),c_primitive(at,0)))
+n_count(c_and(c_not(c_some(r_transitive_closure(r_primitive(adjacent,0,1)),c_primitive(reward,0))),c_primitive(at,0)))
+n_count(c_and(c_not(c_some(r_transitive_closure(r_primitive(adjacent,0,1)),c_primitive(picked,0))),c_primitive(at,0)))
+n_count(c_and(c_all(r_restrict(r_primitive(adjacent,0,1),c_primitive(unblocked,0)),c_primitive(reward,0)),c_primitive(at,0)))
+n_count(c_and(c_all(r_restrict(r_primitive(adjacent,0,1),c_primitive(unblocked,0)),c_primitive(picked,0)),c_primitive(at,0)))
+n_count(c_and(c_all(r_restrict(r_primitive(adjacent,0,1),c_primitive(at,0)),c_primitive(reward,0)),c_primitive(reward,0)))
+n_count(c_and(c_all(r_restrict(r_primitive(adjacent,0,1),c_primitive(at,0)),c_primitive(picked,0)),c_primitive(reward,0)))
+n_count(c_and(c_all(r_restrict(r_primitive(adjacent,0,1),c_primitive(at,0)),c_primitive(picked_g,0)),c_primitive(reward,0)))
+n_count(c_and(c_all(r_restrict(r_primitive(adjacent,0,1),c_primitive(reward,0)),c_primitive(at,0)),c_primitive(reward,0)))
+n_count(c_and(c_all(r_restrict(r_primitive(adjacent,0,1),c_primitive(unblocked,0)),c_primitive(at,0)),c_primitive(reward,0)))
+n_count(c_and(c_all(r_restrict(r_primitive(adjacent,0,1),c_primitive(unblocked,0)),c_primitive(picked,0)),c_primitive(reward,0)))
+n_count(c_and(c_all(r_restrict(r_primitive(adjacent,0,1),c_primitive(picked,0)),c_primitive(at,0)),c_primitive(reward,0)))
+n_count(c_and(c_and(c_not(c_primitive(at,0)),c_not(c_primitive(reward,0))),c_primitive(unblocked,0)))
+n_count(c_and(c_and(c_not(c_primitive(at,0)),c_not(c_primitive(picked,0))),c_primitive(unblocked,0)))
+n_count(c_and(c_not(c_and(c_not(c_primitive(reward,0)),c_primitive(at,0))),c_primitive(unblocked,0)))
+n_count(c_and(c_not(c_and(c_not(c_primitive(picked,0)),c_primitive(at,0))),c_primitive(unblocked,0)))
+n_count(c_and(c_not(c_some(r_transitive_closure(r_primitive(adjacent,0,1)),c_primitive(reward,0))),c_primitive(unblocked,0)))
+n_count(c_and(c_not(c_some(r_transitive_closure(r_primitive(adjacent,0,1)),c_primitive(picked,0))),c_primitive(unblocked,0)))
+n_count(c_and(c_primitive(unblocked,0),c_some(r_primitive(adjacent,0,1),c_and(c_primitive(at,0),c_primitive(reward,0)))))
+n_count(c_and(c_primitive(unblocked,0),c_some(r_primitive(adjacent,0,1),c_and(c_primitive(at,0),c_primitive(picked,0)))))
+n_count(c_and(c_primitive(unblocked,0),c_some(r_primitive(adjacent,0,1),c_and(c_primitive(at,0),c_primitive(picked_g,0)))))
+n_count(c_and(c_primitive(unblocked,0),c_some(r_primitive(adjacent,0,1),c_some(r_primitive(adjacent,0,1),c_primitive(reward,0)))))
+n_count(c_and(c_primitive(unblocked,0),c_some(r_primitive(adjacent,0,1),c_some(r_primitive(adjacent,0,1),c_primitive(picked,0)))))
+n_count(c_and(c_all(r_restrict(r_primitive(adjacent,0,1),c_primitive(at,0)),c_primitive(reward,0)),c_primitive(unblocked,0)))
+n_count(c_and(c_all(r_restrict(r_primitive(adjacent,0,1),c_primitive(at,0)),c_primitive(picked,0)),c_primitive(unblocked,0)))
+n_count(c_and(c_all(r_restrict(r_primitive(adjacent,0,1),c_primitive(reward,0)),c_primitive(at,0)),c_primitive(unblocked,0)))
+n_count(c_and(c_all(r_restrict(r_primitive(adjacent,0,1),c_primitive(picked,0)),c_primitive(at,0)),c_primitive(unblocked,0)))
+n_count(c_and(c_all(r_restrict(r_primitive(adjacent,0,1),c_primitive(at,0)),c_primitive(reward,0)),c_primitive(picked,0)))
+n_count(c_and(c_all(r_restrict(r_primitive(adjacent,0,1),c_primitive(at,0)),c_primitive(picked,0)),c_primitive(picked,0)))
+n_count(c_and(c_all(r_restrict(r_primitive(adjacent,0,1),c_primitive(at,0)),c_primitive(picked_g,0)),c_primitive(picked,0)))
+n_count(c_and(c_all(r_restrict(r_primitive(adjacent,0,1),c_primitive(reward,0)),c_primitive(at,0)),c_primitive(picked,0)))
+n_count(c_and(c_all(r_restrict(r_primitive(adjacent,0,1),c_primitive(unblocked,0)),c_primitive(at,0)),c_primitive(picked,0)))
+n_count(c_and(c_all(r_restrict(r_primitive(adjacent,0,1),c_primitive(unblocked,0)),c_primitive(reward,0)),c_primitive(picked,0)))
+n_count(c_and(c_all(r_restrict(r_primitive(adjacent,0,1),c_primitive(picked,0)),c_primitive(at,0)),c_primitive(picked,0)))
+n_count(c_and(c_all(r_restrict(r_primitive(adjacent,0,1),c_primitive(at,0)),c_primitive(reward,0)),c_primitive(picked_g,0)))
+n_count(c_and(c_all(r_restrict(r_primitive(adjacent,0,1),c_primitive(at,0)),c_primitive(picked,0)),c_primitive(picked_g,0)))
+n_count(c_and(c_not(c_and(c_primitive(at,0),c_primitive(picked,0))),c_not(c_primitive(reward,0))))
+n_count(c_and(c_not(c_primitive(reward,0)),c_not(c_some(r_primitive(adjacent,0,1),c_primitive(at,0)))))
+n_count(c_and(c_not(c_all(r_primitive(adjacent,0,1),c_primitive(unblocked,0))),c_not(c_primitive(reward,0))))
+n_count(c_and(c_not(c_primitive(reward,0)),c_some(r_transitive_closure(r_primitive(adjacent,0,1)),c_primitive(reward,0))))
+n_count(c_and(c_not(c_primitive(reward,0)),c_some(r_transitive_closure(r_primitive(adjacent,0,1)),c_primitive(picked,0))))
+n_count(c_and(c_not(c_and(c_primitive(at,0),c_primitive(reward,0))),c_not(c_primitive(picked,0))))
+n_count(c_and(c_not(c_primitive(picked,0)),c_not(c_some(r_primitive(adjacent,0,1),c_primitive(at,0)))))
+n_count(c_and(c_not(c_all(r_primitive(adjacent,0,1),c_primitive(unblocked,0))),c_not(c_primitive(picked,0))))
+n_count(c_and(c_not(c_primitive(picked,0)),c_some(r_transitive_closure(r_primitive(adjacent,0,1)),c_primitive(reward,0))))
+n_count(c_and(c_not(c_primitive(picked,0)),c_some(r_transitive_closure(r_primitive(adjacent,0,1)),c_primitive(picked,0))))
+n_count(c_and(c_some(r_primitive(adjacent,0,1),c_primitive(at,0)),c_some(r_primitive(adjacent,0,1),c_primitive(reward,0))))
+n_count(c_and(c_some(r_primitive(adjacent,0,1),c_primitive(at,0)),c_some(r_primitive(adjacent,0,1),c_primitive(picked,0))))
+n_count(c_and(c_all(r_primitive(adjacent,0,1),c_primitive(unblocked,0)),c_some(r_primitive(adjacent,0,1),c_primitive(at,0))))
+n_count(c_not(c_and(c_primitive(at,0),c_some(r_transitive_closure(r_primitive(adjacent,0,1)),c_primitive(reward,0)))))
+n_count(c_not(c_and(c_primitive(at,0),c_some(r_transitive_closure(r_primitive(adjacent,0,1)),c_primitive(picked,0)))))
+n_count(c_not(c_and(c_not(c_some(r_primitive(adjacent,0,1),c_primitive(at,0))),c_primitive(reward,0))))
+n_count(c_not(c_and(c_not(c_some(r_primitive(adjacent,0,1),c_primitive(at,0))),c_primitive(unblocked,0))))
+n_count(c_not(c_and(c_primitive(unblocked,0),c_some(r_transitive_closure(r_primitive(adjacent,0,1)),c_primitive(reward,0)))))
+n_count(c_not(c_and(c_primitive(unblocked,0),c_some(r_transitive_closure(r_primitive(adjacent,0,1)),c_primitive(picked,0)))))
+n_count(c_not(c_and(c_not(c_some(r_primitive(adjacent,0,1),c_primitive(at,0))),c_primitive(picked,0))))
+n_count(c_not(c_and(c_primitive(picked_g,0),c_some(r_transitive_closure(r_primitive(adjacent,0,1)),c_primitive(reward,0)))))
+n_count(c_not(c_and(c_primitive(picked_g,0),c_some(r_transitive_closure(r_primitive(adjacent,0,1)),c_primitive(picked,0)))))
+n_count(c_not(c_and(c_not(c_primitive(at,0)),c_some(r_primitive(adjacent,0,1),c_primitive(reward,0)))))
+n_count(c_not(c_and(c_not(c_primitive(at,0)),c_some(r_primitive(adjacent,0,1),c_primitive(picked,0)))))
+n_count(c_not(c_and(c_not(c_primitive(reward,0)),c_some(r_primitive(adjacent,0,1),c_primitive(at,0)))))
+n_count(c_not(c_and(c_all(r_primitive(adjacent,0,1),c_primitive(unblocked,0)),c_not(c_primitive(reward,0)))))
+n_count(c_not(c_and(c_not(c_primitive(picked,0)),c_some(r_primitive(adjacent,0,1),c_primitive(at,0)))))
+n_count(c_not(c_and(c_all(r_primitive(adjacent,0,1),c_primitive(unblocked,0)),c_not(c_primitive(picked,0)))))
+n_count(c_not(c_some(r_transitive_closure(r_primitive(adjacent,0,1)),c_and(c_primitive(at,0),c_primitive(reward,0)))))
+n_count(c_not(c_some(r_transitive_closure(r_primitive(adjacent,0,1)),c_and(c_primitive(at,0),c_primitive(picked,0)))))
+n_count(c_not(c_some(r_transitive_closure(r_primitive(adjacent,0,1)),c_and(c_primitive(at,0),c_primitive(picked_g,0)))))
+n_count(c_not(c_all(r_primitive(adjacent,0,1),c_and(c_not(c_primitive(reward,0)),c_primitive(unblocked,0)))))
+n_count(c_not(c_all(r_primitive(adjacent,0,1),c_and(c_not(c_primitive(picked,0)),c_primitive(unblocked,0)))))
+n_count(c_some(r_primitive(adjacent,0,1),c_and(c_primitive(at,0),c_some(r_primitive(adjacent,0,1),c_primitive(reward,0)))))
+n_count(c_some(r_primitive(adjacent,0,1),c_and(c_primitive(at,0),c_some(r_primitive(adjacent,0,1),c_primitive(picked,0)))))
+n_count(c_some(r_primitive(adjacent,0,1),c_and(c_primitive(reward,0),c_some(r_primitive(adjacent,0,1),c_primitive(picked,0)))))
+n_count(c_some(r_primitive(adjacent,0,1),c_and(c_not(c_primitive(at,0)),c_not(c_primitive(reward,0)))))
+n_count(c_some(r_primitive(adjacent,0,1),c_and(c_not(c_primitive(at,0)),c_not(c_primitive(picked,0)))))
+n_count(c_some(r_transitive_closure(r_primitive(adjacent,0,1)),c_and(c_not(c_primitive(at,0)),c_primitive(reward,0))))
+n_count(c_some(r_transitive_closure(r_primitive(adjacent,0,1)),c_and(c_not(c_primitive(at,0)),c_primitive(picked,0))))
+n_count(c_all(r_restrict(r_primitive(adjacent,0,1),c_primitive(at,0)),c_some(r_primitive(adjacent,0,1),c_primitive(reward,0))))
+n_count(c_all(r_restrict(r_primitive(adjacent,0,1),c_primitive(at,0)),c_some(r_primitive(adjacent,0,1),c_primitive(picked,0))))
+n_count(c_all(r_restrict(r_primitive(adjacent,0,1),c_primitive(at,0)),c_all(r_primitive(adjacent,0,1),c_primitive(unblocked,0))))
+n_count(c_all(r_restrict(r_primitive(adjacent,0,1),c_primitive(reward,0)),c_some(r_primitive(adjacent,0,1),c_primitive(at,0))))
+n_count(c_all(r_restrict(r_primitive(adjacent,0,1),c_primitive(reward,0)),c_some(r_primitive(adjacent,0,1),c_primitive(reward,0))))
+n_count(c_all(r_restrict(r_primitive(adjacent,0,1),c_primitive(unblocked,0)),c_and(c_primitive(at,0),c_primitive(reward,0))))
+n_count(c_all(r_restrict(r_primitive(adjacent,0,1),c_primitive(unblocked,0)),c_and(c_primitive(at,0),c_primitive(picked,0))))
+n_count(c_all(r_restrict(r_primitive(adjacent,0,1),c_primitive(picked,0)),c_some(r_primitive(adjacent,0,1),c_primitive(at,0))))
+n_concept_distance(c_primitive(at,0),r_restrict(r_primitive(adjacent,0,1),c_primitive(reward,0)),c_all(r_primitive(adjacent,0,1),c_primitive(unblocked,0)))
+n_concept_distance(c_primitive(at,0),r_restrict(r_primitive(adjacent,0,1),c_primitive(picked,0)),c_all(r_primitive(adjacent,0,1),c_primitive(unblocked,0)))
+n_concept_distance(c_primitive(at,0),r_primitive(adjacent,0,1),c_and(c_primitive(reward,0),c_some(r_primitive(adjacent,0,1),c_primitive(reward,0))))
+n_concept_distance(c_primitive(at,0),r_primitive(adjacent,0,1),c_and(c_primitive(reward,0),c_some(r_primitive(adjacent,0,1),c_primitive(picked,0))))
+n_concept_distance(c_primitive(at,0),r_primitive(adjacent,0,1),c_and(c_all(r_primitive(adjacent,0,1),c_primitive(unblocked,0)),c_primitive(reward,0)))
+n_concept_distance(c_primitive(at,0),r_primitive(adjacent,0,1),c_and(c_primitive(picked,0),c_some(r_primitive(adjacent,0,1),c_primitive(reward,0))))
+n_concept_distance(c_primitive(at,0),r_primitive(adjacent,0,1),c_and(c_primitive(picked,0),c_some(r_primitive(adjacent,0,1),c_primitive(picked,0))))
+n_concept_distance(c_primitive(at,0),r_primitive(adjacent,0,1),c_and(c_all(r_primitive(adjacent,0,1),c_primitive(unblocked,0)),c_primitive(picked,0)))
+n_concept_distance(c_primitive(at,0),r_primitive(adjacent,0,1),c_and(c_primitive(picked_g,0),c_some(r_primitive(adjacent,0,1),c_primitive(reward,0))))
+n_concept_distance(c_primitive(at,0),r_primitive(adjacent,0,1),c_and(c_primitive(picked_g,0),c_some(r_primitive(adjacent,0,1),c_primitive(picked,0))))
+n_concept_distance(c_primitive(at,0),r_primitive(adjacent,0,1),c_not(c_and(c_not(c_primitive(reward,0)),c_primitive(unblocked,0))))
+n_concept_distance(c_primitive(at,0),r_primitive(adjacent,0,1),c_not(c_and(c_not(c_primitive(picked,0)),c_primitive(unblocked,0))))
+n_concept_distance(c_primitive(at,0),r_primitive(adjacent,0,1),c_not(c_some(r_transitive_closure(r_primitive(adjacent,0,1)),c_primitive(reward,0))))
+n_concept_distance(c_primitive(at,0),r_primitive(adjacent,0,1),c_not(c_some(r_transitive_closure(r_primitive(adjacent,0,1)),c_primitive(picked,0))))
+n_concept_distance(c_primitive(at,0),r_primitive(adjacent,0,1),c_some(r_primitive(adjacent,0,1),c_and(c_primitive(at,0),c_primitive(reward,0))))
+n_concept_distance(c_primitive(at,0),r_primitive(adjacent,0,1),c_some(r_primitive(adjacent,0,1),c_and(c_primitive(at,0),c_primitive(picked,0))))
+n_concept_distance(c_primitive(at,0),r_primitive(adjacent,0,1),c_some(r_primitive(adjacent,0,1),c_and(c_primitive(at,0),c_primitive(picked_g,0))))
+n_concept_distance(c_primitive(at,0),r_primitive(adjacent,0,1),c_some(r_primitive(adjacent,0,1),c_some(r_primitive(adjacent,0,1),c_primitive(reward,0))))
+n_concept_distance(c_primitive(at,0),r_primitive(adjacent,0,1),c_some(r_primitive(adjacent,0,1),c_some(r_primitive(adjacent,0,1),c_primitive(picked,0))))
+n_concept_distance(c_primitive(at,0),r_primitive(adjacent,0,1),c_all(r_restrict(r_primitive(adjacent,0,1),c_primitive(reward,0)),c_primitive(at,0)))
+n_concept_distance(c_primitive(at,0),r_primitive(adjacent,0,1),c_all(r_restrict(r_primitive(adjacent,0,1),c_primitive(unblocked,0)),c_primitive(at,0)))
+n_concept_distance(c_primitive(at,0),r_primitive(adjacent,0,1),c_all(r_restrict(r_primitive(adjacent,0,1),c_primitive(unblocked,0)),c_primitive(reward,0)))
+n_concept_distance(c_primitive(at,0),r_primitive(adjacent,0,1),c_all(r_restrict(r_primitive(adjacent,0,1),c_primitive(unblocked,0)),c_primitive(picked,0)))
+n_concept_distance(c_primitive(at,0),r_primitive(adjacent,0,1),c_all(r_restrict(r_primitive(adjacent,0,1),c_primitive(picked,0)),c_primitive(at,0)))
+n_concept_distance(c_primitive(at,0),r_primitive(adjacent_g,0,1),c_and(c_primitive(reward,0),c_some(r_primitive(adjacent,0,1),c_primitive(reward,0))))
+n_concept_distance(c_primitive(at,0),r_primitive(adjacent_g,0,1),c_and(c_primitive(reward,0),c_some(r_primitive(adjacent,0,1),c_primitive(picked,0))))
+n_concept_distance(c_primitive(at,0),r_primitive(adjacent_g,0,1),c_and(c_all(r_primitive(adjacent,0,1),c_primitive(unblocked,0)),c_primitive(reward,0)))
+n_concept_distance(c_primitive(at,0),r_primitive(adjacent_g,0,1),c_and(c_primitive(picked,0),c_some(r_primitive(adjacent,0,1),c_primitive(reward,0))))
+n_concept_distance(c_primitive(at,0),r_primitive(adjacent_g,0,1),c_and(c_primitive(picked,0),c_some(r_primitive(adjacent,0,1),c_primitive(picked,0))))
+n_concept_distance(c_primitive(at,0),r_primitive(adjacent_g,0,1),c_and(c_all(r_primitive(adjacent,0,1),c_primitive(unblocked,0)),c_primitive(picked,0)))
+n_concept_distance(c_primitive(at,0),r_primitive(adjacent_g,0,1),c_and(c_primitive(picked_g,0),c_some(r_primitive(adjacent,0,1),c_primitive(reward,0))))
+n_concept_distance(c_primitive(at,0),r_primitive(adjacent_g,0,1),c_and(c_primitive(picked_g,0),c_some(r_primitive(adjacent,0,1),c_primitive(picked,0))))
+n_concept_distance(c_primitive(at,0),r_primitive(adjacent_g,0,1),c_some(r_primitive(adjacent,0,1),c_some(r_primitive(adjacent,0,1),c_primitive(reward,0))))
+n_concept_distance(c_primitive(at,0),r_primitive(adjacent_g,0,1),c_some(r_primitive(adjacent,0,1),c_some(r_primitive(adjacent,0,1),c_primitive(picked,0))))
+n_concept_distance(c_primitive(at,0),r_primitive(adjacent_g,0,1),c_all(r_restrict(r_primitive(adjacent,0,1),c_primitive(unblocked,0)),c_primitive(reward,0)))
+n_concept_distance(c_primitive(at,0),r_primitive(adjacent_g,0,1),c_all(r_restrict(r_primitive(adjacent,0,1),c_primitive(unblocked,0)),c_primitive(picked,0)))
+n_concept_distance(c_not(c_primitive(unblocked,0)),r_primitive(adjacent,0,1),c_and(c_not(c_primitive(reward,0)),c_primitive(at,0)))
+n_concept_distance(c_not(c_primitive(unblocked,0)),r_primitive(adjacent,0,1),c_and(c_not(c_primitive(picked,0)),c_primitive(at,0)))
+n_concept_distance(c_not(c_primitive(unblocked,0)),r_primitive(adjacent,0,1),c_and(c_not(c_primitive(picked_g,0)),c_primitive(at,0)))
+n_concept_distance(c_not(c_primitive(unblocked,0)),r_primitive(adjacent,0,1),c_and(c_not(c_primitive(at,0)),c_primitive(reward,0)))
+n_concept_distance(c_not(c_primitive(unblocked,0)),r_primitive(adjacent,0,1),c_and(c_not(c_primitive(at,0)),c_primitive(picked,0)))
+n_concept_distance(c_not(c_primitive(unblocked,0)),r_primitive(adjacent,0,1),c_and(c_not(c_primitive(at,0)),c_primitive(picked_g,0)))
+n_concept_distance(c_and(c_all(r_primitive(adjacent,0,1),c_primitive(unblocked,0)),c_primitive(unblocked,0)),r_primitive(adjacent,0,1),c_primitive(reward,0))
+n_concept_distance(c_and(c_all(r_primitive(adjacent,0,1),c_primitive(unblocked,0)),c_primitive(unblocked,0)),r_primitive(adjacent,0,1),c_primitive(picked,0))
+n_concept_distance(c_and(c_all(r_primitive(adjacent,0,1),c_primitive(unblocked,0)),c_primitive(unblocked,0)),r_primitive(adjacent_g,0,1),c_primitive(reward,0))
+n_concept_distance(c_and(c_all(r_primitive(adjacent,0,1),c_primitive(unblocked,0)),c_primitive(unblocked,0)),r_primitive(adjacent_g,0,1),c_primitive(picked,0))
+n_count(c_and(c_and(c_not(c_all(r_primitive(adjacent,0,1),c_primitive(unblocked,0))),c_primitive(reward,0)),c_primitive(at,0)))
+n_count(c_and(c_and(c_not(c_all(r_primitive(adjacent,0,1),c_primitive(unblocked,0))),c_primitive(picked,0)),c_primitive(at,0)))
+n_count(c_and(c_and(c_not(c_all(r_primitive(adjacent,0,1),c_primitive(unblocked,0))),c_primitive(picked_g,0)),c_primitive(at,0)))
+n_count(c_and(c_and(c_primitive(picked_g,0),c_some(r_transitive_closure(r_primitive(adjacent,0,1)),c_primitive(reward,0))),c_primitive(at,0)))
+n_count(c_and(c_and(c_primitive(picked_g,0),c_some(r_transitive_closure(r_primitive(adjacent,0,1)),c_primitive(picked,0))),c_primitive(at,0)))
+n_count(c_and(c_and(c_not(c_primitive(reward,0)),c_some(r_primitive(adjacent,0,1),c_primitive(reward,0))),c_primitive(at,0)))
+n_count(c_and(c_and(c_not(c_primitive(reward,0)),c_some(r_primitive(adjacent,0,1),c_primitive(picked,0))),c_primitive(at,0)))
+n_count(c_and(c_and(c_not(c_primitive(picked,0)),c_some(r_primitive(adjacent,0,1),c_primitive(reward,0))),c_primitive(at,0)))
+n_count(c_and(c_and(c_not(c_primitive(picked,0)),c_some(r_primitive(adjacent,0,1),c_primitive(picked,0))),c_primitive(at,0)))
+n_count(c_and(c_and(c_not(c_primitive(picked_g,0)),c_some(r_primitive(adjacent,0,1),c_primitive(reward,0))),c_primitive(at,0)))
+n_count(c_and(c_and(c_not(c_primitive(picked_g,0)),c_some(r_primitive(adjacent,0,1),c_primitive(picked,0))),c_primitive(at,0)))
+n_count(c_and(c_not(c_and(c_primitive(reward,0),c_some(r_primitive(adjacent,0,1),c_primitive(reward,0)))),c_primitive(at,0)))
+n_count(c_and(c_not(c_and(c_primitive(reward,0),c_some(r_primitive(adjacent,0,1),c_primitive(picked,0)))),c_primitive(at,0)))
+n_count(c_and(c_not(c_and(c_all(r_primitive(adjacent,0,1),c_primitive(unblocked,0)),c_primitive(reward,0))),c_primitive(at,0)))
+n_count(c_and(c_not(c_and(c_primitive(picked,0),c_some(r_primitive(adjacent,0,1),c_primitive(reward,0)))),c_primitive(at,0)))
+n_count(c_and(c_not(c_and(c_primitive(picked,0),c_some(r_primitive(adjacent,0,1),c_primitive(picked,0)))),c_primitive(at,0)))
+n_count(c_and(c_not(c_and(c_all(r_primitive(adjacent,0,1),c_primitive(unblocked,0)),c_primitive(picked,0))),c_primitive(at,0)))
+n_count(c_and(c_not(c_and(c_primitive(picked_g,0),c_some(r_primitive(adjacent,0,1),c_primitive(reward,0)))),c_primitive(at,0)))
+n_count(c_and(c_not(c_and(c_primitive(picked_g,0),c_some(r_primitive(adjacent,0,1),c_primitive(picked,0)))),c_primitive(at,0)))
+n_count(c_and(c_not(c_all(r_restrict(r_primitive(adjacent,0,1),c_primitive(unblocked,0)),c_primitive(reward,0))),c_primitive(at,0)))
+n_count(c_and(c_not(c_all(r_restrict(r_primitive(adjacent,0,1),c_primitive(unblocked,0)),c_primitive(picked,0))),c_primitive(at,0)))
+n_count(c_and(c_all(r_inverse(r_restrict(r_primitive(adjacent,0,1),c_primitive(reward,0))),c_primitive(unblocked,0)),c_primitive(at,0)))
+n_count(c_and(c_all(r_inverse(r_restrict(r_primitive(adjacent,0,1),c_primitive(picked,0))),c_primitive(unblocked,0)),c_primitive(at,0)))
+n_count(c_and(c_all(r_inverse(r_restrict(r_primitive(adjacent,0,1),c_primitive(picked_g,0))),c_primitive(unblocked,0)),c_primitive(at,0)))
+n_count(c_and(c_and(c_not(c_primitive(at,0)),c_some(r_primitive(adjacent,0,1),c_primitive(reward,0))),c_primitive(reward,0)))
+n_count(c_and(c_and(c_not(c_primitive(at,0)),c_some(r_primitive(adjacent,0,1),c_primitive(picked,0))),c_primitive(reward,0)))
+n_count(c_and(c_not(c_and(c_primitive(at,0),c_some(r_primitive(adjacent,0,1),c_primitive(reward,0)))),c_primitive(reward,0)))
+n_count(c_and(c_not(c_and(c_primitive(at,0),c_some(r_primitive(adjacent,0,1),c_primitive(picked,0)))),c_primitive(reward,0)))
+n_count(c_and(c_not(c_and(c_all(r_primitive(adjacent,0,1),c_primitive(unblocked,0)),c_primitive(at,0))),c_primitive(reward,0)))
+n_count(c_and(c_not(c_some(r_primitive(adjacent,0,1),c_and(c_primitive(at,0),c_primitive(picked,0)))),c_primitive(reward,0)))
+n_count(c_and(c_not(c_some(r_primitive(adjacent,0,1),c_and(c_primitive(at,0),c_primitive(picked_g,0)))),c_primitive(reward,0)))
+n_count(c_and(c_not(c_all(r_restrict(r_primitive(adjacent,0,1),c_primitive(unblocked,0)),c_primitive(at,0))),c_primitive(reward,0)))
+n_count(c_and(c_not(c_all(r_restrict(r_primitive(adjacent,0,1),c_primitive(unblocked,0)),c_primitive(picked,0))),c_primitive(reward,0)))
+n_count(c_and(c_not(c_all(r_restrict(r_primitive(adjacent,0,1),c_primitive(picked,0)),c_primitive(at,0))),c_primitive(reward,0)))
+n_count(c_and(c_primitive(reward,0),c_some(r_transitive_closure(r_primitive(adjacent,0,1)),c_and(c_primitive(at,0),c_primitive(reward,0)))))
+n_count(c_and(c_primitive(reward,0),c_some(r_transitive_closure(r_primitive(adjacent,0,1)),c_and(c_primitive(at,0),c_primitive(picked_g,0)))))
+n_count(c_and(c_all(r_inverse(r_restrict(r_primitive(adjacent,0,1),c_primitive(at,0))),c_primitive(unblocked,0)),c_primitive(reward,0)))
+n_count(c_and(c_and(c_not(c_primitive(at,0)),c_some(r_primitive(adjacent,0,1),c_primitive(reward,0))),c_primitive(unblocked,0)))
+n_count(c_and(c_and(c_not(c_primitive(at,0)),c_some(r_primitive(adjacent,0,1),c_primitive(picked,0))),c_primitive(unblocked,0)))
+n_count(c_and(c_and(c_not(c_primitive(reward,0)),c_some(r_primitive(adjacent,0,1),c_primitive(at,0))),c_primitive(unblocked,0)))
+n_count(c_and(c_and(c_not(c_primitive(reward,0)),c_some(r_primitive(adjacent,0,1),c_primitive(reward,0))),c_primitive(unblocked,0)))
+n_count(c_and(c_and(c_not(c_primitive(reward,0)),c_some(r_primitive(adjacent,0,1),c_primitive(picked,0))),c_primitive(unblocked,0)))
+n_count(c_and(c_and(c_not(c_primitive(picked,0)),c_some(r_primitive(adjacent,0,1),c_primitive(at,0))),c_primitive(unblocked,0)))
+n_count(c_and(c_and(c_not(c_primitive(picked,0)),c_some(r_primitive(adjacent,0,1),c_primitive(reward,0))),c_primitive(unblocked,0)))
+n_count(c_and(c_and(c_not(c_primitive(picked,0)),c_some(r_primitive(adjacent,0,1),c_primitive(picked,0))),c_primitive(unblocked,0)))
+n_count(c_and(c_not(c_and(c_primitive(reward,0),c_some(r_primitive(adjacent,0,1),c_primitive(reward,0)))),c_primitive(unblocked,0)))
+n_count(c_and(c_not(c_and(c_primitive(reward,0),c_some(r_primitive(adjacent,0,1),c_primitive(picked,0)))),c_primitive(unblocked,0)))
+n_count(c_and(c_not(c_and(c_primitive(picked,0),c_some(r_primitive(adjacent,0,1),c_primitive(picked,0)))),c_primitive(unblocked,0)))
+n_count(c_and(c_not(c_some(r_primitive(adjacent,0,1),c_and(c_primitive(at,0),c_primitive(reward,0)))),c_primitive(unblocked,0)))
+n_count(c_and(c_not(c_some(r_primitive(adjacent,0,1),c_and(c_primitive(at,0),c_primitive(picked,0)))),c_primitive(unblocked,0)))
+n_count(c_and(c_not(c_some(r_primitive(adjacent,0,1),c_and(c_primitive(at,0),c_primitive(picked_g,0)))),c_primitive(unblocked,0)))
+n_count(c_and(c_not(c_all(r_restrict(r_primitive(adjacent,0,1),c_primitive(at,0)),c_primitive(reward,0))),c_primitive(unblocked,0)))
+n_count(c_and(c_not(c_all(r_restrict(r_primitive(adjacent,0,1),c_primitive(at,0)),c_primitive(picked,0))),c_primitive(unblocked,0)))
+n_count(c_and(c_not(c_all(r_restrict(r_primitive(adjacent,0,1),c_primitive(reward,0)),c_primitive(at,0))),c_primitive(unblocked,0)))
+n_count(c_and(c_not(c_all(r_restrict(r_primitive(adjacent,0,1),c_primitive(unblocked,0)),c_primitive(at,0))),c_primitive(unblocked,0)))
+n_count(c_and(c_not(c_all(r_restrict(r_primitive(adjacent,0,1),c_primitive(unblocked,0)),c_primitive(reward,0))),c_primitive(unblocked,0)))
+n_count(c_and(c_not(c_all(r_restrict(r_primitive(adjacent,0,1),c_primitive(unblocked,0)),c_primitive(picked,0))),c_primitive(unblocked,0)))
+n_count(c_and(c_not(c_all(r_restrict(r_primitive(adjacent,0,1),c_primitive(picked,0)),c_primitive(at,0))),c_primitive(unblocked,0)))
+n_count(c_and(c_primitive(unblocked,0),c_some(r_transitive_closure(r_primitive(adjacent,0,1)),c_and(c_primitive(at,0),c_primitive(reward,0)))))
+n_count(c_and(c_primitive(unblocked,0),c_some(r_transitive_closure(r_primitive(adjacent,0,1)),c_and(c_primitive(at,0),c_primitive(picked,0)))))
+n_count(c_and(c_primitive(unblocked,0),c_some(r_transitive_closure(r_primitive(adjacent,0,1)),c_and(c_primitive(at,0),c_primitive(picked_g,0)))))
+n_count(c_and(c_all(r_inverse(r_restrict(r_primitive(adjacent,0,1),c_primitive(reward,0))),c_primitive(unblocked,0)),c_primitive(unblocked,0)))
+n_count(c_and(c_all(r_inverse(r_restrict(r_primitive(adjacent,0,1),c_primitive(picked,0))),c_primitive(unblocked,0)),c_primitive(unblocked,0)))
+n_count(c_and(c_and(c_not(c_primitive(at,0)),c_some(r_primitive(adjacent,0,1),c_primitive(picked,0))),c_primitive(picked,0)))
+n_count(c_and(c_not(c_and(c_primitive(at,0),c_some(r_primitive(adjacent,0,1),c_primitive(reward,0)))),c_primitive(picked,0)))
+n_count(c_and(c_not(c_and(c_primitive(at,0),c_some(r_primitive(adjacent,0,1),c_primitive(picked,0)))),c_primitive(picked,0)))
+n_count(c_and(c_not(c_and(c_all(r_primitive(adjacent,0,1),c_primitive(unblocked,0)),c_primitive(at,0))),c_primitive(picked,0)))
+n_count(c_and(c_not(c_some(r_primitive(adjacent,0,1),c_and(c_primitive(at,0),c_primitive(reward,0)))),c_primitive(picked,0)))
+n_count(c_and(c_not(c_some(r_primitive(adjacent,0,1),c_and(c_primitive(at,0),c_primitive(picked_g,0)))),c_primitive(picked,0)))
+n_count(c_and(c_not(c_all(r_restrict(r_primitive(adjacent,0,1),c_primitive(unblocked,0)),c_primitive(at,0))),c_primitive(picked,0)))
+n_count(c_and(c_not(c_all(r_restrict(r_primitive(adjacent,0,1),c_primitive(unblocked,0)),c_primitive(reward,0))),c_primitive(picked,0)))
+n_count(c_and(c_primitive(picked,0),c_some(r_transitive_closure(r_primitive(adjacent,0,1)),c_and(c_primitive(at,0),c_primitive(picked,0)))))
+n_count(c_and(c_primitive(picked,0),c_some(r_transitive_closure(r_primitive(adjacent,0,1)),c_and(c_primitive(at,0),c_primitive(picked_g,0)))))
+n_count(c_and(c_all(r_inverse(r_restrict(r_primitive(adjacent,0,1),c_primitive(at,0))),c_primitive(unblocked,0)),c_primitive(picked,0)))
+n_count(c_and(c_not(c_and(c_primitive(at,0),c_some(r_primitive(adjacent,0,1),c_primitive(reward,0)))),c_primitive(picked_g,0)))
+n_count(c_and(c_not(c_and(c_primitive(at,0),c_some(r_primitive(adjacent,0,1),c_primitive(picked,0)))),c_primitive(picked_g,0)))
+n_count(c_and(c_not(c_and(c_primitive(reward,0),c_some(r_primitive(adjacent,0,1),c_primitive(picked,0)))),c_primitive(picked_g,0)))
+n_count(c_and(c_all(r_inverse(r_restrict(r_primitive(adjacent,0,1),c_primitive(at,0))),c_primitive(unblocked,0)),c_primitive(picked_g,0)))
+n_count(c_and(c_not(c_primitive(at,0)),c_some(r_primitive(adjacent,0,1),c_some(r_primitive(adjacent,0,1),c_primitive(reward,0)))))
+n_count(c_and(c_not(c_primitive(at,0)),c_some(r_primitive(adjacent,0,1),c_some(r_primitive(adjacent,0,1),c_primitive(picked,0)))))
+n_count(c_and(c_all(r_restrict(r_primitive(adjacent,0,1),c_primitive(at,0)),c_primitive(reward,0)),c_not(c_primitive(at,0))))
+n_count(c_and(c_all(r_restrict(r_primitive(adjacent,0,1),c_primitive(at,0)),c_primitive(picked,0)),c_not(c_primitive(at,0))))
+n_count(c_and(c_all(r_restrict(r_primitive(adjacent,0,1),c_primitive(at,0)),c_primitive(picked_g,0)),c_not(c_primitive(at,0))))
+n_count(c_and(c_all(r_restrict(r_primitive(adjacent,0,1),c_primitive(reward,0)),c_primitive(at,0)),c_not(c_primitive(at,0))))
+n_count(c_and(c_all(r_restrict(r_primitive(adjacent,0,1),c_primitive(unblocked,0)),c_primitive(reward,0)),c_not(c_primitive(at,0))))
+n_count(c_and(c_all(r_restrict(r_primitive(adjacent,0,1),c_primitive(unblocked,0)),c_primitive(picked,0)),c_not(c_primitive(at,0))))
+n_count(c_and(c_all(r_restrict(r_primitive(adjacent,0,1),c_primitive(picked,0)),c_primitive(at,0)),c_not(c_primitive(at,0))))
+n_count(c_and(c_not(c_and(c_not(c_primitive(picked,0)),c_primitive(at,0))),c_not(c_primitive(reward,0))))
+n_count(c_and(c_not(c_primitive(reward,0)),c_some(r_primitive(adjacent,0,1),c_and(c_primitive(at,0),c_primitive(reward,0)))))
+n_count(c_and(c_not(c_primitive(reward,0)),c_some(r_primitive(adjacent,0,1),c_and(c_primitive(at,0),c_primitive(picked_g,0)))))
+n_count(c_and(c_all(r_restrict(r_primitive(adjacent,0,1),c_primitive(at,0)),c_primitive(reward,0)),c_not(c_primitive(reward,0))))
+n_count(c_and(c_all(r_restrict(r_primitive(adjacent,0,1),c_primitive(at,0)),c_primitive(picked,0)),c_not(c_primitive(reward,0))))
+n_count(c_and(c_all(r_restrict(r_primitive(adjacent,0,1),c_primitive(at,0)),c_primitive(picked_g,0)),c_not(c_primitive(reward,0))))
+n_count(c_and(c_all(r_restrict(r_primitive(adjacent,0,1),c_primitive(reward,0)),c_primitive(at,0)),c_not(c_primitive(reward,0))))
+n_count(c_and(c_all(r_restrict(r_primitive(adjacent,0,1),c_primitive(unblocked,0)),c_primitive(at,0)),c_not(c_primitive(reward,0))))
+n_count(c_and(c_all(r_restrict(r_primitive(adjacent,0,1),c_primitive(unblocked,0)),c_primitive(reward,0)),c_not(c_primitive(reward,0))))
+n_count(c_and(c_all(r_restrict(r_primitive(adjacent,0,1),c_primitive(picked,0)),c_primitive(at,0)),c_not(c_primitive(reward,0))))
+n_count(c_and(c_all(r_restrict(r_primitive(adjacent,0,1),c_primitive(at,0)),c_primitive(reward,0)),c_not(c_primitive(unblocked,0))))
+n_count(c_and(c_all(r_restrict(r_primitive(adjacent,0,1),c_primitive(at,0)),c_primitive(picked,0)),c_not(c_primitive(unblocked,0))))
+n_count(c_and(c_all(r_restrict(r_primitive(adjacent,0,1),c_primitive(reward,0)),c_primitive(at,0)),c_not(c_primitive(unblocked,0))))
+n_count(c_and(c_all(r_restrict(r_primitive(adjacent,0,1),c_primitive(picked,0)),c_primitive(at,0)),c_not(c_primitive(unblocked,0))))
+n_count(c_and(c_not(c_and(c_not(c_primitive(reward,0)),c_primitive(at,0))),c_not(c_primitive(picked,0))))
+n_count(c_and(c_not(c_primitive(picked,0)),c_some(r_primitive(adjacent,0,1),c_and(c_primitive(at,0),c_primitive(picked,0)))))
+n_count(c_and(c_not(c_primitive(picked,0)),c_some(r_primitive(adjacent,0,1),c_and(c_primitive(at,0),c_primitive(picked_g,0)))))
+n_count(c_and(c_all(r_restrict(r_primitive(adjacent,0,1),c_primitive(at,0)),c_primitive(reward,0)),c_not(c_primitive(picked,0))))
+n_count(c_and(c_all(r_restrict(r_primitive(adjacent,0,1),c_primitive(at,0)),c_primitive(picked,0)),c_not(c_primitive(picked,0))))
+n_count(c_and(c_all(r_restrict(r_primitive(adjacent,0,1),c_primitive(at,0)),c_primitive(picked_g,0)),c_not(c_primitive(picked,0))))
+n_count(c_and(c_all(r_restrict(r_primitive(adjacent,0,1),c_primitive(reward,0)),c_primitive(at,0)),c_not(c_primitive(picked,0))))
+n_count(c_and(c_all(r_restrict(r_primitive(adjacent,0,1),c_primitive(unblocked,0)),c_primitive(at,0)),c_not(c_primitive(picked,0))))
+n_count(c_and(c_all(r_restrict(r_primitive(adjacent,0,1),c_primitive(unblocked,0)),c_primitive(picked,0)),c_not(c_primitive(picked,0))))
+n_count(c_and(c_all(r_restrict(r_primitive(adjacent,0,1),c_primitive(picked,0)),c_primitive(at,0)),c_not(c_primitive(picked,0))))
+n_count(c_and(c_not(c_and(c_primitive(at,0),c_primitive(reward,0))),c_some(r_primitive(adjacent,0,1),c_primitive(reward,0))))
+n_count(c_and(c_not(c_and(c_primitive(at,0),c_primitive(picked,0))),c_some(r_primitive(adjacent,0,1),c_primitive(reward,0))))
+n_count(c_and(c_not(c_and(c_primitive(at,0),c_primitive(picked_g,0))),c_some(r_primitive(adjacent,0,1),c_primitive(reward,0))))
+n_count(c_and(c_not(c_and(c_primitive(at,0),c_primitive(reward,0))),c_some(r_primitive(adjacent,0,1),c_primitive(picked,0))))
+n_count(c_and(c_not(c_and(c_primitive(at,0),c_primitive(picked,0))),c_some(r_primitive(adjacent,0,1),c_primitive(picked,0))))
+n_count(c_and(c_not(c_and(c_primitive(at,0),c_primitive(picked_g,0))),c_some(r_primitive(adjacent,0,1),c_primitive(picked,0))))
+n_count(c_and(c_all(r_primitive(adjacent,0,1),c_primitive(unblocked,0)),c_not(c_and(c_primitive(at,0),c_primitive(reward,0)))))
+n_count(c_and(c_all(r_primitive(adjacent,0,1),c_primitive(unblocked,0)),c_not(c_and(c_primitive(at,0),c_primitive(picked,0)))))
+n_count(c_not(c_and(c_and(c_primitive(reward,0),c_some(r_primitive(adjacent,0,1),c_primitive(reward,0))),c_primitive(at,0))))
+n_count(c_not(c_and(c_and(c_primitive(reward,0),c_some(r_primitive(adjacent,0,1),c_primitive(picked,0))),c_primitive(at,0))))
+n_count(c_not(c_and(c_and(c_all(r_primitive(adjacent,0,1),c_primitive(unblocked,0)),c_primitive(reward,0)),c_primitive(at,0))))
+n_count(c_not(c_and(c_and(c_primitive(picked,0),c_some(r_primitive(adjacent,0,1),c_primitive(reward,0))),c_primitive(at,0))))
+n_count(c_not(c_and(c_and(c_primitive(picked,0),c_some(r_primitive(adjacent,0,1),c_primitive(picked,0))),c_primitive(at,0))))
+n_count(c_not(c_and(c_and(c_all(r_primitive(adjacent,0,1),c_primitive(unblocked,0)),c_primitive(picked,0)),c_primitive(at,0))))
+n_count(c_not(c_and(c_and(c_primitive(picked_g,0),c_some(r_primitive(adjacent,0,1),c_primitive(reward,0))),c_primitive(at,0))))
+n_count(c_not(c_and(c_and(c_primitive(picked_g,0),c_some(r_primitive(adjacent,0,1),c_primitive(picked,0))),c_primitive(at,0))))
+n_count(c_not(c_and(c_not(c_some(r_transitive_closure(r_primitive(adjacent,0,1)),c_primitive(reward,0))),c_primitive(at,0))))
+n_count(c_not(c_and(c_not(c_some(r_transitive_closure(r_primitive(adjacent,0,1)),c_primitive(picked,0))),c_primitive(at,0))))
+n_count(c_not(c_and(c_all(r_restrict(r_primitive(adjacent,0,1),c_primitive(unblocked,0)),c_primitive(reward,0)),c_primitive(at,0))))
+n_count(c_not(c_and(c_all(r_restrict(r_primitive(adjacent,0,1),c_primitive(unblocked,0)),c_primitive(picked,0)),c_primitive(at,0))))
+n_count(c_not(c_and(c_all(r_restrict(r_primitive(adjacent,0,1),c_primitive(at,0)),c_primitive(reward,0)),c_primitive(reward,0))))
+n_count(c_not(c_and(c_all(r_restrict(r_primitive(adjacent,0,1),c_primitive(at,0)),c_primitive(picked,0)),c_primitive(reward,0))))
+n_count(c_not(c_and(c_all(r_restrict(r_primitive(adjacent,0,1),c_primitive(at,0)),c_primitive(picked_g,0)),c_primitive(reward,0))))
+n_count(c_not(c_and(c_all(r_restrict(r_primitive(adjacent,0,1),c_primitive(reward,0)),c_primitive(at,0)),c_primitive(reward,0))))
+n_count(c_not(c_and(c_all(r_restrict(r_primitive(adjacent,0,1),c_primitive(unblocked,0)),c_primitive(at,0)),c_primitive(reward,0))))
+n_count(c_not(c_and(c_all(r_restrict(r_primitive(adjacent,0,1),c_primitive(unblocked,0)),c_primitive(picked,0)),c_primitive(reward,0))))
+n_count(c_not(c_and(c_all(r_restrict(r_primitive(adjacent,0,1),c_primitive(picked,0)),c_primitive(at,0)),c_primitive(reward,0))))
+n_count(c_not(c_and(c_not(c_some(r_transitive_closure(r_primitive(adjacent,0,1)),c_primitive(reward,0))),c_primitive(unblocked,0))))
+n_count(c_not(c_and(c_not(c_some(r_transitive_closure(r_primitive(adjacent,0,1)),c_primitive(picked,0))),c_primitive(unblocked,0))))
+n_count(c_not(c_and(c_primitive(unblocked,0),c_some(r_primitive(adjacent,0,1),c_and(c_primitive(at,0),c_primitive(reward,0))))))
+n_count(c_not(c_and(c_primitive(unblocked,0),c_some(r_primitive(adjacent,0,1),c_and(c_primitive(at,0),c_primitive(picked,0))))))
+n_count(c_not(c_and(c_primitive(unblocked,0),c_some(r_primitive(adjacent,0,1),c_and(c_primitive(at,0),c_primitive(picked_g,0))))))
+n_count(c_not(c_and(c_primitive(unblocked,0),c_some(r_primitive(adjacent,0,1),c_some(r_primitive(adjacent,0,1),c_primitive(reward,0))))))
+n_count(c_not(c_and(c_primitive(unblocked,0),c_some(r_primitive(adjacent,0,1),c_some(r_primitive(adjacent,0,1),c_primitive(picked,0))))))
+n_count(c_not(c_and(c_all(r_restrict(r_primitive(adjacent,0,1),c_primitive(at,0)),c_primitive(reward,0)),c_primitive(unblocked,0))))
+n_count(c_not(c_and(c_all(r_restrict(r_primitive(adjacent,0,1),c_primitive(at,0)),c_primitive(picked,0)),c_primitive(unblocked,0))))
+n_count(c_not(c_and(c_all(r_restrict(r_primitive(adjacent,0,1),c_primitive(reward,0)),c_primitive(at,0)),c_primitive(unblocked,0))))
+n_count(c_not(c_and(c_all(r_restrict(r_primitive(adjacent,0,1),c_primitive(picked,0)),c_primitive(at,0)),c_primitive(unblocked,0))))
+n_count(c_not(c_and(c_all(r_restrict(r_primitive(adjacent,0,1),c_primitive(at,0)),c_primitive(reward,0)),c_primitive(picked,0))))
+n_count(c_not(c_and(c_all(r_restrict(r_primitive(adjacent,0,1),c_primitive(at,0)),c_primitive(picked,0)),c_primitive(picked,0))))
+n_count(c_not(c_and(c_all(r_restrict(r_primitive(adjacent,0,1),c_primitive(at,0)),c_primitive(picked_g,0)),c_primitive(picked,0))))
+n_count(c_not(c_and(c_all(r_restrict(r_primitive(adjacent,0,1),c_primitive(reward,0)),c_primitive(at,0)),c_primitive(picked,0))))
+n_count(c_not(c_and(c_all(r_restrict(r_primitive(adjacent,0,1),c_primitive(unblocked,0)),c_primitive(at,0)),c_primitive(picked,0))))
+n_count(c_not(c_and(c_all(r_restrict(r_primitive(adjacent,0,1),c_primitive(unblocked,0)),c_primitive(reward,0)),c_primitive(picked,0))))
+n_count(c_not(c_and(c_all(r_restrict(r_primitive(adjacent,0,1),c_primitive(picked,0)),c_primitive(at,0)),c_primitive(picked,0))))
+n_count(c_not(c_and(c_not(c_primitive(reward,0)),c_not(c_some(r_primitive(adjacent,0,1),c_primitive(at,0))))))
+n_count(c_not(c_and(c_not(c_primitive(reward,0)),c_some(r_transitive_closure(r_primitive(adjacent,0,1)),c_primitive(reward,0)))))
+n_count(c_not(c_and(c_not(c_primitive(picked,0)),c_not(c_some(r_primitive(adjacent,0,1),c_primitive(at,0))))))
+n_count(c_not(c_and(c_not(c_primitive(picked,0)),c_some(r_transitive_closure(r_primitive(adjacent,0,1)),c_primitive(picked,0)))))
+n_count(c_not(c_some(r_primitive(adjacent,0,1),c_and(c_not(c_primitive(at,0)),c_not(c_primitive(reward,0))))))
+n_count(c_not(c_some(r_primitive(adjacent,0,1),c_and(c_not(c_primitive(at,0)),c_not(c_primitive(picked,0))))))
+n_count(c_not(c_some(r_transitive_closure(r_primitive(adjacent,0,1)),c_and(c_not(c_primitive(at,0)),c_primitive(reward,0)))))
+n_count(c_not(c_some(r_transitive_closure(r_primitive(adjacent,0,1)),c_and(c_not(c_primitive(at,0)),c_primitive(picked,0)))))
+n_count(c_not(c_all(r_restrict(r_primitive(adjacent,0,1),c_primitive(unblocked,0)),c_and(c_primitive(at,0),c_primitive(reward,0)))))
+n_count(c_not(c_all(r_restrict(r_primitive(adjacent,0,1),c_primitive(unblocked,0)),c_and(c_primitive(at,0),c_primitive(picked,0)))))
+n_count(c_some(r_transitive_closure(r_primitive(adjacent,0,1)),c_and(c_primitive(at,0),c_some(r_primitive(adjacent,0,1),c_primitive(reward,0)))))
+n_count(c_some(r_transitive_closure(r_primitive(adjacent,0,1)),c_and(c_primitive(at,0),c_some(r_primitive(adjacent,0,1),c_primitive(picked,0)))))
+n_count(c_some(r_transitive_closure(r_primitive(adjacent,0,1)),c_and(c_all(r_primitive(adjacent,0,1),c_primitive(unblocked,0)),c_primitive(at,0))))
+n_count(c_some(r_transitive_closure(r_primitive(adjacent,0,1)),c_and(c_primitive(reward,0),c_some(r_primitive(adjacent,0,1),c_primitive(picked,0)))))
+n_count(c_some(r_transitive_closure(r_primitive(adjacent,0,1)),c_and(c_all(r_primitive(adjacent,0,1),c_primitive(unblocked,0)),c_primitive(reward,0))))
+n_count(c_some(r_transitive_closure(r_primitive(adjacent,0,1)),c_and(c_all(r_primitive(adjacent,0,1),c_primitive(unblocked,0)),c_primitive(picked,0))))
+n_count(c_some(r_transitive_closure(r_primitive(adjacent,0,1)),c_all(r_restrict(r_primitive(adjacent,0,1),c_primitive(reward,0)),c_primitive(at,0))))
+n_count(c_some(r_transitive_closure(r_primitive(adjacent,0,1)),c_all(r_restrict(r_primitive(adjacent,0,1),c_primitive(picked,0)),c_primitive(at,0))))
+n_count(c_all(r_primitive(adjacent,0,1),c_and(c_not(c_and(c_primitive(at,0),c_primitive(reward,0))),c_primitive(unblocked,0))))
+n_count(c_all(r_primitive(adjacent,0,1),c_and(c_not(c_and(c_primitive(at,0),c_primitive(picked,0))),c_primitive(unblocked,0))))
+n_count(c_all(r_primitive(adjacent,0,1),c_and(c_not(c_and(c_primitive(at,0),c_primitive(picked_g,0))),c_primitive(unblocked,0))))
+n_count(c_all(r_restrict(r_primitive(adjacent,0,1),c_primitive(unblocked,0)),c_and(c_not(c_primitive(at,0)),c_primitive(reward,0))))
+n_count(c_all(r_restrict(r_primitive(adjacent,0,1),c_primitive(unblocked,0)),c_and(c_not(c_primitive(at,0)),c_primitive(picked,0))))
+n_concept_distance(c_primitive(at,0),r_restrict(r_primitive(adjacent,0,1),c_primitive(reward,0)),c_not(c_and(c_primitive(at,0),c_primitive(reward,0))))
+n_concept_distance(c_primitive(at,0),r_restrict(r_primitive(adjacent,0,1),c_primitive(reward,0)),c_not(c_and(c_primitive(at,0),c_primitive(picked_g,0))))
+n_concept_distance(c_primitive(at,0),r_restrict(r_primitive(adjacent,0,1),c_primitive(reward,0)),c_not(c_all(r_primitive(adjacent,0,1),c_primitive(unblocked,0))))
+n_concept_distance(c_primitive(at,0),r_restrict(r_primitive(adjacent,0,1),c_primitive(picked,0)),c_not(c_and(c_primitive(at,0),c_primitive(picked,0))))
+n_concept_distance(c_primitive(at,0),r_restrict(r_primitive(adjacent,0,1),c_primitive(picked,0)),c_not(c_and(c_primitive(at,0),c_primitive(picked_g,0))))
+n_concept_distance(c_primitive(at,0),r_restrict(r_primitive(adjacent,0,1),c_primitive(picked,0)),c_not(c_all(r_primitive(adjacent,0,1),c_primitive(unblocked,0))))
+n_concept_distance(c_not(c_primitive(unblocked,0)),r_restrict(r_primitive(adjacent,0,1),c_primitive(at,0)),c_some(r_primitive(adjacent,0,1),c_primitive(reward,0)))
+n_concept_distance(c_not(c_primitive(unblocked,0)),r_restrict(r_primitive(adjacent,0,1),c_primitive(at,0)),c_some(r_primitive(adjacent,0,1),c_primitive(picked,0)))
+n_concept_distance(c_and(c_not(c_primitive(picked_g,0)),c_primitive(unblocked,0)),r_restrict(r_primitive(adjacent,0,1),c_primitive(at,0)),c_primitive(at,0))
+n_concept_distance(c_and(c_not(c_primitive(picked_g,0)),c_primitive(unblocked,0)),r_restrict(r_primitive(adjacent,0,1),c_primitive(at,0)),c_primitive(reward,0))
+n_concept_distance(c_and(c_not(c_primitive(picked_g,0)),c_primitive(unblocked,0)),r_restrict(r_primitive(adjacent,0,1),c_primitive(at,0)),c_primitive(picked,0))
+n_concept_distance(c_and(c_not(c_primitive(picked_g,0)),c_primitive(unblocked,0)),r_restrict(r_primitive(adjacent,0,1),c_primitive(reward,0)),c_primitive(at,0))
+n_concept_distance(c_and(c_not(c_primitive(picked_g,0)),c_primitive(unblocked,0)),r_restrict(r_primitive(adjacent,0,1),c_primitive(reward,0)),c_primitive(reward,0))
+n_concept_distance(c_and(c_not(c_primitive(picked_g,0)),c_primitive(unblocked,0)),r_restrict(r_primitive(adjacent,0,1),c_primitive(picked,0)),c_primitive(at,0))
+n_concept_distance(c_and(c_not(c_primitive(picked_g,0)),c_primitive(unblocked,0)),r_restrict(r_primitive(adjacent,0,1),c_primitive(picked,0)),c_primitive(picked,0))
+n_concept_distance(c_primitive(at,0),r_primitive(adjacent,0,1),c_and(c_not(c_some(r_primitive(adjacent,0,1),c_primitive(at,0))),c_primitive(reward,0)))
+n_concept_distance(c_primitive(at,0),r_primitive(adjacent,0,1),c_and(c_not(c_all(r_primitive(adjacent,0,1),c_primitive(unblocked,0))),c_primitive(reward,0)))
+n_concept_distance(c_primitive(at,0),r_primitive(adjacent,0,1),c_and(c_not(c_some(r_primitive(adjacent,0,1),c_primitive(at,0))),c_primitive(picked,0)))
+n_concept_distance(c_primitive(at,0),r_primitive(adjacent,0,1),c_and(c_not(c_all(r_primitive(adjacent,0,1),c_primitive(unblocked,0))),c_primitive(picked,0)))
+n_concept_distance(c_primitive(at,0),r_primitive(adjacent,0,1),c_and(c_not(c_all(r_primitive(adjacent,0,1),c_primitive(unblocked,0))),c_primitive(picked_g,0)))
+n_concept_distance(c_primitive(at,0),r_primitive(adjacent,0,1),c_and(c_primitive(picked_g,0),c_some(r_transitive_closure(r_primitive(adjacent,0,1)),c_primitive(reward,0))))
+n_concept_distance(c_primitive(at,0),r_primitive(adjacent,0,1),c_and(c_primitive(picked_g,0),c_some(r_transitive_closure(r_primitive(adjacent,0,1)),c_primitive(picked,0))))
+n_concept_distance(c_primitive(at,0),r_primitive(adjacent,0,1),c_and(c_not(c_primitive(at,0)),c_some(r_primitive(adjacent,0,1),c_primitive(reward,0))))
+n_concept_distance(c_primitive(at,0),r_primitive(adjacent,0,1),c_and(c_not(c_primitive(at,0)),c_some(r_primitive(adjacent,0,1),c_primitive(picked,0))))
+n_concept_distance(c_primitive(at,0),r_primitive(adjacent,0,1),c_and(c_not(c_primitive(reward,0)),c_some(r_primitive(adjacent,0,1),c_primitive(reward,0))))
+n_concept_distance(c_primitive(at,0),r_primitive(adjacent,0,1),c_and(c_not(c_primitive(reward,0)),c_some(r_primitive(adjacent,0,1),c_primitive(picked,0))))
+n_concept_distance(c_primitive(at,0),r_primitive(adjacent,0,1),c_and(c_all(r_primitive(adjacent,0,1),c_primitive(unblocked,0)),c_not(c_primitive(reward,0))))
+n_concept_distance(c_primitive(at,0),r_primitive(adjacent,0,1),c_and(c_not(c_primitive(unblocked,0)),c_some(r_primitive(adjacent,0,1),c_primitive(reward,0))))
+n_concept_distance(c_primitive(at,0),r_primitive(adjacent,0,1),c_and(c_not(c_primitive(unblocked,0)),c_some(r_primitive(adjacent,0,1),c_primitive(picked,0))))
+n_concept_distance(c_primitive(at,0),r_primitive(adjacent,0,1),c_and(c_not(c_primitive(picked,0)),c_some(r_primitive(adjacent,0,1),c_primitive(reward,0))))
+n_concept_distance(c_primitive(at,0),r_primitive(adjacent,0,1),c_and(c_not(c_primitive(picked,0)),c_some(r_primitive(adjacent,0,1),c_primitive(picked,0))))
+n_concept_distance(c_primitive(at,0),r_primitive(adjacent,0,1),c_and(c_all(r_primitive(adjacent,0,1),c_primitive(unblocked,0)),c_not(c_primitive(picked,0))))
+n_concept_distance(c_primitive(at,0),r_primitive(adjacent,0,1),c_and(c_not(c_primitive(picked_g,0)),c_some(r_primitive(adjacent,0,1),c_primitive(reward,0))))
+n_concept_distance(c_primitive(at,0),r_primitive(adjacent,0,1),c_and(c_not(c_primitive(picked_g,0)),c_some(r_primitive(adjacent,0,1),c_primitive(picked,0))))
+n_concept_distance(c_primitive(at,0),r_primitive(adjacent,0,1),c_not(c_and(c_primitive(unblocked,0),c_some(r_primitive(adjacent,0,1),c_primitive(reward,0)))))
+n_concept_distance(c_primitive(at,0),r_primitive(adjacent,0,1),c_not(c_and(c_primitive(unblocked,0),c_some(r_primitive(adjacent,0,1),c_primitive(picked,0)))))
+n_concept_distance(c_primitive(at,0),r_primitive(adjacent,0,1),c_not(c_all(r_restrict(r_primitive(adjacent,0,1),c_primitive(at,0)),c_primitive(reward,0))))
+n_concept_distance(c_primitive(at,0),r_primitive(adjacent,0,1),c_not(c_all(r_restrict(r_primitive(adjacent,0,1),c_primitive(at,0)),c_primitive(picked,0))))
+n_concept_distance(c_primitive(at,0),r_primitive(adjacent,0,1),c_not(c_all(r_restrict(r_primitive(adjacent,0,1),c_primitive(reward,0)),c_primitive(at,0))))
+n_concept_distance(c_primitive(at,0),r_primitive(adjacent,0,1),c_not(c_all(r_restrict(r_primitive(adjacent,0,1),c_primitive(picked,0)),c_primitive(at,0))))
+n_concept_distance(c_primitive(at,0),r_primitive(adjacent,0,1),c_all(r_primitive(adjacent,0,1),c_and(c_not(c_primitive(reward,0)),c_primitive(unblocked,0))))
+n_concept_distance(c_primitive(at,0),r_primitive(adjacent,0,1),c_all(r_primitive(adjacent,0,1),c_and(c_not(c_primitive(picked,0)),c_primitive(unblocked,0))))
+n_concept_distance(c_primitive(at,0),r_primitive(adjacent_g,0,1),c_and(c_not(c_all(r_primitive(adjacent,0,1),c_primitive(unblocked,0))),c_primitive(reward,0)))
+n_concept_distance(c_primitive(at,0),r_primitive(adjacent_g,0,1),c_and(c_not(c_all(r_primitive(adjacent,0,1),c_primitive(unblocked,0))),c_primitive(picked,0)))
+n_concept_distance(c_primitive(at,0),r_primitive(adjacent_g,0,1),c_and(c_not(c_all(r_primitive(adjacent,0,1),c_primitive(unblocked,0))),c_primitive(picked_g,0)))
+n_concept_distance(c_primitive(at,0),r_primitive(adjacent_g,0,1),c_and(c_primitive(picked_g,0),c_some(r_transitive_closure(r_primitive(adjacent,0,1)),c_primitive(reward,0))))
+n_concept_distance(c_primitive(at,0),r_primitive(adjacent_g,0,1),c_and(c_primitive(picked_g,0),c_some(r_transitive_closure(r_primitive(adjacent,0,1)),c_primitive(picked,0))))
+n_concept_distance(c_primitive(at,0),r_primitive(adjacent_g,0,1),c_and(c_not(c_primitive(reward,0)),c_some(r_primitive(adjacent,0,1),c_primitive(reward,0))))
+n_concept_distance(c_primitive(at,0),r_primitive(adjacent_g,0,1),c_and(c_not(c_primitive(reward,0)),c_some(r_primitive(adjacent,0,1),c_primitive(picked,0))))
+n_concept_distance(c_primitive(at,0),r_primitive(adjacent_g,0,1),c_and(c_not(c_primitive(picked,0)),c_some(r_primitive(adjacent,0,1),c_primitive(reward,0))))
+n_concept_distance(c_primitive(at,0),r_primitive(adjacent_g,0,1),c_and(c_not(c_primitive(picked,0)),c_some(r_primitive(adjacent,0,1),c_primitive(picked,0))))
+n_concept_distance(c_primitive(at,0),r_primitive(adjacent_g,0,1),c_and(c_not(c_primitive(picked_g,0)),c_some(r_primitive(adjacent,0,1),c_primitive(reward,0))))
+n_concept_distance(c_primitive(at,0),r_primitive(adjacent_g,0,1),c_and(c_not(c_primitive(picked_g,0)),c_some(r_primitive(adjacent,0,1),c_primitive(picked,0))))
+n_concept_distance(c_primitive(at,0),r_primitive(adjacent_g,0,1),c_not(c_and(c_primitive(reward,0),c_some(r_primitive(adjacent,0,1),c_primitive(reward,0)))))
+n_concept_distance(c_primitive(at,0),r_primitive(adjacent_g,0,1),c_not(c_and(c_primitive(reward,0),c_some(r_primitive(adjacent,0,1),c_primitive(picked,0)))))
+n_concept_distance(c_primitive(at,0),r_primitive(adjacent_g,0,1),c_not(c_and(c_all(r_primitive(adjacent,0,1),c_primitive(unblocked,0)),c_primitive(reward,0))))
+n_concept_distance(c_primitive(at,0),r_primitive(adjacent_g,0,1),c_not(c_and(c_primitive(picked,0),c_some(r_primitive(adjacent,0,1),c_primitive(reward,0)))))
+n_concept_distance(c_primitive(at,0),r_primitive(adjacent_g,0,1),c_not(c_and(c_primitive(picked,0),c_some(r_primitive(adjacent,0,1),c_primitive(picked,0)))))
+n_concept_distance(c_primitive(at,0),r_primitive(adjacent_g,0,1),c_not(c_and(c_all(r_primitive(adjacent,0,1),c_primitive(unblocked,0)),c_primitive(picked,0))))
+n_concept_distance(c_primitive(at,0),r_primitive(adjacent_g,0,1),c_not(c_and(c_primitive(picked_g,0),c_some(r_primitive(adjacent,0,1),c_primitive(reward,0)))))
+n_concept_distance(c_primitive(at,0),r_primitive(adjacent_g,0,1),c_not(c_and(c_primitive(picked_g,0),c_some(r_primitive(adjacent,0,1),c_primitive(picked,0)))))
+n_concept_distance(c_primitive(at,0),r_primitive(adjacent_g,0,1),c_not(c_all(r_restrict(r_primitive(adjacent,0,1),c_primitive(unblocked,0)),c_primitive(reward,0))))
+n_concept_distance(c_primitive(at,0),r_primitive(adjacent_g,0,1),c_not(c_all(r_restrict(r_primitive(adjacent,0,1),c_primitive(unblocked,0)),c_primitive(picked,0))))
+n_concept_distance(c_primitive(at,0),r_primitive(adjacent_g,0,1),c_all(r_primitive(adjacent,0,1),c_and(c_not(c_primitive(reward,0)),c_primitive(unblocked,0))))
+n_concept_distance(c_primitive(at,0),r_primitive(adjacent_g,0,1),c_all(r_primitive(adjacent,0,1),c_and(c_not(c_primitive(picked,0)),c_primitive(unblocked,0))))
+n_concept_distance(c_primitive(at,0),r_primitive(adjacent_g,0,1),c_all(r_inverse(r_restrict(r_primitive(adjacent,0,1),c_primitive(reward,0))),c_primitive(unblocked,0)))
+n_concept_distance(c_primitive(at,0),r_primitive(adjacent_g,0,1),c_all(r_inverse(r_restrict(r_primitive(adjacent,0,1),c_primitive(picked,0))),c_primitive(unblocked,0)))
+n_concept_distance(c_primitive(at,0),r_primitive(adjacent_g,0,1),c_all(r_inverse(r_restrict(r_primitive(adjacent,0,1),c_primitive(picked_g,0))),c_primitive(unblocked,0)))
+n_concept_distance(c_not(c_primitive(unblocked,0)),r_primitive(adjacent,0,1),c_and(c_primitive(at,0),c_some(r_primitive(adjacent,0,1),c_primitive(reward,0))))
+n_concept_distance(c_not(c_primitive(unblocked,0)),r_primitive(adjacent,0,1),c_and(c_primitive(at,0),c_some(r_primitive(adjacent,0,1),c_primitive(picked,0))))
+n_concept_distance(c_not(c_primitive(unblocked,0)),r_primitive(adjacent,0,1),c_and(c_all(r_primitive(adjacent,0,1),c_primitive(unblocked,0)),c_primitive(at,0)))
+n_concept_distance(c_not(c_primitive(unblocked,0)),r_primitive(adjacent,0,1),c_and(c_primitive(reward,0),c_some(r_primitive(adjacent,0,1),c_primitive(at,0))))
+n_concept_distance(c_not(c_primitive(unblocked,0)),r_primitive(adjacent,0,1),c_and(c_primitive(reward,0),c_some(r_primitive(adjacent,0,1),c_primitive(reward,0))))
+n_concept_distance(c_not(c_primitive(unblocked,0)),r_primitive(adjacent,0,1),c_and(c_primitive(reward,0),c_some(r_primitive(adjacent,0,1),c_primitive(picked,0))))
+n_concept_distance(c_not(c_primitive(unblocked,0)),r_primitive(adjacent,0,1),c_and(c_all(r_primitive(adjacent,0,1),c_primitive(unblocked,0)),c_primitive(reward,0)))
+n_concept_distance(c_not(c_primitive(unblocked,0)),r_primitive(adjacent,0,1),c_and(c_primitive(picked,0),c_some(r_primitive(adjacent,0,1),c_primitive(at,0))))
+n_concept_distance(c_not(c_primitive(unblocked,0)),r_primitive(adjacent,0,1),c_and(c_primitive(picked,0),c_some(r_primitive(adjacent,0,1),c_primitive(reward,0))))
+n_concept_distance(c_not(c_primitive(unblocked,0)),r_primitive(adjacent,0,1),c_and(c_primitive(picked,0),c_some(r_primitive(adjacent,0,1),c_primitive(picked,0))))
+n_concept_distance(c_not(c_primitive(unblocked,0)),r_primitive(adjacent,0,1),c_and(c_all(r_primitive(adjacent,0,1),c_primitive(unblocked,0)),c_primitive(picked,0)))
+n_concept_distance(c_not(c_primitive(unblocked,0)),r_primitive(adjacent,0,1),c_some(r_primitive(adjacent,0,1),c_and(c_primitive(at,0),c_primitive(reward,0))))
+n_concept_distance(c_not(c_primitive(unblocked,0)),r_primitive(adjacent,0,1),c_some(r_primitive(adjacent,0,1),c_and(c_primitive(at,0),c_primitive(picked,0))))
+n_concept_distance(c_not(c_primitive(unblocked,0)),r_primitive(adjacent,0,1),c_some(r_primitive(adjacent,0,1),c_and(c_primitive(at,0),c_primitive(picked_g,0))))
+n_concept_distance(c_not(c_primitive(unblocked,0)),r_primitive(adjacent,0,1),c_all(r_restrict(r_primitive(adjacent,0,1),c_primitive(at,0)),c_primitive(reward,0)))
+n_concept_distance(c_not(c_primitive(unblocked,0)),r_primitive(adjacent,0,1),c_all(r_restrict(r_primitive(adjacent,0,1),c_primitive(at,0)),c_primitive(picked,0)))
+n_concept_distance(c_not(c_primitive(unblocked,0)),r_primitive(adjacent,0,1),c_all(r_restrict(r_primitive(adjacent,0,1),c_primitive(reward,0)),c_primitive(at,0)))
+n_concept_distance(c_not(c_primitive(unblocked,0)),r_primitive(adjacent,0,1),c_all(r_restrict(r_primitive(adjacent,0,1),c_primitive(picked,0)),c_primitive(at,0)))
+n_concept_distance(c_not(c_primitive(unblocked,0)),r_primitive(adjacent_g,0,1),c_all(r_restrict(r_primitive(adjacent,0,1),c_primitive(at,0)),c_primitive(reward,0)))
+n_concept_distance(c_not(c_primitive(unblocked,0)),r_primitive(adjacent_g,0,1),c_all(r_restrict(r_primitive(adjacent,0,1),c_primitive(at,0)),c_primitive(picked,0)))
+n_concept_distance(c_not(c_primitive(unblocked,0)),r_primitive(adjacent_g,0,1),c_all(r_restrict(r_primitive(adjacent,0,1),c_primitive(reward,0)),c_primitive(at,0)))
+n_concept_distance(c_not(c_primitive(unblocked,0)),r_primitive(adjacent_g,0,1),c_all(r_restrict(r_primitive(adjacent,0,1),c_primitive(picked,0)),c_primitive(at,0)))
+n_concept_distance(c_and(c_not(c_primitive(picked_g,0)),c_primitive(unblocked,0)),r_primitive(adjacent,0,1),c_and(c_primitive(at,0),c_primitive(reward,0)))
+n_concept_distance(c_and(c_not(c_primitive(picked_g,0)),c_primitive(unblocked,0)),r_primitive(adjacent,0,1),c_and(c_primitive(at,0),c_primitive(picked,0)))
+n_concept_distance(c_and(c_not(c_primitive(picked_g,0)),c_primitive(unblocked,0)),r_primitive(adjacent,0,1),c_and(c_primitive(at,0),c_primitive(picked_g,0)))
+Number of selected training instances: 1
+Sum of number of states in selected training instances: 12
+Max of number of states in selected training instances: 12
+Number of features in the pool: 665
+Resulting sketch:
+(:policy
+(:boolean_features )
+(:numerical_features "n_count(c_primitive(reward,0))")
+(:rule (:conditions (:c_n_gt 0)) (:effects (:e_n_dec 0)))
+)
+Numer of sketch rules: 1
+Number of selected features: 1
+Maximum complexity of selected feature: 2
+Resulting sketch minimized:
+(:policy
+(:boolean_features )
+(:numerical_features "n_count(c_primitive(reward,0))")
+(:rule (:conditions (:c_n_gt 0)) (:effects (:e_n_dec 0)))
+)
+Numer of sketch rules: 1
+Number of selected features: 1
+Maximum complexity of selected feature: 2
+Summary:
+Resulting sketch:
+(:policy
+(:boolean_features )
+(:numerical_features "n_count(c_primitive(reward,0))")
+(:rule (:conditions (:c_n_gt 0)) (:effects (:e_n_dec 0)))
+)
+Numer of sketch rules: 1
+Number of selected features: 1
+Maximum complexity of selected feature: 2
+Resulting structurally minimized sketch:
+(:policy
+(:boolean_features )
+(:numerical_features "n_count(c_primitive(reward,0))")
+(:rule (:conditions (:c_n_gt 0)) (:effects (:e_n_dec 0)))
+)
+Numer of sketch rules: 1
+Number of selected features: 1
+Maximum complexity of selected feature: 2
+Number of training instances: 100
+Number of selected training instances: 1
+Number of states in selected training instances: 12
+Max number of states in selected training instance: 12
+Number of features in the pool: 665
+RESOURCES FOR PREPROCESSING: 20.25 CPU sec - 154.26 MB
+RESOURCES FOR LEARNING: 14.22 CPU sec - 154.26 MB
+================================================================================
+END OF STEP #1: Incremental learning module. 34.55 CPU sec - 196.28 MB
+================================================================================

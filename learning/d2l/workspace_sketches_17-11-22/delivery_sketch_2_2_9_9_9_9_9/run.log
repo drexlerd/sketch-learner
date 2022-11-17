@@ -1,0 +1,1677 @@
+Changing working directory:  /proj/ssiw/projects/code/sketch-learner/learning/d2l/workspace/delivery_sketch_2_2_9_9_9_9_9
+Creating sym link: /proj/ssiw/projects/code/sketch-learner/learning/d2l/libs/dlplan/libs/scorpion/fast-downward.py /proj/ssiw/projects/code/sketch-learner/learning/d2l/workspace/delivery_sketch_2_2_9_9_9_9_9/fast-downward.py
+================================================================================
+SLTP v.0.2.0
+================================================================================
+================================================================================
+(pid: 191954) STARTING STEP #1: Incremental learning module
+================================================================================
+2022-11-17 12:11:10 INFO     [40m[34mInitializing DomainData...[0m
+2022-11-17 12:11:10 INFO     Constructing DomainData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/delivery/domain.pddl
+2022-11-17 12:11:10 INFO     [40m[34m..done[0m
+2022-11-17 12:11:10 INFO     [40m[34mInitializing InstanceDatas...[0m
+2022-11-17 12:11:10 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/delivery/instance_2_1_0.pddl
+Num states: 20
+2022-11-17 12:11:10 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/delivery/instance_2_1_1.pddl
+Num states: 20
+2022-11-17 12:11:11 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/delivery/instance_2_1_2.pddl
+Num states: 20
+2022-11-17 12:11:11 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/delivery/instance_2_1_3.pddl
+Num states: 20
+2022-11-17 12:11:11 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/delivery/instance_2_1_4.pddl
+Num states: 20
+2022-11-17 12:11:11 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/delivery/instance_2_1_5.pddl
+Num states: 20
+2022-11-17 12:11:11 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/delivery/instance_2_1_6.pddl
+Num states: 20
+2022-11-17 12:11:12 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/delivery/instance_2_1_7.pddl
+Num states: 20
+2022-11-17 12:11:12 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/delivery/instance_2_1_8.pddl
+Num states: 20
+2022-11-17 12:11:12 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/delivery/instance_2_1_9.pddl
+Num states: 20
+2022-11-17 12:11:12 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/delivery/instance_2_2_0.pddl
+Num states: 96
+2022-11-17 12:11:12 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/delivery/instance_2_2_1.pddl
+Num states: 96
+2022-11-17 12:11:13 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/delivery/instance_2_2_2.pddl
+Num states: 96
+2022-11-17 12:11:13 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/delivery/instance_2_2_3.pddl
+Num states: 96
+2022-11-17 12:11:13 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/delivery/instance_2_2_4.pddl
+Num states: 96
+2022-11-17 12:11:13 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/delivery/instance_2_2_5.pddl
+Num states: 96
+2022-11-17 12:11:13 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/delivery/instance_2_2_6.pddl
+Num states: 96
+2022-11-17 12:11:14 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/delivery/instance_2_2_7.pddl
+Num states: 96
+2022-11-17 12:11:14 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/delivery/instance_2_2_8.pddl
+Num states: 96
+2022-11-17 12:11:14 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/delivery/instance_2_2_9.pddl
+Num states: 96
+2022-11-17 12:11:14 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/delivery/instance_3_1_0.pddl
+Num states: 90
+2022-11-17 12:11:14 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/delivery/instance_3_1_1.pddl
+Num states: 90
+2022-11-17 12:11:15 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/delivery/instance_3_1_2.pddl
+Num states: 90
+2022-11-17 12:11:15 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/delivery/instance_3_1_3.pddl
+Num states: 90
+2022-11-17 12:11:15 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/delivery/instance_3_1_4.pddl
+Num states: 90
+2022-11-17 12:11:15 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/delivery/instance_3_1_5.pddl
+Num states: 90
+2022-11-17 12:11:15 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/delivery/instance_3_1_6.pddl
+Num states: 90
+2022-11-17 12:11:16 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/delivery/instance_3_1_7.pddl
+Num states: 90
+2022-11-17 12:11:16 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/delivery/instance_3_1_8.pddl
+Num states: 90
+2022-11-17 12:11:16 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/delivery/instance_3_1_9.pddl
+Num states: 90
+2022-11-17 12:11:16 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/delivery/instance_3_2_0.pddl
+Num states: 891
+2022-11-17 12:11:17 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/delivery/instance_3_2_1.pddl
+Num states: 891
+2022-11-17 12:11:17 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/delivery/instance_3_2_2.pddl
+Num states: 891
+2022-11-17 12:11:17 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/delivery/instance_3_2_3.pddl
+Num states: 891
+2022-11-17 12:11:17 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/delivery/instance_3_2_4.pddl
+Num states: 891
+2022-11-17 12:11:17 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/delivery/instance_3_2_5.pddl
+Num states: 891
+2022-11-17 12:11:18 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/delivery/instance_3_2_6.pddl
+Num states: 891
+2022-11-17 12:11:18 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/delivery/instance_3_2_7.pddl
+Num states: 891
+2022-11-17 12:11:18 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/delivery/instance_3_2_8.pddl
+Num states: 891
+2022-11-17 12:11:18 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/delivery/instance_3_2_9.pddl
+Num states: 891
+2022-11-17 12:11:19 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/delivery/instance_4_1_0.pddl
+Num states: 272
+2022-11-17 12:11:19 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/delivery/instance_4_1_1.pddl
+Num states: 272
+2022-11-17 12:11:19 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/delivery/instance_4_1_2.pddl
+Num states: 272
+2022-11-17 12:11:19 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/delivery/instance_4_1_3.pddl
+Num states: 272
+2022-11-17 12:11:19 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/delivery/instance_4_1_4.pddl
+Num states: 272
+2022-11-17 12:11:20 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/delivery/instance_4_1_5.pddl
+Num states: 272
+2022-11-17 12:11:20 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/delivery/instance_4_1_6.pddl
+Num states: 272
+2022-11-17 12:11:20 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/delivery/instance_4_1_7.pddl
+Num states: 272
+2022-11-17 12:11:20 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/delivery/instance_4_1_8.pddl
+Num states: 272
+2022-11-17 12:11:20 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/delivery/instance_4_1_9.pddl
+Num states: 272
+2022-11-17 12:11:21 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/delivery/instance_4_2_0.pddl
+2022-11-17 12:11:21 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/delivery/instance_4_2_1.pddl
+2022-11-17 12:11:21 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/delivery/instance_4_2_2.pddl
+2022-11-17 12:11:21 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/delivery/instance_4_2_3.pddl
+2022-11-17 12:11:22 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/delivery/instance_4_2_4.pddl
+2022-11-17 12:11:22 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/delivery/instance_4_2_5.pddl
+2022-11-17 12:11:22 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/delivery/instance_4_2_6.pddl
+2022-11-17 12:11:23 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/delivery/instance_4_2_7.pddl
+2022-11-17 12:11:23 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/delivery/instance_4_2_8.pddl
+2022-11-17 12:11:23 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/delivery/instance_4_2_9.pddl
+2022-11-17 12:11:23 INFO     [40m[34m..done[0m
+2022-11-17 12:11:23 INFO     [40m[34mInitializing TupleGraphs...[0m
+2022-11-17 12:11:37 INFO     [40m[34m..done[0m
+
+2022-11-17 12:11:37 INFO     [40m[31mIteration: 0[0m
+Number of selected instances: 1
+Selected instances:
+    id: 0 name: instance_2_1_0
+initial states: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 11, 12, 13, 14, 17, 18]
+2022-11-17 12:11:37 INFO     [40m[34mInitializing DomainFeatureData...[0m
+[t=27.1629s, 2004404 KB] Started generating base features of complexity 1.
+[t=27.1633s, 2004404 KB] Complexity 1:
+    b_nullary: 0
+    c_one_of: 0
+    c_top: 1
+    c_bot: 1
+    c_primitive: 5
+    r_primitive: 5
+    c_and: 0
+    c_not: 0
+    c_equal: 0
+    c_some: 0
+    c_all: 0
+    r_restrict: 0
+    r_and: 0
+    r_inverse: 0
+    r_transitive_closure: 0
+    b_empty: 0
+    n_count: 0
+    n_concept_distance: 0
+[t=27.1634s, 2004404 KB] Finished generating base features.
+[t=27.1634s, 2004404 KB] Started generating composite features. 
+[t=27.1637s, 2004404 KB] Complexity 2:
+Total concept elements: 10
+Total role elements: 9
+Total numerical elements: 9
+Total boolean elements: 4
+    b_nullary: 0
+    c_one_of: 0
+    c_top: 1
+    c_bot: 1
+    c_primitive: 5
+    r_primitive: 5
+    c_and: 0
+    c_not: 3
+    c_equal: 0
+    c_some: 0
+    c_all: 0
+    r_restrict: 0
+    r_and: 0
+    r_inverse: 3
+    r_transitive_closure: 1
+    b_empty: 4
+    n_count: 9
+    n_concept_distance: 0
+[t=27.1651s, 2004404 KB] Complexity 3:
+Total concept elements: 15
+Total role elements: 10
+Total numerical elements: 12
+Total boolean elements: 4
+    b_nullary: 0
+    c_one_of: 0
+    c_top: 1
+    c_bot: 1
+    c_primitive: 5
+    r_primitive: 5
+    c_and: 0
+    c_not: 3
+    c_equal: 2
+    c_some: 2
+    c_all: 1
+    r_restrict: 0
+    r_and: 1
+    r_inverse: 3
+    r_transitive_closure: 1
+    b_empty: 4
+    n_count: 12
+    n_concept_distance: 0
+[t=27.1667s, 2004404 KB] Complexity 4:
+Total concept elements: 29
+Total role elements: 11
+Total numerical elements: 20
+Total boolean elements: 5
+    b_nullary: 0
+    c_one_of: 0
+    c_top: 1
+    c_bot: 1
+    c_primitive: 5
+    r_primitive: 5
+    c_and: 1
+    c_not: 4
+    c_equal: 2
+    c_some: 8
+    c_all: 7
+    r_restrict: 0
+    r_and: 1
+    r_inverse: 4
+    r_transitive_closure: 1
+    b_empty: 5
+    n_count: 16
+    n_concept_distance: 4
+[t=27.1683s, 2004404 KB] Complexity 5:
+Total concept elements: 37
+Total role elements: 11
+Total numerical elements: 25
+Total boolean elements: 5
+    b_nullary: 0
+    c_one_of: 0
+    c_top: 1
+    c_bot: 1
+    c_primitive: 5
+    r_primitive: 5
+    c_and: 5
+    c_not: 7
+    c_equal: 2
+    c_some: 8
+    c_all: 8
+    r_restrict: 0
+    r_and: 1
+    r_inverse: 4
+    r_transitive_closure: 1
+    b_empty: 5
+    n_count: 20
+    n_concept_distance: 5
+[t=27.1718s, 2004404 KB] Complexity 6:
+Total concept elements: 98
+Total role elements: 11
+Total numerical elements: 30
+Total boolean elements: 5
+    b_nullary: 0
+    c_one_of: 0
+    c_top: 1
+    c_bot: 1
+    c_primitive: 5
+    r_primitive: 5
+    c_and: 12
+    c_not: 8
+    c_equal: 2
+    c_some: 33
+    c_all: 36
+    r_restrict: 0
+    r_and: 1
+    r_inverse: 4
+    r_transitive_closure: 1
+    b_empty: 5
+    n_count: 22
+    n_concept_distance: 8
+[t=27.1769s, 2004536 KB] Complexity 7:
+Total concept elements: 138
+Total role elements: 11
+Total numerical elements: 73
+Total boolean elements: 15
+    b_nullary: 0
+    c_one_of: 0
+    c_top: 1
+    c_bot: 1
+    c_primitive: 5
+    r_primitive: 5
+    c_and: 32
+    c_not: 26
+    c_equal: 2
+    c_some: 34
+    c_all: 37
+    r_restrict: 0
+    r_and: 1
+    r_inverse: 4
+    r_transitive_closure: 1
+    b_empty: 15
+    n_count: 59
+    n_concept_distance: 14
+[t=27.1905s, 2004692 KB] Complexity 8:
+Total concept elements: 313
+Total role elements: 11
+Total numerical elements: 87
+Total boolean elements: 17
+    b_nullary: 0
+    c_one_of: 0
+    c_top: 1
+    c_bot: 1
+    c_primitive: 5
+    r_primitive: 5
+    c_and: 93
+    c_not: 45
+    c_equal: 2
+    c_some: 79
+    c_all: 87
+    r_restrict: 0
+    r_and: 1
+    r_inverse: 4
+    r_transitive_closure: 1
+    b_empty: 17
+    n_count: 71
+    n_concept_distance: 16
+[t=27.2119s, 2005268 KB] Complexity 9:
+Total concept elements: 523
+Total role elements: 11
+Total numerical elements: 231
+Total boolean elements: 45
+    b_nullary: 0
+    c_one_of: 0
+    c_top: 1
+    c_bot: 1
+    c_primitive: 5
+    r_primitive: 5
+    c_and: 192
+    c_not: 105
+    c_equal: 2
+    c_some: 98
+    c_all: 119
+    r_restrict: 0
+    r_and: 1
+    r_inverse: 4
+    r_transitive_closure: 1
+    b_empty: 45
+    n_count: 176
+    n_concept_distance: 55
+[t=27.212s, 2005268 KB] Finished generating composite features.
+DomainFeatureDataStatistics:
+    num_dlplan_states: 20
+    num_boolean_features: 45
+    num_numerical_features: 231
+2022-11-17 12:11:37 INFO     [40m[34m..done[0m
+2022-11-17 12:11:37 INFO     [40m[34mInitializing InstanceFeatureDatas...[0m
+2022-11-17 12:11:37 INFO     [40m[34m..done[0m
+2022-11-17 12:11:37 INFO     [40m[34mInitializing StatePairEquivalenceDatas...[0m
+2022-11-17 12:11:38 INFO     [40m[34m..done[0m
+2022-11-17 12:11:38 INFO     [40m[34mInitializing TupleGraphEquivalences...[0m
+2022-11-17 12:11:38 INFO     [40m[34m..done[0m
+2022-11-17 12:11:38 INFO     [40m[34mInitializing TupleGraphEquivalenceMinimizer...[0m
+Num subgoals: 28
+Num of selected subgoals: 13
+Num rules: 13
+Num of selected rules: 13
+Num subgoals: 28
+Num of selected subgoals: 13
+Num rules: 13
+Num of selected rules: 13
+Num subgoals: 28
+Num of selected subgoals: 13
+Num rules: 13
+Num of selected rules: 13
+Num subgoals: 28
+Num of selected subgoals: 13
+Num rules: 13
+Num of selected rules: 13
+Num subgoals: 28
+Num of selected subgoals: 13
+Num rules: 13
+Num of selected rules: 13
+Num subgoals: 28
+Num of selected subgoals: 13
+Num rules: 13
+Num of selected rules: 13
+Num subgoals: 28
+Num of selected subgoals: 13
+Num rules: 13
+Num of selected rules: 13
+Num subgoals: 28
+Num of selected subgoals: 13
+Num rules: 13
+Num of selected rules: 13
+Num subgoals: 28
+Num of selected subgoals: 13
+Num rules: 13
+Num of selected rules: 13
+Num subgoals: 28
+Num of selected subgoals: 13
+Num rules: 13
+Num of selected rules: 13
+Num subgoals: 28
+Num of selected subgoals: 13
+Num rules: 13
+Num of selected rules: 13
+Num subgoals: 28
+Num of selected subgoals: 13
+Num rules: 13
+Num of selected rules: 13
+Num subgoals: 28
+Num of selected subgoals: 13
+Num rules: 13
+Num of selected rules: 13
+Num subgoals: 28
+Num of selected subgoals: 13
+Num rules: 13
+Num of selected rules: 13
+Num subgoals: 28
+Num of selected subgoals: 13
+Num rules: 13
+Num of selected rules: 13
+Num subgoals: 28
+Num of selected subgoals: 13
+Num rules: 13
+Num of selected rules: 13
+2022-11-17 12:11:38 INFO     [40m[34m..done[0m
+Number of initial D2 facts: 780
+Number of D2 facts: 780 of 16900
+2022-11-17 12:11:38 INFO     [40m[34mGrounding Logic Program...[0m
+2022-11-17 12:11:39 INFO     [40m[34m..done[0m
+2022-11-17 12:11:39 INFO     [40m[34mSolving Logic Program...[0m
+2022-11-17 12:11:39 INFO     [40m[34m..done[0m
+Clingo statistics:
+Total time:  1.1481428146362305
+CPU time:  1.8845679999999998
+Solve time:  0.07295584678649902
+2022-11-17 12:11:39 INFO     Learned the following sketch:
+(:policy
+(:boolean_features )
+(:numerical_features "n_count(r_and(r_primitive(at,0,1),r_primitive(at_g,0,1)))")
+(:rule (:conditions (:c_n_eq 0)) (:effects (:e_n_bot 0)))
+(:rule (:conditions (:c_n_eq 0)) (:effects (:e_n_inc 0)))
+)
+Numer of sketch rules: 2
+Number of selected features: 1
+Maximum complexity of selected feature: 4
+[40m[31mSketch cycles[0m
+Instance: 0 instance_2_1_0
+18 (instance index=0, state index=18, atoms={at(t1,c_0_1), empty(t1), at(p1,c_1_0)})
+18 (instance index=0, state index=18, atoms={at(t1,c_0_1), empty(t1), at(p1,c_1_0)})
+Number of unsatisfied D2 facts: 1040
+Number of D2 facts: 1820 of 16900
+2022-11-17 12:11:41 INFO     [40m[34mGrounding Logic Program...[0m
+2022-11-17 12:11:42 INFO     [40m[34m..done[0m
+2022-11-17 12:11:42 INFO     [40m[34mSolving Logic Program...[0m
+2022-11-17 12:11:42 INFO     [40m[34m..done[0m
+Clingo statistics:
+Total time:  2.741208076477051
+CPU time:  4.546461000000001
+Solve time:  0.1246030330657959
+2022-11-17 12:11:42 INFO     Learned the following sketch:
+(:policy
+(:boolean_features )
+(:numerical_features "n_count(c_equal(r_primitive(at,0,1),r_primitive(at_g,0,1)))")
+(:rule (:conditions (:c_n_gt 0)) (:effects (:e_n_bot 0)))
+(:rule (:conditions (:c_n_gt 0)) (:effects (:e_n_inc 0)))
+)
+Numer of sketch rules: 2
+Number of selected features: 1
+Maximum complexity of selected feature: 4
+[40m[31mSketch cycles[0m
+Instance: 0 instance_2_1_0
+18 (instance index=0, state index=18, atoms={at(t1,c_0_1), empty(t1), at(p1,c_1_0)})
+18 (instance index=0, state index=18, atoms={at(t1,c_0_1), empty(t1), at(p1,c_1_0)})
+Number of unsatisfied D2 facts: 196
+Number of D2 facts: 2016 of 16900
+2022-11-17 12:11:44 INFO     [40m[34mGrounding Logic Program...[0m
+2022-11-17 12:11:45 INFO     [40m[34m..done[0m
+2022-11-17 12:11:45 INFO     [40m[34mSolving Logic Program...[0m
+2022-11-17 12:11:45 INFO     [40m[34m..done[0m
+Clingo statistics:
+Total time:  2.741266965866089
+CPU time:  4.435147000000001
+Solve time:  0.0867459774017334
+2022-11-17 12:11:45 INFO     Learned the following sketch:
+(:policy
+(:boolean_features "b_empty(r_and(r_primitive(at,0,1),r_primitive(at_g,0,1)))")
+(:numerical_features )
+(:rule (:conditions (:c_b_pos 0)) (:effects (:e_b_bot 0)))
+(:rule (:conditions (:c_b_pos 0)) (:effects (:e_b_neg 0)))
+)
+Numer of sketch rules: 2
+Number of selected features: 1
+Maximum complexity of selected feature: 4
+[40m[31mSketch cycles[0m
+Instance: 0 instance_2_1_0
+18 (instance index=0, state index=18, atoms={at(t1,c_0_1), empty(t1), at(p1,c_1_0)})
+18 (instance index=0, state index=18, atoms={at(t1,c_0_1), empty(t1), at(p1,c_1_0)})
+Number of unsatisfied D2 facts: 99
+Number of D2 facts: 2115 of 16900
+2022-11-17 12:11:47 INFO     [40m[34mGrounding Logic Program...[0m
+2022-11-17 12:11:48 INFO     [40m[34m..done[0m
+2022-11-17 12:11:48 INFO     [40m[34mSolving Logic Program...[0m
+2022-11-17 12:11:48 INFO     [40m[34m..done[0m
+Clingo statistics:
+Total time:  2.7649919986724854
+CPU time:  4.340579999999999
+Solve time:  0.06684112548828125
+2022-11-17 12:11:48 INFO     Learned the following sketch:
+(:policy
+(:boolean_features "b_empty(r_and(r_primitive(at,0,1),r_primitive(at_g,0,1)))")
+(:numerical_features )
+(:rule (:conditions (:c_b_pos 0)) (:effects (:e_b_neg 0)))
+)
+Numer of sketch rules: 1
+Number of selected features: 1
+Maximum complexity of selected feature: 4
+2022-11-17 12:11:48 INFO     [40m[34mVerifying learned sketch...[0m
+[40m[31mSketch fails to bound width of a state[0m
+Instance: 20 instance_2_2_0
+Source_state: 94 (instance index=20, state index=94, atoms={at(t1,c_1_1), empty(t1), at(p1,c_0_0), at(p2,c_0_1)})
+2022-11-17 12:11:48 INFO     [40m[34m..done[0m
+2022-11-17 12:11:48 INFO     [40m[33mIteration summary:[0m
+DomainFeatureDataStatistics:
+    num_dlplan_states: 20
+    num_boolean_features: 45
+    num_numerical_features: 231
+StatePairEquivalenceStatistics:
+    num_state_pairs: 320
+    num_equivalences: 130
+TupleGraphEquivalenceMinimizerStatistics:
+    Number of input tuples: 448
+    Number of output tuples: 208
+Smallest unsolved instance: 20
+Selected instances: [20]
+
+2022-11-17 12:11:48 INFO     [40m[31mIteration: 1[0m
+Number of selected instances: 1
+Selected instances:
+    id: 20 name: instance_2_2_0
+initial states: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 87, 88, 89, 90, 91, 92, 94, 95]
+2022-11-17 12:11:48 INFO     [40m[34mInitializing DomainFeatureData...[0m
+[t=38.3296s, 4269808 KB] Started generating base features of complexity 1.
+[t=38.3301s, 4269808 KB] Complexity 1:
+    b_nullary: 0
+    c_one_of: 0
+    c_top: 1
+    c_bot: 1
+    c_primitive: 5
+    r_primitive: 5
+    c_and: 0
+    c_not: 0
+    c_equal: 0
+    c_some: 0
+    c_all: 0
+    r_restrict: 0
+    r_and: 0
+    r_inverse: 0
+    r_transitive_closure: 0
+    b_empty: 0
+    n_count: 0
+    n_concept_distance: 0
+[t=38.3302s, 4269808 KB] Finished generating base features.
+[t=38.3302s, 4269808 KB] Started generating composite features. 
+[t=38.3308s, 4269808 KB] Complexity 2:
+Total concept elements: 10
+Total role elements: 9
+Total numerical elements: 10
+Total boolean elements: 4
+    b_nullary: 0
+    c_one_of: 0
+    c_top: 1
+    c_bot: 1
+    c_primitive: 5
+    r_primitive: 5
+    c_and: 0
+    c_not: 3
+    c_equal: 0
+    c_some: 0
+    c_all: 0
+    r_restrict: 0
+    r_and: 0
+    r_inverse: 3
+    r_transitive_closure: 1
+    b_empty: 4
+    n_count: 10
+    n_concept_distance: 0
+[t=38.3348s, 4269808 KB] Complexity 3:
+Total concept elements: 15
+Total role elements: 10
+Total numerical elements: 14
+Total boolean elements: 4
+    b_nullary: 0
+    c_one_of: 0
+    c_top: 1
+    c_bot: 1
+    c_primitive: 5
+    r_primitive: 5
+    c_and: 0
+    c_not: 3
+    c_equal: 2
+    c_some: 2
+    c_all: 1
+    r_restrict: 0
+    r_and: 1
+    r_inverse: 3
+    r_transitive_closure: 1
+    b_empty: 4
+    n_count: 14
+    n_concept_distance: 0
+[t=38.3389s, 4269808 KB] Complexity 4:
+Total concept elements: 29
+Total role elements: 11
+Total numerical elements: 21
+Total boolean elements: 5
+    b_nullary: 0
+    c_one_of: 0
+    c_top: 1
+    c_bot: 1
+    c_primitive: 5
+    r_primitive: 5
+    c_and: 1
+    c_not: 4
+    c_equal: 2
+    c_some: 8
+    c_all: 7
+    r_restrict: 0
+    r_and: 1
+    r_inverse: 4
+    r_transitive_closure: 1
+    b_empty: 5
+    n_count: 18
+    n_concept_distance: 3
+[t=38.3433s, 4269808 KB] Complexity 5:
+Total concept elements: 37
+Total role elements: 11
+Total numerical elements: 29
+Total boolean elements: 5
+    b_nullary: 0
+    c_one_of: 0
+    c_top: 1
+    c_bot: 1
+    c_primitive: 5
+    r_primitive: 5
+    c_and: 5
+    c_not: 7
+    c_equal: 2
+    c_some: 8
+    c_all: 8
+    r_restrict: 0
+    r_and: 1
+    r_inverse: 4
+    r_transitive_closure: 1
+    b_empty: 5
+    n_count: 25
+    n_concept_distance: 4
+[t=38.3527s, 4269808 KB] Complexity 6:
+Total concept elements: 102
+Total role elements: 11
+Total numerical elements: 33
+Total boolean elements: 5
+    b_nullary: 0
+    c_one_of: 0
+    c_top: 1
+    c_bot: 1
+    c_primitive: 5
+    r_primitive: 5
+    c_and: 12
+    c_not: 8
+    c_equal: 2
+    c_some: 36
+    c_all: 37
+    r_restrict: 0
+    r_and: 1
+    r_inverse: 4
+    r_transitive_closure: 1
+    b_empty: 5
+    n_count: 29
+    n_concept_distance: 4
+[t=38.3648s, 4269808 KB] Complexity 7:
+Total concept elements: 143
+Total role elements: 11
+Total numerical elements: 90
+Total boolean elements: 17
+    b_nullary: 0
+    c_one_of: 0
+    c_top: 1
+    c_bot: 1
+    c_primitive: 5
+    r_primitive: 5
+    c_and: 32
+    c_not: 28
+    c_equal: 2
+    c_some: 37
+    c_all: 37
+    r_restrict: 0
+    r_and: 1
+    r_inverse: 4
+    r_transitive_closure: 1
+    b_empty: 17
+    n_count: 83
+    n_concept_distance: 7
+[t=38.4014s, 4269808 KB] Complexity 8:
+Total concept elements: 370
+Total role elements: 11
+Total numerical elements: 122
+Total boolean elements: 20
+    b_nullary: 0
+    c_one_of: 0
+    c_top: 1
+    c_bot: 1
+    c_primitive: 5
+    r_primitive: 5
+    c_and: 97
+    c_not: 48
+    c_equal: 2
+    c_some: 106
+    c_all: 110
+    r_restrict: 0
+    r_and: 1
+    r_inverse: 4
+    r_transitive_closure: 1
+    b_empty: 20
+    n_count: 114
+    n_concept_distance: 8
+[t=38.4556s, 4269808 KB] Complexity 9:
+Total concept elements: 641
+Total role elements: 11
+Total numerical elements: 326
+Total boolean elements: 68
+    b_nullary: 0
+    c_one_of: 0
+    c_top: 1
+    c_bot: 1
+    c_primitive: 5
+    r_primitive: 5
+    c_and: 207
+    c_not: 127
+    c_equal: 2
+    c_some: 141
+    c_all: 157
+    r_restrict: 0
+    r_and: 1
+    r_inverse: 4
+    r_transitive_closure: 1
+    b_empty: 68
+    n_count: 293
+    n_concept_distance: 33
+[t=38.4557s, 4269808 KB] Finished generating composite features.
+DomainFeatureDataStatistics:
+    num_dlplan_states: 96
+    num_boolean_features: 68
+    num_numerical_features: 326
+2022-11-17 12:11:48 INFO     [40m[34m..done[0m
+2022-11-17 12:11:48 INFO     [40m[34mInitializing InstanceFeatureDatas...[0m
+2022-11-17 12:11:49 INFO     [40m[34m..done[0m
+2022-11-17 12:11:49 INFO     [40m[34mInitializing StatePairEquivalenceDatas...[0m
+2022-11-17 12:12:02 INFO     [40m[34m..done[0m
+2022-11-17 12:12:02 INFO     [40m[34mInitializing TupleGraphEquivalences...[0m
+2022-11-17 12:12:02 INFO     [40m[34m..done[0m
+2022-11-17 12:12:02 INFO     [40m[34mInitializing TupleGraphEquivalenceMinimizer...[0m
+Num subgoals: 67
+Num of selected subgoals: 30
+Num rules: 31
+Num of selected rules: 30
+Num subgoals: 67
+Num of selected subgoals: 30
+Num rules: 30
+Num of selected rules: 30
+Num subgoals: 67
+Num of selected subgoals: 30
+Num rules: 31
+Num of selected rules: 30
+Num subgoals: 67
+Num of selected subgoals: 30
+Num rules: 30
+Num of selected rules: 30
+Num subgoals: 61
+Num of selected subgoals: 21
+Num rules: 33
+Num of selected rules: 21
+Num subgoals: 61
+Num of selected subgoals: 15
+Num rules: 32
+Num of selected rules: 15
+Num subgoals: 61
+Num of selected subgoals: 21
+Num rules: 34
+Num of selected rules: 21
+Num subgoals: 67
+Num of selected subgoals: 21
+Num rules: 34
+Num of selected rules: 21
+Num subgoals: 61
+Num of selected subgoals: 15
+Num rules: 34
+Num of selected rules: 15
+Num subgoals: 67
+Num of selected subgoals: 15
+Num rules: 30
+Num of selected rules: 15
+Num subgoals: 61
+Num of selected subgoals: 21
+Num rules: 33
+Num of selected rules: 21
+Num subgoals: 67
+Num of selected subgoals: 21
+Num rules: 32
+Num of selected rules: 21
+Num subgoals: 67
+Num of selected subgoals: 21
+Num rules: 29
+Num of selected rules: 21
+Num subgoals: 61
+Num of selected subgoals: 15
+Num rules: 32
+Num of selected rules: 15
+Num subgoals: 67
+Num of selected subgoals: 25
+Num rules: 33
+Num of selected rules: 25
+Num subgoals: 67
+Num of selected subgoals: 15
+Num rules: 20
+Num of selected rules: 15
+Num subgoals: 67
+Num of selected subgoals: 30
+Num rules: 31
+Num of selected rules: 30
+Num subgoals: 67
+Num of selected subgoals: 21
+Num rules: 25
+Num of selected rules: 21
+Num subgoals: 67
+Num of selected subgoals: 21
+Num rules: 25
+Num of selected rules: 21
+Num subgoals: 67
+Num of selected subgoals: 21
+Num rules: 29
+Num of selected rules: 21
+Num subgoals: 67
+Num of selected subgoals: 21
+Num rules: 29
+Num of selected rules: 21
+Num subgoals: 67
+Num of selected subgoals: 21
+Num rules: 34
+Num of selected rules: 21
+Num subgoals: 67
+Num of selected subgoals: 30
+Num rules: 30
+Num of selected rules: 30
+Num subgoals: 67
+Num of selected subgoals: 25
+Num rules: 27
+Num of selected rules: 25
+Num subgoals: 67
+Num of selected subgoals: 25
+Num rules: 27
+Num of selected rules: 25
+Num subgoals: 67
+Num of selected subgoals: 15
+Num rules: 20
+Num of selected rules: 15
+Num subgoals: 67
+Num of selected subgoals: 15
+Num rules: 20
+Num of selected rules: 15
+Num subgoals: 67
+Num of selected subgoals: 15
+Num rules: 30
+Num of selected rules: 15
+Num subgoals: 67
+Num of selected subgoals: 30
+Num rules: 31
+Num of selected rules: 30
+Num subgoals: 67
+Num of selected subgoals: 30
+Num rules: 30
+Num of selected rules: 30
+Num subgoals: 67
+Num of selected subgoals: 21
+Num rules: 32
+Num of selected rules: 21
+Num subgoals: 67
+Num of selected subgoals: 21
+Num rules: 29
+Num of selected rules: 21
+Num subgoals: 61
+Num of selected subgoals: 21
+Num rules: 33
+Num of selected rules: 21
+Num subgoals: 61
+Num of selected subgoals: 21
+Num rules: 33
+Num of selected rules: 21
+Num subgoals: 67
+Num of selected subgoals: 30
+Num rules: 30
+Num of selected rules: 30
+Num subgoals: 67
+Num of selected subgoals: 30
+Num rules: 31
+Num of selected rules: 30
+Num subgoals: 67
+Num of selected subgoals: 25
+Num rules: 33
+Num of selected rules: 25
+Num subgoals: 67
+Num of selected subgoals: 15
+Num rules: 20
+Num of selected rules: 15
+Num subgoals: 61
+Num of selected subgoals: 15
+Num rules: 32
+Num of selected rules: 15
+Num subgoals: 61
+Num of selected subgoals: 15
+Num rules: 32
+Num of selected rules: 15
+Num subgoals: 67
+Num of selected subgoals: 30
+Num rules: 30
+Num of selected rules: 30
+Num subgoals: 61
+Num of selected subgoals: 15
+Num rules: 32
+Num of selected rules: 15
+Num subgoals: 61
+Num of selected subgoals: 21
+Num rules: 34
+Num of selected rules: 21
+Num subgoals: 61
+Num of selected subgoals: 21
+Num rules: 34
+Num of selected rules: 21
+Num subgoals: 67
+Num of selected subgoals: 30
+Num rules: 31
+Num of selected rules: 30
+Num subgoals: 67
+Num of selected subgoals: 30
+Num rules: 31
+Num of selected rules: 30
+Num subgoals: 67
+Num of selected subgoals: 30
+Num rules: 31
+Num of selected rules: 30
+Num subgoals: 61
+Num of selected subgoals: 21
+Num rules: 33
+Num of selected rules: 21
+Num subgoals: 61
+Num of selected subgoals: 15
+Num rules: 34
+Num of selected rules: 15
+Num subgoals: 61
+Num of selected subgoals: 15
+Num rules: 34
+Num of selected rules: 15
+Num subgoals: 67
+Num of selected subgoals: 30
+Num rules: 30
+Num of selected rules: 30
+Num subgoals: 67
+Num of selected subgoals: 30
+Num rules: 30
+Num of selected rules: 30
+Num subgoals: 67
+Num of selected subgoals: 15
+Num rules: 30
+Num of selected rules: 15
+Num subgoals: 61
+Num of selected subgoals: 15
+Num rules: 34
+Num of selected rules: 15
+Num subgoals: 61
+Num of selected subgoals: 21
+Num rules: 33
+Num of selected rules: 21
+Num subgoals: 61
+Num of selected subgoals: 21
+Num rules: 33
+Num of selected rules: 21
+Num subgoals: 67
+Num of selected subgoals: 21
+Num rules: 32
+Num of selected rules: 21
+Num subgoals: 67
+Num of selected subgoals: 30
+Num rules: 31
+Num of selected rules: 30
+Num subgoals: 67
+Num of selected subgoals: 30
+Num rules: 30
+Num of selected rules: 30
+Num subgoals: 67
+Num of selected subgoals: 30
+Num rules: 31
+Num of selected rules: 30
+Num subgoals: 67
+Num of selected subgoals: 21
+Num rules: 34
+Num of selected rules: 21
+Num subgoals: 61
+Num of selected subgoals: 21
+Num rules: 34
+Num of selected rules: 21
+Num subgoals: 61
+Num of selected subgoals: 15
+Num rules: 32
+Num of selected rules: 15
+Num subgoals: 61
+Num of selected subgoals: 15
+Num rules: 32
+Num of selected rules: 15
+Num subgoals: 67
+Num of selected subgoals: 25
+Num rules: 33
+Num of selected rules: 25
+Num subgoals: 67
+Num of selected subgoals: 30
+Num rules: 30
+Num of selected rules: 30
+Num subgoals: 67
+Num of selected subgoals: 30
+Num rules: 31
+Num of selected rules: 30
+Num subgoals: 67
+Num of selected subgoals: 30
+Num rules: 30
+Num of selected rules: 30
+Num subgoals: 61
+Num of selected subgoals: 15
+Num rules: 32
+Num of selected rules: 15
+Num subgoals: 67
+Num of selected subgoals: 25
+Num rules: 33
+Num of selected rules: 25
+Num subgoals: 67
+Num of selected subgoals: 21
+Num rules: 34
+Num of selected rules: 21
+Num subgoals: 67
+Num of selected subgoals: 30
+Num rules: 31
+Num of selected rules: 30
+Num subgoals: 67
+Num of selected subgoals: 21
+Num rules: 25
+Num of selected rules: 21
+Num subgoals: 67
+Num of selected subgoals: 21
+Num rules: 25
+Num of selected rules: 21
+Num subgoals: 67
+Num of selected subgoals: 30
+Num rules: 30
+Num of selected rules: 30
+Num subgoals: 61
+Num of selected subgoals: 21
+Num rules: 33
+Num of selected rules: 21
+Num subgoals: 67
+Num of selected subgoals: 21
+Num rules: 29
+Num of selected rules: 21
+Num subgoals: 67
+Num of selected subgoals: 21
+Num rules: 32
+Num of selected rules: 21
+Num subgoals: 67
+Num of selected subgoals: 15
+Num rules: 30
+Num of selected rules: 15
+Num subgoals: 67
+Num of selected subgoals: 30
+Num rules: 30
+Num of selected rules: 30
+Num subgoals: 67
+Num of selected subgoals: 25
+Num rules: 27
+Num of selected rules: 25
+Num subgoals: 67
+Num of selected subgoals: 25
+Num rules: 27
+Num of selected rules: 25
+Num subgoals: 67
+Num of selected subgoals: 30
+Num rules: 31
+Num of selected rules: 30
+Num subgoals: 67
+Num of selected subgoals: 30
+Num rules: 30
+Num of selected rules: 30
+Num subgoals: 67
+Num of selected subgoals: 30
+Num rules: 31
+Num of selected rules: 30
+Num subgoals: 67
+Num of selected subgoals: 30
+Num rules: 31
+Num of selected rules: 30
+Num subgoals: 67
+Num of selected subgoals: 21
+Num rules: 29
+Num of selected rules: 21
+Num subgoals: 67
+Num of selected subgoals: 21
+Num rules: 29
+Num of selected rules: 21
+Num subgoals: 67
+Num of selected subgoals: 30
+Num rules: 30
+Num of selected rules: 30
+Num subgoals: 67
+Num of selected subgoals: 30
+Num rules: 30
+Num of selected rules: 30
+Num subgoals: 67
+Num of selected subgoals: 30
+Num rules: 31
+Num of selected rules: 30
+Num subgoals: 67
+Num of selected subgoals: 21
+Num rules: 29
+Num of selected rules: 21
+2022-11-17 12:12:02 INFO     [40m[34m..done[0m
+Number of initial D2 facts: 13459
+Number of D2 facts: 13459 of 848241
+2022-11-17 12:12:07 INFO     [40m[34mGrounding Logic Program...[0m
+2022-11-17 12:13:28 INFO     [40m[34m..done[0m
+2022-11-17 12:13:28 INFO     [40m[34mSolving Logic Program...[0m
+2022-11-17 12:13:29 INFO     [40m[34m..done[0m
+Clingo statistics:
+Total time:  86.71233701705933
+CPU time:  96.07860099999999
+Solve time:  0.5274019241333008
+2022-11-17 12:13:31 INFO     Learned the following sketch:
+(:policy
+(:boolean_features )
+(:numerical_features "n_count(r_and(r_primitive(at,0,1),r_primitive(at_g,0,1)))")
+(:rule (:conditions (:c_n_eq 0)) (:effects (:e_n_bot 0)))
+(:rule (:conditions (:c_n_eq 0)) (:effects (:e_n_inc 0)))
+(:rule (:conditions (:c_n_gt 0)) (:effects (:e_n_dec 0)))
+(:rule (:conditions (:c_n_gt 0)) (:effects (:e_n_inc 0)))
+)
+Numer of sketch rules: 4
+Number of selected features: 1
+Maximum complexity of selected feature: 4
+[40m[31mSketch cycles[0m
+Instance: 20 instance_2_2_0
+95 (instance index=20, state index=95, atoms={at(t1,c_1_1), empty(t1), at(p1,c_0_0), at(p2,c_0_0)})
+95 (instance index=20, state index=95, atoms={at(t1,c_1_1), empty(t1), at(p1,c_0_0), at(p2,c_0_0)})
+Number of unsatisfied D2 facts: 23159
+Number of D2 facts: 36618 of 848241
+2022-11-17 12:13:47 INFO     [40m[34mGrounding Logic Program...[0m
+2022-11-17 12:15:20 INFO     [40m[34m..done[0m
+2022-11-17 12:15:20 INFO     [40m[34mSolving Logic Program...[0m
+2022-11-17 12:15:25 INFO     [40m[34m..done[0m
+Clingo statistics:
+Total time:  113.97159695625305
+CPU time:  181.95312199999998
+Solve time:  3.446816921234131
+2022-11-17 12:15:28 INFO     Learned the following sketch:
+(:policy
+(:boolean_features )
+(:numerical_features "n_count(r_and(r_primitive(at,0,1),r_primitive(at_g,0,1)))")
+(:rule (:conditions (:c_n_eq 0)) (:effects (:e_n_bot 0)))
+(:rule (:conditions (:c_n_eq 0)) (:effects (:e_n_inc 0)))
+(:rule (:conditions (:c_n_gt 0)) (:effects (:e_n_bot 0)))
+(:rule (:conditions (:c_n_gt 0)) (:effects (:e_n_inc 0)))
+)
+Numer of sketch rules: 4
+Number of selected features: 1
+Maximum complexity of selected feature: 4
+[40m[31mSketch cycles[0m
+Instance: 20 instance_2_2_0
+95 (instance index=20, state index=95, atoms={at(t1,c_1_1), empty(t1), at(p1,c_0_0), at(p2,c_0_0)})
+95 (instance index=20, state index=95, atoms={at(t1,c_1_1), empty(t1), at(p1,c_0_0), at(p2,c_0_0)})
+Number of unsatisfied D2 facts: 4797
+Number of D2 facts: 41415 of 848241
+2022-11-17 12:15:44 INFO     [40m[34mGrounding Logic Program...[0m
+2022-11-17 12:17:20 INFO     [40m[34m..done[0m
+2022-11-17 12:17:20 INFO     [40m[34mSolving Logic Program...[0m
+2022-11-17 12:17:26 INFO     [40m[34m..done[0m
+Clingo statistics:
+Total time:  118.35804390907288
+CPU time:  225.56412999999992
+Solve time:  3.8060810565948486
+2022-11-17 12:17:29 INFO     Learned the following sketch:
+(:policy
+(:boolean_features )
+(:numerical_features "n_count(c_equal(r_primitive(at,0,1),r_primitive(at_g,0,1)))")
+(:rule (:conditions (:c_n_gt 0)) (:effects (:e_n_bot 0)))
+(:rule (:conditions (:c_n_gt 0)) (:effects (:e_n_inc 0)))
+)
+Numer of sketch rules: 2
+Number of selected features: 1
+Maximum complexity of selected feature: 4
+[40m[31mSketch cycles[0m
+Instance: 20 instance_2_2_0
+95 (instance index=20, state index=95, atoms={at(t1,c_1_1), empty(t1), at(p1,c_0_0), at(p2,c_0_0)})
+95 (instance index=20, state index=95, atoms={at(t1,c_1_1), empty(t1), at(p1,c_0_0), at(p2,c_0_0)})
+Number of unsatisfied D2 facts: 9800
+Number of D2 facts: 51215 of 848241
+2022-11-17 12:17:45 INFO     [40m[34mGrounding Logic Program...[0m
+2022-11-17 12:19:29 INFO     [40m[34m..done[0m
+2022-11-17 12:19:29 INFO     [40m[34mSolving Logic Program...[0m
+2022-11-17 12:19:37 INFO     [40m[34m..done[0m
+Clingo statistics:
+Total time:  128.09565806388855
+CPU time:  256.69620699999996
+Solve time:  5.236013174057007
+2022-11-17 12:19:39 INFO     Learned the following sketch:
+(:policy
+(:boolean_features )
+(:numerical_features "n_count(c_equal(r_primitive(at,0,1),r_primitive(at_g,0,1)))")
+(:rule (:conditions (:c_n_gt 0)) (:effects (:e_n_inc 0)))
+)
+Numer of sketch rules: 1
+Number of selected features: 1
+Maximum complexity of selected feature: 4
+2022-11-17 12:19:39 INFO     [40m[34mVerifying learned sketch...[0m
+2022-11-17 12:19:46 INFO     [40m[34m..done[0m
+2022-11-17 12:19:46 INFO     [40m[33mIteration summary:[0m
+DomainFeatureDataStatistics:
+    num_dlplan_states: 96
+    num_boolean_features: 68
+    num_numerical_features: 326
+StatePairEquivalenceStatistics:
+    num_state_pairs: 6416
+    num_equivalences: 921
+TupleGraphEquivalenceMinimizerStatistics:
+    Number of input tuples: 6020
+    Number of output tuples: 2132
+[40m[31mSketch solves all instances![0m
+2022-11-17 12:19:46 INFO     [40m[32mSummary:[0m
+Boolean features:
+b_empty(c_top)
+b_empty(c_bot)
+b_empty(c_primitive(empty,0))
+b_empty(r_primitive(carrying,0,1))
+b_empty(r_and(r_primitive(at,0,1),r_primitive(at_g,0,1)))
+b_empty(c_and(c_not(c_equal(r_primitive(at,0,1),r_primitive(at_g,0,1))),c_primitive(package,0)))
+b_empty(c_some(r_primitive(at,0,1),c_some(r_inverse(r_primitive(at_g,0,1)),c_top)))
+b_empty(c_some(r_primitive(at,0,1),c_all(r_inverse(r_primitive(at,0,1)),c_primitive(empty,0))))
+b_empty(c_some(r_primitive(at,0,1),c_all(r_inverse(r_primitive(at,0,1)),c_primitive(package,0))))
+b_empty(c_some(r_primitive(at,0,1),c_all(r_inverse(r_primitive(at,0,1)),c_primitive(truck,0))))
+b_empty(c_some(r_primitive(at,0,1),c_all(r_inverse(r_primitive(at_g,0,1)),c_bot)))
+b_empty(c_some(r_primitive(at_g,0,1),c_some(r_inverse(r_primitive(at,0,1)),c_primitive(empty,0))))
+b_empty(c_some(r_primitive(at_g,0,1),c_some(r_inverse(r_primitive(at,0,1)),c_primitive(truck,0))))
+b_empty(c_some(r_primitive(at_g,0,1),c_all(r_inverse(r_primitive(at,0,1)),c_bot)))
+b_empty(c_some(r_primitive(at_g,0,1),c_all(r_inverse(r_primitive(at,0,1)),c_primitive(empty,0))))
+b_empty(c_some(r_primitive(at_g,0,1),c_all(r_inverse(r_primitive(at,0,1)),c_primitive(package,0))))
+b_empty(c_some(r_primitive(at_g,0,1),c_all(r_inverse(r_primitive(at,0,1)),c_primitive(truck,0))))
+b_empty(c_not(c_all(r_primitive(at,0,1),c_some(r_inverse(r_primitive(at,0,1)),c_primitive(empty,0)))))
+b_empty(c_not(c_all(r_primitive(at_g,0,1),c_some(r_inverse(r_primitive(at,0,1)),c_primitive(empty,0)))))
+b_empty(c_not(c_all(r_primitive(at_g,0,1),c_all(r_inverse(r_primitive(at,0,1)),c_primitive(empty,0)))))
+b_empty(c_and(c_primitive(empty,0),c_some(r_primitive(at,0,1),c_some(r_inverse(r_primitive(at,0,1)),c_primitive(package,0)))))
+b_empty(c_and(c_primitive(empty,0),c_some(r_primitive(at,0,1),c_all(r_inverse(r_primitive(at_g,0,1)),c_bot))))
+b_empty(c_and(c_all(r_primitive(adjacent,0,1),c_some(r_inverse(r_primitive(at,0,1)),c_top)),c_primitive(cell,0)))
+b_empty(c_and(c_all(r_primitive(adjacent,0,1),c_some(r_inverse(r_primitive(at,0,1)),c_primitive(package,0))),c_primitive(cell,0)))
+b_empty(c_and(c_all(r_primitive(adjacent,0,1),c_all(r_inverse(r_primitive(at,0,1)),c_bot)),c_primitive(cell,0)))
+b_empty(c_and(c_all(r_primitive(adjacent,0,1),c_all(r_inverse(r_primitive(at,0,1)),c_primitive(empty,0))),c_primitive(cell,0)))
+b_empty(c_and(c_all(r_primitive(adjacent,0,1),c_all(r_inverse(r_primitive(at,0,1)),c_primitive(truck,0))),c_primitive(cell,0)))
+b_empty(c_and(c_all(r_primitive(at,0,1),c_some(r_inverse(r_primitive(at_g,0,1)),c_top)),c_primitive(locatable,0)))
+b_empty(c_and(c_all(r_primitive(at,0,1),c_all(r_inverse(r_primitive(at,0,1)),c_primitive(empty,0))),c_primitive(locatable,0)))
+b_empty(c_and(c_all(r_primitive(at,0,1),c_all(r_inverse(r_primitive(at_g,0,1)),c_bot)),c_primitive(locatable,0)))
+b_empty(c_and(c_primitive(package,0),c_some(r_primitive(at,0,1),c_some(r_inverse(r_primitive(at,0,1)),c_primitive(truck,0)))))
+b_empty(c_and(c_primitive(package,0),c_some(r_primitive(at,0,1),c_all(r_inverse(r_primitive(at_g,0,1)),c_bot))))
+b_empty(c_and(c_all(r_primitive(at,0,1),c_some(r_inverse(r_primitive(at,0,1)),c_primitive(empty,0))),c_primitive(package,0)))
+b_empty(c_and(c_all(r_primitive(at,0,1),c_some(r_inverse(r_primitive(at_g,0,1)),c_top)),c_primitive(package,0)))
+b_empty(c_some(r_primitive(at,0,1),c_some(r_primitive(adjacent,0,1),c_some(r_inverse(r_primitive(at,0,1)),c_top))))
+b_empty(c_some(r_primitive(at,0,1),c_some(r_primitive(adjacent,0,1),c_some(r_inverse(r_primitive(at,0,1)),c_primitive(empty,0)))))
+b_empty(c_some(r_primitive(at,0,1),c_some(r_primitive(adjacent,0,1),c_some(r_inverse(r_primitive(at_g,0,1)),c_top))))
+b_empty(c_some(r_primitive(at,0,1),c_some(r_inverse(r_primitive(at_g,0,1)),c_all(r_primitive(at,0,1),c_bot))))
+b_empty(c_some(r_primitive(at,0,1),c_all(r_primitive(adjacent,0,1),c_some(r_inverse(r_primitive(at,0,1)),c_top))))
+b_empty(c_some(r_primitive(at,0,1),c_all(r_primitive(adjacent,0,1),c_some(r_inverse(r_primitive(at,0,1)),c_primitive(package,0)))))
+b_empty(c_some(r_primitive(at,0,1),c_all(r_primitive(adjacent,0,1),c_all(r_inverse(r_primitive(at_g,0,1)),c_bot))))
+b_empty(c_some(r_primitive(at,0,1),c_all(r_inverse(r_primitive(at,0,1)),c_equal(r_primitive(at,0,1),r_primitive(at_g,0,1)))))
+b_empty(c_some(r_primitive(at,0,1),c_all(r_inverse(r_primitive(at,0,1)),c_equal(r_primitive(carrying,0,1),r_primitive(carrying_g,0,1)))))
+b_empty(c_some(r_primitive(at,0,1),c_all(r_inverse(r_primitive(at,0,1)),c_some(r_primitive(carrying,0,1),c_top))))
+b_empty(c_some(r_primitive(at,0,1),c_all(r_inverse(r_primitive(at_g,0,1)),c_equal(r_primitive(at,0,1),r_primitive(at_g,0,1)))))
+b_empty(c_some(r_primitive(at_g,0,1),c_some(r_primitive(adjacent,0,1),c_some(r_inverse(r_primitive(at,0,1)),c_primitive(empty,0)))))
+b_empty(c_some(r_primitive(at_g,0,1),c_some(r_primitive(adjacent,0,1),c_some(r_inverse(r_primitive(at,0,1)),c_primitive(package,0)))))
+b_empty(c_some(r_primitive(at_g,0,1),c_some(r_primitive(adjacent,0,1),c_some(r_inverse(r_primitive(at,0,1)),c_primitive(truck,0)))))
+b_empty(c_some(r_primitive(at_g,0,1),c_some(r_primitive(adjacent,0,1),c_all(r_inverse(r_primitive(at,0,1)),c_bot))))
+b_empty(c_some(r_primitive(at_g,0,1),c_some(r_primitive(adjacent,0,1),c_all(r_inverse(r_primitive(at,0,1)),c_primitive(empty,0)))))
+b_empty(c_some(r_primitive(at_g,0,1),c_some(r_primitive(adjacent,0,1),c_all(r_inverse(r_primitive(at,0,1)),c_primitive(truck,0)))))
+b_empty(c_some(r_primitive(at_g,0,1),c_some(r_inverse(r_primitive(at,0,1)),c_equal(r_primitive(carrying,0,1),r_primitive(carrying_g,0,1)))))
+b_empty(c_some(r_primitive(at_g,0,1),c_some(r_inverse(r_primitive(at,0,1)),c_some(r_primitive(carrying,0,1),c_top))))
+b_empty(c_some(r_primitive(at_g,0,1),c_all(r_primitive(adjacent,0,1),c_some(r_inverse(r_primitive(at,0,1)),c_top))))
+b_empty(c_some(r_primitive(at_g,0,1),c_all(r_primitive(adjacent,0,1),c_some(r_inverse(r_primitive(at,0,1)),c_primitive(package,0)))))
+b_empty(c_some(r_primitive(at_g,0,1),c_all(r_primitive(adjacent,0,1),c_all(r_inverse(r_primitive(at,0,1)),c_bot))))
+b_empty(c_some(r_primitive(at_g,0,1),c_all(r_primitive(adjacent,0,1),c_all(r_inverse(r_primitive(at,0,1)),c_primitive(empty,0)))))
+b_empty(c_some(r_primitive(at_g,0,1),c_all(r_primitive(adjacent,0,1),c_all(r_inverse(r_primitive(at,0,1)),c_primitive(package,0)))))
+b_empty(c_some(r_primitive(at_g,0,1),c_all(r_primitive(adjacent,0,1),c_all(r_inverse(r_primitive(at,0,1)),c_primitive(truck,0)))))
+b_empty(c_some(r_primitive(at_g,0,1),c_all(r_inverse(r_primitive(at,0,1)),c_equal(r_primitive(carrying,0,1),r_primitive(carrying_g,0,1)))))
+b_empty(c_some(r_primitive(at_g,0,1),c_all(r_inverse(r_primitive(at,0,1)),c_some(r_primitive(carrying,0,1),c_top))))
+b_empty(c_some(r_primitive(at_g,0,1),c_all(r_inverse(r_primitive(at_g,0,1)),c_equal(r_primitive(at,0,1),r_primitive(at_g,0,1)))))
+b_empty(c_some(r_primitive(carrying,0,1),c_some(r_primitive(at_g,0,1),c_some(r_inverse(r_primitive(at,0,1)),c_primitive(package,0)))))
+b_empty(c_some(r_primitive(carrying,0,1),c_some(r_primitive(at_g,0,1),c_all(r_inverse(r_primitive(at,0,1)),c_bot))))
+b_empty(c_some(r_primitive(carrying,0,1),c_some(r_primitive(at_g,0,1),c_all(r_inverse(r_primitive(at,0,1)),c_primitive(package,0)))))
+b_empty(c_some(r_primitive(carrying,0,1),c_some(r_primitive(at_g,0,1),c_all(r_inverse(r_primitive(at,0,1)),c_primitive(truck,0)))))
+b_empty(c_some(r_and(r_primitive(at,0,1),r_primitive(at_g,0,1)),c_some(r_inverse(r_primitive(at,0,1)),c_primitive(empty,0))))
+b_empty(c_some(r_and(r_primitive(at,0,1),r_primitive(at_g,0,1)),c_some(r_inverse(r_primitive(at,0,1)),c_primitive(truck,0))))
+Numerical features:
+n_count(c_top)
+n_count(c_bot)
+n_count(c_primitive(empty,0))
+n_count(c_primitive(cell,0))
+n_count(c_primitive(locatable,0))
+n_count(c_primitive(package,0))
+n_count(c_primitive(truck,0))
+n_count(r_primitive(at,0,1))
+n_count(r_primitive(carrying,0,1))
+n_count(r_primitive(adjacent,0,1))
+n_count(c_not(c_primitive(empty,0)))
+n_count(c_not(c_primitive(package,0)))
+n_count(c_not(c_primitive(truck,0)))
+n_count(r_transitive_closure(r_primitive(adjacent,0,1)))
+n_count(c_equal(r_primitive(at,0,1),r_primitive(at_g,0,1)))
+n_count(c_equal(r_primitive(carrying,0,1),r_primitive(carrying_g,0,1)))
+n_count(c_all(r_primitive(at,0,1),c_bot))
+n_count(r_and(r_primitive(at,0,1),r_primitive(at_g,0,1)))
+n_concept_distance(c_primitive(truck,0),r_primitive(at,0,1),c_bot)
+n_concept_distance(c_primitive(truck,0),r_primitive(at,0,1),c_primitive(empty,0))
+n_concept_distance(c_primitive(truck,0),r_primitive(carrying,0,1),c_primitive(package,0))
+n_count(c_and(c_not(c_primitive(empty,0)),c_primitive(locatable,0)))
+n_count(c_not(c_equal(r_primitive(at,0,1),r_primitive(at_g,0,1))))
+n_count(c_some(r_inverse(r_primitive(at,0,1)),c_top))
+n_count(c_some(r_inverse(r_primitive(at,0,1)),c_primitive(package,0)))
+n_count(c_all(r_inverse(r_primitive(at,0,1)),c_bot))
+n_count(c_all(r_inverse(r_primitive(at,0,1)),c_primitive(empty,0)))
+n_count(c_all(r_inverse(r_primitive(at,0,1)),c_primitive(truck,0)))
+n_concept_distance(c_primitive(truck,0),r_primitive(at_g,0,1),c_not(c_primitive(empty,0)))
+n_count(c_and(c_primitive(package,0),c_some(r_primitive(at,0,1),c_top)))
+n_count(c_not(c_and(c_not(c_primitive(empty,0)),c_primitive(locatable,0))))
+n_count(c_not(c_all(r_inverse(r_primitive(at,0,1)),c_primitive(empty,0))))
+n_count(c_all(r_and(r_primitive(at,0,1),r_primitive(at_g,0,1)),c_bot))
+n_count(c_and(c_all(r_inverse(r_primitive(at,0,1)),c_bot),c_primitive(cell,0)))
+n_count(c_and(c_all(r_inverse(r_primitive(at,0,1)),c_primitive(empty,0)),c_primitive(cell,0)))
+n_count(c_and(c_all(r_inverse(r_primitive(at,0,1)),c_primitive(truck,0)),c_primitive(cell,0)))
+n_count(c_and(c_not(c_equal(r_primitive(at,0,1),r_primitive(at_g,0,1))),c_primitive(package,0)))
+n_count(c_not(c_and(c_primitive(package,0),c_some(r_primitive(at,0,1),c_top))))
+n_count(c_some(r_primitive(at,0,1),c_some(r_inverse(r_primitive(at,0,1)),c_primitive(empty,0))))
+n_count(c_some(r_primitive(at,0,1),c_some(r_inverse(r_primitive(at,0,1)),c_primitive(package,0))))
+n_count(c_some(r_primitive(at,0,1),c_some(r_inverse(r_primitive(at,0,1)),c_primitive(truck,0))))
+n_count(c_some(r_primitive(at,0,1),c_some(r_inverse(r_primitive(at_g,0,1)),c_top)))
+n_count(c_some(r_primitive(at,0,1),c_all(r_inverse(r_primitive(at,0,1)),c_primitive(empty,0))))
+n_count(c_some(r_primitive(at,0,1),c_all(r_inverse(r_primitive(at,0,1)),c_primitive(package,0))))
+n_count(c_some(r_primitive(at,0,1),c_all(r_inverse(r_primitive(at,0,1)),c_primitive(truck,0))))
+n_count(c_some(r_primitive(at,0,1),c_all(r_inverse(r_primitive(at_g,0,1)),c_bot)))
+n_count(c_some(r_primitive(at_g,0,1),c_some(r_inverse(r_primitive(at,0,1)),c_top)))
+n_count(c_some(r_primitive(at_g,0,1),c_some(r_inverse(r_primitive(at,0,1)),c_primitive(empty,0))))
+n_count(c_some(r_primitive(at_g,0,1),c_some(r_inverse(r_primitive(at,0,1)),c_primitive(package,0))))
+n_count(c_some(r_primitive(at_g,0,1),c_some(r_inverse(r_primitive(at,0,1)),c_primitive(truck,0))))
+n_count(c_some(r_primitive(at_g,0,1),c_all(r_inverse(r_primitive(at,0,1)),c_bot)))
+n_count(c_some(r_primitive(at_g,0,1),c_all(r_inverse(r_primitive(at,0,1)),c_primitive(empty,0))))
+n_count(c_some(r_primitive(at_g,0,1),c_all(r_inverse(r_primitive(at,0,1)),c_primitive(package,0))))
+n_count(c_some(r_primitive(at_g,0,1),c_all(r_inverse(r_primitive(at,0,1)),c_primitive(truck,0))))
+n_count(c_some(r_primitive(adjacent,0,1),c_some(r_inverse(r_primitive(at,0,1)),c_top)))
+n_count(c_some(r_primitive(adjacent,0,1),c_some(r_inverse(r_primitive(at,0,1)),c_primitive(empty,0))))
+n_count(c_some(r_primitive(adjacent,0,1),c_some(r_inverse(r_primitive(at,0,1)),c_primitive(package,0))))
+n_count(c_some(r_primitive(adjacent,0,1),c_all(r_inverse(r_primitive(at,0,1)),c_bot)))
+n_count(c_some(r_primitive(adjacent,0,1),c_all(r_inverse(r_primitive(at,0,1)),c_primitive(empty,0))))
+n_count(c_some(r_primitive(adjacent,0,1),c_all(r_inverse(r_primitive(at,0,1)),c_primitive(truck,0))))
+n_count(c_some(r_inverse(r_primitive(at,0,1)),c_equal(r_primitive(at,0,1),r_primitive(at_g,0,1))))
+n_count(c_some(r_inverse(r_primitive(at,0,1)),c_equal(r_primitive(carrying,0,1),r_primitive(carrying_g,0,1))))
+n_count(c_all(r_primitive(at,0,1),c_some(r_inverse(r_primitive(at,0,1)),c_primitive(empty,0))))
+n_count(c_all(r_primitive(at,0,1),c_some(r_inverse(r_primitive(at,0,1)),c_primitive(package,0))))
+n_count(c_all(r_primitive(at,0,1),c_some(r_inverse(r_primitive(at,0,1)),c_primitive(truck,0))))
+n_count(c_all(r_primitive(at,0,1),c_some(r_inverse(r_primitive(at_g,0,1)),c_top)))
+n_count(c_all(r_primitive(at,0,1),c_all(r_inverse(r_primitive(at,0,1)),c_primitive(empty,0))))
+n_count(c_all(r_primitive(at,0,1),c_all(r_inverse(r_primitive(at,0,1)),c_primitive(package,0))))
+n_count(c_all(r_primitive(at,0,1),c_all(r_inverse(r_primitive(at,0,1)),c_primitive(truck,0))))
+n_count(c_all(r_primitive(at,0,1),c_all(r_inverse(r_primitive(at_g,0,1)),c_bot)))
+n_count(c_all(r_primitive(at_g,0,1),c_some(r_inverse(r_primitive(at,0,1)),c_top)))
+n_count(c_all(r_primitive(at_g,0,1),c_some(r_inverse(r_primitive(at,0,1)),c_primitive(empty,0))))
+n_count(c_all(r_primitive(at_g,0,1),c_some(r_inverse(r_primitive(at,0,1)),c_primitive(package,0))))
+n_count(c_all(r_primitive(at_g,0,1),c_some(r_inverse(r_primitive(at,0,1)),c_primitive(truck,0))))
+n_count(c_all(r_primitive(at_g,0,1),c_all(r_inverse(r_primitive(at,0,1)),c_bot)))
+n_count(c_all(r_primitive(at_g,0,1),c_all(r_inverse(r_primitive(at,0,1)),c_primitive(empty,0))))
+n_count(c_all(r_primitive(at_g,0,1),c_all(r_inverse(r_primitive(at,0,1)),c_primitive(package,0))))
+n_count(c_all(r_primitive(at_g,0,1),c_all(r_inverse(r_primitive(at,0,1)),c_primitive(truck,0))))
+n_count(c_all(r_primitive(adjacent,0,1),c_some(r_inverse(r_primitive(at,0,1)),c_top)))
+n_count(c_all(r_primitive(adjacent,0,1),c_some(r_inverse(r_primitive(at,0,1)),c_primitive(package,0))))
+n_count(c_all(r_primitive(adjacent,0,1),c_all(r_inverse(r_primitive(at,0,1)),c_bot)))
+n_count(c_all(r_primitive(adjacent,0,1),c_all(r_inverse(r_primitive(at,0,1)),c_primitive(empty,0))))
+n_count(c_all(r_primitive(adjacent,0,1),c_all(r_inverse(r_primitive(at,0,1)),c_primitive(truck,0))))
+n_count(c_all(r_inverse(r_primitive(at,0,1)),c_equal(r_primitive(at,0,1),r_primitive(at_g,0,1))))
+n_count(c_all(r_inverse(r_primitive(at,0,1)),c_some(r_primitive(carrying,0,1),c_top)))
+n_count(c_all(r_inverse(r_primitive(at_g,0,1)),c_equal(r_primitive(at,0,1),r_primitive(at_g,0,1))))
+n_count(c_all(r_inverse(r_and(r_primitive(at,0,1),r_primitive(at_g,0,1))),c_bot))
+n_concept_distance(c_primitive(truck,0),r_primitive(at,0,1),c_some(r_inverse(r_primitive(at,0,1)),c_primitive(empty,0)))
+n_concept_distance(c_primitive(truck,0),r_primitive(at,0,1),c_some(r_inverse(r_primitive(at,0,1)),c_primitive(package,0)))
+n_concept_distance(c_primitive(truck,0),r_primitive(at,0,1),c_some(r_inverse(r_primitive(at_g,0,1)),c_top))
+n_count(c_and(c_not(c_some(r_inverse(r_primitive(at,0,1)),c_primitive(empty,0))),c_primitive(cell,0)))
+n_count(c_and(c_not(c_equal(r_primitive(at,0,1),r_primitive(at_g,0,1))),c_not(c_primitive(empty,0))))
+n_count(c_and(c_all(r_inverse(r_primitive(at,0,1)),c_bot),c_not(c_primitive(empty,0))))
+n_count(c_and(c_all(r_inverse(r_primitive(at,0,1)),c_primitive(empty,0)),c_not(c_primitive(empty,0))))
+n_count(c_and(c_all(r_inverse(r_primitive(at,0,1)),c_primitive(truck,0)),c_not(c_primitive(empty,0))))
+n_count(c_and(c_all(r_inverse(r_primitive(at,0,1)),c_bot),c_not(c_primitive(package,0))))
+n_count(c_and(c_all(r_inverse(r_primitive(at,0,1)),c_primitive(empty,0)),c_not(c_primitive(package,0))))
+n_count(c_and(c_all(r_inverse(r_primitive(at,0,1)),c_primitive(truck,0)),c_not(c_primitive(package,0))))
+n_count(c_and(c_all(r_inverse(r_primitive(at,0,1)),c_bot),c_not(c_primitive(truck,0))))
+n_count(c_and(c_all(r_inverse(r_primitive(at,0,1)),c_primitive(empty,0)),c_not(c_primitive(truck,0))))
+n_count(c_and(c_all(r_inverse(r_primitive(at,0,1)),c_primitive(truck,0)),c_not(c_primitive(truck,0))))
+n_count(c_and(c_all(r_inverse(r_primitive(carrying,0,1)),c_bot),c_not(c_primitive(truck,0))))
+n_count(c_and(c_equal(r_primitive(carrying,0,1),r_primitive(carrying_g,0,1)),c_some(r_primitive(at,0,1),c_top)))
+n_count(c_not(c_and(c_all(r_inverse(r_primitive(at,0,1)),c_bot),c_primitive(cell,0))))
+n_count(c_not(c_and(c_all(r_inverse(r_primitive(at,0,1)),c_primitive(empty,0)),c_primitive(cell,0))))
+n_count(c_not(c_and(c_all(r_inverse(r_primitive(at,0,1)),c_primitive(truck,0)),c_primitive(cell,0))))
+n_count(c_not(c_and(c_not(c_equal(r_primitive(at,0,1),r_primitive(at_g,0,1))),c_primitive(package,0))))
+n_count(c_not(c_some(r_primitive(at,0,1),c_some(r_inverse(r_primitive(at,0,1)),c_primitive(empty,0)))))
+n_count(c_not(c_some(r_primitive(at,0,1),c_all(r_inverse(r_primitive(at,0,1)),c_primitive(empty,0)))))
+n_count(c_not(c_some(r_primitive(at_g,0,1),c_some(r_inverse(r_primitive(at,0,1)),c_primitive(empty,0)))))
+n_count(c_not(c_some(r_primitive(at_g,0,1),c_all(r_inverse(r_primitive(at,0,1)),c_primitive(empty,0)))))
+n_count(c_not(c_some(r_primitive(adjacent,0,1),c_some(r_inverse(r_primitive(at,0,1)),c_primitive(empty,0)))))
+n_count(c_not(c_some(r_primitive(adjacent,0,1),c_all(r_inverse(r_primitive(at,0,1)),c_primitive(empty,0)))))
+n_count(c_not(c_all(r_primitive(at,0,1),c_some(r_inverse(r_primitive(at,0,1)),c_primitive(empty,0)))))
+n_count(c_not(c_all(r_primitive(at,0,1),c_all(r_inverse(r_primitive(at,0,1)),c_primitive(empty,0)))))
+n_count(c_not(c_all(r_primitive(at_g,0,1),c_some(r_inverse(r_primitive(at,0,1)),c_primitive(empty,0)))))
+n_count(c_not(c_all(r_primitive(at_g,0,1),c_all(r_inverse(r_primitive(at,0,1)),c_primitive(empty,0)))))
+n_count(c_not(c_all(r_primitive(adjacent,0,1),c_all(r_inverse(r_primitive(at,0,1)),c_primitive(empty,0)))))
+n_count(c_not(c_all(r_inverse(r_primitive(at,0,1)),c_equal(r_primitive(at,0,1),r_primitive(at_g,0,1)))))
+n_count(c_not(c_all(r_inverse(r_primitive(at_g,0,1)),c_equal(r_primitive(at,0,1),r_primitive(at_g,0,1)))))
+n_count(c_some(r_transitive_closure(r_primitive(adjacent,0,1)),c_some(r_inverse(r_primitive(at,0,1)),c_primitive(empty,0))))
+n_concept_distance(c_primitive(truck,0),r_primitive(at,0,1),c_not(c_all(r_inverse(r_primitive(at,0,1)),c_primitive(empty,0))))
+n_count(c_and(c_primitive(empty,0),c_some(r_primitive(at,0,1),c_some(r_inverse(r_primitive(at,0,1)),c_primitive(package,0)))))
+n_count(c_and(c_primitive(empty,0),c_some(r_primitive(at,0,1),c_some(r_inverse(r_primitive(at_g,0,1)),c_top))))
+n_count(c_and(c_primitive(empty,0),c_some(r_primitive(at,0,1),c_all(r_inverse(r_primitive(at_g,0,1)),c_bot))))
+n_count(c_and(c_all(r_primitive(adjacent,0,1),c_some(r_inverse(r_primitive(at,0,1)),c_top)),c_primitive(cell,0)))
+n_count(c_and(c_all(r_primitive(adjacent,0,1),c_some(r_inverse(r_primitive(at,0,1)),c_primitive(package,0))),c_primitive(cell,0)))
+n_count(c_and(c_all(r_primitive(adjacent,0,1),c_all(r_inverse(r_primitive(at,0,1)),c_bot)),c_primitive(cell,0)))
+n_count(c_and(c_all(r_primitive(adjacent,0,1),c_all(r_inverse(r_primitive(at,0,1)),c_primitive(empty,0))),c_primitive(cell,0)))
+n_count(c_and(c_all(r_primitive(adjacent,0,1),c_all(r_inverse(r_primitive(at,0,1)),c_primitive(truck,0))),c_primitive(cell,0)))
+n_count(c_and(c_all(r_inverse(r_primitive(at,0,1)),c_equal(r_primitive(at,0,1),r_primitive(at_g,0,1))),c_primitive(cell,0)))
+n_count(c_and(c_all(r_inverse(r_primitive(at,0,1)),c_equal(r_primitive(carrying,0,1),r_primitive(carrying_g,0,1))),c_primitive(cell,0)))
+n_count(c_and(c_all(r_inverse(r_primitive(at,0,1)),c_some(r_primitive(carrying,0,1),c_top)),c_primitive(cell,0)))
+n_count(c_and(c_all(r_inverse(r_primitive(at_g,0,1)),c_equal(r_primitive(at,0,1),r_primitive(at_g,0,1))),c_primitive(cell,0)))
+n_count(c_and(c_all(r_inverse(r_and(r_primitive(at,0,1),r_primitive(at_g,0,1))),c_bot),c_primitive(cell,0)))
+n_count(c_and(c_not(c_and(c_primitive(package,0),c_some(r_primitive(at,0,1),c_top))),c_primitive(locatable,0)))
+n_count(c_and(c_all(r_primitive(at,0,1),c_some(r_inverse(r_primitive(at,0,1)),c_primitive(empty,0))),c_primitive(locatable,0)))
+n_count(c_and(c_all(r_primitive(at,0,1),c_some(r_inverse(r_primitive(at,0,1)),c_primitive(package,0))),c_primitive(locatable,0)))
+n_count(c_and(c_all(r_primitive(at,0,1),c_some(r_inverse(r_primitive(at,0,1)),c_primitive(truck,0))),c_primitive(locatable,0)))
+n_count(c_and(c_all(r_primitive(at,0,1),c_some(r_inverse(r_primitive(at_g,0,1)),c_top)),c_primitive(locatable,0)))
+n_count(c_and(c_all(r_primitive(at,0,1),c_all(r_inverse(r_primitive(at,0,1)),c_primitive(empty,0))),c_primitive(locatable,0)))
+n_count(c_and(c_all(r_primitive(at,0,1),c_all(r_inverse(r_primitive(at,0,1)),c_primitive(package,0))),c_primitive(locatable,0)))
+n_count(c_and(c_all(r_primitive(at,0,1),c_all(r_inverse(r_primitive(at,0,1)),c_primitive(truck,0))),c_primitive(locatable,0)))
+n_count(c_and(c_all(r_primitive(at,0,1),c_all(r_inverse(r_primitive(at_g,0,1)),c_bot)),c_primitive(locatable,0)))
+n_count(c_and(c_all(r_primitive(at_g,0,1),c_some(r_inverse(r_primitive(at,0,1)),c_top)),c_primitive(locatable,0)))
+n_count(c_and(c_all(r_primitive(at_g,0,1),c_some(r_inverse(r_primitive(at,0,1)),c_primitive(empty,0))),c_primitive(locatable,0)))
+n_count(c_and(c_all(r_primitive(at_g,0,1),c_some(r_inverse(r_primitive(at,0,1)),c_primitive(package,0))),c_primitive(locatable,0)))
+n_count(c_and(c_all(r_primitive(at_g,0,1),c_some(r_inverse(r_primitive(at,0,1)),c_primitive(truck,0))),c_primitive(locatable,0)))
+n_count(c_and(c_all(r_primitive(at_g,0,1),c_all(r_inverse(r_primitive(at,0,1)),c_bot)),c_primitive(locatable,0)))
+n_count(c_and(c_all(r_primitive(at_g,0,1),c_all(r_inverse(r_primitive(at,0,1)),c_primitive(empty,0))),c_primitive(locatable,0)))
+n_count(c_and(c_all(r_primitive(at_g,0,1),c_all(r_inverse(r_primitive(at,0,1)),c_primitive(package,0))),c_primitive(locatable,0)))
+n_count(c_and(c_all(r_primitive(at_g,0,1),c_all(r_inverse(r_primitive(at,0,1)),c_primitive(truck,0))),c_primitive(locatable,0)))
+n_count(c_and(c_primitive(package,0),c_some(r_primitive(at,0,1),c_some(r_inverse(r_primitive(at,0,1)),c_primitive(empty,0)))))
+n_count(c_and(c_primitive(package,0),c_some(r_primitive(at,0,1),c_some(r_inverse(r_primitive(at,0,1)),c_primitive(truck,0)))))
+n_count(c_and(c_primitive(package,0),c_some(r_primitive(at,0,1),c_all(r_inverse(r_primitive(at_g,0,1)),c_bot))))
+n_count(c_and(c_all(r_primitive(at,0,1),c_some(r_inverse(r_primitive(at,0,1)),c_primitive(empty,0))),c_primitive(package,0)))
+n_count(c_and(c_all(r_primitive(at,0,1),c_some(r_inverse(r_primitive(at,0,1)),c_primitive(truck,0))),c_primitive(package,0)))
+n_count(c_and(c_all(r_primitive(at,0,1),c_some(r_inverse(r_primitive(at_g,0,1)),c_top)),c_primitive(package,0)))
+n_count(c_and(c_primitive(truck,0),c_some(r_primitive(at,0,1),c_some(r_inverse(r_primitive(at,0,1)),c_primitive(package,0)))))
+n_count(c_and(c_primitive(truck,0),c_some(r_primitive(at,0,1),c_some(r_inverse(r_primitive(at_g,0,1)),c_top))))
+n_count(c_and(c_primitive(truck,0),c_some(r_primitive(at,0,1),c_all(r_inverse(r_primitive(at_g,0,1)),c_bot))))
+n_count(c_and(c_all(r_and(r_primitive(at,0,1),r_primitive(at_g,0,1)),c_bot),c_not(c_primitive(empty,0))))
+n_count(c_and(c_all(r_and(r_primitive(at,0,1),r_primitive(at_g,0,1)),c_bot),c_not(c_primitive(truck,0))))
+n_count(c_and(c_all(r_inverse(r_primitive(at,0,1)),c_bot),c_equal(r_primitive(at,0,1),r_primitive(at_g,0,1))))
+n_count(c_and(c_all(r_inverse(r_primitive(at,0,1)),c_primitive(empty,0)),c_equal(r_primitive(at,0,1),r_primitive(at_g,0,1))))
+n_count(c_and(c_all(r_inverse(r_primitive(at,0,1)),c_primitive(package,0)),c_equal(r_primitive(at,0,1),r_primitive(at_g,0,1))))
+n_count(c_and(c_all(r_inverse(r_primitive(at,0,1)),c_primitive(truck,0)),c_equal(r_primitive(at,0,1),r_primitive(at_g,0,1))))
+n_count(c_and(c_equal(r_primitive(carrying,0,1),r_primitive(carrying_g,0,1)),c_not(c_equal(r_primitive(at,0,1),r_primitive(at_g,0,1)))))
+n_count(c_and(c_all(r_inverse(r_primitive(at,0,1)),c_bot),c_equal(r_primitive(carrying,0,1),r_primitive(carrying_g,0,1))))
+n_count(c_and(c_all(r_inverse(r_primitive(at,0,1)),c_primitive(empty,0)),c_equal(r_primitive(carrying,0,1),r_primitive(carrying_g,0,1))))
+n_count(c_and(c_all(r_inverse(r_primitive(at,0,1)),c_primitive(truck,0)),c_equal(r_primitive(carrying,0,1),r_primitive(carrying_g,0,1))))
+n_count(c_and(c_all(r_inverse(r_primitive(carrying,0,1)),c_bot),c_equal(r_primitive(carrying,0,1),r_primitive(carrying_g,0,1))))
+n_count(c_and(c_all(r_inverse(r_primitive(at,0,1)),c_bot),c_all(r_primitive(at,0,1),c_bot)))
+n_count(c_and(c_all(r_inverse(r_primitive(at,0,1)),c_primitive(empty,0)),c_all(r_primitive(at,0,1),c_bot)))
+n_count(c_and(c_all(r_inverse(r_primitive(at,0,1)),c_primitive(truck,0)),c_all(r_primitive(at,0,1),c_bot)))
+n_count(c_not(c_and(c_not(c_equal(r_primitive(at,0,1),r_primitive(at_g,0,1))),c_not(c_primitive(empty,0)))))
+n_count(c_not(c_and(c_all(r_inverse(r_primitive(at,0,1)),c_bot),c_not(c_primitive(empty,0)))))
+n_count(c_not(c_and(c_all(r_inverse(r_primitive(at,0,1)),c_primitive(empty,0)),c_not(c_primitive(empty,0)))))
+n_count(c_not(c_and(c_all(r_inverse(r_primitive(at,0,1)),c_primitive(truck,0)),c_not(c_primitive(empty,0)))))
+n_count(c_not(c_and(c_all(r_inverse(r_primitive(at,0,1)),c_bot),c_not(c_primitive(package,0)))))
+n_count(c_not(c_and(c_all(r_inverse(r_primitive(at,0,1)),c_primitive(empty,0)),c_not(c_primitive(package,0)))))
+n_count(c_not(c_and(c_all(r_inverse(r_primitive(at,0,1)),c_primitive(truck,0)),c_not(c_primitive(package,0)))))
+n_count(c_not(c_and(c_all(r_inverse(r_primitive(at,0,1)),c_bot),c_not(c_primitive(truck,0)))))
+n_count(c_not(c_and(c_all(r_inverse(r_primitive(at,0,1)),c_primitive(empty,0)),c_not(c_primitive(truck,0)))))
+n_count(c_not(c_and(c_all(r_inverse(r_primitive(at,0,1)),c_primitive(truck,0)),c_not(c_primitive(truck,0)))))
+n_count(c_not(c_and(c_equal(r_primitive(carrying,0,1),r_primitive(carrying_g,0,1)),c_some(r_primitive(at,0,1),c_top))))
+n_count(c_not(c_some(r_transitive_closure(r_primitive(adjacent,0,1)),c_some(r_inverse(r_primitive(at,0,1)),c_primitive(empty,0)))))
+n_count(c_some(r_primitive(at,0,1),c_some(r_primitive(adjacent,0,1),c_some(r_inverse(r_primitive(at,0,1)),c_top))))
+n_count(c_some(r_primitive(at,0,1),c_some(r_primitive(adjacent,0,1),c_some(r_inverse(r_primitive(at,0,1)),c_primitive(empty,0)))))
+n_count(c_some(r_primitive(at,0,1),c_some(r_primitive(adjacent,0,1),c_some(r_inverse(r_primitive(at,0,1)),c_primitive(package,0)))))
+n_count(c_some(r_primitive(at,0,1),c_some(r_primitive(adjacent,0,1),c_some(r_inverse(r_primitive(at,0,1)),c_primitive(truck,0)))))
+n_count(c_some(r_primitive(at,0,1),c_some(r_primitive(adjacent,0,1),c_some(r_inverse(r_primitive(at_g,0,1)),c_top))))
+n_count(c_some(r_primitive(at,0,1),c_some(r_primitive(adjacent,0,1),c_all(r_inverse(r_primitive(at,0,1)),c_bot))))
+n_count(c_some(r_primitive(at,0,1),c_some(r_primitive(adjacent,0,1),c_all(r_inverse(r_primitive(at,0,1)),c_primitive(empty,0)))))
+n_count(c_some(r_primitive(at,0,1),c_some(r_inverse(r_primitive(at,0,1)),c_equal(r_primitive(at,0,1),r_primitive(at_g,0,1)))))
+n_count(c_some(r_primitive(at,0,1),c_some(r_inverse(r_primitive(at,0,1)),c_equal(r_primitive(carrying,0,1),r_primitive(carrying_g,0,1)))))
+n_count(c_some(r_primitive(at,0,1),c_some(r_inverse(r_primitive(at,0,1)),c_some(r_primitive(carrying,0,1),c_top))))
+n_count(c_some(r_primitive(at,0,1),c_some(r_inverse(r_primitive(at_g,0,1)),c_all(r_primitive(at,0,1),c_bot))))
+n_count(c_some(r_primitive(at,0,1),c_all(r_primitive(adjacent,0,1),c_some(r_inverse(r_primitive(at,0,1)),c_top))))
+n_count(c_some(r_primitive(at,0,1),c_all(r_primitive(adjacent,0,1),c_some(r_inverse(r_primitive(at,0,1)),c_primitive(package,0)))))
+n_count(c_some(r_primitive(at,0,1),c_all(r_primitive(adjacent,0,1),c_all(r_inverse(r_primitive(at,0,1)),c_bot))))
+n_count(c_some(r_primitive(at,0,1),c_all(r_primitive(adjacent,0,1),c_all(r_inverse(r_primitive(at,0,1)),c_primitive(empty,0)))))
+n_count(c_some(r_primitive(at,0,1),c_all(r_primitive(adjacent,0,1),c_all(r_inverse(r_primitive(at,0,1)),c_primitive(package,0)))))
+n_count(c_some(r_primitive(at,0,1),c_all(r_primitive(adjacent,0,1),c_all(r_inverse(r_primitive(at,0,1)),c_primitive(truck,0)))))
+n_count(c_some(r_primitive(at,0,1),c_all(r_primitive(adjacent,0,1),c_all(r_inverse(r_primitive(at_g,0,1)),c_bot))))
+n_count(c_some(r_primitive(at,0,1),c_all(r_inverse(r_primitive(at,0,1)),c_equal(r_primitive(at,0,1),r_primitive(at_g,0,1)))))
+n_count(c_some(r_primitive(at,0,1),c_all(r_inverse(r_primitive(at,0,1)),c_equal(r_primitive(carrying,0,1),r_primitive(carrying_g,0,1)))))
+n_count(c_some(r_primitive(at,0,1),c_all(r_inverse(r_primitive(at,0,1)),c_some(r_primitive(carrying,0,1),c_top))))
+n_count(c_some(r_primitive(at,0,1),c_all(r_inverse(r_primitive(at_g,0,1)),c_equal(r_primitive(at,0,1),r_primitive(at_g,0,1)))))
+n_count(c_some(r_primitive(at,0,1),c_all(r_inverse(r_primitive(at_g,0,1)),c_some(r_primitive(at,0,1),c_top))))
+n_count(c_some(r_primitive(at,0,1),c_all(r_inverse(r_and(r_primitive(at,0,1),r_primitive(at_g,0,1))),c_bot)))
+n_count(c_some(r_primitive(at_g,0,1),c_some(r_primitive(adjacent,0,1),c_some(r_inverse(r_primitive(at,0,1)),c_top))))
+n_count(c_some(r_primitive(at_g,0,1),c_some(r_primitive(adjacent,0,1),c_some(r_inverse(r_primitive(at,0,1)),c_primitive(empty,0)))))
+n_count(c_some(r_primitive(at_g,0,1),c_some(r_primitive(adjacent,0,1),c_some(r_inverse(r_primitive(at,0,1)),c_primitive(package,0)))))
+n_count(c_some(r_primitive(at_g,0,1),c_some(r_primitive(adjacent,0,1),c_some(r_inverse(r_primitive(at,0,1)),c_primitive(truck,0)))))
+n_count(c_some(r_primitive(at_g,0,1),c_some(r_primitive(adjacent,0,1),c_all(r_inverse(r_primitive(at,0,1)),c_bot))))
+n_count(c_some(r_primitive(at_g,0,1),c_some(r_primitive(adjacent,0,1),c_all(r_inverse(r_primitive(at,0,1)),c_primitive(empty,0)))))
+n_count(c_some(r_primitive(at_g,0,1),c_some(r_primitive(adjacent,0,1),c_all(r_inverse(r_primitive(at,0,1)),c_primitive(truck,0)))))
+n_count(c_some(r_primitive(at_g,0,1),c_some(r_inverse(r_primitive(at,0,1)),c_equal(r_primitive(carrying,0,1),r_primitive(carrying_g,0,1)))))
+n_count(c_some(r_primitive(at_g,0,1),c_some(r_inverse(r_primitive(at,0,1)),c_some(r_primitive(carrying,0,1),c_top))))
+n_count(c_some(r_primitive(at_g,0,1),c_some(r_inverse(r_primitive(at_g,0,1)),c_all(r_primitive(at,0,1),c_bot))))
+n_count(c_some(r_primitive(at_g,0,1),c_all(r_primitive(adjacent,0,1),c_some(r_inverse(r_primitive(at,0,1)),c_top))))
+n_count(c_some(r_primitive(at_g,0,1),c_all(r_primitive(adjacent,0,1),c_some(r_inverse(r_primitive(at,0,1)),c_primitive(package,0)))))
+n_count(c_some(r_primitive(at_g,0,1),c_all(r_primitive(adjacent,0,1),c_all(r_inverse(r_primitive(at,0,1)),c_bot))))
+n_count(c_some(r_primitive(at_g,0,1),c_all(r_primitive(adjacent,0,1),c_all(r_inverse(r_primitive(at,0,1)),c_primitive(empty,0)))))
+n_count(c_some(r_primitive(at_g,0,1),c_all(r_primitive(adjacent,0,1),c_all(r_inverse(r_primitive(at,0,1)),c_primitive(package,0)))))
+n_count(c_some(r_primitive(at_g,0,1),c_all(r_primitive(adjacent,0,1),c_all(r_inverse(r_primitive(at,0,1)),c_primitive(truck,0)))))
+n_count(c_some(r_primitive(at_g,0,1),c_all(r_inverse(r_primitive(at,0,1)),c_equal(r_primitive(carrying,0,1),r_primitive(carrying_g,0,1)))))
+n_count(c_some(r_primitive(at_g,0,1),c_all(r_inverse(r_primitive(at,0,1)),c_some(r_primitive(carrying,0,1),c_top))))
+n_count(c_some(r_primitive(at_g,0,1),c_all(r_inverse(r_primitive(at_g,0,1)),c_equal(r_primitive(at,0,1),r_primitive(at_g,0,1)))))
+n_count(c_some(r_primitive(carrying,0,1),c_some(r_primitive(at_g,0,1),c_some(r_inverse(r_primitive(at,0,1)),c_top))))
+n_count(c_some(r_primitive(carrying,0,1),c_some(r_primitive(at_g,0,1),c_some(r_inverse(r_primitive(at,0,1)),c_primitive(package,0)))))
+n_count(c_some(r_primitive(carrying,0,1),c_some(r_primitive(at_g,0,1),c_some(r_inverse(r_primitive(at,0,1)),c_primitive(truck,0)))))
+n_count(c_some(r_primitive(carrying,0,1),c_some(r_primitive(at_g,0,1),c_all(r_inverse(r_primitive(at,0,1)),c_bot))))
+n_count(c_some(r_primitive(carrying,0,1),c_some(r_primitive(at_g,0,1),c_all(r_inverse(r_primitive(at,0,1)),c_primitive(package,0)))))
+n_count(c_some(r_primitive(carrying,0,1),c_some(r_primitive(at_g,0,1),c_all(r_inverse(r_primitive(at,0,1)),c_primitive(truck,0)))))
+n_count(c_some(r_primitive(adjacent,0,1),c_some(r_inverse(r_primitive(at,0,1)),c_equal(r_primitive(carrying,0,1),r_primitive(carrying_g,0,1)))))
+n_count(c_some(r_primitive(adjacent,0,1),c_all(r_inverse(r_primitive(at,0,1)),c_equal(r_primitive(at,0,1),r_primitive(at_g,0,1)))))
+n_count(c_some(r_primitive(adjacent,0,1),c_all(r_inverse(r_primitive(at,0,1)),c_some(r_primitive(carrying,0,1),c_top))))
+n_count(c_some(r_and(r_primitive(at,0,1),r_primitive(at_g,0,1)),c_some(r_inverse(r_primitive(at,0,1)),c_primitive(empty,0))))
+n_count(c_some(r_and(r_primitive(at,0,1),r_primitive(at_g,0,1)),c_some(r_inverse(r_primitive(at,0,1)),c_primitive(truck,0))))
+n_count(c_all(r_primitive(at,0,1),c_some(r_primitive(adjacent,0,1),c_some(r_inverse(r_primitive(at,0,1)),c_top))))
+n_count(c_all(r_primitive(at,0,1),c_some(r_primitive(adjacent,0,1),c_some(r_inverse(r_primitive(at,0,1)),c_primitive(empty,0)))))
+n_count(c_all(r_primitive(at,0,1),c_some(r_primitive(adjacent,0,1),c_some(r_inverse(r_primitive(at,0,1)),c_primitive(package,0)))))
+n_count(c_all(r_primitive(at,0,1),c_some(r_primitive(adjacent,0,1),c_some(r_inverse(r_primitive(at,0,1)),c_primitive(truck,0)))))
+n_count(c_all(r_primitive(at,0,1),c_some(r_primitive(adjacent,0,1),c_some(r_inverse(r_primitive(at_g,0,1)),c_top))))
+n_count(c_all(r_primitive(at,0,1),c_some(r_primitive(adjacent,0,1),c_all(r_inverse(r_primitive(at,0,1)),c_bot))))
+n_count(c_all(r_primitive(at,0,1),c_some(r_primitive(adjacent,0,1),c_all(r_inverse(r_primitive(at,0,1)),c_primitive(empty,0)))))
+n_count(c_all(r_primitive(at,0,1),c_some(r_inverse(r_primitive(at,0,1)),c_equal(r_primitive(at,0,1),r_primitive(at_g,0,1)))))
+n_count(c_all(r_primitive(at,0,1),c_some(r_inverse(r_primitive(at,0,1)),c_equal(r_primitive(carrying,0,1),r_primitive(carrying_g,0,1)))))
+n_count(c_all(r_primitive(at,0,1),c_some(r_inverse(r_primitive(at,0,1)),c_some(r_primitive(carrying,0,1),c_top))))
+n_count(c_all(r_primitive(at,0,1),c_some(r_inverse(r_primitive(at_g,0,1)),c_all(r_primitive(at,0,1),c_bot))))
+n_count(c_all(r_primitive(at,0,1),c_all(r_primitive(adjacent,0,1),c_some(r_inverse(r_primitive(at,0,1)),c_top))))
+n_count(c_all(r_primitive(at,0,1),c_all(r_primitive(adjacent,0,1),c_some(r_inverse(r_primitive(at,0,1)),c_primitive(package,0)))))
+n_count(c_all(r_primitive(at,0,1),c_all(r_primitive(adjacent,0,1),c_all(r_inverse(r_primitive(at,0,1)),c_bot))))
+n_count(c_all(r_primitive(at,0,1),c_all(r_primitive(adjacent,0,1),c_all(r_inverse(r_primitive(at,0,1)),c_primitive(empty,0)))))
+n_count(c_all(r_primitive(at,0,1),c_all(r_primitive(adjacent,0,1),c_all(r_inverse(r_primitive(at,0,1)),c_primitive(package,0)))))
+n_count(c_all(r_primitive(at,0,1),c_all(r_primitive(adjacent,0,1),c_all(r_inverse(r_primitive(at,0,1)),c_primitive(truck,0)))))
+n_count(c_all(r_primitive(at,0,1),c_all(r_primitive(adjacent,0,1),c_all(r_inverse(r_primitive(at_g,0,1)),c_bot))))
+n_count(c_all(r_primitive(at,0,1),c_all(r_inverse(r_primitive(at,0,1)),c_equal(r_primitive(at,0,1),r_primitive(at_g,0,1)))))
+n_count(c_all(r_primitive(at,0,1),c_all(r_inverse(r_primitive(at,0,1)),c_equal(r_primitive(carrying,0,1),r_primitive(carrying_g,0,1)))))
+n_count(c_all(r_primitive(at,0,1),c_all(r_inverse(r_primitive(at,0,1)),c_some(r_primitive(carrying,0,1),c_top))))
+n_count(c_all(r_primitive(at,0,1),c_all(r_inverse(r_primitive(at_g,0,1)),c_equal(r_primitive(at,0,1),r_primitive(at_g,0,1)))))
+n_count(c_all(r_primitive(at,0,1),c_all(r_inverse(r_primitive(at_g,0,1)),c_some(r_primitive(at,0,1),c_top))))
+n_count(c_all(r_primitive(at,0,1),c_all(r_inverse(r_and(r_primitive(at,0,1),r_primitive(at_g,0,1))),c_bot)))
+n_count(c_all(r_primitive(at_g,0,1),c_some(r_primitive(adjacent,0,1),c_some(r_inverse(r_primitive(at,0,1)),c_top))))
+n_count(c_all(r_primitive(at_g,0,1),c_some(r_primitive(adjacent,0,1),c_some(r_inverse(r_primitive(at,0,1)),c_primitive(empty,0)))))
+n_count(c_all(r_primitive(at_g,0,1),c_some(r_primitive(adjacent,0,1),c_some(r_inverse(r_primitive(at,0,1)),c_primitive(package,0)))))
+n_count(c_all(r_primitive(at_g,0,1),c_some(r_primitive(adjacent,0,1),c_some(r_inverse(r_primitive(at,0,1)),c_primitive(truck,0)))))
+n_count(c_all(r_primitive(at_g,0,1),c_some(r_primitive(adjacent,0,1),c_all(r_inverse(r_primitive(at,0,1)),c_bot))))
+n_count(c_all(r_primitive(at_g,0,1),c_some(r_primitive(adjacent,0,1),c_all(r_inverse(r_primitive(at,0,1)),c_primitive(empty,0)))))
+n_count(c_all(r_primitive(at_g,0,1),c_some(r_primitive(adjacent,0,1),c_all(r_inverse(r_primitive(at,0,1)),c_primitive(truck,0)))))
+n_count(c_all(r_primitive(at_g,0,1),c_some(r_inverse(r_primitive(at,0,1)),c_equal(r_primitive(carrying,0,1),r_primitive(carrying_g,0,1)))))
+n_count(c_all(r_primitive(at_g,0,1),c_some(r_inverse(r_primitive(at,0,1)),c_some(r_primitive(carrying,0,1),c_top))))
+n_count(c_all(r_primitive(at_g,0,1),c_all(r_primitive(adjacent,0,1),c_some(r_inverse(r_primitive(at,0,1)),c_top))))
+n_count(c_all(r_primitive(at_g,0,1),c_all(r_primitive(adjacent,0,1),c_some(r_inverse(r_primitive(at,0,1)),c_primitive(package,0)))))
+n_count(c_all(r_primitive(at_g,0,1),c_all(r_primitive(adjacent,0,1),c_all(r_inverse(r_primitive(at,0,1)),c_bot))))
+n_count(c_all(r_primitive(at_g,0,1),c_all(r_primitive(adjacent,0,1),c_all(r_inverse(r_primitive(at,0,1)),c_primitive(empty,0)))))
+n_count(c_all(r_primitive(at_g,0,1),c_all(r_primitive(adjacent,0,1),c_all(r_inverse(r_primitive(at,0,1)),c_primitive(package,0)))))
+n_count(c_all(r_primitive(at_g,0,1),c_all(r_primitive(adjacent,0,1),c_all(r_inverse(r_primitive(at,0,1)),c_primitive(truck,0)))))
+n_count(c_all(r_primitive(at_g,0,1),c_all(r_inverse(r_primitive(at,0,1)),c_equal(r_primitive(carrying,0,1),r_primitive(carrying_g,0,1)))))
+n_count(c_all(r_primitive(at_g,0,1),c_all(r_inverse(r_primitive(at,0,1)),c_some(r_primitive(carrying,0,1),c_top))))
+n_count(c_all(r_primitive(at_g,0,1),c_all(r_inverse(r_primitive(at_g,0,1)),c_equal(r_primitive(at,0,1),r_primitive(at_g,0,1)))))
+n_count(c_all(r_primitive(carrying,0,1),c_some(r_primitive(at_g,0,1),c_some(r_inverse(r_primitive(at,0,1)),c_top))))
+n_count(c_all(r_primitive(carrying,0,1),c_some(r_primitive(at_g,0,1),c_some(r_inverse(r_primitive(at,0,1)),c_primitive(package,0)))))
+n_count(c_all(r_primitive(carrying,0,1),c_some(r_primitive(at_g,0,1),c_some(r_inverse(r_primitive(at,0,1)),c_primitive(truck,0)))))
+n_count(c_all(r_primitive(carrying,0,1),c_some(r_primitive(at_g,0,1),c_all(r_inverse(r_primitive(at,0,1)),c_bot))))
+n_count(c_all(r_primitive(carrying,0,1),c_some(r_primitive(at_g,0,1),c_all(r_inverse(r_primitive(at,0,1)),c_primitive(package,0)))))
+n_count(c_all(r_primitive(carrying,0,1),c_some(r_primitive(at_g,0,1),c_all(r_inverse(r_primitive(at,0,1)),c_primitive(truck,0)))))
+n_count(c_all(r_primitive(adjacent,0,1),c_some(r_primitive(adjacent,0,1),c_some(r_inverse(r_primitive(at,0,1)),c_top))))
+n_count(c_all(r_primitive(adjacent,0,1),c_some(r_primitive(adjacent,0,1),c_some(r_inverse(r_primitive(at,0,1)),c_primitive(empty,0)))))
+n_count(c_all(r_primitive(adjacent,0,1),c_some(r_primitive(adjacent,0,1),c_some(r_inverse(r_primitive(at,0,1)),c_primitive(package,0)))))
+n_count(c_all(r_primitive(adjacent,0,1),c_some(r_primitive(adjacent,0,1),c_all(r_inverse(r_primitive(at,0,1)),c_bot))))
+n_count(c_all(r_primitive(adjacent,0,1),c_some(r_primitive(adjacent,0,1),c_all(r_inverse(r_primitive(at,0,1)),c_primitive(empty,0)))))
+n_count(c_all(r_primitive(adjacent,0,1),c_some(r_primitive(adjacent,0,1),c_all(r_inverse(r_primitive(at,0,1)),c_primitive(truck,0)))))
+n_count(c_all(r_primitive(adjacent,0,1),c_some(r_inverse(r_primitive(at,0,1)),c_equal(r_primitive(carrying,0,1),r_primitive(carrying_g,0,1)))))
+n_count(c_all(r_primitive(adjacent,0,1),c_all(r_inverse(r_primitive(at,0,1)),c_equal(r_primitive(at,0,1),r_primitive(at_g,0,1)))))
+n_count(c_all(r_primitive(adjacent,0,1),c_all(r_inverse(r_primitive(at,0,1)),c_some(r_primitive(carrying,0,1),c_top))))
+n_count(c_all(r_and(r_primitive(at,0,1),r_primitive(at_g,0,1)),c_some(r_inverse(r_primitive(at,0,1)),c_primitive(empty,0))))
+n_count(c_all(r_and(r_primitive(at,0,1),r_primitive(at_g,0,1)),c_some(r_inverse(r_primitive(at,0,1)),c_primitive(truck,0))))
+n_count(c_all(r_and(r_primitive(at,0,1),r_primitive(at_g,0,1)),c_all(r_inverse(r_primitive(at,0,1)),c_primitive(package,0))))
+n_concept_distance(c_primitive(truck,0),r_primitive(at,0,1),c_and(c_all(r_inverse(r_primitive(at,0,1)),c_primitive(empty,0)),c_primitive(cell,0)))
+n_concept_distance(c_primitive(truck,0),r_primitive(at,0,1),c_and(c_all(r_inverse(r_primitive(at,0,1)),c_primitive(truck,0)),c_primitive(cell,0)))
+n_concept_distance(c_primitive(truck,0),r_primitive(at,0,1),c_and(c_all(r_inverse(r_primitive(at_g,0,1)),c_bot),c_primitive(cell,0)))
+n_concept_distance(c_primitive(truck,0),r_primitive(at,0,1),c_some(r_primitive(at,0,1),c_some(r_inverse(r_primitive(at,0,1)),c_primitive(package,0))))
+n_concept_distance(c_primitive(truck,0),r_primitive(at,0,1),c_some(r_primitive(at,0,1),c_some(r_inverse(r_primitive(at_g,0,1)),c_top)))
+n_concept_distance(c_primitive(truck,0),r_primitive(at,0,1),c_some(r_primitive(at,0,1),c_all(r_inverse(r_primitive(at,0,1)),c_primitive(empty,0))))
+n_concept_distance(c_primitive(truck,0),r_primitive(at,0,1),c_some(r_primitive(at,0,1),c_all(r_inverse(r_primitive(at,0,1)),c_primitive(truck,0))))
+n_concept_distance(c_primitive(truck,0),r_primitive(at,0,1),c_some(r_primitive(at,0,1),c_all(r_inverse(r_primitive(at_g,0,1)),c_bot)))
+n_concept_distance(c_primitive(truck,0),r_primitive(at,0,1),c_some(r_primitive(adjacent,0,1),c_some(r_inverse(r_primitive(at,0,1)),c_top)))
+n_concept_distance(c_primitive(truck,0),r_primitive(at,0,1),c_some(r_primitive(adjacent,0,1),c_some(r_inverse(r_primitive(at_g,0,1)),c_top)))
+n_concept_distance(c_primitive(truck,0),r_primitive(at,0,1),c_some(r_primitive(adjacent,0,1),c_all(r_inverse(r_primitive(at,0,1)),c_bot)))
+n_concept_distance(c_primitive(truck,0),r_primitive(at,0,1),c_some(r_inverse(r_primitive(at,0,1)),c_equal(r_primitive(at,0,1),r_primitive(at_g,0,1))))
+n_concept_distance(c_primitive(truck,0),r_primitive(at,0,1),c_some(r_inverse(r_primitive(at,0,1)),c_equal(r_primitive(carrying,0,1),r_primitive(carrying_g,0,1))))
+n_concept_distance(c_primitive(truck,0),r_primitive(at,0,1),c_some(r_inverse(r_primitive(at_g,0,1)),c_all(r_primitive(at,0,1),c_bot)))
+n_concept_distance(c_primitive(truck,0),r_primitive(at,0,1),c_all(r_primitive(at,0,1),c_all(r_inverse(r_primitive(at,0,1)),c_primitive(empty,0))))
+n_concept_distance(c_primitive(truck,0),r_primitive(carrying,0,1),c_some(r_primitive(at_g,0,1),c_some(r_inverse(r_primitive(at,0,1)),c_top)))
+n_concept_distance(c_primitive(truck,0),r_primitive(carrying,0,1),c_some(r_primitive(at_g,0,1),c_some(r_inverse(r_primitive(at,0,1)),c_primitive(package,0))))
+n_concept_distance(c_primitive(truck,0),r_primitive(carrying,0,1),c_some(r_primitive(at_g,0,1),c_all(r_inverse(r_primitive(at,0,1)),c_bot)))
+n_concept_distance(c_primitive(truck,0),r_primitive(carrying,0,1),c_some(r_primitive(at_g,0,1),c_all(r_inverse(r_primitive(at,0,1)),c_primitive(package,0))))
+n_concept_distance(c_primitive(truck,0),r_primitive(carrying,0,1),c_some(r_primitive(at_g,0,1),c_all(r_inverse(r_primitive(at,0,1)),c_primitive(truck,0))))
+n_concept_distance(c_primitive(truck,0),r_primitive(carrying,0,1),c_all(r_primitive(at,0,1),c_some(r_inverse(r_primitive(at,0,1)),c_primitive(package,0))))
+n_concept_distance(c_primitive(truck,0),r_primitive(carrying,0,1),c_all(r_primitive(at,0,1),c_some(r_inverse(r_primitive(at_g,0,1)),c_top)))
+n_concept_distance(c_primitive(truck,0),r_primitive(carrying,0,1),c_all(r_primitive(at,0,1),c_all(r_inverse(r_primitive(at,0,1)),c_primitive(empty,0))))
+n_concept_distance(c_primitive(truck,0),r_primitive(carrying,0,1),c_all(r_primitive(at,0,1),c_all(r_inverse(r_primitive(at,0,1)),c_primitive(truck,0))))
+n_concept_distance(c_primitive(truck,0),r_primitive(carrying,0,1),c_all(r_primitive(at,0,1),c_all(r_inverse(r_primitive(at_g,0,1)),c_bot)))
+Number of selected training instances: 1
+Sum of number of states in selected training instances: 96
+Max of number of states in selected training instances: 96
+Number of features in the pool: 394
+Resulting sketch:
+(:policy
+(:boolean_features )
+(:numerical_features "n_count(c_equal(r_primitive(at,0,1),r_primitive(at_g,0,1)))")
+(:rule (:conditions (:c_n_gt 0)) (:effects (:e_n_inc 0)))
+)
+Numer of sketch rules: 1
+Number of selected features: 1
+Maximum complexity of selected feature: 4
+Resulting sketch minimized:
+(:policy
+(:boolean_features )
+(:numerical_features "n_count(c_equal(r_primitive(at,0,1),r_primitive(at_g,0,1)))")
+(:rule (:conditions (:c_n_gt 0)) (:effects (:e_n_inc 0)))
+)
+Numer of sketch rules: 1
+Number of selected features: 1
+Maximum complexity of selected feature: 4
+Summary:
+Resulting sketch:
+(:policy
+(:boolean_features )
+(:numerical_features "n_count(c_equal(r_primitive(at,0,1),r_primitive(at_g,0,1)))")
+(:rule (:conditions (:c_n_gt 0)) (:effects (:e_n_inc 0)))
+)
+Numer of sketch rules: 1
+Number of selected features: 1
+Maximum complexity of selected feature: 4
+Resulting structurally minimized sketch:
+(:policy
+(:boolean_features )
+(:numerical_features "n_count(c_equal(r_primitive(at,0,1),r_primitive(at_g,0,1)))")
+(:rule (:conditions (:c_n_gt 0)) (:effects (:e_n_inc 0)))
+)
+Numer of sketch rules: 1
+Number of selected features: 1
+Maximum complexity of selected feature: 4
+Number of training instances: 50
+Number of selected training instances: 1
+Number of states in selected training instances: 96
+Max number of states in selected training instance: 96
+Number of features in the pool: 394
+RESOURCES FOR PREPROCESSING: 27.46 CPU sec - 3190.86 MB
+RESOURCES FOR LEARNING: 808.89 CPU sec - 3190.86 MB
+================================================================================
+END OF STEP #1: Incremental learning module. 837.40 CPU sec - 3499.35 MB
+================================================================================
