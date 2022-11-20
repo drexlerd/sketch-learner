@@ -1,0 +1,5 @@
+(:policy
+(:boolean_features )
+(:numerical_features "n_count(c_primitive(useable,0))" "n_count(r_primitive(carrying,0,1))")
+(:rule (:conditions (:c_n_gt 0)) (:effects (:e_n_bot 0) (:e_n_inc 1)))
+)
