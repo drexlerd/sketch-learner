@@ -52,7 +52,7 @@ ATTRIBUTES = [
     "expanded",
     "generated",
     "pruned",
-    Attribute(name="total_time", absolute=True),
+    Attribute(name="total_time", absolute=True, function=max),
     Attribute(name="width_average", absolute=True, function=arithmetic_mean),
     Attribute(name="width_maximum", absolute=True),
     Attribute(name="not_i_reachable", absolute=True),

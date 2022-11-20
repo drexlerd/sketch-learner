@@ -47,7 +47,7 @@ ATTRIBUTES = [
     "cost",
     "coverage",
     "error",
-    "total_time"
+    Attribute(name="total_time", absolute=True, function=max),
 ]
 
 
