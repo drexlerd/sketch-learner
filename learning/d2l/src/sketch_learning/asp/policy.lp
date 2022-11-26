@@ -5,24 +5,21 @@
 { select(F) } :- feature(F).
 % Generate selected rules over F
 { good(C) } :- state_pair_class(C).
-% Generate R-reachable states
-{ r_reachable(I, S) } :- state(I, S).
 
 % initial state is R-reachable
-:- not r_reachable(I, S), initial(I, S).
+r_reachable(I, S) :- initial(I, S).
 % require at least one outgoing good for each alive R-reachable state.
-:- { good(C) : cover(I, S, _, C) } = 0, r_reachable(I, S), alive(I, S).
+{ good(C) : cover(I, S, _, C) } != 0 :- r_reachable(I, S), alive(I, S).
 % require S' to be R-reachable if there is good state pair (S,S') from R-reachable state S.
-:- not r_reachable(I, S'), r_reachable(I, S), good(C), cover(I, S, S', C).
+r_reachable(I, S') :- r_reachable(I, S), good(C), cover(I, S, S', C).
 % requires unsolvable S to not be R-reachable
 :- r_reachable(I, S), unsolvable(I, S).
 
 % D2-separation
 :- good(C), not good(C'), d2_separate(C, C'), state_pair_class(C), state_pair_class(C'), { feature(F) : select(F), feature_effect(F, C, V), feature_effect(F, C', V'), V != V' } = 0, { feature(F) : select(F), feature_condition(F, C, V), feature_condition(F, C', V'), V != V' } = 0.
-
 % Goal-separation no possible with current pool, because decrement can mean 2->0, 2->1
 % Hence one would need seed features that reflect feature change.
-%:- nongoal(I, S), goal(I, S'), { feature(F) : select(F), value(I, S, F, V), value(I, S', F, V'), V != V' } = 0.
+%:- nongoal(I, S), goal(I', S'), { feature(F) : select(F), b_value(I, S, F, V), b_value(I', S', F, V'), V != V' } = 0.
 
 % Define ``good`` pairs of state classes similar
 good(I, S, S') :- good(C), cover(I, S, S', C).

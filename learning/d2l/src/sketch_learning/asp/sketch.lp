@@ -15,15 +15,11 @@
 :- D <= D', d_distance(I, S, C, D), t_distance(I, S, T, D'), subgoal(I, S, T), good(C).
 % (Optimal-width): Require solvable states S' closer than subgoal to not be assigned to any rule.
 :- D < D', r_distance(I, S, C, D), t_distance(I, S, T, D'), subgoal(I, S, T), good(C).
-% Require that goal feature valuations are minimal
-% :- good(C), cover(I, S, S', C), nongoal(I, S), goal(I, S).
 
 % D2-separation
 :- good(C), not good(C'), d2_separate(C, C'), state_pair_class(C), state_pair_class(C'), { feature(F) : select(F), feature_effect(F, C, V), feature_effect(F, C', V'), V != V' } = 0, { feature(F) : select(F), feature_condition(F, C, V), feature_condition(F, C', V'), V != V' } = 0.
-
-% Goal-separation no possible with current pool, because decrement can mean 2->0, 2->1
-% Hence one would need seed features that reflect feature change.
-:- nongoal(I', S), goal(I, S'), { feature(F) : select(F), value(I', S, F, V), value(I, S', F, V'), V != V' } = 0.
+% Goal-separation
+:- nongoal(I, S), goal(I', S'), { feature(F) : select(F), b_value(I, S, F, V), b_value(I', S', F, V'), V != V' } = 0.
 
 % Define ``good`` pairs of state classes similar
 good(I, S, S') :- good(C), cover(I, S, S', C).
