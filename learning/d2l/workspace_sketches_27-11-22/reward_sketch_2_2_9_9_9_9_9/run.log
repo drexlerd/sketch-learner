@@ -1,0 +1,791 @@
+Changing working directory:  /proj/ssiw/projects/code/sketch-learner/learning/d2l/workspace/reward_sketch_2_2_9_9_9_9_9
+Creating sym link: /proj/ssiw/projects/code/sketch-learner/learning/d2l/libs/dlplan/libs/scorpion/fast-downward.py /proj/ssiw/projects/code/sketch-learner/learning/d2l/workspace/reward_sketch_2_2_9_9_9_9_9/fast-downward.py
+================================================================================
+SLTP v.0.2.0
+================================================================================
+================================================================================
+(pid: 204275) STARTING STEP #1: Incremental learning module
+================================================================================
+2022-11-26 23:01:56 INFO     [40m[34mInitializing DomainData...[0m
+2022-11-26 23:01:56 INFO     Constructing DomainData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/reward/domain.pddl
+2022-11-26 23:01:56 INFO     [40m[34m..done[0m
+2022-11-26 23:01:56 INFO     [40m[34mInitializing InstanceDatas...[0m
+2022-11-26 23:01:56 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/reward/instance_2x2_0.pddl
+Num states: 16
+2022-11-26 23:01:58 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/reward/instance_3x3_0.pddl
+Num states: 32
+2022-11-26 23:01:58 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/reward/instance_2x2_1.pddl
+Num states: 8
+2022-11-26 23:01:59 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/reward/instance_3x3_1.pddl
+Num states: 16
+2022-11-26 23:01:59 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/reward/instance_2x2_2.pddl
+Num states: 8
+2022-11-26 23:01:59 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/reward/instance_3x3_2.pddl
+Num states: 64
+2022-11-26 23:01:59 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/reward/instance_2x2_3.pddl
+Num states: 8
+2022-11-26 23:01:59 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/reward/instance_3x3_3.pddl
+Num states: 36
+2022-11-26 23:02:00 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/reward/instance_2x2_4.pddl
+Num states: 12
+2022-11-26 23:02:00 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/reward/instance_3x3_4.pddl
+Num states: 48
+2022-11-26 23:02:00 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/reward/instance_2x2_5.pddl
+Num states: 6
+2022-11-26 23:02:00 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/reward/instance_3x3_5.pddl
+Num states: 18
+2022-11-26 23:02:00 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/reward/instance_2x2_6.pddl
+Num states: 12
+2022-11-26 23:02:01 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/reward/instance_3x3_6.pddl
+Num states: 36
+2022-11-26 23:02:01 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/reward/instance_2x2_7.pddl
+Num states: 16
+2022-11-26 23:02:01 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/reward/instance_3x3_7.pddl
+Num states: 72
+2022-11-26 23:02:01 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/reward/instance_2x2_8.pddl
+Num states: 16
+2022-11-26 23:02:01 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/reward/instance_3x3_8.pddl
+Num states: 56
+2022-11-26 23:02:02 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/reward/instance_2x2_9.pddl
+Num states: 16
+2022-11-26 23:02:02 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/reward/instance_3x3_9.pddl
+Num states: 36
+2022-11-26 23:02:02 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/reward/instance_2x2_10.pddl
+Num states: 8
+2022-11-26 23:02:02 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/reward/instance_3x3_10.pddl
+Num states: 36
+2022-11-26 23:02:02 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/reward/instance_2x2_11.pddl
+Num states: 12
+2022-11-26 23:02:03 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/reward/instance_3x3_11.pddl
+Num states: 14
+2022-11-26 23:02:03 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/reward/instance_2x2_12.pddl
+Num states: 8
+2022-11-26 23:02:03 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/reward/instance_3x3_12.pddl
+Num states: 16
+2022-11-26 23:02:03 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/reward/instance_2x2_13.pddl
+Num states: 8
+2022-11-26 23:02:03 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/reward/instance_3x3_13.pddl
+Num states: 56
+2022-11-26 23:02:04 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/reward/instance_2x2_14.pddl
+Num states: 16
+2022-11-26 23:02:04 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/reward/instance_3x3_14.pddl
+Num states: 64
+2022-11-26 23:02:04 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/reward/instance_2x2_15.pddl
+Num states: 16
+2022-11-26 23:02:04 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/reward/instance_3x3_15.pddl
+Num states: 64
+2022-11-26 23:02:04 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/reward/instance_2x2_16.pddl
+Num states: 8
+2022-11-26 23:02:05 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/reward/instance_3x3_16.pddl
+Num states: 28
+2022-11-26 23:02:05 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/reward/instance_2x2_17.pddl
+Num states: 16
+2022-11-26 23:02:05 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/reward/instance_3x3_17.pddl
+Num states: 36
+2022-11-26 23:02:05 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/reward/instance_2x2_18.pddl
+Num states: 16
+2022-11-26 23:02:05 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/reward/instance_3x3_18.pddl
+Num states: 14
+2022-11-26 23:02:06 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/reward/instance_2x2_19.pddl
+Num states: 12
+2022-11-26 23:02:06 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/reward/instance_3x3_19.pddl
+Num states: 14
+2022-11-26 23:02:06 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/reward/instance_2x2_20.pddl
+Num states: 16
+2022-11-26 23:02:06 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/reward/instance_3x3_20.pddl
+Num states: 32
+2022-11-26 23:02:06 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/reward/instance_2x2_21.pddl
+Num states: 6
+2022-11-26 23:02:07 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/reward/instance_3x3_21.pddl
+Num states: 14
+2022-11-26 23:02:07 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/reward/instance_2x2_22.pddl
+Num states: 8
+2022-11-26 23:02:07 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/reward/instance_3x3_22.pddl
+Num states: 64
+2022-11-26 23:02:07 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/reward/instance_2x2_23.pddl
+Num states: 6
+2022-11-26 23:02:07 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/reward/instance_3x3_23.pddl
+Num states: 64
+2022-11-26 23:02:08 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/reward/instance_2x2_24.pddl
+Num states: 16
+2022-11-26 23:02:08 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/reward/instance_3x3_24.pddl
+Num states: 64
+2022-11-26 23:02:08 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/reward/instance_2x2_25.pddl
+Num states: 6
+2022-11-26 23:02:08 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/reward/instance_3x3_25.pddl
+Num states: 16
+2022-11-26 23:02:08 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/reward/instance_2x2_26.pddl
+Num states: 6
+2022-11-26 23:02:09 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/reward/instance_3x3_26.pddl
+Num states: 18
+2022-11-26 23:02:09 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/reward/instance_2x2_27.pddl
+Num states: 16
+2022-11-26 23:02:09 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/reward/instance_3x3_27.pddl
+Num states: 14
+2022-11-26 23:02:09 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/reward/instance_2x2_28.pddl
+Num states: 6
+2022-11-26 23:02:09 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/reward/instance_3x3_28.pddl
+Num states: 14
+2022-11-26 23:02:09 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/reward/instance_2x2_29.pddl
+Num states: 16
+2022-11-26 23:02:10 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/reward/instance_3x3_29.pddl
+Num states: 32
+2022-11-26 23:02:10 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/reward/instance_2x2_30.pddl
+Num states: 6
+2022-11-26 23:02:10 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/reward/instance_3x3_30.pddl
+Num states: 18
+2022-11-26 23:02:10 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/reward/instance_2x2_31.pddl
+Num states: 16
+2022-11-26 23:02:10 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/reward/instance_3x3_31.pddl
+Num states: 64
+2022-11-26 23:02:11 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/reward/instance_2x2_32.pddl
+Num states: 6
+2022-11-26 23:02:11 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/reward/instance_3x3_32.pddl
+Num states: 56
+2022-11-26 23:02:11 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/reward/instance_2x2_33.pddl
+Num states: 6
+2022-11-26 23:02:11 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/reward/instance_3x3_33.pddl
+Num states: 64
+2022-11-26 23:02:11 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/reward/instance_2x2_34.pddl
+Num states: 16
+2022-11-26 23:02:12 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/reward/instance_3x3_34.pddl
+Num states: 28
+2022-11-26 23:02:12 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/reward/instance_2x2_35.pddl
+Num states: 12
+2022-11-26 23:02:12 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/reward/instance_3x3_35.pddl
+Num states: 36
+2022-11-26 23:02:12 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/reward/instance_2x2_36.pddl
+Num states: 12
+2022-11-26 23:02:12 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/reward/instance_3x3_36.pddl
+Num states: 64
+2022-11-26 23:02:13 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/reward/instance_2x2_37.pddl
+Num states: 12
+2022-11-26 23:02:13 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/reward/instance_3x3_37.pddl
+Num states: 32
+2022-11-26 23:02:13 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/reward/instance_2x2_38.pddl
+Num states: 12
+2022-11-26 23:02:13 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/reward/instance_3x3_38.pddl
+Num states: 18
+2022-11-26 23:02:13 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/reward/instance_2x2_39.pddl
+Num states: 16
+2022-11-26 23:02:14 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/reward/instance_3x3_39.pddl
+Num states: 16
+2022-11-26 23:02:14 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/reward/instance_2x2_40.pddl
+Num states: 6
+2022-11-26 23:02:14 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/reward/instance_3x3_40.pddl
+Num states: 36
+2022-11-26 23:02:14 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/reward/instance_2x2_41.pddl
+Num states: 8
+2022-11-26 23:02:14 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/reward/instance_3x3_41.pddl
+Num states: 64
+2022-11-26 23:02:15 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/reward/instance_2x2_42.pddl
+Num states: 6
+2022-11-26 23:02:15 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/reward/instance_3x3_42.pddl
+Num states: 32
+2022-11-26 23:02:15 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/reward/instance_2x2_43.pddl
+Num states: 6
+2022-11-26 23:02:15 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/reward/instance_3x3_43.pddl
+Num states: 28
+2022-11-26 23:02:15 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/reward/instance_2x2_44.pddl
+Num states: 12
+2022-11-26 23:02:16 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/reward/instance_3x3_44.pddl
+Num states: 32
+2022-11-26 23:02:16 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/reward/instance_2x2_45.pddl
+Num states: 16
+2022-11-26 23:02:16 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/reward/instance_3x3_45.pddl
+Num states: 16
+2022-11-26 23:02:16 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/reward/instance_2x2_46.pddl
+Num states: 6
+2022-11-26 23:02:16 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/reward/instance_3x3_46.pddl
+Num states: 64
+2022-11-26 23:02:17 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/reward/instance_2x2_47.pddl
+Num states: 6
+2022-11-26 23:02:17 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/reward/instance_3x3_47.pddl
+Num states: 18
+2022-11-26 23:02:17 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/reward/instance_2x2_48.pddl
+Num states: 16
+2022-11-26 23:02:17 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/reward/instance_3x3_48.pddl
+Num states: 36
+2022-11-26 23:02:17 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/reward/instance_2x2_49.pddl
+Num states: 6
+2022-11-26 23:02:18 INFO     Constructing InstanceData for filename /proj/ssiw/projects/code/sketch-learner/learning/d2l/benchmarks/reward/instance_3x3_49.pddl
+Num states: 36
+2022-11-26 23:02:18 INFO     [40m[34m..done[0m
+2022-11-26 23:02:18 INFO     [40m[34mInitializing TupleGraphs...[0m
+2022-11-26 23:02:18 INFO     [40m[34m..done[0m
+
+2022-11-26 23:02:18 INFO     [40m[31mIteration: 0[0m
+Number of selected instances: 1
+Selected instances:
+    id: 0 name: instance_2x2_5
+initial states: [0, 1, 2]
+2022-11-26 23:02:18 INFO     [40m[34mInitializing DomainFeatureData...[0m
+[t=25.2877s, 1330096 KB] Started generating base features of complexity 1.
+[t=25.288s, 1330096 KB] Complexity 1:
+    b_nullary: 0
+    c_one_of: 0
+    c_top: 1
+    c_bot: 1
+    c_primitive: 5
+    r_primitive: 2
+    c_and: 0
+    c_not: 0
+    c_equal: 0
+    c_some: 0
+    c_all: 0
+    r_restrict: 0
+    r_and: 0
+    r_inverse: 0
+    r_transitive_closure: 0
+    b_empty: 0
+    n_count: 0
+    n_concept_distance: 0
+[t=25.2881s, 1330096 KB] Finished generating base features.
+[t=25.2882s, 1330096 KB] Started generating composite features. 
+[t=25.2884s, 1330096 KB] Complexity 2:
+Total concept elements: 12
+Total role elements: 3
+Total numerical elements: 7
+Total boolean elements: 4
+    b_nullary: 0
+    c_one_of: 0
+    c_top: 1
+    c_bot: 1
+    c_primitive: 5
+    r_primitive: 2
+    c_and: 0
+    c_not: 5
+    c_equal: 0
+    c_some: 0
+    c_all: 0
+    r_restrict: 0
+    r_and: 0
+    r_inverse: 0
+    r_transitive_closure: 1
+    b_empty: 4
+    n_count: 7
+    n_concept_distance: 0
+[t=25.289s, 1330096 KB] Complexity 3:
+Total concept elements: 20
+Total role elements: 8
+Total numerical elements: 10
+Total boolean elements: 4
+    b_nullary: 0
+    c_one_of: 0
+    c_top: 1
+    c_bot: 1
+    c_primitive: 5
+    r_primitive: 2
+    c_and: 3
+    c_not: 5
+    c_equal: 0
+    c_some: 4
+    c_all: 1
+    r_restrict: 5
+    r_and: 0
+    r_inverse: 0
+    r_transitive_closure: 1
+    b_empty: 4
+    n_count: 10
+    n_concept_distance: 0
+[t=25.2897s, 1330096 KB] Complexity 4:
+Total concept elements: 37
+Total role elements: 13
+Total numerical elements: 26
+Total boolean elements: 7
+    b_nullary: 0
+    c_one_of: 0
+    c_top: 1
+    c_bot: 1
+    c_primitive: 5
+    r_primitive: 2
+    c_and: 12
+    c_not: 11
+    c_equal: 0
+    c_some: 6
+    c_all: 1
+    r_restrict: 5
+    r_and: 0
+    r_inverse: 5
+    r_transitive_closure: 1
+    b_empty: 7
+    n_count: 17
+    n_concept_distance: 9
+[t=25.2913s, 1330096 KB] Complexity 5:
+Total concept elements: 63
+Total role elements: 13
+Total numerical elements: 45
+Total boolean elements: 12
+    b_nullary: 0
+    c_one_of: 0
+    c_top: 1
+    c_bot: 1
+    c_primitive: 5
+    r_primitive: 2
+    c_and: 18
+    c_not: 20
+    c_equal: 0
+    c_some: 11
+    c_all: 7
+    r_restrict: 5
+    r_and: 0
+    r_inverse: 5
+    r_transitive_closure: 1
+    b_empty: 12
+    n_count: 30
+    n_concept_distance: 15
+[t=25.2945s, 1330096 KB] Complexity 6:
+Total concept elements: 106
+Total role elements: 13
+Total numerical elements: 71
+Total boolean elements: 12
+    b_nullary: 0
+    c_one_of: 0
+    c_top: 1
+    c_bot: 1
+    c_primitive: 5
+    r_primitive: 2
+    c_and: 40
+    c_not: 37
+    c_equal: 0
+    c_some: 14
+    c_all: 8
+    r_restrict: 5
+    r_and: 0
+    r_inverse: 5
+    r_transitive_closure: 1
+    b_empty: 12
+    n_count: 48
+    n_concept_distance: 23
+[t=25.2998s, 1330096 KB] Complexity 7:
+Total concept elements: 179
+Total role elements: 16
+Total numerical elements: 110
+Total boolean elements: 14
+    b_nullary: 0
+    c_one_of: 0
+    c_top: 1
+    c_bot: 1
+    c_primitive: 5
+    r_primitive: 2
+    c_and: 76
+    c_not: 58
+    c_equal: 0
+    c_some: 24
+    c_all: 14
+    r_restrict: 5
+    r_and: 3
+    r_inverse: 5
+    r_transitive_closure: 1
+    b_empty: 14
+    n_count: 75
+    n_concept_distance: 35
+[t=25.3097s, 1330096 KB] Complexity 8:
+Total concept elements: 265
+Total role elements: 28
+Total numerical elements: 150
+Total boolean elements: 14
+    b_nullary: 0
+    c_one_of: 0
+    c_top: 1
+    c_bot: 1
+    c_primitive: 5
+    r_primitive: 2
+    c_and: 124
+    c_not: 92
+    c_equal: 0
+    c_some: 24
+    c_all: 18
+    r_restrict: 5
+    r_and: 12
+    r_inverse: 8
+    r_transitive_closure: 1
+    b_empty: 14
+    n_count: 105
+    n_concept_distance: 45
+[t=25.3281s, 1330096 KB] Complexity 9:
+Total concept elements: 399
+Total role elements: 28
+Total numerical elements: 188
+Total boolean elements: 14
+    b_nullary: 0
+    c_one_of: 0
+    c_top: 1
+    c_bot: 1
+    c_primitive: 5
+    r_primitive: 2
+    c_and: 215
+    c_not: 127
+    c_equal: 0
+    c_some: 26
+    c_all: 24
+    r_restrict: 5
+    r_and: 12
+    r_inverse: 8
+    r_transitive_closure: 1
+    b_empty: 14
+    n_count: 135
+    n_concept_distance: 53
+[t=25.3283s, 1330096 KB] Finished generating composite features.
+DomainFeatureDataStatistics:
+    num_dlplan_states: 6
+    num_boolean_features: 14
+    num_numerical_features: 188
+2022-11-26 23:02:18 INFO     [40m[34m..done[0m
+2022-11-26 23:02:18 INFO     [40m[34mInitializing InstanceFeatureDatas...[0m
+2022-11-26 23:02:18 INFO     [40m[34m..done[0m
+2022-11-26 23:02:18 INFO     [40m[34mInitializing StatePairEquivalenceDatas...[0m
+2022-11-26 23:02:18 INFO     [40m[34m..done[0m
+2022-11-26 23:02:18 INFO     [40m[34mInitializing TupleGraphEquivalences...[0m
+2022-11-26 23:02:18 INFO     [40m[34m..done[0m
+2022-11-26 23:02:18 INFO     [40m[34mInitializing TupleGraphEquivalenceMinimizer...[0m
+Num subgoals: 6
+Num of selected subgoals: 4
+Num rules: 4
+Num of selected rules: 4
+Num subgoals: 6
+Num of selected subgoals: 4
+Num rules: 4
+Num of selected rules: 4
+Num subgoals: 6
+Num of selected subgoals: 4
+Num rules: 4
+Num of selected rules: 4
+2022-11-26 23:02:18 INFO     [40m[34m..done[0m
+Number of initial D2 facts: 12
+Number of D2 facts: 12 of 64
+2022-11-26 23:02:18 INFO     [40m[34mGrounding Logic Program...[0m
+2022-11-26 23:02:18 INFO     [40m[34m..done[0m
+2022-11-26 23:02:18 INFO     [40m[34mSolving Logic Program...[0m
+2022-11-26 23:02:18 INFO     [40m[34m..done[0m
+Clingo statistics:
+Total time:  0.06680417060852051
+CPU time:  0.1048849999999999
+Solve time:  0.0075380802154541016
+2022-11-26 23:02:18 INFO     Learned the following sketch:
+(:policy
+(:boolean_features "b_empty(c_primitive(picked,0))")
+(:numerical_features )
+(:rule (:conditions (:c_b_pos 0)) (:effects (:e_b_bot 0)))
+(:rule (:conditions (:c_b_pos 0)) (:effects (:e_b_neg 0)))
+)
+Numer of sketch rules: 2
+Number of selected features: 1
+Maximum complexity of selected feature: 2
+[40m[31mSketch cycles[0m
+Instance: 0 instance_2x2_5
+2 (instance index=0, state index=2, atoms={at(c_1_1), reward(c_0_1)})
+2 (instance index=0, state index=2, atoms={at(c_1_1), reward(c_0_1)})
+Number of unsatisfied D2 facts: 6
+Number of D2 facts: 18 of 64
+2022-11-26 23:02:18 INFO     [40m[34mGrounding Logic Program...[0m
+2022-11-26 23:02:18 INFO     [40m[34m..done[0m
+2022-11-26 23:02:18 INFO     [40m[34mSolving Logic Program...[0m
+2022-11-26 23:02:18 INFO     [40m[34m..done[0m
+Clingo statistics:
+Total time:  0.11000919342041016
+CPU time:  0.144239
+Solve time:  0.0074040889739990234
+2022-11-26 23:02:18 INFO     Learned the following sketch:
+(:policy
+(:boolean_features )
+(:numerical_features "n_count(c_primitive(picked,0))")
+(:rule (:conditions (:c_n_eq 0)) (:effects (:e_n_bot 0)))
+(:rule (:conditions (:c_n_eq 0)) (:effects (:e_n_inc 0)))
+)
+Numer of sketch rules: 2
+Number of selected features: 1
+Maximum complexity of selected feature: 2
+[40m[31mSketch cycles[0m
+Instance: 0 instance_2x2_5
+2 (instance index=0, state index=2, atoms={at(c_1_1), reward(c_0_1)})
+2 (instance index=0, state index=2, atoms={at(c_1_1), reward(c_0_1)})
+Number of unsatisfied D2 facts: 3
+Number of D2 facts: 21 of 64
+2022-11-26 23:02:18 INFO     [40m[34mGrounding Logic Program...[0m
+2022-11-26 23:02:18 INFO     [40m[34m..done[0m
+2022-11-26 23:02:18 INFO     [40m[34mSolving Logic Program...[0m
+2022-11-26 23:02:18 INFO     [40m[34m..done[0m
+Clingo statistics:
+Total time:  0.1288011074066162
+CPU time:  0.1692079999999998
+Solve time:  0.005296945571899414
+2022-11-26 23:02:18 INFO     Learned the following sketch:
+(:policy
+(:boolean_features )
+(:numerical_features "n_count(c_primitive(reward,0))")
+(:rule (:conditions (:c_n_gt 0)) (:effects (:e_n_dec 0)))
+)
+Numer of sketch rules: 1
+Number of selected features: 1
+Maximum complexity of selected feature: 2
+2022-11-26 23:02:18 INFO     [40m[34mVerifying learned sketch...[0m
+2022-11-26 23:02:19 INFO     [40m[34m..done[0m
+2022-11-26 23:02:19 INFO     [40m[33mIteration summary:[0m
+DomainFeatureDataStatistics:
+    num_dlplan_states: 6
+    num_boolean_features: 14
+    num_numerical_features: 188
+StatePairEquivalenceStatistics:
+    num_state_pairs: 18
+    num_equivalences: 8
+TupleGraphEquivalenceMinimizerStatistics:
+    Number of input tuples: 18
+    Number of output tuples: 12
+[40m[31mSketch solves all instances![0m
+2022-11-26 23:02:19 INFO     [40m[32mSummary:[0m
+Boolean features:
+b_empty(c_top)
+b_empty(c_bot)
+b_empty(c_primitive(reward,0))
+b_empty(c_primitive(picked,0))
+b_empty(c_and(c_primitive(at,0),c_primitive(reward,0)))
+b_empty(c_and(c_primitive(at,0),c_primitive(picked,0)))
+b_empty(c_and(c_primitive(at,0),c_primitive(picked_g,0)))
+b_empty(c_and(c_not(c_primitive(reward,0)),c_primitive(at,0)))
+b_empty(c_and(c_not(c_primitive(picked,0)),c_primitive(at,0)))
+b_empty(c_and(c_not(c_primitive(picked_g,0)),c_primitive(at,0)))
+b_empty(c_and(c_not(c_primitive(at,0)),c_primitive(reward,0)))
+b_empty(c_and(c_not(c_primitive(at,0)),c_primitive(picked,0)))
+b_empty(c_and(c_not(c_some(r_primitive(adjacent,0,1),c_primitive(reward,0))),c_primitive(at,0)))
+b_empty(c_and(c_not(c_some(r_primitive(adjacent,0,1),c_primitive(picked,0))),c_primitive(at,0)))
+Numerical features:
+n_count(c_top)
+n_count(c_bot)
+n_count(c_primitive(at,0))
+n_count(c_primitive(reward,0))
+n_count(c_primitive(unblocked,0))
+n_count(c_primitive(picked,0))
+n_count(r_primitive(adjacent,0,1))
+n_count(c_not(c_primitive(reward,0)))
+n_count(c_not(c_primitive(picked,0)))
+n_count(r_transitive_closure(r_primitive(adjacent,0,1)))
+n_count(c_and(c_primitive(at,0),c_primitive(reward,0)))
+n_count(c_and(c_primitive(at,0),c_primitive(picked,0)))
+n_count(c_and(c_primitive(at,0),c_primitive(picked_g,0)))
+n_count(c_some(r_primitive(adjacent,0,1),c_primitive(at,0)))
+n_count(c_some(r_primitive(adjacent,0,1),c_primitive(reward,0)))
+n_count(c_some(r_primitive(adjacent,0,1),c_primitive(picked,0)))
+n_count(r_restrict(r_primitive(adjacent,0,1),c_primitive(unblocked,0)))
+n_concept_distance(c_primitive(at,0),r_primitive(adjacent,0,1),c_bot)
+n_concept_distance(c_primitive(at,0),r_primitive(adjacent,0,1),c_primitive(reward,0))
+n_concept_distance(c_primitive(at,0),r_primitive(adjacent,0,1),c_primitive(picked,0))
+n_concept_distance(c_primitive(at,0),r_primitive(adjacent,0,1),c_primitive(picked_g,0))
+n_concept_distance(c_primitive(at,0),r_primitive(adjacent_g,0,1),c_primitive(reward,0))
+n_concept_distance(c_primitive(at,0),r_primitive(adjacent_g,0,1),c_primitive(picked,0))
+n_concept_distance(c_primitive(at,0),r_primitive(adjacent_g,0,1),c_primitive(picked_g,0))
+n_concept_distance(c_primitive(picked_g,0),r_primitive(adjacent,0,1),c_primitive(reward,0))
+n_concept_distance(c_primitive(picked_g,0),r_primitive(adjacent,0,1),c_primitive(picked,0))
+n_count(c_and(c_not(c_primitive(reward,0)),c_primitive(at,0)))
+n_count(c_and(c_not(c_primitive(picked,0)),c_primitive(at,0)))
+n_count(c_and(c_not(c_primitive(at,0)),c_primitive(reward,0)))
+n_count(c_and(c_not(c_primitive(reward,0)),c_primitive(unblocked,0)))
+n_count(c_and(c_not(c_primitive(picked,0)),c_primitive(unblocked,0)))
+n_count(c_and(c_not(c_primitive(at,0)),c_primitive(picked,0)))
+n_count(c_not(c_and(c_primitive(at,0),c_primitive(reward,0))))
+n_count(c_not(c_and(c_primitive(at,0),c_primitive(picked,0))))
+n_count(c_not(c_and(c_primitive(at,0),c_primitive(picked_g,0))))
+n_count(c_not(c_some(r_primitive(adjacent,0,1),c_primitive(reward,0))))
+n_count(c_not(c_some(r_primitive(adjacent,0,1),c_primitive(picked,0))))
+n_count(c_some(r_transitive_closure(r_primitive(adjacent,0,1)),c_primitive(reward,0)))
+n_count(c_some(r_transitive_closure(r_primitive(adjacent,0,1)),c_primitive(picked,0)))
+n_concept_distance(c_primitive(at,0),r_primitive(adjacent,0,1),c_not(c_primitive(unblocked,0)))
+n_concept_distance(c_primitive(at,0),r_primitive(adjacent_g,0,1),c_not(c_primitive(reward,0)))
+n_concept_distance(c_primitive(at,0),r_primitive(adjacent_g,0,1),c_not(c_primitive(picked,0)))
+n_concept_distance(c_primitive(at,0),r_primitive(adjacent_g,0,1),c_not(c_primitive(picked_g,0)))
+n_concept_distance(c_not(c_primitive(unblocked,0)),r_primitive(adjacent,0,1),c_primitive(reward,0))
+n_concept_distance(c_not(c_primitive(unblocked,0)),r_primitive(adjacent,0,1),c_primitive(picked,0))
+n_count(c_and(c_not(c_primitive(at,0)),c_not(c_primitive(reward,0))))
+n_count(c_and(c_not(c_primitive(at,0)),c_not(c_primitive(picked,0))))
+n_count(c_and(c_not(c_primitive(at,0)),c_not(c_primitive(picked_g,0))))
+n_count(c_not(c_and(c_not(c_primitive(reward,0)),c_primitive(at,0))))
+n_count(c_not(c_and(c_not(c_primitive(picked,0)),c_primitive(at,0))))
+n_count(c_not(c_and(c_not(c_primitive(picked_g,0)),c_primitive(at,0))))
+n_count(c_not(c_and(c_not(c_primitive(at,0)),c_primitive(reward,0))))
+n_count(c_not(c_and(c_not(c_primitive(reward,0)),c_primitive(unblocked,0))))
+n_count(c_not(c_and(c_not(c_primitive(picked,0)),c_primitive(unblocked,0))))
+n_count(c_not(c_and(c_not(c_primitive(at,0)),c_primitive(picked,0))))
+n_count(c_some(r_primitive(adjacent,0,1),c_and(c_primitive(at,0),c_primitive(reward,0))))
+n_count(c_some(r_primitive(adjacent,0,1),c_and(c_primitive(at,0),c_primitive(picked,0))))
+n_count(c_some(r_primitive(adjacent,0,1),c_and(c_primitive(at,0),c_primitive(picked_g,0))))
+n_count(c_all(r_restrict(r_primitive(adjacent,0,1),c_primitive(at,0)),c_primitive(reward,0)))
+n_count(c_all(r_restrict(r_primitive(adjacent,0,1),c_primitive(at,0)),c_primitive(picked,0)))
+n_count(c_all(r_restrict(r_primitive(adjacent,0,1),c_primitive(at,0)),c_primitive(picked_g,0)))
+n_count(c_all(r_restrict(r_primitive(adjacent,0,1),c_primitive(reward,0)),c_primitive(at,0)))
+n_count(c_all(r_restrict(r_primitive(adjacent,0,1),c_primitive(picked,0)),c_primitive(at,0)))
+n_concept_distance(c_primitive(at,0),r_restrict(r_primitive(adjacent,0,1),c_primitive(reward,0)),c_primitive(picked_g,0))
+n_concept_distance(c_primitive(at,0),r_restrict(r_primitive(adjacent,0,1),c_primitive(picked,0)),c_primitive(picked_g,0))
+n_concept_distance(c_primitive(at,0),r_primitive(adjacent,0,1),c_some(r_primitive(adjacent,0,1),c_primitive(reward,0)))
+n_concept_distance(c_primitive(at,0),r_primitive(adjacent,0,1),c_some(r_primitive(adjacent,0,1),c_primitive(picked,0)))
+n_concept_distance(c_primitive(at,0),r_primitive(adjacent_g,0,1),c_some(r_primitive(adjacent,0,1),c_primitive(reward,0)))
+n_concept_distance(c_primitive(at,0),r_primitive(adjacent_g,0,1),c_some(r_primitive(adjacent,0,1),c_primitive(picked,0)))
+n_concept_distance(c_primitive(picked_g,0),r_primitive(adjacent,0,1),c_some(r_primitive(adjacent,0,1),c_primitive(reward,0)))
+n_concept_distance(c_primitive(picked_g,0),r_primitive(adjacent,0,1),c_some(r_primitive(adjacent,0,1),c_primitive(picked,0)))
+n_count(c_and(c_not(c_some(r_primitive(adjacent,0,1),c_primitive(reward,0))),c_primitive(at,0)))
+n_count(c_and(c_not(c_some(r_primitive(adjacent,0,1),c_primitive(picked,0))),c_primitive(at,0)))
+n_count(c_and(c_not(c_and(c_primitive(at,0),c_primitive(reward,0))),c_primitive(unblocked,0)))
+n_count(c_and(c_not(c_and(c_primitive(at,0),c_primitive(picked,0))),c_primitive(unblocked,0)))
+n_count(c_and(c_not(c_and(c_primitive(at,0),c_primitive(picked_g,0))),c_primitive(unblocked,0)))
+n_count(c_and(c_not(c_some(r_primitive(adjacent,0,1),c_primitive(at,0))),c_primitive(unblocked,0)))
+n_count(c_and(c_not(c_some(r_primitive(adjacent,0,1),c_primitive(reward,0))),c_primitive(unblocked,0)))
+n_count(c_and(c_not(c_some(r_primitive(adjacent,0,1),c_primitive(picked,0))),c_primitive(unblocked,0)))
+n_count(c_and(c_primitive(unblocked,0),c_some(r_transitive_closure(r_primitive(adjacent,0,1)),c_primitive(reward,0))))
+n_count(c_and(c_primitive(unblocked,0),c_some(r_transitive_closure(r_primitive(adjacent,0,1)),c_primitive(picked,0))))
+n_count(c_and(c_not(c_primitive(at,0)),c_some(r_primitive(adjacent,0,1),c_primitive(reward,0))))
+n_count(c_and(c_not(c_primitive(at,0)),c_some(r_primitive(adjacent,0,1),c_primitive(picked,0))))
+n_count(c_and(c_not(c_primitive(reward,0)),c_some(r_primitive(adjacent,0,1),c_primitive(at,0))))
+n_count(c_and(c_not(c_primitive(picked,0)),c_some(r_primitive(adjacent,0,1),c_primitive(at,0))))
+n_count(c_not(c_and(c_not(c_primitive(at,0)),c_not(c_primitive(reward,0)))))
+n_count(c_not(c_and(c_not(c_primitive(at,0)),c_not(c_primitive(picked,0)))))
+n_count(c_not(c_some(r_primitive(adjacent,0,1),c_and(c_primitive(at,0),c_primitive(reward,0)))))
+n_count(c_not(c_some(r_primitive(adjacent,0,1),c_and(c_primitive(at,0),c_primitive(picked,0)))))
+n_count(c_not(c_some(r_primitive(adjacent,0,1),c_and(c_primitive(at,0),c_primitive(picked_g,0)))))
+n_count(c_not(c_all(r_restrict(r_primitive(adjacent,0,1),c_primitive(at,0)),c_primitive(reward,0))))
+n_count(c_not(c_all(r_restrict(r_primitive(adjacent,0,1),c_primitive(at,0)),c_primitive(picked,0))))
+n_count(c_not(c_all(r_restrict(r_primitive(adjacent,0,1),c_primitive(at,0)),c_primitive(picked_g,0))))
+n_count(c_not(c_all(r_restrict(r_primitive(adjacent,0,1),c_primitive(reward,0)),c_primitive(at,0))))
+n_count(c_not(c_all(r_restrict(r_primitive(adjacent,0,1),c_primitive(picked,0)),c_primitive(at,0))))
+n_count(c_some(r_transitive_closure(r_primitive(adjacent,0,1)),c_and(c_primitive(at,0),c_primitive(reward,0))))
+n_count(c_some(r_transitive_closure(r_primitive(adjacent,0,1)),c_and(c_primitive(at,0),c_primitive(picked,0))))
+n_count(c_some(r_transitive_closure(r_primitive(adjacent,0,1)),c_and(c_primitive(at,0),c_primitive(picked_g,0))))
+n_concept_distance(c_primitive(at,0),r_restrict(r_primitive(adjacent,0,1),c_primitive(reward,0)),c_not(c_primitive(at,0)))
+n_concept_distance(c_primitive(at,0),r_restrict(r_primitive(adjacent,0,1),c_primitive(picked,0)),c_not(c_primitive(at,0)))
+n_concept_distance(c_primitive(at,0),r_restrict(r_primitive(adjacent,0,1),c_primitive(picked_g,0)),c_not(c_primitive(at,0)))
+n_concept_distance(c_primitive(picked_g,0),r_restrict(r_primitive(adjacent,0,1),c_primitive(at,0)),c_not(c_primitive(reward,0)))
+n_concept_distance(c_primitive(picked_g,0),r_restrict(r_primitive(adjacent,0,1),c_primitive(at,0)),c_not(c_primitive(picked,0)))
+n_concept_distance(c_primitive(at,0),r_primitive(adjacent_g,0,1),c_not(c_some(r_primitive(adjacent,0,1),c_primitive(reward,0))))
+n_concept_distance(c_primitive(at,0),r_primitive(adjacent_g,0,1),c_not(c_some(r_primitive(adjacent,0,1),c_primitive(picked,0))))
+n_concept_distance(c_primitive(picked_g,0),r_primitive(adjacent,0,1),c_and(c_not(c_primitive(reward,0)),c_primitive(at,0)))
+n_concept_distance(c_primitive(picked_g,0),r_primitive(adjacent,0,1),c_and(c_not(c_primitive(picked,0)),c_primitive(at,0)))
+n_concept_distance(c_not(c_primitive(unblocked,0)),r_primitive(adjacent,0,1),c_and(c_primitive(at,0),c_primitive(reward,0)))
+n_concept_distance(c_not(c_primitive(unblocked,0)),r_primitive(adjacent,0,1),c_and(c_primitive(at,0),c_primitive(picked,0)))
+n_concept_distance(c_not(c_primitive(unblocked,0)),r_primitive(adjacent,0,1),c_and(c_primitive(at,0),c_primitive(picked_g,0)))
+n_count(c_and(c_not(c_and(c_not(c_primitive(reward,0)),c_primitive(at,0))),c_primitive(unblocked,0)))
+n_count(c_and(c_not(c_and(c_not(c_primitive(picked,0)),c_primitive(at,0))),c_primitive(unblocked,0)))
+n_count(c_and(c_all(r_restrict(r_primitive(adjacent,0,1),c_primitive(at,0)),c_primitive(reward,0)),c_primitive(unblocked,0)))
+n_count(c_and(c_all(r_restrict(r_primitive(adjacent,0,1),c_primitive(at,0)),c_primitive(picked,0)),c_primitive(unblocked,0)))
+n_count(c_and(c_all(r_restrict(r_primitive(adjacent,0,1),c_primitive(reward,0)),c_primitive(at,0)),c_primitive(unblocked,0)))
+n_count(c_and(c_all(r_restrict(r_primitive(adjacent,0,1),c_primitive(picked,0)),c_primitive(at,0)),c_primitive(unblocked,0)))
+n_count(c_and(c_all(r_restrict(r_primitive(adjacent,0,1),c_primitive(picked_g,0)),c_primitive(at,0)),c_primitive(unblocked,0)))
+n_count(c_and(c_not(c_primitive(at,0)),c_not(c_some(r_primitive(adjacent,0,1),c_primitive(reward,0)))))
+n_count(c_and(c_not(c_primitive(at,0)),c_not(c_some(r_primitive(adjacent,0,1),c_primitive(picked,0)))))
+n_count(c_and(c_not(c_and(c_primitive(at,0),c_primitive(picked,0))),c_not(c_primitive(reward,0))))
+n_count(c_and(c_not(c_primitive(reward,0)),c_not(c_some(r_primitive(adjacent,0,1),c_primitive(at,0)))))
+n_count(c_and(c_not(c_primitive(reward,0)),c_not(c_some(r_primitive(adjacent,0,1),c_primitive(reward,0)))))
+n_count(c_and(c_not(c_and(c_primitive(at,0),c_primitive(reward,0))),c_not(c_primitive(picked,0))))
+n_count(c_and(c_not(c_primitive(picked,0)),c_not(c_some(r_primitive(adjacent,0,1),c_primitive(at,0)))))
+n_count(c_and(c_not(c_primitive(picked,0)),c_not(c_some(r_primitive(adjacent,0,1),c_primitive(picked,0)))))
+n_count(c_not(c_and(c_not(c_and(c_primitive(at,0),c_primitive(reward,0))),c_primitive(unblocked,0))))
+n_count(c_not(c_and(c_not(c_and(c_primitive(at,0),c_primitive(picked,0))),c_primitive(unblocked,0))))
+n_count(c_not(c_and(c_not(c_primitive(at,0)),c_some(r_primitive(adjacent,0,1),c_primitive(reward,0)))))
+n_count(c_not(c_and(c_not(c_primitive(at,0)),c_some(r_primitive(adjacent,0,1),c_primitive(picked,0)))))
+n_count(c_not(c_and(c_not(c_primitive(reward,0)),c_some(r_primitive(adjacent,0,1),c_primitive(at,0)))))
+n_count(c_not(c_and(c_not(c_primitive(picked,0)),c_some(r_primitive(adjacent,0,1),c_primitive(at,0)))))
+n_count(c_not(c_some(r_transitive_closure(r_primitive(adjacent,0,1)),c_and(c_primitive(at,0),c_primitive(reward,0)))))
+n_count(c_not(c_some(r_transitive_closure(r_primitive(adjacent,0,1)),c_and(c_primitive(at,0),c_primitive(picked,0)))))
+n_count(c_not(c_some(r_transitive_closure(r_primitive(adjacent,0,1)),c_and(c_primitive(at,0),c_primitive(picked_g,0)))))
+n_count(c_some(r_transitive_closure(r_primitive(adjacent,0,1)),c_and(c_not(c_primitive(at,0)),c_primitive(reward,0))))
+n_count(c_some(r_transitive_closure(r_primitive(adjacent,0,1)),c_and(c_not(c_primitive(at,0)),c_primitive(picked,0))))
+n_count(c_all(r_primitive(adjacent,0,1),c_and(c_not(c_primitive(at,0)),c_not(c_primitive(reward,0)))))
+n_count(c_all(r_primitive(adjacent,0,1),c_and(c_not(c_primitive(at,0)),c_not(c_primitive(picked,0)))))
+n_count(c_all(r_restrict(r_primitive(adjacent,0,1),c_primitive(at,0)),c_some(r_primitive(adjacent,0,1),c_primitive(reward,0))))
+n_count(c_all(r_restrict(r_primitive(adjacent,0,1),c_primitive(at,0)),c_some(r_primitive(adjacent,0,1),c_primitive(picked,0))))
+n_concept_distance(c_primitive(at,0),r_primitive(adjacent,0,1),c_not(c_and(c_not(c_primitive(reward,0)),c_primitive(unblocked,0))))
+n_concept_distance(c_primitive(at,0),r_primitive(adjacent,0,1),c_not(c_and(c_not(c_primitive(picked,0)),c_primitive(unblocked,0))))
+n_concept_distance(c_primitive(at,0),r_primitive(adjacent,0,1),c_some(r_primitive(adjacent,0,1),c_and(c_primitive(at,0),c_primitive(reward,0))))
+n_concept_distance(c_primitive(at,0),r_primitive(adjacent,0,1),c_some(r_primitive(adjacent,0,1),c_and(c_primitive(at,0),c_primitive(picked,0))))
+n_concept_distance(c_primitive(at,0),r_primitive(adjacent,0,1),c_some(r_primitive(adjacent,0,1),c_and(c_primitive(at,0),c_primitive(picked_g,0))))
+n_concept_distance(c_not(c_primitive(unblocked,0)),r_primitive(adjacent,0,1),c_and(c_not(c_primitive(reward,0)),c_primitive(at,0)))
+n_concept_distance(c_not(c_primitive(unblocked,0)),r_primitive(adjacent,0,1),c_and(c_not(c_primitive(picked,0)),c_primitive(at,0)))
+n_concept_distance(c_not(c_primitive(unblocked,0)),r_primitive(adjacent,0,1),c_and(c_not(c_primitive(at,0)),c_primitive(reward,0)))
+n_concept_distance(c_not(c_primitive(unblocked,0)),r_primitive(adjacent,0,1),c_and(c_not(c_primitive(at,0)),c_primitive(picked,0)))
+n_concept_distance(c_not(c_primitive(unblocked,0)),r_primitive(adjacent,0,1),c_and(c_not(c_primitive(at,0)),c_primitive(picked_g,0)))
+n_count(c_and(c_and(c_not(c_primitive(reward,0)),c_some(r_primitive(adjacent,0,1),c_primitive(at,0))),c_primitive(unblocked,0)))
+n_count(c_and(c_and(c_not(c_primitive(picked,0)),c_some(r_primitive(adjacent,0,1),c_primitive(at,0))),c_primitive(unblocked,0)))
+n_count(c_and(c_not(c_some(r_primitive(adjacent,0,1),c_and(c_primitive(at,0),c_primitive(reward,0)))),c_primitive(unblocked,0)))
+n_count(c_and(c_not(c_some(r_primitive(adjacent,0,1),c_and(c_primitive(at,0),c_primitive(picked,0)))),c_primitive(unblocked,0)))
+n_count(c_and(c_not(c_some(r_primitive(adjacent,0,1),c_and(c_primitive(at,0),c_primitive(picked_g,0)))),c_primitive(unblocked,0)))
+n_count(c_and(c_primitive(unblocked,0),c_some(r_transitive_closure(r_primitive(adjacent,0,1)),c_and(c_primitive(at,0),c_primitive(reward,0)))))
+n_count(c_and(c_primitive(unblocked,0),c_some(r_transitive_closure(r_primitive(adjacent,0,1)),c_and(c_primitive(at,0),c_primitive(picked,0)))))
+n_count(c_and(c_primitive(unblocked,0),c_some(r_transitive_closure(r_primitive(adjacent,0,1)),c_and(c_primitive(at,0),c_primitive(picked_g,0)))))
+n_count(c_and(c_not(c_primitive(at,0)),c_some(r_primitive(adjacent,0,1),c_some(r_primitive(adjacent,0,1),c_primitive(reward,0)))))
+n_count(c_and(c_not(c_primitive(at,0)),c_some(r_primitive(adjacent,0,1),c_some(r_primitive(adjacent,0,1),c_primitive(picked,0)))))
+n_count(c_and(c_all(r_restrict(r_primitive(adjacent,0,1),c_primitive(at,0)),c_primitive(reward,0)),c_not(c_primitive(at,0))))
+n_count(c_and(c_all(r_restrict(r_primitive(adjacent,0,1),c_primitive(at,0)),c_primitive(picked,0)),c_not(c_primitive(at,0))))
+n_count(c_and(c_not(c_and(c_not(c_primitive(picked,0)),c_primitive(at,0))),c_not(c_primitive(reward,0))))
+n_count(c_and(c_all(r_restrict(r_primitive(adjacent,0,1),c_primitive(at,0)),c_primitive(picked,0)),c_not(c_primitive(reward,0))))
+n_count(c_and(c_all(r_restrict(r_primitive(adjacent,0,1),c_primitive(at,0)),c_primitive(picked_g,0)),c_not(c_primitive(reward,0))))
+n_count(c_and(c_all(r_restrict(r_primitive(adjacent,0,1),c_primitive(reward,0)),c_primitive(at,0)),c_not(c_primitive(reward,0))))
+n_count(c_and(c_all(r_restrict(r_primitive(adjacent,0,1),c_primitive(picked,0)),c_primitive(at,0)),c_not(c_primitive(reward,0))))
+n_count(c_and(c_all(r_restrict(r_primitive(adjacent,0,1),c_primitive(picked_g,0)),c_primitive(at,0)),c_not(c_primitive(reward,0))))
+n_count(c_and(c_not(c_and(c_not(c_primitive(reward,0)),c_primitive(at,0))),c_not(c_primitive(picked,0))))
+n_count(c_and(c_all(r_restrict(r_primitive(adjacent,0,1),c_primitive(at,0)),c_primitive(reward,0)),c_not(c_primitive(picked,0))))
+n_count(c_and(c_all(r_restrict(r_primitive(adjacent,0,1),c_primitive(at,0)),c_primitive(picked_g,0)),c_not(c_primitive(picked,0))))
+n_count(c_and(c_all(r_restrict(r_primitive(adjacent,0,1),c_primitive(reward,0)),c_primitive(at,0)),c_not(c_primitive(picked,0))))
+n_count(c_and(c_all(r_restrict(r_primitive(adjacent,0,1),c_primitive(picked,0)),c_primitive(at,0)),c_not(c_primitive(picked,0))))
+n_count(c_and(c_all(r_restrict(r_primitive(adjacent,0,1),c_primitive(picked_g,0)),c_primitive(at,0)),c_not(c_primitive(picked,0))))
+n_count(c_not(c_and(c_all(r_restrict(r_primitive(adjacent,0,1),c_primitive(reward,0)),c_primitive(at,0)),c_primitive(unblocked,0))))
+n_count(c_not(c_and(c_all(r_restrict(r_primitive(adjacent,0,1),c_primitive(picked,0)),c_primitive(at,0)),c_primitive(unblocked,0))))
+n_count(c_not(c_and(c_not(c_primitive(at,0)),c_not(c_some(r_primitive(adjacent,0,1),c_primitive(reward,0))))))
+n_count(c_not(c_and(c_not(c_primitive(at,0)),c_not(c_some(r_primitive(adjacent,0,1),c_primitive(picked,0))))))
+n_count(c_not(c_some(r_transitive_closure(r_primitive(adjacent,0,1)),c_and(c_not(c_primitive(at,0)),c_primitive(reward,0)))))
+n_count(c_not(c_some(r_transitive_closure(r_primitive(adjacent,0,1)),c_and(c_not(c_primitive(at,0)),c_primitive(picked,0)))))
+n_concept_distance(c_primitive(at,0),r_primitive(adjacent,0,1),c_and(c_not(c_primitive(at,0)),c_some(r_primitive(adjacent,0,1),c_primitive(reward,0))))
+n_concept_distance(c_primitive(at,0),r_primitive(adjacent,0,1),c_and(c_not(c_primitive(at,0)),c_some(r_primitive(adjacent,0,1),c_primitive(picked,0))))
+n_concept_distance(c_primitive(at,0),r_primitive(adjacent,0,1),c_not(c_all(r_restrict(r_primitive(adjacent,0,1),c_primitive(at,0)),c_primitive(reward,0))))
+n_concept_distance(c_primitive(at,0),r_primitive(adjacent,0,1),c_not(c_all(r_restrict(r_primitive(adjacent,0,1),c_primitive(at,0)),c_primitive(picked,0))))
+n_concept_distance(c_primitive(picked_g,0),r_primitive(adjacent,0,1),c_and(c_not(c_primitive(reward,0)),c_some(r_primitive(adjacent,0,1),c_primitive(at,0))))
+n_concept_distance(c_primitive(picked_g,0),r_primitive(adjacent,0,1),c_and(c_not(c_primitive(picked,0)),c_some(r_primitive(adjacent,0,1),c_primitive(at,0))))
+n_concept_distance(c_primitive(picked_g,0),r_primitive(adjacent,0,1),c_not(c_all(r_restrict(r_primitive(adjacent,0,1),c_primitive(at,0)),c_primitive(reward,0))))
+n_concept_distance(c_primitive(picked_g,0),r_primitive(adjacent,0,1),c_not(c_all(r_restrict(r_primitive(adjacent,0,1),c_primitive(at,0)),c_primitive(picked,0))))
+Number of selected training instances: 1
+Sum of number of states in selected training instances: 6
+Max of number of states in selected training instances: 6
+Number of features in the pool: 202
+Resulting sketch:
+(:policy
+(:boolean_features )
+(:numerical_features "n_count(c_primitive(reward,0))")
+(:rule (:conditions (:c_n_gt 0)) (:effects (:e_n_dec 0)))
+)
+Numer of sketch rules: 1
+Number of selected features: 1
+Maximum complexity of selected feature: 2
+Resulting sketch minimized:
+(:policy
+(:boolean_features )
+(:numerical_features "n_count(c_primitive(reward,0))")
+(:rule (:conditions (:c_n_gt 0)) (:effects (:e_n_dec 0)))
+)
+Numer of sketch rules: 1
+Number of selected features: 1
+Maximum complexity of selected feature: 2
+Summary:
+Resulting sketch:
+(:policy
+(:boolean_features )
+(:numerical_features "n_count(c_primitive(reward,0))")
+(:rule (:conditions (:c_n_gt 0)) (:effects (:e_n_dec 0)))
+)
+Numer of sketch rules: 1
+Number of selected features: 1
+Maximum complexity of selected feature: 2
+Resulting structurally minimized sketch:
+(:policy
+(:boolean_features )
+(:numerical_features "n_count(c_primitive(reward,0))")
+(:rule (:conditions (:c_n_gt 0)) (:effects (:e_n_dec 0)))
+)
+Numer of sketch rules: 1
+Number of selected features: 1
+Maximum complexity of selected feature: 2
+Number of training instances: 100
+Number of selected training instances: 1
+Number of states in selected training instances: 6
+Max number of states in selected training instance: 6
+Number of features in the pool: 202
+RESOURCES FOR PREPROCESSING: 20.29 CPU sec - 81.56 MB
+RESOURCES FOR LEARNING: 0.72 CPU sec - 81.56 MB
+================================================================================
+END OF STEP #1: Incremental learning module. 21.14 CPU sec - 81.65 MB
+================================================================================
