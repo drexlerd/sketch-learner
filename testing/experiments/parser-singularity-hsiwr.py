@@ -33,6 +33,9 @@ def main():
     parser.add_pattern("generated", r".+ Generated (\d+) state\(s\).\n", type=int)
     parser.add_pattern("total_time", r".+ Total time: (.+)s\n", type=float)
     parser.add_pattern("valid_plan_value", r"Final value: (\d+) \n", type=int)
+    parser.add_pattern("maximum_effective_width", r"Maximum effective width: (\d+)\n", type=int)
+    parser.add_pattern("average_effective_width", r"Average effective width: (.+)\n", type=float)
+    parser.add_pattern("total_time_feature_evaluation", r"Total time for evaluation features: (.+)\n", type=float)
     parser.add_function(coverage)
     parser.parse()
 
