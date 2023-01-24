@@ -62,7 +62,7 @@ DIR = Path(__file__).resolve().parent
 BENCHMARKS_DIR = DIR.parent.parent / "testing"/ "benchmarks" / "downward-benchmarks"
 print(BENCHMARKS_DIR)
 if project.REMOTE:
-    SUITE = ["tpp"]
+    SUITE = ["barman", "childsnack", "driverlog", "floortile", "grid", "tpp"]
     ENV = project.TetralithEnvironment(
         email="dominik.drexler@liu.se",
         extra_options="#SBATCH --account=snic2022-5-341",
