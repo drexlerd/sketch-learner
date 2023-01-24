@@ -16,14 +16,10 @@ images to a local filesystem (e.g., /tmp/) before running experiments.
 
 import os
 from pathlib import Path
-import shutil
-import subprocess
 
 from downward import suites
 from downward.reports.absolute import AbsoluteReport
-from downward.experiment import FastDownwardExperiment
-from lab.experiment import Experiment, Run
-from lab import tools
+from lab.experiment import Experiment
 from lab.reports import Attribute, arithmetic_mean
 
 import project
@@ -72,7 +68,7 @@ else:
     SUITE = ["blocks_4_clear:p-51-0.pddl", "blocks_4_on:p-51-0.pddl", "delivery:instance_3_2_0.pddl", "gripper:p01.pddl", "miconic:p01.pddl", "reward:instance_5x5_0.pddl", "spanner:pfile01-001.pddl", "visitall:p01.pddl"]
 
     ENV = project.LocalEnvironment(processes=4)
-SKETCHES_DIR = DIR.parent.parent / "testing" / "sketches_hierarchical"
+SKETCHES_DIR = DIR.parent.parent / "testing" / "sketches_hierarchical_icaps2023"
 print(SKETCHES_DIR)
 
 exp = Experiment(environment=ENV)
@@ -97,7 +93,7 @@ IMAGES = [get_image("hsiwr")]
 for planner, image in IMAGES:
     exp.add_resource(planner, image, symlink=True)
 
-singularity_script = os.path.join(DIR, "run-singularity-hsiwr.sh")
+singularity_script = os.path.join(DIR, "run-singularity-iw.sh")
 exp.add_resource("run_singularity", singularity_script)
 
 TIME_LIMIT = 1800

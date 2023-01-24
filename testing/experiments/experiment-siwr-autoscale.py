@@ -47,28 +47,31 @@ ATTRIBUTES = [
     "error",
     "expanded",
     "generated",
-    Attribute("maximum_effective_width", function=max),
-    Attribute("average_effective_width", function=arithmetic_mean),
-    Attribute("total_time_feature_evaluation", function=sum),
+    "pruned",
+    "maximum_effective_width",
+    "average_effective_width",
+    "total_time_feature_evaluation",
     Attribute(name="total_time", absolute=True, function=max),
+    Attribute(name="width_average", absolute=True, function=arithmetic_mean),
+    Attribute(name="width_maximum", absolute=True),
+    Attribute(name="not_i_reachable", absolute=True),
 ]
 
 
 DIR = Path(__file__).resolve().parent
-BENCHMARKS_DIR = DIR.parent.parent / "testing"/ "benchmarks"
+BENCHMARKS_DIR = DIR.parent.parent / "testing"/ "benchmarks" / "autoscale-21.10-agile-strips"
 print(BENCHMARKS_DIR)
 if project.REMOTE:
-    SUITE = ["blocks_4_clear", "blocks_4_on", "delivery", "gripper", "miconic", "reward", "spanner", "visitall"]
+    SUITE = ["barman", "childsnack", "driverlog", "floortile", "grid", "tpp"]
     ENV = project.TetralithEnvironment(
         email="dominik.drexler@liu.se",
         extra_options="#SBATCH --account=snic2022-5-341",
         memory_per_cpu="8G")
 else:
-    SUITE = ["blocks_4_clear:p-51-0.pddl", "blocks_4_on:p-51-0.pddl", "childsnack:p01.pddl", "delivery:instance_3_2_0.pddl", "gripper:p01.pddl", "miconic:p01.pddl", "reward:instance_5x5_0.pddl", "spanner:pfile01-001.pddl", "visitall:p01.pddl"]
-    #SUITE = ["blocks_4_on"]
+    SUITE = ["barman:p01.pddl", "childsnack:p01.pddl", "driverlog:p01.pddl", "floortile:p01.pddl", "grid:p01.pddl", "tpp:p01.pddl"]
 
     ENV = project.LocalEnvironment(processes=4)
-SKETCHES_DIR = DIR.parent.parent / "testing" / "sketches_icaps2023"
+SKETCHES_DIR = DIR.parent.parent / "testing" / "sketches_kr2021"
 print(SKETCHES_DIR)
 
 exp = Experiment(environment=ENV)
@@ -101,7 +104,8 @@ MEMORY_LIMIT = 8000
 for planner, _ in IMAGES:
     for task in suites.build_suite(BENCHMARKS_DIR, SUITE):
         for w in range(0,3):
-            sketch_name = f"{task.domain}_{w}_structurally_minimized.txt"
+            # sketch_name = f"{task.domain}_{w}_structurally_minimized.txt"
+            sketch_name = f"{task.domain}_{w}.txt"
             sketch_filename = SKETCHES_DIR / task.domain / sketch_name
             if not sketch_filename.is_file(): continue
             run = exp.add_run()
