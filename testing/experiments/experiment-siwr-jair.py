@@ -74,7 +74,6 @@ if project.REMOTE:
         memory_per_cpu="8G")
 else:
     SUITE = ["barman:p01.pddl", "childsnack:p01.pddl", "driverlog:p01.pddl", "floortile:p01.pddl", "grid:p01.pddl", "tpp:p01.pddl"]
-    #SUITE = ["blocks_4_on"]
 
     ENV = project.LocalEnvironment(processes=4)
 SKETCHES_DIR = DIR.parent.parent / "testing" / "sketches_kr2021"
