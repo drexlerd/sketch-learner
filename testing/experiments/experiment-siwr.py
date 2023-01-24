@@ -100,7 +100,7 @@ for planner, image in IMAGES:
 singularity_script = os.path.join(DIR, "run-singularity-siwr.sh")
 exp.add_resource("run_singularity", singularity_script)
 
-TIME_LIMIT = 0
+TIME_LIMIT = 1800
 MEMORY_LIMIT = 8000
 for planner, _ in IMAGES:
     for task in suites.build_suite(BENCHMARKS_DIR, SUITE):
