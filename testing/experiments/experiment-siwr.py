@@ -105,7 +105,7 @@ TIME_LIMIT = 1800
 MEMORY_LIMIT = 8000
 for planner, _ in IMAGES:
     for task in suites.build_suite(BENCHMARKS_DIR, SUITE):
-        for w in range(0,3):
+        for w in range(0,2):
             sketch_name = f"{task.domain}_{w}_structurally_minimized.txt"
             sketch_filename = SKETCHES_DIR / task.domain / sketch_name
             if not sketch_filename.is_file(): continue

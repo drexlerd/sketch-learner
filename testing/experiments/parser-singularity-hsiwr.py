@@ -22,6 +22,13 @@ def error(content, props):
         props["error"] = "none"
 
 
+def unsolved(content, props):
+    if "cost" not in props:
+        props["maximum_effective_width"] = None
+        props["average_effective_width"] = None
+        props["total_time_feature_evaluation"] = None
+
+
 def main():
     parser = Parser()
     parser.add_pattern(
@@ -36,6 +43,7 @@ def main():
     parser.add_pattern("maximum_effective_width", r"Maximum effective width: (\d+)\n", type=int)
     parser.add_pattern("average_effective_width", r"Average effective width: (.+)\n", type=float)
     parser.add_pattern("total_time_feature_evaluation", r"Total time for evaluation features: (.+)\n", type=float)
+    parser.add_function(unsolved)
     parser.add_function(coverage)
     parser.parse()
 
