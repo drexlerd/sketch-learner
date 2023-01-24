@@ -23,6 +23,9 @@ def error(content, props):
 def average_effective_width(content, props):
     if "average_effective_width" not in props:
         props["average_effective_width"] = None
+    else:
+        if props["average_effective_width"] == float("nan"):
+            props["average_effective_width"] = None
 
 
 def main():
