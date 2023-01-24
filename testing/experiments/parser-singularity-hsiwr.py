@@ -23,6 +23,7 @@ def error(content, props):
 
 
 def unsolved(content, props):
+    """ Adds information for unsolved instances. """
     if "cost" not in props:
         props["maximum_effective_width"] = None
         props["average_effective_width"] = None
