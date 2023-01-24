@@ -52,8 +52,8 @@ ATTRIBUTES = [
     "expanded",
     "generated",
     "pruned",
-    Attribute("maximum_effective_width", absolute=True),
-    Attribute("average_effective_width", absolute=True, function=arithmetic_mean),
+    # Attribute("maximum_effective_width", absolute=True),
+    # Attribute("average_effective_width", absolute=True, function=arithmetic_mean),
     "total_time_feature_evaluation",
     Attribute(name="total_time", absolute=True, function=max),
 ]
