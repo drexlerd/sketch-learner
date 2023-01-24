@@ -51,7 +51,6 @@ ATTRIBUTES = [
     "error",
     "expanded",
     "generated",
-    "pruned",
     "maximum_effective_width",
     "average_effective_width",
     "total_time_feature_evaluation",
@@ -101,7 +100,7 @@ for planner, image in IMAGES:
 singularity_script = os.path.join(DIR, "run-singularity-siwr.sh")
 exp.add_resource("run_singularity", singularity_script)
 
-TIME_LIMIT = 1800
+TIME_LIMIT = 0
 MEMORY_LIMIT = 8000
 for planner, _ in IMAGES:
     for task in suites.build_suite(BENCHMARKS_DIR, SUITE):

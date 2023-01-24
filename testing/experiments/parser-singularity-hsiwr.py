@@ -13,23 +13,12 @@ def try_delete(map, key):
 
 
 def coverage(content, props):
-    print(content)
     props["coverage"] = int("cost" in props and "valid_plan_value" in props)
 
 
 def error(content, props):
     if props.get("planner_exit_code") == 0:
         props["error"] = "none"
-
-
-def unsolved(content, props):
-    """ Adds information for unsolved instances. """
-    if "maximum_effective_width" not in props:
-        props["maximum_effective_width"] = 0
-    if "average_effective_width" not in props:
-        props["average_effective_width"] = 0
-    if "total_time_feature_evaluation" not in props:
-        props["total_time_feature_evaluation"] = 0
 
 
 def main():
@@ -46,7 +35,6 @@ def main():
     parser.add_pattern("maximum_effective_width", r"Maximum effective width: (\d+)\n", type=int)
     parser.add_pattern("average_effective_width", r"Average effective width: (.+)\n", type=float)
     parser.add_pattern("total_time_feature_evaluation", r"Total time for evaluation features: (.+)\n", type=float)
-    parser.add_function(unsolved)
     parser.add_function(coverage)
     parser.parse()
 
