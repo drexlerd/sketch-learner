@@ -1,0 +1,14 @@
+(:policy
+(:boolean_features "b_empty(c_primitive(driving,0))"
+                   "b_empty(c_and(c_primitive(obj,0),c_and(c_primitive(in,0),c_primitive(at_g,0))))")
+(:numerical_features "n_count(c_and(c_primitive(obj,0),c_projection(r_diff(r_primitive(at_g,0,1),r_primitive(at,0,1)),0)))"
+                     "n_count(c_and(c_primitive(truck,0),c_projection(r_diff(r_primitive(at_g,0,1),r_primitive(at,0,1)),0)))"
+                     "n_sum_role_distance(r_inverse(r_restrict(r_or(r_primitive(at,1,0),r_primitive(driving,1,0)),c_and(c_primitive(at_g,0),c_primitive(driver,0)))),r_or(r_primitive(at,0,1),r_or(r_primitive(at,1,0),r_primitive(path,0,1))),r_primitive(at_g,0,1))"
+                     "n_concept_distance(c_or(c_primitive(driving,1),c_projection(r_restrict(r_primitive(at,1,0),c_primitive(driver,0)),0)),r_or(r_primitive(at,0,1),r_or(r_primitive(at,1,0),r_primitive(path,0,1))),c_and(c_primitive(truck,0),c_projection(r_diff(r_primitive(at_g,0,1),r_primitive(at,0,1)),0)))")
+(:rule (:conditions (:c_n_gt 0) (:c_b_pos 0)) (:effects (:e_n_bot 0) (:e_n_bot 0) (:e_b_neg 0) (:e_b_bot 1)))
+(:rule (:conditions (:c_n_gt 0) (:c_b_pos 1)) (:effects (:e_n_bot 0) (:e_b_bot 0) (:e_b_neg 1)))
+(:rule (:conditions (:c_n_gt 0)) (:effects (:e_n_dec 0) (:e_b_bot 0)))
+(:rule (:conditions (:c_n_eq 0) (:c_n_gt 1) (:c_n_gt 3)) (:effects (:e_n_bot 0) (:e_n_bot 1) (:e_n_dec 3) (:e_b_bot 1)))
+(:rule (:conditions (:c_n_eq 0) (:c_n_gt 1) (:c_n_eq 3)) (:effects (:e_n_bot 0) (:e_n_dec 1) (:e_b_bot 0) (:e_b_bot 1)))
+(:rule (:conditions (:c_n_eq 0) (:c_n_eq 1) (:c_n_gt 2)) (:effects (:e_n_bot 0) (:e_n_bot 1) (:e_n_dec 2) (:e_n_bot 3) (:e_b_bot 1)))
+)
