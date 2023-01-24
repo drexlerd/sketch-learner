@@ -24,10 +24,12 @@ def error(content, props):
 
 def unsolved(content, props):
     """ Adds information for unsolved instances. """
-    if "cost" not in props:
-        props["maximum_effective_width"] = None
-        props["average_effective_width"] = None
-        props["total_time_feature_evaluation"] = None
+    if "maximum_effective_width" not in props:
+        props["maximum_effective_width"] = 0
+    if "average_effective_width" not in props:
+        props["average_effective_width"] = 0
+    if "total_time_feature_evaluation" not in props:
+        props["total_time_feature_evaluation"] = 0
 
 
 def main():
