@@ -20,13 +20,6 @@ def error(content, props):
     if props.get("planner_exit_code") == 0:
         props["error"] = "none"
 
-def average_effective_width(content, props):
-    if "average_effective_width" not in props:
-        props["average_effective_width"] = 0
-    else:
-        # if props["average_effective_width"] == float("nan"):
-        props["average_effective_width"] = 0
-
 
 def main():
     parser = Parser()
@@ -42,7 +35,6 @@ def main():
     parser.add_pattern("maximum_effective_width", r"Maximum effective width: (\d+)\n", type=int)
     parser.add_pattern("average_effective_width", r"Average effective width: (.+)\n", type=float)
     parser.add_pattern("total_time_feature_evaluation", r"Total time for evaluation features: (.+)\n", type=float)
-    parser.add_function(average_effective_width)
     parser.add_function(coverage)
     parser.parse()
 
