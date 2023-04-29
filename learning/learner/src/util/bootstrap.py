@@ -2,7 +2,7 @@ import logging
 import argparse
 import sys
 
-from .console import get_terminal_size
+from learner.src.util.console import get_terminal_size
 
 _LOG_LEVEL = None
 
@@ -76,21 +76,18 @@ def get_parser(add_log_option=True, **kwargs):
 
 def setup_argparser():
     parser = get_parser()
-    parser.add_argument('exp_id', metavar='domain:experiment', help="The domain and experiment within that domain.")
+    parser.add_argument('--domain', help="The path to the domain file.", required=True)
 
-    parser.add_argument('--workspace', metavar='dir',
-                        help="The directory where the experiment outputs will be left. If none specified, use"
-                             " a default directory inside the SLTP project tree.")
+    parser.add_argument('--task_dir', help="The path to the directory containing the instance.", required=True)
 
-    parser.add_argument('--show', action='store_true',
-                        help="Show the steps available for the given experiment, but don't run anything.")
+    parser.add_argument('--workspace', metavar='dir', default="workspace_default/",
+                        help="The directory where the experiment outputs will be left. If none specified, uses"
+                             " workspace_default inside the current working directory")
 
-    parser.add_argument('steps', metavar='step', nargs='*', default=[], type=int,
-                        help='Which of the experiment steps to run (e.g.: "3 4 5" will assume the first two steps were'
-                             ' already run and skip them). By default, run them all.')
+    parser.add_argument('--pipeline', default="sketch", help="The learning pipeline steps.")
 
-    parser.add_argument('-in_w', '--input_width', default=None, type=int, help='Input related width parameter.')
-    parser.add_argument('-out_w', '--output_width', default=None, type=int, help='Output related width parameter.')
+    parser.add_argument('--exp_id', metavar='domain:experiment', default=None, help="Modified settings for that experiment.")
+    parser.add_argument('-w', '--width', default=None, type=int, help='Input related width parameter.')
     parser.add_argument('-cc', '--concept_complexity_limit', default=None, type=int, help='upper bound on the concept feature complexity')
     parser.add_argument('-rc', '--role_complexity_limit', default=None, type=int, help='upper bound on the role feature complexity')
     parser.add_argument('-bc', '--boolean_complexity_limit', default=None, type=int, help='upper bound on the boolean feature complexity')

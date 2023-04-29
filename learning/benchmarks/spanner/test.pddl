@@ -2,14 +2,14 @@
  (:domain spanner)
  (:objects 
      bob - man
- spanner1 spanner2 - spanner
+     spanner1 spanner2 - spanner
      nut1 nut2 - nut
-     location1 location2 location3 - location
+     location1 - location
      shed gate - location
     )
  (:init 
     (at bob shed)
-    (at spanner1 location3)
+    (at spanner1 location1)
     (useable spanner1)
     (at spanner2 location1)
     (useable spanner2)
@@ -18,9 +18,7 @@
     (loose nut2)
     (at nut2 gate)
     (link shed location1)
-    (link location3 gate)
-    (link location1 location2)
-    (link location2 location3)
+    (link location1 gate)
 )
  (:goal
   (and

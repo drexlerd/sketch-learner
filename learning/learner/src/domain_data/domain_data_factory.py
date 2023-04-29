@@ -4,7 +4,7 @@ import tarski
 
 from tarski.io import PDDLReader
 
-from .domain_data import DomainData
+from learner.src.domain_data.domain_data import DomainData
 
 
 class DomainDataFactory:

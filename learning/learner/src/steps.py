@@ -1,7 +1,4 @@
-import os
-import sys
 import copy
-import math
 
 
 class Step:
@@ -35,9 +32,6 @@ class Step:
 class LearningSketchesStep(Step):
     """ Incrementally learns a sketch by considering more and more instances """
     def process_config(self, config):
-        config["delta"] = math.inf
-        config["goal_separation"] = True
-        config["asp_name"] = "sketch.lp"
         return config
 
     def get_required_attributes(self):
@@ -54,54 +48,6 @@ class LearningSketchesStep(Step):
         """
         from . import learning_sketches_step
         return learning_sketches_step.run
-
-
-class LearningHierarchiesStep(Step):
-    """ Incrementally learns a sketch by considering more and more instances """
-    def process_config(self, config):
-        config["delta"] = 2.0
-        config["goal_separation"] = False
-        config["asp_name"] = "policy.lp"
-        return config
-
-    def get_required_attributes(self):
-        return []
-
-    def get_required_data(self):
-        return []
-
-    def description(self):
-        return "Incremental learning module"
-
-    def get_step_runner(self):
-        """Implement what is to be done
-        """
-        from . import learning_hierarchies_step
-        return learning_hierarchies_step.run
-
-
-class DebugHierarchiesStep(Step):
-    """ Incrementally learns a sketch by considering more and more instances """
-    def process_config(self, config):
-        config["delta"] = 2.0
-        config["goal_separation"] = False
-        config["asp_name"] = "policy.lp"
-        return config
-
-    def get_required_attributes(self):
-        return []
-
-    def get_required_data(self):
-        return []
-
-    def description(self):
-        return "Incremental learning module"
-
-    def get_step_runner(self):
-        """Implement what is to be done
-        """
-        from . import debug_hierarchies_step
-        return debug_hierarchies_step.run
 
 
 def generate_pipeline(pipeline, **kwargs):
@@ -121,13 +67,7 @@ def generate_pipeline_from_list(elements, **kwargs):
 
 
 DEFAULT_PIPELINES = dict(
-    sketch_pipeline=[
+    sketch=[
         LearningSketchesStep
     ],
-    hierarchy_pipeline=[
-        LearningHierarchiesStep
-    ],
-    debug_hierarchy_pipeline=[
-        DebugHierarchiesStep
-    ]
 )

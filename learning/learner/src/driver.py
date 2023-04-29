@@ -7,12 +7,12 @@ import sys
 import numpy as np
 from pathlib import Path
 
-from .returncodes import ExitCode
-from .errors import CriticalPipelineError
-from .util import console
-from .util.naming import compute_serialization_name
-from .util.serialization import deserialize, serialize
-from .util import performance
+from learner.src.returncodes import ExitCode
+from learner.src.errors import CriticalPipelineError
+from learner.src.util import console
+from learner.src.util.naming import compute_serialization_name
+from learner.src.util.serialization import deserialize, serialize
+from learner.src.util import performance
 
 
 DIR = Path(__file__).resolve().parent
@@ -115,7 +115,7 @@ class StepRunner:
             of SubprocessStepRunners
         """
         self.setup(config.quiet)
-        data = Bunch(load(config.experiment_dir, self.required_data)) if self.required_data else None
+        data = Bunch(load(config.workspace, self.required_data)) if self.required_data else None
         rng = np.random.RandomState(config.random_seed)  # ATM we simply create a RNG in each subprocess
 
         try:
@@ -128,7 +128,7 @@ class StepRunner:
             traceback.print_exception(None, exception, exception.__traceback__)
             raise CriticalPipelineError("Error: {}".format(str(exception)))
 
-        save(config.experiment_dir, output)
+        save(config.workspace, output)
         # profiling.start()
         return exitcode
 

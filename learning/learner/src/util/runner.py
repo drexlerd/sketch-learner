@@ -2,9 +2,10 @@ import importlib
 import os
 import sys
 
-from ..util import console
-from ..util.bootstrap import setup_argparser
-from ..util.defaults import generate_experiment
+from pathlib import Path
+
+from learner.src.util.bootstrap import setup_argparser
+from learner.src.util.defaults import generate_experiment
 
 
 def import_from_file(filename):
@@ -33,32 +34,37 @@ def report_and_exit(msg):
     sys.exit(-1)
 
 
-def do(expid, steps=None, workspace=None, show_steps_only=False, input_width=None, output_width=None, concept_complexity_limit=None, role_complexity_limit=None, boolean_complexity_limit=None, count_numerical_complexity_limit=None, distance_numerical_complexity_limit=None):
-    name_parts = expid.split(":")
-    if len(name_parts) != 2:
-        report_and_exit(f'Wrong experiment ID syntax "{expid}". Expected format <domain>:<experiment_name>')
+def do(domain_filename, task_dir, workspace, expid=None, pipeline=None, width=None, concept_complexity_limit=None, role_complexity_limit=None, boolean_complexity_limit=None, count_numerical_complexity_limit=None, distance_numerical_complexity_limit=None):
+    experiment = dict()
+    if expid is not None:
+        name_parts = expid.split(":")
+        if len(name_parts) != 2:
+            report_and_exit(f'Wrong experiment ID syntax "{expid}". Expected format <domain>:<experiment_name>')
 
-    scriptname, expname = name_parts
-    mod = import_experiment_file(scriptname)
+        scriptname, expname = name_parts
+        mod = import_experiment_file(scriptname)
 
-    experiments = None
-    try:
-        experiments = mod.experiments()
-    except AttributeError:
-        report_and_exit(f'Expected method "experiments" not found in script "{scriptname}"')
+        try:
+            experiments = mod.experiments()
+        except AttributeError:
+            report_and_exit(f'Expected method "experiments" not found in script "{scriptname}"')
 
-    if expname not in experiments:
-        report_and_exit(f'No experiment named "{expname}" in current experiment script')
+        if expname not in experiments:
+            report_and_exit(f'No experiment named "{expname}" in current experiment script')
+        experiment = experiments[expname]
 
-    parameters = experiments[expname]
+        assert "domain_filename" in experiment
+        assert "instance_filenames" in experiment
+    else:
+        experiment["domain_filename"] = domain_filename
+        experiment["instance_filenames"] = list(task_dir.iterdir())
+    parameters = experiment
 
     # overwrite parameters given as arguments in the root call
-    if workspace is not None:
-        parameters["workspace"] = workspace
-    if input_width is not None:
-        parameters["input_width"] = input_width
-    if output_width is not None:
-        parameters["output_width"] = output_width
+    parameters["workspace"] = workspace
+    parameters["pipeline"] = pipeline
+    if width is not None:
+        parameters["width"] = width
     if concept_complexity_limit is not None:
         parameters["concept_complexity_limit"] = concept_complexity_limit
     if role_complexity_limit is not None:
@@ -70,25 +76,20 @@ def do(expid, steps=None, workspace=None, show_steps_only=False, input_width=Non
     if distance_numerical_complexity_limit is not None:
         parameters["distance_numerical_complexity_limit"] = distance_numerical_complexity_limit
 
-    experiment = generate_experiment(expid, **parameters)
+    # Sets up experiment
+    experiment = generate_experiment(**parameters)
 
-    if show_steps_only:
-        console.print_hello()
-        print(f'Experiment with id "{expid}" is configured with the following steps:')
-        print(experiment.print_description())
-        return
-
-    experiment.run(steps)
+    experiment.run()
 
 
 def run():
     args = setup_argparser().parse_args(sys.argv[1:])
-    do(args.exp_id,
-        args.steps,
-        args.workspace,
-        args.show,
-        args.input_width,
-        args.output_width,
+    do( Path(args.domain).resolve(),
+        Path(args.task_dir).resolve(),
+        Path(args.workspace).resolve(),
+        args.exp_id,
+        args.pipeline,
+        args.width,
         args.concept_complexity_limit,
         args.role_complexity_limit,
         args.boolean_complexity_limit,

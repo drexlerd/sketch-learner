@@ -4,7 +4,8 @@ import tarski
 
 from dataclasses import dataclass
 
-from ..iteration_data.domain_feature_data import Features
+from learner.src.iteration_data.state_pair_equivalence import DomainStatePairEquivalence
+from learner.src.iteration_data.domain_feature_data import DomainFeatureData
 
 
 @dataclass
@@ -14,5 +15,5 @@ class DomainData:
     vocabulary_info: dlplan.VocabularyInfo
     syntactic_element_factory: dlplan.SyntacticElementFactory
     feature_generator: dlplan.FeatureGenerator
-    zero_cost_boolean_features = Features()
-    zero_cost_numerical_features = Features()
+    domain_feature_data: DomainFeatureData = None
+    domain_state_pair_equivalence: DomainStatePairEquivalence = None
