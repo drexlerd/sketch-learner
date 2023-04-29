@@ -30,6 +30,8 @@ def generate_experiment(domain_filename: str, instance_filenames: List[str], wor
         time_limit=3600,
         feature_limit=1000000,
 
+        goal_separation=True,
+
         width=2,
 
         asp_name="sketch.lp",

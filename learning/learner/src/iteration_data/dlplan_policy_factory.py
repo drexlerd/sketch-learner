@@ -1,3 +1,4 @@
+import re
 from abc import ABC, abstractmethod
 
 import dlplan
@@ -92,15 +93,17 @@ class D2sepDlplanPolicyFactory(DlplanPolicyFactory):
             if symbol.name == "good":
                 r_idx = symbol.arguments[0].number
                 rule = domain_data.domain_state_pair_equivalence.rules[r_idx]
-                conditions = []
+                conditions = set()
                 for condition in rule.get_conditions():
-                    if condition.get_base_feature().compute_repr() in selected_feature_reprs:
+                    feature_repr = re.findall(r".*\"(.*)\".*", condition.compute_repr())[0]
+                    if feature_repr in selected_feature_reprs:
                         new_condition = condition.copy_to_builder(policy_builder)
-                        conditions.append(new_condition)
-                effects = []
+                        conditions.add(new_condition)
+                effects = set()
                 for effect in rule.get_effects():
-                    if effect.get_base_feature().compute_repr() in selected_feature_reprs:
+                    feature_repr = re.findall(r".*\"(.*)\".*", effect.compute_repr())[0]
+                    if feature_repr in selected_feature_reprs:
                         new_effect = effect.copy_to_builder(policy_builder)
-                        effects.append(new_effect)
+                        effects.add(new_effect)
                 policy_builder.add_rule(conditions, effects)
-        return policy_builder.get_result()
+        return policy_builder.get_booleans(), policy_builder.get_numericals(), policy_builder.get_result()

@@ -11,7 +11,7 @@ from learner.src.instance_data.instance_data import InstanceData
 from learner.src.instance_data.instance_information import InstanceInformation
 from learner.src.iteration_data.domain_feature_data_factory import DomainFeatureDataFactory
 from learner.src.iteration_data.feature_valuations_factory import FeatureValuationsFactory
-from learner.src.iteration_data.dlplan_policy_factory import DlplanPolicyFactory
+from learner.src.iteration_data.dlplan_policy_factory import D2sepDlplanPolicyFactory
 from learner.src.iteration_data.sketch import Sketch
 from learner.src.iteration_data.state_pair_equivalence_factory import StatePairEquivalenceFactory
 from learner.src.iteration_data.tuple_graph_equivalence_factory import TupleGraphEquivalenceFactory
@@ -103,7 +103,8 @@ def learn_sketch(config, domain_data, instance_datas, workspace):
                 print(colored("No sketch exists that solves all geneneral subproblems!", "red", "on_grey"))
                 exit(1)
             asp_factory.print_statistics()
-            sketch = Sketch(DlplanPolicyFactory().make_dlplan_policy_from_answer_set(symbols, domain_feature_data, rule_equivalences), width=0)
+            booleans, numericals, dlplan_policy = D2sepDlplanPolicyFactory().make_dlplan_policy_from_answer_set(symbols, domain_data)
+            sketch = Sketch(booleans, numericals, dlplan_policy, config.width)
             logging.info("Learned the following sketch:")
             sketch.print()
             if compute_smallest_unsolved_instance(config, sketch, selected_instance_datas) is None:

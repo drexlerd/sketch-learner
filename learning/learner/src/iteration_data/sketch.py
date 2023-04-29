@@ -1,7 +1,7 @@
 import dlplan
 import math
 from termcolor import colored
-from typing import Dict, MutableSet
+from typing import Dict, MutableSet, List
 from collections import defaultdict, deque
 
 from ..instance_data.state_pair import StatePair
@@ -9,7 +9,9 @@ from ..instance_data.instance_data import InstanceData
 
 
 class Sketch:
-    def __init__(self, dlplan_policy: dlplan.Policy, width: int):
+    def __init__(self, booleans: List[dlplan.Boolean], numericals: List[dlplan.Numerical], dlplan_policy: dlplan.Policy, width: int):
+        self.booleans = booleans
+        self.numericals = numericals
         self.dlplan_policy = dlplan_policy
         self.width = width
 
@@ -29,23 +31,23 @@ class Sketch:
             r_reachable_states.add(initial_s_idx)
         while queue:
             s_idx = queue.pop()
-            if not instance_data.goal_distance_information.is_alive(s_idx):
+            if not instance_data.is_alive(s_idx):
                 continue
             tuple_graph = instance_data.tuple_graphs[s_idx]
-            source_state = instance_data.state_information.get_state(s_idx)
+            source_state = instance_data.state_space.get_states()[s_idx]
             bounded = False
             min_compatible_distance = math.inf
             for tuple_distance, tuple_nodes in enumerate(tuple_graph.get_tuple_nodes_by_distance()):
                 for tuple_node in tuple_nodes:
                     subgoal = True
                     for s_prime_idx in tuple_node.get_state_indices():
-                        target_state = instance_data.state_information.get_state(s_prime_idx)
+                        target_state = instance_data.state_space.get_states()[s_prime_idx]
                         #print(source_state, "->", target_state, ":", self.dlplan_policy.evaluate_lazy(source_state, target_state, instance_data.denotations_caches))
                         #print([numerical.evaluate(source_state) for numerical in self.dlplan_policy.get_numerical_features()])
                         #print([numerical.evaluate(target_state) for numerical in self.dlplan_policy.get_numerical_features()])
                         if self.dlplan_policy.evaluate_lazy(source_state, target_state, instance_data.denotations_caches) is not None:
-                            if instance_data.goal_distance_information.is_deadend(s_prime_idx):
-                                print(colored(f"Sketch leads to an unsolvable state.", "red", "on_grey"))
+                            if instance_data.is_deadend(s_prime_idx):
+                                print(colored("Sketch leads to an unsolvable state.", "red", "on_grey"))
                                 print("Instance:", instance_data.id, instance_data.instance_information.name)
                                 print("Target_state:", source_state.get_index(), str(source_state))
                                 print("Target_state:", target_state.get_index(), str(target_state))
@@ -59,7 +61,7 @@ class Sketch:
                             subgoal = False
                     if subgoal:
                         if require_optimal_width and min_compatible_distance < tuple_distance:
-                            print(colored(f"Optimal width disproven.", "red", "on_grey"))
+                            print(colored("Optimal width disproven.", "red", "on_grey"))
                             print("Min compatible distance:", min_compatible_distance)
                             print("Subgoal tuple distance:", tuple_distance)
                             return [], False
@@ -67,7 +69,7 @@ class Sketch:
                 if bounded:
                     break
             if not bounded:
-                print(colored(f"Sketch fails to bound width of a state", "red", "on_grey"))
+                print(colored("Sketch fails to bound width of a state", "red", "on_grey"))
                 print("Instance:", instance_data.id, instance_data.instance_information.name)
                 print("Source_state:", source_state.get_index(), str(source_state))
                 return [], False
@@ -88,14 +90,14 @@ class Sketch:
                 s_idxs_on_path.add(source_idx)
                 try:
                     target_idx = next(iterator)
-                    if instance_data.goal_distance_information.is_goal(target_idx):
+                    if instance_data.is_goal(target_idx):
                         continue
                     if target_idx in s_idxs_on_path:
                         print(colored("Sketch cycles", "red", "on_grey"))
                         print("Instance:", instance_data.id, instance_data.instance_information.name)
                         for s_idx in s_idxs_on_path:
-                            print(f"{s_idx} {str(instance_data.state_information.get_state(s_idx))}")
-                        print(f"{target_idx} {str(instance_data.state_information.get_state(target_idx))}")
+                            print(f"{s_idx} {str(instance_data.state_space.get_states()[s_idx])}")
+                        print(f"{target_idx} {str(instance_data.state_space.get_states()[target_idx])}")
                         return False
                     if target_idx not in frontier:
                         frontier.add(target_idx)
@@ -105,25 +107,32 @@ class Sketch:
                     stack.pop(-1)
         return True
 
+    def _compute_state_b_values(self, booleans: List[dlplan.Boolean], numericals: List[dlplan.Numerical], instance_data: InstanceData, state: dlplan.State):
+        return tuple([boolean.evaluate(state, instance_data.denotations_caches) for boolean in booleans] + [numerical.evaluate(state, instance_data.denotations_caches) > 0 for numerical in numericals])
+
     def _verify_goal_separating_features(self, instance_data: InstanceData):
         """
         Returns True iff sketch features separate goal from nongoal states.
         """
-        dlplan_policy_features = self.dlplan_policy.get_boolean_features() + self.dlplan_policy.get_numerical_features()
-        s_idx_to_feature_valuations = dict()
-        for s_idx in instance_data.state_space.get_state_indices():
-            s_idx_to_feature_valuations[s_idx] = tuple([feature.evaluate(instance_data.state_information.get_state(s_idx)) for feature in dlplan_policy_features])
-        for s_idx_1 in instance_data.state_space.get_state_indices():
-            for s_idx_2 in instance_data.state_space.get_state_indices():
-                if (instance_data.goal_distance_information.is_goal(s_idx_1) and \
-                    not instance_data.goal_distance_information.is_goal(s_idx_2)):
-                    if (s_idx_to_feature_valuations[s_idx_1] == s_idx_to_feature_valuations[s_idx_2]):
-                        print(colored("Selected features do not separate goals from non goals.", "red", "on_grey"))
-                        print("Instance:", instance_data.id, instance_data.instance_information.name)
-                        print("Goal state:", s_idx_1, str(instance_data.state_information.get_state(s_idx_1)), s_idx_to_feature_valuations[s_idx_1])
-                        print("Nongoal state:", s_idx_2, str(instance_data.state_information.get_state(s_idx_2)), s_idx_to_feature_valuations[s_idx_2])
-                        return False
-        return True
+        goal_b_values = set()
+        nongoal_b_values = set()
+        for s_idx, state in instance_data.state_space.get_states().items():
+            b_values = self._compute_state_b_values(self.booleans, self.numericals, instance_data, state)
+            separating = True
+            if instance_data.is_goal(s_idx):
+                goal_b_values.add(b_values)
+                if b_values in nongoal_b_values:
+                    separating = False
+            else:
+                nongoal_b_values.add(b_values)
+                if b_values in goal_b_values:
+                    separating = False
+            if not separating:
+                print("Features do not separate goals from non goals")
+                print("Booleans:")
+                print("State:", str(state))
+                print("b_values:", b_values)
+                return instance_data
 
     def solves(self, config, instance_data: InstanceData):
         """
@@ -145,5 +154,5 @@ class Sketch:
     def print(self):
         print(self.dlplan_policy.compute_repr())
         print("Numer of sketch rules:", len(self.dlplan_policy.get_rules()))
-        print("Number of selected features:", len(self.dlplan_policy.get_boolean_features()) + len(self.dlplan_policy.get_numerical_features()))
-        print("Maximum complexity of selected feature:", max([0] + [boolean_feature.compute_complexity() for boolean_feature in self.dlplan_policy.get_boolean_features()] + [numerical_feature.compute_complexity() for numerical_feature in self.dlplan_policy.get_numerical_features()]))
+        print("Number of selected features:", len(self.booleans) + len(self.numericals))
+        print("Maximum complexity of selected feature:", max([0] + [boolean.compute_complexity() for boolean in self.booleans] + [numerical.compute_complexity() for numerical in self.numericals]))
