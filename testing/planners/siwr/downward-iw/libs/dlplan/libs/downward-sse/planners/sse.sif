@@ -1,0 +1,59 @@
+Bootstrap: docker
+From: ubuntu:22.04
+
+%files
+   ## Copy subdirectory into the root directory of the container
+   downward-sse /downward-sse
+
+%post
+    ## Add info for tzdata
+    export TZ=Europe/Stockholm
+    ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
+
+    ## Install all necessary dependencies.
+    apt-get update
+    apt-get install --no-install-recommends -y \
+	build-essential \
+	ca-certificates \
+	xutils-dev \
+	cmake \
+	scons \
+	gcc-multilib \
+	flex \
+	bison \
+	python3 \
+	python3-dev \
+	python3-pip \
+	libboost-dev \
+	libjudy-dev \
+	libboost-python-dev \
+	libboost-program-options-dev \
+	g++-multilib \
+	g++ \
+	git-all
+
+    ## Install python packages
+	pip install pathlib
+
+    ## Install planner
+	cd /downward-sse
+	rm -rf builds
+	rm -rf libs/dlplan/builds
+	./build.py
+	cd /
+
+	ln -frs /downward-sse/fast-downward.py /fast-downward.py
+
+%runscript
+    DOMAINFILE=$1
+    PROBLEMFILE=$2
+
+    /fast-downward.py $DOMAINFILE $PROBLEMFILE  --translate-options --dump-static-predicates --dump-predicates --dump-constants --dump-static-atoms --dump-goal-atoms --search-options --search "dump_reachable_search_space()"
+
+## Update the following fields with meta data about your submission.
+## Please use the same field names and use only one line for each value.
+%labels
+Name        Downward-SSE
+Description A tool for state space exploration with additional dumping of relevant lifted task information
+Authors     Dominik Drexler <dominik.drexler@liu.se>
+# sudo singularity build sse.img sse.sif

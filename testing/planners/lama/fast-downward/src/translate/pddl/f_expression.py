@@ -1,6 +1,6 @@
-from __future__ import print_function
+from typing import List
 
-class FunctionalExpression(object):
+class FunctionalExpression:
     def __init__(self, parts):
         self.parts = tuple(parts)
     def dump(self, indent="  "):
@@ -14,7 +14,7 @@ class FunctionalExpression(object):
 
 class NumericConstant(FunctionalExpression):
     parts = ()
-    def __init__(self, value):
+    def __init__(self, value: str) -> None:
         if value != int(value):
             raise ValueError("Fractional numbers are not supported")
         self.value = int(value)
@@ -29,7 +29,7 @@ class NumericConstant(FunctionalExpression):
 
 class PrimitiveNumericExpression(FunctionalExpression):
     parts = ()
-    def __init__(self, symbol, args):
+    def __init__(self, symbol: str, args: List[str]) -> None:
         self.symbol = symbol
         self.args = tuple(args)
         self.hash = hash((self.__class__, self.symbol, self.args))
@@ -54,8 +54,9 @@ class PrimitiveNumericExpression(FunctionalExpression):
         assert result is not None, "Could not find instantiation for PNE: %r" % (str(pne),)
         return result
 
-class FunctionAssignment(object):
-    def __init__(self, fluent, expression):
+class FunctionAssignment:
+    def __init__(self, fluent: PrimitiveNumericExpression,
+                 expression: FunctionalExpression) -> None:
         self.fluent = fluent
         self.expression = expression
     def __str__(self):

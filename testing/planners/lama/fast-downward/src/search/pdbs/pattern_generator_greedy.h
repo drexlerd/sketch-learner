@@ -3,19 +3,16 @@
 
 #include "pattern_generator.h"
 
-namespace options {
-class Options;
-}
-
 namespace pdbs {
 class PatternGeneratorGreedy : public PatternGenerator {
-    int max_states;
-public:
-    explicit PatternGeneratorGreedy(const options::Options &opts);
-    explicit PatternGeneratorGreedy(int max_states);
-    virtual ~PatternGeneratorGreedy() = default;
+    const int max_states;
 
-    virtual PatternInformation generate(const std::shared_ptr<AbstractTask> &task) override;
+    virtual std::string name() const override;
+    virtual PatternInformation compute_pattern(
+        const std::shared_ptr<AbstractTask> &task) override;
+public:
+    explicit PatternGeneratorGreedy(const plugins::Options &opts);
+    virtual ~PatternGeneratorGreedy() = default;
 };
 }
 

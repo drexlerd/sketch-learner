@@ -1,15 +1,14 @@
 #include "max_evaluator.h"
 
-#include "../option_parser.h"
-#include "../plugin.h"
+#include "../plugins/plugin.h"
 
 #include <cassert>
 
 using namespace std;
 
 namespace max_evaluator {
-MaxEvaluator::MaxEvaluator(const Options &opts)
-    : CombiningEvaluator(opts.get_list<shared_ptr<Evaluator>>("evals")) {
+MaxEvaluator::MaxEvaluator(const plugins::Options &opts)
+    : CombiningEvaluator(opts) {
 }
 
 MaxEvaluator::~MaxEvaluator() {
@@ -24,23 +23,21 @@ int MaxEvaluator::combine_values(const vector<int> &values) {
     return result;
 }
 
-static shared_ptr<Evaluator> _parse(OptionParser &parser) {
-    parser.document_synopsis(
-        "Max evaluator",
-        "Calculates the maximum of the sub-evaluators.");
-    parser.add_list_option<shared_ptr<Evaluator>>(
-        "evals",
-        "at least one evaluator");
-
-    Options opts = parser.parse();
-
-    opts.verify_list_non_empty<shared_ptr<Evaluator>>("evals");
-
-    if (parser.dry_run()) {
-        return nullptr;
+class MaxEvaluatorFeature : public plugins::TypedFeature<Evaluator, MaxEvaluator> {
+public:
+    MaxEvaluatorFeature() : TypedFeature("max") {
+        document_subcategory("evaluators_basic");
+        document_title("Max evaluator");
+        document_synopsis(
+            "Calculates the maximum of the sub-evaluators.");
+        combining_evaluator::add_combining_evaluator_options_to_feature(*this);
     }
-    return make_shared<MaxEvaluator>(opts);
-}
 
-static Plugin<Evaluator> plugin("max", _parse, "evaluators_basic");
+    virtual shared_ptr<MaxEvaluator> create_component(const plugins::Options &options, const utils::Context &context) const override {
+        plugins::verify_list_non_empty<shared_ptr<Evaluator>>(context, options, "evals");
+        return make_shared<MaxEvaluator>(options);
+    }
+};
+
+static plugins::FeaturePlugin<MaxEvaluatorFeature> _plugin;
 }

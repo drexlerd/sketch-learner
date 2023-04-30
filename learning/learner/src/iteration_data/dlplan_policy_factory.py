@@ -84,6 +84,7 @@ class D2sepDlplanPolicyFactory(DlplanPolicyFactory):
         selected_feature_reprs = set()
         for symbol in symbols:
             if symbol.name == "select":
+                print(symbol)
                 f_idx = symbol.arguments[0].number
                 if f_idx < len(domain_data.domain_feature_data.boolean_features.features_by_index):
                     selected_feature_reprs.add(domain_data.domain_feature_data.boolean_features.features_by_index[f_idx].dlplan_feature.compute_repr())

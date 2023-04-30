@@ -4,10 +4,9 @@
 #include "validation.h"
 #include "zero_one_pdbs.h"
 
-#include "../option_parser.h"
-#include "../plugin.h"
 #include "../task_proxy.h"
 
+#include "../plugins/plugin.h"
 #include "../task_utils/causal_graph.h"
 #include "../utils/logging.h"
 #include "../utils/markup.h"
@@ -26,8 +25,9 @@ using namespace std;
 
 namespace pdbs {
 PatternCollectionGeneratorGenetic::PatternCollectionGeneratorGenetic(
-    const Options &opts)
-    : pdb_max_size(opts.get<int>("pdb_max_size")),
+    const plugins::Options &opts)
+    : PatternCollectionGenerator(opts),
+      pdb_max_size(opts.get<int>("pdb_max_size")),
       num_collections(opts.get<int>("num_collections")),
       num_episodes(opts.get<int>("num_episodes")),
       mutation_probability(opts.get<double>("mutation_probability")),
@@ -52,10 +52,10 @@ void PatternCollectionGeneratorGenetic::select(
         int selected;
         if (total_so_far == 0) {
             // All fitness values are 0 => choose uniformly.
-            selected = (*rng)(fitness_values.size());
+            selected = rng->random(fitness_values.size());
         } else {
             // [0..total_so_far)
-            double random = (*rng)() * total_so_far;
+            double random = rng->random() * total_so_far;
             // Find first entry which is strictly greater than random.
             selected = upper_bound(cumulative_fitness.begin(),
                                    cumulative_fitness.end(), random) -
@@ -70,7 +70,7 @@ void PatternCollectionGeneratorGenetic::mutate() {
     for (auto &collection : pattern_collections) {
         for (vector<bool> &pattern : collection) {
             for (size_t k = 0; k < pattern.size(); ++k) {
-                double random = (*rng)(); // [0..1)
+                double random = rng->random(); // [0..1)
                 if (random < mutation_probability) {
                     pattern[k].flip();
                 }
@@ -161,9 +161,12 @@ bool PatternCollectionGeneratorGenetic::mark_used_variables(
 
 void PatternCollectionGeneratorGenetic::evaluate(vector<double> &fitness_values) {
     TaskProxy task_proxy(*task);
-    for (const auto &collection : pattern_collections) {
-        //cout << "evaluate pattern collection " << (i + 1) << " of "
-        //     << pattern_collections.size() << endl;
+    for (size_t i = 0; i < pattern_collections.size(); ++i) {
+        const auto &collection = pattern_collections[i];
+        if (log.is_at_least_debug()) {
+            log << "evaluate pattern collection " << (i + 1) << " of "
+                << pattern_collections.size() << endl;
+        }
         double fitness = 0;
         bool pattern_valid = true;
         vector<bool> variables_used(task_proxy.get_variables().size(), false);
@@ -173,14 +176,18 @@ void PatternCollectionGeneratorGenetic::evaluate(vector<double> &fitness_values)
             Pattern pattern = transform_to_pattern_normal_form(bitvector);
 
             if (is_pattern_too_large(pattern)) {
-                cout << "pattern exceeds the memory limit!" << endl;
+                if (log.is_at_least_verbose()) {
+                    log << "pattern exceeds the memory limit!" << endl;
+                }
                 pattern_valid = false;
                 break;
             }
 
             if (disjoint_patterns) {
                 if (mark_used_variables(pattern, variables_used)) {
-                    cout << "patterns are not disjoint anymore!" << endl;
+                    if (log.is_at_least_verbose()) {
+                        log << "patterns are not disjoint anymore!" << endl;
+                    }
                     pattern_valid = false;
                     break;
                 }
@@ -201,7 +208,9 @@ void PatternCollectionGeneratorGenetic::evaluate(vector<double> &fitness_values)
             // Update the best heuristic found so far.
             if (fitness > best_fitness) {
                 best_fitness = fitness;
-                cout << "best_fitness = " << best_fitness << endl;
+                if (log.is_at_least_normal()) {
+                    log << "best_fitness = " << best_fitness << endl;
+                }
                 best_patterns = pattern_collection;
             }
         }
@@ -243,9 +252,9 @@ void PatternCollectionGeneratorGenetic::bin_packing() {
             pattern[var_id] = true;
         }
         /*
-          The last bin has not bin inserted into pattern_collection, do so now.
-          We test current_size against 1 because this is cheaper than
-          testing if pattern is an all-zero bitvector. current_size
+          The last bin has not been inserted into pattern_collection, do
+          so now. We test current_size against 1 because this is cheaper
+          than testing if pattern is an all-zero bitvector. current_size
           can only be 1 if *all* variables have a domain larger than
           pdb_max_size.
         */
@@ -263,8 +272,9 @@ void PatternCollectionGeneratorGenetic::genetic_algorithm() {
     vector<double> initial_fitness_values;
     evaluate(initial_fitness_values);
     for (int i = 0; i < num_episodes; ++i) {
-        cout << endl;
-        cout << "--------- episode no " << (i + 1) << " ---------" << endl;
+        if (log.is_at_least_verbose()) {
+            log << "--------- episode no " << (i + 1) << " ---------" << endl;
+        }
         mutate();
         vector<double> fitness_values;
         evaluate(fitness_values);
@@ -273,113 +283,111 @@ void PatternCollectionGeneratorGenetic::genetic_algorithm() {
     }
 }
 
-PatternCollectionInformation PatternCollectionGeneratorGenetic::generate(
+string PatternCollectionGeneratorGenetic::name() const {
+    return "genetic pattern collection generator";
+}
+
+PatternCollectionInformation PatternCollectionGeneratorGenetic::compute_patterns(
     const shared_ptr<AbstractTask> &task_) {
-    utils::Timer timer;
-    cout << "Generating patterns using the genetic generator..." << endl;
     task = task_;
     genetic_algorithm();
 
     TaskProxy task_proxy(*task);
     assert(best_patterns);
-    PatternCollectionInformation pci(task_proxy, best_patterns);
-    dump_pattern_collection_generation_statistics(
-        "Genetic generator", timer(), pci);
-    return pci;
+    return PatternCollectionInformation(task_proxy, best_patterns, log);
 }
 
-static shared_ptr<PatternCollectionGenerator> _parse(OptionParser &parser) {
-    parser.document_synopsis(
-        "Genetic Algorithm Patterns",
-        "The following paper describes the automated creation of pattern "
-        "databases with a genetic algorithm. Pattern collections are initially "
-        "created with a bin-packing algorithm. The genetic algorithm is used "
-        "to optimize the pattern collections with an objective function that "
-        "estimates the mean heuristic value of the the pattern collections. "
-        "Pattern collections with higher mean heuristic estimates are more "
-        "likely selected for the next generation." + utils::format_conference_reference(
-            {"Stefan Edelkamp"},
-            "Automated Creation of Pattern Database Search Heuristics",
-            "http://www.springerlink.com/content/20613345434608x1/",
-            "Proceedings of the 4th Workshop on Model Checking and Artificial"
-            " Intelligence (!MoChArt 2006)",
-            "35-50",
-            "AAAI Press",
-            "2007"));
-    parser.document_language_support("action costs", "supported");
-    parser.document_language_support("conditional effects", "not supported");
-    parser.document_language_support("axioms", "not supported");
-    parser.document_note(
-        "Note",
-        "This pattern generation method uses the "
-        "zero/one pattern database heuristic.");
-    parser.document_note(
-        "Implementation Notes",
-        "The standard genetic algorithm procedure as described in the paper is "
-        "implemented in Fast Downward. The implementation is close to the "
-        "paper.\n\n"
-        "+ Initialization<<BR>>"
-        "In Fast Downward bin-packing with the next-fit strategy is used. A "
-        "bin corresponds to a pattern which contains variables up to "
-        "``pdb_max_size``. With this method each variable occurs exactly in "
-        "one pattern of a collection. There are ``num_collections`` "
-        "collections created.\n"
-        "+ Mutation<<BR>>"
-        "With probability ``mutation_probability`` a bit is flipped meaning "
-        "that either a variable is added to a pattern or deleted from a "
-        "pattern.\n"
-        "+ Recombination<<BR>>"
-        "Recombination isn't implemented in Fast Downward. In the paper "
-        "recombination is described but not used.\n"
-        "+ Evaluation<<BR>>"
-        "For each pattern collection the mean heuristic value is computed. For "
-        "a single pattern database the mean heuristic value is the sum of all "
-        "pattern database entries divided through the number of entries. "
-        "Entries with infinite heuristic values are ignored in this "
-        "calculation. The sum of these individual mean heuristic values yield "
-        "the mean heuristic value of the collection.\n"
-        "+ Selection<<BR>>"
-        "The higher the mean heuristic value of a pattern collection is, the "
-        "more likely this pattern collection should be selected for the next "
-        "generation. Therefore the mean heuristic values are normalized and "
-        "converted into probabilities and Roulette Wheel Selection is used.\n"
-        "+\n\n", true);
+class PatternCollectionGeneratorGeneticFeature : public plugins::TypedFeature<PatternCollectionGenerator, PatternCollectionGeneratorGenetic> {
+public:
+    PatternCollectionGeneratorGeneticFeature() : TypedFeature("genetic") {
+        document_title("Genetic Algorithm Patterns");
+        document_synopsis(
+            "The following paper describes the automated creation of pattern "
+            "databases with a genetic algorithm. Pattern collections are initially "
+            "created with a bin-packing algorithm. The genetic algorithm is used "
+            "to optimize the pattern collections with an objective function that "
+            "estimates the mean heuristic value of the the pattern collections. "
+            "Pattern collections with higher mean heuristic estimates are more "
+            "likely selected for the next generation." + utils::format_conference_reference(
+                {"Stefan Edelkamp"},
+                "Automated Creation of Pattern Database Search Heuristics",
+                "http://www.springerlink.com/content/20613345434608x1/",
+                "Proceedings of the 4th Workshop on Model Checking and Artificial"
+                " Intelligence (!MoChArt 2006)",
+                "35-50",
+                "AAAI Press",
+                "2007"));
 
-    parser.add_option<int>(
-        "pdb_max_size",
-        "maximal number of states per pattern database ",
-        "50000",
-        Bounds("1", "infinity"));
-    parser.add_option<int>(
-        "num_collections",
-        "number of pattern collections to maintain in the genetic "
-        "algorithm (population size)",
-        "5",
-        Bounds("1", "infinity"));
-    parser.add_option<int>(
-        "num_episodes",
-        "number of episodes for the genetic algorithm",
-        "30",
-        Bounds("0", "infinity"));
-    parser.add_option<double>(
-        "mutation_probability",
-        "probability for flipping a bit in the genetic algorithm",
-        "0.01",
-        Bounds("0.0", "1.0"));
-    parser.add_option<bool>(
-        "disjoint",
-        "consider a pattern collection invalid (giving it very low "
-        "fitness) if its patterns are not disjoint",
-        "false");
+        add_option<int>(
+            "pdb_max_size",
+            "maximal number of states per pattern database ",
+            "50000",
+            plugins::Bounds("1", "infinity"));
+        add_option<int>(
+            "num_collections",
+            "number of pattern collections to maintain in the genetic "
+            "algorithm (population size)",
+            "5",
+            plugins::Bounds("1", "infinity"));
+        add_option<int>(
+            "num_episodes",
+            "number of episodes for the genetic algorithm",
+            "30",
+            plugins::Bounds("0", "infinity"));
+        add_option<double>(
+            "mutation_probability",
+            "probability for flipping a bit in the genetic algorithm",
+            "0.01",
+            plugins::Bounds("0.0", "1.0"));
+        add_option<bool>(
+            "disjoint",
+            "consider a pattern collection invalid (giving it very low "
+            "fitness) if its patterns are not disjoint",
+            "false");
+        utils::add_rng_options(*this);
+        add_generator_options_to_feature(*this);
 
-    utils::add_rng_options(parser);
+        document_note(
+            "Note",
+            "This pattern generation method uses the "
+            "zero/one pattern database heuristic.");
+        document_note(
+            "Implementation Notes",
+            "The standard genetic algorithm procedure as described in the paper is "
+            "implemented in Fast Downward. The implementation is close to the "
+            "paper.\n\n"
+            " * Initialization<<BR>>"
+            "In Fast Downward bin-packing with the next-fit strategy is used. A "
+            "bin corresponds to a pattern which contains variables up to "
+            "``pdb_max_size``. With this method each variable occurs exactly in "
+            "one pattern of a collection. There are ``num_collections`` "
+            "collections created.\n"
+            " * Mutation<<BR>>"
+            "With probability ``mutation_probability`` a bit is flipped meaning "
+            "that either a variable is added to a pattern or deleted from a "
+            "pattern.\n"
+            " * Recombination<<BR>>"
+            "Recombination isn't implemented in Fast Downward. In the paper "
+            "recombination is described but not used.\n"
+            " * Evaluation<<BR>>"
+            "For each pattern collection the mean heuristic value is computed. For "
+            "a single pattern database the mean heuristic value is the sum of all "
+            "pattern database entries divided through the number of entries. "
+            "Entries with infinite heuristic values are ignored in this "
+            "calculation. The sum of these individual mean heuristic values yield "
+            "the mean heuristic value of the collection.\n"
+            " * Selection<<BR>>"
+            "The higher the mean heuristic value of a pattern collection is, the "
+            "more likely this pattern collection should be selected for the next "
+            "generation. Therefore the mean heuristic values are normalized and "
+            "converted into probabilities and Roulette Wheel Selection is used.\n",
+            true);
 
-    Options opts = parser.parse();
-    if (parser.dry_run())
-        return nullptr;
+        document_language_support("action costs", "supported");
+        document_language_support("conditional effects", "not supported");
+        document_language_support("axioms", "not supported");
+    }
+};
 
-    return make_shared<PatternCollectionGeneratorGenetic>(opts);
-}
-
-static Plugin<PatternCollectionGenerator> _plugin("genetic", _parse);
+static plugins::FeaturePlugin<PatternCollectionGeneratorGeneticFeature> _plugin;
 }

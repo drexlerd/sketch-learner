@@ -4,10 +4,9 @@
 #include "factored_transition_system.h"
 #include "transition_system.h"
 
-#include "../option_parser.h"
-#include "../plugin.h"
-
+#include "../plugins/plugin.h"
 #include "../utils/collections.h"
+#include "../utils/logging.h"
 #include "../utils/markup.h"
 
 #include <algorithm>
@@ -20,10 +19,10 @@
 using namespace std;
 
 namespace merge_and_shrink {
-ShrinkFH::ShrinkFH(const Options &opts)
+ShrinkFH::ShrinkFH(const plugins::Options &opts)
     : ShrinkBucketBased(opts),
-      f_start(HighLow(opts.get_enum("shrink_f"))),
-      h_start(HighLow(opts.get_enum("shrink_h"))) {
+      f_start(opts.get<HighLow>("shrink_f")),
+      h_start(opts.get<HighLow>("shrink_h")) {
 }
 
 vector<ShrinkBucketBased::Bucket> ShrinkFH::partition_into_buckets(
@@ -85,7 +84,7 @@ static void collect_f_h_buckets(
     ShrinkFH::HighLow h_start,
     vector<Bucket> &buckets) {
     for (FHIterator iter = begin; iter != end; ++iter) {
-        if (h_start == ShrinkFH::HIGH) {
+        if (h_start == ShrinkFH::HighLow::HIGH) {
             collect_h_buckets(iter->second.rbegin(), iter->second.rend(),
                               buckets);
         } else {
@@ -118,7 +117,7 @@ vector<ShrinkBucketBased::Bucket> ShrinkFH::ordered_buckets_use_map(
 
     vector<Bucket> buckets;
     buckets.reserve(bucket_count);
-    if (f_start == HIGH) {
+    if (f_start == HighLow::HIGH) {
         collect_f_h_buckets(
             states_by_f_and_h.rbegin(), states_by_f_and_h.rend(),
             h_start, buckets);
@@ -158,12 +157,12 @@ vector<ShrinkBucketBased::Bucket> ShrinkFH::ordered_buckets_use_vector(
 
     vector<Bucket> buckets;
     buckets.reserve(bucket_count);
-    int f_init = (f_start == HIGH ? max_f : 0);
-    int f_end = (f_start == HIGH ? 0 : max_f);
+    int f_init = (f_start == HighLow::HIGH ? max_f : 0);
+    int f_end = (f_start == HighLow::HIGH ? 0 : max_f);
     int f_incr = (f_init > f_end ? -1 : 1);
     for (int f = f_init; f != f_end + f_incr; f += f_incr) {
-        int h_init = (h_start == HIGH ? states_by_f_and_h[f].size() - 1 : 0);
-        int h_end = (h_start == HIGH ? 0 : states_by_f_and_h[f].size() - 1);
+        int h_init = (h_start == HighLow::HIGH ? states_by_f_and_h[f].size() - 1 : 0);
+        int h_end = (h_start == HighLow::HIGH ? 0 : states_by_f_and_h[f].size() - 1);
         int h_incr = (h_init > h_end ? -1 : 1);
         for (int h = h_init; h != h_end + h_incr; h += h_incr) {
             Bucket &bucket = states_by_f_and_h[f][h];
@@ -181,65 +180,76 @@ string ShrinkFH::name() const {
     return "f-preserving";
 }
 
-void ShrinkFH::dump_strategy_specific_options() const {
-    cout << "Prefer shrinking high or low f states: "
-         << (f_start == HIGH ? "high" : "low") << endl
-         << "Prefer shrinking high or low h states: "
-         << (h_start == HIGH ? "high" : "low") << endl;
+void ShrinkFH::dump_strategy_specific_options(utils::LogProxy &log) const {
+    if (log.is_at_least_normal()) {
+        log << "Prefer shrinking high or low f states: "
+            << (f_start == HighLow::HIGH ? "high" : "low") << endl
+            << "Prefer shrinking high or low h states: "
+            << (h_start == HighLow::HIGH ? "high" : "low") << endl;
+    }
 }
 
-static shared_ptr<ShrinkStrategy>_parse(OptionParser &parser) {
-    parser.document_synopsis(
-        "f-preserving shrink strategy",
-        "This shrink strategy implements the algorithm described in"
-        " the paper:" + utils::format_conference_reference(
-            {"Malte Helmert", "Patrik Haslum", "Joerg Hoffmann"},
-            "Flexible Abstraction Heuristics for Optimal Sequential Planning",
-            "https://ai.dmi.unibas.ch/papers/helmert-et-al-icaps2007.pdf",
-            "Proceedings of the Seventeenth International Conference on"
-            " Automated Planning and Scheduling (ICAPS 2007)",
-            "176-183",
-            "AAAI Press",
-            "2007"));
-    parser.document_note(
-        "shrink_fh()",
-        "Combine this with the merge-and-shrink option max_states=N (where N "
-        "is a numerical parameter for which sensible values include 1000, "
-        "10000, 50000, 100000 and 200000) and the linear merge startegy "
-        "cg_goal_level to obtain the variant 'f-preserving shrinking of "
-        "transition systems', called called HHH in the IJCAI 2011 paper, see "
-        "bisimulation based shrink strategy. "
-        "When we last ran experiments on interaction of shrink strategies "
-        "with label reduction, this strategy performed best when used with "
-        "label reduction before merging (and no label reduction before "
-        "shrinking). "
-        "We also recommend using full pruning with this shrink strategy, "
-        "because both distances from the initial state and to the goal states "
-        "must be computed anyway, and because the existence of only one "
-        "dead state causes this shrink strategy to always use the map-based "
-        "approach for partitioning states rather than the more efficient "
-        "vector-based approach.");
-    ShrinkBucketBased::add_options_to_parser(parser);
-    vector<string> high_low;
-    high_low.push_back("HIGH");
-    high_low.push_back("LOW");
-    parser.add_enum_option(
-        "shrink_f", high_low,
-        "prefer shrinking states with high or low f values",
-        "HIGH");
-    parser.add_enum_option(
-        "shrink_h", high_low,
-        "prefer shrinking states with high or low h values",
-        "LOW");
-    Options opts = parser.parse();
-    if (parser.help_mode())
-        return nullptr;
+class ShrinkFHFeature : public plugins::TypedFeature<ShrinkStrategy, ShrinkFH> {
+public:
+    ShrinkFHFeature() : TypedFeature("shrink_fh") {
+        document_title("f-preserving shrink strategy");
+        document_synopsis(
+            "This shrink strategy implements the algorithm described in"
+            " the paper:" + utils::format_conference_reference(
+                {"Malte Helmert", "Patrik Haslum", "Joerg Hoffmann"},
+                "Flexible Abstraction Heuristics for Optimal Sequential Planning",
+                "https://ai.dmi.unibas.ch/papers/helmert-et-al-icaps2007.pdf",
+                "Proceedings of the Seventeenth International Conference on"
+                " Automated Planning and Scheduling (ICAPS 2007)",
+                "176-183",
+                "AAAI Press",
+                "2007"));
 
-    if (parser.dry_run())
-        return nullptr;
-    else
-        return make_shared<ShrinkFH>(opts);
-}
+        ShrinkBucketBased::add_options_to_feature(*this);
+        add_option<ShrinkFH::HighLow>(
+            "shrink_f",
+            "in which direction the f based shrink priority is ordered",
+            "high");
+        add_option<ShrinkFH::HighLow>(
+            "shrink_h",
+            "in which direction the h based shrink priority is ordered",
+            "low");
 
-static Plugin<ShrinkStrategy> _plugin("shrink_fh", _parse);
+        document_note(
+            "Note",
+            "The strategy first partitions all states according to their "
+            "combination of f- and g-values. These partitions are then sorted, "
+            "first according to their f-value, then according to their h-value "
+            "(increasing or decreasing, depending on the chosen options). "
+            "States sorted last are shrinked together until reaching max_states.");
+
+        document_note(
+            "shrink_fh()",
+            "Combine this with the merge-and-shrink option max_states=N (where N "
+            "is a numerical parameter for which sensible values include 1000, "
+            "10000, 50000, 100000 and 200000) and the linear merge startegy "
+            "cg_goal_level to obtain the variant 'f-preserving shrinking of "
+            "transition systems', called called HHH in the IJCAI 2011 paper, see "
+            "bisimulation based shrink strategy. "
+            "When we last ran experiments on interaction of shrink strategies "
+            "with label reduction, this strategy performed best when used with "
+            "label reduction before merging (and no label reduction before "
+            "shrinking). "
+            "We also recommend using full pruning with this shrink strategy, "
+            "because both distances from the initial state and to the goal states "
+            "must be computed anyway, and because the existence of only one "
+            "dead state causes this shrink strategy to always use the map-based "
+            "approach for partitioning states rather than the more efficient "
+            "vector-based approach.");
+    }
+};
+
+static plugins::FeaturePlugin<ShrinkFHFeature> _plugin;
+
+static plugins::TypedEnumPlugin<ShrinkFH::HighLow> _enum_plugin({
+        {"high",
+         "prefer shrinking states with high value"},
+        {"low",
+         "prefer shrinking states with low value"}
+    });
 }

@@ -16,11 +16,11 @@ class PotentialMaxHeuristic : public Heuristic {
     std::vector<std::unique_ptr<PotentialFunction>> functions;
 
 protected:
-    virtual int compute_heuristic(const GlobalState &global_state) override;
+    virtual int compute_heuristic(const State &ancestor_state) override;
 
 public:
     explicit PotentialMaxHeuristic(
-        const options::Options &opts,
+        const plugins::Options &opts,
         std::vector<std::unique_ptr<PotentialFunction>> &&functions);
     ~PotentialMaxHeuristic() = default;
 };

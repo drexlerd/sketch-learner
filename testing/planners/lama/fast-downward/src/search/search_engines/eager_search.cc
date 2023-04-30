@@ -3,12 +3,11 @@
 #include "../evaluation_context.h"
 #include "../evaluator.h"
 #include "../open_list_factory.h"
-#include "../option_parser.h"
 #include "../pruning_method.h"
 
 #include "../algorithms/ordered_set.h"
+#include "../plugins/options.h"
 #include "../task_utils/successor_generator.h"
-
 #include "../utils/logging.h"
 
 #include <cassert>
@@ -20,7 +19,7 @@
 using namespace std;
 
 namespace eager_search {
-EagerSearch::EagerSearch(const Options &opts)
+EagerSearch::EagerSearch(const plugins::Options &opts)
     : SearchEngine(opts),
       reopen_closed_nodes(opts.get<bool>("reopen_closed")),
       open_list(opts.get<shared_ptr<OpenListFactory>>("open")->
@@ -36,10 +35,10 @@ EagerSearch::EagerSearch(const Options &opts)
 }
 
 void EagerSearch::initialize() {
-    cout << "Conducting best first search"
-         << (reopen_closed_nodes ? " with" : " without")
-         << " reopening closed nodes, (real) bound = " << bound
-         << endl;
+    log << "Conducting best first search"
+        << (reopen_closed_nodes ? " with" : " without")
+        << " reopening closed nodes, (real) bound = " << bound
+        << endl;
     assert(open_list);
 
     set<Evaluator *> evals;
@@ -72,7 +71,7 @@ void EagerSearch::initialize() {
 
     path_dependent_evaluators.assign(evals.begin(), evals.end());
 
-    const GlobalState &initial_state = state_registry.get_initial_state();
+    State initial_state = state_registry.get_initial_state();
     for (Evaluator *evaluator : path_dependent_evaluators) {
         evaluator->notify_initial_state(initial_state);
     }
@@ -86,7 +85,7 @@ void EagerSearch::initialize() {
     statistics.inc_evaluated_states();
 
     if (open_list->is_dead_end(eval_context)) {
-        cout << "Initial state is a dead end." << endl;
+        log << "Initial state is a dead end." << endl;
     } else {
         if (search_progress.check_progress(eval_context))
             statistics.print_checkpoint_line(0);
@@ -112,15 +111,11 @@ SearchStatus EagerSearch::step() {
     tl::optional<SearchNode> node;
     while (true) {
         if (open_list->empty()) {
-            cout << "Completely explored state space -- no solution!" << endl;
+            log << "Completely explored state space -- no solution!" << endl;
             return FAILED;
         }
         StateID id = open_list->remove_min();
-        // TODO is there a way we can avoid creating the state here and then
-        //      recreate it outside of this function with node.get_state()?
-        //      One way would be to store GlobalState objects inside SearchNodes
-        //      instead of StateIDs
-        GlobalState s = state_registry.lookup_state(id);
+        State s = state_registry.lookup_state(id);
         node.emplace(search_space.get_node(s));
 
         if (node->is_closed())
@@ -172,7 +167,7 @@ SearchStatus EagerSearch::step() {
         break;
     }
 
-    GlobalState s = node->get_state();
+    const State &s = node->get_state();
     if (check_goal_and_set_plan(s))
         return SOLVED;
 
@@ -199,7 +194,7 @@ SearchStatus EagerSearch::step() {
         if ((node->get_real_g() + op.get_cost()) >= bound)
             continue;
 
-        GlobalState succ_state = state_registry.get_successor_state(s, op);
+        State succ_state = state_registry.get_successor_state(s, op);
         statistics.inc_generated();
         bool is_preferred = preferred_operators.contains(op_id);
 
@@ -312,8 +307,8 @@ void EagerSearch::update_f_value_statistics(EvaluationContext &eval_context) {
     }
 }
 
-void add_options_to_parser(OptionParser &parser) {
-    SearchEngine::add_pruning_option(parser);
-    SearchEngine::add_options_to_parser(parser);
+void add_options_to_feature(plugins::Feature &feature) {
+    SearchEngine::add_pruning_option(feature);
+    SearchEngine::add_options_to_feature(feature);
 }
 }

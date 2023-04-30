@@ -2,13 +2,11 @@
 
 #include "distances.h"
 #include "factored_transition_system.h"
-#include "label_equivalence_relation.h"
 #include "transition_system.h"
 
-#include "../option_parser.h"
-#include "../plugin.h"
-
+#include "../plugins/plugin.h"
 #include "../utils/collections.h"
+#include "../utils/logging.h"
 #include "../utils/markup.h"
 #include "../utils/system.h"
 
@@ -76,26 +74,28 @@ struct Signature {
         return state < other.state;
     }
 
-    void dump() const {
-        cout << "Signature(h_and_goal = " << h_and_goal
-             << ", group = " << group
-             << ", state = " << state
-             << ", succ_sig = [";
-        for (size_t i = 0; i < succ_signature.size(); ++i) {
-            if (i)
-                cout << ", ";
-            cout << "(" << succ_signature[i].first
-                 << "," << succ_signature[i].second
-                 << ")";
+    void dump(utils::LogProxy &log) const {
+        if (log.is_at_least_debug()) {
+            log << "Signature(h_and_goal = " << h_and_goal
+                << ", group = " << group
+                << ", state = " << state
+                << ", succ_sig = [";
+            for (size_t i = 0; i < succ_signature.size(); ++i) {
+                if (i)
+                    log << ", ";
+                log << "(" << succ_signature[i].first
+                    << "," << succ_signature[i].second
+                    << ")";
+            }
+            log << "])" << endl;
         }
-        cout << "])" << endl;
     }
 };
 
 
-ShrinkBisimulation::ShrinkBisimulation(const Options &opts)
+ShrinkBisimulation::ShrinkBisimulation(const plugins::Options &opts)
     : greedy(opts.get<bool>("greedy")),
-      at_limit(AtLimit(opts.get_enum("at_limit"))) {
+      at_limit(opts.get<AtLimit>("at_limit")) {
 }
 
 int ShrinkBisimulation::initialize_groups(
@@ -106,7 +106,7 @@ int ShrinkBisimulation::initialize_groups(
 
        Each other group holds all states with one particular h value.
 
-       Note that some goal state *must* exist because irrelevant und
+       Note that some goal state *must* exist because irrelevant and
        unreachable states are pruned before we shrink and we never
        perform the shrinking if that pruning shows that the problem is
        unsolvable.
@@ -183,9 +183,8 @@ void ShrinkBisimulation::compute_signatures(
                                                 threshold=1),
             label_reduction=exact(before_shrinking=true,before_merging=false)))
     */
-    for (const GroupAndTransitions &gat : ts) {
-        const LabelGroup &label_group = gat.label_group;
-        const vector<Transition> &transitions = gat.transitions;
+    for (const LocalLabelInfo &local_label_info : ts) {
+        const vector<Transition> &transitions = local_label_info.get_transitions();
         for (const Transition &transition : transitions) {
             assert(signatures[transition.src + 1].state == transition.src);
             bool skip_transition = false;
@@ -196,7 +195,7 @@ void ShrinkBisimulation::compute_signatures(
                     // We skip transitions connected to an irrelevant state.
                     skip_transition = true;
                 } else {
-                    int cost = label_group.get_cost();
+                    int cost = local_label_info.get_cost();
                     assert(target_h + cost >= src_h);
                     skip_transition = (target_h + cost != src_h);
                 }
@@ -239,7 +238,8 @@ void ShrinkBisimulation::compute_signatures(
 StateEquivalenceRelation ShrinkBisimulation::compute_equivalence_relation(
     const TransitionSystem &ts,
     const Distances &distances,
-    int target_size) const {
+    int target_size,
+    utils::LogProxy &) const {
     assert(distances.are_goal_distances_computed());
     int num_states = ts.get_size();
 
@@ -248,7 +248,7 @@ StateEquivalenceRelation ShrinkBisimulation::compute_equivalence_relation(
     signatures.reserve(num_states + 2);
 
     int num_groups = initialize_groups(ts, distances, state_to_group);
-    // cout << "number of initial groups: " << num_groups << endl;
+    // log << "number of initial groups: " << num_groups << endl;
 
     // TODO: We currently violate this; see issue250
     // assert(num_groups <= target_size);
@@ -300,7 +300,7 @@ StateEquivalenceRelation ShrinkBisimulation::compute_equivalence_relation(
             }
             assert(sig_end > sig_start);
 
-            if (at_limit == RETURN &&
+            if (at_limit == AtLimit::RETURN &&
                 num_groups - num_old_groups + num_new_groups > target_size) {
                 /* Can't split the group (or the set of groups for
                    this h value) -- would exceed bound on abstract
@@ -361,74 +361,74 @@ string ShrinkBisimulation::name() const {
     return "bisimulation";
 }
 
-void ShrinkBisimulation::dump_strategy_specific_options() const {
-    cout << "Bisimulation type: " << (greedy ? "greedy" : "exact") << endl;
-    cout << "At limit: ";
-    if (at_limit == RETURN) {
-        cout << "return";
-    } else if (at_limit == USE_UP) {
-        cout << "use up limit";
-    } else {
-        ABORT("Unknown setting for at_limit.");
+void ShrinkBisimulation::dump_strategy_specific_options(utils::LogProxy &log) const {
+    if (log.is_at_least_normal()) {
+        log << "Bisimulation type: " << (greedy ? "greedy" : "exact") << endl;
+        log << "At limit: ";
+        if (at_limit == AtLimit::RETURN) {
+            log << "return";
+        } else if (at_limit == AtLimit::USE_UP) {
+            log << "use up limit";
+        } else {
+            ABORT("Unknown setting for at_limit.");
+        }
+        log << endl;
     }
-    cout << endl;
 }
 
-static shared_ptr<ShrinkStrategy>_parse(OptionParser &parser) {
-    parser.document_synopsis(
-        "Bismulation based shrink strategy",
-        "This shrink strategy implements the algorithm described in"
-        " the paper:" + utils::format_conference_reference(
-            {"Raz Nissim", "Joerg Hoffmann", "Malte Helmert"},
-            "Computing Perfect Heuristics in Polynomial Time: On Bisimulation"
-            " and Merge-and-Shrink Abstractions in Optimal Planning.",
-            "https://ai.dmi.unibas.ch/papers/nissim-et-al-ijcai2011.pdf",
-            "Proceedings of the Twenty-Second International Joint Conference"
-            " on Artificial Intelligence (IJCAI 2011)",
-            "1983-1990",
-            "AAAI Press",
-            "2011"));
-    parser.document_note(
-        "shrink_bisimulation(greedy=true)",
-        "Combine this with the merge-and-shrink options max_states=infinity "
-        "and threshold_before_merge=1 and with the linear merge strategy "
-        "reverse_level to obtain the variant 'greedy bisimulation without size "
-        "limit', called M&S-gop in the IJCAI 2011 paper. "
-        "When we last ran experiments on interaction of shrink strategies "
-        "with label reduction, this strategy performed best when used with "
-        "label reduction before shrinking (and no label reduction before "
-        "merging).");
-    parser.document_note(
-        "shrink_bisimulation(greedy=false)",
-        "Combine this with the merge-and-shrink option max_states=N (where N "
-        "is a numerical parameter for which sensible values include 1000, "
-        "10000, 50000, 100000 and 200000) and with the linear merge strategy "
-        "reverse_level to obtain the variant 'exact bisimulation with a size "
-        "limit', called DFP-bop in the IJCAI 2011 paper. "
-        "When we last ran experiments on interaction of shrink strategies "
-        "with label reduction, this strategy performed best when used with "
-        "label reduction before shrinking (and no label reduction before "
-        "merging).");
+class ShrinkBisimulationFeature : public plugins::TypedFeature<ShrinkStrategy, ShrinkBisimulation> {
+public:
+    ShrinkBisimulationFeature() : TypedFeature("shrink_bisimulation") {
+        document_title("Bismulation based shrink strategy");
+        document_synopsis(
+            "This shrink strategy implements the algorithm described in"
+            " the paper:" + utils::format_conference_reference(
+                {"Raz Nissim", "Joerg Hoffmann", "Malte Helmert"},
+                "Computing Perfect Heuristics in Polynomial Time: On Bisimulation"
+                " and Merge-and-Shrink Abstractions in Optimal Planning.",
+                "https://ai.dmi.unibas.ch/papers/nissim-et-al-ijcai2011.pdf",
+                "Proceedings of the Twenty-Second International Joint Conference"
+                " on Artificial Intelligence (IJCAI 2011)",
+                "1983-1990",
+                "AAAI Press",
+                "2011"));
 
-    parser.add_option<bool>("greedy", "use greedy bisimulation", "false");
+        add_option<bool>("greedy", "use greedy bisimulation", "false");
+        add_option<AtLimit>(
+            "at_limit",
+            "what to do when the size limit is hit", "return");
 
-    vector<string> at_limit;
-    at_limit.push_back("RETURN");
-    at_limit.push_back("USE_UP");
-    parser.add_enum_option(
-        "at_limit", at_limit,
-        "what to do when the size limit is hit", "RETURN");
+        document_note(
+            "shrink_bisimulation(greedy=true)",
+            "Combine this with the merge-and-shrink options max_states=infinity "
+            "and threshold_before_merge=1 and with the linear merge strategy "
+            "reverse_level to obtain the variant 'greedy bisimulation without size "
+            "limit', called M&S-gop in the IJCAI 2011 paper. "
+            "When we last ran experiments on interaction of shrink strategies "
+            "with label reduction, this strategy performed best when used with "
+            "label reduction before shrinking (and no label reduction before "
+            "merging).");
+        document_note(
+            "shrink_bisimulation(greedy=false)",
+            "Combine this with the merge-and-shrink option max_states=N (where N "
+            "is a numerical parameter for which sensible values include 1000, "
+            "10000, 50000, 100000 and 200000) and with the linear merge strategy "
+            "reverse_level to obtain the variant 'exact bisimulation with a size "
+            "limit', called DFP-bop in the IJCAI 2011 paper. "
+            "When we last ran experiments on interaction of shrink strategies "
+            "with label reduction, this strategy performed best when used with "
+            "label reduction before shrinking (and no label reduction before "
+            "merging).");
+    }
+};
 
-    Options opts = parser.parse();
+static plugins::FeaturePlugin<ShrinkBisimulationFeature> _plugin;
 
-    if (parser.help_mode())
-        return nullptr;
-
-    if (parser.dry_run())
-        return nullptr;
-    else
-        return make_shared<ShrinkBisimulation>(opts);
-}
-
-static Plugin<ShrinkStrategy> _plugin("shrink_bisimulation", _parse);
+static plugins::TypedEnumPlugin<AtLimit> _enum_plugin({
+        {"return",
+         "stop without refining the equivalence class further"},
+        {"use_up",
+         "continue refining the equivalence class until "
+         "the size limit is hit"}
+    });
 }

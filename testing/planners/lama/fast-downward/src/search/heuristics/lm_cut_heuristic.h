@@ -5,9 +5,7 @@
 
 #include <memory>
 
-class GlobalState;
-
-namespace options {
+namespace plugins {
 class Options;
 }
 
@@ -17,10 +15,9 @@ class LandmarkCutLandmarks;
 class LandmarkCutHeuristic : public Heuristic {
     std::unique_ptr<LandmarkCutLandmarks> landmark_generator;
 
-    virtual int compute_heuristic(const GlobalState &global_state) override;
-    int compute_heuristic(const State &state);
+    virtual int compute_heuristic(const State &ancestor_state) override;
 public:
-    explicit LandmarkCutHeuristic(const options::Options &opts);
+    explicit LandmarkCutHeuristic(const plugins::Options &opts);
     virtual ~LandmarkCutHeuristic() override;
 };
 }

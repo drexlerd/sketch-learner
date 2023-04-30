@@ -22,8 +22,11 @@ class InstanceDataFactory:
             if goal_distances.get(state_space.get_initial_state_index(), None) is None:
                 print("Unsolvable.")
                 continue
-            if set(state_space.get_states().keys()) == set(state_space.get_goal_state_indices()):
+            elif set(state_space.get_states().keys()) == set(state_space.get_goal_state_indices()):
                 print("Trivially solvable.")
+                continue
+            elif state_space.get_initial_state_index() in set(state_space.get_goal_state_indices()):
+                print("Initial state is goal.")
                 continue
             else:
                 print("Num states:", len(state_space.get_states()))

@@ -1,10 +1,9 @@
 #include "ff_heuristic.h"
 
-#include "../global_state.h"
-#include "../option_parser.h"
-#include "../plugin.h"
+#include "../plugins/plugin.h"
 
 #include "../task_utils/task_properties.h"
+#include "../utils/logging.h"
 
 #include <cassert>
 
@@ -12,10 +11,12 @@ using namespace std;
 
 namespace ff_heuristic {
 // construction and destruction
-FFHeuristic::FFHeuristic(const Options &opts)
+FFHeuristic::FFHeuristic(const plugins::Options &opts)
     : AdditiveHeuristic(opts),
       relaxed_plan(task_proxy.get_operators().size(), false) {
-    cout << "Initializing FF heuristic..." << endl;
+    if (log.is_at_least_normal()) {
+        log << "Initializing FF heuristic..." << endl;
+    }
 }
 
 void FFHeuristic::mark_preferred_operators_and_relaxed_plan(
@@ -48,8 +49,8 @@ void FFHeuristic::mark_preferred_operators_and_relaxed_plan(
     }
 }
 
-int FFHeuristic::compute_heuristic(const GlobalState &global_state) {
-    State state = convert_global_state(global_state);
+int FFHeuristic::compute_heuristic(const State &ancestor_state) {
+    State state = convert_ancestor_state(ancestor_state);
     int h_add = compute_add_and_ff(state);
     if (h_add == DEAD_END)
         return h_add;
@@ -68,28 +69,27 @@ int FFHeuristic::compute_heuristic(const GlobalState &global_state) {
     return h_ff;
 }
 
+class FFHeuristicFeature : public plugins::TypedFeature<Evaluator, FFHeuristic> {
+public:
+    FFHeuristicFeature() : TypedFeature("ff") {
+        document_title("FF heuristic");
 
-static shared_ptr<Heuristic> _parse(OptionParser &parser) {
-    parser.document_synopsis("FF heuristic", "");
-    parser.document_language_support("action costs", "supported");
-    parser.document_language_support("conditional effects", "supported");
-    parser.document_language_support(
-        "axioms",
-        "supported (in the sense that the planner won't complain -- "
-        "handling of axioms might be very stupid "
-        "and even render the heuristic unsafe)");
-    parser.document_property("admissible", "no");
-    parser.document_property("consistent", "no");
-    parser.document_property("safe", "yes for tasks without axioms");
-    parser.document_property("preferred operators", "yes");
+        Heuristic::add_options_to_feature(*this);
 
-    Heuristic::add_options_to_parser(parser);
-    Options opts = parser.parse();
-    if (parser.dry_run())
-        return nullptr;
-    else
-        return make_shared<FFHeuristic>(opts);
-}
+        document_language_support("action costs", "supported");
+        document_language_support("conditional effects", "supported");
+        document_language_support(
+            "axioms",
+            "supported (in the sense that the planner won't complain -- "
+            "handling of axioms might be very stupid "
+            "and even render the heuristic unsafe)");
 
-static Plugin<Evaluator> _plugin("ff", _parse);
+        document_property("admissible", "no");
+        document_property("consistent", "no");
+        document_property("safe", "yes for tasks without axioms");
+        document_property("preferred operators", "yes");
+    }
+};
+
+static plugins::FeaturePlugin<FFHeuristicFeature> _plugin;
 }

@@ -1,41 +1,18 @@
 #ifndef PRUNING_STUBBORN_SETS_H
 #define PRUNING_STUBBORN_SETS_H
 
-#include "../abstract_task.h"
 #include "../pruning_method.h"
-
-namespace options {
-class OptionParser;
-}
+#include "../task_proxy.h"
 
 namespace stubborn_sets {
 inline FactPair find_unsatisfied_condition(
     const std::vector<FactPair> &conditions, const State &state);
 
 class StubbornSets : public PruningMethod {
-    const double min_required_pruning_ratio;
-    const int num_expansions_before_checking_pruning_ratio;
-    int num_pruning_calls;
-    bool is_pruning_disabled;
-
-    long num_unpruned_successors_generated;
-    long num_pruned_successors_generated;
-
-    /* stubborn[op_no] is true iff the operator with operator index
-       op_no is contained in the stubborn set */
-    std::vector<bool> stubborn;
-
-    /*
-      stubborn_queue contains the operator indices of operators that
-      have been marked as stubborn but have not yet been processed
-      (i.e. more operators might need to be added to stubborn because
-      of the operators in the queue).
-    */
-    std::vector<int> stubborn_queue;
-
     void compute_sorted_operators(const TaskProxy &task_proxy);
     void compute_achievers(const TaskProxy &task_proxy);
-
+    virtual void prune(const State &state,
+                       std::vector<OperatorID> &op_ids) override;
 protected:
     /*
       We copy some parts of the task here, so we can avoid the more expensive
@@ -50,19 +27,9 @@ protected:
        operators that achieve the fact (var, value). */
     std::vector<std::vector<std::vector<int>>> achievers;
 
-    bool can_disable(int op1_no, int op2_no) const;
-    bool can_conflict(int op1_no, int op2_no) const;
-
-    /*
-      Return the first unsatified goal pair,
-      or FactPair::no_fact if there is none.
-
-      Note that we use a sorted list of goals here intentionally.
-      (See comment on find_unsatisfied_precondition.)
-    */
-    FactPair find_unsatisfied_goal(const State &state) const {
-        return find_unsatisfied_condition(sorted_goals, state);
-    }
+    /* stubborn[op_no] is true iff the operator with operator index
+       op_no is contained in the stubborn set */
+    std::vector<bool> stubborn;
 
     /*
       Return the first unsatified precondition,
@@ -85,22 +52,10 @@ protected:
         return find_unsatisfied_condition(sorted_op_preconditions[op_no], state);
     }
 
-    // Returns true iff the operators was enqueued.
-    // TODO: rename to enqueue_stubborn_operator?
-    bool mark_as_stubborn(int op_no);
-    virtual void initialize_stubborn_set(const State &state) = 0;
-    virtual void handle_stubborn_operator(const State &state, int op_no) = 0;
+    virtual void compute_stubborn_set(const State &state) = 0;
 public:
-    explicit StubbornSets(const options::Options &opts);
-
+    explicit StubbornSets(const plugins::Options &opts);
     virtual void initialize(const std::shared_ptr<AbstractTask> &task) override;
-
-    /* TODO: move prune_operators, and also the statistics, to the
-       base class to have only one method virtual, and to make the
-       interface more obvious */
-    virtual void prune_operators(const State &state,
-                                 std::vector<OperatorID> &op_ids) override;
-    virtual void print_statistics() const override;
 };
 
 // Return the first unsatified condition, or FactPair::no_fact if there is none.
@@ -112,8 +67,6 @@ inline FactPair find_unsatisfied_condition(
     }
     return FactPair::no_fact;
 }
-
-void add_pruning_options(options::OptionParser &parser);
 }
 
 #endif

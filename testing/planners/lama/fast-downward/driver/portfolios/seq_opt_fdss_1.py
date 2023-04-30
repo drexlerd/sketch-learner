@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-
 OPTIMAL = True
 
 CONFIGS = [
@@ -14,7 +12,8 @@ CONFIGS = [
            "label_reduction=exact(before_shrinking=true,before_merging=false),"
            "max_states=200000))"]),
     (455, ["--search",
-           "astar(lmcount(lm_merged([lm_rhw(),lm_hm(m=1)]),admissible=true),mpd=true)"]),
+           "let(lmc, landmark_cost_partitioning(lm_merged([lm_rhw(),lm_hm(m=1)])),"
+           "astar(lmc,lazy_evaluator=lmc))"]),
     (569, ["--search",
            "astar(lmcut())"]),
      ]

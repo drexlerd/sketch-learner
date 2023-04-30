@@ -8,7 +8,7 @@
 #include <memory>
 #include <vector>
 
-namespace options {
+namespace plugins {
 class Options;
 }
 
@@ -21,13 +21,10 @@ class MergeSelectorScoreBasedFiltering : public MergeSelector {
         const std::vector<double> &scores) const;
 protected:
     virtual std::string name() const override;
-    virtual void dump_specific_options() const override;
+    virtual void dump_selector_specific_options(utils::LogProxy &log) const override;
 public:
-    explicit MergeSelectorScoreBasedFiltering(const options::Options &options);
+    explicit MergeSelectorScoreBasedFiltering(const plugins::Options &options);
     virtual ~MergeSelectorScoreBasedFiltering() override = default;
-    // TODO: get rid of this extra constructor
-    explicit MergeSelectorScoreBasedFiltering(
-        std::vector<std::shared_ptr<MergeScoringFunction>> scoring_functions);
     virtual std::pair<int, int> select_merge(
         const FactoredTransitionSystem &fts,
         const std::vector<int> &indices_subset = std::vector<int>()) const override;

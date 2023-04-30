@@ -1,6 +1,8 @@
 #include "zero_one_pdbs.h"
 
 #include "pattern_database.h"
+#include "pattern_database_factory.h"
+#include "utils.h"
 
 #include "../task_proxy.h"
 
@@ -24,13 +26,13 @@ ZeroOnePDBs::ZeroOnePDBs(
 
     pattern_databases.reserve(patterns.size());
     for (const Pattern &pattern : patterns) {
-        shared_ptr<PatternDatabase> pdb = make_shared<PatternDatabase>(
-            task_proxy, pattern, false, remaining_operator_costs);
+        shared_ptr<PatternDatabase> pdb = compute_pdb(
+            task_proxy, pattern, remaining_operator_costs);
 
         /* Set cost of relevant operators to 0 for further iterations
            (action cost partitioning). */
         for (OperatorProxy op : operators) {
-            if (pdb->is_operator_relevant(op))
+            if (is_operator_relevant(pdb->get_pattern(), op))
                 remaining_operator_costs[op.get_id()] = 0;
         }
 
@@ -44,9 +46,10 @@ int ZeroOnePDBs::get_value(const State &state) const {
       Because we use cost partitioning, we can simply add up all
       heuristic values of all patterns in the pattern collection.
     */
+    state.unpack();
     int h_val = 0;
     for (const shared_ptr<PatternDatabase> &pdb : pattern_databases) {
-        int pdb_value = pdb->get_value(state);
+        int pdb_value = pdb->get_value(state.get_unpacked_values());
         if (pdb_value == numeric_limits<int>::max())
             return numeric_limits<int>::max();
         h_val += pdb_value;
@@ -62,9 +65,11 @@ double ZeroOnePDBs::compute_approx_mean_finite_h() const {
     return approx_mean_finite_h;
 }
 
-void ZeroOnePDBs::dump() const {
-    for (const shared_ptr<PatternDatabase> &pdb : pattern_databases) {
-        cout << pdb->get_pattern() << endl;
+void ZeroOnePDBs::dump(utils::LogProxy &log) const {
+    if (log.is_at_least_debug()) {
+        for (const shared_ptr<PatternDatabase> &pdb : pattern_databases) {
+            log << pdb->get_pattern() << endl;
+        }
     }
 }
 }

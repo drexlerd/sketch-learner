@@ -3,7 +3,6 @@
 
 #include "../evaluation_context.h"
 #include "../evaluator.h"
-#include "../global_state.h"
 #include "../open_list.h"
 #include "../operator_id.h"
 #include "../search_engine.h"
@@ -14,10 +13,6 @@
 
 #include <memory>
 #include <vector>
-
-namespace options {
-class Options;
-}
 
 namespace lazy_search {
 class LazySearch : public SearchEngine {
@@ -33,7 +28,7 @@ protected:
     std::vector<Evaluator *> path_dependent_evaluators;
     std::vector<std::shared_ptr<Evaluator>> preferred_operator_evaluators;
 
-    GlobalState current_state;
+    State current_state;
     StateID current_predecessor_id;
     OperatorID current_operator_id;
     int current_g;
@@ -52,7 +47,7 @@ protected:
         const ordered_set::OrderedSet<OperatorID> &preferred_operators) const;
 
 public:
-    explicit LazySearch(const options::Options &opts);
+    explicit LazySearch(const plugins::Options &opts);
     virtual ~LazySearch() = default;
 
     void set_preferred_operator_evaluators(std::vector<std::shared_ptr<Evaluator>> &evaluators);

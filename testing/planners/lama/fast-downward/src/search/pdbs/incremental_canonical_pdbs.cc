@@ -2,6 +2,9 @@
 
 #include "canonical_pdbs.h"
 #include "pattern_database.h"
+#include "pattern_database_factory.h"
+
+#include <limits>
 
 using namespace std;
 
@@ -22,7 +25,7 @@ IncrementalCanonicalPDBs::IncrementalCanonicalPDBs(
 }
 
 void IncrementalCanonicalPDBs::add_pdb_for_pattern(const Pattern &pattern) {
-    pattern_databases->push_back(make_shared<PatternDatabase>(task_proxy, pattern));
+    pattern_databases->push_back(compute_pdb(task_proxy, pattern));
     size += pattern_databases->back()->get_size();
 }
 
@@ -50,15 +53,17 @@ int IncrementalCanonicalPDBs::get_value(const State &state) const {
 }
 
 bool IncrementalCanonicalPDBs::is_dead_end(const State &state) const {
+    state.unpack();
     for (const shared_ptr<PatternDatabase> &pdb : *pattern_databases)
-        if (pdb->get_value(state) == numeric_limits<int>::max())
+        if (pdb->get_value(state.get_unpacked_values()) == numeric_limits<int>::max())
             return true;
     return false;
 }
 
 PatternCollectionInformation
-IncrementalCanonicalPDBs::get_pattern_collection_information() const {
-    PatternCollectionInformation result(task_proxy, patterns);
+IncrementalCanonicalPDBs::get_pattern_collection_information(
+    utils::LogProxy &log) const {
+    PatternCollectionInformation result(task_proxy, patterns, log);
     result.set_pdbs(pattern_databases);
     result.set_pattern_cliques(pattern_cliques);
     return result;

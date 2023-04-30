@@ -4,9 +4,8 @@
 #include "potential_max_heuristic.h"
 #include "util.h"
 
-#include "../option_parser.h"
-#include "../plugin.h"
-
+#include "../plugins/plugin.h"
+#include "../utils/logging.h"
 #include "../utils/rng.h"
 #include "../utils/rng_options.h"
 #include "../utils/timer.h"
@@ -16,11 +15,12 @@
 using namespace std;
 
 namespace potentials {
-DiversePotentialHeuristics::DiversePotentialHeuristics(const Options &opts)
+DiversePotentialHeuristics::DiversePotentialHeuristics(const plugins::Options &opts)
     : optimizer(opts),
       max_num_heuristics(opts.get<int>("max_num_heuristics")),
       num_samples(opts.get<int>("num_samples")),
-      rng(utils::parse_rng_from_options(opts)) {
+      rng(utils::parse_rng_from_options(opts)),
+      log(utils::get_log_from_options(opts)) {
 }
 
 SamplesToFunctionsMap
@@ -45,10 +45,12 @@ DiversePotentialHeuristics::filter_samples_and_compute_functions(
             ++num_dead_ends;
         }
     }
-    cout << "Time for filtering dead ends: " << filtering_timer << endl;
-    cout << "Duplicate samples: " << num_duplicates << endl;
-    cout << "Dead end samples: " << num_dead_ends << endl;
-    cout << "Unique non-dead-end samples: " << samples_to_functions.size() << endl;
+    if (log.is_at_least_normal()) {
+        log << "Time for filtering dead ends: " << filtering_timer << endl;
+        log << "Duplicate samples: " << num_duplicates << endl;
+        log << "Dead end samples: " << num_dead_ends << endl;
+        log << "Unique non-dead-end samples: " << samples_to_functions.size() << endl;
+    }
     assert(num_duplicates + num_dead_ends + samples_to_functions.size() == samples.size());
     return samples_to_functions;
 }
@@ -85,16 +87,20 @@ DiversePotentialHeuristics::find_function_and_remove_covered_samples(
     size_t last_num_samples = samples_to_functions.size();
     remove_covered_samples(*function, samples_to_functions);
     if (samples_to_functions.size() == last_num_samples) {
-        cout << "No sample removed -> Use arbitrary precomputed function."
-             << endl;
+        if (log.is_at_least_verbose()) {
+            log << "No sample removed -> Use arbitrary precomputed function."
+                << endl;
+        }
         function = move(samples_to_functions.begin()->second);
         // The move operation invalidated the entry, remove it.
         samples_to_functions.erase(samples_to_functions.begin());
         remove_covered_samples(*function, samples_to_functions);
     }
-    cout << "Removed " << last_num_samples - samples_to_functions.size()
-         << " samples. " << samples_to_functions.size() << " remaining."
-         << endl;
+    if (log.is_at_least_verbose()) {
+        log << "Removed " << last_num_samples - samples_to_functions.size()
+            << " samples. " << samples_to_functions.size() << " remaining."
+            << endl;
+    }
     return function;
 }
 
@@ -103,11 +109,15 @@ void DiversePotentialHeuristics::cover_samples(
     utils::Timer covering_timer;
     while (!samples_to_functions.empty() &&
            static_cast<int>(diverse_functions.size()) < max_num_heuristics) {
-        cout << "Find heuristic #" << diverse_functions.size() + 1 << endl;
+        if (log.is_at_least_verbose()) {
+            log << "Find heuristic #" << diverse_functions.size() + 1 << endl;
+        }
         diverse_functions.push_back(
             find_function_and_remove_covered_samples(samples_to_functions));
     }
-    cout << "Time for covering samples: " << covering_timer << endl;
+    if (log.is_at_least_normal()) {
+        log << "Time for covering samples: " << covering_timer << endl;
+    }
 }
 
 vector<unique_ptr<PotentialFunction>>
@@ -126,36 +136,42 @@ DiversePotentialHeuristics::find_functions() {
     // Iteratively cover samples.
     cover_samples(samples_to_functions);
 
-    cout << "Potential heuristics: " << diverse_functions.size() << endl;
-    cout << "Initialization of potential heuristics: " << init_timer << endl;
+    if (log.is_at_least_normal()) {
+        log << "Potential heuristics: " << diverse_functions.size() << endl;
+        log << "Initialization of potential heuristics: " << init_timer << endl;
+    }
 
     return move(diverse_functions);
 }
 
-static shared_ptr<Heuristic> _parse(OptionParser &parser) {
-    parser.document_synopsis(
-        "Diverse potential heuristics",
-        get_admissible_potentials_reference());
-    parser.add_option<int>(
-        "num_samples",
-        "Number of states to sample",
-        "1000",
-        Bounds("0", "infinity"));
-    parser.add_option<int>(
-        "max_num_heuristics",
-        "maximum number of potential heuristics",
-        "infinity",
-        Bounds("0", "infinity"));
-    prepare_parser_for_admissible_potentials(parser);
-    utils::add_rng_options(parser);
-    Options opts = parser.parse();
-    if (parser.dry_run())
-        return nullptr;
+class DiversePotentialMaxHeuristicFeature : public plugins::TypedFeature<Evaluator, PotentialMaxHeuristic> {
+public:
+    DiversePotentialMaxHeuristicFeature() : TypedFeature("diverse_potentials") {
+        document_subcategory("heuristics_potentials");
+        document_title("Diverse potential heuristics");
+        document_synopsis(
+            get_admissible_potentials_reference());
 
-    DiversePotentialHeuristics factory(opts);
-    return make_shared<PotentialMaxHeuristic>(opts, factory.find_functions());
-}
+        add_option<int>(
+            "num_samples",
+            "Number of states to sample",
+            "1000",
+            plugins::Bounds("0", "infinity"));
+        add_option<int>(
+            "max_num_heuristics",
+            "maximum number of potential heuristics",
+            "infinity",
+            plugins::Bounds("0", "infinity"));
+        prepare_parser_for_admissible_potentials(*this);
+        utils::add_rng_options(*this);
+        utils::add_log_options_to_feature(*this);
+    }
 
-static Plugin<Evaluator> _plugin(
-    "diverse_potentials", _parse, "heuristics_potentials");
+    virtual shared_ptr<PotentialMaxHeuristic> create_component(const plugins::Options &options, const utils::Context &) const override {
+        DiversePotentialHeuristics factory(options);
+        return make_shared<PotentialMaxHeuristic>(options, factory.find_functions());
+    }
+};
+
+static plugins::FeaturePlugin<DiversePotentialMaxHeuristicFeature> _plugin;
 }

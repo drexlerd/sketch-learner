@@ -11,7 +11,6 @@
 #include <vector>
 
 class FactProxy;
-class GlobalState;
 class OperatorProxy;
 
 namespace relaxation_heuristic {
@@ -111,7 +110,7 @@ protected:
     Proposition *get_proposition(int var, int value);
     Proposition *get_proposition(const FactProxy &fact);
 public:
-    explicit RelaxationHeuristic(const options::Options &options);
+    explicit RelaxationHeuristic(const plugins::Options &options);
 
     virtual bool dead_ends_are_reliable() const override;
 };

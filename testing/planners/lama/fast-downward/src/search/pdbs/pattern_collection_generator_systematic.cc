@@ -3,10 +3,9 @@
 #include "utils.h"
 #include "validation.h"
 
-#include "../option_parser.h"
-#include "../plugin.h"
 #include "../task_proxy.h"
 
+#include "../plugins/plugin.h"
 #include "../task_utils/causal_graph.h"
 #include "../utils/logging.h"
 #include "../utils/markup.h"
@@ -48,8 +47,9 @@ static void compute_union_pattern(
 
 
 PatternCollectionGeneratorSystematic::PatternCollectionGeneratorSystematic(
-    const Options &opts)
-    : max_pattern_size(opts.get<int>("pattern_max_size")),
+    const plugins::Options &opts)
+    : PatternCollectionGenerator(opts),
+      max_pattern_size(opts.get<int>("pattern_max_size")),
       only_interesting_patterns(opts.get<bool>("only_interesting_patterns")) {
 }
 
@@ -204,7 +204,9 @@ void PatternCollectionGeneratorSystematic::build_patterns(
         enqueue_pattern_if_new(pattern);
 
 
-    cout << "Found " << sga_patterns.size() << " SGA patterns." << endl;
+    if (log.is_at_least_normal()) {
+        log << "Found " << sga_patterns.size() << " SGA patterns." << endl;
+    }
 
     /*
       Combine patterns in the queue with SGA patterns until all
@@ -234,7 +236,9 @@ void PatternCollectionGeneratorSystematic::build_patterns(
     }
 
     pattern_set.clear();
-    cout << "Found " << patterns->size() << " interesting patterns." << endl;
+    if (log.is_at_least_normal()) {
+        log << "Found " << patterns->size() << " interesting patterns." << endl;
+    }
 }
 
 void PatternCollectionGeneratorSystematic::build_patterns_naive(
@@ -258,13 +262,17 @@ void PatternCollectionGeneratorSystematic::build_patterns_naive(
         next_patterns.clear();
     }
 
-    cout << "Found " << patterns->size() << " patterns." << endl;
+    if (log.is_at_least_normal()) {
+        log << "Found " << patterns->size() << " patterns." << endl;
+    }
 }
 
-PatternCollectionInformation PatternCollectionGeneratorSystematic::generate(
+string PatternCollectionGeneratorSystematic::name() const {
+    return "systematic pattern collection generator";
+}
+
+PatternCollectionInformation PatternCollectionGeneratorSystematic::compute_patterns(
     const shared_ptr<AbstractTask> &task) {
-    utils::Timer timer;
-    cout << "Generating patterns using the systematic generator..." << endl;
     TaskProxy task_proxy(*task);
     patterns = make_shared<PatternCollection>();
     pattern_set.clear();
@@ -273,46 +281,39 @@ PatternCollectionInformation PatternCollectionGeneratorSystematic::generate(
     } else {
         build_patterns_naive(task_proxy);
     }
-    PatternCollectionInformation pci(task_proxy, patterns);
-    /* Do not dump the collection since it can be very large for
-       pattern_max_size >= 3. */
-    dump_pattern_collection_generation_statistics(
-        "Systematic generator", timer(), pci, false);
-    return pci;
+    return PatternCollectionInformation(task_proxy, patterns, log);
 }
 
-static shared_ptr<PatternCollectionGenerator> _parse(OptionParser &parser) {
-    parser.document_synopsis(
-        "Systematically generated patterns",
-        "Generates all (interesting) patterns with up to pattern_max_size "
-        "variables. "
-        "For details, see" + utils::format_conference_reference(
-            {"Florian Pommerening", "Gabriele Roeger", "Malte Helmert"},
-            "Getting the Most Out of Pattern Databases for Classical Planning",
-            "https://ai.dmi.unibas.ch/papers/pommerening-et-al-ijcai2013.pdf",
-            "Proceedings of the Twenty-Third International Joint"
-            " Conference on Artificial Intelligence (IJCAI 2013)",
-            "2357-2364",
-            "AAAI Press",
-            "2013"));
+class PatternCollectionGeneratorSystematicFeature : public plugins::TypedFeature<PatternCollectionGenerator, PatternCollectionGeneratorSystematic> {
+public:
+    PatternCollectionGeneratorSystematicFeature() : TypedFeature("systematic") {
+        document_title("Systematically generated patterns");
+        document_synopsis(
+            "Generates all (interesting) patterns with up to pattern_max_size "
+            "variables. "
+            "For details, see" + utils::format_conference_reference(
+                {"Florian Pommerening", "Gabriele Roeger", "Malte Helmert"},
+                "Getting the Most Out of Pattern Databases for Classical Planning",
+                "https://ai.dmi.unibas.ch/papers/pommerening-et-al-ijcai2013.pdf",
+                "Proceedings of the Twenty-Third International Joint"
+                " Conference on Artificial Intelligence (IJCAI 2013)",
+                "2357-2364",
+                "AAAI Press",
+                "2013"));
 
-    parser.add_option<int>(
-        "pattern_max_size",
-        "max number of variables per pattern",
-        "1",
-        Bounds("1", "infinity"));
-    parser.add_option<bool>(
-        "only_interesting_patterns",
-        "Only consider the union of two disjoint patterns if the union has "
-        "more information than the individual patterns.",
-        "true");
+        add_option<int>(
+            "pattern_max_size",
+            "max number of variables per pattern",
+            "1",
+            plugins::Bounds("1", "infinity"));
+        add_option<bool>(
+            "only_interesting_patterns",
+            "Only consider the union of two disjoint patterns if the union has "
+            "more information than the individual patterns.",
+            "true");
+        add_generator_options_to_feature(*this);
+    }
+};
 
-    Options opts = parser.parse();
-    if (parser.dry_run())
-        return nullptr;
-
-    return make_shared<PatternCollectionGeneratorSystematic>(opts);
-}
-
-static Plugin<PatternCollectionGenerator> _plugin("systematic", _parse);
+static plugins::FeaturePlugin<PatternCollectionGeneratorSystematicFeature> _plugin;
 }

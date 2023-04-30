@@ -1,6 +1,12 @@
-from __future__ import print_function
+from typing import Iterable, List, Union
 
 from . import conditions
+from .f_expression import Increase
+from .conditions import Condition, Literal
+from .pddl_types import TypedObject
+
+AnyEffect = Union["ConditionalEffect", "ConjunctiveEffect", "UniversalEffect",
+                  "SimpleEffect", "CostEffect"]
 
 def cartesian_product(*sequences):
     # TODO: Also exists in tools.py outside the pddl package (defined slightly
@@ -13,8 +19,9 @@ def cartesian_product(*sequences):
                 yield (item,) + tup
 
 
-class Effect(object):
-    def __init__(self, parameters, condition, literal):
+class Effect:
+    def __init__(self, parameters: List[TypedObject], condition: Condition,
+                 literal: Literal) -> None:
         self.parameters = parameters
         self.condition = condition
         self.literal = literal
@@ -74,8 +81,8 @@ class Effect(object):
         return Effect(self.parameters, self.condition.simplified(), self.literal)
 
 
-class ConditionalEffect(object):
-    def __init__(self, condition, effect):
+class ConditionalEffect:
+    def __init__(self, condition: Condition, effect: AnyEffect) -> None:
         if isinstance(effect, ConditionalEffect):
             self.condition = conditions.Conjunction([condition, effect.condition])
             self.effect = effect.effect
@@ -104,8 +111,8 @@ class ConditionalEffect(object):
     def extract_cost(self):
         return None, self
 
-class UniversalEffect(object):
-    def __init__(self, parameters, effect):
+class UniversalEffect:
+    def __init__(self, parameters: List[TypedObject], effect: AnyEffect):
         if isinstance(effect, UniversalEffect):
             self.parameters = parameters + effect.parameters
             self.effect = effect.effect
@@ -129,8 +136,8 @@ class UniversalEffect(object):
     def extract_cost(self):
         return None, self
 
-class ConjunctiveEffect(object):
-    def __init__(self, effects):
+class ConjunctiveEffect:
+    def __init__(self, effects: List[AnyEffect]) -> None:
         flattened_effects = []
         for effect in effects:
             if isinstance(effect, ConjunctiveEffect):
@@ -157,8 +164,8 @@ class ConjunctiveEffect(object):
                 new_effects.append(effect)
         return cost_effect, ConjunctiveEffect(new_effects)
 
-class SimpleEffect(object):
-    def __init__(self, effect):
+class SimpleEffect:
+    def __init__(self, effect: Literal) -> None:
         self.effect = effect
     def dump(self, indent="  "):
         print("%s%s" % (indent, self.effect))
@@ -167,13 +174,13 @@ class SimpleEffect(object):
     def extract_cost(self):
         return None, self
 
-class CostEffect(object):
-    def __init__(self, effect):
+class CostEffect:
+    def __init__(self, effect: Increase) -> None:
         self.effect = effect
     def dump(self, indent="  "):
         print("%s%s" % (indent, self.effect))
     def normalize(self):
         return self
     def extract_cost(self):
-        return self, None # this would only happen if
-    #an action has no effect apart from the cost effect
+        # This only happens if an action has no effect apart from the cost effect.
+        return self, None

@@ -1,0 +1,54 @@
+Bootstrap: docker
+From: ubuntu:22.04
+Stage: build
+
+%files
+   fast-downward
+
+%post
+    ## Install all necessary dependencies.
+    apt-get update
+    apt-get install --no-install-recommends -y \
+		build-essential \
+		cmake \
+		python-is-python3 \
+		python3 \
+		g++
+
+    ## Build LAMA planner.
+	cd /fast-downward
+	rm -rf builds
+	./build.py
+	strip --strip-all builds/release/bin/downward
+	cd /
+
+
+Bootstrap: docker
+From: ubuntu:22.04
+Stage: run
+
+%files from build
+    fast-downward/fast-downward.py
+	fast-downward/driver/
+	fast-downward/builds/release/bin/
+
+%post
+    ## Install all necessary dependencies.
+    apt-get update
+    apt-get install --no-install-recommends -y python3
+
+%runscript
+    #! /bin/bash
+    set -euo pipefail
+
+    DOMAIN_FILE="$1"
+    PROBLEM_FILE="$2"
+    PLAN_FILE="$3"
+
+	/fast-downward/fast-downward.py --plan-file "$PLAN_FILE" --alias lama-first "$DOMAIN_FILE" "$PROBLEM_FILE"
+
+
+%labels
+Name        Hierarchical Policy Execution
+Description Hierarchical Policy Execution implemented in Fast Downward with DLPlan
+Authors     Dominik Drexler <dominik.drexler@liu.se>

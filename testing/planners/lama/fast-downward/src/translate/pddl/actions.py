@@ -1,13 +1,18 @@
-from __future__ import print_function
-
 import copy
+from typing import List, Optional, Tuple
 
 from . import conditions
+from .conditions import Condition, Literal
+from .effects import Effect
+from .f_expression import Increase
+from .pddl_types import TypedObject
 
 
-class Action(object):
-    def __init__(self, name, parameters, num_external_parameters,
-                 precondition, effects, cost):
+class Action:
+    def __init__(self, name: str, parameters: List[TypedObject],
+            num_external_parameters: int,
+            precondition: Condition, effects: List[Effect],
+            cost: Optional[Increase]):
         assert 0 <= num_external_parameters <= len(parameters)
         self.name = name
         self.parameters = parameters
@@ -33,14 +38,13 @@ class Action(object):
         for eff in self.effects:
             eff.dump()
         print("Cost:")
-        if(self.cost):
+        if self.cost:
             self.cost.dump()
         else:
             print("  None")
 
     def uniquify_variables(self):
-        self.type_map = dict([(par.name, par.type_name)
-                              for par in self.parameters])
+        self.type_map = {par.name: par.type_name for par in self.parameters}
         self.precondition = self.precondition.uniquify_variables(self.type_map)
         for effect in self.effects:
             effect.uniquify_variables(self.type_map)
@@ -104,7 +108,8 @@ class Action(object):
 
 
 class PropositionalAction:
-    def __init__(self, name, precondition, effects, cost):
+    def __init__(self, name: str, precondition: List[Literal], effects:
+            List[Tuple[List[Literal], Literal]], cost: int):
         self.name = name
         self.precondition = precondition
         self.add_effects = []

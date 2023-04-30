@@ -1,10 +1,13 @@
-from __future__ import print_function
+from typing import List
 
 from . import conditions
+from .conditions import Atom, Condition, Literal
+from .pddl_types import TypedObject
 
 
-class Axiom(object):
-    def __init__(self, name, parameters, num_external_parameters, condition):
+class Axiom:
+    def __init__(self, name: str, parameters: List[TypedObject],
+                 num_external_parameters: int, condition: Condition):
         # For an explanation of num_external_parameters, see the
         # related Action class. Note that num_external_parameters
         # always equals the arity of the derived predicate.
@@ -21,14 +24,14 @@ class Axiom(object):
         self.condition.dump()
 
     def uniquify_variables(self):
-        self.type_map = dict([(par.name, par.type_name)
-                              for par in self.parameters])
+        self.type_map = {par.name: par.type_name for par in self.parameters}
         self.condition = self.condition.uniquify_variables(self.type_map)
 
     def instantiate(self, var_mapping, init_facts, fluent_facts):
         # The comments for Action.instantiate apply accordingly.
-        arg_list = [self.name] + [var_mapping[par.name]
-                    for par in self.parameters[:self.num_external_parameters]]
+        arg_list = [self.name] + [
+            var_mapping[par.name]
+            for par in self.parameters[:self.num_external_parameters]]
         name = "(%s)" % " ".join(arg_list)
 
         condition = []
@@ -44,7 +47,7 @@ class Axiom(object):
 
 
 class PropositionalAxiom:
-    def __init__(self, name, condition, effect):
+    def __init__(self, name: str, condition: List[Literal], effect: Atom):
         self.name = name
         self.condition = condition
         self.effect = effect

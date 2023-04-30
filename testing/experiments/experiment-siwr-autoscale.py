@@ -86,7 +86,7 @@ print(IMAGES_DIR)
 
 def get_image(name):
     planner = name.replace("-", "_")
-    image = os.path.join(IMAGES_DIR, name + ".img")
+    image = os.path.join(IMAGES_DIR, name + ".sif")
     assert os.path.exists(image), image
     return planner, image
 
