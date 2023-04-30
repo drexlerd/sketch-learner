@@ -17,7 +17,7 @@ from learner.src.iteration_data.state_pair_equivalence_factory import StatePairE
 from learner.src.iteration_data.tuple_graph_equivalence_factory import TupleGraphEquivalenceFactory
 from learner.src.iteration_data.tuple_graph_equivalence_minimizer import TupleGraphEquivalenceMinimizer
 from learner.src.util.timer import CountDownTimer
-from learner.src.util.command import create_experiment_workspace, write_file
+from learner.src.util.command import create_experiment_workspace
 
 
 
@@ -113,10 +113,10 @@ def learn_sketch(config, domain_data, instance_datas, workspace):
                 break
             j += 1
 
-        logging.info(colored(f"Verifying learned sketch...", "blue", "on_grey"))
+        logging.info(colored("Verifying learned sketch...", "blue", "on_grey"))
         assert compute_smallest_unsolved_instance(config, sketch, selected_instance_datas) is None
         smallest_unsolved_instance = compute_smallest_unsolved_instance(config, sketch, instance_datas)
-        logging.info(colored(f"..done", "blue", "on_grey"))
+        logging.info(colored("..done", "blue", "on_grey"))
 
         logging.info(colored("Iteration summary:", "yellow", "on_grey"))
         domain_feature_data_factory.statistics.print()
@@ -134,23 +134,4 @@ def learn_sketch(config, domain_data, instance_datas, workspace):
             print("Smallest unsolved instance:", smallest_unsolved_instance.id)
             print("Selected instances:", selected_instance_idxs)
         i += 1
-
-    logging.info(colored("Summary:", "green", "on_grey"))
-    num_selected_training_instances = len(selected_instance_datas)
-    sum_num_states_in_selected_training_instances = sum([instance_data.state_space.get_num_states() for instance_data in selected_instance_datas])
-    max_num_states_in_selected_training_instances = max([instance_data.state_space.get_num_states() for instance_data in selected_instance_datas])
-    num_features_in_pool = len(domain_feature_data.boolean_features.features_by_index) + len(domain_feature_data.numerical_features.features_by_index)
-    print("Boolean features:")
-    print("\n".join(feature.dlplan_feature.compute_repr() for feature in domain_feature_data.boolean_features.features_by_index))
-    print("Numerical features:")
-    print("\n".join(feature.dlplan_feature.compute_repr() for feature in domain_feature_data.numerical_features.features_by_index))
-    print("Number of selected training instances:", num_selected_training_instances)
-    print("Sum of number of states in selected training instances:", sum_num_states_in_selected_training_instances)
-    print("Max of number of states in selected training instances:", max_num_states_in_selected_training_instances)
-    print("Number of features in the pool:", num_features_in_pool)
-    print("Resulting sketch:")
-    sketch.print()
-    print("Resulting sketch minimized:")
-    sketch_minimized = Sketch(dlplan.PolicyMinimizer().minimize(sketch.dlplan_policy), sketch.width)
-    sketch_minimized.print()
-    return sketch, sketch_minimized, num_selected_training_instances, sum_num_states_in_selected_training_instances, max_num_states_in_selected_training_instances, num_features_in_pool
+    return sketch

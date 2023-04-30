@@ -1,16 +1,12 @@
 import logging
-
-from typing import List
 from termcolor import colored
 
-
 from learner.src.domain_data.domain_data_factory import DomainDataFactory
-from learner.src.instance_data.instance_data import InstanceData
 from learner.src.instance_data.instance_data_factory import InstanceDataFactory
 from learner.src.instance_data.tuple_graph_factory import TupleGraphFactory
-from learner.src.iteration_data.sketch import Sketch
 from learner.src.returncodes import ExitCode
 from learner.src.iteration_data.learn_sketch import learn_sketch
+from learner.src.util.command import create_experiment_workspace, write_file
 
 
 def run(config, data, rng):
@@ -29,6 +25,8 @@ def run(config, data, rng):
     logging.info(colored("..done", "blue", "on_grey"))
 
     sketch = learn_sketch(config, domain_data, instance_datas, config.workspace / "learning")
+    create_experiment_workspace(config.workspace / "output")
+    write_file(config.workspace / "output" / f"sketch_{config.width}.txt", sketch.dlplan_policy.str())
 
     print("Summary:")
     print("Sketch:")

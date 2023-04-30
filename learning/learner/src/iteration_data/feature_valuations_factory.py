@@ -1,11 +1,11 @@
-from typing import  List,  Tuple
+from typing import Dict
 
 from learner.src.instance_data.instance_data import InstanceData
 from learner.src.iteration_data.feature_valuations import FeatureValuation
 
 
 class FeatureValuationsFactory:
-    def make_feature_valuations(self, instance_data: InstanceData) -> List[FeatureValuation]:
+    def make_feature_valuations(self, instance_data: InstanceData) -> Dict[int, FeatureValuation]:
         feature_valuations = dict()
         for s_idx, dlplan_state in instance_data.state_space.get_states().items():
             boolean_state_feature_valuations = []

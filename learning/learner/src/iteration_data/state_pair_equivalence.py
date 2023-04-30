@@ -1,5 +1,5 @@
 import dlplan
-from typing import Dict, List, MutableSet, Tuple
+from typing import Dict, List, MutableSet
 from dataclasses import dataclass
 
 

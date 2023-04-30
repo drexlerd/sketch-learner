@@ -1,4 +1,4 @@
-from typing import Dict, List, MutableSet
+from typing import Dict, MutableSet
 from dataclasses import dataclass
 
 

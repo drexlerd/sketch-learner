@@ -1,9 +1,4 @@
-import dlplan
-import math
-
 from collections import defaultdict
-from typing import Dict, List, MutableSet, Tuple
-from dataclasses import dataclass
 
 from learner.src.instance_data.instance_data import InstanceData
 from learner.src.iteration_data.tuple_graph_equivalence_factory import TupleGraphEquivalenceFactoryStatistics

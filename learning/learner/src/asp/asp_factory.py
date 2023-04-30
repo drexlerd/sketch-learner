@@ -29,8 +29,8 @@ class ASPFactory:
         self.ctl.add("alive", ["i", "s"], "alive(i,s).")
         self.ctl.add("expanded", ["i", "s"], "expanded(i,s).")
         # rule equivalences
-        self.ctl.add("feature_condition", ["f", "r", "v"], "feature_condition(f,r,v).")
-        self.ctl.add("feature_effect", ["f", "r", "v"], "feature_effect(f,r,v).")
+        self.ctl.add("feature_condition", ["r", "f", "v"], "feature_condition(r,f,v).")
+        self.ctl.add("feature_effect", ["r", "f", "v"], "feature_effect(r,f,v).")
         self.ctl.add("state_pair_class", ["r"], "state_pair_class(r).")
         # d2-separation constraints
         self.ctl.add("d2_separate", ["r1", "r2"], "d2_separate(r1,r2).")
@@ -41,6 +41,7 @@ class ASPFactory:
         self.ctl.add("t_distance", ["i", "s", "t", "d"], "t_distance(i,s,t,d).")
         self.ctl.add("d_distance", ["i", "s", "r", "d"], "d_distance(i,s,r,d).")
         self.ctl.add("r_distance", ["i", "s", "r", "d"], "r_distance(i,s,r,d).")
+        self.ctl.add("s_distance", ["i", "s1", "s2", "d"], "s_distance(i,s1,s2,d).")
 
     def load_problem_file(self, filename):
         self.ctl.load(str(filename))
@@ -116,7 +117,7 @@ class ASPFactory:
                     facts.append(("feature_condition", [Number(r_idx), Number(f_idx + len(domain_data.domain_feature_data.boolean_features.features_by_index)), Number(3)]))
                     facts.append(("c_eq_rule", [Number(r_idx), Number(f_idx + len(domain_data.domain_feature_data.boolean_features.features_by_index))]))
                 else:
-                    raise Exception(f"Cannot parse condition {condition_str}")
+                    raise Exception("Cannot parse condition {condition_str}")
             for effect in rule.get_effects():
                 effect_str = effect.str()
                 result = re.findall(r"\(.* (\d+)\)", effect_str)
@@ -141,7 +142,7 @@ class ASPFactory:
                     facts.append(("feature_effect", [Number(r_idx), Number(f_idx + len(domain_data.domain_feature_data.boolean_features.features_by_index)), Number(5)]))
                     facts.append(("e_bot_rule", [Number(r_idx), Number(f_idx + len(domain_data.domain_feature_data.boolean_features.features_by_index))]))
                 else:
-                    raise Exception(f"Cannot parse effect {effect_str}")
+                    raise Exception("Cannot parse effect {effect_str}")
         # State pair equivalence facts
         #print("cover:")
         for instance_data in instance_datas:
@@ -226,13 +227,13 @@ class ASPFactory:
         rule_to_feature_to_effect = defaultdict(dict)
         for symbol in symbols:
             if symbol.name == "feature_condition":
-                f_idx = symbol.arguments[0].number
-                r_idx = symbol.arguments[1].number
+                r_idx = symbol.arguments[0].number
+                f_idx = symbol.arguments[1].number
                 condition = symbol.arguments[2].number
                 rule_to_feature_to_condition[r_idx][f_idx] = condition
             if symbol.name == "feature_effect":
-                f_idx = symbol.arguments[0].number
-                r_idx = symbol.arguments[1].number
+                r_idx = symbol.arguments[0].number
+                f_idx = symbol.arguments[1].number
                 effect = symbol.arguments[2].number
                 rule_to_feature_to_effect[r_idx][f_idx] = effect
         facts = set()
