@@ -17,7 +17,10 @@ class InstanceDataFactory:
             create_experiment_workspace(instance_information.workspace, False)
             # change working directory to put planner output files in correct directory
             os.chdir(instance_information.workspace)
-            state_space = dlplan.generate_state_space(str(config.domain_filename), str(instance_information.filename), vocabulary_info, len(instance_datas))
+            result = dlplan.generate_state_space(str(config.domain_filename), str(instance_information.filename), vocabulary_info, len(instance_datas), config.max_time_per_instance)
+            if result.exit_code != dlplan.GeneratorExitCode.COMPLETE:
+                continue 
+            state_space = result.state_space
             if vocabulary_info is None:
                 # We obtain the parsed vocabulary from the first instance
                 vocabulary_info = state_space.get_instance_info().get_vocabulary_info()
