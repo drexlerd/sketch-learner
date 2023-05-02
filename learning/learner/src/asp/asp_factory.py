@@ -261,16 +261,17 @@ class ASPFactory:
         self.ctl.ground(facts)  # ground a set of facts
 
     def solve(self):
-        """ https://potassco.org/clingo/python-api/current/clingo/solving.html """
+        """ https://potassco.org/clingo/python-api/current/clingo/solving.html
+            with fix where we place resume at the end. """
         with self.ctl.solve(yield_=True, async_=True) as solve_handle:
             while True:
-                solve_handle.resume()
                 _ = solve_handle.wait()
                 model = solve_handle.model()
                 if model.optimality_proven:
                     return model.symbols(shown=True), ClingoExitCode.SATISFIABLE
                 if model is None:
                     return None, ClingoExitCode.UNSATISFIABLE
+                solve_handle.resume()  # discards last model, hence should not be called in first iteration.
 
     def print_statistics(self):
         print("Clingo statistics:")
