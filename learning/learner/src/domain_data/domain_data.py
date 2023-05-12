@@ -1,6 +1,4 @@
-import logging
 import dlplan
-import tarski
 
 from dataclasses import dataclass
 

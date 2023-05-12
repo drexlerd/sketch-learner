@@ -90,8 +90,9 @@ def generate_domain(height, width, npackages, add_fuel=True):
         problem.init.add(adjacent, cell_name(c, d), cell_name(a, b))
 
     cd = coord_objects[:]
-    # random.shuffle(cd)
+    random.shuffle(cd)
 
+    # In comparison to previous work, we allow for multiple packages at the same location.
     # Initial positions
     problem.init.add(at, truck, cd[random.randint(0, len(cd)-1)])
     for p in package_objects:
@@ -100,7 +101,7 @@ def generate_domain(height, width, npackages, add_fuel=True):
     problem.init.add(empty, truck)
 
     # Set the problem goal
-    target = cd.pop()
+    target = cd[random.randint(0, len(cd)-1)]
     goal = [at(p, target) for p in package_objects]
     problem.goal = land(*goal, flat=True)
 

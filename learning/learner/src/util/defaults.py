@@ -33,6 +33,8 @@ def generate_experiment(domain_filename: str, instance_filenames: List[str], wor
 
         goal_separation=True,
 
+        closed_Q=True,
+
         width=2,
 
         asp_name="sketch.lp",

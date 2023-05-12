@@ -19,7 +19,7 @@ class InstanceDataFactory:
             os.chdir(instance_information.workspace)
             result = dlplan.generate_state_space(str(config.domain_filename), str(instance_information.filename), vocabulary_info, len(instance_datas), config.max_time_per_instance)
             if result.exit_code != dlplan.GeneratorExitCode.COMPLETE:
-                continue 
+                continue
             state_space = result.state_space
             if vocabulary_info is None:
                 # We obtain the parsed vocabulary from the first instance
@@ -34,7 +34,7 @@ class InstanceDataFactory:
             elif set(state_space.get_states().keys()) == set(state_space.get_goal_state_indices()):
                 print("Trivially solvable.")
                 continue
-            elif state_space.get_initial_state_index() in set(state_space.get_goal_state_indices()):
+            elif not config.closed_Q and state_space.get_initial_state_index() in set(state_space.get_goal_state_indices()):
                 print("Initial state is goal.")
                 continue
             else:
@@ -42,7 +42,10 @@ class InstanceDataFactory:
                 instance_data = InstanceData(len(instance_datas), domain_data, dlplan.DenotationsCaches(), instance_information)
                 instance_data.set_state_space(state_space, create_dump=True)
                 instance_data.set_goal_distances(goal_distances)
-                instance_data.initial_s_idxs = [state_space.get_initial_state_index(),]
+                if config.closed_Q:
+                    instance_data.initial_s_idxs = [s_idx for s_idx in state_space.get_states().keys() if instance_data.is_alive(s_idx)]
+                else:
+                    instance_data.initial_s_idxs = [state_space.get_initial_state_index(),]
                 instance_datas.append(instance_data)
         # Sort the instances according to size and fix the indices afterwards
         instance_datas = sorted(instance_datas, key=lambda x : len(x.state_space.get_states()))

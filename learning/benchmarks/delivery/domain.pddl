@@ -11,6 +11,7 @@
         locatable - object
         package - locatable
         truck - locatable
+        object
     )
 
     (:constants

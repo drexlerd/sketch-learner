@@ -1,9 +1,9 @@
 #!/bin/bash
 #
 #SBATCH -J blocks_4_on_2
-#SBATCH -t 4-00:00:00
+#SBATCH -t 3-00:00:00
 #SBATCH -C thin --exclusive
 #SBATCH --mail-type=FAIL
 #SBATCH --mail-user=dominik.drexler@liu.se
 
-bash ./blocks_4_on.sh 2
+bash ./runner.sh blocks_4_on release 2
