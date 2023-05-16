@@ -1,6 +1,6 @@
 import re
 
-from clingo import Control, Number, Symbol
+from clingo import Control, Number, Symbol, String
 from collections import defaultdict
 from typing import List
 
@@ -46,52 +46,52 @@ class ASPFactory:
     def load_problem_file(self, filename):
         self.ctl.load(str(filename))
 
-    def make_state_space_facts(self, domain_data: DomainData, instance_datas: List[InstanceData]):
+    def make_state_space_facts(self, instance_datas: List[InstanceData]):
         facts = []
         # State space facts
         for instance_data in instance_datas:
-            instance_idx = instance_data.id
             for s_idx in instance_data.initial_s_idxs:
-                facts.append(("initial", [Number(instance_idx), Number(s_idx)]))
+                facts.append(("initial", [Number(instance_data.id), Number(s_idx)]))
             for s_idx in instance_data.state_space.get_states().keys():
-                facts.append(("state", [Number(instance_idx), Number(s_idx)]))
+                facts.append(("state", [Number(instance_data.id), Number(s_idx)]))
                 if not instance_data.is_deadend(s_idx):
-                    facts.append(("solvable", [Number(instance_idx), Number(s_idx)]))
+                    facts.append(("solvable", [Number(instance_data.id), Number(s_idx)]))
                 else:
-                    facts.append(("unsolvable", [Number(instance_idx), Number(s_idx)]))
+                    facts.append(("unsolvable", [Number(instance_data.id), Number(s_idx)]))
                 if instance_data.is_goal(s_idx):
-                    facts.append(("goal", [Number(instance_idx), Number(s_idx)]))
+                    facts.append(("goal", [Number(instance_data.id), Number(s_idx)]))
                 else:
-                    facts.append(("nongoal", [Number(instance_idx), Number(s_idx)]))
+                    facts.append(("nongoal", [Number(instance_data.id), Number(s_idx)]))
                 if instance_data.is_alive(s_idx):
-                    facts.append(("alive", [Number(instance_idx), Number(s_idx)]))
+                    facts.append(("alive", [Number(instance_data.id), Number(s_idx)]))
+                #print(instance_data.state_space.get_states()[s_idx])
         return facts
 
-    def make_domain_feature_data_facts(self, domain_data: DomainData, instance_datas: List[InstanceData]):
+    def make_domain_feature_data_facts(self, domain_data: DomainData):
         facts = []
         # Domain feature facts
-        for f_idx, boolean in enumerate(domain_data.domain_feature_data.boolean_features.features_by_index):
-            facts.append(("boolean", [Number(f_idx)]))
-            facts.append(("feature", [Number(f_idx)]))
-            facts.append(("complexity", [Number(f_idx), Number(boolean.complexity)]))
-        for f_idx, numerical in enumerate(domain_data.domain_feature_data.numerical_features.features_by_index):
-            facts.append(("numerical", [Number(f_idx + len(domain_data.domain_feature_data.boolean_features.features_by_index))]))
-            facts.append(("feature", [Number(f_idx + len(domain_data.domain_feature_data.boolean_features.features_by_index))]))
-            facts.append(("complexity", [Number(f_idx + len(domain_data.domain_feature_data.boolean_features.features_by_index)), Number(numerical.complexity)]))
+        for b_idx, boolean in domain_data.domain_feature_data.boolean_features.f_idx_to_feature.items():
+            facts.append(("boolean", [String(f"b{b_idx}")]))
+            facts.append(("feature", [String(f"b{b_idx}")]))
+            facts.append(("complexity", [String(f"b{b_idx}"), Number(boolean.complexity)]))
+        for n_idx, numerical in domain_data.domain_feature_data.numerical_features.f_idx_to_feature.items():
+            facts.append(("numerical", [String(f"n{n_idx}")]))
+            facts.append(("feature", [String(f"n{n_idx}")]))
+            facts.append(("complexity", [String(f"n{n_idx}"), Number(numerical.complexity)]))
         return facts
 
-    def make_instance_feature_data_facts(self, domain_data: DomainData, instance_datas: List[InstanceData]):
+    def make_instance_feature_data_facts(self, instance_datas: List[InstanceData]):
         facts = []
         # Instance feature valuation facts
         for instance_data in instance_datas:
             for s_idx in instance_data.state_space.get_states().keys():
                 feature_valuation = instance_data.feature_valuations[s_idx]
-                for f_idx, f_val in enumerate(feature_valuation.boolean_feature_valuations):
-                    facts.append(("value", [Number(instance_data.id), Number(s_idx), Number(f_idx), Number(f_val)]))
-                    facts.append(("b_value", [Number(instance_data.id), Number(s_idx), Number(f_idx), Number(f_val)]))
-                for f_idx, f_val in enumerate(feature_valuation.numerical_feature_valuations):
-                    facts.append(("value", [Number(instance_data.id), Number(s_idx), Number(f_idx + len(feature_valuation.boolean_feature_valuations)), Number(f_val)]))
-                    facts.append(("b_value", [Number(instance_data.id), Number(s_idx), Number(f_idx + len(feature_valuation.boolean_feature_valuations)), Number(1 if f_val > 0 else 0)]))
+                for b_idx, f_val in feature_valuation.b_idx_to_val.items():
+                    facts.append(("value", [Number(instance_data.id), Number(s_idx), String(f"b{b_idx}"), Number(f_val)]))
+                    facts.append(("b_value", [Number(instance_data.id), Number(s_idx), String(f"b{b_idx}"), Number(f_val)]))
+                for n_idx, f_val in feature_valuation.n_idx_to_val.items():
+                    facts.append(("value", [Number(instance_data.id), Number(s_idx), String(f"n{n_idx}"), Number(f_val)]))
+                    facts.append(("b_value", [Number(instance_data.id), Number(s_idx), String(f"n{n_idx}"), Number(1 if f_val > 0 else 0)]))
         return facts
 
     def make_state_pair_equivalence_data_facts(self, domain_data: DomainData, instance_datas: List[InstanceData]):
@@ -105,44 +105,44 @@ class ASPFactory:
                 assert len(result) == 1
                 f_idx = int(result[0])
                 if condition_str.startswith("(:c_b_pos"):
-                    facts.append(("feature_condition", [Number(r_idx), Number(f_idx), Number(0)]))
-                    facts.append(("c_pos_rule", [Number(r_idx), Number(f_idx)]))
+                    facts.append(("feature_condition", [Number(r_idx), String(f"b{f_idx}"), Number(0)]))
+                    facts.append(("c_pos_rule", [Number(r_idx), String(f"b{f_idx}")]))
                 elif condition_str.startswith("(:c_b_neg"):
-                    facts.append(("feature_condition", [Number(r_idx), Number(f_idx), Number(1)]))
-                    facts.append(("c_neg_rule", [Number(r_idx), Number(f_idx)]))
+                    facts.append(("feature_condition", [Number(r_idx), String(f"b{f_idx}"), Number(1)]))
+                    facts.append(("c_neg_rule", [Number(r_idx), String(f"b{f_idx}")]))
                 elif condition_str.startswith("(:c_n_gt"):
-                    facts.append(("feature_condition", [Number(r_idx), Number(f_idx + len(domain_data.domain_feature_data.boolean_features.features_by_index)), Number(2)]))
-                    facts.append(("c_gt_rule", [Number(r_idx), Number(f_idx + len(domain_data.domain_feature_data.boolean_features.features_by_index))]))
+                    facts.append(("feature_condition", [Number(r_idx), String(f"n{f_idx}"), Number(2)]))
+                    facts.append(("c_gt_rule", [Number(r_idx), String(f"n{f_idx}")]))
                 elif condition_str.startswith("(:c_n_eq"):
-                    facts.append(("feature_condition", [Number(r_idx), Number(f_idx + len(domain_data.domain_feature_data.boolean_features.features_by_index)), Number(3)]))
-                    facts.append(("c_eq_rule", [Number(r_idx), Number(f_idx + len(domain_data.domain_feature_data.boolean_features.features_by_index))]))
+                    facts.append(("feature_condition", [Number(r_idx), String(f"n{f_idx}"), Number(3)]))
+                    facts.append(("c_eq_rule", [Number(r_idx), String(f"n{f_idx}")]))
                 else:
-                    raise Exception("Cannot parse condition {condition_str}")
+                    raise RuntimeError(f"Cannot parse condition {condition_str}")
             for effect in rule.get_effects():
                 effect_str = effect.str()
                 result = re.findall(r"\(.* (\d+)\)", effect_str)
                 assert len(result) == 1
                 f_idx = int(result[0])
                 if effect_str.startswith("(:e_b_pos"):
-                    facts.append(("feature_effect", [Number(r_idx), Number(f_idx), Number(0)]))
-                    facts.append(("e_pos_rule", [Number(r_idx), Number(f_idx)]))
+                    facts.append(("feature_effect", [Number(r_idx), String(f"b{f_idx}"), Number(0)]))
+                    facts.append(("e_pos_rule", [Number(r_idx), String(f"b{f_idx}")]))
                 elif effect_str.startswith("(:e_b_neg"):
-                    facts.append(("feature_effect", [Number(r_idx), Number(f_idx), Number(1)]))
-                    facts.append(("e_neg_rule", [Number(r_idx), Number(f_idx)]))
+                    facts.append(("feature_effect", [Number(r_idx), String(f"b{f_idx}"), Number(1)]))
+                    facts.append(("e_neg_rule", [Number(r_idx), String(f"b{f_idx}")]))
                 elif effect_str.startswith("(:e_b_bot"):
-                    facts.append(("feature_effect", [Number(r_idx), Number(f_idx), Number(2)]))
-                    facts.append(("e_bot_rule", [Number(r_idx), Number(f_idx)]))
+                    facts.append(("feature_effect", [Number(r_idx), String(f"b{f_idx}"), Number(2)]))
+                    facts.append(("e_bot_rule", [Number(r_idx), String(f"b{f_idx}")]))
                 elif effect_str.startswith("(:e_n_inc"):
-                    facts.append(("feature_effect", [Number(r_idx), Number(f_idx + len(domain_data.domain_feature_data.boolean_features.features_by_index)), Number(3)]))
-                    facts.append(("e_inc_rule", [Number(r_idx), Number(f_idx + len(domain_data.domain_feature_data.boolean_features.features_by_index))]))
+                    facts.append(("feature_effect", [Number(r_idx), String(f"n{f_idx}"), Number(3)]))
+                    facts.append(("e_inc_rule", [Number(r_idx), String(f"n{f_idx}")]))
                 elif effect_str.startswith("(:e_n_dec"):
-                    facts.append(("feature_effect", [Number(r_idx), Number(f_idx + len(domain_data.domain_feature_data.boolean_features.features_by_index)), Number(4)]))
-                    facts.append(("e_dec_rule", [Number(r_idx), Number(f_idx + len(domain_data.domain_feature_data.boolean_features.features_by_index))]))
+                    facts.append(("feature_effect", [Number(r_idx), String(f"n{f_idx}"), Number(4)]))
+                    facts.append(("e_dec_rule", [Number(r_idx), String(f"n{f_idx}")]))
                 elif effect_str.startswith("(:e_n_bot"):
-                    facts.append(("feature_effect", [Number(r_idx), Number(f_idx + len(domain_data.domain_feature_data.boolean_features.features_by_index)), Number(5)]))
-                    facts.append(("e_bot_rule", [Number(r_idx), Number(f_idx + len(domain_data.domain_feature_data.boolean_features.features_by_index))]))
+                    facts.append(("feature_effect", [Number(r_idx), String(f"n{f_idx}"), Number(5)]))
+                    facts.append(("e_bot_rule", [Number(r_idx), String(f"n{f_idx}")]))
                 else:
-                    raise Exception("Cannot parse effect {effect_str}")
+                    raise RuntimeError(f"Cannot parse effect {effect_str}")
         # State pair equivalence facts
         #print("cover:")
         for instance_data in instance_datas:
@@ -156,6 +156,7 @@ class ASPFactory:
                         facts.append(("cover", [Number(instance_data.id), Number(s_idx), Number(s_prime_idx), Number(r_idx)]))
                         #print(instance_data.id, s_idx, s_prime_idx, r_idx)
         return facts
+
 
     def make_tuple_graph_equivalence_facts(self, domain_data: DomainData, instance_datas: List[InstanceData]):
         facts = []
@@ -185,9 +186,9 @@ class ASPFactory:
 
     def make_facts(self, domain_data: DomainData, instance_datas: List[InstanceData]):
         facts = []
-        facts.extend(self.make_state_space_facts(domain_data, instance_datas))
-        facts.extend(self.make_domain_feature_data_facts(domain_data, instance_datas))
-        facts.extend(self.make_instance_feature_data_facts(domain_data, instance_datas))
+        facts.extend(self.make_state_space_facts(instance_datas))
+        facts.extend(self.make_domain_feature_data_facts(domain_data))
+        facts.extend(self.make_instance_feature_data_facts(instance_datas))
         facts.extend(self.make_state_pair_equivalence_data_facts(domain_data, instance_datas))
         facts.extend(self.make_tuple_graph_equivalence_facts(domain_data, instance_datas))
         facts.extend(self.make_tuple_graph_facts(domain_data, instance_datas))
@@ -221,19 +222,19 @@ class ASPFactory:
         selected_feature_idxs = set()
         for symbol in symbols:
             if symbol.name == "select":
-                selected_feature_idxs.add(symbol.arguments[0].number)
+                selected_feature_idxs.add(symbol.arguments[0].string)
         # preprocess symbols
         rule_to_feature_to_condition = defaultdict(dict)
         rule_to_feature_to_effect = defaultdict(dict)
         for symbol in symbols:
             if symbol.name == "feature_condition":
                 r_idx = symbol.arguments[0].number
-                f_idx = symbol.arguments[1].number
+                f_idx = symbol.arguments[1].string
                 condition = symbol.arguments[2].number
                 rule_to_feature_to_condition[r_idx][f_idx] = condition
             if symbol.name == "feature_effect":
                 r_idx = symbol.arguments[0].number
-                f_idx = symbol.arguments[1].number
+                f_idx = symbol.arguments[1].string
                 effect = symbol.arguments[2].number
                 rule_to_feature_to_effect[r_idx][f_idx] = effect
         facts = set()

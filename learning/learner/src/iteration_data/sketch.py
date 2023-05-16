@@ -9,9 +9,7 @@ from learner.src.instance_data.instance_data import InstanceData
 
 
 class Sketch:
-    def __init__(self, booleans: List[dlplan.Boolean], numericals: List[dlplan.Numerical], dlplan_policy: dlplan.Policy, width: int):
-        self.booleans = booleans
-        self.numericals = numericals
+    def __init__(self, dlplan_policy: dlplan.Policy, width: int):
         self.dlplan_policy = dlplan_policy
         self.width = width
 
@@ -112,7 +110,7 @@ class Sketch:
         goal_b_values = set()
         nongoal_b_values = set()
         for s_idx, state in instance_data.state_space.get_states().items():
-            b_values = self._compute_state_b_values(self.booleans, self.numericals, instance_data, state)
+            b_values = self._compute_state_b_values(self.dlplan_policy.get_booleans(), self.dlplan_policy.get_numericals(), instance_data, state)
             separating = True
             if instance_data.is_goal(s_idx):
                 goal_b_values.add(b_values)
@@ -150,5 +148,5 @@ class Sketch:
     def print(self):
         print(self.dlplan_policy.str())
         print("Numer of sketch rules:", len(self.dlplan_policy.get_rules()))
-        print("Number of selected features:", len(self.booleans) + len(self.numericals))
-        print("Maximum complexity of selected feature:", max([0] + [boolean.compute_complexity() for boolean in self.booleans] + [numerical.compute_complexity() for numerical in self.numericals]))
+        print("Number of selected features:", len(self.dlplan_policy.get_booleans()) + len(self.dlplan_policy.get_numericals()))
+        print("Maximum complexity of selected feature:", max([0] + [boolean.compute_complexity() for boolean in self.dlplan_policy.get_booleans()] + [numerical.compute_complexity() for numerical in self.dlplan_policy.get_numericals()]))

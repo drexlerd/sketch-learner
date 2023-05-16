@@ -4,7 +4,7 @@ from typing import List, Dict
 
 from learner.src.domain_data.domain_data import DomainData
 from learner.src.instance_data.instance_information import InstanceInformation
-from learner.src.iteration_data.feature_valuations import FeatureValuation
+from learner.src.iteration_data.feature_valuations import StateFeatureValuation
 from learner.src.iteration_data.state_pair_equivalence import StatePairEquivalence
 from learner.src.iteration_data.tuple_graph_equivalence import TupleGraphEquivalence
 from learner.src.util.command import write_file
@@ -15,13 +15,15 @@ from learner.src.util.command import create_experiment_workspace
 class InstanceData:
     id: int
     domain_data: DomainData
-    denotations_caches: dlplan.DenotationsCaches
+    denotations_caches: dlplan.DenotationsCaches  # We use a cache for each instance such that we can ignore the instance index.
     instance_information: InstanceInformation
     state_space: dlplan.StateSpace = None
     goal_distances: Dict[int, int] = None
     tuple_graphs: Dict[int, dlplan.TupleGraph] = None
     initial_s_idxs: List[int] = None  # in cases we need multiple initial states
-    feature_valuations: List[FeatureValuation] = None
+    feature_valuations: List[StateFeatureValuation] = None
+    boolean_feature_valuations: Dict[int, List[bool]] = None
+    numerical_feature_valuations: Dict[int, List[int]] = None
     state_pair_equivalences: Dict[int, StatePairEquivalence] = None
     tuple_graph_equivalences: Dict[int, TupleGraphEquivalence] = None
 
@@ -38,7 +40,7 @@ class InstanceData:
                 create_experiment_workspace(self.instance_information.workspace / "tuple_graphs", False)
                 write_file(self.instance_information.workspace / "tuple_graphs" / f"{tuple_graph.get_root_state_index()}.dot", tuple_graph.to_dot(1))
 
-    def set_feature_valuations(self, feature_valuations: List[FeatureValuation], create_dump=False):
+    def set_feature_valuations(self, feature_valuations: List[StateFeatureValuation], create_dump=False):
         self.feature_valuations = feature_valuations
         if create_dump:
             create_experiment_workspace(self.workspace, False)

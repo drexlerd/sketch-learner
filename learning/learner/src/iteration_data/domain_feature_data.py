@@ -9,19 +9,19 @@ class Feature:
 
 class Features:
     def __init__(self):
-        self.features_by_index = []
-        self.features_by_repr = OrderedDict()
+        self.f_idx_to_feature = dict()
+        self.f_repr_to_feature = OrderedDict()
 
     def add_feature(self, feature: Feature):
         """
         overwrites an existing feature
         """
-        feature_repr = feature.dlplan_feature.compute_repr()
-        if feature_repr not in self.features_by_repr:
-            self.features_by_index.append(feature)
-            self.features_by_repr[feature_repr] = feature
+        f_repr = feature.dlplan_feature.compute_repr()
+        if f_repr not in self.f_repr_to_feature:
+            self.f_idx_to_feature[feature.dlplan_feature.get_index()] = feature
+            self.f_repr_to_feature[f_repr] = feature
         else:
-            self.features_by_repr[feature_repr].complexity = feature.complexity
+            self.f_repr_to_feature[f_repr].complexity = feature.complexity
 
 
 class DomainFeatureData:

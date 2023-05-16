@@ -53,7 +53,10 @@ def learn_sketch(config, domain_data, instance_datas, workspace):
 
         logging.info(colored("Initializing InstanceFeatureDatas...", "blue", "on_grey"))
         for instance_data in selected_instance_datas:
-            instance_data.set_feature_valuations(FeatureValuationsFactory().make_feature_valuations(instance_data))
+            state_feature_valuations, boolean_feature_valuations, numerical_feature_valuations = FeatureValuationsFactory().make_feature_valuations(instance_data)
+            instance_data.set_feature_valuations(state_feature_valuations)
+            instance_data.boolean_feature_valuations = boolean_feature_valuations
+            instance_data.numerical_feature_valuations = numerical_feature_valuations
         logging.info(colored("..done", "blue", "on_grey"))
 
         logging.info(colored("Initializing StatePairEquivalenceDatas...", "blue", "on_grey"))
@@ -103,8 +106,8 @@ def learn_sketch(config, domain_data, instance_datas, workspace):
                 print(colored("No sketch exists that solves all geneneral subproblems!", "red", "on_grey"))
                 exit(1)
             asp_factory.print_statistics()
-            booleans, numericals, dlplan_policy = D2sepDlplanPolicyFactory().make_dlplan_policy_from_answer_set(symbols, domain_data)
-            sketch = Sketch(booleans, numericals, dlplan_policy, config.width)
+            dlplan_policy = D2sepDlplanPolicyFactory().make_dlplan_policy_from_answer_set(symbols, domain_data)
+            sketch = Sketch(dlplan_policy, config.width)
             logging.info("Learned the following sketch:")
             sketch.print()
             if compute_smallest_unsolved_instance(config, sketch, selected_instance_datas) is None:

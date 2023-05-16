@@ -1,19 +1,13 @@
-from typing import List
+from typing import Dict
 from dataclasses import dataclass
 
 
 @dataclass
-class FeatureValuation:
+class StateFeatureValuation:
     s_idx: int
-    boolean_feature_valuations: List[bool]
-    numerical_feature_valuations: List[int]
+    b_idx_to_val: Dict[int, bool]
+    n_idx_to_val: Dict[int, int]
 
-    def __hash__(self):
-        return hash(tuple(self.boolean_feature_valuations + self.numerical_feature_valuations))
-
-    def __eq__(self, other):
-        return self.boolean_feature_valuations == other.boolean_feature_valuations and \
-               self.numerical_feature_valuations == other.numerical_feature_valuations
 
     def __str__(self):
-        return self.s_idx + ": " + self.boolean_feature_valuations + " " + self.numerical_feature_valuations
+        return str(self.s_idx) + ": " + str(self.b_idx_to_val) + " " + str(self.n_idx_to_val)

@@ -3,7 +3,7 @@ from learner.src.driver import BENCHMARK_DIR
 
 def experiments():
     base = dict(
-        pipeline="hierarchy_pipeline",
+        pipeline="sketch",
     )
 
     exps = dict()
@@ -26,8 +26,8 @@ def experiments():
         generate_features=False,
         add_features=["b_empty(c_and(c_primitive(at-robby,0),c_one_of(rooma)))",  # robot at room b
                       "n_count(r_primitive(carry,0,1))",  # 4 num balls that the robot carries
-                      "n_count(c_equal(r_primitive(at_g,0,1), r_primitive(at,0,1)))",  # 4 num misplaced balls, i.e., num balls at roomb
-                      "b_empty(r_diff(r_primitive(at_g,0,1), r_primitive(at,0,1)))"  # goal separating feature
+                      "n_count(r_diff(r_primitive(at_g,0,1), r_primitive(at,0,1)))",  # 4 num misplaced balls, i.e., num balls at roomb
+                      "b_empty(r_diff(r_primitive(at_g,0,1), r_primitive(at,0,1)))",  # goal separating feature
         ],
     )
     return exps

@@ -8,9 +8,10 @@ class DomainDataFactory:
     def make_domain_data(self, config, vocabulary_info: dlplan.VocabularyInfo):
         logging.info(f"Constructing DomainData for filename {config.domain_filename}")
         domain_filename = config.domain_filename
+        policy_builder = dlplan.PolicyBuilder()
         syntactic_element_factory = self._construct_syntactic_element_factory(vocabulary_info)
         feature_generator = self._construct_feature_generator(config)
-        return DomainData(domain_filename, vocabulary_info, syntactic_element_factory, feature_generator)
+        return DomainData(domain_filename, vocabulary_info, policy_builder, syntactic_element_factory, feature_generator)
 
     def _construct_syntactic_element_factory(self, vocabulary_info):
         """ Constructs an empty factory for constructing elements. """

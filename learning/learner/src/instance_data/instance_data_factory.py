@@ -51,7 +51,6 @@ class InstanceDataFactory:
         instance_datas = sorted(instance_datas, key=lambda x : len(x.state_space.get_states()))
         for instance_idx, instance_data in enumerate(instance_datas):
             instance_data.id = instance_idx
-            instance_data.state_space.get_instance_info().set_index(instance_idx)
         # change back working directory
         os.chdir(cwd)
         return instance_datas, domain_data

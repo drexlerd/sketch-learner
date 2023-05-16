@@ -3,7 +3,7 @@ from learner.src.driver import BENCHMARK_DIR
 
 def experiments():
     base = dict(
-        pipeline="hierarchy_pipeline",
+        pipeline="sketch",
     )
 
     exps = dict()
