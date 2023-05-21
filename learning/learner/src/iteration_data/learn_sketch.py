@@ -1,4 +1,5 @@
 import logging
+import dlplan
 
 from typing import List
 from termcolor import colored
@@ -137,4 +138,5 @@ def learn_sketch(config, domain_data, instance_datas, workspace):
             print("Smallest unsolved instance:", smallest_unsolved_instance.id)
             print("Selected instances:", selected_instance_idxs)
         i += 1
-    return sketch
+
+    return sketch, Sketch(dlplan.PolicyMinimizer().minimize(sketch.dlplan_policy, domain_data.policy_builder), config.width)

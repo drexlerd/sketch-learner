@@ -19,11 +19,14 @@ def run(config, data, rng):
         instance_data.set_tuple_graphs(tuple_graph_factory.make_tuple_graphs(instance_data))
     logging.info(colored("..done", "blue", "on_grey"))
 
-    sketch = learn_sketch(config, domain_data, instance_datas, config.workspace / "learning")
+    sketch, sketch_minimized = learn_sketch(config, domain_data, instance_datas, config.workspace / "learning")
     create_experiment_workspace(config.workspace / "output")
     write_file(config.workspace / "output" / f"sketch_{config.width}.txt", sketch.dlplan_policy.str())
+    write_file(config.workspace / "output" / f"sketch_minimized_{config.width}.txt", sketch_minimized.dlplan_policy.str())
 
     print("Summary:")
     print("Sketch:")
     sketch.print()
+    print("Sketch minimized:")
+    sketch_minimized.print()
     return ExitCode.Success, None
