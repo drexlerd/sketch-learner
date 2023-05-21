@@ -101,8 +101,8 @@ class StepRunner:
             logging.getLogger().setLevel(self.loglevel)
         else:
             current = self.elapsed_time()
-            print(console.header("END OF STEP #{}: {}. {:.2f} CPU sec - {:.2f} MB".format(
-                self.stepnum, self.step_name, current - self.start, self.used_memory())))
+            print(console.header("END OF STEP #{}: {}. {:.2f} CPU hours - {:.2f} GB".format(
+                self.stepnum, self.step_name, (current - self.start) / 3600, self.used_memory() / 1000)))
 
     def run(self, config):
         exitcode = self._run(config)
