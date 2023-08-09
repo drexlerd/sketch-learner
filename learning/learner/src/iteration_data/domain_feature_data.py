@@ -16,7 +16,7 @@ class Features:
         """
         overwrites an existing feature
         """
-        f_repr = feature.dlplan_feature.compute_repr()
+        f_repr = repr(feature.dlplan_feature)
         if f_repr not in self.f_repr_to_feature:
             self.f_idx_to_feature[feature.dlplan_feature.get_index()] = feature
             self.f_repr_to_feature[f_repr] = feature
