@@ -1,5 +1,5 @@
 import logging
-import dlplan
+from dlplan.policy import PolicyMinimizer
 
 from typing import List
 from termcolor import colored
@@ -45,7 +45,7 @@ def learn_sketch(config, domain_data, instance_datas, workspace):
                 workspace / f"iteration_{i}")
             instance_data.set_state_space(instance_data.state_space, True)
             print("     id:", instance_data.id, "name:", instance_data.instance_information.name)
-    
+
         logging.info(colored("Initializing DomainFeatureData...", "blue", "on_grey"))
         domain_feature_data_factory = DomainFeatureDataFactory()
         domain_feature_data_factory.make_domain_feature_data_from_instance_datas(config, domain_data, selected_instance_datas)
@@ -139,4 +139,4 @@ def learn_sketch(config, domain_data, instance_datas, workspace):
             print("Selected instances:", selected_instance_idxs)
         i += 1
 
-    return sketch, Sketch(dlplan.PolicyMinimizer().minimize(sketch.dlplan_policy, domain_data.policy_builder), config.width)
+    return sketch, Sketch(PolicyMinimizer().minimize(sketch.dlplan_policy, domain_data.policy_builder), config.width)

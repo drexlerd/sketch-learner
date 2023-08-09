@@ -1,4 +1,5 @@
-import dlplan
+from dlplan.policy import PolicyBuilder
+
 import math
 
 from collections import defaultdict
@@ -57,7 +58,7 @@ class StatePairEquivalenceFactory:
                         effects = self._make_effects(policy_builder, domain_data.domain_feature_data, instance_data.feature_valuations[s_idx], instance_data.feature_valuations[s_prime_idx])
                         # add rule
                         rule = policy_builder.add_rule(conditions, effects)
-                        rule_repr = rule.compute_repr()
+                        rule_repr = repr(rule)
                         if rule_repr in rule_repr_to_idx:
                             r_idx = rule_repr_to_idx[rule_repr]
                         else:
@@ -74,7 +75,7 @@ class StatePairEquivalenceFactory:
         domain_data.domain_state_pair_equivalence = DomainStatePairEquivalence(rules)
 
     def _make_conditions(self,
-        policy_builder: dlplan.PolicyBuilder,
+        policy_builder: PolicyBuilder,
         domain_feature_data: DomainFeatureData,
         feature_valuations: StateFeatureValuation):
         """ Create conditions over all features that are satisfied in source_idx """
@@ -94,7 +95,7 @@ class StatePairEquivalenceFactory:
         return conditions
 
     def _make_effects(self,
-        policy_builder: dlplan.PolicyBuilder,
+        policy_builder: PolicyBuilder,
         domain_feature_data: DomainFeatureData,
         source_feature_valuations: StateFeatureValuation,
         target_feature_valuations: StateFeatureValuation):

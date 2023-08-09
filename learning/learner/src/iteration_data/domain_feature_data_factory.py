@@ -1,5 +1,4 @@
-import logging
-import dlplan
+from dlplan.core import Boolean, Numerical, State
 
 from dataclasses import dataclass
 from typing import  List, Tuple
@@ -41,7 +40,7 @@ class DomainFeatureDataFactory:
             dlplan_states.update(set(instance_data.state_space.get_states().values()))
         self.make_domain_feature_data(config, domain_data, list(dlplan_states))
 
-    def make_domain_feature_data(self, config, domain_data: DomainData, dlplan_states: List[dlplan.State]):
+    def make_domain_feature_data(self, config, domain_data: DomainData, dlplan_states: List[State]):
         boolean_features, numerical_features = self._generate_features(config, domain_data, dlplan_states)
         self.statistics.increase_num_dlplan_states(len(dlplan_states))
         self.statistics.increase_num_boolean_features(len(boolean_features))
@@ -57,7 +56,7 @@ class DomainFeatureDataFactory:
             domain_data.all_domain_feature_data.numerical_features.add_feature(Feature(numerical_feature, numerical_feature.compute_complexity() + 1))
         domain_data.domain_feature_data = domain_feature_data
 
-    def _generate_features(self, config, domain_data: DomainData, dlplan_states: List[dlplan.State]) -> Tuple[List[dlplan.Boolean], List[dlplan.Numerical]]:
+    def _generate_features(self, config, domain_data: DomainData, dlplan_states: List[State]) -> Tuple[List[Boolean], List[Numerical]]:
         """ Generate features and their evaluations
         for all states in the given transition systems. """
         syntactic_element_factory = domain_data.syntactic_element_factory

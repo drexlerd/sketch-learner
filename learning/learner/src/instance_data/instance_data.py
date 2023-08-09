@@ -1,4 +1,7 @@
-import dlplan
+from dlplan.core import DenotationsCaches
+from dlplan.novelty import TupleGraph
+from dlplan.state_space import StateSpace
+
 from dataclasses import dataclass
 from typing import List, Dict
 
@@ -15,11 +18,11 @@ from learner.src.util.command import create_experiment_workspace
 class InstanceData:
     id: int
     domain_data: DomainData
-    denotations_caches: dlplan.DenotationsCaches  # We use a cache for each instance such that we can ignore the instance index.
+    denotations_caches: DenotationsCaches  # We use a cache for each instance such that we can ignore the instance index.
     instance_information: InstanceInformation
-    state_space: dlplan.StateSpace = None
+    state_space: StateSpace = None
     goal_distances: Dict[int, int] = None
-    tuple_graphs: Dict[int, dlplan.TupleGraph] = None
+    tuple_graphs: Dict[int, TupleGraph] = None
     initial_s_idxs: List[int] = None  # in cases we need multiple initial states
     feature_valuations: List[StateFeatureValuation] = None
     boolean_feature_valuations: Dict[int, List[bool]] = None
@@ -27,13 +30,13 @@ class InstanceData:
     state_pair_equivalences: Dict[int, StatePairEquivalence] = None
     tuple_graph_equivalences: Dict[int, TupleGraphEquivalence] = None
 
-    def set_state_space(self, state_space: dlplan.StateSpace, create_dump: bool = False):
+    def set_state_space(self, state_space: StateSpace, create_dump: bool = False):
         self.state_space = state_space
         if create_dump:
             create_experiment_workspace(self.instance_information.workspace, False)
             write_file(self.instance_information.workspace / f"{self.instance_information.name}.dot", state_space.to_dot(1))
 
-    def set_tuple_graphs(self, tuple_graphs: Dict[int, dlplan.TupleGraph], create_dump: bool = False):
+    def set_tuple_graphs(self, tuple_graphs: Dict[int, TupleGraph], create_dump: bool = False):
         self.tuple_graphs = tuple_graphs
         if create_dump:
             for tuple_graph in tuple_graphs.values():
@@ -43,8 +46,8 @@ class InstanceData:
     def set_feature_valuations(self, feature_valuations: List[StateFeatureValuation], create_dump=False):
         self.feature_valuations = feature_valuations
         if create_dump:
-            create_experiment_workspace(self.workspace, False)
-            write_file(self.workspace / self.instance_data.instance_information.name / "feature_valuations.txt", str(self.feature_valuations))
+            create_experiment_workspace(self.instance_information.workspace, False)
+            write_file(self.instance_information.workspace / self.instance_information.name / "feature_valuations.txt", str(self.feature_valuations))
 
     def set_state_pair_equivalences(self, state_pair_equivalences: Dict[int, StatePairEquivalence]):
         self.state_pair_equivalences = state_pair_equivalences

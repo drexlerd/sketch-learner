@@ -1,4 +1,5 @@
-import dlplan
+from dlplan.policy import Rule
+
 from typing import Dict, List, MutableSet
 from dataclasses import dataclass
 
@@ -23,8 +24,8 @@ class StatePairEquivalence:
 
 @dataclass
 class DomainStatePairEquivalence:
-    rules: List[dlplan.Rule]
+    rules: List[Rule]
 
     def print(self):
         print("DomainStatePairEquivalence:")
-        print("\n".join([rule.compute_repr() for rule in self.rules]))
+        print("\n".join([repr(rule) for rule in self.rules]))

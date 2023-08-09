@@ -21,8 +21,8 @@ def run(config, data, rng):
 
     sketch, sketch_minimized = learn_sketch(config, domain_data, instance_datas, config.workspace / "learning")
     create_experiment_workspace(config.workspace / "output")
-    write_file(config.workspace / "output" / f"sketch_{config.width}.txt", sketch.dlplan_policy.str())
-    write_file(config.workspace / "output" / f"sketch_minimized_{config.width}.txt", sketch_minimized.dlplan_policy.str())
+    write_file(config.workspace / "output" / f"sketch_{config.width}.txt", str(sketch.dlplan_policy))
+    write_file(config.workspace / "output" / f"sketch_minimized_{config.width}.txt", str(sketch_minimized.dlplan_policy))
 
     print("Summary:")
     print("Sketch:")

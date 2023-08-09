@@ -1,6 +1,8 @@
 import logging
-import dlplan
 import os
+
+from dlplan.core import DenotationsCaches
+from dlplan.state_space import GeneratorExitCode, generate_state_space
 
 from learner.src.domain_data.domain_data_factory import DomainDataFactory
 from learner.src.instance_data.instance_data import InstanceData
@@ -17,8 +19,9 @@ class InstanceDataFactory:
             create_experiment_workspace(instance_information.workspace, False)
             # change working directory to put planner output files in correct directory
             os.chdir(instance_information.workspace)
-            result = dlplan.generate_state_space(str(config.domain_filename), str(instance_information.filename), vocabulary_info, len(instance_datas), config.max_time_per_instance)
-            if result.exit_code != dlplan.GeneratorExitCode.COMPLETE:
+            print(instance_information.workspace)
+            result = generate_state_space(str(config.domain_filename), str(instance_information.filename), vocabulary_info, len(instance_datas), config.max_time_per_instance)
+            if result.exit_code != GeneratorExitCode.COMPLETE:
                 continue
             state_space = result.state_space
             if vocabulary_info is None:
@@ -39,7 +42,7 @@ class InstanceDataFactory:
                 continue
             else:
                 print("Num states:", len(state_space.get_states()))
-                instance_data = InstanceData(len(instance_datas), domain_data, dlplan.DenotationsCaches(), instance_information)
+                instance_data = InstanceData(len(instance_datas), domain_data, DenotationsCaches(), instance_information)
                 instance_data.set_state_space(state_space, create_dump=True)
                 instance_data.set_goal_distances(goal_distances)
                 if config.closed_Q:

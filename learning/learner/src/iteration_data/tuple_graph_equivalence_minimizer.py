@@ -49,9 +49,10 @@ class TupleGraphEquivalenceMinimizer:
             # select tuple nodes according to order
             selected_t_idxs = set()
             representative_r_idxs = set()
-            for _, tuple_nodes in enumerate(tuple_graph.get_tuple_nodes_by_distance()):
-                for tuple_node in tuple_nodes:
-                    t_idx = tuple_node.get_tuple_index()
+            for tuple_node_indices in tuple_graph.get_tuple_node_indices_by_distance():
+                for tuple_node_index in tuple_node_indices:
+                    tuple_node = tuple_graph.get_tuple_nodes()[tuple_node_index]
+                    t_idx = tuple_node.get_index()
                     r_idxs = frozenset(tuple_graph_equivalence.t_idx_to_r_idxs[t_idx])
                     if order.get(t_idx, 0) != 0:
                         continue

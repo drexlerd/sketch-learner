@@ -1,4 +1,6 @@
-import dlplan
+from dlplan.core import Boolean, Numerical, State
+from dlplan.policy import Policy
+
 import math
 
 from termcolor import colored
@@ -9,7 +11,7 @@ from learner.src.instance_data.instance_data import InstanceData
 
 
 class Sketch:
-    def __init__(self, dlplan_policy: dlplan.Policy, width: int):
+    def __init__(self, dlplan_policy: Policy, width: int):
         self.dlplan_policy = dlplan_policy
         self.width = width
 
@@ -39,12 +41,13 @@ class Sketch:
             source_state = instance_data.state_space.get_states()[root_idx]
             bounded = False
             min_compatible_distance = math.inf
-            for tuple_distance, tuple_nodes in enumerate(tuple_graph.get_tuple_nodes_by_distance()):
-                for tuple_node in tuple_nodes:
+            for tuple_distance, tuple_node_indices in enumerate(tuple_graph.get_tuple_node_indices_by_distance()):
+                for tuple_node_index in tuple_node_indices:
+                    tuple_node = tuple_graph.get_tuple_nodes()[tuple_node_index]
                     subgoal = True
                     for s_prime_idx in tuple_node.get_state_indices():
                         target_state = instance_data.state_space.get_states()[s_prime_idx]
-                        if self.dlplan_policy.evaluate_lazy(source_state, target_state, instance_data.denotations_caches) is not None:
+                        if self.dlplan_policy.evaluate(source_state, target_state, instance_data.denotations_caches) is not None:
                             min_compatible_distance = min(min_compatible_distance, tuple_distance)
                             subgoal_states_per_r_reachable_state[root_idx].add(s_prime_idx)
                             if s_prime_idx not in visited:
@@ -100,7 +103,7 @@ class Sketch:
                     stack.pop(-1)
         return True
 
-    def _compute_state_b_values(self, booleans: List[dlplan.Boolean], numericals: List[dlplan.Numerical], instance_data: InstanceData, state: dlplan.State):
+    def _compute_state_b_values(self, booleans: List[Boolean], numericals: List[Numerical], instance_data: InstanceData, state: State):
         return tuple([boolean.evaluate(state, instance_data.denotations_caches) for boolean in booleans] + [numerical.evaluate(state, instance_data.denotations_caches) > 0 for numerical in numericals])
 
     def _verify_goal_separating_features(self, instance_data: InstanceData):
@@ -146,7 +149,7 @@ class Sketch:
         return True
 
     def print(self):
-        print(self.dlplan_policy.str())
+        print(str(self.dlplan_policy))
         print("Numer of sketch rules:", len(self.dlplan_policy.get_rules()))
         print("Number of selected features:", len(self.dlplan_policy.get_booleans()) + len(self.dlplan_policy.get_numericals()))
         print("Maximum complexity of selected feature:", max([0] + [boolean.compute_complexity() for boolean in self.dlplan_policy.get_booleans()] + [numerical.compute_complexity() for numerical in self.dlplan_policy.get_numericals()]))

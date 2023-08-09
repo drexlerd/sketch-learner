@@ -50,9 +50,10 @@ class TupleGraphEquivalenceFactory:
                             r_idx_to_deadend_distance[r_idx] = min(r_idx_to_deadend_distance.get(r_idx, math.inf), state_distance)
                 t_idx_to_r_idxs = defaultdict(set)
                 t_idx_to_distance = dict()
-                for subgoal_distance, tuple_nodes in enumerate(tuple_graph.get_tuple_nodes_by_distance()):
-                    for tuple_node in tuple_nodes:
-                        t_idx = tuple_node.get_tuple_index()
+                for subgoal_distance, tuple_node_indices in enumerate(tuple_graph.get_tuple_node_indices_by_distance()):
+                    for tuple_node_index in tuple_node_indices:
+                        tuple_node = tuple_graph.get_tuple_nodes()[tuple_node_index]
+                        t_idx = tuple_node.get_index()
                         r_idxs = set()
                         for s_prime_idx in tuple_node.get_state_indices():
                             r_idx = state_pair_equivalence.subgoal_state_to_r_idx[s_prime_idx]
@@ -60,7 +61,7 @@ class TupleGraphEquivalenceFactory:
                         t_idx_to_distance[t_idx] = subgoal_distance
                         t_idx_to_r_idxs[t_idx] = r_idxs
                 tuple_graph_equivalence = TupleGraphEquivalence(t_idx_to_r_idxs, t_idx_to_distance, r_idx_to_deadend_distance)
-                #tuple_graph_equivalence.print()
+                # tuple_graph_equivalence.print()
                 tuple_graph_equivalences[s_idx] = tuple_graph_equivalence
                 self.statistics.collect_statistics(tuple_graph_equivalence)
             instance_data.tuple_graph_equivalences = tuple_graph_equivalences

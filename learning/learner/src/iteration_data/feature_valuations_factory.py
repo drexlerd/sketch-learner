@@ -7,7 +7,7 @@ from learner.src.iteration_data.feature_valuations import StateFeatureValuation
 
 class FeatureValuationsFactory:
     def make_feature_valuations(self, instance_data: InstanceData) -> Dict[int, StateFeatureValuation]:
-        """ Evaluates the features on all states.   
+        """ Evaluates the features on all states.
         """
         state_feature_valuations = dict()
         boolean_feature_valuations = defaultdict(list)
