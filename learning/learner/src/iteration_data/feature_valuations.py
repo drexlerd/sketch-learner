@@ -1,13 +1,13 @@
 from typing import Dict
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 
 
 @dataclass
-class StateFeatureValuation:
-    s_idx: int
-    b_idx_to_val: Dict[int, bool]
-    n_idx_to_val: Dict[int, int]
+class FeatureValuations:
+    b_idx_to_val: Dict[int, bool] = field(default_factory=dict)
+    n_idx_to_val: Dict[int, int] = field(default_factory=dict)
 
 
-    def __str__(self):
-        return str(self.s_idx) + ": " + str(self.b_idx_to_val) + " " + str(self.n_idx_to_val)
+@dataclass
+class PerStateFeatureValuations:
+    s_idx_to_feature_valuations: Dict[int, FeatureValuations] = field(default_factory=dict)

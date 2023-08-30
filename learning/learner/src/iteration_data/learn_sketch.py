@@ -10,13 +10,12 @@ from learner.src.asp.returncodes import ClingoExitCode
 
 from learner.src.instance_data.instance_data import InstanceData
 from learner.src.instance_data.instance_information import InstanceInformation
-from learner.src.iteration_data.domain_feature_data_factory import DomainFeatureDataFactory
-from learner.src.iteration_data.feature_valuations_factory import FeatureValuationsFactory
+from learner.src.iteration_data.feature_pool_utils import compute_feature_pool
+from learner.src.iteration_data.feature_valuations_utils import compute_per_state_feature_valuations
 from learner.src.iteration_data.dlplan_policy_factory import D2sepDlplanPolicyFactory
 from learner.src.iteration_data.sketch import Sketch
-from learner.src.iteration_data.state_pair_equivalence_factory import StatePairEquivalenceFactory
-from learner.src.iteration_data.tuple_graph_equivalence_factory import TupleGraphEquivalenceFactory
-from learner.src.iteration_data.tuple_graph_equivalence_minimizer import TupleGraphEquivalenceMinimizer
+from learner.src.iteration_data.state_pair_equivalence_utils import compute_state_pair_equivalences
+from learner.src.iteration_data.tuple_graph_equivalence_utils import compute_tuple_graph_equivalences, minimize_tuple_graph_equivalences
 from learner.src.util.timer import CountDownTimer
 from learner.src.util.command import create_experiment_workspace
 
@@ -47,34 +46,23 @@ def learn_sketch(config, domain_data, instance_datas, workspace):
             print("     id:", instance_data.id, "name:", instance_data.instance_information.name)
 
         logging.info(colored("Initializing DomainFeatureData...", "blue", "on_grey"))
-        domain_feature_data_factory = DomainFeatureDataFactory()
-        domain_feature_data_factory.make_domain_feature_data_from_instance_datas(config, domain_data, selected_instance_datas)
-        domain_feature_data_factory.statistics.print()
+        domain_data.feature_pool = compute_feature_pool(config, domain_data, selected_instance_datas)
         logging.info(colored("..done", "blue", "on_grey"))
 
-        logging.info(colored("Initializing InstanceFeatureDatas...", "blue", "on_grey"))
-        for instance_data in selected_instance_datas:
-            state_feature_valuations, boolean_feature_valuations, numerical_feature_valuations = FeatureValuationsFactory().make_feature_valuations(instance_data)
-            instance_data.set_feature_valuations(state_feature_valuations)
-            instance_data.boolean_feature_valuations = boolean_feature_valuations
-            instance_data.numerical_feature_valuations = numerical_feature_valuations
+        logging.info(colored("Constructing PerStateFeatureValuations...", "blue", "on_grey"))
+        compute_per_state_feature_valuations(selected_instance_datas)
         logging.info(colored("..done", "blue", "on_grey"))
 
-        logging.info(colored("Initializing StatePairEquivalenceDatas...", "blue", "on_grey"))
-        state_pair_equivalence_factory = StatePairEquivalenceFactory()
-        state_pair_equivalence_factory.make_state_pair_equivalences(domain_data, selected_instance_datas)
+        logging.info(colored("Constructing StatePairEquivalenceDatas...", "blue", "on_grey"))
+        compute_state_pair_equivalences(domain_data, selected_instance_datas)
         logging.info(colored("..done", "blue", "on_grey"))
 
-        logging.info(colored("Initializing TupleGraphEquivalences...", "blue", "on_grey"))
-        tuple_graph_equivalence_factory = TupleGraphEquivalenceFactory()
-        tuple_graph_equivalence_factory.make_tuple_graph_equivalences(domain_data, selected_instance_datas)
-        tuple_graph_equivalence_factory.statistics.print()
+        logging.info(colored("Constructing TupleGraphEquivalences...", "blue", "on_grey"))
+        compute_tuple_graph_equivalences(selected_instance_datas)
         logging.info(colored("..done", "blue", "on_grey"))
 
-        # logging.info(colored(f"Initializing TupleGraphEquivalenceMinimizer...", "blue", "on_grey"))
-        tuple_graph_equivalence_minimizer = TupleGraphEquivalenceMinimizer()
-        for instance_data in selected_instance_datas:
-            tuple_graph_equivalence_minimizer.minimize(instance_data)
+        logging.info(colored("Minimizing TupleGraphEquivalences...", "blue", "on_grey"))
+        minimize_tuple_graph_equivalences(selected_instance_datas)
         logging.info(colored("..done", "blue", "on_grey"))
 
         d2_facts = set()
@@ -121,11 +109,6 @@ def learn_sketch(config, domain_data, instance_datas, workspace):
         assert compute_smallest_unsolved_instance(config, sketch, selected_instance_datas) is None
         smallest_unsolved_instance = compute_smallest_unsolved_instance(config, sketch, instance_datas)
         logging.info(colored("..done", "blue", "on_grey"))
-
-        logging.info(colored("Iteration summary:", "yellow", "on_grey"))
-        domain_feature_data_factory.statistics.print()
-        state_pair_equivalence_factory.statistics.print()
-        tuple_graph_equivalence_minimizer.statistics.print()
 
         if smallest_unsolved_instance is None:
             print(colored("Sketch solves all instances!", "red", "on_grey"))

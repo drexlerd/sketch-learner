@@ -70,11 +70,11 @@ class ASPFactory:
     def make_domain_feature_data_facts(self, domain_data: DomainData):
         facts = []
         # Domain feature facts
-        for b_idx, boolean in domain_data.domain_feature_data.boolean_features.f_idx_to_feature.items():
+        for b_idx, boolean in domain_data.feature_pool.boolean_features.f_idx_to_feature.items():
             facts.append(("boolean", [String(f"b{b_idx}")]))
             facts.append(("feature", [String(f"b{b_idx}")]))
             facts.append(("complexity", [String(f"b{b_idx}"), Number(boolean.complexity)]))
-        for n_idx, numerical in domain_data.domain_feature_data.numerical_features.f_idx_to_feature.items():
+        for n_idx, numerical in domain_data.feature_pool.numerical_features.f_idx_to_feature.items():
             facts.append(("numerical", [String(f"n{n_idx}")]))
             facts.append(("feature", [String(f"n{n_idx}")]))
             facts.append(("complexity", [String(f"n{n_idx}"), Number(numerical.complexity)]))
@@ -85,7 +85,7 @@ class ASPFactory:
         # Instance feature valuation facts
         for instance_data in instance_datas:
             for s_idx in instance_data.state_space.get_states().keys():
-                feature_valuation = instance_data.feature_valuations[s_idx]
+                feature_valuation = instance_data.per_state_feature_valuations.s_idx_to_feature_valuations[s_idx]
                 for b_idx, f_val in feature_valuation.b_idx_to_val.items():
                     facts.append(("value", [Number(instance_data.id), Number(s_idx), String(f"b{b_idx}"), Number(f_val)]))
                     facts.append(("b_value", [Number(instance_data.id), Number(s_idx), String(f"b{b_idx}"), Number(f_val)]))
@@ -146,7 +146,7 @@ class ASPFactory:
         # State pair equivalence facts
         #print("cover:")
         for instance_data in instance_datas:
-            for s_idx, state_pair_equivalence in instance_data.state_pair_equivalences.items():
+            for s_idx, state_pair_equivalence in instance_data.per_state_state_pair_equivalences.s_idx_to_state_pair_equivalence.items():
                 if instance_data.is_deadend(s_idx):
                     continue
                 for r_idx, d in state_pair_equivalence.r_idx_to_distance.items():
@@ -162,7 +162,7 @@ class ASPFactory:
         facts = []
         # Tuple graph equivalence facts (Perhaps deprecated since we now let rules imply subgoals)
         for instance_data in instance_datas:
-            for s_idx, tuple_graph_equivalence in instance_data.tuple_graph_equivalences.items():
+            for s_idx, tuple_graph_equivalence in instance_data.per_state_tuple_graph_equivalences.s_idx_to_tuple_graph_equivalence.items():
                 if instance_data.is_deadend(s_idx):
                     continue
                 for t_idx, r_idxs in tuple_graph_equivalence.t_idx_to_r_idxs.items():
@@ -178,7 +178,7 @@ class ASPFactory:
     def make_tuple_graph_facts(self, domain_data: DomainData, instance_datas: List[InstanceData]):
         facts = []
         for instance_data in instance_datas:
-            for s_idx, tuple_graph in instance_data.tuple_graphs.items():
+            for s_idx, tuple_graph in instance_data.per_state_tuple_graphs.s_idx_to_tuple_graph.items():
                 for d, s_prime_idxs in enumerate(tuple_graph.get_state_indices_by_distance()):
                     for s_prime_idx in s_prime_idxs:
                         facts.append(("s_distance", [Number(instance_data.id), Number(s_idx), Number(s_prime_idx), Number(d)]))
@@ -198,13 +198,13 @@ class ASPFactory:
         """ T_0 facts """
         facts = set()
         for instance_data in instance_datas:
-            for s_idx, tuple_graph in instance_data.tuple_graphs.items():
+            for s_idx, tuple_graph in instance_data.per_state_tuple_graphs.s_idx_to_tuple_graph.items():
                 if not instance_data.is_alive(s_idx):
                     continue
                 equivalences = set()
                 for s_prime_idxs in tuple_graph.get_state_indices_by_distance():
                     for s_prime_idx in s_prime_idxs:
-                        equivalences.add(instance_data.state_pair_equivalences[s_idx].subgoal_state_to_r_idx[s_prime_idx])
+                        equivalences.add(instance_data.per_state_state_pair_equivalences.s_idx_to_state_pair_equivalence[s_idx].subgoal_state_to_r_idx[s_prime_idx])
                 for i, eq_1 in enumerate(equivalences):
                     for j, eq_2 in enumerate(equivalences):
                         if i < j:

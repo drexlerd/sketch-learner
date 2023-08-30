@@ -37,7 +37,7 @@ class Sketch:
                 return False, []
             if instance_data.is_goal(root_idx):
                 continue
-            tuple_graph = instance_data.tuple_graphs[root_idx]
+            tuple_graph = instance_data.per_state_tuple_graphs.s_idx_to_tuple_graph[root_idx]
             source_state = instance_data.state_space.get_states()[root_idx]
             bounded = False
             min_compatible_distance = math.inf
