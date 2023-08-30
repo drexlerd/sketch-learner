@@ -64,7 +64,6 @@ class ASPFactory:
                     facts.append(("nongoal", [Number(instance_data.id), Number(s_idx)]))
                 if instance_data.is_alive(s_idx):
                     facts.append(("alive", [Number(instance_data.id), Number(s_idx)]))
-                #print(instance_data.state_space.get_states()[s_idx])
         return facts
 
     def make_domain_feature_data_facts(self, domain_data: DomainData):
