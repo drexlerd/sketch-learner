@@ -1,21 +1,16 @@
 import logging
 from termcolor import colored
 
-from learner.src.instance_data.tuple_graph_utils import compute_tuple_graphs
 from learner.src.returncodes import ExitCode
 from learner.src.iteration_data.learn_sketch import learn_sketch
 from learner.src.util.command import create_experiment_workspace, write_file
 
 
 def run(config, data, rng):
-    logging.info(colored("Initializing InstanceDatas...", "blue", "on_grey"))
-    serialization_data = data["generate_state_space"]
+    logging.info(colored("Loading data...", "blue", "on_grey"))
+    serialization_data = data["generate_tuple_graphs"]
     domain_data = serialization_data.domain_data
     instance_datas = serialization_data.instance_datas
-    logging.info(colored("..done", "blue", "on_grey"))
-
-    logging.info(colored("Initializing TupleGraphs...", "blue", "on_grey"))
-    compute_tuple_graphs(config.width, instance_datas)
     logging.info(colored("..done", "blue", "on_grey"))
 
     sketch, sketch_minimized = learn_sketch(config, domain_data, instance_datas, config.workspace / "learning")

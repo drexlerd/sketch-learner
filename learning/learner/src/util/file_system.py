@@ -23,4 +23,3 @@ def write_object_to_file(filename, object):
 def read_object_from_file(filename):
     with open(filename, "r") as f:
         return jsonpickle.decode(f.readline(), keys=True)
-

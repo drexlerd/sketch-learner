@@ -1,6 +1,7 @@
-from dlplan.core import SyntacticElementFactory
-
 from typing import  List
+
+from dlplan.core import SyntacticElementFactory
+from dlplan.generator import FeatureGenerator
 
 from learner.src.domain_data.domain_data import DomainData
 from learner.src.instance_data.instance_data import InstanceData
@@ -27,8 +28,20 @@ def compute_feature_pool(config, domain_data: DomainData, instance_datas: List[I
 
     syntactic_element_factory = domain_data.syntactic_element_factory
     feature_pool = FeaturePool()
+    feature_generator = FeatureGenerator()
+    feature_generator.set_generate_inclusion_boolean(False)
+    feature_generator.set_generate_diff_concept(False)
+    feature_generator.set_generate_or_concept(False)
+    feature_generator.set_generate_projection_concept(False)
+    feature_generator.set_generate_subset_concept(False)
+    feature_generator.set_generate_compose_role(False)
+    feature_generator.set_generate_diff_role(False)
+    feature_generator.set_generate_identity_role(False)
+    feature_generator.set_generate_not_role(False)
+    feature_generator.set_generate_or_role(False)
+    feature_generator.set_generate_top_role(False)
+    feature_generator.set_generate_transitive_reflexive_closure_role(False)
     if config.generate_features:
-        feature_generator = domain_data.feature_generator
         feature_reprs = feature_generator.generate(syntactic_element_factory, dlplan_states, config.concept_complexity_limit, config.role_complexity_limit, config.boolean_complexity_limit, config.count_numerical_complexity_limit, config.distance_numerical_complexity_limit, config.time_limit, config.feature_limit)
         add_features(domain_data.syntactic_element_factory, feature_reprs, feature_pool)
     if config.add_features:

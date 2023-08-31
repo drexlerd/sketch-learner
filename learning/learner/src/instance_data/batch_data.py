@@ -5,8 +5,8 @@ from typing import List
 from dlplan.serialization import Data, serialize, deserialize
 
 from learner.src.domain_data.domain_data import DomainData
-from learner.src.domain_data.domain_data_utils import construct_feature_generator
 from learner.src.instance_data.instance_data import InstanceData
+from learner.src.instance_data.tuple_graph import PerStateTupleGraphs
 
 
 def parse_tuple(t: str):
@@ -58,7 +58,7 @@ class BatchData:
             state_spaces[str(i)] = instance_data.state_space
             denotations_caches[str(i)] = instance_data.denotations_caches
             if instance_data.per_state_tuple_graphs is not None:
-                for s_idx, tuple_graph in instance_data.per_state_tuple_graphs.items():
+                for s_idx, tuple_graph in instance_data.per_state_tuple_graphs.s_idx_to_tuple_graph.items():
                     tuple_graphs[str((i, s_idx))] = tuple_graph
             initial_s_idxs[str(i)] = instance_data.initial_s_idxs
             per_state_feature_valuations[str(i)] = instance_data.per_state_feature_valuations
@@ -93,15 +93,14 @@ class BatchData:
         vocabulary_info = data.vocabulary_infos["0"]
         policy_builder = data.policy_builders["0"]
         syntactic_element_factory = data.syntactic_element_factories["0"]
-        feature_generator = construct_feature_generator()
         domain_feature_data = state["domain_feature_data"]
         domain_state_pair_equivalence = state["domain_state_pair_equivalence"]
-        self.domain_data = DomainData(state["domain_filename"], vocabulary_info, policy_builder, syntactic_element_factory, feature_generator, domain_feature_data, domain_state_pair_equivalence)
+        self.domain_data = DomainData(state["domain_filename"], vocabulary_info, policy_builder, syntactic_element_factory, domain_feature_data, domain_state_pair_equivalence)
         # InstanceData
         self.instance_datas = []
         num_instances = state["num_instances"]
         for i in range(num_instances):
-            tuple_graphs = { ast.literal_eval(key)[1]: tuple_graph for key, tuple_graph in data.tuple_graphs if ast.literal_eval(key)[0] == i}
+            tuple_graphs = PerStateTupleGraphs({ ast.literal_eval(key)[1]: tuple_graph for key, tuple_graph in data.tuple_graphs.items() if ast.literal_eval(key)[0] == i})
             self.instance_datas.append(
                 InstanceData(
                     state["ids"][i],

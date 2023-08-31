@@ -143,7 +143,6 @@ class ASPFactory:
                 else:
                     raise RuntimeError(f"Cannot parse effect {effect_str}")
         # State pair equivalence facts
-        #print("cover:")
         for instance_data in instance_datas:
             for s_idx, state_pair_equivalence in instance_data.per_state_state_pair_equivalences.s_idx_to_state_pair_equivalence.items():
                 if instance_data.is_deadend(s_idx):
@@ -153,7 +152,6 @@ class ASPFactory:
                 for r_idx, s_prime_idxs in state_pair_equivalence.r_idx_to_subgoal_states.items():
                     for s_prime_idx in s_prime_idxs:
                         facts.append(("cover", [Number(instance_data.id), Number(s_idx), Number(s_prime_idx), Number(r_idx)]))
-                        #print(instance_data.id, s_idx, s_prime_idx, r_idx)
         return facts
 
 
