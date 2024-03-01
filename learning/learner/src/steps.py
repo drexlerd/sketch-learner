@@ -29,48 +29,6 @@ class Step:
         raise NotImplementedError()
 
 
-class GenerateStateSpacesStep(Step):
-    """ Generates state spaces from PDDL files. """
-    def process_config(self, config):
-        return config
-
-    def get_required_attributes(self):
-        return []
-
-    def get_required_data(self):
-        return []
-
-    def description(self):
-        return "Generate state spaces module"
-
-    def get_step_runner(self):
-        """Implement what is to be done
-        """
-        from . import step_generate_state_spaces
-        return step_generate_state_spaces.run
-
-
-class GenerateTupleGraphsStep(Step):
-    """ Generates state spaces from PDDL files. """
-    def process_config(self, config):
-        return config
-
-    def get_required_attributes(self):
-        return []
-
-    def get_required_data(self):
-        return ["generate_state_space"]
-
-    def description(self):
-        return "Generate state spaces module"
-
-    def get_step_runner(self):
-        """Implement what is to be done
-        """
-        from . import step_generate_tuple_graphs
-        return step_generate_tuple_graphs.run
-
-
 class LearningSketchesStep(Step):
     """ Incrementally learns a sketch by considering more and more instances """
     def process_config(self, config):
@@ -80,7 +38,7 @@ class LearningSketchesStep(Step):
         return []
 
     def get_required_data(self):
-        return ["generate_tuple_graphs"]
+        return []
 
     def description(self):
         return "Incremental learning module"
@@ -110,8 +68,6 @@ def generate_pipeline_from_list(elements, **kwargs):
 
 DEFAULT_PIPELINES = dict(
     sketch=[
-        GenerateStateSpacesStep,
-        GenerateTupleGraphsStep,
         LearningSketchesStep
     ],
 )

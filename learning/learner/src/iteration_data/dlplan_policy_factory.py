@@ -2,7 +2,7 @@ import re
 
 from abc import ABC, abstractmethod
 
-from dlplan.policy import PolicyBuilder
+from dlplan.policy import PolicyFactory
 from clingo import Symbol
 from typing import List
 
@@ -52,7 +52,7 @@ class ExplicitDlplanPolicyFactory(DlplanPolicyFactory):
                     f_idx_to_dlplan_numerical[f_idx] = domain_data.feature_pool.numerical_features.f_idx_to_feature[f_idx].dlplan_feature
         return f_idx_to_dlplan_boolean, f_idx_to_dlplan_numerical
 
-    def _add_rules(self, policy_builder: PolicyBuilder, symbols: List[Symbol], f_idx_to_dlplan_boolean, f_idx_to_dlplan_numerical):
+    def _add_rules(self, policy_builder: PolicyFactory, symbols: List[Symbol], f_idx_to_dlplan_boolean, f_idx_to_dlplan_numerical):
         """ """
         rules_dict = dict()
         for symbol in symbols:
@@ -87,7 +87,7 @@ class ExplicitDlplanPolicyFactory(DlplanPolicyFactory):
                         rules_dict[r_idx][1].add(policy_builder.add_bot_effect(f_idx_to_dlplan_numerical[f_idx]))
         rules = set()
         for _, (conditions, effects) in rules_dict.items():
-            rules.add(policy_builder.add_rule(conditions, effects))
+            rules.add(policy_builder.make_rule(conditions, effects))
         return rules
 
 
@@ -113,17 +113,26 @@ class D2sepDlplanPolicyFactory(DlplanPolicyFactory):
                 rule = domain_data.domain_state_pair_equivalence.rules[r_idx]
                 conditions = set()
                 for condition in rule.get_conditions():
-                    feature = condition.get_boolean()
-                    if feature is None:
-                        feature = condition.get_numerical()
+                    result = re.findall(r"\(.* (\d+)\)", str(condition))
+                    f_idx = int(result[0])
+                    assert len(result) == 1
+                    assert not (f_idx in domain_data.feature_pool.boolean_features.f_idx_to_feature and f_idx in domain_data.feature_pool.numerical_features.f_idx_to_feature)
+                    if f_idx in domain_data.feature_pool.boolean_features.f_idx_to_feature:
+                        feature = domain_data.feature_pool.boolean_features.f_idx_to_feature[f_idx].dlplan_feature
+                    if f_idx in domain_data.feature_pool.numerical_features.f_idx_to_feature:
+                        feature = domain_data.feature_pool.numerical_features.f_idx_to_feature[f_idx].dlplan_feature
                     if feature in dlplan_features:
                         conditions.add(condition)
                 effects = set()
                 for effect in rule.get_effects():
-                    feature = effect.get_boolean()
-                    if feature is None:
-                        feature = effect.get_numerical()
+                    result = re.findall(r"\(.* (\d+)\)", str(effect))
+                    f_idx = int(result[0])
+                    assert len(result) == 1
+                    if f_idx in domain_data.feature_pool.boolean_features.f_idx_to_feature:
+                        feature = domain_data.feature_pool.boolean_features.f_idx_to_feature[f_idx].dlplan_feature
+                    if f_idx in domain_data.feature_pool.numerical_features.f_idx_to_feature:
+                        feature = domain_data.feature_pool.numerical_features.f_idx_to_feature[f_idx].dlplan_feature
                     if feature in dlplan_features:
                         effects.add(effect)
-                rules.add(policy_builder.add_rule(conditions, effects))
-        return policy_builder.add_policy(rules)
+                rules.add(policy_builder.make_rule(conditions, effects))
+        return policy_builder.make_policy(rules)
