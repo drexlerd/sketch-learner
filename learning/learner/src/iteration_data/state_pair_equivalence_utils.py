@@ -1,4 +1,5 @@
 from dlplan.policy import PolicyFactory
+from dlplan.core import Boolean, Numerical
 
 import math
 
@@ -19,18 +20,17 @@ def make_conditions(policy_builder: PolicyFactory,
     feature_valuations: FeatureValuations):
     """ Create conditions over all features that are satisfied in source_idx """
     conditions = set()
-    for b_idx, boolean in feature_pool.boolean_features.f_idx_to_feature.items():
-        val = feature_valuations.b_idx_to_val[b_idx]
-        if val:
-            conditions.add(policy_builder.make_pos_condition(policy_builder.make_boolean(str(b_idx), boolean.dlplan_feature)))
-        else:
-            conditions.add(policy_builder.make_neg_condition(policy_builder.make_boolean(str(b_idx), boolean.dlplan_feature)))
-    for n_idx, numerical in feature_pool.numerical_features.f_idx_to_feature.items():
-        val = feature_valuations.n_idx_to_val[n_idx]
-        if val > 0:
-            conditions.add(policy_builder.make_gt_condition(policy_builder.make_numerical(str(n_idx), numerical.dlplan_feature)))
-        else:
-            conditions.add(policy_builder.make_eq_condition(policy_builder.make_numerical(str(n_idx), numerical.dlplan_feature)))
+    for f_idx, (feature, val) in enumerate(zip(feature_pool.features, feature_valuations.f_idx_to_val)):
+        if isinstance(feature.dlplan_feature, Boolean):
+            if val:
+                conditions.add(policy_builder.make_pos_condition(policy_builder.make_boolean(str(f_idx), feature.dlplan_feature)))
+            else:
+                conditions.add(policy_builder.make_neg_condition(policy_builder.make_boolean(str(f_idx), feature.dlplan_feature)))
+        elif isinstance(feature.dlplan_feature, Numerical):
+            if val > 0:
+                conditions.add(policy_builder.make_gt_condition(policy_builder.make_numerical(str(f_idx), feature.dlplan_feature)))
+            else:
+                conditions.add(policy_builder.make_eq_condition(policy_builder.make_numerical(str(f_idx), feature.dlplan_feature)))
     return conditions
 
 def make_effects(policy_builder: PolicyFactory,
@@ -39,24 +39,21 @@ def make_effects(policy_builder: PolicyFactory,
     target_feature_valuations: FeatureValuations):
     """ Create effects over all features that are satisfied in (source_idx,target_idx) """
     effects = set()
-    for b_idx, boolean in feature_pool.boolean_features.f_idx_to_feature.items():
-        source_val = source_feature_valuations.b_idx_to_val[b_idx]
-        target_val = target_feature_valuations.b_idx_to_val[b_idx]
-        if source_val and not target_val:
-            effects.add(policy_builder.make_neg_effect(policy_builder.make_boolean(str(b_idx), boolean.dlplan_feature)))
-        elif not source_val and target_val:
-            effects.add(policy_builder.make_pos_effect(policy_builder.make_boolean(str(b_idx), boolean.dlplan_feature)))
-        else:
-            effects.add(policy_builder.make_bot_effect(policy_builder.make_boolean(str(b_idx), boolean.dlplan_feature)))
-    for n_idx, numerical in feature_pool.numerical_features.f_idx_to_feature.items():
-        source_val = source_feature_valuations.n_idx_to_val[n_idx]
-        target_val = target_feature_valuations.n_idx_to_val[n_idx]
-        if source_val > target_val:
-            effects.add(policy_builder.make_dec_effect(policy_builder.make_numerical(str(n_idx), numerical.dlplan_feature)))
-        elif source_val < target_val:
-            effects.add(policy_builder.make_inc_effect(policy_builder.make_numerical(str(n_idx), numerical.dlplan_feature)))
-        else:
-            effects.add(policy_builder.make_bot_effect(policy_builder.make_numerical(str(n_idx), numerical.dlplan_feature)))
+    for f_idx, (feature, source_val, target_val) in enumerate(zip(feature_pool.features, source_feature_valuations.f_idx_to_val, target_feature_valuations.f_idx_to_val)):
+        if isinstance(feature.dlplan_feature, Boolean):
+            if source_val and not target_val:
+                effects.add(policy_builder.make_neg_effect(policy_builder.make_boolean(str(f_idx), feature.dlplan_feature)))
+            elif not source_val and target_val:
+                effects.add(policy_builder.make_pos_effect(policy_builder.make_boolean(str(f_idx), feature.dlplan_feature)))
+            else:
+                effects.add(policy_builder.make_bot_effect(policy_builder.make_boolean(str(f_idx), feature.dlplan_feature)))
+        elif isinstance(feature.dlplan_feature, Numerical):
+            if source_val > target_val:
+                effects.add(policy_builder.make_dec_effect(policy_builder.make_numerical(str(f_idx), feature.dlplan_feature)))
+            elif source_val < target_val:
+                effects.add(policy_builder.make_inc_effect(policy_builder.make_numerical(str(f_idx), feature.dlplan_feature)))
+            else:
+                effects.add(policy_builder.make_bot_effect(policy_builder.make_numerical(str(f_idx), feature.dlplan_feature)))
     return effects
 
 

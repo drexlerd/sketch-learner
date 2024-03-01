@@ -1,5 +1,5 @@
-from typing import Dict, Union
-from dataclasses import dataclass, field
+from typing import Union, List
+from dataclasses import dataclass
 
 from dlplan.core import Boolean, Numerical
 
@@ -20,20 +20,7 @@ class Feature:
 
 
 @dataclass
-class PerTypeFeatures:
-    """ Stores a collection of features accessible by repr or index. """
-    f_idx_to_feature: Dict[int, Union[Boolean, Numerical]] = field(default_factory=dict)
-    f_repr_to_feature: Dict[str, Union[Boolean, Numerical]] = field(default_factory=dict)
-
-    def add_feature(self, feature: Feature):
-        """ Adds and potentially overwrites an existing feature
-        """
-        self.f_idx_to_feature[feature.dlplan_feature.get_index()] = feature
-        self.f_repr_to_feature[repr(feature.dlplan_feature)] = feature
-
-
-@dataclass
 class FeaturePool:
     """ Stores the generated pool of features. """
-    boolean_features: PerTypeFeatures = field(default_factory=PerTypeFeatures)
-    numerical_features: PerTypeFeatures = field(default_factory=PerTypeFeatures)
+    features: List[Feature]
+

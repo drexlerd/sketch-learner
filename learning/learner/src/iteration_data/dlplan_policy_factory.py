@@ -101,12 +101,8 @@ class D2sepDlplanPolicyFactory(DlplanPolicyFactory):
         dlplan_features = set()
         for symbol in symbols:
             if symbol.name == "select":
-                if symbol.arguments[0].string[0] == "b":
-                    f_idx = extract_f_idx_from_argument(symbol.arguments[0].string)
-                    dlplan_features.add(domain_data.feature_pool.boolean_features.f_idx_to_feature[f_idx].dlplan_feature)
-                elif symbol.arguments[0].string[0] == "n":
-                    f_idx = extract_f_idx_from_argument(symbol.arguments[0].string)
-                    dlplan_features.add(domain_data.feature_pool.numerical_features.f_idx_to_feature[f_idx].dlplan_feature)
+                f_idx = symbol.arguments[0].number
+                dlplan_features.add(domain_data.feature_pool.features[f_idx].dlplan_feature)
         rules = set()
         for symbol in symbols:
             if symbol.name == "good":
@@ -117,23 +113,16 @@ class D2sepDlplanPolicyFactory(DlplanPolicyFactory):
                     result = re.findall(r"\(.* (\d+)\)", str(condition))
                     f_idx = int(result[0])
                     assert len(result) == 1
-                    assert not (f_idx in domain_data.feature_pool.boolean_features.f_idx_to_feature and f_idx in domain_data.feature_pool.numerical_features.f_idx_to_feature)
-                    if f_idx in domain_data.feature_pool.boolean_features.f_idx_to_feature:
-                        feature = domain_data.feature_pool.boolean_features.f_idx_to_feature[f_idx].dlplan_feature
-                    if f_idx in domain_data.feature_pool.numerical_features.f_idx_to_feature:
-                        feature = domain_data.feature_pool.numerical_features.f_idx_to_feature[f_idx].dlplan_feature
-                    if feature in dlplan_features:
+                    dlplan_feature = domain_data.feature_pool.features[f_idx].dlplan_feature
+                    if dlplan_feature in dlplan_features:
                         conditions.add(condition)
                 effects = set()
                 for effect in rule.get_effects():
                     result = re.findall(r"\(.* (\d+)\)", str(effect))
                     f_idx = int(result[0])
                     assert len(result) == 1
-                    if f_idx in domain_data.feature_pool.boolean_features.f_idx_to_feature:
-                        feature = domain_data.feature_pool.boolean_features.f_idx_to_feature[f_idx].dlplan_feature
-                    if f_idx in domain_data.feature_pool.numerical_features.f_idx_to_feature:
-                        feature = domain_data.feature_pool.numerical_features.f_idx_to_feature[f_idx].dlplan_feature
-                    if feature in dlplan_features:
+                    dlplan_feature = domain_data.feature_pool.features[f_idx].dlplan_feature
+                    if dlplan_feature in dlplan_features:
                         effects.add(effect)
                 rules.add(policy_builder.make_rule(conditions, effects))
         return policy_builder.make_policy(rules)
