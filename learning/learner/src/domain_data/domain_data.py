@@ -14,5 +14,5 @@ class DomainData:
     vocabulary_info: VocabularyInfo
     policy_builder: PolicyFactory
     syntactic_element_factory: SyntacticElementFactory
-    domain_feature_data: FeaturePool = None
+    feature_pool: FeaturePool = None
     domain_state_pair_equivalence: PerStateStatePairEquivalences = None

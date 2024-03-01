@@ -37,7 +37,7 @@ def compute_tuple_graph_equivalences(instance_datas: List[InstanceData]) -> None
                     tuple_graph_equivalence.t_idx_to_r_idxs[t_idx] = r_idxs
                     num_nodes += 1
             per_state_tuple_graph_equivalences.s_idx_to_tuple_graph_equivalence[s_idx] = tuple_graph_equivalence
-        instance_data.set_per_state_tuple_graph_equivalences(per_state_tuple_graph_equivalences)
+        instance_data.per_state_tuple_graph_equivalences = per_state_tuple_graph_equivalences
 
     print("Tuple graph equivalence construction statistics:")
     print("Num nodes:", num_nodes)

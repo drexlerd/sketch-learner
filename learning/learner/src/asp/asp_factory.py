@@ -122,7 +122,7 @@ class ASPFactory:
         for instance_data in instance_datas:
             for s_idx in instance_data.state_space.get_states().keys():
                 feature_valuation = instance_data.per_state_feature_valuations.s_idx_to_feature_valuations[s_idx]
-                for f_idx, (feature, val) in enumerate(zip(feature_pool.features, feature_valuation.f_idx_to_val)):
+                for f_idx, (feature, val) in enumerate(zip(feature_pool.features, feature_valuation.feature_valuations)):
                     facts.append(("value", [Number(instance_data.id), Number(s_idx), Number(f_idx), Number(val)]))
                     if isinstance(feature.dlplan_feature, Boolean):
                         facts.append(("b_value", [Number(instance_data.id), Number(s_idx), Number(f_idx), Number(val)]))

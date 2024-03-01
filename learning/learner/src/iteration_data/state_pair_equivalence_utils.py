@@ -20,7 +20,7 @@ def make_conditions(policy_builder: PolicyFactory,
     feature_valuations: FeatureValuations):
     """ Create conditions over all features that are satisfied in source_idx """
     conditions = set()
-    for f_idx, (feature, val) in enumerate(zip(feature_pool.features, feature_valuations.f_idx_to_val)):
+    for f_idx, (feature, val) in enumerate(zip(feature_pool.features, feature_valuations.feature_valuations)):
         if isinstance(feature.dlplan_feature, Boolean):
             if val:
                 conditions.add(policy_builder.make_pos_condition(policy_builder.make_boolean(str(f_idx), feature.dlplan_feature)))
@@ -39,7 +39,7 @@ def make_effects(policy_builder: PolicyFactory,
     target_feature_valuations: FeatureValuations):
     """ Create effects over all features that are satisfied in (source_idx,target_idx) """
     effects = set()
-    for f_idx, (feature, source_val, target_val) in enumerate(zip(feature_pool.features, source_feature_valuations.f_idx_to_val, target_feature_valuations.f_idx_to_val)):
+    for f_idx, (feature, source_val, target_val) in enumerate(zip(feature_pool.features, source_feature_valuations.feature_valuations, target_feature_valuations.feature_valuations)):
         if isinstance(feature.dlplan_feature, Boolean):
             if source_val and not target_val:
                 effects.add(policy_builder.make_neg_effect(policy_builder.make_boolean(str(f_idx), feature.dlplan_feature)))
@@ -64,7 +64,7 @@ def compute_state_pair_equivalences(domain_data: DomainData,
     rules = []
     rule_repr_to_idx = dict()
     for instance_data in instance_datas:
-        per_state_state_pair_equivalences = PerStateStatePairEquivalences()
+        s_idx_to_state_pair_equivalence = dict()
         for s_idx, tuple_graph in instance_data.per_state_tuple_graphs.s_idx_to_tuple_graph.items():
             if instance_data.is_deadend(s_idx):
                 continue
@@ -89,6 +89,6 @@ def compute_state_pair_equivalences(domain_data: DomainData,
                     r_idx_to_distance[r_idx] = min(r_idx_to_distance.get(r_idx, math.inf), s_distance)
                     r_idx_to_subgoal_states[r_idx].add(s_prime_idx)
                     subgoal_states_to_r_idx[s_prime_idx] = r_idx
-            per_state_state_pair_equivalences.s_idx_to_state_pair_equivalence[s_idx] = StatePairEquivalence(r_idx_to_subgoal_states, r_idx_to_distance, subgoal_states_to_r_idx)
-        instance_data.set_per_state_state_pair_equivalences(per_state_state_pair_equivalences)
+            s_idx_to_state_pair_equivalence[s_idx] = StatePairEquivalence(r_idx_to_subgoal_states, r_idx_to_distance, subgoal_states_to_r_idx)
+        instance_data.per_state_state_pair_equivalences = PerStateStatePairEquivalences(s_idx_to_state_pair_equivalence)
     domain_data.domain_state_pair_equivalence = StatePairEquivalenceClasses(rules)

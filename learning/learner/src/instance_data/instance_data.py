@@ -43,21 +43,6 @@ class InstanceData:
                 create_experiment_workspace(self.instance_information.workspace / "tuple_graphs", False)
                 write_file(self.instance_information.workspace / "tuple_graphs" / f"{tuple_graph.get_root_state_index()}.dot", tuple_graph.to_dot(1))
 
-    def set_per_state_feature_valuations(self, per_state_feature_valuations: PerStateFeatureValuations, create_dump=False):
-        self.per_state_feature_valuations = per_state_feature_valuations
-        if create_dump:
-            create_experiment_workspace(self.instance_information.workspace, False)
-            write_file(self.instance_information.workspace / self.instance_information.name / "per_state_feature_valuations.txt", str(self.per_state_feature_valuations))
-
-    def set_per_state_state_pair_equivalences(self, per_state_state_pair_equivalences: PerStateStatePairEquivalences):
-        self.per_state_state_pair_equivalences = per_state_state_pair_equivalences
-
-    def set_per_state_tuple_graph_equivalences(self, per_state_tuple_graph_equivalence: PerStateTupleGraphEquivalences):
-        self.per_state_tuple_graph_equivalences = per_state_tuple_graph_equivalence
-
-    def set_goal_distances(self, goal_distances: Dict[int, int]):
-        self.goal_distances =  goal_distances
-
     def is_deadend(self, s_idx: int):
         return self.goal_distances.get(s_idx, None) is None
 
