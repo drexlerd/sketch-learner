@@ -39,7 +39,8 @@ def generate_experiment(domain_filename: str, instance_filenames: List[str], wor
 
         asp_name="sketch.lp",
 
-        add_features=[],
+        add_boolean_features=[],
+        add_numerical_features=[],
         generate_features=True,
 
         quiet=False,

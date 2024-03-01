@@ -110,17 +110,13 @@ class D2sepDlplanPolicyFactory(DlplanPolicyFactory):
                 rule = domain_data.domain_state_pair_equivalence.rules[r_idx]
                 conditions = set()
                 for condition in rule.get_conditions():
-                    result = re.findall(r"\(.* (\d+)\)", str(condition))
-                    f_idx = int(result[0])
-                    assert len(result) == 1
+                    f_idx = int(condition.get_named_element().get_key())
                     dlplan_feature = domain_data.feature_pool.features[f_idx].dlplan_feature
                     if dlplan_feature in dlplan_features:
                         conditions.add(condition)
                 effects = set()
                 for effect in rule.get_effects():
-                    result = re.findall(r"\(.* (\d+)\)", str(effect))
-                    f_idx = int(result[0])
-                    assert len(result) == 1
+                    f_idx = int(effect.get_named_element().get_key())
                     dlplan_feature = domain_data.feature_pool.features[f_idx].dlplan_feature
                     if dlplan_feature in dlplan_features:
                         effects.add(effect)

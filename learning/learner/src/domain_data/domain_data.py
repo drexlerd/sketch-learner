@@ -1,7 +1,6 @@
 from dataclasses import dataclass
 
 from dlplan.core import VocabularyInfo, SyntacticElementFactory
-from dlplan.generator import FeatureGenerator
 from dlplan.policy import PolicyFactory
 
 from learner.src.iteration_data.state_pair_equivalence import PerStateStatePairEquivalences

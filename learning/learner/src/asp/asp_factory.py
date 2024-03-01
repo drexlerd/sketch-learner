@@ -91,16 +91,28 @@ class ASPFactory:
                     facts.append(self._create_alive_fact(instance_data.id, s_idx))
         return facts
 
+    def _create_feature_fact(self, f_idx: int):
+        return ("feature", [Number(f_idx)])
+
+    def _create_complexity_fact(self, f_idx: int, complexity: int):
+        return ("complexity", [Number(f_idx), Number(complexity)])
+
+    def _create_boolean_fact(self, f_idx: int):
+        return ("boolean", [Number(f_idx)])
+
+    def _create_numerical_fact(self, f_idx: int):
+        return ("numerical", [Number(f_idx)])
+
     def make_domain_feature_data_facts(self, domain_data: DomainData):
         facts = []
         # Domain feature facts
         for f_idx, feature in enumerate(domain_data.feature_pool.features):
-            facts.append(("feature", [Number(f_idx)]))
-            facts.append(("complexity", [Number(f_idx), Number(feature.complexity)]))
+            facts.append(self._create_feature_fact(f_idx))
+            facts.append(self._create_complexity_fact(f_idx, feature.complexity))
             if isinstance(feature.dlplan_feature, Boolean):
-                facts.append(("boolean", [Number(f_idx)]))
+                facts.append(self._create_boolean_fact(f_idx))
             elif isinstance(feature.dlplan_feature, Numerical):
-                facts.append(("numerical", [Number(f_idx)]))
+                facts.append(self._create_numerical_fact(f_idx))
         return facts
 
     def make_instance_feature_data_facts(self, domain_data: DomainData, instance_datas: List[InstanceData]):
@@ -233,7 +245,7 @@ class ASPFactory:
         for symbol in symbols:
             if symbol.name == "good":
                 good_equivalences.add(symbol.arguments[0].number)
-        bad_equivalences = set([r_idx for r_idx in range(len(domain_data.domain_state_pair_equivalence.rules)) if r_idx not in good_equivalences])
+        bad_equivalences = set(r_idx for r_idx in range(len(domain_data.domain_state_pair_equivalence.rules)) if r_idx not in good_equivalences)
         # compute selected features
         selected_feature_idxs = set()
         for symbol in symbols:
