@@ -25,10 +25,14 @@ def experiments():
         strips_base,
         instance_filenames=list(strips_base["task_dir_debug"].iterdir()),
         generate_features=False,
-        add_features=["n_count(c_primitive(reward,0))",
-                      "n_concept_distance(c_primitive(at,0),r_restrict(r_primitive(adjacent,0,1),c_primitive(unblocked,0)),c_primitive(reward,0))",
-                      "b_empty(c_primitive(reward,0))"  # goal separating feature
+        add_boolean_features=[
+            "b_empty(c_primitive(reward,0))"  # goal separating feature
         ],
+        add_numerical_features=[
+            "n_count(c_primitive(reward,0))",
+            "n_concept_distance(c_primitive(at,0),r_restrict(r_primitive(adjacent,0,1),c_primitive(unblocked,0)),c_primitive(reward,0))",
+        ],
+
     )
 
     return exps

@@ -24,10 +24,13 @@ def experiments():
         strips_base,
         instance_filenames=list(strips_base["task_dir_debug"].iterdir()),
         generate_features=False,
-        add_features=["b_empty(c_and(c_primitive(at-robby,0),c_one_of(rooma)))",  # robot at room b
-                      "n_count(r_primitive(carry,0,1))",  # 4 num balls that the robot carries
-                      "n_count(r_diff(r_primitive(at_g,0,1), r_primitive(at,0,1)))",  # 4 num misplaced balls, i.e., num balls at roomb
-                      "b_empty(r_diff(r_primitive(at_g,0,1), r_primitive(at,0,1)))",  # goal separating feature
+        add_boolean_features=[
+            "b_empty(c_and(c_primitive(at-robby,0),c_one_of(rooma)))",  # robot at room b
+            "b_empty(r_diff(r_primitive(at_g,0,1), r_primitive(at,0,1)))",  # goal separating feature
+        ],
+        add_numerical_features=[
+            "n_count(r_primitive(carry,0,1))",  # 4 num balls that the robot carries
+            "n_count(r_diff(r_primitive(at_g,0,1), r_primitive(at,0,1)))",  # 4 num misplaced balls, i.e., num balls at roomb
         ],
     )
     return exps

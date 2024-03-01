@@ -1,6 +1,6 @@
 from typing import  List
 
-from dlplan.core import SyntacticElementFactory
+from dlplan.core import Boolean, Numerical
 from dlplan.generator import FeatureGenerator
 
 from learner.src.domain_data.domain_data import DomainData
@@ -8,16 +8,12 @@ from learner.src.instance_data.instance_data import InstanceData
 from learner.src.iteration_data.feature_pool import Feature, FeaturePool
 
 
-def add_features(syntactic_element_factory: SyntacticElementFactory, feature_reprs: List[str], feature_pool: FeaturePool):
-    for feature_repr in feature_reprs:
-        # To use features from parent node for free have add them with cost 1 and add cost + 1 to each generated feature
-        # To break ties in favor of numerical features, we add an additional + 1 to the complexity of Boolean features.
-        if feature_repr.startswith("n_"):
-            numerical = syntactic_element_factory.parse_numerical(feature_repr)
-            feature_pool.numerical_features.add_feature(Feature(numerical, numerical.compute_complexity() + 1))
-        elif feature_repr.startswith("b_"):
-            boolean = syntactic_element_factory.parse_boolean(feature_repr)
-            feature_pool.boolean_features.add_feature(Feature(boolean, boolean.compute_complexity() + 1 + 1))
+def add_boolean_feature(feature_pool: FeaturePool, boolean: Boolean):
+    feature_pool.boolean_features.add_feature(Feature(boolean, boolean.compute_complexity() + 1 + 1))
+
+
+def add_numerical_feature(feature_pool: FeaturePool, numerical: Numerical):
+    feature_pool.numerical_features.add_feature(Feature(numerical, numerical.compute_complexity() + 1))
 
 
 def compute_feature_pool(config, domain_data: DomainData, instance_datas: List[InstanceData]):
@@ -42,8 +38,13 @@ def compute_feature_pool(config, domain_data: DomainData, instance_datas: List[I
     feature_generator.set_generate_top_role(False)
     feature_generator.set_generate_transitive_reflexive_closure_role(False)
     if config.generate_features:
-        feature_reprs = feature_generator.generate(syntactic_element_factory, dlplan_states, config.concept_complexity_limit, config.role_complexity_limit, config.boolean_complexity_limit, config.count_numerical_complexity_limit, config.distance_numerical_complexity_limit, config.time_limit, config.feature_limit)
-        add_features(domain_data.syntactic_element_factory, feature_reprs, feature_pool)
-    if config.add_features:
-        add_features(domain_data.syntactic_element_factory, config.add_features, feature_pool)
+        [generated_booleans, generated_numericals, _, _] = feature_generator.generate(syntactic_element_factory, dlplan_states, config.concept_complexity_limit, config.role_complexity_limit, config.boolean_complexity_limit, config.count_numerical_complexity_limit, config.distance_numerical_complexity_limit, config.time_limit, config.feature_limit)
+        for boolean in generated_booleans:
+            add_boolean_feature(feature_pool, boolean)
+        for numerical in generated_numericals:
+            add_numerical_feature(feature_pool, numerical)
+    for boolean in config.add_boolean_features:
+        add_boolean_feature(feature_pool, syntactic_element_factory.parse_boolean(boolean))
+    for numerical in config.add_numerical_features:
+        add_numerical_feature(feature_pool, syntactic_element_factory.parse_numerical(numerical))
     return feature_pool

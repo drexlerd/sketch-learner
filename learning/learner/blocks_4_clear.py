@@ -25,9 +25,12 @@ def experiments():
         strips_base_blocks_4_clear,
         instance_filenames=list(strips_base_blocks_4_clear["task_dir_debug"].iterdir()),
         generate_features=False,
-        add_features=["b_nullary(arm-empty)",  # 2
-                      "n_count(r_primitive(on,0,1))",
-                      "b_empty(c_and(c_primitive(clear,0),c_primitive(clear_g,0)))",  # goal separating feature
+        add_boolean_features=[
+            "b_nullary(arm-empty)",  # 2
+            "b_empty(c_and(c_primitive(clear,0),c_primitive(clear_g,0)))",  # goal separating feature
+        ],
+        add_numerical_features=[
+            "n_count(r_primitive(on,0,1))"
         ],
     )
     return exps

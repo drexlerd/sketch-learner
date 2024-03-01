@@ -25,11 +25,13 @@ def experiments():
         strips_base,
         instance_filenames=list(strips_base["task_dir_debug"].iterdir()),
         generate_features=False,
-        add_features=[
+        add_boolean_features=[
+            "b_empty(c_and(c_not(c_primitive(visited,0)),c_primitive(visited_g,0)))",  # goal separating feature
+        ],
+        add_numerical_features=[
             "n_count(c_not(c_primitive(visited,0)))",  # 3
             "n_concept_distance(c_primitive(at-robot,0),r_primitive(connected,0,1),c_not(c_primitive(visited,0)))",  # 5
             "n_concept_distance(c_primitive(at-robot,0),r_primitive(connected,0,1),c_not(c_all(r_restrict(r_primitive(connected,0,1),c_primitive(visited_g,0)),c_primitive(visited,0))))",
-            "b_empty(c_and(c_not(c_primitive(visited,0)),c_primitive(visited_g,0)))",  # goal separating feature
         ],
     )
 
