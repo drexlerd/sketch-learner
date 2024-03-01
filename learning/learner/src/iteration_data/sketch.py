@@ -103,7 +103,7 @@ class Sketch:
                     stack.pop(-1)
         return True
 
-    def _compute_state_b_values(self, booleans: List[NamedBoolean], numericals: List[NamedNumerical], instance_data: InstanceData, state: State):
+    def _compute_state_b_values(self, booleans: List[NamedBoolean], numericals: List[NamedNumerical], state: State):
         return tuple([boolean.get_element().evaluate(state) for boolean in booleans] + [numerical.get_element().evaluate(state) > 0 for numerical in numericals])
 
     def _verify_goal_separating_features(self, instance_data: InstanceData):
@@ -112,10 +112,10 @@ class Sketch:
         """
         goal_b_values = set()
         nongoal_b_values = set()
-        booleans = sorted(list(self.dlplan_policy.get_booleans()), key=lambda x : str(x))
-        numericals = sorted(list(self.dlplan_policy.get_numericals()), key=lambda x : str(x))
+        booleans = self.dlplan_policy.get_booleans()
+        numericals = self.dlplan_policy.get_numericals()
         for s_idx, state in instance_data.state_space.get_states().items():
-            b_values = self._compute_state_b_values(booleans, numericals, instance_data, state)
+            b_values = self._compute_state_b_values(booleans, numericals, state)
             separating = True
             if instance_data.is_goal(s_idx):
                 goal_b_values.add(b_values)

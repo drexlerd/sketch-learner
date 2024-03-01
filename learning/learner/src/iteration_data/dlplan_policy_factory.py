@@ -2,7 +2,8 @@ import re
 
 from abc import ABC, abstractmethod
 
-from dlplan.policy import PolicyFactory
+from dlplan.policy import PolicyFactory, PositiveBooleanCondition, NegativeBooleanCondition, GreaterNumericalCondition, EqualNumericalCondition, PositiveBooleanEffect, NegativeBooleanEffect, UnchangedBooleanEffect, DecrementNumericalEffect, IncrementNumericalEffect, UnchangedNumericalEffect
+
 from clingo import Symbol
 from typing import List
 

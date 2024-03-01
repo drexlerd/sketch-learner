@@ -1,5 +1,7 @@
 import re
 
+from dlplan.policy import PositiveBooleanCondition, NegativeBooleanCondition, GreaterNumericalCondition, EqualNumericalCondition, PositiveBooleanEffect, NegativeBooleanEffect, UnchangedBooleanEffect, DecrementNumericalEffect, IncrementNumericalEffect, UnchangedNumericalEffect
+
 from clingo import Control, Number, Symbol, String
 from collections import defaultdict
 from typing import List
@@ -46,24 +48,46 @@ class ASPFactory:
     def load_problem_file(self, filename):
         self.ctl.load(str(filename))
 
+    def _create_initial_fact(self, instance_id: int, state_id: int):
+        return ("initial", [Number(instance_id), Number(state_id)])
+
+    def _create_state_fact(self, instance_id: int, state_id: int):
+        return ("state", [Number(instance_id), Number(state_id)])
+
+    def _create_solvable_fact(self, instance_id: int, state_id: int):
+        return ("solvable", [Number(instance_id), Number(state_id)])
+
+    def _create_unsolvable_fact(self, instance_id: int, state_id: int):
+        return ("unsolvable", [Number(instance_id), Number(state_id)])
+
+    def _create_goal_fact(self, instance_id: int, state_id: int):
+        return ("goal", [Number(instance_id), Number(state_id)])
+
+    def _create_nongoal_fact(self, instance_id: int, state_id: int):
+        return ("nongoal", [Number(instance_id), Number(state_id)])
+
+    def _create_alive_fact(self, instance_id: int, state_id: int):
+        return ("alive", [Number(instance_id), Number(state_id)])
+
     def make_state_space_facts(self, instance_datas: List[InstanceData]):
+        """ Create facts that encode the state space.
+        """
         facts = []
-        # State space facts
         for instance_data in instance_datas:
             for s_idx in instance_data.initial_s_idxs:
-                facts.append(("initial", [Number(instance_data.id), Number(s_idx)]))
+                facts.append(self._create_initial_fact(instance_data.id, s_idx))
             for s_idx in instance_data.state_space.get_states().keys():
-                facts.append(("state", [Number(instance_data.id), Number(s_idx)]))
+                facts.append(self._create_state_fact(instance_data.id, s_idx))
                 if not instance_data.is_deadend(s_idx):
-                    facts.append(("solvable", [Number(instance_data.id), Number(s_idx)]))
+                    facts.append(self._create_solvable_fact(instance_data.id, s_idx))
                 else:
-                    facts.append(("unsolvable", [Number(instance_data.id), Number(s_idx)]))
+                    facts.append(self._create_unsolvable_fact(instance_data.id, s_idx))
                 if instance_data.is_goal(s_idx):
-                    facts.append(("goal", [Number(instance_data.id), Number(s_idx)]))
+                    facts.append(self._create_goal_fact(instance_data.id, s_idx))
                 else:
-                    facts.append(("nongoal", [Number(instance_data.id), Number(s_idx)]))
+                    facts.append(self._create_nongoal_fact(instance_data.id, s_idx))
                 if instance_data.is_alive(s_idx):
-                    facts.append(("alive", [Number(instance_data.id), Number(s_idx)]))
+                    facts.append(self._create_alive_fact(instance_data.id, s_idx))
         return facts
 
     def make_domain_feature_data_facts(self, domain_data: DomainData):
@@ -99,49 +123,43 @@ class ASPFactory:
         for r_idx, rule in enumerate(domain_data.domain_state_pair_equivalence.rules):
             facts.append(("state_pair_class", [Number(r_idx)]))
             for condition in rule.get_conditions():
-                condition_str = str(condition)
-                result = re.findall(r"\(.* (\d+)\)", condition_str)
-                assert len(result) == 1
-                f_idx = int(result[0])
-                if condition_str.startswith("(:c_b_pos"):
+                f_idx = condition.get_named_element().get_key()
+                if isinstance(condition, PositiveBooleanCondition):
                     facts.append(("feature_condition", [Number(r_idx), String(f"b{f_idx}"), Number(0)]))
                     facts.append(("c_pos_rule", [Number(r_idx), String(f"b{f_idx}")]))
-                elif condition_str.startswith("(:c_b_neg"):
+                elif isinstance(condition, NegativeBooleanCondition):
                     facts.append(("feature_condition", [Number(r_idx), String(f"b{f_idx}"), Number(1)]))
                     facts.append(("c_neg_rule", [Number(r_idx), String(f"b{f_idx}")]))
-                elif condition_str.startswith("(:c_n_gt"):
+                elif isinstance(condition, GreaterNumericalCondition):
                     facts.append(("feature_condition", [Number(r_idx), String(f"n{f_idx}"), Number(2)]))
                     facts.append(("c_gt_rule", [Number(r_idx), String(f"n{f_idx}")]))
-                elif condition_str.startswith("(:c_n_eq"):
+                elif isinstance(condition, EqualNumericalCondition):
                     facts.append(("feature_condition", [Number(r_idx), String(f"n{f_idx}"), Number(3)]))
                     facts.append(("c_eq_rule", [Number(r_idx), String(f"n{f_idx}")]))
                 else:
-                    raise RuntimeError(f"Cannot parse condition {condition_str}")
+                    raise RuntimeError(f"Cannot parse condition {str(condition)}")
             for effect in rule.get_effects():
-                effect_str = str(effect)
-                result = re.findall(r"\(.* (\d+)\)", effect_str)
-                assert len(result) == 1
-                f_idx = int(result[0])
-                if effect_str.startswith("(:e_b_pos"):
+                f_idx = effect.get_named_element().get_key()
+                if isinstance(effect, PositiveBooleanEffect):
                     facts.append(("feature_effect", [Number(r_idx), String(f"b{f_idx}"), Number(0)]))
                     facts.append(("e_pos_rule", [Number(r_idx), String(f"b{f_idx}")]))
-                elif effect_str.startswith("(:e_b_neg"):
+                elif isinstance(effect, NegativeBooleanEffect):
                     facts.append(("feature_effect", [Number(r_idx), String(f"b{f_idx}"), Number(1)]))
                     facts.append(("e_neg_rule", [Number(r_idx), String(f"b{f_idx}")]))
-                elif effect_str.startswith("(:e_b_bot"):
+                elif isinstance(effect, UnchangedBooleanEffect):
                     facts.append(("feature_effect", [Number(r_idx), String(f"b{f_idx}"), Number(2)]))
                     facts.append(("e_bot_rule", [Number(r_idx), String(f"b{f_idx}")]))
-                elif effect_str.startswith("(:e_n_inc"):
+                elif isinstance(effect, IncrementNumericalEffect):
                     facts.append(("feature_effect", [Number(r_idx), String(f"n{f_idx}"), Number(3)]))
                     facts.append(("e_inc_rule", [Number(r_idx), String(f"n{f_idx}")]))
-                elif effect_str.startswith("(:e_n_dec"):
+                elif isinstance(effect, DecrementNumericalEffect):
                     facts.append(("feature_effect", [Number(r_idx), String(f"n{f_idx}"), Number(4)]))
                     facts.append(("e_dec_rule", [Number(r_idx), String(f"n{f_idx}")]))
-                elif effect_str.startswith("(:e_n_bot"):
+                elif isinstance(effect, UnchangedNumericalEffect):
                     facts.append(("feature_effect", [Number(r_idx), String(f"n{f_idx}"), Number(5)]))
                     facts.append(("e_bot_rule", [Number(r_idx), String(f"n{f_idx}")]))
                 else:
-                    raise RuntimeError(f"Cannot parse effect {effect_str}")
+                    raise RuntimeError(f"Cannot parse effect {str(effect)}")
         # State pair equivalence facts
         for instance_data in instance_datas:
             for s_idx, state_pair_equivalence in instance_data.per_state_state_pair_equivalences.s_idx_to_state_pair_equivalence.items():
