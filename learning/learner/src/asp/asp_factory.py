@@ -5,6 +5,7 @@ from dlplan.policy import PositiveBooleanCondition, NegativeBooleanCondition, Gr
 
 from clingo import Control, Number, Symbol, String
 from collections import defaultdict
+from pathlib import Path
 from typing import List, Union
 
 from .returncodes import ClingoExitCode
@@ -13,8 +14,8 @@ from ..instance_data.instance_data import InstanceData
 
 
 class ASPFactory:
-    def __init__(self):
-        self.ctl = Control(arguments=["--parallel-mode=32,split", "--opt-mode=optN"])
+    def __init__(self, asp_file_path: Path, add_arguments: List[str]):
+        self.ctl = Control(arguments=["--parallel-mode=32,split", "--opt-mode=optN"] + add_arguments)
         # features
         self.ctl.add("boolean", ["b"], "boolean(b).")
         self.ctl.add("numerical", ["n"], "numerical(n).")
@@ -45,6 +46,8 @@ class ASPFactory:
         self.ctl.add("d_distance", ["i", "s", "r", "d"], "d_distance(i,s,r,d).")
         self.ctl.add("r_distance", ["i", "s", "r", "d"], "r_distance(i,s,r,d).")
         self.ctl.add("s_distance", ["i", "s1", "s2", "d"], "s_distance(i,s1,s2,d).")
+
+        self.ctl.load(str(asp_file_path))
 
 
     def _create_initial_fact(self, instance_id: int, state_id: int):
@@ -144,29 +147,29 @@ class ASPFactory:
 
     def _create_feature_condition_fact(self, condition: Union[PositiveBooleanCondition, NegativeBooleanCondition, GreaterNumericalCondition, EqualNumericalCondition], r_idx: int, f_idx: int):
         if isinstance(condition, PositiveBooleanCondition):
-            return ("feature_condition", [Number(r_idx), Number(f_idx), String("c_pos")])
+            return ("feature_condition", [Number(r_idx), Number(f_idx), String("c_b_pos")])
         elif isinstance(condition, NegativeBooleanCondition):
-            return ("feature_condition", [Number(r_idx), Number(f_idx), String("c_neg")])
+            return ("feature_condition", [Number(r_idx), Number(f_idx), String("c_b_neg")])
         elif isinstance(condition, GreaterNumericalCondition):
-            return ("feature_condition", [Number(r_idx), Number(f_idx), String("c_gt")])
+            return ("feature_condition", [Number(r_idx), Number(f_idx), String("c_n_gt")])
         elif isinstance(condition, EqualNumericalCondition):
-            return ("feature_condition", [Number(r_idx), Number(f_idx), String("c_eq")])
+            return ("feature_condition", [Number(r_idx), Number(f_idx), String("c_n_eq")])
         else:
             raise RuntimeError(f"Cannot parse condition {str(condition)}")
 
     def _create_feature_effect_fact(self, effect: Union[PositiveBooleanEffect, NegativeBooleanEffect, UnchangedBooleanEffect, IncrementNumericalEffect, DecrementNumericalEffect, UnchangedNumericalEffect], r_idx: int, f_idx: int):
         if isinstance(effect, PositiveBooleanEffect):
-            return ("feature_effect", [Number(r_idx), Number(f_idx), String("e_pos")])
+            return ("feature_effect", [Number(r_idx), Number(f_idx), String("e_b_pos")])
         elif isinstance(effect, NegativeBooleanEffect):
-            return ("feature_effect", [Number(r_idx), Number(f_idx), String("e_neg")])
+            return ("feature_effect", [Number(r_idx), Number(f_idx), String("e_b_neg")])
         elif isinstance(effect, UnchangedBooleanEffect):
-            return ("feature_effect", [Number(r_idx), Number(f_idx), String("e_bot")])
+            return ("feature_effect", [Number(r_idx), Number(f_idx), String("e_b_bot")])
         elif isinstance(effect, IncrementNumericalEffect):
-            return ("feature_effect", [Number(r_idx), Number(f_idx), String("e_inc")])
+            return ("feature_effect", [Number(r_idx), Number(f_idx), String("e_n_inc")])
         elif isinstance(effect, DecrementNumericalEffect):
-            return ("feature_effect", [Number(r_idx), Number(f_idx), String("e_dec")])
+            return ("feature_effect", [Number(r_idx), Number(f_idx), String("e_n_dec")])
         elif isinstance(effect, UnchangedNumericalEffect):
-            return ("feature_effect", [Number(r_idx), Number(f_idx), String("e_bot")])
+            return ("feature_effect", [Number(r_idx), Number(f_idx), String("e_n_bot")])
         else:
             raise RuntimeError(f"Cannot parse effect {str(effect)}")
 
@@ -318,9 +321,6 @@ class ASPFactory:
                 if not exists_distinguishing_feature:
                     facts.add(self._create_d2_separate_fact(good, bad))
         return facts
-
-    def load_problem_file(self, filename):
-        self.ctl.load(str(filename))
 
     def ground(self, facts=[]):
         facts.append(("base", []))

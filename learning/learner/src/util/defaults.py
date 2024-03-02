@@ -33,11 +33,12 @@ def generate_experiment(domain_filename: str, instance_filenames: List[str], wor
 
         goal_separation=True,
 
-        closed_Q=True,
+        closed_Q=False,
 
         width=2,
 
-        asp_name="sketch.lp",
+        d2_separate=False,
+        max_num_rules=4,
 
         add_boolean_features=[],
         add_numerical_features=[],

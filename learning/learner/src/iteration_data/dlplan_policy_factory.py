@@ -2,10 +2,11 @@ import re
 
 from abc import ABC, abstractmethod
 
-from dlplan.policy import PolicyFactory, PositiveBooleanCondition, NegativeBooleanCondition, GreaterNumericalCondition, EqualNumericalCondition, PositiveBooleanEffect, NegativeBooleanEffect, UnchangedBooleanEffect, DecrementNumericalEffect, IncrementNumericalEffect, UnchangedNumericalEffect
+from dlplan.core import Boolean, Numerical
+from dlplan.policy import PolicyFactory
 
 from clingo import Symbol
-from typing import List
+from typing import List, Dict, Union, MutableSet
 
 from learner.src.domain_data.domain_data import DomainData
 
@@ -34,58 +35,54 @@ class ExplicitDlplanPolicyFactory(DlplanPolicyFactory):
     def make_dlplan_policy_from_answer_set(self, symbols: List[Symbol], domain_data: DomainData):
         """ """
         policy_builder = domain_data.policy_builder
-        f_idx_to_dlplan_boolean, f_idx_to_dlplan_numerical = self._add_features(symbols, domain_data)
-        rules = self._add_rules(policy_builder, symbols, f_idx_to_dlplan_boolean, f_idx_to_dlplan_numerical)
-        policy = policy_builder.add_policy(rules)
-        return policy
+        selected_features = self._add_features(symbols, domain_data)
+        rules = self._add_rules(symbols, domain_data, selected_features)
+        return policy_builder.make_policy(rules)
 
     def _add_features(self, symbols: List[Symbol], domain_data: DomainData):
         """ """
-        f_idx_to_dlplan_boolean = dict()
-        f_idx_to_dlplan_numerical = dict()
+        selected_features = set()
         for symbol in symbols:
             if symbol.name == "select":
-                if symbol.arguments[0].string[0] == "b":
-                    f_idx = extract_f_idx_from_argument(symbol.arguments[0].string)
-                    f_idx_to_dlplan_boolean[f_idx] = domain_data.feature_pool.boolean_features.f_idx_to_feature[f_idx].dlplan_feature
-                elif symbol.arguments[0].string[0] == "n":
-                    f_idx = extract_f_idx_from_argument(symbol.arguments[0].string)
-                    f_idx_to_dlplan_numerical[f_idx] = domain_data.feature_pool.numerical_features.f_idx_to_feature[f_idx].dlplan_feature
-        return f_idx_to_dlplan_boolean, f_idx_to_dlplan_numerical
+                f_idx = symbol.arguments[0].number
+                selected_features.add(domain_data.feature_pool.features[f_idx].dlplan_feature)
+        return selected_features
 
-    def _add_rules(self, policy_builder: PolicyFactory, symbols: List[Symbol], f_idx_to_dlplan_boolean, f_idx_to_dlplan_numerical):
+    def _add_rules(self, symbols: List[Symbol], domain_data: DomainData, selected_features: MutableSet[Union[Boolean, Numerical]]):
         """ """
+        policy_builder = domain_data.policy_builder
         rules_dict = dict()
         for symbol in symbols:
             if symbol.name == "rule":
                 r_idx = symbol.arguments[0].number
                 rules_dict[r_idx] = [set(), set()]  # conditions and effects
         for symbol in symbols:
-            if symbol.name in {"c_eq", "c_gt", "c_pos", "c_neg", "e_inc", "e_dec", "e_pos", "e_neg", "e_bot"}:
+            if symbol.name in {"c_b_pos", "c_b_neg", "c_n_gt", "c_n_eq", "e_b_pos", "e_b_neg", "e_b_bot", "e_n_dec", "e_n_inc", "e_n_bot"}:
                 r_idx = symbol.arguments[0].number
-                f_idx = extract_f_idx_from_argument(symbol.arguments[1].string)
-                if symbol.arguments[1].string[0] == "b" and f_idx in f_idx_to_dlplan_boolean:
-                    if symbol.name == "c_pos":
-                        rules_dict[r_idx][0].add(policy_builder.add_pos_condition(f_idx_to_dlplan_boolean[f_idx]))
-                    elif symbol.name == "c_neg":
-                        rules_dict[r_idx][0].add(policy_builder.add_neg_condition(f_idx_to_dlplan_boolean[f_idx]))
-                    elif symbol.name == "e_pos":
-                        rules_dict[r_idx][1].add(policy_builder.add_pos_effect(f_idx_to_dlplan_boolean[f_idx]))
-                    elif symbol.name == "e_neg":
-                        rules_dict[r_idx][1].add(policy_builder.add_neg_effect(f_idx_to_dlplan_boolean[f_idx]))
-                    elif symbol.name == "e_bot":
-                        rules_dict[r_idx][1].add(policy_builder.add_bot_effect(f_idx_to_dlplan_boolean[f_idx]))
-                if symbol.arguments[1].string[0] == "n" and f_idx in f_idx_to_dlplan_numerical:
-                    if symbol.name == "c_eq":
-                        rules_dict[r_idx][0].add(policy_builder.add_eq_condition(f_idx_to_dlplan_numerical[f_idx]))
-                    elif symbol.name == "c_gt":
-                        rules_dict[r_idx][0].add(policy_builder.add_gt_condition(f_idx_to_dlplan_numerical[f_idx]))
-                    elif symbol.name == "e_inc":
-                        rules_dict[r_idx][1].add(policy_builder.add_inc_effect(f_idx_to_dlplan_numerical[f_idx]))
-                    elif symbol.name == "e_dec":
-                        rules_dict[r_idx][1].add(policy_builder.add_dec_effect(f_idx_to_dlplan_numerical[f_idx]))
-                    elif symbol.name == "e_bot":
-                        rules_dict[r_idx][1].add(policy_builder.add_bot_effect(f_idx_to_dlplan_numerical[f_idx]))
+                f_idx = symbol.arguments[1].number
+                feature = domain_data.feature_pool.features[f_idx].dlplan_feature
+                if feature not in selected_features:
+                    continue
+                if symbol.name == "c_b_pos":
+                    rules_dict[r_idx][0].add(policy_builder.make_pos_condition(policy_builder.make_boolean(str(f_idx), feature)))
+                elif symbol.name == "c_b_neg":
+                    rules_dict[r_idx][0].add(policy_builder.make_neg_condition(policy_builder.make_boolean(str(f_idx), feature)))
+                elif symbol.name == "c_n_gt":
+                    rules_dict[r_idx][0].add(policy_builder.make_gt_condition(policy_builder.make_numerical(str(f_idx), feature)))
+                elif symbol.name == "c_n_eq":
+                    rules_dict[r_idx][0].add(policy_builder.make_eq_condition(policy_builder.make_numerical(str(f_idx), feature)))
+                elif symbol.name == "e_b_pos":
+                    rules_dict[r_idx][1].add(policy_builder.make_pos_effect(policy_builder.make_boolean(str(f_idx), feature)))
+                elif symbol.name == "e_b_neg":
+                    rules_dict[r_idx][1].add(policy_builder.make_neg_effect(policy_builder.make_boolean(str(f_idx), feature)))
+                elif symbol.name == "e_b_bot":
+                    rules_dict[r_idx][1].add(policy_builder.make_bot_effect(policy_builder.make_boolean(str(f_idx), feature)))
+                elif symbol.name == "e_n_dec":
+                    rules_dict[r_idx][1].add(policy_builder.make_dec_effect(policy_builder.make_numerical(str(f_idx), feature)))
+                elif symbol.name == "e_n_inc":
+                    rules_dict[r_idx][1].add(policy_builder.make_inc_effect(policy_builder.make_numerical(str(f_idx), feature)))
+                elif symbol.name == "e_n_bot":
+                    rules_dict[r_idx][1].add(policy_builder.make_bot_effect(policy_builder.make_numerical(str(f_idx), feature)))
         rules = set()
         for _, (conditions, effects) in rules_dict.items():
             rules.add(policy_builder.make_rule(conditions, effects))
