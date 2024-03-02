@@ -7,10 +7,10 @@
 
 ## Installation
 
-### Step 1: Clone the repo recursively
+### Step 1: Clone the repo
 
 ```console
-git clone --recursive git@github.com:drexlerd/sketch-learner.git
+git clone git@github.com:drexlerd/sketch-learner.git
 ```
 
 ### Step 2: Create Python3 virtual environment
@@ -21,11 +21,11 @@ source .venv/bin/activate
 pip install -r requirements.txt
 ```
 
-### Step 3: Build Planner Singularity Containers (Testing only)
+### Step 3: Build Planner Apptainer Containers
 
 ```console
 cd testing/planners
-sudo ./build-planners.sh
+./build-planners.sh
 ```
 
 ## Running the Learning Experiments

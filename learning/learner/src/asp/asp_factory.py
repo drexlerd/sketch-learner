@@ -3,9 +3,9 @@ import re
 from dlplan.core import Boolean, Numerical
 from dlplan.policy import PositiveBooleanCondition, NegativeBooleanCondition, GreaterNumericalCondition, EqualNumericalCondition, PositiveBooleanEffect, NegativeBooleanEffect, UnchangedBooleanEffect, DecrementNumericalEffect, IncrementNumericalEffect, UnchangedNumericalEffect
 
-from clingo import Control, Number, Symbol, String
+from clingo import Control, Number, Symbol
 from collections import defaultdict
-from typing import List
+from typing import List, Union
 
 from .returncodes import ClingoExitCode
 from ..domain_data.domain_data import DomainData
@@ -46,8 +46,6 @@ class ASPFactory:
         self.ctl.add("r_distance", ["i", "s", "r", "d"], "r_distance(i,s,r,d).")
         self.ctl.add("s_distance", ["i", "s1", "s2", "d"], "s_distance(i,s1,s2,d).")
 
-    def load_problem_file(self, filename):
-        self.ctl.load(str(filename))
 
     def _create_initial_fact(self, instance_id: int, state_id: int):
         return ("initial", [Number(instance_id), Number(state_id)])
@@ -70,7 +68,7 @@ class ASPFactory:
     def _create_alive_fact(self, instance_id: int, state_id: int):
         return ("alive", [Number(instance_id), Number(state_id)])
 
-    def make_state_space_facts(self, instance_datas: List[InstanceData]):
+    def _make_state_space_facts(self, instance_datas: List[InstanceData]):
         """ Create facts that encode the state space.
         """
         facts = []
@@ -91,6 +89,7 @@ class ASPFactory:
                     facts.append(self._create_alive_fact(instance_data.id, s_idx))
         return facts
 
+
     def _create_feature_fact(self, f_idx: int):
         return ("feature", [Number(f_idx)])
 
@@ -103,7 +102,7 @@ class ASPFactory:
     def _create_numerical_fact(self, f_idx: int):
         return ("numerical", [Number(f_idx)])
 
-    def make_domain_feature_data_facts(self, domain_data: DomainData):
+    def _make_domain_feature_data_facts(self, domain_data: DomainData):
         facts = []
         # Domain feature facts
         for f_idx, feature in enumerate(domain_data.feature_pool.features):
@@ -115,7 +114,19 @@ class ASPFactory:
                 facts.append(self._create_numerical_fact(f_idx))
         return facts
 
-    def make_instance_feature_data_facts(self, domain_data: DomainData, instance_datas: List[InstanceData]):
+
+    def _create_value_fact(self, instance_id: int, s_idx: int, f_idx: int, val: Union[bool, int]):
+        return ("value", [Number(instance_id), Number(s_idx), Number(f_idx), Number(val)])
+
+    def _create_b_value_fact(self, dlplan_feature: Union[Boolean, Numerical], instance_id: int, s_idx: int, f_idx: int, val: Union[bool, int]):
+        if isinstance(dlplan_feature, Boolean):
+            return ("b_value", [Number(instance_id), Number(s_idx), Number(f_idx), Number(val)])
+        elif isinstance(dlplan_feature, Numerical):
+            return ("b_value", [Number(instance_id), Number(s_idx), Number(f_idx), Number(1 if val > 0 else 0)])
+        else:
+            raise RuntimeError("Expected Boolean or Numerical feature.")
+
+    def _make_instance_feature_data_facts(self, domain_data: DomainData, instance_datas: List[InstanceData]):
         facts = []
         # Instance feature valuation facts
         feature_pool = domain_data.feature_pool
@@ -123,70 +134,85 @@ class ASPFactory:
             for s_idx in instance_data.state_space.get_states().keys():
                 feature_valuation = instance_data.per_state_feature_valuations.s_idx_to_feature_valuations[s_idx]
                 for f_idx, (feature, val) in enumerate(zip(feature_pool.features, feature_valuation.feature_valuations)):
-                    facts.append(("value", [Number(instance_data.id), Number(s_idx), Number(f_idx), Number(val)]))
-                    if isinstance(feature.dlplan_feature, Boolean):
-                        facts.append(("b_value", [Number(instance_data.id), Number(s_idx), Number(f_idx), Number(val)]))
-                    elif isinstance(feature.dlplan_feature, Numerical):
-                        facts.append(("b_value", [Number(instance_data.id), Number(s_idx), Number(f_idx), Number(1 if val > 0 else 0)]))
+                    facts.append(self._create_value_fact(instance_data.id, s_idx, f_idx, val))
+                    facts.append(self._create_b_value_fact(feature.dlplan_feature, instance_data.id, s_idx, f_idx, val))
         return facts
 
-    def make_state_pair_equivalence_data_facts(self, domain_data: DomainData, instance_datas: List[InstanceData]):
+
+    def _create_state_pair_class_fact(self, r_idx: int):
+        return ("state_pair_class", [Number(r_idx)])
+
+    def _create_feature_condition_fact(self, condition: Union[PositiveBooleanCondition, NegativeBooleanCondition, GreaterNumericalCondition, EqualNumericalCondition], r_idx: int, f_idx: int):
+        if isinstance(condition, PositiveBooleanCondition):
+            return ("feature_condition", [Number(r_idx), Number(f_idx), Number(0)])
+        elif isinstance(condition, NegativeBooleanCondition):
+            return ("feature_condition", [Number(r_idx), Number(f_idx), Number(1)])
+        elif isinstance(condition, GreaterNumericalCondition):
+            return ("feature_condition", [Number(r_idx), Number(f_idx), Number(2)])
+        elif isinstance(condition, EqualNumericalCondition):
+            return ("feature_condition", [Number(r_idx), Number(f_idx), Number(3)])
+        else:
+            raise RuntimeError(f"Cannot parse condition {str(condition)}")
+
+    def _create_feature_effect_fact(self, effect: Union[PositiveBooleanEffect, NegativeBooleanEffect, UnchangedBooleanEffect, IncrementNumericalEffect, DecrementNumericalEffect, UnchangedNumericalEffect], r_idx: int, f_idx: int):
+        if isinstance(effect, PositiveBooleanEffect):
+            return ("feature_effect", [Number(r_idx), Number(f_idx), Number(0)])
+        elif isinstance(effect, NegativeBooleanEffect):
+            return ("feature_effect", [Number(r_idx), Number(f_idx), Number(1)])
+        elif isinstance(effect, UnchangedBooleanEffect):
+            return ("feature_effect", [Number(r_idx), Number(f_idx), Number(2)])
+        elif isinstance(effect, IncrementNumericalEffect):
+            return ("feature_effect", [Number(r_idx), Number(f_idx), Number(3)])
+        elif isinstance(effect, DecrementNumericalEffect):
+            return ("feature_effect", [Number(r_idx), Number(f_idx), Number(4)])
+        elif isinstance(effect, UnchangedNumericalEffect):
+            return ("feature_effect", [Number(r_idx), Number(f_idx), Number(5)])
+        else:
+            raise RuntimeError(f"Cannot parse effect {str(effect)}")
+
+    def _create_r_distance_fact(self, instance_id: int, s_idx: int, r_idx: int, d: int):
+        return ("r_distance", [Number(instance_id), Number(s_idx), Number(r_idx), Number(d)])
+
+    def _create_cover_fact(self, instance_id: int, s_idx: int, s_prime_idx: int, r_idx: int):
+        return ("cover", [Number(instance_id), Number(s_idx), Number(s_prime_idx), Number(r_idx)])
+
+    def _make_state_pair_equivalence_data_facts(self, domain_data: DomainData, instance_datas: List[InstanceData]):
         facts = []
         # State pair facts
         for r_idx, rule in enumerate(domain_data.domain_state_pair_equivalence.rules):
-            facts.append(("state_pair_class", [Number(r_idx)]))
+            facts.append(self._create_state_pair_class_fact(r_idx))
             for condition in rule.get_conditions():
                 f_idx = int(condition.get_named_element().get_key())
-                if isinstance(condition, PositiveBooleanCondition):
-                    facts.append(("feature_condition", [Number(r_idx), Number(f_idx), Number(0)]))
-                    facts.append(("c_pos_rule", [Number(r_idx), Number(f_idx)]))
-                elif isinstance(condition, NegativeBooleanCondition):
-                    facts.append(("feature_condition", [Number(r_idx), Number(f_idx), Number(1)]))
-                    facts.append(("c_neg_rule", [Number(r_idx), Number(f_idx)]))
-                elif isinstance(condition, GreaterNumericalCondition):
-                    facts.append(("feature_condition", [Number(r_idx), Number(f_idx), Number(2)]))
-                    facts.append(("c_gt_rule", [Number(r_idx), Number(f_idx)]))
-                elif isinstance(condition, EqualNumericalCondition):
-                    facts.append(("feature_condition", [Number(r_idx), Number(f_idx), Number(3)]))
-                    facts.append(("c_eq_rule", [Number(r_idx), Number(f_idx)]))
-                else:
-                    raise RuntimeError(f"Cannot parse condition {str(condition)}")
+                facts.append(self._create_feature_condition_fact(condition, r_idx, f_idx))
             for effect in rule.get_effects():
                 f_idx = int(effect.get_named_element().get_key())
-                if isinstance(effect, PositiveBooleanEffect):
-                    facts.append(("feature_effect", [Number(r_idx), Number(f_idx), Number(0)]))
-                    facts.append(("e_pos_rule", [Number(r_idx), Number(f_idx)]))
-                elif isinstance(effect, NegativeBooleanEffect):
-                    facts.append(("feature_effect", [Number(r_idx), Number(f_idx), Number(1)]))
-                    facts.append(("e_neg_rule", [Number(r_idx), Number(f_idx)]))
-                elif isinstance(effect, UnchangedBooleanEffect):
-                    facts.append(("feature_effect", [Number(r_idx), Number(f_idx), Number(2)]))
-                    facts.append(("e_bot_rule", [Number(r_idx), Number(f_idx)]))
-                elif isinstance(effect, IncrementNumericalEffect):
-                    facts.append(("feature_effect", [Number(r_idx), Number(f_idx), Number(3)]))
-                    facts.append(("e_inc_rule", [Number(r_idx), Number(f_idx)]))
-                elif isinstance(effect, DecrementNumericalEffect):
-                    facts.append(("feature_effect", [Number(r_idx), Number(f_idx), Number(4)]))
-                    facts.append(("e_dec_rule", [Number(r_idx), Number(f_idx)]))
-                elif isinstance(effect, UnchangedNumericalEffect):
-                    facts.append(("feature_effect", [Number(r_idx), Number(f_idx), Number(5)]))
-                    facts.append(("e_bot_rule", [Number(r_idx), Number(f_idx)]))
-                else:
-                    raise RuntimeError(f"Cannot parse effect {str(effect)}")
+                facts.append(self._create_feature_effect_fact(effect, r_idx, f_idx))
         # State pair equivalence facts
         for instance_data in instance_datas:
             for s_idx, state_pair_equivalence in instance_data.per_state_state_pair_equivalences.s_idx_to_state_pair_equivalence.items():
                 if instance_data.is_deadend(s_idx):
                     continue
                 for r_idx, d in state_pair_equivalence.r_idx_to_distance.items():
-                    facts.append(("r_distance", [Number(instance_data.id), Number(s_idx), Number(r_idx), Number(d)]))
+                    facts.append(self._create_r_distance_fact(instance_data.id, s_idx, r_idx, d))
                 for r_idx, s_prime_idxs in state_pair_equivalence.r_idx_to_subgoal_states.items():
                     for s_prime_idx in s_prime_idxs:
-                        facts.append(("cover", [Number(instance_data.id), Number(s_idx), Number(s_prime_idx), Number(r_idx)]))
+                        facts.append(self._create_cover_fact(instance_data.id, s_idx, s_prime_idx, r_idx))
         return facts
 
 
-    def make_tuple_graph_equivalence_facts(self, domain_data: DomainData, instance_datas: List[InstanceData]):
+    def _create_tuple_fact(self, instance_id: int, s_idx: int, t_idx: int):
+        return ("tuple", [Number(instance_id), Number(s_idx), Number(t_idx)])
+
+    def _create_contain_fact(self, instance_id: int, s_idx: int, t_idx: int, r_idx: int):
+        return ("contain", [Number(instance_id), Number(s_idx), Number(t_idx), Number(r_idx)])
+
+    def _create_t_distance_fact(self, instance_id: int, s_idx: int, t_idx: int, d: int):
+        return ("t_distance", [Number(instance_id), Number(s_idx), Number(t_idx), Number(d)])
+
+    def _create_d_distance_fact(self, instance_id: int, s_idx: int, r_idx: int, d: int):
+        return ("d_distance", [Number(instance_id), Number(s_idx), Number(r_idx), Number(d)])
+
+    def _make_tuple_graph_equivalence_facts(self, domain_data: DomainData, instance_datas: List[InstanceData]):
         facts = []
         # Tuple graph equivalence facts (Perhaps deprecated since we now let rules imply subgoals)
         for instance_data in instance_datas:
@@ -194,33 +220,41 @@ class ASPFactory:
                 if instance_data.is_deadend(s_idx):
                     continue
                 for t_idx, r_idxs in tuple_graph_equivalence.t_idx_to_r_idxs.items():
-                    facts.append(("tuple", [Number(instance_data.id), Number(s_idx), Number(t_idx)]))
+                    facts.append(self._create_tuple_fact(instance_data.id, s_idx, t_idx))
                     for r_idx in r_idxs:
-                        facts.append(("contain", [Number(instance_data.id), Number(s_idx), Number(t_idx), Number(r_idx)]))
+                        facts.append(self._create_contain_fact(instance_data.id, s_idx, t_idx, r_idx))
                 for t_idx, d in tuple_graph_equivalence.t_idx_to_distance.items():
-                    facts.append(("t_distance", [Number(instance_data.id), Number(s_idx), Number(t_idx), Number(d)]))
+                    facts.append(self._create_t_distance_fact(instance_data.id, s_idx, t_idx, d))
                 for r_idx, d in tuple_graph_equivalence.r_idx_to_deadend_distance.items():
-                    facts.append(("d_distance", [Number(instance_data.id), Number(s_idx), Number(r_idx), Number(d)]))
+                    facts.append(self._create_d_distance_fact(instance_data.id, s_idx, r_idx, d))
         return facts
 
-    def make_tuple_graph_facts(self, domain_data: DomainData, instance_datas: List[InstanceData]):
+
+    def _create_s_distance_fact(self, instance_id: int, s_idx: int, s_prime_idx: int, d: int):
+        return ("s_distance", [Number(instance_id), Number(s_idx), Number(s_prime_idx), Number(d)])
+
+    def _make_tuple_graph_facts(self, domain_data: DomainData, instance_datas: List[InstanceData]):
         facts = []
         for instance_data in instance_datas:
             for s_idx, tuple_graph in instance_data.per_state_tuple_graphs.s_idx_to_tuple_graph.items():
                 for d, s_prime_idxs in enumerate(tuple_graph.get_state_indices_by_distance()):
                     for s_prime_idx in s_prime_idxs:
-                        facts.append(("s_distance", [Number(instance_data.id), Number(s_idx), Number(s_prime_idx), Number(d)]))
+                        facts.append(self._create_s_distance_fact(instance_data.id, s_idx, s_prime_idx, d))
         return facts
+
 
     def make_facts(self, domain_data: DomainData, instance_datas: List[InstanceData]):
         facts = []
-        facts.extend(self.make_state_space_facts(instance_datas))
-        facts.extend(self.make_domain_feature_data_facts(domain_data))
-        facts.extend(self.make_instance_feature_data_facts(domain_data, instance_datas))
-        facts.extend(self.make_state_pair_equivalence_data_facts(domain_data, instance_datas))
-        facts.extend(self.make_tuple_graph_equivalence_facts(domain_data, instance_datas))
-        facts.extend(self.make_tuple_graph_facts(domain_data, instance_datas))
+        facts.extend(self._make_state_space_facts(instance_datas))
+        facts.extend(self._make_domain_feature_data_facts(domain_data))
+        facts.extend(self._make_instance_feature_data_facts(domain_data, instance_datas))
+        facts.extend(self._make_state_pair_equivalence_data_facts(domain_data, instance_datas))
+        facts.extend(self._make_tuple_graph_equivalence_facts(domain_data, instance_datas))
+        facts.extend(self._make_tuple_graph_facts(domain_data, instance_datas))
         return facts
+
+    def _create_d2_separate_fact(self, r_idx_1: int, r_idx_2: int):
+        return ("d2_separate", (Number(r_idx_1), Number(r_idx_2)))
 
     def make_initial_d2_facts(self, instance_datas: List[InstanceData]):
         """ T_0 facts """
@@ -236,7 +270,7 @@ class ASPFactory:
                 for i, eq_1 in enumerate(equivalences):
                     for j, eq_2 in enumerate(equivalences):
                         if i < j:
-                            facts.add(("d2_separate", (Number(eq_1), Number(eq_2))))
+                            facts.add(self._create_d2_separate_fact(eq_1, eq_2))
         return facts
 
     def make_unsatisfied_d2_facts(self, domain_data: DomainData, symbols: List[Symbol]):
@@ -282,8 +316,11 @@ class ASPFactory:
                         exists_distinguishing_feature = True
                         break
                 if not exists_distinguishing_feature:
-                    facts.add(("d2_separate", (Number(good), Number(bad))))
+                    facts.add(self._create_d2_separate_fact(good, bad))
         return facts
+
+    def load_problem_file(self, filename):
+        self.ctl.load(str(filename))
 
     def ground(self, facts=[]):
         facts.append(("base", []))
