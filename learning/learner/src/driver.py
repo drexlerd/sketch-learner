@@ -82,8 +82,6 @@ class StepRunner:
     def elapsed_time(self):
         info_children = resource.getrusage(resource.RUSAGE_CHILDREN)
         info_self = resource.getrusage(resource.RUSAGE_SELF)
-        # print("({}) Self: {}".format(os.getpid(), info_self))
-        # print("({}) Children: {}".format(os.getpid(), info_children))
         return info_children.ru_utime + info_children.ru_stime + info_self.ru_utime + info_self.ru_stime
 
     def used_memory(self):

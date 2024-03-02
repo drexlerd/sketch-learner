@@ -34,16 +34,6 @@ def change_working_directory(path):
     os.chdir(path)
 
 
-def create_sym_link(src, dst, overwrite):
-    print("Creating sym link:", src, dst)
-    try:
-        os.symlink(src, dst)
-    except FileExistsError:
-        if overwrite:
-            os.remove(dst)
-            os.symlink(src, dst)
-
-
 def execute(command, **kwargs):
     timeout = kwargs["timeout"] if "timeout" in kwargs else None
     stdout = open(kwargs["stdout"], 'w') if "stdout" in kwargs else None
