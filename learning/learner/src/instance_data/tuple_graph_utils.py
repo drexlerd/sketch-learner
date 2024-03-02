@@ -14,4 +14,4 @@ def compute_tuple_graphs(width: int, instance_datas: List[InstanceData]):
             if instance_data.is_deadend(s_idx):
                 continue
             per_state_tuple_graphs.s_idx_to_tuple_graph[s_idx] = TupleGraph(novelty_base, instance_data.state_space, s_idx, True)
-        instance_data.set_per_state_tuple_graphs(per_state_tuple_graphs, True)
+        instance_data.set_per_state_tuple_graphs(per_state_tuple_graphs)
