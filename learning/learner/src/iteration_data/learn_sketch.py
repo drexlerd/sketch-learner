@@ -16,6 +16,7 @@ from learner.src.iteration_data.dlplan_policy_factory import D2sepDlplanPolicyFa
 from learner.src.iteration_data.sketch import Sketch
 from learner.src.iteration_data.state_pair_equivalence_utils import compute_state_pair_equivalences
 from learner.src.iteration_data.tuple_graph_equivalence_utils import compute_tuple_graph_equivalences, minimize_tuple_graph_equivalences
+from learner.src.iteration_data.learning_statistics import LearningStatistics
 from learner.src.util.timer import CountDownTimer
 from learner.src.util.command import create_experiment_workspace
 
@@ -143,4 +144,16 @@ def learn_sketch(config, domain_data, instance_datas, workspace):
             print("Selected instances:", selected_instance_idxs)
         i += 1
 
-    return sketch, Sketch(PolicyMinimizer().minimize(sketch.dlplan_policy, domain_data.policy_builder), config.width)
+    logging.info(colored("Summary:", "green", "on_grey"))
+    learning_statistics = LearningStatistics(
+        num_training_instances=len(instance_datas),
+        num_selected_training_instances=len(selected_instance_datas),
+        num_states_in_selected_training_instances=sum([len(instance_data.state_space.get_states()) for instance_data in selected_instance_datas]),
+        num_features_in_pool=len(domain_data.feature_pool.features))
+    learning_statistics.print()
+    print("Resulting sketch:")
+    sketch.print()
+    print("Resulting sketch minimized:")
+    sketch_minimized = Sketch(PolicyMinimizer().minimize(sketch.dlplan_policy, domain_data.policy_builder), sketch.width)
+    sketch_minimized.print()
+    return sketch, sketch_minimized, learning_statistics

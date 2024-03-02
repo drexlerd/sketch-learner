@@ -1,7 +1,6 @@
 """ Module description: initialize workspace and domain config, instance configs
 """
 
-import os
 from pathlib import Path
 from typing import List
 
@@ -33,12 +32,12 @@ def generate_experiment(domain_filename: str, instance_filenames: List[str], wor
 
         goal_separation=True,
 
-        closed_Q=False,
+        closed_Q=True,
 
         width=2,
 
-        d2_separate=False,
-        max_num_rules=4,
+        d2_separate=True,
+        max_num_rules=4,  # Relevant when d2_separate=False
 
         add_boolean_features=[],
         add_numerical_features=[],
