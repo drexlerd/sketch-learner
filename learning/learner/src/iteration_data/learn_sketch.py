@@ -36,7 +36,7 @@ def learn_sketch(config, domain_data, instance_datas, workspace):
     while not timer.is_expired():
         logging.info(colored(f"Iteration: {i}", "red", "on_grey"))
 
-        selected_instance_datas = [instance_datas[subproblem_idx] for subproblem_idx in selected_instance_idxs]
+        selected_instance_datas : List[InstanceData] = [instance_datas[subproblem_idx] for subproblem_idx in selected_instance_idxs]
         for instance_data in selected_instance_datas:
             instance_data.instance_information = InstanceInformation(
                 instance_data.instance_information.name,

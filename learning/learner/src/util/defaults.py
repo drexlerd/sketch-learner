@@ -37,7 +37,7 @@ def generate_experiment(domain_filename: str, instance_filenames: List[str], wor
 
         width=2,
 
-        d2_separate=True,
+        d2_separate=False,
         max_num_rules=4,
 
         add_boolean_features=[],

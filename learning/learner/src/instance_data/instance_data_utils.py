@@ -58,6 +58,7 @@ def compute_instance_datas(config) -> Tuple[List[InstanceData], DomainData]:
             instance_data.initial_s_idxs = [s_idx for s_idx in state_space.get_states().keys() if instance_data.is_alive(s_idx)]
         else:
             instance_data.initial_s_idxs = [state_space.get_initial_state_index(),]
+        print("initial state indices:", instance_data.initial_s_idxs)
         instance_datas.append(instance_data)
     # Sort the instances according to size and fix the indices afterwards
     instance_datas = sorted(instance_datas, key=lambda x : len(x.state_space.get_states()))
