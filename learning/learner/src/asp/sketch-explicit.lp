@@ -46,7 +46,7 @@ r_reachable(I, S) :- initial(I, S).
 
 %%%%%%%%%% C2.4 %%%%%%%%%%
 % r_reachable(I, S') :- D = D', r_reachable(I, S), sat_pair(I, S, S', R), subgoal_distance(I, S, D, R), s_distance(I, S, S', D).
-%r_reachable(I, S') :- r_reachable(I, S), sat_pair(I, S, S', R).
+r_reachable(I, S') :- r_reachable(I, S), sat_pair(I, S, S', R).
 
 %%% unable to bound width of unsolvable state.
 :- unsolvable(I, S), r_reachable(I, S).
@@ -56,11 +56,11 @@ r_reachable(I, S) :- initial(I, S).
 
 %%%%%%%%%% C4.1 %%%%%%%%%%
 % Require that all equivalence classes C underlying a tuple T of subproblem P[S] are good, effectively bounding the width of P[S]
-%:- not sat_rule(R, C), subgoal(I, S, T, R), contain(I, S, T, C), r_reachable(I, S).
+:- not sat_rule(R, C), subgoal(I, S, T, R), contain(I, S, T, C), r_reachable(I, S).
 
 %%%%%%%%%% C6.1 %%%%%%%%%%
 % (Optimal-width): Require solvable states S' closer than subgoal to not be assigned to any rule.
-%:- D < D', r_distance(I, S, C, D), sat_rule(R, C), subgoal_distance(I, S, D', R), nongoal(I, S).
+:- D < D', r_distance(I, S, C, D), sat_rule(R, C), subgoal_distance(I, S, D', R), nongoal(I, S).
 
 %%%%%%%%%% C7.1 %%%%%%%%%%
 % Define state pair equivalences that are compatible with rules.
