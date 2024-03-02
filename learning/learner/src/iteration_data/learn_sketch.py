@@ -144,16 +144,26 @@ def learn_sketch(config, domain_data, instance_datas, workspace):
             print("Selected instances:", selected_instance_idxs)
         i += 1
 
+    print()
+    print()
     logging.info(colored("Summary:", "green", "on_grey"))
+    print()
+
     learning_statistics = LearningStatistics(
         num_training_instances=len(instance_datas),
         num_selected_training_instances=len(selected_instance_datas),
         num_states_in_selected_training_instances=sum([len(instance_data.state_space.get_states()) for instance_data in selected_instance_datas]),
         num_features_in_pool=len(domain_data.feature_pool.features))
     learning_statistics.print()
+    print()
+
     print("Resulting sketch:")
     sketch.print()
-    print("Resulting sketch minimized:")
+    print()
+
+    print("Resulting minimized sketch:")
     sketch_minimized = Sketch(PolicyMinimizer().minimize(sketch.dlplan_policy, domain_data.policy_builder), sketch.width)
     sketch_minimized.print()
+    print()
+
     return sketch, sketch_minimized, learning_statistics
