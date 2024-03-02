@@ -3,7 +3,7 @@ import re
 from dlplan.core import Boolean, Numerical
 from dlplan.policy import PositiveBooleanCondition, NegativeBooleanCondition, GreaterNumericalCondition, EqualNumericalCondition, PositiveBooleanEffect, NegativeBooleanEffect, UnchangedBooleanEffect, DecrementNumericalEffect, IncrementNumericalEffect, UnchangedNumericalEffect
 
-from clingo import Control, Number, Symbol
+from clingo import Control, Number, Symbol, String
 from collections import defaultdict
 from typing import List, Union
 
@@ -144,29 +144,29 @@ class ASPFactory:
 
     def _create_feature_condition_fact(self, condition: Union[PositiveBooleanCondition, NegativeBooleanCondition, GreaterNumericalCondition, EqualNumericalCondition], r_idx: int, f_idx: int):
         if isinstance(condition, PositiveBooleanCondition):
-            return ("feature_condition", [Number(r_idx), Number(f_idx), Number(0)])
+            return ("feature_condition", [Number(r_idx), Number(f_idx), String("c_pos")])
         elif isinstance(condition, NegativeBooleanCondition):
-            return ("feature_condition", [Number(r_idx), Number(f_idx), Number(1)])
+            return ("feature_condition", [Number(r_idx), Number(f_idx), String("c_neg")])
         elif isinstance(condition, GreaterNumericalCondition):
-            return ("feature_condition", [Number(r_idx), Number(f_idx), Number(2)])
+            return ("feature_condition", [Number(r_idx), Number(f_idx), String("c_gt")])
         elif isinstance(condition, EqualNumericalCondition):
-            return ("feature_condition", [Number(r_idx), Number(f_idx), Number(3)])
+            return ("feature_condition", [Number(r_idx), Number(f_idx), String("c_eq")])
         else:
             raise RuntimeError(f"Cannot parse condition {str(condition)}")
 
     def _create_feature_effect_fact(self, effect: Union[PositiveBooleanEffect, NegativeBooleanEffect, UnchangedBooleanEffect, IncrementNumericalEffect, DecrementNumericalEffect, UnchangedNumericalEffect], r_idx: int, f_idx: int):
         if isinstance(effect, PositiveBooleanEffect):
-            return ("feature_effect", [Number(r_idx), Number(f_idx), Number(0)])
+            return ("feature_effect", [Number(r_idx), Number(f_idx), String("e_pos")])
         elif isinstance(effect, NegativeBooleanEffect):
-            return ("feature_effect", [Number(r_idx), Number(f_idx), Number(1)])
+            return ("feature_effect", [Number(r_idx), Number(f_idx), String("e_neg")])
         elif isinstance(effect, UnchangedBooleanEffect):
-            return ("feature_effect", [Number(r_idx), Number(f_idx), Number(2)])
+            return ("feature_effect", [Number(r_idx), Number(f_idx), String("e_bot")])
         elif isinstance(effect, IncrementNumericalEffect):
-            return ("feature_effect", [Number(r_idx), Number(f_idx), Number(3)])
+            return ("feature_effect", [Number(r_idx), Number(f_idx), String("e_inc")])
         elif isinstance(effect, DecrementNumericalEffect):
-            return ("feature_effect", [Number(r_idx), Number(f_idx), Number(4)])
+            return ("feature_effect", [Number(r_idx), Number(f_idx), String("e_dec")])
         elif isinstance(effect, UnchangedNumericalEffect):
-            return ("feature_effect", [Number(r_idx), Number(f_idx), Number(5)])
+            return ("feature_effect", [Number(r_idx), Number(f_idx), String("e_bot")])
         else:
             raise RuntimeError(f"Cannot parse effect {str(effect)}")
 
@@ -292,12 +292,12 @@ class ASPFactory:
             if symbol.name == "feature_condition":
                 r_idx = symbol.arguments[0].number
                 f_idx = symbol.arguments[1].number
-                condition = symbol.arguments[2].number
+                condition = symbol.arguments[2].string
                 rule_to_feature_to_condition[r_idx][f_idx] = condition
             if symbol.name == "feature_effect":
                 r_idx = symbol.arguments[0].number
                 f_idx = symbol.arguments[1].number
-                effect = symbol.arguments[2].number
+                effect = symbol.arguments[2].string
                 rule_to_feature_to_effect[r_idx][f_idx] = effect
         facts = set()
         for good in good_equivalences:

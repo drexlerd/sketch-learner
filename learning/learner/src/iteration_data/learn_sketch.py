@@ -101,7 +101,7 @@ def learn_sketch(config, domain_data, instance_datas, workspace):
             sketch.print()
             if compute_smallest_unsolved_instance(config, sketch, selected_instance_datas) is None:
                 # Stop adding D2-separation constraints
-                # if sketch solves all training instances by luck
+                # if sketch solves all training instances
                 break
             j += 1
 
