@@ -1,21 +1,26 @@
-import re
+from collections import defaultdict
+from typing import List, Union
 
 from dlplan.core import Boolean, Numerical
 from dlplan.policy import PositiveBooleanCondition, NegativeBooleanCondition, GreaterNumericalCondition, EqualNumericalCondition, PositiveBooleanEffect, NegativeBooleanEffect, UnchangedBooleanEffect, DecrementNumericalEffect, IncrementNumericalEffect, UnchangedNumericalEffect
 
 from clingo import Control, Number, Symbol, String
-from collections import defaultdict
-from pathlib import Path
-from typing import List, Union
 
-from .returncodes import ClingoExitCode
-from ..domain_data.domain_data import DomainData
-from ..instance_data.instance_data import InstanceData
+from learner.src.driver import ENCODING_DIR
+from learner.src.asp.returncodes import ClingoExitCode
+from learner.src.util.config import EncodingType
+from learner.src.domain_data.domain_data import DomainData
+from learner.src.instance_data.instance_data import InstanceData
 
 
 class ASPFactory:
-    def __init__(self, asp_file_path: Path, add_arguments: List[str]):
+    def __init__(self, config):
+        add_arguments = []
+        if config.encoding_type == EncodingType.EXPLICIT:
+            add_arguments.extend(["--const", f"max_num_rules={config.max_num_rules}"])
+
         self.ctl = Control(arguments=["--parallel-mode=32,split", "--opt-mode=optN"] + add_arguments)
+
         # features
         self.ctl.add("boolean", ["b"], "boolean(b).")
         self.ctl.add("numerical", ["n"], "numerical(n).")
@@ -47,7 +52,15 @@ class ASPFactory:
         self.ctl.add("r_distance", ["i", "s", "r", "d"], "r_distance(i,s,r,d).")
         self.ctl.add("s_distance", ["i", "s1", "s2", "d"], "s_distance(i,s1,s2,d).")
 
-        self.ctl.load(str(asp_file_path))
+        if config.encoding_type == EncodingType.D2:
+            self.ctl.load(str(ENCODING_DIR / "sketch-d2.lp"))
+        elif config.encoding_type == EncodingType.EXPLICIT:
+            self.ctl.load(str(ENCODING_DIR / "sketch-explicit.lp"))
+        else:
+            raise RuntimeError("Unknown encoding type:", config.encoding_type)
+
+        if config.goal_separation:
+            self.ctl.load(str(ENCODING_DIR / "goal_separation.lp"))
 
 
     def _create_initial_fact(self, instance_id: int, state_id: int):

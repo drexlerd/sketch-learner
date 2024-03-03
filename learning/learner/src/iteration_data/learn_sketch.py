@@ -17,6 +17,7 @@ from learner.src.iteration_data.sketch import Sketch
 from learner.src.iteration_data.state_pair_equivalence_utils import compute_state_pair_equivalences
 from learner.src.iteration_data.tuple_graph_equivalence_utils import compute_tuple_graph_equivalences, minimize_tuple_graph_equivalences
 from learner.src.iteration_data.learning_statistics import LearningStatistics
+from learner.src.util.config import EncodingType
 from learner.src.util.timer import CountDownTimer
 from learner.src.util.command import create_experiment_workspace
 
@@ -66,12 +67,12 @@ def learn_sketch(config, domain_data, instance_datas, workspace):
         minimize_tuple_graph_equivalences(selected_instance_datas)
         logging.info(colored("..done", "blue", "on_grey"))
 
-        if config.d2_separate:
+        if config.encoding_type == EncodingType.D2:
             d2_facts = set()
             symbols = None
             j = 0
             while True:
-                asp_factory = ASPFactory(config.asp_location / "sketch-d2.lp", [])
+                asp_factory = ASPFactory(config)
                 facts = asp_factory.make_facts(domain_data, selected_instance_datas)
                 if j == 0:
                     d2_facts.update(asp_factory.make_initial_d2_facts(selected_instance_datas))
@@ -105,8 +106,8 @@ def learn_sketch(config, domain_data, instance_datas, workspace):
                     # if sketch solves all training instances
                     break
                 j += 1
-        else:
-            asp_factory = ASPFactory(config.asp_location / "sketch-explicit.lp", ["--const", f"max_num_rules={config.max_num_rules}"])
+        elif config.encoding_type == EncodingType.EXPLICIT:
+            asp_factory = ASPFactory(config)
             facts = asp_factory.make_facts(domain_data, selected_instance_datas)
 
             logging.info(colored("Grounding Logic Program...", "blue", "on_grey"))
@@ -126,6 +127,8 @@ def learn_sketch(config, domain_data, instance_datas, workspace):
             sketch = Sketch(dlplan_policy, config.width)
             logging.info("Learned the following sketch:")
             sketch.print()
+        else:
+            raise RuntimeError("Unknown encoding type:", config.encoding_type)
 
         logging.info(colored("Verifying learned sketch...", "blue", "on_grey"))
         assert compute_smallest_unsolved_instance(config, sketch, selected_instance_datas) is None

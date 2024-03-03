@@ -28,8 +28,6 @@ r_reachable(I, S') :- D = D', r_reachable(I, S), good(I, S, S'), subgoal_distanc
 
 % Require D2-separation
 :- good(C), not good(C'), d2_separate(C, C'), state_pair_class(C), state_pair_class(C'), { feature(F) : select(F), feature_effect(C, F, V), feature_effect(C', F, V'), V != V' } = 0, { feature(F) : select(F), feature_condition(C, F, V), feature_condition(C', F, V'), V != V' } = 0.
-% Require Goal-separation
-:- nongoal(I, S), goal(I', S'), { feature(F) : select(F), b_value(I, S, F, V), b_value(I', S', F, V'), V != V' } = 0.
 
 % Define ``good`` pairs of state classes similar
 good(I, S, S') :- good(C), cover(I, S, S', C).

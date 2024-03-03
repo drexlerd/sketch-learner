@@ -6,7 +6,8 @@ from typing import List
 
 from learner.src.util.command import create_experiment_workspace, change_working_directory
 
-from learner.src.driver import Experiment, BASEDIR
+from learner.src.util.config import EncodingType
+from learner.src.driver import Experiment
 from learner.src.steps import generate_pipeline
 from learner.src.instance_data.instance_information import InstanceInformation
 
@@ -14,14 +15,24 @@ from learner.src.instance_data.instance_information import InstanceInformation
 def generate_experiment(domain_filename: str, instance_filenames: List[str], workspace: str, **kwargs):
     """ """
     defaults = dict(
-        # The overall time limit in seconds
+        ## The overall time limit in seconds
         timeout=6*24*60*60,
 
-        # The maximum states that we allows in each complete state space.
+
+        ## State space generation
+
+        # The maximum states that we allows in each complete state space
         max_states_per_instance=1000,
+        # The maximum time to expand a complete state space
         max_time_per_instance=10,
 
-        # Feature generator settings
+
+        ## Feature generation
+
+        # If true, enable feature generation
+        generate_features=True,
+
+        # The setting that are passed to DLPlan
         concept_complexity_limit=9,
         role_complexity_limit=9,
         boolean_complexity_limit=9,
@@ -30,19 +41,34 @@ def generate_experiment(domain_filename: str, instance_filenames: List[str], wor
         time_limit=3600,
         feature_limit=1000000,
 
-        goal_separation=True,
-
-        closed_Q=True,
-
-        width=2,
-
-        d2_separate=True,
-        max_num_rules=4,  # Relevant when d2_separate=False
-
+        # The features that will be added regardless of the feature generation
+        # Useful for debugging or manually crafting new sketches
         add_boolean_features=[],
         add_numerical_features=[],
-        generate_features=True,
 
+
+        ## If true, features separate goal from nongoal states
+        goal_separation=False,
+
+
+        ## If true, all alive states are considered initial state
+        closed_Q=True,
+
+
+        ## The bound on the sketch width on the training instances
+        width=1,
+
+
+        ## Encoding type
+        encoding_type=EncodingType.D2,
+
+        # D2 encoding settings (there are none yet)
+
+        # Explicit encoding settings
+        max_num_rules=4,
+
+
+        ## Misc
         quiet=False,
         random_seed=0,
     )
@@ -70,8 +96,5 @@ def generate_experiment(domain_filename: str, instance_filenames: List[str], wor
                 workspace / "input" / instance_filename.stem))
 
     steps, config = generate_pipeline(**parameters)
-
-    # The location of the asp problem file
-    config["asp_location"] = BASEDIR / "learner/src/asp/"
 
     return Experiment(steps, parameters)

@@ -1,4 +1,3 @@
-import copy
 import logging
 import multiprocessing
 import os
@@ -17,7 +16,8 @@ from learner.src.util import performance
 
 DIR = Path(__file__).resolve().parent
 BASEDIR = DIR.parent.parent
-BENCHMARK_DIR = BASEDIR / 'benchmarks'
+BENCHMARK_DIR = BASEDIR / "benchmarks"
+ENCODING_DIR = BASEDIR / "learner" / "src" / "asp"
 
 
 class InvalidConfigParameter(Exception):
