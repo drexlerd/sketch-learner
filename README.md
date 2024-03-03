@@ -68,7 +68,7 @@ def experiments():
     return exps
 ```
 
-In this file, we define two experiments. The `debug` experiment turns of the feature generator and adds handcrafted domain specific features. You can additionally pass this script to the call as follows.
+In this file, we define two experiments. The `debug` experiment turns of the feature generator and adds handcrafted domain specific features. You can also modify other hyperparameters from the [list of default parameters](https://github.com/drexlerd/sketch-learner/blob/main/learning/learner/src/util/defaults.py). You can additionally pass this script to the call as follows.
 
 ```console
 python3 learner/learning/main.py --domain <path/to/pddl/domain> --task_dir <path/to/pddl/problems> --width 1 --exp_id gripper:debug
