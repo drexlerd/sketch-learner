@@ -2,10 +2,9 @@ import math
 from typing import List
 from collections import defaultdict
 
+from .tuple_graph_equivalence import TupleGraphEquivalence, PerStateTupleGraphEquivalences
 
-from learner.src.instance_data.instance_data import InstanceData
-from learner.src.iteration_data.tuple_graph_equivalence import TupleGraphEquivalence, PerStateTupleGraphEquivalences
-
+from ..instance_data.instance_data import InstanceData
 
 
 def compute_tuple_graph_equivalences(instance_datas: List[InstanceData]) -> None:

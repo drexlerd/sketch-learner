@@ -3,8 +3,8 @@ from dataclasses import dataclass
 from dlplan.core import VocabularyInfo, SyntacticElementFactory
 from dlplan.policy import PolicyFactory
 
-from learner.src.iteration_data.state_pair_equivalence import PerStateStatePairEquivalences
-from learner.src.iteration_data.feature_pool import FeaturePool
+from ..iteration_data.state_pair_equivalence import PerStateStatePairEquivalences
+from ..iteration_data.feature_pool import FeaturePool
 
 
 @dataclass

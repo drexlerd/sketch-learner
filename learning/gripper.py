@@ -1,4 +1,4 @@
-from learner.src.util.config import EncodingType
+from learner.src.defaults import EncodingType
 from learner.src.util.misc import update_dict
 from learner.src.driver import BENCHMARK_DIR
 

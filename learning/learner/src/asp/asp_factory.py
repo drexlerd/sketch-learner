@@ -6,11 +6,12 @@ from dlplan.policy import PositiveBooleanCondition, NegativeBooleanCondition, Gr
 
 from clingo import Control, Number, Symbol, String
 
-from learner.src.driver import ENCODING_DIR
-from learner.src.asp.returncodes import ClingoExitCode
-from learner.src.util.config import EncodingType
-from learner.src.domain_data.domain_data import DomainData
-from learner.src.instance_data.instance_data import InstanceData
+from .returncodes import ClingoExitCode
+
+from ..driver import ENCODING_DIR
+from ..defaults import EncodingType
+from ..domain_data.domain_data import DomainData
+from ..instance_data.instance_data import InstanceData
 
 
 class ASPFactory:

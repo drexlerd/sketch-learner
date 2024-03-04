@@ -4,8 +4,8 @@ import sys
 
 from pathlib import Path
 
-from learner.src.util.bootstrap import setup_argparser
-from learner.src.util.defaults import generate_experiment
+from .bootstrap import setup_argparser
+from ..defaults import generate_experiment
 
 
 def import_from_file(filename):
@@ -84,6 +84,8 @@ def do(domain_filename, task_dir, workspace, expid=None, pipeline=None, width=No
 
 def run():
     args = setup_argparser().parse_args(sys.argv[1:])
+    print(os.getcwd())
+    print(args.task_dir)
     do( Path(args.domain).resolve(),
         Path(args.task_dir).resolve(),
         Path(args.workspace).resolve(),

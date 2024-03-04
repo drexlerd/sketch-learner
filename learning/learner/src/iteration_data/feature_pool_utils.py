@@ -1,11 +1,11 @@
 from typing import  List
 
-from dlplan.core import Boolean, Numerical
 from dlplan.generator import FeatureGenerator
 
-from learner.src.domain_data.domain_data import DomainData
-from learner.src.instance_data.instance_data import InstanceData
-from learner.src.iteration_data.feature_pool import Feature, FeaturePool
+from .feature_pool import Feature, FeaturePool
+
+from ..domain_data.domain_data import DomainData
+from ..instance_data.instance_data import InstanceData
 
 
 def compute_feature_pool(config, domain_data: DomainData, instance_datas: List[InstanceData]):

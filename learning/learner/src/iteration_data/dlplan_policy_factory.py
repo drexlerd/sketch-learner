@@ -3,12 +3,11 @@ import re
 from abc import ABC, abstractmethod
 
 from dlplan.core import Boolean, Numerical
-from dlplan.policy import PolicyFactory
 
 from clingo import Symbol
-from typing import List, Dict, Union, MutableSet
+from typing import List, Union, MutableSet
 
-from learner.src.domain_data.domain_data import DomainData
+from ..domain_data.domain_data import DomainData
 
 
 class DlplanPolicyFactory(ABC):

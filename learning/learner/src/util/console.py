@@ -2,7 +2,7 @@ import logging
 import shutil
 import time
 
-from learner.src.util.version import get_version
+from .version import get_version
 
 
 def get_terminal_size():

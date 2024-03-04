@@ -6,11 +6,12 @@ import math
 from collections import defaultdict
 from typing import List
 
-from learner.src.domain_data.domain_data import DomainData
-from learner.src.instance_data.instance_data import InstanceData
-from learner.src.iteration_data.state_pair_equivalence import StatePairEquivalenceClasses, StatePairEquivalence, PerStateStatePairEquivalences
-from learner.src.iteration_data.feature_pool import FeaturePool
-from learner.src.iteration_data.feature_valuations import FeatureValuations
+from .state_pair_equivalence import StatePairEquivalenceClasses, StatePairEquivalence, PerStateStatePairEquivalences
+from .feature_pool import FeaturePool
+from .feature_valuations import FeatureValuations
+
+from ..domain_data.domain_data import DomainData
+from ..instance_data.instance_data import InstanceData
 
 
 

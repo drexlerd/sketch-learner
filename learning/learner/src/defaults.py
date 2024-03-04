@@ -3,13 +3,21 @@
 
 from pathlib import Path
 from typing import List
+from enum import Enum
 
-from learner.src.util.command import create_experiment_workspace, change_working_directory
+from .util.command import create_experiment_workspace, change_working_directory
+from .driver import Experiment
+from .steps import generate_pipeline
+from .instance_data.instance_information import InstanceInformation
 
-from learner.src.util.config import EncodingType
-from learner.src.driver import Experiment
-from learner.src.steps import generate_pipeline
-from learner.src.instance_data.instance_information import InstanceInformation
+
+class EncodingType(Enum):
+    """
+    D2 is the encoding related to Francès et al. (AAAI2021): https://arxiv.org/abs/2101.00692
+    EXPLICIT is the encoding from Drexler et al. (ICAPS2022): https://arxiv.org/abs/2203.14852
+    """
+    D2 = 0
+    EXPLICIT = 1
 
 
 def generate_experiment(domain_filename: str, instance_filenames: List[str], workspace: str, **kwargs):

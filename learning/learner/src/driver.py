@@ -6,18 +6,21 @@ import sys
 import numpy as np
 from pathlib import Path
 
-from learner.src.returncodes import ExitCode
-from learner.src.errors import CriticalPipelineError
-from learner.src.util import console
-from learner.src.util.naming import compute_serialization_name
-from learner.src.util.serialization import deserialize, serialize
-from learner.src.util import performance
+from .returncodes import ExitCode
+from .errors import CriticalPipelineError
+from .util import console
+from .util.naming import compute_serialization_name
+from .util.serialization import deserialize, serialize
+from .util import performance
 
 
 DIR = Path(__file__).resolve().parent
+print(DIR)
 BASEDIR = DIR.parent.parent
+print(BASEDIR)
 BENCHMARK_DIR = BASEDIR / "benchmarks"
 ENCODING_DIR = BASEDIR / "learner" / "src" / "asp"
+print(BENCHMARK_DIR)
 
 
 class InvalidConfigParameter(Exception):

@@ -4,22 +4,21 @@ from dlplan.policy import PolicyMinimizer
 from typing import List
 from termcolor import colored
 
-from learner.src.asp.asp_factory import ASPFactory
-from learner.src.asp.returncodes import ClingoExitCode
+from .feature_pool_utils import compute_feature_pool
+from .feature_valuations_utils import compute_per_state_feature_valuations
+from .dlplan_policy_factory import D2sepDlplanPolicyFactory, ExplicitDlplanPolicyFactory
+from .sketch import Sketch
+from .state_pair_equivalence_utils import compute_state_pair_equivalences
+from .tuple_graph_equivalence_utils import compute_tuple_graph_equivalences, minimize_tuple_graph_equivalences
+from .learning_statistics import LearningStatistics
 
-
-from learner.src.instance_data.instance_data import InstanceData
-from learner.src.instance_data.instance_information import InstanceInformation
-from learner.src.iteration_data.feature_pool_utils import compute_feature_pool
-from learner.src.iteration_data.feature_valuations_utils import compute_per_state_feature_valuations
-from learner.src.iteration_data.dlplan_policy_factory import D2sepDlplanPolicyFactory, ExplicitDlplanPolicyFactory
-from learner.src.iteration_data.sketch import Sketch
-from learner.src.iteration_data.state_pair_equivalence_utils import compute_state_pair_equivalences
-from learner.src.iteration_data.tuple_graph_equivalence_utils import compute_tuple_graph_equivalences, minimize_tuple_graph_equivalences
-from learner.src.iteration_data.learning_statistics import LearningStatistics
-from learner.src.util.config import EncodingType
-from learner.src.util.timer import CountDownTimer
-from learner.src.util.command import create_experiment_workspace
+from ..defaults import EncodingType
+from ..asp.asp_factory import ASPFactory
+from ..asp.returncodes import ClingoExitCode
+from ..instance_data.instance_data import InstanceData
+from ..instance_data.instance_information import InstanceInformation
+from ..util.timer import CountDownTimer
+from ..util.command import create_experiment_workspace
 
 
 

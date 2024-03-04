@@ -2,6 +2,7 @@ from typing import Dict, MutableSet
 from dataclasses import dataclass, field
 from collections import defaultdict
 
+
 @dataclass
 class TupleGraphEquivalence:
     """

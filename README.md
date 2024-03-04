@@ -60,7 +60,7 @@ def experiments():
     return exps
 ```
 
-In this file, we define a `debug` experiment that does two things: 1) it turns off the feature generator, and 2) adds handcrafted domain specific features. You can also modify other hyperparameters from the [list of default parameters](https://github.com/drexlerd/sketch-learner/blob/main/learning/learner/src/util/defaults.py). You can additionally pass this script to the call as follows.
+In this file, we define a `debug` experiment that does two things: 1) it turns off the feature generator, and 2) adds handcrafted domain specific features. You can also modify other hyperparameters from the [list of default parameters](https://github.com/drexlerd/sketch-learner/blob/main/learning/learner/src/util/defaults.py). You can additionally pass this script to the call as follows. Note that the experiment script has to live next to main.py.
 
 ```console
 python3 learner/learning/main.py --domain <path/to/pddl/domain> --task_dir <path/to/pddl/problems> --width 1 --exp_id gripper:debug

@@ -7,7 +7,7 @@ from termcolor import colored
 from typing import Dict, List
 from collections import defaultdict, deque
 
-from learner.src.instance_data.instance_data import InstanceData
+from ..instance_data.instance_data import InstanceData
 
 
 class Sketch:

@@ -2,8 +2,8 @@ from typing import List
 
 from dlplan.novelty import NoveltyBase, TupleGraph
 
-from learner.src.instance_data.instance_data import InstanceData
-from learner.src.instance_data.tuple_graph import PerStateTupleGraphs
+from .instance_data import InstanceData
+from .tuple_graph import PerStateTupleGraphs
 
 
 def compute_tuple_graphs(width: int, instance_datas: List[InstanceData]):

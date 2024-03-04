@@ -3,7 +3,7 @@ import logging
 from dlplan.core import VocabularyInfo, SyntacticElementFactory
 from dlplan.policy import PolicyFactory
 
-from learner.src.domain_data.domain_data import DomainData
+from ..domain_data.domain_data import DomainData
 
 
 def compute_domain_data(domain_filename: str, vocabulary_info: VocabularyInfo) -> DomainData:
