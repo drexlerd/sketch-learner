@@ -27,9 +27,9 @@ from .src.iteration_data.tuple_graph_equivalence_utils import compute_tuple_grap
 
 def compute_smallest_unsolved_instance(sketch: Sketch,
                                        instance_datas: List[InstanceData],
-                                       goal_separating_features: bool):
+                                       enable_goal_separating_features: bool):
     for instance_data in instance_datas:
-        if not sketch.solves(instance_data, goal_separating_features):
+        if not sketch.solves(instance_data, enable_goal_separating_features):
             return instance_data
     return None
 
@@ -44,8 +44,8 @@ def learn_sketch_for_problem_class(
     max_time_per_instance: int = 10,
     encoding_type: EncodingType = EncodingType.D2,
     max_num_rules: int = 4,
-    goal_separating_features: bool = True,
-    enable_feature_generation: bool = True,
+    enable_goal_separating_features: bool = True,
+    disable_feature_generation: bool = True,
     concept_complexity_limit: int = 9,
     role_complexity_limit: int = 9,
     boolean_complexity_limit: int = 9,
@@ -104,7 +104,7 @@ def learn_sketch_for_problem_class(
         domain_data.feature_pool = compute_feature_pool(
             domain_data,
             selected_instance_datas,
-            enable_feature_generation,
+            disable_feature_generation,
             concept_complexity_limit,
             role_complexity_limit,
             boolean_complexity_limit,
@@ -136,7 +136,7 @@ def learn_sketch_for_problem_class(
             symbols = None
             j = 0
             while True:
-                asp_factory = ASPFactory(encoding_type, goal_separating_features, max_num_rules)
+                asp_factory = ASPFactory(encoding_type, enable_goal_separating_features, max_num_rules)
                 facts = asp_factory.make_facts(domain_data, selected_instance_datas)
                 if j == 0:
                     d2_facts.update(asp_factory.make_initial_d2_facts(selected_instance_datas))
@@ -165,13 +165,13 @@ def learn_sketch_for_problem_class(
                 sketch = Sketch(dlplan_policy, width)
                 logging.info("Learned the following sketch:")
                 sketch.print()
-                if compute_smallest_unsolved_instance(sketch, selected_instance_datas, goal_separating_features) is None:
+                if compute_smallest_unsolved_instance(sketch, selected_instance_datas, enable_goal_separating_features) is None:
                     # Stop adding D2-separation constraints
                     # if sketch solves all training instances
                     break
                 j += 1
         elif encoding_type == EncodingType.EXPLICIT:
-            asp_factory = ASPFactory(encoding_type, goal_separating_features, max_num_rules)
+            asp_factory = ASPFactory(encoding_type, enable_goal_separating_features, max_num_rules)
             facts = asp_factory.make_facts(domain_data, selected_instance_datas)
 
             logging.info(colored("Grounding Logic Program...", "blue", "on_grey"))
@@ -195,8 +195,8 @@ def learn_sketch_for_problem_class(
             raise RuntimeError("Unknown encoding type:", encoding_type)
 
         logging.info(colored("Verifying learned sketch...", "blue", "on_grey"))
-        assert compute_smallest_unsolved_instance(sketch, selected_instance_datas, goal_separating_features) is None
-        smallest_unsolved_instance = compute_smallest_unsolved_instance(sketch, instance_datas, goal_separating_features)
+        assert compute_smallest_unsolved_instance(sketch, selected_instance_datas, enable_goal_separating_features) is None
+        smallest_unsolved_instance = compute_smallest_unsolved_instance(sketch, instance_datas, enable_goal_separating_features)
         logging.info(colored("..done", "blue", "on_grey"))
 
         if smallest_unsolved_instance is None:

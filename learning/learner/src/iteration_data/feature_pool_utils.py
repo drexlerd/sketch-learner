@@ -10,7 +10,7 @@ from ..instance_data.instance_data import InstanceData
 
 def compute_feature_pool(domain_data: DomainData,
                          instance_datas: List[InstanceData],
-                         enable_feature_generation: bool,
+                         disable_feature_generation: bool,
                          concept_complexity_limit: int,
                          role_complexity_limit: int,
                          boolean_complexity_limit: int,
@@ -39,7 +39,7 @@ def compute_feature_pool(domain_data: DomainData,
     feature_generator.set_generate_top_role(False)
     feature_generator.set_generate_transitive_reflexive_closure_role(False)
     features = []
-    if enable_feature_generation:
+    if not disable_feature_generation:
         [generated_booleans, generated_numericals, _, _] = feature_generator.generate(
             syntactic_element_factory, dlplan_states,
             concept_complexity_limit,

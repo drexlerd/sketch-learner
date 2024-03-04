@@ -15,7 +15,7 @@ from ..instance_data.instance_data import InstanceData
 
 
 class ASPFactory:
-    def __init__(self, encoding_type: EncodingType, goal_separating_features: bool, max_num_rules: int):
+    def __init__(self, encoding_type: EncodingType, enable_goal_separating_features: bool, max_num_rules: int):
         add_arguments = []
         if encoding_type == EncodingType.EXPLICIT:
             add_arguments.extend(["--const", f"max_num_rules={max_num_rules}"])
@@ -60,7 +60,7 @@ class ASPFactory:
         else:
             raise RuntimeError("Unknown encoding type:", encoding_type)
 
-        if goal_separating_features:
+        if enable_goal_separating_features:
             self.ctl.load(str(ENCODING_DIR / "goal_separation.lp"))
 
 
