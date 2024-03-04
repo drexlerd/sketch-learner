@@ -39,7 +39,7 @@ def learn_sketch_for_problem_class(
     problems_directory: Path,
     workspace: Path,
     width: int,
-    closed_Q: bool = True,
+    disable_closed_Q: bool = True,
     max_num_states_per_instance: int = 1000,
     max_time_per_instance: int = 10,
     encoding_type: EncodingType = EncodingType.D2,
@@ -80,7 +80,7 @@ def learn_sketch_for_problem_class(
     timer = Timer()
 
     logging.info(colored("Constructing InstanceDatas...", "blue", "on_grey"))
-    instance_datas, domain_data = compute_instance_datas(domain_filepath, instance_informations, closed_Q, max_num_states_per_instance, max_time_per_instance)
+    instance_datas, domain_data = compute_instance_datas(domain_filepath, instance_informations, disable_closed_Q, max_num_states_per_instance, max_time_per_instance)
     logging.info(colored("..done", "blue", "on_grey"))
 
     logging.info(colored("Initializing TupleGraphs...", "blue", "on_grey"))

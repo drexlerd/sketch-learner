@@ -17,7 +17,7 @@ from ..util.command import create_experiment_workspace
 
 def compute_instance_datas(domain_filepath: Path,
                            instance_informations: List[InstanceInformation],
-                           closed_Q: bool,
+                           disable_closed_Q: bool,
                            max_num_states_per_instance: int,
                            max_time_per_instance: int) -> Tuple[List[InstanceData], DomainData]:
     cwd = os.getcwd()
@@ -46,17 +46,17 @@ def compute_instance_datas(domain_filepath: Path,
         if set(state_space.get_states().keys()) == set(state_space.get_goal_state_indices()):
             print("Trivially solvable.")
             continue
-        if not closed_Q and state_space.get_initial_state_index() in set(state_space.get_goal_state_indices()):
+        if disable_closed_Q and state_space.get_initial_state_index() in set(state_space.get_goal_state_indices()):
             print("Initial state is goal.")
             continue
         print("Num states:", len(state_space.get_states()))
         instance_data = InstanceData(len(instance_datas), domain_data, DenotationsCaches(), instance_information)
         instance_data.set_state_space(state_space, create_dump=True)
         instance_data.goal_distances = goal_distances
-        if closed_Q:
-            instance_data.initial_s_idxs = [s_idx for s_idx in state_space.get_states().keys() if instance_data.is_alive(s_idx)]
-        else:
+        if disable_closed_Q:
             instance_data.initial_s_idxs = [state_space.get_initial_state_index(),]
+        else:
+            instance_data.initial_s_idxs = [s_idx for s_idx in state_space.get_states().keys() if instance_data.is_alive(s_idx)]
         print("initial state indices:", instance_data.initial_s_idxs)
         instance_datas.append(instance_data)
     # Sort the instances according to size and fix the indices afterwards
