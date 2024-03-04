@@ -2,7 +2,7 @@ import logging
 from termcolor import colored
 
 from .returncodes import ExitCode
-from .iteration_data.learn_sketch import learn_sketch
+from .learn_sketch import learn_sketch
 from .util.command import create_experiment_workspace, write_file
 from .instance_data.instance_data_utils import compute_instance_datas
 from .instance_data.tuple_graph_utils import compute_tuple_graphs

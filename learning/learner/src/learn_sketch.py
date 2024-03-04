@@ -4,22 +4,21 @@ from dlplan.policy import PolicyMinimizer
 from typing import List
 from termcolor import colored
 
-from .feature_pool_utils import compute_feature_pool
-from .feature_valuations_utils import compute_per_state_feature_valuations
-from .dlplan_policy_factory import D2sepDlplanPolicyFactory, ExplicitDlplanPolicyFactory
-from .sketch import Sketch
-from .state_pair_equivalence_utils import compute_state_pair_equivalences
-from .tuple_graph_equivalence_utils import compute_tuple_graph_equivalences, minimize_tuple_graph_equivalences
-from .learning_statistics import LearningStatistics
+from .defaults import EncodingType
 
-from ..defaults import EncodingType
-from ..asp.asp_factory import ASPFactory
-from ..asp.returncodes import ClingoExitCode
-from ..instance_data.instance_data import InstanceData
-from ..instance_data.instance_information import InstanceInformation
-from ..util.timer import CountDownTimer
-from ..util.command import create_experiment_workspace
-
+from .asp.asp_factory import ASPFactory
+from .asp.returncodes import ClingoExitCode
+from .instance_data.instance_data import InstanceData
+from .instance_data.instance_information import InstanceInformation
+from .iteration_data.feature_pool_utils import compute_feature_pool
+from .iteration_data.feature_valuations_utils import compute_per_state_feature_valuations
+from .iteration_data.dlplan_policy_factory import D2sepDlplanPolicyFactory, ExplicitDlplanPolicyFactory
+from .iteration_data.sketch import Sketch
+from .iteration_data.state_pair_equivalence_utils import compute_state_pair_equivalences
+from .iteration_data.tuple_graph_equivalence_utils import compute_tuple_graph_equivalences, minimize_tuple_graph_equivalences
+from .iteration_data.learning_statistics import LearningStatistics
+from .util.timer import CountDownTimer
+from .util.command import create_experiment_workspace
 
 
 def compute_smallest_unsolved_instance(config, sketch: Sketch, instance_datas: List[InstanceData]):
