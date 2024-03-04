@@ -1,29 +1,16 @@
-
 import argparse
 import subprocess
 
 from pathlib import Path
 
 
-def run_gripper_debug(domain_filepath: Path, problems_directory: Path, workspace: Path, width: int):
-    additional_booleans = [
-        "b_empty(c_and(c_primitive(at-robby,0),c_one_of(rooma)))",  # robot at room b
-        "b_empty(r_diff(r_primitive(at_g,0,1), r_primitive(at,0,1)))"  # goal separating feature
-    ]
-    additional_numericals = [
-        "n_count(r_primitive(carry,0,1))",  # 4 num balls that the robot carries
-        "n_count(r_diff(r_primitive(at_g,0,1), r_primitive(at,0,1)))",  # 4 num misplaced balls, i.e., num balls at roomb
-    ]
-
+def run_gripper_release(domain_filepath: Path, problems_directory: Path, workspace: Path, width: int):
     subprocess.call([
         "python3", "../../main.py",
         "--domain_filepath", str(domain_filepath),
         "--problems_directory", str(problems_directory),
         "--workspace", str(workspace),
-        "--width", str(width),
-        "--disable_feature_generation"]
-        + ["--additional_booleans", ] + additional_booleans
-        + ["--additional_numericals",] + additional_numericals
+        "--width", str(width)]
     )
 
 
@@ -36,4 +23,4 @@ if __name__ == "__main__":
 
     args = parser.parse_args()
 
-    run_gripper_debug(args.domain_filepath, args.problems_directory, args.workspace, args.width)
+    run_gripper_release(args.domain_filepath, args.problems_directory, args.workspace, args.width)

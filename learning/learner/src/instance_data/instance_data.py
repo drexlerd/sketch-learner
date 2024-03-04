@@ -1,8 +1,8 @@
-from dlplan.core import DenotationsCaches
-from dlplan.state_space import StateSpace
-
 from dataclasses import dataclass
 from typing import List, Dict
+
+from dlplan.core import DenotationsCaches
+from dlplan.state_space import StateSpace
 
 from .instance_information import InstanceInformation
 from .tuple_graph import PerStateTupleGraphs

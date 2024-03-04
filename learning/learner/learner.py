@@ -243,4 +243,6 @@ def learn_sketch_for_problem_class(
     print(f"Total memory: {int(memory_usage() / 1024)} GiB.")
     print("=" * 80)
 
+    print(flush=True)
+
 
