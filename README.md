@@ -46,14 +46,7 @@ def experiments():
 
     exps = dict()
 
-    strips_base = update_dict(
-        base,
-        domain_filename=BENCHMARK_DIR / "gripper" / "domain.pddl",
-        task_dir_debug=BENCHMARK_DIR / "gripper" / "instances_debug",
-    )
-
     exps["debug"] = update_dict(
-        strips_base,
         generate_features=False,
         add_boolean_features=[
             "b_empty(c_and(c_primitive(at-robby,0),c_one_of(rooma)))",  # robot at room b
@@ -67,7 +60,7 @@ def experiments():
     return exps
 ```
 
-In this file, we define a `debug` experiment that does three things: 1) it uses a predefined set of instance from a directory and 2) it turns off the feature generator, and 3) adds handcrafted domain specific features. You can also modify other hyperparameters from the [list of default parameters](https://github.com/drexlerd/sketch-learner/blob/main/learning/learner/src/util/defaults.py). You can additionally pass this script to the call as follows.
+In this file, we define a `debug` experiment that does two things: 1) it turns off the feature generator, and 2) adds handcrafted domain specific features. You can also modify other hyperparameters from the [list of default parameters](https://github.com/drexlerd/sketch-learner/blob/main/learning/learner/src/util/defaults.py). You can additionally pass this script to the call as follows.
 
 ```console
 python3 learner/learning/main.py --domain <path/to/pddl/domain> --task_dir <path/to/pddl/problems> --width 1 --exp_id gripper:debug
