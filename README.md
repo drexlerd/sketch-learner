@@ -26,7 +26,7 @@ pip install -r requirements.txt
 The following command, learns a sketch of width 1 for a set of planning problem over a common domain.
 
 ```console
-python3 learner/learning/main.py --domain <path/to/pddl/domain> --task_dir <path/to/pddl/problems> --width 1
+python3 learner/main.py --domain <path/to/pddl/domain> --task_dir <path/to/pddl/problems> --width 1
 ```
 
 It is important that the planning problems are small. If you have a problem generator, then exhaustively generate small instances with the number of each object type in the range from 1 to 3.
@@ -34,9 +34,9 @@ It is important that the planning problems are small. If you have a problem gene
 If you want to change hyperparameters, or get a deeper understanding of your planning domain, by finding suitable features and learning a sketch for a fixed set of features, or just for debugging purposes, you can create an domain specific experiment script, e.g., a python script for Gripper can look as follows.
 
 ```python
-from learner.src.util.config import EncodingType
-from learner.src.util.misc import update_dict
+from learner.src.defaults import EncodingType
 from learner.src.driver import BENCHMARK_DIR
+from learner.src.util.misc import update_dict
 
 
 def experiments():
@@ -63,7 +63,7 @@ def experiments():
 In this file, we define a `debug` experiment that does two things: 1) it turns off the feature generator, and 2) adds handcrafted domain specific features. You can also modify other hyperparameters from the [list of default parameters](https://github.com/drexlerd/sketch-learner/blob/main/learning/learner/src/util/defaults.py). You can additionally pass this script to the call as follows. Note that the experiment script has to live next to main.py.
 
 ```console
-python3 learner/learning/main.py --domain <path/to/pddl/domain> --task_dir <path/to/pddl/problems> --width 1 --exp_id gripper:debug
+python3 learner/main.py --domain <path/to/pddl/domain> --task_dir <path/to/pddl/problems> --width 1 --exp_id gripper:debug
 ```
 
 
