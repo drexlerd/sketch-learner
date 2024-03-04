@@ -1,5 +1,8 @@
+import os
+
 from collections import defaultdict
 from typing import List, Union
+from pathlib import Path
 
 from dlplan.core import Boolean, Numerical
 from dlplan.policy import PositiveBooleanCondition, NegativeBooleanCondition, GreaterNumericalCondition, EqualNumericalCondition, PositiveBooleanEffect, NegativeBooleanEffect, UnchangedBooleanEffect, DecrementNumericalEffect, IncrementNumericalEffect, UnchangedNumericalEffect
@@ -7,11 +10,13 @@ from dlplan.policy import PositiveBooleanCondition, NegativeBooleanCondition, Gr
 from clingo import Control, Number, Symbol, String
 
 from .returncodes import ClingoExitCode
+from .encoding_type import EncodingType
 
-from ..driver import ENCODING_DIR
-from ..defaults import EncodingType
 from ..domain_data.domain_data import DomainData
 from ..instance_data.instance_data import InstanceData
+
+
+LIST_DIR = Path(os.path.dirname(os.path.abspath(__file__)))
 
 
 class ASPFactory:
@@ -54,14 +59,14 @@ class ASPFactory:
         self.ctl.add("s_distance", ["i", "s1", "s2", "d"], "s_distance(i,s1,s2,d).")
 
         if encoding_type == EncodingType.D2:
-            self.ctl.load(str(ENCODING_DIR / "sketch-d2.lp"))
+            self.ctl.load(str(LIST_DIR / "sketch-d2.lp"))
         elif encoding_type == EncodingType.EXPLICIT:
-            self.ctl.load(str(ENCODING_DIR / "sketch-explicit.lp"))
+            self.ctl.load(str(LIST_DIR / "sketch-explicit.lp"))
         else:
             raise RuntimeError("Unknown encoding type:", encoding_type)
 
         if enable_goal_separating_features:
-            self.ctl.load(str(ENCODING_DIR / "goal_separation.lp"))
+            self.ctl.load(str(LIST_DIR / "goal_separation.lp"))
 
 
     def _create_initial_fact(self, instance_id: int, state_id: int):

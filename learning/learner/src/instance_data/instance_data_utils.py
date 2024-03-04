@@ -25,7 +25,7 @@ def compute_instance_datas(domain_filepath: Path,
     instance_datas = []
     for instance_information in instance_informations:
         logging.info("Constructing InstanceData for filename %s", instance_information.filename)
-        create_experiment_workspace(instance_information.workspace, False)
+        create_experiment_workspace(instance_information.workspace)
         # change working directory to put planner output files in correct directory
         os.chdir(instance_information.workspace)
         print(instance_information.workspace)

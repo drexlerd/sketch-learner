@@ -6,12 +6,12 @@ from typing import List
 
 from dlplan.policy import PolicyMinimizer
 
-from .src.defaults import EncodingType
-
+from .src.asp.encoding_type import EncodingType
 from .src.asp.asp_factory import ASPFactory
 from .src.asp.returncodes import ClingoExitCode
 from .src.util.command import create_experiment_workspace, change_working_directory, write_file
-from .src.util.timer import CountDownTimer
+from .src.util.performance import memory_usage
+from .src.util.timer import Timer
 from .src.instance_data.instance_data import InstanceData
 from .src.instance_data.instance_information import InstanceInformation
 from .src.instance_data.instance_data_utils import compute_instance_datas
@@ -61,7 +61,7 @@ def learn_sketch_for_problem_class(
         additional_numericals = []
 
     # Root level 0 directory for experimental data
-    create_experiment_workspace(workspace, rm_if_existed=False)
+    create_experiment_workspace(workspace)
 
     # Initialize instance informations
     instance_filepaths = list(problems_directory.iterdir())
@@ -77,6 +77,8 @@ def learn_sketch_for_problem_class(
     # Change to working directory to write intermediate files.
     change_working_directory(workspace)
 
+    timer = Timer()
+
     logging.info(colored("Constructing InstanceDatas...", "blue", "on_grey"))
     instance_datas, domain_data = compute_instance_datas(domain_filepath, instance_informations, closed_Q, max_num_states_per_instance, max_time_per_instance)
     logging.info(colored("..done", "blue", "on_grey"))
@@ -87,7 +89,7 @@ def learn_sketch_for_problem_class(
 
     i = 0
     selected_instance_idxs = [0]
-    create_experiment_workspace(workspace, rm_if_existed=False)
+    create_experiment_workspace(workspace)
     while True:
         logging.info(colored(f"Iteration: {i}", "red", "on_grey"))
 
@@ -211,10 +213,8 @@ def learn_sketch_for_problem_class(
             print("Selected instances:", selected_instance_idxs)
         i += 1
 
-    print()
-    print()
+    print("=" * 80)
     logging.info(colored("Summary:", "green", "on_grey"))
-    print()
 
     learning_statistics = LearningStatistics(
         num_training_instances=len(instance_datas),
@@ -222,19 +222,24 @@ def learn_sketch_for_problem_class(
         num_states_in_selected_training_instances=sum([len(instance_data.state_space.get_states()) for instance_data in selected_instance_datas]),
         num_features_in_pool=len(domain_data.feature_pool.features))
     learning_statistics.print()
-    print()
+    print("=" * 80)
 
     print("Resulting sketch:")
     sketch.print()
-    print()
+    print("=" * 80)
 
     print("Resulting minimized sketch:")
     sketch_minimized = Sketch(PolicyMinimizer().minimize(sketch.dlplan_policy, domain_data.policy_builder), sketch.width)
     sketch_minimized.print()
-    print()
+    print("=" * 80)
 
     create_experiment_workspace(workspace / "output")
     write_file(workspace / "output" / f"sketch_{width}.txt", str(sketch.dlplan_policy))
     write_file(workspace / "output" / f"sketch_minimized_{width}.txt", str(sketch_minimized.dlplan_policy))
+
+    print("=" * 80)
+    print(f"Total time: {timer.get_elapsed_sec()} seconds.")
+    print(f"Total memory: {int(memory_usage() / 1024)} GiB.")
+    print("=" * 80)
 
 
