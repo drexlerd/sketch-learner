@@ -1,11 +1,11 @@
-from dlplan.core import State
-from dlplan.policy import Policy, NamedBoolean, NamedNumerical
-
 import math
 
+from collections import defaultdict, deque
 from termcolor import colored
 from typing import Dict, List
-from collections import defaultdict, deque
+
+from dlplan.core import State
+from dlplan.policy import Policy, NamedBoolean, NamedNumerical
 
 from ..instance_data.instance_data import InstanceData
 
@@ -133,7 +133,7 @@ class Sketch:
                 return False
         return True
 
-    def solves(self, config, instance_data: InstanceData):
+    def solves(self, instance_data: InstanceData, goal_separating_features: bool):
         """
         Returns True iff the sketch solves the instance, i.e.,
             (1) subproblems have bounded width,
@@ -143,7 +143,7 @@ class Sketch:
         bounded, subgoal_states_per_r_reachable_state = self._verify_bounded_width(instance_data)
         if not bounded:
             return False
-        if config.goal_separation:
+        if goal_separating_features:
             if not self._verify_goal_separating_features(instance_data):
                 return False
         if not self._verify_acyclicity(instance_data, subgoal_states_per_r_reachable_state):

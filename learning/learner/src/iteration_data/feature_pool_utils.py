@@ -8,7 +8,17 @@ from ..domain_data.domain_data import DomainData
 from ..instance_data.instance_data import InstanceData
 
 
-def compute_feature_pool(config, domain_data: DomainData, instance_datas: List[InstanceData]):
+def compute_feature_pool(domain_data: DomainData,
+                         instance_datas: List[InstanceData],
+                         enable_feature_generation: bool,
+                         concept_complexity_limit: int,
+                         role_complexity_limit: int,
+                         boolean_complexity_limit: int,
+                         count_numerical_complexity_limit: int,
+                         distance_numerical_complexity_limit: int,
+                         feature_limit: int,
+                         additional_booleans: List[str],
+                         additional_numericals: List[str]):
     dlplan_states = set()
     for instance_data in instance_datas:
         dlplan_states.update(set(instance_data.state_space.get_states().values()))
@@ -29,16 +39,24 @@ def compute_feature_pool(config, domain_data: DomainData, instance_datas: List[I
     feature_generator.set_generate_top_role(False)
     feature_generator.set_generate_transitive_reflexive_closure_role(False)
     features = []
-    if config.generate_features:
-        [generated_booleans, generated_numericals, _, _] = feature_generator.generate(syntactic_element_factory, dlplan_states, config.concept_complexity_limit, config.role_complexity_limit, config.boolean_complexity_limit, config.count_numerical_complexity_limit, config.distance_numerical_complexity_limit, config.time_limit, config.feature_limit)
+    if enable_feature_generation:
+        [generated_booleans, generated_numericals, _, _] = feature_generator.generate(
+            syntactic_element_factory, dlplan_states,
+            concept_complexity_limit,
+            role_complexity_limit,
+            boolean_complexity_limit,
+            count_numerical_complexity_limit,
+            distance_numerical_complexity_limit,
+            2147483647,  # max time limit,
+            feature_limit)
         for boolean in generated_booleans:
             features.append(Feature(boolean, boolean.compute_complexity() + 1 + 1))
         for numerical in generated_numericals:
             features.append(Feature(numerical, numerical.compute_complexity() + 1))
-    for boolean in config.add_boolean_features:
+    for boolean in additional_booleans:
         boolean = syntactic_element_factory.parse_boolean(boolean)
         features.append(Feature(boolean, boolean.compute_complexity() + 1 + 1))
-    for numerical in config.add_numerical_features:
+    for numerical in additional_numericals:
         numerical = syntactic_element_factory.parse_numerical(numerical)
         features.append(Feature(numerical, numerical.compute_complexity() + 1))
     return FeaturePool(features)

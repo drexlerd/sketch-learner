@@ -15,10 +15,10 @@ from ..instance_data.instance_data import InstanceData
 
 
 class ASPFactory:
-    def __init__(self, config):
+    def __init__(self, encoding_type: EncodingType, goal_separating_features: bool, max_num_rules: int):
         add_arguments = []
-        if config.encoding_type == EncodingType.EXPLICIT:
-            add_arguments.extend(["--const", f"max_num_rules={config.max_num_rules}"])
+        if encoding_type == EncodingType.EXPLICIT:
+            add_arguments.extend(["--const", f"max_num_rules={max_num_rules}"])
 
         self.ctl = Control(arguments=["--parallel-mode=32,split", "--opt-mode=optN"] + add_arguments)
 
@@ -53,14 +53,14 @@ class ASPFactory:
         self.ctl.add("r_distance", ["i", "s", "r", "d"], "r_distance(i,s,r,d).")
         self.ctl.add("s_distance", ["i", "s1", "s2", "d"], "s_distance(i,s1,s2,d).")
 
-        if config.encoding_type == EncodingType.D2:
+        if encoding_type == EncodingType.D2:
             self.ctl.load(str(ENCODING_DIR / "sketch-d2.lp"))
-        elif config.encoding_type == EncodingType.EXPLICIT:
+        elif encoding_type == EncodingType.EXPLICIT:
             self.ctl.load(str(ENCODING_DIR / "sketch-explicit.lp"))
         else:
-            raise RuntimeError("Unknown encoding type:", config.encoding_type)
+            raise RuntimeError("Unknown encoding type:", encoding_type)
 
-        if config.goal_separation:
+        if goal_separating_features:
             self.ctl.load(str(ENCODING_DIR / "goal_separation.lp"))
 
 
