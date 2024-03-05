@@ -3,7 +3,7 @@ WIDTH=$2
 
 WORKSPACE="${PWD}/workspace/${DOMAIN_NAME}_${WIDTH}"
 DOMAIN="${PWD}/../../benchmarks/${DOMAIN_NAME}/domain.pddl"
-PROBLEMS="${PWD}/../../benchmarks/${DOMAIN_NAME}/instances_debug"
+PROBLEMS="${PWD}/../../benchmarks/${DOMAIN_NAME}/instances"
 RUN_ERR="${WORKSPACE}/run.err"
 RUN_LOG="${WORKSPACE}/run.log"
 
