@@ -232,7 +232,8 @@ def learn_sketch_for_problem_class(
         write_file(f"sketch_minimized_{width}.txt", str(sketch_minimized.dlplan_policy))
 
         print_separation_line()
-        print(f"Total time: {timer.get_elapsed_sec()} seconds.")
+        timer.stop()
+        print(f"Total time: {int(timer.get_elapsed_sec()) + 1} seconds.")
         print(f"Total memory: {int(memory_usage() / 1024)} GiB.")
         print_separation_line()
 
