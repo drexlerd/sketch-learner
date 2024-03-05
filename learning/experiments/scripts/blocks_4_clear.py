@@ -1,3 +1,4 @@
+
 import argparse
 import subprocess
 
@@ -15,7 +16,7 @@ def run(domain_filepath: Path, problems_directory: Path, workspace: Path, width:
 
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description="Gripper release experiment.")
+    parser = argparse.ArgumentParser(description="Blocks_4_clear release experiment.")
     parser.add_argument("--domain_filepath", type=Path, required=True, help="The path to the domain file.")
     parser.add_argument("--problems_directory", type=Path, required=True, help="The directory containing the problem files.")
     parser.add_argument("--workspace", type=Path, required=True, help="The directory containing intermediate files.")

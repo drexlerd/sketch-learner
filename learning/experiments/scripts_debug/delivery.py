@@ -7,12 +7,13 @@ from pathlib import Path
 
 def run(domain_filepath: Path, problems_directory: Path, workspace: Path, width: int):
     additional_booleans = [
-        "b_empty(c_and(c_primitive(at-robby,0),c_one_of(rooma)))",  # robot at room b
-        "b_empty(r_diff(r_primitive(at_g,0,1), r_primitive(at,0,1)))"  # goal separating feature
+            "b_empty(c_primitive(empty,0))",  # 2
+            "b_empty(c_and(c_not(c_equal(r_primitive(at,0,1),r_primitive(at_g,0,1))),c_primitive(package,0)))",  # goal separating feature
     ]
     additional_numericals = [
-        "n_count(r_primitive(carry,0,1))",  # 4 num balls that the robot carries
-        "n_count(r_diff(r_primitive(at_g,0,1), r_primitive(at,0,1)))",  # 4 num misplaced balls, i.e., num balls at roomb
+        "n_count(c_equal(r_primitive(at,0,1),r_primitive(at_g,0,1)))",  # 5
+        "n_concept_distance(c_some(r_inverse(r_primitive(at,0,1)),c_primitive(truck,0)),r_primitive(adjacent,0,1),c_some(r_inverse(r_primitive(at_g,0,1)),c_top))",  # 10
+        "n_concept_distance(c_some(r_inverse(r_primitive(at,0,1)),c_primitive(truck,0)), r_primitive(adjacent,0,1), c_and(c_all(r_inverse(r_primitive(at_g,0,1)),c_bot),c_some(r_inverse(r_primitive(at,0,1)),c_primitive(package,0))))",  # 15
     ]
 
     subprocess.call([
@@ -21,14 +22,15 @@ def run(domain_filepath: Path, problems_directory: Path, workspace: Path, width:
         "--problems_directory", str(problems_directory),
         "--workspace", str(workspace),
         "--width", str(width),
-        "--disable_feature_generation"]
+        "--disable_feature_generation",
+        "--distance_numerical_complexity_limit", "15"]
         + ["--additional_booleans", ] + additional_booleans
         + ["--additional_numericals",] + additional_numericals
     )
 
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description="Gripper debug experiment.")
+    parser = argparse.ArgumentParser(description="Delivery debug experiment.")
     parser.add_argument("--domain_filepath", type=Path, required=True, help="The path to the domain file.")
     parser.add_argument("--problems_directory", type=Path, required=True, help="The directory containing the problem files.")
     parser.add_argument("--workspace", type=Path, required=True, help="The directory containing intermediate files.")
