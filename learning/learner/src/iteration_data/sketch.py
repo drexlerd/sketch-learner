@@ -66,7 +66,7 @@ class Sketch:
                     break
             if not bounded:
                 print(colored("Sketch fails to bound width of a state", "red", "on_grey"))
-                print("Instance:", instance_data.id, instance_data.instance_information.name)
+                print("Instance:", instance_data.id, instance_data.instance_filepath.stem)
                 print("Source_state:", source_state.get_index(), str(source_state))
                 return False, []
         return True, subgoal_states_per_r_reachable_state
@@ -90,7 +90,7 @@ class Sketch:
                         continue
                     if target_idx in s_idxs_on_path:
                         print(colored("Sketch cycles", "red", "on_grey"))
-                        print("Instance:", instance_data.id, instance_data.instance_information.name)
+                        print("Instance:", instance_data.id, instance_data.instance_filepath.stem)
                         for s_idx in s_idxs_on_path:
                             print(f"{s_idx} {str(instance_data.state_space.get_states()[s_idx])}")
                         print(f"{target_idx} {str(instance_data.state_space.get_states()[target_idx])}")
