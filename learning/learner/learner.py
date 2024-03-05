@@ -54,6 +54,7 @@ def learn_sketch_for_problem_class(
     feature_limit: int = 1000000,
     additional_booleans: List[str] = None,
     additional_numericals: List[str] = None,
+    enable_dump_files: bool = False,
 ):
     # Setup arguments and workspace
     if additional_booleans is None:
@@ -71,11 +72,11 @@ def learn_sketch_for_problem_class(
     # Generate data
     with change_dir("input"):
         logging.info(colored("Constructing InstanceDatas...", "blue", "on_grey"))
-        instance_datas, domain_data = compute_instance_datas(domain_filepath, instance_filepaths, disable_closed_Q, max_num_states_per_instance, max_time_per_instance)
+        instance_datas, domain_data = compute_instance_datas(domain_filepath, instance_filepaths, disable_closed_Q, max_num_states_per_instance, max_time_per_instance, enable_dump_files)
         logging.info(colored("..done", "blue", "on_grey"))
 
         logging.info(colored("Initializing TupleGraphs...", "blue", "on_grey"))
-        compute_tuple_graphs(width, instance_datas)
+        compute_tuple_graphs(width, instance_datas, enable_dump_files)
         logging.info(colored("..done", "blue", "on_grey"))
 
     # Learn sketch

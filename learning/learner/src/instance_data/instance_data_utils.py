@@ -16,7 +16,8 @@ def compute_instance_datas(domain_filepath: Path,
                            instance_filepaths: List[Path],
                            disable_closed_Q: bool,
                            max_num_states_per_instance: int,
-                           max_time_per_instance: int) -> Tuple[List[InstanceData], DomainData]:
+                           max_time_per_instance: int,
+                           enable_dump_files: bool) -> Tuple[List[InstanceData], DomainData]:
     vocabulary_info = None
     instance_datas = []
     with change_dir("state_spaces"):
@@ -48,7 +49,9 @@ def compute_instance_datas(domain_filepath: Path,
                 print("Num states:", len(state_space.get_states()))
                 instance_data = InstanceData(len(instance_datas), domain_data, DenotationsCaches(), instance_filepath)
                 instance_data.state_space = state_space
-                write_file(f"{name}.dot", state_space.to_dot(1))
+
+                if enable_dump_files:
+                    write_file(f"{name}.dot", state_space.to_dot(1))
 
                 instance_data.goal_distances = goal_distances
                 if disable_closed_Q:
