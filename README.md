@@ -23,48 +23,19 @@ pip install -r requirements.txt
 
 ## How to learn sketches for a new planning domain?
 
+The following command prints the help message.
+
+```console
+python3 learning/main.py --help
+```
+
 The following command, learns a sketch of width 1 for a set of planning problem over a common domain.
 
 ```console
-python3 learner/main.py --domain <path/to/pddl/domain> --task_dir <path/to/pddl/problems> --width 1
+python3 learning/main.py --domain <path/to/pddl/domain> --task_dir <path/to/pddl/problems> --width 1
 ```
 
 It is important that the planning problems are small. If you have a problem generator, then exhaustively generate small instances with the number of each object type in the range from 1 to 3.
-
-If you want to change hyperparameters, or get a deeper understanding of your planning domain, by finding suitable features and learning a sketch for a fixed set of features, or just for debugging purposes, you can create an domain specific experiment script, e.g., a python script for Gripper can look as follows.
-
-```python
-from learner.src.defaults import EncodingType
-from learner.src.driver import BENCHMARK_DIR
-from learner.src.util.misc import update_dict
-
-
-def experiments():
-    base = dict(
-        pipeline="sketch",
-    )
-
-    exps = dict()
-
-    exps["debug"] = update_dict(
-        generate_features=False,
-        add_boolean_features=[
-            "b_empty(c_and(c_primitive(at-robby,0),c_one_of(rooma)))",  # robot at room b
-            "b_empty(r_diff(r_primitive(at_g,0,1), r_primitive(at,0,1)))",  # goal separating feature
-        ],
-        add_numerical_features=[
-            "n_count(r_primitive(carry,0,1))",  # 4 num balls that the robot carries
-            "n_count(r_diff(r_primitive(at_g,0,1), r_primitive(at,0,1)))",  # 4 num misplaced balls, i.e., num balls at roomb
-        ],
-    )
-    return exps
-```
-
-In this file, we define a `debug` experiment that does two things: 1) it turns off the feature generator, and 2) adds handcrafted domain specific features. You can also modify other hyperparameters from the [list of default parameters](https://github.com/drexlerd/sketch-learner/blob/main/learning/learner/src/util/defaults.py). You can additionally pass this script to the call as follows. Note that the experiment script has to live next to main.py.
-
-```console
-python3 learner/main.py --domain <path/to/pddl/domain> --task_dir <path/to/pddl/problems> --width 1 --exp_id gripper:debug
-```
 
 
 ## Running the Learning Experiments (ICAPS2022)
