@@ -32,7 +32,7 @@ python3 learning/main.py --help
 The following command, learns a sketch of width 1 for a set of planning problem over a common domain.
 
 ```console
-python3 learning/main.py --domain <path/to/pddl/domain> --task_dir <path/to/pddl/problems> --width 1
+python3 learning/main.py --domain_filepath <path/to/pddl/domain> --problems_directory <path/to/pddl/problems> --workspace <path/to/workspace> --width 1
 ```
 
 It is important that the planning problems are small. If you have a problem generator, then exhaustively generate small instances with the number of each object type in the range from 1 to 3.
