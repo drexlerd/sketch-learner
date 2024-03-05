@@ -1,6 +1,6 @@
 % Optimization for fewest number of rules, then smallest sum over feature complexities
-#minimize {1,rule(R): rule(R)}.
-#minimize { C,complexity(F, C) : complexity(F, C), feature(F), select(F) }.
+#minimize { C@2,complexity(F, C) : complexity(F, C), feature(F), select(F) }.
+#minimize { 1@1,rule(R): rule(R)}.
 
 %%%%%%%%%% C1 %%%%%%%%%%
 % Generate selected features

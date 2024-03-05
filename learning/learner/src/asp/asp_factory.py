@@ -25,7 +25,7 @@ class ASPFactory:
         if encoding_type == EncodingType.EXPLICIT:
             add_arguments.extend(["--const", f"max_num_rules={max_num_rules}"])
 
-        self.ctl = Control(arguments=["--parallel-mode=32,split", "--opt-mode=optN"] + add_arguments)
+        self.ctl = Control(arguments=["--parallel-mode=32,split", "--opt-mode=opt"] + add_arguments)
 
         # features
         self.ctl.add("boolean", ["b"], "boolean(b).")

@@ -12,9 +12,8 @@ from .src.asp.returncodes import ClingoExitCode
 from .src.util.command import create_experiment_workspace, change_working_directory, write_file, change_dir
 from .src.util.performance import memory_usage
 from .src.util.timer import Timer
-from .src.util.console import add_console_handler
+from .src.util.console import add_console_handler, print_separation_line
 from .src.instance_data.instance_data import InstanceData
-from .src.instance_data.instance_information import InstanceInformation
 from .src.instance_data.instance_data_utils import compute_instance_datas
 from .src.instance_data.tuple_graph_utils import compute_tuple_graphs
 from .src.iteration_data.learning_statistics import LearningStatistics
@@ -56,22 +55,20 @@ def learn_sketch_for_problem_class(
     additional_booleans: List[str] = None,
     additional_numericals: List[str] = None,
 ):
+    # Setup arguments and workspace
     if additional_booleans is None:
         additional_booleans = []
     if additional_numericals is None:
         additional_numericals = []
     instance_filepaths = list(problems_directory.iterdir())
-
     add_console_handler(logging.getLogger(), logging.INFO)
-
-    # Root level 0 directory for experimental data
     create_experiment_workspace(workspace)
-
-    # Change to working directory to write intermediate files.
     change_working_directory(workspace)
 
+    # Keep track of time
     timer = Timer()
 
+    # Generate data
     with change_dir("input"):
         logging.info(colored("Constructing InstanceDatas...", "blue", "on_grey"))
         instance_datas, domain_data = compute_instance_datas(domain_filepath, instance_filepaths, disable_closed_Q, max_num_states_per_instance, max_time_per_instance)
@@ -81,7 +78,7 @@ def learn_sketch_for_problem_class(
         compute_tuple_graphs(width, instance_datas)
         logging.info(colored("..done", "blue", "on_grey"))
 
-
+    # Learn sketch
     with change_dir("iterations"):
         i = 0
         with change_dir(str(i)):
@@ -207,8 +204,9 @@ def learn_sketch_for_problem_class(
                     print("Selected instances:", selected_instance_idxs)
                 i += 1
 
+    # Output the result
     with change_dir("output"):
-        print("=" * 80)
+        print_separation_line()
         logging.info(colored("Summary:", "green", "on_grey"))
 
         learning_statistics = LearningStatistics(
@@ -217,25 +215,25 @@ def learn_sketch_for_problem_class(
             num_states_in_selected_training_instances=sum([len(instance_data.state_space.get_states()) for instance_data in selected_instance_datas]),
             num_features_in_pool=len(domain_data.feature_pool.features))
         learning_statistics.print()
-        print("=" * 80)
+        print_separation_line()
 
         print("Resulting sketch:")
         sketch.print()
-        print("=" * 80)
+        print_separation_line()
 
         print("Resulting minimized sketch:")
         sketch_minimized = Sketch(PolicyMinimizer().minimize(sketch.dlplan_policy, domain_data.policy_builder), sketch.width)
         sketch_minimized.print()
-        print("=" * 80)
+        print_separation_line()
 
         create_experiment_workspace(workspace / "output")
         write_file(f"sketch_{width}.txt", str(sketch.dlplan_policy))
         write_file(f"sketch_minimized_{width}.txt", str(sketch_minimized.dlplan_policy))
 
-        print("=" * 80)
+        print_separation_line()
         print(f"Total time: {timer.get_elapsed_sec()} seconds.")
         print(f"Total memory: {int(memory_usage() / 1024)} GiB.")
-        print("=" * 80)
+        print_separation_line()
 
         print(flush=True)
 
