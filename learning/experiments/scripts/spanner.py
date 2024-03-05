@@ -16,8 +16,7 @@ def run(domain_filepath: Path, problems_directory: Path, workspace: Path, width:
         "--domain_filepath", str(domain_filepath),
         "--problems_directory", str(problems_directory),
         "--workspace", str(workspace),
-        "--width", str(width),
-        "--disable_feature_generation"]
+        "--width", str(width)]
         + ["--additional_booleans", ] + additional_booleans
         + ["--additional_numericals",] + additional_numericals
     )
