@@ -40,6 +40,8 @@ def compute_instance_datas(domain_filepath: Path,
                     vocabulary_info.add_constant(const.name)
                 static_predicate_names = set(pred.name for pred in domain.static_predicates)
                 for pred in domain.predicates:
+                    if pred.name == "=":
+                        continue
                     if pred.name in static_predicate_names:
                         vocabulary_info.add_predicate(pred.name, pred.arity, True)
                     else:
@@ -53,6 +55,8 @@ def compute_instance_datas(domain_filepath: Path,
             assert(vocabulary_info is not None)
             instance_info = InstanceInfo(i, vocabulary_info)
             for static_atom in problem.get_static_atoms():
+                if static_atom.predicate.name == "=":
+                    continue
                 instance_info.add_static_atom(static_atom.predicate.name, [obj.name for obj in static_atom.terms])
             atom_to_dlplan_atom = dict()
             for atom in set(problem.get_encountered_atoms()).difference(set(problem.get_static_atoms())):
