@@ -29,7 +29,7 @@ def compute_instance_datas(domain_filepath: Path,
             # change working directory to put planner output files in correct directory
 
             ## New code
-            domain, problem, class_index_to_representative_state, class_index_to_states, class_index_to_successor_class_indices, state_to_class_index, mimir_state_space = Driver(domain_filepath, instance_filepath, "INFO", False, True, False, 1).run()
+            domain, problem, class_index_to_representative_state, class_index_to_successor_class_indices, state_to_class_index, mimir_state_space = Driver(domain_filepath, instance_filepath, "INFO", False, True, False, 1).run()
             if domain is None:
                 continue
 

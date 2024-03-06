@@ -35,13 +35,13 @@ class Driver:
         successor_generator = LiftedSuccessorGenerator(problem)
 
         self.logger.info("Started generating state space")
-        max_num_states = 10000
+        max_num_states = 2000
         state_space = StateSpace.new(problem, successor_generator, max_num_states)
         self.logger.info("Finished generating state space")
 
         if state_space is None:
             print("Number of states is too large. Limit is:", max_num_states)
-            return [None * 7]
+            return [None] * 6
 
 
         equivalence_class_key_to_class_index = dict()
@@ -114,4 +114,4 @@ class Driver:
         print("Number of equivalence classes:", len(equivalence_class_key_to_class_index))
         print()
 
-        return domain, problem, class_index_to_representative_state, class_index_to_states, class_index_to_successor_class_indices, state_to_class_index, state_space
+        return domain, problem, class_index_to_representative_state, class_index_to_successor_class_indices, state_to_class_index, state_space
