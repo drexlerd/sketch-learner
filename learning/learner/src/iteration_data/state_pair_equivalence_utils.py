@@ -75,7 +75,7 @@ def compute_state_pair_equivalences(domain_data: DomainData,
             # add conditions
             conditions = make_conditions(policy_builder, domain_data.feature_pool, instance_data.per_state_feature_valuations.s_idx_to_feature_valuations[s_idx])
             for s_distance, s_prime_idxs in enumerate(tuple_graph.get_state_indices_by_distance()):
-                for s_prime_idx in s_prime_idxs:
+                for s_prime_idx in set(instance_data.state_index_to_representative_state_index[s] for s in s_prime_idxs):
                     # add effects
                     effects = make_effects(policy_builder, domain_data.feature_pool, instance_data.per_state_feature_valuations.s_idx_to_feature_valuations[s_idx], instance_data.per_state_feature_valuations.s_idx_to_feature_valuations[s_prime_idx])
                     # add rule

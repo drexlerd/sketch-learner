@@ -8,20 +8,6 @@ from typing import Dict
 from pymimir import DomainParser, ProblemParser, LiftedSuccessorGenerator, State, StateSpace
 
 from .state_graph import StateGraph
-from .equivalence_graph import EquivalenceGraph as XEquivalenceGraph, \
-    Object as XObject, \
-    Constant as XConstant, \
-    Predicate as XPredicate, \
-    Atom as XAtom, \
-    Literal as XLiteral, \
-    Domain as XDomain, \
-    Problem as XProblem, \
-    State as XState, \
-    Action as XAction, \
-    Transition as XTransition, \
-    write_equivalence_graph, read_equivalence_graph
-from .logger import initialize_logger, add_console_handler
-from .search_node import SearchNode, CreatingInfo
 
 
 class Driver:
@@ -32,8 +18,8 @@ class Driver:
         self._enable_pruning = enable_pruning
         self._dump_equivalence_graph = dump_equivalence_graph
         self._num_threads = num_threads
-        self.logger = initialize_logger("exact")
-        self.logger.setLevel(logging.INFO)
+        self.logger = logging.getLogger("exact")
+        self.logger.setLevel(verbosity)
 
     def run(self):
         """ Main loop for computing Aut(S(P)) for state space S(P).
@@ -55,24 +41,23 @@ class Driver:
 
         if state_space is None:
             print("Number of states is too large. Limit is:", max_num_states)
-            return None
+            return [None * 7]
 
 
-
-        num_generated_states = 0
-        equivalence_class_to_index = dict()
-        class_index_to_representative_state = dict()
+        equivalence_class_key_to_class_index = dict()
         class_index_to_successor_class_indices = defaultdict(set)
+        class_index_to_states = defaultdict(set)
         state_to_class_index = dict()
+        class_index_to_representative_state = dict()
 
         self.logger.info("Started generating Aut(G)")
         start_time = time.time()
 
         initial_state = problem.create_state(problem.initial)
-
+        num_generated_states = 1
         initial_state_graph = StateGraph(initial_state)
         initial_equivalence_class_key = (initial_state_graph.nauty_certificate, initial_state_graph.uvc_graph.get_colors())
-        equivalence_class_to_index[initial_equivalence_class_key] = 0
+        equivalence_class_key_to_class_index[initial_equivalence_class_key] = 0
         class_index_to_representative_state[0] = initial_state
         state_to_class_index[initial_state] = 0
 
@@ -80,9 +65,6 @@ class Driver:
         queue.append(initial_state)
         closed_list = set()
         closed_list.add(initial_state)
-        search_nodes : Dict[State, SearchNode] = dict()
-        search_nodes[initial_state] = SearchNode(creating_infos=[])
-        num_generated_states += 1
 
         while queue:
             cur_state = queue.popleft()
@@ -94,29 +76,31 @@ class Driver:
                 state_graph = StateGraph(suc_state)
 
                 equivalence_class_key = (state_graph.nauty_certificate, state_graph.uvc_graph.get_colors())
-                #if self._enable_pruning and equivalence_class_key in equivalence_class_to_index:
-                #    succ_class_index = equivalence_class_to_index[equivalence_class_key]
-                #    class_index_to_successor_class_indices[cur_class_index].add(succ_class_index)
-                #    continue
 
-                if equivalence_class_key not in equivalence_class_to_index:
-                    equivalence_class_to_index[equivalence_class_key] = len(equivalence_class_to_index)
+                # Try add new class
+                if equivalence_class_key not in equivalence_class_key_to_class_index:
+                    equivalence_class_key_to_class_index[equivalence_class_key] = len(equivalence_class_key_to_class_index)
 
-                succ_class_index = equivalence_class_to_index[equivalence_class_key]
-                class_index_to_representative_state[succ_class_index] = suc_state
+                succ_class_index = equivalence_class_key_to_class_index[equivalence_class_key]
+
+                # Add first occurence during brfs as representative of equivalence class
+                if succ_class_index not in class_index_to_representative_state:
+                    class_index_to_representative_state[succ_class_index] = suc_state
+
+                # Add all occurences to equivalence class
+                class_index_to_states[succ_class_index].add(suc_state)
+
+                # Add mapping from state to class index
                 state_to_class_index[suc_state] = succ_class_index
+
+                # Add abstract transition
                 class_index_to_successor_class_indices[cur_class_index].add(succ_class_index)
 
                 if self._dump_dot:
                     state_graph.uvc_graph.to_dot(f"outputs/uvcs/{succ_class_index}/{num_generated_states}.gc")
 
-                if suc_state in closed_list:
-                    # Prune if state already in closed list
-                    search_nodes[suc_state].creating_infos.append(CreatingInfo(cur_state, applicable_action))
-                    continue
-                else:
+                if suc_state not in closed_list:
                     num_generated_states += 1
-                    search_nodes[suc_state] = SearchNode(creating_infos=[CreatingInfo(cur_state, applicable_action)])
                     closed_list.add(suc_state)
                     queue.append(suc_state)
 
@@ -127,47 +111,7 @@ class Driver:
         self.logger.info("Finished generating Aut(G)")
         print(f"Total time: {runtime:.2f} seconds")
         print("Number of generated states:", num_generated_states)
-        print("Number of equivalence classes:", len(equivalence_class_to_index))
+        print("Number of equivalence classes:", len(equivalence_class_key_to_class_index))
         print()
 
-        if self._dump_equivalence_graph:
-            constant_map = {const : XConstant(const.name) for const in domain.constants}
-            object_map = {obj: XObject(obj.name) for obj in problem.objects}
-            predicate_map = {pred: XPredicate(pred.name, pred.arity) for pred in domain.predicates}
-            static_predicate_map = {pred: XPredicate(pred.name, pred.arity) for pred in domain.static_predicates}
-            encountered_atom_map = {atom: XAtom(predicate_map[atom.predicate], [object_map[obj] for obj in atom.terms]) for atom in problem.get_encountered_atoms()}
-            static_atoms = {atom: XAtom(predicate_map[atom.predicate], [object_map[obj] for obj in atom.terms]) for atom in problem.get_static_atoms()}
-            goal_literal_map = {literal: XLiteral(XAtom(predicate_map[literal.atom.predicate], [object_map[obj] for obj in literal.atom.terms]), literal.negated) for literal in problem.goal}
-            state_id = 0
-            state_map = dict()
-            for equivalent_states in class_index_to_representative_state.values():
-                for state in equivalent_states:
-                    state_map[state] = state_id
-                    state_id += 1
-            states = {
-                state_map[state]: XState(
-                    state_map[state],
-                    [encountered_atom_map[atom] for atom in state.get_static_atoms()],
-                    [encountered_atom_map[atom] for atom in state.get_fluent_atoms()],
-                    class_id
-                )
-                for class_id, equivalent_states in enumerate(class_index_to_representative_state.values())
-                for state in equivalent_states
-            }
-            transitions = defaultdict(list)
-            for equivalent_states in class_index_to_representative_state.values():
-                for state in equivalent_states:
-                    target_id = state_map[state]
-                    for creating_info in search_nodes[state].creating_infos:
-                        source_id = state_map[creating_info.parent_state]
-                        if source_id == target_id:
-                            continue
-                        transitions[source_id].append(XTransition(source_id, target_id, XAction(creating_info.creating_action.schema.name, [object_map[obj] for obj in creating_info.creating_action.get_arguments()])))
-            goal_states = set(state_map[state] for state in closed_list if state.literals_hold(problem.goal))
-            domain = XDomain(list(constant_map.values()), list(predicate_map.values()), list(static_predicate_map.values()))
-            problem = XProblem(list(encountered_atom_map.values()), list(static_atoms.values()), list(goal_literal_map.values()))
-            graph = XEquivalenceGraph(domain, problem, states, transitions, goal_states)
-            write_equivalence_graph(graph, Path("equivalence_graph.json").absolute())
-            read_equivalence_graph(Path("equivalence_graph.json").absolute())
-
-        return domain, problem, class_index_to_representative_state, class_index_to_successor_class_indices, state_space
+        return domain, problem, class_index_to_representative_state, class_index_to_states, class_index_to_successor_class_indices, state_to_class_index, state_space

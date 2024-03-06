@@ -21,6 +21,7 @@ class InstanceData:
     instance_filepath: Path
     state_space: StateSpace = None
     complete_state_space: StateSpace = None
+    state_index_to_representative_state_index: Dict[int, int] = None
     goal_distances: Dict[int, int] = None
     per_state_tuple_graphs: PerStateTupleGraphs = None
 

@@ -45,7 +45,7 @@ class Sketch:
                 for tuple_node_index in tuple_node_indices:
                     tuple_node = tuple_graph.get_tuple_nodes()[tuple_node_index]
                     subgoal = True
-                    for s_prime_idx in tuple_node.get_state_indices():
+                    for s_prime_idx in set(instance_data.state_index_to_representative_state_index[s] for s in tuple_node.get_state_indices()):
                         target_state = instance_data.state_space.get_states()[s_prime_idx]
                         if self.dlplan_policy.evaluate(source_state, target_state, instance_data.denotations_caches) is not None:
                             min_compatible_distance = min(min_compatible_distance, tuple_distance)

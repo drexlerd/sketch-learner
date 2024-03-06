@@ -29,7 +29,9 @@ def compute_instance_datas(domain_filepath: Path,
             # change working directory to put planner output files in correct directory
 
             ## New code
-            domain, problem, class_index_to_representative_state, class_index_to_successor_class_indices, mimir_state_space = Driver(domain_filepath, instance_filepath, "INFO", False, True, False, 1).run()
+            domain, problem, class_index_to_representative_state, class_index_to_states, class_index_to_successor_class_indices, state_to_class_index, mimir_state_space = Driver(domain_filepath, instance_filepath, "INFO", False, True, False, 1).run()
+            if domain is None:
+                continue
 
             if vocabulary_info is None:
                 # We obtain the parsed vocabulary from the first instance
@@ -62,20 +64,25 @@ def compute_instance_datas(domain_filepath: Path,
                 instance_info.add_static_atom(obj.type.name, [obj.name])
 
             ## Map states to index
-            state_id = 0
+            state_index = 0
             state_map = dict()
             for mimir_state in mimir_state_space.get_states():
-                state_map[mimir_state] = state_id
-                state_id += 1
+                state_map[mimir_state] = state_index
+                state_index += 1
+
+            state_index_to_representative_state_index = dict()
+            for mimir_state in mimir_state_space.get_states():
+                state_index_to_representative_state_index[state_map[mimir_state]] = state_map[class_index_to_representative_state[state_to_class_index[mimir_state]]]
+            print(state_index_to_representative_state_index)
 
             ## Create pruned state space
             goal_state_ids = set()
             dlplan_states: Dict[int, State] = dict()
             for mimir_state in class_index_to_representative_state.values():
-                state_id = state_map[mimir_state]
-                dlplan_states[state_id] = State(state_id, instance_info, [atom_to_dlplan_atom[atom] for atom in mimir_state.get_fluent_atoms()])
+                state_index = state_map[mimir_state]
+                dlplan_states[state_index] = State(state_index, instance_info, [atom_to_dlplan_atom[atom] for atom in mimir_state.get_fluent_atoms()])
                 if mimir_state.literals_hold(problem.goal):
-                    goal_state_ids.add(state_id)
+                    goal_state_ids.add(state_index)
 
             forward_successors = defaultdict(set)
             for class_index, successor_class_indices in class_index_to_successor_class_indices.items():
@@ -92,10 +99,10 @@ def compute_instance_datas(domain_filepath: Path,
             dlplan_states: Dict[int, State] = dict()
             forward_successors = defaultdict(set)
             for mimir_state in mimir_state_space.get_states():
-                state_id = state_map[mimir_state]
-                dlplan_states[state_id] = State(state_id, instance_info, [atom_to_dlplan_atom[atom] for atom in mimir_state.get_fluent_atoms()])
+                source_index = state_map[mimir_state]
+                dlplan_states[source_index] = State(source_index, instance_info, [atom_to_dlplan_atom[atom] for atom in mimir_state.get_fluent_atoms()])
                 if mimir_state.literals_hold(problem.goal):
-                    goal_state_ids.add(state_id)
+                    goal_state_ids.add(source_index)
 
                 for transition in mimir_state_space.get_forward_transitions(mimir_state):
                     target_index = state_map[transition.target]
@@ -125,6 +132,7 @@ def compute_instance_datas(domain_filepath: Path,
             instance_data = InstanceData(len(instance_datas), domain_data, DenotationsCaches(), instance_filepath)
             instance_data.state_space = state_space
             instance_data.complete_state_space = complete_state_space
+            instance_data.state_index_to_representative_state_index = state_index_to_representative_state_index
 
             if enable_dump_files:
                 write_file(f"{name}.dot", state_space.to_dot(1))

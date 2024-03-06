@@ -260,7 +260,7 @@ class ASPFactory:
         for instance_data in instance_datas:
             for s_idx, tuple_graph in instance_data.per_state_tuple_graphs.s_idx_to_tuple_graph.items():
                 for d, s_prime_idxs in enumerate(tuple_graph.get_state_indices_by_distance()):
-                    for s_prime_idx in s_prime_idxs:
+                    for s_prime_idx in set(instance_data.state_index_to_representative_state_index[s] for s in s_prime_idxs):
                         facts.append(self._create_s_distance_fact(instance_data.id, s_idx, s_prime_idx, d))
         return facts
 
@@ -287,7 +287,7 @@ class ASPFactory:
                     continue
                 equivalences = set()
                 for s_prime_idxs in tuple_graph.get_state_indices_by_distance():
-                    for s_prime_idx in s_prime_idxs:
+                    for s_prime_idx in set(instance_data.state_index_to_representative_state_index[s] for s in s_prime_idxs):
                         equivalences.add(instance_data.per_state_state_pair_equivalences.s_idx_to_state_pair_equivalence[s_idx].subgoal_state_to_r_idx[s_prime_idx])
                 for i, eq_1 in enumerate(equivalences):
                     for j, eq_2 in enumerate(equivalences):
