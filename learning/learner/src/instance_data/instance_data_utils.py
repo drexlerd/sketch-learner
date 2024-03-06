@@ -29,7 +29,7 @@ def compute_instance_datas(domain_filepath: Path,
             # change working directory to put planner output files in correct directory
 
             ## New code
-            domain, problem, class_index_to_state, class_index_to_successor_class_indices = Driver(domain_filepath, instance_filepath, "INFO", False, False, False, 1).run()
+            domain, problem, class_index_to_state, class_index_to_successor_class_indices = Driver(domain_filepath, instance_filepath, "INFO", False, True, False, 1).run()
             if vocabulary_info is None:
                 # We obtain the parsed vocabulary from the first instance
                 vocabulary_info = VocabularyInfo()
@@ -57,6 +57,8 @@ def compute_instance_datas(domain_filepath: Path,
             for literal in problem.goal:
                 assert not literal.negated
                 instance_info.add_static_atom(literal.atom.predicate.name + "_g", [obj.name for obj in literal.atom.terms])
+            for obj in problem.objects:
+                instance_info.add_static_atom(obj.type.name, [obj.name])
 
             state_id = 0
             state_map = dict()
@@ -80,13 +82,6 @@ def compute_instance_datas(domain_filepath: Path,
                     forward_successors[source_index].add(target_index)
 
             state_space = StateSpace(instance_info, dlplan_states, 0, forward_successors, goal_state_ids)
-
-            ## Old code
-            #result = generate_state_space(str(domain_filepath), str(instance_filepath), vocabulary_info, len(instance_datas), max_time_per_instance)
-            #if result.exit_code != GeneratorExitCode.COMPLETE:
-            #    continue
-            #state_space = result.state_space
-
 
             if vocabulary_info is None:
                 # We obtain the parsed vocabulary from the first instance
