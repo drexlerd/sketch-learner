@@ -350,7 +350,6 @@ class ASPFactory:
         with self.ctl.solve(yield_=True) as handle:
             last_model = None
             for model in handle:
-                print(model.cost)
                 last_model = model
             if last_model is not None:
                 assert last_model.optimality_proven
