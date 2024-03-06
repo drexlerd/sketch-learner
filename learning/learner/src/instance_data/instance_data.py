@@ -20,6 +20,7 @@ class InstanceData:
     denotations_caches: DenotationsCaches  # We use a cache for each instance such that we can ignore the instance index.
     instance_filepath: Path
     state_space: StateSpace = None
+    complete_state_space: StateSpace = None
     goal_distances: Dict[int, int] = None
     per_state_tuple_graphs: PerStateTupleGraphs = None
 

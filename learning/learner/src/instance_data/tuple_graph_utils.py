@@ -16,7 +16,7 @@ def compute_tuple_graphs(width: int, instance_datas: List[InstanceData], enable_
             if instance_data.is_deadend(s_idx):
                 continue
 
-            tuple_graph = TupleGraph(novelty_base, instance_data.state_space, s_idx, False)
+            tuple_graph = TupleGraph(novelty_base, instance_data.complete_state_space, s_idx, True)
             per_state_tuple_graphs.s_idx_to_tuple_graph[s_idx] = tuple_graph
 
             if enable_dump_files:

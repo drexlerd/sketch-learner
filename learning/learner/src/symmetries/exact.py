@@ -1,10 +1,11 @@
+import logging
 import time
 
 from pathlib import Path
 from collections import defaultdict, deque
 from typing import Dict
 
-from pymimir import DomainParser, ProblemParser, LiftedSuccessorGenerator, State
+from pymimir import DomainParser, ProblemParser, LiftedSuccessorGenerator, State, StateSpace
 
 from .state_graph import StateGraph
 from .equivalence_graph import EquivalenceGraph as XEquivalenceGraph, \
@@ -31,9 +32,8 @@ class Driver:
         self._enable_pruning = enable_pruning
         self._dump_equivalence_graph = dump_equivalence_graph
         self._num_threads = num_threads
-        self._logger = initialize_logger("exact")
-        self._logger.setLevel(verbosity)
-        add_console_handler(self._logger)
+        self.logger = initialize_logger("exact")
+        self.logger.setLevel(logging.INFO)
 
     def run(self):
         """ Main loop for computing Aut(S(P)) for state space S(P).
@@ -42,19 +42,30 @@ class Driver:
         print("Problem file:", self._problem_file_path)
         print()
 
-        num_generated_states = 0
-        equivalence_class_to_index = dict()
-        class_index_to_state = dict()
-        class_index_to_successor_class_indices = defaultdict(set)
-        state_to_class_index = dict()
-
         domain_parser = DomainParser(str(self._domain_file_path))
         domain = domain_parser.parse()
         problem_parser = ProblemParser(str(self._problem_file_path))
         problem = problem_parser.parse(domain)
         successor_generator = LiftedSuccessorGenerator(problem)
 
-        self._logger.info("Started generating Aut(G)")
+        self.logger.info("Started generating state space")
+        max_num_states = 10000
+        state_space = StateSpace.new(problem, successor_generator, max_num_states)
+        self.logger.info("Finished generating state space")
+
+        if state_space is None:
+            print("Number of states is too large. Limit is:", max_num_states)
+            return None
+
+
+
+        num_generated_states = 0
+        equivalence_class_to_index = dict()
+        class_index_to_representative_state = dict()
+        class_index_to_successor_class_indices = defaultdict(set)
+        state_to_class_index = dict()
+
+        self.logger.info("Started generating Aut(G)")
         start_time = time.time()
 
         initial_state = problem.create_state(problem.initial)
@@ -62,7 +73,7 @@ class Driver:
         initial_state_graph = StateGraph(initial_state)
         initial_equivalence_class_key = (initial_state_graph.nauty_certificate, initial_state_graph.uvc_graph.get_colors())
         equivalence_class_to_index[initial_equivalence_class_key] = 0
-        class_index_to_state[0] = initial_state
+        class_index_to_representative_state[0] = initial_state
         state_to_class_index[initial_state] = 0
 
         queue = deque()
@@ -83,16 +94,16 @@ class Driver:
                 state_graph = StateGraph(suc_state)
 
                 equivalence_class_key = (state_graph.nauty_certificate, state_graph.uvc_graph.get_colors())
-                if self._enable_pruning and equivalence_class_key in equivalence_class_to_index:
-                    succ_class_index = equivalence_class_to_index[equivalence_class_key]
-                    class_index_to_successor_class_indices[cur_class_index].add(succ_class_index)
-                    continue
+                #if self._enable_pruning and equivalence_class_key in equivalence_class_to_index:
+                #    succ_class_index = equivalence_class_to_index[equivalence_class_key]
+                #    class_index_to_successor_class_indices[cur_class_index].add(succ_class_index)
+                #    continue
 
                 if equivalence_class_key not in equivalence_class_to_index:
                     equivalence_class_to_index[equivalence_class_key] = len(equivalence_class_to_index)
 
                 succ_class_index = equivalence_class_to_index[equivalence_class_key]
-                class_index_to_state[succ_class_index] = suc_state
+                class_index_to_representative_state[succ_class_index] = suc_state
                 state_to_class_index[suc_state] = succ_class_index
                 class_index_to_successor_class_indices[cur_class_index].add(succ_class_index)
 
@@ -113,7 +124,7 @@ class Driver:
 
         end_time = time.time()
         runtime = end_time - start_time
-        self._logger.info("Finished generating Aut(G)")
+        self.logger.info("Finished generating Aut(G)")
         print(f"Total time: {runtime:.2f} seconds")
         print("Number of generated states:", num_generated_states)
         print("Number of equivalence classes:", len(equivalence_class_to_index))
@@ -129,7 +140,7 @@ class Driver:
             goal_literal_map = {literal: XLiteral(XAtom(predicate_map[literal.atom.predicate], [object_map[obj] for obj in literal.atom.terms]), literal.negated) for literal in problem.goal}
             state_id = 0
             state_map = dict()
-            for equivalent_states in class_index_to_state.values():
+            for equivalent_states in class_index_to_representative_state.values():
                 for state in equivalent_states:
                     state_map[state] = state_id
                     state_id += 1
@@ -140,11 +151,11 @@ class Driver:
                     [encountered_atom_map[atom] for atom in state.get_fluent_atoms()],
                     class_id
                 )
-                for class_id, equivalent_states in enumerate(class_index_to_state.values())
+                for class_id, equivalent_states in enumerate(class_index_to_representative_state.values())
                 for state in equivalent_states
             }
             transitions = defaultdict(list)
-            for equivalent_states in class_index_to_state.values():
+            for equivalent_states in class_index_to_representative_state.values():
                 for state in equivalent_states:
                     target_id = state_map[state]
                     for creating_info in search_nodes[state].creating_infos:
@@ -159,4 +170,4 @@ class Driver:
             write_equivalence_graph(graph, Path("equivalence_graph.json").absolute())
             read_equivalence_graph(Path("equivalence_graph.json").absolute())
 
-        return domain, problem, class_index_to_state, class_index_to_successor_class_indices
+        return domain, problem, class_index_to_representative_state, class_index_to_successor_class_indices, state_space

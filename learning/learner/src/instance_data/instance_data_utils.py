@@ -29,7 +29,8 @@ def compute_instance_datas(domain_filepath: Path,
             # change working directory to put planner output files in correct directory
 
             ## New code
-            domain, problem, class_index_to_state, class_index_to_successor_class_indices = Driver(domain_filepath, instance_filepath, "INFO", False, True, False, 1).run()
+            domain, problem, class_index_to_representative_state, class_index_to_successor_class_indices, mimir_state_space = Driver(domain_filepath, instance_filepath, "INFO", False, True, False, 1).run()
+
             if vocabulary_info is None:
                 # We obtain the parsed vocabulary from the first instance
                 vocabulary_info = VocabularyInfo()
@@ -60,15 +61,17 @@ def compute_instance_datas(domain_filepath: Path,
             for obj in problem.objects:
                 instance_info.add_static_atom(obj.type.name, [obj.name])
 
+            ## Map states to index
             state_id = 0
             state_map = dict()
-            for mimir_state in class_index_to_state.values():
+            for mimir_state in mimir_state_space.get_states():
                 state_map[mimir_state] = state_id
                 state_id += 1
 
+            ## Create pruned state space
             goal_state_ids = set()
             dlplan_states: Dict[int, State] = dict()
-            for mimir_state in class_index_to_state.values():
+            for mimir_state in class_index_to_representative_state.values():
                 state_id = state_map[mimir_state]
                 dlplan_states[state_id] = State(state_id, instance_info, [atom_to_dlplan_atom[atom] for atom in mimir_state.get_fluent_atoms()])
                 if mimir_state.literals_hold(problem.goal):
@@ -76,13 +79,30 @@ def compute_instance_datas(domain_filepath: Path,
 
             forward_successors = defaultdict(set)
             for class_index, successor_class_indices in class_index_to_successor_class_indices.items():
-                source_index = state_map[class_index_to_state[class_index]]
+                source_index = state_map[class_index_to_representative_state[class_index]]
                 for successor_class_index in successor_class_indices:
-                    target_index = state_map[class_index_to_state[successor_class_index]]
-                    if source_index != target_index:
-                        forward_successors[source_index].add(target_index)
+                    target_index = state_map[class_index_to_representative_state[successor_class_index]]
+                    # if source_index != target_index:
+                    forward_successors[source_index].add(target_index)
 
             state_space = StateSpace(instance_info, dlplan_states, 0, forward_successors, goal_state_ids)
+
+            ## Create complete state space
+            goal_state_ids = set()
+            dlplan_states: Dict[int, State] = dict()
+            forward_successors = defaultdict(set)
+            for mimir_state in mimir_state_space.get_states():
+                state_id = state_map[mimir_state]
+                dlplan_states[state_id] = State(state_id, instance_info, [atom_to_dlplan_atom[atom] for atom in mimir_state.get_fluent_atoms()])
+                if mimir_state.literals_hold(problem.goal):
+                    goal_state_ids.add(state_id)
+
+                for transition in mimir_state_space.get_forward_transitions(mimir_state):
+                    target_index = state_map[transition.target]
+                    forward_successors[source_index].add(target_index)
+
+            complete_state_space = StateSpace(instance_info, dlplan_states, 0, forward_successors, goal_state_ids)
+
 
             if vocabulary_info is None:
                 # We obtain the parsed vocabulary from the first instance
@@ -101,8 +121,10 @@ def compute_instance_datas(domain_filepath: Path,
                 print("Initial state is goal.")
                 continue
             print("Num states:", len(state_space.get_states()))
+            print("Num complete states:", len(complete_state_space.get_states()))
             instance_data = InstanceData(len(instance_datas), domain_data, DenotationsCaches(), instance_filepath)
             instance_data.state_space = state_space
+            instance_data.complete_state_space = complete_state_space
 
             if enable_dump_files:
                 write_file(f"{name}.dot", state_space.to_dot(1))
