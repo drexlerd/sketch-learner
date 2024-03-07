@@ -16,12 +16,13 @@ def compute_tuple_graphs(width: int, instance_datas: List[InstanceData], enable_
             if instance_data.is_deadend(s_idx):
                 continue
 
-            tuple_graph = TupleGraph(novelty_base, instance_data.complete_state_space, s_idx)
-            per_state_tuple_graphs.s_idx_to_tuple_graph[s_idx] = tuple_graph
+            name = instance_data.instance_filepath.stem
+            with change_dir(f"tuple_graphs/{name}/{s_idx}", enable=enable_dump_files):
 
-            if enable_dump_files:
-                name = instance_data.instance_filepath.stem
-                with change_dir(f"tuple_graphs/{name}/{s_idx}"):
+                tuple_graph = TupleGraph(novelty_base, instance_data.complete_state_space, s_idx)
+                per_state_tuple_graphs.s_idx_to_tuple_graph[s_idx] = tuple_graph
+
+                if enable_dump_files:
                     write_file(f"{tuple_graph.get_root_state_index()}.dot", tuple_graph.to_dot(1))
 
         instance_data.per_state_tuple_graphs = per_state_tuple_graphs

@@ -27,7 +27,7 @@ class Driver:
         print("Problem file:", self._problem_file_path)
         print()
 
-        with change_dir("uvcs"):
+        with change_dir("uvcs", enable=self._dump_dot):
             domain_parser = DomainParser(str(self._domain_file_path))
             domain = domain_parser.parse()
             problem_parser = ProblemParser(str(self._problem_file_path))

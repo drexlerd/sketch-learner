@@ -27,16 +27,16 @@ def create_experiment_workspace(dirname):
 
 @contextmanager
 def change_dir(destination, enable=True):
-    if enable:
-        # Save the current directory before entering the try block
-        original_directory = os.getcwd()
-        try:
+    # Save the current directory before entering the try block
+    original_directory = os.getcwd()
+    try:
+        if enable:
             # Create directory if it does not exist
             os.makedirs(destination, exist_ok=True)
             # Change to the new directory
             os.chdir(destination)
             # Yield control back to the with block
-            yield
-        finally:
-            # No matter what happens, change back to the original directory
-            os.chdir(original_directory)
+        yield
+    finally:
+        # No matter what happens, change back to the original directory
+        os.chdir(original_directory)

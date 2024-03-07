@@ -83,7 +83,7 @@ def learn_sketch_for_problem_class(
     # Learn sketch
     with change_dir("iterations"):
         i = 0
-        with change_dir(str(i)):
+        with change_dir(str(i), enable=enable_dump_files):
             selected_instance_idxs = [0]
             create_experiment_workspace(workspace)
             while True:

@@ -24,7 +24,7 @@ def compute_instance_datas(domain_filepath: Path,
     instance_datas = []
     for i, instance_filepath in enumerate(instance_filepaths):
         name = instance_filepath.stem
-        with change_dir(f"state_spaces/{name}"):
+        with change_dir(f"state_spaces/{name}", enable=enable_dump_files):
             logging.info("Constructing InstanceData for filename %s", instance_filepath)
             # change working directory to put planner output files in correct directory
 
