@@ -21,8 +21,34 @@ from downward import suites
 from downward.reports.absolute import AbsoluteReport
 from lab.experiment import Experiment
 from lab.reports import Attribute, arithmetic_mean
+from lab.parser import Parser
 
 import project
+
+
+def coverage(content, props):
+    props["coverage"] = int("cost" in props and "valid_plan_value" in props)
+
+
+def error(content, props):
+    if props.get("planner_exit_code") == 0:
+        props["error"] = "none"
+
+
+class LapktSIWRSingularityParser(Parser):
+    def __init__(self):
+        super().__init__()
+        self.add_pattern(
+            "node", r"node: (.+)\n", type=str, file="driver.log", required=True
+        )
+        self.add_pattern("cost", r"Plan found with cost: (\d+)\n", type=int)
+        self.add_pattern("expanded", r"Expanded (\d+)\n", type=int)
+        self.add_pattern("generated", r"Generated (\d+)\n", type=int)
+        self.add_pattern("total_time", r"Time: (.+)\n", type=float)
+        self.add_pattern("valid_plan_value", r"Final value: (\d+) \n", type=int)
+        self.add_pattern("maximum_effective_width", r"Max ef. width: (\d+)\n", type=int)
+        self.add_pattern("average_effective_width", r"Average ef. width: (.+)\n", type=float)
+        self.add_function(coverage)
 
 
 # Create custom report class with suitable info and error attributes.
@@ -65,17 +91,12 @@ if project.REMOTE:
         memory_per_cpu="8G")
 else:
     SUITE = ["blocks_4_clear:p-51-0.pddl", "blocks_4_on:p-51-0.pddl", "childsnack:p01.pddl", "delivery:instance_3_2_0.pddl", "gripper:p01.pddl", "miconic:p01.pddl", "reward:instance_5x5_0.pddl", "spanner:pfile01-001.pddl", "visitall:p01.pddl"]
-    SUITE = ["blocks_4_clear:p-51-0.pddl"]
     ENV = project.LocalEnvironment(processes=4)
-SKETCHES_DIR = DIR.parent.parent / "learning" / "workspace_symm_7_3_24"
+SKETCHES_DIR = DIR.parent.parent / "learning" / "workspace-sym-2024-3-7"
 print("Sketches directory:", SKETCHES_DIR)
 
 exp = Experiment(environment=ENV)
-exp.add_step("build", exp.build)
-exp.add_step("start", exp.start_runs)
-exp.add_parse_again_step()
-exp.add_fetcher(name="fetch")
-exp.add_parser("parser-singularity-iw.py")
+exp.add_parser(LapktSIWRSingularityParser())
 
 IMAGES_DIR = DIR.parent.parent / "testing" / "planners"
 print(IMAGES_DIR)
@@ -117,7 +138,7 @@ for planner, _ in IMAGES:
                     "{problem}",
                     "{sketch}",
                     w,
-                    "sas_plan",
+                    "plan.ipc",
                 ],
                 time_limit=TIME_LIMIT,
                 memory_limit=MEMORY_LIMIT,
@@ -127,7 +148,21 @@ for planner, _ in IMAGES:
             run.set_property("algorithm", f"{planner}_{w}")
             run.set_property("id", [f"{planner}_{w}", task.domain, task.problem])
 
+# Add step that writes experiment files to disk.
+exp.add_step("build", exp.build)
+
+# Add step that executes all runs.
+exp.add_step("start", exp.start_runs)
+
+exp.add_step("parse", exp.parse)
+
+# Add step that collects properties from run directories and
+# writes them to *-eval/properties.
+exp.add_fetcher(name="fetch")
+
+# Make a report.
 report = os.path.join(exp.eval_dir, f"{exp.name}.html")
 exp.add_report(BaseReport(attributes=ATTRIBUTES), outfile=report)
 
+# Parse the commandline and run the specified steps.
 exp.run_steps()

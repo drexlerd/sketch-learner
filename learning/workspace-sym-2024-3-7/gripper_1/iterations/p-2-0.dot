@@ -1,0 +1,75 @@
+digraph {
+rankdir="LR"
+s1[label="(instance index=1, state index=1, atoms={free(left), at(ball1,rooma), at-robby(roomb), free(right), at(ball2,rooma)})"]
+s6[label="(instance index=1, state index=6, atoms={at-robby(roomb), free(right), carry(ball1,left), at(ball2,rooma)})"]
+s0[label="(instance index=1, state index=0, atoms={free(left), at(ball1,rooma), at-robby(rooma), free(right), at(ball2,rooma)})"]
+s12[label="(instance index=1, state index=12, atoms={free(left), at-robby(roomb), free(right), at(ball2,rooma), at(ball1,roomb)})"]
+s2[label="(instance index=1, state index=2, atoms={at-robby(rooma), free(right), carry(ball1,left), at(ball2,rooma)})"]
+s16[label="(instance index=1, state index=16, atoms={free(left), at-robby(rooma), free(right), at(ball2,rooma), at(ball1,roomb)})"]
+s7[label="(instance index=1, state index=7, atoms={at-robby(rooma), carry(ball2,right), carry(ball1,left)})"]
+s22[label="(instance index=1, state index=22, atoms={at-robby(rooma), free(right), carry(ball2,left), at(ball1,roomb)})"]
+s13[label="(instance index=1, state index=13, atoms={at-robby(roomb), carry(ball2,right), carry(ball1,left)})"]
+s17[label="(instance index=1, state index=17, atoms={free(left), at-robby(roomb), carry(ball2,right), at(ball1,roomb)})"]
+s24[peripheries=2,label="(instance index=1, state index=24, atoms={free(left), at-robby(roomb), free(right), at(ball2,roomb), at(ball1,roomb)})"]
+s27[peripheries=2,label="(instance index=1, state index=27, atoms={free(left), at-robby(rooma), free(right), at(ball2,roomb), at(ball1,roomb)})"]
+Dangling [ label = "", style = invis ]
+{ rank = same; Dangling }
+Dangling -> s0
+{ rank = same; s0}
+{ rank = same; s6,s0}
+{ rank = same; s12,s2}
+{ rank = same; s16,s7}
+{ rank = same; s22,s13}
+{ rank = same; s17}
+{ rank = same; s24,s27}
+{
+s1->s1
+s1->s0
+}
+{
+s6->s6
+s6->s12
+s6->s2
+s0->s2
+s0->s1
+s0->s0
+}
+{
+s12->s6
+s12->s12
+s12->s16
+s2->s6
+s2->s7
+s2->s2
+s2->s0
+}
+{
+s16->s12
+s16->s22
+s16->s16
+s7->s7
+s7->s13
+s7->s2
+}
+{
+s22->s17
+s22->s22
+s22->s16
+s13->s7
+s13->s13
+s13->s17
+}
+{
+s17->s13
+s17->s22
+s17->s17
+s17->s24
+}
+{
+s24->s17
+s24->s27
+s24->s24
+s27->s27
+s27->s24
+}
+}

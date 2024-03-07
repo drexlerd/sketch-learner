@@ -1,0 +1,6 @@
+(:policy
+(:booleans )
+(:numericals (f38 "n_count(c_primitive(picked,0))"))
+(:rule (:conditions (:c_n_gt f38)) (:effects (:e_n_inc f38)))
+(:rule (:conditions (:c_n_eq f38)) (:effects (:e_n_inc f38)))
+)

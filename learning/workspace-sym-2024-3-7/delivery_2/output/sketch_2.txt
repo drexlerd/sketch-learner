@@ -1,0 +1,6 @@
+(:policy
+(:booleans )
+(:numericals (f66 "n_count(r_and(r_primitive(at,0,1),r_primitive(at_g,0,1)))"))
+(:rule (:conditions (:c_n_gt f66)) (:effects (:e_n_inc f66)))
+(:rule (:conditions (:c_n_eq f66)) (:effects (:e_n_inc f66)))
+)

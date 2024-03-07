@@ -1,0 +1,6 @@
+(:policy
+(:booleans )
+(:numericals (f59 "n_count(c_primitive(boarded,0))"))
+(:rule (:conditions (:c_n_eq f59)) (:effects (:e_n_inc f59)))
+(:rule (:conditions (:c_n_gt f59)) (:effects (:e_n_dec f59)))
+)

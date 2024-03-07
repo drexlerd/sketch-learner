@@ -1,0 +1,9 @@
+(:policy
+(:booleans )
+(:numericals (f184 "n_count(c_primitive(boarded,0))") (f198 "n_count(c_all(r_primitive(origin,0,1),c_primitive(lift-at,0)))") (f217 "n_count(c_and(c_primitive(boarded,0),c_some(r_primitive(destin,0,1),c_primitive(lift-at,0))))"))
+(:rule (:conditions (:c_n_gt f198) (:c_n_eq f217)) (:effects (:e_n_inc f184) (:e_n_bot f198) (:e_n_bot f217)))
+(:rule (:conditions (:c_n_gt f184) (:c_n_gt f198) (:c_n_gt f217)) (:effects (:e_n_dec f184) (:e_n_bot f198) (:e_n_dec f217)))
+(:rule (:conditions (:c_n_eq f184) (:c_n_gt f198) (:c_n_eq f217)) (:effects (:e_n_bot f184) (:e_n_inc f198) (:e_n_bot f217)))
+(:rule (:conditions (:c_n_gt f184) (:c_n_gt f198) (:c_n_eq f217)) (:effects (:e_n_bot f184) (:e_n_bot f198) (:e_n_inc f217)))
+(:rule (:conditions (:c_n_gt f184) (:c_n_gt f198) (:c_n_eq f217)) (:effects (:e_n_bot f184) (:e_n_inc f198) (:e_n_inc f217)))
+)

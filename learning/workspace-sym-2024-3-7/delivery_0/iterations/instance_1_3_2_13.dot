@@ -1,0 +1,79 @@
+digraph {
+rankdir="LR"
+s4[label="(instance index=0, state index=4, atoms={at(p1,c_0_2), empty(t1), at(p2,c_0_2), at(t1,c_0_0)})"]
+s18[label="(instance index=0, state index=18, atoms={empty(t1), at(p1,c_0_0), at(p2,c_0_2), at(t1,c_0_1)})"]
+s1[label="(instance index=0, state index=1, atoms={at(p1,c_0_2), empty(t1), at(p2,c_0_2), at(t1,c_0_1)})"]
+s0[label="(instance index=0, state index=0, atoms={at(p1,c_0_2), empty(t1), at(t1,c_0_2), at(p2,c_0_2)})"]
+s13[label="(instance index=0, state index=13, atoms={empty(t1), at(p1,c_0_0), at(p2,c_0_2), at(t1,c_0_0)})"]
+s8[label="(instance index=0, state index=8, atoms={carrying(t1,p1), at(p2,c_0_2), at(t1,c_0_0)})"]
+s2[label="(instance index=0, state index=2, atoms={carrying(t1,p1), at(t1,c_0_2), at(p2,c_0_2)})"]
+s5[label="(instance index=0, state index=5, atoms={carrying(t1,p1), at(p2,c_0_2), at(t1,c_0_1)})"]
+s11[label="(instance index=0, state index=11, atoms={empty(t1), at(p1,c_0_1), at(p2,c_0_2), at(t1,c_0_0)})"]
+s7[label="(instance index=0, state index=7, atoms={empty(t1), at(p1,c_0_1), at(p2,c_0_2), at(t1,c_0_1)})"]
+s12[label="(instance index=0, state index=12, atoms={empty(t1), at(t1,c_0_2), at(p1,c_0_1), at(p2,c_0_2)})"]
+s17[label="(instance index=0, state index=17, atoms={carrying(t1,p2), at(t1,c_0_2), at(p1,c_0_1)})"]
+s21[label="(instance index=0, state index=21, atoms={carrying(t1,p2), at(p1,c_0_1), at(t1,c_0_1)})"]
+s25[peripheries=2,label="(instance index=0, state index=25, atoms={empty(t1), at(p1,c_0_1), at(p2,c_0_1), at(t1,c_0_1)})"]
+s30[peripheries=2,label="(instance index=0, state index=30, atoms={empty(t1), at(p1,c_0_1), at(t1,c_0_0), at(p2,c_0_1)})"]
+Dangling [ label = "", style = invis ]
+{ rank = same; Dangling }
+Dangling -> s0
+{ rank = same; s0}
+{ rank = same; s18,s1}
+{ rank = same; s0,s13}
+{ rank = same; s8,s2}
+{ rank = same; s5,s11}
+{ rank = same; s7}
+{ rank = same; s12}
+{ rank = same; s17}
+{ rank = same; s21}
+{ rank = same; s25,s30}
+{
+s4->s1
+}
+{
+s18->s13
+s1->s4
+s1->s0
+}
+{
+s0->s2
+s0->s1
+s13->s18
+s13->s8
+}
+{
+s8->s13
+s8->s5
+s2->s5
+s2->s0
+}
+{
+s5->s7
+s5->s2
+s5->s8
+s11->s7
+}
+{
+s7->s12
+s7->s5
+s7->s11
+}
+{
+s12->s7
+s12->s17
+}
+{
+s17->s21
+s17->s12
+}
+{
+s21->s25
+s21->s17
+}
+{
+s25->s30
+s25->s21
+s30->s25
+}
+}
