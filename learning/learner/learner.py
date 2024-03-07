@@ -6,6 +6,7 @@ from typing import List
 
 from dlplan.policy import PolicyMinimizer
 
+from .exit_codes import ExitCode
 from .src.asp.encoding_type import EncodingType
 from .src.asp.asp_factory import ASPFactory
 from .src.asp.returncodes import ClingoExitCode
@@ -150,10 +151,17 @@ def learn_sketch_for_problem_class(
                         symbols, returncode = asp_factory.solve()
                         logging.info(colored("..done", "blue", "on_grey"))
 
-                        if returncode in [ClingoExitCode.UNSATISFIABLE]:
-                            print(colored("ASP is UNSAT", "red", "on_grey"))
-                            print(colored("No sketch exists that solves all geneneral subproblems!", "red", "on_grey"))
-                            exit(1)
+                        if returncode in [ClingoExitCode.UNSATISFIABLE, ClingoExitCode.EXHAUSTED]:
+                            print(colored("ASP is unsatisfiable!", "red", "on_grey"))
+                            print(colored(f"No sketch of width {width} exists that solves all instances!", "red", "on_grey"))
+                            exit(ExitCode.UNSOLVABLE)
+                        elif returncode == ClingoExitCode.UNKNOWN:
+                            print(colored("ASP solving throws unknown error!", "red", "on_grey"))
+                            exit(ExitCode.UNKNOWN)
+                        elif returncode == ClingoExitCode.INTERRUPTED:
+                            print(colored("ASP solving iterrupted!", "red", "on_grey"))
+                            exit(ExitCode.INTERRUPTED)
+
                         asp_factory.print_statistics()
                         dlplan_policy = D2sepDlplanPolicyFactory().make_dlplan_policy_from_answer_set(symbols, domain_data)
                         sketch = Sketch(dlplan_policy, width)
@@ -238,5 +246,6 @@ def learn_sketch_for_problem_class(
         print_separation_line()
 
         print(flush=True)
+
 
 

@@ -4,7 +4,7 @@ from pathlib import Path
 from collections import defaultdict
 
 from dlplan.core import VocabularyInfo, InstanceInfo, State, DenotationsCaches
-from dlplan.state_space import StateSpace, GeneratorExitCode, generate_state_space
+from dlplan.state_space import StateSpace
 
 from .instance_data import InstanceData
 
