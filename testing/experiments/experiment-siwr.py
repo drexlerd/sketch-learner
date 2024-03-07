@@ -122,7 +122,6 @@ for planner, _ in IMAGES:
     for task in suites.build_suite(BENCHMARKS_DIR, SUITE):
         for w in range(0,3):
             sketch_filename = SKETCHES_DIR / f"{task.domain}_{w}" / "output" / f"sketch_minimized_{w}.txt"
-            print(sketch_filename)
             if not sketch_filename.is_file():
                 continue
             run = exp.add_run()
