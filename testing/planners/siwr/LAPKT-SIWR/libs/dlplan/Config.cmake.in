@@ -1,0 +1,27 @@
+@PACKAGE_INIT@
+
+include("${CMAKE_CURRENT_LIST_DIR}/cmake/configure_boost.cmake")
+
+##############
+# Dependencies
+##############
+
+include(CMakeFindDependencyMacro)
+
+configure_boost()
+find_dependency(Boost ${BOOST_MIN_VERSION} COMPONENTS serialization)
+
+
+############
+# Components
+############
+
+set(_dlplan_supported_components core generator novelty policy serialization statespace)
+
+foreach(_comp ${dlplan_FIND_COMPONENTS})
+  if (NOT _comp IN_LIST _dlplan_supported_components)
+    set(dlplan_FOUND False)
+    set(dlplan_NOT_FOUND_MESSAGE "Unsupported component: ${_comp}")
+  endif()
+  include("${CMAKE_CURRENT_LIST_DIR}/dlplan${_comp}Targets.cmake")
+endforeach()

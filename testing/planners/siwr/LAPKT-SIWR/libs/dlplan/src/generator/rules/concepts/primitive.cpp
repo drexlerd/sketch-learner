@@ -1,8 +1,6 @@
 #include "primitive.h"
 
-#include "../../generator_data.h"
-
-#include "../../../core/elements/concepts/primitive.h"
+#include "src/generator/generator_data.h"
 
 
 namespace dlplan::generator::rules {
@@ -17,13 +15,15 @@ void PrimitiveConcept::generate_impl(const core::States& states, int target_comp
                 data.m_reprs.push_back(element->compute_repr());
                 data.m_concepts_by_iteration[target_complexity].push_back(std::move(element));
                 increment_generated();
+            } else {
+                caches.concept_denotations_cache.erase_denotation(element->get_index(), -1, -1);
             }
         }
     }
 }
 
 std::string PrimitiveConcept::get_name() const {
-    return core::PrimitiveConcept::get_name();
+    return "c_primitive";
 }
 
 }

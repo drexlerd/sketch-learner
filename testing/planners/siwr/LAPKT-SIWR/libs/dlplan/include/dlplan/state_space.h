@@ -1,42 +1,47 @@
+/// Provides functionality for generating state spaces from PDDL.
+
 #ifndef DLPLAN_INCLUDE_DLPLAN_STATE_SPACE_H_
 #define DLPLAN_INCLUDE_DLPLAN_STATE_SPACE_H_
 
-#include "core.h"
-
+#include <functional>
 #include <unordered_map>
 #include <unordered_set>
 
+#include "core.h"
 
-/**
- * Forward declarations and usings
- */
+
+// Forward declarations of this header
 namespace dlplan::state_space {
-    using StateIndex = int;
-    using StateIndices = std::vector<StateIndex>;
-    using StateIndicesSet = std::unordered_set<StateIndex>;
-    using AdjacencyList = std::unordered_map<StateIndex, StateIndicesSet>;
-    using Distance = int;
-    using Distances = std::unordered_map<StateIndex, Distance>;
-    using StateMapping = std::unordered_map<StateIndex, core::State>;
+class StateSpace;
+}
 
-    const int UNDEFINED = -1;
+
+// Forward declarations of template spezializations for serialization
+namespace boost::serialization {
+    class access;
+
+    template <typename Archive>
+    void serialize(Archive& ar, dlplan::state_space::StateSpace& state_space, const unsigned int version);
 }
 
 
 namespace dlplan::state_space {
-/**
- * StateSpace stores states, transitions,
- * a single initial state, and a set of goal states.
- *
- * We use sparse indexing which makes it easier
- * to use the same indexing when incrementally
- * adding states from an existing state space
- * and for back reference to the original state space.
- */
+using StateIndex = int;
+using StateIndices = std::vector<StateIndex>;
+using StateIndicesSet = std::unordered_set<StateIndex>;
+using AdjacencyList = std::unordered_map<StateIndex, StateIndicesSet>;
+using Distance = int;
+using Distances = std::unordered_map<StateIndex, Distance>;
+using StateMapping = std::unordered_map<StateIndex, core::State>;
+
+const int UNDEFINED = -1;
+
+
+/// @brief Implements a state space in sparse state representation.
 class StateSpace {
 private:
     /* Required information. */
-    std::shared_ptr<const core::InstanceInfo> m_instance_info;
+    std::shared_ptr<core::InstanceInfo> m_instance_info;
     StateMapping m_states;
     StateIndex m_initial_state_index;
     AdjacencyList m_forward_successor_state_indices;
@@ -45,9 +50,16 @@ private:
     // for backward search
     AdjacencyList m_backward_successor_state_indices;
 
+    /// @brief Constructor for serialization
+    StateSpace();
+
+    friend class boost::serialization::access;
+    template<typename Archive>
+    friend void boost::serialization::serialize(Archive& ar, StateSpace& state_space, const unsigned int version);
+
 public:
     StateSpace(
-        std::shared_ptr<const core::InstanceInfo>&& instance_info,
+        std::shared_ptr<core::InstanceInfo>&& instance_info,
         StateMapping&& index_to_state,
         StateIndex initial_state_index,
         AdjacencyList&& forward_successor_state_indices,
@@ -79,27 +91,19 @@ public:
     void for_each_backward_successor_state_index(std::function<void(int)>&& function, StateIndex state) const;
 
     bool is_goal(StateIndex state) const;
-    bool is_nongoal(StateIndex state) const;
 
     /**
-     * Pretty printing.
+     * Creates a string representations
      */
-    void print() const;
+    std::string str() const;
     /**
      * Creates a dot representation that can be read with graphviz.
      */
     std::string to_dot(int verbosity_level) const;
 
-    /**
-     * Setters.
-     */
     void set_initial_state_index(StateIndex initial_state);
     void set_goal_state_indices(const StateIndicesSet& goal_states);
-
-    /**
-     * Getters.
-     */
-    std::shared_ptr<const core::InstanceInfo> get_instance_info() const;
+    std::shared_ptr<core::InstanceInfo> get_instance_info() const;
     const StateMapping& get_states() const;
     StateIndex get_initial_state_index() const;
     const AdjacencyList& get_forward_successor_state_indices() const;
@@ -107,29 +111,36 @@ public:
     const StateIndicesSet& get_goal_state_indices() const;
 };
 
-/**
- * Flag providing additional information regarding the generated state space
-*/
+
+/// @brief Represents the status of the generated state space.
 enum class GeneratorExitCode {
     COMPLETE,
     INCOMPLETE,
     FAIL,
 };
 
+
+/// @brief Encapsulates the result of the state space generation process.
 struct GeneratorResult {
     GeneratorExitCode exit_code;
-    StateSpace state_space;
+    std::shared_ptr<StateSpace> state_space;
 };
 
-/**
- * Generate a state space from PDDL input files.
- */
+
+/// @brief Generates a state space from PDDL input files and limit on resources.
+/// @param domain_file
+/// @param instance_file
+/// @param vocabulary_info
+/// @param index
+/// @param max_time
+/// @return
 extern GeneratorResult generate_state_space(
     const std::string& domain_file,
     const std::string& instance_file,
-    std::shared_ptr<const core::VocabularyInfo> vocabulary_info=nullptr,
-    int index=-1,
-    int max_time=std::numeric_limits<int>::max());
+    std::shared_ptr<core::VocabularyInfo> vocabulary_info=nullptr,
+    core::InstanceIndex index=-1,
+    int max_time=std::numeric_limits<int>::max()-1,
+    int max_num_states=std::numeric_limits<int>::max()-1);
 
 }
 

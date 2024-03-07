@@ -32,7 +32,7 @@ namespace aptk
 typedef		int 	 Action_Idx;
 // MRJ: This should correspond to the biggest 32-bit unsigned
 // but it's a quite dodgy way of initializing this.
-const		Action_Idx no_op = -1; 
+const		Action_Idx no_op = -1;
 
 template <typename State> class Search_Problem {
 public:
@@ -58,7 +58,7 @@ public:
 	virtual State*	next( const State& s, Action_Idx a ) const = 0;
 	// MRJ: Outputs a description of the problem
 	virtual void 	print(std::ostream &os) const = 0;
-	
+
 protected:
 
 };

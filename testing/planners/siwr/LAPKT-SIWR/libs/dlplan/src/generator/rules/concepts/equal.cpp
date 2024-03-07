@@ -1,9 +1,8 @@
 #include "equal.h"
 
-#include "../../generator_data.h"
+#include "src/generator/generator_data.h"
 
-#include "../../../core/elements/concepts/equal.h"
-#include "../../../core/elements/roles/primitive.h"
+#include "src/core/elements/roles/primitive.h"
 
 
 namespace dlplan::generator::rules {
@@ -30,6 +29,8 @@ void EqualConcept::generate_impl(const core::States& states, int target_complexi
                                     data.m_reprs.push_back(element->compute_repr());
                                     data.m_concepts_by_iteration[target_complexity].push_back(std::move(element));
                                     increment_generated();
+                                } else {
+                                    caches.concept_denotations_cache.erase_denotation(element->get_index(), -1, -1);
                                 }
                             }
                         }
@@ -41,7 +42,7 @@ void EqualConcept::generate_impl(const core::States& states, int target_complexi
 }
 
 std::string EqualConcept::get_name() const {
-    return core::EqualConcept::get_name();
+    return "c_equal";
 }
 
 }

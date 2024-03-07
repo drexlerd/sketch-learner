@@ -1,8 +1,6 @@
 #include "transitive_closure.h"
 
-#include "../../generator_data.h"
-
-#include "../../../core/elements/roles/transitive_closure.h"
+#include "src/generator/generator_data.h"
 
 
 namespace dlplan::generator::rules {
@@ -16,13 +14,15 @@ void TransitiveClosureRole::generate_impl(const core::States& states, int target
                 data.m_reprs.push_back(element->compute_repr());
                 data.m_roles_by_iteration[target_complexity].push_back(std::move(element));
                 increment_generated();
+            } else {
+                caches.role_denotations_cache.erase_denotation(element->get_index(), -1, -1);
             }
         }
     }
 }
 
 std::string TransitiveClosureRole::get_name() const {
-    return core::TransitiveClosureRole::get_name();
+    return "r_transitive_closure";
 }
 
 }

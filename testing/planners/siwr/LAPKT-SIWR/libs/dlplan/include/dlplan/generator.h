@@ -1,27 +1,23 @@
+/// @brief Provides functionality for automatically generating a set of domain-general
+///        state features that are distinguishable on a given finite set of states.
+
 #ifndef DLPLAN_INCLUDE_DLPLAN_GENERATOR_H_
 #define DLPLAN_INCLUDE_DLPLAN_GENERATOR_H_
-
-#include "core.h"
-#include "utils/pimpl.h"
 
 #include <string>
 #include <vector>
 
-
-/**
- * Forward declarations and usings
- */
-namespace dlplan::generator {
-    class FeatureGeneratorImpl;
-    using States = std::vector<core::State>;
-    using FeatureRepresentations = std::vector<std::string>;
-}
+#include "core.h"
+#include "utils/pimpl.h"
 
 
 namespace dlplan::generator {
-/**
- * FeatureGenerator exhaustively generates features up to the complexity bound or until the time limit was reached.
- */
+class FeatureGeneratorImpl;
+using States = std::vector<core::State>;
+using FeatureRepresentations = std::vector<std::string>;
+
+/// @brief Provides functionality for automatically generating state features
+///        that are distinguishable on a finite set of states.
 class FeatureGenerator {
 private:
     dlplan::utils::pimpl<FeatureGeneratorImpl> m_pImpl;
@@ -34,9 +30,6 @@ public:
     FeatureGenerator& operator=(FeatureGenerator&& other);
     ~FeatureGenerator();
 
-    /**
-     * Exhaustively generates features with pairwise disjoint feature evaluations on the states.
-     */
     FeatureRepresentations generate(
         core::SyntacticElementFactory& factory,
         const core::States& states,
@@ -81,6 +74,7 @@ public:
 };
 
 
+/// @brief Generates state features that are distinguishable on a finite set of states.
 extern FeatureRepresentations generate_features(
     core::SyntacticElementFactory& factory,
     const core::States& states,

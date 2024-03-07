@@ -144,7 +144,6 @@ public:
 		m_open_hash.clear();
 	}
 
-
 	void	set_verbose( bool v ) { m_verbose = v; }
 	bool	verbose() const { return m_verbose; }
 
@@ -192,13 +191,6 @@ public:
 		m_root->print(std::cout);
 		std::cout << std::endl;
 #endif
-        // Dominik(26.01.2023): Set index of initial state
-		assert(this-m_open_hash.size() == 0 && this->m_closed.size() == 0);
-        this->m_root->set_index(this->m_open_hash.size() + this->m_closed.size());
-		if( this->m_root->has_state() ) {
-		    this->m_root->state()->set_index(this->m_open_hash.size() + this->m_closed.size());
-		}
-
 		m_open.push( m_root );
 		m_open_hash.put( m_root );
 		inc_gen();
@@ -248,11 +240,11 @@ public:
 	}
 
 	void	 	open_node( Search_Node *n ) {
-		// Dominik(26.01.2023): set index of newly generated node. It was previously tested whether it was hashed in open or closed before.
-		n->set_index(m_open_hash.size() + m_closed.size() + 1);
+		// Dominik(18.06.2023): set index of newly generated node.
 		if( n->has_state() ) {
-		    n->state()->set_index(m_open_hash.size() + m_closed.size() + 1);  // + 1 because get_node pops node during expansion
+		    n->state()->set_index(this->generated());
 		}
+		// n->state()->print(std::cout);
 
 		m_open.push(n);
 		m_open_hash.put(n);
@@ -263,13 +255,11 @@ public:
 			if ( verbose() )
 				std::cout << "[" << m_max_depth  <<"]" << std::flush;
 		}
-
 	}
 
 	virtual Search_Node*   process(  Search_Node *head ) {
 		typedef typename Search_Model::Action_Iterator Iterator;
 		Iterator it( this->problem() );
-
 		int a = it.start( *(head->state()) );
 		while ( a != no_op ) {
 			State *succ =  m_problem.next( *(head->state()), a ) ;
@@ -326,7 +316,6 @@ public:
 
 	virtual bool 			previously_hashed( Search_Node *n ) {
 		Search_Node *previous_copy = m_open_hash.retrieve(n);
-
 		if( previous_copy != NULL )
 			return true;
 

@@ -6,10 +6,11 @@ include README.md
 include requirements.txt
 include setup.py
 include tox.ini
+include Config.cmake.in
 recursive-include api/python/ *
 recursive-include examples/ *
 recursive-include experiments/ *
 recursive-include include/ *
 recursive-include src/ *
 recursive-include tests/ *
-
+recursive-include cmake/ *

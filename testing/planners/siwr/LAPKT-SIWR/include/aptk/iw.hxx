@@ -28,6 +28,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #include <vector>
 #include <algorithm>
 #include <iostream>
+#include <random>
 
 // #define CUSTOMDEBUG
 
@@ -48,7 +49,7 @@ public:
 	typedef 	Closed_List< Search_Node >			Closed_List_Type;
 
 	IW( 	const Search_Model& search_problem )
-	: BRFS< Search_Model >(search_problem), m_pruned_B_count(0), m_B( infty ), m_verbose( true ) {
+	: BRFS< Search_Model >(search_problem), m_pruned_B_count(0), m_B( infty ), m_verbose( true ), random_engine(0) {
 		m_novelty = new Abstract_Novelty( search_problem );
 	}
 
@@ -60,11 +61,13 @@ public:
 	bool	verbose() const { return m_verbose; }
 
 	void	start(State*s = NULL) {
-		if(!s)
+		if(!s) {
 			this->m_root = new Search_Node( this->problem().init(), no_op, NULL );
-		else
+			// Dominik(18.06.2023): set index of newly generated node.
+			this->problem().init()->set_index(this->generated());
+		} else {
 			this->m_root = new Search_Node( s, no_op, NULL );
-
+		}
 
 		m_pruned_B_count = 0;
 		this->reset();
@@ -84,12 +87,6 @@ public:
 			std::cout << std::endl;
 		}
 #endif
-        // Dominik(26.01.2023): Set index of initial state
-		assert(this-m_open_hash.size() == 0 && this->m_closed.size() == 0);
-        this->m_root->set_index(this->m_open_hash.size() + this->m_closed.size());
-		if( this->m_root->has_state() ) {
-		    this->m_root->state()->set_index(this->m_open_hash.size() + this->m_closed.size());
-		}
 
 		this->m_open.push( this->m_root );
 		this->m_open_hash.put( this->m_root );
@@ -128,6 +125,9 @@ protected:
 		std::vector< aptk::Action_Idx > app_set;
 		this->problem().applicable_set_v2( *(head->state()), app_set );
 
+        // Dominik(20.10.2023): randomization can helps to get more robust runtimes.
+		std::shuffle(app_set.begin(), app_set.end(), random_engine);
+
 		for (unsigned i = 0; i < app_set.size(); ++i ) {
 			int a = app_set[i];
 
@@ -138,7 +138,6 @@ protected:
 			//need to check COND EFF TOO!!
 			// if( head->state()->entails(this->problem().task().actions()[a]->add_vec()) )
 			// 	continue;
-
 
 			State *succ = this->problem().next( *(head->state()), a );
 
@@ -203,14 +202,12 @@ protected:
 				#endif
 
 				this->open_node(n);
-				if( this->is_goal( n ) )
+				if( this->is_goal( n ) ) {
 					return n;
+				}
 			}
 
 		}
-
-
-
 		return NULL;
 	}
 
@@ -220,6 +217,7 @@ protected:
 	unsigned				m_pruned_B_count;
 	float					m_B;
 	bool					m_verbose;
+	std::default_random_engine random_engine;
 };
 
 }

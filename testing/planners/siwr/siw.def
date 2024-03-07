@@ -1,5 +1,5 @@
 Bootstrap: docker
-From: ubuntu:20.04
+From: ubuntu:22.04
 
 %files
    ## Copy subdirectory into the root directory of the container
@@ -13,6 +13,7 @@ From: ubuntu:20.04
     ## Install all necessary dependencies.
     apt-get update
     apt-get install --no-install-recommends -y \
+    wget \
 	build-essential \
 	ca-certificates \
 	xutils-dev \
@@ -21,14 +22,23 @@ From: ubuntu:20.04
 	gcc-multilib \
 	flex \
 	bison \
+    libboost-python-dev\
 	python2.7 \
-	python-dev \
-	libboost-dev \
+    python-dev-is-python3 \
 	libjudy-dev \
-	libboost-python-dev \
-	libboost-program-options-dev \
 	g++-multilib \
 	g++
+
+    ## Install boost 
+    wget --no-check-certificate 'https://boostorg.jfrog.io/artifactory/main/release/1.82.0/source/boost_1_82_0.tar.gz'
+    tar xf boost_1_82_0.tar.gz
+    cd /boost_1_82_0
+    ./bootstrap.sh
+    export CXXFLAGS="-fPIC"
+    ./b2 cxxflags="$CXXFLAGS" link=static
+    export BOOST_ROOT="/boost_1_82_0"
+    export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/boost_1_82_0/stage/lib"
+    export CPLUS_INCLUDE_PATH="$CPLUS_INCLUDE_PATH:/boost_1_82_0/include"
 
     cd /LAPKT-SIWR/libs/dlplan
     rm -rf builds

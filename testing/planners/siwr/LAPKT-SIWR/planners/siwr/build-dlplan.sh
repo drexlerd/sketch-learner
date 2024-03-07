@@ -12,9 +12,13 @@ cd ${SCRIPT_DIR}
 
 cd ../../libs/dlplan
 
-PREFIX="$(realpath .)"/installs/"$BUILD_TYPE"
+PREFIX="$(realpath .)"/installs/"$BUILD_TYPE/dlplan/"
 BUILD_DIR="$(realpath .)"/builds/"$BUILD_TYPE"
 
-cmake -DCMAKE_BUILD_TYPE=${BUILD_TYPE} -DCMAKE_INSTALL_PREFIX=${PREFIX} -S . -B ${BUILD_DIR}
+echo $SCRIPT_DIR
+echo $PREFIX 
+echo $BUILD_DIR
+
+cmake -DCMAKE_BUILD_TYPE=${BUILD_TYPE} -S . -B ${BUILD_DIR}
 cmake --build ${BUILD_DIR} -j$(nproc)
-cmake --install ${BUILD_DIR}
+cmake --install ${BUILD_DIR} --prefix=${PREFIX}

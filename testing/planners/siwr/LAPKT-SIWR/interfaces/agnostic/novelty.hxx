@@ -191,7 +191,6 @@ protected:
 		unsigned atoms_arity = arity - 1;
 		unsigned n_combinations = aptk::unrolled_pow(  fl.size() , atoms_arity );
 
-
 		for ( Fluent_Vec::const_iterator it_add = add.begin();
 					it_add != add.end(); it_add++ )
 			{
@@ -233,8 +232,6 @@ protected:
 
 						tuple_idx = tuple2idx( tuple, arity );
 					}
-
-
 
 					/**
 					 * new_tuple if
@@ -282,7 +279,6 @@ protected:
 
 		if(!has_state)
 			n->parent()->state()->regress_lazy_state( m_strips_model.actions()[ n->action() ] );
-
 		return new_covers;
 	}
 

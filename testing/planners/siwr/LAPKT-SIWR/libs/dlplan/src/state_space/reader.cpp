@@ -1,11 +1,11 @@
-#include "../../include/dlplan/state_space.h"
+#include "include/dlplan/state_space.h"
 
 #include <iostream>
 #include <fstream>
 #include <regex>
 #include <sstream>
 
-#include "../utils/tokenizer.h"
+#include "src/utils/tokenizer.h"
 
 
 using namespace dlplan::core;
@@ -169,6 +169,10 @@ static GeneratorExitCode parse_run_file(const std::string& filename) {
         if (std::regex_search(line, std::regex("Time limit reached\\. Abort search\\.", std::regex_constants::ECMAScript))) {
             return GeneratorExitCode::INCOMPLETE;
         }
+        // [t=0.00408488s, 11316 KB] Num states limit reached. Abort search.
+        else if (std::regex_search(line, std::regex("Num states limit reached\\. Abort search\\.", std::regex_constants::ECMAScript))) {
+            return GeneratorExitCode::INCOMPLETE;
+        }
         // [t=0.000984712s, 11492 KB] Finished dumping the reachable state space.
         else if (std::regex_search(line, std::regex("Finished dumping the reachable state space\\.", std::regex_constants::ECMAScript))) {
             return GeneratorExitCode::COMPLETE;
@@ -177,18 +181,23 @@ static GeneratorExitCode parse_run_file(const std::string& filename) {
     return GeneratorExitCode::FAIL;
 }
 
-GeneratorResult read(std::shared_ptr<const VocabularyInfo> vocabulary_info, int index) {
+GeneratorResult read(std::shared_ptr<VocabularyInfo> vocabulary_info, int index) {
     auto exit_code = parse_run_file("run.log");
     if (exit_code == GeneratorExitCode::FAIL) {
-        return GeneratorResult{ 
+        return GeneratorResult{
             exit_code,
-            std::move(StateSpace(nullptr, {}, 0, {}, {}))
+            nullptr
         };
     }
     if (!vocabulary_info) {
         std::shared_ptr<VocabularyInfo> new_vocabulary_info = std::make_shared<core::VocabularyInfo>();
         parse_predicates_file("predicates.txt", *new_vocabulary_info, false);
-        parse_predicates_file("static-predicates.txt", *new_vocabulary_info, true);
+        /*
+         we parse static predicates as non static ones because
+         we want to ensure we cannot deduce this information from
+         a spefic instance of the domain
+        */
+        parse_predicates_file("static-predicates.txt", *new_vocabulary_info, false);
         parse_constants_file("constants.txt", *new_vocabulary_info);
         vocabulary_info = new_vocabulary_info;
     }
@@ -200,10 +209,10 @@ GeneratorResult read(std::shared_ptr<const VocabularyInfo> vocabulary_info, int 
     auto states = std::move(parse_states_result.first);
     auto goal_state_indices = std::move(parse_states_result.second);
     auto adjacency_list = parse_transitions_file("transitions.txt");
-    // initial state has id 0 in scorpion
+    int initial_state_index = 0;
     return GeneratorResult{
-        exit_code, 
-        std::move(StateSpace(std::move(instance_info), std::move(states), 0, std::move(adjacency_list), std::move(goal_state_indices)))
+        exit_code,
+        std::make_shared<StateSpace>(std::move(instance_info), std::move(states), initial_state_index, std::move(adjacency_list), std::move(goal_state_indices))
     };
 }
 

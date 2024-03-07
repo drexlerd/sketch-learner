@@ -51,8 +51,9 @@ public:
 
 	Sketch_SIW( const Search_Model& search_problem )
 		: brfs::IW<Search_Model, aptk::agnostic::Novelty<Search_Model, Search_Node>>( search_problem ),
-		  m_pruned_sum_B_count(0), m_sum_B_count(0), m_max_B_count(0), m_iw_calls(0), m_max_bound( std::numeric_limits<unsigned>::max() ), m_closed_goal_states( NULL ),
-		  m_dlplan_initial_state(static_cast<const Sketch_STRIPS_Problem*>(&search_problem.task())->get_default_state()) {
+		  m_pruned_sum_B_count(0), m_sum_B_count(0), m_max_B_count(0), m_iw_calls(0), m_max_bound( std::numeric_limits<unsigned>::max() ),
+		  m_dlplan_initial_state(static_cast<const Sketch_STRIPS_Problem*>(&search_problem.task())->get_default_state()),
+		  m_count_goal_test(0) {
 		m_goal_agenda = NULL;
 		m_sketch_problem = static_cast<const Sketch_STRIPS_Problem*>(&search_problem.task());
 	}
@@ -65,7 +66,6 @@ public:
 	 * Calls IW for each subproblem encountered
 	 */
 	virtual bool	find_solution( float& cost, std::vector<Action_Idx>& plan, std::vector<std::vector<Action_Idx>>& partial_plans, std::vector<std::string>& sketch_plan, std::vector<unsigned>& subproblem_widths) {
-
 		unsigned gsize = this->problem().task().goal().size();
 		Search_Node* end = NULL;
 		State* new_init_state = NULL;
@@ -74,8 +74,7 @@ public:
 
 		new_init_state = new State( this->problem().task() );
 		new_init_state->set( this->m_root->state()->fluent_vec() );
-		this->start( new_init_state );
-        // new_init_state->print( std::cout );
+		new_init_state->set_index( this->m_root->state()->index() );
 
         m_sketch = m_sketch_problem->sketch();
 
@@ -88,10 +87,9 @@ public:
 				//std::cout << std::endl << "{" << gsize << "/" << this->m_goal_candidates.size() << "/" << this->m_goals_achieved.size() << "}:IW(" << this->bound() << ") -> ";
 
             // We must reset cache because indices start from 0 again.
-		    m_denotation_caches = dlplan::core::DenotationsCaches();
             m_dlplan_initial_state = m_sketch_problem->from_lapkt_state(new_init_state, new_init_state->index());
-			// new_init_state->print( std::cout );
-		    m_rules = m_sketch->evaluate_conditions_eager(m_dlplan_initial_state, m_denotation_caches);
+			m_denotation_caches = dlplan::core::DenotationsCaches();
+		    m_rules = m_sketch->evaluate_conditions(m_dlplan_initial_state, m_denotation_caches);
 			end = this->do_search();
 			m_pruned_sum_B_count += this->pruned_by_bound();
 
@@ -108,6 +106,7 @@ public:
 
 				new_init_state = new State( this->problem().task() );
 				new_init_state->set( this->m_root->state()->fluent_vec() );
+				new_init_state->set_index( this->m_root->state()->index() );
 				new_init_state->update_hash();
 
 				if ( this->bound() > this->max_bound() ) // Hard cap on width exceeded
@@ -157,12 +156,15 @@ public:
 
 				new_init_state = new State( this->problem().task() );
 				new_init_state->set( end->state()->fluent_vec() );
+				new_init_state->set_index( end->state()->index() );
 				new_init_state->update_hash();
 
 				this->set_bound( 1 );
 				this->start( new_init_state );
 			}
 		} while( !this->problem().goal( *new_init_state ) );
+
+		std::cout << "Num goal tests: " << m_count_goal_test << std::endl;
 
 		return true;
 	}
@@ -171,13 +173,14 @@ public:
 	 * Starts a new IW search if new subproblem is encountered.
 	 */
 	virtual bool  is_goal( Search_Node* n ) {
+		++m_count_goal_test;
 		State* s = n->state();
 		assert(s != NULL);
 
 		dlplan::core::State dlplan_target_state = m_sketch_problem->from_lapkt_state(s, s->index());
-		const auto evaluation_result = m_sketch->evaluate_effects_lazy(m_dlplan_initial_state, dlplan_target_state, m_rules, m_denotation_caches);
+		const auto evaluation_result = m_sketch->evaluate_effects(m_dlplan_initial_state, dlplan_target_state, m_rules);
 		if (evaluation_result) {
-			m_key_applied_rule = evaluation_result->compute_repr();
+			m_key_applied_rule = evaluation_result->str();
 			return true;
 		}
 		/* 2. Check whether s is an overall goal of the problem. */
@@ -201,12 +204,12 @@ protected:
 	Landmarks_Graph*        m_goal_agenda;
 	unsigned		m_max_bound;
 
-	Closed_List_Type*			m_closed_goal_states;
-
 	// sketch related information
 	const Sketch_STRIPS_Problem* m_sketch_problem;
 	std::shared_ptr<const dlplan::policy::Policy> m_sketch;
 	dlplan::core::DenotationsCaches m_denotation_caches;
+
+	int m_count_goal_test;
 
 	dlplan::core::State m_dlplan_initial_state;
 	std::vector<std::shared_ptr<const dlplan::policy::Rule>> m_rules;

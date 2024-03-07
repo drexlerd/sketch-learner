@@ -1,9 +1,9 @@
 #ifndef DLPLAN_SRC_GENERATOR_GENERATOR_DATA_H_
 #define DLPLAN_SRC_GENERATOR_GENERATOR_DATA_H_
 
-#include "../utils/countdown_timer.h"
+#include "src/utils/countdown_timer.h"
 
-#include "../../include/dlplan/core.h"
+#include "include/dlplan/core.h"
 
 #include <iostream>
 #include <numeric>
@@ -14,9 +14,9 @@ namespace dlplan::generator {
 
 struct GeneratorData {
     core::SyntacticElementFactory& m_factory;
-    std::unordered_set<void*> m_boolean_and_numerical_hash_table;
-    std::unordered_set<core::ConceptDenotations*> m_concept_hash_table;
-    std::unordered_set<core::RoleDenotations*> m_role_hash_table;
+    std::unordered_set<const void*> m_boolean_and_numerical_hash_table;
+    std::unordered_set<const core::ConceptDenotations*> m_concept_hash_table;
+    std::unordered_set<const core::RoleDenotations*> m_role_hash_table;
     std::vector<std::vector<std::shared_ptr<const core::Boolean>>> m_booleans_by_iteration;
     std::vector<std::vector<std::shared_ptr<const core::Numerical>>> m_numericals_by_iteration;
     std::vector<std::vector<std::shared_ptr<const core::Concept>>> m_concepts_by_iteration;

@@ -1,15 +1,19 @@
 #include "feature_generator.h"
 
-#include "generator_data.h"
-
-#include "../../include/dlplan/core.h"
-#include "../utils/logging.h"
-
+#include <algorithm>
 #include <iostream>
+#include <csignal>
+
+#include "generator_data.h"
+#include "src/utils/logging.h"
+#include "include/dlplan/core.h"
 
 
 namespace dlplan::generator {
-
+void exit_sigint_handler(int signal) {
+    std::cout << "Caught signal " << signal << std::endl;
+    exit(signal);
+}
 
 FeatureGeneratorImpl::FeatureGeneratorImpl()
     : c_one_of(std::make_shared<rules::OneOfConcept>()),
@@ -98,6 +102,8 @@ FeatureRepresentations FeatureGeneratorImpl::generate(
     int distance_numerical_complexity_limit,
     int time_limit,
     int feature_limit) {
+    // Allow termination with ctrl+c
+    auto pre_sigint_handler = std::signal(SIGINT, exit_sigint_handler);
     // Initialize statistics in each rule.
     for (auto& r : m_primitive_rules) r->initialize();
     for (auto& r : m_concept_inductive_rules) r->initialize();
@@ -110,6 +116,8 @@ FeatureRepresentations FeatureGeneratorImpl::generate(
     core::DenotationsCaches caches;
     generate_base(states, data, caches);
     generate_inductively(states, concept_complexity_limit, role_complexity_limit, boolean_complexity_limit, count_numerical_complexity_limit, distance_numerical_complexity_limit, data, caches);
+    // Restore previous sigint handler
+    std::signal(SIGINT, pre_sigint_handler);
     return data.m_reprs;
 }
 

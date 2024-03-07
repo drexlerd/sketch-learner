@@ -63,25 +63,25 @@ class ExplicitDlplanPolicyFactory(DlplanPolicyFactory):
                 if feature not in selected_features:
                     continue
                 if symbol.name == "c_b_pos":
-                    rules_dict[r_idx][0].add(policy_builder.make_pos_condition(policy_builder.make_boolean(str(f_idx), feature)))
+                    rules_dict[r_idx][0].add(policy_builder.make_pos_condition(policy_builder.make_boolean(f"f{f_idx}", feature)))
                 elif symbol.name == "c_b_neg":
-                    rules_dict[r_idx][0].add(policy_builder.make_neg_condition(policy_builder.make_boolean(str(f_idx), feature)))
+                    rules_dict[r_idx][0].add(policy_builder.make_neg_condition(policy_builder.make_boolean(f"f{f_idx}", feature)))
                 elif symbol.name == "c_n_gt":
-                    rules_dict[r_idx][0].add(policy_builder.make_gt_condition(policy_builder.make_numerical(str(f_idx), feature)))
+                    rules_dict[r_idx][0].add(policy_builder.make_gt_condition(policy_builder.make_numerical(f"f{f_idx}", feature)))
                 elif symbol.name == "c_n_eq":
-                    rules_dict[r_idx][0].add(policy_builder.make_eq_condition(policy_builder.make_numerical(str(f_idx), feature)))
+                    rules_dict[r_idx][0].add(policy_builder.make_eq_condition(policy_builder.make_numerical(f"f{f_idx}", feature)))
                 elif symbol.name == "e_b_pos":
-                    rules_dict[r_idx][1].add(policy_builder.make_pos_effect(policy_builder.make_boolean(str(f_idx), feature)))
+                    rules_dict[r_idx][1].add(policy_builder.make_pos_effect(policy_builder.make_boolean(f"f{f_idx}", feature)))
                 elif symbol.name == "e_b_neg":
-                    rules_dict[r_idx][1].add(policy_builder.make_neg_effect(policy_builder.make_boolean(str(f_idx), feature)))
+                    rules_dict[r_idx][1].add(policy_builder.make_neg_effect(policy_builder.make_boolean(f"f{f_idx}", feature)))
                 elif symbol.name == "e_b_bot":
-                    rules_dict[r_idx][1].add(policy_builder.make_bot_effect(policy_builder.make_boolean(str(f_idx), feature)))
+                    rules_dict[r_idx][1].add(policy_builder.make_bot_effect(policy_builder.make_boolean(f"f{f_idx}", feature)))
                 elif symbol.name == "e_n_dec":
-                    rules_dict[r_idx][1].add(policy_builder.make_dec_effect(policy_builder.make_numerical(str(f_idx), feature)))
+                    rules_dict[r_idx][1].add(policy_builder.make_dec_effect(policy_builder.make_numerical(f"f{f_idx}", feature)))
                 elif symbol.name == "e_n_inc":
-                    rules_dict[r_idx][1].add(policy_builder.make_inc_effect(policy_builder.make_numerical(str(f_idx), feature)))
+                    rules_dict[r_idx][1].add(policy_builder.make_inc_effect(policy_builder.make_numerical(f"f{f_idx}", feature)))
                 elif symbol.name == "e_n_bot":
-                    rules_dict[r_idx][1].add(policy_builder.make_bot_effect(policy_builder.make_numerical(str(f_idx), feature)))
+                    rules_dict[r_idx][1].add(policy_builder.make_bot_effect(policy_builder.make_numerical(f"f{f_idx}", feature)))
         rules = set()
         for _, (conditions, effects) in rules_dict.items():
             rules.add(policy_builder.make_rule(conditions, effects))
@@ -106,13 +106,13 @@ class D2sepDlplanPolicyFactory(DlplanPolicyFactory):
                 rule = domain_data.domain_state_pair_equivalence.rules[r_idx]
                 conditions = set()
                 for condition in rule.get_conditions():
-                    f_idx = int(condition.get_named_element().get_key())
+                    f_idx = int(condition.get_named_element().get_key()[1:])
                     dlplan_feature = domain_data.feature_pool.features[f_idx].dlplan_feature
                     if dlplan_feature in dlplan_features:
                         conditions.add(condition)
                 effects = set()
                 for effect in rule.get_effects():
-                    f_idx = int(effect.get_named_element().get_key())
+                    f_idx = int(effect.get_named_element().get_key()[1:])
                     dlplan_feature = domain_data.feature_pool.features[f_idx].dlplan_feature
                     if dlplan_feature in dlplan_features:
                         effects.add(effect)

@@ -1,78 +1,85 @@
 #include <gtest/gtest.h>
 
+#include "include/dlplan/novelty.h"
+
+#include "src/novelty/tuple_index_generator.h"
+
 #include <iostream>
-
-#include "../include/dlplan/novelty.h"
-
 
 using namespace dlplan::novelty;
 
-TEST(DLPTests, TupleIndexGeneratorTest) {
-    // Test with single atom tuple.
-    auto novelty_base = std::make_shared<const NoveltyBase>(4, 2);
-    auto tuple_index_generator = TupleIndexGenerator(novelty_base, {0,1});
-    auto begin = tuple_index_generator.begin();
-    auto end = tuple_index_generator.end();
-    EXPECT_EQ(*(begin++), 5);  // {0,1} 5 = 0*5^0 + 1*5^1
-    EXPECT_EQ(begin, end);
 
-    // Test with unsorted atom indices.
-    tuple_index_generator = TupleIndexGenerator(novelty_base, {1,0});
-    begin = tuple_index_generator.begin();
-    end = tuple_index_generator.end();
-    EXPECT_EQ(*(begin++), 5);  // {0,1} 5 = 0*5^0 + 1*5^1
-    EXPECT_EQ(begin, end);
+namespace dlplan::tests::novelty {
 
-    // Test with empty atom indices.
-    tuple_index_generator = TupleIndexGenerator(novelty_base, {0});
-    begin = tuple_index_generator.begin();
-    end = tuple_index_generator.end();
-    EXPECT_EQ(*(begin++), 25);  // {0,5} 25 = 0*5^0 + 5*5^1
-    EXPECT_EQ(begin, end);
+TEST(DLPLTests, TupleIndexGeneratorForEachArityKTest) {
+    auto novelty_base = NoveltyBase(4, 2);
+    // Generate all tuples up to size 2.
+    TupleIndices result_1;
+    for_each_tuple_index(novelty_base, {0,1,2}, [&](TupleIndex tuple_index){
+        result_1.push_back(tuple_index);
+        return false;
+    });
+    std::sort(result_1.begin(), result_1.end());
+    EXPECT_EQ(result_1, TupleIndices({0, 5, 10, 11, 15, 16, 17}));
+    std::vector<AtomIndices> atom_tuple_indices_1;
+    std::for_each(result_1.begin(), result_1.end(), [&](TupleIndex tuple_index){
+        atom_tuple_indices_1.push_back(novelty_base.tuple_index_to_atom_indices(tuple_index));
+    });
+    EXPECT_EQ(atom_tuple_indices_1, std::vector<AtomIndices>({{}, { 0 }, { 1 }, { 0, 1 }, { 2 }, { 0, 2 }, { 1, 2 }}));
 
-    // Test for more than one atom tuple.
-    tuple_index_generator = TupleIndexGenerator(novelty_base, {0,1,2,3});
-    begin = tuple_index_generator.begin();
-    end = tuple_index_generator.end();
-    EXPECT_EQ(*(begin++), 10);  // {0,2} 10 = 0*5^0 + 2*5^1
-    EXPECT_EQ(*(begin++), 15);  // {0,3} 15 = 0*5^0 + 3*5^1
-    EXPECT_EQ(*(begin++), 11);  // {1,2} 11 = 1*5^0 + 2*5^1
-    EXPECT_EQ(*(begin++), 16);  // {1,3} 16 = 1*5^0 + 3*5^1
-    EXPECT_EQ(*(begin++), 17);  // {2,3} 17 = 2*5^0 + 3*5^1
-    EXPECT_EQ(*(begin++), 5);  // {0,1} 5 = 0*5^0 + 1*5^1  - {0,1} occurs in the end because we call seek_next() in the constructor
-    EXPECT_EQ(begin, end);
+    // Generate all tuples up to size 2 that include at least one atom from add_atom_indices.
+    TupleIndices result_2;
+    for_each_tuple_index(novelty_base, {}, {0,1,2}, [&](TupleIndex tuple_index){
+        result_2.push_back(tuple_index);
+        return false;
+    });
+    std::sort(result_2.begin(), result_2.end());
+    EXPECT_EQ(result_2, TupleIndices({5, 10, 11, 15, 16, 17}));
+    std::vector<AtomIndices> atom_tuple_indices_2;
+    std::for_each(result_2.begin(), result_2.end(), [&](TupleIndex tuple_index){
+        atom_tuple_indices_2.push_back(novelty_base.tuple_index_to_atom_indices(tuple_index));
+    });
+    EXPECT_EQ(atom_tuple_indices_2, std::vector<AtomIndices>({{ 0 }, { 1 }, { 0, 1 }, { 2 }, { 0, 2 }, { 1, 2 }}));
+
+    TupleIndices result_3;
+    for_each_tuple_index(novelty_base, {1,3}, {0,2}, [&](TupleIndex tuple_index){
+        result_3.push_back(tuple_index);
+        return false;
+    });
+    std::sort(result_3.begin(), result_3.end());
+    EXPECT_EQ(result_3, TupleIndices({5, 11, 15, 16, 17, 21, 23}));
+    std::vector<AtomIndices> atom_tuple_indices_3;
+    std::for_each(result_3.begin(), result_3.end(), [&](TupleIndex tuple_index){
+        atom_tuple_indices_3.push_back(novelty_base.tuple_index_to_atom_indices(tuple_index));
+    });
+    EXPECT_EQ(atom_tuple_indices_3, std::vector<AtomIndices>({{ 0 }, { 0, 1 }, { 2 }, { 0, 2 }, { 1, 2 }, { 0, 3 }, { 2, 3 }}));
+
+    // Test empty vectors
+    TupleIndices result_4;
+    for_each_tuple_index(novelty_base, {}, [&](TupleIndex tuple_index){
+        result_4.push_back(tuple_index);
+        return false;
+    });
+    std::sort(result_4.begin(), result_4.end());
+    EXPECT_EQ(result_4, TupleIndices({0}));
+    std::vector<AtomIndices> atom_tuple_indices_4;
+    std::for_each(result_4.begin(), result_4.end(), [&](TupleIndex tuple_index){
+        atom_tuple_indices_4.push_back(novelty_base.tuple_index_to_atom_indices(tuple_index));
+    });
+    EXPECT_EQ(atom_tuple_indices_4, std::vector<AtomIndices>({{}}));
+
+    TupleIndices result_5;
+    for_each_tuple_index(novelty_base, {}, {}, [&](TupleIndex tuple_index){
+        result_5.push_back(tuple_index);
+        return false;
+    });
+    std::sort(result_5.begin(), result_5.end());
+    EXPECT_EQ(result_5, TupleIndices());
+    std::vector<AtomIndices> atom_tuple_indices_5;
+    std::for_each(result_5.begin(), result_5.end(), [&](TupleIndex tuple_index){
+        atom_tuple_indices_5.push_back(novelty_base.tuple_index_to_atom_indices(tuple_index));
+    });
+    EXPECT_EQ(atom_tuple_indices_5, std::vector<AtomIndices>());
 }
 
-TEST(DLPTests, TupleIndexGeneratorTest2) {
-    // Test with single atom tuple.
-    auto novelty_base = std::make_shared<const NoveltyBase>(4, 3);
-    auto tuple_index_generator = TupleIndexGenerator(novelty_base, {0,1,2});
-    auto begin = tuple_index_generator.begin();
-    auto end = tuple_index_generator.end();
-    EXPECT_EQ(*(begin++), 55);  // {0,1,2} 55 = 0*5^0 + 1*5^1 + 2*5^1
-    EXPECT_EQ(begin, end);
-
-    // Test with unsorted atom indices.
-    tuple_index_generator = TupleIndexGenerator(novelty_base, {2,1,0});
-    begin = tuple_index_generator.begin();
-    end = tuple_index_generator.end();
-    EXPECT_EQ(*(begin++), 55);  // {0,1,2} 55 = 0*5^0 + 1*5^1 + 2*5^1
-    EXPECT_EQ(begin, end);
-
-    // Test with empty atom indices.
-    tuple_index_generator = TupleIndexGenerator(novelty_base, {0});
-    begin = tuple_index_generator.begin();
-    end = tuple_index_generator.end();
-    EXPECT_EQ(*(begin++), 150);  // {0,5,5} 150 = 0*5^0 + 5*5^1 + 5*5^2
-    EXPECT_EQ(begin, end);
-
-    // Test for more than one atom tuple.
-    tuple_index_generator = TupleIndexGenerator(novelty_base, {0,1,2,3});
-    begin = tuple_index_generator.begin();
-    end = tuple_index_generator.end();
-    EXPECT_EQ(*(begin++), 80);  // {0,1,3} 80 = 0*5^0 + 1*5^1 + 3*5^2
-    EXPECT_EQ(*(begin++), 85);  // {0,2,3} 85 = 0*5^0 + 2*5^1 + 3*5^2
-    EXPECT_EQ(*(begin++), 86);  // {1,2,3} 11 = 1*5^0 + 2*5^1 + 3*5^2
-    EXPECT_EQ(*(begin++), 55);  // {0,1,2} 16 = 1*5^0 + 3*5^1 + 5*5^2 - {0,1,2} occurs in the end because we call seek_next() in the constructor
-    EXPECT_EQ(begin, end);
 }

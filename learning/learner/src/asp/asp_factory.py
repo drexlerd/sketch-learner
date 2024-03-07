@@ -204,10 +204,10 @@ class ASPFactory:
         for r_idx, rule in enumerate(domain_data.domain_state_pair_equivalence.rules):
             facts.append(self._create_state_pair_class_fact(r_idx))
             for condition in rule.get_conditions():
-                f_idx = int(condition.get_named_element().get_key())
+                f_idx = int(condition.get_named_element().get_key()[1:])
                 facts.append(self._create_feature_condition_fact(condition, r_idx, f_idx))
             for effect in rule.get_effects():
-                f_idx = int(effect.get_named_element().get_key())
+                f_idx = int(effect.get_named_element().get_key()[1:])
                 facts.append(self._create_feature_effect_fact(effect, r_idx, f_idx))
         # State pair equivalence facts
         for instance_data in instance_datas:

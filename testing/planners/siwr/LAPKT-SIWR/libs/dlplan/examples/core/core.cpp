@@ -1,68 +1,90 @@
-#include "../../include/dlplan/core.h"
+/// Example illustrating the core component.
+
+#include "include/dlplan/core.h"
 
 #include <iostream>
 
 using namespace dlplan::core;
 
+
+/// @brief Construct a VocabularyInfo for the Blocks domain.
+///
+/// Create an empty VocabularyInfo and then add predicates, and constants.
+///
+/// @return the VocabularyInfo
 static std::shared_ptr<VocabularyInfo> construct_vocabulary_info() {
-    std::shared_ptr<VocabularyInfo> v = std::make_shared<VocabularyInfo>();
-    // Add predicates and constants of the domain.
-    // Note that there are no constants in Blocksworld.
-    v->add_predicate("on", 2);
-    v->add_predicate("on_g", 2);
-    v->add_predicate("ontable", 1);
-    v->add_predicate("holding", 1);
-    v->add_predicate("clear", 1);
-    v->add_predicate("arm-empty", 0);
-    return v;
+    auto vocabulary = std::make_shared<VocabularyInfo>();
+    vocabulary->add_predicate("on", 2);
+    vocabulary->add_predicate("on_g", 2);
+    vocabulary->add_predicate("ontable", 1);
+    vocabulary->add_predicate("holding", 1);
+    vocabulary->add_predicate("clear", 1);
+    vocabulary->add_predicate("arm-empty", 0);
+    return vocabulary;
 }
 
-static std::shared_ptr<InstanceInfo> construct_instance_info(std::shared_ptr<VocabularyInfo> v) {
-    std::shared_ptr<InstanceInfo> i = std::make_shared<InstanceInfo>(v);
-    // Add dynamic atoms
-    i->add_atom("on", {"a", "b"});
-    i->add_atom("on", {"b", "a"});
-    i->add_atom("ontable", {"a"});
-    i->add_atom("ontable", {"b"});
-    i->add_atom("holding", {"a"});
-    i->add_atom("holding", {"b"});
-    i->add_atom("clear", {"a"});
-    i->add_atom("clear", {"b"});
-    i->add_atom("arm-empty", {});
-    // Add static goal atoms
-    i->add_static_atom("on_g", {"a", "b"});
-    // Add static atoms
-    // Note that there are no static atoms in Blocksworld.
-    return i;
+/// @brief Construct an InstanceInfo over the Blocks domain.
+///
+/// Create an empty InstanceInfo and then add objects, atoms, and static atoms.
+///
+/// @param vocabulary the VocabularyInfo initialized for Blocks
+/// @return the InstanceInfo
+static std::shared_ptr<InstanceInfo> construct_instance_info(
+    const std::shared_ptr<VocabularyInfo>& vocabulary) {
+    // User must ensure that each InstanceInfo gets its unique index for caching.
+    auto instance = std::make_shared<InstanceInfo>(vocabulary, 0);
+    instance->add_atom("on", {"a", "b"});
+    instance->add_atom("on", {"b", "a"});
+    instance->add_atom("ontable", {"a"});
+    instance->add_atom("ontable", {"b"});
+    instance->add_atom("holding", {"a"});
+    instance->add_atom("holding", {"b"});
+    instance->add_atom("clear", {"a"});
+    instance->add_atom("clear", {"b"});
+    instance->add_atom("arm-empty", {});
+    instance->add_static_atom("on_g", {"a", "b"});
+    return instance;
 }
 
 
-/**
- * The simplest example to illustrate the construction and evaluation of elements.
- */
+/// @brief Example illustrating the core component on a fragment of a planning
+///        problem over the Blocks domain.
+///
+/// The example illustrates the creation of VocabularyInfo, InstanceInfo,
+/// State, Element, and the evaluation of Element on a State using
+/// DenotationsCaches.
 int main() {
-    // 1. Initialize VocabularyInfo
-    auto v = construct_vocabulary_info();
-    // 2. Initialize InstanceInfo
-    auto i = construct_instance_info(v);
-    // 3. Initialize SyntacticElementFactory
-    SyntacticElementFactory f(v);
+    auto vocabulary = construct_vocabulary_info();
+    auto instance = construct_instance_info(vocabulary);
+    SyntacticElementFactory factory(vocabulary);
 
-    // 4. Construct a state.
-    const auto& atoms = i->get_atoms();
-    const Atom& a0 = atoms[0];
-    const Atom& a3 = atoms[3];
-    const Atom& a6 = atoms[6];
-    State state(i, {a0, a3, a6});
+    const auto& atoms = instance->get_atoms();
+    const auto& atom_0 = atoms[0];
+    const auto& atom_1 = atoms[1];
+    const auto& atom_3 = atoms[3];
+    const auto& atom_6 = atoms[6];
+    // User must ensure that each State gets its unique index for caching.
+    State state_0(instance, {atom_0, atom_3, atom_6}, 0);  // a on b
+    State state_1(instance, {atom_1, atom_3, atom_6}, 1);  // b on a
+    States states{state_0, state_1};
 
-    // 5. Parse and evaluate elements.
-    std::shared_ptr<const Numerical> numerical = f.parse_numerical("n_count(c_and(c_primitive(on_g,0),c_primitive(on,0)))");
-    std::cout << "repr: " << numerical->compute_repr() << std::endl;
-    std::cout << "value: " << numerical->evaluate(state) << std::endl;
+    auto numerical = factory.parse_numerical("n_count(c_and(c_primitive(on_g,x),c_primitive(on,0)))");
+    std::cout << "Element repr: " << numerical->compute_repr() << std::endl << std::endl;
 
-    std::shared_ptr<const Boolean> boolean = f.parse_boolean("b_empty(c_and(c_primitive(on_g,0),c_primitive(on,0)))");
-    std::cout << "repr: " << boolean->compute_repr() << std::endl;
-    std::cout << "value: " << boolean->evaluate(state) << std::endl;
+    std::cout << "Evaluate for single state without cache." << std::endl;
+    std::cout << "State: " << state_0.str() << std::endl;
+    std::cout << "Value: " << numerical->evaluate(state_0) << std::endl << std::endl;
 
+    DenotationsCaches caches;
+    std::cout << "Evaluate for single state with cache." << std::endl;
+    std::cout << "State: " << state_1.str() << std::endl;
+    std::cout << "Value: " << numerical->evaluate(state_1, caches) << std::endl << std::endl;
+
+    std::cout << "Evaluate for multiple states with cache." << std::endl;
+    auto denotations = numerical->evaluate(states, caches);
+    for (size_t i = 0; i < states.size(); ++i) {
+        std::cout << "State: " << states[i].str() << std::endl;
+        std::cout << "Value: " << (*denotations)[i] << std::endl;
+    }
     return 0;
 }

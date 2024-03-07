@@ -1,8 +1,6 @@
 #include "identity.h"
 
-#include "../../generator_data.h"
-
-#include "../../../core/elements/roles/identity.h"
+#include "src/generator/generator_data.h"
 
 
 namespace dlplan::generator::rules {
@@ -15,12 +13,14 @@ void IdentityRole::generate_impl(const core::States& states, int target_complexi
             data.m_reprs.push_back(element->compute_repr());
             data.m_roles_by_iteration[target_complexity].push_back(std::move(element));
             increment_generated();
+        } else {
+            caches.role_denotations_cache.erase_denotation(element->get_index(), -1, -1);
         }
     }
 }
 
 std::string IdentityRole::get_name() const {
-    return core::IdentityRole::get_name();
+    return "r_identity";
 }
 
 }

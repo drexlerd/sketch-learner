@@ -56,7 +56,7 @@ ATTRIBUTES = [
 
 DIR = Path(__file__).resolve().parent
 BENCHMARKS_DIR = DIR.parent.parent / "testing"/ "benchmarks"
-print(BENCHMARKS_DIR)
+print("Benchmark directory:", BENCHMARKS_DIR)
 if project.REMOTE:
     SUITE = ["blocks_4_clear", "blocks_4_on", "delivery", "gripper", "miconic", "reward", "spanner", "visitall"]
     ENV = project.TetralithEnvironment(
@@ -65,11 +65,10 @@ if project.REMOTE:
         memory_per_cpu="8G")
 else:
     SUITE = ["blocks_4_clear:p-51-0.pddl", "blocks_4_on:p-51-0.pddl", "childsnack:p01.pddl", "delivery:instance_3_2_0.pddl", "gripper:p01.pddl", "miconic:p01.pddl", "reward:instance_5x5_0.pddl", "spanner:pfile01-001.pddl", "visitall:p01.pddl"]
-    #SUITE = ["blocks_4_on"]
-
+    SUITE = ["blocks_4_clear:p-51-0.pddl"]
     ENV = project.LocalEnvironment(processes=4)
-SKETCHES_DIR = DIR.parent.parent / "testing" / "sketches_icaps2023"
-print(SKETCHES_DIR)
+SKETCHES_DIR = DIR.parent.parent / "learning" / "workspace_symm_7_3_24"
+print("Sketches directory:", SKETCHES_DIR)
 
 exp = Experiment(environment=ENV)
 exp.add_step("build", exp.build)
@@ -101,9 +100,10 @@ MEMORY_LIMIT = 8000
 for planner, _ in IMAGES:
     for task in suites.build_suite(BENCHMARKS_DIR, SUITE):
         for w in range(0,3):
-            sketch_name = f"{task.domain}_{w}_structurally_minimized.txt"
-            sketch_filename = SKETCHES_DIR / task.domain / sketch_name
-            if not sketch_filename.is_file(): continue
+            sketch_filename = SKETCHES_DIR / f"{task.domain}_{w}" / "output" / f"sketch_minimized_{w}.txt"
+            print(sketch_filename)
+            if not sketch_filename.is_file():
+                continue
             run = exp.add_run()
             run.add_resource("domain", task.domain_file, "domain.pddl")
             run.add_resource("problem", task.problem_file, "problem.pddl")

@@ -1,0 +1,2 @@
+add_executable(experiment_generator experiment_generator.cpp)
+target_link_libraries(experiment_generator dlplancore dlplangenerator dlplanstatespace)

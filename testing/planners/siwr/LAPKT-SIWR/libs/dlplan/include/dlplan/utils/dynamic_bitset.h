@@ -5,6 +5,24 @@
 #include <limits>
 #include <vector>
 
+#include <boost/serialization/vector.hpp>
+
+#include "hash.h"
+
+
+namespace dlplan::utils {
+template<typename Block>
+class DynamicBitset;
+}
+
+
+namespace boost::serialization {
+    class access;
+
+    template <typename Archive, typename Block>
+    void serialize(Archive& ar, dlplan::utils::DynamicBitset<Block>& t, const unsigned int version);
+}
+
 
 /*
   Poor man's version of boost::dynamic_bitset, mostly copied from there.
@@ -54,6 +72,13 @@ class DynamicBitset {
             blocks.back() &= ~(ones << bits_in_last_block);
         }
     }
+
+    /// @brief Constructor for serialization.
+    DynamicBitset() : blocks(std::vector<Block>()), num_bits(0) { }
+
+    friend class boost::serialization::access;
+    template<typename Archive, typename Block_>
+    friend void boost::serialization::serialize(Archive& ar, DynamicBitset<Block_>& t, const unsigned int version);
 
 public:
     explicit DynamicBitset(std::size_t num_bits)
@@ -175,11 +200,8 @@ public:
         return true;
     }
 
-    /**
-     * Useful for copying the underlying data when computing a hash for a collection of bitsets.
-     */
-    const std::vector<Block>& get_blocks() const {
-        return blocks;
+    std::size_t hash() const {
+        return dlplan::utils::hash<std::vector<Block>>()(blocks);
     }
 };
 
@@ -188,6 +210,16 @@ const Block DynamicBitset<Block>::zeros = Block(0);
 
 template<typename Block>
 const Block DynamicBitset<Block>::ones = ~DynamicBitset<Block>::zeros;
+}
+
+namespace boost::serialization {
+
+template<typename Archive, typename Block>
+void serialize(Archive& ar, dlplan::utils::DynamicBitset<Block>& t, const unsigned int /* version */) {
+    ar & t.blocks;
+    ar & t.num_bits;
+}
+
 }
 
 /*

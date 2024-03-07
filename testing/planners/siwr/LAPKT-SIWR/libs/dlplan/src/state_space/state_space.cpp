@@ -1,17 +1,23 @@
-#include "../../include/dlplan/state_space.h"
-
-#include "generator.h"
-#include "reader.h"
-
-#include "../utils/collections.h"
-#include "../utils/memory.h"
-#include "../utils/set_operators.h"
+#include "include/dlplan/state_space.h"
 
 #include <algorithm>
 #include <deque>
 #include <iostream>
 #include <stdexcept>
 #include <sstream>
+
+#include <boost/archive/text_oarchive.hpp>
+#include <boost/archive/text_iarchive.hpp>
+#include <boost/serialization/shared_ptr.hpp>
+#include <boost/serialization/unordered_map.hpp>
+#include <boost/serialization/unordered_set.hpp>
+#include <boost/serialization/vector.hpp>
+#include <boost/serialization/utility.hpp>
+
+#include "generator.h"
+#include "reader.h"
+#include "src/utils/collections.h"
+#include "src/utils/memory.h"
 
 
 using namespace dlplan::core;
@@ -30,8 +36,15 @@ static AdjacencyList compute_inverse_successor_state_indices(const AdjacencyList
     return inverse_successor_state_indices;
 }
 
+StateSpace::StateSpace()
+    : m_instance_info(nullptr),
+      m_states(StateMapping()),
+      m_initial_state_index(-1),
+      m_forward_successor_state_indices(AdjacencyList()),
+      m_backward_successor_state_indices(AdjacencyList()) { }
+
 StateSpace::StateSpace(
-    std::shared_ptr<const InstanceInfo>&& instance_info,
+    std::shared_ptr<InstanceInfo>&& instance_info,
     StateMapping&& states,
     StateIndex initial_state_index,
     AdjacencyList&& forward_successor_state_indices,
@@ -47,7 +60,7 @@ StateSpace::StateSpace(
         throw std::runtime_error("StateSpace::StateSpace - not all states come from the given InstanceInfo.");
     }
     if (!std::all_of(m_states.begin(), m_states.end(),
-        [this](const auto& pair){ return pair.first == pair.second.get_index(); })) {
+        [](const auto& pair){ return pair.first == pair.second.get_index(); })) {
         throw std::runtime_error("StateSpace::StateSpace - invalid mapping from index to state.");
     }
     // assert goals
@@ -187,43 +200,40 @@ bool StateSpace::is_goal(StateIndex state) const {
     return m_goal_state_indices.count(state);
 }
 
-bool StateSpace::is_nongoal(StateIndex state) const {
-    return !is_goal(state);
-}
-
-void StateSpace::print() const {
-    std::cout << "Initial state index: " << m_initial_state_index << std::endl;
-    std::cout << "States: " << std::to_string(m_states.size()) << std::endl;
+std::string StateSpace::str() const {
+    std::stringstream ss;
+    ss << "Initial state index: " << m_initial_state_index << std::endl;
+    ss << "States: " << std::to_string(m_states.size()) << std::endl;
     for (const auto& pair : m_states) {
-        std::cout << "    " << std::to_string(pair.first) << ":" << pair.second.str() << std::endl;
+        ss << "    " << std::to_string(pair.first) << ":" << pair.second.str() << std::endl;
     }
-    std::cout << "Forward successors:" << std::endl;
+    ss << "Forward successors:" << std::endl;
     for_each_state(
-        [this](const auto& source){
-            std::cout << "    " << source.get_index() << ": ";
+        [&](const auto& source){
+            ss << "    " << source.get_index() << ": ";
             for_each_forward_successor_state_index(
-                [](StateIndex target){
-                    std::cout << target << " ";
+                [&](StateIndex target){
+                    ss << target << " ";
                 }, source.get_index());
-            std::cout << std::endl;
+            ss << std::endl;
         }
     );
-    std::cout << "Backward successors:" << std::endl;
+    ss << "Backward successors:" << std::endl;
     for_each_state(
-        [this](const auto& source){
-            std::cout << "    " << source.get_index() << ": ";
+        [&](const auto& source){
+            ss << "    " << source.get_index() << ": ";
             for_each_backward_successor_state_index(
-                [](StateIndex target){
-                    std::cout << target << " ";
+                [&](StateIndex target){
+                    ss << target << " ";
                 }, source.get_index());
-            std::cout << std::endl;
+            ss << std::endl;
         }
     );
-    std::cout << "Goal state indices: ";
+    ss << "Goal state indices: ";
     for (const auto goal_state : m_goal_state_indices) {
-        std::cout << goal_state << " ";
+        ss << goal_state << " ";
     }
-    std::cout << std::endl;
+    return ss.str();
 }
 
 std::string StateSpace::to_dot(int verbosity_level) const {
@@ -351,18 +361,39 @@ const StateIndicesSet& StateSpace::get_goal_state_indices() const {
     return m_goal_state_indices;
 }
 
-std::shared_ptr<const InstanceInfo> StateSpace::get_instance_info() const {
+std::shared_ptr<InstanceInfo> StateSpace::get_instance_info() const {
     return m_instance_info;
 }
 
 GeneratorResult generate_state_space(
     const std::string& domain_file,
     const std::string& instance_file,
-    std::shared_ptr<const core::VocabularyInfo> vocabulary_info,
-    int index,
-    int max_time) {
-    generator::generate_state_space_files(domain_file, instance_file, max_time);
+    std::shared_ptr<core::VocabularyInfo> vocabulary_info,
+    core::InstanceIndex index,
+    int max_time,
+    int max_num_states) {
+    generator::generate_state_space_files(domain_file, instance_file, max_time, max_num_states);
     return reader::read(vocabulary_info, index);
 }
+
+}
+
+
+namespace boost::serialization {
+template<typename Archive>
+void serialize( Archive& ar, dlplan::state_space::StateSpace& t, const unsigned int /* version */ )
+{
+    ar & t.m_instance_info;
+    ar & t.m_states;
+    ar & t.m_initial_state_index;
+    ar & t.m_goal_state_indices;
+    ar & t.m_forward_successor_state_indices;
+    ar & t.m_backward_successor_state_indices;
+}
+
+template void serialize(boost::archive::text_iarchive& ar,
+    dlplan::state_space::StateSpace& t, const unsigned int version);
+template void serialize(boost::archive::text_oarchive& ar,
+    dlplan::state_space::StateSpace& t, const unsigned int version);
 
 }

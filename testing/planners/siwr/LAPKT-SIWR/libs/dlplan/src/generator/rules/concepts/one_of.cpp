@@ -1,8 +1,6 @@
 #include "one_of.h"
 
-#include "../../generator_data.h"
-
-#include "../../../core/elements/concepts/one_of.h"
+#include "src/generator/generator_data.h"
 
 
 namespace dlplan::generator::rules {
@@ -16,12 +14,14 @@ void OneOfConcept::generate_impl(const core::States& states, int target_complexi
             data.m_reprs.push_back(element->compute_repr());
             data.m_concepts_by_iteration[target_complexity].push_back(std::move(element));
             increment_generated();
+        } else {
+            caches.concept_denotations_cache.erase_denotation(element->get_index(), -1, -1);
         }
     }
 }
 
 std::string OneOfConcept::get_name() const {
-    return core::OneOfConcept::get_name();
+    return "c_one_of";
 }
 
 }

@@ -2,12 +2,14 @@
 import os
 import sys
 import subprocess
+import multiprocessing
+
 from pathlib import Path
 
-from setuptools import setup, Extension
+from setuptools import setup, find_packages, Extension
 from setuptools.command.build_ext import build_ext
 
-__version__ = "0.2.15"
+__version__ = "0.3.4"
 HERE = Path(__file__).resolve().parent
 
 
@@ -48,7 +50,7 @@ class CMakeBuild(build_ext):
             ["cmake", ext.sourcedir] + cmake_args, cwd=self.build_temp
         )
         subprocess.check_call(
-            ["cmake", "--build", "."] + build_args, cwd=self.build_temp
+            ["cmake", "--build", ".", f"-j{multiprocessing.cpu_count()}"] + build_args, cwd=self.build_temp
         )
 
 
@@ -62,9 +64,12 @@ setup(
     url="https://github.com/rleap-project/dlplan",
     description="A library for using description logics features in planning",
     long_description="",
-    install_requires=["pybind11==2.10.4", "pybind11-global==2.10.4", "state_space_generator==0.1.7", "cmake>=3.16.3"],
-    packages=['dlplan'],
+    install_requires=["pybind11==2.10.4", "pybind11-global==2.10.4", "state_space_generator==0.1.8", "cmake>=3.16.3"],
+    packages=find_packages(where="api/python/src"),
     package_dir={"": "api/python/src"},
+    package_data={
+        "": ["*.pyi"],
+    },
     ext_modules=[CMakeExtension("_dlplan")],
     cmdclass={"build_ext": CMakeBuild},
     zip_safe=False,

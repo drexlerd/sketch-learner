@@ -109,9 +109,9 @@ public:
 	 * Setters
 	 */
 	void set_sketch_textual( std::string sketch_textual ) {
-		dlplan::policy::PolicyBuilder builder;
-		dlplan::core::SyntacticElementFactory factory(m_vocabulary_info);
-		m_sketch = dlplan::policy::PolicyReader().read(sketch_textual, builder, factory);
+		auto element_factory = std::make_shared<dlplan::core::SyntacticElementFactory>(m_vocabulary_info);
+		dlplan::policy::PolicyFactory policy_factory(element_factory);
+		m_sketch = policy_factory.parse_policy(sketch_textual);
 	}
 
     /**

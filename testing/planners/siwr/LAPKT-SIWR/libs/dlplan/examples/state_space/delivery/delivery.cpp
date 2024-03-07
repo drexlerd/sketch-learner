@@ -1,29 +1,32 @@
+/// Example illustrating the state_space component.
+
+#include "include/dlplan/core.h"
+#include "include/dlplan/state_space.h"
+
 #include <cassert>
 #include <iostream>
 #include <vector>
 
-#include "../../../include/dlplan/core.h"
-#include "../../../include/dlplan/state_space.h"
-
-using namespace dlplan::core;
 using namespace dlplan::state_space;
 
 
+/// @brief Generate state spaces over the same vocabulary and compute distances.
 int main() {
     // Generate and read state space files.
     auto result = generate_state_space("domain.pddl", "instance_2_1_0.pddl", nullptr, 0);
-    auto state_space_2_1_0 = result.state_space;
+    const auto& state_space_2_1_0 = *result.state_space;
     auto vocabulary_info = state_space_2_1_0.get_instance_info()->get_vocabulary_info();
     std::cout << "State space of instance_2_1_0:" << std::endl;
-    state_space_2_1_0.print();
+    std::cout << state_space_2_1_0.str() << std::endl;
+
     // Generate and read state space files over same VocabularyInfo.
     auto result2 = generate_state_space("domain.pddl", "instance_2_1_0.pddl", vocabulary_info, 1);
-    auto state_space_2_2_0 = result2.state_space;
+    const auto& state_space_2_2_0 = *result2.state_space;
     std::cout << "State space of instance_2_2_0:" << std::endl;
-    state_space_2_2_0.print();
+    std::cout << state_space_2_2_0.str() << std::endl;
     std::cout << std::endl;
 
-    // Compute goal distances
+    // Compute goal distances and deadends
     Distances goal_distance_info = state_space_2_1_0.compute_goal_distances();
     std::cout << "Goal distances:" << std::endl;
     for (const auto& pair : goal_distance_info) {

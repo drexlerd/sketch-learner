@@ -1,17 +1,37 @@
 #ifndef DLPLAN_SRC_CORE_ELEMENTS_CONCEPTS_PRIMITIVE_H_
 #define DLPLAN_SRC_CORE_ELEMENTS_CONCEPTS_PRIMITIVE_H_
 
-#include "../../../../include/dlplan/core.h"
-
-#include "../../../utils/collections.h"
-
 #include <sstream>
+
+#include <boost/archive/text_oarchive.hpp>
+#include <boost/archive/text_iarchive.hpp>
+#include <boost/serialization/export.hpp>
+#include <boost/serialization/base_object.hpp>
+#include <boost/serialization/shared_ptr.hpp>
+
+#include "src/core/elements/utils.h"
+#include "src/utils/collections.h"
+#include "include/dlplan/core.h"
 
 using namespace std::string_literals;
 
 
 namespace dlplan::core {
+class PrimitiveConcept;
+}
 
+
+namespace boost::serialization {
+    template<typename Archive>
+    void serialize(Archive& ar, dlplan::core::PrimitiveConcept& concept, const unsigned int version);
+    template<class Archive>
+    void save_construct_data(Archive& ar, const dlplan::core::PrimitiveConcept* concept, const unsigned int version);
+    template<class Archive>
+    void load_construct_data(Archive& ar, dlplan::core::PrimitiveConcept* concept, const unsigned int version);
+}
+
+
+namespace dlplan::core {
 class PrimitiveConcept : public Concept {
 private:
     void compute_result(const State& state, ConceptDenotation& result) const {
@@ -32,36 +52,41 @@ private:
         }
     }
 
-    std::unique_ptr<ConceptDenotation> evaluate_impl(const State& state, DenotationsCaches&) const override {
-        auto denotation = std::make_unique<ConceptDenotation>(
-            ConceptDenotation(state.get_instance_info()->get_objects().size()));
+    ConceptDenotation evaluate_impl(const State& state, DenotationsCaches&) const override {
+        ConceptDenotation denotation(state.get_instance_info()->get_objects().size());
         compute_result(
             state,
-            *denotation);
+            denotation);
         return denotation;
     }
 
-    std::unique_ptr<ConceptDenotations> evaluate_impl(const States& states, DenotationsCaches& caches) const override {
-        auto denotations = std::make_unique<ConceptDenotations>();
-        denotations->reserve(states.size());
+    ConceptDenotations evaluate_impl(const States& states, DenotationsCaches& caches) const override {
+        ConceptDenotations denotations;
+        denotations.reserve(states.size());
         for (size_t i = 0; i < states.size(); ++i) {
-            auto denotation = std::make_unique<ConceptDenotation>(
-                ConceptDenotation(states[i].get_instance_info()->get_objects().size()));
+            ConceptDenotation denotation(states[i].get_instance_info()->get_objects().size());
             compute_result(
                 states[i],
-                *denotation);
-            denotations->push_back(caches.m_c_denot_cache.insert(std::move(denotation)).first->get());
+                denotation);
+            denotations.push_back(caches.concept_denotation_cache.insert_denotation(std::move(denotation)));
         }
         return denotations;
     }
+
+    template<typename Archive>
+    friend void boost::serialization::serialize(Archive& ar, PrimitiveConcept& concept, const unsigned int version);
+    template<class Archive>
+    friend void boost::serialization::save_construct_data(Archive& ar, const PrimitiveConcept* concept, const unsigned int version);
+    template<class Archive>
+    friend void boost::serialization::load_construct_data(Archive& ar, PrimitiveConcept* concept, const unsigned int version);
 
 protected:
     const Predicate m_predicate;
     const int m_pos;
 
 public:
-    PrimitiveConcept(std::shared_ptr<const VocabularyInfo> vocabulary_info, const Predicate& predicate, int pos)
-    : Concept(vocabulary_info, predicate.is_static()), m_predicate(predicate), m_pos(pos) {
+    PrimitiveConcept(std::shared_ptr<VocabularyInfo> vocabulary_info, ElementIndex index, const Predicate& predicate, int pos)
+    : Concept(vocabulary_info, index, predicate.is_static()), m_predicate(predicate), m_pos(pos) {
         if (m_pos >= m_predicate.get_arity()) {
             throw std::runtime_error("PrimitiveConcept::PrimitiveConcept - object index does not match predicate arity ("s + std::to_string(m_pos) + " > " + std::to_string(predicate.get_arity()) + ").");
         }
@@ -77,16 +102,52 @@ public:
         return 1;
     }
 
-
     void compute_repr(std::stringstream& out) const override {
-        out << get_name() << "(" << m_predicate.get_name() << "," << std::to_string(m_pos) << ")";
+        out << "c_primitive" << "(" << m_predicate.get_name() << "," << std::to_string(m_pos) << ")";
     }
 
-    static std::string get_name() {
-        return "c_primitive";
+    int compute_evaluate_time_score() const override {
+        return SCORE_LINEAR;
     }
 };
 
 }
+
+
+
+namespace boost::serialization {
+template<typename Archive>
+void serialize(Archive& /* ar */ , dlplan::core::PrimitiveConcept& t, const unsigned int /* version */ )
+{
+    boost::serialization::base_object<dlplan::core::Concept>(t);
+}
+
+template<class Archive>
+void save_construct_data(Archive& ar, const dlplan::core::PrimitiveConcept* t, const unsigned int /* version */ )
+{
+    ar << t->m_vocabulary_info;
+    ar << t->m_index;
+    ar << &t->m_predicate;
+    ar << t->m_pos;
+}
+
+template<class Archive>
+void load_construct_data(Archive& ar, dlplan::core::PrimitiveConcept* t, const unsigned int /* version */ )
+{
+    std::shared_ptr<dlplan::core::VocabularyInfo> vocabulary;
+    int index;
+    dlplan::core::Predicate* predicate;
+    int pos;
+    ar >> vocabulary;
+    ar >> index;
+    ar >> predicate;
+    ar >> pos;
+    ::new(t)dlplan::core::PrimitiveConcept(vocabulary, index, *predicate, pos);
+    delete predicate;
+}
+
+}
+
+BOOST_CLASS_EXPORT_GUID(dlplan::core::PrimitiveConcept, "dlplan::core::PrimitiveConcept")
 
 #endif

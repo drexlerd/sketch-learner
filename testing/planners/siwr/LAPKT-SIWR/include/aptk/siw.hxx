@@ -57,7 +57,6 @@ public:
 	void            set_goal_agenda( Landmarks_Graph* lg ) { m_goal_agenda = lg; }
 
 	virtual bool	find_solution( float& cost, std::vector<Action_Idx>& plan ) {
-
 		unsigned gsize = this->problem().task().goal().size();
 		Search_Node* end = NULL;
 		State* new_init_state = NULL;

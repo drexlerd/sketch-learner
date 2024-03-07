@@ -1,15 +1,23 @@
-#include "../../include/dlplan/policy.h"
+#include "include/dlplan/policy.h"
+
+#include <algorithm>
+#include <sstream>
+
+#include <boost/archive/text_oarchive.hpp>
+#include <boost/archive/text_iarchive.hpp>
+#include <boost/serialization/set.hpp>
+#include <boost/serialization/shared_ptr.hpp>
 
 #include "condition.h"
 #include "effect.h"
 
-#include <sstream>
-
 
 namespace dlplan::policy {
+Rule::Rule() : m_conditions(Conditions()), m_effects(Effects()), m_index(-1) { }
 
-Rule::Rule(Conditions&& conditions, Effects&& effects)
-    : m_conditions(std::move(conditions)), m_effects(std::move(effects)) { }
+Rule::Rule(const Conditions& conditions, const Effects& effects, RuleIndex index)
+    : m_conditions(conditions), m_effects(effects), m_index(index) {
+}
 
 Rule::~Rule() = default;
 
@@ -44,32 +52,26 @@ bool Rule::evaluate_effects(const core::State& source_state, const core::State& 
 std::string Rule::compute_repr() const {
     std::stringstream ss;
     ss << "(:rule (:conditions ";
-    // sort conditions by index then repr to obtain canonical representation
-    std::vector<std::shared_ptr<const BaseCondition>> conditions(m_conditions.begin(), m_conditions.end());
-    std::sort(conditions.begin(), conditions.end(), [&](const auto& l, const auto& r){
-        if (l->get_base_feature()->get_index() == r->get_base_feature()->get_index()) {
-            return l->compute_repr() < r->compute_repr();
-        }
-        return l->get_base_feature()->get_index() < r->get_base_feature()->get_index();
+    // sort conditions by repr to obtain canonical representation
+    std::vector<std::shared_ptr<const BaseCondition>> sorted_conditions(m_conditions.begin(), m_conditions.end());
+    std::sort(sorted_conditions.begin(), sorted_conditions.end(), [&](const auto& l, const auto& r){
+        return l->compute_repr() < r->compute_repr();
     });
-    for (const auto& c : conditions) {
+    for (const auto& c : sorted_conditions) {
         ss << c->compute_repr();
-        if (c != *conditions.rbegin()) {
+        if (c != *sorted_conditions.rbegin()) {
             ss << " ";
         }
     }
     ss << ") (:effects ";
-    // sort conditions by index then repr to obtain canonical representation
-    std::vector<std::shared_ptr<const BaseEffect>> effects(m_effects.begin(), m_effects.end());
-    std::sort(effects.begin(), effects.end(), [&](const auto& l, const auto& r){
-        if (l->get_base_feature()->get_index() == r->get_base_feature()->get_index()) {
-            return l->compute_repr() < r->compute_repr();
-        }
-        return l->get_base_feature()->get_index() < r->get_base_feature()->get_index();
+    // sort conditions by repr to obtain canonical representation
+    std::vector<std::shared_ptr<const BaseEffect>> sorted_effects(m_effects.begin(), m_effects.end());
+    std::sort(sorted_effects.begin(), sorted_effects.end(), [&](const auto& l, const auto& r){
+        return l->compute_repr() < r->compute_repr();
     });
-    for (const auto& e : effects) {
+    for (const auto& e : sorted_effects) {
         ss << e->compute_repr();
-        if (e != *effects.rbegin()) {
+        if (e != *sorted_effects.rbegin()) {
             ss << " ";
         }
     }
@@ -80,32 +82,16 @@ std::string Rule::compute_repr() const {
 std::string Rule::str() const {
     std::stringstream ss;
     ss << "(:rule (:conditions ";
-    // sort conditions by index then repr to obtain canonical representation
-    std::vector<std::shared_ptr<const BaseCondition>> conditions(m_conditions.begin(), m_conditions.end());
-    std::sort(conditions.begin(), conditions.end(), [&](const auto& l, const auto& r){
-        if (l->get_base_feature()->get_index() == r->get_base_feature()->get_index()) {
-            return l->compute_repr() < r->compute_repr();
-        }
-        return l->get_base_feature()->get_index() < r->get_base_feature()->get_index();
-    });
-    for (const auto& c : conditions) {
+    for (const auto& c : m_conditions) {
         ss << c->str();
-        if (c != *conditions.rbegin()) {
+        if (c != *m_conditions.rbegin()) {
             ss << " ";
         }
     }
     ss << ") (:effects ";
-    // sort conditions by index then repr to obtain canonical representation
-    std::vector<std::shared_ptr<const BaseEffect>> effects(m_effects.begin(), m_effects.end());
-    std::sort(effects.begin(), effects.end(), [&](const auto& l, const auto& r){
-        if (l->get_base_feature()->get_index() == r->get_base_feature()->get_index()) {
-            return l->compute_repr() < r->compute_repr();
-        }
-        return l->get_base_feature()->get_index() < r->get_base_feature()->get_index();
-    });
-    for (const auto& e : effects) {
+    for (const auto& e : m_effects) {
         ss << e->str();
-        if (e != *effects.rbegin()) {
+        if (e != *m_effects.rbegin()) {
             ss << " ";
         }
     }
@@ -113,23 +99,18 @@ std::string Rule::str() const {
     return ss.str();
 }
 
-std::shared_ptr<const Rule> Rule::copy_to_builder(PolicyBuilder& policy_builder) const {
-    Conditions conditions;
+int Rule::compute_evaluate_time_score() const {
+    int score = 0;
     for (const auto& condition : m_conditions) {
-        conditions.insert(condition->copy_to_builder(policy_builder));
+        score += condition->compute_evaluate_time_score();
     }
-    Effects effects;
     for (const auto& effect : m_effects) {
-        effects.insert(effect->copy_to_builder(policy_builder));
+        score += effect->compute_evaluate_time_score();
     }
-    return policy_builder.add_rule(std::move(conditions), std::move(effects));
+    return score;
 }
 
-void Rule::set_index(int index) {
-    m_index = index;
-}
-
-int Rule::get_index() const {
+RuleIndex Rule::get_index() const {
     return m_index;
 }
 
@@ -141,4 +122,20 @@ const Effects& Rule::get_effects() const {
     return m_effects;
 }
 
+}
+
+
+namespace boost::serialization {
+template<typename Archive>
+void serialize(Archive& ar, dlplan::policy::Rule& t, const unsigned int /* version */ )
+{
+    ar & t.m_index;
+    ar & t.m_conditions;
+    ar & t.m_effects;
+}
+
+template void serialize(boost::archive::text_iarchive& ar,
+    dlplan::policy::Rule& t, const unsigned int version);
+template void serialize(boost::archive::text_oarchive& ar,
+    dlplan::policy::Rule& t, const unsigned int version);
 }

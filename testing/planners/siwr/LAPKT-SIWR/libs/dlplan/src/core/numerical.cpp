@@ -1,11 +1,12 @@
-#include "../../include/dlplan/core.h"
+#include "include/dlplan/core.h"
+
+
+#include <boost/serialization/base_object.hpp>
 
 
 namespace dlplan::core {
-
-
-Numerical::Numerical(std::shared_ptr<const VocabularyInfo> vocabulary_info, bool is_static)
-    : BaseElement(vocabulary_info, is_static) {
+Numerical::Numerical(std::shared_ptr<VocabularyInfo> vocabulary_info, ElementIndex index, bool is_static)
+    : BaseElement(vocabulary_info, index, is_static) {
 }
 
 Numerical::Numerical(const Numerical& other) = default;
@@ -19,40 +20,45 @@ Numerical& Numerical::operator=(Numerical&& other) = default;
 Numerical::~Numerical() = default;
 
 int Numerical::evaluate(const State& state, DenotationsCaches& caches) const {
-    if (is_static()) {
-        // check if denotations is cached.
-        auto key = std::array<int, 2>({state.get_instance_info()->get_index(), get_index()});
-        auto cached = caches.m_n_denots_mapping_per_instance.find(key);
-        if (cached != caches.m_n_denots_mapping_per_instance.end()) return cached->second;
-        // compute denotation
-        auto denotation = evaluate_impl(state, caches);
-        // register denotation and return it
-        caches.m_n_denots_mapping_per_instance.emplace(key, denotation);
-        return denotation;
-    } else {
-        // check if denotations is cached.
-        auto key = std::array<int, 3>({state.get_instance_info()->get_index(), state.get_index(), get_index()});
-        auto cached = caches.m_n_denots_mapping_per_state.find(key);
-        if (cached != caches.m_n_denots_mapping_per_state.end()) return cached->second;
-        // compute denotation
-        auto denotation = evaluate_impl(state, caches);
-        // register denotation and return it
-        caches.m_n_denots_mapping_per_state.emplace(key, denotation);
-        return denotation;
-    }
+    const int* cached = caches.numerical_denotation_cache.get_denotation(
+        get_index(),
+        state.get_instance_info()->get_index(),
+        is_static() ? -1 : state.get_index());
+    if (cached) return *cached;
+    const int* denotation = caches.numerical_denotation_cache.insert_denotation(evaluate_impl(state, caches));
+    caches.numerical_denotation_cache.insert_denotation(
+        get_index(),
+        state.get_instance_info()->get_index(),
+        is_static() ? -1 : state.get_index(),
+        denotation);
+    return *denotation;
 }
 
-NumericalDenotations* Numerical::evaluate(const States& states, DenotationsCaches& caches) const {
-    // check if denotations is cached.
-    auto cached = caches.m_n_denots_mapping.find(get_index());
-    if (cached != caches.m_n_denots_mapping.end()) return cached->second;
-    // compute denotations
-    auto denotations = evaluate_impl(states, caches);
-    // register denotations and return it.
-    auto result_denotations = caches.m_n_denots_cache.insert(std::move(denotations)).first->get();
-    caches.m_n_denots_mapping.emplace(get_index(), result_denotations);
+const NumericalDenotations* Numerical::evaluate(const States& states, DenotationsCaches& caches) const {
+    auto cached = caches.numerical_denotations_cache.get_denotation(get_index(), -1, -1);
+    if (cached) return cached;
+    auto result_denotations = caches.numerical_denotations_cache.insert_denotation(evaluate_impl(states, caches));
+    caches.numerical_denotations_cache.insert_denotation(get_index(), -1, -1, result_denotations);
     return result_denotations;
 }
 
+}
 
+
+namespace boost::serialization {
+template<typename Archive>
+void serialize(Archive& /* ar */ , dlplan::core::Numerical& t, const unsigned int /* version */ )
+{
+    boost::serialization::base_object<dlplan::core::BaseElement>(t);
+}
+
+template<class Archive>
+void save_construct_data(Archive& /* ar */ , const dlplan::core::Numerical* /* t */ , const unsigned int /* version */ )
+{
+}
+
+template<class Archive>
+void load_construct_data(Archive& /* ar */ , dlplan::core::Numerical* /* t */ , const unsigned int /* version */ )
+{
+}
 }

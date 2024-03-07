@@ -1,8 +1,6 @@
 #include "subset.h"
 
-#include "../../generator_data.h"
-
-#include "../../../core/elements/concepts/subset.h"
+#include "src/generator/generator_data.h"
 
 
 namespace dlplan::generator::rules {
@@ -19,6 +17,8 @@ void SubsetConcept::generate_impl(const core::States& states, int target_complex
                         data.m_reprs.push_back(element->compute_repr());
                         data.m_concepts_by_iteration[target_complexity].push_back(std::move(element));
                         increment_generated();
+                    } else {
+                        caches.concept_denotations_cache.erase_denotation(element->get_index(), -1, -1);
                     }
                 }
             }
@@ -27,6 +27,6 @@ void SubsetConcept::generate_impl(const core::States& states, int target_complex
 }
 
 std::string SubsetConcept::get_name() const {
-    return core::SubsetConcept::get_name();
+    return "c_subset";
 }
 }

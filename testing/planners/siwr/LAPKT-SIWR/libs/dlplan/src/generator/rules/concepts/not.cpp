@@ -1,8 +1,6 @@
 #include "not.h"
 
-#include "../../generator_data.h"
-
-#include "../../../core/elements/concepts/not.h"
+#include "src/generator/generator_data.h"
 
 
 namespace dlplan::generator::rules {
@@ -15,12 +13,14 @@ void NotConcept::generate_impl(const core::States& states, int target_complexity
             data.m_reprs.push_back(element->compute_repr());
             data.m_concepts_by_iteration[target_complexity].push_back(std::move(element));
             increment_generated();
+        } else {
+            caches.concept_denotations_cache.erase_denotation(element->get_index(), -1, -1);
         }
     }
 }
 
 std::string NotConcept::get_name() const {
-    return core::NotConcept::get_name();
+    return "c_not";
 }
 
 }

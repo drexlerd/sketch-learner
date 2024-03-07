@@ -55,29 +55,51 @@ extern Log g_log;
 }
 
 namespace std {
-    template<class T>
-    ostream &operator<<(ostream &stream, const vector<T> &vec) {
-        stream << "[";
-        for (size_t i = 0; i < vec.size(); ++i) {
-            if (i != 0)
-                stream << ", ";
-            stream << vec[i];
-        }
-        stream << "]";
-        return stream;
-    }
 
-    template<class T>
-    ostream &operator<<(ostream &stream, const unordered_set<T> &set) {
-        stream << "{";
-        for (size_t i = 0; i < set.size(); ++i) {
-            if (i != 0)
-                stream << ", ";
-            stream << set[i];
-        }
-        stream << "}";
-        return stream;
+template<class T, size_t C>
+std::ostream &operator<<(std::ostream &stream, const std::array<T, C> &arr) {
+    stream << "[";
+    for (size_t i = 0; i < arr.size(); ++i) {
+        if (i != 0)
+            stream << ", ";
+        stream << arr[i];
     }
+    stream << "]";
+    return stream;
 }
+
+
+template<class T>
+std::ostream &operator<<(std::ostream &stream, const std::vector<T> &vec) {
+    stream << "[";
+    for (size_t i = 0; i < vec.size(); ++i) {
+        if (i != 0)
+            stream << ", ";
+        stream << vec[i];
+    }
+    stream << "]";
+    return stream;
+}
+
+template<class T>
+std::ostream &operator<<(std::ostream &stream, const std::unordered_set<T> &set) {
+    stream << "{";
+    for (size_t i = 0; i < set.size(); ++i) {
+        if (i != 0)
+            stream << ", ";
+        stream << set[i];
+    }
+    stream << "}";
+    return stream;
+}
+
+template<class T, class U>
+std::ostream &operator<<(std::ostream &stream, const std::pair<T, U> &pair) {
+    stream << "<" << pair.first << "," << pair.second << ">";
+    return stream;
+}
+
+}
+
 
 #endif

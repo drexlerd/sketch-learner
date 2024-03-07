@@ -1,8 +1,15 @@
-#include "../../include/dlplan/core.h"
+#include "include/dlplan/core.h"
+
+#include <sstream>
+
+#include <boost/archive/text_oarchive.hpp>
+#include <boost/archive/text_iarchive.hpp>
 
 
 namespace dlplan::core {
-Predicate::Predicate(const std::string& name, int index, int arity, bool is_static)
+Predicate::Predicate() : m_name(""), m_index(-1), m_arity(0), m_is_static(false) { }
+
+Predicate::Predicate(const std::string& name, PredicateIndex index, int arity, bool is_static)
     : m_name(name), m_index(index), m_arity(arity), m_is_static(is_static) { }
 
 Predicate::Predicate(const Predicate& other) = default;
@@ -23,11 +30,31 @@ bool Predicate::operator!=(const Predicate& other) const {
     return !(*this == other);
 }
 
+std::string Predicate::compute_repr() const {
+    std::stringstream ss;
+    ss << "Predicate("
+       << "index=" << m_index << ", "
+       << "name=" << m_name << ", "
+       << "arity=" << m_arity << ", "
+       << "is_static=" << m_is_static
+       << ")";
+    return ss.str();
+}
+
+std::ostream& operator<<(std::ostream& os, const Predicate& predicate) {
+    os << predicate.compute_repr();
+    return os;
+}
+
+std::string Predicate::str() const {
+    return compute_repr();
+}
+
 const std::string& Predicate::get_name() const {
     return m_name;
 }
 
-int Predicate::get_index() const {
+PredicateIndex Predicate::get_index() const {
     return m_index;
 }
 
@@ -39,4 +66,21 @@ bool Predicate::is_static() const {
     return m_is_static;
 }
 
+}
+
+
+namespace boost::serialization {
+
+template<typename Archive>
+void serialize(Archive& ar, dlplan::core::Predicate& t, const unsigned int /* version */) {
+    ar & t.m_name;
+    ar & t.m_index;
+    ar & t.m_arity;
+    ar & t.m_is_static;
+}
+
+template void serialize(boost::archive::text_iarchive& ar,
+    dlplan::core::Predicate& t, const unsigned int version);
+template void serialize(boost::archive::text_oarchive& ar,
+    dlplan::core::Predicate& t, const unsigned int version);
 }

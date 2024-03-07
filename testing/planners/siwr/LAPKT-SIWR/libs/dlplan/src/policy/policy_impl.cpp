@@ -1,19 +1,28 @@
-#include "../../include/dlplan/policy.h"
+#include "include/dlplan/policy.h"
+
+#include <algorithm>
+#include <sstream>
+
+#include <boost/archive/text_oarchive.hpp>
+#include <boost/archive/text_iarchive.hpp>
+#include <boost/serialization/set.hpp>
+#include <boost/serialization/shared_ptr.hpp>
 
 #include "condition.h"
 #include "effect.h"
-
-#include "../../include/dlplan/core.h"
-
-#include <sstream>
+#include "include/dlplan/core.h"
 
 
 namespace dlplan::policy {
 
-Policy::Policy() = default;
+Policy::Policy()
+    : m_booleans(Booleans()),
+      m_numericals(Numericals()),
+      m_rules(Rules()),
+      m_index(-1) { }
 
-Policy::Policy(Rules&& rules)
-    : m_rules(move(rules)) {
+Policy::Policy(const Rules& rules, PolicyIndex index)
+    : m_rules(rules), m_index(index) {
     // Retrieve boolean and numericals from the rules.
     for (const auto& rule : m_rules) {
         for (const auto& condition : rule->get_conditions()) {
@@ -49,7 +58,7 @@ Policy& Policy::operator=(Policy&& other) = default;
 
 Policy::~Policy() = default;
 
-std::shared_ptr<const Rule> Policy::evaluate_lazy(const core::State& source_state, const core::State& target_state) const {
+std::shared_ptr<const Rule> Policy::evaluate(const core::State& source_state, const core::State& target_state) const {
     for (const auto& r : m_rules) {
         if (r->evaluate_conditions(source_state) && r->evaluate_effects(source_state, target_state)) {
             return r;
@@ -58,7 +67,7 @@ std::shared_ptr<const Rule> Policy::evaluate_lazy(const core::State& source_stat
     return nullptr;
 }
 
-std::shared_ptr<const Rule> Policy::evaluate_lazy(const core::State& source_state, const core::State& target_state, core::DenotationsCaches& caches) const {
+std::shared_ptr<const Rule> Policy::evaluate(const core::State& source_state, const core::State& target_state, core::DenotationsCaches& caches) const {
     for (const auto& r : m_rules) {
         if (r->evaluate_conditions(source_state, caches) && r->evaluate_effects(source_state, target_state, caches)) {
             return r;
@@ -67,7 +76,7 @@ std::shared_ptr<const Rule> Policy::evaluate_lazy(const core::State& source_stat
     return nullptr;
 }
 
-std::vector<std::shared_ptr<const Rule>> Policy::evaluate_conditions_eager(const core::State& source_state) const {
+std::vector<std::shared_ptr<const Rule>> Policy::evaluate_conditions(const core::State& source_state) const {
     std::vector<std::shared_ptr<const Rule>> result;
     for (const auto& r : m_rules) {
         if (r->evaluate_conditions(source_state)) {
@@ -77,7 +86,7 @@ std::vector<std::shared_ptr<const Rule>> Policy::evaluate_conditions_eager(const
     return result;
 }
 
-std::vector<std::shared_ptr<const Rule>> Policy::evaluate_conditions_eager(const core::State& source_state, core::DenotationsCaches& caches) const {
+std::vector<std::shared_ptr<const Rule>> Policy::evaluate_conditions(const core::State& source_state, core::DenotationsCaches& caches) const {
     std::vector<std::shared_ptr<const Rule>> result;
     for (const auto& r : m_rules) {
         if (r->evaluate_conditions(source_state, caches)) {
@@ -87,7 +96,7 @@ std::vector<std::shared_ptr<const Rule>> Policy::evaluate_conditions_eager(const
     return result;
 }
 
-std::shared_ptr<const Rule> Policy::evaluate_effects_lazy(const core::State& source_state, const core::State& target_state, const std::vector<std::shared_ptr<const Rule>>& rules) const {
+std::shared_ptr<const Rule> Policy::evaluate_effects(const core::State& source_state, const core::State& target_state, const std::vector<std::shared_ptr<const Rule>>& rules) const {
     for (const auto& r : rules) {
         if (r->evaluate_effects(source_state, target_state)) {
             return r;
@@ -96,7 +105,7 @@ std::shared_ptr<const Rule> Policy::evaluate_effects_lazy(const core::State& sou
     return nullptr;
 }
 
-std::shared_ptr<const Rule> Policy::evaluate_effects_lazy(const core::State& source_state, const core::State& target_state, const std::vector<std::shared_ptr<const Rule>>& rules, core::DenotationsCaches& caches) const {
+std::shared_ptr<const Rule> Policy::evaluate_effects(const core::State& source_state, const core::State& target_state, const std::vector<std::shared_ptr<const Rule>>& rules, core::DenotationsCaches& caches) const {
     for (const auto& r : rules) {
         if (r->evaluate_effects(source_state, target_state, caches)) {
             return r;
@@ -124,13 +133,13 @@ std::string Policy::str() const {
     ss << "(:policy\n";
     ss << "(:booleans ";
     for (const auto& boolean : m_booleans) {
-        ss << "(" << boolean->get_index() << " \"" << boolean->compute_repr() << "\")";
+        ss << "(" << boolean->get_key() << " \"" << boolean->get_boolean()->compute_repr() << "\")";
         if (boolean != *m_booleans.rbegin()) ss << " ";
     }
     ss << ")\n";
     ss << "(:numericals ";
     for (const auto& numerical : m_numericals) {
-        ss << "(" << numerical->get_index() << " \"" << numerical->compute_repr() << "\")";
+        ss << "(" << numerical->get_key() << " \"" << numerical->get_numerical()->compute_repr() << "\")";
         if (numerical != *m_numericals.rbegin()) ss << " ";
     }
     ss << ")\n";
@@ -141,19 +150,15 @@ std::string Policy::str() const {
     return ss.str();
 }
 
-std::shared_ptr<const Policy> Policy::copy_to_builder(PolicyBuilder& policy_builder) const {
-    Rules rules;
+int Policy::compute_evaluate_time_score() const {
+    int score = 0;
     for (const auto& rule : m_rules) {
-        rules.insert(rule->copy_to_builder(policy_builder));
+        score += rule->compute_evaluate_time_score();
     }
-    return policy_builder.add_policy(std::move(rules));
+    return score;
 }
 
-void Policy::set_index(int index) {
-    m_index = index;
-}
-
-int Policy::get_index() const {
+PolicyIndex Policy::get_index() const {
     return m_index;
 }
 
@@ -169,4 +174,21 @@ const Rules& Policy::get_rules() const {
     return m_rules;
 }
 
+}
+
+
+namespace boost::serialization {
+template<typename Archive>
+void serialize(Archive& ar, dlplan::policy::Policy& t, const unsigned int /* version */ )
+{
+    ar & t.m_index;
+    ar & t.m_booleans;
+    ar & t.m_numericals;
+    ar & t.m_rules;
+}
+
+template void serialize(boost::archive::text_iarchive& ar,
+    dlplan::policy::Policy& t, const unsigned int version);
+template void serialize(boost::archive::text_oarchive& ar,
+    dlplan::policy::Policy& t, const unsigned int version);
 }

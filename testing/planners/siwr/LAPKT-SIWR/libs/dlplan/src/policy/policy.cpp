@@ -1,185 +1,210 @@
-#include "../include/dlplan/policy.h"
+#include "include/dlplan/policy.h"
+
+#include <iostream>
+
+#include <boost/archive/text_oarchive.hpp>
+#include <boost/archive/text_iarchive.hpp>
 
 #include "condition.h"
 #include "effect.h"
-#include "policy_builder.h"
-#include "reader.h"
-#include "writer.h"
+#include "policy_factory.h"
+#include "include/dlplan/policy.h"
 
-#include "../../include/dlplan/policy.h"
+
+using namespace dlplan::common::parsers;
 
 
 namespace dlplan::policy {
 
 
-BaseCondition::BaseCondition(std::shared_ptr<const core::BaseElement> base_feature)
-    : m_base_feature(base_feature) { }
+BaseCondition::BaseCondition(ConditionIndex index) : m_index(index) { }
 
 BaseCondition::~BaseCondition() = default;
 
-void BaseCondition::set_index(int index) {
-    m_index = index;
-}
-
-std::shared_ptr<const core::BaseElement> BaseCondition::get_base_feature() const {
-    return m_base_feature;
-}
-
-
-int BaseCondition::get_index() const {
+ConditionIndex BaseCondition::get_index() const {
     return m_index;
 }
 
 
-BaseEffect::BaseEffect(std::shared_ptr<const core::BaseElement> base_feature)
-    : m_base_feature(base_feature) { }
+BaseEffect::BaseEffect(EffectIndex index) : m_index(index) { }
 
 BaseEffect::~BaseEffect() = default;
 
-void BaseEffect::set_index(int index) {
-    m_index = index;
-}
-
-std::shared_ptr<const core::BaseElement> BaseEffect::get_base_feature() const {
-    return m_base_feature;
-}
-
-int BaseEffect::get_index() const {
+EffectIndex BaseEffect::get_index() const {
     return m_index;
 }
 
 
-PolicyBuilder::PolicyBuilder() = default;
+PolicyFactory::PolicyFactory() : m_pImpl(nullptr) { }
 
-PolicyBuilder::PolicyBuilder(const PolicyBuilder& other)
+PolicyFactory::PolicyFactory(std::shared_ptr<core::SyntacticElementFactory> element_factory)
+    : m_pImpl(PolicyFactoryImpl(element_factory)) { }
+
+PolicyFactory::PolicyFactory(const PolicyFactory& other)
     : m_pImpl(*other.m_pImpl) { }
 
-PolicyBuilder& PolicyBuilder::operator=(const PolicyBuilder& other) {
+PolicyFactory& PolicyFactory::operator=(const PolicyFactory& other) {
     if (this != &other) {
         *m_pImpl = *other.m_pImpl;
     }
     return *this;
 }
 
-PolicyBuilder::PolicyBuilder(PolicyBuilder&& other)
+PolicyFactory::PolicyFactory(PolicyFactory&& other)
     : m_pImpl(std::move(*other.m_pImpl)) { }
 
-PolicyBuilder& PolicyBuilder::operator=(PolicyBuilder&& other) {
+PolicyFactory& PolicyFactory::operator=(PolicyFactory&& other) {
     if (this != &other) {
         std::swap(*m_pImpl, *other.m_pImpl);
     }
     return *this;
 }
 
-PolicyBuilder::~PolicyBuilder() = default;
+PolicyFactory::~PolicyFactory() = default;
 
-std::shared_ptr<const BaseCondition> PolicyBuilder::add_pos_condition(const std::shared_ptr<const core::Boolean>& boolean) {
-    return m_pImpl->add_pos_condition(boolean);
+std::shared_ptr<const Policy> PolicyFactory::parse_policy(
+    const std::string& description,
+    const std::string& filename) {
+    return m_pImpl->parse_policy(*this, description, filename);
 }
 
-std::shared_ptr<const BaseCondition> PolicyBuilder::add_neg_condition(const std::shared_ptr<const core::Boolean>& boolean) {
-    return m_pImpl->add_neg_condition(boolean);
+std::shared_ptr<const Policy> PolicyFactory::parse_policy(
+    iterator_type& iter, iterator_type end,
+    const std::string& filename) {
+    return m_pImpl->parse_policy(*this, iter, end, filename);
 }
 
-std::shared_ptr<const BaseCondition> PolicyBuilder::add_gt_condition(const std::shared_ptr<const core::Numerical>& numerical) {
-    return m_pImpl->add_gt_condition(numerical);
+std::shared_ptr<const NamedBoolean> PolicyFactory::make_boolean(const std::string& key, const std::shared_ptr<const core::Boolean>& boolean) {
+    return m_pImpl->make_boolean(key, boolean);
 }
 
-std::shared_ptr<const BaseCondition> PolicyBuilder::add_eq_condition(const std::shared_ptr<const core::Numerical>& numerical) {
-    return m_pImpl->add_eq_condition(numerical);
+std::shared_ptr<const NamedNumerical> PolicyFactory::make_numerical(const std::string& key, const std::shared_ptr<const core::Numerical>& numerical) {
+    return m_pImpl->make_numerical(key, numerical);
 }
 
-std::shared_ptr<const BaseEffect> PolicyBuilder::add_pos_effect(const std::shared_ptr<const core::Boolean>& boolean) {
-    return m_pImpl->add_pos_effect(boolean);
+std::shared_ptr<const NamedConcept> PolicyFactory::make_concept(const std::string& key, const std::shared_ptr<const core::Concept>& concept) {
+    return m_pImpl->make_concept(key, concept);
 }
 
-std::shared_ptr<const BaseEffect> PolicyBuilder::add_neg_effect(const std::shared_ptr<const core::Boolean>& boolean) {
-    return m_pImpl->add_neg_effect(boolean);
+std::shared_ptr<const NamedRole> PolicyFactory::make_role(const std::string& key, const std::shared_ptr<const core::Role>& role) {
+    return m_pImpl->make_role(key, role);
 }
 
-std::shared_ptr<const BaseEffect> PolicyBuilder::add_bot_effect(const std::shared_ptr<const core::Boolean>& boolean) {
-    return m_pImpl->add_bot_effect(boolean);
+std::shared_ptr<const BaseCondition> PolicyFactory::make_pos_condition(const std::shared_ptr<const NamedBoolean>& boolean) {
+    return m_pImpl->make_pos_condition(boolean);
 }
 
-std::shared_ptr<const BaseEffect> PolicyBuilder::add_inc_effect(const std::shared_ptr<const core::Numerical>& numerical) {
-    return m_pImpl->add_inc_effect(numerical);
+std::shared_ptr<const BaseCondition> PolicyFactory::make_neg_condition(const std::shared_ptr<const NamedBoolean>& boolean) {
+    return m_pImpl->make_neg_condition(boolean);
 }
 
-std::shared_ptr<const BaseEffect> PolicyBuilder::add_dec_effect(const std::shared_ptr<const core::Numerical>& numerical) {
-    return m_pImpl->add_dec_effect(numerical);
+std::shared_ptr<const BaseCondition> PolicyFactory::make_gt_condition(const std::shared_ptr<const NamedNumerical>& numerical) {
+    return m_pImpl->make_gt_condition(numerical);
 }
 
-std::shared_ptr<const BaseEffect> PolicyBuilder::add_bot_effect(const std::shared_ptr<const core::Numerical>& numerical) {
-    return m_pImpl->add_bot_effect(numerical);
+std::shared_ptr<const BaseCondition> PolicyFactory::make_eq_condition(const std::shared_ptr<const NamedNumerical>& numerical) {
+    return m_pImpl->make_eq_condition(numerical);
 }
 
-std::shared_ptr<const Rule> PolicyBuilder::add_rule(
-    std::set<std::shared_ptr<const BaseCondition>>&& conditions,
-    std::set<std::shared_ptr<const BaseEffect>>&& effects) {
-    return m_pImpl->add_rule(std::move(conditions), std::move(effects));
+std::shared_ptr<const BaseEffect> PolicyFactory::make_pos_effect(const std::shared_ptr<const NamedBoolean>& boolean) {
+    return m_pImpl->make_pos_effect(boolean);
 }
 
-std::shared_ptr<const Policy> PolicyBuilder::add_policy(
-    std::set<std::shared_ptr<const Rule>>&& rules) {
-    return m_pImpl->add_policy(std::move(rules));
+std::shared_ptr<const BaseEffect> PolicyFactory::make_neg_effect(const std::shared_ptr<const NamedBoolean>& boolean) {
+    return m_pImpl->make_neg_effect(boolean);
+}
+
+std::shared_ptr<const BaseEffect> PolicyFactory::make_bot_effect(const std::shared_ptr<const NamedBoolean>& boolean) {
+    return m_pImpl->make_bot_effect(boolean);
+}
+
+std::shared_ptr<const BaseEffect> PolicyFactory::make_inc_effect(const std::shared_ptr<const NamedNumerical>& numerical) {
+    return m_pImpl->make_inc_effect(numerical);
+}
+
+std::shared_ptr<const BaseEffect> PolicyFactory::make_dec_effect(const std::shared_ptr<const NamedNumerical>& numerical) {
+    return m_pImpl->make_dec_effect(numerical);
+}
+
+std::shared_ptr<const BaseEffect> PolicyFactory::make_bot_effect(const std::shared_ptr<const NamedNumerical>& numerical) {
+    return m_pImpl->make_bot_effect(numerical);
+}
+
+std::shared_ptr<const Rule> PolicyFactory::make_rule(
+    const Conditions& conditions,
+    const Effects& effects) {
+    return m_pImpl->make_rule(conditions, effects);
+}
+
+std::shared_ptr<const Policy> PolicyFactory::make_policy(
+    const Rules& rules) {
+    return m_pImpl->make_policy(rules);
+}
+
+std::shared_ptr<core::SyntacticElementFactory> PolicyFactory::get_element_factory() const {
+    return m_pImpl->get_element_factory();
+}
+
 }
 
 
-PolicyReader::PolicyReader() = default;
-
-PolicyReader::PolicyReader(const PolicyReader& other)
-    : m_pImpl(*other.m_pImpl) { }
-
-PolicyReader& PolicyReader::operator=(const PolicyReader& other) {
-    if (this != &other) {
-        *m_pImpl = *other.m_pImpl;
-    }
-    return *this;
+namespace boost::serialization {
+template<typename Archive>
+void serialize( Archive& /* ar */ , dlplan::policy::BaseCondition& /* t */ , const unsigned int /* version */ )
+{
 }
 
-PolicyReader::PolicyReader(PolicyReader&& other)
-    : m_pImpl(std::move(*other.m_pImpl)) { }
-
-PolicyReader& PolicyReader::operator=(PolicyReader&& other) {
-    if (this != &other) {
-        std::swap(*m_pImpl, *other.m_pImpl);
-    }
-    return *this;
+template<class Archive>
+void save_construct_data(Archive& /* ar */ , const dlplan::policy::BaseCondition* /* t */ , const unsigned int /* version */ )
+{
 }
 
-PolicyReader::~PolicyReader() = default;
-
-std::shared_ptr<const Policy> PolicyReader::read(const std::string& data, PolicyBuilder& builder, core::SyntacticElementFactory& factory) const {
-    return m_pImpl->read(data, builder, factory);
+template<class Archive>
+void load_construct_data(Archive& /* ar */ , dlplan::policy::BaseCondition* /* t */ , const unsigned int /* version */ )
+{
 }
 
-
-PolicyWriter::PolicyWriter() { }
-
-PolicyWriter::PolicyWriter(const PolicyWriter& other)
-    : m_pImpl(*other.m_pImpl) { }
-
-PolicyWriter& PolicyWriter::operator=(const PolicyWriter& other) {
-    if (this != &other) {
-        *m_pImpl = *other.m_pImpl;
-    }
-    return *this;
+template<typename Archive>
+void serialize( Archive& /* ar */ , dlplan::policy::BaseEffect& /* t */ , const unsigned int /* version */ )
+{
 }
 
-PolicyWriter::PolicyWriter(PolicyWriter&& other)
-    : m_pImpl(std::move(*other.m_pImpl)) { }
-
-PolicyWriter& PolicyWriter::operator=(PolicyWriter&& other) {
-    if (this != &other) {
-        std::swap(*m_pImpl, *other.m_pImpl);
-    }
-    return *this;
+template<class Archive>
+void save_construct_data(Archive& /* ar */ , const dlplan::policy::BaseEffect* /* t */ , const unsigned int /* version */ )
+{
 }
 
-PolicyWriter::~PolicyWriter() { }
-
-std::string PolicyWriter::write(const Policy& policy) const {
-    return m_pImpl->write(policy);
+template<class Archive>
+void load_construct_data(Archive& /* ar */ , dlplan::policy::BaseEffect* /* t */ , const unsigned int /* version */ )
+{
 }
 
+template<typename Archive>
+void serialize( Archive& ar, dlplan::policy::PolicyFactory& t, const unsigned int /* version */ )
+{
+    ar & t.m_pImpl;
+}
+
+template void serialize(boost::archive::text_iarchive& ar,
+    dlplan::policy::BaseCondition& t, const unsigned int version);
+template void serialize(boost::archive::text_oarchive& ar,
+    dlplan::policy::BaseCondition& t, const unsigned int version);
+template void save_construct_data(boost::archive::text_oarchive& ar,
+    const dlplan::policy::BaseCondition* t, const unsigned int version);
+template void load_construct_data(boost::archive::text_iarchive& ar,
+    dlplan::policy::BaseCondition* t, const unsigned int version);
+
+template void serialize(boost::archive::text_iarchive& ar,
+    dlplan::policy::BaseEffect& t, const unsigned int version);
+template void serialize(boost::archive::text_oarchive& ar,
+    dlplan::policy::BaseEffect& t, const unsigned int version);
+template void save_construct_data(boost::archive::text_oarchive& ar,
+    const dlplan::policy::BaseEffect* t, const unsigned int version);
+template void load_construct_data(boost::archive::text_iarchive& ar,
+    dlplan::policy::BaseEffect* t, const unsigned int version);
+
+template void serialize(boost::archive::text_iarchive& ar,
+    dlplan::policy::PolicyFactory& t, const unsigned int version);
+template void serialize(boost::archive::text_oarchive& ar,
+    dlplan::policy::PolicyFactory& t, const unsigned int version);
 }

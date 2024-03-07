@@ -1,77 +1,94 @@
 #!/usr/bin/python3
 
-import dlplan
+"""
+Example illustrating the core component.
+"""
+
+from dlplan.core import VocabularyInfo, InstanceInfo, State, \
+    SyntacticElementFactory, DenotationsCaches
 
 
 def construct_vocabulary_info():
-    v = dlplan.VocabularyInfo()
-    # Add predicates and constants of the domain.
-    # Note that there are no constants in Blocksworld.
-    v.add_predicate("on", 2)
-    v.add_predicate("on_g", 2)
-    v.add_predicate("ontable", 1)
-    v.add_predicate("holding", 1)
-    v.add_predicate("clear", 1)
-    v.add_predicate("arm-empty", 0)
-    return v
+    """ Construct a VocabularyInfo for the Blocks domain.
+
+    Create an empty VocabularyInfo and then add predicates, and constants.
+
+    Returns: the VocabularyInfo
+    """
+    vocabulary = VocabularyInfo()
+    vocabulary.add_predicate("on", 2)
+    vocabulary.add_predicate("on_g", 2)
+    vocabulary.add_predicate("ontable", 1)
+    vocabulary.add_predicate("holding", 1)
+    vocabulary.add_predicate("clear", 1)
+    vocabulary.add_predicate("arm-empty", 0)
+    return vocabulary
 
 
-def construct_instance_info(v):
-    i = dlplan.InstanceInfo(v)
-    # Add dynamic atoms
-    i.add_atom("on", ["a", "b"])
-    i.add_atom("on", ["b", "a"])
-    i.add_atom("ontable", ["a"])
-    i.add_atom("ontable", ["b"])
-    i.add_atom("holding", ["a"])
-    i.add_atom("holding", ["b"])
-    i.add_atom("clear", ["a"])
-    i.add_atom("clear", ["b"])
-    i.add_atom("arm-empty", [])
-    # Add static goal atoms
-    i.add_static_atom("on_g", ["a", "b"])
-    # Add static atoms
-    # Note that there are no static atoms in Blocksworld.
-    return i
+def construct_instance_info(vocabulary):
+    """ Construct an InstanceInfo over the Blocks domain.
+
+    Create an empty InstanceInfo and then add objects, atoms, and static atoms.
+
+    Returns: the InstanceInfo
+    """
+    # User must ensure that each InstanceInfo gets its unique index for caching.
+    instance = InstanceInfo(vocabulary, index=0)
+    instance.add_atom("on", ["a", "b"])
+    instance.add_atom("on", ["b", "a"])
+    instance.add_atom("ontable", ["a"])
+    instance.add_atom("ontable", ["b"])
+    instance.add_atom("holding", ["a"])
+    instance.add_atom("holding", ["b"])
+    instance.add_atom("clear", ["a"])
+    instance.add_atom("clear", ["b"])
+    instance.add_atom("arm-empty", [])
+    instance.add_static_atom("on_g", ["a", "b"])
+    return instance
 
 
-# The simplest example to illustrate the construction and evaluation of elements.
 def main():
-    # 1. Initialize VocabularyInfo
-    v = construct_vocabulary_info()
-    # 2. Initialize InstanceInfo
-    i = construct_instance_info(v)
-    # 3. Initialize SyntacticElementFactory
-    f = dlplan.SyntacticElementFactory(v)
+    """ Example illustrating the core component on a fragment of a planning
+    problem over the Blocks domain.
 
-    # 4. Construct a state.
-    atoms = i.get_atoms()
-    a0 = atoms[0]
-    a1 = atoms[1]
-    a3 = atoms[3]
-    a6 = atoms[6]
-    state = dlplan.State(i, [a0, a3, a6])
-    state2 = dlplan.State(i, [a1, a3, a6])
+    The example illustrates the creation of VocabularyInfo, InstanceInfo,
+    State, Element, and the evaluation of Element on a State using
+    DenotationsCaches.
+    """
+    vocabulary = construct_vocabulary_info()
+    instance = construct_instance_info(vocabulary)
+    factory = SyntacticElementFactory(vocabulary)
 
-    # 5. Parse and evaluate elements.
-    numerical = f.parse_numerical("n_count(c_and(c_primitive(on_g,0),c_primitive(on,0)))")
-    print(f"repr: {numerical.compute_repr()}")
-    print(f"value: {numerical.evaluate(state)}")
+    atoms = instance.get_atoms()
+    atom_0 = atoms[0]
+    atom_1 = atoms[1]
+    atom_3 = atoms[3]
+    atom_6 = atoms[6]
+    # User must ensure that each State gets its unique index for caching.
+    state_0 = State(instance, [atom_0, atom_3, atom_6], 0)  # a on b
+    state_1 = State(instance, [atom_1, atom_3, atom_6], 1)  # b on a
+    states = [state_0, state_1]
 
-    boolean = f.parse_boolean("b_empty(c_and(c_primitive(on_g,0),c_primitive(on,0)))")
-    print(f"repr: {boolean.compute_repr()}")
-    print(f"value: {boolean.evaluate(state)}")
+    numerical = factory.parse_numerical("n_count(c_and(c_primitive(on_g,0),c_primitive(on,0)))")
+    print("Element repr:", repr(numerical))
+    print()
 
-    denotations_caches = dlplan.DenotationsCaches()
-    concept = f.parse_concept("c_and(c_primitive(on_g,0),c_primitive(on,0))")
-    evaluations = concept.evaluate([state, state, state2], denotations_caches)
-    for eval in evaluations:
-        print(eval.to_sorted_vector())
+    print("Evaluate for single state without cache.")
+    print("State:", str(state_0))
+    print("Value:", numerical.evaluate(state_0))
+    print()
 
-    role = f.parse_role("r_and(r_primitive(on_g,0,1),r_primitive(on,0,1))")
-    evaluations = role.evaluate([state, state, state2], denotations_caches)
-    for eval in evaluations:
-        print(eval.to_sorted_vector())
+    caches = DenotationsCaches()
+    print("Evaluate for single state with cache.")
+    print("State:", str(state_1))
+    print("Value:", numerical.evaluate(state_1, caches))
+    print()
+
+    print("Evaluate for multiple states with cache.")
+    denotations = numerical.evaluate(states, caches)
+    for state, value in zip(states, denotations):
+        print("State:", str(state))
+        print("Value:", value)
 
 
 if __name__ == "__main__":

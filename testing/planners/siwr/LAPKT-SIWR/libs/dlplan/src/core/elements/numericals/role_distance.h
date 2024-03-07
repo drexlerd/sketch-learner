@@ -1,16 +1,36 @@
 #ifndef DLPLAN_SRC_CORE_ELEMENTS_NUMERICAL_ROLE_DISTANCE_H_
 #define DLPLAN_SRC_CORE_ELEMENTS_NUMERICAL_ROLE_DISTANCE_H_
 
-#include "../../../../include/dlplan/core.h"
-#include "../utils.h"
-
 #include <sstream>
+#include <memory>
+
+#include <boost/archive/text_oarchive.hpp>
+#include <boost/archive/text_iarchive.hpp>
+#include <boost/serialization/export.hpp>
+#include <boost/serialization/shared_ptr.hpp>
+
+#include "src/core/elements/utils.h"
+#include "include/dlplan/core.h"
 
 using namespace std::string_literals;
 
 
 namespace dlplan::core {
+class RoleDistanceNumerical;
+}
 
+
+namespace boost::serialization {
+    template<typename Archive>
+    void serialize(Archive& ar, dlplan::core::RoleDistanceNumerical& numerical, const unsigned int version);
+    template<class Archive>
+    void save_construct_data(Archive& ar, const dlplan::core::RoleDistanceNumerical* numerical, const unsigned int version);
+    template<class Archive>
+    void load_construct_data(Archive& ar, dlplan::core::RoleDistanceNumerical* numerical, const unsigned int version);
+}
+
+
+namespace dlplan::core {
 class RoleDistanceNumerical : public Numerical {
 private:
     void compute_result(const RoleDenotation& role_from_denot, const RoleDenotation& role_denot, const RoleDenotation& role_to_denot, int& result) const {
@@ -45,19 +65,19 @@ private:
         return denotation;
     }
 
-    std::unique_ptr<NumericalDenotations> evaluate_impl(const States& states, DenotationsCaches& caches) const override {
-        auto denotations = std::make_unique<NumericalDenotations>();
-        denotations->reserve(states.size());
+    NumericalDenotations evaluate_impl(const States& states, DenotationsCaches& caches) const override {
+        NumericalDenotations denotations;
+        denotations.reserve(states.size());
         auto role_from_denots = m_role_from->evaluate(states, caches);
         auto role_denots = m_role->evaluate(states, caches);
         auto role_to_denots = m_role_to->evaluate(states, caches);
         for (size_t i = 0; i < states.size(); ++i) {
             if ((*role_from_denots)[i]->empty()) {
-                denotations->push_back(INF);
+                denotations.push_back(INF);
                 continue;
             }
             if ((*role_to_denots)[i]->empty()) {
-                denotations->push_back(INF);
+                denotations.push_back(INF);
                 continue;
             }
             int denotation;
@@ -66,10 +86,17 @@ private:
                 *(*role_denots)[i],
                 *(*role_to_denots)[i],
                 denotation);
-            denotations->push_back(denotation);
+            denotations.push_back(denotation);
         }
         return denotations;
     }
+
+    template<typename Archive>
+    friend void boost::serialization::serialize(Archive& ar, RoleDistanceNumerical& numerical, const unsigned int version);
+    template<class Archive>
+    friend void boost::serialization::save_construct_data(Archive& ar, const RoleDistanceNumerical* numerical, const unsigned int version);
+    template<class Archive>
+    friend void boost::serialization::load_construct_data(Archive& ar, RoleDistanceNumerical* numerical, const unsigned int version);
 
 protected:
     const std::shared_ptr<const Role> m_role_from;
@@ -77,11 +104,11 @@ protected:
     const std::shared_ptr<const Role> m_role_to;
 
 public:
-    RoleDistanceNumerical(std::shared_ptr<const VocabularyInfo> vocabulary_info, std::shared_ptr<const Role> role_from, std::shared_ptr<const Role> role, std::shared_ptr<const Role> role_to)
-    : Numerical(vocabulary_info, role_from->is_static() && role->is_static() && role_to->is_static()),
+    RoleDistanceNumerical(std::shared_ptr<VocabularyInfo> vocabulary_info, ElementIndex index, std::shared_ptr<const Role> role_from, std::shared_ptr<const Role> role, std::shared_ptr<const Role> role_to)
+    : Numerical(vocabulary_info, index, role_from->is_static() && role->is_static() && role_to->is_static()),
       m_role_from(role_from), m_role(role), m_role_to(role_to) {
         if (!(role_from && role && role_to)) {
-            throw std::runtime_error("ConceptDistanceNumerical::ConceptDistanceNumerical - child is not of type Role, Role, Role.");
+            throw std::runtime_error("RoleDistanceNumerical::RoleDistanceNumerical - child is not of type Role, Role, Role.");
         }
     }
 
@@ -105,7 +132,7 @@ public:
     }
 
     void compute_repr(std::stringstream& out) const override {
-        out << get_name() << "(";
+        out << "n_role_distance_numerical" << "(";
         m_role_from->compute_repr(out);
         out << ",";
         m_role->compute_repr(out);
@@ -114,11 +141,49 @@ public:
         out << ")";
     }
 
-    static std::string get_name() {
-        return "n_role_distance";
+    int compute_evaluate_time_score() const override {
+        return m_role_from->compute_evaluate_time_score() + m_role->compute_evaluate_time_score() + m_role_to->compute_evaluate_time_score() + SCORE_QUBIC;
     }
 };
 
 }
+
+
+namespace boost::serialization {
+template<typename Archive>
+void serialize(Archive& /* ar */ , dlplan::core::RoleDistanceNumerical& t, const unsigned int /* version */ )
+{
+    boost::serialization::base_object<dlplan::core::Numerical>(t);
+}
+
+template<class Archive>
+void save_construct_data(Archive & ar, const dlplan::core::RoleDistanceNumerical* t, const unsigned int /* version */ )
+{
+    ar << t->m_vocabulary_info;
+    ar << t->m_index;
+    ar << t->m_role_from;
+    ar << t->m_role;
+    ar << t->m_role_to;
+}
+
+template<class Archive>
+void load_construct_data(Archive & ar, dlplan::core::RoleDistanceNumerical* t, const unsigned int /* version */ )
+{
+    std::shared_ptr<dlplan::core::VocabularyInfo> vocabulary;
+    int index;
+    std::shared_ptr<const dlplan::core::Role> role_from;
+    std::shared_ptr<const dlplan::core::Role> role;
+    std::shared_ptr<const dlplan::core::Role> role_to;
+    ar >> vocabulary;
+    ar >> index;
+    ar >> role_from;
+    ar >> role;
+    ar >> role_to;
+    ::new(t)dlplan::core::RoleDistanceNumerical(vocabulary, index, role_from, role, role_to);
+}
+
+}
+
+BOOST_CLASS_EXPORT_GUID(dlplan::core::RoleDistanceNumerical, "dlplan::core::RoleDistanceNumerical")
 
 #endif

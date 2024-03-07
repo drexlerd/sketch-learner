@@ -1,15 +1,36 @@
 #ifndef DLPLAN_SRC_CORE_ELEMENTS_ROLES_OR_H_
 #define DLPLAN_SRC_CORE_ELEMENTS_ROLES_OR_H_
 
-#include "../../../../include/dlplan/core.h"
-
 #include <sstream>
+#include <memory>
+
+#include <boost/archive/text_oarchive.hpp>
+#include <boost/archive/text_iarchive.hpp>
+#include <boost/serialization/export.hpp>
+#include <boost/serialization/shared_ptr.hpp>
+
+#include "src/core/elements/utils.h"
+#include "include/dlplan/core.h"
 
 using namespace std::string_literals;
 
 
 namespace dlplan::core {
+class OrRole;
+}
 
+
+namespace boost::serialization {
+    template<typename Archive>
+    void serialize(Archive& ar, dlplan::core::OrRole& role, const unsigned int version);
+    template<class Archive>
+    void save_construct_data(Archive& ar, const dlplan::core::OrRole* role, const unsigned int version);
+    template<class Archive>
+    void load_construct_data(Archive& ar, dlplan::core::OrRole* role, const unsigned int version);
+}
+
+
+namespace dlplan::core {
 class OrRole : public Role {
 private:
     void compute_result(const RoleDenotation& left_denot, const RoleDenotation& right_denot, RoleDenotation& result) const {
@@ -17,40 +38,45 @@ private:
         result |= right_denot;
     }
 
-    std::unique_ptr<RoleDenotation> evaluate_impl(const State& state, DenotationsCaches& caches) const override {
-        auto denotation = std::make_unique<RoleDenotation>(
-            RoleDenotation(state.get_instance_info()->get_objects().size()));
+    RoleDenotation evaluate_impl(const State& state, DenotationsCaches& caches) const override {
+        RoleDenotation denotation(state.get_instance_info()->get_objects().size());
         compute_result(
             *m_role_left->evaluate(state, caches),
             *m_role_right->evaluate(state, caches),
-            *denotation);
+            denotation);
         return denotation;
     }
 
-    std::unique_ptr<RoleDenotations> evaluate_impl(const States& states, DenotationsCaches& caches) const override {
-        auto denotations = std::make_unique<RoleDenotations>();
-        denotations->reserve(states.size());
+    RoleDenotations evaluate_impl(const States& states, DenotationsCaches& caches) const override {
+        RoleDenotations denotations;
+        denotations.reserve(states.size());
         auto role_left_denotations = m_role_left->evaluate(states, caches);
         auto role_right_denotations = m_role_right->evaluate(states, caches);
         for (size_t i = 0; i < states.size(); ++i) {
-            auto denotation = std::make_unique<RoleDenotation>(
-                RoleDenotation(states[i].get_instance_info()->get_objects().size()));
+            RoleDenotation denotation(states[i].get_instance_info()->get_objects().size());
             compute_result(
                 *(*role_left_denotations)[i],
                 *(*role_right_denotations)[i],
-                *denotation);
-            denotations->push_back(caches.m_r_denot_cache.insert(std::move(denotation)).first->get());
+                denotation);
+            denotations.push_back(caches.role_denotation_cache.insert_denotation(std::move(denotation)));
         }
         return denotations;
     }
+
+    template<typename Archive>
+    friend void boost::serialization::serialize(Archive& ar, OrRole& role, const unsigned int version);
+    template<class Archive>
+    friend void boost::serialization::save_construct_data(Archive& ar, const OrRole* role, const unsigned int version);
+    template<class Archive>
+    friend void boost::serialization::load_construct_data(Archive& ar, OrRole* role, const unsigned int version);
 
 protected:
     std::shared_ptr<const Role> m_role_left;
     std::shared_ptr<const Role> m_role_right;
 
 public:
-    OrRole(std::shared_ptr<const VocabularyInfo> vocabulary_info, std::shared_ptr<const Role> role_1, std::shared_ptr<const Role> role_2)
-    : Role(vocabulary_info, role_1->is_static() && role_2->is_static()),
+    OrRole(std::shared_ptr<VocabularyInfo> vocabulary_info, ElementIndex index, std::shared_ptr<const Role> role_1, std::shared_ptr<const Role> role_2)
+    : Role(vocabulary_info, index, role_1->is_static() && role_2->is_static()),
       m_role_left(role_1),
       m_role_right(role_2) {
         if (!(role_1 && role_2)) {
@@ -77,18 +103,53 @@ public:
     }
 
     void compute_repr(std::stringstream& out) const override {
-        out << get_name() << "(";
+        out << "r_or" << "(";
         m_role_left->compute_repr(out);
         out << ",";
         m_role_right->compute_repr(out);
         out << ")";
     }
 
-    static std::string get_name() {
-        return "r_or";
+    int compute_evaluate_time_score() const override {
+        return m_role_left->compute_evaluate_time_score() + m_role_right->compute_evaluate_time_score() + SCORE_QUADRATIC;
     }
 };
 
 }
+
+
+namespace boost::serialization {
+template<typename Archive>
+void serialize(Archive& /* ar */ , dlplan::core::OrRole& t, const unsigned int /* version */ )
+{
+    boost::serialization::base_object<dlplan::core::Role>(t);
+}
+
+template<class Archive>
+void save_construct_data(Archive & ar, const dlplan::core::OrRole* t, const unsigned int /* version */ )
+{
+    ar << t->m_vocabulary_info;
+    ar << t->m_index;
+    ar << t->m_role_left;
+    ar << t->m_role_right;
+}
+
+template<class Archive>
+void load_construct_data(Archive & ar, dlplan::core::OrRole* t, const unsigned int /* version */ )
+{
+    std::shared_ptr<dlplan::core::VocabularyInfo> vocabulary;
+    int index;
+    std::shared_ptr<const dlplan::core::Role> role_left;
+    std::shared_ptr<const dlplan::core::Role> role_right;
+    ar >> vocabulary;
+    ar >> index;
+    ar >> role_left;
+    ar >> role_right;
+    ::new(t)dlplan::core::OrRole(vocabulary, index, role_left, role_right);
+}
+
+}
+
+BOOST_CLASS_EXPORT_GUID(dlplan::core::OrRole, "dlplan::core::OrRole")
 
 #endif
