@@ -1,7 +1,7 @@
 from pymimir import State, Problem
 from pynauty import Graph as NautyGraph, certificate as nauty_certificate
 
-from typing import List, MutableSet
+from typing import Dict
 from collections import defaultdict
 
 from .color import Color
@@ -13,7 +13,7 @@ class NameToIndexMapper:
     Perfect has function to map a list of types to a color
     """
     def __init__(self):
-        self._str_to_int = dict()
+        self._str_to_int: Dict[str, int] = {}
 
     def add(self, string : str):
         assert string not in self._str_to_int
@@ -42,7 +42,7 @@ class StateGraph:
 
 
     def _create_index_mapper(self, state: State):
-        problem = state.get_problem()
+        problem: Problem = state.get_problem()
         index_mapper = NameToIndexMapper()
         index_mapper.add(None)  # used to represent "uncolored"
         for obj in problem.objects:
