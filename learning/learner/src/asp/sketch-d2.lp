@@ -1,6 +1,5 @@
 % Optimization smallest sum over feature complexities
 #minimize { C@2,complexity(F, C) : complexity(F, C), feature(F), select(F) }.
-%#minimize { 1@1,good(C): good(C)}.
 
 % Generate selected features
 { select(F) } :- feature(F).
