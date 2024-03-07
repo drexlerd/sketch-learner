@@ -39,7 +39,7 @@ def learn_sketch_for_problem_class(
     problems_directory: Path,
     workspace: Path,
     width: int,
-    disable_closed_Q: bool = True,
+    disable_closed_Q: bool = False,
     max_num_states_per_instance: int = 1000,
     max_time_per_instance: int = 10,
     encoding_type: EncodingType = EncodingType.D2,
@@ -121,9 +121,9 @@ def learn_sketch_for_problem_class(
                 compute_tuple_graph_equivalences(selected_instance_datas)
                 logging.info(colored("..done", "blue", "on_grey"))
 
-                #logging.info(colored("Minimizing TupleGraphEquivalences...", "blue", "on_grey"))
-                #minimize_tuple_graph_equivalences(selected_instance_datas)
-                #logging.info(colored("..done", "blue", "on_grey"))
+                logging.info(colored("Minimizing TupleGraphEquivalences...", "blue", "on_grey"))
+                minimize_tuple_graph_equivalences(selected_instance_datas)
+                logging.info(colored("..done", "blue", "on_grey"))
 
                 if encoding_type == EncodingType.D2:
                     d2_facts = set()

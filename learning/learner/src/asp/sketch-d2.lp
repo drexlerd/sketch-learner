@@ -1,5 +1,6 @@
 % Optimization smallest sum over feature complexities
-#minimize { C,complexity(F, C) : complexity(F, C), feature(F), select(F) }.
+#minimize { C@2,complexity(F, C) : complexity(F, C), feature(F), select(F) }.
+%#minimize { 1@1,good(C): good(C)}.
 
 % Generate selected features
 { select(F) } :- feature(F).
@@ -26,7 +27,9 @@ r_reachable(I, S') :- D = D', r_reachable(I, S), good(I, S, S'), subgoal_distanc
 :- D < D', r_distance(I, S, C, D), t_distance(I, S, T, D'), subgoal(I, S, T), good(C).
 
 % Require D2-separation
-:- good(C), not good(C'), d2_separate(C, C'), state_pair_class(C), state_pair_class(C'), { feature(F) : select(F), feature_effect(C, F, V), feature_effect(C', F, V'), V != V' } = 0, { feature(F) : select(F), feature_condition(C, F, V), feature_condition(C', F, V'), V != V' } = 0.
+%:- good(C), not good(C'), d2_separate(C, C'), state_pair_class(C), state_pair_class(C'), { feature(F) : select(F), feature_effect(C, F, V), feature_effect(C', F, V'), V != V' } = 0, { feature(F) : select(F), feature_condition(C, F, V), feature_condition(C', F, V'), V != V' } = 0.
+:- good(C), not good(C'), state_pair_class(C), state_pair_class(C'), { feature(F) : select(F), feature_effect(C, F, V), feature_effect(C', F, V'), V != V' } = 0, { feature(F) : select(F), feature_condition(C, F, V), feature_condition(C', F, V'), V != V' } = 0.
+
 
 % Define ``good`` pairs of state classes similar
 good(I, S, S') :- good(C), cover(I, S, S', C).

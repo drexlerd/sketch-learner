@@ -77,7 +77,6 @@ def compute_instance_datas(domain_filepath: Path,
             state_index_to_representative_state_index = dict()
             for mimir_state in mimir_state_space.get_states():
                 state_index_to_representative_state_index[state_map[mimir_state]] = state_map[class_index_to_representative_state[state_to_class_index[mimir_state]]]
-            print(state_index_to_representative_state_index)
 
             ## Create pruned state space
             goal_state_ids = set()
