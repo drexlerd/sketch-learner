@@ -12,14 +12,14 @@
 
 
 
-(origin p0 f1)
-(destin p0 f0)
+(origin p0 f0)
+(destin p0 f1)
 
 (origin p1 f1)
 (destin p1 f0)
 
-(origin p2 f1)
-(destin p2 f0)
+(origin p2 f0)
+(destin p2 f1)
 
 
 

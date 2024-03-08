@@ -14,17 +14,17 @@
     )
 
     (:init
-        (adjacent c_0_2 c_0_1)
         (adjacent c_0_1 c_0_2)
+        (adjacent c_0_2 c_0_1)
         (adjacent c_0_1 c_0_0)
         (adjacent c_0_0 c_0_1)
-        (at t1 c_0_2)
+        (at t1 c_0_1)
         (at p1 c_0_0)
         (empty t1)
     )
 
     (:goal
-        (at p1 c_0_1)
+        (at p1 c_0_0)
     )
 
     

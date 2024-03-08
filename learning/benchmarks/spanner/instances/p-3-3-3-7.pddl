@@ -13,7 +13,7 @@
     (useable spanner1)
     (at spanner2 location3)
     (useable spanner2)
-    (at spanner3 location2)
+    (at spanner3 location1)
     (useable spanner3)
     (loose nut1)
     (at nut1 gate)

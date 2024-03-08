@@ -16,10 +16,10 @@
 
 
 (origin p0 f2)
-(destin p0 f0)
+(destin p0 f1)
 
-(origin p1 f2)
-(destin p1 f0)
+(origin p1 f0)
+(destin p1 f1)
 
 
 

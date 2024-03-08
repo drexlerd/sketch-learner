@@ -14,8 +14,8 @@
     )
 
     (:init
-        (at p1 c_0_0)
         (at t1 c_0_0)
+        (at p1 c_0_0)
         (empty t1)
     )
 
