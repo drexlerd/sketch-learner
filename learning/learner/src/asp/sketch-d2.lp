@@ -23,7 +23,7 @@ r_reachable(I, S') :- D = D', r_reachable(I, S), good(I, S, S'), subgoal_distanc
 % Require that all equivalence classes C underlying a tuple T of subproblem P[S] are good, effectively bounding the width of P[S]
 :- not good(C), subgoal(I, S, T), contain(I, S, T, C).
 % (Optimal-width): Require solvable states S' closer than subgoal to not be assigned to any rule.
-:- D < D', r_distance(I, S, C, D), t_distance(I, S, T, D'), subgoal(I, S, T), good(C).
+:- D < D', r_distance(I, S, C, D), subgoal_distance(I, S, D'), good(C).
 
 % Require D2-separation
 :- good(C), not good(C'), d2_separate(C, C'), state_pair_class(C), state_pair_class(C'), { feature(F) : select(F), feature_effect(C, F, V), feature_effect(C', F, V'), V != V' } = 0, { feature(F) : select(F), feature_condition(C, F, V), feature_condition(C', F, V'), V != V' } = 0.
