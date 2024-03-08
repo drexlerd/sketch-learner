@@ -17,9 +17,8 @@ def get_objects(blocks: int, **kwargs: dict) -> str:
 def get_state(blocks: int, percentage_new_tower: int, is_goal: bool = False, **kwargs: dict) -> str:
     offset = "\n    "
     str_state = ""
-    # In blocks three we do atomic move actions
-    #if not is_goal:
-    #    str_state += offset + "(arm-empty)"
+    if not is_goal:
+        str_state += offset + "(arm-empty)"
 
     vblocks = list(range(1, blocks + 1))
     random.shuffle(vblocks)

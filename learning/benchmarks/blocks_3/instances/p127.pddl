@@ -4,7 +4,6 @@
  (:domain blocksworld)
  (:objects b1 b2 b3 b4 - object)
  (:init 
-    (arm-empty)
     (clear b4)
     (on b4 b2)
     (on b2 b3)

@@ -60,6 +60,8 @@ def compute_instance_datas(domain_filepath: Path,
                 instance_info.add_static_atom(static_atom.predicate.name, [obj.name for obj in static_atom.terms])
             atom_to_dlplan_atom = dict()
             for atom in set(problem.get_encountered_atoms()).difference(set(problem.get_static_atoms())):
+                if atom.predicate.name == "=":
+                    continue
                 atom_to_dlplan_atom[atom] = instance_info.add_atom(atom.predicate.name, [obj.name for obj in atom.terms])
             for literal in problem.goal:
                 assert not literal.negated

@@ -41,7 +41,7 @@ def learn_sketch_for_problem_class(
     workspace: Path,
     width: int,
     disable_closed_Q: bool = False,
-    max_num_states_per_instance: int = 1000,
+    max_num_states_per_instance: int = 2000,
     max_time_per_instance: int = 10,
     encoding_type: EncodingType = EncodingType.D2,
     max_num_rules: int = 4,
@@ -93,7 +93,11 @@ def learn_sketch_for_problem_class(
                 for instance_data in selected_instance_datas:
                     name = instance_data.instance_filepath.stem
                     write_file(f"{name}.dot", instance_data.state_space.to_dot(1))
-                    print("     id:", instance_data.id, "name:", name)
+                    print("     ", end="")
+                    print("id:", instance_data.id,
+                          "name:", name,
+                          "num_states:", len(instance_data.complete_state_space.get_states()),
+                          "num_state_equivalences:", len(instance_data.state_space.get_states()))
 
                 logging.info(colored("Initializing DomainFeatureData...", "blue", "on_grey"))
                 domain_data.feature_pool = compute_feature_pool(
