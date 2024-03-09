@@ -11,7 +11,7 @@
     (at bob shed)
     (at spanner1 location3)
     (useable spanner1)
-    (at spanner2 location3)
+    (at spanner2 location1)
     (useable spanner2)
     (at spanner3 location1)
     (useable spanner3)

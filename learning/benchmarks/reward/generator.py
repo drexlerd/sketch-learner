@@ -131,7 +131,7 @@ def main():
                 # need to place robot and at least one reward in separate cells
                 continue
             run = 0
-            while run != 10:
+            while run != 30:
                 num_blocks = random.randint(0, gridsize-1)
                 num_rewards = random.randint(1, gridsize)
                 if num_rewards + num_blocks <= gridsize - 1:

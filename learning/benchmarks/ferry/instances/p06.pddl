@@ -9,6 +9,6 @@
  (:init 
     (empty-ferry)
     (at-ferry loc1)
-    (at car1 loc1)
+    (at car1 loc2)
 )
- (:goal  (and (at car1 loc2))))
+ (:goal  (and (at car1 loc1))))

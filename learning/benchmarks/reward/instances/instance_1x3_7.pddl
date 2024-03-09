@@ -12,20 +12,18 @@
     )
 
     (:init
-        (adjacent c_0_0 c_0_1)
-        (adjacent c_0_1 c_0_2)
         (adjacent c_0_1 c_0_0)
         (adjacent c_0_2 c_0_1)
+        (adjacent c_0_0 c_0_1)
+        (adjacent c_0_1 c_0_2)
         (at c_0_0)
         (unblocked c_0_2)
-        (unblocked c_0_1)
         (unblocked c_0_0)
-        (reward c_0_1)
         (reward c_0_2)
     )
 
     (:goal
-        (and (picked c_0_2) (picked c_0_1))
+        (picked c_0_2)
     )
 
     

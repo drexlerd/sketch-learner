@@ -7,8 +7,7 @@
 (on b1 b3)
 (on b2 b4)
 (on-table b3)
-(on-table b4)
-(clear b1)
+(on b4 b1)
 (clear b2)
 )
 (:goal

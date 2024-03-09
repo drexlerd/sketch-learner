@@ -86,7 +86,7 @@ def parse_args() -> Dict[str, int]:
 def main():
     num_blocks = [1,2,3,4,5]
     percentage_new_towers = [0,10,20,40]
-    num_seeds = 10
+    num_seeds = 30
     instance_id = 0
     for num_block in num_blocks:
         for percentage_new_tower in percentage_new_towers:

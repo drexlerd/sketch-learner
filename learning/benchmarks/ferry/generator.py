@@ -91,7 +91,7 @@ def generate_problem(args: Dict):
 def main():
     num_cars = [1,2,3]
     num_locations = [2,3]
-    num_seeds = 10
+    num_seeds = 30
     instance_id = 0
     for num_car in num_cars:
         for num_location in num_locations:

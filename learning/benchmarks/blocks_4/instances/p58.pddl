@@ -1,14 +1,12 @@
-;; blocks=2, percentage_new_tower=10, out_folder=., instance_id=58, seed=8
+;; blocks=1, percentage_new_tower=10, out_folder=., instance_id=58, seed=28
 
 (define (problem blocksworld-58)
  (:domain blocksworld)
- (:objects b1 b2 - object)
+ (:objects b1 - object)
  (:init 
     (arm-empty)
-    (clear b2)
-    (on b2 b1)
+    (clear b1)
     (on-table b1))
  (:goal  (and 
     (clear b1)
-    (on b1 b2)
-    (on-table b2))))
+    (on-table b1))))

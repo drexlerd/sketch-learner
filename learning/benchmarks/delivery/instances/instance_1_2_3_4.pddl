@@ -16,10 +16,10 @@
     (:init
         (adjacent c_0_1 c_0_0)
         (adjacent c_0_0 c_0_1)
+        (at p1 c_0_1)
+        (at t1 c_0_0)
+        (at p2 c_0_0)
         (at p3 c_0_0)
-        (at t1 c_0_1)
-        (at p2 c_0_1)
-        (at p1 c_0_0)
         (empty t1)
     )
 

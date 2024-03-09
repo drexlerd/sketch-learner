@@ -12,8 +12,8 @@
     )
 
     (:init
-        (adjacent c_1_0 c_0_0)
         (adjacent c_0_0 c_1_0)
+        (adjacent c_1_0 c_0_0)
         (at c_0_0)
         (unblocked c_1_0)
         (unblocked c_0_0)

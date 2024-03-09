@@ -1,10 +1,10 @@
-;; cars=1, locations=3, seed=0, instance_id=10, out_folder=.
+;; cars=1, locations=2, seed=10, instance_id=10, out_folder=.
 
 (define (problem ferry-10)
  (:domain ferry)
  (:objects 
     car1 - car
-    loc1 loc2 loc3 - location
+    loc1 loc2 - location
  )
  (:init 
     (empty-ferry)

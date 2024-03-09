@@ -1,18 +1,14 @@
-;; cars=3, locations=2, seed=7, instance_id=47, out_folder=.
+;; cars=1, locations=3, seed=17, instance_id=47, out_folder=.
 
 (define (problem ferry-47)
  (:domain ferry)
  (:objects 
-    car1 car2 car3 - car
-    loc1 loc2 - location
+    car1 - car
+    loc1 loc2 loc3 - location
  )
  (:init 
     (empty-ferry)
     (at-ferry loc1)
-    (at car1 loc2)
-    (at car2 loc2)
-    (at car3 loc1)
+    (at car1 loc3)
 )
- (:goal  (and (at car1 loc1)
-   (at car2 loc1)
-   (at car3 loc2))))
+ (:goal  (and (at car1 loc2))))

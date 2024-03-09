@@ -5,9 +5,13 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (define (domain reward-strips)
-    (:requirements :typing :equality)
+    (:requirements :equality :typing)
     (:types
         cell - object
+    )
+
+    (:constants
+        
     )
 
     (:predicates
@@ -17,6 +21,13 @@
         (picked ?x1 - cell)
         (adjacent ?x1 - cell ?x2 - cell)
     )
+
+    (:functions
+        
+    )
+
+    
+
     
     (:action move
      :parameters (?from - cell ?to - cell)
@@ -25,6 +36,7 @@
         (not (at ?from))
         (at ?to))
     )
+
 
     (:action pick-reward
      :parameters (?x - cell)

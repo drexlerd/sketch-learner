@@ -12,25 +12,22 @@
     )
 
     (:init
-        (adjacent c_0_1 c_1_1)
+        (adjacent c_0_0 c_1_0)
         (adjacent c_1_1 c_1_0)
         (adjacent c_1_1 c_0_1)
-        (adjacent c_1_0 c_1_1)
         (adjacent c_0_1 c_0_0)
-        (adjacent c_0_0 c_1_0)
-        (adjacent c_0_0 c_0_1)
         (adjacent c_1_0 c_0_0)
+        (adjacent c_0_0 c_0_1)
+        (adjacent c_0_1 c_1_1)
+        (adjacent c_1_0 c_1_1)
         (at c_0_0)
-        (unblocked c_0_1)
         (unblocked c_1_0)
-        (unblocked c_1_1)
         (unblocked c_0_0)
-        (reward c_1_1)
-        (reward c_0_1)
+        (reward c_1_0)
     )
 
     (:goal
-        (and (picked c_0_1) (picked c_1_1))
+        (picked c_1_0)
     )
 
     

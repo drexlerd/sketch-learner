@@ -1,4 +1,4 @@
-;; blocks=1, percentage_new_tower=10, out_folder=., instance_id=14, seed=4
+;; blocks=1, percentage_new_tower=0, out_folder=., instance_id=14, seed=14
 
 (define (problem blocksworld-14)
  (:domain blocksworld)

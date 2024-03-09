@@ -19,11 +19,11 @@
 
 
 
-(origin p0 f1)
+(origin p0 f0)
 (destin p0 f2)
 
-(origin p1 f2)
-(destin p1 f1)
+(origin p1 f3)
+(destin p1 f2)
 
 
 
