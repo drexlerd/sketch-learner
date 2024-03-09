@@ -5,13 +5,13 @@ from collections import defaultdict
 
 from dlplan.core import VocabularyInfo, InstanceInfo, State, DenotationsCaches
 from dlplan.state_space import StateSpace
+from pymimir import DomainParser, ProblemParser, LiftedSuccessorGenerator, StateSpace as MimirStateSpace
 
 from .instance_data import InstanceData
 
 from ..domain_data.domain_data import DomainData
 from ..domain_data.domain_data_utils import compute_domain_data
 from ..util.command import change_dir, write_file
-from ..symmetries.exact import Driver
 
 
 def compute_instance_datas(domain_filepath: Path,
@@ -29,7 +29,17 @@ def compute_instance_datas(domain_filepath: Path,
             # change working directory to put planner output files in correct directory
 
             ## New code
-            domain, problem, class_index_to_representative_state, class_index_to_successor_class_indices, state_to_class_index, mimir_state_space = Driver(domain_filepath, instance_filepath, max_num_states_per_instance, "INFO", enable_dump_files).run()
+            domain_parser = DomainParser(str(domain_filepath))
+            domain = domain_parser.parse()
+            problem_parser = ProblemParser(str(instance_filepath))
+            problem = problem_parser.parse(domain)
+            successor_generator = LiftedSuccessorGenerator(problem)
+            print("Started generating state space")
+            mimir_state_space = MimirStateSpace.new(problem, successor_generator, max_num_states_per_instance)
+            if mimir_state_space is None:
+                print("Number of states is too large. Limit is:", max_num_states_per_instance)
+                continue
+            print("Finished generating state space")
             if domain is None:
                 continue
 
@@ -76,29 +86,6 @@ def compute_instance_datas(domain_filepath: Path,
                 state_map[mimir_state] = state_index
                 state_index += 1
 
-            state_index_to_representative_state_index = dict()
-            for mimir_state in mimir_state_space.get_states():
-                state_index_to_representative_state_index[state_map[mimir_state]] = state_map[class_index_to_representative_state[state_to_class_index[mimir_state]]]
-
-            ## Create pruned state space
-            goal_state_ids = set()
-            dlplan_states: Dict[int, State] = dict()
-            for mimir_state in class_index_to_representative_state.values():
-                state_index = state_map[mimir_state]
-                dlplan_states[state_index] = State(state_index, instance_info, [atom_to_dlplan_atom[atom] for atom in mimir_state.get_fluent_atoms()])
-                if mimir_state.literals_hold(problem.goal):
-                    goal_state_ids.add(state_index)
-
-            forward_successors = defaultdict(set)
-            for class_index, successor_class_indices in class_index_to_successor_class_indices.items():
-                source_index = state_map[class_index_to_representative_state[class_index]]
-                for successor_class_index in successor_class_indices:
-                    target_index = state_map[class_index_to_representative_state[successor_class_index]]
-                    # if source_index != target_index:
-                    forward_successors[source_index].add(target_index)
-
-            state_space = StateSpace(instance_info, dlplan_states, 0, forward_successors, goal_state_ids)
-
             ## Create complete state space
             goal_state_ids = set()
             dlplan_states: Dict[int, State] = dict()
@@ -113,7 +100,7 @@ def compute_instance_datas(domain_filepath: Path,
                     target_index = state_map[transition.target]
                     forward_successors[source_index].add(target_index)
 
-            complete_state_space = StateSpace(instance_info, dlplan_states, 0, forward_successors, goal_state_ids)
+            state_space = StateSpace(instance_info, dlplan_states, 0, forward_successors, goal_state_ids)
 
 
             if vocabulary_info is None:
@@ -133,11 +120,9 @@ def compute_instance_datas(domain_filepath: Path,
                 print("Initial state is goal.")
                 continue
             print("Num states:", len(state_space.get_states()))
-            print("Num complete states:", len(complete_state_space.get_states()))
             instance_data = InstanceData(len(instance_datas), domain_data, DenotationsCaches(), instance_filepath)
             instance_data.state_space = state_space
-            instance_data.complete_state_space = complete_state_space
-            instance_data.state_index_to_representative_state_index = state_index_to_representative_state_index
+            instance_data.complete_state_space = state_space
 
             if enable_dump_files:
                 write_file(f"{name}.dot", state_space.to_dot(1))
