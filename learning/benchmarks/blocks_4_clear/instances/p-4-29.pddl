@@ -2,14 +2,15 @@
 
 (define (problem BW-rand-4)
 (:domain blocksworld)
-(:objects b1 b2 b3 b4  - block)
+(:objects b3 b4 )
 (:init
-(on-table b1)
+(arm-empty)
+(on b1 b2)
 (on-table b2)
-(on b3 b2)
-(on b4 b3)
+(on b3 b4)
+(on-table b4)
 (clear b1)
-(clear b4)
+(clear b3)
 )
 (:goal
 (and
