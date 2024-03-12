@@ -49,8 +49,6 @@ class StateGraph:
             index_mapper.add("o_" + obj.name)
         for typ in problem.domain.types:
             index_mapper.add("t_" + typ.name)
-        for const in problem.domain.constants:
-            index_mapper.add("c_" + const.name)
         for pred in problem.domain.predicates:
             for i in range(pred.arity):
                 index_mapper.add("p_" + pred.name + f":{i}")
@@ -123,15 +121,6 @@ class StateGraph:
                     graph.add_edge(v_pos_prev.id, v_pos.id)
                     graph.add_edge(v_pos.id, v_pos_prev.id)
                 v_pos_prev = v_pos
-
-        # Add constant edges
-        for const in problem.domain.constants:
-            v_object_id = index_mapper.str_to_int("o_" + const.name)
-            v = UVCVertex(add_vertex_id, Color(index_mapper.str_to_int("c_" + const.name)))
-            graph.add_vertex(v)
-            add_vertex_id += 1
-            graph.add_edge(v_object_id, v.id)
-            graph.add_edge(v.id, v_object_id)
 
         assert graph.test_is_undirected()
         return graph
