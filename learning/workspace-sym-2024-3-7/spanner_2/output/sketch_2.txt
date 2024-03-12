@@ -1,7 +1,0 @@
-(:policy
-(:booleans )
-(:numericals (f64 "n_count(r_restrict(r_primitive(carrying,0,1),c_primitive(useable,0)))"))
-(:rule (:conditions (:c_n_gt f64)) (:effects (:e_n_dec f64)))
-(:rule (:conditions (:c_n_gt f64)) (:effects (:e_n_inc f64)))
-(:rule (:conditions (:c_n_eq f64)) (:effects (:e_n_inc f64)))
-)
