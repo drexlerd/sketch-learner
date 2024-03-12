@@ -4,6 +4,7 @@ import time
 from pathlib import Path
 from collections import defaultdict, deque
 from typing import Dict
+from concurrent.futures import ProcessPoolExecutor, as_completed
 
 from pymimir import DomainParser, ProblemParser, LiftedSuccessorGenerator, State, StateSpace
 
@@ -41,7 +42,6 @@ class Driver:
             if state_space is None:
                 print("Number of states is too large. Limit is:", self._max_num_states_per_instance)
                 return [None] * 6
-
 
             equivalence_class_key_to_class_index = dict()
             class_index_to_successor_class_indices = defaultdict(set)
