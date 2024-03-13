@@ -1,6 +1,0 @@
-(:policy
-(:booleans )
-(:numericals (f38 "n_count(r_primitive(carrying,0,1))") (f41 "n_count(c_equal(r_primitive(at,0,1),r_primitive(at_g,0,1)))"))
-(:rule (:conditions (:c_n_gt f38) (:c_n_gt f41)) (:effects (:e_n_dec f38) (:e_n_inc f41)))
-(:rule (:conditions (:c_n_eq f38) (:c_n_gt f41)) (:effects (:e_n_inc f38) (:e_n_bot f41)))
-)

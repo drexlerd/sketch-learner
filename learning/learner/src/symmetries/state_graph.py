@@ -76,6 +76,9 @@ class StateGraph:
 
         # Add atom edges
         for atom in state.get_atoms():
+            if atom.predicate.name == "=":
+                continue
+
             v_pos_prev = None
             for pos, obj in enumerate(atom.terms):
                 v_object_id = index_mapper.str_to_int("o_" + obj.name)

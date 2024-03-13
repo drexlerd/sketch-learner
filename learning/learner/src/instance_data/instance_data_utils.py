@@ -94,7 +94,6 @@ def compute_instance_datas(domain_filepath: Path,
                 source_index = state_map[class_index_to_representative_state[class_index]]
                 for successor_class_index in successor_class_indices:
                     target_index = state_map[class_index_to_representative_state[successor_class_index]]
-                    # if source_index != target_index:
                     forward_successors[source_index].add(target_index)
 
             state_space = StateSpace(instance_info, dlplan_states, 0, forward_successors, goal_state_ids)

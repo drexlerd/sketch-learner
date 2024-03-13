@@ -1,5 +1,0 @@
-(:policy
-(:booleans )
-(:numericals (f61 "n_count(c_primitive(served,0))"))
-(:rule (:conditions ) (:effects (:e_n_inc f61)))
-)

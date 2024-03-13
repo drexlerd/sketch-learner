@@ -31,6 +31,7 @@ class Sketch:
         subgoal_states_per_r_reachable_state = defaultdict(set)
         while queue:
             root_idx = queue.pop()
+            assert root_idx in instance_data.state_space.get_states().keys()
             if instance_data.is_deadend(root_idx):
                 print("Deadend state is r_reachable")
                 print("State:", instance_data.state_space.get_states()[root_idx])
@@ -64,6 +65,14 @@ class Sketch:
                         bounded = True
                 if bounded:
                     break
+            # Dominik (2024-3-13): Must also check states underlying pruned subgoal tuples.
+            for s_prime_idx in set(instance_data.state_index_to_representative_state_index[s] for s in tuple_graph.get_state_indices_by_distance()[tuple_distance]):
+                target_state = instance_data.state_space.get_states()[s_prime_idx]
+                if self.dlplan_policy.evaluate(source_state, target_state, instance_data.denotations_caches) is not None:
+                    if s_prime_idx not in visited:
+                        visited.add(s_prime_idx)
+                        queue.append(s_prime_idx)
+
             if not bounded:
                 print(colored("Sketch fails to bound width of a state", "red", "on_grey"))
                 print("Instance:", instance_data.id, instance_data.instance_filepath.stem)

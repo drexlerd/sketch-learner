@@ -52,7 +52,7 @@ class Driver:
             self.logger.info("Started generating Aut(G)")
             start_time = time.time()
 
-            initial_state = problem.create_state(problem.initial)
+            initial_state = state_space.get_initial_state()
             num_generated_states = 1
             initial_state_graph = StateGraph(initial_state)
             initial_equivalence_class_key = (initial_state_graph.nauty_certificate, initial_state_graph.uvc_graph.get_colors())
@@ -69,8 +69,8 @@ class Driver:
                 cur_state = queue.popleft()
                 cur_class_index = state_to_class_index[cur_state]
 
-                for applicable_action in successor_generator.get_applicable_actions(cur_state):
-                    suc_state = applicable_action.apply(cur_state)
+                for transition in state_space.get_forward_transitions(cur_state):
+                    suc_state = transition.target
 
                     state_graph = StateGraph(suc_state)
 
