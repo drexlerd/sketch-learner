@@ -1,6 +1,6 @@
 (define (domain blocksworld)
   (:requirements :strips)
-(:constants b1 b2)
+(:constants b1)
 (:predicates (clear ?x)
              (on-table ?x)
              (arm-empty)

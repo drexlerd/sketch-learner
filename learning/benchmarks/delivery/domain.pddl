@@ -20,7 +20,6 @@
         (adjacent ?x1 - cell ?x2 - cell)
     )
 
-
     (:action pick-package
      :parameters (?t - truck ?p - package ?x - cell)
      :precondition (and (at ?p ?x) (at ?t ?x) (empty ?t))
