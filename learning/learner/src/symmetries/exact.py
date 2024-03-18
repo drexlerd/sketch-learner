@@ -95,13 +95,13 @@ class Driver:
                     # Add abstract transition
                     class_index_to_successor_class_indices[cur_class_index].add(succ_class_index)
 
-                    if self._dump_dot:
-                        state_graph.uvc_graph.to_dot(f"{succ_class_index}/{num_generated_states}.gc")
-
                     if suc_state not in closed_list:
                         num_generated_states += 1
                         closed_list.add(suc_state)
                         queue.append(suc_state)
+
+                        if self._dump_dot:
+                            state_graph.uvc_graph.to_dot(f"{succ_class_index}/{num_generated_states}.gc")
 
             print()
 
