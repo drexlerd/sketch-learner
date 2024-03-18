@@ -2,12 +2,11 @@
 
 (define (problem BW-rand-2)
 (:domain blocksworld)
-(:objects )
+(:objects b2 )
 (:init
 (arm-empty)
 (on-table b1)
-(on-table b2)
-(clear b1)
+(on b2 b1)
 (clear b2)
 )
 (:goal

@@ -8,10 +8,13 @@ from pathlib import Path
 def run(domain_filepath: Path, problems_directory: Path, workspace: Path, width: int):
     additional_booleans=[
         "b_nullary(arm-empty)",  # 2
-        "b_empty(c_and(c_primitive(clear,0),c_primitive(clear_g,0)))",  # goal separating feature
+        "b_empty(c_and(c_primitive(clear,0),c_one_of(b1)))",  # goal separating feature
     ]
     additional_numericals=[
-        "n_count(r_primitive(on,0,1))"
+        "n_count(r_primitive(on,0,1))",
+        "n_count(c_primitive(on-table,0))",
+        "n_count(c_primitive(clear,0))",
+        "n_count(c_and(c_primitive(clear,0),c_one_of(b1)))",
     ]
 
     subprocess.call([
