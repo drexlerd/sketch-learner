@@ -68,7 +68,10 @@ def learn_sketch_for_problem_class(
     change_working_directory(workspace)
 
     # Keep track of time
-    timer = Timer()
+    total_timer = Timer()
+    preprocessing_timer = Timer()
+    asp_timer = Timer(stopped=True)
+    verification_timer = Timer(stopped=True)
 
     # Generate data
     with change_dir("input"):
@@ -80,6 +83,8 @@ def learn_sketch_for_problem_class(
         compute_tuple_graphs(width, instance_datas, enable_dump_files)
         logging.info(colored("..done", "blue", "on_grey"))
 
+    preprocessing_timer.stop()
+
     # Learn sketch
     with change_dir("iterations"):
         i = 0
@@ -89,6 +94,7 @@ def learn_sketch_for_problem_class(
             while True:
                 logging.info(colored(f"Iteration: {i}", "red", "on_grey"))
 
+                preprocessing_timer.resume()
                 selected_instance_datas : List[InstanceData] = [instance_datas[subproblem_idx] for subproblem_idx in selected_instance_idxs]
                 for instance_data in selected_instance_datas:
                     name = instance_data.instance_filepath.stem
@@ -115,7 +121,7 @@ def learn_sketch_for_problem_class(
                 logging.info(colored("..done", "blue", "on_grey"))
 
                 logging.info(colored("Constructing PerStateFeatureValuations...", "blue", "on_grey"))
-                compute_per_state_feature_valuations(selected_instance_datas)
+                compute_per_state_feature_valuations(selected_instance_datas, domain_data)
                 logging.info(colored("..done", "blue", "on_grey"))
 
                 logging.info(colored("Constructing StatePairEquivalenceDatas...", "blue", "on_grey"))
@@ -129,7 +135,9 @@ def learn_sketch_for_problem_class(
                 logging.info(colored("Minimizing TupleGraphEquivalences...", "blue", "on_grey"))
                 minimize_tuple_graph_equivalences(selected_instance_datas)
                 logging.info(colored("..done", "blue", "on_grey"))
+                preprocessing_timer.stop()
 
+                asp_timer.resume()
                 if encoding_type == EncodingType.D2:
                     d2_facts = set()
                     symbols = None
@@ -200,10 +208,14 @@ def learn_sketch_for_problem_class(
                 else:
                     raise RuntimeError("Unknown encoding type:", encoding_type)
 
+                asp_timer.stop()
+
+                verification_timer.resume()
                 logging.info(colored("Verifying learned sketch...", "blue", "on_grey"))
                 assert compute_smallest_unsolved_instance(sketch, selected_instance_datas, enable_goal_separating_features) is None
                 smallest_unsolved_instance = compute_smallest_unsolved_instance(sketch, instance_datas, enable_goal_separating_features)
                 logging.info(colored("..done", "blue", "on_grey"))
+                verification_timer.stop()
 
                 if smallest_unsolved_instance is None:
                     print(colored("Sketch solves all instances!", "red", "on_grey"))
@@ -216,6 +228,8 @@ def learn_sketch_for_problem_class(
                     print("Smallest unsolved instance:", smallest_unsolved_instance.id)
                     print("Selected instances:", selected_instance_idxs)
                 i += 1
+
+    total_timer.stop()
 
     # Output the result
     with change_dir("output"):
@@ -245,8 +259,10 @@ def learn_sketch_for_problem_class(
         write_file(f"sketch_minimized_{width}.txt", str(sketch_minimized.dlplan_policy))
 
         print_separation_line()
-        timer.stop()
-        print(f"Total time: {int(timer.get_elapsed_sec()) + 1} seconds.")
+        print(f"Preprocessing time: {int(preprocessing_timer.get_elapsed_sec()) + 1} seconds.")
+        print(f"ASP time: {int(asp_timer.get_elapsed_sec()) + 1} seconds.")
+        print(f"Verification time: {int(verification_timer.get_elapsed_sec()) + 1} seconds.")
+        print(f"Total time: {int(total_timer.get_elapsed_sec()) + 1} seconds.")
         print(f"Total memory: {int(memory_usage() / 1024)} GiB.")
         print_separation_line()
 

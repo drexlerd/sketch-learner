@@ -1,3 +1,4 @@
+from enum import Enum
 from typing import  List
 
 from dlplan.generator import FeatureGenerator
@@ -6,6 +7,12 @@ from .feature_pool import Feature, FeaturePool
 
 from ..domain_data.domain_data import DomainData
 from ..instance_data.instance_data import InstanceData
+
+
+class FeatureChange(Enum):
+    UP = 0
+    DOWN = 1
+    BOT = 2
 
 
 def compute_feature_pool(domain_data: DomainData,
@@ -38,6 +45,10 @@ def compute_feature_pool(domain_data: DomainData,
     feature_generator.set_generate_or_role(False)
     feature_generator.set_generate_top_role(False)
     feature_generator.set_generate_transitive_reflexive_closure_role(False)
+
+    feature_generator.set_generate_restrict_role(False)
+    feature_generator.set_generate_and_concept(False)
+
     features = []
     if not disable_feature_generation:
         [generated_booleans, generated_numericals, _, _] = feature_generator.generate(
@@ -49,14 +60,49 @@ def compute_feature_pool(domain_data: DomainData,
             distance_numerical_complexity_limit,
             2147483647,  # max time limit,
             feature_limit)
-        for boolean in generated_booleans:
-            features.append(Feature(boolean, boolean.compute_complexity() + 1 + 1))
         for numerical in generated_numericals:
             features.append(Feature(numerical, numerical.compute_complexity() + 1))
-    for boolean in additional_booleans:
-        boolean = syntactic_element_factory.parse_boolean(boolean)
-        features.append(Feature(boolean, boolean.compute_complexity() + 1 + 1))
+        for boolean in generated_booleans:
+            features.append(Feature(boolean, boolean.compute_complexity() + 1 + 1))
     for numerical in additional_numericals:
         numerical = syntactic_element_factory.parse_numerical(numerical)
         features.append(Feature(numerical, numerical.compute_complexity() + 1))
+    for boolean in additional_booleans:
+        boolean = syntactic_element_factory.parse_boolean(boolean)
+        features.append(Feature(boolean, boolean.compute_complexity() + 1 + 1))
+
+    # Prune features that do have same feature change a long all state pairs.
+    feature_changes = dict()
+    num_pruned = 0
+    for feature in features:
+        changes = []
+        for instance_data in instance_datas:
+            for s_idx, tuple_graph in instance_data.per_state_tuple_graphs.s_idx_to_tuple_graph.items():
+                if instance_data.is_deadend(s_idx):
+                    continue
+                dlplan_source = instance_data.state_space.get_states()[s_idx]
+                source_val = int(feature.dlplan_feature.evaluate(dlplan_source, instance_data.denotations_caches))
+                for _, s_prime_idxs in enumerate(tuple_graph.get_state_indices_by_distance()):
+                    for s_prime_idx in set(instance_data.state_index_to_representative_state_index[s] for s in s_prime_idxs):
+                        dlplan_target = instance_data.state_space.get_states()[s_prime_idx]
+                        target_val = int(feature.dlplan_feature.evaluate(dlplan_target, instance_data.denotations_caches))
+                        if source_val < target_val:
+                            changes.append(FeatureChange.UP)
+                        elif source_val > target_val:
+                            changes.append(FeatureChange.DOWN)
+                        else:
+                            changes.append(FeatureChange.BOT)
+        existing_feature = feature_changes.get(tuple(changes), None)
+        if existing_feature is None:
+            feature_changes[tuple(changes)] = feature
+        else:
+            if existing_feature.complexity > feature.complexity:
+                feature_changes[tuple(changes)] = feature
+            num_pruned += 1
+
+    print("Features generated:", len(features))
+    print("Features after pruning:", len(feature_changes))
+
+    features = list(feature_changes.values())
+
     return FeaturePool(features)
