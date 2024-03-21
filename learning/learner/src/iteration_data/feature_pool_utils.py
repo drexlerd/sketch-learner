@@ -46,9 +46,6 @@ def compute_feature_pool(domain_data: DomainData,
     feature_generator.set_generate_top_role(False)
     feature_generator.set_generate_transitive_reflexive_closure_role(False)
 
-    feature_generator.set_generate_restrict_role(False)
-    feature_generator.set_generate_and_concept(False)
-
     features = []
     if not disable_feature_generation:
         [generated_booleans, generated_numericals, _, _] = feature_generator.generate(
@@ -70,6 +67,23 @@ def compute_feature_pool(domain_data: DomainData,
     for boolean in additional_booleans:
         boolean = syntactic_element_factory.parse_boolean(boolean)
         features.append(Feature(boolean, boolean.compute_complexity() + 1 + 1))
+
+    print("Features generated:", len(features))
+
+    # Prune features that never reach 0/False
+    selected_features = []
+    for feature in features:
+        always_nnz = True
+        for instance_data in instance_datas:
+            for dlplan_state in instance_data.state_space.get_states().values():
+                val = int(feature.dlplan_feature.evaluate(dlplan_state, instance_data.denotations_caches))
+                if val == 0:
+                    always_nnz = False
+                    break
+        if not always_nnz:
+            selected_features.append(feature)
+    features = selected_features
+    print("Features after pruning:", len(selected_features))
 
     # Prune features that do have same feature change a long all state pairs.
     feature_changes = dict()
@@ -99,9 +113,8 @@ def compute_feature_pool(domain_data: DomainData,
             if existing_feature.complexity > feature.complexity:
                 feature_changes[tuple(changes)] = feature
             num_pruned += 1
+    print("Features relevant:", len(feature_changes))
 
-    print("Features generated:", len(features))
-    print("Features after pruning:", len(feature_changes))
 
     features = list(feature_changes.values())
 
