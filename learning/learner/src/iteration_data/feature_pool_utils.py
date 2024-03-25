@@ -85,6 +85,32 @@ def compute_feature_pool(domain_data: DomainData,
     features = selected_features
     print("Features after pruning:", len(selected_features))
 
+    # Prune features that decrease by more than 1 on a state transition
+    soft_changing_features = set()
+    for feature in features:
+        is_soft_changing = True
+        for instance_data in instance_datas:
+            for s_idx, s_prime_idxs in instance_data.state_space.get_forward_successor_state_indices().items():
+                dlplan_source = instance_data.state_space.get_states()[s_idx]
+                source_val = int(feature.dlplan_feature.evaluate(dlplan_source, instance_data.denotations_caches))
+                for s_prime_idx in s_prime_idxs:
+                    dlplan_target = instance_data.state_space.get_states()[s_prime_idx]
+                    target_val = int(feature.dlplan_feature.evaluate(dlplan_target, instance_data.denotations_caches))
+                    if source_val != 2147483647 and source_val > target_val and (source_val > target_val + 1):
+                        is_soft_changing = False
+                        break
+                    if target_val != 2147483647 and target_val > source_val and (target_val > source_val + 1):
+                        is_soft_changing = False
+                        break
+                if not is_soft_changing:
+                    break
+            if not is_soft_changing:
+                break
+        if is_soft_changing:
+            soft_changing_features.add(feature)
+    features = list(soft_changing_features)
+    print("Features soft changing:", len(features))
+
     # Prune features that do have same feature change a long all state pairs.
     feature_changes = dict()
     num_pruned = 0
@@ -113,9 +139,9 @@ def compute_feature_pool(domain_data: DomainData,
             if existing_feature.complexity > feature.complexity:
                 feature_changes[tuple(changes)] = feature
             num_pruned += 1
-    print("Features relevant:", len(feature_changes))
-
-
     features = list(feature_changes.values())
+    print("Features relevant:", len(features))
+
+    print()
 
     return FeaturePool(features)

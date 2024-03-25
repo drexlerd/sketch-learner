@@ -239,8 +239,8 @@ def learn_sketch_for_problem_class(
         learning_statistics = LearningStatistics(
             num_training_instances=len(instance_datas),
             num_selected_training_instances=len(selected_instance_datas),
-            num_states_in_selected_training_instances=sum([len(instance_data.state_space.get_states()) for instance_data in selected_instance_datas]),
-            num_states_in_complete_selected_training_instances=sum([len(instance_data.complete_state_space.get_states()) for instance_data in selected_instance_datas]),
+            num_states_in_selected_training_instances=sum(len(instance_data.state_space.get_states()) for instance_data in selected_instance_datas),
+            num_states_in_complete_selected_training_instances=sum(len(instance_data.complete_state_space.get_states()) for instance_data in selected_instance_datas),
             num_features_in_pool=len(domain_data.feature_pool.features))
         learning_statistics.print()
         print_separation_line()
@@ -264,6 +264,8 @@ def learn_sketch_for_problem_class(
         print(f"Verification time: {int(verification_timer.get_elapsed_sec()) + 1} seconds.")
         print(f"Total time: {int(total_timer.get_elapsed_sec()) + 1} seconds.")
         print(f"Total memory: {int(memory_usage() / 1024)} GiB.")
+        print("Num states in training data before symmetry pruning:", sum(len(instance_data.complete_state_space.get_states()) for instance_data in instance_datas))
+        print("Num states in training data after symmetry pruning:", sum(len(instance_data.state_space.get_states()) for instance_data in instance_datas))
         print_separation_line()
 
         print(flush=True)
