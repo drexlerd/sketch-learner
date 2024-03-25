@@ -1,5 +1,9 @@
 #!/bin/bash
 #
+./blocks_3_0.sh
+./blocks_3_1.sh
+./blocks_3_2.sh
+
 ./blocks_4_clear_0.sh
 ./blocks_4_clear_1.sh
 ./blocks_4_clear_2.sh

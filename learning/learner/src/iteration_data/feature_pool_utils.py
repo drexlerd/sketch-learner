@@ -67,7 +67,6 @@ def compute_feature_pool(domain_data: DomainData,
     for boolean in additional_booleans:
         boolean = syntactic_element_factory.parse_boolean(boolean)
         features.append(Feature(boolean, boolean.compute_complexity() + 1 + 1))
-
     print("Features generated:", len(features))
 
     # Prune features that never reach 0/False
@@ -83,7 +82,7 @@ def compute_feature_pool(domain_data: DomainData,
         if not always_nnz:
             selected_features.append(feature)
     features = selected_features
-    print("Features after pruning:", len(selected_features))
+    print("Features after 0/1 pruning (incomplete):", len(selected_features))
 
     # Prune features that decrease by more than 1 on a state transition
     soft_changing_features = set()
@@ -96,10 +95,13 @@ def compute_feature_pool(domain_data: DomainData,
                 for s_prime_idx in s_prime_idxs:
                     dlplan_target = instance_data.state_space.get_states()[s_prime_idx]
                     target_val = int(feature.dlplan_feature.evaluate(dlplan_target, instance_data.denotations_caches))
-                    if source_val != 2147483647 and source_val > target_val and (source_val > target_val + 1):
+                    if source_val in {0, 2147483647} or target_val in {0, 2147483647}:
+                        # Allow arbitrary changes on border values
+                        continue
+                    if source_val > target_val and (source_val > target_val + 1):
                         is_soft_changing = False
                         break
-                    if target_val != 2147483647 and target_val > source_val and (target_val > source_val + 1):
+                    if target_val > source_val and (target_val > source_val + 1):
                         is_soft_changing = False
                         break
                 if not is_soft_changing:
@@ -109,7 +111,7 @@ def compute_feature_pool(domain_data: DomainData,
         if is_soft_changing:
             soft_changing_features.add(feature)
     features = list(soft_changing_features)
-    print("Features soft changing:", len(features))
+    print("Features after soft changes pruning (incomplete):", len(features))
 
     # Prune features that do have same feature change a long all state pairs.
     feature_changes = dict()
@@ -140,7 +142,7 @@ def compute_feature_pool(domain_data: DomainData,
                 feature_changes[tuple(changes)] = feature
             num_pruned += 1
     features = list(feature_changes.values())
-    print("Features relevant:", len(features))
+    print("Features after relevant changes pruning (complete):", len(features))
 
     print()
 
