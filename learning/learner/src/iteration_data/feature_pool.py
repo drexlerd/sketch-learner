@@ -18,6 +18,12 @@ class Feature:
     def complexity(self):
         return self._complexity
 
+    def __eq__(self, other: "Feature"):
+        return self.dlplan_feature == other.dlplan_feature
+
+    def __hash__(self):
+        return hash(str(self.dlplan_feature))
+
 
 @dataclass
 class FeaturePool:
