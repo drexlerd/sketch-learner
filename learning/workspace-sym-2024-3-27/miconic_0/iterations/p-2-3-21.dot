@@ -1,0 +1,135 @@
+digraph {
+rankdir="LR"
+s0[label="(instance index=35, state index=0, atoms={origin(p2,f0), origin(p1,f1), lift-at(f0), origin(p0,f0)})"]
+s3[label="(instance index=35, state index=3, atoms={lift-at(f1), origin(p2,f0), origin(p1,f1), origin(p0,f0)})"]
+s1[label="(instance index=35, state index=1, atoms={origin(p2,f0), origin(p1,f1), lift-at(f0), boarded(p0)})"]
+s7[label="(instance index=35, state index=7, atoms={lift-at(f1), origin(p2,f0), boarded(p1), origin(p0,f0)})"]
+s5[label="(instance index=35, state index=5, atoms={lift-at(f1), origin(p2,f0), origin(p1,f1), boarded(p0)})"]
+s19[label="(instance index=35, state index=19, atoms={served(p0), origin(p2,f0), origin(p1,f1), lift-at(f0)})"]
+s4[label="(instance index=35, state index=4, atoms={boarded(p2), origin(p1,f1), lift-at(f0), boarded(p0)})"]
+s9[label="(instance index=35, state index=9, atoms={lift-at(f1), origin(p2,f0), boarded(p1), boarded(p0)})"]
+s10[label="(instance index=35, state index=10, atoms={served(p0), lift-at(f1), origin(p2,f0), origin(p1,f1)})"]
+s13[label="(instance index=35, state index=13, atoms={origin(p2,f0), boarded(p1), lift-at(f0), origin(p0,f0)})"]
+s34[label="(instance index=35, state index=34, atoms={served(p1), lift-at(f1), origin(p2,f0), origin(p0,f0)})"]
+s18[label="(instance index=35, state index=18, atoms={origin(p2,f0), boarded(p1), lift-at(f0), boarded(p0)})"]
+s17[label="(instance index=35, state index=17, atoms={served(p0), lift-at(f1), origin(p2,f0), boarded(p1)})"]
+s41[label="(instance index=35, state index=41, atoms={served(p1), lift-at(f1), origin(p2,f0), boarded(p0)})"]
+s23[label="(instance index=35, state index=23, atoms={served(p1), origin(p2,f0), lift-at(f0), origin(p0,f0)})"]
+s8[label="(instance index=35, state index=8, atoms={boarded(p2), lift-at(f1), origin(p1,f1), boarded(p0)})"]
+s28[label="(instance index=35, state index=28, atoms={served(p0), boarded(p2), origin(p1,f1), lift-at(f0)})"]
+s30[label="(instance index=35, state index=30, atoms={served(p0), origin(p2,f0), boarded(p1), lift-at(f0)})"]
+s15[label="(instance index=35, state index=15, atoms={served(p0), boarded(p2), lift-at(f1), origin(p1,f1)})"]
+s48[label="(instance index=35, state index=48, atoms={served(p1), served(p0), lift-at(f1), origin(p2,f0)})"]
+s26[label="(instance index=35, state index=26, atoms={boarded(p2), boarded(p1), lift-at(f0), boarded(p0)})"]
+s31[label="(instance index=35, state index=31, atoms={served(p1), origin(p2,f0), lift-at(f0), boarded(p0)})"]
+s14[label="(instance index=35, state index=14, atoms={boarded(p2), lift-at(f1), boarded(p1), boarded(p0)})"]
+s39[label="(instance index=35, state index=39, atoms={served(p0), origin(p1,f1), served(p2), lift-at(f0)})"]
+s36[label="(instance index=35, state index=36, atoms={served(p0), boarded(p2), boarded(p1), lift-at(f0)})"]
+s38[label="(instance index=35, state index=38, atoms={served(p1), boarded(p2), lift-at(f0), boarded(p0)})"]
+s24[label="(instance index=35, state index=24, atoms={served(p0), boarded(p2), lift-at(f1), boarded(p1)})"]
+s27[label="(instance index=35, state index=27, atoms={served(p0), lift-at(f1), origin(p1,f1), served(p2)})"]
+s40[label="(instance index=35, state index=40, atoms={served(p1), served(p0), origin(p2,f0), lift-at(f0)})"]
+s35[label="(instance index=35, state index=35, atoms={served(p0), lift-at(f1), served(p2), boarded(p1)})"]
+s47[label="(instance index=35, state index=47, atoms={served(p1), boarded(p2), lift-at(f1), boarded(p0)})"]
+s45[label="(instance index=35, state index=45, atoms={served(p1), served(p0), boarded(p2), lift-at(f0)})"]
+s44[label="(instance index=35, state index=44, atoms={served(p0), served(p2), boarded(p1), lift-at(f0)})"]
+s51[label="(instance index=35, state index=51, atoms={served(p1), served(p0), boarded(p2), lift-at(f1)})"]
+s53[peripheries=2,label="(instance index=35, state index=53, atoms={served(p1), served(p0), lift-at(f1), served(p2)})"]
+s50[peripheries=2,label="(instance index=35, state index=50, atoms={served(p1), served(p0), served(p2), lift-at(f0)})"]
+Dangling [ label = "", style = invis ]
+{ rank = same; Dangling }
+Dangling -> s0
+{ rank = same; s0}
+{ rank = same; s1,s7,s5}
+{ rank = same; s19,s4,s9,s10,s13,s34}
+{ rank = same; s18,s17,s41,s23,s8,s28}
+{ rank = same; s30,s15,s48,s26,s31,s14,s39}
+{ rank = same; s36,s38,s24,s27,s40}
+{ rank = same; s35,s47,s45}
+{ rank = same; s44,s51}
+{ rank = same; s53,s50}
+{
+s0->s3
+s0->s1
+s3->s7
+s3->s0
+}
+{
+s1->s5
+s1->s4
+s7->s13
+s5->s9
+s5->s10
+s5->s1
+}
+{
+s19->s28
+s19->s10
+s4->s8
+s9->s18
+s9->s17
+s10->s19
+s10->s17
+s13->s7
+s13->s23
+s13->s18
+s34->s23
+}
+{
+s18->s31
+s18->s26
+s18->s9
+s17->s30
+s41->s31
+s41->s48
+s23->s31
+s23->s34
+s8->s15
+s8->s14
+s8->s4
+s28->s15
+}
+{
+s30->s36
+s30->s17
+s30->s40
+s15->s28
+s15->s27
+s15->s24
+s48->s40
+s26->s14
+s26->s38
+s31->s38
+s31->s41
+s14->s26
+s14->s24
+s39->s27
+}
+{
+s36->s45
+s36->s24
+s38->s47
+s24->s36
+s24->s35
+s27->s39
+s27->s35
+s40->s45
+s40->s48
+}
+{
+s35->s44
+s47->s38
+s47->s51
+s45->s51
+}
+{
+s44->s35
+s44->s50
+s51->s53
+s51->s45
+}
+{
+s53->s50
+s50->s53
+}
+}

@@ -1,0 +1,13 @@
+(:policy
+(:booleans )
+(:numericals (f1335 "n_count(c_primitive(holding,0))") (f172 "n_count(r_primitive(on,0,1))") (f792 "n_concept_distance(c_one_of(b1),r_restrict(r_primitive(on,0,1),c_one_of(b2)),c_primitive(on-table,0))"))
+(:rule (:conditions (:c_n_eq f1335) (:c_n_gt f172) (:c_n_gt f792)) (:effects (:e_n_inc f1335) (:e_n_dec f172) (:e_n_bot f792)))
+(:rule (:conditions (:c_n_eq f1335) (:c_n_gt f172) (:c_n_eq f792)) (:effects (:e_n_inc f1335) (:e_n_dec f172) (:e_n_bot f792)))
+(:rule (:conditions (:c_n_gt f1335) (:c_n_gt f172) (:c_n_gt f792)) (:effects (:e_n_dec f1335) (:e_n_bot f172) (:e_n_dec f792)))
+(:rule (:conditions (:c_n_gt f1335) (:c_n_gt f172) (:c_n_gt f792)) (:effects (:e_n_dec f1335) (:e_n_bot f172) (:e_n_bot f792)))
+(:rule (:conditions (:c_n_gt f1335) (:c_n_gt f172) (:c_n_eq f792)) (:effects (:e_n_dec f1335) (:e_n_bot f172) (:e_n_bot f792)))
+(:rule (:conditions (:c_n_gt f1335) (:c_n_eq f172) (:c_n_eq f792)) (:effects (:e_n_dec f1335) (:e_n_bot f172) (:e_n_bot f792)))
+(:rule (:conditions (:c_n_gt f1335) (:c_n_gt f172) (:c_n_gt f792)) (:effects (:e_n_dec f1335) (:e_n_inc f172) (:e_n_dec f792)))
+(:rule (:conditions (:c_n_eq f1335) (:c_n_eq f172) (:c_n_eq f792)) (:effects (:e_n_inc f1335) (:e_n_bot f172) (:e_n_inc f792)))
+(:rule (:conditions (:c_n_gt f1335) (:c_n_eq f172) (:c_n_gt f792)) (:effects (:e_n_dec f1335) (:e_n_inc f172) (:e_n_dec f792)))
+)

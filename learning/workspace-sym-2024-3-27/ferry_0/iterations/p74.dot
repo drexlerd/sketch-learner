@@ -1,0 +1,51 @@
+digraph {
+rankdir="LR"
+s0[label="(instance index=5, state index=0, atoms={empty-ferry(), at(car1,loc2), at(car2,loc1), at-ferry(loc1)})"]
+s1[label="(instance index=5, state index=1, atoms={on(car2), at(car1,loc2), at-ferry(loc1)})"]
+s8[label="(instance index=5, state index=8, atoms={empty-ferry(), at(car1,loc2), at(car2,loc2), at-ferry(loc1)})"]
+s3[label="(instance index=5, state index=3, atoms={on(car2), at(car1,loc2), at-ferry(loc2)})"]
+s5[label="(instance index=5, state index=5, atoms={empty-ferry(), at(car1,loc2), at(car2,loc2), at-ferry(loc2)})"]
+s7[label="(instance index=5, state index=7, atoms={at(car2,loc2), on(car1), at-ferry(loc2)})"]
+s10[label="(instance index=5, state index=10, atoms={at(car2,loc2), at-ferry(loc1), on(car1)})"]
+s13[peripheries=2,label="(instance index=5, state index=13, atoms={empty-ferry(), at(car1,loc1), at(car2,loc2), at-ferry(loc1)})"]
+Dangling [ label = "", style = invis ]
+{ rank = same; Dangling }
+Dangling -> s0
+{ rank = same; s0}
+{ rank = same; s1}
+{ rank = same; s8,s3}
+{ rank = same; s5}
+{ rank = same; s7}
+{ rank = same; s10}
+{ rank = same; s13}
+{
+s0->s1
+s0->s0
+}
+{
+s1->s3
+s1->s0
+}
+{
+s8->s5
+s3->s5
+s3->s1
+}
+{
+s5->s7
+s5->s3
+s5->s8
+}
+{
+s7->s5
+s7->s10
+}
+{
+s10->s7
+s10->s13
+}
+{
+s13->s13
+s13->s10
+}
+}

@@ -1,0 +1,54 @@
+digraph {
+rankdir="LR"
+s11[label="(instance index=194, state index=11, atoms={visited(loc-x1-y2), visited(loc-x2-y0), visited(loc-x1-y0), at-robot(loc-x2-y0), visited(loc-x1-y1)})"]
+s6[label="(instance index=194, state index=6, atoms={visited(loc-x2-y0), visited(loc-x1-y0), at-robot(loc-x2-y0), visited(loc-x1-y1)})"]
+s3[label="(instance index=194, state index=3, atoms={visited(loc-x2-y0), visited(loc-x1-y0), at-robot(loc-x2-y0)})"]
+s0[label="(instance index=194, state index=0, atoms={visited(loc-x2-y0), at-robot(loc-x2-y0)})"]
+s9[label="(instance index=194, state index=9, atoms={visited(loc-x1-y2), visited(loc-x2-y0), visited(loc-x1-y0), at-robot(loc-x1-y0), visited(loc-x1-y1)})"]
+s4[label="(instance index=194, state index=4, atoms={visited(loc-x2-y0), visited(loc-x1-y0), at-robot(loc-x1-y0), visited(loc-x1-y1)})"]
+s1[label="(instance index=194, state index=1, atoms={visited(loc-x2-y0), visited(loc-x1-y0), at-robot(loc-x1-y0)})"]
+s7[label="(instance index=194, state index=7, atoms={visited(loc-x1-y2), visited(loc-x2-y0), visited(loc-x1-y0), at-robot(loc-x1-y1), visited(loc-x1-y1)})"]
+s2[label="(instance index=194, state index=2, atoms={visited(loc-x2-y0), visited(loc-x1-y0), at-robot(loc-x1-y1), visited(loc-x1-y1)})"]
+s5[label="(instance index=194, state index=5, atoms={at-robot(loc-x1-y2), visited(loc-x1-y2), visited(loc-x2-y0), visited(loc-x1-y0), visited(loc-x1-y1)})"]
+s8[peripheries=2,label="(instance index=194, state index=8, atoms={visited(loc-x2-y2), visited(loc-x1-y2), at-robot(loc-x2-y2), visited(loc-x2-y0), visited(loc-x1-y0), visited(loc-x1-y1)})"]
+s10[peripheries=2,label="(instance index=194, state index=10, atoms={visited(loc-x2-y2), at-robot(loc-x1-y2), visited(loc-x1-y2), visited(loc-x2-y0), visited(loc-x1-y0), visited(loc-x1-y1)})"]
+s12[peripheries=2,label="(instance index=194, state index=12, atoms={visited(loc-x2-y2), visited(loc-x1-y2), visited(loc-x2-y0), visited(loc-x1-y0), at-robot(loc-x1-y1), visited(loc-x1-y1)})"]
+Dangling [ label = "", style = invis ]
+{ rank = same; Dangling }
+Dangling -> s0
+{ rank = same; s0}
+{ rank = same; s9,s4,s1}
+{ rank = same; s7,s2}
+{ rank = same; s5}
+{ rank = same; s8,s10,s12}
+{
+s11->s9
+s6->s4
+s3->s1
+s0->s1
+}
+{
+s9->s7
+s9->s11
+s4->s6
+s4->s2
+s1->s3
+s1->s2
+}
+{
+s7->s5
+s7->s9
+s2->s5
+s2->s4
+}
+{
+s5->s7
+s5->s8
+}
+{
+s8->s10
+s10->s12
+s10->s8
+s12->s10
+}
+}
