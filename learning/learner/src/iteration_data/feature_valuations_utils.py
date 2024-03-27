@@ -3,9 +3,10 @@ from typing import List
 from .feature_valuations import FeatureValuations, PerStateFeatureValuations
 
 from ..instance_data.instance_data import InstanceData
+from ..domain_data.domain_data import DomainData
 
 
-def compute_per_state_feature_valuations(instance_datas: List[InstanceData]) -> None:
+def compute_per_state_feature_valuations(instance_datas: List[InstanceData], domain_data: DomainData) -> None:
     """ Evaluates the features on all states.
     """
     for instance_data in instance_datas:
