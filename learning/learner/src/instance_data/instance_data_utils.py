@@ -41,7 +41,9 @@ def compute_instance_datas(domain_filepath: Path,
 
             ## Prune isomorphic instances
             max_distance_equivalence_class_keys = exact_driver.get_max_distance_equivalence_class_keys()
-            assert max_distance_equivalence_class_keys
+            if not max_distance_equivalence_class_keys:
+                # Unsolvable
+                continue
             if all(equivalence_class_key in equivalence_class_key_to_num_states for equivalence_class_key in max_distance_equivalence_class_keys):
                 print("Found isomorphic instance")
                 num_states_i = equivalence_class_key_to_num_states[max_distance_equivalence_class_keys[0]]
