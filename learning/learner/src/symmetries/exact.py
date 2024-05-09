@@ -162,3 +162,7 @@ class Driver:
             print()
 
             return self._domain, self._problem, equivalence_class_key_to_class_index, class_index_to_representative_state, class_index_to_successor_class_indices, state_to_class_index, self._state_space
+
+    @property
+    def state_space(self):
+        return self._state_space

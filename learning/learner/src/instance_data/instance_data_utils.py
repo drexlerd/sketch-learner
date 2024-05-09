@@ -39,6 +39,10 @@ def compute_instance_datas(domain_filepath: Path,
 
             exact_driver = Driver(domain_filepath, instance_filepath, max_num_states_per_instance, "INFO", enable_dump_files, coloring_function)
 
+            ## Prune too large instances
+            if exact_driver._state_space is None:
+                continue
+
             ## Prune isomorphic instances
             max_distance_equivalence_class_keys = exact_driver.get_max_distance_equivalence_class_keys()
             if not max_distance_equivalence_class_keys:
@@ -51,10 +55,6 @@ def compute_instance_datas(domain_filepath: Path,
                 continue
 
             domain, problem, equivalence_class_key_to_class_index, class_index_to_representative_state, class_index_to_successor_class_indices, state_to_class_index, mimir_state_space = exact_driver.run()
-
-            ## Prune too large instances
-            if domain is None:
-                continue
 
             ## Add global isomorphism data for pruning isomorphic instances
             num_states += len(mimir_state_space.get_states())
