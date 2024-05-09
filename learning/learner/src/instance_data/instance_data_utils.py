@@ -40,7 +40,7 @@ def compute_instance_datas(domain_filepath: Path,
             exact_driver = Driver(domain_filepath, instance_filepath, max_num_states_per_instance, "INFO", enable_dump_files, coloring_function)
 
             ## Prune too large instances
-            if exact_driver._state_space is None:
+            if exact_driver.state_space is None:
                 continue
 
             ## Prune isomorphic instances
