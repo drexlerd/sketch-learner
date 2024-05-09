@@ -76,7 +76,7 @@ def learn_sketch_for_problem_class(
     # Generate data
     with change_dir("input"):
         logging.info(colored("Constructing InstanceDatas...", "blue", "on_grey"))
-        instance_datas, domain_data = compute_instance_datas(domain_filepath, instance_filepaths, disable_closed_Q, max_num_states_per_instance, max_time_per_instance, enable_dump_files)
+        instance_datas, domain_data, num_states, num_partitions = compute_instance_datas(domain_filepath, instance_filepaths, disable_closed_Q, max_num_states_per_instance, max_time_per_instance, enable_dump_files)
         logging.info(colored("..done", "blue", "on_grey"))
 
         logging.info(colored("Initializing TupleGraphs...", "blue", "on_grey"))
@@ -264,8 +264,8 @@ def learn_sketch_for_problem_class(
         print(f"Verification time: {int(verification_timer.get_elapsed_sec()) + 1} seconds.")
         print(f"Total time: {int(total_timer.get_elapsed_sec()) + 1} seconds.")
         print(f"Total memory: {int(memory_usage() / 1024)} GiB.")
-        print("Num states in training data before symmetry pruning:", sum(len(instance_data.complete_state_space.get_states()) for instance_data in instance_datas))
-        print("Num states in training data after symmetry pruning:", sum(len(instance_data.state_space.get_states()) for instance_data in instance_datas))
+        print("Num states in training data before symmetry pruning:", num_states)
+        print("Num states in training data after symmetry pruning:", num_partitions)
         print_separation_line()
 
         print(flush=True)

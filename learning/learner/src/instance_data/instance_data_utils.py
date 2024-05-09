@@ -12,7 +12,7 @@ from ..domain_data.domain_data import DomainData
 from ..domain_data.domain_data_utils import compute_domain_data
 from ..util.command import change_dir, write_file
 from ..symmetries.exact import Driver
-
+from ..symmetries.key_to_int import KeyToInt
 
 def compute_instance_datas(domain_filepath: Path,
                            instance_filepaths: List[Path],
@@ -22,16 +22,43 @@ def compute_instance_datas(domain_filepath: Path,
                            enable_dump_files: bool) -> Tuple[List[InstanceData], DomainData]:
     vocabulary_info = None
     instance_datas = []
+    coloring_function = KeyToInt()
+
+    # Prune instances with same equivalence class key
+    equivalence_class_key_to_num_states = dict()
+    equivalence_class_key_to_instance_name = dict()
+
+    num_states = 0
+    num_partitions = 0
+
     for i, instance_filepath in enumerate(instance_filepaths):
         name = instance_filepath.stem
         with change_dir(f"state_spaces/{name}", enable=enable_dump_files):
             logging.info("Constructing InstanceData for filename %s", instance_filepath)
             # change working directory to put planner output files in correct directory
 
-            ## New code
-            domain, problem, class_index_to_representative_state, class_index_to_successor_class_indices, state_to_class_index, mimir_state_space = Driver(domain_filepath, instance_filepath, max_num_states_per_instance, "INFO", enable_dump_files).run()
+            exact_driver = Driver(domain_filepath, instance_filepath, max_num_states_per_instance, "INFO", enable_dump_files, coloring_function)
+
+            ## Prune isomorphic instances
+            max_distance_equivalence_class_keys = exact_driver.get_max_distance_equivalence_class_keys()
+            assert max_distance_equivalence_class_keys
+            if all(equivalence_class_key in equivalence_class_key_to_num_states for equivalence_class_key in max_distance_equivalence_class_keys):
+                print("Found isomorphic instance")
+                num_states_i = equivalence_class_key_to_num_states[max_distance_equivalence_class_keys[0]]
+                num_states += num_states_i
+                continue
+
+            domain, problem, equivalence_class_key_to_class_index, class_index_to_representative_state, class_index_to_successor_class_indices, state_to_class_index, mimir_state_space = exact_driver.run()
+
+            ## Prune too large instances
             if domain is None:
                 continue
+
+            ## Add global isomorphism data for pruning isomorphic instances
+            num_states += len(mimir_state_space.get_states())
+            for equivalence_class_key in equivalence_class_key_to_class_index:
+                equivalence_class_key_to_num_states[equivalence_class_key] = len(mimir_state_space.get_states())
+                equivalence_class_key_to_instance_name[equivalence_class_key] = name
 
             if vocabulary_info is None:
                 # We obtain the parsed vocabulary from the first instance
@@ -138,6 +165,8 @@ def compute_instance_datas(domain_filepath: Path,
             instance_data.complete_state_space = complete_state_space
             instance_data.state_index_to_representative_state_index = state_index_to_representative_state_index
 
+            num_partitions += len(state_space.get_states())
+
             if enable_dump_files:
                 write_file(f"{name}.dot", state_space.to_dot(1))
 
@@ -153,4 +182,4 @@ def compute_instance_datas(domain_filepath: Path,
     for instance_idx, instance_data in enumerate(instance_datas):
         instance_data.id = instance_idx
 
-    return instance_datas, domain_data
+    return instance_datas, domain_data, num_states, num_partitions
