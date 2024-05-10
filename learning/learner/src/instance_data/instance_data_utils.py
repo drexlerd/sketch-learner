@@ -38,23 +38,27 @@ def compute_instance_datas(domain_filepath: Path,
             # change working directory to put planner output files in correct directory
 
             exact_driver = Driver(domain_filepath, instance_filepath, max_num_states_per_instance, "INFO", enable_dump_files, coloring_function)
+            mimir_state_space = exact_driver.state_space
+            domain = exact_driver.domain
+            problem = exact_driver.problem
 
-            ## Prune too large instances
-            if exact_driver.state_space is None:
+            if mimir_state_space is None:
+                # Instance is too large
                 continue
 
             ## Prune isomorphic instances
             max_distance_equivalence_class_keys = exact_driver.get_max_distance_equivalence_class_keys()
             if not max_distance_equivalence_class_keys:
-                # Unsolvable
+                # Instance is unsolvable
                 continue
+
             if all(equivalence_class_key in equivalence_class_key_to_num_states for equivalence_class_key in max_distance_equivalence_class_keys):
                 print("Found isomorphic instance")
                 num_states_i = equivalence_class_key_to_num_states[max_distance_equivalence_class_keys[0]]
                 num_states += num_states_i
                 continue
 
-            domain, problem, equivalence_class_key_to_class_index, class_index_to_representative_state, class_index_to_successor_class_indices, state_to_class_index, mimir_state_space = exact_driver.run()
+            equivalence_class_key_to_class_index, class_index_to_representative_state, class_index_to_successor_class_indices, state_to_class_index = exact_driver.run()
 
             ## Add global isomorphism data for pruning isomorphic instances
             num_states += len(mimir_state_space.get_states())

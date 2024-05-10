@@ -71,8 +71,9 @@ class UVCGraph:
                     dot.edge(str(source_id), str(target_id))
         dot.render(output_file_path, view=False, quiet=True)
 
-    def get_colors(self):
-        return tuple(sorted(list(set(vertex.color.value for vertex in self._vertices.values()))))
+    def get_color_histogram(self):
+        """ Return lexicographically sorted color histogram. """
+        return tuple(sorted(list(vertex.color.value for vertex in self._vertices.values())))
 
     @property
     def state(self):

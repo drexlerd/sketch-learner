@@ -35,7 +35,11 @@ def create_pynauty_undirected_vertex_colored_graph(uvc_graph: UVCGraph) -> Nauty
             directed=False,
             adjacency_dict=adjacency_dict,
             vertex_coloring=vertex_coloring)
+
+        # sprint(str(graph))
+
         return graph
+
 
 def compute_nauty_certificate(nauty_graph: NautyGraph):
     return certificate(nauty_graph)
@@ -73,7 +77,7 @@ class Driver:
             if goal_distance != -1 and goal_distance == max_distance:
                 state_graph = StateGraph(state, self._coloring_function)
                 nauty_certificate = compute_nauty_certificate(create_pynauty_undirected_vertex_colored_graph(state_graph.uvc_graph))
-                equivalence_class_key = (nauty_certificate, state_graph.uvc_graph.get_colors())
+                equivalence_class_key = (nauty_certificate, state_graph.uvc_graph.get_color_histogram())
                 equivalence_class_keys.append(equivalence_class_key)
 
         return equivalence_class_keys
@@ -102,7 +106,7 @@ class Driver:
             num_generated_states = 1
             initial_state_graph = StateGraph(initial_state, self._coloring_function)
             initial_nauty_certificate = compute_nauty_certificate(create_pynauty_undirected_vertex_colored_graph(initial_state_graph.uvc_graph))
-            initial_equivalence_class_key = (initial_nauty_certificate, initial_state_graph.uvc_graph.get_colors())
+            initial_equivalence_class_key = (initial_nauty_certificate, initial_state_graph.uvc_graph.get_color_histogram())
 
             equivalence_class_key_to_class_index[initial_equivalence_class_key] = 0
             class_index_to_representative_state[0] = initial_state
@@ -122,7 +126,7 @@ class Driver:
 
                     state_graph = StateGraph(suc_state, self._coloring_function)
                     nauty_certificate = compute_nauty_certificate(create_pynauty_undirected_vertex_colored_graph(state_graph.uvc_graph))
-                    equivalence_class_key = (nauty_certificate, state_graph.uvc_graph.get_colors())
+                    equivalence_class_key = (nauty_certificate, state_graph.uvc_graph.get_color_histogram())
 
                     # Try add new class
                     if equivalence_class_key not in equivalence_class_key_to_class_index:
@@ -161,8 +165,16 @@ class Driver:
             print("Number of equivalence classes:", len(equivalence_class_key_to_class_index))
             print()
 
-            return self._domain, self._problem, equivalence_class_key_to_class_index, class_index_to_representative_state, class_index_to_successor_class_indices, state_to_class_index, self._state_space
+            return equivalence_class_key_to_class_index, class_index_to_representative_state, class_index_to_successor_class_indices, state_to_class_index
 
     @property
     def state_space(self):
         return self._state_space
+
+    @property
+    def domain(self):
+        return self._domain
+
+    @property
+    def problem(self):
+        return self._problem
