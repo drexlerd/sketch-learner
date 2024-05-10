@@ -85,64 +85,64 @@ def compute_feature_pool(domain_data: DomainData,
     print("Features after 0/1 pruning (incomplete):", len(selected_features))
 
     # Prune features that decrease by more than 1 on a state transition
-    #soft_changing_features = set()
-    #for feature in features:
-    #    is_soft_changing = True
-    #    for instance_data in instance_datas:
-    #        for s_idx, s_prime_idxs in instance_data.state_space.get_forward_successor_state_indices().items():
-    #            dlplan_source = instance_data.state_space.get_states()[s_idx]
-    #            source_val = int(feature.dlplan_feature.evaluate(dlplan_source, instance_data.denotations_caches))
-    #            for s_prime_idx in s_prime_idxs:
-    #                dlplan_target = instance_data.state_space.get_states()[s_prime_idx]
-    #                target_val = int(feature.dlplan_feature.evaluate(dlplan_target, instance_data.denotations_caches))
-    #                if source_val in {0, 2147483647} or target_val in {0, 2147483647}:
-    #                    # Allow arbitrary changes on border values
-    #                    continue
-    #                if source_val > target_val and (source_val > target_val + 1):
-    #                    is_soft_changing = False
-    #                    break
-    #                if target_val > source_val and (target_val > source_val + 1):
-    #                    is_soft_changing = False
-    #                    break
-    #            if not is_soft_changing:
-    #                break
-    #        if not is_soft_changing:
-    #            break
-    #    if is_soft_changing:
-    #        soft_changing_features.add(feature)
-    #features = list(soft_changing_features)
-    #print("Features after soft changes pruning (incomplete):", len(features))
-#
-    ## Prune features that do have same feature change a long all state pairs.
-    #feature_changes = dict()
-    #num_pruned = 0
-    #for feature in features:
-    #    changes = []
-    #    for instance_data in instance_datas:
-    #        for s_idx, tuple_graph in instance_data.per_state_tuple_graphs.s_idx_to_tuple_graph.items():
-    #            if instance_data.is_deadend(s_idx):
-    #                continue
-    #            dlplan_source = instance_data.state_space.get_states()[s_idx]
-    #            source_val = int(feature.dlplan_feature.evaluate(dlplan_source, instance_data.denotations_caches))
-    #            for _, s_prime_idxs in enumerate(tuple_graph.get_state_indices_by_distance()):
-    #                for s_prime_idx in set(instance_data.state_index_to_representative_state_index[s] for s in s_prime_idxs):
-    #                    dlplan_target = instance_data.state_space.get_states()[s_prime_idx]
-    #                    target_val = int(feature.dlplan_feature.evaluate(dlplan_target, instance_data.denotations_caches))
-    #                    if source_val < target_val:
-    #                        changes.append(FeatureChange.UP)
-    #                    elif source_val > target_val:
-    #                        changes.append(FeatureChange.DOWN)
-    #                    else:
-    #                        changes.append(FeatureChange.BOT)
-    #    existing_feature = feature_changes.get(tuple(changes), None)
-    #    if existing_feature is None:
-    #        feature_changes[tuple(changes)] = feature
-    #    else:
-    #        if existing_feature.complexity > feature.complexity:
-    #            feature_changes[tuple(changes)] = feature
-    #        num_pruned += 1
-    #features = list(feature_changes.values())
-    #print("Features after relevant changes pruning (complete):", len(features))
+    soft_changing_features = set()
+    for feature in features:
+        is_soft_changing = True
+        for instance_data in instance_datas:
+            for s_idx, s_prime_idxs in instance_data.state_space.get_forward_successor_state_indices().items():
+                dlplan_source = instance_data.state_space.get_states()[s_idx]
+                source_val = int(feature.dlplan_feature.evaluate(dlplan_source, instance_data.denotations_caches))
+                for s_prime_idx in s_prime_idxs:
+                    dlplan_target = instance_data.state_space.get_states()[s_prime_idx]
+                    target_val = int(feature.dlplan_feature.evaluate(dlplan_target, instance_data.denotations_caches))
+                    if source_val in {0, 2147483647} or target_val in {0, 2147483647}:
+                        # Allow arbitrary changes on border values
+                        continue
+                    if source_val > target_val and (source_val > target_val + 1):
+                        is_soft_changing = False
+                        break
+                    if target_val > source_val and (target_val > source_val + 1):
+                        is_soft_changing = False
+                        break
+                if not is_soft_changing:
+                    break
+            if not is_soft_changing:
+                break
+        if is_soft_changing:
+            soft_changing_features.add(feature)
+    features = list(soft_changing_features)
+    print("Features after soft changes pruning (incomplete):", len(features))
+
+    # Prune features that do have same feature change a long all state pairs.
+    feature_changes = dict()
+    num_pruned = 0
+    for feature in features:
+        changes = []
+        for instance_data in instance_datas:
+            for s_idx, tuple_graph in instance_data.per_state_tuple_graphs.s_idx_to_tuple_graph.items():
+                if instance_data.is_deadend(s_idx):
+                    continue
+                dlplan_source = instance_data.state_space.get_states()[s_idx]
+                source_val = int(feature.dlplan_feature.evaluate(dlplan_source, instance_data.denotations_caches))
+                for _, s_prime_idxs in enumerate(tuple_graph.get_state_indices_by_distance()):
+                    for s_prime_idx in set(instance_data.state_index_to_representative_state_index[s] for s in s_prime_idxs):
+                        dlplan_target = instance_data.state_space.get_states()[s_prime_idx]
+                        target_val = int(feature.dlplan_feature.evaluate(dlplan_target, instance_data.denotations_caches))
+                        if source_val < target_val:
+                            changes.append(FeatureChange.UP)
+                        elif source_val > target_val:
+                            changes.append(FeatureChange.DOWN)
+                        else:
+                            changes.append(FeatureChange.BOT)
+        existing_feature = feature_changes.get(tuple(changes), None)
+        if existing_feature is None:
+            feature_changes[tuple(changes)] = feature
+        else:
+            if existing_feature.complexity > feature.complexity:
+                feature_changes[tuple(changes)] = feature
+            num_pruned += 1
+    features = list(feature_changes.values())
+    print("Features after relevant changes pruning (complete):", len(features))
 
     print()
 
