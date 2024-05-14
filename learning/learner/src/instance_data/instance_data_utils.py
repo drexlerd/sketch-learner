@@ -47,15 +47,11 @@ def compute_instance_datas(domain_filepath: Path,
                 continue
 
             ## Prune isomorphic instances
-            # TODO: consider also states that are at max distance but not reachable from each other.
-            max_distance_equivalence_class_keys = exact_driver.get_furthest_distance_equivalence_class_keys()
-            if not max_distance_equivalence_class_keys:
-                # Instance is unsolvable
-                continue
+            initial_distance_equivalence_class_keys = exact_driver.get_initial_state_equivalence_class_keys()
 
-            if all(equivalence_class_key in equivalence_class_key_to_num_states for equivalence_class_key in max_distance_equivalence_class_keys):
+            if initial_distance_equivalence_class_keys in equivalence_class_key_to_num_states:
                 print("Found isomorphic instance")
-                num_states_i = equivalence_class_key_to_num_states[max_distance_equivalence_class_keys[0]]
+                num_states_i = equivalence_class_key_to_num_states[initial_distance_equivalence_class_keys]
                 num_states += num_states_i
                 continue
 
