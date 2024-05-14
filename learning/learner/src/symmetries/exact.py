@@ -69,16 +69,36 @@ class Driver:
         self._logger.info("Finished generating state space")
 
 
-    def get_max_distance_equivalence_class_keys(self):
+    def get_furthest_distance_equivalence_class_keys(self):
         equivalence_class_keys = []
-        max_distance = self._state_space.get_longest_distance_to_goal_state()
-        for state in self._state_space.get_states():
-            goal_distance = self._state_space.get_distance_to_goal_state(state)
-            if goal_distance != -1 and goal_distance == max_distance:
-                state_graph = StateGraph(state, self._coloring_function)
-                nauty_certificate = compute_nauty_certificate(create_pynauty_undirected_vertex_colored_graph(state_graph.uvc_graph))
-                equivalence_class_key = (nauty_certificate, state_graph.uvc_graph.get_color_histogram())
-                equivalence_class_keys.append(equivalence_class_key)
+        queue = deque()
+        goal_distances = dict()
+        for state in self._state_space.get_goal_states():
+            goal_distances[state] = 0
+            queue.append(state)
+        furthest_distance_states = set()
+        while queue:
+            cur_state = queue.popleft()
+            cost = goal_distances[cur_state]
+
+            exists_further_state = False
+
+            for transition in self._state_space.get_backward_transitions(cur_state):
+                suc_state = transition.source
+
+                if suc_state not in goal_distances:
+                    goal_distances[suc_state] = cost + 1
+                    exists_further_state = True
+                    queue.append(suc_state)
+
+            if not exists_further_state:
+                furthest_distance_states.add(cur_state)
+
+        for state in furthest_distance_states:
+            state_graph = StateGraph(state, self._coloring_function)
+            nauty_certificate = compute_nauty_certificate(create_pynauty_undirected_vertex_colored_graph(state_graph.uvc_graph))
+            equivalence_class_key = (nauty_certificate, state_graph.uvc_graph.get_color_histogram())
+            equivalence_class_keys.append(equivalence_class_key)
 
         return equivalence_class_keys
 
