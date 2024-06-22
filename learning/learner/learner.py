@@ -76,7 +76,7 @@ def learn_sketch_for_problem_class(
     # Generate data
     with change_dir("input"):
         logging.info(colored("Constructing InstanceDatas...", "blue", "on_grey"))
-        instance_datas, domain_data, num_states, num_partitions = compute_instance_datas(domain_filepath, instance_filepaths, disable_closed_Q, max_num_states_per_instance, max_time_per_instance, enable_dump_files)
+        instance_datas, domain_data = compute_instance_datas(domain_filepath, instance_filepaths, disable_closed_Q, max_num_states_per_instance, max_time_per_instance, enable_dump_files)
         logging.info(colored("..done", "blue", "on_grey"))
 
         logging.info(colored("Initializing TupleGraphs...", "blue", "on_grey"))
@@ -97,13 +97,12 @@ def learn_sketch_for_problem_class(
                 preprocessing_timer.resume()
                 selected_instance_datas : List[InstanceData] = [instance_datas[subproblem_idx] for subproblem_idx in selected_instance_idxs]
                 for instance_data in selected_instance_datas:
-                    name = instance_data.instance_filepath.stem
-                    write_file(f"{name}.dot", instance_data.state_space.to_dot(1))
+                    write_file(f"{instance_data.id}.dot", instance_data.dlplan_state_space.to_dot(1))
                     print("     ", end="")
                     print("id:", instance_data.id,
-                          "name:", name,
-                          "num_states:", len(instance_data.complete_state_space.get_states()),
-                          "num_state_equivalences:", len(instance_data.state_space.get_states()))
+                          "problem_filepath:", instance_data.mimir_state_space.get_pddl_parser().get_problem_filepath(),
+                          "num_states:", instance_data.mimir_state_space.get_num_states(),
+                          "num_state_equivalences:", instance_data.global_faithful_abstraction.get_num_states())
 
                 logging.info(colored("Initializing DomainFeatureData...", "blue", "on_grey"))
                 domain_data.feature_pool = compute_feature_pool(
