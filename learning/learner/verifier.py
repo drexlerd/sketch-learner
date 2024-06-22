@@ -55,7 +55,7 @@ def verify_sketch_for_problem_class(
         instance_datas, domain_data = compute_instance_datas(domain_filepath, instance_filepaths, disable_closed_Q, max_num_states_per_instance, max_time_per_instance, enable_dump_files)
         logging.info(colored("..done", "blue", "on_grey"))
 
-        for s_idx in instance_datas[0].initial_s_idxs:
+        for s_idx in instance_datas[0].initial_global_s_idxs:
             print(instance_datas[0].state_space.get_states()[s_idx])
 
         for instance_data in instance_datas:
@@ -71,11 +71,11 @@ def verify_sketch_for_problem_class(
     for instance_data in instance_datas:
         for numerical in [n.get_element() for n in sketch.dlplan_policy.get_numericals()]:
             representative_feature_valuations = defaultdict(set)
-            for state_index, representative_index in instance_data.state_index_to_representative_state_index.items():
+            for state_index, representative_index in instance_data.concrete_s_idx_to_global_s_idx.items():
                 representative_feature_valuations[representative_index].add(numerical.evaluate(instance_data.complete_state_space.get_states()[state_index]))
                 if len(representative_feature_valuations[representative_index]) > 1:
                     print(str(numerical))
-                    for state_index2, representative_index2 in instance_data.state_index_to_representative_state_index.items():
+                    for state_index2, representative_index2 in instance_data.concrete_s_idx_to_global_s_idx.items():
                         if representative_index == representative_index2:
                             print(instance_data.complete_state_space.get_states()[state_index2])
                             print(numerical.evaluate(instance_data.complete_state_space.get_states()[state_index2]))

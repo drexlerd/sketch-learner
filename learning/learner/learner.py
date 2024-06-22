@@ -14,7 +14,7 @@ from .src.util.command import create_experiment_workspace, change_working_direct
 from .src.util.performance import memory_usage
 from .src.util.timer import Timer
 from .src.util.console import add_console_handler, print_separation_line
-from .src.instance_data.instance_data import InstanceData
+from .src.instance_data.instance_data import InstanceData, StateFinder
 from .src.instance_data.instance_data_utils import compute_instance_datas
 from .src.instance_data.tuple_graph_utils import compute_tuple_graphs
 from .src.iteration_data.learning_statistics import LearningStatistics
@@ -78,6 +78,8 @@ def learn_sketch_for_problem_class(
         logging.info(colored("Constructing InstanceDatas...", "blue", "on_grey"))
         instance_datas, domain_data = compute_instance_datas(domain_filepath, instance_filepaths, disable_closed_Q, max_num_states_per_instance, max_time_per_instance, enable_dump_files)
         logging.info(colored("..done", "blue", "on_grey"))
+        if instance_datas is None and domain_data is None:
+            raise Exception("Failed to create InstanceData.")
 
         logging.info(colored("Initializing TupleGraphs...", "blue", "on_grey"))
         compute_tuple_graphs(width, instance_datas, enable_dump_files)
@@ -97,17 +99,20 @@ def learn_sketch_for_problem_class(
                 preprocessing_timer.resume()
                 selected_instance_datas : List[InstanceData] = [instance_datas[subproblem_idx] for subproblem_idx in selected_instance_idxs]
                 for instance_data in selected_instance_datas:
-                    write_file(f"{instance_data.id}.dot", instance_data.dlplan_state_space.to_dot(1))
+                    write_file(f"{instance_data.idx}.dot", instance_data.dlplan_state_space.to_dot(1))
                     print("     ", end="")
-                    print("id:", instance_data.id,
+                    print("id:", instance_data.idx,
                           "problem_filepath:", instance_data.mimir_state_space.get_pddl_parser().get_problem_filepath(),
                           "num_states:", instance_data.mimir_state_space.get_num_states(),
                           "num_state_equivalences:", instance_data.global_faithful_abstraction.get_num_states())
+
+                state_finder = StateFinder(domain_data, selected_instance_datas)
 
                 logging.info(colored("Initializing DomainFeatureData...", "blue", "on_grey"))
                 domain_data.feature_pool = compute_feature_pool(
                     domain_data,
                     selected_instance_datas,
+                    state_finder,
                     disable_feature_generation,
                     concept_complexity_limit,
                     role_complexity_limit,

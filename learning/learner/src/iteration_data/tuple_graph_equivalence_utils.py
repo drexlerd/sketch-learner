@@ -20,7 +20,7 @@ def compute_tuple_graph_equivalences(instance_datas: List[InstanceData]) -> None
             tuple_graph_equivalence = TupleGraphEquivalence()
             # rule distances, deadend rule distances
             for state_distance, s_prime_idxs in enumerate(tuple_graph.get_state_indices_by_distance()):
-                for s_prime_idx in set(instance_data.state_index_to_representative_state_index[s] for s in s_prime_idxs):
+                for s_prime_idx in set(instance_data.concrete_s_idx_to_global_s_idx[s] for s in s_prime_idxs):
                     r_idx = state_pair_equivalence.subgoal_state_to_r_idx[s_prime_idx]
                     if instance_data.is_deadend(s_prime_idx):
                         tuple_graph_equivalence.r_idx_to_deadend_distance[r_idx] = min(tuple_graph_equivalence.r_idx_to_deadend_distance.get(r_idx, math.inf), state_distance)
@@ -29,7 +29,7 @@ def compute_tuple_graph_equivalences(instance_datas: List[InstanceData]) -> None
                     tuple_node = tuple_graph.get_tuple_nodes()[tuple_node_index]
                     t_idx = tuple_node.get_index()
                     r_idxs = set()
-                    for s_prime_idx in set(instance_data.state_index_to_representative_state_index[s] for s in tuple_node.get_state_indices()):
+                    for s_prime_idx in set(instance_data.concrete_s_idx_to_global_s_idx[s] for s in tuple_node.get_state_indices()):
                         r_idx = state_pair_equivalence.subgoal_state_to_r_idx[s_prime_idx]
                         r_idxs.add(r_idx)
                     tuple_graph_equivalence.t_idx_to_distance[t_idx] = subgoal_distance

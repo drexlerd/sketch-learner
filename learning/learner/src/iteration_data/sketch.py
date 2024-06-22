@@ -24,9 +24,9 @@ class Sketch:
         that are closer than the closest satisfied subgoal tuple.
         """
         queue = deque()
-        queue.extend(instance_data.initial_s_idxs)
+        queue.extend(instance_data.initial_global_s_idxs)
         visited = set()
-        visited.update(instance_data.initial_s_idxs)
+        visited.update(instance_data.initial_global_s_idxs)
         # byproduct for acyclicity check
         subgoal_states_per_r_reachable_state = defaultdict(set)
         while queue:
@@ -44,7 +44,7 @@ class Sketch:
             min_compatible_distance = math.inf
             for tuple_distance, tuple_node_indices in enumerate(tuple_graph.get_tuple_node_indices_by_distance()):
                 # Dominik (2024-3-13): Must also check states underlying pruned subgoal tuples.
-                for s_prime_idx in set(instance_data.state_index_to_representative_state_index[s] for s in tuple_graph.get_state_indices_by_distance()[tuple_distance]):
+                for s_prime_idx in set(instance_data.concrete_s_idx_to_global_s_idx[s] for s in tuple_graph.get_state_indices_by_distance()[tuple_distance]):
                     target_state = instance_data.state_space.get_states()[s_prime_idx]
                     if self.dlplan_policy.evaluate(source_state, target_state, instance_data.denotations_caches) is not None:
                         min_compatible_distance = min(min_compatible_distance, tuple_distance)
@@ -57,7 +57,7 @@ class Sketch:
                 for tuple_node_index in tuple_node_indices:
                     tuple_node = tuple_graph.get_tuple_nodes()[tuple_node_index]
                     is_subgoal_tuple = True
-                    for s_prime_idx in set(instance_data.state_index_to_representative_state_index[s] for s in tuple_node.get_state_indices()):
+                    for s_prime_idx in set(instance_data.concrete_s_idx_to_global_s_idx[s] for s in tuple_node.get_state_indices()):
                         target_state = instance_data.state_space.get_states()[s_prime_idx]
                         if self.dlplan_policy.evaluate(source_state, target_state, instance_data.denotations_caches) is not None:
                             min_compatible_distance = min(min_compatible_distance, tuple_distance)

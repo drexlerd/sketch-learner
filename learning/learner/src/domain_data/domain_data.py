@@ -1,4 +1,5 @@
 from dataclasses import dataclass
+from typing import List
 
 from dlplan.core import VocabularyInfo, SyntacticElementFactory
 from dlplan.policy import PolicyFactory
@@ -14,5 +15,6 @@ class DomainData:
     vocabulary_info: VocabularyInfo
     policy_builder: PolicyFactory
     syntactic_element_factory: SyntacticElementFactory
+    instance_idx_remap : List[int] = None
     feature_pool: FeaturePool = None
     domain_state_pair_equivalence: StatePairEquivalenceClasses = None
