@@ -9,6 +9,7 @@ from ..domain_data.domain_data import DomainData
 def compute_per_state_feature_valuations(instance_datas: List[InstanceData], domain_data: DomainData) -> None:
     """ Evaluates the features on all states.
     """
+    # For simplicity we just evaluate the features on all concrete states.
     for instance_data in instance_datas:
         per_state_feature_valuations = PerStateFeatureValuations()
         for s_idx, dlplan_state in instance_data.dlplan_state_space.get_states().items():

@@ -129,11 +129,11 @@ def learn_sketch_for_problem_class(
                 logging.info(colored("..done", "blue", "on_grey"))
 
                 logging.info(colored("Constructing StatePairEquivalenceDatas...", "blue", "on_grey"))
-                compute_state_pair_equivalences(domain_data, selected_instance_datas)
+                compute_state_pair_equivalences(domain_data, selected_instance_datas, state_finder)
                 logging.info(colored("..done", "blue", "on_grey"))
 
                 logging.info(colored("Constructing TupleGraphEquivalences...", "blue", "on_grey"))
-                compute_tuple_graph_equivalences(selected_instance_datas)
+                compute_tuple_graph_equivalences(selected_instance_datas, state_finder)
                 logging.info(colored("..done", "blue", "on_grey"))
 
                 logging.info(colored("Minimizing TupleGraphEquivalences...", "blue", "on_grey"))

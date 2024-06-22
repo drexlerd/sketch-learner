@@ -4,14 +4,14 @@ from collections import defaultdict
 
 from .tuple_graph_equivalence import TupleGraphEquivalence, PerStateTupleGraphEquivalences
 
-from ..instance_data.instance_data import InstanceData
+from ..instance_data.instance_data import InstanceData, StateFinder
 
 
-def compute_tuple_graph_equivalences(instance_datas: List[InstanceData]) -> None:
+def compute_tuple_graph_equivalences(instance_datas: List[InstanceData], state_finder: StateFinder) -> None:
     """ Computes information for all subgoal states, tuples and rules over F.
     """
     num_nodes = 0
-    for instance_data in instance_datas:
+    for instance_idx, instance_data in enumerate(instance_datas):
         per_state_tuple_graph_equivalences = PerStateTupleGraphEquivalences()
         for s_idx, tuple_graph in instance_data.per_state_tuple_graphs.s_idx_to_tuple_graph.items():
             if instance_data.is_deadend(s_idx):
@@ -19,17 +19,17 @@ def compute_tuple_graph_equivalences(instance_datas: List[InstanceData]) -> None
             state_pair_equivalence = instance_data.per_state_state_pair_equivalences.s_idx_to_state_pair_equivalence[s_idx]
             tuple_graph_equivalence = TupleGraphEquivalence()
             # rule distances, deadend rule distances
-            for state_distance, s_prime_idxs in enumerate(tuple_graph.get_state_indices_by_distance()):
-                for s_prime_idx in set(instance_data.concrete_s_idx_to_global_s_idx[s] for s in s_prime_idxs):
+            for s_distance, target_mimir_states in enumerate(tuple_graph.get_states_by_distance()):
+                for s_prime_idx in [state_finder.get_state_id_in_complete_state_space(state_finder.get_global_state(instance_idx, target_mimir_state)) for target_mimir_state in target_mimir_states]:
                     r_idx = state_pair_equivalence.subgoal_state_to_r_idx[s_prime_idx]
                     if instance_data.is_deadend(s_prime_idx):
-                        tuple_graph_equivalence.r_idx_to_deadend_distance[r_idx] = min(tuple_graph_equivalence.r_idx_to_deadend_distance.get(r_idx, math.inf), state_distance)
-            for subgoal_distance, tuple_node_indices in enumerate(tuple_graph.get_tuple_node_indices_by_distance()):
-                for tuple_node_index in tuple_node_indices:
-                    tuple_node = tuple_graph.get_tuple_nodes()[tuple_node_index]
-                    t_idx = tuple_node.get_index()
+                        tuple_graph_equivalence.r_idx_to_deadend_distance[r_idx] = min(tuple_graph_equivalence.r_idx_to_deadend_distance.get(r_idx, math.inf), s_distance)
+            for subgoal_distance, tuple_vertex_indices in enumerate(tuple_graph.get_vertex_indices_by_distances()):
+                for tuple_vertex_index in tuple_vertex_indices:
+                    tuple_vertex = tuple_graph.get_vertices()[tuple_vertex_index]
+                    t_idx = tuple_vertex.get_identifier()
                     r_idxs = set()
-                    for s_prime_idx in set(instance_data.concrete_s_idx_to_global_s_idx[s] for s in tuple_node.get_state_indices()):
+                    for s_prime_idx in [state_finder.get_state_id_in_complete_state_space(state_finder.get_global_state(instance_idx, target_mimir_state)) for target_mimir_state in tuple_vertex.get_states()]:
                         r_idx = state_pair_equivalence.subgoal_state_to_r_idx[s_prime_idx]
                         r_idxs.add(r_idx)
                     tuple_graph_equivalence.t_idx_to_distance[t_idx] = subgoal_distance
@@ -40,8 +40,6 @@ def compute_tuple_graph_equivalences(instance_datas: List[InstanceData]) -> None
 
     print("Tuple graph equivalence construction statistics:")
     print("Num nodes:", num_nodes)
-
-
 
 
 def minimize_tuple_graph_equivalences(instance_datas: List[InstanceData]):
@@ -67,10 +65,10 @@ def minimize_tuple_graph_equivalences(instance_datas: List[InstanceData]):
             # select tuple nodes according to order
             selected_t_idxs = set()
             representative_r_idxs = set()
-            for tuple_node_indices in tuple_graph.get_tuple_node_indices_by_distance():
-                for tuple_node_index in tuple_node_indices:
-                    tuple_node = tuple_graph.get_tuple_nodes()[tuple_node_index]
-                    t_idx = tuple_node.get_index()
+            for tuple_vertex_indices in tuple_graph.get_vertex_indices_by_distances():
+                for tuple_vertex_index in tuple_vertex_indices:
+                    tuple_vertex = tuple_graph.get_vertices()[tuple_vertex_index]
+                    t_idx = tuple_vertex.get_identifier()
                     r_idxs = frozenset(tuple_graph_equivalence.t_idx_to_r_idxs[t_idx])
                     if order.get(t_idx, 0) != 0:
                         continue

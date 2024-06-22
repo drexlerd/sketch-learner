@@ -11,7 +11,7 @@ from .feature_pool import FeaturePool
 from .feature_valuations import FeatureValuations
 
 from ..domain_data.domain_data import DomainData
-from ..instance_data.instance_data import InstanceData
+from ..instance_data.instance_data import InstanceData, StateFinder
 
 
 
@@ -59,12 +59,13 @@ def make_effects(policy_builder: PolicyFactory,
 
 
 def compute_state_pair_equivalences(domain_data: DomainData,
-    instance_datas: List[InstanceData]):
+    instance_datas: List[InstanceData],
+    state_finder: StateFinder):
     # We have to take a new policy_builder because our feature pool F uses indices 0,...,|F|
     policy_builder = domain_data.policy_builder
     rules = []
     rule_repr_to_idx = dict()
-    for instance_data in instance_datas:
+    for instance_idx, instance_data in enumerate(instance_datas):
         s_idx_to_state_pair_equivalence = dict()
         for s_idx, tuple_graph in instance_data.per_state_tuple_graphs.s_idx_to_tuple_graph.items():
             if instance_data.is_deadend(s_idx):
@@ -74,8 +75,8 @@ def compute_state_pair_equivalences(domain_data: DomainData,
             subgoal_states_to_r_idx = dict()
             # add conditions
             conditions = make_conditions(policy_builder, domain_data.feature_pool, instance_data.per_state_feature_valuations.s_idx_to_feature_valuations[s_idx])
-            for s_distance, s_prime_idxs in enumerate(instance_data.mimir_state_space.get_state_id(s) for s in tuple_graph.get_states_by_distance()):
-                for s_prime_idx in set(instance_data.concrete_s_idx_to_global_s_idx[s_idx] for s_idx in s_prime_idxs):
+            for s_distance, target_mimir_states in enumerate(tuple_graph.get_states_by_distance()):
+                for s_prime_idx in [state_finder.get_state_id_in_complete_state_space(state_finder.get_global_state(instance_idx, target_mimir_state)) for target_mimir_state in target_mimir_states]:
                     # add effects
                     effects = make_effects(policy_builder, domain_data.feature_pool, instance_data.per_state_feature_valuations.s_idx_to_feature_valuations[s_idx], instance_data.per_state_feature_valuations.s_idx_to_feature_valuations[s_prime_idx])
                     # add rule

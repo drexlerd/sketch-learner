@@ -131,8 +131,8 @@ def compute_feature_pool(domain_data: DomainData,
                 dlplan_source = instance_data.dlplan_state_space.get_states()[s_idx]
                 source_val = int(feature.dlplan_feature.evaluate(dlplan_source, instance_data.denotations_caches))
                 for target_mimir_states in tuple_graph.get_states_by_distance():
-                    for dlplan_target in [state_finder.get_dlplan_state(state_finder.get_global_state(instance_idx, target_mimir_state)) for target_mimir_state in target_mimir_states]:
-                        target_val = int(feature.dlplan_feature.evaluate(dlplan_target, instance_data.denotations_caches))
+                    for dlplan_target_state in [state_finder.get_dlplan_state(state_finder.get_global_state(instance_idx, target_mimir_state)) for target_mimir_state in target_mimir_states]:
+                        target_val = int(feature.dlplan_feature.evaluate(dlplan_target_state, instance_data.denotations_caches))
                         if source_val < target_val:
                             changes.append(FeatureChange.UP)
                         elif source_val > target_val:
