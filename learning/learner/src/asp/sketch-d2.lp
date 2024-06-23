@@ -9,10 +9,10 @@
 
 % Define R-reachable states, base and inductive case
 r_reachable(S) :- initial(S).
-r_reachable(S') :- D = D', r_reachable(S), good(S, S'), subgoal_distance(S, D), s_distance(S, S', D).
+r_reachable(S') :- D = D', r_reachable(S), good(S, S'), subgoal_distance(S, D), s_distance(S, S', D), nongoal(S).
 
 % Define a distance from which to pick at least one subgoal tuple for each R-reachable state
-{ subgoal_distance(S, D) : t_distance(S, _, D) } != 0 :- r_reachable(S), nongoal(S).
+{ subgoal_distance(S, D) : t_distance(S, _, D), D > 0 } != 0 :- r_reachable(S), nongoal(S).
 
 % Require unsolvable state to not be R-reachable.
 :- unsolvable(S), r_reachable(S).

@@ -87,31 +87,29 @@ def compute_state_pair_equivalences(domain_data: DomainData,
                                      domain_data.feature_pool,
                                      domain_data.gfa_state_id_to_feature_evaluations[gfa_state_id])
 
-        for s_distance, tuple_vertex_idxs in enumerate(tuple_graph.get_vertex_indices_by_distances()):
-            for tuple_vertex_idx in tuple_vertex_idxs:
-                tuple_vertex = tuple_graph.get_vertices()[tuple_vertex_idx]
-                for mimir_ss_state_prime in tuple_vertex.get_states():
-                    gfa_state_prime = state_finder.get_gfa_state_from_ss_state_idx(new_instance_idx, instance_data.mimir_ss.get_state_index(mimir_ss_state_prime))
-                    gfa_state_prime_id = gfa_state_prime.get_id()
+        for s_distance, mimir_ss_states_prime in enumerate(tuple_graph.get_states_by_distance()):
+            for mimir_ss_state_prime in mimir_ss_states_prime:
+                gfa_state_prime = state_finder.get_gfa_state_from_ss_state_idx(new_instance_idx, instance_data.mimir_ss.get_state_index(mimir_ss_state_prime))
+                gfa_state_prime_id = gfa_state_prime.get_id()
 
-                    # add effects
-                    effects = make_effects(policy_builder,
-                                           domain_data.feature_pool,
-                                           domain_data.gfa_state_id_to_feature_evaluations[gfa_state_id],
-                                           domain_data.gfa_state_id_to_feature_evaluations[gfa_state_prime_id])
+                # add effects
+                effects = make_effects(policy_builder,
+                                        domain_data.feature_pool,
+                                        domain_data.gfa_state_id_to_feature_evaluations[gfa_state_id],
+                                        domain_data.gfa_state_id_to_feature_evaluations[gfa_state_prime_id])
 
-                    # add rule
-                    rule = policy_builder.make_rule(conditions, effects)
-                    rule_repr = repr(rule)
-                    if rule_repr in rule_repr_to_idx:
-                        r_idx = rule_repr_to_idx[rule_repr]
-                    else:
-                        r_idx = len(rules)
-                        rule_repr_to_idx[rule_repr] = r_idx
-                        rules.append(rule)
-                    r_idx_to_distance[r_idx] = min(r_idx_to_distance.get(r_idx, math.inf), s_distance)
-                    r_idx_to_subgoal_gfa_state_ids[r_idx].add(gfa_state_prime_id)
-                    subgoal_gfa_state_id_to_r_idx[gfa_state_prime_id] = r_idx
+                # add rule
+                rule = policy_builder.make_rule(conditions, effects)
+                rule_repr = repr(rule)
+                if rule_repr in rule_repr_to_idx:
+                    r_idx = rule_repr_to_idx[rule_repr]
+                else:
+                    r_idx = len(rules)
+                    rule_repr_to_idx[rule_repr] = r_idx
+                    rules.append(rule)
+                r_idx_to_distance[r_idx] = min(r_idx_to_distance.get(r_idx, math.inf), s_distance)
+                r_idx_to_subgoal_gfa_state_ids[r_idx].add(gfa_state_prime_id)
+                subgoal_gfa_state_id_to_r_idx[gfa_state_prime_id] = r_idx
 
         gfa_state_id_to_state_pair_equivalence[gfa_state_id] = StatePairEquivalence(r_idx_to_subgoal_gfa_state_ids, r_idx_to_distance, subgoal_gfa_state_id_to_r_idx)
 

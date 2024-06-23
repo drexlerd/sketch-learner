@@ -259,13 +259,11 @@ class ASPFactory:
             gfa_state_id = gfa_state.get_id()
             tuple_graph = domain_data.gfa_state_id_to_tuple_graph[gfa_state_id]
 
-            for s_distance, tuple_vertex_idxs in enumerate(tuple_graph.get_vertex_indices_by_distances()):
-                for tuple_vertex_idx in tuple_vertex_idxs:
-                    tuple_vertex = tuple_graph.get_vertices()[tuple_vertex_idx]
-                    for mimir_ss_state_prime in tuple_vertex.get_states():
-                        gfa_state_prime = state_finder.get_gfa_state_from_ss_state_idx(new_instance_idx, instance_data.mimir_ss.get_state_index(mimir_ss_state_prime))
-                        gfa_state_prime_id = gfa_state_prime.get_id()
-                        facts.append(self._create_s_distance_fact(gfa_state_id, gfa_state_prime_id, s_distance))
+            for s_distance, mimir_ss_states_prime in enumerate(tuple_graph.get_states_by_distance()):
+                for mimir_ss_state_prime in mimir_ss_states_prime:
+                    gfa_state_prime = state_finder.get_gfa_state_from_ss_state_idx(new_instance_idx, instance_data.mimir_ss.get_state_index(mimir_ss_state_prime))
+                    gfa_state_prime_id = gfa_state_prime.get_id()
+                    facts.append(self._create_s_distance_fact(gfa_state_id, gfa_state_prime_id, s_distance))
 
         return facts
 

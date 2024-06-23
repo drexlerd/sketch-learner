@@ -176,6 +176,8 @@ def learn_sketch_for_problem_class(
 
                         logging.info(colored("Solving Logic Program...", "blue", "on_grey"))
                         symbols, returncode = asp_factory.solve()
+                        for symbol in symbols:
+                            print(symbol)
                         logging.info(colored("..done", "blue", "on_grey"))
 
                         if returncode in [ClingoExitCode.UNSATISFIABLE, ClingoExitCode.EXHAUSTED]:

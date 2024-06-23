@@ -44,9 +44,6 @@ def create_instance_info(
         if literal.get_atom().get_predicate().get_name() != "=":
             assert not literal.is_negated()
             instance_info.add_static_atom(literal.get_atom().get_predicate().get_name(), [obj.get_name() for obj in literal.get_atom().get_objects()])
-    for literal in problem.get_fluent_initial_literals():
-        assert not literal.is_negated()
-        instance_info.add_static_atom(literal.get_atom().get_predicate().get_name(), [obj.get_name() for obj in literal.get_atom().get_objects()])
     # Reached atoms
     atom_to_dlplan_atom = dict()
     for atom in pddl_factories.get_fluent_ground_atoms_from_ids(mimir_state_space.get_ssg().get_reached_fluent_ground_atoms()):
@@ -131,21 +128,22 @@ def compute_instance_datas(domain_filepath: Path,
             for ss_state_idx, sp_state in enumerate(mimir_ss.get_states()):
                 ss_state_idx_to_gfa_state_idx[ss_state_idx] = gfa.get_abstract_state_index(sp_state)
 
+            print(ss_state_idx_to_gfa_state_idx)
+
             if enable_dump_files:
                 write_file(f"{instance_id}.dot", dlplan_ss.to_dot(1))
 
             if disable_closed_Q:
                 initial_gfa_state_idxs = [gfa.get_initial_state(),]
             else:
-                initial_gfa_state_idxs = [state_idx for state_idx in range(gfa.get_num_states()) if ((state_idx not in gfa.get_goal_states()) and (state_idx not in gfa.get_deadend_states()))]
+                initial_gfa_state_idxs = [state_idx for state_idx in range(gfa.get_num_states()) if gfa.is_alive_state(state_idx)]
 
             logging.info(f"Created InstanceData with num concrete states: {mimir_ss.get_num_states()} and num abstract states: {gfa.get_num_states()}")
             instance_data = InstanceData(instance_id, domain_data, dlplan_core.DenotationsCaches(), mimir_ss.get_pddl_parser().get_problem_filepath(), gfa, mimir_ss, dlplan_ss, ss_state_idx_to_gfa_state_idx, initial_gfa_state_idxs)
             instance_datas.append(instance_data)
 
     # Sort the instances according to size and fix the indices afterwards
-    # We also need to keep track of the remapping
-    # for remapping FaithfulAbstractions within a GlobalFaithfulAbstraction.
+    # We also need to keep track of the remapping for remapping GlobalFaithfulAbstractStates.
     instance_datas = sorted(instance_datas, key=lambda x : x.gfa.get_num_states())
     instance_idx_remap = [-1] * len(instance_datas)
     for new_instance_idx, instance_data in enumerate(instance_datas):
