@@ -7,79 +7,72 @@ import dlplan.core as dlplan_core
 from dlplan.core import DenotationsCaches
 from dlplan.state_space import StateSpace
 
-from .tuple_graph import PerStateTupleGraphs
-
 from ..domain_data.domain_data import DomainData
-from ..iteration_data.feature_valuations import PerStateFeatureValuations
 from ..iteration_data.state_pair_equivalence import PerStateStatePairEquivalences
 from ..iteration_data.tuple_graph_equivalence import PerStateTupleGraphEquivalences
 
 
 @dataclass
 class InstanceData:
+    # Persistent data
     idx: int
     domain_data: DomainData
     denotations_caches: DenotationsCaches  # We use a cache for each instance such that we can ignore the instance index.
     instance_filepath: Path
-    global_faithful_abstraction: mm.GlobalFaithfulAbstraction
-    mimir_state_space: mm.StateSpace
-    dlplan_state_space: StateSpace
-    concrete_s_idx_to_global_s_idx: Dict[int, int]
-    initial_global_s_idxs: List[int]  # in cases we need multiple initial states
+    gfa: mm.GlobalFaithfulAbstraction
+    mimir_ss: mm.StateSpace
+    dlplan_ss: StateSpace
+    ss_state_idx_to_gfa_state_idx: Dict[int, int]
+    initial_gfs_state_idxs: List[int]  # in cases we need multiple initial states
 
-    per_state_tuple_graphs: PerStateTupleGraphs = None
-    per_state_feature_valuations: PerStateFeatureValuations = None
+    # Changes in each iteration
     per_state_state_pair_equivalences: PerStateStatePairEquivalences = None
     per_state_tuple_graph_equivalences: PerStateTupleGraphEquivalences = None
 
-    def is_deadend(self, s_idx: int):
-        return s_idx in self.mimir_state_space.get_deadend_states()
-
-    def is_goal(self, s_idx: int):
-        return s_idx in self.mimir_state_space.get_goal_states()
-
-    def is_alive(self, s_idx: int):
-        return not self.is_goal(s_idx) and not self.is_deadend(s_idx)
-
 class StateFinder:
     def __init__(self, domain_data: DomainData, instance_datas: List[InstanceData]):
-        self.instance_idx_remap = domain_data.instance_idx_remap
         self.domain_data = domain_data
-        self.faithful_abstractions = instance_datas[0].global_faithful_abstraction.get_abstractions()
         self.instance_datas = instance_datas
 
-    def get_state_id_in_complete_state_space(self, global_state: mm.GlobalFaithfulAbstractState) -> int:
-        new_instance_id = self.instance_idx_remap[global_state.get_abstraction_id()]
-        faithful_abstraction = self.faithful_abstractions[global_state.get_abstraction_id()]
-        abstract_state = faithful_abstraction.get_states()[global_state.get_abstract_state_id()]
-        mimir_state = abstract_state.get_state()
-        mimir_state_space = self.instance_datas[new_instance_id].mimir_state_space
-        state_id = mimir_state_space.get_state_id(mimir_state)
+    def get_ss_state_idx(self, gfa_state: mm.GlobalFaithfulAbstractState) -> int:
+        new_instance_idx = self.domain_data.instance_idx_remap[gfa_state.get_abstraction_id()]
+        fa = self.instance_datas[0].gfa.get_abstractions()[gfa_state.get_abstraction_id()]
+        fa_state = fa.get_states()[gfa_state.get_abstract_state_id()]
+        mimir_s = fa_state.get_state()
+        mimir_ss = self.instance_datas[new_instance_idx].mimir_ss
+        ss_state_idx = mimir_ss.get_state_index(mimir_s)
 
-        return state_id
+        return ss_state_idx
 
-    def get_dlplan_state(self, global_state: mm.GlobalFaithfulAbstractState) -> dlplan_core.State:
-        state_id = self.get_state_id_in_complete_state_space(global_state)
-        new_instance_id = self.instance_idx_remap[global_state.get_abstraction_id()]
-        dlplan_state_space = self.instance_datas[new_instance_id].dlplan_state_space
-        dlplan_state = dlplan_state_space.get_states()[state_id]
+    def get_dlplan_ss_state(self, gfa_state: mm.GlobalFaithfulAbstractState) -> dlplan_core.State:
+        ss_state_idx = self.get_ss_state_idx(gfa_state)
+        new_instance_idx = self.domain_data.instance_idx_remap[gfa_state.get_abstraction_id()]
+        dlplan_ss = self.instance_datas[new_instance_idx].dlplan_ss
+        dlplan_ss_state = dlplan_ss.get_states()[ss_state_idx]
 
-        return dlplan_state
+        return dlplan_ss_state
 
-    def get_mimir_state(self, global_state: mm.GlobalFaithfulAbstractState) -> mm.State:
-        faithful_abstraction = self.faithful_abstractions[global_state.get_abstraction_id()]
-        abstract_state = faithful_abstraction.get_states()[global_state.get_abstract_state_id()]
-        mimir_state = abstract_state.get_state()
+    def get_mimir_ss_state(self, gfa_state: mm.GlobalFaithfulAbstractState) -> mm.State:
+        fa = self.instance_datas[0].gfa.get_abstractions()[gfa_state.get_abstraction_id()]
+        fa_state = fa.get_states()[gfa_state.get_abstract_state_id()]
+        mimir_ss_state = fa_state.get_state()
 
-        return mimir_state
+        return mimir_ss_state
 
-    def get_global_state(self, instance_id: int, mimir_state: mm.State):
-        instance_data = self.instance_datas[instance_id]
+    def get_gfa_state(self, instance_idx: int, ss_state: mm.State):
+        instance_data = self.instance_datas[instance_idx]
 
-        state_id = instance_data.mimir_state_space.get_state_id(mimir_state)
-        global_state = instance_data.global_faithful_abstraction.get_states()[instance_data.concrete_s_idx_to_global_s_idx[state_id]]
+        gfa_state_idx = instance_data.mimir_ss.get_state_index(ss_state)
+        gfa_state = instance_data.gfa.get_states()[instance_data.ss_state_idx_to_gfa_state_idx[gfa_state_idx]]
 
-        return global_state
+        return gfa_state
+
+    def get_gfa_state_from_ss_state_idx(self, instance_idx: int, ss_state_idx: int):
+        instance_data = self.instance_datas[instance_idx]
+
+        gfa_state = instance_data.gfa.get_states()[instance_data.ss_state_idx_to_gfa_state_idx[ss_state_idx]]
+
+        return gfa_state
 
 
 

@@ -74,15 +74,15 @@ def create_dlplan_statespace(
     pddl_factories = mimir_state_space.get_aag().get_pddl_factories()
     dlplan_states: Dict[int, dlplan_core.State] = dict()
     forward_successors = defaultdict(set)
-    for state_id, state in enumerate(mimir_state_space.get_states()):
+    for ss_state_idx, ss_state in enumerate(mimir_state_space.get_states()):
         dlplan_state_atoms = []
-        for atom in pddl_factories.get_fluent_ground_atoms_from_ids(state.get_fluent_atoms()):
+        for atom in pddl_factories.get_fluent_ground_atoms_from_ids(ss_state.get_fluent_atoms()):
             dlplan_state_atoms.append(atom_to_dlplan_atom[atom])
-        for atom in pddl_factories.get_derived_ground_atoms_from_ids(state.get_derived_atoms()):
+        for atom in pddl_factories.get_derived_ground_atoms_from_ids(ss_state.get_derived_atoms()):
             dlplan_state_atoms.append(atom_to_dlplan_atom[atom])
-        dlplan_states[state_id] = dlplan_core.State(state_id, instance_info, dlplan_state_atoms)
-        for transition in mimir_state_space.get_forward_transitions()[state_id]:
-            forward_successors[state_id].add(transition.get_successor_state())
+        dlplan_states[ss_state_idx] = dlplan_core.State(ss_state_idx, instance_info, dlplan_state_atoms)
+        for transition in mimir_state_space.get_forward_transitions()[ss_state_idx]:
+            forward_successors[ss_state_idx].add(transition.get_successor_state())
     dlplan_state_space = dlplan_statespace.StateSpace(instance_info, dlplan_states, mimir_state_space.get_initial_state(), forward_successors, mimir_state_space.get_goal_states())
     return dlplan_state_space
 
@@ -105,9 +105,9 @@ def compute_instance_datas(domain_filepath: Path,
 
         logging.info("Constructing StateSpaces...")
         memories = []
-        faithful_abstractions = abstractions[0].get_abstractions()
-        for global_faithful_abstraction in faithful_abstractions:
-            memories.append([global_faithful_abstraction.get_pddl_parser(), global_faithful_abstraction.get_aag(), global_faithful_abstraction.get_ssg()])
+        fas = abstractions[0].get_abstractions()
+        for gfa in fas:
+            memories.append([gfa.get_pddl_parser(), gfa.get_aag(), gfa.get_ssg()])
         state_spaces = mm.StateSpace.create(memories)
         logging.info("...done")
 
@@ -116,37 +116,37 @@ def compute_instance_datas(domain_filepath: Path,
         domain_data = compute_domain_data(str(domain_filepath), vocabulary_info)
 
         # 3. Create InstanceData
-        for instance_id, (mimir_state_space, global_faithful_abstraction) in enumerate(zip(state_spaces, abstractions)):
-            if mimir_state_space.get_num_goal_states() == 0:
+        for instance_id, (mimir_ss, gfa) in enumerate(zip(state_spaces, abstractions)):
+            if mimir_ss.get_num_goal_states() == 0:
                 continue
 
             # 3.1. Create dlplan instance info
-            instance_info, atom_to_dlplan_atom = create_instance_info(vocabulary_info, instance_id, mimir_state_space)
+            instance_info, atom_to_dlplan_atom = create_instance_info(vocabulary_info, instance_id, mimir_ss)
 
             # 3.2 Create dlplan state space
-            dlplan_state_space = create_dlplan_statespace(instance_info, mimir_state_space, atom_to_dlplan_atom)
+            dlplan_ss = create_dlplan_statespace(instance_info, mimir_ss, atom_to_dlplan_atom)
 
             # 3.3 Create mapping from concrete states to global faithful abstract states
-            concrete_s_idx_to_global_s_idx = dict()
-            for state_id, state in enumerate(mimir_state_space.get_states()):
-                concrete_s_idx_to_global_s_idx[state_id] = global_faithful_abstraction.get_abstract_state_id(state)
+            ss_state_idx_to_gfa_state_idx = dict()
+            for ss_state_idx, sp_state in enumerate(mimir_ss.get_states()):
+                ss_state_idx_to_gfa_state_idx[ss_state_idx] = gfa.get_abstract_state_index(sp_state)
 
             if enable_dump_files:
-                write_file(f"{instance_id}.dot", dlplan_state_space.to_dot(1))
+                write_file(f"{instance_id}.dot", dlplan_ss.to_dot(1))
 
             if disable_closed_Q:
-                initial_global_s_idxs = [global_faithful_abstraction.get_initial_state(),]
+                initial_gfa_state_idxs = [gfa.get_initial_state(),]
             else:
-                initial_global_s_idxs = [s_idx for s_idx in range(global_faithful_abstraction.get_num_states()) if ((s_idx not in global_faithful_abstraction.get_goal_states()) and (s_idx not in global_faithful_abstraction.get_deadend_states()))]
+                initial_gfa_state_idxs = [state_idx for state_idx in range(gfa.get_num_states()) if ((state_idx not in gfa.get_goal_states()) and (state_idx not in gfa.get_deadend_states()))]
 
-            logging.info(f"Created InstanceData with num concrete states: {mimir_state_space.get_num_states()} and num abstract states: {global_faithful_abstraction.get_num_states()}")
-            instance_data = InstanceData(instance_id, domain_data, dlplan_core.DenotationsCaches(), mimir_state_space.get_pddl_parser().get_problem_filepath(), global_faithful_abstraction, mimir_state_space, dlplan_state_space, concrete_s_idx_to_global_s_idx, initial_global_s_idxs)
+            logging.info(f"Created InstanceData with num concrete states: {mimir_ss.get_num_states()} and num abstract states: {gfa.get_num_states()}")
+            instance_data = InstanceData(instance_id, domain_data, dlplan_core.DenotationsCaches(), mimir_ss.get_pddl_parser().get_problem_filepath(), gfa, mimir_ss, dlplan_ss, ss_state_idx_to_gfa_state_idx, initial_gfa_state_idxs)
             instance_datas.append(instance_data)
 
     # Sort the instances according to size and fix the indices afterwards
     # We also need to keep track of the remapping
     # for remapping FaithfulAbstractions within a GlobalFaithfulAbstraction.
-    instance_datas = sorted(instance_datas, key=lambda x : x.global_faithful_abstraction.get_num_states())
+    instance_datas = sorted(instance_datas, key=lambda x : x.gfa.get_num_states())
     instance_idx_remap = [-1] * len(instance_datas)
     for new_instance_idx, instance_data in enumerate(instance_datas):
         instance_idx_remap[instance_data.idx] = new_instance_idx

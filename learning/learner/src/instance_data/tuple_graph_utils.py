@@ -1,28 +1,35 @@
-from typing import List
+from typing import List, Dict
 
 import pymimir as mm
 
-from .instance_data import InstanceData
-from .tuple_graph import PerStateTupleGraphs
+from .instance_data import InstanceData, StateFinder
+from ..domain_data.domain_data import DomainData
 
 from ..util.command import change_dir, write_file
 
 
-def compute_tuple_graphs(width: int, instance_datas: List[InstanceData], enable_dump_files: bool):
-    for instance_data in instance_datas:
-        per_state_tuple_graphs = PerStateTupleGraphs()
+def compute_tuple_graphs(domain_data: DomainData, instance_datas: List[InstanceData], state_finder: StateFinder, width: int, enable_dump_files: bool):
+    """ Compute a tuple graph for each representative concrete state of each global faithful abstract state.
+    """
+    gfa_state_id_to_tuple_graph: Dict[int, mm.TupleGraph] = dict()
 
-        tuple_graph_factory = mm.TupleGraphFactory(instance_data.mimir_state_space, width, True)
-        for s_idx, state in enumerate(instance_data.mimir_state_space.get_states()):
-            if instance_data.is_deadend(s_idx):
+    for instance_data in instance_datas:
+        gfa = instance_data.gfa
+        tuple_graph_factory = mm.TupleGraphFactory(instance_data.mimir_ss, width, True)
+
+        for gfa_state_idx, gfa_state in enumerate(instance_data.gfa.get_states()):
+            if gfa.is_deadend_state(gfa_state_idx):
                 continue
 
-            with change_dir(f"tuple_graphs/{instance_data.idx}/{s_idx}", enable=enable_dump_files):
+            gfa_state_id = gfa_state.get_id()
+            ss_state = state_finder.get_mimir_ss_state(gfa_state)
 
-                tuple_graph = tuple_graph_factory.create(state)
-                per_state_tuple_graphs.s_idx_to_tuple_graph[s_idx] = tuple_graph
+            with change_dir(f"tuple_graphs/{instance_data.idx}/{gfa_state_id}", enable=enable_dump_files):
+
+                tuple_graph = tuple_graph_factory.create(ss_state)
+                gfa_state_id_to_tuple_graph[gfa_state_id] = tuple_graph
 
                 if enable_dump_files:
-                    write_file(f"{s_idx}.dot", str(tuple_graph))
+                    write_file(f"{gfa_state_id}.dot", str(tuple_graph))
 
-        instance_data.per_state_tuple_graphs = per_state_tuple_graphs
+    domain_data.gfa_state_id_to_tuple_graph = gfa_state_id_to_tuple_graph

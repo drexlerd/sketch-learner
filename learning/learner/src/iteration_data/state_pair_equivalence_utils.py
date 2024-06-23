@@ -8,7 +8,6 @@ from typing import List
 
 from .state_pair_equivalence import StatePairEquivalenceClasses, StatePairEquivalence, PerStateStatePairEquivalences
 from .feature_pool import FeaturePool
-from .feature_valuations import FeatureValuations
 
 from ..domain_data.domain_data import DomainData
 from ..instance_data.instance_data import InstanceData, StateFinder
@@ -18,7 +17,7 @@ from ..instance_data.instance_data import InstanceData, StateFinder
 
 def make_conditions(policy_builder: PolicyFactory,
     feature_pool: FeaturePool,
-    feature_valuations: FeatureValuations):
+    feature_valuations):
     """ Create conditions over all features that are satisfied in source_idx """
     conditions = set()
     for f_idx, (feature, val) in enumerate(zip(feature_pool.features, feature_valuations.feature_valuations)):
@@ -36,8 +35,8 @@ def make_conditions(policy_builder: PolicyFactory,
 
 def make_effects(policy_builder: PolicyFactory,
     feature_pool: FeaturePool,
-    source_feature_valuations: FeatureValuations,
-    target_feature_valuations: FeatureValuations):
+    source_feature_valuations,
+    target_feature_valuations):
     """ Create effects over all features that are satisfied in (source_idx,target_idx) """
     effects = set()
     for f_idx, (feature, source_val, target_val) in enumerate(zip(feature_pool.features, source_feature_valuations.feature_valuations, target_feature_valuations.feature_valuations)):
@@ -67,18 +66,18 @@ def compute_state_pair_equivalences(domain_data: DomainData,
     rule_repr_to_idx = dict()
     for instance_idx, instance_data in enumerate(instance_datas):
         s_idx_to_state_pair_equivalence = dict()
-        for s_idx, tuple_graph in instance_data.per_state_tuple_graphs.s_idx_to_tuple_graph.items():
+        for s_idx, tuple_graph in instance_data.per_state_tuple_graphs.gfa_state_idx_to_tuple_graph.items():
             if instance_data.is_deadend(s_idx):
                 continue
             r_idx_to_distance = dict()
             r_idx_to_subgoal_states = defaultdict(set)
             subgoal_states_to_r_idx = dict()
             # add conditions
-            conditions = make_conditions(policy_builder, domain_data.feature_pool, instance_data.per_state_feature_valuations.s_idx_to_feature_valuations[s_idx])
+            conditions = make_conditions(policy_builder, domain_data.feature_pool, instance_data.per_state_feature_valuations.gfa_state_idx_to_feature_valuations[s_idx])
             for s_distance, target_mimir_states in enumerate(tuple_graph.get_states_by_distance()):
-                for s_prime_idx in [state_finder.get_state_id_in_complete_state_space(state_finder.get_global_state(instance_idx, target_mimir_state)) for target_mimir_state in target_mimir_states]:
+                for s_prime_idx in [state_finder.get_ss_state_idx(state_finder.get_gfa_state(instance_idx, target_mimir_state)) for target_mimir_state in target_mimir_states]:
                     # add effects
-                    effects = make_effects(policy_builder, domain_data.feature_pool, instance_data.per_state_feature_valuations.s_idx_to_feature_valuations[s_idx], instance_data.per_state_feature_valuations.s_idx_to_feature_valuations[s_prime_idx])
+                    effects = make_effects(policy_builder, domain_data.feature_pool, instance_data.per_state_feature_valuations.gfa_state_idx_to_feature_valuations[s_idx], instance_data.per_state_feature_valuations.gfa_state_idx_to_feature_valuations[s_prime_idx])
                     # add rule
                     rule = policy_builder.make_rule(conditions, effects)
                     rule_repr = repr(rule)

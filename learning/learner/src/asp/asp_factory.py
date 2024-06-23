@@ -95,7 +95,7 @@ class ASPFactory:
         """
         facts = []
         for instance_data in instance_datas:
-            for s_idx in instance_data.initial_global_s_idxs:
+            for s_idx in instance_data.initial_gfs_state_idxs:
                 facts.append(self._create_initial_fact(instance_data.id, s_idx))
             for s_idx in instance_data.state_space.get_states().keys():
                 facts.append(self._create_state_fact(instance_data.id, s_idx))
@@ -154,7 +154,7 @@ class ASPFactory:
         feature_pool = domain_data.feature_pool
         for instance_data in instance_datas:
             for s_idx in instance_data.state_space.get_states().keys():
-                feature_valuation = instance_data.per_state_feature_valuations.s_idx_to_feature_valuations[s_idx]
+                feature_valuation = instance_data.per_state_feature_valuations.gfa_state_idx_to_feature_valuations[s_idx]
                 for f_idx, (feature, val) in enumerate(zip(feature_pool.features, feature_valuation.feature_valuations)):
                     facts.append(self._create_value_fact(instance_data.id, s_idx, f_idx, val))
                     facts.append(self._create_b_value_fact(feature.dlplan_feature, instance_data.id, s_idx, f_idx, val))
@@ -258,9 +258,9 @@ class ASPFactory:
     def _make_tuple_graph_facts(self, domain_data: DomainData, instance_datas: List[InstanceData]):
         facts = []
         for instance_data in instance_datas:
-            for s_idx, tuple_graph in instance_data.per_state_tuple_graphs.s_idx_to_tuple_graph.items():
+            for s_idx, tuple_graph in instance_data.per_state_tuple_graphs.gfa_state_idx_to_tuple_graph.items():
                 for d, s_prime_idxs in enumerate(tuple_graph.get_state_indices_by_distance()):
-                    for s_prime_idx in set(instance_data.concrete_s_idx_to_global_s_idx[s] for s in s_prime_idxs):
+                    for s_prime_idx in set(instance_data.ss_state_idx_to_gfa_state_idx[s] for s in s_prime_idxs):
                         facts.append(self._create_s_distance_fact(instance_data.id, s_idx, s_prime_idx, d))
         return facts
 
@@ -282,12 +282,12 @@ class ASPFactory:
         """ T_0 facts """
         facts = set()
         for instance_data in instance_datas:
-            for s_idx, tuple_graph in instance_data.per_state_tuple_graphs.s_idx_to_tuple_graph.items():
+            for s_idx, tuple_graph in instance_data.per_state_tuple_graphs.gfa_state_idx_to_tuple_graph.items():
                 if not instance_data.is_alive(s_idx):
                     continue
                 equivalences = set()
                 for s_prime_idxs in tuple_graph.get_state_indices_by_distance():
-                    for s_prime_idx in set(instance_data.concrete_s_idx_to_global_s_idx[s] for s in s_prime_idxs):
+                    for s_prime_idx in set(instance_data.ss_state_idx_to_gfa_state_idx[s] for s in s_prime_idxs):
                         equivalences.add(instance_data.per_state_state_pair_equivalences.s_idx_to_state_pair_equivalence[s_idx].subgoal_state_to_r_idx[s_prime_idx])
                 for i, eq_1 in enumerate(equivalences):
                     for j, eq_2 in enumerate(equivalences):

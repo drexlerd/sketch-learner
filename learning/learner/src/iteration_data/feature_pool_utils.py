@@ -1,5 +1,5 @@
 from enum import Enum
-from typing import List, MutableSet
+from typing import List, MutableSet, Dict, Union
 
 import pymimir as mm
 from dlplan.generator import FeatureGenerator
@@ -18,6 +18,7 @@ class FeatureChange(Enum):
 
 def compute_feature_pool(domain_data: DomainData,
                          instance_datas: List[InstanceData],
+                         selected_instance_datas: List[InstanceData],
                          state_finder: StateFinder,
                          disable_feature_generation: bool,
                          concept_complexity_limit: int,
@@ -29,13 +30,10 @@ def compute_feature_pool(domain_data: DomainData,
                          additional_booleans: List[str],
                          additional_numericals: List[str]):
     # Get concrete dlplan states of global states
-    dlplan_states = set()
-    global_states : MutableSet[mm.GlobalFaithfulAbstractState] = set()
-    for instance_data in instance_datas:
-        global_states.update(instance_data.global_faithful_abstraction.get_states())
-    for global_state in global_states:
-        dlplan_states.add(state_finder.get_dlplan_state(global_state))
-    dlplan_states = list(dlplan_states)
+    dlplan_ss_states = set()
+    for gfa_state in domain_data.gfa_states:
+        dlplan_ss_states.add(state_finder.get_dlplan_ss_state(gfa_state))
+    dlplan_ss_states = list(dlplan_ss_states)
 
     syntactic_element_factory = domain_data.syntactic_element_factory
     feature_generator = FeatureGenerator()
@@ -55,7 +53,7 @@ def compute_feature_pool(domain_data: DomainData,
     features = []
     if not disable_feature_generation:
         [generated_booleans, generated_numericals, _, _] = feature_generator.generate(
-            syntactic_element_factory, dlplan_states,
+            syntactic_element_factory, dlplan_ss_states,
             concept_complexity_limit,
             role_complexity_limit,
             boolean_complexity_limit,
@@ -79,8 +77,8 @@ def compute_feature_pool(domain_data: DomainData,
     selected_features = []
     for feature in features:
         always_nnz = True
-        for instance_data in instance_datas:
-            for dlplan_state in instance_data.dlplan_state_space.get_states().values():
+        for instance_data in selected_instance_datas:
+            for dlplan_state in instance_data.dlplan_ss.get_states().values():
                 val = int(feature.dlplan_feature.evaluate(dlplan_state, instance_data.denotations_caches))
                 if val == 0:
                     always_nnz = False
@@ -94,23 +92,26 @@ def compute_feature_pool(domain_data: DomainData,
     soft_changing_features = set()
     for feature in features:
         is_soft_changing = True
-        for instance_data in instance_datas:
-            for s_idx, s_prime_idxs in instance_data.dlplan_state_space.get_forward_successor_state_indices().items():
-                dlplan_source = instance_data.dlplan_state_space.get_states()[s_idx]
-                source_val = int(feature.dlplan_feature.evaluate(dlplan_source, instance_data.denotations_caches))
-                for s_prime_idx in s_prime_idxs:
-                    dlplan_target = instance_data.dlplan_state_space.get_states()[s_prime_idx]
-                    target_val = int(feature.dlplan_feature.evaluate(dlplan_target, instance_data.denotations_caches))
-                    if source_val in {0, 2147483647} or target_val in {0, 2147483647}:
-                        # Allow arbitrary changes on border values
-                        continue
-                    if source_val > target_val and (source_val > target_val + 1):
-                        is_soft_changing = False
-                        break
-                    if target_val > source_val and (target_val > source_val + 1):
-                        is_soft_changing = False
-                        break
-                if not is_soft_changing:
+        for gfa_state in domain_data.gfa_states:
+            dlplan_source_ss_state = state_finder.get_dlplan_ss_state(gfa_state)
+            new_instance_idx = domain_data.instance_idx_remap[gfa_state.get_abstraction_id()]
+            source_val = int(feature.dlplan_feature.evaluate(dlplan_source_ss_state, instance_datas[new_instance_idx].denotations_caches))
+
+            gfa = instance_datas[new_instance_idx].gfa
+            gfa_state_idx = gfa.get_state_index(gfa_state)
+            for transition in gfa.get_forward_transitions()[gfa_state_idx]:
+                gfa_state_prime_idxs = transition.get_successor_state()
+                gfa_state_prime = gfa.get_states()[gfa_state_prime_idxs]
+                dlplan_target_ss_state = state_finder.get_dlplan_ss_state(gfa_state_prime)
+                target_val = int(feature.dlplan_feature.evaluate(dlplan_target_ss_state, instance_datas[new_instance_idx].denotations_caches))
+                if source_val in {0, 2147483647} or target_val in {0, 2147483647}:
+                    # Allow arbitrary changes on border values
+                    continue
+                if source_val > target_val and (source_val > target_val + 1):
+                    is_soft_changing = False
+                    break
+                if target_val > source_val and (target_val > source_val + 1):
+                    is_soft_changing = False
                     break
             if not is_soft_changing:
                 break
@@ -124,15 +125,24 @@ def compute_feature_pool(domain_data: DomainData,
     num_pruned = 0
     for feature in features:
         changes = []
-        for instance_idx, instance_data in enumerate(instance_datas):
-            for s_idx, tuple_graph in instance_data.per_state_tuple_graphs.s_idx_to_tuple_graph.items():
-                if instance_data.is_deadend(s_idx):
-                    continue
-                dlplan_source = instance_data.dlplan_state_space.get_states()[s_idx]
-                source_val = int(feature.dlplan_feature.evaluate(dlplan_source, instance_data.denotations_caches))
-                for target_mimir_states in tuple_graph.get_states_by_distance():
-                    for dlplan_target_state in [state_finder.get_dlplan_state(state_finder.get_global_state(instance_idx, target_mimir_state)) for target_mimir_state in target_mimir_states]:
-                        target_val = int(feature.dlplan_feature.evaluate(dlplan_target_state, instance_data.denotations_caches))
+        for gfa_state in domain_data.gfa_states:
+            gfa_state_id = gfa_state.get_id()
+            tuple_graph = domain_data.gfa_state_id_to_tuple_graph[gfa_state_id]
+
+            dlplan_source_ss_state = state_finder.get_dlplan_ss_state(gfa_state)
+            new_instance_idx = domain_data.instance_idx_remap[gfa_state.get_abstraction_id()]
+            instance_data = instance_datas[new_instance_idx]
+            source_val = int(feature.dlplan_feature.evaluate(dlplan_source_ss_state, instance_data.denotations_caches))
+
+            for tuple_vertex_idxs in tuple_graph.get_vertex_indices_by_distances():
+                for tuple_vertex_idx in tuple_vertex_idxs:
+                    tuple_vertex = tuple_graph.get_vertices()[tuple_vertex_idx]
+                    for mimir_ss_state_prime in tuple_vertex.get_states():
+                        gfa_state_prime = state_finder.get_gfa_state_from_ss_state_idx(instance_data.idx, instance_data.mimir_ss.get_state_index(mimir_ss_state_prime))
+                        dlplan_target_ss_state = state_finder.get_dlplan_ss_state(gfa_state_prime)
+                        new_instance_prime_idx = domain_data.instance_idx_remap[gfa_state_prime.get_abstraction_id()]
+                        instance_data_prime = instance_datas[new_instance_prime_idx]
+                        target_val = int(feature.dlplan_feature.evaluate(dlplan_target_ss_state, instance_data_prime.denotations_caches))
                         if source_val < target_val:
                             changes.append(FeatureChange.UP)
                         elif source_val > target_val:
@@ -148,7 +158,5 @@ def compute_feature_pool(domain_data: DomainData,
             num_pruned += 1
     features = list(feature_changes.values())
     print("Features after relevant changes pruning (complete):", len(features))
-
-    print()
 
     return FeaturePool(features)

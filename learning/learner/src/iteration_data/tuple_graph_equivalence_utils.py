@@ -13,14 +13,14 @@ def compute_tuple_graph_equivalences(instance_datas: List[InstanceData], state_f
     num_nodes = 0
     for instance_idx, instance_data in enumerate(instance_datas):
         per_state_tuple_graph_equivalences = PerStateTupleGraphEquivalences()
-        for s_idx, tuple_graph in instance_data.per_state_tuple_graphs.s_idx_to_tuple_graph.items():
+        for s_idx, tuple_graph in instance_data.per_state_tuple_graphs.gfa_state_idx_to_tuple_graph.items():
             if instance_data.is_deadend(s_idx):
                 continue
             state_pair_equivalence = instance_data.per_state_state_pair_equivalences.s_idx_to_state_pair_equivalence[s_idx]
             tuple_graph_equivalence = TupleGraphEquivalence()
             # rule distances, deadend rule distances
             for s_distance, target_mimir_states in enumerate(tuple_graph.get_states_by_distance()):
-                for s_prime_idx in [state_finder.get_state_id_in_complete_state_space(state_finder.get_global_state(instance_idx, target_mimir_state)) for target_mimir_state in target_mimir_states]:
+                for s_prime_idx in [state_finder.get_ss_state_idx(state_finder.get_gfa_state(instance_idx, target_mimir_state)) for target_mimir_state in target_mimir_states]:
                     r_idx = state_pair_equivalence.subgoal_state_to_r_idx[s_prime_idx]
                     if instance_data.is_deadend(s_prime_idx):
                         tuple_graph_equivalence.r_idx_to_deadend_distance[r_idx] = min(tuple_graph_equivalence.r_idx_to_deadend_distance.get(r_idx, math.inf), s_distance)
@@ -29,7 +29,7 @@ def compute_tuple_graph_equivalences(instance_datas: List[InstanceData], state_f
                     tuple_vertex = tuple_graph.get_vertices()[tuple_vertex_index]
                     t_idx = tuple_vertex.get_identifier()
                     r_idxs = set()
-                    for s_prime_idx in [state_finder.get_state_id_in_complete_state_space(state_finder.get_global_state(instance_idx, target_mimir_state)) for target_mimir_state in tuple_vertex.get_states()]:
+                    for s_prime_idx in [state_finder.get_ss_state_idx(state_finder.get_gfa_state(instance_idx, target_mimir_state)) for target_mimir_state in tuple_vertex.get_states()]:
                         r_idx = state_pair_equivalence.subgoal_state_to_r_idx[s_prime_idx]
                         r_idxs.add(r_idx)
                     tuple_graph_equivalence.t_idx_to_distance[t_idx] = subgoal_distance
@@ -46,7 +46,7 @@ def minimize_tuple_graph_equivalences(instance_datas: List[InstanceData]):
     num_kept_nodes = 0
     num_orig_nodes = 0
     for instance_data in instance_datas:
-        for root_idx, tuple_graph in instance_data.per_state_tuple_graphs.s_idx_to_tuple_graph.items():
+        for root_idx, tuple_graph in instance_data.per_state_tuple_graphs.gfa_state_idx_to_tuple_graph.items():
             if instance_data.is_deadend(root_idx):
                 continue
 

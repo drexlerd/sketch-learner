@@ -2,8 +2,9 @@ import logging
 
 from pathlib import Path
 from termcolor import colored
-from typing import List
+from typing import List, MutableSet
 
+import pymimir as mm
 from dlplan.policy import PolicyMinimizer
 
 from .exit_codes import ExitCode
@@ -81,8 +82,10 @@ def learn_sketch_for_problem_class(
         if instance_datas is None and domain_data is None:
             raise Exception("Failed to create InstanceData.")
 
+        state_finder = StateFinder(domain_data, instance_datas)
+
         logging.info(colored("Initializing TupleGraphs...", "blue", "on_grey"))
-        compute_tuple_graphs(width, instance_datas, enable_dump_files)
+        compute_tuple_graphs(domain_data, instance_datas, state_finder, width, enable_dump_files)
         logging.info(colored("..done", "blue", "on_grey"))
 
     preprocessing_timer.stop()
@@ -99,18 +102,24 @@ def learn_sketch_for_problem_class(
                 preprocessing_timer.resume()
                 selected_instance_datas : List[InstanceData] = [instance_datas[subproblem_idx] for subproblem_idx in selected_instance_idxs]
                 for instance_data in selected_instance_datas:
-                    write_file(f"{instance_data.idx}.dot", instance_data.dlplan_state_space.to_dot(1))
+                    write_file(f"{instance_data.idx}.dot", instance_data.dlplan_ss.to_dot(1))
                     print("     ", end="")
                     print("id:", instance_data.idx,
-                          "problem_filepath:", instance_data.mimir_state_space.get_pddl_parser().get_problem_filepath(),
-                          "num_states:", instance_data.mimir_state_space.get_num_states(),
-                          "num_state_equivalences:", instance_data.global_faithful_abstraction.get_num_states())
+                          "problem_filepath:", instance_data.mimir_ss.get_pddl_parser().get_problem_filepath(),
+                          "num_states:", instance_data.mimir_ss.get_num_states(),
+                          "num_state_equivalences:", instance_data.gfa.get_num_states())
 
-                state_finder = StateFinder(domain_data, selected_instance_datas)
+                logging.info(colored("Initialize global faithful abstract states...", "blue", "on_grey"))
+                gfa_states : MutableSet[mm.GlobalFaithfulAbstractState] = set()
+                for instance_data in selected_instance_datas:
+                    gfa_states.update(instance_data.gfa.get_states())
+                domain_data.gfa_states = list(gfa_states)
+                logging.info(colored("..done", "blue", "on_grey"))
 
                 logging.info(colored("Initializing DomainFeatureData...", "blue", "on_grey"))
                 domain_data.feature_pool = compute_feature_pool(
                     domain_data,
+                    instance_datas,
                     selected_instance_datas,
                     state_finder,
                     disable_feature_generation,
@@ -125,7 +134,7 @@ def learn_sketch_for_problem_class(
                 logging.info(colored("..done", "blue", "on_grey"))
 
                 logging.info(colored("Constructing PerStateFeatureValuations...", "blue", "on_grey"))
-                compute_per_state_feature_valuations(selected_instance_datas, domain_data)
+                compute_per_state_feature_valuations(selected_instance_datas, domain_data, state_finder)
                 logging.info(colored("..done", "blue", "on_grey"))
 
                 logging.info(colored("Constructing StatePairEquivalenceDatas...", "blue", "on_grey"))
