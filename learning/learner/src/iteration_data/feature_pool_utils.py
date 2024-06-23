@@ -94,16 +94,17 @@ def compute_feature_pool(domain_data: DomainData,
         is_soft_changing = True
         for gfa_state in domain_data.gfa_states:
             dlplan_source_ss_state = state_finder.get_dlplan_ss_state(gfa_state)
-            new_instance_idx = domain_data.instance_idx_remap[gfa_state.get_abstraction_id()]
-            source_val = int(feature.dlplan_feature.evaluate(dlplan_source_ss_state, instance_datas[new_instance_idx].denotations_caches))
+            instance_idx = gfa_state.get_abstraction_id()
+            instance_data = instance_datas[instance_idx]
+            source_val = int(feature.dlplan_feature.evaluate(dlplan_source_ss_state, instance_data.denotations_caches))
 
-            gfa = instance_datas[new_instance_idx].gfa
+            gfa = instance_data.gfa
             gfa_state_idx = gfa.get_state_index(gfa_state)
             for transition in gfa.get_forward_transitions()[gfa_state_idx]:
                 gfa_state_prime_idxs = transition.get_successor_state()
                 gfa_state_prime = gfa.get_states()[gfa_state_prime_idxs]
                 dlplan_target_ss_state = state_finder.get_dlplan_ss_state(gfa_state_prime)
-                target_val = int(feature.dlplan_feature.evaluate(dlplan_target_ss_state, instance_datas[new_instance_idx].denotations_caches))
+                target_val = int(feature.dlplan_feature.evaluate(dlplan_target_ss_state, instance_data.denotations_caches))
                 if source_val in {0, 2147483647} or target_val in {0, 2147483647}:
                     # Allow arbitrary changes on border values
                     continue
@@ -130,18 +131,18 @@ def compute_feature_pool(domain_data: DomainData,
             tuple_graph = domain_data.gfa_state_id_to_tuple_graph[gfa_state_id]
 
             dlplan_source_ss_state = state_finder.get_dlplan_ss_state(gfa_state)
-            new_instance_idx = domain_data.instance_idx_remap[gfa_state.get_abstraction_id()]
-            instance_data = instance_datas[new_instance_idx]
+            instance_idx = gfa_state.get_abstraction_id()
+            instance_data = instance_datas[instance_idx]
             source_val = int(feature.dlplan_feature.evaluate(dlplan_source_ss_state, instance_data.denotations_caches))
 
             for tuple_vertex_idxs in tuple_graph.get_vertex_indices_by_distances():
                 for tuple_vertex_idx in tuple_vertex_idxs:
                     tuple_vertex = tuple_graph.get_vertices()[tuple_vertex_idx]
                     for mimir_ss_state_prime in tuple_vertex.get_states():
-                        gfa_state_prime = state_finder.get_gfa_state_from_ss_state_idx(new_instance_idx, instance_data.mimir_ss.get_state_index(mimir_ss_state_prime))
+                        gfa_state_prime = state_finder.get_gfa_state_from_ss_state_idx(instance_idx, instance_data.mimir_ss.get_state_index(mimir_ss_state_prime))
                         dlplan_target_ss_state = state_finder.get_dlplan_ss_state(gfa_state_prime)
-                        new_instance_prime_idx = domain_data.instance_idx_remap[gfa_state_prime.get_abstraction_id()]
-                        instance_data_prime = instance_datas[new_instance_prime_idx]
+                        instance_prime_idx = gfa_state_prime.get_abstraction_id()
+                        instance_data_prime = instance_datas[instance_prime_idx]
                         target_val = int(feature.dlplan_feature.evaluate(dlplan_target_ss_state, instance_data_prime.denotations_caches))
                         if source_val < target_val:
                             changes.append(FeatureChange.UP)

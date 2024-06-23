@@ -13,9 +13,12 @@ def compute_tuple_graphs(domain_data: DomainData, instance_datas: List[InstanceD
     """
     gfa_state_id_to_tuple_graph: Dict[int, mm.TupleGraph] = dict()
 
+    tuple_graph_factories = []
+    for instance_data in instance_datas:
+        tuple_graph_factories.append(mm.TupleGraphFactory(instance_data.mimir_ss, width, True))
+
     for instance_data in instance_datas:
         gfa = instance_data.gfa
-        tuple_graph_factory = mm.TupleGraphFactory(instance_data.mimir_ss, width, True)
 
         for gfa_state_idx, gfa_state in enumerate(instance_data.gfa.get_states()):
             if gfa.is_deadend_state(gfa_state_idx):
@@ -23,6 +26,7 @@ def compute_tuple_graphs(domain_data: DomainData, instance_datas: List[InstanceD
 
             gfa_state_id = gfa_state.get_id()
             ss_state = state_finder.get_mimir_ss_state(gfa_state)
+            tuple_graph_factory = tuple_graph_factories[gfa_state.get_abstraction_id()]
 
             with change_dir(f"tuple_graphs/{instance_data.idx}/{gfa_state_idx}", enable=enable_dump_files):
 

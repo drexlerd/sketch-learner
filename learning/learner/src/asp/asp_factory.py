@@ -253,15 +253,15 @@ class ASPFactory:
     def _make_tuple_graph_facts(self, domain_data: DomainData, instance_datas: List[InstanceData], selected_instance_datas: List[InstanceData], state_finder: StateFinder):
         facts = []
         for gfa_state in domain_data.gfa_states:
-            new_instance_idx = domain_data.instance_idx_remap[gfa_state.get_abstraction_id()]
-            instance_data = instance_datas[new_instance_idx]
+            instance_idx = gfa_state.get_abstraction_id()
+            instance_data = instance_datas[instance_idx]
 
             gfa_state_id = gfa_state.get_id()
             tuple_graph = domain_data.gfa_state_id_to_tuple_graph[gfa_state_id]
 
             for s_distance, mimir_ss_states_prime in enumerate(tuple_graph.get_states_by_distance()):
                 for mimir_ss_state_prime in mimir_ss_states_prime:
-                    gfa_state_prime = state_finder.get_gfa_state_from_ss_state_idx(new_instance_idx, instance_data.mimir_ss.get_state_index(mimir_ss_state_prime))
+                    gfa_state_prime = state_finder.get_gfa_state_from_ss_state_idx(instance_idx, instance_data.mimir_ss.get_state_index(mimir_ss_state_prime))
                     gfa_state_prime_id = gfa_state_prime.get_id()
                     facts.append(self._create_s_distance_fact(gfa_state_id, gfa_state_prime_id, s_distance))
 
@@ -289,8 +289,8 @@ class ASPFactory:
         """ T_0 facts """
         facts = set()
         for gfa_state in domain_data.gfa_states:
-            new_instance_idx = domain_data.instance_idx_remap[gfa_state.get_abstraction_id()]
-            instance_data = instance_datas[new_instance_idx]
+            instance_idx = gfa_state.get_abstraction_id()
+            instance_data = instance_datas[instance_idx]
 
             gfa_state_id = gfa_state.get_id()
             tuple_graph = domain_data.gfa_state_id_to_tuple_graph[gfa_state_id]
@@ -301,7 +301,7 @@ class ASPFactory:
                 for tuple_vertex_idx in tuple_vertex_idxs:
                     tuple_vertex = tuple_graph.get_vertices()[tuple_vertex_idx]
                     for mimir_ss_state_prime in tuple_vertex.get_states():
-                        gfa_state_prime = state_finder.get_gfa_state_from_ss_state_idx(new_instance_idx, instance_data.mimir_ss.get_state_index(mimir_ss_state_prime))
+                        gfa_state_prime = state_finder.get_gfa_state_from_ss_state_idx(instance_idx, instance_data.mimir_ss.get_state_index(mimir_ss_state_prime))
                         gfa_state_prime_id = gfa_state_prime.get_id()
                         equivalences.add(domain_data.gfa_state_id_to_state_pair_equivalence[gfa_state_id].subgoal_gfa_state_id_to_r_idx[gfa_state_prime_id])
 

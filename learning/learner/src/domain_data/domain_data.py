@@ -19,7 +19,6 @@ class DomainData:
     vocabulary_info: VocabularyInfo
     policy_builder: PolicyFactory
     syntactic_element_factory: SyntacticElementFactory
-    instance_idx_remap : List[int] = None
     gfa_state_id_to_tuple_graph : Dict[int, mm.TupleGraph] = None
 
     # Changes in each iterations

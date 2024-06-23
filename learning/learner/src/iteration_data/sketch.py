@@ -43,16 +43,17 @@ class Sketch:
             gfa_root_id = gfa_root.get_id()
             tuple_graph = domain_data.gfa_state_id_to_tuple_graph[gfa_root_id]
 
-            new_instance_idx = domain_data.instance_idx_remap[gfa_root.get_abstraction_id()]
+            instance_idx = gfa_root.get_abstraction_id()
+            instance_data = instance_datas[instance_idx]
             dlplan_ss_root = state_finder.get_dlplan_ss_state(gfa_root)
 
             ḧas_bounded_width = False
             min_compatible_distance = math.inf
             for s_distance, tuple_vertex_idxs in enumerate(tuple_graph.get_vertex_indices_by_distances()):
                 for mimir_ss_state_prime in tuple_graph.get_states_by_distance()[s_distance]:
-                    gfa_state_prime = state_finder.get_gfa_state_from_ss_state_idx(new_instance_idx, instance_data.mimir_ss.get_state_index(mimir_ss_state_prime))
-                    new_instance_prime_idx = domain_data.instance_idx_remap[gfa_state_prime.get_abstraction_id()]
-                    instance_data_prime = instance_datas[new_instance_prime_idx]
+                    gfa_state_prime = state_finder.get_gfa_state_from_ss_state_idx(instance_idx, instance_data.mimir_ss.get_state_index(mimir_ss_state_prime))
+                    instance_prime_idx = gfa_state_prime.get_abstraction_id()
+                    instance_data_prime = instance_datas[instance_prime_idx]
                     gfa_state_prime_idx = instance_data_prime.gfa.get_state_index(gfa_state_prime)
                     dlplan_ss_state_prime = state_finder.get_dlplan_ss_state(gfa_state_prime)
 
@@ -69,9 +70,9 @@ class Sketch:
                     tuple_vertex = tuple_graph.get_vertices()[tuple_vertex_idx]
                     is_subgoal_tuple = True
                     for mimir_ss_state_prime in tuple_vertex.get_states():
-                        gfa_state_prime = state_finder.get_gfa_state_from_ss_state_idx(new_instance_idx, instance_data.mimir_ss.get_state_index(mimir_ss_state_prime))
-                        new_instance_prime_idx = domain_data.instance_idx_remap[gfa_state_prime.get_abstraction_id()]
-                        instance_data_prime = instance_datas[new_instance_prime_idx]
+                        gfa_state_prime = state_finder.get_gfa_state_from_ss_state_idx(instance_idx, instance_data.mimir_ss.get_state_index(mimir_ss_state_prime))
+                        instance_prime_idx = gfa_state_prime.get_abstraction_id()
+                        instance_data_prime = instance_datas[instance_prime_idx]
                         gfa_state_prime_idx = instance_data_prime.gfa.get_state_index(gfa_state_prime)
                         dlplan_ss_state_prime = state_finder.get_dlplan_ss_state(gfa_state_prime)
 

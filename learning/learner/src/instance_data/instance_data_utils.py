@@ -1,5 +1,5 @@
 import logging
-from typing import  List, Tuple, Dict, Union
+from typing import List, Tuple, Dict, Union
 from pathlib import Path
 from collections import defaultdict
 
@@ -95,7 +95,7 @@ def compute_instance_datas(domain_filepath: Path,
     with change_dir("state_spaces", enable=enable_dump_files):
         # 1. Create mimir StateSpace and GlobalFaithfulAbstraction
         logging.info("Constructing GlobalFaithfulAbstractions...")
-        abstractions = mm.GlobalFaithfulAbstraction.create(str(domain_filepath), [str(p) for p in instance_filepaths], False, True, max_num_states_per_instance, max_time_per_instance)
+        abstractions = mm.GlobalFaithfulAbstraction.create(str(domain_filepath), [str(p) for p in instance_filepaths], False, True, True, True, max_num_states_per_instance, max_time_per_instance)
         logging.info("...done")
         if len(abstractions) == 0:
             return None, None
@@ -105,7 +105,8 @@ def compute_instance_datas(domain_filepath: Path,
         fas = abstractions[0].get_abstractions()
         for gfa in fas:
             memories.append([gfa.get_pddl_parser(), gfa.get_aag(), gfa.get_ssg()])
-        state_spaces = mm.StateSpace.create(memories)
+            print(gfa.get_num_states())
+        state_spaces = mm.StateSpace.create(memories, True, True, True)
         logging.info("...done")
 
         # 2. Create DomainData
@@ -113,12 +114,12 @@ def compute_instance_datas(domain_filepath: Path,
         domain_data = compute_domain_data(str(domain_filepath), vocabulary_info)
 
         # 3. Create InstanceData
-        for instance_id, (mimir_ss, gfa) in enumerate(zip(state_spaces, abstractions)):
-            if mimir_ss.get_num_goal_states() == 0:
-                continue
+        instance_idx = 0
+        for mimir_ss, gfa in zip(state_spaces, abstractions):
+            assert(mimir_ss.get_num_goal_states())
 
             # 3.1. Create dlplan instance info
-            instance_info, atom_to_dlplan_atom = create_instance_info(vocabulary_info, instance_id, mimir_ss)
+            instance_info, atom_to_dlplan_atom = create_instance_info(vocabulary_info, instance_idx, mimir_ss)
 
             # 3.2 Create dlplan state space
             dlplan_ss = create_dlplan_statespace(instance_info, mimir_ss, atom_to_dlplan_atom)
@@ -129,7 +130,7 @@ def compute_instance_datas(domain_filepath: Path,
                 ss_state_idx_to_gfa_state_idx[ss_state_idx] = gfa.get_abstract_state_index(sp_state)
 
             if enable_dump_files:
-                write_file(f"{instance_id}.dot", dlplan_ss.to_dot(1))
+                write_file(f"{instance_idx}.dot", dlplan_ss.to_dot(1))
 
             if disable_closed_Q:
                 initial_gfa_state_idxs = [gfa.get_initial_state(),]
@@ -137,15 +138,8 @@ def compute_instance_datas(domain_filepath: Path,
                 initial_gfa_state_idxs = [state_idx for state_idx in range(gfa.get_num_states()) if gfa.is_alive_state(state_idx)]
 
             logging.info(f"Created InstanceData with num concrete states: {mimir_ss.get_num_states()} and num abstract states: {gfa.get_num_states()}")
-            instance_data = InstanceData(instance_id, domain_data, dlplan_core.DenotationsCaches(), mimir_ss.get_pddl_parser().get_problem_filepath(), gfa, mimir_ss, dlplan_ss, ss_state_idx_to_gfa_state_idx, initial_gfa_state_idxs)
+            instance_data = InstanceData(instance_idx, domain_data, dlplan_core.DenotationsCaches(), mimir_ss.get_pddl_parser().get_problem_filepath(), gfa, mimir_ss, dlplan_ss, ss_state_idx_to_gfa_state_idx, initial_gfa_state_idxs)
             instance_datas.append(instance_data)
-
-    # Sort the instances according to size and fix the indices afterwards
-    # We also need to keep track of the remapping for remapping GlobalFaithfulAbstractStates.
-    instance_datas = sorted(instance_datas, key=lambda x : x.gfa.get_num_states())
-    instance_idx_remap = [-1] * len(instance_datas)
-    for new_instance_idx, instance_data in enumerate(instance_datas):
-        instance_idx_remap[instance_data.idx] = new_instance_idx
-    domain_data.instance_idx_remap = instance_idx_remap
+            instance_idx += 1
 
     return instance_datas, domain_data

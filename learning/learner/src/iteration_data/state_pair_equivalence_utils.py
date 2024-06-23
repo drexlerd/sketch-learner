@@ -69,8 +69,8 @@ def compute_state_pair_equivalences(domain_data: DomainData,
     gfa_state_id_to_state_pair_equivalence: Dict[int, StatePairEquivalence] = dict()
 
     for gfa_state in domain_data.gfa_states:
-        new_instance_idx = domain_data.instance_idx_remap[gfa_state.get_abstraction_id()]
-        instance_data = instance_datas[new_instance_idx]
+        instance_idx = gfa_state.get_abstraction_id()
+        instance_data = instance_datas[instance_idx]
         gfa_state_id = gfa_state.get_id()
         gfa_state_idx = instance_data.gfa.get_state_index(gfa_state)
         if instance_data.gfa.is_deadend_state(gfa_state_idx):
@@ -89,7 +89,7 @@ def compute_state_pair_equivalences(domain_data: DomainData,
 
         for s_distance, mimir_ss_states_prime in enumerate(tuple_graph.get_states_by_distance()):
             for mimir_ss_state_prime in mimir_ss_states_prime:
-                gfa_state_prime = state_finder.get_gfa_state_from_ss_state_idx(new_instance_idx, instance_data.mimir_ss.get_state_index(mimir_ss_state_prime))
+                gfa_state_prime = state_finder.get_gfa_state_from_ss_state_idx(instance_idx, instance_data.mimir_ss.get_state_index(mimir_ss_state_prime))
                 gfa_state_prime_id = gfa_state_prime.get_id()
 
                 # add effects
