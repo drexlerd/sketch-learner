@@ -40,9 +40,6 @@ def compute_tuple_graph_equivalences(domain_data: DomainData,
                 instance_data_prime = instance_datas[new_instance_prime_idx]
                 gfa_state_prime_idx = instance_data_prime.gfa.get_state_index(gfa_state_prime)
 
-                print(gfa_state_id, gfa_state_prime_id)
-                print(domain_data.gfa_state_id_to_state_pair_equivalence[gfa_state_id].subgoal_gfa_state_id_to_r_idx)
-
                 r_idx = domain_data.gfa_state_id_to_state_pair_equivalence[gfa_state_id].subgoal_gfa_state_id_to_r_idx[gfa_state_prime_id]
 
                 if instance_data_prime.gfa.is_deadend_state(gfa_state_prime_idx):

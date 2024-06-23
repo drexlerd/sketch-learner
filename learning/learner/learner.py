@@ -15,6 +15,7 @@ from .src.util.command import create_experiment_workspace, change_working_direct
 from .src.util.performance import memory_usage
 from .src.util.timer import Timer
 from .src.util.console import add_console_handler, print_separation_line
+from .src.domain_data.domain_data import DomainData
 from .src.instance_data.instance_data import InstanceData, StateFinder
 from .src.instance_data.instance_data_utils import compute_instance_datas
 from .src.instance_data.tuple_graph_utils import compute_tuple_graphs
@@ -27,11 +28,15 @@ from .src.iteration_data.state_pair_equivalence_utils import compute_state_pair_
 from .src.iteration_data.tuple_graph_equivalence_utils import compute_tuple_graph_equivalences, minimize_tuple_graph_equivalences
 
 
-def compute_smallest_unsolved_instance(sketch: Sketch,
-                                       instance_datas: List[InstanceData],
-                                       enable_goal_separating_features: bool):
-    for instance_data in instance_datas:
-        if not sketch.solves(instance_data, enable_goal_separating_features):
+def compute_smallest_unsolved_instance(
+        domain_data: DomainData,
+        instance_datas: List[InstanceData],
+        selected_instance_datas: List[InstanceData],
+        state_finder: StateFinder,
+        sketch: Sketch,
+        enable_goal_separating_features: bool):
+    for instance_data in selected_instance_datas:
+        if not sketch.solves(domain_data, instance_datas, state_finder, instance_data, enable_goal_separating_features):
             return instance_data
     return None
 
@@ -158,8 +163,8 @@ def learn_sketch_for_problem_class(
                     while True:
                         asp_factory = ASPFactory(encoding_type, enable_goal_separating_features, max_num_rules)
                         facts = asp_factory.make_facts(domain_data, instance_datas, selected_instance_datas, state_finder)
-                        for fact in sorted(facts):
-                            print(fact)
+                        #for fact in sorted(facts):
+                        #    print(fact)
                         if j == 0:
                             d2_facts.update(asp_factory.make_initial_d2_facts(domain_data, instance_datas, selected_instance_datas, state_finder))
                             print("Number of initial D2 facts:", len(d2_facts))
@@ -176,8 +181,6 @@ def learn_sketch_for_problem_class(
 
                         logging.info(colored("Solving Logic Program...", "blue", "on_grey"))
                         symbols, returncode = asp_factory.solve()
-                        for symbol in symbols:
-                            print(symbol)
                         logging.info(colored("..done", "blue", "on_grey"))
 
                         if returncode in [ClingoExitCode.UNSATISFIABLE, ClingoExitCode.EXHAUSTED]:
@@ -196,7 +199,7 @@ def learn_sketch_for_problem_class(
                         sketch = Sketch(dlplan_policy, width)
                         logging.info("Learned the following sketch:")
                         sketch.print()
-                        if compute_smallest_unsolved_instance(sketch, selected_instance_datas, enable_goal_separating_features) is None:
+                        if compute_smallest_unsolved_instance(domain_data, instance_datas, selected_instance_datas, state_finder, sketch, enable_goal_separating_features) is None:
                             # Stop adding D2-separation constraints
                             # if sketch solves all training instances
                             break
@@ -229,8 +232,8 @@ def learn_sketch_for_problem_class(
 
                 verification_timer.resume()
                 logging.info(colored("Verifying learned sketch...", "blue", "on_grey"))
-                assert compute_smallest_unsolved_instance(sketch, selected_instance_datas, enable_goal_separating_features) is None
-                smallest_unsolved_instance = compute_smallest_unsolved_instance(sketch, instance_datas, enable_goal_separating_features)
+                assert compute_smallest_unsolved_instance(domain_data, instance_datas, selected_instance_datas, state_finder, sketch, enable_goal_separating_features) is None
+                smallest_unsolved_instance = compute_smallest_unsolved_instance(domain_data, instance_datas, instance_datas, state_finder, sketch, enable_goal_separating_features)
                 logging.info(colored("..done", "blue", "on_grey"))
                 verification_timer.stop()
 
@@ -238,11 +241,11 @@ def learn_sketch_for_problem_class(
                     print(colored("Sketch solves all instances!", "red", "on_grey"))
                     break
                 else:
-                    if smallest_unsolved_instance.id > max(selected_instance_idxs):
-                        selected_instance_idxs = [smallest_unsolved_instance.id]
+                    if smallest_unsolved_instance.idx > max(selected_instance_idxs):
+                        selected_instance_idxs = [smallest_unsolved_instance.idx]
                     else:
-                        selected_instance_idxs.append(smallest_unsolved_instance.id)
-                    print("Smallest unsolved instance:", smallest_unsolved_instance.id)
+                        selected_instance_idxs.append(smallest_unsolved_instance.idx)
+                    print("Smallest unsolved instance:", smallest_unsolved_instance.idx)
                     print("Selected instances:", selected_instance_idxs)
                 i += 1
 
@@ -256,9 +259,9 @@ def learn_sketch_for_problem_class(
         learning_statistics = LearningStatistics(
             num_training_instances=len(instance_datas),
             num_selected_training_instances=len(selected_instance_datas),
-            num_states_in_selected_training_instances=sum(len(instance_data.state_space.get_states()) for instance_data in selected_instance_datas),
-            num_states_in_complete_selected_training_instances=sum(len(instance_data.complete_state_space.get_states()) for instance_data in selected_instance_datas),
-            num_features_in_pool=len(domain_data.feature_pool.features))
+            num_states_in_selected_training_instances=sum(instance_data.gfa.get_num_states() for instance_data in selected_instance_datas),
+            num_states_in_complete_selected_training_instances=sum(instance_data.mimir_ss.get_num_states() for instance_data in selected_instance_datas),
+            num_features_in_pool=len(domain_data.feature_pool))
         learning_statistics.print()
         print_separation_line()
 
@@ -281,8 +284,8 @@ def learn_sketch_for_problem_class(
         print(f"Verification time: {int(verification_timer.get_elapsed_sec()) + 1} seconds.")
         print(f"Total time: {int(total_timer.get_elapsed_sec()) + 1} seconds.")
         print(f"Total memory: {int(memory_usage() / 1024)} GiB.")
-        print("Num states in training data before symmetry pruning:", num_states)
-        print("Num states in training data after symmetry pruning:", num_partitions)
+        #print("Num states in training data before symmetry pruning:", num_states)
+        #print("Num states in training data after symmetry pruning:", num_partitions)
         print_separation_line()
 
         print(flush=True)

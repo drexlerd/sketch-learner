@@ -317,7 +317,7 @@ class ASPFactory:
         for symbol in symbols:
             if symbol.name == "good":
                 good_equivalences.add(symbol.arguments[0].number)
-        bad_equivalences = set(r_idx for r_idx in range(len(domain_data.domain_state_pair_equivalence.rules)) if r_idx not in good_equivalences)
+        bad_equivalences = set(r_idx for r_idx in range(len(domain_data.state_pair_equivalences)) if r_idx not in good_equivalences)
         # compute selected features
         selected_feature_idxs = set()
         for symbol in symbols:

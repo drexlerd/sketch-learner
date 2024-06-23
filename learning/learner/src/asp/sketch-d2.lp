@@ -26,7 +26,7 @@ r_reachable(S') :- D = D', r_reachable(S), good(S, S'), subgoal_distance(S, D), 
 :- D < D', r_distance(S, C, D), subgoal_distance(S, D'), good(C).
 
 % Require D2-separation
-% :- good(C), not good(C'), d2_separate(C, C'), state_pair_class(C), state_pair_class(C'), { feature(F) : select(F), feature_effect(C, F, V), feature_effect(C', F, V'), V != V' } = 0, { feature(F) : select(F), feature_condition(C, F, V), feature_condition(C', F, V'), V != V' } = 0.
+%:- good(C), not good(C'), d2_separate(C, C'), state_pair_class(C), state_pair_class(C'), { feature(F) : select(F), feature_effect(C, F, V), feature_effect(C', F, V'), V != V' } = 0, { feature(F) : select(F), feature_condition(C, F, V), feature_condition(C', F, V'), V != V' } = 0.
 :- good(C), not good(C'), state_pair_class(C), state_pair_class(C'), { feature(F) : select(F), feature_effect(C, F, V), feature_effect(C', F, V'), V != V' } = 0, { feature(F) : select(F), feature_condition(C, F, V), feature_condition(C', F, V'), V != V' } = 0.
 
 

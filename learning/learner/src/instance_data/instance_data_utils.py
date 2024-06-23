@@ -128,8 +128,6 @@ def compute_instance_datas(domain_filepath: Path,
             for ss_state_idx, sp_state in enumerate(mimir_ss.get_states()):
                 ss_state_idx_to_gfa_state_idx[ss_state_idx] = gfa.get_abstract_state_index(sp_state)
 
-            print(ss_state_idx_to_gfa_state_idx)
-
             if enable_dump_files:
                 write_file(f"{instance_id}.dot", dlplan_ss.to_dot(1))
 
