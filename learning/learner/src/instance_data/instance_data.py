@@ -43,8 +43,8 @@ class StateFinder:
     def get_dlplan_ss_state(self, gfa_state: mm.GlobalFaithfulAbstractState) -> dlplan_core.State:
         """ Get the representative dlplan state in the complete concrete dlplan state space.
         """
-        ss_state_idx = self.get_ss_state_idx(gfa_state)
         instance_idx = gfa_state.get_abstraction_id()
+        ss_state_idx = self.get_ss_state_idx(gfa_state)
         dlplan_ss = self.instance_datas[instance_idx].dlplan_ss
         dlplan_ss_state = dlplan_ss.get_states()[ss_state_idx]
 
@@ -63,7 +63,6 @@ class StateFinder:
         """ Get the global faithful abstract state of a state from a complete concrete mimir state space.
         """
         instance_data = self.instance_datas[instance_idx]
-
         gfa_state_idx = instance_data.mimir_ss.get_state_index(ss_state)
         gfa_state = instance_data.gfa.get_states()[instance_data.ss_state_idx_to_gfa_state_idx[gfa_state_idx]]
 
@@ -73,7 +72,6 @@ class StateFinder:
         """ Get the global faithful abstract state of a state index from a complete concrete mimir state space.
         """
         instance_data = self.instance_datas[instance_idx]
-
         gfa_state = instance_data.gfa.get_states()[instance_data.ss_state_idx_to_gfa_state_idx[ss_state_idx]]
 
         return gfa_state

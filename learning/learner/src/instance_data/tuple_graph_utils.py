@@ -24,15 +24,14 @@ def compute_tuple_graphs(domain_data: DomainData, instance_datas: List[InstanceD
             if gfa.is_deadend_state(gfa_state_idx):
                 continue
 
-            gfa_state_id = gfa_state.get_id()
-            ss_state = state_finder.get_mimir_ss_state(gfa_state)
             tuple_graph_factory = tuple_graph_factories[gfa_state.get_abstraction_id()]
+            ss_state = state_finder.get_mimir_ss_state(gfa_state)
+            tuple_graph = tuple_graph_factory.create(ss_state)
+
+            gfa_state_id = gfa_state.get_id()
+            gfa_state_id_to_tuple_graph[gfa_state_id] = tuple_graph
 
             with change_dir(f"tuple_graphs/{instance_data.idx}/{gfa_state_idx}", enable=enable_dump_files):
-
-                tuple_graph = tuple_graph_factory.create(ss_state)
-                gfa_state_id_to_tuple_graph[gfa_state_id] = tuple_graph
-
                 if enable_dump_files:
                     write_file(f"{gfa_state_idx}.dot", str(tuple_graph))
 

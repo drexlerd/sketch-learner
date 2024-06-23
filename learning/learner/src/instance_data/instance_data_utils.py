@@ -105,8 +105,8 @@ def compute_instance_datas(domain_filepath: Path,
         fas = abstractions[0].get_abstractions()
         for gfa in fas:
             memories.append([gfa.get_pddl_parser(), gfa.get_aag(), gfa.get_ssg()])
-            print(gfa.get_num_states())
-        state_spaces = mm.StateSpace.create(memories, True, True, True)
+        # We must not sort state spaces to match the sorting of gfas
+        state_spaces = mm.StateSpace.create(memories, True, True, sort_ascending_by_num_states=False)
         logging.info("...done")
 
         # 2. Create DomainData

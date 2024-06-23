@@ -23,6 +23,7 @@ class DomainData:
 
     # Changes in each iterations
     gfa_states: List[mm.GlobalFaithfulAbstractState] = None
+    gfa_states_by_id: Dict[int, mm.GlobalFaithfulAbstractState] = None
 
     feature_pool: List[Feature] = None
     gfa_state_id_to_feature_evaluations: Dict[int, List[Union[bool, int]]] = None
