@@ -4,7 +4,7 @@ from typing import List, MutableSet, Dict, Union
 import pymimir as mm
 from dlplan.generator import FeatureGenerator
 
-from .feature_pool import Feature, FeaturePool
+from .feature_pool import Feature
 
 from ..domain_data.domain_data import DomainData
 from ..instance_data.instance_data import InstanceData, StateFinder
@@ -138,7 +138,7 @@ def compute_feature_pool(domain_data: DomainData,
                 for tuple_vertex_idx in tuple_vertex_idxs:
                     tuple_vertex = tuple_graph.get_vertices()[tuple_vertex_idx]
                     for mimir_ss_state_prime in tuple_vertex.get_states():
-                        gfa_state_prime = state_finder.get_gfa_state_from_ss_state_idx(instance_data.idx, instance_data.mimir_ss.get_state_index(mimir_ss_state_prime))
+                        gfa_state_prime = state_finder.get_gfa_state_from_ss_state_idx(new_instance_idx, instance_data.mimir_ss.get_state_index(mimir_ss_state_prime))
                         dlplan_target_ss_state = state_finder.get_dlplan_ss_state(gfa_state_prime)
                         new_instance_prime_idx = domain_data.instance_idx_remap[gfa_state_prime.get_abstraction_id()]
                         instance_data_prime = instance_datas[new_instance_prime_idx]
@@ -159,4 +159,4 @@ def compute_feature_pool(domain_data: DomainData,
     features = list(feature_changes.values())
     print("Features after relevant changes pruning (complete):", len(features))
 
-    return FeaturePool(features)
+    domain_data.feature_pool = features

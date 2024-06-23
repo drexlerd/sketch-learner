@@ -55,7 +55,7 @@ def verify_sketch_for_problem_class(
         instance_datas, domain_data = compute_instance_datas(domain_filepath, instance_filepaths, disable_closed_Q, max_num_states_per_instance, max_time_per_instance, enable_dump_files)
         logging.info(colored("..done", "blue", "on_grey"))
 
-        for s_idx in instance_datas[0].initial_gfs_state_idxs:
+        for s_idx in instance_datas[0].initial_gfa_state_idxs:
             print(instance_datas[0].state_space.get_states()[s_idx])
 
         for instance_data in instance_datas:

@@ -1,42 +1,66 @@
 import math
-from typing import List
+from typing import List, Dict, MutableSet
 from collections import defaultdict
 
 from .tuple_graph_equivalence import TupleGraphEquivalence, PerStateTupleGraphEquivalences
 
+from ..domain_data.domain_data import DomainData
 from ..instance_data.instance_data import InstanceData, StateFinder
 
 
-def compute_tuple_graph_equivalences(instance_datas: List[InstanceData], state_finder: StateFinder) -> None:
+def compute_tuple_graph_equivalences(domain_data: DomainData,
+    instance_datas: List[InstanceData],
+    selected_instance_datas: List[InstanceData],
+    state_finder: StateFinder) -> None:
     """ Computes information for all subgoal states, tuples and rules over F.
     """
     num_nodes = 0
-    for instance_idx, instance_data in enumerate(instance_datas):
-        per_state_tuple_graph_equivalences = PerStateTupleGraphEquivalences()
-        for s_idx, tuple_graph in instance_data.per_state_tuple_graphs.gfa_state_idx_to_tuple_graph.items():
-            if instance_data.is_deadend(s_idx):
-                continue
-            state_pair_equivalence = instance_data.per_state_state_pair_equivalences.s_idx_to_state_pair_equivalence[s_idx]
-            tuple_graph_equivalence = TupleGraphEquivalence()
-            # rule distances, deadend rule distances
-            for s_distance, target_mimir_states in enumerate(tuple_graph.get_states_by_distance()):
-                for s_prime_idx in [state_finder.get_ss_state_idx(state_finder.get_gfa_state(instance_idx, target_mimir_state)) for target_mimir_state in target_mimir_states]:
-                    r_idx = state_pair_equivalence.subgoal_state_to_r_idx[s_prime_idx]
-                    if instance_data.is_deadend(s_prime_idx):
-                        tuple_graph_equivalence.r_idx_to_deadend_distance[r_idx] = min(tuple_graph_equivalence.r_idx_to_deadend_distance.get(r_idx, math.inf), s_distance)
-            for subgoal_distance, tuple_vertex_indices in enumerate(tuple_graph.get_vertex_indices_by_distances()):
-                for tuple_vertex_index in tuple_vertex_indices:
-                    tuple_vertex = tuple_graph.get_vertices()[tuple_vertex_index]
-                    t_idx = tuple_vertex.get_identifier()
-                    r_idxs = set()
-                    for s_prime_idx in [state_finder.get_ss_state_idx(state_finder.get_gfa_state(instance_idx, target_mimir_state)) for target_mimir_state in tuple_vertex.get_states()]:
-                        r_idx = state_pair_equivalence.subgoal_state_to_r_idx[s_prime_idx]
-                        r_idxs.add(r_idx)
-                    tuple_graph_equivalence.t_idx_to_distance[t_idx] = subgoal_distance
-                    tuple_graph_equivalence.t_idx_to_r_idxs[t_idx] = r_idxs
-                    num_nodes += 1
-            per_state_tuple_graph_equivalences.s_idx_to_tuple_graph_equivalence[s_idx] = tuple_graph_equivalence
-        instance_data.per_state_tuple_graph_equivalences = per_state_tuple_graph_equivalences
+
+    gfa_state_id_to_tuple_graph_equivalence: Dict[int, TupleGraphEquivalence] = dict()
+
+    for gfa_state in domain_data.gfa_states:
+        new_instance_idx = domain_data.instance_idx_remap[gfa_state.get_abstraction_id()]
+        instance_data = instance_datas[new_instance_idx]
+        gfa_state_id = gfa_state.get_id()
+        gfa_state_idx = instance_data.gfa.get_state_index(gfa_state)
+        if instance_data.gfa.is_deadend_state(gfa_state_idx):
+            continue
+
+        tuple_graph = domain_data.gfa_state_id_to_tuple_graph[gfa_state_id]
+
+        t_idx_to_r_idxs: Dict[int, MutableSet[int]] = dict()
+        t_idx_to_distance: Dict[int, int] = dict()
+        r_idx_to_deadend_distance: Dict[int, int] = dict()
+
+        for s_distance, mimir_ss_states_prime in enumerate(tuple_graph.get_states_by_distance()):
+            for mimir_ss_state_prime in mimir_ss_states_prime:
+                gfa_state_prime = state_finder.get_gfa_state_from_ss_state_idx(new_instance_idx, instance_data.mimir_ss.get_state_index(mimir_ss_state_prime))
+                gfa_state_prime_id = gfa_state_prime.get_id()
+                new_instance_prime_idx = domain_data.instance_idx_remap[gfa_state_prime.get_abstraction_id()]
+                instance_data_prime = instance_datas[new_instance_prime_idx]
+                gfa_state_prime_idx = instance_data_prime.gfa.get_state_index(gfa_state_prime)
+
+                r_idx = domain_data.gfa_state_id_to_state_pair_equivalence[gfa_state_prime_id]
+
+                if instance_data_prime.gfa.is_deadend_state(gfa_state_prime_idx):
+                    r_idx_to_deadend_distance[r_idx] = min(r_idx_to_deadend_distance[r_idx], s_distance)
+
+        for s_distance, tuple_vertex_idxs in enumerate(tuple_graph.get_vertex_indices_by_distances()):
+            for tuple_vertex_idx in tuple_vertex_idxs:
+                tuple_vertex = tuple_graph.get_vertices()[tuple_vertex_idx]
+                t_idx = tuple_vertex.get_identifier()
+                r_idxs = set()
+                for mimir_ss_state_prime in tuple_vertex.get_states():
+                    gfa_state_prime = state_finder.get_gfa_state_from_ss_state_idx(new_instance_idx, instance_data.mimir_ss.get_state_index(mimir_ss_state_prime))
+                    gfa_state_prime_id = gfa_state_prime.get_id()
+                    r_idx = domain_data.gfa_state_id_to_state_pair_equivalence[gfa_state_prime_id].subgoal_gfa_state_id_to_r_idx[gfa_state_prime_id]
+                    r_idxs.add(r_idx)
+                t_idx_to_distance[t_idx] = s_distance
+                t_idx_to_r_idxs[t_idx] = r_idxs
+                num_nodes += 1
+
+        gfa_state_id_to_tuple_graph_equivalence[gfa_state_id] = TupleGraphEquivalence(t_idx_to_r_idxs, t_idx_to_distance, r_idx_to_deadend_distance)
+    domain_data.gfa_state_id_to_tuple_graph_equivalence = gfa_state_id_to_tuple_graph_equivalence
 
     print("Tuple graph equivalence construction statistics:")
     print("Num nodes:", num_nodes)

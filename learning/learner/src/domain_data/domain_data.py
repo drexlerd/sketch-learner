@@ -4,11 +4,11 @@ from typing import List, Dict, Union
 import pymimir as mm
 
 from dlplan.core import VocabularyInfo, SyntacticElementFactory
-from dlplan.policy import PolicyFactory
+from dlplan.policy import PolicyFactory, Rule
 
-from ..iteration_data.state_pair_equivalence import StatePairEquivalenceClasses
-from ..iteration_data.feature_pool import FeaturePool
-
+from ..iteration_data.feature_pool import Feature
+from ..iteration_data.state_pair_equivalence import StatePairEquivalence
+from ..iteration_data.tuple_graph_equivalence import TupleGraphEquivalence
 
 @dataclass
 class DomainData:
@@ -24,6 +24,11 @@ class DomainData:
 
     # Changes in each iterations
     gfa_states: List[mm.GlobalFaithfulAbstractState] = None
-    feature_pool: FeaturePool = None
+
+    feature_pool: List[Feature] = None
     gfa_state_id_to_feature_evaluations: Dict[int, List[Union[bool, int]]] = None
-    domain_state_pair_equivalence: StatePairEquivalenceClasses = None
+
+    state_pair_equivalences: List[Rule] = None
+    gfa_state_id_to_state_pair_equivalence: Dict[int, StatePairEquivalence] = None
+
+    gfa_state_id_to_tuple_graph_equivalence: Dict[int, TupleGraphEquivalence] = None

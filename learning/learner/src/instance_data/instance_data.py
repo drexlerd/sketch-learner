@@ -8,8 +8,6 @@ from dlplan.core import DenotationsCaches
 from dlplan.state_space import StateSpace
 
 from ..domain_data.domain_data import DomainData
-from ..iteration_data.state_pair_equivalence import PerStateStatePairEquivalences
-from ..iteration_data.tuple_graph_equivalence import PerStateTupleGraphEquivalences
 
 
 @dataclass
@@ -23,11 +21,7 @@ class InstanceData:
     mimir_ss: mm.StateSpace
     dlplan_ss: StateSpace
     ss_state_idx_to_gfa_state_idx: Dict[int, int]
-    initial_gfs_state_idxs: List[int]  # in cases we need multiple initial states
-
-    # Changes in each iteration
-    per_state_state_pair_equivalences: PerStateStatePairEquivalences = None
-    per_state_tuple_graph_equivalences: PerStateTupleGraphEquivalences = None
+    initial_gfa_state_idxs: List[int]  # in cases we need multiple initial states
 
 class StateFinder:
     def __init__(self, domain_data: DomainData, instance_datas: List[InstanceData]):

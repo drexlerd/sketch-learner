@@ -98,22 +98,22 @@ class D2sepDlplanPolicyFactory(DlplanPolicyFactory):
         for symbol in symbols:
             if symbol.name == "select":
                 f_idx = symbol.arguments[0].number
-                dlplan_features.add(domain_data.feature_pool.features[f_idx].dlplan_feature)
+                dlplan_features.add(domain_data.feature_pool[f_idx].dlplan_feature)
         rules = set()
         for symbol in symbols:
             if symbol.name == "good":
                 r_idx = symbol.arguments[0].number
-                rule = domain_data.domain_state_pair_equivalence.rules[r_idx]
+                rule = domain_data.state_pair_equivalences[r_idx]
                 conditions = set()
                 for condition in rule.get_conditions():
                     f_idx = int(condition.get_named_element().get_key()[1:])
-                    dlplan_feature = domain_data.feature_pool.features[f_idx].dlplan_feature
+                    dlplan_feature = domain_data.feature_pool[f_idx].dlplan_feature
                     if dlplan_feature in dlplan_features:
                         conditions.add(condition)
                 effects = set()
                 for effect in rule.get_effects():
                     f_idx = int(effect.get_named_element().get_key()[1:])
-                    dlplan_feature = domain_data.feature_pool.features[f_idx].dlplan_feature
+                    dlplan_feature = domain_data.feature_pool[f_idx].dlplan_feature
                     if dlplan_feature in dlplan_features:
                         effects.add(effect)
                 rules.add(policy_builder.make_rule(conditions, effects))

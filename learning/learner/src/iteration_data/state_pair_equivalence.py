@@ -1,5 +1,3 @@
-from dlplan.policy import Rule
-
 from typing import Dict, List, MutableSet
 from dataclasses import dataclass, field
 
@@ -12,42 +10,18 @@ class StatePairEquivalence:
     This creates an abstraction of the state pairs that allows
     reducing the number of constraints in the propositonal encoding.
     """
-    _r_idx_to_subgoal_states: Dict[int, MutableSet[int]]
-    _r_idx_to_distance: Dict[int, int]
-    _subgoal_state_to_r_idx: Dict[int, int]
+    _r_idx_to_subgoal_gfa_state_ids: Dict[int, MutableSet[int]]
+    _r_idx_to_closest_subgoal_distance: Dict[int, int]
+    _subgoal_gfa_state_id_to_r_idx: Dict[int, int]
 
     @property
-    def r_idx_to_subgoal_states(self):
-        return self._r_idx_to_subgoal_states
+    def r_idx_to_subgoal_gfa_state_ids(self):
+        return self._r_idx_to_subgoal_gfa_state_ids
 
     @property
-    def r_idx_to_distance(self):
-        return self._r_idx_to_distance
+    def r_idx_to_closest_subgoal_distance(self):
+        return self._r_idx_to_closest_subgoal_distance
 
     @property
-    def subgoal_state_to_r_idx(self):
-        return self._subgoal_state_to_r_idx
-
-    def __str__(self):
-        return f"StatePairEquivalence(\
-            r_idx_to_subgoal_state={self.r_idx_to_subgoal_states}, \
-            r_idx_to_distance={self.r_idx_to_distance}, \
-            subgoal_state_to_r_idx={self.subgoal_state_to_r_idx})"
-
-
-@dataclass
-class StatePairEquivalenceClasses:
-    _rules: List[Rule]
-
-    @property
-    def rules(self):
-        return self._rules
-
-    def __str__(self):
-        rules_str = ", ".join([repr(rule) for rule in self.rules])
-        return f"StatePairEquivalenceClasses(rules=[{rules_str}])"
-
-
-@dataclass
-class PerStateStatePairEquivalences:
-    s_idx_to_state_pair_equivalence: Dict[int, StatePairEquivalence] = field(default_factory=dict)
+    def subgoal_gfa_state_id_to_r_idx(self):
+        return self._subgoal_gfa_state_id_to_r_idx

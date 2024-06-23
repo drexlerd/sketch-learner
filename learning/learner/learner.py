@@ -117,7 +117,7 @@ def learn_sketch_for_problem_class(
                 logging.info(colored("..done", "blue", "on_grey"))
 
                 logging.info(colored("Initializing DomainFeatureData...", "blue", "on_grey"))
-                domain_data.feature_pool = compute_feature_pool(
+                compute_feature_pool(
                     domain_data,
                     instance_datas,
                     selected_instance_datas,
@@ -134,19 +134,19 @@ def learn_sketch_for_problem_class(
                 logging.info(colored("..done", "blue", "on_grey"))
 
                 logging.info(colored("Constructing PerStateFeatureValuations...", "blue", "on_grey"))
-                compute_per_state_feature_valuations(selected_instance_datas, domain_data, state_finder)
+                compute_per_state_feature_valuations(domain_data, instance_datas, selected_instance_datas, state_finder)
                 logging.info(colored("..done", "blue", "on_grey"))
 
                 logging.info(colored("Constructing StatePairEquivalenceDatas...", "blue", "on_grey"))
-                compute_state_pair_equivalences(domain_data, selected_instance_datas, state_finder)
+                compute_state_pair_equivalences(domain_data, instance_datas, selected_instance_datas, state_finder)
                 logging.info(colored("..done", "blue", "on_grey"))
 
                 logging.info(colored("Constructing TupleGraphEquivalences...", "blue", "on_grey"))
-                compute_tuple_graph_equivalences(selected_instance_datas, state_finder)
+                compute_tuple_graph_equivalences(domain_data, instance_datas, selected_instance_datas, state_finder)
                 logging.info(colored("..done", "blue", "on_grey"))
 
                 logging.info(colored("Minimizing TupleGraphEquivalences...", "blue", "on_grey"))
-                minimize_tuple_graph_equivalences(selected_instance_datas)
+                # minimize_tuple_graph_equivalences(selected_instance_datas)
                 logging.info(colored("..done", "blue", "on_grey"))
                 preprocessing_timer.stop()
 
@@ -157,15 +157,17 @@ def learn_sketch_for_problem_class(
                     j = 0
                     while True:
                         asp_factory = ASPFactory(encoding_type, enable_goal_separating_features, max_num_rules)
-                        facts = asp_factory.make_facts(domain_data, selected_instance_datas)
+                        facts = asp_factory.make_facts(domain_data, instance_datas, selected_instance_datas, state_finder)
+                        for fact in sorted(facts):
+                            print(fact)
                         if j == 0:
-                            d2_facts.update(asp_factory.make_initial_d2_facts(selected_instance_datas))
+                            d2_facts.update(asp_factory.make_initial_d2_facts(domain_data, instance_datas, selected_instance_datas, state_finder))
                             print("Number of initial D2 facts:", len(d2_facts))
                         elif j > 0:
                             unsatisfied_d2_facts = asp_factory.make_unsatisfied_d2_facts(domain_data, symbols)
                             d2_facts.update(unsatisfied_d2_facts)
                             print("Number of unsatisfied D2 facts:", len(unsatisfied_d2_facts))
-                        print("Number of D2 facts:", len(d2_facts), "of", len(domain_data.domain_state_pair_equivalence.rules) ** 2)
+                        print("Number of D2 facts:", len(d2_facts), "of", len(domain_data.state_pair_equivalences) ** 2)
                         facts.extend(list(d2_facts))
 
                         logging.info(colored("Grounding Logic Program...", "blue", "on_grey"))

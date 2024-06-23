@@ -23,10 +23,3 @@ class Feature:
 
     def __hash__(self):
         return hash(str(self.dlplan_feature))
-
-
-@dataclass
-class FeaturePool:
-    """ Stores the generated pool of features. """
-    features: List[Feature]
-

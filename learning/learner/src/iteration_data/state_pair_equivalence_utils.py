@@ -4,10 +4,10 @@ from dlplan.core import Boolean, Numerical
 import math
 
 from collections import defaultdict
-from typing import List
+from typing import List, Dict
 
-from .state_pair_equivalence import StatePairEquivalenceClasses, StatePairEquivalence, PerStateStatePairEquivalences
-from .feature_pool import FeaturePool
+from .state_pair_equivalence import StatePairEquivalence
+from .feature_pool import Feature
 
 from ..domain_data.domain_data import DomainData
 from ..instance_data.instance_data import InstanceData, StateFinder
@@ -16,11 +16,11 @@ from ..instance_data.instance_data import InstanceData, StateFinder
 
 
 def make_conditions(policy_builder: PolicyFactory,
-    feature_pool: FeaturePool,
+    feature_pool: List[Feature],
     feature_valuations):
     """ Create conditions over all features that are satisfied in source_idx """
     conditions = set()
-    for f_idx, (feature, val) in enumerate(zip(feature_pool.features, feature_valuations.feature_valuations)):
+    for f_idx, (feature, val) in enumerate(zip(feature_pool, feature_valuations)):
         if isinstance(feature.dlplan_feature, Boolean):
             if val:
                 conditions.add(policy_builder.make_pos_condition(policy_builder.make_boolean(f"f{f_idx}", feature.dlplan_feature)))
@@ -34,12 +34,12 @@ def make_conditions(policy_builder: PolicyFactory,
     return conditions
 
 def make_effects(policy_builder: PolicyFactory,
-    feature_pool: FeaturePool,
+    feature_pool: List[Feature],
     source_feature_valuations,
     target_feature_valuations):
     """ Create effects over all features that are satisfied in (source_idx,target_idx) """
     effects = set()
-    for f_idx, (feature, source_val, target_val) in enumerate(zip(feature_pool.features, source_feature_valuations.feature_valuations, target_feature_valuations.feature_valuations)):
+    for f_idx, (feature, source_val, target_val) in enumerate(zip(feature_pool, source_feature_valuations, target_feature_valuations)):
         if isinstance(feature.dlplan_feature, Boolean):
             if source_val and not target_val:
                 effects.add(policy_builder.make_neg_effect(policy_builder.make_boolean(f"f{f_idx}", feature.dlplan_feature)))
@@ -59,25 +59,47 @@ def make_effects(policy_builder: PolicyFactory,
 
 def compute_state_pair_equivalences(domain_data: DomainData,
     instance_datas: List[InstanceData],
+    selected_instance_datas: List[InstanceData],
     state_finder: StateFinder):
     # We have to take a new policy_builder because our feature pool F uses indices 0,...,|F|
     policy_builder = domain_data.policy_builder
     rules = []
     rule_repr_to_idx = dict()
-    for instance_idx, instance_data in enumerate(instance_datas):
-        s_idx_to_state_pair_equivalence = dict()
-        for s_idx, tuple_graph in instance_data.per_state_tuple_graphs.gfa_state_idx_to_tuple_graph.items():
-            if instance_data.is_deadend(s_idx):
-                continue
-            r_idx_to_distance = dict()
-            r_idx_to_subgoal_states = defaultdict(set)
-            subgoal_states_to_r_idx = dict()
-            # add conditions
-            conditions = make_conditions(policy_builder, domain_data.feature_pool, instance_data.per_state_feature_valuations.gfa_state_idx_to_feature_valuations[s_idx])
-            for s_distance, target_mimir_states in enumerate(tuple_graph.get_states_by_distance()):
-                for s_prime_idx in [state_finder.get_ss_state_idx(state_finder.get_gfa_state(instance_idx, target_mimir_state)) for target_mimir_state in target_mimir_states]:
+
+    gfa_state_id_to_state_pair_equivalence: Dict[int, StatePairEquivalence] = dict()
+
+    for gfa_state in domain_data.gfa_states:
+        new_instance_idx = domain_data.instance_idx_remap[gfa_state.get_abstraction_id()]
+        instance_data = instance_datas[new_instance_idx]
+        gfa_state_id = gfa_state.get_id()
+        gfa_state_idx = instance_data.gfa.get_state_index(gfa_state)
+        if instance_data.gfa.is_deadend_state(gfa_state_idx):
+            continue
+
+        tuple_graph = domain_data.gfa_state_id_to_tuple_graph[gfa_state_id]
+
+        r_idx_to_distance = dict()
+        r_idx_to_subgoal_gfa_state_ids = defaultdict(set)
+        subgoal_gfa_state_id_to_r_idx = dict()
+
+        # add conditions
+        conditions = make_conditions(policy_builder,
+                                     domain_data.feature_pool,
+                                     domain_data.gfa_state_id_to_feature_evaluations[gfa_state_id])
+
+        for s_distance, tuple_vertex_idxs in enumerate(tuple_graph.get_vertex_indices_by_distances()):
+            for tuple_vertex_idx in tuple_vertex_idxs:
+                tuple_vertex = tuple_graph.get_vertices()[tuple_vertex_idx]
+                for mimir_ss_state_prime in tuple_vertex.get_states():
+                    gfa_state_prime = state_finder.get_gfa_state_from_ss_state_idx(new_instance_idx, instance_data.mimir_ss.get_state_index(mimir_ss_state_prime))
+                    gfa_state_prime_id = gfa_state_prime.get_id()
+
                     # add effects
-                    effects = make_effects(policy_builder, domain_data.feature_pool, instance_data.per_state_feature_valuations.gfa_state_idx_to_feature_valuations[s_idx], instance_data.per_state_feature_valuations.gfa_state_idx_to_feature_valuations[s_prime_idx])
+                    effects = make_effects(policy_builder,
+                                           domain_data.feature_pool,
+                                           domain_data.gfa_state_id_to_feature_evaluations[gfa_state_id],
+                                           domain_data.gfa_state_id_to_feature_evaluations[gfa_state_prime_id])
+
                     # add rule
                     rule = policy_builder.make_rule(conditions, effects)
                     rule_repr = repr(rule)
@@ -88,8 +110,10 @@ def compute_state_pair_equivalences(domain_data: DomainData,
                         rule_repr_to_idx[rule_repr] = r_idx
                         rules.append(rule)
                     r_idx_to_distance[r_idx] = min(r_idx_to_distance.get(r_idx, math.inf), s_distance)
-                    r_idx_to_subgoal_states[r_idx].add(s_prime_idx)
-                    subgoal_states_to_r_idx[s_prime_idx] = r_idx
-            s_idx_to_state_pair_equivalence[s_idx] = StatePairEquivalence(r_idx_to_subgoal_states, r_idx_to_distance, subgoal_states_to_r_idx)
-        instance_data.per_state_state_pair_equivalences = PerStateStatePairEquivalences(s_idx_to_state_pair_equivalence)
-    domain_data.domain_state_pair_equivalence = StatePairEquivalenceClasses(rules)
+                    r_idx_to_subgoal_gfa_state_ids[r_idx].add(gfa_state_prime_id)
+                    subgoal_gfa_state_id_to_r_idx[gfa_state_prime_id] = r_idx
+
+        gfa_state_id_to_state_pair_equivalence[gfa_state_id] = StatePairEquivalence(r_idx_to_subgoal_gfa_state_ids, r_idx_to_distance, subgoal_gfa_state_id_to_r_idx)
+
+    domain_data.state_pair_equivalences = rules
+    domain_data.gfa_state_id_to_state_pair_equivalence = gfa_state_id_to_state_pair_equivalence

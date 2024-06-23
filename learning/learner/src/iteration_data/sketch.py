@@ -24,9 +24,9 @@ class Sketch:
         that are closer than the closest satisfied subgoal tuple.
         """
         queue = deque()
-        queue.extend(instance_data.initial_gfs_state_idxs)
+        queue.extend(instance_data.initial_gfa_state_idxs)
         visited = set()
-        visited.update(instance_data.initial_gfs_state_idxs)
+        visited.update(instance_data.initial_gfa_state_idxs)
         # byproduct for acyclicity check
         subgoal_states_per_r_reachable_state = defaultdict(set)
         while queue:
