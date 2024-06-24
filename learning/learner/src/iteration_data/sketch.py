@@ -4,15 +4,15 @@ from collections import defaultdict, deque
 from termcolor import colored
 from typing import Dict, List
 
-from dlplan.core import State, DenotationsCaches
-from dlplan.policy import Policy, NamedBoolean, NamedNumerical
+import dlplan.core as dlplan_core
+import dlplan.policy as dlplan_policy
 
 from ..instance_data.instance_data import InstanceData, StateFinder
 from ..domain_data.domain_data import DomainData
 
 
 class Sketch:
-    def __init__(self, dlplan_policy: Policy, width: int):
+    def __init__(self, dlplan_policy: dlplan_policy.Policy, width: int):
         self.dlplan_policy = dlplan_policy
         self.width = width
 
@@ -142,7 +142,7 @@ class Sketch:
                     stack.pop(-1)
         return True
 
-    def _compute_state_b_values(self, booleans: List[NamedBoolean], numericals: List[NamedNumerical], state: State, denotations_caches: DenotationsCaches):
+    def _compute_state_b_values(self, booleans: List[dlplan_policy.NamedBoolean], numericals: List[dlplan_policy.NamedNumerical], state: dlplan_core.State, denotations_caches: dlplan_core.DenotationsCaches):
         return tuple([boolean.get_element().evaluate(state, denotations_caches) for boolean in booleans] + [numerical.get_element().evaluate(state, denotations_caches) > 0 for numerical in numericals])
 
     def _verify_goal_separating_features(self, instance_data: InstanceData):

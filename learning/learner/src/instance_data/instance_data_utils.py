@@ -116,6 +116,7 @@ def compute_instance_datas(domain_filepath: Path,
         # 3. Create InstanceData
         instance_idx = 0
         for mimir_ss, gfa in zip(state_spaces, abstractions):
+            # Ensure that unsolvable instances were removed
             assert(mimir_ss.get_num_goal_states())
 
             # 3.1. Create dlplan instance info

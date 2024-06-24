@@ -4,8 +4,8 @@ from collections import defaultdict
 from typing import List, Union
 from pathlib import Path
 
-from dlplan.core import Boolean, Numerical
-from dlplan.policy import PositiveBooleanCondition, NegativeBooleanCondition, GreaterNumericalCondition, EqualNumericalCondition, PositiveBooleanEffect, NegativeBooleanEffect, UnchangedBooleanEffect, DecrementNumericalEffect, IncrementNumericalEffect, UnchangedNumericalEffect
+import dlplan.core as dlplan_core
+import dlplan.policy as dlplan_policy
 
 from clingo import Control, Number, Symbol, String
 
@@ -134,9 +134,9 @@ class ASPFactory:
         for f_idx, feature in enumerate(domain_data.feature_pool):
             facts.append(self._create_feature_fact(f_idx))
             facts.append(self._create_complexity_fact(f_idx, feature.complexity))
-            if isinstance(feature.dlplan_feature, Boolean):
+            if isinstance(feature.dlplan_feature, dlplan_core.Boolean):
                 facts.append(self._create_boolean_fact(f_idx))
-            elif isinstance(feature.dlplan_feature, Numerical):
+            elif isinstance(feature.dlplan_feature, dlplan_core.Numerical):
                 facts.append(self._create_numerical_fact(f_idx))
         return facts
 
@@ -144,10 +144,10 @@ class ASPFactory:
     def _create_value_fact(self, gfa_state_id: int, f_idx: int, val: Union[bool, int]):
         return ("value", (Number(gfa_state_id), Number(f_idx), Number(val)))
 
-    def _create_b_value_fact(self, dlplan_feature: Union[Boolean, Numerical], gfa_state_id: int, f_idx: int, val: Union[bool, int]):
-        if isinstance(dlplan_feature, Boolean):
+    def _create_b_value_fact(self, dlplan_feature: Union[dlplan_core.Boolean, dlplan_core.Numerical], gfa_state_id: int, f_idx: int, val: Union[bool, int]):
+        if isinstance(dlplan_feature, dlplan_core.Boolean):
             return ("b_value", (Number(gfa_state_id), Number(f_idx), Number(val)))
-        elif isinstance(dlplan_feature, Numerical):
+        elif isinstance(dlplan_feature, dlplan_core.Numerical):
             return ("b_value", (Number(gfa_state_id), Number(f_idx), Number(1 if val > 0 else 0)))
         else:
             raise RuntimeError("Expected Boolean or Numerical feature.")
@@ -166,30 +166,30 @@ class ASPFactory:
     def _create_state_pair_class_fact(self, r_idx: int):
         return ("state_pair_class", (Number(r_idx),))
 
-    def _create_feature_condition_fact(self, condition: Union[PositiveBooleanCondition, NegativeBooleanCondition, GreaterNumericalCondition, EqualNumericalCondition], r_idx: int, f_idx: int):
-        if isinstance(condition, PositiveBooleanCondition):
+    def _create_feature_condition_fact(self, condition: Union[dlplan_policy.PositiveBooleanCondition, dlplan_policy.NegativeBooleanCondition, dlplan_policy.GreaterNumericalCondition, dlplan_policy.EqualNumericalCondition], r_idx: int, f_idx: int):
+        if isinstance(condition, dlplan_policy.PositiveBooleanCondition):
             return ("feature_condition", (Number(r_idx), Number(f_idx), String("c_b_pos"),))
-        elif isinstance(condition, NegativeBooleanCondition):
+        elif isinstance(condition, dlplan_policy.NegativeBooleanCondition):
             return ("feature_condition", (Number(r_idx), Number(f_idx), String("c_b_neg"),))
-        elif isinstance(condition, GreaterNumericalCondition):
+        elif isinstance(condition, dlplan_policy.GreaterNumericalCondition):
             return ("feature_condition", (Number(r_idx), Number(f_idx), String("c_n_gt"),))
-        elif isinstance(condition, EqualNumericalCondition):
+        elif isinstance(condition, dlplan_policy.EqualNumericalCondition):
             return ("feature_condition", (Number(r_idx), Number(f_idx), String("c_n_eq"),))
         else:
             raise RuntimeError(f"Cannot parse condition {str(condition)}")
 
-    def _create_feature_effect_fact(self, effect: Union[PositiveBooleanEffect, NegativeBooleanEffect, UnchangedBooleanEffect, IncrementNumericalEffect, DecrementNumericalEffect, UnchangedNumericalEffect], r_idx: int, f_idx: int):
-        if isinstance(effect, PositiveBooleanEffect):
+    def _create_feature_effect_fact(self, effect: Union[dlplan_policy.PositiveBooleanEffect, dlplan_policy.NegativeBooleanEffect, dlplan_policy.UnchangedBooleanEffect, dlplan_policy.IncrementNumericalEffect, dlplan_policy.DecrementNumericalEffect, dlplan_policy.UnchangedNumericalEffect], r_idx: int, f_idx: int):
+        if isinstance(effect, dlplan_policy.PositiveBooleanEffect):
             return ("feature_effect", (Number(r_idx), Number(f_idx), String("e_b_pos"),))
-        elif isinstance(effect, NegativeBooleanEffect):
+        elif isinstance(effect, dlplan_policy.NegativeBooleanEffect):
             return ("feature_effect", (Number(r_idx), Number(f_idx), String("e_b_neg"),))
-        elif isinstance(effect, UnchangedBooleanEffect):
+        elif isinstance(effect, dlplan_policy.UnchangedBooleanEffect):
             return ("feature_effect", (Number(r_idx), Number(f_idx), String("e_b_bot"),))
-        elif isinstance(effect, IncrementNumericalEffect):
+        elif isinstance(effect, dlplan_policy.IncrementNumericalEffect):
             return ("feature_effect", (Number(r_idx), Number(f_idx), String("e_n_inc"),))
-        elif isinstance(effect, DecrementNumericalEffect):
+        elif isinstance(effect, dlplan_policy.DecrementNumericalEffect):
             return ("feature_effect", (Number(r_idx), Number(f_idx), String("e_n_dec"),))
-        elif isinstance(effect, UnchangedNumericalEffect):
+        elif isinstance(effect, dlplan_policy.UnchangedNumericalEffect):
             return ("feature_effect", (Number(r_idx), Number(f_idx), String("e_n_bot"),))
         else:
             raise RuntimeError(f"Cannot parse effect {str(effect)}")

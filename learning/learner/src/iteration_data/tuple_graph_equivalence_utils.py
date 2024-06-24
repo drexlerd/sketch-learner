@@ -1,8 +1,7 @@
-import math
 from typing import List, Dict, MutableSet
 from collections import defaultdict
 
-from .tuple_graph_equivalence import TupleGraphEquivalence, PerStateTupleGraphEquivalences
+from .tuple_graph_equivalence import TupleGraphEquivalence
 
 from ..domain_data.domain_data import DomainData
 from ..instance_data.instance_data import InstanceData, StateFinder

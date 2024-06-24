@@ -1,13 +1,13 @@
 from typing import Union, List
 from dataclasses import dataclass
 
-from dlplan.core import Boolean, Numerical
+import dlplan.core as dlplan_core
 
 
 @dataclass
 class Feature:
     """ A single feature with custom complexity. """
-    _dlplan_feature: Union[Boolean, Numerical]
+    _dlplan_feature: Union[dlplan_core.Boolean, dlplan_core.Numerical]
     _complexity: int
 
     @property

@@ -4,8 +4,7 @@ from pathlib import Path
 
 import pymimir as mm
 import dlplan.core as dlplan_core
-from dlplan.core import DenotationsCaches
-from dlplan.state_space import StateSpace
+import dlplan.state_space as dlplan_state_space
 
 from ..domain_data.domain_data import DomainData
 
@@ -15,11 +14,11 @@ class InstanceData:
     # Persistent data
     idx: int
     domain_data: DomainData
-    denotations_caches: DenotationsCaches  # We use a cache for each instance such that we can ignore the instance index.
+    denotations_caches: dlplan_core.DenotationsCaches  # We use a cache for each instance such that we can ignore the instance index.
     instance_filepath: Path
     gfa: mm.GlobalFaithfulAbstraction
     mimir_ss: mm.StateSpace
-    dlplan_ss: StateSpace
+    dlplan_ss: dlplan_state_space.StateSpace
     ss_state_idx_to_gfa_state_idx: Dict[int, int]
     initial_gfa_state_idxs: List[int]  # in cases we need multiple initial states
 
@@ -82,7 +81,3 @@ class StateFinder:
         gfa_state = instance_data.gfa.get_states()[instance_data.ss_state_idx_to_gfa_state_idx[ss_state_idx]]
 
         return gfa_state
-
-
-
-

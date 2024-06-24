@@ -2,7 +2,7 @@ import re
 
 from abc import ABC, abstractmethod
 
-from dlplan.core import Boolean, Numerical
+import dlplan.core as dlplan_core
 
 from clingo import Symbol
 from typing import List, Union, MutableSet
@@ -47,7 +47,7 @@ class ExplicitDlplanPolicyFactory(DlplanPolicyFactory):
                 selected_features.add(domain_data.feature_pool[f_idx].dlplan_feature)
         return selected_features
 
-    def _add_rules(self, symbols: List[Symbol], domain_data: DomainData, selected_features: MutableSet[Union[Boolean, Numerical]]):
+    def _add_rules(self, symbols: List[Symbol], domain_data: DomainData, selected_features: MutableSet[Union[dlplan_core.Boolean, dlplan_core.Numerical]]):
         """ """
         policy_builder = domain_data.policy_builder
         rules_dict = dict()

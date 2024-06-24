@@ -2,7 +2,7 @@ from enum import Enum
 from typing import List, MutableSet, Dict, Union
 
 import pymimir as mm
-from dlplan.generator import FeatureGenerator
+import dlplan.generator as dlplan_generator
 
 from .feature_pool import Feature
 
@@ -36,7 +36,7 @@ def compute_feature_pool(domain_data: DomainData,
     dlplan_ss_states = list(dlplan_ss_states)
 
     syntactic_element_factory = domain_data.syntactic_element_factory
-    feature_generator = FeatureGenerator()
+    feature_generator = dlplan_generator.FeatureGenerator()
     feature_generator.set_generate_inclusion_boolean(False)
     feature_generator.set_generate_diff_concept(False)
     feature_generator.set_generate_or_concept(False)

@@ -1,10 +1,10 @@
-from dlplan.policy import PolicyFactory
-from dlplan.core import Boolean, Numerical
-
 import math
 
 from collections import defaultdict
 from typing import List, Dict
+
+import dlplan.core as dlplan_core
+import dlplan.policy as dlplan_policy
 
 from .state_pair_equivalence import StatePairEquivalence
 from .feature_pool import Feature
@@ -13,41 +13,39 @@ from ..domain_data.domain_data import DomainData
 from ..instance_data.instance_data import InstanceData, StateFinder
 
 
-
-
-def make_conditions(policy_builder: PolicyFactory,
+def make_conditions(policy_builder: dlplan_policy.PolicyFactory,
     feature_pool: List[Feature],
     feature_valuations):
     """ Create conditions over all features that are satisfied in source_idx """
     conditions = set()
     for f_idx, (feature, val) in enumerate(zip(feature_pool, feature_valuations)):
-        if isinstance(feature.dlplan_feature, Boolean):
+        if isinstance(feature.dlplan_feature, dlplan_core.Boolean):
             if val:
                 conditions.add(policy_builder.make_pos_condition(policy_builder.make_boolean(f"f{f_idx}", feature.dlplan_feature)))
             else:
                 conditions.add(policy_builder.make_neg_condition(policy_builder.make_boolean(f"f{f_idx}", feature.dlplan_feature)))
-        elif isinstance(feature.dlplan_feature, Numerical):
+        elif isinstance(feature.dlplan_feature, dlplan_core.Numerical):
             if val > 0:
                 conditions.add(policy_builder.make_gt_condition(policy_builder.make_numerical(f"f{f_idx}", feature.dlplan_feature)))
             else:
                 conditions.add(policy_builder.make_eq_condition(policy_builder.make_numerical(f"f{f_idx}", feature.dlplan_feature)))
     return conditions
 
-def make_effects(policy_builder: PolicyFactory,
+def make_effects(policy_builder: dlplan_policy.PolicyFactory,
     feature_pool: List[Feature],
     source_feature_valuations,
     target_feature_valuations):
     """ Create effects over all features that are satisfied in (source_idx,target_idx) """
     effects = set()
     for f_idx, (feature, source_val, target_val) in enumerate(zip(feature_pool, source_feature_valuations, target_feature_valuations)):
-        if isinstance(feature.dlplan_feature, Boolean):
+        if isinstance(feature.dlplan_feature, dlplan_core.Boolean):
             if source_val and not target_val:
                 effects.add(policy_builder.make_neg_effect(policy_builder.make_boolean(f"f{f_idx}", feature.dlplan_feature)))
             elif not source_val and target_val:
                 effects.add(policy_builder.make_pos_effect(policy_builder.make_boolean(f"f{f_idx}", feature.dlplan_feature)))
             else:
                 effects.add(policy_builder.make_bot_effect(policy_builder.make_boolean(f"f{f_idx}", feature.dlplan_feature)))
-        elif isinstance(feature.dlplan_feature, Numerical):
+        elif isinstance(feature.dlplan_feature, dlplan_core.Numerical):
             if source_val > target_val:
                 effects.add(policy_builder.make_dec_effect(policy_builder.make_numerical(f"f{f_idx}", feature.dlplan_feature)))
             elif source_val < target_val:
