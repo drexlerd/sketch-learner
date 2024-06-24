@@ -127,12 +127,17 @@ def compute_feature_pool(domain_data: DomainData,
     for feature in features:
         changes = []
         for gfa_state in domain_data.gfa_states:
+            instance_idx = gfa_state.get_abstraction_id()
+            instance_data = instance_datas[instance_idx]
+
             gfa_state_id = gfa_state.get_id()
+            gfa_state_idx = state_finder.get_gfa_state_idx_from_gfa_state(gfa_state.get_abstraction_id(), gfa_state)
+            if instance_data.gfa.is_deadend_state(gfa_state_idx):
+                continue
+
             tuple_graph = domain_data.gfa_state_id_to_tuple_graph[gfa_state_id]
 
             dlplan_source_ss_state = state_finder.get_dlplan_ss_state(gfa_state)
-            instance_idx = gfa_state.get_abstraction_id()
-            instance_data = instance_datas[instance_idx]
             source_val = int(feature.dlplan_feature.evaluate(dlplan_source_ss_state, instance_data.denotations_caches))
 
             for tuple_vertex_idxs in tuple_graph.get_vertex_indices_by_distances():

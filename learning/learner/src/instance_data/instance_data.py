@@ -59,6 +59,13 @@ class StateFinder:
 
         return mimir_ss_state
 
+    def get_gfa_state_idx_from_gfa_state(self, instance_idx: int, gfa_state: mm.GlobalFaithfulAbstractState):
+        """ Get the index of the global faithful abstract state in the global faithful abstraction with index instance_idx
+        """
+        instance_data = self.instance_datas[instance_idx]
+        gfa_state_idx = instance_data.gfa.get_state_index(gfa_state)
+        return gfa_state_idx
+
     def get_gfa_state(self, instance_idx: int, ss_state: mm.State):
         """ Get the global faithful abstract state of a state from a complete concrete mimir state space.
         """

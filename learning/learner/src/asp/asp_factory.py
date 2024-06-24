@@ -257,6 +257,10 @@ class ASPFactory:
             instance_data = instance_datas[instance_idx]
 
             gfa_state_id = gfa_state.get_id()
+            gfa_state_idx = state_finder.get_gfa_state_idx_from_gfa_state(gfa_state.get_abstraction_id(), gfa_state)
+            if instance_data.gfa.is_deadend_state(gfa_state_idx):
+                continue
+
             tuple_graph = domain_data.gfa_state_id_to_tuple_graph[gfa_state_id]
 
             for s_distance, mimir_ss_states_prime in enumerate(tuple_graph.get_states_by_distance()):
@@ -293,6 +297,10 @@ class ASPFactory:
             instance_data = instance_datas[instance_idx]
 
             gfa_state_id = gfa_state.get_id()
+            gfa_state_idx = state_finder.get_gfa_state_idx_from_gfa_state(gfa_state.get_abstraction_id(), gfa_state)
+            if instance_data.gfa.is_deadend_state(gfa_state_idx):
+                continue
+
             tuple_graph = domain_data.gfa_state_id_to_tuple_graph[gfa_state_id]
 
             equivalences = set()

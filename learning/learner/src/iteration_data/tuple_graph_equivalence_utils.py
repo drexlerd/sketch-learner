@@ -43,7 +43,7 @@ def compute_tuple_graph_equivalences(domain_data: DomainData,
                 r_idx = domain_data.gfa_state_id_to_state_pair_equivalence[gfa_state_id].subgoal_gfa_state_id_to_r_idx[gfa_state_prime_id]
 
                 if instance_data_prime.gfa.is_deadend_state(gfa_state_prime_idx):
-                    r_idx_to_deadend_distance[r_idx] = min(r_idx_to_deadend_distance[r_idx], s_distance)
+                    r_idx_to_deadend_distance[r_idx] = min(r_idx_to_deadend_distance.get(r_idx, float("inf")), s_distance)
 
         for s_distance, tuple_vertex_idxs in enumerate(tuple_graph.get_vertex_indices_by_distances()):
             for tuple_vertex_idx in tuple_vertex_idxs:

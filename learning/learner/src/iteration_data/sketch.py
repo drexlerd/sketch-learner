@@ -24,8 +24,6 @@ class Sketch:
         If optimal width is required, we do not allow R-compatible states
         that are closer than the closest satisfied subgoal tuple.
         """
-        for gfa_state in domain_data.gfa_states:
-            print(gfa_state.get_id(), gfa_state.get_abstraction_id(), gfa_state.get_abstract_state_id())
         queue = deque()
         visited = set()
         for gfa_state_idx in instance_data.initial_gfa_state_idxs:
@@ -37,7 +35,6 @@ class Sketch:
         subgoal_states_per_r_reachable_state = defaultdict(set)
         while queue:
             gfa_root_id = queue.pop()
-            print(gfa_root_id, len(domain_data.gfa_states))
             gfa_root = domain_data.gfa_states_by_id[gfa_root_id]
             instance_idx = gfa_root.get_abstraction_id()
             instance_data = instance_datas[instance_idx]
@@ -84,9 +81,6 @@ class Sketch:
                         instance_data_prime = instance_datas[instance_prime_idx]
                         gfa_state_prime_idx = instance_data_prime.gfa.get_state_index(gfa_state_prime)
                         dlplan_ss_state_prime = state_finder.get_dlplan_ss_state(gfa_state_prime)
-                        print(s_distance,instance_idx, gfa_root_idx, dlplan_ss_root)
-                        print(s_distance,instance_prime_idx, gfa_state_prime_idx, dlplan_ss_state_prime)
-                        print()
 
                         if self.dlplan_policy.evaluate(dlplan_ss_root, dlplan_ss_state_prime, instance_data.denotations_caches) is not None:
                             min_compatible_distance = min(min_compatible_distance, s_distance)
@@ -113,7 +107,6 @@ class Sketch:
                 print("Instance:", instance_data.idx)
                 print("Source_state:", gfa_root_id)
                 return False, []
-        print(subgoal_states_per_r_reachable_state)
 
         return True, subgoal_states_per_r_reachable_state
 
