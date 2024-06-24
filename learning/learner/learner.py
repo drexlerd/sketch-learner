@@ -119,10 +119,6 @@ def learn_sketch_for_problem_class(
                 for instance_data in selected_instance_datas:
                     gfa_states.update(instance_data.gfa.get_states())
                 domain_data.gfa_states = list(gfa_states)
-                gfa_states_by_id: Dict[int, mm.GlobalFaithfulAbstractState] = dict()
-                for gfa_state in gfa_states:
-                    gfa_states_by_id[gfa_state.get_id()] = gfa_state
-                domain_data.gfa_states_by_id = gfa_states_by_id
                 logging.info(colored("..done", "blue", "on_grey"))
 
                 logging.info(colored("Initializing DomainFeatureData...", "blue", "on_grey"))

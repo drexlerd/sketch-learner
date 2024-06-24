@@ -90,7 +90,7 @@ def compute_instance_datas(domain_filepath: Path,
                            max_num_states_per_instance: int,
                            max_time_per_instance: int,
                            enable_dump_files: bool) -> Tuple[List[InstanceData], DomainData]:
-    instance_datas = []
+    instance_datas: List[InstanceData] = []
 
     with change_dir("state_spaces", enable=enable_dump_files):
         # 1. Create mimir StateSpace and GlobalFaithfulAbstraction
@@ -141,5 +141,11 @@ def compute_instance_datas(domain_filepath: Path,
             instance_data = InstanceData(instance_idx, domain_data, dlplan_core.DenotationsCaches(), mimir_ss.get_pddl_parser().get_problem_filepath(), gfa, mimir_ss, dlplan_ss, ss_state_idx_to_gfa_state_idx, initial_gfa_state_idxs)
             instance_datas.append(instance_data)
             instance_idx += 1
+
+    gfa_states_by_id: Dict[int, mm.GlobalFaithfulAbstractState] = dict()
+    for instance_data in instance_datas:
+        for gfa_state in instance_data.gfa.get_states():
+            gfa_states_by_id[gfa_state.get_id()] = gfa_state
+    domain_data.gfa_states_by_id = gfa_states_by_id
 
     return instance_datas, domain_data
