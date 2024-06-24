@@ -206,7 +206,7 @@ def learn_sketch_for_problem_class(
                         j += 1
                 elif encoding_type == EncodingType.EXPLICIT:
                     asp_factory = ASPFactory(encoding_type, enable_goal_separating_features, max_num_rules)
-                    facts = asp_factory.make_facts(domain_data, selected_instance_datas)
+                    facts = asp_factory.make_facts(domain_data, instance_datas, selected_instance_datas, state_finder)
 
                     logging.info(colored("Grounding Logic Program...", "blue", "on_grey"))
                     asp_factory.ground(facts)
