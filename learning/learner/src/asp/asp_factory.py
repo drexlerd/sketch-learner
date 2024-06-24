@@ -253,11 +253,11 @@ class ASPFactory:
     def _make_tuple_graph_facts(self, domain_data: DomainData, instance_datas: List[InstanceData], selected_instance_datas: List[InstanceData], state_finder: StateFinder):
         facts = []
         for gfa_state in domain_data.gfa_states:
-            instance_idx = gfa_state.get_abstraction_id()
+            instance_idx = gfa_state.get_abstraction_index()
             instance_data = instance_datas[instance_idx]
 
             gfa_state_id = gfa_state.get_id()
-            gfa_state_idx = state_finder.get_gfa_state_idx_from_gfa_state(gfa_state.get_abstraction_id(), gfa_state)
+            gfa_state_idx = state_finder.get_gfa_state_idx_from_gfa_state(gfa_state.get_abstraction_index(), gfa_state)
             if instance_data.gfa.is_deadend_state(gfa_state_idx):
                 continue
 
@@ -293,11 +293,11 @@ class ASPFactory:
         """ T_0 facts """
         facts = set()
         for gfa_state in domain_data.gfa_states:
-            instance_idx = gfa_state.get_abstraction_id()
+            instance_idx = gfa_state.get_abstraction_index()
             instance_data = instance_datas[instance_idx]
 
             gfa_state_id = gfa_state.get_id()
-            gfa_state_idx = state_finder.get_gfa_state_idx_from_gfa_state(gfa_state.get_abstraction_id(), gfa_state)
+            gfa_state_idx = state_finder.get_gfa_state_idx_from_gfa_state(gfa_state.get_abstraction_index(), gfa_state)
             if instance_data.gfa.is_deadend_state(gfa_state_idx):
                 continue
 

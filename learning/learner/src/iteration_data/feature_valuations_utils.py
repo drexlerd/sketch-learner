@@ -9,7 +9,7 @@ def compute_per_state_feature_valuations(domain_data: DomainData, instance_datas
     """
     gfa_state_id_to_feature_evaluations: Dict[int, List[Union[bool, int]]] = dict()
     for gfa_state in domain_data.gfa_states:
-        instance_idx = gfa_state.get_abstraction_id()
+        instance_idx = gfa_state.get_abstraction_index()
         instance_data = instance_datas[instance_idx]
         dlplan_ss_state = state_finder.get_dlplan_ss_state(gfa_state)
         global_state_id = gfa_state.get_id()

@@ -18,7 +18,7 @@ def compute_tuple_graph_equivalences(domain_data: DomainData,
     gfa_state_id_to_tuple_graph_equivalence: Dict[int, TupleGraphEquivalence] = dict()
 
     for gfa_state in domain_data.gfa_states:
-        instance_idx = gfa_state.get_abstraction_id()
+        instance_idx = gfa_state.get_abstraction_index()
         instance_data = instance_datas[instance_idx]
         gfa_state_id = gfa_state.get_id()
         gfa_state_idx = instance_data.gfa.get_state_index(gfa_state)
@@ -35,7 +35,7 @@ def compute_tuple_graph_equivalences(domain_data: DomainData,
             for mimir_ss_state_prime in mimir_ss_states_prime:
                 gfa_state_prime = state_finder.get_gfa_state_from_ss_state_idx(instance_idx, instance_data.mimir_ss.get_state_index(mimir_ss_state_prime))
                 gfa_state_prime_id = gfa_state_prime.get_id()
-                instance_prime_idx = gfa_state_prime.get_abstraction_id()
+                instance_prime_idx = gfa_state_prime.get_abstraction_index()
                 instance_data_prime = instance_datas[instance_prime_idx]
                 gfa_state_prime_idx = instance_data_prime.gfa.get_state_index(gfa_state_prime)
 

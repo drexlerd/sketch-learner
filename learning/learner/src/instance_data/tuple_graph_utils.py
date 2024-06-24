@@ -24,7 +24,7 @@ def compute_tuple_graphs(domain_data: DomainData, instance_datas: List[InstanceD
             if gfa.is_deadend_state(gfa_state_idx):
                 continue
 
-            tuple_graph_factory = tuple_graph_factories[gfa_state.get_abstraction_id()]
+            tuple_graph_factory = tuple_graph_factories[gfa_state.get_abstraction_index()]
             ss_state = state_finder.get_mimir_ss_state(gfa_state)
             tuple_graph = tuple_graph_factory.create(ss_state)
 

@@ -30,8 +30,8 @@ class StateFinder:
     def get_ss_state_idx(self, gfa_state: mm.GlobalFaithfulAbstractState) -> int:
         """ Get the index of the representative state in the complete concrete state space.
         """
-        instance_idx = gfa_state.get_abstraction_id()
-        fa = self.instance_datas[0].gfa.get_abstractions()[gfa_state.get_abstraction_id()]
+        instance_idx = gfa_state.get_abstraction_index()
+        fa = self.instance_datas[0].gfa.get_abstractions()[instance_idx]
         fa_state = fa.get_states()[gfa_state.get_abstract_state_id()]
         mimir_s = fa_state.get_state()
         mimir_ss = self.instance_datas[instance_idx].mimir_ss
@@ -42,7 +42,7 @@ class StateFinder:
     def get_dlplan_ss_state(self, gfa_state: mm.GlobalFaithfulAbstractState) -> dlplan_core.State:
         """ Get the representative dlplan state in the complete concrete dlplan state space.
         """
-        instance_idx = gfa_state.get_abstraction_id()
+        instance_idx = gfa_state.get_abstraction_index()
         ss_state_idx = self.get_ss_state_idx(gfa_state)
         dlplan_ss = self.instance_datas[instance_idx].dlplan_ss
         dlplan_ss_state = dlplan_ss.get_states()[ss_state_idx]
@@ -52,7 +52,8 @@ class StateFinder:
     def get_mimir_ss_state(self, gfa_state: mm.GlobalFaithfulAbstractState) -> mm.State:
         """ Get the representative mimir state in the complete concrete mimir state space.
         """
-        fa = self.instance_datas[0].gfa.get_abstractions()[gfa_state.get_abstraction_id()]
+        instance_idx = gfa_state.get_abstraction_index()
+        fa = self.instance_datas[0].gfa.get_abstractions()[instance_idx]
         fa_state = fa.get_states()[gfa_state.get_abstract_state_id()]
         mimir_ss_state = fa_state.get_state()
 

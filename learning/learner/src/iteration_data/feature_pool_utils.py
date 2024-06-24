@@ -94,7 +94,7 @@ def compute_feature_pool(domain_data: DomainData,
         is_soft_changing = True
         for gfa_state in domain_data.gfa_states:
             dlplan_source_ss_state = state_finder.get_dlplan_ss_state(gfa_state)
-            instance_idx = gfa_state.get_abstraction_id()
+            instance_idx = gfa_state.get_abstraction_index()
             instance_data = instance_datas[instance_idx]
             source_val = int(feature.dlplan_feature.evaluate(dlplan_source_ss_state, instance_data.denotations_caches))
 
@@ -127,11 +127,11 @@ def compute_feature_pool(domain_data: DomainData,
     for feature in features:
         changes = []
         for gfa_state in domain_data.gfa_states:
-            instance_idx = gfa_state.get_abstraction_id()
+            instance_idx = gfa_state.get_abstraction_index()
             instance_data = instance_datas[instance_idx]
 
             gfa_state_id = gfa_state.get_id()
-            gfa_state_idx = state_finder.get_gfa_state_idx_from_gfa_state(gfa_state.get_abstraction_id(), gfa_state)
+            gfa_state_idx = state_finder.get_gfa_state_idx_from_gfa_state(gfa_state.get_abstraction_index(), gfa_state)
             if instance_data.gfa.is_deadend_state(gfa_state_idx):
                 continue
 
@@ -146,7 +146,7 @@ def compute_feature_pool(domain_data: DomainData,
                     for mimir_ss_state_prime in tuple_vertex.get_states():
                         gfa_state_prime = state_finder.get_gfa_state_from_ss_state_idx(instance_idx, instance_data.mimir_ss.get_state_index(mimir_ss_state_prime))
                         dlplan_target_ss_state = state_finder.get_dlplan_ss_state(gfa_state_prime)
-                        instance_prime_idx = gfa_state_prime.get_abstraction_id()
+                        instance_prime_idx = gfa_state_prime.get_abstraction_index()
                         instance_data_prime = instance_datas[instance_prime_idx]
                         target_val = int(feature.dlplan_feature.evaluate(dlplan_target_ss_state, instance_data_prime.denotations_caches))
                         if source_val < target_val:

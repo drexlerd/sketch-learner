@@ -36,7 +36,7 @@ class Sketch:
         while queue:
             gfa_root_id = queue.pop()
             gfa_root = domain_data.gfa_states_by_id[gfa_root_id]
-            instance_idx = gfa_root.get_abstraction_id()
+            instance_idx = gfa_root.get_abstraction_index()
             instance_data = instance_datas[instance_idx]
             gfa_root_idx = instance_data.gfa.get_state_index(gfa_root)
 
@@ -57,7 +57,7 @@ class Sketch:
                 for mimir_ss_state_prime in tuple_graph.get_states_by_distance()[s_distance]:
                     gfa_state_prime = state_finder.get_gfa_state_from_ss_state_idx(instance_idx, instance_data.mimir_ss.get_state_index(mimir_ss_state_prime))
                     gfa_state_prime_id = gfa_state_prime.get_id()
-                    instance_prime_idx = gfa_state_prime.get_abstraction_id()
+                    instance_prime_idx = gfa_state_prime.get_abstraction_index()
                     instance_data_prime = instance_datas[instance_prime_idx]
                     gfa_state_prime_idx = instance_data_prime.gfa.get_state_index(gfa_state_prime)
                     dlplan_ss_state_prime = state_finder.get_dlplan_ss_state(gfa_state_prime)
@@ -77,7 +77,7 @@ class Sketch:
                     for mimir_ss_state_prime in tuple_vertex.get_states():
                         gfa_state_prime = state_finder.get_gfa_state_from_ss_state_idx(instance_idx, instance_data.mimir_ss.get_state_index(mimir_ss_state_prime))
                         gfa_state_prime_id = gfa_state_prime.get_id()
-                        instance_prime_idx = gfa_state_prime.get_abstraction_id()
+                        instance_prime_idx = gfa_state_prime.get_abstraction_index()
                         instance_data_prime = instance_datas[instance_prime_idx]
                         gfa_state_prime_idx = instance_data_prime.gfa.get_state_index(gfa_state_prime)
                         dlplan_ss_state_prime = state_finder.get_dlplan_ss_state(gfa_state_prime)

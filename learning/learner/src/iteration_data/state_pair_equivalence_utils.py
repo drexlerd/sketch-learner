@@ -67,7 +67,7 @@ def compute_state_pair_equivalences(domain_data: DomainData,
     gfa_state_id_to_state_pair_equivalence: Dict[int, StatePairEquivalence] = dict()
 
     for gfa_state in domain_data.gfa_states:
-        instance_idx = gfa_state.get_abstraction_id()
+        instance_idx = gfa_state.get_abstraction_index()
         instance_data = instance_datas[instance_idx]
         gfa_state_id = gfa_state.get_id()
         gfa_state_idx = instance_data.gfa.get_state_index(gfa_state)
