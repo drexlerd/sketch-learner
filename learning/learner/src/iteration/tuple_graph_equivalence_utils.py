@@ -2,10 +2,9 @@ from typing import List, Dict, MutableSet
 from collections import defaultdict
 
 from .tuple_graph_equivalence import TupleGraphEquivalence
+from .iteration_data import IterationData
 
-from ..preprocessing_data.preprocessing_data import PreprocessingData
-from ..iteration_data.iteration_data import IterationData
-from ..instance_data.instance_data import InstanceData
+from ..preprocessing import PreprocessingData, InstanceData
 
 
 def compute_tuple_graph_equivalences(preprocessing_data: PreprocessingData,

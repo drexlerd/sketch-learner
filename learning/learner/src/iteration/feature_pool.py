@@ -1,4 +1,4 @@
-from typing import Union, List
+from typing import Union
 from dataclasses import dataclass
 
 import dlplan.core as dlplan_core

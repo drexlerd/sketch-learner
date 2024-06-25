@@ -3,10 +3,10 @@ from typing import List, Dict
 import pymimir as mm
 
 from .state_finder import StateFinder
-from ..instance_data.instance_data import InstanceData
-from ..domain_data.domain_data import DomainData
+from .instance_data import InstanceData
+from .domain_data import DomainData
 
-from ..util.command import change_dir, write_file
+from ..util import change_dir, write_file
 
 
 def compute_tuple_graphs(domain_data: DomainData, instance_datas: List[InstanceData], state_finder: StateFinder, width: int, enable_dump_files: bool):

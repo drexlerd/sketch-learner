@@ -4,10 +4,12 @@ from typing import List, Dict, Union
 import pymimir as mm
 import dlplan.policy as dlplan_policy
 
-from ..instance_data.instance_data import InstanceData
-from ..iteration_data.feature_pool import Feature
-from ..iteration_data.state_pair_equivalence import StatePairEquivalence
-from ..iteration_data.tuple_graph_equivalence import TupleGraphEquivalence
+from .feature_pool import Feature
+from .state_pair_equivalence import StatePairEquivalence
+from .tuple_graph_equivalence import TupleGraphEquivalence
+
+from ..preprocessing import InstanceData
+
 
 @dataclass
 class IterationData:

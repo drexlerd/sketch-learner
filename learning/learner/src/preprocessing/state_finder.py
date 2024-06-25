@@ -3,8 +3,8 @@ from typing import List
 import pymimir as mm
 import dlplan.core as dlplan_core
 
-from ..domain_data.domain_data import DomainData
-from ..instance_data.instance_data import InstanceData
+from .domain_data import DomainData
+from .instance_data import InstanceData
 
 
 class StateFinder:

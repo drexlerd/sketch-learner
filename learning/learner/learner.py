@@ -8,26 +8,9 @@ import pymimir as mm
 from dlplan.policy import PolicyMinimizer
 
 from .src.exit_codes import ExitCode
-from .src.asp.encoding_type import EncodingType
-from .src.asp.asp_factory import ASPFactory
-from .src.asp.returncodes import ClingoExitCode
-from .src.util.command import create_experiment_workspace, change_working_directory, write_file, change_dir
-from .src.util.performance import memory_usage
-from .src.util.timer import Timer
-from .src.util.console import add_console_handler, print_separation_line
-from .src.preprocessing_data.state_finder import StateFinder
-from .src.preprocessing_data.preprocessing_data import PreprocessingData
-from .src.instance_data.instance_data import InstanceData
-from .src.instance_data.instance_data_utils import compute_instance_datas
-from .src.preprocessing_data.tuple_graph_utils import compute_tuple_graphs
-from .src.iteration_data.iteration_data import IterationData
-from .src.iteration_data.learning_statistics import LearningStatistics
-from .src.iteration_data.feature_pool_utils import compute_feature_pool
-from .src.iteration_data.feature_valuations_utils import compute_per_state_feature_valuations
-from .src.iteration_data.dlplan_policy_factory import D2sepDlplanPolicyFactory, ExplicitDlplanPolicyFactory
-from .src.iteration_data.sketch import Sketch
-from .src.iteration_data.state_pair_equivalence_utils import compute_state_pair_equivalences
-from .src.iteration_data.tuple_graph_equivalence_utils import compute_tuple_graph_equivalences, minimize_tuple_graph_equivalences
+from .src.iteration import EncodingType, ASPFactory, ClingoExitCode, IterationData, LearningStatistics, Sketch, D2sepDlplanPolicyFactory, ExplicitDlplanPolicyFactory, compute_feature_pool, compute_per_state_feature_valuations, compute_state_pair_equivalences, compute_tuple_graph_equivalences, minimize_tuple_graph_equivalences
+from .src.util import Timer, create_experiment_workspace, change_working_directory, write_file, change_dir, memory_usage, add_console_handler, print_separation_line
+from .src.preprocessing import InstanceData, PreprocessingData, StateFinder, compute_instance_datas, compute_tuple_graphs
 
 
 def compute_smallest_unsolved_instance(
@@ -167,8 +150,6 @@ def learn_sketch_for_problem_class(
                     while True:
                         asp_factory = ASPFactory(encoding_type, enable_goal_separating_features, max_num_rules)
                         facts = asp_factory.make_facts(preprocessing_data, iteration_data)
-                        #for fact in sorted(facts):
-                        #    print(fact)
                         if j == 0:
                             d2_facts.update(asp_factory.make_initial_d2_facts(preprocessing_data, iteration_data))
                             print("Number of initial D2 facts:", len(d2_facts))

@@ -5,14 +5,9 @@ from termcolor import colored
 from typing import List
 from collections import defaultdict
 
-from .src.util.command import create_experiment_workspace, change_working_directory, change_dir, read_file
-from .src.util.timer import Timer
-from .src.util.console import add_console_handler
-from .src.instance_data.instance_data import InstanceData
-from .src.instance_data.instance_data_utils import compute_instance_datas
-from .src.preprocessing_data.tuple_graph_utils import compute_tuple_graphs
-
-from .src.iteration_data.sketch import Sketch
+from .src.util import Timer, create_experiment_workspace, change_working_directory, change_dir, read_file, add_console_handler
+from .src.preprocessing import InstanceData, compute_instance_datas, compute_tuple_graphs
+from .src.iteration import Sketch
 
 
 def compute_smallest_unsolved_instance(sketch: Sketch,

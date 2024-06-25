@@ -1,7 +1,8 @@
 from typing import List, Dict, Union
 
-from ..iteration_data.iteration_data import IterationData
-from ..preprocessing_data.preprocessing_data import PreprocessingData
+from .iteration_data import IterationData
+
+from ..preprocessing import PreprocessingData
 
 
 def compute_per_state_feature_valuations(

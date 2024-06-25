@@ -8,10 +8,10 @@ import dlplan.core as dlplan_core
 import dlplan.state_space as dlplan_statespace
 
 from .instance_data import InstanceData
+from .domain_data import DomainData
+from .domain_data_utils import compute_domain_data
 
-from ..domain_data.domain_data import DomainData
-from ..domain_data.domain_data_utils import compute_domain_data
-from ..util.command import change_dir, write_file
+from ..util import change_dir, write_file
 
 
 def create_vocabulary_info(domain: mm.Domain) -> dlplan_core.VocabularyInfo:
@@ -98,7 +98,7 @@ def compute_instance_datas(domain_filepath: Path,
         abstractions = mm.GlobalFaithfulAbstraction.create(str(domain_filepath), [str(p) for p in instance_filepaths], False, True, True, True, max_num_states_per_instance, max_time_per_instance)
         logging.info("...done")
         if len(abstractions) == 0:
-            return None, None
+            return None * 3
 
         logging.info("Constructing StateSpaces...")
         memories = []

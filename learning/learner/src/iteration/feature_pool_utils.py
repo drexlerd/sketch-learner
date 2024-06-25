@@ -1,16 +1,13 @@
 from enum import Enum
-from typing import List, MutableSet, Dict, Union
+from typing import List, Dict
 
 import pymimir as mm
 import dlplan.generator as dlplan_generator
 
 from .feature_pool import Feature
+from .iteration_data import IterationData
 
-from ..preprocessing_data.preprocessing_data import PreprocessingData
-from ..iteration_data.iteration_data import IterationData
-from ..domain_data.domain_data import DomainData
-from ..instance_data.instance_data import InstanceData
-from ..preprocessing_data.state_finder import StateFinder
+from ..preprocessing import PreprocessingData, StateFinder
 
 
 class FeatureChange(Enum):

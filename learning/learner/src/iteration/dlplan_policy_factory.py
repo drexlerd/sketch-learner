@@ -7,8 +7,9 @@ import dlplan.core as dlplan_core
 from clingo import Symbol
 from typing import List, Union, MutableSet
 
-from ..iteration_data.iteration_data import IterationData
-from ..preprocessing_data.preprocessing_data import PreprocessingData
+from .iteration_data import IterationData
+
+from ..preprocessing import PreprocessingData
 
 
 class DlplanPolicyFactory(ABC):

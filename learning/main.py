@@ -5,7 +5,7 @@ import argparse
 from pathlib import Path
 
 from learner.learner import learn_sketch_for_problem_class
-from learner.src.asp.encoding_type import EncodingType
+from learner.src.iteration import EncodingType
 
 
 if __name__ == "__main__":

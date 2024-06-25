@@ -3,9 +3,10 @@ from typing import Dict, List
 
 import pymimir as mm
 
-from ..domain_data.domain_data import DomainData
-from ..instance_data.instance_data import InstanceData
+from .domain_data import DomainData
+from .instance_data import InstanceData
 from .state_finder import StateFinder
+
 
 @dataclass
 class PreprocessingData:

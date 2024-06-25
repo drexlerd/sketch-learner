@@ -3,18 +3,14 @@ import math
 from collections import defaultdict
 from typing import List, Dict
 
-import pymimir as mm
 import dlplan.core as dlplan_core
 import dlplan.policy as dlplan_policy
 
 from .state_pair_equivalence import StatePairEquivalence
 from .feature_pool import Feature
+from .iteration_data import IterationData
 
-from ..preprocessing_data.preprocessing_data import PreprocessingData
-from ..iteration_data.iteration_data import IterationData
-from ..domain_data.domain_data import DomainData
-from ..instance_data.instance_data import InstanceData
-from ..preprocessing_data.state_finder import StateFinder
+from ..preprocessing import PreprocessingData
 
 
 def make_conditions(policy_builder: dlplan_policy.PolicyFactory,

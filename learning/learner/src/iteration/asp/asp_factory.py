@@ -14,11 +14,8 @@ from clingo import Control, Number, Symbol, String
 from .returncodes import ClingoExitCode
 from .encoding_type import EncodingType
 
-from ..preprocessing_data.preprocessing_data import PreprocessingData
-from ..iteration_data.iteration_data import IterationData
-from ..domain_data.domain_data import DomainData
-from ..instance_data.instance_data import InstanceData
-from ..preprocessing_data.state_finder import StateFinder
+from ...preprocessing.preprocessing_data import PreprocessingData
+from ..iteration_data import IterationData
 
 
 LIST_DIR = Path(os.path.dirname(os.path.abspath(__file__)))
