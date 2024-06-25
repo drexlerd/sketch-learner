@@ -1,21 +1,15 @@
 from typing import List, Dict, MutableSet
 from collections import defaultdict
 
-import pymimir as mm
-
 from .tuple_graph_equivalence import TupleGraphEquivalence
 
+from ..preprocessing_data.preprocessing_data import PreprocessingData
 from ..iteration_data.iteration_data import IterationData
-from ..domain_data.domain_data import DomainData
 from ..instance_data.instance_data import InstanceData
-from ..preprocessing_data.state_finder import StateFinder
 
 
-def compute_tuple_graph_equivalences(domain_data: DomainData,
-    instance_datas: List[InstanceData],
-    iteration_data: IterationData,
-    gfa_state_id_to_tuple_graph: Dict[int, mm.TupleGraph],
-    state_finder: StateFinder) -> None:
+def compute_tuple_graph_equivalences(preprocessing_data: PreprocessingData,
+                                     iteration_data: IterationData) -> None:
     """ Computes information for all subgoal states, tuples and rules over F.
     """
     num_nodes = 0
@@ -24,13 +18,13 @@ def compute_tuple_graph_equivalences(domain_data: DomainData,
 
     for gfa_state in iteration_data.gfa_states:
         instance_idx = gfa_state.get_abstraction_index()
-        instance_data = instance_datas[instance_idx]
+        instance_data = preprocessing_data.instance_datas[instance_idx]
         gfa_state_id = gfa_state.get_id()
         gfa_state_idx = instance_data.gfa.get_state_index(gfa_state)
         if instance_data.gfa.is_deadend_state(gfa_state_idx):
             continue
 
-        tuple_graph = gfa_state_id_to_tuple_graph[gfa_state_id]
+        tuple_graph = preprocessing_data.gfa_state_id_to_tuple_graph[gfa_state_id]
 
         t_idx_to_r_idxs: Dict[int, MutableSet[int]] = dict()
         t_idx_to_distance: Dict[int, int] = dict()
@@ -38,10 +32,10 @@ def compute_tuple_graph_equivalences(domain_data: DomainData,
 
         for s_distance, mimir_ss_states_prime in enumerate(tuple_graph.get_states_by_distance()):
             for mimir_ss_state_prime in mimir_ss_states_prime:
-                gfa_state_prime = state_finder.get_gfa_state_from_ss_state_idx(instance_idx, instance_data.mimir_ss.get_state_index(mimir_ss_state_prime))
+                gfa_state_prime = preprocessing_data.state_finder.get_gfa_state_from_ss_state_idx(instance_idx, instance_data.mimir_ss.get_state_index(mimir_ss_state_prime))
                 gfa_state_prime_id = gfa_state_prime.get_id()
                 instance_prime_idx = gfa_state_prime.get_abstraction_index()
-                instance_data_prime = instance_datas[instance_prime_idx]
+                instance_data_prime = preprocessing_data.instance_datas[instance_prime_idx]
                 gfa_state_prime_idx = instance_data_prime.gfa.get_state_index(gfa_state_prime)
 
                 r_idx = iteration_data.gfa_state_id_to_state_pair_equivalence[gfa_state_id].subgoal_gfa_state_id_to_r_idx[gfa_state_prime_id]
@@ -55,7 +49,7 @@ def compute_tuple_graph_equivalences(domain_data: DomainData,
                 t_idx = tuple_vertex.get_identifier()
                 r_idxs = set()
                 for mimir_ss_state_prime in tuple_vertex.get_states():
-                    gfa_state_prime = state_finder.get_gfa_state_from_ss_state_idx(instance_idx, instance_data.mimir_ss.get_state_index(mimir_ss_state_prime))
+                    gfa_state_prime = preprocessing_data.state_finder.get_gfa_state_from_ss_state_idx(instance_idx, instance_data.mimir_ss.get_state_index(mimir_ss_state_prime))
                     gfa_state_prime_id = gfa_state_prime.get_id()
                     r_idx = iteration_data.gfa_state_id_to_state_pair_equivalence[gfa_state_id].subgoal_gfa_state_id_to_r_idx[gfa_state_prime_id]
                     r_idxs.add(r_idx)

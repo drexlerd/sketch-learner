@@ -9,6 +9,8 @@ import dlplan.core as dlplan_core
 import dlplan.policy as dlplan_policy
 
 from ..preprocessing_data.state_finder import StateFinder
+from ..preprocessing_data.preprocessing_data import PreprocessingData
+from ..iteration_data.iteration_data import IterationData
 from ..instance_data.instance_data import InstanceData
 from ..domain_data.domain_data import DomainData
 
@@ -18,7 +20,11 @@ class Sketch:
         self.dlplan_policy = dlplan_policy
         self.width = width
 
-    def _verify_bounded_width(self, domain_data: DomainData, instance_datas: List[InstanceData], state_finder: StateFinder, instance_data: InstanceData, require_optimal_width=False):
+    def _verify_bounded_width(self,
+                              preprocessing_data: PreprocessingData,
+                              iteration_data: IterationData,
+                              instance_data: InstanceData,
+                              require_optimal_width=False):
         """
         Performs forward search over R-reachable states.
         Initially, the R-reachable states are all initial states.
@@ -38,7 +44,7 @@ class Sketch:
             gfa_root = queue.pop()
             gfa_root_id = gfa_root.get_id()
             instance_idx = gfa_root.get_abstraction_index()
-            instance_data = instance_datas[instance_idx]
+            instance_data = preprocessing_data.instance_datas[instance_idx]
             gfa_root_idx = instance_data.gfa.get_state_index(gfa_root)
 
             if instance_data.gfa.is_deadend_state(gfa_root_idx):
@@ -48,17 +54,17 @@ class Sketch:
             if instance_data.gfa.is_goal_state(gfa_root_idx):
                 continue
 
-            tuple_graph = domain_data.gfa_state_id_to_tuple_graph[gfa_root_id]
+            tuple_graph = preprocessing_data.gfa_state_id_to_tuple_graph[gfa_root_id]
 
-            dlplan_ss_root = state_finder.get_dlplan_ss_state(gfa_root)
+            dlplan_ss_root = preprocessing_data.state_finder.get_dlplan_ss_state(gfa_root)
 
             ḧas_bounded_width = False
             min_compatible_distance = math.inf
             for s_distance, tuple_vertex_idxs in enumerate(tuple_graph.get_vertex_indices_by_distances()):
                 for mimir_ss_state_prime in tuple_graph.get_states_by_distance()[s_distance]:
-                    gfa_state_prime = state_finder.get_gfa_state_from_ss_state_idx(instance_idx, instance_data.mimir_ss.get_state_index(mimir_ss_state_prime))
+                    gfa_state_prime = preprocessing_data.state_finder.get_gfa_state_from_ss_state_idx(instance_idx, instance_data.mimir_ss.get_state_index(mimir_ss_state_prime))
                     gfa_state_prime_id = gfa_state_prime.get_id()
-                    dlplan_ss_state_prime = state_finder.get_dlplan_ss_state(gfa_state_prime)
+                    dlplan_ss_state_prime = preprocessing_data.state_finder.get_dlplan_ss_state(gfa_state_prime)
 
                     if self.dlplan_policy.evaluate(dlplan_ss_root, dlplan_ss_state_prime, instance_data.denotations_caches) is not None:
                         min_compatible_distance = min(min_compatible_distance, s_distance)
@@ -73,9 +79,9 @@ class Sketch:
                     tuple_vertex = tuple_graph.get_vertices()[tuple_vertex_idx]
                     is_subgoal_tuple = True
                     for mimir_ss_state_prime in tuple_vertex.get_states():
-                        gfa_state_prime = state_finder.get_gfa_state_from_ss_state_idx(instance_idx, instance_data.mimir_ss.get_state_index(mimir_ss_state_prime))
+                        gfa_state_prime = preprocessing_data.state_finder.get_gfa_state_from_ss_state_idx(instance_idx, instance_data.mimir_ss.get_state_index(mimir_ss_state_prime))
                         gfa_state_prime_id = gfa_state_prime.get_id()
-                        dlplan_ss_state_prime = state_finder.get_dlplan_ss_state(gfa_state_prime)
+                        dlplan_ss_state_prime = preprocessing_data.state_finder.get_dlplan_ss_state(gfa_state_prime)
 
                         if self.dlplan_policy.evaluate(dlplan_ss_root, dlplan_ss_state_prime, instance_data.denotations_caches) is not None:
                             min_compatible_distance = min(min_compatible_distance, s_distance)
@@ -140,7 +146,10 @@ class Sketch:
     def _compute_state_b_values(self, booleans: List[dlplan_policy.NamedBoolean], numericals: List[dlplan_policy.NamedNumerical], state: dlplan_core.State, denotations_caches: dlplan_core.DenotationsCaches):
         return tuple([boolean.get_element().evaluate(state, denotations_caches) for boolean in booleans] + [numerical.get_element().evaluate(state, denotations_caches) > 0 for numerical in numericals])
 
-    def _verify_goal_separating_features(self, domain_data: DomainData, instance_datas: List[InstanceData], state_finder: StateFinder, instance_data: InstanceData):
+    def _verify_goal_separating_features(self,
+                                         preprocessing_data: PreprocessingData,
+                                         iteration_data: IterationData,
+                                         instance_data: InstanceData):
         """
         Returns True iff sketch features separate goal from nongoal states.
         """
@@ -150,8 +159,8 @@ class Sketch:
         numericals = self.dlplan_policy.get_numericals()
         for gfa_state_idx, gfa_state in enumerate(instance_data.gfa.get_states()):
             new_instance_idx = gfa_state.get_abstraction_index()
-            new_instance_data = instance_datas[new_instance_idx]
-            dlplan_ss_state = state_finder.get_dlplan_ss_state(gfa_state)
+            new_instance_data = preprocessing_data.instance_datas[new_instance_idx]
+            dlplan_ss_state = preprocessing_data.state_finder.get_dlplan_ss_state(gfa_state)
             b_values = self._compute_state_b_values(booleans, numericals, dlplan_ss_state, new_instance_data.denotations_caches)
             separating = True
             if instance_data.gfa.is_goal_state(gfa_state_idx):
@@ -170,18 +179,22 @@ class Sketch:
                 return False
         return True
 
-    def solves(self, domain_data: DomainData, instance_datas: List[InstanceData], state_finder: StateFinder, instance_data: InstanceData, enable_goal_separating_features: bool):
+    def solves(self,
+               preprocessing_data: PreprocessingData,
+               iteration_data: IterationData,
+               instance_data: InstanceData,
+               enable_goal_separating_features: bool):
         """
         Returns True iff the sketch solves the instance, i.e.,
             (1) subproblems have bounded width,
             (2) sketch only classifies delta optimal state pairs as good,
             (3) sketch is acyclic, and
             (4) sketch features separate goals from nongoal states. """
-        bounded, subgoal_states_per_r_reachable_state = self._verify_bounded_width(domain_data, instance_datas, state_finder, instance_data)
+        bounded, subgoal_states_per_r_reachable_state = self._verify_bounded_width(preprocessing_data, iteration_data, instance_data)
         if not bounded:
             return False
         if enable_goal_separating_features:
-            if not self._verify_goal_separating_features(domain_data, instance_datas, state_finder, instance_data):
+            if not self._verify_goal_separating_features(preprocessing_data, iteration_data, instance_data):
                 return False
         if not self._verify_acyclicity(instance_data, subgoal_states_per_r_reachable_state):
             return False

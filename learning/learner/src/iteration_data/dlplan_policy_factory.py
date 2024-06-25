@@ -7,13 +7,14 @@ import dlplan.core as dlplan_core
 from clingo import Symbol
 from typing import List, Union, MutableSet
 
-from ..domain_data.domain_data import DomainData
+from ..iteration_data.iteration_data import IterationData
+from ..preprocessing_data.preprocessing_data import PreprocessingData
 
 
 class DlplanPolicyFactory(ABC):
     """ """
     @abstractmethod
-    def make_dlplan_policy_from_answer_set(self, symbols: List[Symbol], domain_data: DomainData):
+    def make_dlplan_policy_from_answer_set(self, symbols: List[Symbol], preprocssing_data: PreprocessingData, iteration_data: IterationData):
         """
         Parses the facts of an answer set into a dlplan policy.
         """
@@ -31,25 +32,25 @@ class ExplicitDlplanPolicyFactory(DlplanPolicyFactory):
     """
     Encoding where rules are explicit in the ASP encoding (ICAPS2022)
     """
-    def make_dlplan_policy_from_answer_set(self, symbols: List[Symbol], domain_data: DomainData):
+    def make_dlplan_policy_from_answer_set(self, symbols: List[Symbol], preprocessing_data: PreprocessingData, iteration_data: IterationData):
         """ """
-        policy_builder = domain_data.policy_builder
-        selected_features = self._add_features(symbols, domain_data)
-        rules = self._add_rules(symbols, domain_data, selected_features)
+        policy_builder = preprocessing_data.domain_data.policy_builder
+        selected_features = self._add_features(symbols, preprocessing_data, iteration_data)
+        rules = self._add_rules(symbols, preprocessing_data, iteration_data, selected_features)
         return policy_builder.make_policy(rules)
 
-    def _add_features(self, symbols: List[Symbol], domain_data: DomainData):
+    def _add_features(self, symbols: List[Symbol], preprocessing_data: PreprocessingData, iteration_data: IterationData):
         """ """
         selected_features = set()
         for symbol in symbols:
             if symbol.name == "select":
                 f_idx = symbol.arguments[0].number
-                selected_features.add(domain_data.feature_pool[f_idx].dlplan_feature)
+                selected_features.add(iteration_data.feature_pool[f_idx].dlplan_feature)
         return selected_features
 
-    def _add_rules(self, symbols: List[Symbol], domain_data: DomainData, selected_features: MutableSet[Union[dlplan_core.Boolean, dlplan_core.Numerical]]):
+    def _add_rules(self, symbols: List[Symbol], preprocessing_data: PreprocessingData, iteration_data: IterationData, selected_features: MutableSet[Union[dlplan_core.Boolean, dlplan_core.Numerical]]):
         """ """
-        policy_builder = domain_data.policy_builder
+        policy_builder = preprocessing_data.domain_data.policy_builder
         rules_dict = dict()
         for symbol in symbols:
             if symbol.name == "rule":
@@ -59,7 +60,7 @@ class ExplicitDlplanPolicyFactory(DlplanPolicyFactory):
             if symbol.name in {"c_b_pos", "c_b_neg", "c_n_gt", "c_n_eq", "e_b_pos", "e_b_neg", "e_b_bot", "e_n_dec", "e_n_inc", "e_n_bot"}:
                 r_idx = symbol.arguments[0].number
                 f_idx = symbol.arguments[1].number
-                feature = domain_data.feature_pool[f_idx].dlplan_feature
+                feature = iteration_data.feature_pool[f_idx].dlplan_feature
                 if feature not in selected_features:
                     continue
                 if symbol.name == "c_b_pos":
@@ -92,28 +93,28 @@ class D2sepDlplanPolicyFactory(DlplanPolicyFactory):
     """
     Encoding where rules are implicit in the D2-separation.
     """
-    def make_dlplan_policy_from_answer_set(self, symbols: List[Symbol], domain_data: DomainData):
-        policy_builder = domain_data.policy_builder
+    def make_dlplan_policy_from_answer_set(self, symbols: List[Symbol], preprocessing_data: PreprocessingData, iteration_data: IterationData):
+        policy_builder = preprocessing_data.domain_data.policy_builder
         dlplan_features = set()
         for symbol in symbols:
             if symbol.name == "select":
                 f_idx = symbol.arguments[0].number
-                dlplan_features.add(domain_data.feature_pool[f_idx].dlplan_feature)
+                dlplan_features.add(iteration_data.feature_pool[f_idx].dlplan_feature)
         rules = set()
         for symbol in symbols:
             if symbol.name == "good":
                 r_idx = symbol.arguments[0].number
-                rule = domain_data.state_pair_equivalences[r_idx]
+                rule = iteration_data.state_pair_equivalences[r_idx]
                 conditions = set()
                 for condition in rule.get_conditions():
                     f_idx = int(condition.get_named_element().get_key()[1:])
-                    dlplan_feature = domain_data.feature_pool[f_idx].dlplan_feature
+                    dlplan_feature = iteration_data.feature_pool[f_idx].dlplan_feature
                     if dlplan_feature in dlplan_features:
                         conditions.add(condition)
                 effects = set()
                 for effect in rule.get_effects():
                     f_idx = int(effect.get_named_element().get_key()[1:])
-                    dlplan_feature = domain_data.feature_pool[f_idx].dlplan_feature
+                    dlplan_feature = iteration_data.feature_pool[f_idx].dlplan_feature
                     if dlplan_feature in dlplan_features:
                         effects.add(effect)
                 rules.add(policy_builder.make_rule(conditions, effects))

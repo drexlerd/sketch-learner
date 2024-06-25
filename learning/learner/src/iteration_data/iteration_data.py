@@ -11,7 +11,7 @@ from ..iteration_data.tuple_graph_equivalence import TupleGraphEquivalence
 
 @dataclass
 class IterationData:
-    """ Store data related to a domain. """
+    """ Store data that is being computed in each iteration of learning sketches. """
     # Changes in each iterations
     instance_datas: List[InstanceData] = None
 
