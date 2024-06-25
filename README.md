@@ -1,5 +1,7 @@
 # Sketch Learner
 
+This repository contains code for learning policy sketches for a given set of training instances Q_Train from a class of problems Q over a common classical planning domain.
+
 ## Environment
 
 - Ubuntu 18.04
@@ -96,3 +98,4 @@ cd testing/experiments
 ./experiment-dual-bfws.py --all
 ./experiment-lama-first.py --all
 ```
+

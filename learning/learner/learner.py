@@ -70,8 +70,8 @@ def learn_sketch_for_problem_class(
         logging.info(colored("Constructing InstanceDatas...", "blue", "on_grey"))
         domain_data, instance_datas, gfa_states_by_id = compute_instance_datas(domain_filepath, instance_filepaths, disable_closed_Q, max_num_states_per_instance, max_time_per_instance, enable_dump_files)
         logging.info(colored("..done", "blue", "on_grey"))
-        if instance_datas is None and domain_data is None:
-            raise Exception("Failed to create InstanceData.")
+        if instance_datas is None:
+            raise Exception("Failed to create InstanceDatas.")
 
         state_finder = StateFinder(domain_data, instance_datas)
 
@@ -138,7 +138,7 @@ def learn_sketch_for_problem_class(
                 logging.info(colored("..done", "blue", "on_grey"))
 
                 logging.info(colored("Minimizing TupleGraphEquivalences...", "blue", "on_grey"))
-                # minimize_tuple_graph_equivalences(selected_instance_datas)
+                minimize_tuple_graph_equivalences(preprocessing_data, iteration_data)
                 logging.info(colored("..done", "blue", "on_grey"))
                 preprocessing_timer.stop()
 
