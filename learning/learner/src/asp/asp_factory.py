@@ -1,8 +1,10 @@
 import os
 
 from collections import defaultdict
-from typing import List, Union
+from typing import List, Union, Dict
 from pathlib import Path
+
+import pymimir as mm
 
 import dlplan.core as dlplan_core
 import dlplan.policy as dlplan_policy
@@ -12,8 +14,10 @@ from clingo import Control, Number, Symbol, String
 from .returncodes import ClingoExitCode
 from .encoding_type import EncodingType
 
+from ..iteration_data.iteration_data import IterationData
 from ..domain_data.domain_data import DomainData
-from ..instance_data.instance_data import InstanceData, StateFinder
+from ..instance_data.instance_data import InstanceData
+from ..preprocessing_data.state_finder import StateFinder
 
 
 LIST_DIR = Path(os.path.dirname(os.path.abspath(__file__)))
@@ -146,7 +150,7 @@ class ASPFactory:
 
     def _create_b_value_fact(self, dlplan_feature: Union[dlplan_core.Boolean, dlplan_core.Numerical], gfa_state_id: int, f_idx: int, val: Union[bool, int]):
         if isinstance(dlplan_feature, dlplan_core.Boolean):
-            return ("b_value", (Number(gfa_state_id), Number(f_idx), Number(val)))
+            return ("b_value", (Number(gfa_state_id), Number(f_idx), Number(1 if val else 0)))
         elif isinstance(dlplan_feature, dlplan_core.Numerical):
             return ("b_value", (Number(gfa_state_id), Number(f_idx), Number(1 if val > 0 else 0)))
         else:
@@ -160,6 +164,7 @@ class ASPFactory:
             for f_idx, (feature, val) in enumerate(zip(feature_pool, feature_valuations)):
                 facts.append(self._create_value_fact(gfa_state_id, f_idx, val))
                 facts.append(self._create_b_value_fact(feature.dlplan_feature, gfa_state_id, f_idx, val))
+        print(facts)
         return facts
 
 
@@ -275,15 +280,16 @@ class ASPFactory:
     def make_facts(self,
                    domain_data: DomainData,
                    instance_datas: List[InstanceData],
-                   selected_instance_datas: List[InstanceData],
+                   iteration_data: IterationData,
+                   gfa_state_id_to_tuple_graph: Dict[int, mm.TupleGraph],
                    state_finder: StateFinder):
         facts = []
-        facts.extend(self._make_state_space_facts(domain_data, instance_datas, selected_instance_datas, state_finder))
-        facts.extend(self._make_domain_feature_data_facts(domain_data, instance_datas, selected_instance_datas, state_finder))
-        facts.extend(self._make_instance_feature_data_facts(domain_data, instance_datas, selected_instance_datas, state_finder))
-        facts.extend(self._make_state_pair_equivalence_data_facts(domain_data, instance_datas, selected_instance_datas, state_finder))
-        facts.extend(self._make_tuple_graph_equivalence_facts(domain_data, instance_datas, selected_instance_datas, state_finder))
-        facts.extend(self._make_tuple_graph_facts(domain_data, instance_datas, selected_instance_datas, state_finder))
+        facts.extend(self._make_state_space_facts(domain_data, instance_datas, iteration_data, gfa_state_id_to_tuple_graph, state_finder))
+        facts.extend(self._make_domain_feature_data_facts(domain_data, instance_datas, iteration_data, gfa_state_id_to_tuple_graph, state_finder))
+        facts.extend(self._make_instance_feature_data_facts(domain_data, instance_datas, iteration_data, gfa_state_id_to_tuple_graph, state_finder))
+        facts.extend(self._make_state_pair_equivalence_data_facts(domain_data, instance_datas, iteration_data, gfa_state_id_to_tuple_graph, state_finder))
+        facts.extend(self._make_tuple_graph_equivalence_facts(domain_data, instance_datas, iteration_data, gfa_state_id_to_tuple_graph, state_finder))
+        facts.extend(self._make_tuple_graph_facts(domain_data, instance_datas, iteration_data, gfa_state_id_to_tuple_graph, state_finder))
         return facts
 
     def _create_d2_separate_fact(self, r_idx_1: int, r_idx_2: int):

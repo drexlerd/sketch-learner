@@ -10,7 +10,7 @@ from .src.util.timer import Timer
 from .src.util.console import add_console_handler
 from .src.instance_data.instance_data import InstanceData
 from .src.instance_data.instance_data_utils import compute_instance_datas
-from .src.instance_data.tuple_graph_utils import compute_tuple_graphs
+from .src.preprocessing_data.tuple_graph_utils import compute_tuple_graphs
 
 from .src.iteration_data.sketch import Sketch
 

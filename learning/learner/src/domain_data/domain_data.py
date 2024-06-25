@@ -1,34 +1,28 @@
 from dataclasses import dataclass
-from typing import List, Dict, Union
 
-import pymimir as mm
-
-from dlplan.core import VocabularyInfo, SyntacticElementFactory
-from dlplan.policy import PolicyFactory, Rule
-
-from ..iteration_data.feature_pool import Feature
-from ..iteration_data.state_pair_equivalence import StatePairEquivalence
-from ..iteration_data.tuple_graph_equivalence import TupleGraphEquivalence
+import dlplan.core as dlplan_core
+import dlplan.policy as dlplan_policy
 
 @dataclass
 class DomainData:
-    """ Store data related to a domain. """
+    """ Immutable data class. """
+    _domain_filename: str
+    _vocabulary_info: dlplan_core.VocabularyInfo
+    _policy_builder: dlplan_policy.PolicyFactory
+    _syntactic_element_factory: dlplan_core.SyntacticElementFactory
 
-    # Persistant data.
-    domain_filename: str
-    vocabulary_info: VocabularyInfo
-    policy_builder: PolicyFactory
-    syntactic_element_factory: SyntacticElementFactory
-    gfa_state_id_to_tuple_graph : Dict[int, mm.TupleGraph] = None
+    @property
+    def domain_filename(self):
+        return self._domain_filename
 
-    # Changes in each iterations
-    gfa_states: List[mm.GlobalFaithfulAbstractState] = None
-    gfa_states_by_id: Dict[int, mm.GlobalFaithfulAbstractState] = None
+    @property
+    def vocabulary_info(self):
+        return self._vocabulary_info
 
-    feature_pool: List[Feature] = None
-    gfa_state_id_to_feature_evaluations: Dict[int, List[Union[bool, int]]] = None
+    @property
+    def policy_builder(self):
+        return self._policy_builder
 
-    state_pair_equivalences: List[Rule] = None
-    gfa_state_id_to_state_pair_equivalence: Dict[int, StatePairEquivalence] = None
-
-    gfa_state_id_to_tuple_graph_equivalence: Dict[int, TupleGraphEquivalence] = None
+    @property
+    def syntactic_element_factory(self):
+        return self._syntactic_element_factory

@@ -1,6 +1,5 @@
 from typing import Dict, MutableSet
-from dataclasses import dataclass, field
-from collections import defaultdict
+from dataclasses import dataclass
 
 
 @dataclass
@@ -11,6 +10,18 @@ class TupleGraphEquivalence:
     This is necessary for constructing the constraints in the propositional encoding
     relevant to bound the width of the subproblem.
     """
-    t_idx_to_r_idxs: Dict[int, MutableSet[int]] = field(default_factory=lambda: defaultdict(set))
-    t_idx_to_distance: Dict[int, int] = field(default_factory=dict)
-    r_idx_to_deadend_distance: Dict[int, int] = field(default_factory=dict)
+    _t_idx_to_r_idxs: Dict[int, MutableSet[int]]
+    _t_idx_to_distance: Dict[int, int]
+    _r_idx_to_deadend_distance: Dict[int, int]
+
+    @property
+    def t_idx_to_r_idxs(self):
+        return self._t_idx_to_r_idxs
+
+    @property
+    def t_idx_to_distance(self):
+        return self._t_idx_to_distance
+
+    @property
+    def r_idx_to_deadend_distance(self):
+        return self._r_idx_to_deadend_distance

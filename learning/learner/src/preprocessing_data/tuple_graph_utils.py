@@ -2,7 +2,8 @@ from typing import List, Dict
 
 import pymimir as mm
 
-from .instance_data import InstanceData, StateFinder
+from .state_finder import StateFinder
+from ..instance_data.instance_data import InstanceData
 from ..domain_data.domain_data import DomainData
 
 from ..util.command import change_dir, write_file
@@ -35,4 +36,4 @@ def compute_tuple_graphs(domain_data: DomainData, instance_datas: List[InstanceD
                 if enable_dump_files:
                     write_file(f"{gfa_state_idx}.dot", str(tuple_graph))
 
-    domain_data.gfa_state_id_to_tuple_graph = gfa_state_id_to_tuple_graph
+    return gfa_state_id_to_tuple_graph

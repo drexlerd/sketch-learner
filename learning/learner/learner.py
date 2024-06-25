@@ -7,7 +7,6 @@ from typing import List, MutableSet, Dict
 import pymimir as mm
 from dlplan.policy import PolicyMinimizer
 
-from .exit_codes import ExitCode
 from .src.asp.encoding_type import EncodingType
 from .src.asp.asp_factory import ASPFactory
 from .src.asp.returncodes import ClingoExitCode
@@ -16,9 +15,12 @@ from .src.util.performance import memory_usage
 from .src.util.timer import Timer
 from .src.util.console import add_console_handler, print_separation_line
 from .src.domain_data.domain_data import DomainData
-from .src.instance_data.instance_data import InstanceData, StateFinder
+from .src.preprocessing_data.state_finder import StateFinder
+from .src.preprocessing_data.preprocessing_data import PreprocessingData
+from .src.instance_data.instance_data import InstanceData
 from .src.instance_data.instance_data_utils import compute_instance_datas
-from .src.instance_data.tuple_graph_utils import compute_tuple_graphs
+from .src.preprocessing_data.tuple_graph_utils import compute_tuple_graphs
+from .src.iteration_data.iteration_data import IterationData
 from .src.iteration_data.learning_statistics import LearningStatistics
 from .src.iteration_data.feature_pool_utils import compute_feature_pool
 from .src.iteration_data.feature_valuations_utils import compute_per_state_feature_valuations
@@ -79,10 +81,12 @@ def learn_sketch_for_problem_class(
     asp_timer = Timer(stopped=True)
     verification_timer = Timer(stopped=True)
 
+    iteration_data = IterationData()
+
     # Generate data
     with change_dir("input"):
         logging.info(colored("Constructing InstanceDatas...", "blue", "on_grey"))
-        instance_datas, domain_data = compute_instance_datas(domain_filepath, instance_filepaths, disable_closed_Q, max_num_states_per_instance, max_time_per_instance, enable_dump_files)
+        domain_data, instance_datas, gfa_states_by_id = compute_instance_datas(domain_filepath, instance_filepaths, disable_closed_Q, max_num_states_per_instance, max_time_per_instance, enable_dump_files)
         logging.info(colored("..done", "blue", "on_grey"))
         if instance_datas is None and domain_data is None:
             raise Exception("Failed to create InstanceData.")
@@ -90,9 +94,10 @@ def learn_sketch_for_problem_class(
         state_finder = StateFinder(domain_data, instance_datas)
 
         logging.info(colored("Initializing TupleGraphs...", "blue", "on_grey"))
-        compute_tuple_graphs(domain_data, instance_datas, state_finder, width, enable_dump_files)
+        gfa_state_id_to_tuple_graph: Dict[int, mm.TupleGraph] = compute_tuple_graphs(domain_data, instance_datas, state_finder, width, enable_dump_files)
         logging.info(colored("..done", "blue", "on_grey"))
 
+    preprocessing_data = PreprocessingData(domain_data, instance_datas, state_finder, gfa_states_by_id, gfa_state_id_to_tuple_graph)
     preprocessing_timer.stop()
 
     # Learn sketch
@@ -113,19 +118,21 @@ def learn_sketch_for_problem_class(
                           "problem_filepath:", instance_data.mimir_ss.get_pddl_parser().get_problem_filepath(),
                           "num_states:", instance_data.mimir_ss.get_num_states(),
                           "num_state_equivalences:", instance_data.gfa.get_num_states())
+                iteration_data.instance_datas = selected_instance_datas
 
                 logging.info(colored("Initialize global faithful abstract states...", "blue", "on_grey"))
                 gfa_states : MutableSet[mm.GlobalFaithfulAbstractState] = set()
                 for instance_data in selected_instance_datas:
                     gfa_states.update(instance_data.gfa.get_states())
-                domain_data.gfa_states = list(gfa_states)
+                iteration_data.gfa_states = list(gfa_states)
                 logging.info(colored("..done", "blue", "on_grey"))
 
                 logging.info(colored("Initializing DomainFeatureData...", "blue", "on_grey"))
-                compute_feature_pool(
+                iteration_data.feature_pool = compute_feature_pool(
                     domain_data,
                     instance_datas,
-                    selected_instance_datas,
+                    iteration_data,
+                    gfa_state_id_to_tuple_graph,
                     state_finder,
                     disable_feature_generation,
                     concept_complexity_limit,
@@ -139,15 +146,15 @@ def learn_sketch_for_problem_class(
                 logging.info(colored("..done", "blue", "on_grey"))
 
                 logging.info(colored("Constructing PerStateFeatureValuations...", "blue", "on_grey"))
-                compute_per_state_feature_valuations(domain_data, instance_datas, selected_instance_datas, state_finder)
+                iteration_data.gfa_state_id_to_feature_evaluations = compute_per_state_feature_valuations(domain_data, instance_datas, preprocessing_data, iteration_data)
                 logging.info(colored("..done", "blue", "on_grey"))
 
                 logging.info(colored("Constructing StatePairEquivalenceDatas...", "blue", "on_grey"))
-                compute_state_pair_equivalences(domain_data, instance_datas, selected_instance_datas, state_finder)
+                iteration_data.state_pair_equivalences, iteration_data.gfa_state_id_to_state_pair_equivalence = compute_state_pair_equivalences(domain_data, instance_datas, preprocessing_data, iteration_data)
                 logging.info(colored("..done", "blue", "on_grey"))
 
                 logging.info(colored("Constructing TupleGraphEquivalences...", "blue", "on_grey"))
-                compute_tuple_graph_equivalences(domain_data, instance_datas, selected_instance_datas, state_finder)
+                iteration_data.gfa_state_id_to_tuple_graph_equivalence = compute_tuple_graph_equivalences(domain_data, instance_datas, preprocessing_data, iteration_data)
                 logging.info(colored("..done", "blue", "on_grey"))
 
                 logging.info(colored("Minimizing TupleGraphEquivalences...", "blue", "on_grey"))
@@ -162,17 +169,17 @@ def learn_sketch_for_problem_class(
                     j = 0
                     while True:
                         asp_factory = ASPFactory(encoding_type, enable_goal_separating_features, max_num_rules)
-                        facts = asp_factory.make_facts(domain_data, instance_datas, selected_instance_datas, state_finder)
+                        facts = asp_factory.make_facts(domain_data, instance_datas, iteration_data, gfa_state_id_to_tuple_graph, state_finder)
                         #for fact in sorted(facts):
                         #    print(fact)
                         if j == 0:
-                            d2_facts.update(asp_factory.make_initial_d2_facts(domain_data, instance_datas, selected_instance_datas, state_finder))
+                            d2_facts.update(asp_factory.make_initial_d2_facts(domain_data, instance_datas, preprocessing_data, iteration_data))
                             print("Number of initial D2 facts:", len(d2_facts))
                         elif j > 0:
                             unsatisfied_d2_facts = asp_factory.make_unsatisfied_d2_facts(domain_data, symbols)
                             d2_facts.update(unsatisfied_d2_facts)
                             print("Number of unsatisfied D2 facts:", len(unsatisfied_d2_facts))
-                        print("Number of D2 facts:", len(d2_facts), "of", len(domain_data.state_pair_equivalences) ** 2)
+                        print("Number of D2 facts:", len(d2_facts), "of", len(iteration_data.state_pair_equivalences) ** 2)
                         facts.extend(list(d2_facts))
 
                         logging.info(colored("Grounding Logic Program...", "blue", "on_grey"))
@@ -199,14 +206,14 @@ def learn_sketch_for_problem_class(
                         sketch = Sketch(dlplan_policy, width)
                         logging.info("Learned the following sketch:")
                         sketch.print()
-                        if compute_smallest_unsolved_instance(domain_data, instance_datas, selected_instance_datas, state_finder, sketch, enable_goal_separating_features) is None:
+                        if compute_smallest_unsolved_instance(domain_data, instance_datas, iteration_data, gfa_state_id_to_tuple_graph, state_finder, sketch, enable_goal_separating_features) is None:
                             # Stop adding D2-separation constraints
                             # if sketch solves all training instances
                             break
                         j += 1
                 elif encoding_type == EncodingType.EXPLICIT:
                     asp_factory = ASPFactory(encoding_type, enable_goal_separating_features, max_num_rules)
-                    facts = asp_factory.make_facts(domain_data, instance_datas, selected_instance_datas, state_finder)
+                    facts = asp_factory.make_facts(domain_data, instance_datas, iteration_data, gfa_state_id_to_tuple_graph, state_finder)
 
                     logging.info(colored("Grounding Logic Program...", "blue", "on_grey"))
                     asp_factory.ground(facts)
@@ -232,8 +239,8 @@ def learn_sketch_for_problem_class(
 
                 verification_timer.resume()
                 logging.info(colored("Verifying learned sketch...", "blue", "on_grey"))
-                assert compute_smallest_unsolved_instance(domain_data, instance_datas, selected_instance_datas, state_finder, sketch, enable_goal_separating_features) is None
-                smallest_unsolved_instance = compute_smallest_unsolved_instance(domain_data, instance_datas, instance_datas, state_finder, sketch, enable_goal_separating_features)
+                assert compute_smallest_unsolved_instance(domain_data, instance_datas, iteration_data.selected_instance_datas, iteration_data, gfa_state_id_to_tuple_graph, state_finder, sketch, enable_goal_separating_features) is None
+                smallest_unsolved_instance = compute_smallest_unsolved_instance(domain_data, instance_datas, instance_datas, iteration_data, gfa_state_id_to_tuple_graph, state_finder, sketch, enable_goal_separating_features)
                 logging.info(colored("..done", "blue", "on_grey"))
                 verification_timer.stop()
 
@@ -261,7 +268,7 @@ def learn_sketch_for_problem_class(
             num_selected_training_instances=len(selected_instance_datas),
             num_states_in_selected_training_instances=sum(instance_data.gfa.get_num_states() for instance_data in selected_instance_datas),
             num_states_in_complete_selected_training_instances=sum(instance_data.mimir_ss.get_num_states() for instance_data in selected_instance_datas),
-            num_features_in_pool=len(domain_data.feature_pool))
+            num_features_in_pool=len(iteration_data.feature_pool))
         learning_statistics.print()
         print_separation_line()
 

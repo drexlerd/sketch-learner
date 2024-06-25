@@ -3,14 +3,17 @@ import math
 from collections import defaultdict
 from typing import List, Dict
 
+import pymimir as mm
 import dlplan.core as dlplan_core
 import dlplan.policy as dlplan_policy
 
 from .state_pair_equivalence import StatePairEquivalence
 from .feature_pool import Feature
 
+from ..iteration_data.iteration_data import IterationData
 from ..domain_data.domain_data import DomainData
-from ..instance_data.instance_data import InstanceData, StateFinder
+from ..instance_data.instance_data import InstanceData
+from ..preprocessing_data.state_finder import StateFinder
 
 
 def make_conditions(policy_builder: dlplan_policy.PolicyFactory,
@@ -57,7 +60,8 @@ def make_effects(policy_builder: dlplan_policy.PolicyFactory,
 
 def compute_state_pair_equivalences(domain_data: DomainData,
     instance_datas: List[InstanceData],
-    selected_instance_datas: List[InstanceData],
+    iteration_data: IterationData,
+    gfa_state_id_to_tuple_graph: Dict[int, mm.TupleGraph],
     state_finder: StateFinder):
     # We have to take a new policy_builder because our feature pool F uses indices 0,...,|F|
     policy_builder = domain_data.policy_builder
@@ -66,7 +70,7 @@ def compute_state_pair_equivalences(domain_data: DomainData,
 
     gfa_state_id_to_state_pair_equivalence: Dict[int, StatePairEquivalence] = dict()
 
-    for gfa_state in domain_data.gfa_states:
+    for gfa_state in iteration_data.gfa_states:
         instance_idx = gfa_state.get_abstraction_index()
         instance_data = instance_datas[instance_idx]
         gfa_state_id = gfa_state.get_id()
@@ -74,7 +78,7 @@ def compute_state_pair_equivalences(domain_data: DomainData,
         if instance_data.gfa.is_deadend_state(gfa_state_idx):
             continue
 
-        tuple_graph = domain_data.gfa_state_id_to_tuple_graph[gfa_state_id]
+        tuple_graph = gfa_state_id_to_tuple_graph[gfa_state_id]
 
         r_idx_to_distance = dict()
         r_idx_to_subgoal_gfa_state_ids = defaultdict(set)
@@ -82,8 +86,8 @@ def compute_state_pair_equivalences(domain_data: DomainData,
 
         # add conditions
         conditions = make_conditions(policy_builder,
-                                     domain_data.feature_pool,
-                                     domain_data.gfa_state_id_to_feature_evaluations[gfa_state_id])
+                                     iteration_data.feature_pool,
+                                     iteration_data.gfa_state_id_to_feature_evaluations[gfa_state_id])
 
         for s_distance, mimir_ss_states_prime in enumerate(tuple_graph.get_states_by_distance()):
             for mimir_ss_state_prime in mimir_ss_states_prime:
@@ -92,9 +96,9 @@ def compute_state_pair_equivalences(domain_data: DomainData,
 
                 # add effects
                 effects = make_effects(policy_builder,
-                                        domain_data.feature_pool,
-                                        domain_data.gfa_state_id_to_feature_evaluations[gfa_state_id],
-                                        domain_data.gfa_state_id_to_feature_evaluations[gfa_state_prime_id])
+                                        iteration_data.feature_pool,
+                                        iteration_data.gfa_state_id_to_feature_evaluations[gfa_state_id],
+                                        iteration_data.gfa_state_id_to_feature_evaluations[gfa_state_prime_id])
 
                 # add rule
                 rule = policy_builder.make_rule(conditions, effects)
@@ -111,5 +115,4 @@ def compute_state_pair_equivalences(domain_data: DomainData,
 
         gfa_state_id_to_state_pair_equivalence[gfa_state_id] = StatePairEquivalence(r_idx_to_subgoal_gfa_state_ids, r_idx_to_distance, subgoal_gfa_state_id_to_r_idx)
 
-    domain_data.state_pair_equivalences = rules
-    domain_data.gfa_state_id_to_state_pair_equivalence = gfa_state_id_to_state_pair_equivalence
+    return rules, gfa_state_id_to_state_pair_equivalence

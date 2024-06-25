@@ -2,12 +2,14 @@ import math
 
 from collections import defaultdict, deque
 from termcolor import colored
-from typing import Dict, List
+from typing import Dict, List, Deque, MutableSet
 
+import pymimir as mm
 import dlplan.core as dlplan_core
 import dlplan.policy as dlplan_policy
 
-from ..instance_data.instance_data import InstanceData, StateFinder
+from ..preprocessing_data.state_finder import StateFinder
+from ..instance_data.instance_data import InstanceData
 from ..domain_data.domain_data import DomainData
 
 
@@ -24,18 +26,17 @@ class Sketch:
         If optimal width is required, we do not allow R-compatible states
         that are closer than the closest satisfied subgoal tuple.
         """
-        queue = deque()
-        visited = set()
+        queue: Deque[mm.GlobalFaithfulAbstractState] = deque()
+        visited: MutableSet[mm.GlobalFaithfulAbstractState] = set()
         for gfa_state_idx in instance_data.initial_gfa_state_idxs:
             gfa_state = instance_data.gfa.get_states()[gfa_state_idx]
-            gfa_state_id = gfa_state.get_id()
-            queue.append(gfa_state_id)
-            visited.add(gfa_state_id)
+            queue.append(gfa_state)
+            visited.add(gfa_state)
         # byproduct for acyclicity check
         subgoal_states_per_r_reachable_state = defaultdict(set)
         while queue:
-            gfa_root_id = queue.pop()
-            gfa_root = domain_data.gfa_states_by_id[gfa_root_id]
+            gfa_root = queue.pop()
+            gfa_root_id = gfa_root.get_id()
             instance_idx = gfa_root.get_abstraction_index()
             instance_data = instance_datas[instance_idx]
             gfa_root_idx = instance_data.gfa.get_state_index(gfa_root)
@@ -57,17 +58,14 @@ class Sketch:
                 for mimir_ss_state_prime in tuple_graph.get_states_by_distance()[s_distance]:
                     gfa_state_prime = state_finder.get_gfa_state_from_ss_state_idx(instance_idx, instance_data.mimir_ss.get_state_index(mimir_ss_state_prime))
                     gfa_state_prime_id = gfa_state_prime.get_id()
-                    instance_prime_idx = gfa_state_prime.get_abstraction_index()
-                    instance_data_prime = instance_datas[instance_prime_idx]
-                    gfa_state_prime_idx = instance_data_prime.gfa.get_state_index(gfa_state_prime)
                     dlplan_ss_state_prime = state_finder.get_dlplan_ss_state(gfa_state_prime)
 
                     if self.dlplan_policy.evaluate(dlplan_ss_root, dlplan_ss_state_prime, instance_data.denotations_caches) is not None:
                         min_compatible_distance = min(min_compatible_distance, s_distance)
                         subgoal_states_per_r_reachable_state[gfa_root_id].add(gfa_state_prime_id)
-                        if gfa_state_prime_id not in visited:
-                            visited.add(gfa_state_prime_id)
-                            queue.append(gfa_state_prime_id)
+                        if gfa_state_prime not in visited:
+                            visited.add(gfa_state_prime)
+                            queue.append(gfa_state_prime)
 
                 # Check whether there exists a subgoal tuple for which all underlying states are subgoal states
                 found_subgoal_tuple = False
@@ -77,9 +75,6 @@ class Sketch:
                     for mimir_ss_state_prime in tuple_vertex.get_states():
                         gfa_state_prime = state_finder.get_gfa_state_from_ss_state_idx(instance_idx, instance_data.mimir_ss.get_state_index(mimir_ss_state_prime))
                         gfa_state_prime_id = gfa_state_prime.get_id()
-                        instance_prime_idx = gfa_state_prime.get_abstraction_index()
-                        instance_data_prime = instance_datas[instance_prime_idx]
-                        gfa_state_prime_idx = instance_data_prime.gfa.get_state_index(gfa_state_prime)
                         dlplan_ss_state_prime = state_finder.get_dlplan_ss_state(gfa_state_prime)
 
                         if self.dlplan_policy.evaluate(dlplan_ss_root, dlplan_ss_state_prime, instance_data.denotations_caches) is not None:
@@ -145,7 +140,7 @@ class Sketch:
     def _compute_state_b_values(self, booleans: List[dlplan_policy.NamedBoolean], numericals: List[dlplan_policy.NamedNumerical], state: dlplan_core.State, denotations_caches: dlplan_core.DenotationsCaches):
         return tuple([boolean.get_element().evaluate(state, denotations_caches) for boolean in booleans] + [numerical.get_element().evaluate(state, denotations_caches) > 0 for numerical in numericals])
 
-    def _verify_goal_separating_features(self, instance_data: InstanceData):
+    def _verify_goal_separating_features(self, domain_data: DomainData, instance_datas: List[InstanceData], state_finder: StateFinder, instance_data: InstanceData):
         """
         Returns True iff sketch features separate goal from nongoal states.
         """
@@ -153,10 +148,13 @@ class Sketch:
         nongoal_b_values = set()
         booleans = self.dlplan_policy.get_booleans()
         numericals = self.dlplan_policy.get_numericals()
-        for s_idx, state in instance_data.state_space.get_states().items():
-            b_values = self._compute_state_b_values(booleans, numericals, state, instance_data.denotations_caches)
+        for gfa_state_idx, gfa_state in enumerate(instance_data.gfa.get_states()):
+            new_instance_idx = gfa_state.get_abstraction_index()
+            new_instance_data = instance_datas[new_instance_idx]
+            dlplan_ss_state = state_finder.get_dlplan_ss_state(gfa_state)
+            b_values = self._compute_state_b_values(booleans, numericals, dlplan_ss_state, new_instance_data.denotations_caches)
             separating = True
-            if instance_data.is_goal(s_idx):
+            if instance_data.gfa.is_goal_state(gfa_state_idx):
                 goal_b_values.add(b_values)
                 if b_values in nongoal_b_values:
                     separating = False
@@ -167,7 +165,7 @@ class Sketch:
             if not separating:
                 print("Features do not separate goals from non goals")
                 print("Booleans:")
-                print("State:", str(state))
+                print("State:", str(dlplan_ss_state))
                 print("b_values:", b_values)
                 return False
         return True
@@ -183,7 +181,7 @@ class Sketch:
         if not bounded:
             return False
         if enable_goal_separating_features:
-            if not self._verify_goal_separating_features(instance_data):
+            if not self._verify_goal_separating_features(domain_data, instance_datas, state_finder, instance_data):
                 return False
         if not self._verify_acyclicity(instance_data, subgoal_states_per_r_reachable_state):
             return False

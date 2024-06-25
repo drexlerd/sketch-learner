@@ -1,5 +1,5 @@
-from typing import Dict, List, MutableSet
-from dataclasses import dataclass, field
+from typing import Dict, MutableSet
+from dataclasses import dataclass
 
 
 @dataclass

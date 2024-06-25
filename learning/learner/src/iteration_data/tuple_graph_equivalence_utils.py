@@ -1,15 +1,20 @@
 from typing import List, Dict, MutableSet
 from collections import defaultdict
 
+import pymimir as mm
+
 from .tuple_graph_equivalence import TupleGraphEquivalence
 
+from ..iteration_data.iteration_data import IterationData
 from ..domain_data.domain_data import DomainData
-from ..instance_data.instance_data import InstanceData, StateFinder
+from ..instance_data.instance_data import InstanceData
+from ..preprocessing_data.state_finder import StateFinder
 
 
 def compute_tuple_graph_equivalences(domain_data: DomainData,
     instance_datas: List[InstanceData],
-    selected_instance_datas: List[InstanceData],
+    iteration_data: IterationData,
+    gfa_state_id_to_tuple_graph: Dict[int, mm.TupleGraph],
     state_finder: StateFinder) -> None:
     """ Computes information for all subgoal states, tuples and rules over F.
     """
@@ -17,7 +22,7 @@ def compute_tuple_graph_equivalences(domain_data: DomainData,
 
     gfa_state_id_to_tuple_graph_equivalence: Dict[int, TupleGraphEquivalence] = dict()
 
-    for gfa_state in domain_data.gfa_states:
+    for gfa_state in iteration_data.gfa_states:
         instance_idx = gfa_state.get_abstraction_index()
         instance_data = instance_datas[instance_idx]
         gfa_state_id = gfa_state.get_id()
@@ -25,7 +30,7 @@ def compute_tuple_graph_equivalences(domain_data: DomainData,
         if instance_data.gfa.is_deadend_state(gfa_state_idx):
             continue
 
-        tuple_graph = domain_data.gfa_state_id_to_tuple_graph[gfa_state_id]
+        tuple_graph = gfa_state_id_to_tuple_graph[gfa_state_id]
 
         t_idx_to_r_idxs: Dict[int, MutableSet[int]] = dict()
         t_idx_to_distance: Dict[int, int] = dict()
@@ -39,7 +44,7 @@ def compute_tuple_graph_equivalences(domain_data: DomainData,
                 instance_data_prime = instance_datas[instance_prime_idx]
                 gfa_state_prime_idx = instance_data_prime.gfa.get_state_index(gfa_state_prime)
 
-                r_idx = domain_data.gfa_state_id_to_state_pair_equivalence[gfa_state_id].subgoal_gfa_state_id_to_r_idx[gfa_state_prime_id]
+                r_idx = iteration_data.gfa_state_id_to_state_pair_equivalence[gfa_state_id].subgoal_gfa_state_id_to_r_idx[gfa_state_prime_id]
 
                 if instance_data_prime.gfa.is_deadend_state(gfa_state_prime_idx):
                     r_idx_to_deadend_distance[r_idx] = min(r_idx_to_deadend_distance.get(r_idx, float("inf")), s_distance)
@@ -52,17 +57,18 @@ def compute_tuple_graph_equivalences(domain_data: DomainData,
                 for mimir_ss_state_prime in tuple_vertex.get_states():
                     gfa_state_prime = state_finder.get_gfa_state_from_ss_state_idx(instance_idx, instance_data.mimir_ss.get_state_index(mimir_ss_state_prime))
                     gfa_state_prime_id = gfa_state_prime.get_id()
-                    r_idx = domain_data.gfa_state_id_to_state_pair_equivalence[gfa_state_id].subgoal_gfa_state_id_to_r_idx[gfa_state_prime_id]
+                    r_idx = iteration_data.gfa_state_id_to_state_pair_equivalence[gfa_state_id].subgoal_gfa_state_id_to_r_idx[gfa_state_prime_id]
                     r_idxs.add(r_idx)
                 t_idx_to_distance[t_idx] = s_distance
                 t_idx_to_r_idxs[t_idx] = r_idxs
                 num_nodes += 1
 
         gfa_state_id_to_tuple_graph_equivalence[gfa_state_id] = TupleGraphEquivalence(t_idx_to_r_idxs, t_idx_to_distance, r_idx_to_deadend_distance)
-    domain_data.gfa_state_id_to_tuple_graph_equivalence = gfa_state_id_to_tuple_graph_equivalence
 
     print("Tuple graph equivalence construction statistics:")
     print("Num nodes:", num_nodes)
+
+    return gfa_state_id_to_tuple_graph_equivalence
 
 
 def minimize_tuple_graph_equivalences(instance_datas: List[InstanceData]):

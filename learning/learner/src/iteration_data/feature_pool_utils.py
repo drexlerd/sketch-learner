@@ -6,8 +6,10 @@ import dlplan.generator as dlplan_generator
 
 from .feature_pool import Feature
 
+from ..iteration_data.iteration_data import IterationData
 from ..domain_data.domain_data import DomainData
-from ..instance_data.instance_data import InstanceData, StateFinder
+from ..instance_data.instance_data import InstanceData
+from ..preprocessing_data.state_finder import StateFinder
 
 
 class FeatureChange(Enum):
@@ -18,7 +20,8 @@ class FeatureChange(Enum):
 
 def compute_feature_pool(domain_data: DomainData,
                          instance_datas: List[InstanceData],
-                         selected_instance_datas: List[InstanceData],
+                         iteration_data: IterationData,
+                         gfa_state_id_to_tuple_graph: Dict[int, mm.TupleGraph],
                          state_finder: StateFinder,
                          disable_feature_generation: bool,
                          concept_complexity_limit: int,
@@ -31,7 +34,7 @@ def compute_feature_pool(domain_data: DomainData,
                          additional_numericals: List[str]):
     # Get concrete dlplan states of global states
     dlplan_ss_states = set()
-    for gfa_state in domain_data.gfa_states:
+    for gfa_state in iteration_data.gfa_states:
         dlplan_ss_states.add(state_finder.get_dlplan_ss_state(gfa_state))
     dlplan_ss_states = list(dlplan_ss_states)
 
@@ -77,7 +80,7 @@ def compute_feature_pool(domain_data: DomainData,
     selected_features = []
     for feature in features:
         always_nnz = True
-        for instance_data in selected_instance_datas:
+        for instance_data in iteration_data.instance_datas:
             for dlplan_state in instance_data.dlplan_ss.get_states().values():
                 val = int(feature.dlplan_feature.evaluate(dlplan_state, instance_data.denotations_caches))
                 if val == 0:
@@ -92,7 +95,7 @@ def compute_feature_pool(domain_data: DomainData,
     soft_changing_features = set()
     for feature in features:
         is_soft_changing = True
-        for gfa_state in domain_data.gfa_states:
+        for gfa_state in iteration_data.gfa_states:
             dlplan_source_ss_state = state_finder.get_dlplan_ss_state(gfa_state)
             instance_idx = gfa_state.get_abstraction_index()
             instance_data = instance_datas[instance_idx]
@@ -126,7 +129,7 @@ def compute_feature_pool(domain_data: DomainData,
     num_pruned = 0
     for feature in features:
         changes = []
-        for gfa_state in domain_data.gfa_states:
+        for gfa_state in iteration_data.gfa_states:
             instance_idx = gfa_state.get_abstraction_index()
             instance_data = instance_datas[instance_idx]
 
@@ -135,7 +138,7 @@ def compute_feature_pool(domain_data: DomainData,
             if instance_data.gfa.is_deadend_state(gfa_state_idx):
                 continue
 
-            tuple_graph = domain_data.gfa_state_id_to_tuple_graph[gfa_state_id]
+            tuple_graph = gfa_state_id_to_tuple_graph[gfa_state_id]
 
             dlplan_source_ss_state = state_finder.get_dlplan_ss_state(gfa_state)
             source_val = int(feature.dlplan_feature.evaluate(dlplan_source_ss_state, instance_data.denotations_caches))
@@ -165,4 +168,4 @@ def compute_feature_pool(domain_data: DomainData,
     features = list(feature_changes.values())
     print("Features after relevant changes pruning (complete):", len(features))
 
-    domain_data.feature_pool = features
+    return features
