@@ -184,7 +184,7 @@ def learn_sketch_for_problem_class(
                         sketch = Sketch(dlplan_policy, width)
                         logging.info("Learned the following sketch:")
                         sketch.print()
-                        if compute_smallest_unsolved_instance(preprocessing_data, iteration_data, instance_datas, sketch, enable_goal_separating_features) is None:
+                        if compute_smallest_unsolved_instance(preprocessing_data, iteration_data, iteration_data.instance_datas, sketch, enable_goal_separating_features) is None:
                             # Stop adding D2-separation constraints
                             # if sketch solves all training instances
                             break
