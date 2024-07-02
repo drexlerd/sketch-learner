@@ -78,8 +78,9 @@ def create_dlplan_statespace(
         for atom in pddl_factories.get_derived_ground_atoms_from_ids(ss_state.get_derived_atoms()):
             dlplan_state_atoms.append(atom_to_dlplan_atom[atom])
         dlplan_states[ss_state_idx] = dlplan_core.State(ss_state_idx, instance_info, dlplan_state_atoms)
-        for transition in mimir_state_space.get_forward_transitions()[ss_state_idx]:
-            forward_successors[ss_state_idx].add(transition.get_successor_state())
+        for transition_index in mimir_state_space.get_forward_transition_adjacency_lists()[ss_state_idx]:
+            transition = mimir_state_space.get_transitions()[transition_index]
+            forward_successors[ss_state_idx].add(transition.get_forward_successor())
     dlplan_state_space = dlplan_statespace.StateSpace(instance_info, dlplan_states, mimir_state_space.get_initial_state(), forward_successors, mimir_state_space.get_goal_states())
     return dlplan_state_space
 
