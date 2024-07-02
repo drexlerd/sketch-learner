@@ -31,7 +31,7 @@ def learn_sketch_for_problem_class(
     workspace: Path,
     width: int,
     disable_closed_Q: bool = False,
-    max_num_states_per_instance: int = 2000,
+    max_num_states_per_instance: int = 10000,
     max_time_per_instance: int = 10,
     encoding_type: EncodingType = EncodingType.D2,
     max_num_rules: int = 4,
@@ -63,12 +63,10 @@ def learn_sketch_for_problem_class(
     asp_timer = Timer(stopped=True)
     verification_timer = Timer(stopped=True)
 
-    iteration_data = IterationData()
-
     # Generate data
     with change_dir("input"):
         logging.info(colored("Constructing InstanceDatas...", "blue", "on_grey"))
-        domain_data, instance_datas, gfa_states_by_id = compute_instance_datas(domain_filepath, instance_filepaths, disable_closed_Q, max_num_states_per_instance, max_time_per_instance, enable_dump_files)
+        domain_data, instance_datas, gfa_states_by_id, num_ss_states, num_gfa_states = compute_instance_datas(domain_filepath, instance_filepaths, disable_closed_Q, max_num_states_per_instance, max_time_per_instance, enable_dump_files)
         logging.info(colored("..done", "blue", "on_grey"))
         if instance_datas is None:
             raise Exception("Failed to create InstanceDatas.")
@@ -83,6 +81,7 @@ def learn_sketch_for_problem_class(
     preprocessing_timer.stop()
 
     # Learn sketch
+    iteration_data = IterationData()
     with change_dir("iterations"):
         i = 0
         with change_dir(str(i), enable=enable_dump_files):
@@ -269,8 +268,8 @@ def learn_sketch_for_problem_class(
         print(f"Verification time: {int(verification_timer.get_elapsed_sec()) + 1} seconds.")
         print(f"Total time: {int(total_timer.get_elapsed_sec()) + 1} seconds.")
         print(f"Total memory: {int(memory_usage() / 1024)} GiB.")
-        #print("Num states in training data before symmetry pruning:", num_states)
-        #print("Num states in training data after symmetry pruning:", num_partitions)
+        print("Num states in training data before symmetry pruning:", num_ss_states)
+        print("Num states in training data after symmetry pruning:", num_gfa_states)
         print_separation_line()
 
         print(flush=True)

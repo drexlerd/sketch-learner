@@ -92,6 +92,15 @@ def compute_instance_datas(domain_filepath: Path,
                            enable_dump_files: bool) -> Tuple[List[InstanceData], DomainData]:
     instance_datas: List[InstanceData] = []
 
+    state_spaces = mm.StateSpace.create(str(domain_filepath), [str(p) for p in instance_filepaths], True, True, True, max_num_states_per_instance, max_time_per_instance)
+    # Remove trivially solvable instances
+    instance_filespaths = []
+    num_ss_states = 0
+    for state_space in state_spaces:
+        if state_space.get_num_states() != state_space.get_num_goal_states():
+            instance_filespaths.append(state_space.get_pddl_parser().get_problem_filepath())
+            num_ss_states += state_space.get_num_states()
+
     with change_dir("state_spaces", enable=enable_dump_files):
         # 1. Create mimir StateSpace and GlobalFaithfulAbstraction
         logging.info("Constructing GlobalFaithfulAbstractions...")
@@ -147,5 +156,6 @@ def compute_instance_datas(domain_filepath: Path,
     for instance_data in instance_datas:
         for gfa_state in instance_data.gfa.get_states():
             gfa_states_by_id[gfa_state.get_id()] = gfa_state
+    num_gfa_states = len(gfa_states_by_id)
 
-    return domain_data, instance_datas, gfa_states_by_id
+    return domain_data, instance_datas, gfa_states_by_id, num_ss_states, num_gfa_states
