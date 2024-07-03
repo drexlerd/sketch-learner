@@ -72,8 +72,9 @@ def create_dlplan_statespace(
 ) -> dlplan_statespace.StateSpace:
     dlplan_states: Dict[int, dlplan_core.State] = dict()
     forward_successors = defaultdict(set)
+    mimir_ss_states = mimir_state_space.get_states()
     mimir_forward_successors = mimir_state_space.get_forward_successor_adjacency_lists()
-    for ss_state_idx, ss_state in enumerate(mimir_state_space.get_states()):
+    for ss_state_idx, ss_state in enumerate(mimir_ss_states):
         dlplan_state_atoms = []
         for atom_id in ss_state.get_fluent_atoms():
             dlplan_state_atoms.append(fluent_atom_id_to_dlplan_atom[atom_id])

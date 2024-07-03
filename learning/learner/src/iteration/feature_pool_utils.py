@@ -101,8 +101,7 @@ def compute_feature_pool(preprocessing_data: PreprocessingData,
             gfa = instance_data.gfa
             gfa_state_idx = gfa.get_state_index(gfa_state)
             gfa_states = gfa.get_states()
-            gfa_forward_successors = gfa.get_forward_successor_adjacency_lists()
-            for gfa_state_prime_idx in gfa_forward_successors[gfa_state_idx]:
+            for gfa_state_prime_idx in gfa.get_forward_successor_adjacency_lists()[gfa_state_idx]:
                 gfa_state_prime = gfa_states[gfa_state_prime_idx]
                 dlplan_target_ss_state = state_finder.get_dlplan_ss_state(gfa_state_prime)
                 target_val = int(feature.dlplan_feature.evaluate(dlplan_target_ss_state, instance_data.denotations_caches))
@@ -137,13 +136,15 @@ def compute_feature_pool(preprocessing_data: PreprocessingData,
                 continue
 
             tuple_graph = gfa_state_id_to_tuple_graph[gfa_state_id]
+            tuple_graph_vertices_by_distance = tuple_graph.get_vertex_indices_by_distances()
 
             dlplan_source_ss_state = state_finder.get_dlplan_ss_state(gfa_state)
             source_val = int(feature.dlplan_feature.evaluate(dlplan_source_ss_state, instance_data.denotations_caches))
 
-            for tuple_vertex_idxs in tuple_graph.get_vertex_indices_by_distances():
+            tuple_graph_vertices = tuple_graph.get_vertices()
+            for tuple_vertex_idxs in tuple_graph_vertices_by_distance:
                 for tuple_vertex_idx in tuple_vertex_idxs:
-                    tuple_vertex = tuple_graph.get_vertices()[tuple_vertex_idx]
+                    tuple_vertex = tuple_graph_vertices[tuple_vertex_idx]
                     for mimir_ss_state_prime in tuple_vertex.get_states():
                         gfa_state_prime = state_finder.get_gfa_state_from_ss_state_idx(instance_idx, instance_data.mimir_ss.get_state_index(mimir_ss_state_prime))
                         dlplan_target_ss_state = state_finder.get_dlplan_ss_state(gfa_state_prime)

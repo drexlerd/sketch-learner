@@ -73,6 +73,7 @@ def compute_state_pair_equivalences(preprocessing_data: PreprocessingData,
             continue
 
         tuple_graph = preprocessing_data.gfa_state_id_to_tuple_graph[gfa_state_id]
+        tuple_graph_states_by_distance = tuple_graph.get_states_by_distance()
 
         r_idx_to_distance = dict()
         r_idx_to_subgoal_gfa_state_ids = defaultdict(set)
@@ -83,7 +84,7 @@ def compute_state_pair_equivalences(preprocessing_data: PreprocessingData,
                                      iteration_data.feature_pool,
                                      iteration_data.gfa_state_id_to_feature_evaluations[gfa_state_id])
 
-        for s_distance, mimir_ss_states_prime in enumerate(tuple_graph.get_states_by_distance()):
+        for s_distance, mimir_ss_states_prime in enumerate(tuple_graph_states_by_distance):
             for mimir_ss_state_prime in mimir_ss_states_prime:
                 gfa_state_prime = preprocessing_data.state_finder.get_gfa_state_from_ss_state_idx(instance_idx, instance_data.mimir_ss.get_state_index(mimir_ss_state_prime))
                 gfa_state_prime_id = gfa_state_prime.get_id()

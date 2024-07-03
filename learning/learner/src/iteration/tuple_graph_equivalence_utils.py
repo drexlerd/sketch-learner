@@ -24,12 +24,15 @@ def compute_tuple_graph_equivalences(preprocessing_data: PreprocessingData,
             continue
 
         tuple_graph = preprocessing_data.gfa_state_id_to_tuple_graph[gfa_state_id]
+        tuple_graph_vertices =  tuple_graph.get_vertices()
+        tuple_graph_vertices_by_distance = tuple_graph.get_vertex_indices_by_distances()
+        tuple_graph_states_by_distance = tuple_graph.get_states_by_distance()
 
         t_idx_to_r_idxs: Dict[int, MutableSet[int]] = dict()
         t_idx_to_distance: Dict[int, int] = dict()
         r_idx_to_deadend_distance: Dict[int, int] = dict()
 
-        for s_distance, mimir_ss_states_prime in enumerate(tuple_graph.get_states_by_distance()):
+        for s_distance, mimir_ss_states_prime in enumerate(tuple_graph_states_by_distance):
             for mimir_ss_state_prime in mimir_ss_states_prime:
                 gfa_state_prime = preprocessing_data.state_finder.get_gfa_state_from_ss_state_idx(instance_idx, instance_data.mimir_ss.get_state_index(mimir_ss_state_prime))
                 gfa_state_prime_id = gfa_state_prime.get_id()
@@ -42,9 +45,9 @@ def compute_tuple_graph_equivalences(preprocessing_data: PreprocessingData,
                 if instance_data_prime.gfa.is_deadend_state(gfa_state_prime_idx):
                     r_idx_to_deadend_distance[r_idx] = min(r_idx_to_deadend_distance.get(r_idx, float("inf")), s_distance)
 
-        for s_distance, tuple_vertex_idxs in enumerate(tuple_graph.get_vertex_indices_by_distances()):
+        for s_distance, tuple_vertex_idxs in enumerate(tuple_graph_vertices_by_distance):
             for tuple_vertex_idx in tuple_vertex_idxs:
-                tuple_vertex = tuple_graph.get_vertices()[tuple_vertex_idx]
+                tuple_vertex = tuple_graph_vertices[tuple_vertex_idx]
                 t_idx = tuple_vertex.get_identifier()
                 r_idxs = set()
                 for mimir_ss_state_prime in tuple_vertex.get_states():

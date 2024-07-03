@@ -53,13 +53,17 @@ class Sketch:
                 continue
 
             tuple_graph = preprocessing_data.gfa_state_id_to_tuple_graph[gfa_root_id]
+            tuple_graph_vertices =  tuple_graph.get_vertices()
+            tuple_graph_vertices_by_distance = tuple_graph.get_vertex_indices_by_distances()
+            tuple_graph_states_by_distance = tuple_graph.get_states_by_distance()
 
             dlplan_ss_root = preprocessing_data.state_finder.get_dlplan_ss_state(gfa_root)
 
             ḧas_bounded_width = False
             min_compatible_distance = math.inf
-            for s_distance, tuple_vertex_idxs in enumerate(tuple_graph.get_vertex_indices_by_distances()):
-                for mimir_ss_state_prime in tuple_graph.get_states_by_distance()[s_distance]:
+
+            for s_distance, tuple_vertex_idxs in enumerate(tuple_graph_vertices_by_distance):
+                for mimir_ss_state_prime in tuple_graph_states_by_distance[s_distance]:
                     gfa_state_prime = preprocessing_data.state_finder.get_gfa_state_from_ss_state_idx(instance_idx, instance_data.mimir_ss.get_state_index(mimir_ss_state_prime))
                     gfa_state_prime_id = gfa_state_prime.get_id()
                     dlplan_ss_state_prime = preprocessing_data.state_finder.get_dlplan_ss_state(gfa_state_prime)
@@ -74,7 +78,7 @@ class Sketch:
                 # Check whether there exists a subgoal tuple for which all underlying states are subgoal states
                 found_subgoal_tuple = False
                 for tuple_vertex_idx in tuple_vertex_idxs:
-                    tuple_vertex = tuple_graph.get_vertices()[tuple_vertex_idx]
+                    tuple_vertex = tuple_graph_vertices[tuple_vertex_idx]
                     is_subgoal_tuple = True
                     for mimir_ss_state_prime in tuple_vertex.get_states():
                         gfa_state_prime = preprocessing_data.state_finder.get_gfa_state_from_ss_state_idx(instance_idx, instance_data.mimir_ss.get_state_index(mimir_ss_state_prime))
