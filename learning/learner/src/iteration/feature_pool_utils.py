@@ -136,12 +136,12 @@ def compute_feature_pool(preprocessing_data: PreprocessingData,
                 continue
 
             tuple_graph = gfa_state_id_to_tuple_graph[gfa_state_id]
+            tuple_graph_vertices = tuple_graph.get_vertices()
             tuple_graph_vertices_by_distance = tuple_graph.get_vertex_indices_by_distances()
 
             dlplan_source_ss_state = state_finder.get_dlplan_ss_state(gfa_state)
             source_val = int(feature.dlplan_feature.evaluate(dlplan_source_ss_state, instance_data.denotations_caches))
 
-            tuple_graph_vertices = tuple_graph.get_vertices()
             for tuple_vertex_idxs in tuple_graph_vertices_by_distance:
                 for tuple_vertex_idx in tuple_vertex_idxs:
                     tuple_vertex = tuple_graph_vertices[tuple_vertex_idx]
