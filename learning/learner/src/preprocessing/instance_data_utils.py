@@ -45,11 +45,12 @@ def create_instance_info(
             assert not literal.is_negated()
             instance_info.add_static_atom(literal.get_atom().get_predicate().get_name(), [obj.get_name() for obj in literal.get_atom().get_objects()])
     # Reached atoms
-    atom_to_dlplan_atom = dict()
+    fluent_atom_id_to_dlplan_atom = dict()
+    derived_atom_id_to_dlplan_atom = dict()
     for atom in pddl_factories.get_fluent_ground_atoms_from_ids(mimir_state_space.get_ssg().get_reached_fluent_ground_atoms()):
-        atom_to_dlplan_atom[atom] = instance_info.add_atom(atom.get_predicate().get_name(), [obj.get_name() for obj in atom.get_objects()])
+        fluent_atom_id_to_dlplan_atom[atom.get_identifier()] = instance_info.add_atom(atom.get_predicate().get_name(), [obj.get_name() for obj in atom.get_objects()])
     for atom in pddl_factories.get_derived_ground_atoms_from_ids(mimir_state_space.get_ssg().get_reached_derived_ground_atoms()):
-        atom_to_dlplan_atom[atom] = instance_info.add_atom(atom.get_predicate().get_name(), [obj.get_name() for obj in atom.get_objects()])
+        derived_atom_id_to_dlplan_atom[atom.get_identifier()] = instance_info.add_atom(atom.get_predicate().get_name(), [obj.get_name() for obj in atom.get_objects()])
     # Goal literals
     for literal in problem.get_static_goal_condition():
         assert not literal.is_negated()
@@ -60,27 +61,27 @@ def create_instance_info(
     for literal in problem.get_derived_goal_condition():
         assert not literal.is_negated()
         instance_info.add_static_atom(literal.get_atom().get_predicate().get_name() + "_g", [obj.get_name() for obj in literal.get_atom().get_objects()])
-    return instance_info, atom_to_dlplan_atom
+    return instance_info, fluent_atom_id_to_dlplan_atom, derived_atom_id_to_dlplan_atom
 
 
 def create_dlplan_statespace(
         instance_info: dlplan_core.InstanceInfo,
         mimir_state_space: mm.StateSpace,
-        atom_to_dlplan_atom: Dict[Union[mm.FluentGroundAtom, mm.DerivedGroundAtom], dlplan_core.Atom]
+        fluent_atom_id_to_dlplan_atom: Dict[int, dlplan_core.Atom],
+        derived_atom_id_to_dlplan_atom: Dict[int, dlplan_core.Atom]
 ) -> dlplan_statespace.StateSpace:
-    pddl_factories = mimir_state_space.get_aag().get_pddl_factories()
     dlplan_states: Dict[int, dlplan_core.State] = dict()
     forward_successors = defaultdict(set)
+    mimir_forward_successors = mimir_state_space.get_forward_successor_adjacency_lists()
     for ss_state_idx, ss_state in enumerate(mimir_state_space.get_states()):
         dlplan_state_atoms = []
-        for atom in pddl_factories.get_fluent_ground_atoms_from_ids(ss_state.get_fluent_atoms()):
-            dlplan_state_atoms.append(atom_to_dlplan_atom[atom])
-        for atom in pddl_factories.get_derived_ground_atoms_from_ids(ss_state.get_derived_atoms()):
-            dlplan_state_atoms.append(atom_to_dlplan_atom[atom])
+        for atom_id in ss_state.get_fluent_atoms():
+            dlplan_state_atoms.append(fluent_atom_id_to_dlplan_atom[atom_id])
+        for atom_id in ss_state.get_derived_atoms():
+            dlplan_state_atoms.append(derived_atom_id_to_dlplan_atom[atom_id])
         dlplan_states[ss_state_idx] = dlplan_core.State(ss_state_idx, instance_info, dlplan_state_atoms)
-        for transition_index in mimir_state_space.get_forward_transition_adjacency_lists()[ss_state_idx]:
-            transition = mimir_state_space.get_transitions()[transition_index]
-            forward_successors[ss_state_idx].add(transition.get_forward_successor())
+        for ss_state_prime_idx in mimir_forward_successors[ss_state_idx]:
+            forward_successors[ss_state_idx].add(ss_state_prime_idx)
     dlplan_state_space = dlplan_statespace.StateSpace(instance_info, dlplan_states, mimir_state_space.get_initial_state(), forward_successors, mimir_state_space.get_goal_states())
     return dlplan_state_space
 
@@ -105,7 +106,7 @@ def compute_instance_datas(domain_filepath: Path,
     with change_dir("state_spaces", enable=enable_dump_files):
         # 1. Create mimir StateSpace and GlobalFaithfulAbstraction
         logging.info("Constructing GlobalFaithfulAbstractions...")
-        abstractions = mm.GlobalFaithfulAbstraction.create(str(domain_filepath), [str(p) for p in instance_filepaths], False, True, True, True, max_num_states_per_instance, max_time_per_instance)
+        abstractions = mm.GlobalFaithfulAbstraction.create(str(domain_filepath), [str(p) for p in instance_filepaths], False, True, True, False, True, max_num_states_per_instance, max_time_per_instance)
         logging.info("...done")
         if len(abstractions) == 0:
             return None * 3
@@ -130,10 +131,10 @@ def compute_instance_datas(domain_filepath: Path,
             assert(mimir_ss.get_num_goal_states())
 
             # 3.1. Create dlplan instance info
-            instance_info, atom_to_dlplan_atom = create_instance_info(vocabulary_info, instance_idx, mimir_ss)
+            instance_info, fluent_atom_id_to_dlplan_atom, derived_atom_id_to_dlplan_atom = create_instance_info(vocabulary_info, instance_idx, mimir_ss)
 
             # 3.2 Create dlplan state space
-            dlplan_ss = create_dlplan_statespace(instance_info, mimir_ss, atom_to_dlplan_atom)
+            dlplan_ss = create_dlplan_statespace(instance_info, mimir_ss, fluent_atom_id_to_dlplan_atom, derived_atom_id_to_dlplan_atom)
 
             # 3.3 Create mapping from concrete states to global faithful abstract states
             ss_state_idx_to_gfa_state_idx = dict()

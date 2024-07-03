@@ -100,10 +100,10 @@ def compute_feature_pool(preprocessing_data: PreprocessingData,
 
             gfa = instance_data.gfa
             gfa_state_idx = gfa.get_state_index(gfa_state)
-            for transition_index in gfa.get_forward_transition_adjacency_lists()[gfa_state_idx]:
-                transition = gfa.get_transitions()[transition_index]
-                gfa_state_prime_idxs = transition.get_forward_successor()
-                gfa_state_prime = gfa.get_states()[gfa_state_prime_idxs]
+            gfa_states = gfa.get_states()
+            gfa_forward_successors = gfa.get_forward_successor_adjacency_lists()
+            for gfa_state_prime_idx in gfa_forward_successors[gfa_state_idx]:
+                gfa_state_prime = gfa_states[gfa_state_prime_idx]
                 dlplan_target_ss_state = state_finder.get_dlplan_ss_state(gfa_state_prime)
                 target_val = int(feature.dlplan_feature.evaluate(dlplan_target_ss_state, instance_data.denotations_caches))
                 if source_val in {0, 2147483647} or target_val in {0, 2147483647}:
