@@ -14,8 +14,7 @@ class PreprocessingData:
     _domain_data: DomainData
     _instance_datas: List[InstanceData]
     _state_finder: StateFinder
-    _gfa_states_by_id: Dict[int, mm.GlobalFaithfulAbstractState]
-    _gfa_state_id_to_tuple_graph: Dict[int, mm.TupleGraph]
+    _gfa_state_global_idx_to_tuple_graph: Dict[int, mm.TupleGraph]
 
     @property
     def domain_data(self):
@@ -30,9 +29,5 @@ class PreprocessingData:
         return self._state_finder
 
     @property
-    def gfa_states_by_id(self):
-        return self._gfa_states_by_id
-
-    @property
-    def gfa_state_id_to_tuple_graph(self):
-        return self._gfa_state_id_to_tuple_graph
+    def gfa_state_global_idx_to_tuple_graph(self):
+        return self._gfa_state_global_idx_to_tuple_graph

@@ -20,11 +20,11 @@ class StateFinder:
     def get_ss_state_idx(self, gfa_state: mm.GlobalFaithfulAbstractState) -> int:
         """ Get the index of the representative state in the complete concrete state space.
         """
-        instance_idx = gfa_state.get_abstraction_index()
-        fa_state = self.fa_states_by_instance_idx[instance_idx][gfa_state.get_abstract_state_id()]
-        mimir_s = fa_state.get_representative_state()
+        instance_idx = gfa_state.get_faithful_abstraction_index()
+        fa_state = self.fa_states_by_instance_idx[instance_idx][gfa_state.get_faithful_abstract_state_index()]
+        mimir_ss_state = fa_state.get_representative_state()
         mimir_ss = self.instance_datas[instance_idx].mimir_ss
-        ss_state_idx = mimir_ss.get_state_index(mimir_s)
+        ss_state_idx = mimir_ss.get_state_index(mimir_ss_state)
 
         return ss_state_idx
 
@@ -32,35 +32,22 @@ class StateFinder:
         """ Get the representative dlplan state in the complete concrete dlplan state space.
         """
         ss_state_idx = self.get_ss_state_idx(gfa_state)
-
-        instance_idx = gfa_state.get_abstraction_index()
-        dlplan_ss_state = self.dlplan_ss_states_by_instance_id[instance_idx][ss_state_idx]
+        dlplan_ss_state = self.dlplan_ss_states_by_instance_id[gfa_state.get_faithful_abstraction_index()][ss_state_idx]
 
         return dlplan_ss_state
 
     def get_mimir_ss_state(self, gfa_state: mm.GlobalFaithfulAbstractState) -> mm.State:
         """ Get the representative mimir state in the complete concrete mimir state space.
         """
-        instance_idx = gfa_state.get_abstraction_index()
-        fa_state = self.fa_states_by_instance_idx[instance_idx][gfa_state.get_abstract_state_id()]
+        fa_state = self.fa_states_by_instance_idx[gfa_state.get_faithful_abstraction_index()][gfa_state.get_faithful_abstract_state_index()]
         mimir_ss_state = fa_state.get_representative_state()
 
         return mimir_ss_state
 
-    def get_gfa_state_idx_from_gfa_state(self, instance_idx: int, gfa_state: mm.GlobalFaithfulAbstractState):
-        """ Get the index of the global faithful abstract state in the global faithful abstraction with index instance_idx
+    def get_remapped_gfa_state_from_gfa_state(self, instance_idx: int, gfa_state: mm.GlobalFaithfulAbstractState):
+        """ Get the global faithful abstract from from its representative gfa state.
         """
-        instance_data = self.instance_datas[instance_idx]
-        gfa_state_idx = instance_data.gfa.get_state_index(gfa_state)
-
-        return gfa_state_idx
-
-    def get_gfa_state(self, instance_idx: int, ss_state: mm.State):
-        """ Get the global faithful abstract state of a state from a complete concrete mimir state space.
-        """
-        instance_data = self.instance_datas[instance_idx]
-        gfa_state_idx = instance_data.mimir_ss.get_state_index(ss_state)
-        gfa_state = self.gfa_states_by_instance_idx[instance_idx][instance_data.ss_state_idx_to_gfa_state_idx[gfa_state_idx]]
+        gfa_state = self.gfa_states_by_instance_idx[instance_idx][gfa_state.get_faithful_abstract_state_index()]
 
         return gfa_state
 

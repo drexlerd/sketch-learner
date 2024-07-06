@@ -94,12 +94,13 @@ def compute_feature_pool(preprocessing_data: PreprocessingData,
         is_soft_changing = True
         for gfa_state in iteration_data.gfa_states:
             dlplan_source_ss_state = state_finder.get_dlplan_ss_state(gfa_state)
-            instance_idx = gfa_state.get_abstraction_index()
+            instance_idx = gfa_state.get_faithful_abstraction_index()
             instance_data = preprocessing_data.instance_datas[instance_idx]
             source_val = int(feature.dlplan_feature.evaluate(dlplan_source_ss_state, instance_data.denotations_caches))
 
             gfa = instance_data.gfa
-            gfa_state_idx = gfa.get_state_index(gfa_state)
+            gfa_state = state_finder.get_remapped_gfa_state_from_gfa_state(instance_idx, gfa_state)
+            gfa_state_idx = gfa_state.get_index()
             gfa_states = gfa.get_states()
             for gfa_state_prime_idx in gfa.get_target_states(gfa_state_idx):
                 gfa_state_prime = gfa_states[gfa_state_prime_idx]
@@ -127,15 +128,15 @@ def compute_feature_pool(preprocessing_data: PreprocessingData,
     for feature in features:
         changes = []
         for gfa_state in iteration_data.gfa_states:
-            instance_idx = gfa_state.get_abstraction_index()
+            instance_idx = gfa_state.get_faithful_abstraction_index()
             instance_data = preprocessing_data.instance_datas[instance_idx]
 
-            gfa_state_id = gfa_state.get_id()
-            gfa_state_idx = state_finder.get_gfa_state_idx_from_gfa_state(gfa_state.get_abstraction_index(), gfa_state)
+            gfa_state_global_idx = gfa_state.get_global_index()
+            gfa_state_idx = gfa_state.get_index()
             if instance_data.gfa.is_deadend_state(gfa_state_idx):
                 continue
 
-            tuple_graph = gfa_state_id_to_tuple_graph[gfa_state_id]
+            tuple_graph = gfa_state_id_to_tuple_graph[gfa_state_global_idx]
             tuple_graph_vertices = tuple_graph.get_vertices()
             tuple_graph_vertices_by_distance = tuple_graph.get_vertex_indices_by_distances()
 
@@ -148,7 +149,7 @@ def compute_feature_pool(preprocessing_data: PreprocessingData,
                     for mimir_ss_state_prime in tuple_vertex.get_states():
                         gfa_state_prime = state_finder.get_gfa_state_from_ss_state_idx(instance_idx, instance_data.mimir_ss.get_state_index(mimir_ss_state_prime))
                         dlplan_target_ss_state = state_finder.get_dlplan_ss_state(gfa_state_prime)
-                        instance_prime_idx = gfa_state_prime.get_abstraction_index()
+                        instance_prime_idx = gfa_state_prime.get_faithful_abstraction_index()
                         instance_data_prime = preprocessing_data.instance_datas[instance_prime_idx]
                         target_val = int(feature.dlplan_feature.evaluate(dlplan_target_ss_state, instance_data_prime.denotations_caches))
                         if source_val < target_val:

@@ -73,7 +73,6 @@ def create_dlplan_statespace(
     dlplan_states: Dict[int, dlplan_core.State] = dict()
     forward_successors = defaultdict(set)
     mimir_ss_states = mimir_state_space.get_states()
-    print(mimir_state_space.get_pddl_parser().get_problem_filepath())
     for ss_state_idx, ss_state in enumerate(mimir_ss_states):
         dlplan_state_atoms = []
         for atom_id in ss_state.get_fluent_atoms():
@@ -155,10 +154,13 @@ def compute_instance_datas(domain_filepath: Path,
             instance_datas.append(instance_data)
             instance_idx += 1
 
-    gfa_states_by_id: Dict[int, mm.GlobalFaithfulAbstractState] = dict()
+    gfa_state_global_indices =  set()
     for instance_data in instance_datas:
         for gfa_state in instance_data.gfa.get_states():
-            gfa_states_by_id[gfa_state.get_id()] = gfa_state
-    num_gfa_states = len(gfa_states_by_id)
+            gfa_state_global_indices.add(gfa_state.get_global_index())
+    num_gfa_states = len(gfa_state_global_indices)
 
-    return domain_data, instance_datas, gfa_states_by_id, num_ss_states, num_gfa_states
+    for instance_idx, instance_data in enumerate(instance_datas):
+        assert instance_idx == instance_data.idx
+
+    return domain_data, instance_datas, num_ss_states, num_gfa_states

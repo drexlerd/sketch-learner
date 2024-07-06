@@ -65,14 +65,14 @@ def compute_state_pair_equivalences(preprocessing_data: PreprocessingData,
     gfa_state_id_to_state_pair_equivalence: Dict[int, StatePairEquivalence] = dict()
 
     for gfa_state in iteration_data.gfa_states:
-        instance_idx = gfa_state.get_abstraction_index()
+        instance_idx = gfa_state.get_faithful_abstraction_index()
         instance_data = preprocessing_data.instance_datas[instance_idx]
-        gfa_state_id = gfa_state.get_id()
-        gfa_state_idx = instance_data.gfa.get_state_index(gfa_state)
+        gfa_state_global_idx = gfa_state.get_global_index()
+        gfa_state_idx = gfa_state.get_index()
         if instance_data.gfa.is_deadend_state(gfa_state_idx):
             continue
 
-        tuple_graph = preprocessing_data.gfa_state_id_to_tuple_graph[gfa_state_id]
+        tuple_graph = preprocessing_data.gfa_state_global_idx_to_tuple_graph[gfa_state_global_idx]
         tuple_graph_states_by_distance = tuple_graph.get_states_by_distance()
 
         r_idx_to_distance = dict()
@@ -82,18 +82,18 @@ def compute_state_pair_equivalences(preprocessing_data: PreprocessingData,
         # add conditions
         conditions = make_conditions(policy_builder,
                                      iteration_data.feature_pool,
-                                     iteration_data.gfa_state_id_to_feature_evaluations[gfa_state_id])
+                                     iteration_data.gfa_state_global_idx_to_feature_evaluations[gfa_state_global_idx])
 
         for s_distance, mimir_ss_states_prime in enumerate(tuple_graph_states_by_distance):
             for mimir_ss_state_prime in mimir_ss_states_prime:
                 gfa_state_prime = preprocessing_data.state_finder.get_gfa_state_from_ss_state_idx(instance_idx, instance_data.mimir_ss.get_state_index(mimir_ss_state_prime))
-                gfa_state_prime_id = gfa_state_prime.get_id()
+                gfa_state_prime_global_idx = gfa_state_prime.get_global_index()
 
                 # add effects
                 effects = make_effects(policy_builder,
                                         iteration_data.feature_pool,
-                                        iteration_data.gfa_state_id_to_feature_evaluations[gfa_state_id],
-                                        iteration_data.gfa_state_id_to_feature_evaluations[gfa_state_prime_id])
+                                        iteration_data.gfa_state_global_idx_to_feature_evaluations[gfa_state_global_idx],
+                                        iteration_data.gfa_state_global_idx_to_feature_evaluations[gfa_state_prime_global_idx])
 
                 # add rule
                 rule = policy_builder.make_rule(conditions, effects)
@@ -105,9 +105,9 @@ def compute_state_pair_equivalences(preprocessing_data: PreprocessingData,
                     rule_repr_to_idx[rule_repr] = r_idx
                     rules.append(rule)
                 r_idx_to_distance[r_idx] = min(r_idx_to_distance.get(r_idx, math.inf), s_distance)
-                r_idx_to_subgoal_gfa_state_ids[r_idx].add(gfa_state_prime_id)
-                subgoal_gfa_state_id_to_r_idx[gfa_state_prime_id] = r_idx
+                r_idx_to_subgoal_gfa_state_ids[r_idx].add(gfa_state_prime_global_idx)
+                subgoal_gfa_state_id_to_r_idx[gfa_state_prime_global_idx] = r_idx
 
-        gfa_state_id_to_state_pair_equivalence[gfa_state_id] = StatePairEquivalence(r_idx_to_subgoal_gfa_state_ids, r_idx_to_distance, subgoal_gfa_state_id_to_r_idx)
+        gfa_state_id_to_state_pair_equivalence[gfa_state_global_idx] = StatePairEquivalence(r_idx_to_subgoal_gfa_state_ids, r_idx_to_distance, subgoal_gfa_state_id_to_r_idx)
 
     return rules, gfa_state_id_to_state_pair_equivalence

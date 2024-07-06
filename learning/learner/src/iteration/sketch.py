@@ -40,10 +40,8 @@ class Sketch:
         subgoal_states_per_r_reachable_state = defaultdict(set)
         while queue:
             gfa_root = queue.pop()
-            gfa_root_id = gfa_root.get_id()
-            instance_idx = gfa_root.get_abstraction_index()
-            instance_data = preprocessing_data.instance_datas[instance_idx]
-            gfa_root_idx = instance_data.gfa.get_state_index(gfa_root)
+            gfa_root_global_idx = gfa_root.get_global_index()
+            gfa_root_idx = gfa_root.get_index()
 
             if instance_data.gfa.is_deadend_state(gfa_root_idx):
                 print("Deadend state is r_reachable")
@@ -52,7 +50,7 @@ class Sketch:
             if instance_data.gfa.is_goal_state(gfa_root_idx):
                 continue
 
-            tuple_graph = preprocessing_data.gfa_state_id_to_tuple_graph[gfa_root_id]
+            tuple_graph = preprocessing_data.gfa_state_global_idx_to_tuple_graph[gfa_root_global_idx]
             tuple_graph_vertices =  tuple_graph.get_vertices()
             tuple_graph_vertices_by_distance = tuple_graph.get_vertex_indices_by_distances()
             tuple_graph_states_by_distance = tuple_graph.get_states_by_distance()
@@ -62,18 +60,24 @@ class Sketch:
             ḧas_bounded_width = False
             min_compatible_distance = math.inf
 
+            mapped_instance_idx = gfa_root.get_faithful_abstraction_index()
+            mapped_instance_data = preprocessing_data.instance_datas[mapped_instance_idx]
+
             for s_distance, tuple_vertex_idxs in enumerate(tuple_graph_vertices_by_distance):
                 for mimir_ss_state_prime in tuple_graph_states_by_distance[s_distance]:
-                    gfa_state_prime = preprocessing_data.state_finder.get_gfa_state_from_ss_state_idx(instance_idx, instance_data.mimir_ss.get_state_index(mimir_ss_state_prime))
-                    gfa_state_prime_id = gfa_state_prime.get_id()
-                    dlplan_ss_state_prime = preprocessing_data.state_finder.get_dlplan_ss_state(gfa_state_prime)
+                    mapped_gfa_state_prime = preprocessing_data.state_finder.get_gfa_state_from_ss_state_idx(mapped_instance_idx, mapped_instance_data.mimir_ss.get_state_index(mimir_ss_state_prime))
+                    mapped_gfa_state_prime_global_idx = mapped_gfa_state_prime.get_global_index()
+                    dlplan_ss_state_prime = preprocessing_data.state_finder.get_dlplan_ss_state(mapped_gfa_state_prime)
 
                     if self.dlplan_policy.evaluate(dlplan_ss_root, dlplan_ss_state_prime, instance_data.denotations_caches) is not None:
                         min_compatible_distance = min(min_compatible_distance, s_distance)
-                        subgoal_states_per_r_reachable_state[gfa_root_id].add(gfa_state_prime_id)
-                        if gfa_state_prime not in visited:
-                            visited.add(gfa_state_prime)
-                            queue.append(gfa_state_prime)
+                        subgoal_states_per_r_reachable_state[gfa_root_global_idx].add(mapped_gfa_state_prime_global_idx)
+                        # Important: unmap the mapped gfa state to the original instance_data.gfa
+                        # since the goal is to check whether sketch solves the given instance_data.
+                        unmapped_gfa_state_prime = preprocessing_data.state_finder.get_remapped_gfa_state_from_gfa_state(instance_data.idx, mapped_gfa_state_prime)
+                        if unmapped_gfa_state_prime not in visited:
+                            visited.add(unmapped_gfa_state_prime)
+                            queue.append(unmapped_gfa_state_prime)
 
                 # Check whether there exists a subgoal tuple for which all underlying states are subgoal states
                 found_subgoal_tuple = False
@@ -81,13 +85,13 @@ class Sketch:
                     tuple_vertex = tuple_graph_vertices[tuple_vertex_idx]
                     is_subgoal_tuple = True
                     for mimir_ss_state_prime in tuple_vertex.get_states():
-                        gfa_state_prime = preprocessing_data.state_finder.get_gfa_state_from_ss_state_idx(instance_idx, instance_data.mimir_ss.get_state_index(mimir_ss_state_prime))
-                        gfa_state_prime_id = gfa_state_prime.get_id()
-                        dlplan_ss_state_prime = preprocessing_data.state_finder.get_dlplan_ss_state(gfa_state_prime)
+                        mapped_gfa_state_prime = preprocessing_data.state_finder.get_gfa_state_from_ss_state_idx(mapped_instance_idx, mapped_instance_data.mimir_ss.get_state_index(mimir_ss_state_prime))
+                        mapped_gfa_state_prime_global_idx = mapped_gfa_state_prime.get_global_index()
+                        dlplan_ss_state_prime = preprocessing_data.state_finder.get_dlplan_ss_state(mapped_gfa_state_prime)
 
                         if self.dlplan_policy.evaluate(dlplan_ss_root, dlplan_ss_state_prime, instance_data.denotations_caches) is not None:
                             min_compatible_distance = min(min_compatible_distance, s_distance)
-                            subgoal_states_per_r_reachable_state[gfa_root_id].add(gfa_state_prime_id)
+                            subgoal_states_per_r_reachable_state[gfa_root_global_idx].add(mapped_gfa_state_prime_global_idx)
                         else:
                             is_subgoal_tuple = False
                     if is_subgoal_tuple:
@@ -107,8 +111,10 @@ class Sketch:
 
             if not ḧas_bounded_width:
                 print(colored("Sketch fails to bound width of a state", "red", "on_grey"))
+                print(instance_data.instance_filepath)
                 print("Instance:", instance_data.idx)
-                print("Source_state:", gfa_root_id)
+                print("Source_state:", gfa_root_global_idx)
+                print("Dlplan state:", str(dlplan_ss_root))
                 return False, []
 
         return True, subgoal_states_per_r_reachable_state

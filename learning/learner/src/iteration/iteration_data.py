@@ -20,9 +20,9 @@ class IterationData:
     gfa_states: List[mm.GlobalFaithfulAbstractState] = None
 
     feature_pool: List[Feature] = None
-    gfa_state_id_to_feature_evaluations: Dict[int, List[Union[bool, int]]] = None
+    gfa_state_global_idx_to_feature_evaluations: Dict[int, List[Union[bool, int]]] = None
 
     state_pair_equivalences: List[dlplan_policy.Rule] = None
-    gfa_state_id_to_state_pair_equivalence: Dict[int, StatePairEquivalence] = None
+    gfa_state_global_idx_to_state_pair_equivalence: Dict[int, StatePairEquivalence] = None
 
-    gfa_state_id_to_tuple_graph_equivalence: Dict[int, TupleGraphEquivalence] = None
+    gfa_state_global_idx_to_tuple_graph_equivalence: Dict[int, TupleGraphEquivalence] = None

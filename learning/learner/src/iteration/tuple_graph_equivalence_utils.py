@@ -4,7 +4,7 @@ from collections import defaultdict
 from .tuple_graph_equivalence import TupleGraphEquivalence
 from .iteration_data import IterationData
 
-from ..preprocessing import PreprocessingData, InstanceData
+from ..preprocessing import PreprocessingData
 
 
 def compute_tuple_graph_equivalences(preprocessing_data: PreprocessingData,
@@ -16,14 +16,14 @@ def compute_tuple_graph_equivalences(preprocessing_data: PreprocessingData,
     gfa_state_id_to_tuple_graph_equivalence: Dict[int, TupleGraphEquivalence] = dict()
 
     for gfa_state in iteration_data.gfa_states:
-        instance_idx = gfa_state.get_abstraction_index()
+        instance_idx = gfa_state.get_faithful_abstraction_index()
         instance_data = preprocessing_data.instance_datas[instance_idx]
-        gfa_state_id = gfa_state.get_id()
-        gfa_state_idx = instance_data.gfa.get_state_index(gfa_state)
+        gfa_state_global_idx = gfa_state.get_global_index()
+        gfa_state_idx = gfa_state.get_index()
         if instance_data.gfa.is_deadend_state(gfa_state_idx):
             continue
 
-        tuple_graph = preprocessing_data.gfa_state_id_to_tuple_graph[gfa_state_id]
+        tuple_graph = preprocessing_data.gfa_state_global_idx_to_tuple_graph[gfa_state_global_idx]
         tuple_graph_vertices =  tuple_graph.get_vertices()
         tuple_graph_vertices_by_distance = tuple_graph.get_vertex_indices_by_distances()
         tuple_graph_states_by_distance = tuple_graph.get_states_by_distance()
@@ -35,12 +35,12 @@ def compute_tuple_graph_equivalences(preprocessing_data: PreprocessingData,
         for s_distance, mimir_ss_states_prime in enumerate(tuple_graph_states_by_distance):
             for mimir_ss_state_prime in mimir_ss_states_prime:
                 gfa_state_prime = preprocessing_data.state_finder.get_gfa_state_from_ss_state_idx(instance_idx, instance_data.mimir_ss.get_state_index(mimir_ss_state_prime))
-                gfa_state_prime_id = gfa_state_prime.get_id()
-                instance_prime_idx = gfa_state_prime.get_abstraction_index()
+                gfa_state_prime_global_idx = gfa_state_prime.get_global_index()
+                instance_prime_idx = gfa_state_prime.get_faithful_abstraction_index()
                 instance_data_prime = preprocessing_data.instance_datas[instance_prime_idx]
-                gfa_state_prime_idx = instance_data_prime.gfa.get_state_index(gfa_state_prime)
+                gfa_state_prime_idx = gfa_state_prime.get_index()
 
-                r_idx = iteration_data.gfa_state_id_to_state_pair_equivalence[gfa_state_id].subgoal_gfa_state_id_to_r_idx[gfa_state_prime_id]
+                r_idx = iteration_data.gfa_state_global_idx_to_state_pair_equivalence[gfa_state_global_idx].subgoal_gfa_state_id_to_r_idx[gfa_state_prime_global_idx]
 
                 if instance_data_prime.gfa.is_deadend_state(gfa_state_prime_idx):
                     r_idx_to_deadend_distance[r_idx] = min(r_idx_to_deadend_distance.get(r_idx, float("inf")), s_distance)
@@ -52,14 +52,14 @@ def compute_tuple_graph_equivalences(preprocessing_data: PreprocessingData,
                 r_idxs = set()
                 for mimir_ss_state_prime in tuple_vertex.get_states():
                     gfa_state_prime = preprocessing_data.state_finder.get_gfa_state_from_ss_state_idx(instance_idx, instance_data.mimir_ss.get_state_index(mimir_ss_state_prime))
-                    gfa_state_prime_id = gfa_state_prime.get_id()
-                    r_idx = iteration_data.gfa_state_id_to_state_pair_equivalence[gfa_state_id].subgoal_gfa_state_id_to_r_idx[gfa_state_prime_id]
+                    gfa_state_prime_global_idx = gfa_state_prime.get_global_index()
+                    r_idx = iteration_data.gfa_state_global_idx_to_state_pair_equivalence[gfa_state_global_idx].subgoal_gfa_state_id_to_r_idx[gfa_state_prime_global_idx]
                     r_idxs.add(r_idx)
                 t_idx_to_distance[t_idx] = s_distance
                 t_idx_to_r_idxs[t_idx] = r_idxs
                 num_nodes += 1
 
-        gfa_state_id_to_tuple_graph_equivalence[gfa_state_id] = TupleGraphEquivalence(t_idx_to_r_idxs, t_idx_to_distance, r_idx_to_deadend_distance)
+        gfa_state_id_to_tuple_graph_equivalence[gfa_state_global_idx] = TupleGraphEquivalence(t_idx_to_r_idxs, t_idx_to_distance, r_idx_to_deadend_distance)
 
     print("Tuple graph equivalence construction statistics:")
     print("Num nodes:", num_nodes)
@@ -73,15 +73,15 @@ def minimize_tuple_graph_equivalences(preprocessing_data: PreprocessingData,
     num_orig_nodes = 0
 
     for gfa_state in iteration_data.gfa_states:
-        instance_idx = gfa_state.get_abstraction_index()
+        instance_idx = gfa_state.get_faithful_abstraction_index()
         instance_data = preprocessing_data.instance_datas[instance_idx]
-        gfa_state_id = gfa_state.get_id()
-        gfa_state_idx = instance_data.gfa.get_state_index(gfa_state)
+        gfa_state_global_idx = gfa_state.get_global_index()
+        gfa_state_idx = gfa_state.get_index()
         if instance_data.gfa.is_deadend_state(gfa_state_idx):
             continue
 
-        tuple_graph = preprocessing_data.gfa_state_id_to_tuple_graph[gfa_state_id]
-        tuple_graph_equivalence = iteration_data.gfa_state_id_to_tuple_graph_equivalence[gfa_state_id]
+        tuple_graph = preprocessing_data.gfa_state_global_idx_to_tuple_graph[gfa_state_global_idx]
+        tuple_graph_equivalence = iteration_data.gfa_state_global_idx_to_tuple_graph_equivalence[gfa_state_global_idx]
         # compute order
         order = defaultdict(set)
         for t_idx_1 in tuple_graph_equivalence.t_idx_to_r_idxs.keys():
@@ -121,7 +121,7 @@ def minimize_tuple_graph_equivalences(preprocessing_data: PreprocessingData,
             if t_idx in selected_t_idxs:
                 t_idx_to_distance[t_idx] = distance
 
-        iteration_data.gfa_state_id_to_tuple_graph_equivalence[gfa_state_id] = TupleGraphEquivalence(t_idx_to_r_idxs, t_idx_to_distance, tuple_graph_equivalence.r_idx_to_deadend_distance)
+        iteration_data.gfa_state_global_idx_to_tuple_graph_equivalence[gfa_state_global_idx] = TupleGraphEquivalence(t_idx_to_r_idxs, t_idx_to_distance, tuple_graph_equivalence.r_idx_to_deadend_distance)
 
     print("Tuple graph equivalence minimization statistics:")
     print("Num orig nodes:", num_orig_nodes)

@@ -66,7 +66,7 @@ def learn_sketch_for_problem_class(
     # Generate data
     with change_dir("input"):
         logging.info(colored("Constructing InstanceDatas...", "blue", "on_grey"))
-        domain_data, instance_datas, gfa_states_by_id, num_ss_states, num_gfa_states = compute_instance_datas(domain_filepath, instance_filepaths, disable_closed_Q, max_num_states_per_instance, max_time_per_instance, enable_dump_files)
+        domain_data, instance_datas, num_ss_states, num_gfa_states = compute_instance_datas(domain_filepath, instance_filepaths, disable_closed_Q, max_num_states_per_instance, max_time_per_instance, enable_dump_files)
         logging.info(colored("..done", "blue", "on_grey"))
         if instance_datas is None:
             raise Exception("Failed to create InstanceDatas.")
@@ -77,7 +77,7 @@ def learn_sketch_for_problem_class(
         gfa_state_id_to_tuple_graph: Dict[int, mm.TupleGraph] = compute_tuple_graphs(domain_data, instance_datas, state_finder, width, enable_dump_files)
         logging.info(colored("..done", "blue", "on_grey"))
 
-    preprocessing_data = PreprocessingData(domain_data, instance_datas, state_finder, gfa_states_by_id, gfa_state_id_to_tuple_graph)
+    preprocessing_data = PreprocessingData(domain_data, instance_datas, state_finder, gfa_state_id_to_tuple_graph)
     preprocessing_timer.stop()
 
     # Learn sketch
@@ -125,15 +125,15 @@ def learn_sketch_for_problem_class(
                 logging.info(colored("..done", "blue", "on_grey"))
 
                 logging.info(colored("Constructing PerStateFeatureValuations...", "blue", "on_grey"))
-                iteration_data.gfa_state_id_to_feature_evaluations = compute_per_state_feature_valuations(preprocessing_data, iteration_data)
+                iteration_data.gfa_state_global_idx_to_feature_evaluations = compute_per_state_feature_valuations(preprocessing_data, iteration_data)
                 logging.info(colored("..done", "blue", "on_grey"))
 
                 logging.info(colored("Constructing StatePairEquivalenceDatas...", "blue", "on_grey"))
-                iteration_data.state_pair_equivalences, iteration_data.gfa_state_id_to_state_pair_equivalence = compute_state_pair_equivalences(preprocessing_data, iteration_data)
+                iteration_data.state_pair_equivalences, iteration_data.gfa_state_global_idx_to_state_pair_equivalence = compute_state_pair_equivalences(preprocessing_data, iteration_data)
                 logging.info(colored("..done", "blue", "on_grey"))
 
                 logging.info(colored("Constructing TupleGraphEquivalences...", "blue", "on_grey"))
-                iteration_data.gfa_state_id_to_tuple_graph_equivalence = compute_tuple_graph_equivalences(preprocessing_data, iteration_data)
+                iteration_data.gfa_state_global_idx_to_tuple_graph_equivalence = compute_tuple_graph_equivalences(preprocessing_data, iteration_data)
                 logging.info(colored("..done", "blue", "on_grey"))
 
                 logging.info(colored("Minimizing TupleGraphEquivalences...", "blue", "on_grey"))
