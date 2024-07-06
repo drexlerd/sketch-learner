@@ -73,6 +73,7 @@ def create_dlplan_statespace(
     dlplan_states: Dict[int, dlplan_core.State] = dict()
     forward_successors = defaultdict(set)
     mimir_ss_states = mimir_state_space.get_states()
+    print(mimir_state_space.get_pddl_parser().get_problem_filepath())
     for ss_state_idx, ss_state in enumerate(mimir_ss_states):
         dlplan_state_atoms = []
         for atom_id in ss_state.get_fluent_atoms():
@@ -106,7 +107,7 @@ def compute_instance_datas(domain_filepath: Path,
     with change_dir("state_spaces", enable=enable_dump_files):
         # 1. Create mimir StateSpace and GlobalFaithfulAbstraction
         logging.info("Constructing GlobalFaithfulAbstractions...")
-        abstractions = mm.GlobalFaithfulAbstraction.create(str(domain_filepath), [str(p) for p in instance_filepaths], False, True, True, False, True, max_num_states_per_instance, max_time_per_instance)
+        abstractions = mm.GlobalFaithfulAbstraction.create(str(domain_filepath), [str(p) for p in instance_filepaths], False, True, True, True, True, max_num_states_per_instance, max_time_per_instance)
         logging.info("...done")
         if len(abstractions) == 0:
             return None * 3

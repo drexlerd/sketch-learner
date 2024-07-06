@@ -22,7 +22,7 @@ class StateFinder:
         """
         instance_idx = gfa_state.get_abstraction_index()
         fa_state = self.fa_states_by_instance_idx[instance_idx][gfa_state.get_abstract_state_id()]
-        mimir_s = fa_state.get_state()
+        mimir_s = fa_state.get_representative_state()
         mimir_ss = self.instance_datas[instance_idx].mimir_ss
         ss_state_idx = mimir_ss.get_state_index(mimir_s)
 
@@ -43,7 +43,7 @@ class StateFinder:
         """
         instance_idx = gfa_state.get_abstraction_index()
         fa_state = self.fa_states_by_instance_idx[instance_idx][gfa_state.get_abstract_state_id()]
-        mimir_ss_state = fa_state.get_state()
+        mimir_ss_state = fa_state.get_representative_state()
 
         return mimir_ss_state
 
