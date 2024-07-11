@@ -100,7 +100,7 @@ def compute_instance_datas(domain_filepath: Path,
     num_ss_states = 0
     for state_space in state_spaces:
         if state_space.get_num_states() != state_space.get_num_goal_states():
-            instance_filespaths.append(state_space.get_pddl_parser().get_problem_filepath())
+            instance_filespaths.append(state_space.get_problem().get_filepath())
             num_ss_states += state_space.get_num_states()
 
     with change_dir("state_spaces", enable=enable_dump_files):
@@ -115,7 +115,7 @@ def compute_instance_datas(domain_filepath: Path,
         memories = []
         fas = abstractions[0].get_abstractions()
         for gfa in fas:
-            memories.append([gfa.get_pddl_parser(), gfa.get_aag(), gfa.get_ssg()])
+            memories.append([gfa.get_problem(), gfa.get_pddl_factories(), gfa.get_aag(), gfa.get_ssg()])
         # We must not sort state spaces to match the sorting of gfas
         state_spaces = mm.StateSpace.create(memories, True, True, sort_ascending_by_num_states=False)
         logging.info("...done")
@@ -150,7 +150,7 @@ def compute_instance_datas(domain_filepath: Path,
                 initial_gfa_state_idxs = [state_idx for state_idx in range(gfa.get_num_states()) if gfa.is_alive_state(state_idx)]
 
             logging.info(f"Created InstanceData with num concrete states: {mimir_ss.get_num_states()} and num abstract states: {gfa.get_num_states()}")
-            instance_data = InstanceData(instance_idx, dlplan_core.DenotationsCaches(), mimir_ss.get_pddl_parser().get_problem_filepath(), gfa, mimir_ss, dlplan_ss, ss_state_idx_to_gfa_state_idx, initial_gfa_state_idxs)
+            instance_data = InstanceData(instance_idx, dlplan_core.DenotationsCaches(), mimir_ss.get_problem().get_filepath(), gfa, mimir_ss, dlplan_ss, ss_state_idx_to_gfa_state_idx, initial_gfa_state_idxs)
             instance_datas.append(instance_data)
             instance_idx += 1
 

@@ -96,7 +96,7 @@ def learn_sketch_for_problem_class(
                     write_file(f"{instance_data.idx}.dot", instance_data.dlplan_ss.to_dot(1))
                     print("     ", end="")
                     print("id:", instance_data.idx,
-                          "problem_filepath:", instance_data.mimir_ss.get_pddl_parser().get_problem_filepath(),
+                          "problem_filepath:", instance_data.mimir_ss.get_problem().get_filepath(),
                           "num_states:", instance_data.mimir_ss.get_num_states(),
                           "num_state_equivalences:", instance_data.gfa.get_num_states())
 
