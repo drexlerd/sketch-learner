@@ -51,9 +51,8 @@ class Sketch:
                 continue
 
             tuple_graph = preprocessing_data.gfa_state_global_idx_to_tuple_graph[gfa_root_global_idx]
-            tuple_graph_vertices =  tuple_graph.get_vertices()
-            tuple_graph_vertices_by_distance = tuple_graph.get_vertex_indices_by_distances()
-            tuple_graph_states_by_distance = tuple_graph.get_states_by_distance()
+            tuple_graph_vertices_by_distance = tuple_graph.get_vertices_grouped_by_distance()
+            tuple_graph_states_by_distance = tuple_graph.get_states_grouped_by_distance()
 
             dlplan_ss_root = preprocessing_data.state_finder.get_dlplan_ss_state(gfa_root)
 
@@ -63,7 +62,7 @@ class Sketch:
             mapped_instance_idx = gfa_root.get_faithful_abstraction_index()
             mapped_instance_data = preprocessing_data.instance_datas[mapped_instance_idx]
 
-            for s_distance, tuple_vertex_idxs in enumerate(tuple_graph_vertices_by_distance):
+            for s_distance, tuple_vertex_group in enumerate(tuple_graph_vertices_by_distance):
                 for mimir_ss_state_prime in tuple_graph_states_by_distance[s_distance]:
                     mapped_gfa_state_prime = preprocessing_data.state_finder.get_gfa_state_from_ss_state_idx(mapped_instance_idx, mapped_instance_data.mimir_ss.get_state_index(mimir_ss_state_prime))
                     mapped_gfa_state_prime_global_idx = mapped_gfa_state_prime.get_global_index()
@@ -81,8 +80,7 @@ class Sketch:
 
                 # Check whether there exists a subgoal tuple for which all underlying states are subgoal states
                 found_subgoal_tuple = False
-                for tuple_vertex_idx in tuple_vertex_idxs:
-                    tuple_vertex = tuple_graph_vertices[tuple_vertex_idx]
+                for tuple_vertex in tuple_vertex_group:
                     is_subgoal_tuple = True
                     for mimir_ss_state_prime in tuple_vertex.get_states():
                         mapped_gfa_state_prime = preprocessing_data.state_finder.get_gfa_state_from_ss_state_idx(mapped_instance_idx, mapped_instance_data.mimir_ss.get_state_index(mimir_ss_state_prime))

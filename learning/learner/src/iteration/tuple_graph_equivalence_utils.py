@@ -24,9 +24,8 @@ def compute_tuple_graph_equivalences(preprocessing_data: PreprocessingData,
             continue
 
         tuple_graph = preprocessing_data.gfa_state_global_idx_to_tuple_graph[gfa_state_global_idx]
-        tuple_graph_vertices =  tuple_graph.get_vertices()
-        tuple_graph_vertices_by_distance = tuple_graph.get_vertex_indices_by_distances()
-        tuple_graph_states_by_distance = tuple_graph.get_states_by_distance()
+        tuple_graph_vertices_by_distance = tuple_graph.get_vertices_grouped_by_distance()
+        tuple_graph_states_by_distance = tuple_graph.get_states_grouped_by_distance()
 
         t_idx_to_r_idxs: Dict[int, MutableSet[int]] = dict()
         t_idx_to_distance: Dict[int, int] = dict()
@@ -45,10 +44,9 @@ def compute_tuple_graph_equivalences(preprocessing_data: PreprocessingData,
                 if instance_data_prime.gfa.is_deadend_state(gfa_state_prime_idx):
                     r_idx_to_deadend_distance[r_idx] = min(r_idx_to_deadend_distance.get(r_idx, float("inf")), s_distance)
 
-        for s_distance, tuple_vertex_idxs in enumerate(tuple_graph_vertices_by_distance):
-            for tuple_vertex_idx in tuple_vertex_idxs:
-                tuple_vertex = tuple_graph_vertices[tuple_vertex_idx]
-                t_idx = tuple_vertex.get_identifier()
+        for s_distance, tuple_vertex_group in enumerate(tuple_graph_vertices_by_distance):
+            for tuple_vertex in tuple_vertex_group:
+                t_idx = tuple_vertex.get_index()
                 r_idxs = set()
                 for mimir_ss_state_prime in tuple_vertex.get_states():
                     gfa_state_prime = preprocessing_data.state_finder.get_gfa_state_from_ss_state_idx(instance_idx, instance_data.mimir_ss.get_state_index(mimir_ss_state_prime))
@@ -96,10 +94,9 @@ def minimize_tuple_graph_equivalences(preprocessing_data: PreprocessingData,
         # select tuple nodes according to order
         selected_t_idxs = set()
         representative_r_idxs = set()
-        for tuple_vertex_indices in tuple_graph.get_vertex_indices_by_distances():
-            for tuple_vertex_index in tuple_vertex_indices:
-                tuple_vertex = tuple_graph.get_vertices()[tuple_vertex_index]
-                t_idx = tuple_vertex.get_identifier()
+        for tuple_vertex_group in tuple_graph.get_vertices_grouped_by_distance():
+            for tuple_vertex in tuple_vertex_group:
+                t_idx = tuple_vertex.get_index()
                 r_idxs = frozenset(tuple_graph_equivalence.t_idx_to_r_idxs[t_idx])
                 if order.get(t_idx, 0) != 0:
                     continue

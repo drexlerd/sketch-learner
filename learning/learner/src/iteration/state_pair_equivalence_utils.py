@@ -73,7 +73,7 @@ def compute_state_pair_equivalences(preprocessing_data: PreprocessingData,
             continue
 
         tuple_graph = preprocessing_data.gfa_state_global_idx_to_tuple_graph[gfa_state_global_idx]
-        tuple_graph_states_by_distance = tuple_graph.get_states_by_distance()
+        tuple_graph_states_by_distance = tuple_graph.get_states_grouped_by_distance()
 
         r_idx_to_distance = dict()
         r_idx_to_subgoal_gfa_state_ids = defaultdict(set)
