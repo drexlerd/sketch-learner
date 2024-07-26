@@ -111,7 +111,8 @@ def compute_instance_datas(domain_filepath: Path,
         # 1. Create mimir StateSpace and GlobalFaithfulAbstraction
         logging.info("Constructing GlobalFaithfulAbstractions...")
         abstractions_options = mm.FaithfulAbstractionsOptions()
-        abstractions_options.fa_options.max_num_states = max_num_states_per_instance
+        abstractions_options.fa_options.max_num_concrete_states = max_num_states_per_instance
+        abstractions_options.fa_options.max_num_abstract_states = max_num_states_per_instance
         abstractions_options.fa_options.timeout_ms = max_time_per_instance
         abstractions_options.fa_options.compute_complete_abstraction_mapping = True
         # Does not work yet
