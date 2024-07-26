@@ -115,7 +115,7 @@ def compute_instance_datas(domain_filepath: Path,
         abstractions_options.fa_options.timeout_ms = max_time_per_instance
         abstractions_options.fa_options.compute_complete_abstraction_mapping = True
         # Does not work yet
-        # abstractions_options.fa_options.pruning_strategy = mm.ObjectGraphPruningStrategyEnum.StaticScc
+        abstractions_options.fa_options.pruning_strategy = mm.ObjectGraphPruningStrategyEnum.StaticScc
         abstractions_options.sort_ascending_by_num_states = True
         abstractions = mm.GlobalFaithfulAbstraction.create(str(domain_filepath), [str(p) for p in instance_filepaths], abstractions_options)
         logging.info("...done")
@@ -124,13 +124,10 @@ def compute_instance_datas(domain_filepath: Path,
 
         logging.info("Constructing StateSpaces...")
         memories = []
-        fas = abstractions[0].get_abstractions()
-        for gfa in fas:
+        for gfa in abstractions:
             memories.append([gfa.get_problem(), gfa.get_pddl_factories(), gfa.get_aag(), gfa.get_ssg()])
         # We must not sort state spaces to match the sorting of gfas
         state_space_options = mm.StateSpacesOptions()
-        state_space_options.state_space_options.max_num_states = max_num_states_per_instance
-        state_space_options.state_space_options.timeout_ms = max_time_per_instance
         state_space_options.sort_ascending_by_num_states = False
         state_spaces = mm.StateSpace.create(memories, state_space_options)
         logging.info("...done")
@@ -141,6 +138,7 @@ def compute_instance_datas(domain_filepath: Path,
 
         # 3. Create InstanceData
         instance_idx = 0
+        assert len(state_spaces) == len(abstractions)
         for mimir_ss, gfa in zip(state_spaces, abstractions):
             # Ensure that unsolvable instances were removed
             assert(mimir_ss.get_num_goal_states())
@@ -150,6 +148,8 @@ def compute_instance_datas(domain_filepath: Path,
 
             # 3.2 Create dlplan state space
             dlplan_ss = create_dlplan_statespace(instance_info, mimir_ss, fluent_atom_id_to_dlplan_atom, derived_atom_id_to_dlplan_atom)
+
+            print(mimir_ss.get_problem().get_filepath(), gfa.get_problem().get_filepath())
 
             # 3.3 Create mapping from concrete states to global faithful abstract states
             ss_state_idx_to_gfa_state_idx = dict()
