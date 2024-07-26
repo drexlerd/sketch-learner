@@ -116,7 +116,7 @@ def compute_instance_datas(domain_filepath: Path,
         abstractions_options.fa_options.timeout_ms = max_time_per_instance
         abstractions_options.fa_options.compute_complete_abstraction_mapping = True
         # Does not work yet
-        abstractions_options.fa_options.pruning_strategy = mm.ObjectGraphPruningStrategyEnum.StaticScc
+        # abstractions_options.fa_options.pruning_strategy = mm.ObjectGraphPruningStrategyEnum.StaticScc
         abstractions_options.sort_ascending_by_num_states = True
         abstractions = mm.GlobalFaithfulAbstraction.create(str(domain_filepath), [str(p) for p in instance_filepaths], abstractions_options)
         logging.info("...done")
