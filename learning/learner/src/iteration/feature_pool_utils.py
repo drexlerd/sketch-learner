@@ -99,8 +99,8 @@ def compute_feature_pool(preprocessing_data: PreprocessingData,
             source_val = int(feature.dlplan_feature.evaluate(dlplan_source_ss_state, instance_data.denotations_caches))
 
             gfa = instance_data.gfa
-            gfa_state = state_finder.get_remapped_gfa_state_from_gfa_state(instance_idx, gfa_state)
-            gfa_state_idx = gfa_state.get_index()
+            gfa_state_global_idx = gfa_state.get_global_index()
+            gfa_state_idx = gfa.get_abstract_state_index(gfa_state_global_idx)
             gfa_states = gfa.get_states()
             for gfa_state_prime_idx in gfa.get_target_states(gfa_state_idx):
                 gfa_state_prime = gfa_states[gfa_state_prime_idx]
@@ -131,12 +131,10 @@ def compute_feature_pool(preprocessing_data: PreprocessingData,
             instance_idx = gfa_state.get_faithful_abstraction_index()
             instance_data = preprocessing_data.instance_datas[instance_idx]
 
-            gfa_state_global_idx = gfa_state.get_global_index()
-            gfa_state_idx = gfa_state.get_index()
-            if instance_data.gfa.is_deadend_state(gfa_state_idx):
+            if instance_data.gfa.is_deadend_state(gfa_state.get_faithful_abstract_state_index()):
                 continue
 
-            tuple_graph = gfa_state_id_to_tuple_graph[gfa_state_global_idx]
+            tuple_graph = gfa_state_id_to_tuple_graph[gfa_state.get_global_index()]
             tuple_graph_vertices_by_distance = tuple_graph.get_vertices_grouped_by_distance()
 
             dlplan_source_ss_state = state_finder.get_dlplan_ss_state(gfa_state)

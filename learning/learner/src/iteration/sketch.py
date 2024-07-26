@@ -32,22 +32,28 @@ class Sketch:
         """
         queue: Deque[mm.GlobalFaithfulAbstractState] = deque()
         visited: MutableSet[mm.GlobalFaithfulAbstractState] = set()
+        # Dominik (25-07-2024): checked, use index.
         for gfa_state_idx in instance_data.initial_gfa_state_idxs:
             gfa_state = instance_data.gfa.get_states()[gfa_state_idx]
             queue.append(gfa_state)
             visited.add(gfa_state)
         # byproduct for acyclicity check
         subgoal_states_per_r_reachable_state = defaultdict(set)
+        cur_instance_idx = instance_data.idx
         while queue:
+            # Ensure that we do not reassign instance_data accidentally
+            assert cur_instance_idx == instance_data.idx
+
             gfa_root = queue.pop()
             gfa_root_global_idx = gfa_root.get_global_index()
             gfa_root_idx = gfa_root.get_index()
 
+            # Dominik (25-07-2024): checked, use index.
             if instance_data.gfa.is_deadend_state(gfa_root_idx):
                 print("Deadend state is r_reachable")
                 print("State:", gfa_root_idx)
                 return False, []
-            if instance_data.gfa.is_goal_state(gfa_root_idx):
+            elif instance_data.gfa.is_goal_state(gfa_root_idx):
                 continue
 
             tuple_graph = preprocessing_data.gfa_state_global_idx_to_tuple_graph[gfa_root_global_idx]
@@ -73,7 +79,8 @@ class Sketch:
                         subgoal_states_per_r_reachable_state[gfa_root_global_idx].add(mapped_gfa_state_prime_global_idx)
                         # Important: unmap the mapped gfa state to the original instance_data.gfa
                         # since the goal is to check whether sketch solves the given instance_data.
-                        unmapped_gfa_state_prime = preprocessing_data.state_finder.get_remapped_gfa_state_from_gfa_state(instance_data.idx, mapped_gfa_state_prime)
+                        unmapped_gfa_state_prime_idx = instance_data.gfa.get_abstract_state_index(mapped_gfa_state_prime.get_global_index())
+                        unmapped_gfa_state_prime = instance_data.gfa.get_states()[unmapped_gfa_state_prime_idx]
                         if unmapped_gfa_state_prime not in visited:
                             visited.add(unmapped_gfa_state_prime)
                             queue.append(unmapped_gfa_state_prime)

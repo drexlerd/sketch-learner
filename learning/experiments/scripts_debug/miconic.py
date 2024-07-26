@@ -11,10 +11,12 @@ def run(domain_filepath: Path, problems_directory: Path, workspace: Path, width:
     ]
     additional_numericals=[
         "n_count(c_primitive(served,0))",
-        "n_count(c_primitive(boarded,0))",
+        "n_count(c_primitive(boarded,0))",  # ok
         "n_count(c_and(c_primitive(boarded,0),c_some(r_primitive(destin,0,1),c_primitive(lift-at,0))))",
-        "n_count(c_some(r_primitive(origin,0,1),c_primitive(lift-at,0)))",
+        "n_count(c_some(r_primitive(origin,0,1),c_primitive(lift-at,0)))",  # ok
+        "n_count(c_and(c_primitive(lift-at,0),c_some(r_inverse(r_primitive(destin,0,1)),c_primitive(boarded,0))))", # new
     ]
+
 
     subprocess.call([
         "python3", "../../main.py",

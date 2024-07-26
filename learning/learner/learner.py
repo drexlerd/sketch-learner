@@ -93,7 +93,10 @@ def learn_sketch_for_problem_class(
                 preprocessing_timer.resume()
                 iteration_data.instance_datas = [preprocessing_data.instance_datas[subproblem_idx] for subproblem_idx in selected_instance_idxs]
                 for instance_data in iteration_data.instance_datas:
-                    write_file(f"{instance_data.idx}.dot", instance_data.dlplan_ss.to_dot(1))
+                    write_file(f"dlplan_ss_{instance_data.idx}.dot", instance_data.dlplan_ss.to_dot(1))
+                    write_file(f"mimir_ss_{instance_data.idx}.dot", str(instance_data.mimir_ss))
+                    write_file(f"mimir_fa_{instance_data.idx}.dot", str(instance_data.gfa.get_abstractions()[instance_data.idx]))
+                    write_file(f"mimir_gfa_{instance_data.idx}.dot", str(instance_data.gfa))
                     print("     ", end="")
                     print("id:", instance_data.idx,
                           "problem_filepath:", instance_data.mimir_ss.get_problem().get_filepath(),

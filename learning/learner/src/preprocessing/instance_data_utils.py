@@ -94,7 +94,11 @@ def compute_instance_datas(domain_filepath: Path,
                            enable_dump_files: bool) -> Tuple[List[InstanceData], DomainData]:
     instance_datas: List[InstanceData] = []
 
-    state_spaces = mm.StateSpace.create(str(domain_filepath), [str(p) for p in instance_filepaths], True, True, True, max_num_states_per_instance, max_time_per_instance)
+    state_space_options = mm.StateSpacesOptions()
+    state_space_options.state_space_options.max_num_states = max_num_states_per_instance
+    state_space_options.state_space_options.timeout_ms = max_time_per_instance
+    state_space_options.sort_ascending_by_num_states = True
+    state_spaces = mm.StateSpace.create(str(domain_filepath), [str(p) for p in instance_filepaths], state_space_options)
     # Remove trivially solvable instances
     instance_filespaths = []
     num_ss_states = 0
@@ -106,7 +110,14 @@ def compute_instance_datas(domain_filepath: Path,
     with change_dir("state_spaces", enable=enable_dump_files):
         # 1. Create mimir StateSpace and GlobalFaithfulAbstraction
         logging.info("Constructing GlobalFaithfulAbstractions...")
-        abstractions = mm.GlobalFaithfulAbstraction.create(str(domain_filepath), [str(p) for p in instance_filepaths], False, True, True, True, True, max_num_states_per_instance, max_time_per_instance)
+        abstractions_options = mm.FaithfulAbstractionsOptions()
+        abstractions_options.fa_options.max_num_states = max_num_states_per_instance
+        abstractions_options.fa_options.timeout_ms = max_time_per_instance
+        abstractions_options.fa_options.compute_complete_abstraction_mapping = True
+        # Does not work yet
+        # abstractions_options.fa_options.pruning_strategy = mm.ObjectGraphPruningStrategyEnum.StaticScc
+        abstractions_options.sort_ascending_by_num_states = True
+        abstractions = mm.GlobalFaithfulAbstraction.create(str(domain_filepath), [str(p) for p in instance_filepaths], abstractions_options)
         logging.info("...done")
         if len(abstractions) == 0:
             return None * 3
@@ -117,7 +128,11 @@ def compute_instance_datas(domain_filepath: Path,
         for gfa in fas:
             memories.append([gfa.get_problem(), gfa.get_pddl_factories(), gfa.get_aag(), gfa.get_ssg()])
         # We must not sort state spaces to match the sorting of gfas
-        state_spaces = mm.StateSpace.create(memories, True, True, sort_ascending_by_num_states=False)
+        state_space_options = mm.StateSpacesOptions()
+        state_space_options.state_space_options.max_num_states = max_num_states_per_instance
+        state_space_options.state_space_options.timeout_ms = max_time_per_instance
+        state_space_options.sort_ascending_by_num_states = False
+        state_spaces = mm.StateSpace.create(memories, state_space_options)
         logging.info("...done")
 
         # 2. Create DomainData

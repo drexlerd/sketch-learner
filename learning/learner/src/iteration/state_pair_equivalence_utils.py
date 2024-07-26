@@ -68,8 +68,7 @@ def compute_state_pair_equivalences(preprocessing_data: PreprocessingData,
         instance_idx = gfa_state.get_faithful_abstraction_index()
         instance_data = preprocessing_data.instance_datas[instance_idx]
         gfa_state_global_idx = gfa_state.get_global_index()
-        gfa_state_idx = gfa_state.get_index()
-        if instance_data.gfa.is_deadend_state(gfa_state_idx):
+        if instance_data.gfa.is_deadend_state(gfa_state.get_faithful_abstract_state_index()):
             continue
 
         tuple_graph = preprocessing_data.gfa_state_global_idx_to_tuple_graph[gfa_state_global_idx]

@@ -21,21 +21,21 @@ def compute_tuple_graphs(domain_data: DomainData, instance_datas: List[InstanceD
     for instance_data in instance_datas:
         gfa = instance_data.gfa
 
-        for gfa_state_idx, gfa_state in enumerate(instance_data.gfa.get_states()):
-            if gfa.is_deadend_state(gfa_state_idx):
+        for gfa_state in instance_data.gfa.get_states():
+
+            if gfa.is_deadend_state(gfa_state.get_index()):
                 continue
 
-            gfa_state_global_idx = gfa_state.get_global_index()
-            if gfa_state_global_idx in gfa_state_global_idx_to_tuple_graph:
+            if gfa_state.get_global_index() in gfa_state_global_idx_to_tuple_graph:
                 continue
 
             tuple_graph_factory = tuple_graph_factories[gfa_state.get_faithful_abstraction_index()]
             ss_state = state_finder.get_mimir_ss_state(gfa_state)
             tuple_graph = tuple_graph_factory.create(ss_state)
-            gfa_state_global_idx_to_tuple_graph[gfa_state_global_idx] = tuple_graph
+            gfa_state_global_idx_to_tuple_graph[gfa_state.get_global_index()] = tuple_graph
 
-            with change_dir(f"tuple_graphs/{instance_data.idx}/{gfa_state_idx}", enable=enable_dump_files):
+            with change_dir(f"tuple_graphs/{instance_data.idx}/{gfa_state.get_index()}", enable=enable_dump_files):
                 if enable_dump_files:
-                    write_file(f"{gfa_state_idx}.dot", str(tuple_graph))
+                    write_file(f"{gfa_state.get_index()}.dot", str(tuple_graph))
 
     return gfa_state_global_idx_to_tuple_graph

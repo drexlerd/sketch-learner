@@ -18,11 +18,11 @@ def compute_tuple_graph_equivalences(preprocessing_data: PreprocessingData,
     for gfa_state in iteration_data.gfa_states:
         instance_idx = gfa_state.get_faithful_abstraction_index()
         instance_data = preprocessing_data.instance_datas[instance_idx]
-        gfa_state_global_idx = gfa_state.get_global_index()
-        gfa_state_idx = gfa_state.get_index()
-        if instance_data.gfa.is_deadend_state(gfa_state_idx):
+
+        if instance_data.gfa.is_deadend_state(gfa_state.get_faithful_abstract_state_index()):
             continue
 
+        gfa_state_global_idx = gfa_state.get_global_index()
         tuple_graph = preprocessing_data.gfa_state_global_idx_to_tuple_graph[gfa_state_global_idx]
         tuple_graph_vertices_by_distance = tuple_graph.get_vertices_grouped_by_distance()
         tuple_graph_states_by_distance = tuple_graph.get_states_grouped_by_distance()
@@ -73,11 +73,11 @@ def minimize_tuple_graph_equivalences(preprocessing_data: PreprocessingData,
     for gfa_state in iteration_data.gfa_states:
         instance_idx = gfa_state.get_faithful_abstraction_index()
         instance_data = preprocessing_data.instance_datas[instance_idx]
-        gfa_state_global_idx = gfa_state.get_global_index()
-        gfa_state_idx = gfa_state.get_index()
-        if instance_data.gfa.is_deadend_state(gfa_state_idx):
+
+        if instance_data.gfa.is_deadend_state(gfa_state.get_faithful_abstract_state_index()):
             continue
 
+        gfa_state_global_idx = gfa_state.get_global_index()
         tuple_graph = preprocessing_data.gfa_state_global_idx_to_tuple_graph[gfa_state_global_idx]
         tuple_graph_equivalence = iteration_data.gfa_state_global_idx_to_tuple_graph_equivalence[gfa_state_global_idx]
         # compute order
