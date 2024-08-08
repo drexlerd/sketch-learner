@@ -91,11 +91,13 @@ def compute_feature_pool(preprocessing_data: PreprocessingData,
     for feature in features:
         is_soft_changing = True
         for instance_data in iteration_data.instance_datas:
+            dlplan_ss_states = instance_data.dlplan_ss.get_states()
+
             for s_idx in range(instance_data.mimir_ss.get_num_states()):
-                dlplan_source = instance_data.dlplan_ss.get_states()[s_idx]
+                dlplan_source = dlplan_ss_states[s_idx]
                 source_val = int(feature.dlplan_feature.evaluate(dlplan_source, instance_data.denotations_caches))
                 for s_prime_idx in instance_data.mimir_ss.get_forward_adjacent_state_indices(s_idx):
-                    dlplan_target = instance_data.dlplan_ss.get_states()[s_prime_idx]
+                    dlplan_target = dlplan_ss_states[s_prime_idx]
                     target_val = int(feature.dlplan_feature.evaluate(dlplan_target, instance_data.denotations_caches))
                     if source_val in {0, 2147483647} or target_val in {0, 2147483647}:
                         # Allow arbitrary changes on border values
@@ -121,16 +123,18 @@ def compute_feature_pool(preprocessing_data: PreprocessingData,
     for feature in features:
         changes = []
         for instance_data in iteration_data.instance_datas:
+            dlplan_ss_states = instance_data.dlplan_ss.get_states()
+
             for s_idx, tuple_graph in preprocessing_data.ss_state_idx_to_tuple_graph[instance_data.idx].items():
                 if instance_data.mimir_ss.is_deadend_state(s_idx):
                     continue
 
-                dlplan_source = instance_data.dlplan_ss.get_states()[s_idx]
+                dlplan_source = dlplan_ss_states[s_idx]
                 source_val = int(feature.dlplan_feature.evaluate(dlplan_source, instance_data.denotations_caches))
                 for s_primes in tuple_graph.get_states_grouped_by_distance():
                     for s_prime in s_primes:
                         s_prime_idx = instance_data.mimir_ss.get_state_index(s_prime)
-                        dlplan_target = instance_data.dlplan_ss.get_states()[s_prime_idx]
+                        dlplan_target = dlplan_ss_states[s_prime_idx]
                         target_val = int(feature.dlplan_feature.evaluate(dlplan_target, instance_data.denotations_caches))
                         if source_val < target_val:
                             changes.append(FeatureChange.UP)
