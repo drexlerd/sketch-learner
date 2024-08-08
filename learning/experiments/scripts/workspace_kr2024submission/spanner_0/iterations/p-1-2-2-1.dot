@@ -1,0 +1,46 @@
+digraph {
+rankdir="LR"
+s0[label="(instance index=8, state index=0, atoms={at(spanner1,location1), at(bob,shed), at(spanner2,location1), loose(nut1), at(nut1,gate), at(nut2,gate), useable(spanner2), loose(nut2), useable(spanner1)})"]
+s1[label="(instance index=8, state index=1, atoms={at(spanner1,location1), at(spanner2,location1), at(bob,location1), loose(nut1), at(nut1,gate), at(nut2,gate), useable(spanner2), loose(nut2), useable(spanner1)})"]
+s2[label="(instance index=8, state index=2, atoms={at(spanner2,location1), at(bob,location1), loose(nut1), at(nut1,gate), at(nut2,gate), carrying(bob,spanner1), useable(spanner2), loose(nut2), useable(spanner1)})"]
+s4[label="(instance index=8, state index=4, atoms={at(spanner1,location1), at(spanner2,location1), loose(nut1), at(nut1,gate), at(nut2,gate), useable(spanner2), loose(nut2), at(bob,gate), useable(spanner1)})"]
+s5[label="(instance index=8, state index=5, atoms={carrying(bob,spanner2), at(bob,location1), loose(nut1), at(nut1,gate), at(nut2,gate), carrying(bob,spanner1), useable(spanner2), loose(nut2), useable(spanner1)})"]
+s6[label="(instance index=8, state index=6, atoms={at(spanner2,location1), loose(nut1), at(nut1,gate), at(nut2,gate), carrying(bob,spanner1), useable(spanner2), loose(nut2), at(bob,gate), useable(spanner1)})"]
+s8[label="(instance index=8, state index=8, atoms={carrying(bob,spanner2), loose(nut1), at(nut1,gate), at(nut2,gate), carrying(bob,spanner1), useable(spanner2), loose(nut2), at(bob,gate), useable(spanner1)})"]
+s9[label="(instance index=8, state index=9, atoms={at(spanner2,location1), at(nut1,gate), at(nut2,gate), carrying(bob,spanner1), useable(spanner2), loose(nut2), tightened(nut1), at(bob,gate)})"]
+s13[label="(instance index=8, state index=13, atoms={carrying(bob,spanner2), at(nut1,gate), at(nut2,gate), carrying(bob,spanner1), useable(spanner2), loose(nut2), tightened(nut1), at(bob,gate)})"]
+s17[peripheries=2,label="(instance index=8, state index=17, atoms={carrying(bob,spanner2), tightened(nut2), at(nut1,gate), at(nut2,gate), carrying(bob,spanner1), tightened(nut1), at(bob,gate)})"]
+Dangling [ label = "", style = invis ]
+{ rank = same; Dangling }
+Dangling -> s0
+{ rank = same; s0}
+{ rank = same; s1}
+{ rank = same; s2,s4}
+{ rank = same; s5,s6}
+{ rank = same; s8,s9}
+{ rank = same; s13}
+{ rank = same; s17}
+{
+s0->s1
+}
+{
+s1->s4
+s1->s2
+}
+{
+s2->s6
+s2->s5
+}
+{
+s5->s8
+s6->s9
+}
+{
+s8->s13
+}
+{
+s13->s17
+}
+{
+}
+}

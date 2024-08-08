@@ -1,0 +1,13 @@
+(:policy
+(:booleans )
+(:numericals (f141 "n_count(r_primitive(carrying,0,1))") (f232 "n_concept_distance(c_some(r_inverse(r_primitive(at,0,1)),c_primitive(truck,0)),r_primitive(adjacent,0,1),c_some(r_inverse(r_primitive(at_g,0,1)),c_top))") (f345 "n_concept_distance(c_some(r_inverse(r_primitive(at,0,1)),c_primitive(truck,0)),r_primitive(adjacent,0,1),c_and(c_all(r_inverse(r_primitive(at_g,0,1)),c_bot),c_some(r_inverse(r_primitive(at,0,1)),c_primitive(package,0))))"))
+(:rule (:conditions (:c_n_gt f141) (:c_n_gt f232)) (:effects (:e_n_bot f141) (:e_n_dec f232) (:e_n_bot f345)))
+(:rule (:conditions (:c_n_gt f141) (:c_n_gt f232)) (:effects (:e_n_bot f141) (:e_n_dec f232) (:e_n_inc f345)))
+(:rule (:conditions (:c_n_gt f141) (:c_n_gt f232) (:c_n_gt f345)) (:effects (:e_n_bot f141) (:e_n_dec f232)))
+(:rule (:conditions (:c_n_eq f141) (:c_n_gt f345)) (:effects (:e_n_bot f141) (:e_n_inc f232) (:e_n_dec f345)))
+(:rule (:conditions (:c_n_gt f232) (:c_n_gt f345)) (:effects (:e_n_bot f141) (:e_n_dec f232) (:e_n_dec f345)))
+(:rule (:conditions (:c_n_eq f141) (:c_n_gt f232) (:c_n_eq f345)) (:effects (:e_n_inc f141) (:e_n_bot f232) (:e_n_inc f345)))
+(:rule (:conditions (:c_n_eq f141) (:c_n_gt f232) (:c_n_eq f345)) (:effects (:e_n_inc f141) (:e_n_bot f232) (:e_n_bot f345)))
+(:rule (:conditions (:c_n_gt f141) (:c_n_eq f232) (:c_n_gt f345)) (:effects (:e_n_dec f141) (:e_n_bot f232) (:e_n_bot f345)))
+(:rule (:conditions (:c_n_eq f141) (:c_n_gt f232) (:c_n_eq f345)) (:effects (:e_n_bot f141) (:e_n_inc f232) (:e_n_bot f345)))
+)

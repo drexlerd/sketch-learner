@@ -1,0 +1,1141 @@
+Changing working directory:  /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/experiments/scripts/workspace/blocks_4_clear_0
+2024-05-10 17:47:29,814 - Constructing InstanceDatas...
+2024-05-10 17:47:29,814 - Constructing InstanceData for filename /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/blocks_4_clear/instances/p-4-1.pddl
+2024-05-10 17:47:29,819 - Started generating state space
+2024-05-10 17:47:29,821 - Finished generating state space
+Domain file: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/blocks_4_clear/domain.pddl
+Problem file: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/blocks_4_clear/instances/p-4-1.pddl
+2024-05-10 17:47:29,822 - Started generating Aut(G)
+
+2024-05-10 17:47:29,862 - Finished generating Aut(G)
+Total time: 0.04 seconds
+Number of generated states: 125
+Number of equivalence classes: 24
+
+2024-05-10 17:47:29,863 - Constructing DomainData for filename /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/blocks_4_clear/domain.pddl
+Num states: 24
+Num complete states: 125
+initial state indices: [111, 72, 96, 26, 21, 18, 5, 4, 90, 3, 2, 1, 0]
+2024-05-10 17:47:29,865 - Constructing InstanceData for filename /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/blocks_4_clear/instances/p-2-10.pddl
+2024-05-10 17:47:29,867 - Started generating state space
+2024-05-10 17:47:29,868 - Finished generating state space
+Domain file: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/blocks_4_clear/domain.pddl
+Problem file: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/blocks_4_clear/instances/p-2-10.pddl
+2024-05-10 17:47:29,868 - Started generating Aut(G)
+
+2024-05-10 17:47:29,869 - Finished generating Aut(G)
+Total time: 0.00 seconds
+Number of generated states: 5
+Number of equivalence classes: 5
+
+Num states: 5
+Num complete states: 5
+initial state indices: [4, 1]
+2024-05-10 17:47:29,870 - Constructing InstanceData for filename /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/blocks_4_clear/instances/p-5-25.pddl
+2024-05-10 17:47:29,876 - Started generating state space
+2024-05-10 17:47:29,891 - Finished generating state space
+Domain file: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/blocks_4_clear/domain.pddl
+Problem file: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/blocks_4_clear/instances/p-5-25.pddl
+2024-05-10 17:47:29,896 - Started generating Aut(G)
+
+2024-05-10 17:47:30,251 - Finished generating Aut(G)
+Total time: 0.36 seconds
+Number of generated states: 866
+Number of equivalence classes: 45
+
+Num states: 45
+Num complete states: 866
+initial state indices: [324, 184, 41, 35, 29, 310, 27, 26, 23, 22, 18, 63, 15, 12, 105, 198, 8, 54, 6, 99, 52, 5, 191, 96, 1, 94]
+2024-05-10 17:47:30,269 - Constructing InstanceData for filename /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/blocks_4_clear/instances/p-3-17.pddl
+2024-05-10 17:47:30,271 - Started generating state space
+2024-05-10 17:47:30,272 - Finished generating state space
+Domain file: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/blocks_4_clear/domain.pddl
+Problem file: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/blocks_4_clear/instances/p-3-17.pddl
+2024-05-10 17:47:30,275 - Started generating Aut(G)
+
+2024-05-10 17:47:30,280 - Finished generating Aut(G)
+Total time: 0.00 seconds
+Number of generated states: 22
+Number of equivalence classes: 12
+
+Num states: 12
+Num complete states: 22
+initial state indices: [18, 9, 3, 15, 14, 0]
+2024-05-10 17:47:30,281 - Constructing InstanceData for filename /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/blocks_4_clear/instances/p-3-18.pddl
+2024-05-10 17:47:30,294 - Started generating state space
+2024-05-10 17:47:30,295 - Finished generating state space
+Found isomorphic instance
+2024-05-10 17:47:30,297 - Constructing InstanceData for filename /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/blocks_4_clear/instances/p-2-27.pddl
+2024-05-10 17:47:30,302 - Started generating state space
+2024-05-10 17:47:30,303 - Finished generating state space
+Found isomorphic instance
+2024-05-10 17:47:30,303 - Constructing InstanceData for filename /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/blocks_4_clear/instances/p-2-22.pddl
+2024-05-10 17:47:30,314 - Started generating state space
+2024-05-10 17:47:30,314 - Finished generating state space
+Found isomorphic instance
+2024-05-10 17:47:30,314 - Constructing InstanceData for filename /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/blocks_4_clear/instances/p-4-2.pddl
+2024-05-10 17:47:30,315 - Started generating state space
+2024-05-10 17:47:30,317 - Finished generating state space
+Found isomorphic instance
+2024-05-10 17:47:30,318 - Constructing InstanceData for filename /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/blocks_4_clear/instances/p-4-13.pddl
+2024-05-10 17:47:30,328 - Started generating state space
+2024-05-10 17:47:30,330 - Finished generating state space
+Found isomorphic instance
+2024-05-10 17:47:30,331 - Constructing InstanceData for filename /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/blocks_4_clear/instances/p-2-9.pddl
+2024-05-10 17:47:30,332 - Started generating state space
+2024-05-10 17:47:30,333 - Finished generating state space
+Found isomorphic instance
+2024-05-10 17:47:30,333 - Constructing InstanceData for filename /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/blocks_4_clear/instances/p-2-28.pddl
+2024-05-10 17:47:30,337 - Started generating state space
+2024-05-10 17:47:30,337 - Finished generating state space
+Found isomorphic instance
+2024-05-10 17:47:30,337 - Constructing InstanceData for filename /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/blocks_4_clear/instances/p-5-19.pddl
+2024-05-10 17:47:30,348 - Started generating state space
+2024-05-10 17:47:30,362 - Finished generating state space
+Found isomorphic instance
+2024-05-10 17:47:30,367 - Constructing InstanceData for filename /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/blocks_4_clear/instances/p-2-6.pddl
+2024-05-10 17:47:30,368 - Started generating state space
+2024-05-10 17:47:30,369 - Finished generating state space
+Found isomorphic instance
+2024-05-10 17:47:30,372 - Constructing InstanceData for filename /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/blocks_4_clear/instances/p-5-1.pddl
+2024-05-10 17:47:30,372 - Started generating state space
+2024-05-10 17:47:30,386 - Finished generating state space
+Found isomorphic instance
+2024-05-10 17:47:30,391 - Constructing InstanceData for filename /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/blocks_4_clear/instances/p-4-25.pddl
+2024-05-10 17:47:30,392 - Started generating state space
+2024-05-10 17:47:30,394 - Finished generating state space
+Found isomorphic instance
+2024-05-10 17:47:30,397 - Constructing InstanceData for filename /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/blocks_4_clear/instances/p-4-0.pddl
+2024-05-10 17:47:30,398 - Started generating state space
+2024-05-10 17:47:30,400 - Finished generating state space
+Found isomorphic instance
+2024-05-10 17:47:30,401 - Constructing InstanceData for filename /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/blocks_4_clear/instances/p-2-0.pddl
+2024-05-10 17:47:30,404 - Started generating state space
+2024-05-10 17:47:30,404 - Finished generating state space
+Found isomorphic instance
+2024-05-10 17:47:30,404 - Constructing InstanceData for filename /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/blocks_4_clear/instances/p-5-4.pddl
+2024-05-10 17:47:30,405 - Started generating state space
+2024-05-10 17:47:30,418 - Finished generating state space
+Found isomorphic instance
+2024-05-10 17:47:30,423 - Constructing InstanceData for filename /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/blocks_4_clear/instances/p-5-3.pddl
+2024-05-10 17:47:30,424 - Started generating state space
+2024-05-10 17:47:30,439 - Finished generating state space
+Found isomorphic instance
+2024-05-10 17:47:30,447 - Constructing InstanceData for filename /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/blocks_4_clear/instances/p-3-1.pddl
+2024-05-10 17:47:30,448 - Started generating state space
+2024-05-10 17:47:30,448 - Finished generating state space
+Found isomorphic instance
+2024-05-10 17:47:30,451 - Constructing InstanceData for filename /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/blocks_4_clear/instances/p-5-12.pddl
+2024-05-10 17:47:30,452 - Started generating state space
+2024-05-10 17:47:30,466 - Finished generating state space
+Found isomorphic instance
+2024-05-10 17:47:30,471 - Constructing InstanceData for filename /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/blocks_4_clear/instances/p-3-27.pddl
+2024-05-10 17:47:30,472 - Started generating state space
+2024-05-10 17:47:30,472 - Finished generating state space
+Found isomorphic instance
+2024-05-10 17:47:30,475 - Constructing InstanceData for filename /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/blocks_4_clear/instances/p-3-12.pddl
+2024-05-10 17:47:30,476 - Started generating state space
+2024-05-10 17:47:30,477 - Finished generating state space
+Found isomorphic instance
+2024-05-10 17:47:30,478 - Constructing InstanceData for filename /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/blocks_4_clear/instances/p-3-4.pddl
+2024-05-10 17:47:30,479 - Started generating state space
+2024-05-10 17:47:30,479 - Finished generating state space
+Found isomorphic instance
+2024-05-10 17:47:30,479 - Constructing InstanceData for filename /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/blocks_4_clear/instances/p-4-27.pddl
+2024-05-10 17:47:30,480 - Started generating state space
+2024-05-10 17:47:30,483 - Finished generating state space
+Found isomorphic instance
+2024-05-10 17:47:30,484 - Constructing InstanceData for filename /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/blocks_4_clear/instances/p-5-29.pddl
+2024-05-10 17:47:30,485 - Started generating state space
+2024-05-10 17:47:30,498 - Finished generating state space
+Found isomorphic instance
+2024-05-10 17:47:30,504 - Constructing InstanceData for filename /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/blocks_4_clear/instances/p-2-24.pddl
+2024-05-10 17:47:30,505 - Started generating state space
+2024-05-10 17:47:30,505 - Finished generating state space
+Found isomorphic instance
+2024-05-10 17:47:30,508 - Constructing InstanceData for filename /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/blocks_4_clear/instances/p-4-7.pddl
+2024-05-10 17:47:30,509 - Started generating state space
+2024-05-10 17:47:30,511 - Finished generating state space
+Found isomorphic instance
+2024-05-10 17:47:30,512 - Constructing InstanceData for filename /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/blocks_4_clear/instances/p-2-7.pddl
+2024-05-10 17:47:30,513 - Started generating state space
+2024-05-10 17:47:30,513 - Finished generating state space
+Found isomorphic instance
+2024-05-10 17:47:30,513 - Constructing InstanceData for filename /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/blocks_4_clear/instances/p-5-8.pddl
+2024-05-10 17:47:30,514 - Started generating state space
+2024-05-10 17:47:30,527 - Finished generating state space
+Found isomorphic instance
+2024-05-10 17:47:30,532 - Constructing InstanceData for filename /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/blocks_4_clear/instances/p-2-13.pddl
+2024-05-10 17:47:30,534 - Started generating state space
+2024-05-10 17:47:30,534 - Finished generating state space
+Found isomorphic instance
+2024-05-10 17:47:30,537 - Constructing InstanceData for filename /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/blocks_4_clear/instances/p-4-12.pddl
+2024-05-10 17:47:30,537 - Started generating state space
+2024-05-10 17:47:30,539 - Finished generating state space
+Found isomorphic instance
+2024-05-10 17:47:30,540 - Constructing InstanceData for filename /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/blocks_4_clear/instances/p-4-23.pddl
+2024-05-10 17:47:30,541 - Started generating state space
+2024-05-10 17:47:30,544 - Finished generating state space
+Found isomorphic instance
+2024-05-10 17:47:30,545 - Constructing InstanceData for filename /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/blocks_4_clear/instances/p-4-10.pddl
+2024-05-10 17:47:30,546 - Started generating state space
+2024-05-10 17:47:30,547 - Finished generating state space
+Found isomorphic instance
+2024-05-10 17:47:30,549 - Constructing InstanceData for filename /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/blocks_4_clear/instances/p-5-10.pddl
+2024-05-10 17:47:30,550 - Started generating state space
+2024-05-10 17:47:30,563 - Finished generating state space
+Found isomorphic instance
+2024-05-10 17:47:30,568 - Constructing InstanceData for filename /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/blocks_4_clear/instances/p-5-11.pddl
+2024-05-10 17:47:30,569 - Started generating state space
+2024-05-10 17:47:30,582 - Finished generating state space
+Found isomorphic instance
+2024-05-10 17:47:30,589 - Constructing InstanceData for filename /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/blocks_4_clear/instances/p-2-11.pddl
+2024-05-10 17:47:30,590 - Started generating state space
+2024-05-10 17:47:30,590 - Finished generating state space
+Found isomorphic instance
+2024-05-10 17:47:30,593 - Constructing InstanceData for filename /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/blocks_4_clear/instances/p-5-22.pddl
+2024-05-10 17:47:30,594 - Started generating state space
+2024-05-10 17:47:30,607 - Finished generating state space
+Found isomorphic instance
+2024-05-10 17:47:30,612 - Constructing InstanceData for filename /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/blocks_4_clear/instances/p-3-22.pddl
+2024-05-10 17:47:30,613 - Started generating state space
+2024-05-10 17:47:30,614 - Finished generating state space
+Found isomorphic instance
+2024-05-10 17:47:30,617 - Constructing InstanceData for filename /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/blocks_4_clear/instances/p-4-18.pddl
+2024-05-10 17:47:30,617 - Started generating state space
+2024-05-10 17:47:30,619 - Finished generating state space
+Found isomorphic instance
+2024-05-10 17:47:30,620 - Constructing InstanceData for filename /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/blocks_4_clear/instances/p-5-9.pddl
+2024-05-10 17:47:30,621 - Started generating state space
+2024-05-10 17:47:30,634 - Finished generating state space
+Found isomorphic instance
+2024-05-10 17:47:30,640 - Constructing InstanceData for filename /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/blocks_4_clear/instances/p-5-7.pddl
+2024-05-10 17:47:30,640 - Started generating state space
+2024-05-10 17:47:30,653 - Finished generating state space
+Found isomorphic instance
+2024-05-10 17:47:30,661 - Constructing InstanceData for filename /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/blocks_4_clear/instances/p-2-2.pddl
+2024-05-10 17:47:30,662 - Started generating state space
+2024-05-10 17:47:30,662 - Finished generating state space
+Found isomorphic instance
+2024-05-10 17:47:30,665 - Constructing InstanceData for filename /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/blocks_4_clear/instances/p-3-7.pddl
+2024-05-10 17:47:30,666 - Started generating state space
+2024-05-10 17:47:30,667 - Finished generating state space
+Found isomorphic instance
+2024-05-10 17:47:30,667 - Constructing InstanceData for filename /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/blocks_4_clear/instances/p-2-23.pddl
+2024-05-10 17:47:30,668 - Started generating state space
+2024-05-10 17:47:30,668 - Finished generating state space
+Found isomorphic instance
+2024-05-10 17:47:30,668 - Constructing InstanceData for filename /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/blocks_4_clear/instances/p-3-5.pddl
+2024-05-10 17:47:30,669 - Started generating state space
+2024-05-10 17:47:30,669 - Finished generating state space
+Found isomorphic instance
+2024-05-10 17:47:30,670 - Constructing InstanceData for filename /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/blocks_4_clear/instances/p-5-2.pddl
+2024-05-10 17:47:30,671 - Started generating state space
+2024-05-10 17:47:30,684 - Finished generating state space
+Found isomorphic instance
+2024-05-10 17:47:30,689 - Constructing InstanceData for filename /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/blocks_4_clear/instances/p-3-8.pddl
+2024-05-10 17:47:30,691 - Started generating state space
+2024-05-10 17:47:30,692 - Finished generating state space
+Found isomorphic instance
+2024-05-10 17:47:30,694 - Constructing InstanceData for filename /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/blocks_4_clear/instances/p-3-29.pddl
+2024-05-10 17:47:30,695 - Started generating state space
+2024-05-10 17:47:30,695 - Finished generating state space
+Found isomorphic instance
+2024-05-10 17:47:30,696 - Constructing InstanceData for filename /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/blocks_4_clear/instances/p-3-15.pddl
+2024-05-10 17:47:30,697 - Started generating state space
+2024-05-10 17:47:30,698 - Finished generating state space
+Found isomorphic instance
+2024-05-10 17:47:30,698 - Constructing InstanceData for filename /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/blocks_4_clear/instances/p-2-21.pddl
+2024-05-10 17:47:30,699 - Started generating state space
+2024-05-10 17:47:30,699 - Finished generating state space
+Found isomorphic instance
+2024-05-10 17:47:30,700 - Constructing InstanceData for filename /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/blocks_4_clear/instances/p-5-17.pddl
+2024-05-10 17:47:30,701 - Started generating state space
+2024-05-10 17:47:30,714 - Finished generating state space
+Found isomorphic instance
+2024-05-10 17:47:30,719 - Constructing InstanceData for filename /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/blocks_4_clear/instances/p-5-15.pddl
+2024-05-10 17:47:30,720 - Started generating state space
+2024-05-10 17:47:30,733 - Finished generating state space
+Found isomorphic instance
+2024-05-10 17:47:30,740 - Constructing InstanceData for filename /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/blocks_4_clear/instances/p-3-11.pddl
+2024-05-10 17:47:30,741 - Started generating state space
+2024-05-10 17:47:30,742 - Finished generating state space
+Found isomorphic instance
+2024-05-10 17:47:30,745 - Constructing InstanceData for filename /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/blocks_4_clear/instances/p-4-24.pddl
+2024-05-10 17:47:30,745 - Started generating state space
+2024-05-10 17:47:30,747 - Finished generating state space
+Found isomorphic instance
+2024-05-10 17:47:30,748 - Constructing InstanceData for filename /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/blocks_4_clear/instances/p-4-3.pddl
+2024-05-10 17:47:30,749 - Started generating state space
+2024-05-10 17:47:30,751 - Finished generating state space
+Found isomorphic instance
+2024-05-10 17:47:30,753 - Constructing InstanceData for filename /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/blocks_4_clear/instances/p-2-19.pddl
+2024-05-10 17:47:30,754 - Started generating state space
+2024-05-10 17:47:30,754 - Finished generating state space
+Found isomorphic instance
+2024-05-10 17:47:30,754 - Constructing InstanceData for filename /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/blocks_4_clear/instances/p-2-20.pddl
+2024-05-10 17:47:30,756 - Started generating state space
+2024-05-10 17:47:30,756 - Finished generating state space
+Found isomorphic instance
+2024-05-10 17:47:30,756 - Constructing InstanceData for filename /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/blocks_4_clear/instances/p-2-12.pddl
+2024-05-10 17:47:30,757 - Started generating state space
+2024-05-10 17:47:30,757 - Finished generating state space
+Found isomorphic instance
+2024-05-10 17:47:30,757 - Constructing InstanceData for filename /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/blocks_4_clear/instances/p-3-26.pddl
+2024-05-10 17:47:30,758 - Started generating state space
+2024-05-10 17:47:30,758 - Finished generating state space
+Found isomorphic instance
+2024-05-10 17:47:30,759 - Constructing InstanceData for filename /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/blocks_4_clear/instances/p-4-8.pddl
+2024-05-10 17:47:30,760 - Started generating state space
+2024-05-10 17:47:30,761 - Finished generating state space
+Found isomorphic instance
+2024-05-10 17:47:30,763 - Constructing InstanceData for filename /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/blocks_4_clear/instances/p-5-6.pddl
+2024-05-10 17:47:30,764 - Started generating state space
+2024-05-10 17:47:30,777 - Finished generating state space
+Found isomorphic instance
+2024-05-10 17:47:30,782 - Constructing InstanceData for filename /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/blocks_4_clear/instances/p-3-25.pddl
+2024-05-10 17:47:30,783 - Started generating state space
+2024-05-10 17:47:30,784 - Finished generating state space
+Found isomorphic instance
+2024-05-10 17:47:30,787 - Constructing InstanceData for filename /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/blocks_4_clear/instances/p-4-20.pddl
+2024-05-10 17:47:30,788 - Started generating state space
+2024-05-10 17:47:30,789 - Finished generating state space
+Found isomorphic instance
+2024-05-10 17:47:30,790 - Constructing InstanceData for filename /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/blocks_4_clear/instances/p-5-24.pddl
+2024-05-10 17:47:30,791 - Started generating state space
+2024-05-10 17:47:30,805 - Finished generating state space
+Found isomorphic instance
+2024-05-10 17:47:30,810 - Constructing InstanceData for filename /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/blocks_4_clear/instances/p-4-21.pddl
+2024-05-10 17:47:30,811 - Started generating state space
+2024-05-10 17:47:30,813 - Finished generating state space
+Found isomorphic instance
+2024-05-10 17:47:30,817 - Constructing InstanceData for filename /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/blocks_4_clear/instances/p-2-14.pddl
+2024-05-10 17:47:30,818 - Started generating state space
+2024-05-10 17:47:30,818 - Finished generating state space
+Found isomorphic instance
+2024-05-10 17:47:30,819 - Constructing InstanceData for filename /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/blocks_4_clear/instances/p-4-5.pddl
+2024-05-10 17:47:30,820 - Started generating state space
+2024-05-10 17:47:30,821 - Finished generating state space
+Found isomorphic instance
+2024-05-10 17:47:30,823 - Constructing InstanceData for filename /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/blocks_4_clear/instances/p-3-3.pddl
+2024-05-10 17:47:30,824 - Started generating state space
+2024-05-10 17:47:30,824 - Finished generating state space
+Found isomorphic instance
+2024-05-10 17:47:30,824 - Constructing InstanceData for filename /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/blocks_4_clear/instances/p-5-20.pddl
+2024-05-10 17:47:30,825 - Started generating state space
+2024-05-10 17:47:30,838 - Finished generating state space
+Found isomorphic instance
+2024-05-10 17:47:30,843 - Constructing InstanceData for filename /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/blocks_4_clear/instances/p-4-14.pddl
+2024-05-10 17:47:30,844 - Started generating state space
+2024-05-10 17:47:30,846 - Finished generating state space
+Found isomorphic instance
+2024-05-10 17:47:30,850 - Constructing InstanceData for filename /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/blocks_4_clear/instances/p-4-15.pddl
+2024-05-10 17:47:30,851 - Started generating state space
+2024-05-10 17:47:30,853 - Finished generating state space
+Found isomorphic instance
+2024-05-10 17:47:30,855 - Constructing InstanceData for filename /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/blocks_4_clear/instances/p-4-9.pddl
+2024-05-10 17:47:30,855 - Started generating state space
+2024-05-10 17:47:30,857 - Finished generating state space
+Found isomorphic instance
+2024-05-10 17:47:30,858 - Constructing InstanceData for filename /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/blocks_4_clear/instances/p-3-23.pddl
+2024-05-10 17:47:30,859 - Started generating state space
+2024-05-10 17:47:30,860 - Finished generating state space
+Found isomorphic instance
+2024-05-10 17:47:30,860 - Constructing InstanceData for filename /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/blocks_4_clear/instances/p-4-26.pddl
+2024-05-10 17:47:30,861 - Started generating state space
+2024-05-10 17:47:30,863 - Finished generating state space
+Found isomorphic instance
+2024-05-10 17:47:30,865 - Constructing InstanceData for filename /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/blocks_4_clear/instances/p-2-17.pddl
+2024-05-10 17:47:30,866 - Started generating state space
+2024-05-10 17:47:30,866 - Finished generating state space
+Found isomorphic instance
+2024-05-10 17:47:30,866 - Constructing InstanceData for filename /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/blocks_4_clear/instances/p-2-15.pddl
+2024-05-10 17:47:30,867 - Started generating state space
+2024-05-10 17:47:30,868 - Finished generating state space
+Found isomorphic instance
+2024-05-10 17:47:30,868 - Constructing InstanceData for filename /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/blocks_4_clear/instances/p-4-28.pddl
+2024-05-10 17:47:30,869 - Started generating state space
+2024-05-10 17:47:30,871 - Finished generating state space
+Found isomorphic instance
+2024-05-10 17:47:30,872 - Constructing InstanceData for filename /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/blocks_4_clear/instances/p-2-18.pddl
+2024-05-10 17:47:30,875 - Started generating state space
+2024-05-10 17:47:30,875 - Finished generating state space
+Found isomorphic instance
+2024-05-10 17:47:30,876 - Constructing InstanceData for filename /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/blocks_4_clear/instances/p-2-4.pddl
+2024-05-10 17:47:30,877 - Started generating state space
+2024-05-10 17:47:30,877 - Finished generating state space
+Found isomorphic instance
+2024-05-10 17:47:30,877 - Constructing InstanceData for filename /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/blocks_4_clear/instances/p-2-29.pddl
+2024-05-10 17:47:30,878 - Started generating state space
+2024-05-10 17:47:30,879 - Finished generating state space
+Found isomorphic instance
+2024-05-10 17:47:30,879 - Constructing InstanceData for filename /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/blocks_4_clear/instances/p-2-25.pddl
+2024-05-10 17:47:30,880 - Started generating state space
+2024-05-10 17:47:30,881 - Finished generating state space
+Found isomorphic instance
+2024-05-10 17:47:30,881 - Constructing InstanceData for filename /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/blocks_4_clear/instances/p-4-4.pddl
+2024-05-10 17:47:30,882 - Started generating state space
+2024-05-10 17:47:30,884 - Finished generating state space
+Found isomorphic instance
+2024-05-10 17:47:30,885 - Constructing InstanceData for filename /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/blocks_4_clear/instances/p-5-0.pddl
+2024-05-10 17:47:30,886 - Started generating state space
+2024-05-10 17:47:30,899 - Finished generating state space
+Found isomorphic instance
+2024-05-10 17:47:30,904 - Constructing InstanceData for filename /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/blocks_4_clear/instances/p-5-18.pddl
+2024-05-10 17:47:30,905 - Started generating state space
+2024-05-10 17:47:30,918 - Finished generating state space
+Found isomorphic instance
+2024-05-10 17:47:30,926 - Constructing InstanceData for filename /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/blocks_4_clear/instances/p-2-8.pddl
+2024-05-10 17:47:30,927 - Started generating state space
+2024-05-10 17:47:30,927 - Finished generating state space
+Found isomorphic instance
+2024-05-10 17:47:30,930 - Constructing InstanceData for filename /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/blocks_4_clear/instances/p-4-17.pddl
+2024-05-10 17:47:30,931 - Started generating state space
+2024-05-10 17:47:30,933 - Finished generating state space
+Found isomorphic instance
+2024-05-10 17:47:30,934 - Constructing InstanceData for filename /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/blocks_4_clear/instances/p-3-6.pddl
+2024-05-10 17:47:30,935 - Started generating state space
+2024-05-10 17:47:30,935 - Finished generating state space
+Found isomorphic instance
+2024-05-10 17:47:30,936 - Constructing InstanceData for filename /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/blocks_4_clear/instances/p-3-19.pddl
+2024-05-10 17:47:30,937 - Started generating state space
+2024-05-10 17:47:30,937 - Finished generating state space
+Found isomorphic instance
+2024-05-10 17:47:30,938 - Constructing InstanceData for filename /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/blocks_4_clear/instances/p-3-13.pddl
+2024-05-10 17:47:30,939 - Started generating state space
+2024-05-10 17:47:30,939 - Finished generating state space
+Found isomorphic instance
+2024-05-10 17:47:30,940 - Constructing InstanceData for filename /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/blocks_4_clear/instances/p-4-16.pddl
+2024-05-10 17:47:30,941 - Started generating state space
+2024-05-10 17:47:30,942 - Finished generating state space
+Found isomorphic instance
+2024-05-10 17:47:30,943 - Constructing InstanceData for filename /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/blocks_4_clear/instances/p-5-5.pddl
+2024-05-10 17:47:30,944 - Started generating state space
+2024-05-10 17:47:30,957 - Finished generating state space
+Found isomorphic instance
+2024-05-10 17:47:30,962 - Constructing InstanceData for filename /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/blocks_4_clear/instances/p-4-11.pddl
+2024-05-10 17:47:30,963 - Started generating state space
+2024-05-10 17:47:30,965 - Finished generating state space
+Found isomorphic instance
+2024-05-10 17:47:30,969 - Constructing InstanceData for filename /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/blocks_4_clear/instances/p-3-10.pddl
+2024-05-10 17:47:30,970 - Started generating state space
+2024-05-10 17:47:30,970 - Finished generating state space
+Found isomorphic instance
+2024-05-10 17:47:30,971 - Constructing InstanceData for filename /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/blocks_4_clear/instances/p-3-2.pddl
+2024-05-10 17:47:30,972 - Started generating state space
+2024-05-10 17:47:30,972 - Finished generating state space
+Found isomorphic instance
+2024-05-10 17:47:30,973 - Constructing InstanceData for filename /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/blocks_4_clear/instances/p-5-23.pddl
+2024-05-10 17:47:30,974 - Started generating state space
+2024-05-10 17:47:30,987 - Finished generating state space
+Found isomorphic instance
+2024-05-10 17:47:30,992 - Constructing InstanceData for filename /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/blocks_4_clear/instances/p-3-24.pddl
+2024-05-10 17:47:30,994 - Started generating state space
+2024-05-10 17:47:30,994 - Finished generating state space
+Found isomorphic instance
+2024-05-10 17:47:30,997 - Constructing InstanceData for filename /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/blocks_4_clear/instances/p-2-26.pddl
+2024-05-10 17:47:30,999 - Started generating state space
+2024-05-10 17:47:30,999 - Finished generating state space
+Found isomorphic instance
+2024-05-10 17:47:30,999 - Constructing InstanceData for filename /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/blocks_4_clear/instances/p-3-28.pddl
+2024-05-10 17:47:31,000 - Started generating state space
+2024-05-10 17:47:31,001 - Finished generating state space
+Found isomorphic instance
+2024-05-10 17:47:31,002 - Constructing InstanceData for filename /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/blocks_4_clear/instances/p-2-5.pddl
+2024-05-10 17:47:31,002 - Started generating state space
+2024-05-10 17:47:31,003 - Finished generating state space
+Found isomorphic instance
+2024-05-10 17:47:31,003 - Constructing InstanceData for filename /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/blocks_4_clear/instances/p-3-16.pddl
+2024-05-10 17:47:31,004 - Started generating state space
+2024-05-10 17:47:31,005 - Finished generating state space
+Found isomorphic instance
+2024-05-10 17:47:31,005 - Constructing InstanceData for filename /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/blocks_4_clear/instances/p-5-26.pddl
+2024-05-10 17:47:31,006 - Started generating state space
+2024-05-10 17:47:31,019 - Finished generating state space
+Found isomorphic instance
+2024-05-10 17:47:31,024 - Constructing InstanceData for filename /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/blocks_4_clear/instances/p-5-27.pddl
+2024-05-10 17:47:31,025 - Started generating state space
+2024-05-10 17:47:31,038 - Finished generating state space
+Found isomorphic instance
+2024-05-10 17:47:31,046 - Constructing InstanceData for filename /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/blocks_4_clear/instances/p-3-21.pddl
+2024-05-10 17:47:31,047 - Started generating state space
+2024-05-10 17:47:31,047 - Finished generating state space
+Found isomorphic instance
+2024-05-10 17:47:31,050 - Constructing InstanceData for filename /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/blocks_4_clear/instances/p-4-19.pddl
+2024-05-10 17:47:31,051 - Started generating state space
+2024-05-10 17:47:31,053 - Finished generating state space
+Found isomorphic instance
+2024-05-10 17:47:31,054 - Constructing InstanceData for filename /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/blocks_4_clear/instances/p-4-22.pddl
+2024-05-10 17:47:31,055 - Started generating state space
+2024-05-10 17:47:31,057 - Finished generating state space
+Found isomorphic instance
+2024-05-10 17:47:31,058 - Constructing InstanceData for filename /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/blocks_4_clear/instances/p-5-28.pddl
+2024-05-10 17:47:31,060 - Started generating state space
+2024-05-10 17:47:31,073 - Finished generating state space
+Found isomorphic instance
+2024-05-10 17:47:31,078 - Constructing InstanceData for filename /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/blocks_4_clear/instances/p-3-0.pddl
+2024-05-10 17:47:31,079 - Started generating state space
+2024-05-10 17:47:31,080 - Finished generating state space
+Found isomorphic instance
+2024-05-10 17:47:31,083 - Constructing InstanceData for filename /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/blocks_4_clear/instances/p-3-20.pddl
+2024-05-10 17:47:31,084 - Started generating state space
+2024-05-10 17:47:31,084 - Finished generating state space
+Found isomorphic instance
+2024-05-10 17:47:31,084 - Constructing InstanceData for filename /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/blocks_4_clear/instances/p-2-16.pddl
+2024-05-10 17:47:31,085 - Started generating state space
+2024-05-10 17:47:31,086 - Finished generating state space
+Found isomorphic instance
+2024-05-10 17:47:31,086 - Constructing InstanceData for filename /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/blocks_4_clear/instances/p-5-14.pddl
+2024-05-10 17:47:31,087 - Started generating state space
+2024-05-10 17:47:31,100 - Finished generating state space
+Found isomorphic instance
+2024-05-10 17:47:31,105 - Constructing InstanceData for filename /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/blocks_4_clear/instances/p-5-21.pddl
+2024-05-10 17:47:31,106 - Started generating state space
+2024-05-10 17:47:31,119 - Finished generating state space
+Found isomorphic instance
+2024-05-10 17:47:31,127 - Constructing InstanceData for filename /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/blocks_4_clear/instances/p-5-16.pddl
+2024-05-10 17:47:31,128 - Started generating state space
+2024-05-10 17:47:31,141 - Finished generating state space
+Found isomorphic instance
+2024-05-10 17:47:31,148 - Constructing InstanceData for filename /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/blocks_4_clear/instances/p-2-3.pddl
+2024-05-10 17:47:31,149 - Started generating state space
+2024-05-10 17:47:31,149 - Finished generating state space
+Found isomorphic instance
+2024-05-10 17:47:31,152 - Constructing InstanceData for filename /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/blocks_4_clear/instances/p-3-9.pddl
+2024-05-10 17:47:31,153 - Started generating state space
+2024-05-10 17:47:31,154 - Finished generating state space
+Found isomorphic instance
+2024-05-10 17:47:31,154 - Constructing InstanceData for filename /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/blocks_4_clear/instances/p-4-29.pddl
+2024-05-10 17:47:31,155 - Started generating state space
+2024-05-10 17:47:31,157 - Finished generating state space
+Found isomorphic instance
+2024-05-10 17:47:31,158 - Constructing InstanceData for filename /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/blocks_4_clear/instances/p-5-13.pddl
+2024-05-10 17:47:31,159 - Started generating state space
+2024-05-10 17:47:31,172 - Finished generating state space
+Found isomorphic instance
+2024-05-10 17:47:31,177 - Constructing InstanceData for filename /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/blocks_4_clear/instances/p-4-6.pddl
+2024-05-10 17:47:31,178 - Started generating state space
+2024-05-10 17:47:31,180 - Finished generating state space
+Found isomorphic instance
+2024-05-10 17:47:31,183 - Constructing InstanceData for filename /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/blocks_4_clear/instances/p-3-14.pddl
+2024-05-10 17:47:31,185 - Started generating state space
+2024-05-10 17:47:31,185 - Finished generating state space
+Found isomorphic instance
+2024-05-10 17:47:31,186 - Constructing InstanceData for filename /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/blocks_4_clear/instances/p-2-1.pddl
+2024-05-10 17:47:31,186 - Started generating state space
+2024-05-10 17:47:31,187 - Finished generating state space
+Found isomorphic instance
+2024-05-10 17:47:31,187 - ..done
+2024-05-10 17:47:31,187 - Initializing TupleGraphs...
+2024-05-10 17:47:31,188 - ..done
+2024-05-10 17:47:31,190 - Iteration: 0
+     id: 0 name: p-2-10 num_states: 5 num_state_equivalences: 5
+2024-05-10 17:47:31,192 - Initializing DomainFeatureData...
+[t=3.12598s, 276604 KB] Started generating base features of complexity 1.
+[t=3.12633s, 276604 KB] Complexity 1:
+    b_nullary: 2
+    c_one_of: 1
+    c_top: 1
+    c_bot: 1
+    c_primitive: 3
+    r_primitive: 2
+    c_and: 0
+    c_not: 0
+    c_equal: 0
+    c_some: 0
+    c_all: 0
+    r_restrict: 0
+    r_and: 0
+    r_inverse: 0
+    r_transitive_closure: 0
+    b_empty: 0
+    n_count: 0
+    n_concept_distance: 0
+[t=3.12645s, 276604 KB] Finished generating base features.
+[t=3.12647s, 276604 KB] Started generating composite features. 
+[t=3.12669s, 276604 KB] Complexity 2:
+Total concept elements: 10
+Total role elements: 3
+Total numerical elements: 6
+Total boolean elements: 4
+    b_nullary: 2
+    c_one_of: 1
+    c_top: 1
+    c_bot: 1
+    c_primitive: 3
+    r_primitive: 2
+    c_and: 0
+    c_not: 4
+    c_equal: 0
+    c_some: 0
+    c_all: 0
+    r_restrict: 0
+    r_and: 0
+    r_inverse: 1
+    r_transitive_closure: 0
+    b_empty: 2
+    n_count: 6
+    n_concept_distance: 0
+[t=3.12705s, 276604 KB] Complexity 3:
+Total concept elements: 18
+Total role elements: 4
+Total numerical elements: 8
+Total boolean elements: 5
+    b_nullary: 2
+    c_one_of: 1
+    c_top: 1
+    c_bot: 1
+    c_primitive: 3
+    r_primitive: 2
+    c_and: 4
+    c_not: 4
+    c_equal: 1
+    c_some: 2
+    c_all: 1
+    r_restrict: 1
+    r_and: 0
+    r_inverse: 1
+    r_transitive_closure: 0
+    b_empty: 3
+    n_count: 8
+    n_concept_distance: 0
+[t=3.12734s, 276604 KB] Complexity 4:
+Total concept elements: 34
+Total role elements: 5
+Total numerical elements: 20
+Total boolean elements: 10
+    b_nullary: 2
+    c_one_of: 1
+    c_top: 1
+    c_bot: 1
+    c_primitive: 3
+    r_primitive: 2
+    c_and: 11
+    c_not: 10
+    c_equal: 1
+    c_some: 3
+    c_all: 3
+    r_restrict: 1
+    r_and: 0
+    r_inverse: 2
+    r_transitive_closure: 0
+    b_empty: 8
+    n_count: 15
+    n_concept_distance: 5
+[t=3.12772s, 276604 KB] Complexity 5:
+Total concept elements: 48
+Total role elements: 5
+Total numerical elements: 42
+Total boolean elements: 17
+    b_nullary: 2
+    c_one_of: 1
+    c_top: 1
+    c_bot: 1
+    c_primitive: 3
+    r_primitive: 2
+    c_and: 17
+    c_not: 18
+    c_equal: 1
+    c_some: 3
+    c_all: 3
+    r_restrict: 1
+    r_and: 0
+    r_inverse: 2
+    r_transitive_closure: 0
+    b_empty: 15
+    n_count: 27
+    n_concept_distance: 15
+[t=3.12836s, 276604 KB] Complexity 6:
+Total concept elements: 64
+Total role elements: 5
+Total numerical elements: 61
+Total boolean elements: 22
+    b_nullary: 2
+    c_one_of: 1
+    c_top: 1
+    c_bot: 1
+    c_primitive: 3
+    r_primitive: 2
+    c_and: 27
+    c_not: 24
+    c_equal: 1
+    c_some: 3
+    c_all: 3
+    r_restrict: 1
+    r_and: 0
+    r_inverse: 2
+    r_transitive_closure: 0
+    b_empty: 20
+    n_count: 39
+    n_concept_distance: 22
+[t=3.12917s, 276604 KB] Complexity 7:
+Total concept elements: 86
+Total role elements: 5
+Total numerical elements: 78
+Total boolean elements: 26
+    b_nullary: 2
+    c_one_of: 1
+    c_top: 1
+    c_bot: 1
+    c_primitive: 3
+    r_primitive: 2
+    c_and: 41
+    c_not: 32
+    c_equal: 1
+    c_some: 3
+    c_all: 3
+    r_restrict: 1
+    r_and: 0
+    r_inverse: 2
+    r_transitive_closure: 0
+    b_empty: 24
+    n_count: 51
+    n_concept_distance: 27
+[t=3.1303s, 276604 KB] Complexity 8:
+Total concept elements: 107
+Total role elements: 5
+Total numerical elements: 91
+Total boolean elements: 28
+    b_nullary: 2
+    c_one_of: 1
+    c_top: 1
+    c_bot: 1
+    c_primitive: 3
+    r_primitive: 2
+    c_and: 54
+    c_not: 40
+    c_equal: 1
+    c_some: 3
+    c_all: 3
+    r_restrict: 1
+    r_and: 0
+    r_inverse: 2
+    r_transitive_closure: 0
+    b_empty: 26
+    n_count: 61
+    n_concept_distance: 30
+[t=3.1319s, 276604 KB] Complexity 9:
+Total concept elements: 123
+Total role elements: 5
+Total numerical elements: 101
+Total boolean elements: 28
+    b_nullary: 2
+    c_one_of: 1
+    c_top: 1
+    c_bot: 1
+    c_primitive: 3
+    r_primitive: 2
+    c_and: 69
+    c_not: 41
+    c_equal: 1
+    c_some: 3
+    c_all: 3
+    r_restrict: 1
+    r_and: 0
+    r_inverse: 2
+    r_transitive_closure: 0
+    b_empty: 26
+    n_count: 70
+    n_concept_distance: 31
+[t=3.132s, 276604 KB] Finished generating composite features.
+Features generated: 129
+Features after 0/1 pruning (incomplete): 98
+Features after soft changes pruning (incomplete): 98
+Features after relevant changes pruning (complete): 41
+
+2024-05-10 17:47:31,210 - ..done
+2024-05-10 17:47:31,210 - Constructing PerStateFeatureValuations...
+2024-05-10 17:47:31,211 - ..done
+2024-05-10 17:47:31,211 - Constructing StatePairEquivalenceDatas...
+2024-05-10 17:47:31,214 - ..done
+2024-05-10 17:47:31,214 - Constructing TupleGraphEquivalences...
+Tuple graph equivalence construction statistics:
+Num nodes: 13
+2024-05-10 17:47:31,214 - ..done
+2024-05-10 17:47:31,214 - Minimizing TupleGraphEquivalences...
+Tuple graph equivalence minimization statistics:
+Num orig nodes: 13
+Num kept nodes: 13
+2024-05-10 17:47:31,214 - ..done
+Number of initial D2 facts: 4
+Number of D2 facts: 4 of 169
+2024-05-10 17:47:31,227 - Grounding Logic Program...
+2024-05-10 17:47:31,235 - ..done
+2024-05-10 17:47:31,236 - Solving Logic Program...
+2024-05-10 17:47:31,240 - ..done
+Clingo statistics:
+{'call': 0.0, 'result': 1.0, 'signal': 0.0, 'exhausted': 1.0, 'costs': [3.0], 'lower': [3.0], 'concurrency': 32.0, 'winner': 0.0, 'times': {'total': 0.025115966796875, 'cpu': 0.034975999999999896, 'solve': 0.0038928985595703125, 'unsat': 0.0006589889526367188, 'sat': 0.0028939247131347656}, 'models': {'enumerated': 7.0, 'optimal': 1.0}}
+Solution cost: [3.0]
+Total time: 0.025115966796875
+CPU time: 0.034975999999999896
+Solve time: 0.0038928985595703125
+2024-05-10 17:47:31,245 - Learned the following sketch:
+(:policy
+(:booleans )
+(:numericals (f39 "n_count(c_primitive(holding,0))"))
+(:rule (:conditions (:c_n_eq f39)) (:effects (:e_n_inc f39)))
+(:rule (:conditions (:c_n_gt f39)) (:effects (:e_n_dec f39)))
+)
+Numer of sketch rules: 2
+Number of selected features: 1
+Maximum complexity of selected feature: 2
+2024-05-10 17:47:31,246 - Verifying learned sketch...
+Sketch cycles
+Instance: 1 p-3-17
+9 (instance index=3, state index=9, atoms={on(b2,b1), clear(b2), on-table(b3), arm-empty(), clear(b3), on-table(b1)})
+14 (instance index=3, state index=14, atoms={on(b2,b1), clear(b2), holding(b3), on-table(b1)})
+14 (instance index=3, state index=14, atoms={on(b2,b1), clear(b2), holding(b3), on-table(b1)})
+2024-05-10 17:47:31,247 - ..done
+Smallest unsolved instance: 1
+Selected instances: [1]
+2024-05-10 17:47:31,247 - Iteration: 1
+     id: 1 name: p-3-17 num_states: 22 num_state_equivalences: 12
+2024-05-10 17:47:31,247 - Initializing DomainFeatureData...
+[t=3.18148s, 2505468 KB] Started generating base features of complexity 1.
+[t=3.18163s, 2505468 KB] Complexity 1:
+    b_nullary: 2
+    c_one_of: 1
+    c_top: 1
+    c_bot: 1
+    c_primitive: 3
+    r_primitive: 2
+    c_and: 0
+    c_not: 0
+    c_equal: 0
+    c_some: 0
+    c_all: 0
+    r_restrict: 0
+    r_and: 0
+    r_inverse: 0
+    r_transitive_closure: 0
+    b_empty: 0
+    n_count: 0
+    n_concept_distance: 0
+[t=3.18174s, 2505468 KB] Finished generating base features.
+[t=3.18177s, 2505468 KB] Started generating composite features. 
+[t=3.18189s, 2505468 KB] Complexity 2:
+Total concept elements: 10
+Total role elements: 4
+Total numerical elements: 6
+Total boolean elements: 4
+    b_nullary: 2
+    c_one_of: 1
+    c_top: 1
+    c_bot: 1
+    c_primitive: 3
+    r_primitive: 2
+    c_and: 0
+    c_not: 4
+    c_equal: 0
+    c_some: 0
+    c_all: 0
+    r_restrict: 0
+    r_and: 0
+    r_inverse: 1
+    r_transitive_closure: 1
+    b_empty: 2
+    n_count: 6
+    n_concept_distance: 0
+[t=3.18233s, 2505468 KB] Complexity 3:
+Total concept elements: 20
+Total role elements: 7
+Total numerical elements: 10
+Total boolean elements: 5
+    b_nullary: 2
+    c_one_of: 1
+    c_top: 1
+    c_bot: 1
+    c_primitive: 3
+    r_primitive: 2
+    c_and: 4
+    c_not: 4
+    c_equal: 1
+    c_some: 3
+    c_all: 2
+    r_restrict: 2
+    r_and: 0
+    r_inverse: 2
+    r_transitive_closure: 1
+    b_empty: 3
+    n_count: 10
+    n_concept_distance: 0
+[t=3.18285s, 2505468 KB] Complexity 4:
+Total concept elements: 44
+Total role elements: 9
+Total numerical elements: 24
+Total boolean elements: 10
+    b_nullary: 2
+    c_one_of: 1
+    c_top: 1
+    c_bot: 1
+    c_primitive: 3
+    r_primitive: 2
+    c_and: 12
+    c_not: 12
+    c_equal: 1
+    c_some: 7
+    c_all: 6
+    r_restrict: 2
+    r_and: 0
+    r_inverse: 4
+    r_transitive_closure: 1
+    b_empty: 8
+    n_count: 19
+    n_concept_distance: 5
+[t=3.18381s, 2505468 KB] Complexity 5:
+Total concept elements: 80
+Total role elements: 9
+Total numerical elements: 47
+Total boolean elements: 19
+    b_nullary: 2
+    c_one_of: 1
+    c_top: 1
+    c_bot: 1
+    c_primitive: 3
+    r_primitive: 2
+    c_and: 25
+    c_not: 26
+    c_equal: 1
+    c_some: 11
+    c_all: 11
+    r_restrict: 2
+    r_and: 0
+    r_inverse: 4
+    r_transitive_closure: 1
+    b_empty: 17
+    n_count: 37
+    n_concept_distance: 10
+[t=3.18574s, 2505468 KB] Complexity 6:
+Total concept elements: 146
+Total role elements: 9
+Total numerical elements: 86
+Total boolean elements: 33
+    b_nullary: 2
+    c_one_of: 1
+    c_top: 1
+    c_bot: 1
+    c_primitive: 3
+    r_primitive: 2
+    c_and: 59
+    c_not: 48
+    c_equal: 1
+    c_some: 13
+    c_all: 19
+    r_restrict: 2
+    r_and: 0
+    r_inverse: 4
+    r_transitive_closure: 1
+    b_empty: 31
+    n_count: 68
+    n_concept_distance: 18
+[t=3.18902s, 2505468 KB] Complexity 7:
+Total concept elements: 260
+Total role elements: 9
+Total numerical elements: 147
+Total boolean elements: 50
+    b_nullary: 2
+    c_one_of: 1
+    c_top: 1
+    c_bot: 1
+    c_primitive: 3
+    r_primitive: 2
+    c_and: 118
+    c_not: 79
+    c_equal: 1
+    c_some: 24
+    c_all: 32
+    r_restrict: 2
+    r_and: 0
+    r_inverse: 4
+    r_transitive_closure: 1
+    b_empty: 48
+    n_count: 113
+    n_concept_distance: 34
+[t=3.19515s, 2505468 KB] Complexity 8:
+Total concept elements: 447
+Total role elements: 9
+Total numerical elements: 241
+Total boolean elements: 76
+    b_nullary: 2
+    c_one_of: 1
+    c_top: 1
+    c_bot: 1
+    c_primitive: 3
+    r_primitive: 2
+    c_and: 218
+    c_not: 148
+    c_equal: 1
+    c_some: 33
+    c_all: 41
+    r_restrict: 2
+    r_and: 0
+    r_inverse: 4
+    r_transitive_closure: 1
+    b_empty: 74
+    n_count: 191
+    n_concept_distance: 50
+[t=3.20594s, 2505468 KB] Complexity 9:
+Total concept elements: 735
+Total role elements: 9
+Total numerical elements: 393
+Total boolean elements: 110
+    b_nullary: 2
+    c_one_of: 1
+    c_top: 1
+    c_bot: 1
+    c_primitive: 3
+    r_primitive: 2
+    c_and: 392
+    c_not: 228
+    c_equal: 1
+    c_some: 42
+    c_all: 66
+    r_restrict: 2
+    r_and: 0
+    r_inverse: 4
+    r_transitive_closure: 1
+    b_empty: 108
+    n_count: 318
+    n_concept_distance: 75
+[t=3.20605s, 2505468 KB] Finished generating composite features.
+Features generated: 503
+Features after 0/1 pruning (incomplete): 360
+Features after soft changes pruning (incomplete): 352
+Features after relevant changes pruning (complete): 245
+
+2024-05-10 17:47:31,474 - ..done
+2024-05-10 17:47:31,474 - Constructing PerStateFeatureValuations...
+2024-05-10 17:47:31,476 - ..done
+2024-05-10 17:47:31,476 - Constructing StatePairEquivalenceDatas...
+2024-05-10 17:47:31,534 - ..done
+2024-05-10 17:47:31,534 - Constructing TupleGraphEquivalences...
+Tuple graph equivalence construction statistics:
+Num nodes: 36
+2024-05-10 17:47:31,535 - ..done
+2024-05-10 17:47:31,535 - Minimizing TupleGraphEquivalences...
+Tuple graph equivalence minimization statistics:
+Num orig nodes: 36
+Num kept nodes: 34
+2024-05-10 17:47:31,535 - ..done
+Number of initial D2 facts: 14
+Number of D2 facts: 14 of 1156
+2024-05-10 17:47:31,651 - Grounding Logic Program...
+2024-05-10 17:47:31,746 - ..done
+2024-05-10 17:47:31,746 - Solving Logic Program...
+2024-05-10 17:47:31,755 - ..done
+Clingo statistics:
+{'call': 0.0, 'result': 1.0, 'signal': 0.0, 'exhausted': 1.0, 'costs': [3.0], 'lower': [3.0], 'concurrency': 32.0, 'winner': 5.0, 'times': {'total': 0.21955394744873047, 'cpu': 0.23586399999999985, 'solve': 0.004513978958129883, 'unsat': 0.0015728473663330078, 'sat': 0.001990079879760742}, 'models': {'enumerated': 4.0, 'optimal': 1.0}}
+Solution cost: [3.0]
+Total time: 0.21955394744873047
+CPU time: 0.23586399999999985
+Solve time: 0.004513978958129883
+2024-05-10 17:47:31,811 - Learned the following sketch:
+(:policy
+(:booleans )
+(:numericals (f18 "n_count(r_primitive(on,0,1))"))
+(:rule (:conditions (:c_n_gt f18)) (:effects (:e_n_dec f18)))
+(:rule (:conditions (:c_n_eq f18)) (:effects (:e_n_bot f18)))
+(:rule (:conditions (:c_n_gt f18)) (:effects (:e_n_bot f18)))
+(:rule (:conditions (:c_n_gt f18)) (:effects (:e_n_inc f18)))
+)
+Numer of sketch rules: 4
+Number of selected features: 1
+Maximum complexity of selected feature: 2
+Sketch cycles
+Instance: 1 p-3-17
+0 (instance index=3, state index=0, atoms={on-table(b2), on(b3,b1), arm-empty(), on(b1,b2), clear(b3)})
+0 (instance index=3, state index=0, atoms={on-table(b2), on(b3,b1), arm-empty(), on(b1,b2), clear(b3)})
+Number of unsatisfied D2 facts: 43
+Number of D2 facts: 57 of 1156
+2024-05-10 17:47:32,196 - Grounding Logic Program...
+2024-05-10 17:47:32,299 - ..done
+2024-05-10 17:47:32,299 - Solving Logic Program...
+2024-05-10 17:47:32,310 - ..done
+Clingo statistics:
+{'call': 0.0, 'result': 1.0, 'signal': 0.0, 'exhausted': 1.0, 'costs': [4.0], 'lower': [4.0], 'concurrency': 32.0, 'winner': 5.0, 'times': {'total': 0.497081995010376, 'cpu': 0.5234609999999997, 'solve': 0.004412174224853516, 'unsat': 0.0013020038604736328, 'sat': 0.002051115036010742}, 'models': {'enumerated': 6.0, 'optimal': 1.0}}
+Solution cost: [4.0]
+Total time: 0.497081995010376
+CPU time: 0.5234609999999997
+Solve time: 0.004412174224853516
+2024-05-10 17:47:32,370 - Learned the following sketch:
+(:policy
+(:booleans )
+(:numericals (f232 "n_count(c_not(c_primitive(clear,0)))"))
+(:rule (:conditions (:c_n_gt f232)) (:effects (:e_n_bot f232)))
+(:rule (:conditions (:c_n_gt f232)) (:effects (:e_n_dec f232)))
+)
+Numer of sketch rules: 2
+Number of selected features: 1
+Maximum complexity of selected feature: 3
+Sketch cycles
+Instance: 1 p-3-17
+0 (instance index=3, state index=0, atoms={on-table(b2), on(b3,b1), arm-empty(), on(b1,b2), clear(b3)})
+0 (instance index=3, state index=0, atoms={on-table(b2), on(b3,b1), arm-empty(), on(b1,b2), clear(b3)})
+Number of unsatisfied D2 facts: 112
+Number of D2 facts: 169 of 1156
+2024-05-10 17:47:32,741 - Grounding Logic Program...
+2024-05-10 17:47:32,883 - ..done
+2024-05-10 17:47:32,884 - Solving Logic Program...
+2024-05-10 17:47:32,898 - ..done
+Clingo statistics:
+{'call': 0.0, 'result': 1.0, 'signal': 0.0, 'exhausted': 1.0, 'costs': [6.0], 'lower': [6.0], 'concurrency': 32.0, 'winner': 22.0, 'times': {'total': 0.5266621112823486, 'cpu': 0.5730250000000003, 'solve': 0.005504131317138672, 'unsat': 0.0007791519165039062, 'sat': 0.004082918167114258}, 'models': {'enumerated': 6.0, 'optimal': 1.0}}
+Solution cost: [6.0]
+Total time: 0.5266621112823486
+CPU time: 0.5730250000000003
+Solve time: 0.005504131317138672
+2024-05-10 17:47:32,961 - Learned the following sketch:
+(:policy
+(:booleans )
+(:numericals (f243 "n_count(c_primitive(holding,0))") (f18 "n_count(r_primitive(on,0,1))"))
+(:rule (:conditions (:c_n_eq f243) (:c_n_gt f18)) (:effects (:e_n_inc f243) (:e_n_dec f18)))
+(:rule (:conditions (:c_n_gt f243) (:c_n_eq f18)) (:effects (:e_n_dec f243) (:e_n_bot f18)))
+(:rule (:conditions (:c_n_gt f243) (:c_n_gt f18)) (:effects (:e_n_dec f243) (:e_n_bot f18)))
+)
+Numer of sketch rules: 3
+Number of selected features: 2
+Maximum complexity of selected feature: 2
+2024-05-10 17:47:32,961 - Verifying learned sketch...
+2024-05-10 17:47:32,969 - ..done
+Sketch solves all instances!
+================================================================================
+2024-05-10 17:47:32,969 - Summary:
+LearningStatistics:
+    num_training_instances: 4
+    num_selected_training_instances (|P|): 1
+    num_states_in_selected_training_instances (|S|): 12
+    num_states_in_complete_selected_training_instances (|S|): 22
+    num_features_in_pool (|F|): 245
+================================================================================
+Resulting sketch:
+(:policy
+(:booleans )
+(:numericals (f243 "n_count(c_primitive(holding,0))") (f18 "n_count(r_primitive(on,0,1))"))
+(:rule (:conditions (:c_n_eq f243) (:c_n_gt f18)) (:effects (:e_n_inc f243) (:e_n_dec f18)))
+(:rule (:conditions (:c_n_gt f243) (:c_n_eq f18)) (:effects (:e_n_dec f243) (:e_n_bot f18)))
+(:rule (:conditions (:c_n_gt f243) (:c_n_gt f18)) (:effects (:e_n_dec f243) (:e_n_bot f18)))
+)
+Numer of sketch rules: 3
+Number of selected features: 2
+Maximum complexity of selected feature: 2
+================================================================================
+Resulting minimized sketch:
+(:policy
+(:booleans )
+(:numericals (f243 "n_count(c_primitive(holding,0))") (f18 "n_count(r_primitive(on,0,1))"))
+(:rule (:conditions (:c_n_gt f243)) (:effects (:e_n_dec f243) (:e_n_bot f18)))
+(:rule (:conditions (:c_n_eq f243) (:c_n_gt f18)) (:effects (:e_n_inc f243) (:e_n_dec f18)))
+)
+Numer of sketch rules: 2
+Number of selected features: 2
+Maximum complexity of selected feature: 2
+================================================================================
+================================================================================
+Preprocessing time: 2 seconds.
+ASP time: 2 seconds.
+Verification time: 1 seconds.
+Total time: 4 seconds.
+Total memory: 0 GiB.
+Num states in training data before symmetry pruning: 30540
+Num states in training data after symmetry pruning: 86
+================================================================================
+

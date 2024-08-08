@@ -1,0 +1,10 @@
+(:policy
+(:booleans )
+(:numericals (f224 "n_count(c_primitive(boarded,0))") (f129 "n_count(c_some(r_primitive(origin,0,1),c_primitive(lift-at,0)))") (f252 "n_count(c_and(c_primitive(boarded,0),c_some(r_primitive(destin,0,1),c_primitive(lift-at,0))))"))
+(:rule (:conditions (:c_n_gt f224) (:c_n_gt f129)) (:effects (:e_n_inc f224) (:e_n_dec f129) (:e_n_bot f252)))
+(:rule (:conditions (:c_n_gt f224) (:c_n_gt f252)) (:effects (:e_n_dec f224) (:e_n_bot f129) (:e_n_dec f252)))
+(:rule (:conditions (:c_n_gt f129) (:c_n_eq f252)) (:effects (:e_n_inc f224) (:e_n_dec f129) (:e_n_bot f252)))
+(:rule (:conditions (:c_n_eq f224) (:c_n_eq f129) (:c_n_eq f252)) (:effects (:e_n_bot f224) (:e_n_inc f129) (:e_n_bot f252)))
+(:rule (:conditions (:c_n_gt f224) (:c_n_eq f129) (:c_n_eq f252)) (:effects (:e_n_bot f224) (:e_n_bot f129) (:e_n_inc f252)))
+(:rule (:conditions (:c_n_gt f224) (:c_n_eq f129) (:c_n_eq f252)) (:effects (:e_n_bot f224) (:e_n_inc f129) (:e_n_inc f252)))
+)

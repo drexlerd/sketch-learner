@@ -1,0 +1,87 @@
+digraph {
+rankdir="LR"
+s1[label="(instance index=0, state index=1, atoms={origin(p1,f2), origin(p0,f2), lift-at(f1)})"]
+s0[label="(instance index=0, state index=0, atoms={origin(p1,f2), origin(p0,f2), lift-at(f0)})"]
+s7[label="(instance index=0, state index=7, atoms={origin(p1,f2), boarded(p0), lift-at(f1)})"]
+s2[label="(instance index=0, state index=2, atoms={lift-at(f2), origin(p1,f2), origin(p0,f2)})"]
+s6[label="(instance index=0, state index=6, atoms={origin(p1,f2), boarded(p0), lift-at(f0)})"]
+s12[label="(instance index=0, state index=12, atoms={origin(p1,f2), served(p0), lift-at(f0)})"]
+s16[label="(instance index=0, state index=16, atoms={origin(p1,f2), served(p0), lift-at(f1)})"]
+s3[label="(instance index=0, state index=3, atoms={lift-at(f2), origin(p1,f2), boarded(p0)})"]
+s17[label="(instance index=0, state index=17, atoms={lift-at(f2), origin(p1,f2), served(p0)})"]
+s5[label="(instance index=0, state index=5, atoms={lift-at(f2), boarded(p1), boarded(p0)})"]
+s11[label="(instance index=0, state index=11, atoms={boarded(p1), boarded(p0), lift-at(f1)})"]
+s21[label="(instance index=0, state index=21, atoms={served(p0), boarded(p1), lift-at(f1)})"]
+s22[label="(instance index=0, state index=22, atoms={lift-at(f2), served(p0), boarded(p1)})"]
+s10[label="(instance index=0, state index=10, atoms={boarded(p1), boarded(p0), lift-at(f0)})"]
+s14[label="(instance index=0, state index=14, atoms={served(p0), boarded(p1), lift-at(f0)})"]
+s20[peripheries=2,label="(instance index=0, state index=20, atoms={served(p1), served(p0), lift-at(f0)})"]
+s26[peripheries=2,label="(instance index=0, state index=26, atoms={served(p1), lift-at(f2), served(p0)})"]
+s25[peripheries=2,label="(instance index=0, state index=25, atoms={served(p1), served(p0), lift-at(f1)})"]
+Dangling [ label = "", style = invis ]
+{ rank = same; Dangling }
+Dangling -> s0
+{ rank = same; s0}
+{ rank = same; s7,s2,s6}
+{ rank = same; s12,s16,s3}
+{ rank = same; s17,s5,s11}
+{ rank = same; s21,s22,s10}
+{ rank = same; s14}
+{ rank = same; s20,s26,s25}
+{
+s1->s2
+s1->s0
+s0->s2
+s0->s1
+}
+{
+s7->s6
+s7->s3
+s2->s1
+s2->s3
+s2->s0
+s6->s7
+s6->s12
+s6->s3
+}
+{
+s12->s17
+s12->s16
+s16->s12
+s16->s17
+s3->s7
+s3->s6
+s3->s5
+}
+{
+s17->s12
+s17->s22
+s17->s16
+s5->s11
+s5->s10
+s11->s5
+s11->s10
+}
+{
+s21->s22
+s21->s14
+s22->s14
+s22->s21
+s10->s14
+s10->s5
+s10->s11
+}
+{
+s14->s22
+s14->s21
+s14->s20
+}
+{
+s20->s26
+s20->s25
+s26->s20
+s26->s25
+s25->s20
+s25->s26
+}
+}
