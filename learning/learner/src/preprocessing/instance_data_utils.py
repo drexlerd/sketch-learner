@@ -94,44 +94,19 @@ def compute_instance_datas(domain_filepath: Path,
                            enable_dump_files: bool) -> Tuple[List[InstanceData], DomainData]:
     instance_datas: List[InstanceData] = []
 
-    state_space_options = mm.StateSpacesOptions()
-    state_space_options.state_space_options.max_num_states = max_num_states_per_instance
-    state_space_options.state_space_options.timeout_ms = max_time_per_instance
-    state_space_options.sort_ascending_by_num_states = True
-    state_spaces = mm.StateSpace.create(str(domain_filepath), [str(p) for p in instance_filepaths], state_space_options)
-    # Remove trivially solvable instances
-    instance_filespaths = []
-    num_ss_states = 0
-    for state_space in state_spaces:
-        if state_space.get_num_states() != state_space.get_num_goal_states():
-            instance_filespaths.append(state_space.get_problem().get_filepath())
-            num_ss_states += state_space.get_num_states()
-
     with change_dir("state_spaces", enable=enable_dump_files):
-        # 1. Create mimir StateSpace and GlobalFaithfulAbstraction
-        logging.info("Constructing GlobalFaithfulAbstractions...")
-        abstractions_options = mm.FaithfulAbstractionsOptions()
-        abstractions_options.fa_options.max_num_concrete_states = max_num_states_per_instance
-        abstractions_options.fa_options.max_num_abstract_states = max_num_states_per_instance
-        abstractions_options.fa_options.timeout_ms = max_time_per_instance
-        abstractions_options.fa_options.compute_complete_abstraction_mapping = True
-        # Does not work yet
-        # abstractions_options.fa_options.pruning_strategy = mm.ObjectGraphPruningStrategyEnum.StaticScc
-        abstractions_options.sort_ascending_by_num_states = True
-        abstractions = mm.GlobalFaithfulAbstraction.create(str(domain_filepath), [str(p) for p in instance_filepaths], abstractions_options)
-        logging.info("...done")
-        if len(abstractions) == 0:
-            return None * 3
-
+        # 1. Create mimir StateSpaces
         logging.info("Constructing StateSpaces...")
-        memories = []
-        for gfa in abstractions:
-            memories.append([gfa.get_problem(), gfa.get_pddl_factories(), gfa.get_aag(), gfa.get_ssg()])
         # We must not sort state spaces to match the sorting of gfas
         state_space_options = mm.StateSpacesOptions()
-        state_space_options.sort_ascending_by_num_states = False
-        state_spaces = mm.StateSpace.create(memories, state_space_options)
+        state_space_options.state_space_options.max_num_states = max_num_states_per_instance
+        state_space_options.sort_ascending_by_num_states = True
+        state_spaces = mm.StateSpace.create(str(domain_filepath), [str(p) for p in instance_filepaths], state_space_options)
+        # Remove trivially solvable instances
+        state_spaces = [state_space for state_space in state_spaces if state_space.get_num_states() != state_space.get_num_goal_states()]
         logging.info("...done")
+        if len(state_spaces) == 0:
+            return None * 3
 
         # 2. Create DomainData
         vocabulary_info = create_vocabulary_info(state_spaces[0].get_aag().get_problem().get_domain())
@@ -139,8 +114,7 @@ def compute_instance_datas(domain_filepath: Path,
 
         # 3. Create InstanceData
         instance_idx = 0
-        assert len(state_spaces) == len(abstractions)
-        for mimir_ss, gfa in zip(state_spaces, abstractions):
+        for mimir_ss in state_spaces:
             # Ensure that unsolvable instances were removed
             assert(mimir_ss.get_num_goal_states())
 
@@ -150,33 +124,26 @@ def compute_instance_datas(domain_filepath: Path,
             # 3.2 Create dlplan state space
             dlplan_ss = create_dlplan_statespace(instance_info, mimir_ss, fluent_atom_id_to_dlplan_atom, derived_atom_id_to_dlplan_atom)
 
-            print(mimir_ss.get_problem().get_filepath(), gfa.get_problem().get_filepath())
-
-            # 3.3 Create mapping from concrete states to global faithful abstract states
-            ss_state_idx_to_gfa_state_idx = dict()
-            for ss_state_idx, sp_state in enumerate(mimir_ss.get_states()):
-                ss_state_idx_to_gfa_state_idx[ss_state_idx] = gfa.get_abstract_state_index(sp_state.get_state())
+            print(mimir_ss.get_problem().get_filepath(), mimir_ss.get_problem().get_filepath())
 
             if enable_dump_files:
                 write_file(f"{instance_idx}.dot", dlplan_ss.to_dot(1))
 
             if disable_closed_Q:
-                initial_gfa_state_idxs = [gfa.get_initial_state(),]
+                initial_ss_state_idxs = [mimir_ss.get_initial_state(),]
             else:
-                initial_gfa_state_idxs = [state_idx for state_idx in range(gfa.get_num_states()) if gfa.is_alive_state(state_idx)]
+                initial_ss_state_idxs = [state_idx for state_idx in range(mimir_ss.get_num_states()) if mimir_ss.is_alive_state(state_idx)]
 
-            logging.info(f"Created InstanceData with num concrete states: {mimir_ss.get_num_states()} and num abstract states: {gfa.get_num_states()}")
-            instance_data = InstanceData(instance_idx, dlplan_core.DenotationsCaches(), mimir_ss.get_problem().get_filepath(), gfa, mimir_ss, dlplan_ss, ss_state_idx_to_gfa_state_idx, initial_gfa_state_idxs)
+            logging.info(f"Created InstanceData with num concrete states: {mimir_ss.get_num_states()} and num abstract states: {mimir_ss.get_num_states()}")
+            instance_data = InstanceData(instance_idx, dlplan_core.DenotationsCaches(), mimir_ss.get_problem().get_filepath(), mimir_ss, dlplan_ss, initial_ss_state_idxs)
             instance_datas.append(instance_data)
             instance_idx += 1
-
-    gfa_state_global_indices =  set()
-    for instance_data in instance_datas:
-        for gfa_state in instance_data.gfa.get_states():
-            gfa_state_global_indices.add(gfa_state.get_global_index())
-    num_gfa_states = len(gfa_state_global_indices)
 
     for instance_idx, instance_data in enumerate(instance_datas):
         assert instance_idx == instance_data.idx
 
-    return domain_data, instance_datas, num_ss_states, num_gfa_states
+    num_ss_states = 0
+    for state_space in state_spaces:
+        num_ss_states += state_space.get_num_states()
+
+    return domain_data, instance_datas, num_ss_states

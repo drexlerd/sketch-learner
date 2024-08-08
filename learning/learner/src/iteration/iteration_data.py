@@ -17,12 +17,10 @@ class IterationData:
     # Changes in each iterations
     instance_datas: List[InstanceData] = None
 
-    gfa_states: List[mm.GlobalFaithfulAbstractState] = None
-
     feature_pool: List[Feature] = None
-    gfa_state_global_idx_to_feature_evaluations: Dict[int, List[Union[bool, int]]] = None
+    instance_idx_to_ss_idx_to_feature_valuations: Dict[int, List[List[Union[bool, int]]]] = None
 
     state_pair_equivalences: List[dlplan_policy.Rule] = None
-    gfa_state_global_idx_to_state_pair_equivalence: Dict[int, StatePairEquivalence] = None
+    instance_idx_to_ss_idx_to_state_pair_equivalence: Dict[int, Dict[int, StatePairEquivalence]] = None
 
-    gfa_state_global_idx_to_tuple_graph_equivalence: Dict[int, TupleGraphEquivalence] = None
+    instance_idx_to_ss_idx_to_tuple_graph_equivalence: Dict[int, Dict[int, TupleGraphEquivalence]] = None

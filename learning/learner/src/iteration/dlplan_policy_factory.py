@@ -102,6 +102,7 @@ class D2sepDlplanPolicyFactory(DlplanPolicyFactory):
                 f_idx = symbol.arguments[0].number
                 dlplan_features.add(iteration_data.feature_pool[f_idx].dlplan_feature)
         rules = set()
+
         for symbol in symbols:
             if symbol.name == "good":
                 r_idx = symbol.arguments[0].number

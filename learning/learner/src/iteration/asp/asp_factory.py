@@ -34,17 +34,17 @@ class ASPFactory:
         self.ctl.add("numerical", ["n"], "numerical(n).")
         self.ctl.add("feature", ["f"], "feature(f).")
         self.ctl.add("complexity", ["f", "c"], "complexity(f,c).")
-        self.ctl.add("value", ["s","f","v"], "value(s,f,v).")
-        self.ctl.add("b_value", ["s","f","v"], "b_value(s,f,v).")
+        self.ctl.add("value", ["i","s","f","v"], "value(i,s,f,v).")
+        self.ctl.add("b_value", ["i","s","f","v"], "b_value(i,s,f,v).")
         # state space
-        self.ctl.add("state", ["s"], "state(s).")
-        self.ctl.add("initial", ["s"], "initial(s).")
-        self.ctl.add("solvable", ["s"], "solvable(s).")
-        self.ctl.add("unsolvable", ["s"], "unsolvable(s).")
-        self.ctl.add("goal", ["s"], "goal(s).")
-        self.ctl.add("nongoal", ["s"], "nongoal(s).")
-        self.ctl.add("alive", ["s"], "alive(s).")
-        self.ctl.add("expanded", ["s"], "expanded(s).")
+        self.ctl.add("state", ["i", "s"], "state(i,s).")
+        self.ctl.add("initial", ["i", "s"], "initial(i,s).")
+        self.ctl.add("solvable", ["i", "s"], "solvable(i,s).")
+        self.ctl.add("unsolvable", ["i", "s"], "unsolvable(i,s).")
+        self.ctl.add("goal", ["i", "s"], "goal(i,s).")
+        self.ctl.add("nongoal", ["i", "s"], "nongoal(i,s).")
+        self.ctl.add("alive", ["i", "s"], "alive(i,s).")
+        self.ctl.add("expanded", ["i", "s"], "expanded(i,s).")
         # rule equivalences
         self.ctl.add("feature_condition", ["r", "f", "v"], "feature_condition(r,f,v).")
         self.ctl.add("feature_effect", ["r", "f", "v"], "feature_effect(r,f,v).")
@@ -52,13 +52,13 @@ class ASPFactory:
         # d2-separation constraints
         self.ctl.add("d2_separate", ["r1", "r2"], "d2_separate(r1,r2).")
         # tuple graph
-        self.ctl.add("tuple", ["s", "t"], "tuple(s,t).")
-        self.ctl.add("contain", ["s", "t", "r"], "contain(s,t,r).")
-        self.ctl.add("cover", ["s1", "s2", "r"], "cover(s1,s2,r).")
-        self.ctl.add("t_distance", ["s", "t", "d"], "t_distance(s,t,d).")
-        self.ctl.add("d_distance", ["s", "r", "d"], "d_distance(s,r,d).")
-        self.ctl.add("r_distance", ["s", "r", "d"], "r_distance(s,r,d).")
-        self.ctl.add("s_distance", ["s1", "s2", "d"], "s_distance(s1,s2,d).")
+        self.ctl.add("tuple", ["i", "s", "t"], "tuple(i,s,t).")
+        self.ctl.add("contain", ["i", "s", "t", "r"], "contain(i,s,t,r).")
+        self.ctl.add("cover", ["i", "s1", "s2", "r"], "cover(i,s1,s2,r).")
+        self.ctl.add("t_distance", ["i", "s", "t", "d"], "t_distance(i,s,t,d).")
+        self.ctl.add("d_distance", ["i", "s", "r", "d"], "d_distance(i,s,r,d).")
+        self.ctl.add("r_distance", ["i", "s", "r", "d"], "r_distance(i,s,r,d).")
+        self.ctl.add("s_distance", ["i", "s1", "s2", "d"], "s_distance(i,s1,s2,d).")
 
         if encoding_type == EncodingType.D2:
             self.ctl.load(str(LIST_DIR / "sketch-d2.lp"))
@@ -70,55 +70,48 @@ class ASPFactory:
         if enable_goal_separating_features:
             self.ctl.load(str(LIST_DIR / "goal_separation.lp"))
 
+    def _create_initial_fact(self, instance_id: int, state_id: int):
+        return ("initial", [Number(instance_id), Number(state_id)])
 
-    def _create_initial_fact(self, gfa_state_global_idx: int):
-        return ("initial", (Number(gfa_state_global_idx),))
+    def _create_state_fact(self, instance_id: int, state_id: int):
+        return ("state", [Number(instance_id), Number(state_id)])
 
-    def _create_state_fact(self, gfa_state_global_idx: int):
-        return ("state", (Number(gfa_state_global_idx),))
+    def _create_solvable_fact(self, instance_id: int, state_id: int):
+        return ("solvable", [Number(instance_id), Number(state_id)])
 
-    def _create_solvable_fact(self, gfa_state_global_idx: int):
-        return ("solvable", (Number(gfa_state_global_idx),))
+    def _create_unsolvable_fact(self, instance_id: int, state_id: int):
+        return ("unsolvable", [Number(instance_id), Number(state_id)])
 
-    def _create_unsolvable_fact(self, gfa_state_global_idx: int):
-        return ("unsolvable", (Number(gfa_state_global_idx),))
+    def _create_goal_fact(self, instance_id: int, state_id: int):
+        return ("goal", [Number(instance_id), Number(state_id)])
 
-    def _create_goal_fact(self, gfa_state_global_idx: int):
-        return ("goal", (Number(gfa_state_global_idx),))
+    def _create_nongoal_fact(self, instance_id: int, state_id: int):
+        return ("nongoal", [Number(instance_id), Number(state_id)])
 
-    def _create_nongoal_fact(self, gfa_state_global_idx: int):
-        return ("nongoal", (Number(gfa_state_global_idx),))
+    def _create_alive_fact(self, instance_id: int, state_id: int):
+        return ("alive", [Number(instance_id), Number(state_id)])
 
-    def _create_alive_fact(self, gfa_state_global_idx: int):
-        return ("alive", (Number(gfa_state_global_idx),))
-
-    def _make_state_space_facts(self,
-                                preprocessing_data: PreprocessingData,
+    def _make_state_space_facts(self, preprocessing_data: PreprocessingData,
                                 iteration_data: IterationData):
         """ Create facts that encode the state space.
         """
-        facts = set()
+        facts = []
         for instance_data in iteration_data.instance_datas:
-            for initial_gfa_idx in instance_data.initial_gfa_state_idxs:
-                initial_gfa_state = instance_data.gfa.get_states()[initial_gfa_idx]
-                initial_gfa_state_global_idx = initial_gfa_state.get_global_index()
-                facts.add(self._create_initial_fact(initial_gfa_state_global_idx))
-            for gfa_state in instance_data.gfa.get_states():
-                gfa_state_global_idx = gfa_state.get_global_index()
-                gfa_state_idx = gfa_state.get_index()
-                facts.add(self._create_state_fact(gfa_state_global_idx))
-                if instance_data.gfa.is_deadend_state(gfa_state_idx):
-                    facts.add(self._create_unsolvable_fact(gfa_state_global_idx))
+            for s_idx in instance_data.initial_ss_state_idxs:
+                facts.append(self._create_initial_fact(instance_data.idx, s_idx))
+            for s_idx in range(instance_data.mimir_ss.get_num_states()):
+                facts.append(self._create_state_fact(instance_data.idx, s_idx))
+                if not instance_data.mimir_ss.is_deadend_state(s_idx):
+                    facts.append(self._create_solvable_fact(instance_data.idx, s_idx))
                 else:
-                    facts.add(self._create_solvable_fact(gfa_state_global_idx))
-                if instance_data.gfa.is_goal_state(gfa_state_idx):
-                    facts.add(self._create_goal_fact(gfa_state_global_idx))
+                    facts.append(self._create_unsolvable_fact(instance_data.idx, s_idx))
+                if instance_data.mimir_ss.is_goal_state(s_idx):
+                    facts.append(self._create_goal_fact(instance_data.idx, s_idx))
                 else:
-                    facts.add(self._create_nongoal_fact(gfa_state_global_idx))
-                if instance_data.gfa.is_alive_state(gfa_state_idx):
-                    facts.add(self._create_alive_fact(gfa_state_global_idx))
+                    facts.append(self._create_nongoal_fact(instance_data.idx, s_idx))
+                if instance_data.mimir_ss.is_alive_state(s_idx):
+                    facts.append(self._create_alive_fact(instance_data.idx, s_idx))
         return sorted(list(facts))
-
 
     def _create_feature_fact(self, f_idx: int):
         return ("feature", (Number(f_idx),))
@@ -146,15 +139,14 @@ class ASPFactory:
                 facts.append(self._create_numerical_fact(f_idx))
         return facts
 
+    def _create_value_fact(self, instance_id: int, s_idx: int, f_idx: int, val: Union[bool, int]):
+        return ("value", [Number(instance_id), Number(s_idx), Number(f_idx), Number(val)])
 
-    def _create_value_fact(self, gfa_state_id: int, f_idx: int, val: Union[bool, int]):
-        return ("value", (Number(gfa_state_id), Number(f_idx), Number(val)))
-
-    def _create_b_value_fact(self, dlplan_feature: Union[dlplan_core.Boolean, dlplan_core.Numerical], gfa_state_id: int, f_idx: int, val: Union[bool, int]):
+    def _create_b_value_fact(self, dlplan_feature: Union[dlplan_core.Boolean, dlplan_core.Numerical], instance_id: int, s_idx: int, f_idx: int, val: Union[bool, int]):
         if isinstance(dlplan_feature, dlplan_core.Boolean):
-            return ("b_value", (Number(gfa_state_id), Number(f_idx), Number(1 if val else 0)))
+            return ("b_value", [Number(instance_id), Number(s_idx), Number(f_idx), Number(val)])
         elif isinstance(dlplan_feature, dlplan_core.Numerical):
-            return ("b_value", (Number(gfa_state_id), Number(f_idx), Number(1 if val > 0 else 0)))
+            return ("b_value", [Number(instance_id), Number(s_idx), Number(f_idx), Number(1 if val > 0 else 0)])
         else:
             raise RuntimeError("Expected Boolean or Numerical feature.")
 
@@ -164,10 +156,12 @@ class ASPFactory:
         facts = []
         # Instance feature valuation facts
         feature_pool = iteration_data.feature_pool
-        for gfa_state_id, feature_valuations in iteration_data.gfa_state_global_idx_to_feature_evaluations.items():
-            for f_idx, (feature, val) in enumerate(zip(feature_pool, feature_valuations)):
-                facts.append(self._create_value_fact(gfa_state_id, f_idx, val))
-                facts.append(self._create_b_value_fact(feature.dlplan_feature, gfa_state_id, f_idx, val))
+        for instance_data in iteration_data.instance_datas:
+            for mimir_ss_state_idx in range(instance_data.mimir_ss.get_num_states()):
+                feature_valuations = iteration_data.instance_idx_to_ss_idx_to_feature_valuations[instance_data.idx][mimir_ss_state_idx]
+                for f_idx, (feature, val) in enumerate(zip(feature_pool, feature_valuations)):
+                    facts.append(self._create_value_fact(instance_data.idx, mimir_ss_state_idx, f_idx, val))
+                    facts.append(self._create_b_value_fact(feature.dlplan_feature, instance_data.idx, mimir_ss_state_idx, f_idx, val))
         return facts
 
 
@@ -202,11 +196,11 @@ class ASPFactory:
         else:
             raise RuntimeError(f"Cannot parse effect {str(effect)}")
 
-    def _create_r_distance_fact(self, gfa_state_id: int, r_idx: int, d: int):
-        return ("r_distance", (Number(gfa_state_id), Number(r_idx), Number(d)))
+    def _create_r_distance_fact(self, instance_id: int, s_idx: int, r_idx: int, d: int):
+        return ("r_distance", [Number(instance_id), Number(s_idx), Number(r_idx), Number(d)])
 
-    def _create_cover_fact(self, gfa_state_id: int, gfa_state_prime_id: int, r_idx: int):
-        return ("cover", (Number(gfa_state_id), Number(gfa_state_prime_id), Number(r_idx)))
+    def _create_cover_fact(self, instance_id: int, s_idx: int, s_prime_idx: int, r_idx: int):
+        return ("cover", [Number(instance_id), Number(s_idx), Number(s_prime_idx), Number(r_idx)])
 
     def _make_state_pair_equivalence_data_facts(self,
                                                 preprocessing_data: PreprocessingData,
@@ -222,67 +216,59 @@ class ASPFactory:
                 f_idx = int(effect.get_named_element().get_key()[1:])
                 facts.append(self._create_feature_effect_fact(effect, r_idx, f_idx))
         # State pair equivalence facts
-        for gfa_state_id, state_pair_equivalence in iteration_data.gfa_state_global_idx_to_state_pair_equivalence.items():
-            for r_idx, d in state_pair_equivalence.r_idx_to_closest_subgoal_distance.items():
-                facts.append(self._create_r_distance_fact(gfa_state_id, r_idx, d))
-            for r_idx, gfa_state_prime_ids in state_pair_equivalence.r_idx_to_subgoal_gfa_state_ids.items():
-                for gfa_state_prime_id in gfa_state_prime_ids:
-                    facts.append(self._create_cover_fact(gfa_state_id, gfa_state_prime_id, r_idx))
+        for instance_data in iteration_data.instance_datas:
+            for mimir_ss_state_idx, state_pair_equivalence in iteration_data.instance_idx_to_ss_idx_to_state_pair_equivalence[instance_data.idx].items():
+                for r_idx, d in state_pair_equivalence.r_idx_to_closest_subgoal_distance.items():
+                    facts.append(self._create_r_distance_fact(instance_data.idx, mimir_ss_state_idx, r_idx, d))
+                for r_idx, gfa_state_prime_ids in state_pair_equivalence.r_idx_to_subgoal_gfa_state_ids.items():
+                    for gfa_state_prime_id in gfa_state_prime_ids:
+                        facts.append(self._create_cover_fact(instance_data.idx, mimir_ss_state_idx, gfa_state_prime_id, r_idx))
         return facts
 
+    def _create_tuple_fact(self, instance_id: int, s_idx: int, t_idx: int):
+        return ("tuple", [Number(instance_id), Number(s_idx), Number(t_idx)])
 
-    def _create_tuple_fact(self, gfa_state_global_idx: int, t_idx: int):
-        return ("tuple", (Number(gfa_state_global_idx), Number(t_idx)))
+    def _create_contain_fact(self, instance_id: int, s_idx: int, t_idx: int, r_idx: int):
+        return ("contain", [Number(instance_id), Number(s_idx), Number(t_idx), Number(r_idx)])
 
-    def _create_contain_fact(self, gfa_state_global_idx: int, t_idx: int, r_idx: int):
-        return ("contain", (Number(gfa_state_global_idx), Number(t_idx), Number(r_idx)))
+    def _create_t_distance_fact(self, instance_id: int, s_idx: int, t_idx: int, d: int):
+        return ("t_distance", [Number(instance_id), Number(s_idx), Number(t_idx), Number(d)])
 
-    def _create_t_distance_fact(self, gfa_state_global_idx: int, t_idx: int, d: int):
-        return ("t_distance", (Number(gfa_state_global_idx), Number(t_idx), Number(d)))
-
-    def _create_d_distance_fact(self, gfa_state_global_idx: int, r_idx: int, d: int):
-        return ("d_distance", (Number(gfa_state_global_idx), Number(r_idx), Number(d)))
+    def _create_d_distance_fact(self, instance_id: int, s_idx: int, r_idx: int, d: int):
+        return ("d_distance", [Number(instance_id), Number(s_idx), Number(r_idx), Number(d)])
 
     def _make_tuple_graph_equivalence_facts(self,
                                             preprocessing_data: PreprocessingData,
                                             iteration_data: IterationData):
         facts = []
-        for gfa_state_global_idx, tuple_graph_equivalence in iteration_data.gfa_state_global_idx_to_tuple_graph_equivalence.items():
-            for t_idx, r_idxs in tuple_graph_equivalence.t_idx_to_r_idxs.items():
-                facts.append(self._create_tuple_fact(gfa_state_global_idx, t_idx))
-                for r_idx in r_idxs:
-                    facts.append(self._create_contain_fact(gfa_state_global_idx, t_idx, r_idx))
-            for t_idx, d in tuple_graph_equivalence.t_idx_to_distance.items():
-                facts.append(self._create_t_distance_fact(gfa_state_global_idx, t_idx, d))
-            for r_idx, d in tuple_graph_equivalence.r_idx_to_deadend_distance.items():
-                facts.append(self._create_d_distance_fact(gfa_state_global_idx, r_idx, d))
+        for instance_data in iteration_data.instance_datas:
+            for mimir_ss_state_idx, tuple_graph_equivalence in iteration_data.instance_idx_to_ss_idx_to_tuple_graph_equivalence[instance_data.idx].items():
+                for t_idx, r_idxs in tuple_graph_equivalence.t_idx_to_r_idxs.items():
+                    facts.append(self._create_tuple_fact(instance_data.idx, mimir_ss_state_idx, t_idx))
+                    for r_idx in r_idxs:
+                        facts.append(self._create_contain_fact(instance_data.idx, mimir_ss_state_idx, t_idx, r_idx))
+                for t_idx, d in tuple_graph_equivalence.t_idx_to_distance.items():
+                    facts.append(self._create_t_distance_fact(instance_data.idx, mimir_ss_state_idx, t_idx, d))
+                for r_idx, d in tuple_graph_equivalence.r_idx_to_deadend_distance.items():
+                    facts.append(self._create_d_distance_fact(instance_data.idx, mimir_ss_state_idx, r_idx, d))
         return facts
 
 
-    def _create_s_distance_fact(self, gfa_state_global_idx: int, gfa_state_prime_id: int, d: int):
-        return ("s_distance", (Number(gfa_state_global_idx), Number(gfa_state_prime_id), Number(d)))
+    def _create_s_distance_fact(self, instance_id: int, s_idx: int, s_prime_idx: int, d: int):
+        return ("s_distance", [Number(instance_id), Number(s_idx), Number(s_prime_idx), Number(d)])
 
     def _make_tuple_graph_facts(self,
                                 preprocessing_data: PreprocessingData,
                                 iteration_data: IterationData):
         facts = []
-        for gfa_state in iteration_data.gfa_states:
-            instance_idx = gfa_state.get_faithful_abstraction_index()
-            instance_data = preprocessing_data.instance_datas[instance_idx]
+        for instance_data in iteration_data.instance_datas:
+            for mimir_ss_state_idx, tuple_graph in preprocessing_data.ss_state_idx_to_tuple_graph[instance_data.idx].items():
+                tuple_graph_states_by_distance = tuple_graph.get_states_grouped_by_distance()
 
-            gfa_state_global_idx = gfa_state.get_global_index()
-            gfa_state_idx = instance_data.gfa.get_abstract_state_index(gfa_state_global_idx)
-            if instance_data.gfa.is_deadend_state(gfa_state_idx):
-                continue
-
-            tuple_graph = preprocessing_data.gfa_state_global_idx_to_tuple_graph[gfa_state_global_idx]
-            tuple_graph_states_by_distance = tuple_graph.get_states_grouped_by_distance()
-
-            for s_distance, mimir_ss_states_prime in enumerate(tuple_graph_states_by_distance):
-                for mimir_ss_state_prime in mimir_ss_states_prime:
-                    gfa_state_prime = preprocessing_data.state_finder.get_gfa_state_from_ss_state_idx(instance_idx, instance_data.mimir_ss.get_state_index(mimir_ss_state_prime))
-                    gfa_state_prime_global_idx = gfa_state_prime.get_global_index()
-                    facts.append(self._create_s_distance_fact(gfa_state_global_idx, gfa_state_prime_global_idx, s_distance))
+                for s_distance, mimir_ss_states_prime in enumerate(tuple_graph_states_by_distance):
+                    for mimir_ss_state_prime in mimir_ss_states_prime:
+                        mimir_ss_state_prime_idx = instance_data.mimir_ss.get_state_index(mimir_ss_state_prime)
+                        facts.append(self._create_s_distance_fact(instance_data.idx, mimir_ss_state_idx, mimir_ss_state_prime_idx, s_distance))
 
         return facts
 
@@ -307,30 +293,23 @@ class ASPFactory:
                               iteration_data: IterationData):
         """ T_0 facts """
         facts = set()
-        for gfa_state in iteration_data.gfa_states:
-            instance_idx = gfa_state.get_faithful_abstraction_index()
-            instance_data = preprocessing_data.instance_datas[instance_idx]
+        for instance_data in iteration_data.instance_datas:
+            for mimir_ss_state_idx, tuple_graph in preprocessing_data.ss_state_idx_to_tuple_graph[instance_data.idx].items():
+                tuple_graph_vertices_by_distance = tuple_graph.get_vertices_grouped_by_distance()
 
-            if instance_data.gfa.is_deadend_state(gfa_state.get_faithful_abstract_state_index()):
-                continue
+                equivalences = set()
 
-            gfa_state_global_idx = gfa_state.get_global_index()
-            tuple_graph = preprocessing_data.gfa_state_global_idx_to_tuple_graph[gfa_state_global_idx]
-            tuple_graph_vertices_by_distance = tuple_graph.get_vertices_grouped_by_distance()
+                for tuple_vertex_group in tuple_graph_vertices_by_distance:
+                    for tuple_vertex in tuple_vertex_group:
+                        for mimir_ss_state_prime in tuple_vertex.get_states():
+                            mimir_ss_state_prime_idx = instance_data.mimir_ss.get_state_index(mimir_ss_state_prime)
 
-            equivalences = set()
+                            equivalences.add(iteration_data.instance_idx_to_ss_idx_to_state_pair_equivalence[instance_data.idx][mimir_ss_state_idx].subgoal_gfa_state_id_to_r_idx[mimir_ss_state_prime_idx])
 
-            for tuple_vertex_group in tuple_graph_vertices_by_distance:
-                for tuple_vertex in tuple_vertex_group:
-                    for mimir_ss_state_prime in tuple_vertex.get_states():
-                        gfa_state_prime = preprocessing_data.state_finder.get_gfa_state_from_ss_state_idx(instance_idx, instance_data.mimir_ss.get_state_index(mimir_ss_state_prime))
-                        gfa_state_prime_global_idx = gfa_state_prime.get_global_index()
-                        equivalences.add(iteration_data.gfa_state_global_idx_to_state_pair_equivalence[gfa_state_global_idx].subgoal_gfa_state_id_to_r_idx[gfa_state_prime_global_idx])
-
-            for i, eq_1 in enumerate(equivalences):
-                for j, eq_2 in enumerate(equivalences):
-                    if i < j:
-                        facts.add(self._create_d2_separate_fact(eq_1, eq_2))
+                for i, eq_1 in enumerate(equivalences):
+                    for j, eq_2 in enumerate(equivalences):
+                        if i < j:
+                            facts.add(self._create_d2_separate_fact(eq_1, eq_2))
         return facts
 
     def make_unsatisfied_d2_facts(self, iteration_data: IterationData, symbols: List[Symbol]):

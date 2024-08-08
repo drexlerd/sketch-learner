@@ -35,49 +35,49 @@ e_satisfied(R, F, C) :- e_b_unk(R, F), boolean(F), rule(R), state_pair_class(C).
 
 %%%%%%%%%% C2.1 %%%%%%%%%%
 % Generate subgoal distance and subgoal for r_reachable state.
-{ sat_cond(S, R) : rule(R) } != 0 :- r_reachable(S), nongoal(S).
+{ sat_cond(I, S, R) : rule(R) } != 0 :- r_reachable(I, S), nongoal(I, S).
 
 %%%%%%%%%% C2.2 %%%%%%%%%%
-{ subgoal_distance(S, D, R) : t_distance(S, _, D) } != 0 :- sat_cond(S, R), r_reachable(S), nongoal(S).
+{ subgoal_distance(I, S, D, R) : t_distance(I, S, _, D) } != 0 :- sat_cond(I, S, R), r_reachable(I, S), nongoal(I, S).
 
 %%%%%%%%%% C2.3 %%%%%%%%%%
 % Define initial state to be r_reachable
-r_reachable(S) :- initial(S).
+r_reachable(I, S) :- initial(I, S).
 
 %%%%%%%%%% C2.4 %%%%%%%%%%
-r_reachable(S') :- D = D', r_reachable(S), sat_pair(S, S', R), subgoal_distance(S, D, R), s_distance(S, S', D).
-%r_reachable(S') :- r_reachable(S), sat_pair(S, S', R).
+r_reachable(I, S') :- D = D', r_reachable(I, S), sat_pair(I, S, S', R), subgoal_distance(I, S, D, R), s_distance(I, S, S', D).
+%r_reachable(I, S') :- r_reachable(I, S), sat_pair(I, S, S', R).
 
 %%% unable to bound width of unsolvable state.
-:- unsolvable(S), r_reachable(S).
+:- unsolvable(I, S), r_reachable(I, S).
 
 %%%%%%%%%% C3.1 %%%%%%%%%%
-{ subgoal(S, T, R) : t_distance(S, T, D) } != 0 :- subgoal_distance(S, D, R), r_reachable(S).
+{ subgoal(I, S, T, R) : t_distance(I, S, T, D) } != 0 :- subgoal_distance(I, S, D, R), r_reachable(I, S).
 
 %%%%%%%%%% C4.1 %%%%%%%%%%
 % Require that all equivalence classes C underlying a tuple T of subproblem P[S] are good, effectively bounding the width of P[S]
-:- not sat_rule(R, C), subgoal(S, T, R), contain(S, T, C), r_reachable(S).
+:- not sat_rule(R, C), subgoal(I, S, T, R), contain(I, S, T, C), r_reachable(I, S).
 
 %%%%%%%%%% C6.1 %%%%%%%%%%
 % (Optimal-width): Require solvable states S' closer than subgoal to not be assigned to any rule.
-:- D < D', r_distance(S, C, D), sat_rule(R, C), subgoal_distance(S, D', R), nongoal(S).
+:- D < D', r_distance(I, S, C, D), sat_rule(R, C), subgoal_distance(I, S, D', R), nongoal(I, S).
 
 %%%%%%%%%% C7.1 %%%%%%%%%%
 % Define state pair equivalences that are compatible with rules.
 sat_rule(R, C) :- { feature(F) : not c_satisfied(R, F, C), select(F);
      feature(F) : not e_satisfied(R, F, C), select(F) } = 0, rule(R), state_pair_class(C).
 % Define state pairs that are compatible with rules.
-sat_pair(S, S', R) :- sat_rule(R, C), cover(S, S', C), nongoal(S).
+sat_pair(I, S, S', R) :- sat_rule(R, C), cover(I, S, S', C), nongoal(I, S).
 
 %%%%%%%%%% C7.2 %%%%%%%%%%
-sat_cond(S, R) :- { feature(F) : not c_satisfied(R, F, C), select(F) } = 0, rule(R), state_pair_class(C), cover(S, _, C), nongoal(S).
+sat_cond(I, S, R) :- { feature(F) : not c_satisfied(R, F, C), select(F) } = 0, rule(R), state_pair_class(C), cover(I, S, _, C), nongoal(I, S).
 
 %%%%%%%%%% C8.1 %%%%%%%%%%
 % (Termination): Sketch must define strict partial order over R-reachable states
 % Source of this formulation: https://users.aalto.fi/~rintanj1/papers/GebserJR14kr.pdf
-order(S, S') :- r_reachable(S), r_reachable(S'), nongoal(S), sat_pair(S, S', _), order(S').
-order(S) :- r_reachable(S), order(S, S') : sat_pair(S, S', _), r_reachable(S), r_reachable(S'), nongoal(S).
-:- r_reachable(S), nongoal(S), not order(S).
+order(I, S, S') :- r_reachable(I, S), r_reachable(I, S'), nongoal(I, S), sat_pair(I, S, S', _), order(I, S').
+order(I, S) :- r_reachable(I, S), order(I, S, S') : sat_pair(I, S, S', _), r_reachable(I, S), r_reachable(I, S'), nongoal(I, S).
+:- r_reachable(I, S), nongoal(I, S), not order(I, S).
 
 % Display
 #show rule/1.
@@ -100,4 +100,3 @@ order(S) :- r_reachable(S), order(S, S') : sat_pair(S, S', _), r_reachable(S), r
 #show e_b_neg/2.
 #show e_b_bot/2.
 #show e_b_unk/2.
-

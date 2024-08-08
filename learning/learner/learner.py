@@ -66,18 +66,16 @@ def learn_sketch_for_problem_class(
     # Generate data
     with change_dir("input"):
         logging.info(colored("Constructing InstanceDatas...", "blue", "on_grey"))
-        domain_data, instance_datas, num_ss_states, num_gfa_states = compute_instance_datas(domain_filepath, instance_filepaths, disable_closed_Q, max_num_states_per_instance, max_time_per_instance, enable_dump_files)
+        domain_data, instance_datas, num_ss_states = compute_instance_datas(domain_filepath, instance_filepaths, disable_closed_Q, max_num_states_per_instance, max_time_per_instance, enable_dump_files)
         logging.info(colored("..done", "blue", "on_grey"))
         if instance_datas is None:
             raise Exception("Failed to create InstanceDatas.")
 
-        state_finder = StateFinder(domain_data, instance_datas)
-
         logging.info(colored("Initializing TupleGraphs...", "blue", "on_grey"))
-        gfa_state_id_to_tuple_graph: Dict[int, mm.TupleGraph] = compute_tuple_graphs(domain_data, instance_datas, state_finder, width, enable_dump_files)
+        ss_state_id_to_tuple_graph: List[Dict[int, mm.TupleGraph]] = compute_tuple_graphs(domain_data, instance_datas, width, enable_dump_files)
         logging.info(colored("..done", "blue", "on_grey"))
 
-    preprocessing_data = PreprocessingData(domain_data, instance_datas, state_finder, gfa_state_id_to_tuple_graph)
+    preprocessing_data = PreprocessingData(domain_data, instance_datas, ss_state_id_to_tuple_graph)
     preprocessing_timer.stop()
 
     # Learn sketch
@@ -95,27 +93,15 @@ def learn_sketch_for_problem_class(
                 for instance_data in iteration_data.instance_datas:
                     write_file(f"dlplan_ss_{instance_data.idx}.dot", instance_data.dlplan_ss.to_dot(1))
                     write_file(f"mimir_ss_{instance_data.idx}.dot", str(instance_data.mimir_ss))
-                    write_file(f"mimir_fa_{instance_data.idx}.dot", str(instance_data.gfa.get_abstractions()[instance_data.idx]))
-                    write_file(f"mimir_gfa_{instance_data.idx}.dot", str(instance_data.gfa))
                     print("     ", end="")
                     print("id:", instance_data.idx,
                           "problem_filepath:", instance_data.mimir_ss.get_problem().get_filepath(),
-                          "num_states:", instance_data.mimir_ss.get_num_states(),
-                          "num_state_equivalences:", instance_data.gfa.get_num_states())
-
-                logging.info(colored("Initialize global faithful abstract states...", "blue", "on_grey"))
-                gfa_states : MutableSet[mm.GlobalFaithfulAbstractState] = set()
-                for instance_data in iteration_data.instance_datas:
-                    gfa_states.update(instance_data.gfa.get_states())
-                iteration_data.gfa_states = list(gfa_states)
-                logging.info(colored("..done", "blue", "on_grey"))
+                          "num_states:", instance_data.mimir_ss.get_num_states())
 
                 logging.info(colored("Initializing DomainFeatureData...", "blue", "on_grey"))
                 iteration_data.feature_pool = compute_feature_pool(
                     preprocessing_data,
                     iteration_data,
-                    gfa_state_id_to_tuple_graph,
-                    state_finder,
                     disable_feature_generation,
                     concept_complexity_limit,
                     role_complexity_limit,
@@ -128,19 +114,19 @@ def learn_sketch_for_problem_class(
                 logging.info(colored("..done", "blue", "on_grey"))
 
                 logging.info(colored("Constructing PerStateFeatureValuations...", "blue", "on_grey"))
-                iteration_data.gfa_state_global_idx_to_feature_evaluations = compute_per_state_feature_valuations(preprocessing_data, iteration_data)
+                iteration_data.instance_idx_to_ss_idx_to_feature_valuations = compute_per_state_feature_valuations(preprocessing_data, iteration_data)
                 logging.info(colored("..done", "blue", "on_grey"))
 
                 logging.info(colored("Constructing StatePairEquivalenceDatas...", "blue", "on_grey"))
-                iteration_data.state_pair_equivalences, iteration_data.gfa_state_global_idx_to_state_pair_equivalence = compute_state_pair_equivalences(preprocessing_data, iteration_data)
+                iteration_data.state_pair_equivalences, iteration_data.instance_idx_to_ss_idx_to_state_pair_equivalence = compute_state_pair_equivalences(preprocessing_data, iteration_data)
                 logging.info(colored("..done", "blue", "on_grey"))
 
                 logging.info(colored("Constructing TupleGraphEquivalences...", "blue", "on_grey"))
-                iteration_data.gfa_state_global_idx_to_tuple_graph_equivalence = compute_tuple_graph_equivalences(preprocessing_data, iteration_data)
+                iteration_data.instance_idx_to_ss_idx_to_tuple_graph_equivalence = compute_tuple_graph_equivalences(preprocessing_data, iteration_data)
                 logging.info(colored("..done", "blue", "on_grey"))
 
                 logging.info(colored("Minimizing TupleGraphEquivalences...", "blue", "on_grey"))
-                minimize_tuple_graph_equivalences(preprocessing_data, iteration_data)
+                # minimize_tuple_graph_equivalences(preprocessing_data, iteration_data)
                 logging.info(colored("..done", "blue", "on_grey"))
                 preprocessing_timer.stop()
 
@@ -246,7 +232,7 @@ def learn_sketch_for_problem_class(
         learning_statistics = LearningStatistics(
             num_training_instances=len(instance_datas),
             num_selected_training_instances=len(iteration_data.instance_datas),
-            num_states_in_selected_training_instances=sum(instance_data.gfa.get_num_states() for instance_data in iteration_data.instance_datas),
+            num_states_in_selected_training_instances=sum(instance_data.mimir_ss.get_num_states() for instance_data in iteration_data.instance_datas),
             num_states_in_complete_selected_training_instances=sum(instance_data.mimir_ss.get_num_states() for instance_data in iteration_data.instance_datas),
             num_features_in_pool=len(iteration_data.feature_pool))
         learning_statistics.print()
@@ -271,8 +257,7 @@ def learn_sketch_for_problem_class(
         print(f"Verification time: {int(verification_timer.get_elapsed_sec()) + 1} seconds.")
         print(f"Total time: {int(total_timer.get_elapsed_sec()) + 1} seconds.")
         print(f"Total memory: {int(memory_usage() / 1024)} GiB.")
-        print("Num states in training data before symmetry pruning:", num_ss_states)
-        print("Num states in training data after symmetry pruning:", num_gfa_states)
+        print("Num states in training data:", num_ss_states)
         print_separation_line()
 
         print(flush=True)

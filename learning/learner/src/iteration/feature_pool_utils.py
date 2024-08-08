@@ -18,8 +18,6 @@ class FeatureChange(Enum):
 
 def compute_feature_pool(preprocessing_data: PreprocessingData,
                          iteration_data: IterationData,
-                         gfa_state_id_to_tuple_graph: Dict[int, mm.TupleGraph],
-                         state_finder: StateFinder,
                          disable_feature_generation: bool,
                          concept_complexity_limit: int,
                          role_complexity_limit: int,
@@ -31,8 +29,8 @@ def compute_feature_pool(preprocessing_data: PreprocessingData,
                          additional_numericals: List[str]):
     # Get concrete dlplan states of global states
     dlplan_ss_states = set()
-    for gfa_state in iteration_data.gfa_states:
-        dlplan_ss_states.add(state_finder.get_dlplan_ss_state(gfa_state))
+    for instance_data in iteration_data.instance_datas:
+        dlplan_ss_states.update(set(instance_data.dlplan_ss.get_states().values()))
     dlplan_ss_states = list(dlplan_ss_states)
 
     syntactic_element_factory = preprocessing_data.domain_data.syntactic_element_factory
@@ -53,7 +51,7 @@ def compute_feature_pool(preprocessing_data: PreprocessingData,
     features = []
     if not disable_feature_generation:
         [generated_booleans, generated_numericals, _, _] = feature_generator.generate(
-            syntactic_element_factory, dlplan_ss_states,
+            syntactic_element_factory, list(dlplan_ss_states),
             concept_complexity_limit,
             role_complexity_limit,
             boolean_complexity_limit,
@@ -92,29 +90,24 @@ def compute_feature_pool(preprocessing_data: PreprocessingData,
     soft_changing_features = set()
     for feature in features:
         is_soft_changing = True
-        for gfa_state in iteration_data.gfa_states:
-            dlplan_source_ss_state = state_finder.get_dlplan_ss_state(gfa_state)
-            instance_idx = gfa_state.get_faithful_abstraction_index()
-            instance_data = preprocessing_data.instance_datas[instance_idx]
-            source_val = int(feature.dlplan_feature.evaluate(dlplan_source_ss_state, instance_data.denotations_caches))
-
-            gfa = instance_data.gfa
-            gfa_state_global_idx = gfa_state.get_global_index()
-            gfa_state_idx = gfa.get_abstract_state_index(gfa_state_global_idx)
-            gfa_states = gfa.get_states()
-            for gfa_state_prime_idx in gfa.get_forward_adjacent_state_indices(gfa_state_idx):
-                gfa_state_prime = gfa_states[gfa_state_prime_idx]
-                dlplan_target_ss_state = state_finder.get_dlplan_ss_state(gfa_state_prime)
-                target_val = int(feature.dlplan_feature.evaluate(dlplan_target_ss_state, instance_data.denotations_caches))
-                if source_val in {0, 2147483647} or target_val in {0, 2147483647}:
-                    # Allow arbitrary changes on border values
-                    continue
-                if source_val > target_val and (source_val > target_val + 1):
-                    is_soft_changing = False
-                    break
-                if target_val > source_val and (target_val > source_val + 1):
-                    is_soft_changing = False
-                    break
+        for instance_data in iteration_data.instance_datas:
+            for s_idx in range(instance_data.mimir_ss.get_num_states()):
+                dlplan_source = instance_data.dlplan_ss.get_states()[s_idx]
+                source_val = int(feature.dlplan_feature.evaluate(dlplan_source, instance_data.denotations_caches))
+                for s_prime_idx in instance_data.mimir_ss.get_forward_adjacent_state_indices(s_idx):
+                    dlplan_target = instance_data.dlplan_ss.get_states()[s_prime_idx]
+                    target_val = int(feature.dlplan_feature.evaluate(dlplan_target, instance_data.denotations_caches))
+                    if source_val in {0, 2147483647} or target_val in {0, 2147483647}:
+                        # Allow arbitrary changes on border values
+                        continue
+                    if source_val > target_val and (source_val > target_val + 1):
+                        is_soft_changing = False
+                        break
+                    if target_val > source_val and (target_val > source_val + 1):
+                        is_soft_changing = False
+                        break
+                if not is_soft_changing:
+                        break
             if not is_soft_changing:
                 break
         if is_soft_changing:
@@ -127,27 +120,18 @@ def compute_feature_pool(preprocessing_data: PreprocessingData,
     num_pruned = 0
     for feature in features:
         changes = []
-        for gfa_state in iteration_data.gfa_states:
-            instance_idx = gfa_state.get_faithful_abstraction_index()
-            instance_data = preprocessing_data.instance_datas[instance_idx]
+        for instance_data in iteration_data.instance_datas:
+            for s_idx, tuple_graph in preprocessing_data.ss_state_idx_to_tuple_graph[instance_data.idx].items():
+                if instance_data.mimir_ss.is_deadend_state(s_idx):
+                    continue
 
-            if instance_data.gfa.is_deadend_state(gfa_state.get_faithful_abstract_state_index()):
-                continue
-
-            tuple_graph = gfa_state_id_to_tuple_graph[gfa_state.get_global_index()]
-            tuple_graph_vertices_by_distance = tuple_graph.get_vertices_grouped_by_distance()
-
-            dlplan_source_ss_state = state_finder.get_dlplan_ss_state(gfa_state)
-            source_val = int(feature.dlplan_feature.evaluate(dlplan_source_ss_state, instance_data.denotations_caches))
-
-            for tuple_vertex_group in tuple_graph_vertices_by_distance:
-                for tuple_vertex in tuple_vertex_group:
-                    for mimir_ss_state_prime in tuple_vertex.get_states():
-                        gfa_state_prime = state_finder.get_gfa_state_from_ss_state_idx(instance_idx, instance_data.mimir_ss.get_state_index(mimir_ss_state_prime))
-                        dlplan_target_ss_state = state_finder.get_dlplan_ss_state(gfa_state_prime)
-                        instance_prime_idx = gfa_state_prime.get_faithful_abstraction_index()
-                        instance_data_prime = preprocessing_data.instance_datas[instance_prime_idx]
-                        target_val = int(feature.dlplan_feature.evaluate(dlplan_target_ss_state, instance_data_prime.denotations_caches))
+                dlplan_source = instance_data.dlplan_ss.get_states()[s_idx]
+                source_val = int(feature.dlplan_feature.evaluate(dlplan_source, instance_data.denotations_caches))
+                for s_primes in tuple_graph.get_states_grouped_by_distance():
+                    for s_prime in s_primes:
+                        s_prime_idx = instance_data.mimir_ss.get_state_index(s_prime)
+                        dlplan_target = instance_data.dlplan_ss.get_states()[s_prime_idx]
+                        target_val = int(feature.dlplan_feature.evaluate(dlplan_target, instance_data.denotations_caches))
                         if source_val < target_val:
                             changes.append(FeatureChange.UP)
                         elif source_val > target_val:
