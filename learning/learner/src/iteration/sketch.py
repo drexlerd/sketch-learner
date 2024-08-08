@@ -30,13 +30,14 @@ class Sketch:
         If optimal width is required, we do not allow R-compatible states
         that are closer than the closest satisfied subgoal tuple.
         """
+        instance_data_gfa_states = instance_data.gfa.get_states()
+
         queue: Deque[mm.GlobalFaithfulAbstractState] = deque()
         visited: MutableSet[mm.GlobalFaithfulAbstractState] = set()
         # Dominik (25-07-2024): checked, use index.
         for gfa_state_idx in instance_data.initial_gfa_state_idxs:
-            gfa_state = instance_data.gfa.get_states()[gfa_state_idx]
-            queue.append(gfa_state)
-            visited.add(gfa_state)
+            queue.append(gfa_state_idx)
+            visited.add(gfa_state_idx)
         # byproduct for acyclicity check
         subgoal_states_per_r_reachable_state = defaultdict(set)
         cur_instance_idx = instance_data.idx
@@ -44,9 +45,9 @@ class Sketch:
             # Ensure that we do not reassign instance_data accidentally
             assert cur_instance_idx == instance_data.idx
 
-            gfa_root = queue.pop()
+            gfa_root_idx = queue.pop()
+            gfa_root = instance_data_gfa_states[gfa_state_idx]
             gfa_root_global_idx = gfa_root.get_global_index()
-            gfa_root_idx = gfa_root.get_index()
 
             # Dominik (25-07-2024): checked, use index.
             if instance_data.gfa.is_deadend_state(gfa_root_idx):
@@ -80,10 +81,9 @@ class Sketch:
                         # Important: unmap the mapped gfa state to the original instance_data.gfa
                         # since the goal is to check whether sketch solves the given instance_data.
                         unmapped_gfa_state_prime_idx = instance_data.gfa.get_abstract_state_index(mapped_gfa_state_prime.get_global_index())
-                        unmapped_gfa_state_prime = instance_data.gfa.get_states()[unmapped_gfa_state_prime_idx]
-                        if unmapped_gfa_state_prime not in visited:
-                            visited.add(unmapped_gfa_state_prime)
-                            queue.append(unmapped_gfa_state_prime)
+                        if unmapped_gfa_state_prime_idx not in visited:
+                            visited.add(unmapped_gfa_state_prime_idx)
+                            queue.append(unmapped_gfa_state_prime_idx)
 
                 # Check whether there exists a subgoal tuple for which all underlying states are subgoal states
                 found_subgoal_tuple = False
