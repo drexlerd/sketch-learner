@@ -102,7 +102,7 @@ def compute_feature_pool(preprocessing_data: PreprocessingData,
             gfa_state_global_idx = gfa_state.get_global_index()
             gfa_state_idx = gfa.get_abstract_state_index(gfa_state_global_idx)
             gfa_states = gfa.get_states()
-            for gfa_state_prime_idx in gfa.get_target_states(gfa_state_idx):
+            for gfa_state_prime_idx in gfa.get_forward_adjacent_state_indices(gfa_state_idx):
                 gfa_state_prime = gfa_states[gfa_state_prime_idx]
                 dlplan_target_ss_state = state_finder.get_dlplan_ss_state(gfa_state_prime)
                 target_val = int(feature.dlplan_feature.evaluate(dlplan_target_ss_state, instance_data.denotations_caches))

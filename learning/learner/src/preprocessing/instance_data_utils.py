@@ -75,12 +75,12 @@ def create_dlplan_statespace(
     mimir_ss_states = mimir_state_space.get_states()
     for ss_state_idx, ss_state in enumerate(mimir_ss_states):
         dlplan_state_atoms = []
-        for atom_id in ss_state.get_fluent_atoms():
+        for atom_id in ss_state.get_state().get_fluent_atoms():
             dlplan_state_atoms.append(fluent_atom_id_to_dlplan_atom[atom_id])
-        for atom_id in ss_state.get_derived_atoms():
+        for atom_id in ss_state.get_state().get_derived_atoms():
             dlplan_state_atoms.append(derived_atom_id_to_dlplan_atom[atom_id])
         dlplan_states[ss_state_idx] = dlplan_core.State(ss_state_idx, instance_info, dlplan_state_atoms)
-        for ss_state_prime_idx in mimir_state_space.get_target_states(ss_state_idx):
+        for ss_state_prime_idx in mimir_state_space.get_forward_adjacent_state_indices(ss_state_idx):
             forward_successors[ss_state_idx].add(ss_state_prime_idx)
     dlplan_state_space = dlplan_statespace.StateSpace(instance_info, dlplan_states, mimir_state_space.get_initial_state(), forward_successors, mimir_state_space.get_goal_states())
     return dlplan_state_space
@@ -155,7 +155,7 @@ def compute_instance_datas(domain_filepath: Path,
             # 3.3 Create mapping from concrete states to global faithful abstract states
             ss_state_idx_to_gfa_state_idx = dict()
             for ss_state_idx, sp_state in enumerate(mimir_ss.get_states()):
-                ss_state_idx_to_gfa_state_idx[ss_state_idx] = gfa.get_abstract_state_index(sp_state)
+                ss_state_idx_to_gfa_state_idx[ss_state_idx] = gfa.get_abstract_state_index(sp_state.get_state())
 
             if enable_dump_files:
                 write_file(f"{instance_idx}.dot", dlplan_ss.to_dot(1))
