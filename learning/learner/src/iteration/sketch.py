@@ -46,7 +46,7 @@ class Sketch:
             assert cur_instance_idx == instance_data.idx
 
             gfa_root_idx = queue.pop()
-            gfa_root = instance_data_gfa_states[gfa_state_idx]
+            gfa_root = instance_data_gfa_states[gfa_root_idx]
             gfa_root_global_idx = gfa_root.get_global_index()
 
             # Dominik (25-07-2024): checked, use index.
@@ -121,6 +121,8 @@ class Sketch:
                 print("Source_state:", gfa_root_global_idx)
                 print("Dlplan state:", str(dlplan_ss_root))
                 return False, []
+
+        print("Sketch solves:", instance_data.mimir_ss.get_problem().get_filepath())
 
         return True, subgoal_states_per_r_reachable_state
 
