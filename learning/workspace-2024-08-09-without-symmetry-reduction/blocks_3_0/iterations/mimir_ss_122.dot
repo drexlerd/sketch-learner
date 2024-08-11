@@ -1,0 +1,25 @@
+digraph {
+rankdir="LR"
+s0[peripheries=2,label="State(index=0, fluent atoms=[(on-table b1), (clear b1), (on-table b2), (clear b2)], static atoms=[], derived atoms=[])"]
+s1[label="State(index=1, fluent atoms=[(on-table b1), (clear b1), (on b2 b2)], static atoms=[], derived atoms=[])"]
+s2[label="State(index=2, fluent atoms=[(on-table b2), (clear b2), (on b1 b1)], static atoms=[], derived atoms=[])"]
+s3[label="State(index=3, fluent atoms=[(on-table b1), (clear b2), (on b2 b1)], static atoms=[], derived atoms=[])"]
+s4[label="State(index=4, fluent atoms=[(clear b1), (on-table b2), (on b1 b2)], static atoms=[], derived atoms=[])"]
+s5[label="State(index=5, fluent atoms=[(on b2 b2), (on b1 b1)], static atoms=[], derived atoms=[])"]
+Dangling [ label = "", style = invis ]
+{ rank = same; Dangling }
+Dangling -> s0
+{ rank = same; s1,s2,s5}
+{ rank = same; s3,s4}
+{ rank = same; s0}
+s0->s1 [label="(move-t-to-b b2 b2)"]
+s0->s2 [label="(move-t-to-b b1 b1)"]
+s0->s3 [label="(move-t-to-b b2 b1)"]
+s0->s4 [label="(move-t-to-b b1 b2)"]
+s4->s0 [label="(move-b-to-t b1 b2)"]
+s4->s2 [label="(move-b-to-b b1 b2 b1)"]
+s3->s0 [label="(move-b-to-t b2 b1)"]
+s3->s1 [label="(move-b-to-b b2 b1 b2)"]
+s2->s5 [label="(move-t-to-b b2 b2)"]
+s1->s5 [label="(move-t-to-b b1 b1)"]
+}

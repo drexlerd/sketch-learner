@@ -1,0 +1,8 @@
+(:policy
+(:booleans )
+(:numericals (f31 "n_count(r_primitive(carry,0,1))") (f43 "n_concept_distance(c_one_of(rooma),r_primitive(carry,0,1),c_primitive(at-robby,0))"))
+(:rule (:conditions (:c_n_eq f31) (:c_n_eq f43)) (:effects (:e_n_inc f31) (:e_n_bot f43)))
+(:rule (:conditions (:c_n_eq f31) (:c_n_gt f43)) (:effects (:e_n_bot f31) (:e_n_dec f43)))
+(:rule (:conditions (:c_n_gt f31) (:c_n_eq f43)) (:effects (:e_n_bot f31) (:e_n_inc f43)))
+(:rule (:conditions (:c_n_gt f31) (:c_n_gt f43)) (:effects (:e_n_dec f31) (:e_n_bot f43)))
+)

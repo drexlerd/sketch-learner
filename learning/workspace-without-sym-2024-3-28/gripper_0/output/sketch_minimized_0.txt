@@ -1,8 +1,0 @@
-(:policy
-(:booleans )
-(:numericals (f102 "n_count(r_primitive(carry,0,1))") (f49 "n_count(c_some(r_primitive(at_g,0,1),c_primitive(at-robby,0)))"))
-(:rule (:conditions (:c_n_gt f102) (:c_n_eq f49)) (:effects (:e_n_bot f102) (:e_n_inc f49)))
-(:rule (:conditions (:c_n_eq f102) (:c_n_gt f49)) (:effects (:e_n_bot f102) (:e_n_dec f49)))
-(:rule (:conditions (:c_n_eq f102) (:c_n_eq f49)) (:effects (:e_n_inc f102) (:e_n_bot f49)))
-(:rule (:conditions (:c_n_gt f102) (:c_n_gt f49)) (:effects (:e_n_dec f102) (:e_n_bot f49)))
-)

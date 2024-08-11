@@ -1,0 +1,120 @@
+digraph {
+rankdir="LR"
+s0[label="state_index=0 global_state_index = 5 abstraction_index=1 abstract_state_index=0
+State(index=19, fluent atoms=[(on-table b1), (arm-empty), (clear b2), (on b3 b1), (on b2 b3)], static atoms=[], derived atoms=[])
+State(index=0, fluent atoms=[(clear b3), (on b3 b2), (on b2 b1), (on-table b1), (arm-empty)], static atoms=[], derived atoms=[])
+"]
+s1[label="state_index=1 global_state_index = 6 abstraction_index=1 abstract_state_index=1
+State(index=18, fluent atoms=[(clear b3), (on-table b1), (holding b2), (on b3 b1)], static atoms=[], derived atoms=[])
+State(index=1, fluent atoms=[(on b2 b1), (on-table b1), (holding b3), (clear b2)], static atoms=[], derived atoms=[])
+"]
+s2[label="state_index=2 global_state_index = 7 abstraction_index=1 abstract_state_index=2
+State(index=17, fluent atoms=[(clear b3), (on-table b1), (arm-empty), (clear b2), (on b3 b1), (on-table b2)], static atoms=[], derived atoms=[])
+State(index=2, fluent atoms=[(clear b3), (on b2 b1), (on-table b1), (arm-empty), (clear b2), (on-table b3)], static atoms=[], derived atoms=[])
+"]
+s3[peripheries=2,label="state_index=3 global_state_index = 8 abstraction_index=1 abstract_state_index=3
+State(index=3, fluent atoms=[(clear b1), (clear b3), (on-table b1), (holding b2), (on-table b3)], static atoms=[], derived atoms=[])
+State(index=8, fluent atoms=[(clear b1), (on-table b1), (holding b3), (clear b2), (on-table b2)], static atoms=[], derived atoms=[])
+"]
+s4[peripheries=2,label="state_index=4 global_state_index = 9 abstraction_index=1 abstract_state_index=4
+State(index=4, fluent atoms=[(clear b1), (clear b3), (on-table b1), (arm-empty), (clear b2), (on-table b3), (on-table b2)], static atoms=[], derived atoms=[])
+"]
+s5[peripheries=2,label="state_index=5 global_state_index = 10 abstraction_index=1 abstract_state_index=5
+State(index=16, fluent atoms=[(clear b1), (clear b3), (on b3 b2), (on-table b1), (arm-empty), (on-table b2)], static atoms=[], derived atoms=[])
+State(index=5, fluent atoms=[(clear b1), (on-table b1), (arm-empty), (clear b2), (on-table b3), (on b2 b3)], static atoms=[], derived atoms=[])
+"]
+s6[label="state_index=6 global_state_index = 11 abstraction_index=1 abstract_state_index=6
+State(index=20, fluent atoms=[(clear b3), (on b3 b2), (on-table b2), (holding b1)], static atoms=[], derived atoms=[])
+State(index=6, fluent atoms=[(clear b2), (on-table b3), (on b2 b3), (holding b1)], static atoms=[], derived atoms=[])
+"]
+s7[peripheries=2,label="state_index=7 global_state_index = 12 abstraction_index=1 abstract_state_index=7
+State(index=21, fluent atoms=[(clear b1), (on b3 b2), (arm-empty), (on-table b2), (on b1 b3)], static atoms=[], derived atoms=[])
+State(index=7, fluent atoms=[(clear b1), (arm-empty), (on-table b3), (on b2 b3), (on b1 b2)], static atoms=[], derived atoms=[])
+"]
+s8[label="state_index=8 global_state_index = 13 abstraction_index=1 abstract_state_index=8
+State(index=9, fluent atoms=[(clear b3), (clear b2), (on-table b3), (on-table b2), (holding b1)], static atoms=[], derived atoms=[])
+"]
+s9[peripheries=2,label="state_index=9 global_state_index = 14 abstraction_index=1 abstract_state_index=9
+State(index=10, fluent atoms=[(clear b1), (arm-empty), (clear b2), (on-table b3), (on-table b2), (on b1 b3)], static atoms=[], derived atoms=[])
+State(index=11, fluent atoms=[(clear b1), (clear b3), (arm-empty), (on-table b3), (on-table b2), (on b1 b2)], static atoms=[], derived atoms=[])
+"]
+s10[peripheries=2,label="state_index=10 global_state_index = 15 abstraction_index=1 abstract_state_index=10
+State(index=14, fluent atoms=[(clear b1), (holding b2), (on-table b3), (on b1 b3)], static atoms=[], derived atoms=[])
+State(index=12, fluent atoms=[(clear b1), (holding b3), (on-table b2), (on b1 b2)], static atoms=[], derived atoms=[])
+"]
+s11[label="state_index=11 global_state_index = 16 abstraction_index=1 abstract_state_index=11
+State(index=15, fluent atoms=[(on b2 b1), (arm-empty), (clear b2), (on-table b3), (on b1 b3)], static atoms=[], derived atoms=[])
+State(index=13, fluent atoms=[(clear b3), (arm-empty), (on b3 b1), (on-table b2), (on b1 b2)], static atoms=[], derived atoms=[])
+"]
+Dangling [ label = "", style = invis ]
+{ rank = same; Dangling }
+Dangling -> s0
+{ rank = same; s0}
+{ rank = same; s1}
+{ rank = same; s2,s6,s8,s11}
+{ rank = same; s3,s4,s5,s7,s9,s10}
+s0->s1 [label="(unstack b2 b3)
+(unstack b3 b2)
+"]
+s1->s0 [label="(stack b3 b2)
+(stack b2 b3)
+"]
+s1->s2 [label="(putdown b3)
+(putdown b2)
+"]
+s2->s1 [label="(pickup b3)
+(pickup b2)
+"]
+s2->s3 [label="(unstack b2 b1)
+(unstack b3 b1)
+"]
+s3->s2 [label="(stack b3 b1)
+(stack b2 b1)
+"]
+s3->s4 [label="(putdown b3)
+(putdown b2)
+"]
+s3->s5 [label="(stack b2 b3)
+(stack b3 b2)
+"]
+s4->s3 [label="(pickup b3)
+(pickup b2)
+"]
+s4->s8 [label="(pickup b1)
+"]
+s5->s3 [label="(unstack b3 b2)
+(unstack b2 b3)
+"]
+s5->s6 [label="(pickup b1)
+(pickup b1)
+"]
+s6->s5 [label="(putdown b1)
+(putdown b1)
+"]
+s6->s7 [label="(stack b1 b3)
+(stack b1 b2)
+"]
+s7->s6 [label="(unstack b1 b3)
+(unstack b1 b2)
+"]
+s8->s4 [label="(putdown b1)
+"]
+s8->s9 [label="(stack b1 b2)
+(stack b1 b3)
+"]
+s9->s8 [label="(unstack b1 b3)
+(unstack b1 b2)
+"]
+s9->s10 [label="(pickup b2)
+(pickup b3)
+"]
+s10->s9 [label="(putdown b2)
+(putdown b3)
+"]
+s10->s11 [label="(stack b2 b1)
+(stack b3 b1)
+"]
+s11->s10 [label="(unstack b2 b1)
+(unstack b3 b1)
+"]
+}

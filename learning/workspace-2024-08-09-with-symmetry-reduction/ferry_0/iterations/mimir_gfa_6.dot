@@ -1,0 +1,297 @@
+digraph {
+rankdir="LR"
+s0[label="state_index=0 global_state_index = 60 abstraction_index=6 abstract_state_index=0
+State(index=34, fluent atoms=[(at-ferry loc3), (empty-ferry), (at car1 loc1), (at car2 loc3)], static atoms=[(location loc3), (location loc2), (location loc1), (car car2), (car car1)], derived atoms=[])
+State(index=0, fluent atoms=[(at car2 loc2), (at car1 loc3), (at-ferry loc3), (empty-ferry)], static atoms=[(location loc3), (location loc2), (location loc1), (car car2), (car car1)], derived atoms=[])
+"]
+s1[label="state_index=1 global_state_index = 61 abstraction_index=6 abstract_state_index=1
+State(index=33, fluent atoms=[(empty-ferry), (at-ferry loc1), (at car1 loc1), (at car2 loc3)], static atoms=[(location loc3), (location loc2), (location loc1), (car car2), (car car1)], derived atoms=[])
+State(index=1, fluent atoms=[(at car2 loc2), (at car1 loc3), (empty-ferry), (at-ferry loc2)], static atoms=[(location loc3), (location loc2), (location loc1), (car car2), (car car1)], derived atoms=[])
+"]
+s2[label="state_index=2 global_state_index = 62 abstraction_index=6 abstract_state_index=2
+State(index=35, fluent atoms=[(empty-ferry), (at-ferry loc2), (at car1 loc1), (at car2 loc3)], static atoms=[(location loc3), (location loc2), (location loc1), (car car2), (car car1)], derived atoms=[])
+State(index=2, fluent atoms=[(at car2 loc2), (at car1 loc3), (empty-ferry), (at-ferry loc1)], static atoms=[(location loc3), (location loc2), (location loc1), (car car2), (car car1)], derived atoms=[])
+"]
+s3[label="state_index=3 global_state_index = 63 abstraction_index=6 abstract_state_index=3
+State(index=10, fluent atoms=[(at-ferry loc3), (at car1 loc1), (on car2)], static atoms=[(location loc3), (location loc2), (location loc1), (car car2), (car car1)], derived atoms=[])
+State(index=3, fluent atoms=[(at car2 loc2), (at-ferry loc3), (on car1)], static atoms=[(location loc3), (location loc2), (location loc1), (car car2), (car car1)], derived atoms=[])
+"]
+s4[label="state_index=4 global_state_index = 64 abstraction_index=6 abstract_state_index=4
+State(index=11, fluent atoms=[(at-ferry loc1), (at car1 loc1), (on car2)], static atoms=[(location loc3), (location loc2), (location loc1), (car car2), (car car1)], derived atoms=[])
+State(index=4, fluent atoms=[(at car2 loc2), (on car1), (at-ferry loc2)], static atoms=[(location loc3), (location loc2), (location loc1), (car car2), (car car1)], derived atoms=[])
+"]
+s5[label="state_index=5 global_state_index = 65 abstraction_index=6 abstract_state_index=5
+State(index=9, fluent atoms=[(at-ferry loc2), (at car1 loc1), (on car2)], static atoms=[(location loc3), (location loc2), (location loc1), (car car2), (car car1)], derived atoms=[])
+State(index=5, fluent atoms=[(at car2 loc2), (on car1), (at-ferry loc1)], static atoms=[(location loc3), (location loc2), (location loc1), (car car2), (car car1)], derived atoms=[])
+"]
+s6[label="state_index=6 global_state_index = 66 abstraction_index=6 abstract_state_index=6
+State(index=8, fluent atoms=[(at car2 loc2), (empty-ferry), (at-ferry loc2), (at car1 loc1)], static atoms=[(location loc3), (location loc2), (location loc1), (car car2), (car car1)], derived atoms=[])
+State(index=6, fluent atoms=[(at car2 loc2), (empty-ferry), (at-ferry loc1), (at car1 loc1)], static atoms=[(location loc3), (location loc2), (location loc1), (car car2), (car car1)], derived atoms=[])
+"]
+s7[label="state_index=7 global_state_index = 67 abstraction_index=6 abstract_state_index=7
+State(index=7, fluent atoms=[(at car2 loc2), (at-ferry loc3), (empty-ferry), (at car1 loc1)], static atoms=[(location loc3), (location loc2), (location loc1), (car car2), (car car1)], derived atoms=[])
+"]
+s8[label="state_index=8 global_state_index = 68 abstraction_index=6 abstract_state_index=8
+State(index=12, fluent atoms=[(at car2 loc1), (empty-ferry), (at-ferry loc1), (at car1 loc1)], static atoms=[(location loc3), (location loc2), (location loc1), (car car2), (car car1)], derived atoms=[])
+State(index=24, fluent atoms=[(at car1 loc2), (at car2 loc2), (empty-ferry), (at-ferry loc2)], static atoms=[(location loc3), (location loc2), (location loc1), (car car2), (car car1)], derived atoms=[])
+"]
+s9[label="state_index=9 global_state_index = 69 abstraction_index=6 abstract_state_index=9
+State(index=13, fluent atoms=[(at car2 loc1), (at-ferry loc3), (empty-ferry), (at car1 loc1)], static atoms=[(location loc3), (location loc2), (location loc1), (car car2), (car car1)], derived atoms=[])
+State(index=25, fluent atoms=[(at car1 loc2), (at car2 loc2), (at-ferry loc3), (empty-ferry)], static atoms=[(location loc3), (location loc2), (location loc1), (car car2), (car car1)], derived atoms=[])
+"]
+s10[label="state_index=10 global_state_index = 70 abstraction_index=6 abstract_state_index=10
+State(index=14, fluent atoms=[(at car2 loc1), (empty-ferry), (at-ferry loc2), (at car1 loc1)], static atoms=[(location loc3), (location loc2), (location loc1), (car car2), (car car1)], derived atoms=[])
+State(index=26, fluent atoms=[(at car1 loc2), (at car2 loc2), (empty-ferry), (at-ferry loc1)], static atoms=[(location loc3), (location loc2), (location loc1), (car car2), (car car1)], derived atoms=[])
+"]
+s11[label="state_index=11 global_state_index = 71 abstraction_index=6 abstract_state_index=11
+State(index=15, fluent atoms=[(at car2 loc1), (on car1), (at-ferry loc1)], static atoms=[(location loc3), (location loc2), (location loc1), (car car2), (car car1)], derived atoms=[])
+State(index=23, fluent atoms=[(at car1 loc2), (at-ferry loc2), (on car2)], static atoms=[(location loc3), (location loc2), (location loc1), (car car2), (car car1)], derived atoms=[])
+"]
+s12[label="state_index=12 global_state_index = 72 abstraction_index=6 abstract_state_index=12
+State(index=16, fluent atoms=[(at car2 loc1), (at-ferry loc3), (on car1)], static atoms=[(location loc3), (location loc2), (location loc1), (car car2), (car car1)], derived atoms=[])
+State(index=22, fluent atoms=[(at car1 loc2), (at-ferry loc3), (on car2)], static atoms=[(location loc3), (location loc2), (location loc1), (car car2), (car car1)], derived atoms=[])
+"]
+s13[label="state_index=13 global_state_index = 73 abstraction_index=6 abstract_state_index=13
+State(index=17, fluent atoms=[(at car2 loc1), (on car1), (at-ferry loc2)], static atoms=[(location loc3), (location loc2), (location loc1), (car car2), (car car1)], derived atoms=[])
+State(index=21, fluent atoms=[(at car1 loc2), (at-ferry loc1), (on car2)], static atoms=[(location loc3), (location loc2), (location loc1), (car car2), (car car1)], derived atoms=[])
+"]
+s14[peripheries=2,label="state_index=14 global_state_index = 74 abstraction_index=6 abstract_state_index=14
+State(index=18, fluent atoms=[(at car2 loc1), (at car1 loc2), (empty-ferry), (at-ferry loc2)], static atoms=[(location loc3), (location loc2), (location loc1), (car car2), (car car1)], derived atoms=[])
+State(index=20, fluent atoms=[(at car2 loc1), (at car1 loc2), (empty-ferry), (at-ferry loc1)], static atoms=[(location loc3), (location loc2), (location loc1), (car car2), (car car1)], derived atoms=[])
+"]
+s15[peripheries=2,label="state_index=15 global_state_index = 75 abstraction_index=6 abstract_state_index=15
+State(index=19, fluent atoms=[(at car2 loc1), (at car1 loc2), (at-ferry loc3), (empty-ferry)], static atoms=[(location loc3), (location loc2), (location loc1), (car car2), (car car1)], derived atoms=[])
+"]
+s16[label="state_index=16 global_state_index = 76 abstraction_index=6 abstract_state_index=16
+State(index=43, fluent atoms=[(at car2 loc1), (at car1 loc3), (at-ferry loc3), (empty-ferry)], static atoms=[(location loc3), (location loc2), (location loc1), (car car2), (car car1)], derived atoms=[])
+State(index=27, fluent atoms=[(at car1 loc2), (at-ferry loc3), (empty-ferry), (at car2 loc3)], static atoms=[(location loc3), (location loc2), (location loc1), (car car2), (car car1)], derived atoms=[])
+"]
+s17[label="state_index=17 global_state_index = 77 abstraction_index=6 abstract_state_index=17
+State(index=42, fluent atoms=[(at car2 loc1), (at car1 loc3), (empty-ferry), (at-ferry loc1)], static atoms=[(location loc3), (location loc2), (location loc1), (car car2), (car car1)], derived atoms=[])
+State(index=28, fluent atoms=[(at car1 loc2), (empty-ferry), (at-ferry loc2), (at car2 loc3)], static atoms=[(location loc3), (location loc2), (location loc1), (car car2), (car car1)], derived atoms=[])
+"]
+s18[label="state_index=18 global_state_index = 78 abstraction_index=6 abstract_state_index=18
+State(index=29, fluent atoms=[(at car1 loc2), (empty-ferry), (at-ferry loc1), (at car2 loc3)], static atoms=[(location loc3), (location loc2), (location loc1), (car car2), (car car1)], derived atoms=[])
+State(index=44, fluent atoms=[(at car2 loc1), (at car1 loc3), (empty-ferry), (at-ferry loc2)], static atoms=[(location loc3), (location loc2), (location loc1), (car car2), (car car1)], derived atoms=[])
+"]
+s19[label="state_index=19 global_state_index = 79 abstraction_index=6 abstract_state_index=19
+State(index=30, fluent atoms=[(on car1), (at-ferry loc2), (at car2 loc3)], static atoms=[(location loc3), (location loc2), (location loc1), (car car2), (car car1)], derived atoms=[])
+State(index=41, fluent atoms=[(at car1 loc3), (at-ferry loc1), (on car2)], static atoms=[(location loc3), (location loc2), (location loc1), (car car2), (car car1)], derived atoms=[])
+"]
+s20[label="state_index=20 global_state_index = 80 abstraction_index=6 abstract_state_index=20
+State(index=31, fluent atoms=[(at-ferry loc3), (on car1), (at car2 loc3)], static atoms=[(location loc3), (location loc2), (location loc1), (car car2), (car car1)], derived atoms=[])
+State(index=39, fluent atoms=[(at car1 loc3), (at-ferry loc3), (on car2)], static atoms=[(location loc3), (location loc2), (location loc1), (car car2), (car car1)], derived atoms=[])
+"]
+s21[label="state_index=21 global_state_index = 81 abstraction_index=6 abstract_state_index=21
+State(index=40, fluent atoms=[(at car1 loc3), (at-ferry loc2), (on car2)], static atoms=[(location loc3), (location loc2), (location loc1), (car car2), (car car1)], derived atoms=[])
+State(index=32, fluent atoms=[(on car1), (at-ferry loc1), (at car2 loc3)], static atoms=[(location loc3), (location loc2), (location loc1), (car car2), (car car1)], derived atoms=[])
+"]
+s22[label="state_index=22 global_state_index = 82 abstraction_index=6 abstract_state_index=22
+State(index=36, fluent atoms=[(at car1 loc3), (at-ferry loc3), (empty-ferry), (at car2 loc3)], static atoms=[(location loc3), (location loc2), (location loc1), (car car2), (car car1)], derived atoms=[])
+"]
+s23[label="state_index=23 global_state_index = 83 abstraction_index=6 abstract_state_index=23
+State(index=38, fluent atoms=[(at car1 loc3), (empty-ferry), (at-ferry loc1), (at car2 loc3)], static atoms=[(location loc3), (location loc2), (location loc1), (car car2), (car car1)], derived atoms=[])
+State(index=37, fluent atoms=[(at car1 loc3), (empty-ferry), (at-ferry loc2), (at car2 loc3)], static atoms=[(location loc3), (location loc2), (location loc1), (car car2), (car car1)], derived atoms=[])
+"]
+Dangling [ label = "", style = invis ]
+{ rank = same; Dangling }
+Dangling -> s0
+{ rank = same; s23}
+{ rank = same; s1,s2,s7,s22}
+{ rank = same; s0,s6,s20,s21}
+{ rank = same; s3,s5,s19}
+{ rank = same; s4,s9,s10,s17,s18}
+{ rank = same; s8,s16}
+{ rank = same; s11,s12}
+{ rank = same; s13}
+{ rank = same; s14,s15}
+s0->s1 [label="(sail loc3 loc2)
+(sail loc3 loc1)
+"]
+s0->s2 [label="(sail loc3 loc1)
+(sail loc3 loc2)
+"]
+s0->s3 [label="(board car1 loc3)
+(board car2 loc3)
+"]
+s1->s0 [label="(sail loc2 loc3)
+(sail loc1 loc3)
+"]
+s1->s2 [label="(sail loc2 loc1)
+(sail loc1 loc2)
+"]
+s1->s21 [label="(board car2 loc2)
+(board car1 loc1)
+"]
+s2->s0 [label="(sail loc2 loc3)
+(sail loc1 loc3)
+"]
+s2->s1 [label="(sail loc2 loc1)
+(sail loc1 loc2)
+"]
+s3->s0 [label="(debark car1 loc3)
+(debark car2 loc3)
+"]
+s3->s4 [label="(sail loc3 loc2)
+(sail loc3 loc1)
+"]
+s3->s5 [label="(sail loc3 loc1)
+(sail loc3 loc2)
+"]
+s4->s3 [label="(sail loc1 loc3)
+(sail loc2 loc3)
+"]
+s4->s5 [label="(sail loc1 loc2)
+(sail loc2 loc1)
+"]
+s4->s8 [label="(debark car1 loc2)
+(debark car2 loc1)
+"]
+s5->s3 [label="(sail loc2 loc3)
+(sail loc1 loc3)
+"]
+s5->s4 [label="(sail loc2 loc1)
+(sail loc1 loc2)
+"]
+s5->s6 [label="(debark car2 loc2)
+(debark car1 loc1)
+"]
+s6->s5 [label="(board car2 loc2)
+(board car1 loc1)
+"]
+s6->s6 [label="(sail loc1 loc2)
+(sail loc2 loc1)
+"]
+s6->s7 [label="(sail loc1 loc3)
+(sail loc2 loc3)
+"]
+s7->s6 [label="(sail loc3 loc2)
+(sail loc3 loc1)
+"]
+s8->s4 [label="(board car2 loc1)
+(board car1 loc2)
+"]
+s8->s9 [label="(sail loc2 loc3)
+(sail loc1 loc3)
+"]
+s8->s10 [label="(sail loc1 loc2)
+(sail loc2 loc1)
+"]
+s8->s11 [label="(board car2 loc2)
+(board car1 loc1)
+"]
+s9->s8 [label="(sail loc3 loc2)
+(sail loc3 loc1)
+"]
+s9->s10 [label="(sail loc3 loc1)
+(sail loc3 loc2)
+"]
+s10->s8 [label="(sail loc1 loc2)
+(sail loc2 loc1)
+"]
+s10->s9 [label="(sail loc2 loc3)
+(sail loc1 loc3)
+"]
+s11->s8 [label="(debark car2 loc2)
+(debark car1 loc1)
+"]
+s11->s12 [label="(sail loc1 loc3)
+(sail loc2 loc3)
+"]
+s11->s13 [label="(sail loc1 loc2)
+(sail loc2 loc1)
+"]
+s12->s11 [label="(sail loc3 loc2)
+(sail loc3 loc1)
+"]
+s12->s13 [label="(sail loc3 loc1)
+(sail loc3 loc2)
+"]
+s12->s16 [label="(debark car2 loc3)
+(debark car1 loc3)
+"]
+s13->s11 [label="(sail loc2 loc1)
+(sail loc1 loc2)
+"]
+s13->s12 [label="(sail loc2 loc3)
+(sail loc1 loc3)
+"]
+s13->s14 [label="(debark car2 loc1)
+(debark car1 loc2)
+"]
+s14->s13 [label="(board car2 loc1)
+(board car1 loc2)
+"]
+s14->s14 [label="(sail loc2 loc1)
+(sail loc1 loc2)
+"]
+s14->s15 [label="(sail loc2 loc3)
+(sail loc1 loc3)
+"]
+s15->s14 [label="(sail loc3 loc1)
+(sail loc3 loc2)
+"]
+s16->s12 [label="(board car2 loc3)
+(board car1 loc3)
+"]
+s16->s17 [label="(sail loc3 loc2)
+(sail loc3 loc1)
+"]
+s16->s18 [label="(sail loc3 loc2)
+(sail loc3 loc1)
+"]
+s17->s16 [label="(sail loc1 loc3)
+(sail loc2 loc3)
+"]
+s17->s18 [label="(sail loc1 loc2)
+(sail loc2 loc1)
+"]
+s17->s19 [label="(board car2 loc1)
+(board car1 loc2)
+"]
+s18->s16 [label="(sail loc1 loc3)
+(sail loc2 loc3)
+"]
+s18->s17 [label="(sail loc1 loc2)
+(sail loc2 loc1)
+"]
+s19->s17 [label="(debark car2 loc1)
+(debark car1 loc2)
+"]
+s19->s20 [label="(sail loc1 loc3)
+(sail loc2 loc3)
+"]
+s19->s21 [label="(sail loc1 loc2)
+(sail loc2 loc1)
+"]
+s20->s19 [label="(sail loc3 loc1)
+(sail loc3 loc2)
+"]
+s20->s21 [label="(sail loc3 loc2)
+(sail loc3 loc1)
+"]
+s20->s22 [label="(debark car1 loc3)
+(debark car2 loc3)
+"]
+s21->s1 [label="(debark car1 loc1)
+(debark car2 loc2)
+"]
+s21->s19 [label="(sail loc1 loc2)
+(sail loc2 loc1)
+"]
+s21->s20 [label="(sail loc1 loc3)
+(sail loc2 loc3)
+"]
+s22->s20 [label="(board car2 loc3)
+(board car1 loc3)
+"]
+s22->s23 [label="(sail loc3 loc2)
+(sail loc3 loc1)
+"]
+s23->s22 [label="(sail loc2 loc3)
+(sail loc1 loc3)
+"]
+s23->s23 [label="(sail loc2 loc1)
+(sail loc1 loc2)
+"]
+}

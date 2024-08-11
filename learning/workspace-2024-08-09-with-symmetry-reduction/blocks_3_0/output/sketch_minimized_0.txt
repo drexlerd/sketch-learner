@@ -1,0 +1,13 @@
+(:policy
+(:booleans )
+(:numericals (f2610 "n_count(r_primitive(on,0,1))") (f833 "n_count(r_and(r_primitive(on,0,1),r_primitive(on_g,0,1)))") (f2468 "n_count(c_all(r_transitive_closure(r_primitive(on,0,1)),c_equal(r_primitive(on,0,1),r_primitive(on_g,0,1))))"))
+(:rule (:conditions (:c_n_gt f2610) (:c_n_gt f2468)) (:effects (:e_n_dec f2610) (:e_n_bot f833) (:e_n_inc f2468)))
+(:rule (:conditions (:c_n_gt f2610) (:c_n_gt f2468)) (:effects (:e_n_dec f2610) (:e_n_bot f833) (:e_n_bot f2468)))
+(:rule (:conditions (:c_n_gt f2610) (:c_n_gt f833) (:c_n_gt f2468)) (:effects (:e_n_inc f2610) (:e_n_inc f833) (:e_n_bot f2468)))
+(:rule (:conditions (:c_n_gt f2610) (:c_n_eq f833) (:c_n_gt f2468)) (:effects (:e_n_bot f2610) (:e_n_bot f833) (:e_n_inc f2468)))
+(:rule (:conditions (:c_n_eq f2610) (:c_n_eq f833) (:c_n_gt f2468)) (:effects (:e_n_inc f2610) (:e_n_inc f833) (:e_n_bot f2468)))
+(:rule (:conditions (:c_n_gt f2610) (:c_n_gt f833) (:c_n_gt f2468)) (:effects (:e_n_dec f2610) (:e_n_dec f833) (:e_n_inc f2468)))
+(:rule (:conditions (:c_n_gt f2610) (:c_n_eq f833) (:c_n_gt f2468)) (:effects (:e_n_bot f2610) (:e_n_inc f833) (:e_n_bot f2468)))
+(:rule (:conditions (:c_n_gt f2610) (:c_n_eq f833) (:c_n_gt f2468)) (:effects (:e_n_bot f2610) (:e_n_inc f833) (:e_n_inc f2468)))
+(:rule (:conditions (:c_n_gt f2610) (:c_n_gt f833) (:c_n_gt f2468)) (:effects (:e_n_bot f2610) (:e_n_dec f833) (:e_n_inc f2468)))
+)

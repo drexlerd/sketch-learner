@@ -1,0 +1,7 @@
+(:policy
+(:booleans (f114 "b_nullary(arm-empty)"))
+(:numericals (f35 "n_count(r_primitive(on,0,1))"))
+(:rule (:conditions (:c_b_neg f114)) (:effects (:e_b_pos f114) (:e_n_bot f35)))
+(:rule (:conditions (:c_b_pos f114) (:c_n_gt f35)) (:effects (:e_b_neg f114) (:e_n_dec f35)))
+(:rule (:conditions (:c_b_neg f114) (:c_n_eq f35)) (:effects (:e_b_pos f114) (:e_n_inc f35)))
+)

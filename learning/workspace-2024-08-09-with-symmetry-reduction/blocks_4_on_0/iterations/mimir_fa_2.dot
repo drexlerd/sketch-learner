@@ -1,0 +1,682 @@
+digraph {
+rankdir="LR"
+s0[label="state_index=0
+State(index=0, fluent atoms=[(clear b3), (clear b2), (clear b1), (on-table b4), (on b3 b4), (on-table b2), (on-table b1), (arm-empty)], static atoms=[], derived atoms=[])
+State(index=33, fluent atoms=[(clear b2), (clear b1), (on-table b2), (on-table b1), (arm-empty), (clear b4), (on-table b3), (on b4 b3)], static atoms=[], derived atoms=[])
+"]
+s1[label="state_index=1
+State(index=1, fluent atoms=[(clear b3), (clear b1), (on-table b4), (on b3 b4), (on-table b1), (holding b2)], static atoms=[], derived atoms=[])
+State(index=32, fluent atoms=[(clear b1), (on-table b1), (clear b4), (holding b2), (on-table b3), (on b4 b3)], static atoms=[], derived atoms=[])
+"]
+s2[label="state_index=2
+State(index=2, fluent atoms=[(clear b3), (clear b2), (on-table b4), (on b3 b4), (on-table b2), (holding b1)], static atoms=[], derived atoms=[])
+State(index=37, fluent atoms=[(clear b2), (on-table b2), (clear b4), (holding b1), (on-table b3), (on b4 b3)], static atoms=[], derived atoms=[])
+"]
+s3[label="state_index=3
+State(index=3, fluent atoms=[(clear b2), (clear b1), (on-table b4), (on-table b2), (on-table b1), (holding b3), (clear b4)], static atoms=[], derived atoms=[])
+State(index=38, fluent atoms=[(clear b3), (clear b2), (clear b1), (on-table b2), (on-table b1), (on-table b3), (holding b4)], static atoms=[], derived atoms=[])
+"]
+s4[label="state_index=4
+State(index=4, fluent atoms=[(clear b3), (clear b2), (clear b1), (on-table b4), (on-table b2), (on-table b1), (arm-empty), (clear b4), (on-table b3)], static atoms=[], derived atoms=[])
+"]
+s5[label="state_index=5
+State(index=5, fluent atoms=[(clear b3), (clear b1), (on-table b4), (on-table b2), (on-table b1), (arm-empty), (clear b4), (on b3 b2)], static atoms=[], derived atoms=[])
+State(index=39, fluent atoms=[(clear b3), (clear b1), (on-table b2), (on-table b1), (arm-empty), (clear b4), (on-table b3), (on b4 b2)], static atoms=[], derived atoms=[])
+"]
+s6[label="state_index=6
+State(index=40, fluent atoms=[(clear b3), (clear b2), (on-table b2), (on-table b1), (arm-empty), (clear b4), (on-table b3), (on b4 b1)], static atoms=[], derived atoms=[])
+State(index=6, fluent atoms=[(clear b3), (clear b2), (on-table b4), (on-table b2), (on-table b1), (arm-empty), (clear b4), (on b3 b1)], static atoms=[], derived atoms=[])
+"]
+s7[label="state_index=7
+State(index=41, fluent atoms=[(clear b2), (on-table b2), (on-table b1), (holding b3), (clear b4), (on b4 b1)], static atoms=[], derived atoms=[])
+State(index=7, fluent atoms=[(clear b3), (clear b2), (on-table b2), (on-table b1), (on b3 b1), (holding b4)], static atoms=[], derived atoms=[])
+"]
+s8[label="state_index=8
+State(index=42, fluent atoms=[(clear b3), (on-table b1), (clear b4), (holding b2), (on-table b3), (on b4 b1)], static atoms=[], derived atoms=[])
+State(index=8, fluent atoms=[(clear b3), (on-table b4), (on-table b1), (clear b4), (holding b2), (on b3 b1)], static atoms=[], derived atoms=[])
+"]
+s9[label="state_index=9
+State(index=44, fluent atoms=[(clear b2), (on-table b1), (arm-empty), (clear b4), (on b2 b3), (on-table b3), (on b4 b1)], static atoms=[], derived atoms=[])
+State(index=9, fluent atoms=[(clear b3), (clear b2), (on-table b4), (on-table b1), (arm-empty), (on b2 b4), (on b3 b1)], static atoms=[], derived atoms=[])
+"]
+s10[label="state_index=10
+State(index=43, fluent atoms=[(clear b3), (clear b2), (on-table b1), (arm-empty), (on b2 b4), (on-table b3), (on b4 b1)], static atoms=[], derived atoms=[])
+State(index=10, fluent atoms=[(clear b2), (on-table b4), (on-table b1), (arm-empty), (clear b4), (on b2 b3), (on b3 b1)], static atoms=[], derived atoms=[])
+"]
+s11[label="state_index=11
+State(index=49, fluent atoms=[(clear b2), (on-table b1), (holding b3), (on b2 b4), (on b4 b1)], static atoms=[], derived atoms=[])
+State(index=11, fluent atoms=[(clear b2), (on-table b1), (on b2 b3), (on b3 b1), (holding b4)], static atoms=[], derived atoms=[])
+"]
+s12[label="state_index=12
+State(index=50, fluent atoms=[(clear b3), (on-table b1), (arm-empty), (on b2 b4), (on b3 b2), (on b4 b1)], static atoms=[], derived atoms=[])
+State(index=12, fluent atoms=[(on-table b1), (arm-empty), (clear b4), (on b2 b3), (on b3 b1), (on b4 b2)], static atoms=[], derived atoms=[])
+"]
+s13[label="state_index=13
+State(index=13, fluent atoms=[(clear b2), (clear b1), (on-table b4), (on-table b1), (holding b3), (on b2 b4)], static atoms=[], derived atoms=[])
+State(index=45, fluent atoms=[(clear b2), (clear b1), (on-table b1), (on b2 b3), (on-table b3), (holding b4)], static atoms=[], derived atoms=[])
+"]
+s14[label="state_index=14
+State(index=20, fluent atoms=[(clear b2), (clear b1), (on-table b4), (on-table b1), (arm-empty), (clear b4), (on b2 b3), (on-table b3)], static atoms=[], derived atoms=[])
+State(index=14, fluent atoms=[(clear b3), (clear b2), (clear b1), (on-table b4), (on-table b1), (arm-empty), (on b2 b4), (on-table b3)], static atoms=[], derived atoms=[])
+"]
+s15[label="state_index=15
+State(index=15, fluent atoms=[(clear b3), (clear b1), (on-table b4), (on-table b1), (arm-empty), (on b2 b4), (on b3 b2)], static atoms=[], derived atoms=[])
+State(index=46, fluent atoms=[(clear b1), (on-table b1), (arm-empty), (clear b4), (on b2 b3), (on-table b3), (on b4 b2)], static atoms=[], derived atoms=[])
+"]
+s16[label="state_index=16
+State(index=16, fluent atoms=[(clear b3), (on-table b4), (holding b1), (on b2 b4), (on b3 b2)], static atoms=[], derived atoms=[])
+State(index=47, fluent atoms=[(clear b4), (holding b1), (on b2 b3), (on-table b3), (on b4 b2)], static atoms=[], derived atoms=[])
+"]
+s17[label="state_index=17
+State(index=17, fluent atoms=[(clear b1), (on-table b4), (arm-empty), (on b2 b4), (on b1 b3), (on b3 b2)], static atoms=[], derived atoms=[])
+State(index=48, fluent atoms=[(clear b1), (arm-empty), (on b2 b3), (on b1 b4), (on-table b3), (on b4 b2)], static atoms=[], derived atoms=[])
+"]
+s18[label="state_index=18
+State(index=88, fluent atoms=[(clear b2), (on-table b4), (clear b4), (holding b1), (on b2 b3), (on-table b3)], static atoms=[], derived atoms=[])
+State(index=18, fluent atoms=[(clear b3), (clear b2), (on-table b4), (holding b1), (on b2 b4), (on-table b3)], static atoms=[], derived atoms=[])
+"]
+s19[label="state_index=19
+State(index=19, fluent atoms=[(clear b3), (clear b1), (on-table b4), (on-table b1), (clear b4), (holding b2), (on-table b3)], static atoms=[], derived atoms=[])
+"]
+s20[label="state_index=20
+State(index=21, fluent atoms=[(clear b3), (clear b2), (on-table b4), (on-table b1), (arm-empty), (clear b4), (on b2 b1), (on-table b3)], static atoms=[], derived atoms=[])
+"]
+s21[label="state_index=21
+State(index=23, fluent atoms=[(clear b2), (on-table b4), (on-table b1), (holding b3), (clear b4), (on b2 b1)], static atoms=[], derived atoms=[])
+State(index=22, fluent atoms=[(clear b3), (clear b2), (on-table b1), (on b2 b1), (on-table b3), (holding b4)], static atoms=[], derived atoms=[])
+"]
+s22[label="state_index=22
+State(index=28, fluent atoms=[(clear b2), (on-table b1), (arm-empty), (clear b4), (on b2 b1), (on-table b3), (on b4 b3)], static atoms=[], derived atoms=[])
+State(index=24, fluent atoms=[(clear b3), (clear b2), (on-table b4), (on b3 b4), (on-table b1), (arm-empty), (on b2 b1)], static atoms=[], derived atoms=[])
+"]
+s23[label="state_index=23
+State(index=25, fluent atoms=[(clear b3), (on-table b4), (on-table b1), (arm-empty), (clear b4), (on b2 b1), (on b3 b2)], static atoms=[], derived atoms=[])
+State(index=29, fluent atoms=[(clear b3), (on-table b1), (arm-empty), (clear b4), (on b2 b1), (on-table b3), (on b4 b2)], static atoms=[], derived atoms=[])
+"]
+s24[label="state_index=24
+State(index=26, fluent atoms=[(clear b3), (on-table b1), (on b2 b1), (on b3 b2), (holding b4)], static atoms=[], derived atoms=[])
+State(index=30, fluent atoms=[(on-table b1), (holding b3), (clear b4), (on b2 b1), (on b4 b2)], static atoms=[], derived atoms=[])
+"]
+s25[label="state_index=25
+State(index=27, fluent atoms=[(on-table b1), (arm-empty), (clear b4), (on b2 b1), (on b3 b2), (on b4 b3)], static atoms=[], derived atoms=[])
+State(index=31, fluent atoms=[(clear b3), (on b3 b4), (on-table b1), (arm-empty), (on b2 b1), (on b4 b2)], static atoms=[], derived atoms=[])
+"]
+s26[label="state_index=26
+State(index=122, fluent atoms=[(clear b2), (clear b1), (on-table b4), (on b3 b4), (on-table b1), (arm-empty), (on b2 b3)], static atoms=[], derived atoms=[])
+State(index=34, fluent atoms=[(clear b2), (clear b1), (on-table b1), (arm-empty), (on b2 b4), (on-table b3), (on b4 b3)], static atoms=[], derived atoms=[])
+"]
+s27[label="state_index=27
+State(index=123, fluent atoms=[(clear b2), (on-table b4), (on b3 b4), (holding b1), (on b2 b3)], static atoms=[], derived atoms=[])
+State(index=35, fluent atoms=[(clear b2), (holding b1), (on b2 b4), (on-table b3), (on b4 b3)], static atoms=[], derived atoms=[])
+"]
+s28[peripheries=2,label="state_index=28
+State(index=124, fluent atoms=[(on b1 b2), (clear b1), (on-table b4), (on b3 b4), (arm-empty), (on b2 b3)], static atoms=[], derived atoms=[])
+State(index=36, fluent atoms=[(on b1 b2), (clear b1), (arm-empty), (on b2 b4), (on-table b3), (on b4 b3)], static atoms=[], derived atoms=[])
+"]
+s29[label="state_index=29
+State(index=116, fluent atoms=[(clear b2), (on-table b2), (on-table b1), (arm-empty), (clear b4), (on b3 b1), (on b4 b3)], static atoms=[], derived atoms=[])
+State(index=51, fluent atoms=[(clear b3), (clear b2), (on b3 b4), (on-table b2), (on-table b1), (arm-empty), (on b4 b1)], static atoms=[], derived atoms=[])
+"]
+s30[label="state_index=30
+State(index=107, fluent atoms=[(clear b3), (on-table b2), (on-table b1), (arm-empty), (clear b4), (on b3 b1), (on b4 b2)], static atoms=[], derived atoms=[])
+State(index=52, fluent atoms=[(clear b3), (on-table b2), (on-table b1), (arm-empty), (clear b4), (on b3 b2), (on b4 b1)], static atoms=[], derived atoms=[])
+"]
+s31[label="state_index=31
+State(index=59, fluent atoms=[(clear b1), (on-table b2), (on-table b1), (holding b3), (clear b4), (on b4 b2)], static atoms=[], derived atoms=[])
+State(index=53, fluent atoms=[(clear b3), (clear b1), (on-table b2), (on-table b1), (on b3 b2), (holding b4)], static atoms=[], derived atoms=[])
+"]
+s32[label="state_index=32
+State(index=106, fluent atoms=[(clear b3), (clear b1), (on b3 b4), (on-table b2), (on-table b1), (arm-empty), (on b4 b2)], static atoms=[], derived atoms=[])
+State(index=54, fluent atoms=[(clear b1), (on-table b2), (on-table b1), (arm-empty), (clear b4), (on b3 b2), (on b4 b3)], static atoms=[], derived atoms=[])
+"]
+s33[label="state_index=33
+State(index=108, fluent atoms=[(clear b3), (on b3 b4), (on-table b2), (holding b1), (on b4 b2)], static atoms=[], derived atoms=[])
+State(index=55, fluent atoms=[(on-table b2), (clear b4), (holding b1), (on b3 b2), (on b4 b3)], static atoms=[], derived atoms=[])
+"]
+s34[label="state_index=34
+State(index=109, fluent atoms=[(clear b1), (on b3 b4), (on-table b2), (arm-empty), (on b1 b3), (on b4 b2)], static atoms=[], derived atoms=[])
+State(index=56, fluent atoms=[(clear b1), (on-table b2), (arm-empty), (on b1 b4), (on b3 b2), (on b4 b3)], static atoms=[], derived atoms=[])
+"]
+s35[label="state_index=35
+State(index=117, fluent atoms=[(on-table b1), (clear b4), (holding b2), (on b3 b1), (on b4 b3)], static atoms=[], derived atoms=[])
+State(index=57, fluent atoms=[(clear b3), (on b3 b4), (on-table b1), (holding b2), (on b4 b1)], static atoms=[], derived atoms=[])
+"]
+s36[label="state_index=36
+State(index=118, fluent atoms=[(clear b2), (on-table b1), (arm-empty), (on b2 b4), (on b3 b1), (on b4 b3)], static atoms=[], derived atoms=[])
+State(index=58, fluent atoms=[(clear b2), (on b3 b4), (on-table b1), (arm-empty), (on b2 b3), (on b4 b1)], static atoms=[], derived atoms=[])
+"]
+s37[label="state_index=37
+State(index=96, fluent atoms=[(clear b3), (on-table b4), (on-table b2), (clear b4), (holding b1), (on b3 b2)], static atoms=[], derived atoms=[])
+State(index=60, fluent atoms=[(clear b3), (on-table b2), (clear b4), (holding b1), (on-table b3), (on b4 b2)], static atoms=[], derived atoms=[])
+"]
+s38[label="state_index=38
+State(index=97, fluent atoms=[(clear b1), (on-table b4), (on-table b2), (arm-empty), (clear b4), (on b1 b3), (on b3 b2)], static atoms=[], derived atoms=[])
+State(index=61, fluent atoms=[(clear b3), (clear b1), (on-table b2), (arm-empty), (on b1 b4), (on-table b3), (on b4 b2)], static atoms=[], derived atoms=[])
+"]
+s39[label="state_index=39
+State(index=92, fluent atoms=[(clear b3), (clear b1), (on-table b4), (on-table b2), (arm-empty), (on b1 b4), (on b3 b2)], static atoms=[], derived atoms=[])
+State(index=62, fluent atoms=[(clear b1), (on-table b2), (arm-empty), (clear b4), (on b1 b3), (on-table b3), (on b4 b2)], static atoms=[], derived atoms=[])
+"]
+s40[label="state_index=40
+State(index=82, fluent atoms=[(clear b2), (clear b1), (on-table b4), (on-table b2), (holding b3), (on b1 b4)], static atoms=[], derived atoms=[])
+State(index=63, fluent atoms=[(clear b2), (clear b1), (on-table b2), (on b1 b3), (on-table b3), (holding b4)], static atoms=[], derived atoms=[])
+"]
+s41[label="state_index=41
+State(index=64, fluent atoms=[(clear b2), (clear b1), (on-table b4), (on-table b2), (arm-empty), (clear b4), (on b1 b3), (on-table b3)], static atoms=[], derived atoms=[])
+State(index=70, fluent atoms=[(clear b3), (clear b2), (clear b1), (on-table b4), (on-table b2), (arm-empty), (on b1 b4), (on-table b3)], static atoms=[], derived atoms=[])
+"]
+s42[label="state_index=42
+State(index=93, fluent atoms=[(clear b3), (clear b2), (on-table b4), (on-table b2), (arm-empty), (on b1 b4), (on b3 b1)], static atoms=[], derived atoms=[])
+State(index=65, fluent atoms=[(clear b2), (on-table b2), (arm-empty), (clear b4), (on b1 b3), (on-table b3), (on b4 b1)], static atoms=[], derived atoms=[])
+"]
+s43[label="state_index=43
+State(index=94, fluent atoms=[(clear b3), (on-table b4), (holding b2), (on b1 b4), (on b3 b1)], static atoms=[], derived atoms=[])
+State(index=66, fluent atoms=[(clear b4), (holding b2), (on b1 b3), (on-table b3), (on b4 b1)], static atoms=[], derived atoms=[])
+"]
+s44[label="state_index=44
+State(index=95, fluent atoms=[(clear b2), (on-table b4), (arm-empty), (on b2 b3), (on b1 b4), (on b3 b1)], static atoms=[], derived atoms=[])
+State(index=67, fluent atoms=[(clear b2), (arm-empty), (on b2 b4), (on b1 b3), (on-table b3), (on b4 b1)], static atoms=[], derived atoms=[])
+"]
+s45[label="state_index=45
+State(index=83, fluent atoms=[(clear b3), (clear b1), (on-table b4), (holding b2), (on b1 b4), (on-table b3)], static atoms=[], derived atoms=[])
+State(index=68, fluent atoms=[(clear b1), (on-table b4), (clear b4), (holding b2), (on b1 b3), (on-table b3)], static atoms=[], derived atoms=[])
+"]
+s46[label="state_index=46
+State(index=69, fluent atoms=[(clear b3), (clear b2), (on-table b4), (on-table b2), (clear b4), (holding b1), (on-table b3)], static atoms=[], derived atoms=[])
+"]
+s47[peripheries=2,label="state_index=47
+State(index=71, fluent atoms=[(on b1 b2), (clear b3), (clear b1), (on-table b4), (on-table b2), (arm-empty), (clear b4), (on-table b3)], static atoms=[], derived atoms=[])
+"]
+s48[peripheries=2,label="state_index=48
+State(index=73, fluent atoms=[(on b1 b2), (clear b1), (on-table b4), (on-table b2), (holding b3), (clear b4)], static atoms=[], derived atoms=[])
+State(index=72, fluent atoms=[(on b1 b2), (clear b3), (clear b1), (on-table b2), (on-table b3), (holding b4)], static atoms=[], derived atoms=[])
+"]
+s49[peripheries=2,label="state_index=49
+State(index=78, fluent atoms=[(on b1 b2), (clear b1), (on-table b2), (arm-empty), (clear b4), (on-table b3), (on b4 b3)], static atoms=[], derived atoms=[])
+State(index=74, fluent atoms=[(on b1 b2), (clear b3), (clear b1), (on-table b4), (on b3 b4), (on-table b2), (arm-empty)], static atoms=[], derived atoms=[])
+"]
+s50[peripheries=2,label="state_index=50
+State(index=79, fluent atoms=[(on b1 b2), (clear b3), (on-table b2), (arm-empty), (clear b4), (on-table b3), (on b4 b1)], static atoms=[], derived atoms=[])
+State(index=75, fluent atoms=[(on b1 b2), (clear b3), (on-table b4), (on-table b2), (arm-empty), (clear b4), (on b3 b1)], static atoms=[], derived atoms=[])
+"]
+s51[peripheries=2,label="state_index=51
+State(index=80, fluent atoms=[(on b1 b2), (on-table b2), (holding b3), (clear b4), (on b4 b1)], static atoms=[], derived atoms=[])
+State(index=76, fluent atoms=[(on b1 b2), (clear b3), (on-table b2), (on b3 b1), (holding b4)], static atoms=[], derived atoms=[])
+"]
+s52[peripheries=2,label="state_index=52
+State(index=81, fluent atoms=[(on b1 b2), (clear b3), (on b3 b4), (on-table b2), (arm-empty), (on b4 b1)], static atoms=[], derived atoms=[])
+State(index=77, fluent atoms=[(on b1 b2), (on-table b2), (arm-empty), (clear b4), (on b3 b1), (on b4 b3)], static atoms=[], derived atoms=[])
+"]
+s53[label="state_index=53
+State(index=100, fluent atoms=[(clear b2), (clear b1), (on-table b4), (arm-empty), (on b2 b4), (on b1 b3), (on-table b3)], static atoms=[], derived atoms=[])
+State(index=84, fluent atoms=[(clear b2), (clear b1), (on-table b4), (arm-empty), (on b2 b3), (on b1 b4), (on-table b3)], static atoms=[], derived atoms=[])
+"]
+s54[label="state_index=54
+State(index=101, fluent atoms=[(clear b2), (on-table b4), (arm-empty), (clear b4), (on b2 b1), (on b1 b3), (on-table b3)], static atoms=[], derived atoms=[])
+State(index=85, fluent atoms=[(clear b3), (clear b2), (on-table b4), (arm-empty), (on b2 b1), (on b1 b4), (on-table b3)], static atoms=[], derived atoms=[])
+"]
+s55[label="state_index=55
+State(index=102, fluent atoms=[(clear b2), (on b2 b1), (on b1 b3), (on-table b3), (holding b4)], static atoms=[], derived atoms=[])
+State(index=86, fluent atoms=[(clear b2), (on-table b4), (holding b3), (on b2 b1), (on b1 b4)], static atoms=[], derived atoms=[])
+"]
+s56[label="state_index=56
+State(index=103, fluent atoms=[(arm-empty), (clear b4), (on b2 b1), (on b1 b3), (on-table b3), (on b4 b2)], static atoms=[], derived atoms=[])
+State(index=87, fluent atoms=[(clear b3), (on-table b4), (arm-empty), (on b2 b1), (on b1 b4), (on b3 b2)], static atoms=[], derived atoms=[])
+"]
+s57[peripheries=2,label="state_index=57
+State(index=113, fluent atoms=[(on b1 b2), (clear b3), (clear b1), (on-table b4), (arm-empty), (on b2 b4), (on-table b3)], static atoms=[], derived atoms=[])
+State(index=89, fluent atoms=[(on b1 b2), (clear b1), (on-table b4), (arm-empty), (clear b4), (on b2 b3), (on-table b3)], static atoms=[], derived atoms=[])
+"]
+s58[peripheries=2,label="state_index=58
+State(index=114, fluent atoms=[(on b1 b2), (clear b1), (on-table b4), (holding b3), (on b2 b4)], static atoms=[], derived atoms=[])
+State(index=90, fluent atoms=[(on b1 b2), (clear b1), (on b2 b3), (on-table b3), (holding b4)], static atoms=[], derived atoms=[])
+"]
+s59[peripheries=2,label="state_index=59
+State(index=115, fluent atoms=[(on b1 b2), (clear b3), (on-table b4), (arm-empty), (on b2 b4), (on b3 b1)], static atoms=[], derived atoms=[])
+State(index=91, fluent atoms=[(on b1 b2), (arm-empty), (clear b4), (on b2 b3), (on-table b3), (on b4 b1)], static atoms=[], derived atoms=[])
+"]
+s60[label="state_index=60
+State(index=104, fluent atoms=[(clear b1), (on-table b2), (holding b3), (on b1 b4), (on b4 b2)], static atoms=[], derived atoms=[])
+State(index=98, fluent atoms=[(clear b1), (on-table b2), (on b1 b3), (on b3 b2), (holding b4)], static atoms=[], derived atoms=[])
+"]
+s61[label="state_index=61
+State(index=105, fluent atoms=[(clear b3), (on-table b2), (arm-empty), (on b1 b4), (on b3 b1), (on b4 b2)], static atoms=[], derived atoms=[])
+State(index=99, fluent atoms=[(on-table b2), (arm-empty), (clear b4), (on b1 b3), (on b3 b2), (on b4 b1)], static atoms=[], derived atoms=[])
+"]
+s62[label="state_index=62
+State(index=119, fluent atoms=[(clear b2), (clear b1), (on-table b4), (on b3 b4), (on-table b2), (arm-empty), (on b1 b3)], static atoms=[], derived atoms=[])
+State(index=110, fluent atoms=[(clear b2), (clear b1), (on-table b2), (arm-empty), (on b1 b4), (on-table b3), (on b4 b3)], static atoms=[], derived atoms=[])
+"]
+s63[label="state_index=63
+State(index=120, fluent atoms=[(clear b1), (on-table b4), (on b3 b4), (holding b2), (on b1 b3)], static atoms=[], derived atoms=[])
+State(index=111, fluent atoms=[(clear b1), (holding b2), (on b1 b4), (on-table b3), (on b4 b3)], static atoms=[], derived atoms=[])
+"]
+s64[label="state_index=64
+State(index=121, fluent atoms=[(clear b2), (on-table b4), (on b3 b4), (arm-empty), (on b2 b1), (on b1 b3)], static atoms=[], derived atoms=[])
+State(index=112, fluent atoms=[(clear b2), (arm-empty), (on b2 b1), (on b1 b4), (on-table b3), (on b4 b3)], static atoms=[], derived atoms=[])
+"]
+Dangling [ label = "", style = invis ]
+{ rank = same; Dangling }
+Dangling -> s0
+{ rank = same; s12,s25,s34,s36,s61}
+{ rank = same; s11,s24,s33,s35,s60}
+{ rank = same; s10,s17,s23,s29,s30,s32,s38,s44,s56}
+{ rank = same; s7,s8,s16,s21,s31,s37,s43,s55}
+{ rank = same; s5,s6,s9,s15,s20,s22,s39,s42,s54,s64}
+{ rank = same; s1,s3,s13,s19,s40,s45,s63}
+{ rank = same; s0,s4,s14,s26,s41,s53,s62}
+{ rank = same; s2,s18,s27,s46}
+{ rank = same; s28,s47,s48,s49,s50,s51,s52,s57,s58,s59}
+s0->s1 [label="(pickup b2)
+(pickup b2)
+"]
+s0->s2 [label="(pickup b1)
+(pickup b1)
+"]
+s0->s3 [label="(unstack b3 b4)
+(unstack b4 b3)
+"]
+s1->s0 [label="(putdown b2)
+(putdown b2)
+"]
+s1->s22 [label="(stack b2 b1)
+(stack b2 b1)
+"]
+s1->s26 [label="(stack b2 b3)
+(stack b2 b4)
+"]
+s2->s0 [label="(putdown b1)
+(putdown b1)
+"]
+s2->s49 [label="(stack b1 b2)
+(stack b1 b2)
+"]
+s2->s62 [label="(stack b1 b3)
+(stack b1 b4)
+"]
+s3->s0 [label="(stack b4 b3)
+(stack b3 b4)
+"]
+s3->s4 [label="(putdown b4)
+(putdown b3)
+"]
+s3->s5 [label="(stack b3 b2)
+(stack b4 b2)
+"]
+s3->s6 [label="(stack b3 b1)
+(stack b4 b1)
+"]
+s4->s3 [label="(pickup b4)
+(pickup b3)
+"]
+s4->s19 [label="(pickup b2)
+"]
+s4->s46 [label="(pickup b1)
+"]
+s5->s3 [label="(unstack b3 b2)
+(unstack b4 b2)
+"]
+s5->s31 [label="(pickup b3)
+(pickup b4)
+"]
+s5->s37 [label="(pickup b1)
+(pickup b1)
+"]
+s6->s3 [label="(unstack b3 b1)
+(unstack b4 b1)
+"]
+s6->s7 [label="(pickup b3)
+(pickup b4)
+"]
+s6->s8 [label="(pickup b2)
+(pickup b2)
+"]
+s7->s6 [label="(putdown b4)
+(putdown b3)
+"]
+s7->s29 [label="(stack b3 b4)
+(stack b4 b3)
+"]
+s7->s30 [label="(stack b4 b2)
+(stack b3 b2)
+"]
+s8->s6 [label="(putdown b2)
+(putdown b2)
+"]
+s8->s9 [label="(stack b2 b4)
+(stack b2 b3)
+"]
+s8->s10 [label="(stack b2 b4)
+(stack b2 b3)
+"]
+s9->s8 [label="(unstack b2 b4)
+(unstack b2 b3)
+"]
+s9->s13 [label="(unstack b4 b1)
+(unstack b3 b1)
+"]
+s10->s8 [label="(unstack b2 b3)
+(unstack b2 b4)
+"]
+s10->s11 [label="(pickup b4)
+(pickup b3)
+"]
+s11->s10 [label="(putdown b3)
+(putdown b4)
+"]
+s11->s12 [label="(stack b3 b2)
+(stack b4 b2)
+"]
+s12->s11 [label="(unstack b4 b2)
+(unstack b3 b2)
+"]
+s13->s9 [label="(stack b3 b1)
+(stack b4 b1)
+"]
+s13->s14 [label="(putdown b4)
+(putdown b3)
+"]
+s13->s15 [label="(stack b4 b2)
+(stack b3 b2)
+"]
+s14->s13 [label="(pickup b4)
+(pickup b3)
+"]
+s14->s18 [label="(pickup b1)
+(pickup b1)
+"]
+s14->s19 [label="(unstack b2 b3)
+(unstack b2 b4)
+"]
+s15->s13 [label="(unstack b4 b2)
+(unstack b3 b2)
+"]
+s15->s16 [label="(pickup b1)
+(pickup b1)
+"]
+s16->s15 [label="(putdown b1)
+(putdown b1)
+"]
+s16->s17 [label="(stack b1 b4)
+(stack b1 b3)
+"]
+s17->s16 [label="(unstack b1 b4)
+(unstack b1 b3)
+"]
+s18->s14 [label="(putdown b1)
+(putdown b1)
+"]
+s18->s53 [label="(stack b1 b4)
+(stack b1 b3)
+"]
+s18->s57 [label="(stack b1 b2)
+(stack b1 b2)
+"]
+s19->s4 [label="(putdown b2)
+"]
+s19->s14 [label="(stack b2 b4)
+(stack b2 b3)
+"]
+s19->s20 [label="(stack b2 b1)
+"]
+s20->s19 [label="(unstack b2 b1)
+"]
+s20->s21 [label="(pickup b4)
+(pickup b3)
+"]
+s21->s20 [label="(putdown b3)
+(putdown b4)
+"]
+s21->s22 [label="(stack b3 b4)
+(stack b4 b3)
+"]
+s21->s23 [label="(stack b3 b2)
+(stack b4 b2)
+"]
+s22->s1 [label="(unstack b2 b1)
+(unstack b2 b1)
+"]
+s22->s21 [label="(unstack b3 b4)
+(unstack b4 b3)
+"]
+s23->s21 [label="(unstack b3 b2)
+(unstack b4 b2)
+"]
+s23->s24 [label="(pickup b4)
+(pickup b3)
+"]
+s24->s23 [label="(putdown b4)
+(putdown b3)
+"]
+s24->s25 [label="(stack b4 b3)
+(stack b3 b4)
+"]
+s25->s24 [label="(unstack b4 b3)
+(unstack b3 b4)
+"]
+s26->s1 [label="(unstack b2 b4)
+(unstack b2 b3)
+"]
+s26->s27 [label="(pickup b1)
+(pickup b1)
+"]
+s27->s26 [label="(putdown b1)
+(putdown b1)
+"]
+s27->s28 [label="(stack b1 b2)
+(stack b1 b2)
+"]
+s28->s27 [label="(unstack b1 b2)
+(unstack b1 b2)
+"]
+s29->s7 [label="(unstack b4 b3)
+(unstack b3 b4)
+"]
+s29->s35 [label="(pickup b2)
+(pickup b2)
+"]
+s30->s7 [label="(unstack b3 b2)
+(unstack b4 b2)
+"]
+s30->s31 [label="(unstack b4 b1)
+(unstack b3 b1)
+"]
+s31->s5 [label="(putdown b3)
+(putdown b4)
+"]
+s31->s30 [label="(stack b4 b1)
+(stack b3 b1)
+"]
+s31->s32 [label="(stack b3 b4)
+(stack b4 b3)
+"]
+s32->s31 [label="(unstack b4 b3)
+(unstack b3 b4)
+"]
+s32->s33 [label="(pickup b1)
+(pickup b1)
+"]
+s33->s32 [label="(putdown b1)
+(putdown b1)
+"]
+s33->s34 [label="(stack b1 b3)
+(stack b1 b4)
+"]
+s34->s33 [label="(unstack b1 b3)
+(unstack b1 b4)
+"]
+s35->s29 [label="(putdown b2)
+(putdown b2)
+"]
+s35->s36 [label="(stack b2 b4)
+(stack b2 b3)
+"]
+s36->s35 [label="(unstack b2 b4)
+(unstack b2 b3)
+"]
+s37->s5 [label="(putdown b1)
+(putdown b1)
+"]
+s37->s38 [label="(stack b1 b4)
+(stack b1 b3)
+"]
+s37->s39 [label="(stack b1 b3)
+(stack b1 b4)
+"]
+s38->s37 [label="(unstack b1 b4)
+(unstack b1 b3)
+"]
+s38->s60 [label="(pickup b4)
+(pickup b3)
+"]
+s39->s37 [label="(unstack b1 b3)
+(unstack b1 b4)
+"]
+s39->s40 [label="(unstack b4 b2)
+(unstack b3 b2)
+"]
+s40->s39 [label="(stack b3 b2)
+(stack b4 b2)
+"]
+s40->s41 [label="(putdown b4)
+(putdown b3)
+"]
+s40->s42 [label="(stack b3 b1)
+(stack b4 b1)
+"]
+s41->s40 [label="(pickup b4)
+(pickup b3)
+"]
+s41->s45 [label="(pickup b2)
+(pickup b2)
+"]
+s41->s46 [label="(unstack b1 b4)
+(unstack b1 b3)
+"]
+s42->s40 [label="(unstack b4 b1)
+(unstack b3 b1)
+"]
+s42->s43 [label="(pickup b2)
+(pickup b2)
+"]
+s43->s42 [label="(putdown b2)
+(putdown b2)
+"]
+s43->s44 [label="(stack b2 b4)
+(stack b2 b3)
+"]
+s44->s43 [label="(unstack b2 b3)
+(unstack b2 b4)
+"]
+s45->s41 [label="(putdown b2)
+(putdown b2)
+"]
+s45->s53 [label="(stack b2 b4)
+(stack b2 b3)
+"]
+s45->s54 [label="(stack b2 b1)
+(stack b2 b1)
+"]
+s46->s4 [label="(putdown b1)
+"]
+s46->s41 [label="(stack b1 b3)
+(stack b1 b4)
+"]
+s46->s47 [label="(stack b1 b2)
+"]
+s47->s46 [label="(unstack b1 b2)
+"]
+s47->s48 [label="(pickup b4)
+(pickup b3)
+"]
+s48->s47 [label="(putdown b4)
+(putdown b3)
+"]
+s48->s49 [label="(stack b3 b4)
+(stack b4 b3)
+"]
+s48->s50 [label="(stack b3 b1)
+(stack b4 b1)
+"]
+s49->s2 [label="(unstack b1 b2)
+(unstack b1 b2)
+"]
+s49->s48 [label="(unstack b4 b3)
+(unstack b3 b4)
+"]
+s50->s48 [label="(unstack b3 b1)
+(unstack b4 b1)
+"]
+s50->s51 [label="(pickup b3)
+(pickup b4)
+"]
+s51->s50 [label="(putdown b3)
+(putdown b4)
+"]
+s51->s52 [label="(stack b4 b3)
+(stack b3 b4)
+"]
+s52->s51 [label="(unstack b4 b3)
+(unstack b3 b4)
+"]
+s53->s18 [label="(unstack b1 b4)
+(unstack b1 b3)
+"]
+s53->s45 [label="(unstack b2 b4)
+(unstack b2 b3)
+"]
+s54->s45 [label="(unstack b2 b1)
+(unstack b2 b1)
+"]
+s54->s55 [label="(pickup b3)
+(pickup b4)
+"]
+s55->s54 [label="(putdown b4)
+(putdown b3)
+"]
+s55->s56 [label="(stack b4 b2)
+(stack b3 b2)
+"]
+s56->s55 [label="(unstack b4 b2)
+(unstack b3 b2)
+"]
+s57->s18 [label="(unstack b1 b2)
+(unstack b1 b2)
+"]
+s57->s58 [label="(pickup b3)
+(pickup b4)
+"]
+s58->s57 [label="(putdown b4)
+(putdown b3)
+"]
+s58->s59 [label="(stack b4 b1)
+(stack b3 b1)
+"]
+s59->s58 [label="(unstack b4 b1)
+(unstack b3 b1)
+"]
+s60->s38 [label="(putdown b3)
+(putdown b4)
+"]
+s60->s61 [label="(stack b3 b1)
+(stack b4 b1)
+"]
+s61->s60 [label="(unstack b4 b1)
+(unstack b3 b1)
+"]
+s62->s2 [label="(unstack b1 b4)
+(unstack b1 b3)
+"]
+s62->s63 [label="(pickup b2)
+(pickup b2)
+"]
+s63->s62 [label="(putdown b2)
+(putdown b2)
+"]
+s63->s64 [label="(stack b2 b1)
+(stack b2 b1)
+"]
+s64->s63 [label="(unstack b2 b1)
+(unstack b2 b1)
+"]
+}

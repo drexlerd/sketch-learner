@@ -1,0 +1,8 @@
+(:policy
+(:booleans )
+(:numericals (f19 "n_count(c_primitive(on,0))") (f4 "n_count(c_and(c_primitive(on,0),c_some(r_primitive(at_g,0,1),c_primitive(at-ferry,0))))") (f85 "n_count(c_and(c_all(r_primitive(at,0,1),c_primitive(at-ferry,0)),c_not(c_all(r_primitive(at_g,0,1),c_primitive(at-ferry,0)))))"))
+(:rule (:conditions (:c_n_gt f19) (:c_n_gt f4)) (:effects (:e_n_dec f19) (:e_n_dec f4) (:e_n_bot f85)))
+(:rule (:conditions (:c_n_gt f19) (:c_n_eq f4) (:c_n_gt f85)) (:effects (:e_n_bot f19) (:e_n_inc f4)))
+(:rule (:conditions (:c_n_eq f19) (:c_n_eq f4) (:c_n_eq f85)) (:effects (:e_n_bot f19) (:e_n_bot f4) (:e_n_inc f85)))
+(:rule (:conditions (:c_n_eq f19) (:c_n_eq f4) (:c_n_gt f85)) (:effects (:e_n_inc f19) (:e_n_bot f4) (:e_n_bot f85)))
+)

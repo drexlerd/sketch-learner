@@ -1,0 +1,12 @@
+(:policy
+(:booleans )
+(:numericals (f1108 "n_count(c_primitive(on-table,0))") (f2482 "n_count(r_and(r_primitive(on,0,1),r_primitive(on_g,0,1)))") (f2106 "n_count(c_all(r_transitive_closure(r_primitive(on,0,1)),c_equal(r_primitive(on,0,1),r_primitive(on_g,0,1))))"))
+(:rule (:conditions (:c_n_gt f1108) (:c_n_gt f2106)) (:effects (:e_n_inc f1108) (:e_n_bot f2482) (:e_n_inc f2106)))
+(:rule (:conditions (:c_n_gt f1108) (:c_n_gt f2106)) (:effects (:e_n_dec f1108) (:e_n_inc f2482) (:e_n_bot f2106)))
+(:rule (:conditions (:c_n_gt f1108) (:c_n_gt f2106)) (:effects (:e_n_inc f1108) (:e_n_bot f2482) (:e_n_bot f2106)))
+(:rule (:conditions (:c_n_gt f1108) (:c_n_gt f2482) (:c_n_gt f2106)) (:effects (:e_n_inc f1108) (:e_n_dec f2482) (:e_n_inc f2106)))
+(:rule (:conditions (:c_n_gt f1108) (:c_n_eq f2482) (:c_n_gt f2106)) (:effects (:e_n_bot f1108) (:e_n_inc f2482) (:e_n_bot f2106)))
+(:rule (:conditions (:c_n_gt f1108) (:c_n_gt f2482) (:c_n_gt f2106)) (:effects (:e_n_bot f1108) (:e_n_inc f2482) (:e_n_inc f2106)))
+(:rule (:conditions (:c_n_gt f1108) (:c_n_eq f2482) (:c_n_gt f2106)) (:effects (:e_n_bot f1108) (:e_n_inc f2482) (:e_n_dec f2106)))
+(:rule (:conditions (:c_n_gt f1108) (:c_n_eq f2482) (:c_n_gt f2106)) (:effects (:e_n_bot f1108) (:e_n_bot f2482) (:e_n_inc f2106)))
+)

@@ -1,0 +1,8 @@
+(:policy
+(:booleans )
+(:numericals (f30 "n_count(c_primitive(picked,0))") (f220 "n_concept_distance(c_primitive(at,0),r_restrict(r_primitive(adjacent,0,1),c_primitive(unblocked,0)),c_primitive(reward,0))"))
+(:rule (:conditions (:c_n_eq f30) (:c_n_gt f220)) (:effects (:e_n_bot f30) (:e_n_dec f220)))
+(:rule (:conditions (:c_n_eq f30) (:c_n_eq f220)) (:effects (:e_n_inc f30) (:e_n_inc f220)))
+(:rule (:conditions (:c_n_gt f30) (:c_n_gt f220)) (:effects (:e_n_bot f30) (:e_n_dec f220)))
+(:rule (:conditions (:c_n_gt f30) (:c_n_eq f220)) (:effects (:e_n_inc f30) (:e_n_inc f220)))
+)

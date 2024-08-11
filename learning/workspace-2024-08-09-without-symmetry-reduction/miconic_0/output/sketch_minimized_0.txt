@@ -1,0 +1,11 @@
+(:policy
+(:booleans )
+(:numericals (f283 "n_count(c_primitive(boarded,0))") (f270 "n_count(c_some(r_primitive(origin,0,1),c_primitive(lift-at,0)))") (f76 "n_count(c_and(c_primitive(boarded,0),c_some(r_primitive(destin,0,1),c_primitive(lift-at,0))))"))
+(:rule (:conditions (:c_n_gt f283) (:c_n_gt f270)) (:effects (:e_n_inc f283) (:e_n_dec f270) (:e_n_bot f76)))
+(:rule (:conditions (:c_n_gt f270) (:c_n_eq f76)) (:effects (:e_n_inc f283) (:e_n_dec f270) (:e_n_bot f76)))
+(:rule (:conditions (:c_n_gt f283) (:c_n_eq f270) (:c_n_eq f76)) (:effects (:e_n_bot f283) (:e_n_inc f270) (:e_n_inc f76)))
+(:rule (:conditions (:c_n_eq f283) (:c_n_eq f270) (:c_n_eq f76)) (:effects (:e_n_bot f283) (:e_n_inc f270) (:e_n_bot f76)))
+(:rule (:conditions (:c_n_gt f283) (:c_n_eq f270) (:c_n_eq f76)) (:effects (:e_n_bot f283) (:e_n_bot f270) (:e_n_inc f76)))
+(:rule (:conditions (:c_n_gt f283) (:c_n_eq f270) (:c_n_gt f76)) (:effects (:e_n_dec f283) (:e_n_bot f270) (:e_n_dec f76)))
+(:rule (:conditions (:c_n_gt f283) (:c_n_eq f270) (:c_n_gt f76)) (:effects (:e_n_bot f283) (:e_n_inc f270) (:e_n_dec f76)))
+)

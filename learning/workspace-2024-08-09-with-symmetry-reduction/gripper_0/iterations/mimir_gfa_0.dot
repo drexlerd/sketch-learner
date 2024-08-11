@@ -1,0 +1,71 @@
+digraph {
+rankdir="LR"
+s0[label="state_index=0 global_state_index = 0 abstraction_index=0 abstract_state_index=0
+State(index=0, fluent atoms=[(at-robby rooma), (at ball1 rooma), (free right), (free left)], static atoms=[(ball ball1), (gripper right), (gripper left), (room roomb), (room rooma)], derived atoms=[])
+"]
+s1[label="state_index=1 global_state_index = 1 abstraction_index=0 abstract_state_index=1
+State(index=1, fluent atoms=[(at ball1 rooma), (free right), (free left), (at-robby roomb)], static atoms=[(ball ball1), (gripper right), (gripper left), (room roomb), (room rooma)], derived atoms=[])
+"]
+s2[label="state_index=2 global_state_index = 2 abstraction_index=0 abstract_state_index=2
+State(index=3, fluent atoms=[(at-robby rooma), (free right), (carry ball1 left)], static atoms=[(ball ball1), (gripper right), (gripper left), (room roomb), (room rooma)], derived atoms=[])
+State(index=2, fluent atoms=[(at-robby rooma), (free left), (carry ball1 right)], static atoms=[(ball ball1), (gripper right), (gripper left), (room roomb), (room rooma)], derived atoms=[])
+"]
+s3[label="state_index=3 global_state_index = 3 abstraction_index=0 abstract_state_index=3
+State(index=7, fluent atoms=[(free left), (carry ball1 right), (at-robby roomb)], static atoms=[(ball ball1), (gripper right), (gripper left), (room roomb), (room rooma)], derived atoms=[])
+State(index=4, fluent atoms=[(free right), (carry ball1 left), (at-robby roomb)], static atoms=[(ball ball1), (gripper right), (gripper left), (room roomb), (room rooma)], derived atoms=[])
+"]
+s4[peripheries=2,label="state_index=4 global_state_index = 4 abstraction_index=0 abstract_state_index=4
+State(index=5, fluent atoms=[(at ball1 roomb), (free right), (free left), (at-robby roomb)], static atoms=[(ball ball1), (gripper right), (gripper left), (room roomb), (room rooma)], derived atoms=[])
+"]
+s5[peripheries=2,label="state_index=5 global_state_index = 5 abstraction_index=0 abstract_state_index=5
+State(index=6, fluent atoms=[(at ball1 roomb), (at-robby rooma), (free right), (free left)], static atoms=[(ball ball1), (gripper right), (gripper left), (room roomb), (room rooma)], derived atoms=[])
+"]
+Dangling [ label = "", style = invis ]
+{ rank = same; Dangling }
+Dangling -> s0
+{ rank = same; s1}
+{ rank = same; s0}
+{ rank = same; s2}
+{ rank = same; s3}
+{ rank = same; s4,s5}
+s0->s0 [label="(move rooma rooma)
+"]
+s0->s1 [label="(move rooma roomb)
+"]
+s0->s2 [label="(pick ball1 rooma right)
+(pick ball1 rooma left)
+"]
+s1->s0 [label="(move roomb rooma)
+"]
+s1->s1 [label="(move roomb roomb)
+"]
+s2->s0 [label="(drop ball1 rooma left)
+(drop ball1 rooma right)
+"]
+s2->s2 [label="(move rooma rooma)
+(move rooma rooma)
+"]
+s2->s3 [label="(move rooma roomb)
+(move rooma roomb)
+"]
+s3->s2 [label="(move roomb rooma)
+(move roomb rooma)
+"]
+s3->s3 [label="(move roomb roomb)
+(move roomb roomb)
+"]
+s3->s4 [label="(drop ball1 roomb right)
+(drop ball1 roomb left)
+"]
+s4->s3 [label="(pick ball1 roomb right)
+(pick ball1 roomb left)
+"]
+s4->s4 [label="(move roomb roomb)
+"]
+s4->s5 [label="(move roomb rooma)
+"]
+s5->s4 [label="(move rooma roomb)
+"]
+s5->s5 [label="(move rooma rooma)
+"]
+}

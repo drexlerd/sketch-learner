@@ -1,0 +1,103 @@
+digraph {
+rankdir="LR"
+s0[label="state_index=0 global_state_index = 60 abstraction_index=9 abstract_state_index=0
+State(index=0, fluent atoms=[(lift-at f0), (origin p1 f1), (origin p0 f1)], static atoms=[(floor f1), (floor f0), (passenger p1), (passenger p0), (destin p1 f0), (destin p0 f0), (above f0 f1)], derived atoms=[])
+"]
+s1[label="state_index=1 global_state_index = 61 abstraction_index=9 abstract_state_index=1
+State(index=1, fluent atoms=[(origin p1 f1), (origin p0 f1), (lift-at f1)], static atoms=[(floor f1), (floor f0), (passenger p1), (passenger p0), (destin p1 f0), (destin p0 f0), (above f0 f1)], derived atoms=[])
+"]
+s2[label="state_index=2 global_state_index = 62 abstraction_index=9 abstract_state_index=2
+State(index=2, fluent atoms=[(origin p0 f1), (lift-at f1), (boarded p1)], static atoms=[(floor f1), (floor f0), (passenger p1), (passenger p0), (destin p1 f0), (destin p0 f0), (above f0 f1)], derived atoms=[])
+State(index=3, fluent atoms=[(origin p1 f1), (lift-at f1), (boarded p0)], static atoms=[(floor f1), (floor f0), (passenger p1), (passenger p0), (destin p1 f0), (destin p0 f0), (above f0 f1)], derived atoms=[])
+"]
+s3[label="state_index=3 global_state_index = 63 abstraction_index=9 abstract_state_index=3
+State(index=15, fluent atoms=[(lift-at f0), (origin p0 f1), (boarded p1)], static atoms=[(floor f1), (floor f0), (passenger p1), (passenger p0), (destin p1 f0), (destin p0 f0), (above f0 f1)], derived atoms=[])
+State(index=4, fluent atoms=[(lift-at f0), (origin p1 f1), (boarded p0)], static atoms=[(floor f1), (floor f0), (passenger p1), (passenger p0), (destin p1 f0), (destin p0 f0), (above f0 f1)], derived atoms=[])
+"]
+s4[label="state_index=4 global_state_index = 64 abstraction_index=9 abstract_state_index=4
+State(index=5, fluent atoms=[(lift-at f1), (boarded p1), (boarded p0)], static atoms=[(floor f1), (floor f0), (passenger p1), (passenger p0), (destin p1 f0), (destin p0 f0), (above f0 f1)], derived atoms=[])
+"]
+s5[label="state_index=5 global_state_index = 65 abstraction_index=9 abstract_state_index=5
+State(index=6, fluent atoms=[(lift-at f0), (boarded p1), (boarded p0)], static atoms=[(floor f1), (floor f0), (passenger p1), (passenger p0), (destin p1 f0), (destin p0 f0), (above f0 f1)], derived atoms=[])
+"]
+s6[label="state_index=6 global_state_index = 66 abstraction_index=9 abstract_state_index=6
+State(index=7, fluent atoms=[(served p1), (lift-at f0), (boarded p0)], static atoms=[(floor f1), (floor f0), (passenger p1), (passenger p0), (destin p1 f0), (destin p0 f0), (above f0 f1)], derived atoms=[])
+State(index=8, fluent atoms=[(served p0), (lift-at f0), (boarded p1)], static atoms=[(floor f1), (floor f0), (passenger p1), (passenger p0), (destin p1 f0), (destin p0 f0), (above f0 f1)], derived atoms=[])
+"]
+s7[label="state_index=7 global_state_index = 67 abstraction_index=9 abstract_state_index=7
+State(index=9, fluent atoms=[(served p0), (lift-at f1), (boarded p1)], static atoms=[(floor f1), (floor f0), (passenger p1), (passenger p0), (destin p1 f0), (destin p0 f0), (above f0 f1)], derived atoms=[])
+State(index=12, fluent atoms=[(served p1), (lift-at f1), (boarded p0)], static atoms=[(floor f1), (floor f0), (passenger p1), (passenger p0), (destin p1 f0), (destin p0 f0), (above f0 f1)], derived atoms=[])
+"]
+s8[peripheries=2,label="state_index=8 global_state_index = 68 abstraction_index=9 abstract_state_index=8
+State(index=10, fluent atoms=[(served p1), (served p0), (lift-at f0)], static atoms=[(floor f1), (floor f0), (passenger p1), (passenger p0), (destin p1 f0), (destin p0 f0), (above f0 f1)], derived atoms=[])
+"]
+s9[peripheries=2,label="state_index=9 global_state_index = 69 abstraction_index=9 abstract_state_index=9
+State(index=11, fluent atoms=[(served p1), (served p0), (lift-at f1)], static atoms=[(floor f1), (floor f0), (passenger p1), (passenger p0), (destin p1 f0), (destin p0 f0), (above f0 f1)], derived atoms=[])
+"]
+s10[label="state_index=10 global_state_index = 70 abstraction_index=9 abstract_state_index=10
+State(index=16, fluent atoms=[(served p1), (lift-at f0), (origin p0 f1)], static atoms=[(floor f1), (floor f0), (passenger p1), (passenger p0), (destin p1 f0), (destin p0 f0), (above f0 f1)], derived atoms=[])
+State(index=13, fluent atoms=[(served p0), (lift-at f0), (origin p1 f1)], static atoms=[(floor f1), (floor f0), (passenger p1), (passenger p0), (destin p1 f0), (destin p0 f0), (above f0 f1)], derived atoms=[])
+"]
+s11[label="state_index=11 global_state_index = 71 abstraction_index=9 abstract_state_index=11
+State(index=17, fluent atoms=[(served p1), (origin p0 f1), (lift-at f1)], static atoms=[(floor f1), (floor f0), (passenger p1), (passenger p0), (destin p1 f0), (destin p0 f0), (above f0 f1)], derived atoms=[])
+State(index=14, fluent atoms=[(served p0), (origin p1 f1), (lift-at f1)], static atoms=[(floor f1), (floor f0), (passenger p1), (passenger p0), (destin p1 f0), (destin p0 f0), (above f0 f1)], derived atoms=[])
+"]
+Dangling [ label = "", style = invis ]
+{ rank = same; Dangling }
+Dangling -> s0
+{ rank = same; s0}
+{ rank = same; s1,s3}
+{ rank = same; s2,s10}
+{ rank = same; s4,s11}
+{ rank = same; s5,s7}
+{ rank = same; s6}
+{ rank = same; s8,s9}
+s0->s1 [label="(up f0 f1)
+"]
+s1->s0 [label="(down f1 f0)
+"]
+s1->s2 [label="(board f1 p1)
+(board f1 p0)
+"]
+s2->s3 [label="(down f1 f0)
+(down f1 f0)
+"]
+s2->s4 [label="(board f1 p1)
+(board f1 p0)
+"]
+s3->s2 [label="(up f0 f1)
+(up f0 f1)
+"]
+s3->s10 [label="(depart f0 p1)
+(depart f0 p0)
+"]
+s4->s5 [label="(down f1 f0)
+"]
+s5->s4 [label="(up f0 f1)
+"]
+s5->s6 [label="(depart f0 p0)
+(depart f0 p1)
+"]
+s6->s7 [label="(up f0 f1)
+(up f0 f1)
+"]
+s6->s8 [label="(depart f0 p0)
+(depart f0 p1)
+"]
+s7->s6 [label="(down f1 f0)
+(down f1 f0)
+"]
+s8->s9 [label="(up f0 f1)
+"]
+s9->s8 [label="(down f1 f0)
+"]
+s10->s11 [label="(up f0 f1)
+(up f0 f1)
+"]
+s11->s7 [label="(board f1 p1)
+(board f1 p0)
+"]
+s11->s10 [label="(down f1 f0)
+(down f1 f0)
+"]
+}

@@ -1,0 +1,134 @@
+digraph {
+rankdir="LR"
+s0[label="state_index=0 global_state_index = 234 abstraction_index=31 abstract_state_index=0
+State(index=0, fluent atoms=[(reward c_0_2), (at c_0_0)], static atoms=[(unblocked c_1_1), (unblocked c_2_0), (unblocked c_1_0), (cell c_2_2), (unblocked c_0_2), (cell c_2_1), (unblocked c_2_1), (cell c_2_0), (unblocked c_0_0), (cell c_1_2), (unblocked c_2_2), (cell c_1_1), (unblocked c_1_2), (cell c_1_0), (adjacent c_2_2 c_2_1), (cell c_0_2), (adjacent c_2_1 c_1_1), (cell c_0_1), (adjacent c_1_0 c_1_1), (cell c_0_0), (adjacent c_0_1 c_0_0), (adjacent c_1_1 c_0_1), (adjacent c_1_1 c_1_0), (adjacent c_1_2 c_0_2), (adjacent c_0_2 c_0_1), (adjacent c_0_1 c_1_1), (adjacent c_1_1 c_1_2), (adjacent c_2_1 c_2_2), (adjacent c_2_0 c_1_0), (adjacent c_1_1 c_2_1), (adjacent c_2_1 c_2_0), (adjacent c_0_0 c_0_1), (adjacent c_1_2 c_1_1), (adjacent c_1_0 c_2_0), (adjacent c_0_2 c_1_2), (adjacent c_0_0 c_1_0), (adjacent c_2_0 c_2_1), (adjacent c_1_0 c_0_0), (adjacent c_1_2 c_2_2), (adjacent c_0_1 c_0_2), (adjacent c_2_2 c_1_2)], derived atoms=[])
+"]
+s1[label="state_index=1 global_state_index = 235 abstraction_index=31 abstract_state_index=1
+State(index=1, fluent atoms=[(reward c_0_2), (at c_1_0)], static atoms=[(unblocked c_1_1), (unblocked c_2_0), (unblocked c_1_0), (cell c_2_2), (unblocked c_0_2), (cell c_2_1), (unblocked c_2_1), (cell c_2_0), (unblocked c_0_0), (cell c_1_2), (unblocked c_2_2), (cell c_1_1), (unblocked c_1_2), (cell c_1_0), (adjacent c_2_2 c_2_1), (cell c_0_2), (adjacent c_2_1 c_1_1), (cell c_0_1), (adjacent c_1_0 c_1_1), (cell c_0_0), (adjacent c_0_1 c_0_0), (adjacent c_1_1 c_0_1), (adjacent c_1_1 c_1_0), (adjacent c_1_2 c_0_2), (adjacent c_0_2 c_0_1), (adjacent c_0_1 c_1_1), (adjacent c_1_1 c_1_2), (adjacent c_2_1 c_2_2), (adjacent c_2_0 c_1_0), (adjacent c_1_1 c_2_1), (adjacent c_2_1 c_2_0), (adjacent c_0_0 c_0_1), (adjacent c_1_2 c_1_1), (adjacent c_1_0 c_2_0), (adjacent c_0_2 c_1_2), (adjacent c_0_0 c_1_0), (adjacent c_2_0 c_2_1), (adjacent c_1_0 c_0_0), (adjacent c_1_2 c_2_2), (adjacent c_0_1 c_0_2), (adjacent c_2_2 c_1_2)], derived atoms=[])
+"]
+s2[label="state_index=2 global_state_index = 236 abstraction_index=31 abstract_state_index=2
+State(index=2, fluent atoms=[(reward c_0_2), (at c_2_0)], static atoms=[(unblocked c_1_1), (unblocked c_2_0), (unblocked c_1_0), (cell c_2_2), (unblocked c_0_2), (cell c_2_1), (unblocked c_2_1), (cell c_2_0), (unblocked c_0_0), (cell c_1_2), (unblocked c_2_2), (cell c_1_1), (unblocked c_1_2), (cell c_1_0), (adjacent c_2_2 c_2_1), (cell c_0_2), (adjacent c_2_1 c_1_1), (cell c_0_1), (adjacent c_1_0 c_1_1), (cell c_0_0), (adjacent c_0_1 c_0_0), (adjacent c_1_1 c_0_1), (adjacent c_1_1 c_1_0), (adjacent c_1_2 c_0_2), (adjacent c_0_2 c_0_1), (adjacent c_0_1 c_1_1), (adjacent c_1_1 c_1_2), (adjacent c_2_1 c_2_2), (adjacent c_2_0 c_1_0), (adjacent c_1_1 c_2_1), (adjacent c_2_1 c_2_0), (adjacent c_0_0 c_0_1), (adjacent c_1_2 c_1_1), (adjacent c_1_0 c_2_0), (adjacent c_0_2 c_1_2), (adjacent c_0_0 c_1_0), (adjacent c_2_0 c_2_1), (adjacent c_1_0 c_0_0), (adjacent c_1_2 c_2_2), (adjacent c_0_1 c_0_2), (adjacent c_2_2 c_1_2)], derived atoms=[])
+"]
+s3[label="state_index=3 global_state_index = 237 abstraction_index=31 abstract_state_index=3
+State(index=3, fluent atoms=[(reward c_0_2), (at c_1_1)], static atoms=[(unblocked c_1_1), (unblocked c_2_0), (unblocked c_1_0), (cell c_2_2), (unblocked c_0_2), (cell c_2_1), (unblocked c_2_1), (cell c_2_0), (unblocked c_0_0), (cell c_1_2), (unblocked c_2_2), (cell c_1_1), (unblocked c_1_2), (cell c_1_0), (adjacent c_2_2 c_2_1), (cell c_0_2), (adjacent c_2_1 c_1_1), (cell c_0_1), (adjacent c_1_0 c_1_1), (cell c_0_0), (adjacent c_0_1 c_0_0), (adjacent c_1_1 c_0_1), (adjacent c_1_1 c_1_0), (adjacent c_1_2 c_0_2), (adjacent c_0_2 c_0_1), (adjacent c_0_1 c_1_1), (adjacent c_1_1 c_1_2), (adjacent c_2_1 c_2_2), (adjacent c_2_0 c_1_0), (adjacent c_1_1 c_2_1), (adjacent c_2_1 c_2_0), (adjacent c_0_0 c_0_1), (adjacent c_1_2 c_1_1), (adjacent c_1_0 c_2_0), (adjacent c_0_2 c_1_2), (adjacent c_0_0 c_1_0), (adjacent c_2_0 c_2_1), (adjacent c_1_0 c_0_0), (adjacent c_1_2 c_2_2), (adjacent c_0_1 c_0_2), (adjacent c_2_2 c_1_2)], derived atoms=[])
+"]
+s4[label="state_index=4 global_state_index = 238 abstraction_index=31 abstract_state_index=4
+State(index=4, fluent atoms=[(reward c_0_2), (at c_2_1)], static atoms=[(unblocked c_1_1), (unblocked c_2_0), (unblocked c_1_0), (cell c_2_2), (unblocked c_0_2), (cell c_2_1), (unblocked c_2_1), (cell c_2_0), (unblocked c_0_0), (cell c_1_2), (unblocked c_2_2), (cell c_1_1), (unblocked c_1_2), (cell c_1_0), (adjacent c_2_2 c_2_1), (cell c_0_2), (adjacent c_2_1 c_1_1), (cell c_0_1), (adjacent c_1_0 c_1_1), (cell c_0_0), (adjacent c_0_1 c_0_0), (adjacent c_1_1 c_0_1), (adjacent c_1_1 c_1_0), (adjacent c_1_2 c_0_2), (adjacent c_0_2 c_0_1), (adjacent c_0_1 c_1_1), (adjacent c_1_1 c_1_2), (adjacent c_2_1 c_2_2), (adjacent c_2_0 c_1_0), (adjacent c_1_1 c_2_1), (adjacent c_2_1 c_2_0), (adjacent c_0_0 c_0_1), (adjacent c_1_2 c_1_1), (adjacent c_1_0 c_2_0), (adjacent c_0_2 c_1_2), (adjacent c_0_0 c_1_0), (adjacent c_2_0 c_2_1), (adjacent c_1_0 c_0_0), (adjacent c_1_2 c_2_2), (adjacent c_0_1 c_0_2), (adjacent c_2_2 c_1_2)], derived atoms=[])
+"]
+s5[label="state_index=5 global_state_index = 239 abstraction_index=31 abstract_state_index=5
+State(index=5, fluent atoms=[(reward c_0_2), (at c_1_2)], static atoms=[(unblocked c_1_1), (unblocked c_2_0), (unblocked c_1_0), (cell c_2_2), (unblocked c_0_2), (cell c_2_1), (unblocked c_2_1), (cell c_2_0), (unblocked c_0_0), (cell c_1_2), (unblocked c_2_2), (cell c_1_1), (unblocked c_1_2), (cell c_1_0), (adjacent c_2_2 c_2_1), (cell c_0_2), (adjacent c_2_1 c_1_1), (cell c_0_1), (adjacent c_1_0 c_1_1), (cell c_0_0), (adjacent c_0_1 c_0_0), (adjacent c_1_1 c_0_1), (adjacent c_1_1 c_1_0), (adjacent c_1_2 c_0_2), (adjacent c_0_2 c_0_1), (adjacent c_0_1 c_1_1), (adjacent c_1_1 c_1_2), (adjacent c_2_1 c_2_2), (adjacent c_2_0 c_1_0), (adjacent c_1_1 c_2_1), (adjacent c_2_1 c_2_0), (adjacent c_0_0 c_0_1), (adjacent c_1_2 c_1_1), (adjacent c_1_0 c_2_0), (adjacent c_0_2 c_1_2), (adjacent c_0_0 c_1_0), (adjacent c_2_0 c_2_1), (adjacent c_1_0 c_0_0), (adjacent c_1_2 c_2_2), (adjacent c_0_1 c_0_2), (adjacent c_2_2 c_1_2)], derived atoms=[])
+"]
+s6[label="state_index=6 global_state_index = 240 abstraction_index=31 abstract_state_index=6
+State(index=6, fluent atoms=[(reward c_0_2), (at c_2_2)], static atoms=[(unblocked c_1_1), (unblocked c_2_0), (unblocked c_1_0), (cell c_2_2), (unblocked c_0_2), (cell c_2_1), (unblocked c_2_1), (cell c_2_0), (unblocked c_0_0), (cell c_1_2), (unblocked c_2_2), (cell c_1_1), (unblocked c_1_2), (cell c_1_0), (adjacent c_2_2 c_2_1), (cell c_0_2), (adjacent c_2_1 c_1_1), (cell c_0_1), (adjacent c_1_0 c_1_1), (cell c_0_0), (adjacent c_0_1 c_0_0), (adjacent c_1_1 c_0_1), (adjacent c_1_1 c_1_0), (adjacent c_1_2 c_0_2), (adjacent c_0_2 c_0_1), (adjacent c_0_1 c_1_1), (adjacent c_1_1 c_1_2), (adjacent c_2_1 c_2_2), (adjacent c_2_0 c_1_0), (adjacent c_1_1 c_2_1), (adjacent c_2_1 c_2_0), (adjacent c_0_0 c_0_1), (adjacent c_1_2 c_1_1), (adjacent c_1_0 c_2_0), (adjacent c_0_2 c_1_2), (adjacent c_0_0 c_1_0), (adjacent c_2_0 c_2_1), (adjacent c_1_0 c_0_0), (adjacent c_1_2 c_2_2), (adjacent c_0_1 c_0_2), (adjacent c_2_2 c_1_2)], derived atoms=[])
+"]
+s7[label="state_index=7 global_state_index = 241 abstraction_index=31 abstract_state_index=7
+State(index=7, fluent atoms=[(reward c_0_2), (at c_0_2)], static atoms=[(unblocked c_1_1), (unblocked c_2_0), (unblocked c_1_0), (cell c_2_2), (unblocked c_0_2), (cell c_2_1), (unblocked c_2_1), (cell c_2_0), (unblocked c_0_0), (cell c_1_2), (unblocked c_2_2), (cell c_1_1), (unblocked c_1_2), (cell c_1_0), (adjacent c_2_2 c_2_1), (cell c_0_2), (adjacent c_2_1 c_1_1), (cell c_0_1), (adjacent c_1_0 c_1_1), (cell c_0_0), (adjacent c_0_1 c_0_0), (adjacent c_1_1 c_0_1), (adjacent c_1_1 c_1_0), (adjacent c_1_2 c_0_2), (adjacent c_0_2 c_0_1), (adjacent c_0_1 c_1_1), (adjacent c_1_1 c_1_2), (adjacent c_2_1 c_2_2), (adjacent c_2_0 c_1_0), (adjacent c_1_1 c_2_1), (adjacent c_2_1 c_2_0), (adjacent c_0_0 c_0_1), (adjacent c_1_2 c_1_1), (adjacent c_1_0 c_2_0), (adjacent c_0_2 c_1_2), (adjacent c_0_0 c_1_0), (adjacent c_2_0 c_2_1), (adjacent c_1_0 c_0_0), (adjacent c_1_2 c_2_2), (adjacent c_0_1 c_0_2), (adjacent c_2_2 c_1_2)], derived atoms=[])
+"]
+s8[peripheries=2,label="state_index=8 global_state_index = 242 abstraction_index=31 abstract_state_index=8
+State(index=8, fluent atoms=[(picked c_0_2), (at c_0_2)], static atoms=[(unblocked c_1_1), (unblocked c_2_0), (unblocked c_1_0), (cell c_2_2), (unblocked c_0_2), (cell c_2_1), (unblocked c_2_1), (cell c_2_0), (unblocked c_0_0), (cell c_1_2), (unblocked c_2_2), (cell c_1_1), (unblocked c_1_2), (cell c_1_0), (adjacent c_2_2 c_2_1), (cell c_0_2), (adjacent c_2_1 c_1_1), (cell c_0_1), (adjacent c_1_0 c_1_1), (cell c_0_0), (adjacent c_0_1 c_0_0), (adjacent c_1_1 c_0_1), (adjacent c_1_1 c_1_0), (adjacent c_1_2 c_0_2), (adjacent c_0_2 c_0_1), (adjacent c_0_1 c_1_1), (adjacent c_1_1 c_1_2), (adjacent c_2_1 c_2_2), (adjacent c_2_0 c_1_0), (adjacent c_1_1 c_2_1), (adjacent c_2_1 c_2_0), (adjacent c_0_0 c_0_1), (adjacent c_1_2 c_1_1), (adjacent c_1_0 c_2_0), (adjacent c_0_2 c_1_2), (adjacent c_0_0 c_1_0), (adjacent c_2_0 c_2_1), (adjacent c_1_0 c_0_0), (adjacent c_1_2 c_2_2), (adjacent c_0_1 c_0_2), (adjacent c_2_2 c_1_2)], derived atoms=[])
+"]
+s9[peripheries=2,label="state_index=9 global_state_index = 243 abstraction_index=31 abstract_state_index=9
+State(index=9, fluent atoms=[(picked c_0_2), (at c_1_2)], static atoms=[(unblocked c_1_1), (unblocked c_2_0), (unblocked c_1_0), (cell c_2_2), (unblocked c_0_2), (cell c_2_1), (unblocked c_2_1), (cell c_2_0), (unblocked c_0_0), (cell c_1_2), (unblocked c_2_2), (cell c_1_1), (unblocked c_1_2), (cell c_1_0), (adjacent c_2_2 c_2_1), (cell c_0_2), (adjacent c_2_1 c_1_1), (cell c_0_1), (adjacent c_1_0 c_1_1), (cell c_0_0), (adjacent c_0_1 c_0_0), (adjacent c_1_1 c_0_1), (adjacent c_1_1 c_1_0), (adjacent c_1_2 c_0_2), (adjacent c_0_2 c_0_1), (adjacent c_0_1 c_1_1), (adjacent c_1_1 c_1_2), (adjacent c_2_1 c_2_2), (adjacent c_2_0 c_1_0), (adjacent c_1_1 c_2_1), (adjacent c_2_1 c_2_0), (adjacent c_0_0 c_0_1), (adjacent c_1_2 c_1_1), (adjacent c_1_0 c_2_0), (adjacent c_0_2 c_1_2), (adjacent c_0_0 c_1_0), (adjacent c_2_0 c_2_1), (adjacent c_1_0 c_0_0), (adjacent c_1_2 c_2_2), (adjacent c_0_1 c_0_2), (adjacent c_2_2 c_1_2)], derived atoms=[])
+"]
+s10[peripheries=2,label="state_index=10 global_state_index = 244 abstraction_index=31 abstract_state_index=10
+State(index=10, fluent atoms=[(picked c_0_2), (at c_2_2)], static atoms=[(unblocked c_1_1), (unblocked c_2_0), (unblocked c_1_0), (cell c_2_2), (unblocked c_0_2), (cell c_2_1), (unblocked c_2_1), (cell c_2_0), (unblocked c_0_0), (cell c_1_2), (unblocked c_2_2), (cell c_1_1), (unblocked c_1_2), (cell c_1_0), (adjacent c_2_2 c_2_1), (cell c_0_2), (adjacent c_2_1 c_1_1), (cell c_0_1), (adjacent c_1_0 c_1_1), (cell c_0_0), (adjacent c_0_1 c_0_0), (adjacent c_1_1 c_0_1), (adjacent c_1_1 c_1_0), (adjacent c_1_2 c_0_2), (adjacent c_0_2 c_0_1), (adjacent c_0_1 c_1_1), (adjacent c_1_1 c_1_2), (adjacent c_2_1 c_2_2), (adjacent c_2_0 c_1_0), (adjacent c_1_1 c_2_1), (adjacent c_2_1 c_2_0), (adjacent c_0_0 c_0_1), (adjacent c_1_2 c_1_1), (adjacent c_1_0 c_2_0), (adjacent c_0_2 c_1_2), (adjacent c_0_0 c_1_0), (adjacent c_2_0 c_2_1), (adjacent c_1_0 c_0_0), (adjacent c_1_2 c_2_2), (adjacent c_0_1 c_0_2), (adjacent c_2_2 c_1_2)], derived atoms=[])
+"]
+s11[peripheries=2,label="state_index=11 global_state_index = 245 abstraction_index=31 abstract_state_index=11
+State(index=11, fluent atoms=[(picked c_0_2), (at c_1_1)], static atoms=[(unblocked c_1_1), (unblocked c_2_0), (unblocked c_1_0), (cell c_2_2), (unblocked c_0_2), (cell c_2_1), (unblocked c_2_1), (cell c_2_0), (unblocked c_0_0), (cell c_1_2), (unblocked c_2_2), (cell c_1_1), (unblocked c_1_2), (cell c_1_0), (adjacent c_2_2 c_2_1), (cell c_0_2), (adjacent c_2_1 c_1_1), (cell c_0_1), (adjacent c_1_0 c_1_1), (cell c_0_0), (adjacent c_0_1 c_0_0), (adjacent c_1_1 c_0_1), (adjacent c_1_1 c_1_0), (adjacent c_1_2 c_0_2), (adjacent c_0_2 c_0_1), (adjacent c_0_1 c_1_1), (adjacent c_1_1 c_1_2), (adjacent c_2_1 c_2_2), (adjacent c_2_0 c_1_0), (adjacent c_1_1 c_2_1), (adjacent c_2_1 c_2_0), (adjacent c_0_0 c_0_1), (adjacent c_1_2 c_1_1), (adjacent c_1_0 c_2_0), (adjacent c_0_2 c_1_2), (adjacent c_0_0 c_1_0), (adjacent c_2_0 c_2_1), (adjacent c_1_0 c_0_0), (adjacent c_1_2 c_2_2), (adjacent c_0_1 c_0_2), (adjacent c_2_2 c_1_2)], derived atoms=[])
+"]
+s12[peripheries=2,label="state_index=12 global_state_index = 246 abstraction_index=31 abstract_state_index=12
+State(index=12, fluent atoms=[(picked c_0_2), (at c_2_1)], static atoms=[(unblocked c_1_1), (unblocked c_2_0), (unblocked c_1_0), (cell c_2_2), (unblocked c_0_2), (cell c_2_1), (unblocked c_2_1), (cell c_2_0), (unblocked c_0_0), (cell c_1_2), (unblocked c_2_2), (cell c_1_1), (unblocked c_1_2), (cell c_1_0), (adjacent c_2_2 c_2_1), (cell c_0_2), (adjacent c_2_1 c_1_1), (cell c_0_1), (adjacent c_1_0 c_1_1), (cell c_0_0), (adjacent c_0_1 c_0_0), (adjacent c_1_1 c_0_1), (adjacent c_1_1 c_1_0), (adjacent c_1_2 c_0_2), (adjacent c_0_2 c_0_1), (adjacent c_0_1 c_1_1), (adjacent c_1_1 c_1_2), (adjacent c_2_1 c_2_2), (adjacent c_2_0 c_1_0), (adjacent c_1_1 c_2_1), (adjacent c_2_1 c_2_0), (adjacent c_0_0 c_0_1), (adjacent c_1_2 c_1_1), (adjacent c_1_0 c_2_0), (adjacent c_0_2 c_1_2), (adjacent c_0_0 c_1_0), (adjacent c_2_0 c_2_1), (adjacent c_1_0 c_0_0), (adjacent c_1_2 c_2_2), (adjacent c_0_1 c_0_2), (adjacent c_2_2 c_1_2)], derived atoms=[])
+"]
+s13[peripheries=2,label="state_index=13 global_state_index = 247 abstraction_index=31 abstract_state_index=13
+State(index=13, fluent atoms=[(picked c_0_2), (at c_1_0)], static atoms=[(unblocked c_1_1), (unblocked c_2_0), (unblocked c_1_0), (cell c_2_2), (unblocked c_0_2), (cell c_2_1), (unblocked c_2_1), (cell c_2_0), (unblocked c_0_0), (cell c_1_2), (unblocked c_2_2), (cell c_1_1), (unblocked c_1_2), (cell c_1_0), (adjacent c_2_2 c_2_1), (cell c_0_2), (adjacent c_2_1 c_1_1), (cell c_0_1), (adjacent c_1_0 c_1_1), (cell c_0_0), (adjacent c_0_1 c_0_0), (adjacent c_1_1 c_0_1), (adjacent c_1_1 c_1_0), (adjacent c_1_2 c_0_2), (adjacent c_0_2 c_0_1), (adjacent c_0_1 c_1_1), (adjacent c_1_1 c_1_2), (adjacent c_2_1 c_2_2), (adjacent c_2_0 c_1_0), (adjacent c_1_1 c_2_1), (adjacent c_2_1 c_2_0), (adjacent c_0_0 c_0_1), (adjacent c_1_2 c_1_1), (adjacent c_1_0 c_2_0), (adjacent c_0_2 c_1_2), (adjacent c_0_0 c_1_0), (adjacent c_2_0 c_2_1), (adjacent c_1_0 c_0_0), (adjacent c_1_2 c_2_2), (adjacent c_0_1 c_0_2), (adjacent c_2_2 c_1_2)], derived atoms=[])
+"]
+s14[peripheries=2,label="state_index=14 global_state_index = 248 abstraction_index=31 abstract_state_index=14
+State(index=14, fluent atoms=[(picked c_0_2), (at c_2_0)], static atoms=[(unblocked c_1_1), (unblocked c_2_0), (unblocked c_1_0), (cell c_2_2), (unblocked c_0_2), (cell c_2_1), (unblocked c_2_1), (cell c_2_0), (unblocked c_0_0), (cell c_1_2), (unblocked c_2_2), (cell c_1_1), (unblocked c_1_2), (cell c_1_0), (adjacent c_2_2 c_2_1), (cell c_0_2), (adjacent c_2_1 c_1_1), (cell c_0_1), (adjacent c_1_0 c_1_1), (cell c_0_0), (adjacent c_0_1 c_0_0), (adjacent c_1_1 c_0_1), (adjacent c_1_1 c_1_0), (adjacent c_1_2 c_0_2), (adjacent c_0_2 c_0_1), (adjacent c_0_1 c_1_1), (adjacent c_1_1 c_1_2), (adjacent c_2_1 c_2_2), (adjacent c_2_0 c_1_0), (adjacent c_1_1 c_2_1), (adjacent c_2_1 c_2_0), (adjacent c_0_0 c_0_1), (adjacent c_1_2 c_1_1), (adjacent c_1_0 c_2_0), (adjacent c_0_2 c_1_2), (adjacent c_0_0 c_1_0), (adjacent c_2_0 c_2_1), (adjacent c_1_0 c_0_0), (adjacent c_1_2 c_2_2), (adjacent c_0_1 c_0_2), (adjacent c_2_2 c_1_2)], derived atoms=[])
+"]
+s15[peripheries=2,label="state_index=15 global_state_index = 249 abstraction_index=31 abstract_state_index=15
+State(index=15, fluent atoms=[(picked c_0_2), (at c_0_0)], static atoms=[(unblocked c_1_1), (unblocked c_2_0), (unblocked c_1_0), (cell c_2_2), (unblocked c_0_2), (cell c_2_1), (unblocked c_2_1), (cell c_2_0), (unblocked c_0_0), (cell c_1_2), (unblocked c_2_2), (cell c_1_1), (unblocked c_1_2), (cell c_1_0), (adjacent c_2_2 c_2_1), (cell c_0_2), (adjacent c_2_1 c_1_1), (cell c_0_1), (adjacent c_1_0 c_1_1), (cell c_0_0), (adjacent c_0_1 c_0_0), (adjacent c_1_1 c_0_1), (adjacent c_1_1 c_1_0), (adjacent c_1_2 c_0_2), (adjacent c_0_2 c_0_1), (adjacent c_0_1 c_1_1), (adjacent c_1_1 c_1_2), (adjacent c_2_1 c_2_2), (adjacent c_2_0 c_1_0), (adjacent c_1_1 c_2_1), (adjacent c_2_1 c_2_0), (adjacent c_0_0 c_0_1), (adjacent c_1_2 c_1_1), (adjacent c_1_0 c_2_0), (adjacent c_0_2 c_1_2), (adjacent c_0_0 c_1_0), (adjacent c_2_0 c_2_1), (adjacent c_1_0 c_0_0), (adjacent c_1_2 c_2_2), (adjacent c_0_1 c_0_2), (adjacent c_2_2 c_1_2)], derived atoms=[])
+"]
+Dangling [ label = "", style = invis ]
+{ rank = same; Dangling }
+Dangling -> s0
+{ rank = same; s0,s2}
+{ rank = same; s1,s4}
+{ rank = same; s3,s6}
+{ rank = same; s5}
+{ rank = same; s7}
+{ rank = same; s8,s9,s10,s11,s12,s13,s14,s15}
+s0->s1 [label="(move c_0_0 c_1_0)
+"]
+s1->s0 [label="(move c_1_0 c_0_0)
+"]
+s1->s2 [label="(move c_1_0 c_2_0)
+"]
+s1->s3 [label="(move c_1_0 c_1_1)
+"]
+s2->s1 [label="(move c_2_0 c_1_0)
+"]
+s2->s4 [label="(move c_2_0 c_2_1)
+"]
+s3->s1 [label="(move c_1_1 c_1_0)
+"]
+s3->s4 [label="(move c_1_1 c_2_1)
+"]
+s3->s5 [label="(move c_1_1 c_1_2)
+"]
+s4->s2 [label="(move c_2_1 c_2_0)
+"]
+s4->s3 [label="(move c_2_1 c_1_1)
+"]
+s4->s6 [label="(move c_2_1 c_2_2)
+"]
+s5->s3 [label="(move c_1_2 c_1_1)
+"]
+s5->s6 [label="(move c_1_2 c_2_2)
+"]
+s5->s7 [label="(move c_1_2 c_0_2)
+"]
+s6->s4 [label="(move c_2_2 c_2_1)
+"]
+s6->s5 [label="(move c_2_2 c_1_2)
+"]
+s7->s5 [label="(move c_0_2 c_1_2)
+"]
+s7->s8 [label="(pick-reward c_0_2)
+"]
+s8->s9 [label="(move c_0_2 c_1_2)
+"]
+s9->s8 [label="(move c_1_2 c_0_2)
+"]
+s9->s10 [label="(move c_1_2 c_2_2)
+"]
+s9->s11 [label="(move c_1_2 c_1_1)
+"]
+s10->s9 [label="(move c_2_2 c_1_2)
+"]
+s10->s12 [label="(move c_2_2 c_2_1)
+"]
+s11->s9 [label="(move c_1_1 c_1_2)
+"]
+s11->s12 [label="(move c_1_1 c_2_1)
+"]
+s11->s13 [label="(move c_1_1 c_1_0)
+"]
+s12->s10 [label="(move c_2_1 c_2_2)
+"]
+s12->s11 [label="(move c_2_1 c_1_1)
+"]
+s12->s14 [label="(move c_2_1 c_2_0)
+"]
+s13->s11 [label="(move c_1_0 c_1_1)
+"]
+s13->s14 [label="(move c_1_0 c_2_0)
+"]
+s13->s15 [label="(move c_1_0 c_0_0)
+"]
+s14->s12 [label="(move c_2_0 c_2_1)
+"]
+s14->s13 [label="(move c_2_0 c_1_0)
+"]
+s15->s13 [label="(move c_0_0 c_1_0)
+"]
+}

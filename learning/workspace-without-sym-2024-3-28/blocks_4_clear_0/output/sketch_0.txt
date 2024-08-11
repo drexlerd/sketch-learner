@@ -1,7 +1,0 @@
-(:policy
-(:booleans (f219 "b_nullary(arm-empty)"))
-(:numericals (f72 "n_count(r_primitive(on,0,1))"))
-(:rule (:conditions (:c_b_pos f219) (:c_n_gt f72)) (:effects (:e_b_neg f219) (:e_n_dec f72)))
-(:rule (:conditions (:c_b_neg f219) (:c_n_gt f72)) (:effects (:e_b_pos f219) (:e_n_bot f72)))
-(:rule (:conditions (:c_b_neg f219) (:c_n_eq f72)) (:effects (:e_b_pos f219) (:e_n_bot f72)))
-)

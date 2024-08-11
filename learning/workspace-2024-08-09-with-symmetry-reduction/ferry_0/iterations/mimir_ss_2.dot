@@ -1,0 +1,61 @@
+digraph {
+rankdir="LR"
+s0[label="State(index=0, fluent atoms=[(at car2 loc2), (at car1 loc1), (at-ferry loc2), (empty-ferry)], static atoms=[(location loc2), (location loc1), (car car2), (car car1)], derived atoms=[])"]
+s1[label="State(index=1, fluent atoms=[(at car2 loc2), (at car1 loc1), (empty-ferry), (at-ferry loc1)], static atoms=[(location loc2), (location loc1), (car car2), (car car1)], derived atoms=[])"]
+s2[label="State(index=2, fluent atoms=[(at car1 loc1), (at-ferry loc2), (on car2)], static atoms=[(location loc2), (location loc1), (car car2), (car car1)], derived atoms=[])"]
+s3[label="State(index=3, fluent atoms=[(at car1 loc1), (on car2), (at-ferry loc1)], static atoms=[(location loc2), (location loc1), (car car2), (car car1)], derived atoms=[])"]
+s4[label="State(index=4, fluent atoms=[(at car2 loc1), (at car1 loc1), (empty-ferry), (at-ferry loc1)], static atoms=[(location loc2), (location loc1), (car car2), (car car1)], derived atoms=[])"]
+s5[label="State(index=5, fluent atoms=[(at car2 loc1), (at car1 loc1), (at-ferry loc2), (empty-ferry)], static atoms=[(location loc2), (location loc1), (car car2), (car car1)], derived atoms=[])"]
+s6[label="State(index=6, fluent atoms=[(at car2 loc1), (at-ferry loc1), (on car1)], static atoms=[(location loc2), (location loc1), (car car2), (car car1)], derived atoms=[])"]
+s7[label="State(index=7, fluent atoms=[(at car2 loc1), (at-ferry loc2), (on car1)], static atoms=[(location loc2), (location loc1), (car car2), (car car1)], derived atoms=[])"]
+s8[peripheries=2,label="State(index=8, fluent atoms=[(at car2 loc1), (at car1 loc2), (at-ferry loc2), (empty-ferry)], static atoms=[(location loc2), (location loc1), (car car2), (car car1)], derived atoms=[])"]
+s9[peripheries=2,label="State(index=9, fluent atoms=[(at car2 loc1), (at car1 loc2), (empty-ferry), (at-ferry loc1)], static atoms=[(location loc2), (location loc1), (car car2), (car car1)], derived atoms=[])"]
+s10[label="State(index=10, fluent atoms=[(at car1 loc2), (on car2), (at-ferry loc1)], static atoms=[(location loc2), (location loc1), (car car2), (car car1)], derived atoms=[])"]
+s11[label="State(index=11, fluent atoms=[(at car1 loc2), (at-ferry loc2), (on car2)], static atoms=[(location loc2), (location loc1), (car car2), (car car1)], derived atoms=[])"]
+s12[label="State(index=12, fluent atoms=[(at car1 loc2), (at car2 loc2), (at-ferry loc2), (empty-ferry)], static atoms=[(location loc2), (location loc1), (car car2), (car car1)], derived atoms=[])"]
+s13[label="State(index=13, fluent atoms=[(at car1 loc2), (at car2 loc2), (empty-ferry), (at-ferry loc1)], static atoms=[(location loc2), (location loc1), (car car2), (car car1)], derived atoms=[])"]
+s14[label="State(index=14, fluent atoms=[(at car2 loc2), (at-ferry loc2), (on car1)], static atoms=[(location loc2), (location loc1), (car car2), (car car1)], derived atoms=[])"]
+s15[label="State(index=15, fluent atoms=[(at car2 loc2), (at-ferry loc1), (on car1)], static atoms=[(location loc2), (location loc1), (car car2), (car car1)], derived atoms=[])"]
+Dangling [ label = "", style = invis ]
+{ rank = same; Dangling }
+Dangling -> s0
+{ rank = same; s0,s1}
+{ rank = same; s2,s15}
+{ rank = same; s3,s5,s13,s14}
+{ rank = same; s4,s12}
+{ rank = same; s6,s11}
+{ rank = same; s7,s10}
+{ rank = same; s8,s9}
+s0->s1 [label="(sail loc2 loc1)"]
+s0->s2 [label="(board car2 loc2)"]
+s2->s0 [label="(debark car2 loc2)"]
+s2->s3 [label="(sail loc2 loc1)"]
+s3->s4 [label="(debark car2 loc1)"]
+s3->s2 [label="(sail loc1 loc2)"]
+s4->s5 [label="(sail loc1 loc2)"]
+s4->s3 [label="(board car2 loc1)"]
+s4->s6 [label="(board car1 loc1)"]
+s6->s4 [label="(debark car1 loc1)"]
+s6->s7 [label="(sail loc1 loc2)"]
+s7->s8 [label="(debark car1 loc2)"]
+s7->s6 [label="(sail loc2 loc1)"]
+s8->s9 [label="(sail loc2 loc1)"]
+s8->s7 [label="(board car1 loc2)"]
+s9->s8 [label="(sail loc1 loc2)"]
+s9->s10 [label="(board car2 loc1)"]
+s10->s9 [label="(debark car2 loc1)"]
+s10->s11 [label="(sail loc1 loc2)"]
+s11->s12 [label="(debark car2 loc2)"]
+s11->s10 [label="(sail loc2 loc1)"]
+s12->s13 [label="(sail loc2 loc1)"]
+s12->s11 [label="(board car2 loc2)"]
+s12->s14 [label="(board car1 loc2)"]
+s14->s12 [label="(debark car1 loc2)"]
+s14->s15 [label="(sail loc2 loc1)"]
+s15->s1 [label="(debark car1 loc1)"]
+s15->s14 [label="(sail loc1 loc2)"]
+s13->s12 [label="(sail loc1 loc2)"]
+s5->s4 [label="(sail loc2 loc1)"]
+s1->s0 [label="(sail loc1 loc2)"]
+s1->s15 [label="(board car1 loc1)"]
+}

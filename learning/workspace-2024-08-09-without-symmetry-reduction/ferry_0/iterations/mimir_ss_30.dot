@@ -1,0 +1,53 @@
+digraph {
+rankdir="LR"
+s0[label="State(index=0, fluent atoms=[(at car1 loc3), (at-ferry loc2), (empty-ferry)], static atoms=[(location loc3), (location loc2), (location loc1), (car car1)], derived atoms=[])"]
+s1[label="State(index=1, fluent atoms=[(at car1 loc3), (empty-ferry), (at-ferry loc3)], static atoms=[(location loc3), (location loc2), (location loc1), (car car1)], derived atoms=[])"]
+s2[label="State(index=2, fluent atoms=[(at car1 loc3), (empty-ferry), (at-ferry loc1)], static atoms=[(location loc3), (location loc2), (location loc1), (car car1)], derived atoms=[])"]
+s3[label="State(index=3, fluent atoms=[(at-ferry loc3), (on car1)], static atoms=[(location loc3), (location loc2), (location loc1), (car car1)], derived atoms=[])"]
+s4[label="State(index=4, fluent atoms=[(at-ferry loc2), (on car1)], static atoms=[(location loc3), (location loc2), (location loc1), (car car1)], derived atoms=[])"]
+s5[label="State(index=5, fluent atoms=[(at-ferry loc1), (on car1)], static atoms=[(location loc3), (location loc2), (location loc1), (car car1)], derived atoms=[])"]
+s6[peripheries=2,label="State(index=6, fluent atoms=[(at car1 loc1), (empty-ferry), (at-ferry loc1)], static atoms=[(location loc3), (location loc2), (location loc1), (car car1)], derived atoms=[])"]
+s7[peripheries=2,label="State(index=7, fluent atoms=[(at car1 loc1), (empty-ferry), (at-ferry loc3)], static atoms=[(location loc3), (location loc2), (location loc1), (car car1)], derived atoms=[])"]
+s8[peripheries=2,label="State(index=8, fluent atoms=[(at car1 loc1), (at-ferry loc2), (empty-ferry)], static atoms=[(location loc3), (location loc2), (location loc1), (car car1)], derived atoms=[])"]
+s9[label="State(index=9, fluent atoms=[(at-ferry loc2), (empty-ferry), (at car1 loc2)], static atoms=[(location loc3), (location loc2), (location loc1), (car car1)], derived atoms=[])"]
+s10[label="State(index=10, fluent atoms=[(empty-ferry), (at-ferry loc3), (at car1 loc2)], static atoms=[(location loc3), (location loc2), (location loc1), (car car1)], derived atoms=[])"]
+s11[label="State(index=11, fluent atoms=[(empty-ferry), (at-ferry loc1), (at car1 loc2)], static atoms=[(location loc3), (location loc2), (location loc1), (car car1)], derived atoms=[])"]
+Dangling [ label = "", style = invis ]
+{ rank = same; Dangling }
+Dangling -> s0
+{ rank = same; s0,s2,s10,s11}
+{ rank = same; s1,s9}
+{ rank = same; s3,s4}
+{ rank = same; s5}
+{ rank = same; s6,s7,s8}
+s0->s1 [label="(sail loc2 loc3)"]
+s0->s2 [label="(sail loc2 loc1)"]
+s2->s1 [label="(sail loc1 loc3)"]
+s2->s0 [label="(sail loc1 loc2)"]
+s1->s0 [label="(sail loc3 loc2)"]
+s1->s2 [label="(sail loc3 loc1)"]
+s1->s3 [label="(board car1 loc3)"]
+s3->s1 [label="(debark car1 loc3)"]
+s3->s4 [label="(sail loc3 loc2)"]
+s3->s5 [label="(sail loc3 loc1)"]
+s5->s6 [label="(debark car1 loc1)"]
+s5->s3 [label="(sail loc1 loc3)"]
+s5->s4 [label="(sail loc1 loc2)"]
+s6->s7 [label="(sail loc1 loc3)"]
+s6->s8 [label="(sail loc1 loc2)"]
+s6->s5 [label="(board car1 loc1)"]
+s8->s7 [label="(sail loc2 loc3)"]
+s8->s6 [label="(sail loc2 loc1)"]
+s7->s8 [label="(sail loc3 loc2)"]
+s7->s6 [label="(sail loc3 loc1)"]
+s4->s9 [label="(debark car1 loc2)"]
+s4->s3 [label="(sail loc2 loc3)"]
+s4->s5 [label="(sail loc2 loc1)"]
+s9->s10 [label="(sail loc2 loc3)"]
+s9->s11 [label="(sail loc2 loc1)"]
+s9->s4 [label="(board car1 loc2)"]
+s11->s10 [label="(sail loc1 loc3)"]
+s11->s9 [label="(sail loc1 loc2)"]
+s10->s9 [label="(sail loc3 loc2)"]
+s10->s11 [label="(sail loc3 loc1)"]
+}

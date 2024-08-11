@@ -1,0 +1,24 @@
+digraph {
+rankdir="LR"
+s0[peripheries=2,label="state_index=0 global_state_index = 0 abstraction_index=0 abstract_state_index=0
+State(index=0, fluent atoms=[(at p3 c_0_0), (at p2 c_0_0), (at p1 c_0_0), (empty t1), (at t1 c_0_0)], static atoms=[(truck t1), (locatable t1), (package p3), (locatable p3), (package p2), (locatable p2), (package p1), (locatable p1), (cell c_0_0)], derived atoms=[])
+"]
+s1[label="state_index=1 global_state_index = 1 abstraction_index=0 abstract_state_index=1
+State(index=3, fluent atoms=[(at p3 c_0_0), (at p2 c_0_0), (at t1 c_0_0), (carrying t1 p1)], static atoms=[(truck t1), (locatable t1), (package p3), (locatable p3), (package p2), (locatable p2), (package p1), (locatable p1), (cell c_0_0)], derived atoms=[])
+State(index=2, fluent atoms=[(at p3 c_0_0), (at p1 c_0_0), (at t1 c_0_0), (carrying t1 p2)], static atoms=[(truck t1), (locatable t1), (package p3), (locatable p3), (package p2), (locatable p2), (package p1), (locatable p1), (cell c_0_0)], derived atoms=[])
+State(index=1, fluent atoms=[(at p2 c_0_0), (at p1 c_0_0), (at t1 c_0_0), (carrying t1 p3)], static atoms=[(truck t1), (locatable t1), (package p3), (locatable p3), (package p2), (locatable p2), (package p1), (locatable p1), (cell c_0_0)], derived atoms=[])
+"]
+Dangling [ label = "", style = invis ]
+{ rank = same; Dangling }
+Dangling -> s0
+{ rank = same; s1}
+{ rank = same; s0}
+s0->s1 [label="(pick-package t1 p3 c_0_0)
+(pick-package t1 p2 c_0_0)
+(pick-package t1 p1 c_0_0)
+"]
+s1->s0 [label="(drop-package t1 p1 c_0_0)
+(drop-package t1 p2 c_0_0)
+(drop-package t1 p3 c_0_0)
+"]
+}

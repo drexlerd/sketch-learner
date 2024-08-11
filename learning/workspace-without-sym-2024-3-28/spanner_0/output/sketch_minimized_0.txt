@@ -1,7 +1,0 @@
-(:policy
-(:booleans )
-(:numericals (f5 "n_count(r_restrict(r_primitive(carrying,0,1),c_primitive(useable,0)))") (f60 "n_count(c_some(r_inverse(r_transitive_closure(r_primitive(link,0,1))),c_some(r_inverse(r_primitive(at,0,1)),c_top)))"))
-(:rule (:conditions (:c_n_gt f60)) (:effects (:e_n_bot f5) (:e_n_dec f60)))
-(:rule (:conditions (:c_n_gt f60)) (:effects (:e_n_inc f5) (:e_n_bot f60)))
-(:rule (:conditions (:c_n_gt f5) (:c_n_eq f60)) (:effects (:e_n_dec f5) (:e_n_bot f60)))
-)

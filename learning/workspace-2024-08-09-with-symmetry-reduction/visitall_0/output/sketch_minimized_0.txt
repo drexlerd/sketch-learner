@@ -1,0 +1,7 @@
+(:policy
+(:booleans )
+(:numericals (f12 "n_count(c_not(c_primitive(visited,0)))") (f68 "n_concept_distance(c_primitive(at-robot,0),r_primitive(connected,0,1),c_not(c_all(r_primitive(connected,0,1),c_primitive(visited,0))))"))
+(:rule (:conditions (:c_n_gt f12) (:c_n_gt f68)) (:effects (:e_n_bot f12) (:e_n_dec f68)))
+(:rule (:conditions (:c_n_gt f12) (:c_n_eq f68)) (:effects (:e_n_dec f12) (:e_n_bot f68)))
+(:rule (:conditions (:c_n_gt f12) (:c_n_eq f68)) (:effects (:e_n_dec f12) (:e_n_inc f68)))
+)

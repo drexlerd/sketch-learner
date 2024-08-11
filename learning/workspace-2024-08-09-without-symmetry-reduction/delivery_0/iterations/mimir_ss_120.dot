@@ -1,0 +1,47 @@
+digraph {
+rankdir="LR"
+s0[label="State(index=0, fluent atoms=[(empty t1), (at p1 c_2_0), (at t1 c_0_0)], static atoms=[(truck t1), (locatable t1), (package p1), (locatable p1), (cell c_2_0), (cell c_1_0), (cell c_0_0), (adjacent c_0_0 c_1_0), (adjacent c_1_0 c_2_0), (adjacent c_1_0 c_0_0), (adjacent c_2_0 c_1_0)], derived atoms=[])"]
+s1[label="State(index=1, fluent atoms=[(empty t1), (at p1 c_2_0), (at t1 c_1_0)], static atoms=[(truck t1), (locatable t1), (package p1), (locatable p1), (cell c_2_0), (cell c_1_0), (cell c_0_0), (adjacent c_0_0 c_1_0), (adjacent c_1_0 c_2_0), (adjacent c_1_0 c_0_0), (adjacent c_2_0 c_1_0)], derived atoms=[])"]
+s2[label="State(index=2, fluent atoms=[(empty t1), (at p1 c_2_0), (at t1 c_2_0)], static atoms=[(truck t1), (locatable t1), (package p1), (locatable p1), (cell c_2_0), (cell c_1_0), (cell c_0_0), (adjacent c_0_0 c_1_0), (adjacent c_1_0 c_2_0), (adjacent c_1_0 c_0_0), (adjacent c_2_0 c_1_0)], derived atoms=[])"]
+s3[label="State(index=3, fluent atoms=[(at t1 c_2_0), (carrying t1 p1)], static atoms=[(truck t1), (locatable t1), (package p1), (locatable p1), (cell c_2_0), (cell c_1_0), (cell c_0_0), (adjacent c_0_0 c_1_0), (adjacent c_1_0 c_2_0), (adjacent c_1_0 c_0_0), (adjacent c_2_0 c_1_0)], derived atoms=[])"]
+s4[label="State(index=4, fluent atoms=[(at t1 c_1_0), (carrying t1 p1)], static atoms=[(truck t1), (locatable t1), (package p1), (locatable p1), (cell c_2_0), (cell c_1_0), (cell c_0_0), (adjacent c_0_0 c_1_0), (adjacent c_1_0 c_2_0), (adjacent c_1_0 c_0_0), (adjacent c_2_0 c_1_0)], derived atoms=[])"]
+s5[label="State(index=5, fluent atoms=[(at t1 c_0_0), (carrying t1 p1)], static atoms=[(truck t1), (locatable t1), (package p1), (locatable p1), (cell c_2_0), (cell c_1_0), (cell c_0_0), (adjacent c_0_0 c_1_0), (adjacent c_1_0 c_2_0), (adjacent c_1_0 c_0_0), (adjacent c_2_0 c_1_0)], derived atoms=[])"]
+s6[label="State(index=6, fluent atoms=[(empty t1), (at t1 c_1_0), (at p1 c_1_0)], static atoms=[(truck t1), (locatable t1), (package p1), (locatable p1), (cell c_2_0), (cell c_1_0), (cell c_0_0), (adjacent c_0_0 c_1_0), (adjacent c_1_0 c_2_0), (adjacent c_1_0 c_0_0), (adjacent c_2_0 c_1_0)], derived atoms=[])"]
+s7[label="State(index=7, fluent atoms=[(empty t1), (at t1 c_2_0), (at p1 c_1_0)], static atoms=[(truck t1), (locatable t1), (package p1), (locatable p1), (cell c_2_0), (cell c_1_0), (cell c_0_0), (adjacent c_0_0 c_1_0), (adjacent c_1_0 c_2_0), (adjacent c_1_0 c_0_0), (adjacent c_2_0 c_1_0)], derived atoms=[])"]
+s8[label="State(index=8, fluent atoms=[(empty t1), (at t1 c_0_0), (at p1 c_1_0)], static atoms=[(truck t1), (locatable t1), (package p1), (locatable p1), (cell c_2_0), (cell c_1_0), (cell c_0_0), (adjacent c_0_0 c_1_0), (adjacent c_1_0 c_2_0), (adjacent c_1_0 c_0_0), (adjacent c_2_0 c_1_0)], derived atoms=[])"]
+s9[peripheries=2,label="State(index=9, fluent atoms=[(at p1 c_0_0), (empty t1), (at t1 c_0_0)], static atoms=[(truck t1), (locatable t1), (package p1), (locatable p1), (cell c_2_0), (cell c_1_0), (cell c_0_0), (adjacent c_0_0 c_1_0), (adjacent c_1_0 c_2_0), (adjacent c_1_0 c_0_0), (adjacent c_2_0 c_1_0)], derived atoms=[])"]
+s10[peripheries=2,label="State(index=10, fluent atoms=[(at p1 c_0_0), (empty t1), (at t1 c_1_0)], static atoms=[(truck t1), (locatable t1), (package p1), (locatable p1), (cell c_2_0), (cell c_1_0), (cell c_0_0), (adjacent c_0_0 c_1_0), (adjacent c_1_0 c_2_0), (adjacent c_1_0 c_0_0), (adjacent c_2_0 c_1_0)], derived atoms=[])"]
+s11[peripheries=2,label="State(index=11, fluent atoms=[(at p1 c_0_0), (empty t1), (at t1 c_2_0)], static atoms=[(truck t1), (locatable t1), (package p1), (locatable p1), (cell c_2_0), (cell c_1_0), (cell c_0_0), (adjacent c_0_0 c_1_0), (adjacent c_1_0 c_2_0), (adjacent c_1_0 c_0_0), (adjacent c_2_0 c_1_0)], derived atoms=[])"]
+Dangling [ label = "", style = invis ]
+{ rank = same; Dangling }
+Dangling -> s0
+{ rank = same; s0}
+{ rank = same; s1}
+{ rank = same; s2,s7,s8}
+{ rank = same; s3,s6}
+{ rank = same; s4}
+{ rank = same; s5}
+{ rank = same; s9,s10,s11}
+s0->s1 [label="(move t1 c_0_0 c_1_0)"]
+s1->s2 [label="(move t1 c_1_0 c_2_0)"]
+s1->s0 [label="(move t1 c_1_0 c_0_0)"]
+s2->s1 [label="(move t1 c_2_0 c_1_0)"]
+s2->s3 [label="(pick-package t1 p1 c_2_0)"]
+s3->s4 [label="(move t1 c_2_0 c_1_0)"]
+s3->s2 [label="(drop-package t1 p1 c_2_0)"]
+s4->s3 [label="(move t1 c_1_0 c_2_0)"]
+s4->s5 [label="(move t1 c_1_0 c_0_0)"]
+s4->s6 [label="(drop-package t1 p1 c_1_0)"]
+s6->s7 [label="(move t1 c_1_0 c_2_0)"]
+s6->s8 [label="(move t1 c_1_0 c_0_0)"]
+s6->s4 [label="(pick-package t1 p1 c_1_0)"]
+s8->s6 [label="(move t1 c_0_0 c_1_0)"]
+s7->s6 [label="(move t1 c_2_0 c_1_0)"]
+s5->s4 [label="(move t1 c_0_0 c_1_0)"]
+s5->s9 [label="(drop-package t1 p1 c_0_0)"]
+s9->s10 [label="(move t1 c_0_0 c_1_0)"]
+s9->s5 [label="(pick-package t1 p1 c_0_0)"]
+s10->s11 [label="(move t1 c_1_0 c_2_0)"]
+s10->s9 [label="(move t1 c_1_0 c_0_0)"]
+s11->s10 [label="(move t1 c_2_0 c_1_0)"]
+}

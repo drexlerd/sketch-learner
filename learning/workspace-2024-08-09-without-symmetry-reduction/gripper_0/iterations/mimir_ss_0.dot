@@ -1,0 +1,43 @@
+digraph {
+rankdir="LR"
+s0[label="State(index=0, fluent atoms=[(at-robby rooma), (at ball1 rooma), (free right), (free left)], static atoms=[(ball ball1), (gripper right), (gripper left), (room roomb), (room rooma)], derived atoms=[])"]
+s1[label="State(index=1, fluent atoms=[(at ball1 rooma), (free right), (free left), (at-robby roomb)], static atoms=[(ball ball1), (gripper right), (gripper left), (room roomb), (room rooma)], derived atoms=[])"]
+s2[label="State(index=2, fluent atoms=[(at-robby rooma), (free left), (carry ball1 right)], static atoms=[(ball ball1), (gripper right), (gripper left), (room roomb), (room rooma)], derived atoms=[])"]
+s3[label="State(index=3, fluent atoms=[(at-robby rooma), (free right), (carry ball1 left)], static atoms=[(ball ball1), (gripper right), (gripper left), (room roomb), (room rooma)], derived atoms=[])"]
+s4[label="State(index=4, fluent atoms=[(free right), (carry ball1 left), (at-robby roomb)], static atoms=[(ball ball1), (gripper right), (gripper left), (room roomb), (room rooma)], derived atoms=[])"]
+s5[peripheries=2,label="State(index=5, fluent atoms=[(at ball1 roomb), (free right), (free left), (at-robby roomb)], static atoms=[(ball ball1), (gripper right), (gripper left), (room roomb), (room rooma)], derived atoms=[])"]
+s6[peripheries=2,label="State(index=6, fluent atoms=[(at ball1 roomb), (at-robby rooma), (free right), (free left)], static atoms=[(ball ball1), (gripper right), (gripper left), (room roomb), (room rooma)], derived atoms=[])"]
+s7[label="State(index=7, fluent atoms=[(free left), (carry ball1 right), (at-robby roomb)], static atoms=[(ball ball1), (gripper right), (gripper left), (room roomb), (room rooma)], derived atoms=[])"]
+Dangling [ label = "", style = invis ]
+{ rank = same; Dangling }
+Dangling -> s0
+{ rank = same; s1}
+{ rank = same; s0}
+{ rank = same; s2,s3}
+{ rank = same; s4,s7}
+{ rank = same; s5,s6}
+s0->s1 [label="(move rooma roomb)"]
+s0->s0 [label="(move rooma rooma)"]
+s0->s2 [label="(pick ball1 rooma right)"]
+s0->s3 [label="(pick ball1 rooma left)"]
+s3->s4 [label="(move rooma roomb)"]
+s3->s3 [label="(move rooma rooma)"]
+s3->s0 [label="(drop ball1 rooma left)"]
+s4->s4 [label="(move roomb roomb)"]
+s4->s3 [label="(move roomb rooma)"]
+s4->s5 [label="(drop ball1 roomb left)"]
+s5->s5 [label="(move roomb roomb)"]
+s5->s6 [label="(move roomb rooma)"]
+s5->s7 [label="(pick ball1 roomb right)"]
+s5->s4 [label="(pick ball1 roomb left)"]
+s7->s7 [label="(move roomb roomb)"]
+s7->s2 [label="(move roomb rooma)"]
+s7->s5 [label="(drop ball1 roomb right)"]
+s6->s5 [label="(move rooma roomb)"]
+s6->s6 [label="(move rooma rooma)"]
+s2->s7 [label="(move rooma roomb)"]
+s2->s2 [label="(move rooma rooma)"]
+s2->s0 [label="(drop ball1 rooma right)"]
+s1->s1 [label="(move roomb roomb)"]
+s1->s0 [label="(move roomb rooma)"]
+}

@@ -1,0 +1,173 @@
+digraph {
+rankdir="LR"
+s0[label="(instance index=91, state index=0, atoms={at(car3,loc2), at(car2,loc2), at(car1,loc2), at-ferry(loc1), empty-ferry()})"]
+s1[label="(instance index=91, state index=1, atoms={at(car3,loc2), at(car2,loc2), at(car1,loc2), empty-ferry(), at-ferry(loc2)})"]
+s3[label="(instance index=91, state index=3, atoms={at(car3,loc2), at(car1,loc2), at-ferry(loc2), on(car2)})"]
+s4[label="(instance index=91, state index=4, atoms={at(car3,loc2), at(car2,loc2), at-ferry(loc2), on(car1)})"]
+s2[label="(instance index=91, state index=2, atoms={at(car2,loc2), at(car1,loc2), at-ferry(loc2), on(car3)})"]
+s39[label="(instance index=91, state index=39, atoms={at(car3,loc2), at(car1,loc2), at-ferry(loc1), on(car2)})"]
+s5[label="(instance index=91, state index=5, atoms={at(car3,loc2), at(car2,loc2), at-ferry(loc1), on(car1)})"]
+s38[label="(instance index=91, state index=38, atoms={at(car2,loc2), at(car1,loc2), at-ferry(loc1), on(car3)})"]
+s16[label="(instance index=91, state index=16, atoms={at(car2,loc1), at(car3,loc2), at(car1,loc2), at-ferry(loc1), empty-ferry()})"]
+s6[label="(instance index=91, state index=6, atoms={at(car1,loc1), at(car3,loc2), at(car2,loc2), at-ferry(loc1), empty-ferry()})"]
+s24[label="(instance index=91, state index=24, atoms={at(car3,loc1), at(car2,loc2), at(car1,loc2), at-ferry(loc1), empty-ferry()})"]
+s7[label="(instance index=91, state index=7, atoms={at(car1,loc1), at(car3,loc2), at(car2,loc2), empty-ferry(), at-ferry(loc2)})"]
+s23[label="(instance index=91, state index=23, atoms={at(car3,loc1), at(car2,loc2), at(car1,loc2), empty-ferry(), at-ferry(loc2)})"]
+s15[label="(instance index=91, state index=15, atoms={at(car2,loc1), at(car3,loc2), at(car1,loc2), empty-ferry(), at-ferry(loc2)})"]
+s8[label="(instance index=91, state index=8, atoms={at(car1,loc1), at(car2,loc2), at-ferry(loc2), on(car3)})"]
+s25[label="(instance index=91, state index=25, atoms={at(car3,loc1), at(car2,loc2), at-ferry(loc2), on(car1)})"]
+s9[label="(instance index=91, state index=9, atoms={at(car1,loc1), at(car3,loc2), at-ferry(loc2), on(car2)})"]
+s14[label="(instance index=91, state index=14, atoms={at(car2,loc1), at(car3,loc2), at-ferry(loc2), on(car1)})"]
+s17[label="(instance index=91, state index=17, atoms={at(car2,loc1), at(car1,loc2), at-ferry(loc2), on(car3)})"]
+s22[label="(instance index=91, state index=22, atoms={at(car3,loc1), at(car1,loc2), at-ferry(loc2), on(car2)})"]
+s26[label="(instance index=91, state index=26, atoms={at(car3,loc1), at(car2,loc2), at-ferry(loc1), on(car1)})"]
+s29[label="(instance index=91, state index=29, atoms={at(car1,loc1), at(car2,loc2), at-ferry(loc1), on(car3)})"]
+s10[label="(instance index=91, state index=10, atoms={at(car1,loc1), at(car3,loc2), at-ferry(loc1), on(car2)})"]
+s13[label="(instance index=91, state index=13, atoms={at(car2,loc1), at(car3,loc2), at-ferry(loc1), on(car1)})"]
+s18[label="(instance index=91, state index=18, atoms={at(car2,loc1), at(car1,loc2), at-ferry(loc1), on(car3)})"]
+s21[label="(instance index=91, state index=21, atoms={at(car3,loc1), at(car1,loc2), at-ferry(loc1), on(car2)})"]
+s27[label="(instance index=91, state index=27, atoms={at(car3,loc1), at(car1,loc1), at(car2,loc2), at-ferry(loc1), empty-ferry()})"]
+s11[label="(instance index=91, state index=11, atoms={at(car2,loc1), at(car1,loc1), at(car3,loc2), at-ferry(loc1), empty-ferry()})"]
+s19[label="(instance index=91, state index=19, atoms={at(car3,loc1), at(car2,loc1), at(car1,loc2), at-ferry(loc1), empty-ferry()})"]
+s12[label="(instance index=91, state index=12, atoms={at(car2,loc1), at(car1,loc1), at(car3,loc2), empty-ferry(), at-ferry(loc2)})"]
+s28[label="(instance index=91, state index=28, atoms={at(car3,loc1), at(car1,loc1), at(car2,loc2), empty-ferry(), at-ferry(loc2)})"]
+s20[label="(instance index=91, state index=20, atoms={at(car3,loc1), at(car2,loc1), at(car1,loc2), empty-ferry(), at-ferry(loc2)})"]
+s36[label="(instance index=91, state index=36, atoms={at(car3,loc1), at(car2,loc1), at-ferry(loc2), on(car1)})"]
+s37[label="(instance index=91, state index=37, atoms={at(car2,loc1), at(car1,loc1), at-ferry(loc2), on(car3)})"]
+s30[label="(instance index=91, state index=30, atoms={at(car3,loc1), at(car1,loc1), at-ferry(loc2), on(car2)})"]
+s35[label="(instance index=91, state index=35, atoms={at(car3,loc1), at(car2,loc1), at-ferry(loc1), on(car1)})"]
+s34[label="(instance index=91, state index=34, atoms={at(car2,loc1), at(car1,loc1), at-ferry(loc1), on(car3)})"]
+s31[label="(instance index=91, state index=31, atoms={at(car3,loc1), at(car1,loc1), at-ferry(loc1), on(car2)})"]
+s32[peripheries=2,label="(instance index=91, state index=32, atoms={at(car3,loc1), at(car2,loc1), at(car1,loc1), at-ferry(loc1), empty-ferry()})"]
+s33[peripheries=2,label="(instance index=91, state index=33, atoms={at(car3,loc1), at(car2,loc1), at(car1,loc1), empty-ferry(), at-ferry(loc2)})"]
+Dangling [ label = "", style = invis ]
+{ rank = same; Dangling }
+Dangling -> s0
+{ rank = same; s0}
+{ rank = same; s1}
+{ rank = same; s3,s4,s2}
+{ rank = same; s39,s5,s38}
+{ rank = same; s16,s6,s24}
+{ rank = same; s7,s23,s15}
+{ rank = same; s8,s25,s9,s14,s17,s22}
+{ rank = same; s26,s29,s10,s13,s18,s21}
+{ rank = same; s27,s11,s19}
+{ rank = same; s12,s28,s20}
+{ rank = same; s36,s37,s30}
+{ rank = same; s35,s34,s31}
+{ rank = same; s32,s33}
+{
+s0->s1
+}
+{
+s1->s4
+s1->s3
+s1->s2
+s1->s0
+}
+{
+s3->s39
+s3->s1
+s4->s5
+s4->s1
+s2->s38
+s2->s1
+}
+{
+s39->s3
+s39->s16
+s5->s6
+s5->s4
+s38->s2
+s38->s24
+}
+{
+s16->s39
+s16->s15
+s6->s7
+s6->s5
+s24->s23
+s24->s38
+}
+{
+s7->s6
+s7->s9
+s7->s8
+s23->s22
+s23->s25
+s23->s24
+s15->s14
+s15->s17
+s15->s16
+}
+{
+s8->s7
+s8->s29
+s25->s23
+s25->s26
+s9->s7
+s9->s10
+s14->s15
+s14->s13
+s17->s15
+s17->s18
+s22->s23
+s22->s21
+}
+{
+s26->s27
+s26->s25
+s29->s27
+s29->s8
+s10->s11
+s10->s9
+s13->s14
+s13->s11
+s18->s19
+s18->s17
+s21->s22
+s21->s19
+}
+{
+s27->s28
+s27->s29
+s27->s26
+s11->s12
+s11->s13
+s11->s10
+s19->s20
+s19->s21
+s19->s18
+}
+{
+s12->s37
+s12->s11
+s28->s30
+s28->s27
+s20->s36
+s20->s19
+}
+{
+s36->s20
+s36->s35
+s37->s12
+s37->s34
+s30->s31
+s30->s28
+}
+{
+s35->s36
+s35->s32
+s34->s37
+s34->s32
+s31->s30
+s31->s32
+}
+{
+s32->s31
+s32->s35
+s32->s34
+s32->s33
+s33->s32
+}
+}

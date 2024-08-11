@@ -1,9 +1,0 @@
-(:policy
-(:booleans )
-(:numericals (f915 "n_count(c_primitive(clear,0))") (f531 "n_count(r_and(r_primitive(on,0,1),r_primitive(on_g,0,1)))") (f678 "n_count(c_all(r_transitive_closure(r_primitive(on,0,1)),c_equal(r_primitive(on,0,1),r_primitive(on_g,0,1))))"))
-(:rule (:conditions (:c_n_gt f915) (:c_n_gt f678)) (:effects (:e_n_inc f915) (:e_n_bot f531) (:e_n_inc f678)))
-(:rule (:conditions (:c_n_gt f915) (:c_n_gt f678)) (:effects (:e_n_dec f915) (:e_n_inc f531) (:e_n_bot f678)))
-(:rule (:conditions (:c_n_gt f915) (:c_n_gt f678)) (:effects (:e_n_inc f915) (:e_n_bot f531) (:e_n_bot f678)))
-(:rule (:conditions (:c_n_gt f915) (:c_n_gt f531) (:c_n_gt f678)) (:effects (:e_n_inc f915) (:e_n_dec f531) (:e_n_inc f678)))
-(:rule (:conditions (:c_n_gt f915) (:c_n_gt f531) (:c_n_gt f678)) (:effects (:e_n_bot f915) (:e_n_dec f531) (:e_n_inc f678)))
-)
