@@ -47,10 +47,10 @@ def create_instance_info(
     # Reached atoms
     fluent_atom_id_to_dlplan_atom = dict()
     derived_atom_id_to_dlplan_atom = dict()
-    for atom in pddl_factories.get_fluent_ground_atoms_from_ids(mimir_state_space.get_ssg().get_reached_fluent_ground_atoms()):
-        fluent_atom_id_to_dlplan_atom[atom.get_identifier()] = instance_info.add_atom(atom.get_predicate().get_name(), [obj.get_name() for obj in atom.get_objects()])
-    for atom in pddl_factories.get_derived_ground_atoms_from_ids(mimir_state_space.get_ssg().get_reached_derived_ground_atoms()):
-        derived_atom_id_to_dlplan_atom[atom.get_identifier()] = instance_info.add_atom(atom.get_predicate().get_name(), [obj.get_name() for obj in atom.get_objects()])
+    for atom in pddl_factories.get_fluent_ground_atoms_from_indices(mimir_state_space.get_ssg().get_reached_fluent_ground_atoms()):
+        fluent_atom_id_to_dlplan_atom[atom.get_index()] = instance_info.add_atom(atom.get_predicate().get_name(), [obj.get_name() for obj in atom.get_objects()])
+    for atom in pddl_factories.get_derived_ground_atoms_from_indices(mimir_state_space.get_ssg().get_reached_derived_ground_atoms()):
+        derived_atom_id_to_dlplan_atom[atom.get_index()] = instance_info.add_atom(atom.get_predicate().get_name(), [obj.get_name() for obj in atom.get_objects()])
     # Goal literals
     for literal in problem.get_static_goal_condition():
         assert not literal.is_negated()
