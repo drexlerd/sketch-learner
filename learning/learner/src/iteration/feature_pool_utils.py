@@ -21,6 +21,7 @@ def compute_feature_pool(preprocessing_data: PreprocessingData,
                          gfa_state_id_to_tuple_graph: Dict[int, mm.TupleGraph],
                          state_finder: StateFinder,
                          disable_feature_generation: bool,
+                         enable_incomplete_feature_pruning: bool,
                          concept_complexity_limit: int,
                          role_complexity_limit: int,
                          boolean_complexity_limit: int,
@@ -74,53 +75,54 @@ def compute_feature_pool(preprocessing_data: PreprocessingData,
     print("Features generated:", len(features))
 
     # Prune features that never reach 0/False
-    selected_features = []
-    for feature in features:
-        always_nnz = True
-        for instance_data in iteration_data.instance_datas:
-            for dlplan_state in instance_data.dlplan_ss.get_states().values():
-                val = int(feature.dlplan_feature.evaluate(dlplan_state, instance_data.denotations_caches))
-                if val == 0:
-                    always_nnz = False
-                    break
-        if not always_nnz:
-            selected_features.append(feature)
-    features = selected_features
-    print("Features after 0/1 pruning (incomplete):", len(selected_features))
+    if enable_incomplete_feature_pruning:
+        selected_features = []
+        for feature in features:
+            always_nnz = True
+            for instance_data in iteration_data.instance_datas:
+                for dlplan_state in instance_data.dlplan_ss.get_states().values():
+                    val = int(feature.dlplan_feature.evaluate(dlplan_state, instance_data.denotations_caches))
+                    if val == 0:
+                        always_nnz = False
+                        break
+            if not always_nnz:
+                selected_features.append(feature)
+        features = selected_features
+        print("Features after 0/1 pruning (incomplete):", len(selected_features))
 
-    # Prune features that decrease by more than 1 on a state transition
-    soft_changing_features = set()
-    for feature in features:
-        is_soft_changing = True
-        for gfa_state in iteration_data.gfa_states:
-            dlplan_source_ss_state = state_finder.get_dlplan_ss_state(gfa_state)
-            instance_idx = gfa_state.get_faithful_abstraction_index()
-            instance_data = preprocessing_data.instance_datas[instance_idx]
-            source_val = int(feature.dlplan_feature.evaluate(dlplan_source_ss_state, instance_data.denotations_caches))
+        # Prune features that decrease by more than 1 on a state transition
+        soft_changing_features = set()
+        for feature in features:
+            is_soft_changing = True
+            for gfa_state in iteration_data.gfa_states:
+                dlplan_source_ss_state = state_finder.get_dlplan_ss_state(gfa_state)
+                instance_idx = gfa_state.get_faithful_abstraction_index()
+                instance_data = preprocessing_data.instance_datas[instance_idx]
+                source_val = int(feature.dlplan_feature.evaluate(dlplan_source_ss_state, instance_data.denotations_caches))
 
-            gfa = instance_data.gfa
-            gfa_state_global_idx = gfa_state.get_global_index()
-            gfa_state_idx = gfa.get_abstract_state_index(gfa_state_global_idx)
-            gfa_states = gfa.get_states()
-            for gfa_state_prime_idx in gfa.get_forward_adjacent_state_indices(gfa_state_idx):
-                gfa_state_prime = gfa_states[gfa_state_prime_idx]
-                dlplan_target_ss_state = state_finder.get_dlplan_ss_state(gfa_state_prime)
-                target_val = int(feature.dlplan_feature.evaluate(dlplan_target_ss_state, instance_data.denotations_caches))
-                if source_val in {0, 2147483647} or target_val in {0, 2147483647}:
-                    # Allow arbitrary changes on border values
-                    continue
-                if source_val > target_val and (source_val > target_val + 1):
-                    is_soft_changing = False
+                gfa = instance_data.gfa
+                gfa_state_global_idx = gfa_state.get_global_index()
+                gfa_state_idx = gfa.get_abstract_state_index(gfa_state_global_idx)
+                gfa_states = gfa.get_states()
+                for gfa_state_prime_idx in gfa.get_forward_adjacent_state_indices(gfa_state_idx):
+                    gfa_state_prime = gfa_states[gfa_state_prime_idx]
+                    dlplan_target_ss_state = state_finder.get_dlplan_ss_state(gfa_state_prime)
+                    target_val = int(feature.dlplan_feature.evaluate(dlplan_target_ss_state, instance_data.denotations_caches))
+                    if source_val in {0, 2147483647} or target_val in {0, 2147483647}:
+                        # Allow arbitrary changes on border values
+                        continue
+                    if source_val > target_val and (source_val > target_val + 1):
+                        is_soft_changing = False
+                        break
+                    if target_val > source_val and (target_val > source_val + 1):
+                        is_soft_changing = False
+                        break
+                if not is_soft_changing:
                     break
-                if target_val > source_val and (target_val > source_val + 1):
-                    is_soft_changing = False
-                    break
-            if not is_soft_changing:
-                break
-        if is_soft_changing:
-            soft_changing_features.add(feature)
-    features = list(soft_changing_features)
-    print("Features after soft changes pruning (incomplete):", len(features))
+            if is_soft_changing:
+                soft_changing_features.add(feature)
+        features = list(soft_changing_features)
+        print("Features after soft changes pruning (incomplete):", len(features))
 
     # Prune features that do have same feature change a long all state pairs.
     feature_changes = dict()

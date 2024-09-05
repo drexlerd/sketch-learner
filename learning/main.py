@@ -20,7 +20,8 @@ if __name__ == "__main__":
     parser.add_argument("--encoding_type", type=EncodingType, default=EncodingType.D2, choices=[EncodingType.D2, EncodingType.EXPLICIT], help="The encoding type for the sketch learner.")
     parser.add_argument("--max_num_rules", type=int, default=4, help="The maximum number of rules used in the explicit encoding.")
     parser.add_argument("--enable_goal_separating_features", action='store_true', default=False, help="Whether to enable goal separating features. Default is True.")
-    parser.add_argument("--disable_feature_generation", action='store_true', default=False, help="Whether to enable feature generation. Default is True.")
+    parser.add_argument("--disable_feature_generation", action='store_true', default=False, help="Whether to enable feature generation. Default is False.")
+    parser.add_argument("--enable_incomplete_feature_pruning", action='store_true', default=False, help="Whether to enable incomplete feature pruning. Default is False.")
     parser.add_argument("--concept_complexity_limit", type=int, default=9, help="The complexity limit for concepts.")
     parser.add_argument("--role_complexity_limit", type=int, default=9, help="The complexity limit for roles.")
     parser.add_argument("--boolean_complexity_limit", type=int, default=9, help="The complexity limit for boolean features.")
@@ -44,6 +45,7 @@ if __name__ == "__main__":
                                    args.max_num_rules,
                                    args.enable_goal_separating_features,
                                    args.disable_feature_generation,
+                                   args.enable_incomplete_feature_pruning,
                                    args.concept_complexity_limit,
                                    args.role_complexity_limit,
                                    args.boolean_complexity_limit,
