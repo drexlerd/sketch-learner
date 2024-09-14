@@ -32,9 +32,9 @@ sbatch -A ${PARTITION} -t 1-00:00:00 -C thin --exclusive -J satellite_1 job.sh i
 sbatch -A ${PARTITION} -t 1-00:00:00 -C thin --exclusive -J satellite_2 job.sh ipc2023 satellite 2
 
 # Domain is intractable
-sbatch -A ${PARTITION} -t 1-00:00:00 -C thin --exclusive -J sokoban_0 job.sh tractable sokoban 0
-sbatch -A ${PARTITION} -t 1-00:00:00 -C thin --exclusive -J sokoban_1 job.sh tractable sokoban 1
-sbatch -A ${PARTITION} -t 1-00:00:00 -C thin --exclusive -J sokoban_2 job.sh tractable sokoban 2
+sbatch -A ${PARTITION} -t 1-00:00:00 -C thin --exclusive -J sokoban_0 job.sh ipc2023 sokoban 0
+sbatch -A ${PARTITION} -t 1-00:00:00 -C thin --exclusive -J sokoban_1 job.sh ipc2023 sokoban 1
+sbatch -A ${PARTITION} -t 1-00:00:00 -C thin --exclusive -J sokoban_2 job.sh ipc2023 sokoban 2
 
 sbatch -A ${PARTITION} -t 1-00:00:00 -C thin --exclusive -J spanner_0 job.sh ipc2023 spanner 0
 sbatch -A ${PARTITION} -t 1-00:00:00 -C thin --exclusive -J spanner_1 job.sh ipc2023 spanner 1
