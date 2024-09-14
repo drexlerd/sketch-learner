@@ -2,9 +2,9 @@
 
 PARTITION="naiss2024-5-421"
 
-#./job.sh tractable blocks_3 0
-#./job.sh tractable blocks_3 1
-#./job.sh tractable blocks_3 2
+sbatch -A ${PARTITION} -t 1-00:00:00 -C thin --exclusive -J barman_0 job.sh tractable barman 0
+sbatch -A ${PARTITION} -t 1-00:00:00 -C thin --exclusive -J barman_1 job.sh tractable barman 1
+sbatch -A ${PARTITION} -t 1-00:00:00 -C thin --exclusive -J barman_2 job.sh tractable barman 2
 
 sbatch -A ${PARTITION} -t 1-00:00:00 -C thin --exclusive -J blocks_3_0 job.sh tractable blocks_3 0
 sbatch -A ${PARTITION} -t 1-00:00:00 -C thin --exclusive -J blocks_3_1 job.sh tractable blocks_3 1
