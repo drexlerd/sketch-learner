@@ -42,6 +42,8 @@ It is important that the planning problems are small. If you have a problem gene
 
 ## Running the Learning Experiments (ICAPS2022)
 
+Running the learning experiments requires setting the environment variable `SKETCH_LEARNER_DIR` to the location of the root of the repo.
+The experiments can be run by executing the following sequence of commands.
 
 ```console
 cd learning/experiments/scripts

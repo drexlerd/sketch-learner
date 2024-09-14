@@ -1,8 +1,10 @@
-
 import argparse
+import os
 import subprocess
 
 from pathlib import Path
+
+SKETCH_LEARNER_DIR = Path(os.getenv("SKETCH_LEARNER_DIR"))
 
 
 def run(domain_filepath: Path, problems_directory: Path, workspace: Path, width: int):
@@ -14,7 +16,7 @@ def run(domain_filepath: Path, problems_directory: Path, workspace: Path, width:
         "n_concept_distance(c_primitive(at,0),r_restrict(r_primitive(adjacent,0,1),c_primitive(unblocked,0)),c_primitive(reward,0))",
     ]
     subprocess.call([
-        "python3", "../../main.py",
+        "python3", SKETCH_LEARNER_DIR / "learning" / "main.py",
         "--domain_filepath", str(domain_filepath),
         "--problems_directory", str(problems_directory),
         "--workspace", str(workspace),
