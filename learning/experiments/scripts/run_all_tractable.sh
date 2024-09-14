@@ -46,6 +46,10 @@ sbatch -A ${PARTITION} -t 1-00:00:00 -C thin --exclusive -J satellite_0 job.sh t
 sbatch -A ${PARTITION} -t 1-00:00:00 -C thin --exclusive -J satellite_1 job.sh tractable satellite 1
 sbatch -A ${PARTITION} -t 1-00:00:00 -C thin --exclusive -J satellite_2 job.sh tractable satellite 2
 
+sbatch -A ${PARTITION} -t 1-00:00:00 -C thin --exclusive -J schedule_0 job.sh tractable schedule 0
+sbatch -A ${PARTITION} -t 1-00:00:00 -C thin --exclusive -J schedule_1 job.sh tractable schedule 1
+sbatch -A ${PARTITION} -t 1-00:00:00 -C thin --exclusive -J schedule_2 job.sh tractable schedule 2
+
 sbatch -A ${PARTITION} -t 1-00:00:00 -C thin --exclusive -J spanner_0 job.sh tractable spanner 0
 sbatch -A ${PARTITION} -t 1-00:00:00 -C thin --exclusive -J spanner_1 job.sh tractable spanner 1
 sbatch -A ${PARTITION} -t 1-00:00:00 -C thin --exclusive -J spanner_2 job.sh tractable spanner 2

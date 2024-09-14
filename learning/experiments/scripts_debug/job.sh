@@ -7,7 +7,7 @@ WIDTH=$3
 DOMAIN="${SKETCH_LEARNER_DIR}/learning/benchmarks/${DATASET}/${DOMAIN_NAME}/domain.pddl"
 PROBLEMS="${SKETCH_LEARNER_DIR}/learning/benchmarks/${DATASET}/${DOMAIN_NAME}/training/easy"
 
-WORKSPACE="${PWD}/workspace/${DOMAIN_NAME}_${WIDTH}"
+WORKSPACE="${PWD}/workspace-${DATASET}/${DOMAIN_NAME}_${WIDTH}"
 RUN_ERR="${WORKSPACE}/run.err"
 RUN_LOG="${WORKSPACE}/run.log"
 
