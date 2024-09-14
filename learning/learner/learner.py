@@ -81,6 +81,26 @@ def learn_sketch_for_problem_class(
     preprocessing_data = PreprocessingData(domain_data, instance_datas, state_finder, gfa_state_id_to_tuple_graph)
     preprocessing_timer.stop()
 
+    for instance_data in instance_datas:
+        instance_data: InstanceData = instance_data
+        for state in instance_data.mimir_ss.get_states():
+            preprocessing_data.gfa_state_global_idx_to_tuple_graph
+
+    # gfa_states_by_idx contains all pairwise non-symmetric states of the input dataset.
+    gfa_states_by_idx : MutableSet[mm.GlobalFaithfulAbstractState] = dict()
+    for instance_data in instance_datas:
+        for gfa_state in instance_data.gfa.get_states():
+            gfa_states_by_idx[gfa_state.get_index()] = gfa_state
+
+    for gfa_state_idx, tuple_graph in preprocessing_data.gfa_state_global_idx_to_tuple_graph.items():
+        gfa_state = gfa_states_by_idx
+
+        for group in tuple_graph.get_vertices_grouped_by_distance()[1:]:
+            for tuple_vertex in group:
+                tuple_vertex: mm.TupleGraphVertex = tuple_vertex
+                tuple_index = tuple_vertex.get_tuple_index()
+                underlying_states = tuple_vertex.get_states()
+
     # Learn sketch
     iteration_data = IterationData()
     with change_dir("iterations"):
