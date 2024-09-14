@@ -43,47 +43,16 @@ It is important that the planning problems are small. If you have a problem gene
 ## Running the Learning Experiments (ICAPS2022)
 
 Running the learning experiments requires setting the environment variable `SKETCH_LEARNER_DIR` to the location of the root of the repo.
-The experiments can be run by executing the following sequence of commands.
+The experiments can be run in a slurm environment by running the following sequence of commands.
 
 ```console
 cd learning/experiments/scripts
 
-./blocks_4_clear_0.sh
-./blocks_4_clear_1.sh
-./blocks_4_clear_2.sh
-
-./blocks_4_on_0.sh
-./blocks_4_on_1.sh
-./blocks_4_on_2.sh
-
-./delivery_0.sh
-./delivery_1.sh
-./delivery_2.sh
-
-./gripper_0.sh
-./gripper_1.sh
-./gripper_2.sh
-
-./miconic_0.sh
-./miconic_1.sh
-./miconic_2.sh
-
-./reward_0.sh
-./reward_1.sh
-./reward_2.sh
-
-./spanner_0.sh
-./spanner_1.sh
-./spanner_2.sh
-
-./visitall_0.sh
-./visitall_1.sh
-./visitall_2.sh
+./run_all_tractable.sh
+./run_all_ipc2023.sh
 ```
 
 ## Running the Testing Experiments (ICAPS2022)
-
-TODO
 
 Build the planner apptainers
 

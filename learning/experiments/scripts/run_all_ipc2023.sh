@@ -10,9 +10,9 @@ sbatch -A ${PARTITION} -t 1-00:00:00 -C thin --exclusive -J childsnack_0 job.sh 
 sbatch -A ${PARTITION} -t 1-00:00:00 -C thin --exclusive -J childsnack_1 job.sh ipc2023 childsnack 1
 sbatch -A ${PARTITION} -t 1-00:00:00 -C thin --exclusive -J childsnack_2 job.sh ipc2023 childsnack 2
 
-sbatch -A ${PARTITION} -t 1-00:00:00 -C thin --exclusive -J ferry_on_0 job.sh ipc2023 ferry 0
-sbatch -A ${PARTITION} -t 1-00:00:00 -C thin --exclusive -J ferry_on_1 job.sh ipc2023 ferry 1
-sbatch -A ${PARTITION} -t 1-00:00:00 -C thin --exclusive -J ferry_on_2 job.sh ipc2023 ferry 2
+sbatch -A ${PARTITION} -t 1-00:00:00 -C thin --exclusive -J ferry_0 job.sh ipc2023 ferry 0
+sbatch -A ${PARTITION} -t 1-00:00:00 -C thin --exclusive -J ferry_1 job.sh ipc2023 ferry 1
+sbatch -A ${PARTITION} -t 1-00:00:00 -C thin --exclusive -J ferry_2 job.sh ipc2023 ferry 2
 
 # Domain requires too complex features
 sbatch -A ${PARTITION} -t 1-00:00:00 -C thin --exclusive -J floortile_0 job.sh ipc2023 floortile 0
