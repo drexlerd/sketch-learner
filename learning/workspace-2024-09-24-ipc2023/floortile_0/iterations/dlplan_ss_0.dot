@@ -1,0 +1,62 @@
+digraph {
+rankdir="LR"
+s0[label="(instance index=0, state index=0, atoms={robot-at(robot1,tile_1_1), robot-has(robot1,black), clear(tile_0_1)})"]
+s2[label="(instance index=0, state index=2, atoms={robot-has(robot1,black), robot-at(robot1,tile_0_1), clear(tile_1_1)})"]
+s1[label="(instance index=0, state index=1, atoms={robot-at(robot1,tile_1_1), clear(tile_0_1), robot-has(robot1,white)})"]
+s3[label="(instance index=0, state index=3, atoms={robot-at(robot1,tile_1_1), robot-has(robot1,black), painted(tile_0_1,black)})"]
+s5[label="(instance index=0, state index=5, atoms={robot-at(robot1,tile_0_1), clear(tile_1_1), robot-has(robot1,white)})"]
+s6[label="(instance index=0, state index=6, atoms={robot-has(robot1,black), robot-at(robot1,tile_0_1), painted(tile_1_1,black)})"]
+s10[label="(instance index=0, state index=10, atoms={robot-at(robot1,tile_1_1), robot-has(robot1,white), painted(tile_0_1,white)})"]
+s4[label="(instance index=0, state index=4, atoms={robot-at(robot1,tile_1_1), painted(tile_0_1,black), robot-has(robot1,white)})"]
+s8[peripheries=2,label="(instance index=0, state index=8, atoms={painted(tile_1_1,white), robot-at(robot1,tile_0_1), robot-has(robot1,white)})"]
+s9[peripheries=2,label="(instance index=0, state index=9, atoms={painted(tile_1_1,white), robot-has(robot1,black), robot-at(robot1,tile_0_1)})"]
+s7[label="(instance index=0, state index=7, atoms={robot-at(robot1,tile_0_1), robot-has(robot1,white), painted(tile_1_1,black)})"]
+s11[label="(instance index=0, state index=11, atoms={robot-at(robot1,tile_1_1), robot-has(robot1,black), painted(tile_0_1,white)})"]
+Dangling [ label = "", style = invis ]
+{ rank = same; Dangling }
+Dangling -> s0
+{ rank = same; s0}
+{ rank = same; s2,s1,s3}
+{ rank = same; s5,s6,s10,s4}
+{ rank = same; s8,s9,s7,s11}
+{
+s0->s3
+s0->s2
+s0->s1
+s0->s0
+}
+{
+s2->s6
+s2->s2
+s2->s5
+s2->s0
+s1->s1
+s1->s5
+s1->s10
+s1->s0
+s3->s4
+s3->s3
+}
+{
+s5->s5
+s5->s2
+s5->s1
+s5->s8
+s6->s7
+s6->s6
+s10->s11
+s10->s10
+s4->s4
+s4->s3
+}
+{
+s8->s9
+s8->s8
+s9->s9
+s9->s8
+s7->s7
+s7->s6
+s11->s11
+s11->s10
+}
+}

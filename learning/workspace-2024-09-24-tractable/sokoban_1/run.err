@@ -1,0 +1,8 @@
+Traceback (most recent call last):
+  File "/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/experiments/scripts/../../main.py", line 37, in <module>
+    learn_sketch_for_problem_class(args.domain_filepath.resolve(),
+  File "/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/learner/learner.py", line 56, in learn_sketch_for_problem_class
+    instance_filepaths = list(problems_directory.iterdir())
+  File "/usr/lib64/python3.9/pathlib.py", line 1160, in iterdir
+    for name in self._accessor.listdir(self):
+FileNotFoundError: [Errno 2] No such file or directory: '/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/sokoban/training/easy'

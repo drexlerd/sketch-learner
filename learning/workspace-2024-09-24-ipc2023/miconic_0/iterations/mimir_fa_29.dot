@@ -1,0 +1,845 @@
+digraph {
+rankdir="LR"
+s0[label="state_index=0
+State(index=0, fluent atoms=[(lift-at f1), (origin p1 f2), (origin p2 f1), (origin p3 f2), (origin p4 f1)], static atoms=[(destin p1 f1), (destin p2 f2), (destin p3 f1), (destin p4 f2), (above f1 f2), (passenger p1), (passenger p2), (passenger p3), (passenger p4), (floor f1), (floor f2)], derived atoms=[])
+"]
+s1[label="state_index=1
+State(index=1, fluent atoms=[(origin p1 f2), (origin p2 f1), (origin p3 f2), (origin p4 f1), (lift-at f2)], static atoms=[(destin p1 f1), (destin p2 f2), (destin p3 f1), (destin p4 f2), (above f1 f2), (passenger p1), (passenger p2), (passenger p3), (passenger p4), (floor f1), (floor f2)], derived atoms=[])
+"]
+s2[label="state_index=2
+State(index=3, fluent atoms=[(lift-at f1), (origin p1 f2), (origin p3 f2), (origin p4 f1), (boarded p2)], static atoms=[(destin p1 f1), (destin p2 f2), (destin p3 f1), (destin p4 f2), (above f1 f2), (passenger p1), (passenger p2), (passenger p3), (passenger p4), (floor f1), (floor f2)], derived atoms=[])
+State(index=2, fluent atoms=[(lift-at f1), (origin p1 f2), (origin p2 f1), (origin p3 f2), (boarded p4)], static atoms=[(destin p1 f1), (destin p2 f2), (destin p3 f1), (destin p4 f2), (above f1 f2), (passenger p1), (passenger p2), (passenger p3), (passenger p4), (floor f1), (floor f2)], derived atoms=[])
+"]
+s3[label="state_index=3
+State(index=4, fluent atoms=[(origin p1 f2), (origin p3 f2), (origin p4 f1), (lift-at f2), (boarded p2)], static atoms=[(destin p1 f1), (destin p2 f2), (destin p3 f1), (destin p4 f2), (above f1 f2), (passenger p1), (passenger p2), (passenger p3), (passenger p4), (floor f1), (floor f2)], derived atoms=[])
+State(index=111, fluent atoms=[(origin p1 f2), (origin p2 f1), (origin p3 f2), (lift-at f2), (boarded p4)], static atoms=[(destin p1 f1), (destin p2 f2), (destin p3 f1), (destin p4 f2), (above f1 f2), (passenger p1), (passenger p2), (passenger p3), (passenger p4), (floor f1), (floor f2)], derived atoms=[])
+"]
+s4[label="state_index=4
+State(index=5, fluent atoms=[(lift-at f1), (origin p1 f2), (origin p3 f2), (boarded p2), (boarded p4)], static atoms=[(destin p1 f1), (destin p2 f2), (destin p3 f1), (destin p4 f2), (above f1 f2), (passenger p1), (passenger p2), (passenger p3), (passenger p4), (floor f1), (floor f2)], derived atoms=[])
+"]
+s5[label="state_index=5
+State(index=6, fluent atoms=[(origin p1 f2), (origin p3 f2), (lift-at f2), (boarded p2), (boarded p4)], static atoms=[(destin p1 f1), (destin p2 f2), (destin p3 f1), (destin p4 f2), (above f1 f2), (passenger p1), (passenger p2), (passenger p3), (passenger p4), (floor f1), (floor f2)], derived atoms=[])
+"]
+s6[label="state_index=6
+State(index=8, fluent atoms=[(origin p3 f2), (lift-at f2), (boarded p2), (boarded p4), (boarded p1)], static atoms=[(destin p1 f1), (destin p2 f2), (destin p3 f1), (destin p4 f2), (above f1 f2), (passenger p1), (passenger p2), (passenger p3), (passenger p4), (floor f1), (floor f2)], derived atoms=[])
+State(index=7, fluent atoms=[(origin p1 f2), (lift-at f2), (boarded p2), (boarded p4), (boarded p3)], static atoms=[(destin p1 f1), (destin p2 f2), (destin p3 f1), (destin p4 f2), (above f1 f2), (passenger p1), (passenger p2), (passenger p3), (passenger p4), (floor f1), (floor f2)], derived atoms=[])
+"]
+s7[label="state_index=7
+State(index=10, fluent atoms=[(served p2), (origin p1 f2), (origin p3 f2), (lift-at f2), (boarded p4)], static atoms=[(destin p1 f1), (destin p2 f2), (destin p3 f1), (destin p4 f2), (above f1 f2), (passenger p1), (passenger p2), (passenger p3), (passenger p4), (floor f1), (floor f2)], derived atoms=[])
+State(index=9, fluent atoms=[(served p4), (origin p1 f2), (origin p3 f2), (lift-at f2), (boarded p2)], static atoms=[(destin p1 f1), (destin p2 f2), (destin p3 f1), (destin p4 f2), (above f1 f2), (passenger p1), (passenger p2), (passenger p3), (passenger p4), (floor f1), (floor f2)], derived atoms=[])
+"]
+s8[label="state_index=8
+State(index=46, fluent atoms=[(served p4), (lift-at f1), (origin p1 f2), (origin p3 f2), (boarded p2)], static atoms=[(destin p1 f1), (destin p2 f2), (destin p3 f1), (destin p4 f2), (above f1 f2), (passenger p1), (passenger p2), (passenger p3), (passenger p4), (floor f1), (floor f2)], derived atoms=[])
+State(index=11, fluent atoms=[(served p2), (lift-at f1), (origin p1 f2), (origin p3 f2), (boarded p4)], static atoms=[(destin p1 f1), (destin p2 f2), (destin p3 f1), (destin p4 f2), (above f1 f2), (passenger p1), (passenger p2), (passenger p3), (passenger p4), (floor f1), (floor f2)], derived atoms=[])
+"]
+s9[label="state_index=9
+State(index=48, fluent atoms=[(served p4), (origin p3 f2), (lift-at f2), (boarded p2), (boarded p1)], static atoms=[(destin p1 f1), (destin p2 f2), (destin p3 f1), (destin p4 f2), (above f1 f2), (passenger p1), (passenger p2), (passenger p3), (passenger p4), (floor f1), (floor f2)], derived atoms=[])
+State(index=47, fluent atoms=[(served p4), (origin p1 f2), (lift-at f2), (boarded p2), (boarded p3)], static atoms=[(destin p1 f1), (destin p2 f2), (destin p3 f1), (destin p4 f2), (above f1 f2), (passenger p1), (passenger p2), (passenger p3), (passenger p4), (floor f1), (floor f2)], derived atoms=[])
+State(index=12, fluent atoms=[(served p2), (origin p1 f2), (lift-at f2), (boarded p4), (boarded p3)], static atoms=[(destin p1 f1), (destin p2 f2), (destin p3 f1), (destin p4 f2), (above f1 f2), (passenger p1), (passenger p2), (passenger p3), (passenger p4), (floor f1), (floor f2)], derived atoms=[])
+State(index=13, fluent atoms=[(served p2), (origin p3 f2), (lift-at f2), (boarded p4), (boarded p1)], static atoms=[(destin p1 f1), (destin p2 f2), (destin p3 f1), (destin p4 f2), (above f1 f2), (passenger p1), (passenger p2), (passenger p3), (passenger p4), (floor f1), (floor f2)], derived atoms=[])
+"]
+s10[label="state_index=10
+State(index=14, fluent atoms=[(served p2), (served p4), (origin p1 f2), (origin p3 f2), (lift-at f2)], static atoms=[(destin p1 f1), (destin p2 f2), (destin p3 f1), (destin p4 f2), (above f1 f2), (passenger p1), (passenger p2), (passenger p3), (passenger p4), (floor f1), (floor f2)], derived atoms=[])
+"]
+s11[label="state_index=11
+State(index=15, fluent atoms=[(served p2), (served p4), (lift-at f1), (origin p1 f2), (origin p3 f2)], static atoms=[(destin p1 f1), (destin p2 f2), (destin p3 f1), (destin p4 f2), (above f1 f2), (passenger p1), (passenger p2), (passenger p3), (passenger p4), (floor f1), (floor f2)], derived atoms=[])
+"]
+s12[label="state_index=12
+State(index=16, fluent atoms=[(served p2), (served p4), (origin p1 f2), (lift-at f2), (boarded p3)], static atoms=[(destin p1 f1), (destin p2 f2), (destin p3 f1), (destin p4 f2), (above f1 f2), (passenger p1), (passenger p2), (passenger p3), (passenger p4), (floor f1), (floor f2)], derived atoms=[])
+State(index=17, fluent atoms=[(served p2), (served p4), (origin p3 f2), (lift-at f2), (boarded p1)], static atoms=[(destin p1 f1), (destin p2 f2), (destin p3 f1), (destin p4 f2), (above f1 f2), (passenger p1), (passenger p2), (passenger p3), (passenger p4), (floor f1), (floor f2)], derived atoms=[])
+"]
+s13[label="state_index=13
+State(index=29, fluent atoms=[(served p2), (served p4), (lift-at f1), (origin p1 f2), (boarded p3)], static atoms=[(destin p1 f1), (destin p2 f2), (destin p3 f1), (destin p4 f2), (above f1 f2), (passenger p1), (passenger p2), (passenger p3), (passenger p4), (floor f1), (floor f2)], derived atoms=[])
+State(index=18, fluent atoms=[(served p2), (served p4), (lift-at f1), (origin p3 f2), (boarded p1)], static atoms=[(destin p1 f1), (destin p2 f2), (destin p3 f1), (destin p4 f2), (above f1 f2), (passenger p1), (passenger p2), (passenger p3), (passenger p4), (floor f1), (floor f2)], derived atoms=[])
+"]
+s14[label="state_index=14
+State(index=19, fluent atoms=[(served p2), (served p4), (lift-at f2), (boarded p1), (boarded p3)], static atoms=[(destin p1 f1), (destin p2 f2), (destin p3 f1), (destin p4 f2), (above f1 f2), (passenger p1), (passenger p2), (passenger p3), (passenger p4), (floor f1), (floor f2)], derived atoms=[])
+"]
+s15[label="state_index=15
+State(index=20, fluent atoms=[(served p2), (served p4), (lift-at f1), (boarded p1), (boarded p3)], static atoms=[(destin p1 f1), (destin p2 f2), (destin p3 f1), (destin p4 f2), (above f1 f2), (passenger p1), (passenger p2), (passenger p3), (passenger p4), (floor f1), (floor f2)], derived atoms=[])
+"]
+s16[label="state_index=16
+State(index=21, fluent atoms=[(served p2), (served p3), (served p4), (lift-at f1), (boarded p1)], static atoms=[(destin p1 f1), (destin p2 f2), (destin p3 f1), (destin p4 f2), (above f1 f2), (passenger p1), (passenger p2), (passenger p3), (passenger p4), (floor f1), (floor f2)], derived atoms=[])
+State(index=22, fluent atoms=[(served p1), (served p2), (served p4), (lift-at f1), (boarded p3)], static atoms=[(destin p1 f1), (destin p2 f2), (destin p3 f1), (destin p4 f2), (above f1 f2), (passenger p1), (passenger p2), (passenger p3), (passenger p4), (floor f1), (floor f2)], derived atoms=[])
+"]
+s17[label="state_index=17
+State(index=23, fluent atoms=[(served p1), (served p2), (served p4), (lift-at f2), (boarded p3)], static atoms=[(destin p1 f1), (destin p2 f2), (destin p3 f1), (destin p4 f2), (above f1 f2), (passenger p1), (passenger p2), (passenger p3), (passenger p4), (floor f1), (floor f2)], derived atoms=[])
+State(index=26, fluent atoms=[(served p2), (served p3), (served p4), (lift-at f2), (boarded p1)], static atoms=[(destin p1 f1), (destin p2 f2), (destin p3 f1), (destin p4 f2), (above f1 f2), (passenger p1), (passenger p2), (passenger p3), (passenger p4), (floor f1), (floor f2)], derived atoms=[])
+"]
+s18[peripheries=2,label="state_index=18
+State(index=24, fluent atoms=[(served p1), (served p2), (served p3), (served p4), (lift-at f1)], static atoms=[(destin p1 f1), (destin p2 f2), (destin p3 f1), (destin p4 f2), (above f1 f2), (passenger p1), (passenger p2), (passenger p3), (passenger p4), (floor f1), (floor f2)], derived atoms=[])
+"]
+s19[peripheries=2,label="state_index=19
+State(index=25, fluent atoms=[(served p1), (served p2), (served p3), (served p4), (lift-at f2)], static atoms=[(destin p1 f1), (destin p2 f2), (destin p3 f1), (destin p4 f2), (above f1 f2), (passenger p1), (passenger p2), (passenger p3), (passenger p4), (floor f1), (floor f2)], derived atoms=[])
+"]
+s20[label="state_index=20
+State(index=30, fluent atoms=[(served p2), (served p3), (served p4), (lift-at f1), (origin p1 f2)], static atoms=[(destin p1 f1), (destin p2 f2), (destin p3 f1), (destin p4 f2), (above f1 f2), (passenger p1), (passenger p2), (passenger p3), (passenger p4), (floor f1), (floor f2)], derived atoms=[])
+State(index=27, fluent atoms=[(served p1), (served p2), (served p4), (lift-at f1), (origin p3 f2)], static atoms=[(destin p1 f1), (destin p2 f2), (destin p3 f1), (destin p4 f2), (above f1 f2), (passenger p1), (passenger p2), (passenger p3), (passenger p4), (floor f1), (floor f2)], derived atoms=[])
+"]
+s21[label="state_index=21
+State(index=31, fluent atoms=[(served p2), (served p3), (served p4), (origin p1 f2), (lift-at f2)], static atoms=[(destin p1 f1), (destin p2 f2), (destin p3 f1), (destin p4 f2), (above f1 f2), (passenger p1), (passenger p2), (passenger p3), (passenger p4), (floor f1), (floor f2)], derived atoms=[])
+State(index=28, fluent atoms=[(served p1), (served p2), (served p4), (origin p3 f2), (lift-at f2)], static atoms=[(destin p1 f1), (destin p2 f2), (destin p3 f1), (destin p4 f2), (above f1 f2), (passenger p1), (passenger p2), (passenger p3), (passenger p4), (floor f1), (floor f2)], derived atoms=[])
+"]
+s22[label="state_index=22
+State(index=49, fluent atoms=[(served p4), (lift-at f1), (origin p3 f2), (boarded p2), (boarded p1)], static atoms=[(destin p1 f1), (destin p2 f2), (destin p3 f1), (destin p4 f2), (above f1 f2), (passenger p1), (passenger p2), (passenger p3), (passenger p4), (floor f1), (floor f2)], derived atoms=[])
+State(index=43, fluent atoms=[(served p2), (lift-at f1), (origin p1 f2), (boarded p4), (boarded p3)], static atoms=[(destin p1 f1), (destin p2 f2), (destin p3 f1), (destin p4 f2), (above f1 f2), (passenger p1), (passenger p2), (passenger p3), (passenger p4), (floor f1), (floor f2)], derived atoms=[])
+State(index=32, fluent atoms=[(served p2), (lift-at f1), (origin p3 f2), (boarded p4), (boarded p1)], static atoms=[(destin p1 f1), (destin p2 f2), (destin p3 f1), (destin p4 f2), (above f1 f2), (passenger p1), (passenger p2), (passenger p3), (passenger p4), (floor f1), (floor f2)], derived atoms=[])
+State(index=60, fluent atoms=[(served p4), (lift-at f1), (origin p1 f2), (boarded p2), (boarded p3)], static atoms=[(destin p1 f1), (destin p2 f2), (destin p3 f1), (destin p4 f2), (above f1 f2), (passenger p1), (passenger p2), (passenger p3), (passenger p4), (floor f1), (floor f2)], derived atoms=[])
+"]
+s23[label="state_index=23
+State(index=50, fluent atoms=[(served p4), (lift-at f2), (boarded p2), (boarded p1), (boarded p3)], static atoms=[(destin p1 f1), (destin p2 f2), (destin p3 f1), (destin p4 f2), (above f1 f2), (passenger p1), (passenger p2), (passenger p3), (passenger p4), (floor f1), (floor f2)], derived atoms=[])
+State(index=33, fluent atoms=[(served p2), (lift-at f2), (boarded p4), (boarded p1), (boarded p3)], static atoms=[(destin p1 f1), (destin p2 f2), (destin p3 f1), (destin p4 f2), (above f1 f2), (passenger p1), (passenger p2), (passenger p3), (passenger p4), (floor f1), (floor f2)], derived atoms=[])
+"]
+s24[label="state_index=24
+State(index=51, fluent atoms=[(served p4), (lift-at f1), (boarded p2), (boarded p1), (boarded p3)], static atoms=[(destin p1 f1), (destin p2 f2), (destin p3 f1), (destin p4 f2), (above f1 f2), (passenger p1), (passenger p2), (passenger p3), (passenger p4), (floor f1), (floor f2)], derived atoms=[])
+State(index=34, fluent atoms=[(served p2), (lift-at f1), (boarded p4), (boarded p1), (boarded p3)], static atoms=[(destin p1 f1), (destin p2 f2), (destin p3 f1), (destin p4 f2), (above f1 f2), (passenger p1), (passenger p2), (passenger p3), (passenger p4), (floor f1), (floor f2)], derived atoms=[])
+"]
+s25[label="state_index=25
+State(index=53, fluent atoms=[(served p1), (served p4), (lift-at f1), (boarded p2), (boarded p3)], static atoms=[(destin p1 f1), (destin p2 f2), (destin p3 f1), (destin p4 f2), (above f1 f2), (passenger p1), (passenger p2), (passenger p3), (passenger p4), (floor f1), (floor f2)], derived atoms=[])
+State(index=52, fluent atoms=[(served p3), (served p4), (lift-at f1), (boarded p2), (boarded p1)], static atoms=[(destin p1 f1), (destin p2 f2), (destin p3 f1), (destin p4 f2), (above f1 f2), (passenger p1), (passenger p2), (passenger p3), (passenger p4), (floor f1), (floor f2)], derived atoms=[])
+State(index=36, fluent atoms=[(served p1), (served p2), (lift-at f1), (boarded p4), (boarded p3)], static atoms=[(destin p1 f1), (destin p2 f2), (destin p3 f1), (destin p4 f2), (above f1 f2), (passenger p1), (passenger p2), (passenger p3), (passenger p4), (floor f1), (floor f2)], derived atoms=[])
+State(index=35, fluent atoms=[(served p2), (served p3), (lift-at f1), (boarded p4), (boarded p1)], static atoms=[(destin p1 f1), (destin p2 f2), (destin p3 f1), (destin p4 f2), (above f1 f2), (passenger p1), (passenger p2), (passenger p3), (passenger p4), (floor f1), (floor f2)], derived atoms=[])
+"]
+s26[label="state_index=26
+State(index=57, fluent atoms=[(served p3), (served p4), (lift-at f2), (boarded p2), (boarded p1)], static atoms=[(destin p1 f1), (destin p2 f2), (destin p3 f1), (destin p4 f2), (above f1 f2), (passenger p1), (passenger p2), (passenger p3), (passenger p4), (floor f1), (floor f2)], derived atoms=[])
+State(index=54, fluent atoms=[(served p1), (served p4), (lift-at f2), (boarded p2), (boarded p3)], static atoms=[(destin p1 f1), (destin p2 f2), (destin p3 f1), (destin p4 f2), (above f1 f2), (passenger p1), (passenger p2), (passenger p3), (passenger p4), (floor f1), (floor f2)], derived atoms=[])
+State(index=40, fluent atoms=[(served p2), (served p3), (lift-at f2), (boarded p4), (boarded p1)], static atoms=[(destin p1 f1), (destin p2 f2), (destin p3 f1), (destin p4 f2), (above f1 f2), (passenger p1), (passenger p2), (passenger p3), (passenger p4), (floor f1), (floor f2)], derived atoms=[])
+State(index=37, fluent atoms=[(served p1), (served p2), (lift-at f2), (boarded p4), (boarded p3)], static atoms=[(destin p1 f1), (destin p2 f2), (destin p3 f1), (destin p4 f2), (above f1 f2), (passenger p1), (passenger p2), (passenger p3), (passenger p4), (floor f1), (floor f2)], derived atoms=[])
+"]
+s27[label="state_index=27
+State(index=55, fluent atoms=[(served p1), (served p3), (served p4), (lift-at f1), (boarded p2)], static atoms=[(destin p1 f1), (destin p2 f2), (destin p3 f1), (destin p4 f2), (above f1 f2), (passenger p1), (passenger p2), (passenger p3), (passenger p4), (floor f1), (floor f2)], derived atoms=[])
+State(index=38, fluent atoms=[(served p1), (served p2), (served p3), (lift-at f1), (boarded p4)], static atoms=[(destin p1 f1), (destin p2 f2), (destin p3 f1), (destin p4 f2), (above f1 f2), (passenger p1), (passenger p2), (passenger p3), (passenger p4), (floor f1), (floor f2)], derived atoms=[])
+"]
+s28[label="state_index=28
+State(index=56, fluent atoms=[(served p1), (served p3), (served p4), (lift-at f2), (boarded p2)], static atoms=[(destin p1 f1), (destin p2 f2), (destin p3 f1), (destin p4 f2), (above f1 f2), (passenger p1), (passenger p2), (passenger p3), (passenger p4), (floor f1), (floor f2)], derived atoms=[])
+State(index=39, fluent atoms=[(served p1), (served p2), (served p3), (lift-at f2), (boarded p4)], static atoms=[(destin p1 f1), (destin p2 f2), (destin p3 f1), (destin p4 f2), (above f1 f2), (passenger p1), (passenger p2), (passenger p3), (passenger p4), (floor f1), (floor f2)], derived atoms=[])
+"]
+s29[label="state_index=29
+State(index=58, fluent atoms=[(served p1), (served p4), (lift-at f1), (origin p3 f2), (boarded p2)], static atoms=[(destin p1 f1), (destin p2 f2), (destin p3 f1), (destin p4 f2), (above f1 f2), (passenger p1), (passenger p2), (passenger p3), (passenger p4), (floor f1), (floor f2)], derived atoms=[])
+State(index=44, fluent atoms=[(served p2), (served p3), (lift-at f1), (origin p1 f2), (boarded p4)], static atoms=[(destin p1 f1), (destin p2 f2), (destin p3 f1), (destin p4 f2), (above f1 f2), (passenger p1), (passenger p2), (passenger p3), (passenger p4), (floor f1), (floor f2)], derived atoms=[])
+State(index=41, fluent atoms=[(served p1), (served p2), (lift-at f1), (origin p3 f2), (boarded p4)], static atoms=[(destin p1 f1), (destin p2 f2), (destin p3 f1), (destin p4 f2), (above f1 f2), (passenger p1), (passenger p2), (passenger p3), (passenger p4), (floor f1), (floor f2)], derived atoms=[])
+State(index=61, fluent atoms=[(served p3), (served p4), (lift-at f1), (origin p1 f2), (boarded p2)], static atoms=[(destin p1 f1), (destin p2 f2), (destin p3 f1), (destin p4 f2), (above f1 f2), (passenger p1), (passenger p2), (passenger p3), (passenger p4), (floor f1), (floor f2)], derived atoms=[])
+"]
+s30[label="state_index=30
+State(index=45, fluent atoms=[(served p2), (served p3), (origin p1 f2), (lift-at f2), (boarded p4)], static atoms=[(destin p1 f1), (destin p2 f2), (destin p3 f1), (destin p4 f2), (above f1 f2), (passenger p1), (passenger p2), (passenger p3), (passenger p4), (floor f1), (floor f2)], derived atoms=[])
+State(index=42, fluent atoms=[(served p1), (served p2), (origin p3 f2), (lift-at f2), (boarded p4)], static atoms=[(destin p1 f1), (destin p2 f2), (destin p3 f1), (destin p4 f2), (above f1 f2), (passenger p1), (passenger p2), (passenger p3), (passenger p4), (floor f1), (floor f2)], derived atoms=[])
+State(index=59, fluent atoms=[(served p1), (served p4), (origin p3 f2), (lift-at f2), (boarded p2)], static atoms=[(destin p1 f1), (destin p2 f2), (destin p3 f1), (destin p4 f2), (above f1 f2), (passenger p1), (passenger p2), (passenger p3), (passenger p4), (floor f1), (floor f2)], derived atoms=[])
+State(index=62, fluent atoms=[(served p3), (served p4), (origin p1 f2), (lift-at f2), (boarded p2)], static atoms=[(destin p1 f1), (destin p2 f2), (destin p3 f1), (destin p4 f2), (above f1 f2), (passenger p1), (passenger p2), (passenger p3), (passenger p4), (floor f1), (floor f2)], derived atoms=[])
+"]
+s31[label="state_index=31
+State(index=63, fluent atoms=[(lift-at f1), (origin p3 f2), (boarded p2), (boarded p4), (boarded p1)], static atoms=[(destin p1 f1), (destin p2 f2), (destin p3 f1), (destin p4 f2), (above f1 f2), (passenger p1), (passenger p2), (passenger p3), (passenger p4), (floor f1), (floor f2)], derived atoms=[])
+State(index=74, fluent atoms=[(lift-at f1), (origin p1 f2), (boarded p2), (boarded p4), (boarded p3)], static atoms=[(destin p1 f1), (destin p2 f2), (destin p3 f1), (destin p4 f2), (above f1 f2), (passenger p1), (passenger p2), (passenger p3), (passenger p4), (floor f1), (floor f2)], derived atoms=[])
+"]
+s32[label="state_index=32
+State(index=64, fluent atoms=[(lift-at f2), (boarded p2), (boarded p4), (boarded p1), (boarded p3)], static atoms=[(destin p1 f1), (destin p2 f2), (destin p3 f1), (destin p4 f2), (above f1 f2), (passenger p1), (passenger p2), (passenger p3), (passenger p4), (floor f1), (floor f2)], derived atoms=[])
+"]
+s33[label="state_index=33
+State(index=65, fluent atoms=[(lift-at f1), (boarded p2), (boarded p4), (boarded p1), (boarded p3)], static atoms=[(destin p1 f1), (destin p2 f2), (destin p3 f1), (destin p4 f2), (above f1 f2), (passenger p1), (passenger p2), (passenger p3), (passenger p4), (floor f1), (floor f2)], derived atoms=[])
+"]
+s34[label="state_index=34
+State(index=66, fluent atoms=[(served p3), (lift-at f1), (boarded p2), (boarded p4), (boarded p1)], static atoms=[(destin p1 f1), (destin p2 f2), (destin p3 f1), (destin p4 f2), (above f1 f2), (passenger p1), (passenger p2), (passenger p3), (passenger p4), (floor f1), (floor f2)], derived atoms=[])
+State(index=67, fluent atoms=[(served p1), (lift-at f1), (boarded p2), (boarded p4), (boarded p3)], static atoms=[(destin p1 f1), (destin p2 f2), (destin p3 f1), (destin p4 f2), (above f1 f2), (passenger p1), (passenger p2), (passenger p3), (passenger p4), (floor f1), (floor f2)], derived atoms=[])
+"]
+s35[label="state_index=35
+State(index=68, fluent atoms=[(served p1), (lift-at f2), (boarded p2), (boarded p4), (boarded p3)], static atoms=[(destin p1 f1), (destin p2 f2), (destin p3 f1), (destin p4 f2), (above f1 f2), (passenger p1), (passenger p2), (passenger p3), (passenger p4), (floor f1), (floor f2)], derived atoms=[])
+State(index=71, fluent atoms=[(served p3), (lift-at f2), (boarded p2), (boarded p4), (boarded p1)], static atoms=[(destin p1 f1), (destin p2 f2), (destin p3 f1), (destin p4 f2), (above f1 f2), (passenger p1), (passenger p2), (passenger p3), (passenger p4), (floor f1), (floor f2)], derived atoms=[])
+"]
+s36[label="state_index=36
+State(index=69, fluent atoms=[(served p1), (served p3), (lift-at f1), (boarded p2), (boarded p4)], static atoms=[(destin p1 f1), (destin p2 f2), (destin p3 f1), (destin p4 f2), (above f1 f2), (passenger p1), (passenger p2), (passenger p3), (passenger p4), (floor f1), (floor f2)], derived atoms=[])
+"]
+s37[label="state_index=37
+State(index=70, fluent atoms=[(served p1), (served p3), (lift-at f2), (boarded p2), (boarded p4)], static atoms=[(destin p1 f1), (destin p2 f2), (destin p3 f1), (destin p4 f2), (above f1 f2), (passenger p1), (passenger p2), (passenger p3), (passenger p4), (floor f1), (floor f2)], derived atoms=[])
+"]
+s38[label="state_index=38
+State(index=72, fluent atoms=[(served p1), (lift-at f1), (origin p3 f2), (boarded p2), (boarded p4)], static atoms=[(destin p1 f1), (destin p2 f2), (destin p3 f1), (destin p4 f2), (above f1 f2), (passenger p1), (passenger p2), (passenger p3), (passenger p4), (floor f1), (floor f2)], derived atoms=[])
+State(index=75, fluent atoms=[(served p3), (lift-at f1), (origin p1 f2), (boarded p2), (boarded p4)], static atoms=[(destin p1 f1), (destin p2 f2), (destin p3 f1), (destin p4 f2), (above f1 f2), (passenger p1), (passenger p2), (passenger p3), (passenger p4), (floor f1), (floor f2)], derived atoms=[])
+"]
+s39[label="state_index=39
+State(index=73, fluent atoms=[(served p1), (origin p3 f2), (lift-at f2), (boarded p2), (boarded p4)], static atoms=[(destin p1 f1), (destin p2 f2), (destin p3 f1), (destin p4 f2), (above f1 f2), (passenger p1), (passenger p2), (passenger p3), (passenger p4), (floor f1), (floor f2)], derived atoms=[])
+State(index=76, fluent atoms=[(served p3), (origin p1 f2), (lift-at f2), (boarded p2), (boarded p4)], static atoms=[(destin p1 f1), (destin p2 f2), (destin p3 f1), (destin p4 f2), (above f1 f2), (passenger p1), (passenger p2), (passenger p3), (passenger p4), (floor f1), (floor f2)], derived atoms=[])
+"]
+s40[label="state_index=40
+State(index=77, fluent atoms=[(origin p1 f2), (origin p4 f1), (lift-at f2), (boarded p2), (boarded p3)], static atoms=[(destin p1 f1), (destin p2 f2), (destin p3 f1), (destin p4 f2), (above f1 f2), (passenger p1), (passenger p2), (passenger p3), (passenger p4), (floor f1), (floor f2)], derived atoms=[])
+State(index=78, fluent atoms=[(origin p3 f2), (origin p4 f1), (lift-at f2), (boarded p2), (boarded p1)], static atoms=[(destin p1 f1), (destin p2 f2), (destin p3 f1), (destin p4 f2), (above f1 f2), (passenger p1), (passenger p2), (passenger p3), (passenger p4), (floor f1), (floor f2)], derived atoms=[])
+State(index=112, fluent atoms=[(origin p1 f2), (origin p2 f1), (lift-at f2), (boarded p4), (boarded p3)], static atoms=[(destin p1 f1), (destin p2 f2), (destin p3 f1), (destin p4 f2), (above f1 f2), (passenger p1), (passenger p2), (passenger p3), (passenger p4), (floor f1), (floor f2)], derived atoms=[])
+State(index=113, fluent atoms=[(origin p2 f1), (origin p3 f2), (lift-at f2), (boarded p4), (boarded p1)], static atoms=[(destin p1 f1), (destin p2 f2), (destin p3 f1), (destin p4 f2), (above f1 f2), (passenger p1), (passenger p2), (passenger p3), (passenger p4), (floor f1), (floor f2)], derived atoms=[])
+"]
+s41[label="state_index=41
+State(index=79, fluent atoms=[(served p2), (origin p1 f2), (origin p3 f2), (origin p4 f1), (lift-at f2)], static atoms=[(destin p1 f1), (destin p2 f2), (destin p3 f1), (destin p4 f2), (above f1 f2), (passenger p1), (passenger p2), (passenger p3), (passenger p4), (floor f1), (floor f2)], derived atoms=[])
+State(index=114, fluent atoms=[(served p4), (origin p1 f2), (origin p2 f1), (origin p3 f2), (lift-at f2)], static atoms=[(destin p1 f1), (destin p2 f2), (destin p3 f1), (destin p4 f2), (above f1 f2), (passenger p1), (passenger p2), (passenger p3), (passenger p4), (floor f1), (floor f2)], derived atoms=[])
+"]
+s42[label="state_index=42
+State(index=80, fluent atoms=[(served p2), (lift-at f1), (origin p1 f2), (origin p3 f2), (origin p4 f1)], static atoms=[(destin p1 f1), (destin p2 f2), (destin p3 f1), (destin p4 f2), (above f1 f2), (passenger p1), (passenger p2), (passenger p3), (passenger p4), (floor f1), (floor f2)], derived atoms=[])
+State(index=115, fluent atoms=[(served p4), (lift-at f1), (origin p1 f2), (origin p2 f1), (origin p3 f2)], static atoms=[(destin p1 f1), (destin p2 f2), (destin p3 f1), (destin p4 f2), (above f1 f2), (passenger p1), (passenger p2), (passenger p3), (passenger p4), (floor f1), (floor f2)], derived atoms=[])
+"]
+s43[label="state_index=43
+State(index=81, fluent atoms=[(served p2), (origin p1 f2), (origin p4 f1), (lift-at f2), (boarded p3)], static atoms=[(destin p1 f1), (destin p2 f2), (destin p3 f1), (destin p4 f2), (above f1 f2), (passenger p1), (passenger p2), (passenger p3), (passenger p4), (floor f1), (floor f2)], derived atoms=[])
+State(index=82, fluent atoms=[(served p2), (origin p3 f2), (origin p4 f1), (lift-at f2), (boarded p1)], static atoms=[(destin p1 f1), (destin p2 f2), (destin p3 f1), (destin p4 f2), (above f1 f2), (passenger p1), (passenger p2), (passenger p3), (passenger p4), (floor f1), (floor f2)], derived atoms=[])
+State(index=116, fluent atoms=[(served p4), (origin p1 f2), (origin p2 f1), (lift-at f2), (boarded p3)], static atoms=[(destin p1 f1), (destin p2 f2), (destin p3 f1), (destin p4 f2), (above f1 f2), (passenger p1), (passenger p2), (passenger p3), (passenger p4), (floor f1), (floor f2)], derived atoms=[])
+State(index=117, fluent atoms=[(served p4), (origin p2 f1), (origin p3 f2), (lift-at f2), (boarded p1)], static atoms=[(destin p1 f1), (destin p2 f2), (destin p3 f1), (destin p4 f2), (above f1 f2), (passenger p1), (passenger p2), (passenger p3), (passenger p4), (floor f1), (floor f2)], derived atoms=[])
+"]
+s44[label="state_index=44
+State(index=129, fluent atoms=[(served p4), (lift-at f1), (origin p1 f2), (origin p2 f1), (boarded p3)], static atoms=[(destin p1 f1), (destin p2 f2), (destin p3 f1), (destin p4 f2), (above f1 f2), (passenger p1), (passenger p2), (passenger p3), (passenger p4), (floor f1), (floor f2)], derived atoms=[])
+State(index=83, fluent atoms=[(served p2), (lift-at f1), (origin p3 f2), (origin p4 f1), (boarded p1)], static atoms=[(destin p1 f1), (destin p2 f2), (destin p3 f1), (destin p4 f2), (above f1 f2), (passenger p1), (passenger p2), (passenger p3), (passenger p4), (floor f1), (floor f2)], derived atoms=[])
+State(index=94, fluent atoms=[(served p2), (lift-at f1), (origin p1 f2), (origin p4 f1), (boarded p3)], static atoms=[(destin p1 f1), (destin p2 f2), (destin p3 f1), (destin p4 f2), (above f1 f2), (passenger p1), (passenger p2), (passenger p3), (passenger p4), (floor f1), (floor f2)], derived atoms=[])
+State(index=118, fluent atoms=[(served p4), (lift-at f1), (origin p2 f1), (origin p3 f2), (boarded p1)], static atoms=[(destin p1 f1), (destin p2 f2), (destin p3 f1), (destin p4 f2), (above f1 f2), (passenger p1), (passenger p2), (passenger p3), (passenger p4), (floor f1), (floor f2)], derived atoms=[])
+"]
+s45[label="state_index=45
+State(index=84, fluent atoms=[(served p2), (origin p4 f1), (lift-at f2), (boarded p1), (boarded p3)], static atoms=[(destin p1 f1), (destin p2 f2), (destin p3 f1), (destin p4 f2), (above f1 f2), (passenger p1), (passenger p2), (passenger p3), (passenger p4), (floor f1), (floor f2)], derived atoms=[])
+State(index=119, fluent atoms=[(served p4), (origin p2 f1), (lift-at f2), (boarded p1), (boarded p3)], static atoms=[(destin p1 f1), (destin p2 f2), (destin p3 f1), (destin p4 f2), (above f1 f2), (passenger p1), (passenger p2), (passenger p3), (passenger p4), (floor f1), (floor f2)], derived atoms=[])
+"]
+s46[label="state_index=46
+State(index=85, fluent atoms=[(served p2), (lift-at f1), (origin p4 f1), (boarded p1), (boarded p3)], static atoms=[(destin p1 f1), (destin p2 f2), (destin p3 f1), (destin p4 f2), (above f1 f2), (passenger p1), (passenger p2), (passenger p3), (passenger p4), (floor f1), (floor f2)], derived atoms=[])
+State(index=120, fluent atoms=[(served p4), (lift-at f1), (origin p2 f1), (boarded p1), (boarded p3)], static atoms=[(destin p1 f1), (destin p2 f2), (destin p3 f1), (destin p4 f2), (above f1 f2), (passenger p1), (passenger p2), (passenger p3), (passenger p4), (floor f1), (floor f2)], derived atoms=[])
+"]
+s47[label="state_index=47
+State(index=86, fluent atoms=[(served p2), (served p3), (lift-at f1), (origin p4 f1), (boarded p1)], static atoms=[(destin p1 f1), (destin p2 f2), (destin p3 f1), (destin p4 f2), (above f1 f2), (passenger p1), (passenger p2), (passenger p3), (passenger p4), (floor f1), (floor f2)], derived atoms=[])
+State(index=87, fluent atoms=[(served p1), (served p2), (lift-at f1), (origin p4 f1), (boarded p3)], static atoms=[(destin p1 f1), (destin p2 f2), (destin p3 f1), (destin p4 f2), (above f1 f2), (passenger p1), (passenger p2), (passenger p3), (passenger p4), (floor f1), (floor f2)], derived atoms=[])
+State(index=121, fluent atoms=[(served p3), (served p4), (lift-at f1), (origin p2 f1), (boarded p1)], static atoms=[(destin p1 f1), (destin p2 f2), (destin p3 f1), (destin p4 f2), (above f1 f2), (passenger p1), (passenger p2), (passenger p3), (passenger p4), (floor f1), (floor f2)], derived atoms=[])
+State(index=122, fluent atoms=[(served p1), (served p4), (lift-at f1), (origin p2 f1), (boarded p3)], static atoms=[(destin p1 f1), (destin p2 f2), (destin p3 f1), (destin p4 f2), (above f1 f2), (passenger p1), (passenger p2), (passenger p3), (passenger p4), (floor f1), (floor f2)], derived atoms=[])
+"]
+s48[label="state_index=48
+State(index=88, fluent atoms=[(served p1), (served p2), (origin p4 f1), (lift-at f2), (boarded p3)], static atoms=[(destin p1 f1), (destin p2 f2), (destin p3 f1), (destin p4 f2), (above f1 f2), (passenger p1), (passenger p2), (passenger p3), (passenger p4), (floor f1), (floor f2)], derived atoms=[])
+State(index=91, fluent atoms=[(served p2), (served p3), (origin p4 f1), (lift-at f2), (boarded p1)], static atoms=[(destin p1 f1), (destin p2 f2), (destin p3 f1), (destin p4 f2), (above f1 f2), (passenger p1), (passenger p2), (passenger p3), (passenger p4), (floor f1), (floor f2)], derived atoms=[])
+State(index=123, fluent atoms=[(served p1), (served p4), (origin p2 f1), (lift-at f2), (boarded p3)], static atoms=[(destin p1 f1), (destin p2 f2), (destin p3 f1), (destin p4 f2), (above f1 f2), (passenger p1), (passenger p2), (passenger p3), (passenger p4), (floor f1), (floor f2)], derived atoms=[])
+State(index=126, fluent atoms=[(served p3), (served p4), (origin p2 f1), (lift-at f2), (boarded p1)], static atoms=[(destin p1 f1), (destin p2 f2), (destin p3 f1), (destin p4 f2), (above f1 f2), (passenger p1), (passenger p2), (passenger p3), (passenger p4), (floor f1), (floor f2)], derived atoms=[])
+"]
+s49[label="state_index=49
+State(index=89, fluent atoms=[(served p1), (served p2), (served p3), (lift-at f1), (origin p4 f1)], static atoms=[(destin p1 f1), (destin p2 f2), (destin p3 f1), (destin p4 f2), (above f1 f2), (passenger p1), (passenger p2), (passenger p3), (passenger p4), (floor f1), (floor f2)], derived atoms=[])
+State(index=124, fluent atoms=[(served p1), (served p3), (served p4), (lift-at f1), (origin p2 f1)], static atoms=[(destin p1 f1), (destin p2 f2), (destin p3 f1), (destin p4 f2), (above f1 f2), (passenger p1), (passenger p2), (passenger p3), (passenger p4), (floor f1), (floor f2)], derived atoms=[])
+"]
+s50[label="state_index=50
+State(index=90, fluent atoms=[(served p1), (served p2), (served p3), (origin p4 f1), (lift-at f2)], static atoms=[(destin p1 f1), (destin p2 f2), (destin p3 f1), (destin p4 f2), (above f1 f2), (passenger p1), (passenger p2), (passenger p3), (passenger p4), (floor f1), (floor f2)], derived atoms=[])
+State(index=125, fluent atoms=[(served p1), (served p3), (served p4), (origin p2 f1), (lift-at f2)], static atoms=[(destin p1 f1), (destin p2 f2), (destin p3 f1), (destin p4 f2), (above f1 f2), (passenger p1), (passenger p2), (passenger p3), (passenger p4), (floor f1), (floor f2)], derived atoms=[])
+"]
+s51[label="state_index=51
+State(index=130, fluent atoms=[(served p3), (served p4), (lift-at f1), (origin p1 f2), (origin p2 f1)], static atoms=[(destin p1 f1), (destin p2 f2), (destin p3 f1), (destin p4 f2), (above f1 f2), (passenger p1), (passenger p2), (passenger p3), (passenger p4), (floor f1), (floor f2)], derived atoms=[])
+State(index=127, fluent atoms=[(served p1), (served p4), (lift-at f1), (origin p2 f1), (origin p3 f2)], static atoms=[(destin p1 f1), (destin p2 f2), (destin p3 f1), (destin p4 f2), (above f1 f2), (passenger p1), (passenger p2), (passenger p3), (passenger p4), (floor f1), (floor f2)], derived atoms=[])
+State(index=92, fluent atoms=[(served p1), (served p2), (lift-at f1), (origin p3 f2), (origin p4 f1)], static atoms=[(destin p1 f1), (destin p2 f2), (destin p3 f1), (destin p4 f2), (above f1 f2), (passenger p1), (passenger p2), (passenger p3), (passenger p4), (floor f1), (floor f2)], derived atoms=[])
+State(index=95, fluent atoms=[(served p2), (served p3), (lift-at f1), (origin p1 f2), (origin p4 f1)], static atoms=[(destin p1 f1), (destin p2 f2), (destin p3 f1), (destin p4 f2), (above f1 f2), (passenger p1), (passenger p2), (passenger p3), (passenger p4), (floor f1), (floor f2)], derived atoms=[])
+"]
+s52[label="state_index=52
+State(index=131, fluent atoms=[(served p3), (served p4), (origin p1 f2), (origin p2 f1), (lift-at f2)], static atoms=[(destin p1 f1), (destin p2 f2), (destin p3 f1), (destin p4 f2), (above f1 f2), (passenger p1), (passenger p2), (passenger p3), (passenger p4), (floor f1), (floor f2)], derived atoms=[])
+State(index=128, fluent atoms=[(served p1), (served p4), (origin p2 f1), (origin p3 f2), (lift-at f2)], static atoms=[(destin p1 f1), (destin p2 f2), (destin p3 f1), (destin p4 f2), (above f1 f2), (passenger p1), (passenger p2), (passenger p3), (passenger p4), (floor f1), (floor f2)], derived atoms=[])
+State(index=93, fluent atoms=[(served p1), (served p2), (origin p3 f2), (origin p4 f1), (lift-at f2)], static atoms=[(destin p1 f1), (destin p2 f2), (destin p3 f1), (destin p4 f2), (above f1 f2), (passenger p1), (passenger p2), (passenger p3), (passenger p4), (floor f1), (floor f2)], derived atoms=[])
+State(index=96, fluent atoms=[(served p2), (served p3), (origin p1 f2), (origin p4 f1), (lift-at f2)], static atoms=[(destin p1 f1), (destin p2 f2), (destin p3 f1), (destin p4 f2), (above f1 f2), (passenger p1), (passenger p2), (passenger p3), (passenger p4), (floor f1), (floor f2)], derived atoms=[])
+"]
+s53[label="state_index=53
+State(index=143, fluent atoms=[(lift-at f1), (origin p1 f2), (origin p2 f1), (boarded p4), (boarded p3)], static atoms=[(destin p1 f1), (destin p2 f2), (destin p3 f1), (destin p4 f2), (above f1 f2), (passenger p1), (passenger p2), (passenger p3), (passenger p4), (floor f1), (floor f2)], derived atoms=[])
+State(index=132, fluent atoms=[(lift-at f1), (origin p2 f1), (origin p3 f2), (boarded p4), (boarded p1)], static atoms=[(destin p1 f1), (destin p2 f2), (destin p3 f1), (destin p4 f2), (above f1 f2), (passenger p1), (passenger p2), (passenger p3), (passenger p4), (floor f1), (floor f2)], derived atoms=[])
+State(index=97, fluent atoms=[(lift-at f1), (origin p3 f2), (origin p4 f1), (boarded p2), (boarded p1)], static atoms=[(destin p1 f1), (destin p2 f2), (destin p3 f1), (destin p4 f2), (above f1 f2), (passenger p1), (passenger p2), (passenger p3), (passenger p4), (floor f1), (floor f2)], derived atoms=[])
+State(index=108, fluent atoms=[(lift-at f1), (origin p1 f2), (origin p4 f1), (boarded p2), (boarded p3)], static atoms=[(destin p1 f1), (destin p2 f2), (destin p3 f1), (destin p4 f2), (above f1 f2), (passenger p1), (passenger p2), (passenger p3), (passenger p4), (floor f1), (floor f2)], derived atoms=[])
+"]
+s54[label="state_index=54
+State(index=133, fluent atoms=[(origin p2 f1), (lift-at f2), (boarded p4), (boarded p1), (boarded p3)], static atoms=[(destin p1 f1), (destin p2 f2), (destin p3 f1), (destin p4 f2), (above f1 f2), (passenger p1), (passenger p2), (passenger p3), (passenger p4), (floor f1), (floor f2)], derived atoms=[])
+State(index=98, fluent atoms=[(origin p4 f1), (lift-at f2), (boarded p2), (boarded p1), (boarded p3)], static atoms=[(destin p1 f1), (destin p2 f2), (destin p3 f1), (destin p4 f2), (above f1 f2), (passenger p1), (passenger p2), (passenger p3), (passenger p4), (floor f1), (floor f2)], derived atoms=[])
+"]
+s55[label="state_index=55
+State(index=134, fluent atoms=[(lift-at f1), (origin p2 f1), (boarded p4), (boarded p1), (boarded p3)], static atoms=[(destin p1 f1), (destin p2 f2), (destin p3 f1), (destin p4 f2), (above f1 f2), (passenger p1), (passenger p2), (passenger p3), (passenger p4), (floor f1), (floor f2)], derived atoms=[])
+State(index=99, fluent atoms=[(lift-at f1), (origin p4 f1), (boarded p2), (boarded p1), (boarded p3)], static atoms=[(destin p1 f1), (destin p2 f2), (destin p3 f1), (destin p4 f2), (above f1 f2), (passenger p1), (passenger p2), (passenger p3), (passenger p4), (floor f1), (floor f2)], derived atoms=[])
+"]
+s56[label="state_index=56
+State(index=136, fluent atoms=[(served p1), (lift-at f1), (origin p2 f1), (boarded p4), (boarded p3)], static atoms=[(destin p1 f1), (destin p2 f2), (destin p3 f1), (destin p4 f2), (above f1 f2), (passenger p1), (passenger p2), (passenger p3), (passenger p4), (floor f1), (floor f2)], derived atoms=[])
+State(index=135, fluent atoms=[(served p3), (lift-at f1), (origin p2 f1), (boarded p4), (boarded p1)], static atoms=[(destin p1 f1), (destin p2 f2), (destin p3 f1), (destin p4 f2), (above f1 f2), (passenger p1), (passenger p2), (passenger p3), (passenger p4), (floor f1), (floor f2)], derived atoms=[])
+State(index=100, fluent atoms=[(served p3), (lift-at f1), (origin p4 f1), (boarded p2), (boarded p1)], static atoms=[(destin p1 f1), (destin p2 f2), (destin p3 f1), (destin p4 f2), (above f1 f2), (passenger p1), (passenger p2), (passenger p3), (passenger p4), (floor f1), (floor f2)], derived atoms=[])
+State(index=101, fluent atoms=[(served p1), (lift-at f1), (origin p4 f1), (boarded p2), (boarded p3)], static atoms=[(destin p1 f1), (destin p2 f2), (destin p3 f1), (destin p4 f2), (above f1 f2), (passenger p1), (passenger p2), (passenger p3), (passenger p4), (floor f1), (floor f2)], derived atoms=[])
+"]
+s57[label="state_index=57
+State(index=140, fluent atoms=[(served p3), (origin p2 f1), (lift-at f2), (boarded p4), (boarded p1)], static atoms=[(destin p1 f1), (destin p2 f2), (destin p3 f1), (destin p4 f2), (above f1 f2), (passenger p1), (passenger p2), (passenger p3), (passenger p4), (floor f1), (floor f2)], derived atoms=[])
+State(index=137, fluent atoms=[(served p1), (origin p2 f1), (lift-at f2), (boarded p4), (boarded p3)], static atoms=[(destin p1 f1), (destin p2 f2), (destin p3 f1), (destin p4 f2), (above f1 f2), (passenger p1), (passenger p2), (passenger p3), (passenger p4), (floor f1), (floor f2)], derived atoms=[])
+State(index=102, fluent atoms=[(served p1), (origin p4 f1), (lift-at f2), (boarded p2), (boarded p3)], static atoms=[(destin p1 f1), (destin p2 f2), (destin p3 f1), (destin p4 f2), (above f1 f2), (passenger p1), (passenger p2), (passenger p3), (passenger p4), (floor f1), (floor f2)], derived atoms=[])
+State(index=105, fluent atoms=[(served p3), (origin p4 f1), (lift-at f2), (boarded p2), (boarded p1)], static atoms=[(destin p1 f1), (destin p2 f2), (destin p3 f1), (destin p4 f2), (above f1 f2), (passenger p1), (passenger p2), (passenger p3), (passenger p4), (floor f1), (floor f2)], derived atoms=[])
+"]
+s58[label="state_index=58
+State(index=138, fluent atoms=[(served p1), (served p3), (lift-at f1), (origin p2 f1), (boarded p4)], static atoms=[(destin p1 f1), (destin p2 f2), (destin p3 f1), (destin p4 f2), (above f1 f2), (passenger p1), (passenger p2), (passenger p3), (passenger p4), (floor f1), (floor f2)], derived atoms=[])
+State(index=103, fluent atoms=[(served p1), (served p3), (lift-at f1), (origin p4 f1), (boarded p2)], static atoms=[(destin p1 f1), (destin p2 f2), (destin p3 f1), (destin p4 f2), (above f1 f2), (passenger p1), (passenger p2), (passenger p3), (passenger p4), (floor f1), (floor f2)], derived atoms=[])
+"]
+s59[label="state_index=59
+State(index=139, fluent atoms=[(served p1), (served p3), (origin p2 f1), (lift-at f2), (boarded p4)], static atoms=[(destin p1 f1), (destin p2 f2), (destin p3 f1), (destin p4 f2), (above f1 f2), (passenger p1), (passenger p2), (passenger p3), (passenger p4), (floor f1), (floor f2)], derived atoms=[])
+State(index=104, fluent atoms=[(served p1), (served p3), (origin p4 f1), (lift-at f2), (boarded p2)], static atoms=[(destin p1 f1), (destin p2 f2), (destin p3 f1), (destin p4 f2), (above f1 f2), (passenger p1), (passenger p2), (passenger p3), (passenger p4), (floor f1), (floor f2)], derived atoms=[])
+"]
+s60[label="state_index=60
+State(index=144, fluent atoms=[(served p3), (lift-at f1), (origin p1 f2), (origin p2 f1), (boarded p4)], static atoms=[(destin p1 f1), (destin p2 f2), (destin p3 f1), (destin p4 f2), (above f1 f2), (passenger p1), (passenger p2), (passenger p3), (passenger p4), (floor f1), (floor f2)], derived atoms=[])
+State(index=141, fluent atoms=[(served p1), (lift-at f1), (origin p2 f1), (origin p3 f2), (boarded p4)], static atoms=[(destin p1 f1), (destin p2 f2), (destin p3 f1), (destin p4 f2), (above f1 f2), (passenger p1), (passenger p2), (passenger p3), (passenger p4), (floor f1), (floor f2)], derived atoms=[])
+State(index=106, fluent atoms=[(served p1), (lift-at f1), (origin p3 f2), (origin p4 f1), (boarded p2)], static atoms=[(destin p1 f1), (destin p2 f2), (destin p3 f1), (destin p4 f2), (above f1 f2), (passenger p1), (passenger p2), (passenger p3), (passenger p4), (floor f1), (floor f2)], derived atoms=[])
+State(index=109, fluent atoms=[(served p3), (lift-at f1), (origin p1 f2), (origin p4 f1), (boarded p2)], static atoms=[(destin p1 f1), (destin p2 f2), (destin p3 f1), (destin p4 f2), (above f1 f2), (passenger p1), (passenger p2), (passenger p3), (passenger p4), (floor f1), (floor f2)], derived atoms=[])
+"]
+s61[label="state_index=61
+State(index=145, fluent atoms=[(served p3), (origin p1 f2), (origin p2 f1), (lift-at f2), (boarded p4)], static atoms=[(destin p1 f1), (destin p2 f2), (destin p3 f1), (destin p4 f2), (above f1 f2), (passenger p1), (passenger p2), (passenger p3), (passenger p4), (floor f1), (floor f2)], derived atoms=[])
+State(index=142, fluent atoms=[(served p1), (origin p2 f1), (origin p3 f2), (lift-at f2), (boarded p4)], static atoms=[(destin p1 f1), (destin p2 f2), (destin p3 f1), (destin p4 f2), (above f1 f2), (passenger p1), (passenger p2), (passenger p3), (passenger p4), (floor f1), (floor f2)], derived atoms=[])
+State(index=107, fluent atoms=[(served p1), (origin p3 f2), (origin p4 f1), (lift-at f2), (boarded p2)], static atoms=[(destin p1 f1), (destin p2 f2), (destin p3 f1), (destin p4 f2), (above f1 f2), (passenger p1), (passenger p2), (passenger p3), (passenger p4), (floor f1), (floor f2)], derived atoms=[])
+State(index=110, fluent atoms=[(served p3), (origin p1 f2), (origin p4 f1), (lift-at f2), (boarded p2)], static atoms=[(destin p1 f1), (destin p2 f2), (destin p3 f1), (destin p4 f2), (above f1 f2), (passenger p1), (passenger p2), (passenger p3), (passenger p4), (floor f1), (floor f2)], derived atoms=[])
+"]
+s62[label="state_index=62
+State(index=147, fluent atoms=[(origin p2 f1), (origin p3 f2), (origin p4 f1), (lift-at f2), (boarded p1)], static atoms=[(destin p1 f1), (destin p2 f2), (destin p3 f1), (destin p4 f2), (above f1 f2), (passenger p1), (passenger p2), (passenger p3), (passenger p4), (floor f1), (floor f2)], derived atoms=[])
+State(index=146, fluent atoms=[(origin p1 f2), (origin p2 f1), (origin p4 f1), (lift-at f2), (boarded p3)], static atoms=[(destin p1 f1), (destin p2 f2), (destin p3 f1), (destin p4 f2), (above f1 f2), (passenger p1), (passenger p2), (passenger p3), (passenger p4), (floor f1), (floor f2)], derived atoms=[])
+"]
+s63[label="state_index=63
+State(index=159, fluent atoms=[(lift-at f1), (origin p1 f2), (origin p2 f1), (origin p4 f1), (boarded p3)], static atoms=[(destin p1 f1), (destin p2 f2), (destin p3 f1), (destin p4 f2), (above f1 f2), (passenger p1), (passenger p2), (passenger p3), (passenger p4), (floor f1), (floor f2)], derived atoms=[])
+State(index=148, fluent atoms=[(lift-at f1), (origin p2 f1), (origin p3 f2), (origin p4 f1), (boarded p1)], static atoms=[(destin p1 f1), (destin p2 f2), (destin p3 f1), (destin p4 f2), (above f1 f2), (passenger p1), (passenger p2), (passenger p3), (passenger p4), (floor f1), (floor f2)], derived atoms=[])
+"]
+s64[label="state_index=64
+State(index=149, fluent atoms=[(origin p2 f1), (origin p4 f1), (lift-at f2), (boarded p1), (boarded p3)], static atoms=[(destin p1 f1), (destin p2 f2), (destin p3 f1), (destin p4 f2), (above f1 f2), (passenger p1), (passenger p2), (passenger p3), (passenger p4), (floor f1), (floor f2)], derived atoms=[])
+"]
+s65[label="state_index=65
+State(index=150, fluent atoms=[(lift-at f1), (origin p2 f1), (origin p4 f1), (boarded p1), (boarded p3)], static atoms=[(destin p1 f1), (destin p2 f2), (destin p3 f1), (destin p4 f2), (above f1 f2), (passenger p1), (passenger p2), (passenger p3), (passenger p4), (floor f1), (floor f2)], derived atoms=[])
+"]
+s66[label="state_index=66
+State(index=152, fluent atoms=[(served p1), (lift-at f1), (origin p2 f1), (origin p4 f1), (boarded p3)], static atoms=[(destin p1 f1), (destin p2 f2), (destin p3 f1), (destin p4 f2), (above f1 f2), (passenger p1), (passenger p2), (passenger p3), (passenger p4), (floor f1), (floor f2)], derived atoms=[])
+State(index=151, fluent atoms=[(served p3), (lift-at f1), (origin p2 f1), (origin p4 f1), (boarded p1)], static atoms=[(destin p1 f1), (destin p2 f2), (destin p3 f1), (destin p4 f2), (above f1 f2), (passenger p1), (passenger p2), (passenger p3), (passenger p4), (floor f1), (floor f2)], derived atoms=[])
+"]
+s67[label="state_index=67
+State(index=156, fluent atoms=[(served p3), (origin p2 f1), (origin p4 f1), (lift-at f2), (boarded p1)], static atoms=[(destin p1 f1), (destin p2 f2), (destin p3 f1), (destin p4 f2), (above f1 f2), (passenger p1), (passenger p2), (passenger p3), (passenger p4), (floor f1), (floor f2)], derived atoms=[])
+State(index=153, fluent atoms=[(served p1), (origin p2 f1), (origin p4 f1), (lift-at f2), (boarded p3)], static atoms=[(destin p1 f1), (destin p2 f2), (destin p3 f1), (destin p4 f2), (above f1 f2), (passenger p1), (passenger p2), (passenger p3), (passenger p4), (floor f1), (floor f2)], derived atoms=[])
+"]
+s68[label="state_index=68
+State(index=154, fluent atoms=[(served p1), (served p3), (lift-at f1), (origin p2 f1), (origin p4 f1)], static atoms=[(destin p1 f1), (destin p2 f2), (destin p3 f1), (destin p4 f2), (above f1 f2), (passenger p1), (passenger p2), (passenger p3), (passenger p4), (floor f1), (floor f2)], derived atoms=[])
+"]
+s69[label="state_index=69
+State(index=155, fluent atoms=[(served p1), (served p3), (origin p2 f1), (origin p4 f1), (lift-at f2)], static atoms=[(destin p1 f1), (destin p2 f2), (destin p3 f1), (destin p4 f2), (above f1 f2), (passenger p1), (passenger p2), (passenger p3), (passenger p4), (floor f1), (floor f2)], derived atoms=[])
+"]
+s70[label="state_index=70
+State(index=160, fluent atoms=[(served p3), (lift-at f1), (origin p1 f2), (origin p2 f1), (origin p4 f1)], static atoms=[(destin p1 f1), (destin p2 f2), (destin p3 f1), (destin p4 f2), (above f1 f2), (passenger p1), (passenger p2), (passenger p3), (passenger p4), (floor f1), (floor f2)], derived atoms=[])
+State(index=157, fluent atoms=[(served p1), (lift-at f1), (origin p2 f1), (origin p3 f2), (origin p4 f1)], static atoms=[(destin p1 f1), (destin p2 f2), (destin p3 f1), (destin p4 f2), (above f1 f2), (passenger p1), (passenger p2), (passenger p3), (passenger p4), (floor f1), (floor f2)], derived atoms=[])
+"]
+s71[label="state_index=71
+State(index=161, fluent atoms=[(served p3), (origin p1 f2), (origin p2 f1), (origin p4 f1), (lift-at f2)], static atoms=[(destin p1 f1), (destin p2 f2), (destin p3 f1), (destin p4 f2), (above f1 f2), (passenger p1), (passenger p2), (passenger p3), (passenger p4), (floor f1), (floor f2)], derived atoms=[])
+State(index=158, fluent atoms=[(served p1), (origin p2 f1), (origin p3 f2), (origin p4 f1), (lift-at f2)], static atoms=[(destin p1 f1), (destin p2 f2), (destin p3 f1), (destin p4 f2), (above f1 f2), (passenger p1), (passenger p2), (passenger p3), (passenger p4), (floor f1), (floor f2)], derived atoms=[])
+"]
+Dangling [ label = "", style = invis ]
+{ rank = same; Dangling }
+Dangling -> s0
+{ rank = same; s0,s1}
+{ rank = same; s2,s3,s62,s63}
+{ rank = same; s4,s40,s41,s42,s53,s64,s70,s71}
+{ rank = same; s5,s8,s31,s43,s44,s54,s60,s61,s65,s67}
+{ rank = same; s6,s7,s11,s22,s38,s45,s51,s52,s55,s57,s66,s69}
+{ rank = same; s9,s10,s13,s29,s32,s33,s39,s46,s48,s56,s59,s68}
+{ rank = same; s12,s20,s23,s24,s30,s34,s35,s47,s50,s58}
+{ rank = same; s14,s21,s25,s26,s36,s49}
+{ rank = same; s15,s17,s27,s37}
+{ rank = same; s16,s28}
+{ rank = same; s18,s19}
+s0->s1 [label="(up f1 f2)
+"]
+s0->s2 [label="(board f1 p4)
+(board f1 p2)
+"]
+s1->s0 [label="(down f2 f1)
+"]
+s1->s62 [label="(board f2 p3)
+(board f2 p1)
+"]
+s2->s3 [label="(up f1 f2)
+(up f1 f2)
+"]
+s2->s4 [label="(board f1 p4)
+(board f1 p2)
+"]
+s3->s2 [label="(down f2 f1)
+(down f2 f1)
+"]
+s3->s40 [label="(board f2 p1)
+(board f2 p1)
+(board f2 p3)
+(board f2 p3)
+"]
+s3->s41 [label="(depart f2 p2)
+(depart f2 p4)
+"]
+s4->s5 [label="(up f1 f2)
+"]
+s5->s4 [label="(down f2 f1)
+"]
+s5->s6 [label="(board f2 p1)
+(board f2 p3)
+"]
+s5->s7 [label="(depart f2 p2)
+(depart f2 p4)
+"]
+s6->s9 [label="(depart f2 p2)
+(depart f2 p4)
+(depart f2 p2)
+(depart f2 p4)
+"]
+s6->s31 [label="(down f2 f1)
+(down f2 f1)
+"]
+s6->s32 [label="(board f2 p3)
+(board f2 p1)
+"]
+s7->s8 [label="(down f2 f1)
+(down f2 f1)
+"]
+s7->s9 [label="(board f2 p3)
+(board f2 p3)
+(board f2 p1)
+(board f2 p1)
+"]
+s7->s10 [label="(depart f2 p4)
+(depart f2 p2)
+"]
+s8->s7 [label="(up f1 f2)
+(up f1 f2)
+"]
+s9->s12 [label="(depart f2 p4)
+(depart f2 p2)
+(depart f2 p2)
+(depart f2 p4)
+"]
+s9->s22 [label="(down f2 f1)
+(down f2 f1)
+(down f2 f1)
+(down f2 f1)
+"]
+s9->s23 [label="(board f2 p3)
+(board f2 p1)
+(board f2 p3)
+(board f2 p1)
+"]
+s10->s11 [label="(down f2 f1)
+"]
+s10->s12 [label="(board f2 p3)
+(board f2 p1)
+"]
+s11->s10 [label="(up f1 f2)
+"]
+s12->s13 [label="(down f2 f1)
+(down f2 f1)
+"]
+s12->s14 [label="(board f2 p3)
+(board f2 p1)
+"]
+s13->s12 [label="(up f1 f2)
+(up f1 f2)
+"]
+s13->s20 [label="(depart f1 p1)
+(depart f1 p3)
+"]
+s14->s15 [label="(down f2 f1)
+"]
+s15->s14 [label="(up f1 f2)
+"]
+s15->s16 [label="(depart f1 p1)
+(depart f1 p3)
+"]
+s16->s17 [label="(up f1 f2)
+(up f1 f2)
+"]
+s16->s18 [label="(depart f1 p3)
+(depart f1 p1)
+"]
+s17->s16 [label="(down f2 f1)
+(down f2 f1)
+"]
+s18->s19 [label="(up f1 f2)
+"]
+s19->s18 [label="(down f2 f1)
+"]
+s20->s21 [label="(up f1 f2)
+(up f1 f2)
+"]
+s21->s17 [label="(board f2 p3)
+(board f2 p1)
+"]
+s21->s20 [label="(down f2 f1)
+(down f2 f1)
+"]
+s22->s9 [label="(up f1 f2)
+(up f1 f2)
+(up f1 f2)
+(up f1 f2)
+"]
+s22->s29 [label="(depart f1 p3)
+(depart f1 p1)
+(depart f1 p1)
+(depart f1 p3)
+"]
+s23->s14 [label="(depart f2 p2)
+(depart f2 p4)
+"]
+s23->s24 [label="(down f2 f1)
+(down f2 f1)
+"]
+s24->s23 [label="(up f1 f2)
+(up f1 f2)
+"]
+s24->s25 [label="(depart f1 p3)
+(depart f1 p1)
+(depart f1 p3)
+(depart f1 p1)
+"]
+s25->s26 [label="(up f1 f2)
+(up f1 f2)
+(up f1 f2)
+(up f1 f2)
+"]
+s25->s27 [label="(depart f1 p1)
+(depart f1 p3)
+(depart f1 p1)
+(depart f1 p3)
+"]
+s26->s17 [label="(depart f2 p2)
+(depart f2 p4)
+(depart f2 p4)
+(depart f2 p2)
+"]
+s26->s25 [label="(down f2 f1)
+(down f2 f1)
+(down f2 f1)
+(down f2 f1)
+"]
+s27->s28 [label="(up f1 f2)
+(up f1 f2)
+"]
+s28->s19 [label="(depart f2 p2)
+(depart f2 p4)
+"]
+s28->s27 [label="(down f2 f1)
+(down f2 f1)
+"]
+s29->s30 [label="(up f1 f2)
+(up f1 f2)
+(up f1 f2)
+(up f1 f2)
+"]
+s30->s21 [label="(depart f2 p2)
+(depart f2 p4)
+(depart f2 p4)
+(depart f2 p2)
+"]
+s30->s26 [label="(board f2 p3)
+(board f2 p3)
+(board f2 p1)
+(board f2 p1)
+"]
+s30->s29 [label="(down f2 f1)
+(down f2 f1)
+(down f2 f1)
+(down f2 f1)
+"]
+s31->s6 [label="(up f1 f2)
+(up f1 f2)
+"]
+s31->s38 [label="(depart f1 p3)
+(depart f1 p1)
+"]
+s32->s23 [label="(depart f2 p2)
+(depart f2 p4)
+"]
+s32->s33 [label="(down f2 f1)
+"]
+s33->s32 [label="(up f1 f2)
+"]
+s33->s34 [label="(depart f1 p3)
+(depart f1 p1)
+"]
+s34->s35 [label="(up f1 f2)
+(up f1 f2)
+"]
+s34->s36 [label="(depart f1 p3)
+(depart f1 p1)
+"]
+s35->s26 [label="(depart f2 p4)
+(depart f2 p2)
+(depart f2 p4)
+(depart f2 p2)
+"]
+s35->s34 [label="(down f2 f1)
+(down f2 f1)
+"]
+s36->s37 [label="(up f1 f2)
+"]
+s37->s28 [label="(depart f2 p4)
+(depart f2 p2)
+"]
+s37->s36 [label="(down f2 f1)
+"]
+s38->s39 [label="(up f1 f2)
+(up f1 f2)
+"]
+s39->s30 [label="(depart f2 p2)
+(depart f2 p2)
+(depart f2 p4)
+(depart f2 p4)
+"]
+s39->s35 [label="(board f2 p1)
+(board f2 p3)
+"]
+s39->s38 [label="(down f2 f1)
+(down f2 f1)
+"]
+s40->s43 [label="(depart f2 p2)
+(depart f2 p4)
+(depart f2 p2)
+(depart f2 p4)
+"]
+s40->s53 [label="(down f2 f1)
+(down f2 f1)
+(down f2 f1)
+(down f2 f1)
+"]
+s40->s54 [label="(board f2 p3)
+(board f2 p3)
+(board f2 p1)
+(board f2 p1)
+"]
+s41->s42 [label="(down f2 f1)
+(down f2 f1)
+"]
+s41->s43 [label="(board f2 p3)
+(board f2 p1)
+(board f2 p3)
+(board f2 p1)
+"]
+s42->s8 [label="(board f1 p2)
+(board f1 p4)
+"]
+s42->s41 [label="(up f1 f2)
+(up f1 f2)
+"]
+s43->s44 [label="(down f2 f1)
+(down f2 f1)
+(down f2 f1)
+(down f2 f1)
+"]
+s43->s45 [label="(board f2 p3)
+(board f2 p1)
+(board f2 p3)
+(board f2 p1)
+"]
+s44->s22 [label="(board f1 p4)
+(board f1 p4)
+(board f1 p2)
+(board f1 p2)
+"]
+s44->s43 [label="(up f1 f2)
+(up f1 f2)
+(up f1 f2)
+(up f1 f2)
+"]
+s44->s51 [label="(depart f1 p1)
+(depart f1 p3)
+(depart f1 p1)
+(depart f1 p3)
+"]
+s45->s46 [label="(down f2 f1)
+(down f2 f1)
+"]
+s46->s24 [label="(board f1 p4)
+(board f1 p2)
+"]
+s46->s45 [label="(up f1 f2)
+(up f1 f2)
+"]
+s46->s47 [label="(depart f1 p3)
+(depart f1 p3)
+(depart f1 p1)
+(depart f1 p1)
+"]
+s47->s25 [label="(board f1 p2)
+(board f1 p4)
+(board f1 p4)
+(board f1 p2)
+"]
+s47->s48 [label="(up f1 f2)
+(up f1 f2)
+(up f1 f2)
+(up f1 f2)
+"]
+s47->s49 [label="(depart f1 p1)
+(depart f1 p3)
+(depart f1 p3)
+(depart f1 p1)
+"]
+s48->s47 [label="(down f2 f1)
+(down f2 f1)
+(down f2 f1)
+(down f2 f1)
+"]
+s49->s27 [label="(board f1 p2)
+(board f1 p4)
+"]
+s49->s50 [label="(up f1 f2)
+(up f1 f2)
+"]
+s50->s49 [label="(down f2 f1)
+(down f2 f1)
+"]
+s51->s29 [label="(board f1 p2)
+(board f1 p4)
+(board f1 p4)
+(board f1 p2)
+"]
+s51->s52 [label="(up f1 f2)
+(up f1 f2)
+(up f1 f2)
+(up f1 f2)
+"]
+s52->s48 [label="(board f2 p1)
+(board f2 p1)
+(board f2 p3)
+(board f2 p3)
+"]
+s52->s51 [label="(down f2 f1)
+(down f2 f1)
+(down f2 f1)
+(down f2 f1)
+"]
+s53->s31 [label="(board f1 p4)
+(board f1 p2)
+(board f1 p4)
+(board f1 p2)
+"]
+s53->s40 [label="(up f1 f2)
+(up f1 f2)
+(up f1 f2)
+(up f1 f2)
+"]
+s53->s60 [label="(depart f1 p3)
+(depart f1 p1)
+(depart f1 p1)
+(depart f1 p3)
+"]
+s54->s45 [label="(depart f2 p2)
+(depart f2 p4)
+"]
+s54->s55 [label="(down f2 f1)
+(down f2 f1)
+"]
+s55->s33 [label="(board f1 p2)
+(board f1 p4)
+"]
+s55->s54 [label="(up f1 f2)
+(up f1 f2)
+"]
+s55->s56 [label="(depart f1 p1)
+(depart f1 p3)
+(depart f1 p1)
+(depart f1 p3)
+"]
+s56->s34 [label="(board f1 p2)
+(board f1 p4)
+(board f1 p2)
+(board f1 p4)
+"]
+s56->s57 [label="(up f1 f2)
+(up f1 f2)
+(up f1 f2)
+(up f1 f2)
+"]
+s56->s58 [label="(depart f1 p3)
+(depart f1 p1)
+(depart f1 p3)
+(depart f1 p1)
+"]
+s57->s48 [label="(depart f2 p2)
+(depart f2 p2)
+(depart f2 p4)
+(depart f2 p4)
+"]
+s57->s56 [label="(down f2 f1)
+(down f2 f1)
+(down f2 f1)
+(down f2 f1)
+"]
+s58->s36 [label="(board f1 p2)
+(board f1 p4)
+"]
+s58->s59 [label="(up f1 f2)
+(up f1 f2)
+"]
+s59->s50 [label="(depart f2 p4)
+(depart f2 p2)
+"]
+s59->s58 [label="(down f2 f1)
+(down f2 f1)
+"]
+s60->s38 [label="(board f1 p2)
+(board f1 p2)
+(board f1 p4)
+(board f1 p4)
+"]
+s60->s61 [label="(up f1 f2)
+(up f1 f2)
+(up f1 f2)
+(up f1 f2)
+"]
+s61->s52 [label="(depart f2 p4)
+(depart f2 p4)
+(depart f2 p2)
+(depart f2 p2)
+"]
+s61->s57 [label="(board f2 p1)
+(board f2 p1)
+(board f2 p3)
+(board f2 p3)
+"]
+s61->s60 [label="(down f2 f1)
+(down f2 f1)
+(down f2 f1)
+(down f2 f1)
+"]
+s62->s63 [label="(down f2 f1)
+(down f2 f1)
+"]
+s62->s64 [label="(board f2 p3)
+(board f2 p1)
+"]
+s63->s53 [label="(board f1 p4)
+(board f1 p2)
+(board f1 p2)
+(board f1 p4)
+"]
+s63->s62 [label="(up f1 f2)
+(up f1 f2)
+"]
+s63->s70 [label="(depart f1 p3)
+(depart f1 p1)
+"]
+s64->s65 [label="(down f2 f1)
+"]
+s65->s55 [label="(board f1 p2)
+(board f1 p4)
+"]
+s65->s64 [label="(up f1 f2)
+"]
+s65->s66 [label="(depart f1 p1)
+(depart f1 p3)
+"]
+s66->s56 [label="(board f1 p4)
+(board f1 p4)
+(board f1 p2)
+(board f1 p2)
+"]
+s66->s67 [label="(up f1 f2)
+(up f1 f2)
+"]
+s66->s68 [label="(depart f1 p1)
+(depart f1 p3)
+"]
+s67->s66 [label="(down f2 f1)
+(down f2 f1)
+"]
+s68->s58 [label="(board f1 p2)
+(board f1 p4)
+"]
+s68->s69 [label="(up f1 f2)
+"]
+s69->s68 [label="(down f2 f1)
+"]
+s70->s60 [label="(board f1 p4)
+(board f1 p2)
+(board f1 p2)
+(board f1 p4)
+"]
+s70->s71 [label="(up f1 f2)
+(up f1 f2)
+"]
+s71->s67 [label="(board f2 p1)
+(board f2 p3)
+"]
+s71->s70 [label="(down f2 f1)
+(down f2 f1)
+"]
+}

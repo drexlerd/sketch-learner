@@ -1,0 +1,138 @@
+digraph {
+rankdir="LR"
+s0[label="(instance index=1, state index=0, atoms={at-robot(loc_5_2), at(box1,loc_4_7), clear(loc_4_5), clear(loc_4_2), clear(loc_6_5), clear(loc_5_7), clear(loc_6_8), clear(loc_3_6), clear(loc_8_5), clear(loc_5_6), clear(loc_4_4), clear(loc_2_3), clear(loc_2_6), clear(loc_8_4), clear(loc_8_7), clear(loc_4_3), clear(loc_5_2), clear(loc_4_6), clear(loc_2_2), clear(loc_2_8), clear(loc_3_7)})"]
+s1[label="(instance index=1, state index=1, atoms={at(box1,loc_4_7), clear(loc_4_5), clear(loc_4_2), clear(loc_6_5), clear(loc_5_7), clear(loc_6_8), clear(loc_3_6), clear(loc_8_5), clear(loc_5_6), clear(loc_4_4), clear(loc_2_3), clear(loc_2_6), clear(loc_8_4), clear(loc_8_7), clear(loc_4_3), clear(loc_5_2), clear(loc_4_6), clear(loc_2_2), clear(loc_2_8), clear(loc_3_7), at-robot(loc_4_2)})"]
+s2[label="(instance index=1, state index=2, atoms={at(box1,loc_4_7), clear(loc_4_5), clear(loc_4_2), clear(loc_6_5), clear(loc_5_7), clear(loc_6_8), clear(loc_3_6), clear(loc_8_5), clear(loc_5_6), clear(loc_4_4), clear(loc_2_3), clear(loc_2_6), clear(loc_8_4), clear(loc_8_7), clear(loc_4_3), clear(loc_5_2), clear(loc_4_6), clear(loc_2_2), clear(loc_2_8), clear(loc_3_7), at-robot(loc_4_3)})"]
+s9[label="(instance index=1, state index=9, atoms={at(box1,loc_4_7), clear(loc_4_5), clear(loc_4_2), clear(loc_6_5), clear(loc_5_7), clear(loc_6_8), clear(loc_3_6), clear(loc_8_5), clear(loc_5_6), clear(loc_4_4), clear(loc_2_3), clear(loc_2_6), clear(loc_8_4), clear(loc_8_7), clear(loc_4_3), clear(loc_5_2), clear(loc_4_6), clear(loc_2_2), clear(loc_2_8), clear(loc_3_7), at-robot(loc_2_6)})"]
+s8[label="(instance index=1, state index=8, atoms={at(box1,loc_4_7), clear(loc_4_5), clear(loc_4_2), clear(loc_6_5), clear(loc_5_7), clear(loc_6_8), clear(loc_3_6), clear(loc_8_5), clear(loc_5_6), clear(loc_4_4), clear(loc_2_3), clear(loc_2_6), clear(loc_8_4), clear(loc_8_7), clear(loc_4_3), clear(loc_5_2), clear(loc_4_6), clear(loc_2_2), clear(loc_2_8), clear(loc_3_7), at-robot(loc_3_7)})"]
+s3[label="(instance index=1, state index=3, atoms={at(box1,loc_4_7), clear(loc_4_5), clear(loc_4_2), clear(loc_6_5), clear(loc_5_7), clear(loc_6_8), clear(loc_3_6), clear(loc_8_5), clear(loc_5_6), clear(loc_4_4), clear(loc_2_3), clear(loc_2_6), clear(loc_8_4), clear(loc_8_7), clear(loc_4_3), clear(loc_5_2), clear(loc_4_6), clear(loc_2_2), clear(loc_2_8), clear(loc_3_7), at-robot(loc_4_4)})"]
+s7[label="(instance index=1, state index=7, atoms={at(box1,loc_4_7), clear(loc_4_5), clear(loc_4_2), clear(loc_6_5), clear(loc_5_7), clear(loc_6_8), clear(loc_3_6), clear(loc_8_5), clear(loc_5_6), clear(loc_4_4), clear(loc_2_3), clear(loc_2_6), clear(loc_8_4), clear(loc_8_7), clear(loc_4_3), clear(loc_5_2), clear(loc_4_6), clear(loc_2_2), clear(loc_2_8), clear(loc_3_7), at-robot(loc_3_6)})"]
+s4[label="(instance index=1, state index=4, atoms={at(box1,loc_4_7), clear(loc_4_5), clear(loc_4_2), clear(loc_6_5), clear(loc_5_7), clear(loc_6_8), clear(loc_3_6), clear(loc_8_5), clear(loc_5_6), clear(loc_4_4), clear(loc_2_3), clear(loc_2_6), clear(loc_8_4), clear(loc_8_7), clear(loc_4_3), clear(loc_5_2), clear(loc_4_6), clear(loc_2_2), clear(loc_2_8), clear(loc_3_7), at-robot(loc_4_5)})"]
+s10[label="(instance index=1, state index=10, atoms={clear(loc_4_5), clear(loc_4_2), clear(loc_6_5), clear(loc_6_8), clear(loc_3_6), clear(loc_8_5), clear(loc_5_6), clear(loc_4_4), clear(loc_2_3), clear(loc_2_6), clear(loc_8_4), clear(loc_8_7), clear(loc_4_3), clear(loc_5_2), clear(loc_4_6), clear(loc_2_2), clear(loc_2_8), clear(loc_3_7), at-robot(loc_4_7), at(box1,loc_5_7), clear(loc_4_7)})"]
+s5[label="(instance index=1, state index=5, atoms={at(box1,loc_4_7), clear(loc_4_5), clear(loc_4_2), clear(loc_6_5), clear(loc_5_7), clear(loc_6_8), clear(loc_3_6), clear(loc_8_5), clear(loc_5_6), clear(loc_4_4), clear(loc_2_3), clear(loc_2_6), clear(loc_8_4), clear(loc_8_7), clear(loc_4_3), clear(loc_5_2), clear(loc_4_6), clear(loc_2_2), clear(loc_2_8), clear(loc_3_7), at-robot(loc_4_6)})"]
+s12[label="(instance index=1, state index=12, atoms={clear(loc_4_5), clear(loc_4_2), clear(loc_6_5), clear(loc_6_8), clear(loc_3_6), clear(loc_8_5), clear(loc_5_6), clear(loc_4_4), clear(loc_2_3), clear(loc_2_6), clear(loc_8_4), clear(loc_8_7), clear(loc_4_3), clear(loc_5_2), clear(loc_4_6), clear(loc_2_2), clear(loc_2_8), clear(loc_3_7), at-robot(loc_3_7), at(box1,loc_5_7), clear(loc_4_7)})"]
+s11[label="(instance index=1, state index=11, atoms={clear(loc_4_5), clear(loc_4_2), clear(loc_6_5), clear(loc_6_8), clear(loc_3_6), clear(loc_8_5), clear(loc_5_6), clear(loc_4_4), clear(loc_2_3), clear(loc_2_6), clear(loc_8_4), clear(loc_8_7), clear(loc_4_3), clear(loc_5_2), clear(loc_4_6), clear(loc_2_2), clear(loc_2_8), clear(loc_3_7), at-robot(loc_4_6), at(box1,loc_5_7), clear(loc_4_7)})"]
+s6[label="(instance index=1, state index=6, atoms={at(box1,loc_4_7), clear(loc_4_5), clear(loc_4_2), clear(loc_6_5), clear(loc_5_7), clear(loc_6_8), clear(loc_3_6), clear(loc_8_5), clear(loc_5_6), clear(loc_4_4), clear(loc_2_3), clear(loc_2_6), clear(loc_8_4), clear(loc_8_7), clear(loc_4_3), clear(loc_5_2), clear(loc_4_6), clear(loc_2_2), clear(loc_2_8), clear(loc_3_7), at-robot(loc_5_6)})"]
+s13[label="(instance index=1, state index=13, atoms={clear(loc_4_5), clear(loc_4_2), clear(loc_6_5), clear(loc_6_8), clear(loc_3_6), clear(loc_8_5), clear(loc_5_6), clear(loc_4_4), clear(loc_2_3), clear(loc_2_6), clear(loc_8_4), clear(loc_8_7), clear(loc_4_3), clear(loc_5_2), clear(loc_4_6), clear(loc_2_2), clear(loc_2_8), clear(loc_3_7), at-robot(loc_3_6), at(box1,loc_5_7), clear(loc_4_7)})"]
+s15[label="(instance index=1, state index=15, atoms={clear(loc_4_5), clear(loc_4_2), clear(loc_6_5), clear(loc_6_8), clear(loc_3_6), clear(loc_8_5), clear(loc_5_6), clear(loc_4_4), clear(loc_2_3), clear(loc_2_6), clear(loc_8_4), clear(loc_8_7), clear(loc_4_3), clear(loc_5_2), clear(loc_4_6), clear(loc_2_2), clear(loc_2_8), clear(loc_3_7), at-robot(loc_5_6), at(box1,loc_5_7), clear(loc_4_7)})"]
+s16[label="(instance index=1, state index=16, atoms={clear(loc_4_5), clear(loc_4_2), clear(loc_6_5), clear(loc_6_8), clear(loc_3_6), clear(loc_8_5), clear(loc_5_6), clear(loc_4_4), clear(loc_2_3), clear(loc_2_6), clear(loc_8_4), clear(loc_8_7), clear(loc_4_3), clear(loc_5_2), clear(loc_4_6), clear(loc_2_2), clear(loc_2_8), clear(loc_3_7), at-robot(loc_4_5), at(box1,loc_5_7), clear(loc_4_7)})"]
+s21[label="(instance index=1, state index=21, atoms={at(box1,loc_4_7), clear(loc_4_5), clear(loc_4_2), clear(loc_6_5), clear(loc_5_7), clear(loc_6_8), clear(loc_3_6), clear(loc_8_5), clear(loc_5_6), clear(loc_4_4), clear(loc_2_3), clear(loc_2_6), clear(loc_8_4), clear(loc_8_7), clear(loc_4_3), clear(loc_5_2), clear(loc_4_6), clear(loc_2_2), clear(loc_2_8), clear(loc_3_7), at-robot(loc_5_7)})"]
+s14[label="(instance index=1, state index=14, atoms={clear(loc_4_5), clear(loc_4_2), clear(loc_6_5), clear(loc_6_8), clear(loc_3_6), clear(loc_8_5), clear(loc_5_6), clear(loc_4_4), clear(loc_2_3), clear(loc_2_6), clear(loc_8_4), clear(loc_8_7), clear(loc_4_3), clear(loc_5_2), clear(loc_4_6), clear(loc_2_2), clear(loc_2_8), clear(loc_3_7), at-robot(loc_2_6), at(box1,loc_5_7), clear(loc_4_7)})"]
+s17[label="(instance index=1, state index=17, atoms={clear(loc_4_5), clear(loc_4_2), clear(loc_6_5), clear(loc_6_8), clear(loc_3_6), clear(loc_8_5), clear(loc_5_6), clear(loc_4_4), clear(loc_2_3), clear(loc_2_6), clear(loc_8_4), clear(loc_8_7), clear(loc_4_3), clear(loc_5_2), clear(loc_4_6), clear(loc_2_2), clear(loc_2_8), clear(loc_3_7), at-robot(loc_4_4), at(box1,loc_5_7), clear(loc_4_7)})"]
+s31[peripheries=2,label="(instance index=1, state index=31, atoms={at(box1,loc_3_7), clear(loc_4_5), clear(loc_4_2), clear(loc_6_5), clear(loc_5_7), clear(loc_6_8), clear(loc_3_6), clear(loc_8_5), clear(loc_5_6), clear(loc_4_4), clear(loc_2_3), clear(loc_2_6), clear(loc_8_4), clear(loc_8_7), clear(loc_4_3), clear(loc_5_2), clear(loc_4_6), clear(loc_2_2), clear(loc_2_8), at-robot(loc_4_2), clear(loc_4_7)})"]
+s30[peripheries=2,label="(instance index=1, state index=30, atoms={at(box1,loc_3_7), clear(loc_4_5), clear(loc_4_2), clear(loc_6_5), clear(loc_5_7), clear(loc_6_8), clear(loc_3_6), clear(loc_8_5), clear(loc_5_6), clear(loc_4_4), clear(loc_2_3), clear(loc_2_6), clear(loc_8_4), clear(loc_8_7), clear(loc_4_3), clear(loc_5_2), clear(loc_4_6), clear(loc_2_2), clear(loc_2_8), at-robot(loc_4_3), clear(loc_4_7)})"]
+s29[peripheries=2,label="(instance index=1, state index=29, atoms={at(box1,loc_3_7), clear(loc_4_5), clear(loc_4_2), clear(loc_6_5), clear(loc_5_7), clear(loc_6_8), clear(loc_3_6), clear(loc_8_5), clear(loc_5_6), clear(loc_4_4), clear(loc_2_3), clear(loc_2_6), clear(loc_8_4), clear(loc_8_7), clear(loc_4_3), clear(loc_5_2), clear(loc_4_6), clear(loc_2_2), clear(loc_2_8), at-robot(loc_4_4), clear(loc_4_7)})"]
+s28[peripheries=2,label="(instance index=1, state index=28, atoms={at(box1,loc_3_7), clear(loc_4_5), clear(loc_4_2), clear(loc_6_5), clear(loc_5_7), clear(loc_6_8), clear(loc_3_6), clear(loc_8_5), clear(loc_5_6), clear(loc_4_4), clear(loc_2_3), clear(loc_2_6), clear(loc_8_4), clear(loc_8_7), clear(loc_4_3), clear(loc_5_2), clear(loc_4_6), clear(loc_2_2), clear(loc_2_8), at-robot(loc_2_6), clear(loc_4_7)})"]
+s27[peripheries=2,label="(instance index=1, state index=27, atoms={at(box1,loc_3_7), clear(loc_4_5), clear(loc_4_2), clear(loc_6_5), clear(loc_5_7), clear(loc_6_8), clear(loc_3_6), clear(loc_8_5), clear(loc_5_6), clear(loc_4_4), clear(loc_2_3), clear(loc_2_6), clear(loc_8_4), clear(loc_8_7), clear(loc_4_3), clear(loc_5_2), clear(loc_4_6), clear(loc_2_2), clear(loc_2_8), at-robot(loc_3_6), clear(loc_4_7)})"]
+s26[peripheries=2,label="(instance index=1, state index=26, atoms={at(box1,loc_3_7), clear(loc_4_5), clear(loc_4_2), clear(loc_6_5), clear(loc_5_7), clear(loc_6_8), clear(loc_3_6), clear(loc_8_5), clear(loc_5_6), clear(loc_4_4), clear(loc_2_3), clear(loc_2_6), clear(loc_8_4), clear(loc_8_7), clear(loc_4_3), clear(loc_5_2), clear(loc_4_6), clear(loc_2_2), clear(loc_2_8), at-robot(loc_4_5), clear(loc_4_7)})"]
+s25[peripheries=2,label="(instance index=1, state index=25, atoms={at(box1,loc_3_7), clear(loc_4_5), clear(loc_4_2), clear(loc_6_5), clear(loc_5_7), clear(loc_6_8), clear(loc_3_6), clear(loc_8_5), clear(loc_5_6), clear(loc_4_4), clear(loc_2_3), clear(loc_2_6), clear(loc_8_4), clear(loc_8_7), clear(loc_4_3), clear(loc_5_2), clear(loc_4_6), clear(loc_2_2), clear(loc_2_8), at-robot(loc_5_6), clear(loc_4_7)})"]
+s24[peripheries=2,label="(instance index=1, state index=24, atoms={at(box1,loc_3_7), clear(loc_4_5), clear(loc_4_2), clear(loc_6_5), clear(loc_5_7), clear(loc_6_8), clear(loc_3_6), clear(loc_8_5), clear(loc_5_6), clear(loc_4_4), clear(loc_2_3), clear(loc_2_6), clear(loc_8_4), clear(loc_8_7), clear(loc_4_3), clear(loc_5_2), clear(loc_4_6), clear(loc_2_2), clear(loc_2_8), at-robot(loc_4_6), clear(loc_4_7)})"]
+s23[peripheries=2,label="(instance index=1, state index=23, atoms={at(box1,loc_3_7), clear(loc_4_5), clear(loc_4_2), clear(loc_6_5), clear(loc_5_7), clear(loc_6_8), clear(loc_3_6), clear(loc_8_5), clear(loc_5_6), clear(loc_4_4), clear(loc_2_3), clear(loc_2_6), clear(loc_8_4), clear(loc_8_7), clear(loc_4_3), clear(loc_5_2), clear(loc_4_6), clear(loc_2_2), clear(loc_2_8), at-robot(loc_5_7), clear(loc_4_7)})"]
+s22[peripheries=2,label="(instance index=1, state index=22, atoms={at(box1,loc_3_7), clear(loc_4_5), clear(loc_4_2), clear(loc_6_5), clear(loc_5_7), clear(loc_6_8), clear(loc_3_6), clear(loc_8_5), clear(loc_5_6), clear(loc_4_4), clear(loc_2_3), clear(loc_2_6), clear(loc_8_4), clear(loc_8_7), clear(loc_4_3), clear(loc_5_2), clear(loc_4_6), clear(loc_2_2), clear(loc_2_8), at-robot(loc_4_7), clear(loc_4_7)})"]
+s32[peripheries=2,label="(instance index=1, state index=32, atoms={at(box1,loc_3_7), at-robot(loc_5_2), clear(loc_4_5), clear(loc_4_2), clear(loc_6_5), clear(loc_5_7), clear(loc_6_8), clear(loc_3_6), clear(loc_8_5), clear(loc_5_6), clear(loc_4_4), clear(loc_2_3), clear(loc_2_6), clear(loc_8_4), clear(loc_8_7), clear(loc_4_3), clear(loc_5_2), clear(loc_4_6), clear(loc_2_2), clear(loc_2_8), clear(loc_4_7)})"]
+s18[label="(instance index=1, state index=18, atoms={clear(loc_4_5), clear(loc_4_2), clear(loc_6_5), clear(loc_6_8), clear(loc_3_6), clear(loc_8_5), clear(loc_5_6), clear(loc_4_4), clear(loc_2_3), clear(loc_2_6), clear(loc_8_4), clear(loc_8_7), clear(loc_4_3), clear(loc_5_2), clear(loc_4_6), clear(loc_2_2), clear(loc_2_8), clear(loc_3_7), at-robot(loc_4_3), at(box1,loc_5_7), clear(loc_4_7)})"]
+s19[label="(instance index=1, state index=19, atoms={clear(loc_4_5), clear(loc_4_2), clear(loc_6_5), clear(loc_6_8), clear(loc_3_6), clear(loc_8_5), clear(loc_5_6), clear(loc_4_4), clear(loc_2_3), clear(loc_2_6), clear(loc_8_4), clear(loc_8_7), clear(loc_4_3), clear(loc_5_2), clear(loc_4_6), clear(loc_2_2), clear(loc_2_8), clear(loc_3_7), at-robot(loc_4_2), at(box1,loc_5_7), clear(loc_4_7)})"]
+s20[label="(instance index=1, state index=20, atoms={at-robot(loc_5_2), clear(loc_4_5), clear(loc_4_2), clear(loc_6_5), clear(loc_6_8), clear(loc_3_6), clear(loc_8_5), clear(loc_5_6), clear(loc_4_4), clear(loc_2_3), clear(loc_2_6), clear(loc_8_4), clear(loc_8_7), clear(loc_4_3), clear(loc_5_2), clear(loc_4_6), clear(loc_2_2), clear(loc_2_8), clear(loc_3_7), at(box1,loc_5_7), clear(loc_4_7)})"]
+Dangling [ label = "", style = invis ]
+{ rank = same; Dangling }
+Dangling -> s0
+{ rank = same; s0}
+{ rank = same; s1}
+{ rank = same; s2}
+{ rank = same; s9,s8,s3}
+{ rank = same; s7,s4,s10}
+{ rank = same; s5,s12,s11}
+{ rank = same; s6,s13,s15,s16}
+{ rank = same; s21,s14,s17}
+{ rank = same; s31,s30,s29,s28,s27,s26,s25,s24,s23,s22,s32,s18}
+{ rank = same; s19}
+{ rank = same; s20}
+{
+s0->s1
+}
+{
+s1->s2
+s1->s0
+}
+{
+s2->s3
+s2->s1
+}
+{
+s9->s7
+s8->s7
+s8->s10
+s3->s4
+s3->s2
+}
+{
+s7->s9
+s7->s5
+s7->s8
+s4->s5
+s4->s3
+s10->s12
+s10->s11
+}
+{
+s5->s6
+s5->s7
+s5->s4
+s12->s13
+s12->s10
+s11->s13
+s11->s15
+s11->s10
+s11->s16
+}
+{
+s6->s21
+s6->s5
+s13->s12
+s13->s14
+s13->s11
+s15->s11
+s16->s11
+s16->s17
+}
+{
+s21->s22
+s21->s6
+s14->s13
+s17->s18
+s17->s16
+}
+{
+s31->s30
+s31->s32
+s30->s31
+s30->s29
+s29->s30
+s29->s26
+s28->s27
+s27->s28
+s27->s24
+s26->s29
+s26->s24
+s25->s23
+s25->s24
+s24->s22
+s24->s27
+s24->s26
+s24->s25
+s23->s22
+s23->s25
+s22->s23
+s22->s24
+s32->s31
+s18->s19
+s18->s17
+}
+{
+s19->s20
+s19->s18
+}
+{
+s20->s19
+}
+}

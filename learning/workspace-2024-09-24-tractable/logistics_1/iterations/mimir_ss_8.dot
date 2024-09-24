@@ -1,0 +1,52 @@
+digraph {
+rankdir="LR"
+s0[peripheries=2,label="State(index=0, fluent atoms=[(at p0 l0-1), (at t0 l0-1), (at a0 l0-0)], static atoms=[(airplane a0), (city c0), (truck t0), (location l0-0), (in-city l0-0 c0), (location l0-1), (in-city l0-1 c0), (airport l0-0), (obj p0)], derived atoms=[])"]
+s1[peripheries=2,label="State(index=1, fluent atoms=[(at p0 l0-1), (at a0 l0-0), (at t0 l0-0)], static atoms=[(airplane a0), (city c0), (truck t0), (location l0-0), (in-city l0-0 c0), (location l0-1), (in-city l0-1 c0), (airport l0-0), (obj p0)], derived atoms=[])"]
+s2[label="State(index=2, fluent atoms=[(at t0 l0-1), (at a0 l0-0), (in p0 t0)], static atoms=[(airplane a0), (city c0), (truck t0), (location l0-0), (in-city l0-0 c0), (location l0-1), (in-city l0-1 c0), (airport l0-0), (obj p0)], derived atoms=[])"]
+s3[label="State(index=3, fluent atoms=[(at a0 l0-0), (at t0 l0-0), (in p0 t0)], static atoms=[(airplane a0), (city c0), (truck t0), (location l0-0), (in-city l0-0 c0), (location l0-1), (in-city l0-1 c0), (airport l0-0), (obj p0)], derived atoms=[])"]
+s4[label="State(index=4, fluent atoms=[(at a0 l0-0), (at t0 l0-0), (at p0 l0-0)], static atoms=[(airplane a0), (city c0), (truck t0), (location l0-0), (in-city l0-0 c0), (location l0-1), (in-city l0-1 c0), (airport l0-0), (obj p0)], derived atoms=[])"]
+s5[label="State(index=5, fluent atoms=[(at t0 l0-1), (at a0 l0-0), (at p0 l0-0)], static atoms=[(airplane a0), (city c0), (truck t0), (location l0-0), (in-city l0-0 c0), (location l0-1), (in-city l0-1 c0), (airport l0-0), (obj p0)], derived atoms=[])"]
+s6[label="State(index=6, fluent atoms=[(at a0 l0-0), (at t0 l0-0), (in p0 a0)], static atoms=[(airplane a0), (city c0), (truck t0), (location l0-0), (in-city l0-0 c0), (location l0-1), (in-city l0-1 c0), (airport l0-0), (obj p0)], derived atoms=[])"]
+s7[label="State(index=7, fluent atoms=[(at t0 l0-1), (at a0 l0-0), (in p0 a0)], static atoms=[(airplane a0), (city c0), (truck t0), (location l0-0), (in-city l0-0 c0), (location l0-1), (in-city l0-1 c0), (airport l0-0), (obj p0)], derived atoms=[])"]
+Dangling [ label = "", style = invis ]
+{ rank = same; Dangling }
+Dangling -> s0
+{ rank = same; s7}
+{ rank = same; s5,s6}
+{ rank = same; s4}
+{ rank = same; s3}
+{ rank = same; s2}
+{ rank = same; s0,s1}
+s0->s0 [label="(drive-truck t0 l0-1 l0-1 c0)"]
+s0->s1 [label="(drive-truck t0 l0-1 l0-0 c0)"]
+s0->s2 [label="(load-truck p0 t0 l0-1)"]
+s0->s0 [label="(fly-airplane a0 l0-0 l0-0)"]
+s2->s2 [label="(drive-truck t0 l0-1 l0-1 c0)"]
+s2->s3 [label="(drive-truck t0 l0-1 l0-0 c0)"]
+s2->s0 [label="(unload-truck p0 t0 l0-1)"]
+s2->s2 [label="(fly-airplane a0 l0-0 l0-0)"]
+s3->s2 [label="(drive-truck t0 l0-0 l0-1 c0)"]
+s3->s3 [label="(drive-truck t0 l0-0 l0-0 c0)"]
+s3->s4 [label="(unload-truck p0 t0 l0-0)"]
+s3->s3 [label="(fly-airplane a0 l0-0 l0-0)"]
+s4->s5 [label="(drive-truck t0 l0-0 l0-1 c0)"]
+s4->s4 [label="(drive-truck t0 l0-0 l0-0 c0)"]
+s4->s3 [label="(load-truck p0 t0 l0-0)"]
+s4->s4 [label="(fly-airplane a0 l0-0 l0-0)"]
+s4->s6 [label="(load-airplane p0 a0 l0-0)"]
+s6->s7 [label="(drive-truck t0 l0-0 l0-1 c0)"]
+s6->s6 [label="(drive-truck t0 l0-0 l0-0 c0)"]
+s6->s6 [label="(fly-airplane a0 l0-0 l0-0)"]
+s6->s4 [label="(unload-airplane p0 a0 l0-0)"]
+s7->s7 [label="(drive-truck t0 l0-1 l0-1 c0)"]
+s7->s6 [label="(drive-truck t0 l0-1 l0-0 c0)"]
+s7->s7 [label="(fly-airplane a0 l0-0 l0-0)"]
+s7->s5 [label="(unload-airplane p0 a0 l0-0)"]
+s5->s5 [label="(drive-truck t0 l0-1 l0-1 c0)"]
+s5->s4 [label="(drive-truck t0 l0-1 l0-0 c0)"]
+s5->s5 [label="(fly-airplane a0 l0-0 l0-0)"]
+s5->s7 [label="(load-airplane p0 a0 l0-0)"]
+s1->s0 [label="(drive-truck t0 l0-0 l0-1 c0)"]
+s1->s1 [label="(drive-truck t0 l0-0 l0-0 c0)"]
+s1->s1 [label="(fly-airplane a0 l0-0 l0-0)"]
+}

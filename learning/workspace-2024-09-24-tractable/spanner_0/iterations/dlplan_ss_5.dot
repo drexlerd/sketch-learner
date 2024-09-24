@@ -1,0 +1,66 @@
+digraph {
+rankdir="LR"
+s0[label="(instance index=5, state index=0, atoms={at(bob,shed), at(spanner1,location1), useable(spanner1), at(spanner2,location1), useable(spanner2), loose(nut1), at(nut1,gate), loose(nut2), at(nut2,gate)})"]
+s1[label="(instance index=5, state index=1, atoms={at(spanner1,location1), useable(spanner1), at(spanner2,location1), useable(spanner2), loose(nut1), at(nut1,gate), loose(nut2), at(nut2,gate), at(bob,location1)})"]
+s4[label="(instance index=5, state index=4, atoms={useable(spanner1), at(spanner2,location1), useable(spanner2), loose(nut1), at(nut1,gate), loose(nut2), at(nut2,gate), at(bob,location1), carrying(bob,spanner1)})"]
+s3[label="(instance index=5, state index=3, atoms={at(spanner1,location1), useable(spanner1), useable(spanner2), loose(nut1), at(nut1,gate), loose(nut2), at(nut2,gate), at(bob,location1), carrying(bob,spanner2)})"]
+s2[label="(instance index=5, state index=2, atoms={at(spanner1,location1), useable(spanner1), at(spanner2,location1), useable(spanner2), loose(nut1), at(nut1,gate), loose(nut2), at(nut2,gate), at(bob,gate)})"]
+s6[label="(instance index=5, state index=6, atoms={useable(spanner1), useable(spanner2), loose(nut1), at(nut1,gate), loose(nut2), at(nut2,gate), at(bob,location1), carrying(bob,spanner1), carrying(bob,spanner2)})"]
+s5[label="(instance index=5, state index=5, atoms={useable(spanner1), at(spanner2,location1), useable(spanner2), loose(nut1), at(nut1,gate), loose(nut2), at(nut2,gate), carrying(bob,spanner1), at(bob,gate)})"]
+s15[label="(instance index=5, state index=15, atoms={at(spanner1,location1), useable(spanner1), useable(spanner2), loose(nut1), at(nut1,gate), loose(nut2), at(nut2,gate), carrying(bob,spanner2), at(bob,gate)})"]
+s7[label="(instance index=5, state index=7, atoms={useable(spanner1), useable(spanner2), loose(nut1), at(nut1,gate), loose(nut2), at(nut2,gate), carrying(bob,spanner1), carrying(bob,spanner2), at(bob,gate)})"]
+s14[label="(instance index=5, state index=14, atoms={tightened(nut1), at(spanner2,location1), useable(spanner2), at(nut1,gate), loose(nut2), at(nut2,gate), carrying(bob,spanner1), at(bob,gate)})"]
+s13[label="(instance index=5, state index=13, atoms={tightened(nut2), at(spanner2,location1), useable(spanner2), loose(nut1), at(nut1,gate), at(nut2,gate), carrying(bob,spanner1), at(bob,gate)})"]
+s17[label="(instance index=5, state index=17, atoms={tightened(nut1), at(spanner1,location1), useable(spanner1), at(nut1,gate), loose(nut2), at(nut2,gate), carrying(bob,spanner2), at(bob,gate)})"]
+s16[label="(instance index=5, state index=16, atoms={tightened(nut2), at(spanner1,location1), useable(spanner1), loose(nut1), at(nut1,gate), at(nut2,gate), carrying(bob,spanner2), at(bob,gate)})"]
+s11[label="(instance index=5, state index=11, atoms={tightened(nut1), useable(spanner2), at(nut1,gate), loose(nut2), at(nut2,gate), carrying(bob,spanner1), carrying(bob,spanner2), at(bob,gate)})"]
+s10[label="(instance index=5, state index=10, atoms={tightened(nut1), useable(spanner1), at(nut1,gate), loose(nut2), at(nut2,gate), carrying(bob,spanner1), carrying(bob,spanner2), at(bob,gate)})"]
+s9[label="(instance index=5, state index=9, atoms={tightened(nut2), useable(spanner2), loose(nut1), at(nut1,gate), at(nut2,gate), carrying(bob,spanner1), carrying(bob,spanner2), at(bob,gate)})"]
+s8[label="(instance index=5, state index=8, atoms={tightened(nut2), useable(spanner1), loose(nut1), at(nut1,gate), at(nut2,gate), carrying(bob,spanner1), carrying(bob,spanner2), at(bob,gate)})"]
+s12[peripheries=2,label="(instance index=5, state index=12, atoms={tightened(nut1), tightened(nut2), at(nut1,gate), at(nut2,gate), carrying(bob,spanner1), carrying(bob,spanner2), at(bob,gate)})"]
+Dangling [ label = "", style = invis ]
+{ rank = same; Dangling }
+Dangling -> s0
+{ rank = same; s0}
+{ rank = same; s1}
+{ rank = same; s4,s3,s2}
+{ rank = same; s6,s5,s15}
+{ rank = same; s7,s14,s13,s17,s16}
+{ rank = same; s11,s10,s9,s8}
+{ rank = same; s12}
+{
+s0->s1
+}
+{
+s1->s4
+s1->s3
+s1->s2
+}
+{
+s4->s6
+s4->s5
+s3->s15
+s3->s6
+}
+{
+s6->s7
+s5->s14
+s5->s13
+s15->s17
+s15->s16
+}
+{
+s7->s11
+s7->s10
+s7->s9
+s7->s8
+}
+{
+s11->s12
+s10->s12
+s9->s12
+s8->s12
+}
+{
+}
+}

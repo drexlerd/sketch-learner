@@ -1,0 +1,488 @@
+digraph {
+rankdir="LR"
+s0[label="state_index=0 global_state_index = 12 abstraction_index=1 abstract_state_index=0
+State(index=0, fluent atoms=[(robot-at robot1 tile_0_1), (robot-has robot1 black), (clear tile_2_1), (clear tile_1_1)], static atoms=[(available-color white), (available-color black), (up tile_2_1 tile_1_1), (up tile_1_1 tile_0_1), (down tile_1_1 tile_2_1), (down tile_0_1 tile_1_1), (tile tile_0_1), (tile tile_1_1), (tile tile_2_1), (robot robot1), (color white), (color black)], derived atoms=[])
+"]
+s1[label="state_index=1 global_state_index = 13 abstraction_index=1 abstract_state_index=1
+State(index=1, fluent atoms=[(robot-at robot1 tile_0_1), (clear tile_2_1), (clear tile_1_1), (robot-has robot1 white)], static atoms=[(available-color white), (available-color black), (up tile_2_1 tile_1_1), (up tile_1_1 tile_0_1), (down tile_1_1 tile_2_1), (down tile_0_1 tile_1_1), (tile tile_0_1), (tile tile_1_1), (tile tile_2_1), (robot robot1), (color white), (color black)], derived atoms=[])
+"]
+s2[label="state_index=2 global_state_index = 14 abstraction_index=1 abstract_state_index=2
+State(index=2, fluent atoms=[(robot-has robot1 black), (clear tile_2_1), (robot-at robot1 tile_1_1), (clear tile_0_1)], static atoms=[(available-color white), (available-color black), (up tile_2_1 tile_1_1), (up tile_1_1 tile_0_1), (down tile_1_1 tile_2_1), (down tile_0_1 tile_1_1), (tile tile_0_1), (tile tile_1_1), (tile tile_2_1), (robot robot1), (color white), (color black)], derived atoms=[])
+"]
+s3[label="state_index=3 global_state_index = 15 abstraction_index=1 abstract_state_index=3
+State(index=3, fluent atoms=[(robot-at robot1 tile_0_1), (robot-has robot1 black), (clear tile_2_1), (painted tile_1_1 black)], static atoms=[(available-color white), (available-color black), (up tile_2_1 tile_1_1), (up tile_1_1 tile_0_1), (down tile_1_1 tile_2_1), (down tile_0_1 tile_1_1), (tile tile_0_1), (tile tile_1_1), (tile tile_2_1), (robot robot1), (color white), (color black)], derived atoms=[])
+"]
+s4[label="state_index=4 global_state_index = 16 abstraction_index=1 abstract_state_index=4
+State(index=4, fluent atoms=[(robot-at robot1 tile_0_1), (clear tile_2_1), (painted tile_1_1 black), (robot-has robot1 white)], static atoms=[(available-color white), (available-color black), (up tile_2_1 tile_1_1), (up tile_1_1 tile_0_1), (down tile_1_1 tile_2_1), (down tile_0_1 tile_1_1), (tile tile_0_1), (tile tile_1_1), (tile tile_2_1), (robot robot1), (color white), (color black)], derived atoms=[])
+"]
+s5[label="state_index=5 global_state_index = 17 abstraction_index=1 abstract_state_index=5
+State(index=5, fluent atoms=[(clear tile_2_1), (robot-at robot1 tile_1_1), (clear tile_0_1), (robot-has robot1 white)], static atoms=[(available-color white), (available-color black), (up tile_2_1 tile_1_1), (up tile_1_1 tile_0_1), (down tile_1_1 tile_2_1), (down tile_0_1 tile_1_1), (tile tile_0_1), (tile tile_1_1), (tile tile_2_1), (robot robot1), (color white), (color black)], derived atoms=[])
+"]
+s6[label="state_index=6 global_state_index = 18 abstraction_index=1 abstract_state_index=6
+State(index=6, fluent atoms=[(robot-has robot1 black), (clear tile_1_1), (clear tile_0_1), (robot-at robot1 tile_2_1)], static atoms=[(available-color white), (available-color black), (up tile_2_1 tile_1_1), (up tile_1_1 tile_0_1), (down tile_1_1 tile_2_1), (down tile_0_1 tile_1_1), (tile tile_0_1), (tile tile_1_1), (tile tile_2_1), (robot robot1), (color white), (color black)], derived atoms=[])
+"]
+s7[label="state_index=7 global_state_index = 19 abstraction_index=1 abstract_state_index=7
+State(index=7, fluent atoms=[(painted tile_2_1 black), (robot-has robot1 black), (robot-at robot1 tile_1_1), (clear tile_0_1)], static atoms=[(available-color white), (available-color black), (up tile_2_1 tile_1_1), (up tile_1_1 tile_0_1), (down tile_1_1 tile_2_1), (down tile_0_1 tile_1_1), (tile tile_0_1), (tile tile_1_1), (tile tile_2_1), (robot robot1), (color white), (color black)], derived atoms=[])
+"]
+s8[label="state_index=8 global_state_index = 20 abstraction_index=1 abstract_state_index=8
+State(index=8, fluent atoms=[(robot-has robot1 black), (clear tile_2_1), (robot-at robot1 tile_1_1), (painted tile_0_1 black)], static atoms=[(available-color white), (available-color black), (up tile_2_1 tile_1_1), (up tile_1_1 tile_0_1), (down tile_1_1 tile_2_1), (down tile_0_1 tile_1_1), (tile tile_0_1), (tile tile_1_1), (tile tile_2_1), (robot robot1), (color white), (color black)], derived atoms=[])
+"]
+s9[label="state_index=9 global_state_index = 21 abstraction_index=1 abstract_state_index=9
+State(index=9, fluent atoms=[(clear tile_2_1), (robot-at robot1 tile_1_1), (robot-has robot1 white), (painted tile_0_1 black)], static atoms=[(available-color white), (available-color black), (up tile_2_1 tile_1_1), (up tile_1_1 tile_0_1), (down tile_1_1 tile_2_1), (down tile_0_1 tile_1_1), (tile tile_0_1), (tile tile_1_1), (tile tile_2_1), (robot robot1), (color white), (color black)], derived atoms=[])
+"]
+s10[label="state_index=10 global_state_index = 22 abstraction_index=1 abstract_state_index=10
+State(index=10, fluent atoms=[(robot-has robot1 black), (clear tile_1_1), (robot-at robot1 tile_2_1), (painted tile_0_1 black)], static atoms=[(available-color white), (available-color black), (up tile_2_1 tile_1_1), (up tile_1_1 tile_0_1), (down tile_1_1 tile_2_1), (down tile_0_1 tile_1_1), (tile tile_0_1), (tile tile_1_1), (tile tile_2_1), (robot robot1), (color white), (color black)], derived atoms=[])
+"]
+s11[label="state_index=11 global_state_index = 23 abstraction_index=1 abstract_state_index=11
+State(index=11, fluent atoms=[(painted tile_2_1 black), (robot-has robot1 black), (robot-at robot1 tile_1_1), (painted tile_0_1 black)], static atoms=[(available-color white), (available-color black), (up tile_2_1 tile_1_1), (up tile_1_1 tile_0_1), (down tile_1_1 tile_2_1), (down tile_0_1 tile_1_1), (tile tile_0_1), (tile tile_1_1), (tile tile_2_1), (robot robot1), (color white), (color black)], derived atoms=[])
+"]
+s12[label="state_index=12 global_state_index = 24 abstraction_index=1 abstract_state_index=12
+State(index=12, fluent atoms=[(painted tile_2_1 black), (robot-at robot1 tile_1_1), (robot-has robot1 white), (painted tile_0_1 black)], static atoms=[(available-color white), (available-color black), (up tile_2_1 tile_1_1), (up tile_1_1 tile_0_1), (down tile_1_1 tile_2_1), (down tile_0_1 tile_1_1), (tile tile_0_1), (tile tile_1_1), (tile tile_2_1), (robot robot1), (color white), (color black)], derived atoms=[])
+"]
+s13[label="state_index=13 global_state_index = 25 abstraction_index=1 abstract_state_index=13
+State(index=13, fluent atoms=[(clear tile_1_1), (robot-has robot1 white), (robot-at robot1 tile_2_1), (painted tile_0_1 black)], static atoms=[(available-color white), (available-color black), (up tile_2_1 tile_1_1), (up tile_1_1 tile_0_1), (down tile_1_1 tile_2_1), (down tile_0_1 tile_1_1), (tile tile_0_1), (tile tile_1_1), (tile tile_2_1), (robot robot1), (color white), (color black)], derived atoms=[])
+"]
+s14[label="state_index=14 global_state_index = 26 abstraction_index=1 abstract_state_index=14
+State(index=14, fluent atoms=[(robot-has robot1 black), (painted tile_1_1 black), (robot-at robot1 tile_2_1), (painted tile_0_1 black)], static atoms=[(available-color white), (available-color black), (up tile_2_1 tile_1_1), (up tile_1_1 tile_0_1), (down tile_1_1 tile_2_1), (down tile_0_1 tile_1_1), (tile tile_0_1), (tile tile_1_1), (tile tile_2_1), (robot robot1), (color white), (color black)], derived atoms=[])
+"]
+s15[label="state_index=15 global_state_index = 27 abstraction_index=1 abstract_state_index=15
+State(index=15, fluent atoms=[(painted tile_1_1 black), (robot-has robot1 white), (robot-at robot1 tile_2_1), (painted tile_0_1 black)], static atoms=[(available-color white), (available-color black), (up tile_2_1 tile_1_1), (up tile_1_1 tile_0_1), (down tile_1_1 tile_2_1), (down tile_0_1 tile_1_1), (tile tile_0_1), (tile tile_1_1), (tile tile_2_1), (robot robot1), (color white), (color black)], derived atoms=[])
+"]
+s16[label="state_index=16 global_state_index = 28 abstraction_index=1 abstract_state_index=16
+State(index=16, fluent atoms=[(painted tile_1_1 white), (robot-has robot1 white), (robot-at robot1 tile_2_1), (painted tile_0_1 black)], static atoms=[(available-color white), (available-color black), (up tile_2_1 tile_1_1), (up tile_1_1 tile_0_1), (down tile_1_1 tile_2_1), (down tile_0_1 tile_1_1), (tile tile_0_1), (tile tile_1_1), (tile tile_2_1), (robot robot1), (color white), (color black)], derived atoms=[])
+"]
+s17[label="state_index=17 global_state_index = 29 abstraction_index=1 abstract_state_index=17
+State(index=17, fluent atoms=[(painted tile_1_1 white), (robot-has robot1 black), (robot-at robot1 tile_2_1), (painted tile_0_1 black)], static atoms=[(available-color white), (available-color black), (up tile_2_1 tile_1_1), (up tile_1_1 tile_0_1), (down tile_1_1 tile_2_1), (down tile_0_1 tile_1_1), (tile tile_0_1), (tile tile_1_1), (tile tile_2_1), (robot robot1), (color white), (color black)], derived atoms=[])
+"]
+s18[label="state_index=18 global_state_index = 30 abstraction_index=1 abstract_state_index=18
+State(index=18, fluent atoms=[(robot-at robot1 tile_1_1), (robot-has robot1 white), (painted tile_0_1 black), (painted tile_2_1 white)], static atoms=[(available-color white), (available-color black), (up tile_2_1 tile_1_1), (up tile_1_1 tile_0_1), (down tile_1_1 tile_2_1), (down tile_0_1 tile_1_1), (tile tile_0_1), (tile tile_1_1), (tile tile_2_1), (robot robot1), (color white), (color black)], derived atoms=[])
+"]
+s19[label="state_index=19 global_state_index = 31 abstraction_index=1 abstract_state_index=19
+State(index=19, fluent atoms=[(robot-has robot1 black), (robot-at robot1 tile_1_1), (painted tile_0_1 black), (painted tile_2_1 white)], static atoms=[(available-color white), (available-color black), (up tile_2_1 tile_1_1), (up tile_1_1 tile_0_1), (down tile_1_1 tile_2_1), (down tile_0_1 tile_1_1), (tile tile_0_1), (tile tile_1_1), (tile tile_2_1), (robot robot1), (color white), (color black)], derived atoms=[])
+"]
+s20[label="state_index=20 global_state_index = 32 abstraction_index=1 abstract_state_index=20
+State(index=20, fluent atoms=[(painted tile_2_1 black), (robot-at robot1 tile_1_1), (clear tile_0_1), (robot-has robot1 white)], static atoms=[(available-color white), (available-color black), (up tile_2_1 tile_1_1), (up tile_1_1 tile_0_1), (down tile_1_1 tile_2_1), (down tile_0_1 tile_1_1), (tile tile_0_1), (tile tile_1_1), (tile tile_2_1), (robot robot1), (color white), (color black)], derived atoms=[])
+"]
+s21[label="state_index=21 global_state_index = 33 abstraction_index=1 abstract_state_index=21
+State(index=21, fluent atoms=[(painted tile_2_1 black), (robot-at robot1 tile_0_1), (robot-has robot1 black), (clear tile_1_1)], static atoms=[(available-color white), (available-color black), (up tile_2_1 tile_1_1), (up tile_1_1 tile_0_1), (down tile_1_1 tile_2_1), (down tile_0_1 tile_1_1), (tile tile_0_1), (tile tile_1_1), (tile tile_2_1), (robot robot1), (color white), (color black)], derived atoms=[])
+"]
+s22[label="state_index=22 global_state_index = 34 abstraction_index=1 abstract_state_index=22
+State(index=22, fluent atoms=[(painted tile_2_1 black), (robot-at robot1 tile_0_1), (clear tile_1_1), (robot-has robot1 white)], static atoms=[(available-color white), (available-color black), (up tile_2_1 tile_1_1), (up tile_1_1 tile_0_1), (down tile_1_1 tile_2_1), (down tile_0_1 tile_1_1), (tile tile_0_1), (tile tile_1_1), (tile tile_2_1), (robot robot1), (color white), (color black)], derived atoms=[])
+"]
+s23[label="state_index=23 global_state_index = 35 abstraction_index=1 abstract_state_index=23
+State(index=23, fluent atoms=[(painted tile_2_1 black), (robot-at robot1 tile_0_1), (robot-has robot1 black), (painted tile_1_1 black)], static atoms=[(available-color white), (available-color black), (up tile_2_1 tile_1_1), (up tile_1_1 tile_0_1), (down tile_1_1 tile_2_1), (down tile_0_1 tile_1_1), (tile tile_0_1), (tile tile_1_1), (tile tile_2_1), (robot robot1), (color white), (color black)], derived atoms=[])
+"]
+s24[label="state_index=24 global_state_index = 36 abstraction_index=1 abstract_state_index=24
+State(index=24, fluent atoms=[(painted tile_2_1 black), (robot-at robot1 tile_0_1), (painted tile_1_1 black), (robot-has robot1 white)], static atoms=[(available-color white), (available-color black), (up tile_2_1 tile_1_1), (up tile_1_1 tile_0_1), (down tile_1_1 tile_2_1), (down tile_0_1 tile_1_1), (tile tile_0_1), (tile tile_1_1), (tile tile_2_1), (robot robot1), (color white), (color black)], derived atoms=[])
+"]
+s25[peripheries=2,label="state_index=25 global_state_index = 37 abstraction_index=1 abstract_state_index=25
+State(index=25, fluent atoms=[(painted tile_1_1 white), (painted tile_2_1 black), (robot-at robot1 tile_0_1), (robot-has robot1 white)], static atoms=[(available-color white), (available-color black), (up tile_2_1 tile_1_1), (up tile_1_1 tile_0_1), (down tile_1_1 tile_2_1), (down tile_0_1 tile_1_1), (tile tile_0_1), (tile tile_1_1), (tile tile_2_1), (robot robot1), (color white), (color black)], derived atoms=[])
+"]
+s26[peripheries=2,label="state_index=26 global_state_index = 38 abstraction_index=1 abstract_state_index=26
+State(index=26, fluent atoms=[(painted tile_1_1 white), (painted tile_2_1 black), (robot-at robot1 tile_0_1), (robot-has robot1 black)], static atoms=[(available-color white), (available-color black), (up tile_2_1 tile_1_1), (up tile_1_1 tile_0_1), (down tile_1_1 tile_2_1), (down tile_0_1 tile_1_1), (tile tile_0_1), (tile tile_1_1), (tile tile_2_1), (robot robot1), (color white), (color black)], derived atoms=[])
+"]
+s27[label="state_index=27 global_state_index = 39 abstraction_index=1 abstract_state_index=27
+State(index=27, fluent atoms=[(painted tile_2_1 black), (robot-at robot1 tile_1_1), (robot-has robot1 white), (painted tile_0_1 white)], static atoms=[(available-color white), (available-color black), (up tile_2_1 tile_1_1), (up tile_1_1 tile_0_1), (down tile_1_1 tile_2_1), (down tile_0_1 tile_1_1), (tile tile_0_1), (tile tile_1_1), (tile tile_2_1), (robot robot1), (color white), (color black)], derived atoms=[])
+"]
+s28[label="state_index=28 global_state_index = 40 abstraction_index=1 abstract_state_index=28
+State(index=28, fluent atoms=[(painted tile_2_1 black), (robot-has robot1 black), (robot-at robot1 tile_1_1), (painted tile_0_1 white)], static atoms=[(available-color white), (available-color black), (up tile_2_1 tile_1_1), (up tile_1_1 tile_0_1), (down tile_1_1 tile_2_1), (down tile_0_1 tile_1_1), (tile tile_0_1), (tile tile_1_1), (tile tile_2_1), (robot robot1), (color white), (color black)], derived atoms=[])
+"]
+s29[label="state_index=29 global_state_index = 41 abstraction_index=1 abstract_state_index=29
+State(index=29, fluent atoms=[(clear tile_1_1), (clear tile_0_1), (robot-has robot1 white), (robot-at robot1 tile_2_1)], static atoms=[(available-color white), (available-color black), (up tile_2_1 tile_1_1), (up tile_1_1 tile_0_1), (down tile_1_1 tile_2_1), (down tile_0_1 tile_1_1), (tile tile_0_1), (tile tile_1_1), (tile tile_2_1), (robot robot1), (color white), (color black)], derived atoms=[])
+"]
+s30[label="state_index=30 global_state_index = 42 abstraction_index=1 abstract_state_index=30
+State(index=30, fluent atoms=[(robot-has robot1 black), (clear tile_0_1), (painted tile_1_1 black), (robot-at robot1 tile_2_1)], static atoms=[(available-color white), (available-color black), (up tile_2_1 tile_1_1), (up tile_1_1 tile_0_1), (down tile_1_1 tile_2_1), (down tile_0_1 tile_1_1), (tile tile_0_1), (tile tile_1_1), (tile tile_2_1), (robot robot1), (color white), (color black)], derived atoms=[])
+"]
+s31[label="state_index=31 global_state_index = 43 abstraction_index=1 abstract_state_index=31
+State(index=31, fluent atoms=[(clear tile_0_1), (painted tile_1_1 black), (robot-has robot1 white), (robot-at robot1 tile_2_1)], static atoms=[(available-color white), (available-color black), (up tile_2_1 tile_1_1), (up tile_1_1 tile_0_1), (down tile_1_1 tile_2_1), (down tile_0_1 tile_1_1), (tile tile_0_1), (tile tile_1_1), (tile tile_2_1), (robot robot1), (color white), (color black)], derived atoms=[])
+"]
+s32[label="state_index=32 global_state_index = 44 abstraction_index=1 abstract_state_index=32
+State(index=32, fluent atoms=[(painted tile_1_1 white), (clear tile_0_1), (robot-has robot1 white), (robot-at robot1 tile_2_1)], static atoms=[(available-color white), (available-color black), (up tile_2_1 tile_1_1), (up tile_1_1 tile_0_1), (down tile_1_1 tile_2_1), (down tile_0_1 tile_1_1), (tile tile_0_1), (tile tile_1_1), (tile tile_2_1), (robot robot1), (color white), (color black)], derived atoms=[])
+"]
+s33[label="state_index=33 global_state_index = 45 abstraction_index=1 abstract_state_index=33
+State(index=33, fluent atoms=[(painted tile_1_1 white), (robot-has robot1 black), (clear tile_0_1), (robot-at robot1 tile_2_1)], static atoms=[(available-color white), (available-color black), (up tile_2_1 tile_1_1), (up tile_1_1 tile_0_1), (down tile_1_1 tile_2_1), (down tile_0_1 tile_1_1), (tile tile_0_1), (tile tile_1_1), (tile tile_2_1), (robot robot1), (color white), (color black)], derived atoms=[])
+"]
+s34[label="state_index=34 global_state_index = 46 abstraction_index=1 abstract_state_index=34
+State(index=34, fluent atoms=[(robot-at robot1 tile_1_1), (clear tile_0_1), (robot-has robot1 white), (painted tile_2_1 white)], static atoms=[(available-color white), (available-color black), (up tile_2_1 tile_1_1), (up tile_1_1 tile_0_1), (down tile_1_1 tile_2_1), (down tile_0_1 tile_1_1), (tile tile_0_1), (tile tile_1_1), (tile tile_2_1), (robot robot1), (color white), (color black)], derived atoms=[])
+"]
+s35[label="state_index=35 global_state_index = 47 abstraction_index=1 abstract_state_index=35
+State(index=35, fluent atoms=[(clear tile_2_1), (robot-at robot1 tile_1_1), (robot-has robot1 white), (painted tile_0_1 white)], static atoms=[(available-color white), (available-color black), (up tile_2_1 tile_1_1), (up tile_1_1 tile_0_1), (down tile_1_1 tile_2_1), (down tile_0_1 tile_1_1), (tile tile_0_1), (tile tile_1_1), (tile tile_2_1), (robot robot1), (color white), (color black)], derived atoms=[])
+"]
+s36[label="state_index=36 global_state_index = 48 abstraction_index=1 abstract_state_index=36
+State(index=36, fluent atoms=[(robot-has robot1 black), (clear tile_2_1), (robot-at robot1 tile_1_1), (painted tile_0_1 white)], static atoms=[(available-color white), (available-color black), (up tile_2_1 tile_1_1), (up tile_1_1 tile_0_1), (down tile_1_1 tile_2_1), (down tile_0_1 tile_1_1), (tile tile_0_1), (tile tile_1_1), (tile tile_2_1), (robot robot1), (color white), (color black)], derived atoms=[])
+"]
+s37[label="state_index=37 global_state_index = 49 abstraction_index=1 abstract_state_index=37
+State(index=37, fluent atoms=[(clear tile_1_1), (robot-has robot1 white), (robot-at robot1 tile_2_1), (painted tile_0_1 white)], static atoms=[(available-color white), (available-color black), (up tile_2_1 tile_1_1), (up tile_1_1 tile_0_1), (down tile_1_1 tile_2_1), (down tile_0_1 tile_1_1), (tile tile_0_1), (tile tile_1_1), (tile tile_2_1), (robot robot1), (color white), (color black)], derived atoms=[])
+"]
+s38[label="state_index=38 global_state_index = 50 abstraction_index=1 abstract_state_index=38
+State(index=38, fluent atoms=[(robot-at robot1 tile_1_1), (robot-has robot1 white), (painted tile_0_1 white), (painted tile_2_1 white)], static atoms=[(available-color white), (available-color black), (up tile_2_1 tile_1_1), (up tile_1_1 tile_0_1), (down tile_1_1 tile_2_1), (down tile_0_1 tile_1_1), (tile tile_0_1), (tile tile_1_1), (tile tile_2_1), (robot robot1), (color white), (color black)], derived atoms=[])
+"]
+s39[label="state_index=39 global_state_index = 51 abstraction_index=1 abstract_state_index=39
+State(index=39, fluent atoms=[(robot-has robot1 black), (robot-at robot1 tile_1_1), (painted tile_0_1 white), (painted tile_2_1 white)], static atoms=[(available-color white), (available-color black), (up tile_2_1 tile_1_1), (up tile_1_1 tile_0_1), (down tile_1_1 tile_2_1), (down tile_0_1 tile_1_1), (tile tile_0_1), (tile tile_1_1), (tile tile_2_1), (robot robot1), (color white), (color black)], derived atoms=[])
+"]
+s40[label="state_index=40 global_state_index = 52 abstraction_index=1 abstract_state_index=40
+State(index=40, fluent atoms=[(robot-has robot1 black), (clear tile_1_1), (robot-at robot1 tile_2_1), (painted tile_0_1 white)], static atoms=[(available-color white), (available-color black), (up tile_2_1 tile_1_1), (up tile_1_1 tile_0_1), (down tile_1_1 tile_2_1), (down tile_0_1 tile_1_1), (tile tile_0_1), (tile tile_1_1), (tile tile_2_1), (robot robot1), (color white), (color black)], derived atoms=[])
+"]
+s41[label="state_index=41 global_state_index = 53 abstraction_index=1 abstract_state_index=41
+State(index=41, fluent atoms=[(painted tile_1_1 white), (robot-has robot1 white), (robot-at robot1 tile_2_1), (painted tile_0_1 white)], static atoms=[(available-color white), (available-color black), (up tile_2_1 tile_1_1), (up tile_1_1 tile_0_1), (down tile_1_1 tile_2_1), (down tile_0_1 tile_1_1), (tile tile_0_1), (tile tile_1_1), (tile tile_2_1), (robot robot1), (color white), (color black)], derived atoms=[])
+"]
+s42[label="state_index=42 global_state_index = 54 abstraction_index=1 abstract_state_index=42
+State(index=42, fluent atoms=[(painted tile_1_1 white), (robot-has robot1 black), (robot-at robot1 tile_2_1), (painted tile_0_1 white)], static atoms=[(available-color white), (available-color black), (up tile_2_1 tile_1_1), (up tile_1_1 tile_0_1), (down tile_1_1 tile_2_1), (down tile_0_1 tile_1_1), (tile tile_0_1), (tile tile_1_1), (tile tile_2_1), (robot robot1), (color white), (color black)], derived atoms=[])
+"]
+s43[label="state_index=43 global_state_index = 55 abstraction_index=1 abstract_state_index=43
+State(index=43, fluent atoms=[(robot-has robot1 black), (painted tile_1_1 black), (robot-at robot1 tile_2_1), (painted tile_0_1 white)], static atoms=[(available-color white), (available-color black), (up tile_2_1 tile_1_1), (up tile_1_1 tile_0_1), (down tile_1_1 tile_2_1), (down tile_0_1 tile_1_1), (tile tile_0_1), (tile tile_1_1), (tile tile_2_1), (robot robot1), (color white), (color black)], derived atoms=[])
+"]
+s44[label="state_index=44 global_state_index = 56 abstraction_index=1 abstract_state_index=44
+State(index=44, fluent atoms=[(painted tile_1_1 black), (robot-has robot1 white), (robot-at robot1 tile_2_1), (painted tile_0_1 white)], static atoms=[(available-color white), (available-color black), (up tile_2_1 tile_1_1), (up tile_1_1 tile_0_1), (down tile_1_1 tile_2_1), (down tile_0_1 tile_1_1), (tile tile_0_1), (tile tile_1_1), (tile tile_2_1), (robot robot1), (color white), (color black)], derived atoms=[])
+"]
+s45[label="state_index=45 global_state_index = 57 abstraction_index=1 abstract_state_index=45
+State(index=45, fluent atoms=[(robot-has robot1 black), (robot-at robot1 tile_1_1), (clear tile_0_1), (painted tile_2_1 white)], static atoms=[(available-color white), (available-color black), (up tile_2_1 tile_1_1), (up tile_1_1 tile_0_1), (down tile_1_1 tile_2_1), (down tile_0_1 tile_1_1), (tile tile_0_1), (tile tile_1_1), (tile tile_2_1), (robot robot1), (color white), (color black)], derived atoms=[])
+"]
+s46[label="state_index=46 global_state_index = 58 abstraction_index=1 abstract_state_index=46
+State(index=46, fluent atoms=[(robot-at robot1 tile_0_1), (clear tile_1_1), (robot-has robot1 white), (painted tile_2_1 white)], static atoms=[(available-color white), (available-color black), (up tile_2_1 tile_1_1), (up tile_1_1 tile_0_1), (down tile_1_1 tile_2_1), (down tile_0_1 tile_1_1), (tile tile_0_1), (tile tile_1_1), (tile tile_2_1), (robot robot1), (color white), (color black)], derived atoms=[])
+"]
+s47[label="state_index=47 global_state_index = 59 abstraction_index=1 abstract_state_index=47
+State(index=47, fluent atoms=[(robot-at robot1 tile_0_1), (robot-has robot1 black), (clear tile_1_1), (painted tile_2_1 white)], static atoms=[(available-color white), (available-color black), (up tile_2_1 tile_1_1), (up tile_1_1 tile_0_1), (down tile_1_1 tile_2_1), (down tile_0_1 tile_1_1), (tile tile_0_1), (tile tile_1_1), (tile tile_2_1), (robot robot1), (color white), (color black)], derived atoms=[])
+"]
+s48[label="state_index=48 global_state_index = 60 abstraction_index=1 abstract_state_index=48
+State(index=48, fluent atoms=[(painted tile_1_1 white), (robot-at robot1 tile_0_1), (robot-has robot1 white), (painted tile_2_1 white)], static atoms=[(available-color white), (available-color black), (up tile_2_1 tile_1_1), (up tile_1_1 tile_0_1), (down tile_1_1 tile_2_1), (down tile_0_1 tile_1_1), (tile tile_0_1), (tile tile_1_1), (tile tile_2_1), (robot robot1), (color white), (color black)], derived atoms=[])
+"]
+s49[label="state_index=49 global_state_index = 61 abstraction_index=1 abstract_state_index=49
+State(index=49, fluent atoms=[(painted tile_1_1 white), (robot-at robot1 tile_0_1), (robot-has robot1 black), (painted tile_2_1 white)], static atoms=[(available-color white), (available-color black), (up tile_2_1 tile_1_1), (up tile_1_1 tile_0_1), (down tile_1_1 tile_2_1), (down tile_0_1 tile_1_1), (tile tile_0_1), (tile tile_1_1), (tile tile_2_1), (robot robot1), (color white), (color black)], derived atoms=[])
+"]
+s50[label="state_index=50 global_state_index = 62 abstraction_index=1 abstract_state_index=50
+State(index=50, fluent atoms=[(robot-at robot1 tile_0_1), (robot-has robot1 black), (painted tile_1_1 black), (painted tile_2_1 white)], static atoms=[(available-color white), (available-color black), (up tile_2_1 tile_1_1), (up tile_1_1 tile_0_1), (down tile_1_1 tile_2_1), (down tile_0_1 tile_1_1), (tile tile_0_1), (tile tile_1_1), (tile tile_2_1), (robot robot1), (color white), (color black)], derived atoms=[])
+"]
+s51[label="state_index=51 global_state_index = 63 abstraction_index=1 abstract_state_index=51
+State(index=51, fluent atoms=[(robot-at robot1 tile_0_1), (painted tile_1_1 black), (robot-has robot1 white), (painted tile_2_1 white)], static atoms=[(available-color white), (available-color black), (up tile_2_1 tile_1_1), (up tile_1_1 tile_0_1), (down tile_1_1 tile_2_1), (down tile_0_1 tile_1_1), (tile tile_0_1), (tile tile_1_1), (tile tile_2_1), (robot robot1), (color white), (color black)], derived atoms=[])
+"]
+s52[label="state_index=52 global_state_index = 64 abstraction_index=1 abstract_state_index=52
+State(index=52, fluent atoms=[(painted tile_1_1 white), (robot-at robot1 tile_0_1), (clear tile_2_1), (robot-has robot1 white)], static atoms=[(available-color white), (available-color black), (up tile_2_1 tile_1_1), (up tile_1_1 tile_0_1), (down tile_1_1 tile_2_1), (down tile_0_1 tile_1_1), (tile tile_0_1), (tile tile_1_1), (tile tile_2_1), (robot robot1), (color white), (color black)], derived atoms=[])
+"]
+s53[label="state_index=53 global_state_index = 65 abstraction_index=1 abstract_state_index=53
+State(index=53, fluent atoms=[(painted tile_1_1 white), (robot-at robot1 tile_0_1), (robot-has robot1 black), (clear tile_2_1)], static atoms=[(available-color white), (available-color black), (up tile_2_1 tile_1_1), (up tile_1_1 tile_0_1), (down tile_1_1 tile_2_1), (down tile_0_1 tile_1_1), (tile tile_0_1), (tile tile_1_1), (tile tile_2_1), (robot robot1), (color white), (color black)], derived atoms=[])
+"]
+Dangling [ label = "", style = invis ]
+{ rank = same; Dangling }
+Dangling -> s0
+{ rank = same; s3,s4,s8,s9,s10,s11,s12,s13,s14,s15,s16,s17,s18,s19,s23,s24,s27,s28,s30,s31,s32,s33,s34,s35,s36,s37,s38,s39,s40,s41,s42,s43,s44,s45,s46,s47,s48,s49,s50,s51,s52,s53}
+{ rank = same; s1,s29}
+{ rank = same; s0,s5,s6}
+{ rank = same; s2}
+{ rank = same; s7}
+{ rank = same; s20,s21}
+{ rank = same; s22}
+{ rank = same; s25,s26}
+s0->s0 [label="(change_color robot1 black black)
+"]
+s0->s1 [label="(change_color robot1 black white)
+"]
+s0->s2 [label="(move_up robot1 tile_0_1 tile_1_1)
+"]
+s0->s3 [label="(paint_up robot1 tile_1_1 tile_0_1 black)
+"]
+s1->s0 [label="(change_color robot1 white black)
+"]
+s1->s1 [label="(change_color robot1 white white)
+"]
+s1->s5 [label="(move_up robot1 tile_0_1 tile_1_1)
+"]
+s1->s52 [label="(paint_up robot1 tile_1_1 tile_0_1 white)
+"]
+s2->s0 [label="(move_down robot1 tile_1_1 tile_0_1)
+"]
+s2->s2 [label="(change_color robot1 black black)
+"]
+s2->s5 [label="(change_color robot1 black white)
+"]
+s2->s6 [label="(move_up robot1 tile_1_1 tile_2_1)
+"]
+s2->s7 [label="(paint_up robot1 tile_2_1 tile_1_1 black)
+"]
+s2->s8 [label="(paint_down robot1 tile_0_1 tile_1_1 black)
+"]
+s3->s3 [label="(change_color robot1 black black)
+"]
+s3->s4 [label="(change_color robot1 black white)
+"]
+s4->s3 [label="(change_color robot1 white black)
+"]
+s4->s4 [label="(change_color robot1 white white)
+"]
+s5->s1 [label="(move_down robot1 tile_1_1 tile_0_1)
+"]
+s5->s2 [label="(change_color robot1 white black)
+"]
+s5->s5 [label="(change_color robot1 white white)
+"]
+s5->s29 [label="(move_up robot1 tile_1_1 tile_2_1)
+"]
+s5->s34 [label="(paint_up robot1 tile_2_1 tile_1_1 white)
+"]
+s5->s35 [label="(paint_down robot1 tile_0_1 tile_1_1 white)
+"]
+s6->s2 [label="(move_down robot1 tile_2_1 tile_1_1)
+"]
+s6->s6 [label="(change_color robot1 black black)
+"]
+s6->s29 [label="(change_color robot1 black white)
+"]
+s6->s30 [label="(paint_down robot1 tile_1_1 tile_2_1 black)
+"]
+s7->s7 [label="(change_color robot1 black black)
+"]
+s7->s11 [label="(paint_down robot1 tile_0_1 tile_1_1 black)
+"]
+s7->s20 [label="(change_color robot1 black white)
+"]
+s7->s21 [label="(move_down robot1 tile_1_1 tile_0_1)
+"]
+s8->s8 [label="(change_color robot1 black black)
+"]
+s8->s9 [label="(change_color robot1 black white)
+"]
+s8->s10 [label="(move_up robot1 tile_1_1 tile_2_1)
+"]
+s8->s11 [label="(paint_up robot1 tile_2_1 tile_1_1 black)
+"]
+s9->s8 [label="(change_color robot1 white black)
+"]
+s9->s9 [label="(change_color robot1 white white)
+"]
+s9->s13 [label="(move_up robot1 tile_1_1 tile_2_1)
+"]
+s9->s18 [label="(paint_up robot1 tile_2_1 tile_1_1 white)
+"]
+s10->s8 [label="(move_down robot1 tile_2_1 tile_1_1)
+"]
+s10->s10 [label="(change_color robot1 black black)
+"]
+s10->s13 [label="(change_color robot1 black white)
+"]
+s10->s14 [label="(paint_down robot1 tile_1_1 tile_2_1 black)
+"]
+s11->s11 [label="(change_color robot1 black black)
+"]
+s11->s12 [label="(change_color robot1 black white)
+"]
+s12->s11 [label="(change_color robot1 white black)
+"]
+s12->s12 [label="(change_color robot1 white white)
+"]
+s13->s9 [label="(move_down robot1 tile_2_1 tile_1_1)
+"]
+s13->s10 [label="(change_color robot1 white black)
+"]
+s13->s13 [label="(change_color robot1 white white)
+"]
+s13->s16 [label="(paint_down robot1 tile_1_1 tile_2_1 white)
+"]
+s14->s14 [label="(change_color robot1 black black)
+"]
+s14->s15 [label="(change_color robot1 black white)
+"]
+s15->s14 [label="(change_color robot1 white black)
+"]
+s15->s15 [label="(change_color robot1 white white)
+"]
+s16->s16 [label="(change_color robot1 white white)
+"]
+s16->s17 [label="(change_color robot1 white black)
+"]
+s17->s16 [label="(change_color robot1 black white)
+"]
+s17->s17 [label="(change_color robot1 black black)
+"]
+s18->s18 [label="(change_color robot1 white white)
+"]
+s18->s19 [label="(change_color robot1 white black)
+"]
+s19->s18 [label="(change_color robot1 black white)
+"]
+s19->s19 [label="(change_color robot1 black black)
+"]
+s20->s7 [label="(change_color robot1 white black)
+"]
+s20->s20 [label="(change_color robot1 white white)
+"]
+s20->s22 [label="(move_down robot1 tile_1_1 tile_0_1)
+"]
+s20->s27 [label="(paint_down robot1 tile_0_1 tile_1_1 white)
+"]
+s21->s7 [label="(move_up robot1 tile_0_1 tile_1_1)
+"]
+s21->s21 [label="(change_color robot1 black black)
+"]
+s21->s22 [label="(change_color robot1 black white)
+"]
+s21->s23 [label="(paint_up robot1 tile_1_1 tile_0_1 black)
+"]
+s22->s20 [label="(move_up robot1 tile_0_1 tile_1_1)
+"]
+s22->s21 [label="(change_color robot1 white black)
+"]
+s22->s22 [label="(change_color robot1 white white)
+"]
+s22->s25 [label="(paint_up robot1 tile_1_1 tile_0_1 white)
+"]
+s23->s23 [label="(change_color robot1 black black)
+"]
+s23->s24 [label="(change_color robot1 black white)
+"]
+s24->s23 [label="(change_color robot1 white black)
+"]
+s24->s24 [label="(change_color robot1 white white)
+"]
+s25->s25 [label="(change_color robot1 white white)
+"]
+s25->s26 [label="(change_color robot1 white black)
+"]
+s26->s25 [label="(change_color robot1 black white)
+"]
+s26->s26 [label="(change_color robot1 black black)
+"]
+s27->s27 [label="(change_color robot1 white white)
+"]
+s27->s28 [label="(change_color robot1 white black)
+"]
+s28->s27 [label="(change_color robot1 black white)
+"]
+s28->s28 [label="(change_color robot1 black black)
+"]
+s29->s5 [label="(move_down robot1 tile_2_1 tile_1_1)
+"]
+s29->s6 [label="(change_color robot1 white black)
+"]
+s29->s29 [label="(change_color robot1 white white)
+"]
+s29->s32 [label="(paint_down robot1 tile_1_1 tile_2_1 white)
+"]
+s30->s30 [label="(change_color robot1 black black)
+"]
+s30->s31 [label="(change_color robot1 black white)
+"]
+s31->s30 [label="(change_color robot1 white black)
+"]
+s31->s31 [label="(change_color robot1 white white)
+"]
+s32->s32 [label="(change_color robot1 white white)
+"]
+s32->s33 [label="(change_color robot1 white black)
+"]
+s33->s32 [label="(change_color robot1 black white)
+"]
+s33->s33 [label="(change_color robot1 black black)
+"]
+s34->s34 [label="(change_color robot1 white white)
+"]
+s34->s38 [label="(paint_down robot1 tile_0_1 tile_1_1 white)
+"]
+s34->s45 [label="(change_color robot1 white black)
+"]
+s34->s46 [label="(move_down robot1 tile_1_1 tile_0_1)
+"]
+s35->s35 [label="(change_color robot1 white white)
+"]
+s35->s36 [label="(change_color robot1 white black)
+"]
+s35->s37 [label="(move_up robot1 tile_1_1 tile_2_1)
+"]
+s35->s38 [label="(paint_up robot1 tile_2_1 tile_1_1 white)
+"]
+s36->s28 [label="(paint_up robot1 tile_2_1 tile_1_1 black)
+"]
+s36->s35 [label="(change_color robot1 black white)
+"]
+s36->s36 [label="(change_color robot1 black black)
+"]
+s36->s40 [label="(move_up robot1 tile_1_1 tile_2_1)
+"]
+s37->s35 [label="(move_down robot1 tile_2_1 tile_1_1)
+"]
+s37->s37 [label="(change_color robot1 white white)
+"]
+s37->s40 [label="(change_color robot1 white black)
+"]
+s37->s41 [label="(paint_down robot1 tile_1_1 tile_2_1 white)
+"]
+s38->s38 [label="(change_color robot1 white white)
+"]
+s38->s39 [label="(change_color robot1 white black)
+"]
+s39->s38 [label="(change_color robot1 black white)
+"]
+s39->s39 [label="(change_color robot1 black black)
+"]
+s40->s36 [label="(move_down robot1 tile_2_1 tile_1_1)
+"]
+s40->s37 [label="(change_color robot1 black white)
+"]
+s40->s40 [label="(change_color robot1 black black)
+"]
+s40->s43 [label="(paint_down robot1 tile_1_1 tile_2_1 black)
+"]
+s41->s41 [label="(change_color robot1 white white)
+"]
+s41->s42 [label="(change_color robot1 white black)
+"]
+s42->s41 [label="(change_color robot1 black white)
+"]
+s42->s42 [label="(change_color robot1 black black)
+"]
+s43->s43 [label="(change_color robot1 black black)
+"]
+s43->s44 [label="(change_color robot1 black white)
+"]
+s44->s43 [label="(change_color robot1 white black)
+"]
+s44->s44 [label="(change_color robot1 white white)
+"]
+s45->s19 [label="(paint_down robot1 tile_0_1 tile_1_1 black)
+"]
+s45->s34 [label="(change_color robot1 black white)
+"]
+s45->s45 [label="(change_color robot1 black black)
+"]
+s45->s47 [label="(move_down robot1 tile_1_1 tile_0_1)
+"]
+s46->s34 [label="(move_up robot1 tile_0_1 tile_1_1)
+"]
+s46->s46 [label="(change_color robot1 white white)
+"]
+s46->s47 [label="(change_color robot1 white black)
+"]
+s46->s48 [label="(paint_up robot1 tile_1_1 tile_0_1 white)
+"]
+s47->s45 [label="(move_up robot1 tile_0_1 tile_1_1)
+"]
+s47->s46 [label="(change_color robot1 black white)
+"]
+s47->s47 [label="(change_color robot1 black black)
+"]
+s47->s50 [label="(paint_up robot1 tile_1_1 tile_0_1 black)
+"]
+s48->s48 [label="(change_color robot1 white white)
+"]
+s48->s49 [label="(change_color robot1 white black)
+"]
+s49->s48 [label="(change_color robot1 black white)
+"]
+s49->s49 [label="(change_color robot1 black black)
+"]
+s50->s50 [label="(change_color robot1 black black)
+"]
+s50->s51 [label="(change_color robot1 black white)
+"]
+s51->s50 [label="(change_color robot1 white black)
+"]
+s51->s51 [label="(change_color robot1 white white)
+"]
+s52->s52 [label="(change_color robot1 white white)
+"]
+s52->s53 [label="(change_color robot1 white black)
+"]
+s53->s52 [label="(change_color robot1 black white)
+"]
+s53->s53 [label="(change_color robot1 black black)
+"]
+}

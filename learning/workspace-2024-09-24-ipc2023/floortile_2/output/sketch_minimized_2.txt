@@ -1,0 +1,5 @@
+(:policy
+(:booleans )
+(:numericals (f90 "n_count(c_all(r_transitive_closure(r_primitive(down,0,1)),c_equal(r_primitive(painted,0,1),r_primitive(painted_g,0,1))))"))
+(:rule (:conditions (:c_n_gt f90)) (:effects (:e_n_inc f90)))
+)

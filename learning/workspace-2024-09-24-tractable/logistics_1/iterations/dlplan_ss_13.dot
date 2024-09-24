@@ -1,0 +1,149 @@
+digraph {
+rankdir="LR"
+s0[label="(instance index=13, state index=0, atoms={at(t0,l0-0), at(t1,l0-0), at(p0,l0-1), at(a0,l0-0), at(a1,l0-0)})"]
+s1[label="(instance index=13, state index=1, atoms={at(t0,l0-0), at(p0,l0-1), at(a0,l0-0), at(a1,l0-0), at(t1,l0-1)})"]
+s2[label="(instance index=13, state index=2, atoms={at(t1,l0-0), at(p0,l0-1), at(a0,l0-0), at(a1,l0-0), at(t0,l0-1)})"]
+s3[label="(instance index=13, state index=3, atoms={at(p0,l0-1), at(a0,l0-0), at(a1,l0-0), at(t0,l0-1), at(t1,l0-1)})"]
+s21[label="(instance index=13, state index=21, atoms={at(t0,l0-0), at(a0,l0-0), at(a1,l0-0), at(t1,l0-1), in(p0,t1)})"]
+s4[label="(instance index=13, state index=4, atoms={at(t1,l0-0), at(a0,l0-0), at(a1,l0-0), at(t0,l0-1), in(p0,t0)})"]
+s5[label="(instance index=13, state index=5, atoms={at(a0,l0-0), at(a1,l0-0), at(t0,l0-1), at(t1,l0-1), in(p0,t0)})"]
+s23[label="(instance index=13, state index=23, atoms={at(a0,l0-0), at(a1,l0-0), at(t0,l0-1), at(t1,l0-1), in(p0,t1)})"]
+s13[label="(instance index=13, state index=13, atoms={at(t0,l0-0), at(t1,l0-0), at(a0,l0-0), at(a1,l0-0), in(p0,a0)})"]
+s12[label="(instance index=13, state index=12, atoms={at(t0,l0-0), at(t1,l0-0), at(a0,l0-0), at(a1,l0-0), in(p0,a1)})"]
+s11[label="(instance index=13, state index=11, atoms={at(t0,l0-0), at(t1,l0-0), at(a0,l0-0), at(a1,l0-0), in(p0,t1)})"]
+s22[label="(instance index=13, state index=22, atoms={at(t1,l0-0), at(a0,l0-0), at(a1,l0-0), at(t0,l0-1), in(p0,t1)})"]
+s16[label="(instance index=13, state index=16, atoms={at(a0,l0-0), at(a1,l0-0), at(t0,l0-1), at(t1,l0-1), in(p0,a0)})"]
+s18[label="(instance index=13, state index=18, atoms={at(a0,l0-0), at(a1,l0-0), at(t0,l0-1), at(t1,l0-1), in(p0,a1)})"]
+s15[label="(instance index=13, state index=15, atoms={at(t1,l0-0), at(a0,l0-0), at(a1,l0-0), at(t0,l0-1), in(p0,a0)})"]
+s19[label="(instance index=13, state index=19, atoms={at(t1,l0-0), at(a0,l0-0), at(a1,l0-0), at(t0,l0-1), in(p0,a1)})"]
+s6[label="(instance index=13, state index=6, atoms={at(t0,l0-0), at(t1,l0-0), at(a0,l0-0), at(a1,l0-0), in(p0,t0)})"]
+s14[label="(instance index=13, state index=14, atoms={at(t0,l0-0), at(a0,l0-0), at(a1,l0-0), at(t1,l0-1), in(p0,a0)})"]
+s7[label="(instance index=13, state index=7, atoms={at(t0,l0-0), at(a0,l0-0), at(a1,l0-0), at(t1,l0-1), in(p0,t0)})"]
+s20[label="(instance index=13, state index=20, atoms={at(t0,l0-0), at(a0,l0-0), at(a1,l0-0), at(t1,l0-1), in(p0,a1)})"]
+s17[peripheries=2,label="(instance index=13, state index=17, atoms={at(p0,l0-0), at(a0,l0-0), at(a1,l0-0), at(t0,l0-1), at(t1,l0-1)})"]
+s10[peripheries=2,label="(instance index=13, state index=10, atoms={at(p0,l0-0), at(t1,l0-0), at(a0,l0-0), at(a1,l0-0), at(t0,l0-1)})"]
+s9[peripheries=2,label="(instance index=13, state index=9, atoms={at(p0,l0-0), at(t0,l0-0), at(a0,l0-0), at(a1,l0-0), at(t1,l0-1)})"]
+s8[peripheries=2,label="(instance index=13, state index=8, atoms={at(p0,l0-0), at(t0,l0-0), at(t1,l0-0), at(a0,l0-0), at(a1,l0-0)})"]
+Dangling [ label = "", style = invis ]
+{ rank = same; Dangling }
+Dangling -> s0
+{ rank = same; s0}
+{ rank = same; s1,s2,s3}
+{ rank = same; s21,s4,s5,s23}
+{ rank = same; s13,s12,s11,s22,s16,s18,s15,s19,s6,s14,s7,s20}
+{ rank = same; s17,s10,s9,s8}
+{
+s0->s2
+s0->s1
+s0->s0
+}
+{
+s1->s3
+s1->s21
+s1->s1
+s1->s0
+s2->s4
+s2->s3
+s2->s2
+s2->s0
+s3->s5
+s3->s23
+s3->s3
+s3->s2
+s3->s1
+}
+{
+s21->s23
+s21->s21
+s21->s11
+s21->s1
+s4->s6
+s4->s5
+s4->s4
+s4->s2
+s5->s7
+s5->s5
+s5->s4
+s5->s3
+s23->s22
+s23->s21
+s23->s23
+s23->s3
+}
+{
+s13->s15
+s13->s14
+s13->s13
+s13->s8
+s12->s20
+s12->s12
+s12->s19
+s12->s8
+s11->s22
+s11->s21
+s11->s11
+s11->s8
+s22->s23
+s22->s22
+s22->s11
+s22->s10
+s16->s15
+s16->s14
+s16->s17
+s16->s16
+s18->s20
+s18->s19
+s18->s18
+s18->s17
+s15->s13
+s15->s15
+s15->s10
+s15->s16
+s19->s12
+s19->s19
+s19->s18
+s19->s10
+s6->s7
+s6->s6
+s6->s4
+s6->s8
+s14->s13
+s14->s14
+s14->s9
+s14->s16
+s7->s7
+s7->s6
+s7->s5
+s7->s9
+s20->s20
+s20->s12
+s20->s18
+s20->s9
+}
+{
+s17->s18
+s17->s17
+s17->s16
+s17->s10
+s17->s9
+s10->s19
+s10->s17
+s10->s10
+s10->s22
+s10->s15
+s10->s8
+s9->s20
+s9->s17
+s9->s9
+s9->s8
+s9->s14
+s9->s7
+s8->s12
+s8->s11
+s8->s10
+s8->s9
+s8->s8
+s8->s13
+s8->s6
+}
+}

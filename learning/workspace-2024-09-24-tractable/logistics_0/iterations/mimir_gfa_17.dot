@@ -1,0 +1,304 @@
+digraph {
+rankdir="LR"
+s0[label="state_index=0 global_state_index = 134 abstraction_index=17 abstract_state_index=0
+State(index=18, fluent atoms=[(at t0 l0-0), (at t1 l1-0), (at p0 l0-0), (at a0 l1-0), (at a1 l0-0)], static atoms=[(airplane a0), (airplane a1), (city c0), (city c1), (truck t0), (truck t1), (location l0-0), (in-city l0-0 c0), (location l1-0), (in-city l1-0 c1), (airport l0-0), (airport l1-0), (obj p0)], derived atoms=[])
+State(index=0, fluent atoms=[(at t0 l0-0), (at t1 l1-0), (at p0 l0-0), (at a0 l0-0), (at a1 l1-0)], static atoms=[(airplane a0), (airplane a1), (city c0), (city c1), (truck t0), (truck t1), (location l0-0), (in-city l0-0 c0), (location l1-0), (in-city l1-0 c1), (airport l0-0), (airport l1-0), (obj p0)], derived atoms=[])
+"]
+s1[label="state_index=1 global_state_index = 135 abstraction_index=17 abstract_state_index=1
+State(index=19, fluent atoms=[(at t0 l0-0), (at t1 l1-0), (at a0 l1-0), (at a1 l0-0), (in p0 t0)], static atoms=[(airplane a0), (airplane a1), (city c0), (city c1), (truck t0), (truck t1), (location l0-0), (in-city l0-0 c0), (location l1-0), (in-city l1-0 c1), (airport l0-0), (airport l1-0), (obj p0)], derived atoms=[])
+State(index=1, fluent atoms=[(at t0 l0-0), (at t1 l1-0), (at a0 l0-0), (at a1 l1-0), (in p0 t0)], static atoms=[(airplane a0), (airplane a1), (city c0), (city c1), (truck t0), (truck t1), (location l0-0), (in-city l0-0 c0), (location l1-0), (in-city l1-0 c1), (airport l0-0), (airport l1-0), (obj p0)], derived atoms=[])
+"]
+s2[label="state_index=2 global_state_index = 136 abstraction_index=17 abstract_state_index=2
+State(index=2, fluent atoms=[(at t0 l0-0), (at t1 l1-0), (at p0 l0-0), (at a0 l0-0), (at a1 l0-0)], static atoms=[(airplane a0), (airplane a1), (city c0), (city c1), (truck t0), (truck t1), (location l0-0), (in-city l0-0 c0), (location l1-0), (in-city l1-0 c1), (airport l0-0), (airport l1-0), (obj p0)], derived atoms=[])
+"]
+s3[label="state_index=3 global_state_index = 137 abstraction_index=17 abstract_state_index=3
+State(index=3, fluent atoms=[(at t0 l0-0), (at t1 l1-0), (at p0 l0-0), (at a1 l1-0), (at a0 l1-0)], static atoms=[(airplane a0), (airplane a1), (city c0), (city c1), (truck t0), (truck t1), (location l0-0), (in-city l0-0 c0), (location l1-0), (in-city l1-0 c1), (airport l0-0), (airport l1-0), (obj p0)], derived atoms=[])
+"]
+s4[label="state_index=4 global_state_index = 138 abstraction_index=17 abstract_state_index=4
+State(index=17, fluent atoms=[(at t0 l0-0), (at t1 l1-0), (at a0 l1-0), (at a1 l0-0), (in p0 a1)], static atoms=[(airplane a0), (airplane a1), (city c0), (city c1), (truck t0), (truck t1), (location l0-0), (in-city l0-0 c0), (location l1-0), (in-city l1-0 c1), (airport l0-0), (airport l1-0), (obj p0)], derived atoms=[])
+State(index=4, fluent atoms=[(at t0 l0-0), (at t1 l1-0), (at a0 l0-0), (at a1 l1-0), (in p0 a0)], static atoms=[(airplane a0), (airplane a1), (city c0), (city c1), (truck t0), (truck t1), (location l0-0), (in-city l0-0 c0), (location l1-0), (in-city l1-0 c1), (airport l0-0), (airport l1-0), (obj p0)], derived atoms=[])
+"]
+s5[label="state_index=5 global_state_index = 139 abstraction_index=17 abstract_state_index=5
+State(index=16, fluent atoms=[(at t0 l0-0), (at t1 l1-0), (at a0 l0-0), (at a1 l0-0), (in p0 a1)], static atoms=[(airplane a0), (airplane a1), (city c0), (city c1), (truck t0), (truck t1), (location l0-0), (in-city l0-0 c0), (location l1-0), (in-city l1-0 c1), (airport l0-0), (airport l1-0), (obj p0)], derived atoms=[])
+State(index=5, fluent atoms=[(at t0 l0-0), (at t1 l1-0), (at a0 l0-0), (at a1 l0-0), (in p0 a0)], static atoms=[(airplane a0), (airplane a1), (city c0), (city c1), (truck t0), (truck t1), (location l0-0), (in-city l0-0 c0), (location l1-0), (in-city l1-0 c1), (airport l0-0), (airport l1-0), (obj p0)], derived atoms=[])
+"]
+s6[label="state_index=6 global_state_index = 140 abstraction_index=17 abstract_state_index=6
+State(index=6, fluent atoms=[(at t0 l0-0), (at t1 l1-0), (at a1 l1-0), (at a0 l1-0), (in p0 a0)], static atoms=[(airplane a0), (airplane a1), (city c0), (city c1), (truck t0), (truck t1), (location l0-0), (in-city l0-0 c0), (location l1-0), (in-city l1-0 c1), (airport l0-0), (airport l1-0), (obj p0)], derived atoms=[])
+State(index=11, fluent atoms=[(at t0 l0-0), (at t1 l1-0), (at a1 l1-0), (at a0 l1-0), (in p0 a1)], static atoms=[(airplane a0), (airplane a1), (city c0), (city c1), (truck t0), (truck t1), (location l0-0), (in-city l0-0 c0), (location l1-0), (in-city l1-0 c1), (airport l0-0), (airport l1-0), (obj p0)], derived atoms=[])
+"]
+s7[label="state_index=7 global_state_index = 141 abstraction_index=17 abstract_state_index=7
+State(index=15, fluent atoms=[(at t0 l0-0), (at t1 l1-0), (at a0 l0-0), (at a1 l1-0), (in p0 a1)], static atoms=[(airplane a0), (airplane a1), (city c0), (city c1), (truck t0), (truck t1), (location l0-0), (in-city l0-0 c0), (location l1-0), (in-city l1-0 c1), (airport l0-0), (airport l1-0), (obj p0)], derived atoms=[])
+State(index=7, fluent atoms=[(at t0 l0-0), (at t1 l1-0), (at a0 l1-0), (at a1 l0-0), (in p0 a0)], static atoms=[(airplane a0), (airplane a1), (city c0), (city c1), (truck t0), (truck t1), (location l0-0), (in-city l0-0 c0), (location l1-0), (in-city l1-0 c1), (airport l0-0), (airport l1-0), (obj p0)], derived atoms=[])
+"]
+s8[peripheries=2,label="state_index=8 global_state_index = 142 abstraction_index=17 abstract_state_index=8
+State(index=8, fluent atoms=[(at p0 l1-0), (at t0 l0-0), (at t1 l1-0), (at a1 l1-0), (at a0 l1-0)], static atoms=[(airplane a0), (airplane a1), (city c0), (city c1), (truck t0), (truck t1), (location l0-0), (in-city l0-0 c0), (location l1-0), (in-city l1-0 c1), (airport l0-0), (airport l1-0), (obj p0)], derived atoms=[])
+"]
+s9[label="state_index=9 global_state_index = 143 abstraction_index=17 abstract_state_index=9
+State(index=9, fluent atoms=[(at t0 l0-0), (at t1 l1-0), (at a1 l1-0), (at a0 l1-0), (in p0 t1)], static atoms=[(airplane a0), (airplane a1), (city c0), (city c1), (truck t0), (truck t1), (location l0-0), (in-city l0-0 c0), (location l1-0), (in-city l1-0 c1), (airport l0-0), (airport l1-0), (obj p0)], derived atoms=[])
+"]
+s10[peripheries=2,label="state_index=10 global_state_index = 144 abstraction_index=17 abstract_state_index=10
+State(index=10, fluent atoms=[(at p0 l1-0), (at t0 l0-0), (at t1 l1-0), (at a0 l1-0), (at a1 l0-0)], static atoms=[(airplane a0), (airplane a1), (city c0), (city c1), (truck t0), (truck t1), (location l0-0), (in-city l0-0 c0), (location l1-0), (in-city l1-0 c1), (airport l0-0), (airport l1-0), (obj p0)], derived atoms=[])
+State(index=12, fluent atoms=[(at p0 l1-0), (at t0 l0-0), (at t1 l1-0), (at a0 l0-0), (at a1 l1-0)], static atoms=[(airplane a0), (airplane a1), (city c0), (city c1), (truck t0), (truck t1), (location l0-0), (in-city l0-0 c0), (location l1-0), (in-city l1-0 c1), (airport l0-0), (airport l1-0), (obj p0)], derived atoms=[])
+"]
+s11[label="state_index=11 global_state_index = 145 abstraction_index=17 abstract_state_index=11
+State(index=23, fluent atoms=[(at t0 l0-0), (at t1 l1-0), (at a0 l1-0), (at a1 l0-0), (in p0 t1)], static atoms=[(airplane a0), (airplane a1), (city c0), (city c1), (truck t0), (truck t1), (location l0-0), (in-city l0-0 c0), (location l1-0), (in-city l1-0 c1), (airport l0-0), (airport l1-0), (obj p0)], derived atoms=[])
+State(index=13, fluent atoms=[(at t0 l0-0), (at t1 l1-0), (at a0 l0-0), (at a1 l1-0), (in p0 t1)], static atoms=[(airplane a0), (airplane a1), (city c0), (city c1), (truck t0), (truck t1), (location l0-0), (in-city l0-0 c0), (location l1-0), (in-city l1-0 c1), (airport l0-0), (airport l1-0), (obj p0)], derived atoms=[])
+"]
+s12[peripheries=2,label="state_index=12 global_state_index = 146 abstraction_index=17 abstract_state_index=12
+State(index=14, fluent atoms=[(at p0 l1-0), (at t0 l0-0), (at t1 l1-0), (at a0 l0-0), (at a1 l0-0)], static atoms=[(airplane a0), (airplane a1), (city c0), (city c1), (truck t0), (truck t1), (location l0-0), (in-city l0-0 c0), (location l1-0), (in-city l1-0 c1), (airport l0-0), (airport l1-0), (obj p0)], derived atoms=[])
+"]
+s13[label="state_index=13 global_state_index = 147 abstraction_index=17 abstract_state_index=13
+State(index=20, fluent atoms=[(at t0 l0-0), (at t1 l1-0), (at a1 l1-0), (at a0 l1-0), (in p0 t0)], static atoms=[(airplane a0), (airplane a1), (city c0), (city c1), (truck t0), (truck t1), (location l0-0), (in-city l0-0 c0), (location l1-0), (in-city l1-0 c1), (airport l0-0), (airport l1-0), (obj p0)], derived atoms=[])
+"]
+s14[label="state_index=14 global_state_index = 148 abstraction_index=17 abstract_state_index=14
+State(index=21, fluent atoms=[(at t0 l0-0), (at t1 l1-0), (at a0 l0-0), (at a1 l0-0), (in p0 t0)], static atoms=[(airplane a0), (airplane a1), (city c0), (city c1), (truck t0), (truck t1), (location l0-0), (in-city l0-0 c0), (location l1-0), (in-city l1-0 c1), (airport l0-0), (airport l1-0), (obj p0)], derived atoms=[])
+"]
+s15[label="state_index=15 global_state_index = 149 abstraction_index=17 abstract_state_index=15
+State(index=22, fluent atoms=[(at t0 l0-0), (at t1 l1-0), (at a0 l0-0), (at a1 l0-0), (in p0 t1)], static atoms=[(airplane a0), (airplane a1), (city c0), (city c1), (truck t0), (truck t1), (location l0-0), (in-city l0-0 c0), (location l1-0), (in-city l1-0 c1), (airport l0-0), (airport l1-0), (obj p0)], derived atoms=[])
+"]
+Dangling [ label = "", style = invis ]
+{ rank = same; Dangling }
+Dangling -> s0
+{ rank = same; s13}
+{ rank = same; s1,s3,s14}
+{ rank = same; s0,s2}
+{ rank = same; s4,s5}
+{ rank = same; s6,s7,s9,s11,s15}
+{ rank = same; s8,s10,s12}
+s0->s0 [label="(drive-truck t0 l0-0 l0-0 c0)
+(drive-truck t1 l1-0 l1-0 c1)
+(drive-truck t0 l0-0 l0-0 c0)
+(fly-airplane a1 l0-0 l0-0)
+(fly-airplane a0 l1-0 l1-0)
+(drive-truck t1 l1-0 l1-0 c1)
+(fly-airplane a0 l0-0 l0-0)
+(fly-airplane a1 l1-0 l1-0)
+"]
+s0->s1 [label="(load-truck p0 t0 l0-0)
+(load-truck p0 t0 l0-0)
+"]
+s0->s2 [label="(fly-airplane a1 l1-0 l0-0)
+(fly-airplane a0 l1-0 l0-0)
+"]
+s0->s3 [label="(fly-airplane a0 l0-0 l1-0)
+(fly-airplane a1 l0-0 l1-0)
+"]
+s0->s4 [label="(load-airplane p0 a0 l0-0)
+(load-airplane p0 a1 l0-0)
+"]
+s1->s0 [label="(unload-truck p0 t0 l0-0)
+(unload-truck p0 t0 l0-0)
+"]
+s1->s1 [label="(fly-airplane a0 l0-0 l0-0)
+(drive-truck t1 l1-0 l1-0 c1)
+(drive-truck t0 l0-0 l0-0 c0)
+(fly-airplane a1 l0-0 l0-0)
+(fly-airplane a0 l1-0 l1-0)
+(drive-truck t1 l1-0 l1-0 c1)
+(drive-truck t0 l0-0 l0-0 c0)
+(fly-airplane a1 l1-0 l1-0)
+"]
+s1->s13 [label="(fly-airplane a1 l0-0 l1-0)
+(fly-airplane a0 l0-0 l1-0)
+"]
+s1->s14 [label="(fly-airplane a1 l1-0 l0-0)
+(fly-airplane a0 l1-0 l0-0)
+"]
+s2->s0 [label="(fly-airplane a1 l0-0 l1-0)
+(fly-airplane a0 l0-0 l1-0)
+"]
+s2->s2 [label="(fly-airplane a0 l0-0 l0-0)
+(fly-airplane a1 l0-0 l0-0)
+(drive-truck t0 l0-0 l0-0 c0)
+(drive-truck t1 l1-0 l1-0 c1)
+"]
+s2->s5 [label="(load-airplane p0 a0 l0-0)
+(load-airplane p0 a1 l0-0)
+"]
+s2->s14 [label="(load-truck p0 t0 l0-0)
+"]
+s3->s0 [label="(fly-airplane a0 l1-0 l0-0)
+(fly-airplane a1 l1-0 l0-0)
+"]
+s3->s3 [label="(fly-airplane a0 l1-0 l1-0)
+(fly-airplane a1 l1-0 l1-0)
+(drive-truck t0 l0-0 l0-0 c0)
+(drive-truck t1 l1-0 l1-0 c1)
+"]
+s3->s13 [label="(load-truck p0 t0 l0-0)
+"]
+s4->s0 [label="(unload-airplane p0 a0 l0-0)
+(unload-airplane p0 a1 l0-0)
+"]
+s4->s4 [label="(fly-airplane a0 l0-0 l0-0)
+(drive-truck t1 l1-0 l1-0 c1)
+(fly-airplane a0 l1-0 l1-0)
+(fly-airplane a1 l0-0 l0-0)
+(drive-truck t0 l0-0 l0-0 c0)
+(drive-truck t1 l1-0 l1-0 c1)
+(drive-truck t0 l0-0 l0-0 c0)
+(fly-airplane a1 l1-0 l1-0)
+"]
+s4->s5 [label="(fly-airplane a0 l1-0 l0-0)
+(fly-airplane a1 l1-0 l0-0)
+"]
+s4->s6 [label="(fly-airplane a1 l0-0 l1-0)
+(fly-airplane a0 l0-0 l1-0)
+"]
+s5->s2 [label="(unload-airplane p0 a1 l0-0)
+(unload-airplane p0 a0 l0-0)
+"]
+s5->s4 [label="(fly-airplane a0 l0-0 l1-0)
+(fly-airplane a1 l0-0 l1-0)
+"]
+s5->s5 [label="(fly-airplane a0 l0-0 l0-0)
+(drive-truck t1 l1-0 l1-0 c1)
+(drive-truck t0 l0-0 l0-0 c0)
+(fly-airplane a0 l0-0 l0-0)
+(fly-airplane a1 l0-0 l0-0)
+(drive-truck t1 l1-0 l1-0 c1)
+(drive-truck t0 l0-0 l0-0 c0)
+(fly-airplane a1 l0-0 l0-0)
+"]
+s5->s7 [label="(fly-airplane a0 l0-0 l1-0)
+(fly-airplane a1 l0-0 l1-0)
+"]
+s6->s4 [label="(fly-airplane a0 l1-0 l0-0)
+(fly-airplane a1 l1-0 l0-0)
+"]
+s6->s6 [label="(fly-airplane a0 l1-0 l1-0)
+(fly-airplane a1 l1-0 l1-0)
+(drive-truck t0 l0-0 l0-0 c0)
+(drive-truck t1 l1-0 l1-0 c1)
+(drive-truck t0 l0-0 l0-0 c0)
+(fly-airplane a1 l1-0 l1-0)
+(fly-airplane a0 l1-0 l1-0)
+(drive-truck t1 l1-0 l1-0 c1)
+"]
+s6->s7 [label="(fly-airplane a1 l1-0 l0-0)
+(fly-airplane a0 l1-0 l0-0)
+"]
+s6->s8 [label="(unload-airplane p0 a0 l1-0)
+(unload-airplane p0 a1 l1-0)
+"]
+s7->s5 [label="(fly-airplane a0 l1-0 l0-0)
+(fly-airplane a1 l1-0 l0-0)
+"]
+s7->s6 [label="(fly-airplane a0 l0-0 l1-0)
+(fly-airplane a1 l0-0 l1-0)
+"]
+s7->s7 [label="(fly-airplane a0 l1-0 l1-0)
+(drive-truck t1 l1-0 l1-0 c1)
+(drive-truck t0 l0-0 l0-0 c0)
+(fly-airplane a1 l1-0 l1-0)
+(drive-truck t1 l1-0 l1-0 c1)
+(drive-truck t0 l0-0 l0-0 c0)
+(fly-airplane a1 l0-0 l0-0)
+(fly-airplane a0 l0-0 l0-0)
+"]
+s7->s10 [label="(unload-airplane p0 a0 l1-0)
+(unload-airplane p0 a1 l1-0)
+"]
+s8->s6 [label="(load-airplane p0 a1 l1-0)
+(load-airplane p0 a0 l1-0)
+"]
+s8->s8 [label="(drive-truck t1 l1-0 l1-0 c1)
+(fly-airplane a0 l1-0 l1-0)
+(drive-truck t0 l0-0 l0-0 c0)
+(fly-airplane a1 l1-0 l1-0)
+"]
+s8->s9 [label="(load-truck p0 t1 l1-0)
+"]
+s8->s10 [label="(fly-airplane a1 l1-0 l0-0)
+(fly-airplane a0 l1-0 l0-0)
+"]
+s9->s8 [label="(unload-truck p0 t1 l1-0)
+"]
+s9->s9 [label="(fly-airplane a1 l1-0 l1-0)
+(drive-truck t0 l0-0 l0-0 c0)
+(drive-truck t1 l1-0 l1-0 c1)
+(fly-airplane a0 l1-0 l1-0)
+"]
+s9->s11 [label="(fly-airplane a1 l1-0 l0-0)
+(fly-airplane a0 l1-0 l0-0)
+"]
+s10->s7 [label="(load-airplane p0 a1 l1-0)
+(load-airplane p0 a0 l1-0)
+"]
+s10->s8 [label="(fly-airplane a0 l0-0 l1-0)
+(fly-airplane a1 l0-0 l1-0)
+"]
+s10->s10 [label="(drive-truck t0 l0-0 l0-0 c0)
+(drive-truck t1 l1-0 l1-0 c1)
+(fly-airplane a1 l1-0 l1-0)
+(fly-airplane a0 l1-0 l1-0)
+(fly-airplane a1 l0-0 l0-0)
+(drive-truck t0 l0-0 l0-0 c0)
+(drive-truck t1 l1-0 l1-0 c1)
+(fly-airplane a0 l0-0 l0-0)
+"]
+s10->s11 [label="(load-truck p0 t1 l1-0)
+(load-truck p0 t1 l1-0)
+"]
+s10->s12 [label="(fly-airplane a0 l1-0 l0-0)
+(fly-airplane a1 l1-0 l0-0)
+"]
+s11->s9 [label="(fly-airplane a0 l0-0 l1-0)
+(fly-airplane a1 l0-0 l1-0)
+"]
+s11->s10 [label="(unload-truck p0 t1 l1-0)
+(unload-truck p0 t1 l1-0)
+"]
+s11->s11 [label="(drive-truck t1 l1-0 l1-0 c1)
+(fly-airplane a0 l0-0 l0-0)
+(fly-airplane a1 l1-0 l1-0)
+(drive-truck t0 l0-0 l0-0 c0)
+(drive-truck t1 l1-0 l1-0 c1)
+(fly-airplane a0 l1-0 l1-0)
+(fly-airplane a1 l0-0 l0-0)
+(drive-truck t0 l0-0 l0-0 c0)
+"]
+s11->s15 [label="(fly-airplane a1 l1-0 l0-0)
+(fly-airplane a0 l1-0 l0-0)
+"]
+s12->s10 [label="(fly-airplane a0 l0-0 l1-0)
+(fly-airplane a1 l0-0 l1-0)
+"]
+s12->s12 [label="(fly-airplane a0 l0-0 l0-0)
+(drive-truck t1 l1-0 l1-0 c1)
+(drive-truck t0 l0-0 l0-0 c0)
+(fly-airplane a1 l0-0 l0-0)
+"]
+s12->s15 [label="(load-truck p0 t1 l1-0)
+"]
+s13->s1 [label="(fly-airplane a0 l1-0 l0-0)
+(fly-airplane a1 l1-0 l0-0)
+"]
+s13->s3 [label="(unload-truck p0 t0 l0-0)
+"]
+s13->s13 [label="(fly-airplane a0 l1-0 l1-0)
+(drive-truck t1 l1-0 l1-0 c1)
+(drive-truck t0 l0-0 l0-0 c0)
+(fly-airplane a1 l1-0 l1-0)
+"]
+s14->s1 [label="(fly-airplane a1 l0-0 l1-0)
+(fly-airplane a0 l0-0 l1-0)
+"]
+s14->s2 [label="(unload-truck p0 t0 l0-0)
+"]
+s14->s14 [label="(drive-truck t1 l1-0 l1-0 c1)
+(drive-truck t0 l0-0 l0-0 c0)
+(fly-airplane a1 l0-0 l0-0)
+(fly-airplane a0 l0-0 l0-0)
+"]
+s15->s11 [label="(fly-airplane a0 l0-0 l1-0)
+(fly-airplane a1 l0-0 l1-0)
+"]
+s15->s12 [label="(unload-truck p0 t1 l1-0)
+"]
+s15->s15 [label="(fly-airplane a0 l0-0 l0-0)
+(fly-airplane a1 l0-0 l0-0)
+(drive-truck t0 l0-0 l0-0 c0)
+(drive-truck t1 l1-0 l1-0 c1)
+"]
+}

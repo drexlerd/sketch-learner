@@ -1,0 +1,853 @@
+Changing working directory:  /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/experiments/scripts/workspace-tractable/logistics_2
+2024-09-14 14:05:21,177 - Constructing InstanceDatas...
+2024-09-14 14:05:23,403 - Constructing GlobalFaithfulAbstractions...
+2024-09-14 14:05:25,508 - ...done
+2024-09-14 14:05:25,539 - Constructing StateSpaces...
+2024-09-14 14:05:25,607 - ...done
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/logistics/training/easy/p-1-2-1-1-2-2.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/logistics/training/easy/p-1-2-1-1-2-2.pddl
+2024-09-14 14:05:25,645 - Created InstanceData with num concrete states: 5 and num abstract states: 3
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/logistics/training/easy/p-1-1-1-1-2-5.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/logistics/training/easy/p-1-1-1-1-2-5.pddl
+2024-09-14 14:05:25,645 - Created InstanceData with num concrete states: 4 and num abstract states: 3
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/logistics/training/easy/p-1-1-1-1-1-8.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/logistics/training/easy/p-1-1-1-1-1-8.pddl
+2024-09-14 14:05:25,646 - Created InstanceData with num concrete states: 3 and num abstract states: 3
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/logistics/training/easy/p-1-2-1-1-1-21.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/logistics/training/easy/p-1-2-1-1-1-21.pddl
+2024-09-14 14:05:25,646 - Created InstanceData with num concrete states: 4 and num abstract states: 3
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/logistics/training/easy/p-1-1-1-2-1-7.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/logistics/training/easy/p-1-1-1-2-1-7.pddl
+2024-09-14 14:05:25,647 - Created InstanceData with num concrete states: 9 and num abstract states: 6
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/logistics/training/easy/p-1-2-1-2-1-4.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/logistics/training/easy/p-1-2-1-2-1-4.pddl
+2024-09-14 14:05:25,648 - Created InstanceData with num concrete states: 16 and num abstract states: 7
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/logistics/training/easy/p-1-1-1-2-2-27.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/logistics/training/easy/p-1-1-1-2-2-27.pddl
+2024-09-14 14:05:25,649 - Created InstanceData with num concrete states: 16 and num abstract states: 7
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/logistics/training/easy/p-1-2-1-2-2-11.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/logistics/training/easy/p-1-2-1-2-2-11.pddl
+2024-09-14 14:05:25,650 - Created InstanceData with num concrete states: 25 and num abstract states: 8
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/logistics/training/easy/p-2-1-1-1-1-7.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/logistics/training/easy/p-2-1-1-1-1-7.pddl
+2024-09-14 14:05:25,651 - Created InstanceData with num concrete states: 8 and num abstract states: 8
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/logistics/training/easy/p-2-1-1-1-1-9.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/logistics/training/easy/p-2-1-1-1-1-9.pddl
+2024-09-14 14:05:25,651 - Created InstanceData with num concrete states: 8 and num abstract states: 8
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/logistics/training/easy/p-2-2-1-1-1-26.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/logistics/training/easy/p-2-2-1-1-1-26.pddl
+2024-09-14 14:05:25,653 - Created InstanceData with num concrete states: 10 and num abstract states: 8
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/logistics/training/easy/p-2-2-1-1-1-23.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/logistics/training/easy/p-2-2-1-1-1-23.pddl
+2024-09-14 14:05:25,654 - Created InstanceData with num concrete states: 10 and num abstract states: 8
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/logistics/training/easy/p-1-1-2-1-2-4.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/logistics/training/easy/p-1-1-2-1-2-4.pddl
+2024-09-14 14:05:25,655 - Created InstanceData with num concrete states: 10 and num abstract states: 10
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/logistics/training/easy/p-2-2-1-1-2-8.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/logistics/training/easy/p-2-2-1-1-2-8.pddl
+2024-09-14 14:05:25,656 - Created InstanceData with num concrete states: 24 and num abstract states: 13
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/logistics/training/easy/p-2-2-1-1-2-17.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/logistics/training/easy/p-2-2-1-1-2-17.pddl
+2024-09-14 14:05:25,657 - Created InstanceData with num concrete states: 24 and num abstract states: 13
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/logistics/training/easy/p-2-1-1-1-2-17.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/logistics/training/easy/p-2-1-1-1-2-17.pddl
+2024-09-14 14:05:25,658 - Created InstanceData with num concrete states: 20 and num abstract states: 13
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/logistics/training/easy/p-2-1-1-1-2-1.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/logistics/training/easy/p-2-1-1-1-2-1.pddl
+2024-09-14 14:05:25,659 - Created InstanceData with num concrete states: 20 and num abstract states: 13
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/logistics/training/easy/p-1-2-2-1-2-24.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/logistics/training/easy/p-1-2-2-1-2-24.pddl
+2024-09-14 14:05:25,660 - Created InstanceData with num concrete states: 24 and num abstract states: 16
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/logistics/training/easy/p-2-1-1-2-1-10.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/logistics/training/easy/p-2-1-1-2-1-10.pddl
+2024-09-14 14:05:25,661 - Created InstanceData with num concrete states: 32 and num abstract states: 20
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/logistics/training/easy/p-2-1-1-2-1-9.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/logistics/training/easy/p-2-1-1-2-1-9.pddl
+2024-09-14 14:05:25,662 - Created InstanceData with num concrete states: 32 and num abstract states: 20
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/logistics/training/easy/p-2-2-1-2-1-29.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/logistics/training/easy/p-2-2-1-2-1-29.pddl
+2024-09-14 14:05:25,664 - Created InstanceData with num concrete states: 50 and num abstract states: 22
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/logistics/training/easy/p-2-2-1-2-1-20.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/logistics/training/easy/p-2-2-1-2-1-20.pddl
+2024-09-14 14:05:25,665 - Created InstanceData with num concrete states: 50 and num abstract states: 22
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/logistics/training/easy/p-1-1-2-2-2-4.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/logistics/training/easy/p-1-1-2-2-2-4.pddl
+2024-09-14 14:05:25,667 - Created InstanceData with num concrete states: 50 and num abstract states: 25
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/logistics/training/easy/p-1-1-2-2-2-14.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/logistics/training/easy/p-1-1-2-2-2-14.pddl
+2024-09-14 14:05:25,669 - Created InstanceData with num concrete states: 50 and num abstract states: 30
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/logistics/training/easy/p-2-1-1-2-1-2.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/logistics/training/easy/p-2-1-1-2-1-2.pddl
+2024-09-14 14:05:25,670 - Created InstanceData with num concrete states: 32 and num abstract states: 32
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/logistics/training/easy/p-2-2-1-2-1-26.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/logistics/training/easy/p-2-2-1-2-1-26.pddl
+2024-09-14 14:05:25,671 - Created InstanceData with num concrete states: 50 and num abstract states: 34
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/logistics/training/easy/p-2-1-1-2-2-22.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/logistics/training/easy/p-2-1-1-2-2-22.pddl
+2024-09-14 14:05:25,674 - Created InstanceData with num concrete states: 100 and num abstract states: 37
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/logistics/training/easy/p-2-1-1-2-2-18.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/logistics/training/easy/p-2-1-1-2-2-18.pddl
+2024-09-14 14:05:25,677 - Created InstanceData with num concrete states: 100 and num abstract states: 37
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/logistics/training/easy/p-2-2-1-2-2-20.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/logistics/training/easy/p-2-2-1-2-2-20.pddl
+2024-09-14 14:05:25,680 - Created InstanceData with num concrete states: 144 and num abstract states: 40
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/logistics/training/easy/p-2-2-1-2-2-8.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/logistics/training/easy/p-2-2-1-2-2-8.pddl
+2024-09-14 14:05:25,684 - Created InstanceData with num concrete states: 144 and num abstract states: 40
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/logistics/training/easy/p-1-2-2-2-2-5.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/logistics/training/easy/p-1-2-2-2-2-5.pddl
+2024-09-14 14:05:25,687 - Created InstanceData with num concrete states: 144 and num abstract states: 47
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/logistics/training/easy/p-1-2-2-2-2-9.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/logistics/training/easy/p-1-2-2-2-2-9.pddl
+2024-09-14 14:05:25,691 - Created InstanceData with num concrete states: 144 and num abstract states: 53
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/logistics/training/easy/p-2-1-2-1-2-10.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/logistics/training/easy/p-2-1-2-1-2-10.pddl
+2024-09-14 14:05:25,693 - Created InstanceData with num concrete states: 56 and num abstract states: 56
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/logistics/training/easy/p-2-1-2-1-2-3.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/logistics/training/easy/p-2-1-2-1-2-3.pddl
+2024-09-14 14:05:25,694 - Created InstanceData with num concrete states: 56 and num abstract states: 56
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/logistics/training/easy/p-2-1-1-2-2-24.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/logistics/training/easy/p-2-1-1-2-2-24.pddl
+2024-09-14 14:05:25,697 - Created InstanceData with num concrete states: 100 and num abstract states: 59
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/logistics/training/easy/p-2-2-1-2-2-5.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/logistics/training/easy/p-2-2-1-2-2-5.pddl
+2024-09-14 14:05:25,701 - Created InstanceData with num concrete states: 144 and num abstract states: 62
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/logistics/training/easy/p-2-2-2-1-2-28.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/logistics/training/easy/p-2-2-2-1-2-28.pddl
+2024-09-14 14:05:25,704 - Created InstanceData with num concrete states: 128 and num abstract states: 88
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/logistics/training/easy/p-2-2-2-1-2-13.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/logistics/training/easy/p-2-2-2-1-2-13.pddl
+2024-09-14 14:05:25,707 - Created InstanceData with num concrete states: 128 and num abstract states: 88
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/logistics/training/easy/p-2-1-2-2-2-15.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/logistics/training/easy/p-2-1-2-2-2-15.pddl
+2024-09-14 14:05:25,715 - Created InstanceData with num concrete states: 392 and num abstract states: 196
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/logistics/training/easy/p-2-1-2-2-2-8.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/logistics/training/easy/p-2-1-2-2-2-8.pddl
+2024-09-14 14:05:25,723 - Created InstanceData with num concrete states: 392 and num abstract states: 196
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/logistics/training/easy/p-2-1-2-2-2-11.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/logistics/training/easy/p-2-1-2-2-2-11.pddl
+2024-09-14 14:05:25,732 - Created InstanceData with num concrete states: 392 and num abstract states: 224
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/logistics/training/easy/p-2-1-2-2-2-14.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/logistics/training/easy/p-2-1-2-2-2-14.pddl
+2024-09-14 14:05:25,740 - Created InstanceData with num concrete states: 392 and num abstract states: 224
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/logistics/training/easy/p-2-2-2-2-2-5.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/logistics/training/easy/p-2-2-2-2-2-5.pddl
+2024-09-14 14:05:25,761 - Created InstanceData with num concrete states: 1024 and num abstract states: 336
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/logistics/training/easy/p-2-2-2-2-2-3.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/logistics/training/easy/p-2-2-2-2-2-3.pddl
+2024-09-14 14:05:25,782 - Created InstanceData with num concrete states: 1024 and num abstract states: 336
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/logistics/training/easy/p-2-2-2-2-2-11.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/logistics/training/easy/p-2-2-2-2-2-11.pddl
+2024-09-14 14:05:25,804 - Created InstanceData with num concrete states: 1024 and num abstract states: 376
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/logistics/training/easy/p-2-2-2-2-2-9.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/logistics/training/easy/p-2-2-2-2-2-9.pddl
+2024-09-14 14:05:25,826 - Created InstanceData with num concrete states: 1024 and num abstract states: 376
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/logistics/training/easy/p-2-1-2-2-2-12.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/logistics/training/easy/p-2-1-2-2-2-12.pddl
+2024-09-14 14:05:25,835 - Created InstanceData with num concrete states: 392 and num abstract states: 392
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/logistics/training/easy/p-2-1-2-2-2-1.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/logistics/training/easy/p-2-1-2-2-2-1.pddl
+2024-09-14 14:05:25,843 - Created InstanceData with num concrete states: 392 and num abstract states: 392
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/logistics/training/easy/p-2-2-2-2-2-28.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/logistics/training/easy/p-2-2-2-2-2-28.pddl
+2024-09-14 14:05:25,864 - Created InstanceData with num concrete states: 1024 and num abstract states: 656
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/logistics/training/easy/p-2-2-2-2-2-12.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/logistics/training/easy/p-2-2-2-2-2-12.pddl
+2024-09-14 14:05:25,886 - Created InstanceData with num concrete states: 1024 and num abstract states: 656
+2024-09-14 14:05:25,891 - ..done
+2024-09-14 14:05:25,902 - Initializing TupleGraphs...
+2024-09-14 14:05:31,244 - ..done
+2024-09-14 14:05:31,245 - Iteration: 0
+     id: 0 problem_filepath: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/logistics/training/easy/p-1-2-1-1-2-2.pddl num_states: 5 num_state_equivalences: 3
+2024-09-14 14:05:31,247 - Initialize global faithful abstract states...
+2024-09-14 14:05:31,247 - ..done
+2024-09-14 14:05:31,247 - Initializing DomainFeatureData...
+[t=10.1121s, 2603992 KB] Started generating base features of complexity 1.
+[t=10.1124s, 2603992 KB] Complexity 1:
+    b_nullary: 0
+    c_one_of: 0
+    c_top: 1
+    c_bot: 1
+    c_primitive: 5
+    r_primitive: 5
+    c_and: 0
+    c_not: 0
+    c_equal: 0
+    c_some: 0
+    c_all: 0
+    r_restrict: 0
+    r_and: 0
+    r_inverse: 0
+    r_transitive_closure: 0
+    b_empty: 0
+    n_count: 0
+    n_concept_distance: 0
+[t=10.1128s, 2603992 KB] Finished generating base features.
+[t=10.1128s, 2603992 KB] Started generating composite features. 
+[t=10.1131s, 2603992 KB] Complexity 2:
+Total concept elements: 12
+Total role elements: 9
+Total numerical elements: 6
+Total boolean elements: 3
+    b_nullary: 0
+    c_one_of: 0
+    c_top: 1
+    c_bot: 1
+    c_primitive: 5
+    r_primitive: 5
+    c_and: 0
+    c_not: 5
+    c_equal: 0
+    c_some: 0
+    c_all: 0
+    r_restrict: 0
+    r_and: 0
+    r_inverse: 4
+    r_transitive_closure: 0
+    b_empty: 3
+    n_count: 6
+    n_concept_distance: 0
+[t=10.1139s, 2603992 KB] Complexity 3:
+Total concept elements: 21
+Total role elements: 12
+Total numerical elements: 8
+Total boolean elements: 3
+    b_nullary: 0
+    c_one_of: 0
+    c_top: 1
+    c_bot: 1
+    c_primitive: 5
+    r_primitive: 5
+    c_and: 0
+    c_not: 5
+    c_equal: 1
+    c_some: 4
+    c_all: 4
+    r_restrict: 2
+    r_and: 1
+    r_inverse: 4
+    r_transitive_closure: 0
+    b_empty: 3
+    n_count: 8
+    n_concept_distance: 0
+[t=10.1146s, 2603992 KB] Complexity 4:
+Total concept elements: 25
+Total role elements: 15
+Total numerical elements: 20
+Total boolean elements: 6
+    b_nullary: 0
+    c_one_of: 0
+    c_top: 1
+    c_bot: 1
+    c_primitive: 5
+    r_primitive: 5
+    c_and: 0
+    c_not: 6
+    c_equal: 1
+    c_some: 6
+    c_all: 5
+    r_restrict: 2
+    r_and: 1
+    r_inverse: 7
+    r_transitive_closure: 0
+    b_empty: 6
+    n_count: 16
+    n_concept_distance: 4
+[t=10.1155s, 2603992 KB] Complexity 5:
+Total concept elements: 40
+Total role elements: 15
+Total numerical elements: 22
+Total boolean elements: 6
+    b_nullary: 0
+    c_one_of: 0
+    c_top: 1
+    c_bot: 1
+    c_primitive: 5
+    r_primitive: 5
+    c_and: 13
+    c_not: 7
+    c_equal: 1
+    c_some: 6
+    c_all: 6
+    r_restrict: 2
+    r_and: 1
+    r_inverse: 7
+    r_transitive_closure: 0
+    b_empty: 6
+    n_count: 17
+    n_concept_distance: 5
+[t=10.1165s, 2603992 KB] Complexity 6:
+Total concept elements: 88
+Total role elements: 15
+Total numerical elements: 33
+Total boolean elements: 8
+    b_nullary: 0
+    c_one_of: 0
+    c_top: 1
+    c_bot: 1
+    c_primitive: 5
+    r_primitive: 5
+    c_and: 37
+    c_not: 17
+    c_equal: 1
+    c_some: 12
+    c_all: 14
+    r_restrict: 2
+    r_and: 1
+    r_inverse: 7
+    r_transitive_closure: 0
+    b_empty: 8
+    n_count: 22
+    n_concept_distance: 11
+[t=10.1179s, 2603992 KB] Complexity 7:
+Total concept elements: 115
+Total role elements: 15
+Total numerical elements: 46
+Total boolean elements: 8
+    b_nullary: 0
+    c_one_of: 0
+    c_top: 1
+    c_bot: 1
+    c_primitive: 5
+    r_primitive: 5
+    c_and: 46
+    c_not: 33
+    c_equal: 1
+    c_some: 13
+    c_all: 15
+    r_restrict: 2
+    r_and: 1
+    r_inverse: 7
+    r_transitive_closure: 0
+    b_empty: 8
+    n_count: 35
+    n_concept_distance: 11
+[t=10.1206s, 2603992 KB] Complexity 8:
+Total concept elements: 144
+Total role elements: 15
+Total numerical elements: 57
+Total boolean elements: 8
+    b_nullary: 0
+    c_one_of: 0
+    c_top: 1
+    c_bot: 1
+    c_primitive: 5
+    r_primitive: 5
+    c_and: 58
+    c_not: 42
+    c_equal: 1
+    c_some: 17
+    c_all: 19
+    r_restrict: 2
+    r_and: 1
+    r_inverse: 7
+    r_transitive_closure: 0
+    b_empty: 8
+    n_count: 44
+    n_concept_distance: 13
+[t=10.1243s, 2603992 KB] Complexity 9:
+Total concept elements: 226
+Total role elements: 15
+Total numerical elements: 78
+Total boolean elements: 8
+    b_nullary: 0
+    c_one_of: 0
+    c_top: 1
+    c_bot: 1
+    c_primitive: 5
+    r_primitive: 5
+    c_and: 122
+    c_not: 52
+    c_equal: 1
+    c_some: 21
+    c_all: 23
+    r_restrict: 2
+    r_and: 1
+    r_inverse: 7
+    r_transitive_closure: 0
+    b_empty: 8
+    n_count: 59
+    n_concept_distance: 19
+[t=10.1246s, 2603992 KB] Finished generating composite features.
+Features generated: 86
+Features after relevant changes pruning (complete): 13
+2024-09-14 14:05:31,288 - ..done
+2024-09-14 14:05:31,288 - Constructing PerStateFeatureValuations...
+2024-09-14 14:05:31,288 - ..done
+2024-09-14 14:05:31,288 - Constructing StatePairEquivalenceDatas...
+2024-09-14 14:05:31,290 - ..done
+2024-09-14 14:05:31,290 - Constructing TupleGraphEquivalences...
+Tuple graph equivalence construction statistics:
+Num nodes: 15
+2024-09-14 14:05:31,291 - ..done
+2024-09-14 14:05:31,291 - Minimizing TupleGraphEquivalences...
+Tuple graph equivalence minimization statistics:
+Num orig nodes: 15
+Num kept nodes: 9
+2024-09-14 14:05:31,291 - ..done
+Number of initial D2 facts: 9
+Number of D2 facts: 9 of 81
+2024-09-14 14:05:31,295 - Grounding Logic Program...
+2024-09-14 14:05:31,299 - ..done
+2024-09-14 14:05:31,300 - Solving Logic Program...
+2024-09-14 14:05:31,303 - ..done
+Clingo statistics:
+{'call': 0.0, 'result': 1.0, 'signal': 0.0, 'exhausted': 1.0, 'costs': [0.0], 'lower': [0.0], 'concurrency': 32.0, 'winner': 13.0, 'times': {'total': 0.01137995719909668, 'cpu': 0.02048800000000206, 'solve': 0.002827882766723633, 'unsat': 0.0005509853363037109, 'sat': 0.002276897430419922}, 'models': {'enumerated': 1.0, 'optimal': 1.0}}
+Solution cost: [0.0]
+Total time: 0.01137995719909668
+CPU time: 0.02048800000000206
+Solve time: 0.002827882766723633
+2024-09-14 14:05:31,305 - Learned the following sketch:
+(:policy
+(:booleans )
+(:numericals )
+(:rule (:conditions ) (:effects ))
+)
+Numer of sketch rules: 1
+Number of selected features: 0
+Maximum complexity of selected feature: 0
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/logistics/training/easy/p-1-2-1-1-2-2.pddl
+Sketch cycles
+Instance: 0
+2
+2
+Number of unsatisfied D2 facts: 18
+Number of D2 facts: 27 of 81
+2024-09-14 14:05:31,314 - Grounding Logic Program...
+2024-09-14 14:05:31,319 - ..done
+2024-09-14 14:05:31,319 - Solving Logic Program...
+2024-09-14 14:05:31,321 - ..done
+Clingo statistics:
+{'call': 0.0, 'result': 1.0, 'signal': 0.0, 'exhausted': 1.0, 'costs': [3.0], 'lower': [3.0], 'concurrency': 32.0, 'winner': 19.0, 'times': {'total': 0.014785051345825195, 'cpu': 0.01918700000000051, 'solve': 0.0017240047454833984, 'unsat': 0.0003390312194824219, 'sat': 0.0011870861053466797}, 'models': {'enumerated': 3.0, 'optimal': 1.0}}
+Solution cost: [3.0]
+Total time: 0.014785051345825195
+CPU time: 0.01918700000000051
+Solve time: 0.0017240047454833984
+2024-09-14 14:05:31,323 - Learned the following sketch:
+(:policy
+(:booleans )
+(:numericals (f2 "n_count(r_primitive(in,0,1))"))
+(:rule (:conditions (:c_n_gt f2)) (:effects (:e_n_dec f2)))
+)
+Numer of sketch rules: 1
+Number of selected features: 1
+Maximum complexity of selected feature: 2
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/logistics/training/easy/p-1-2-1-1-2-2.pddl
+2024-09-14 14:05:31,323 - Verifying learned sketch...
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/logistics/training/easy/p-1-2-1-1-2-2.pddl
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/logistics/training/easy/p-1-2-1-1-2-2.pddl
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/logistics/training/easy/p-1-1-1-1-2-5.pddl
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/logistics/training/easy/p-1-1-1-1-1-8.pddl
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/logistics/training/easy/p-1-2-1-1-1-21.pddl
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/logistics/training/easy/p-1-1-1-2-1-7.pddl
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/logistics/training/easy/p-1-2-1-2-1-4.pddl
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/logistics/training/easy/p-1-1-1-2-2-27.pddl
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/logistics/training/easy/p-1-2-1-2-2-11.pddl
+Sketch fails to bound width of a state
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/logistics/training/easy/p-2-1-1-1-1-7.pddl
+Instance: 8
+Source_state: 45
+Dlplan state: (instance index=8, state index=5, atoms={at(t0,l0-1), at(a0,l0-0), at(p0,l0-0)})
+2024-09-14 14:05:31,329 - ..done
+Smallest unsolved instance: 8
+Selected instances: [8]
+2024-09-14 14:05:31,329 - Iteration: 1
+     id: 8 problem_filepath: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/logistics/training/easy/p-2-1-1-1-1-7.pddl num_states: 8 num_state_equivalences: 8
+2024-09-14 14:05:31,358 - Initialize global faithful abstract states...
+2024-09-14 14:05:31,358 - ..done
+2024-09-14 14:05:31,358 - Initializing DomainFeatureData...
+[t=10.2233s, 2606552 KB] Started generating base features of complexity 1.
+[t=10.2235s, 2606552 KB] Complexity 1:
+    b_nullary: 0
+    c_one_of: 0
+    c_top: 1
+    c_bot: 1
+    c_primitive: 6
+    r_primitive: 5
+    c_and: 0
+    c_not: 0
+    c_equal: 0
+    c_some: 0
+    c_all: 0
+    r_restrict: 0
+    r_and: 0
+    r_inverse: 0
+    r_transitive_closure: 0
+    b_empty: 0
+    n_count: 0
+    n_concept_distance: 0
+[t=10.2238s, 2606552 KB] Finished generating base features.
+[t=10.2239s, 2606552 KB] Started generating composite features. 
+[t=10.224s, 2606552 KB] Complexity 2:
+Total concept elements: 14
+Total role elements: 9
+Total numerical elements: 6
+Total boolean elements: 3
+    b_nullary: 0
+    c_one_of: 0
+    c_top: 1
+    c_bot: 1
+    c_primitive: 6
+    r_primitive: 5
+    c_and: 0
+    c_not: 6
+    c_equal: 0
+    c_some: 0
+    c_all: 0
+    r_restrict: 0
+    r_and: 0
+    r_inverse: 4
+    r_transitive_closure: 0
+    b_empty: 3
+    n_count: 6
+    n_concept_distance: 0
+[t=10.2249s, 2606552 KB] Complexity 3:
+Total concept elements: 25
+Total role elements: 13
+Total numerical elements: 8
+Total boolean elements: 3
+    b_nullary: 0
+    c_one_of: 0
+    c_top: 1
+    c_bot: 1
+    c_primitive: 6
+    r_primitive: 5
+    c_and: 0
+    c_not: 6
+    c_equal: 1
+    c_some: 5
+    c_all: 5
+    r_restrict: 3
+    r_and: 1
+    r_inverse: 4
+    r_transitive_closure: 0
+    b_empty: 3
+    n_count: 8
+    n_concept_distance: 0
+[t=10.2261s, 2606552 KB] Complexity 4:
+Total concept elements: 39
+Total role elements: 17
+Total numerical elements: 24
+Total boolean elements: 6
+    b_nullary: 0
+    c_one_of: 0
+    c_top: 1
+    c_bot: 1
+    c_primitive: 6
+    r_primitive: 5
+    c_and: 1
+    c_not: 9
+    c_equal: 1
+    c_some: 9
+    c_all: 11
+    r_restrict: 3
+    r_and: 1
+    r_inverse: 8
+    r_transitive_closure: 0
+    b_empty: 6
+    n_count: 18
+    n_concept_distance: 6
+[t=10.2275s, 2606552 KB] Complexity 5:
+Total concept elements: 68
+Total role elements: 17
+Total numerical elements: 34
+Total boolean elements: 8
+    b_nullary: 0
+    c_one_of: 0
+    c_top: 1
+    c_bot: 1
+    c_primitive: 6
+    r_primitive: 5
+    c_and: 22
+    c_not: 14
+    c_equal: 1
+    c_some: 10
+    c_all: 13
+    r_restrict: 3
+    r_and: 1
+    r_inverse: 8
+    r_transitive_closure: 0
+    b_empty: 8
+    n_count: 27
+    n_concept_distance: 7
+[t=10.2299s, 2606552 KB] Complexity 6:
+Total concept elements: 174
+Total role elements: 17
+Total numerical elements: 60
+Total boolean elements: 14
+    b_nullary: 0
+    c_one_of: 0
+    c_top: 1
+    c_bot: 1
+    c_primitive: 6
+    r_primitive: 5
+    c_and: 69
+    c_not: 34
+    c_equal: 1
+    c_some: 27
+    c_all: 35
+    r_restrict: 3
+    r_and: 1
+    r_inverse: 8
+    r_transitive_closure: 0
+    b_empty: 14
+    n_count: 40
+    n_concept_distance: 20
+[t=10.2339s, 2606552 KB] Complexity 7:
+Total concept elements: 282
+Total role elements: 17
+Total numerical elements: 110
+Total boolean elements: 23
+    b_nullary: 0
+    c_one_of: 0
+    c_top: 1
+    c_bot: 1
+    c_primitive: 6
+    r_primitive: 5
+    c_and: 115
+    c_not: 84
+    c_equal: 1
+    c_some: 35
+    c_all: 39
+    r_restrict: 3
+    r_and: 1
+    r_inverse: 8
+    r_transitive_closure: 0
+    b_empty: 23
+    n_count: 81
+    n_concept_distance: 29
+[t=10.2434s, 2606552 KB] Complexity 8:
+Total concept elements: 463
+Total role elements: 17
+Total numerical elements: 162
+Total boolean elements: 26
+    b_nullary: 0
+    c_one_of: 0
+    c_top: 1
+    c_bot: 1
+    c_primitive: 6
+    r_primitive: 5
+    c_and: 197
+    c_not: 133
+    c_equal: 1
+    c_some: 59
+    c_all: 65
+    r_restrict: 3
+    r_and: 1
+    r_inverse: 8
+    r_transitive_closure: 0
+    b_empty: 26
+    n_count: 121
+    n_concept_distance: 41
+[t=10.2602s, 2606552 KB] Complexity 9:
+Total concept elements: 860
+Total role elements: 17
+Total numerical elements: 311
+Total boolean elements: 41
+    b_nullary: 0
+    c_one_of: 0
+    c_top: 1
+    c_bot: 1
+    c_primitive: 6
+    r_primitive: 5
+    c_and: 428
+    c_not: 219
+    c_equal: 1
+    c_some: 94
+    c_all: 110
+    r_restrict: 3
+    r_and: 1
+    r_inverse: 8
+    r_transitive_closure: 0
+    b_empty: 41
+    n_count: 224
+    n_concept_distance: 87
+[t=10.2605s, 2606552 KB] Finished generating composite features.
+Features generated: 352
+Features after relevant changes pruning (complete): 151
+2024-09-14 14:05:31,875 - ..done
+2024-09-14 14:05:31,875 - Constructing PerStateFeatureValuations...
+2024-09-14 14:05:31,876 - ..done
+2024-09-14 14:05:31,876 - Constructing StatePairEquivalenceDatas...
+2024-09-14 14:05:31,935 - ..done
+2024-09-14 14:05:31,936 - Constructing TupleGraphEquivalences...
+Tuple graph equivalence construction statistics:
+Num nodes: 64
+2024-09-14 14:05:31,938 - ..done
+2024-09-14 14:05:31,938 - Minimizing TupleGraphEquivalences...
+Tuple graph equivalence minimization statistics:
+Num orig nodes: 64
+Num kept nodes: 64
+2024-09-14 14:05:31,938 - ..done
+Number of initial D2 facts: 224
+Number of D2 facts: 224 of 4096
+2024-09-14 14:05:32,058 - Grounding Logic Program...
+2024-09-14 14:05:32,182 - ..done
+2024-09-14 14:05:32,182 - Solving Logic Program...
+2024-09-14 14:05:32,194 - ..done
+Clingo statistics:
+{'call': 0.0, 'result': 1.0, 'signal': 0.0, 'exhausted': 1.0, 'costs': [0.0], 'lower': [0.0], 'concurrency': 32.0, 'winner': 15.0, 'times': {'total': 0.2543799877166748, 'cpu': 0.285775000000001, 'solve': 0.0036149024963378906, 'unsat': 0.0006427764892578125, 'sat': 0.0019750595092773438}, 'models': {'enumerated': 9.0, 'optimal': 1.0}}
+Solution cost: [0.0]
+Total time: 0.2543799877166748
+CPU time: 0.285775000000001
+Solve time: 0.0036149024963378906
+2024-09-14 14:05:32,256 - Learned the following sketch:
+(:policy
+(:booleans )
+(:numericals )
+(:rule (:conditions ) (:effects ))
+)
+Numer of sketch rules: 1
+Number of selected features: 0
+Maximum complexity of selected feature: 0
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/logistics/training/easy/p-2-1-1-1-1-7.pddl
+Sketch cycles
+Instance: 8
+47
+47
+Number of unsatisfied D2 facts: 540
+Number of D2 facts: 764 of 4096
+2024-09-14 14:05:32,671 - Grounding Logic Program...
+2024-09-14 14:05:32,919 - ..done
+2024-09-14 14:05:32,919 - Solving Logic Program...
+2024-09-14 14:05:32,950 - ..done
+Clingo statistics:
+{'call': 0.0, 'result': 1.0, 'signal': 0.0, 'exhausted': 1.0, 'costs': [5.0], 'lower': [5.0], 'concurrency': 32.0, 'winner': 22.0, 'times': {'total': 0.692216157913208, 'cpu': 0.8830240000000025, 'solve': 0.015112161636352539, 'unsat': 0.002353191375732422, 'sat': 0.005680084228515625}, 'models': {'enumerated': 10.0, 'optimal': 1.0}}
+Solution cost: [5.0]
+Total time: 0.692216157913208
+CPU time: 0.8830240000000025
+Solve time: 0.015112161636352539
+2024-09-14 14:05:33,017 - Learned the following sketch:
+(:policy
+(:booleans )
+(:numericals (f3 "n_count(c_equal(r_primitive(at,0,1),r_primitive(at_g,0,1)))"))
+(:rule (:conditions (:c_n_gt f3)) (:effects (:e_n_inc f3)))
+(:rule (:conditions (:c_n_gt f3)) (:effects (:e_n_bot f3)))
+)
+Numer of sketch rules: 2
+Number of selected features: 1
+Maximum complexity of selected feature: 4
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/logistics/training/easy/p-2-1-1-1-1-7.pddl
+Sketch cycles
+Instance: 8
+47
+47
+Number of unsatisfied D2 facts: 144
+Number of D2 facts: 908 of 4096
+2024-09-14 14:05:33,440 - Grounding Logic Program...
+2024-09-14 14:05:33,721 - ..done
+2024-09-14 14:05:33,721 - Solving Logic Program...
+2024-09-14 14:05:33,759 - ..done
+Clingo statistics:
+{'call': 0.0, 'result': 1.0, 'signal': 0.0, 'exhausted': 1.0, 'costs': [5.0], 'lower': [5.0], 'concurrency': 32.0, 'winner': 11.0, 'times': {'total': 0.7404451370239258, 'cpu': 1.028813000000003, 'solve': 0.019585132598876953, 'unsat': 0.005319118499755859, 'sat': 0.005352020263671875}, 'models': {'enumerated': 16.0, 'optimal': 1.0}}
+Solution cost: [5.0]
+Total time: 0.7404451370239258
+CPU time: 1.028813000000003
+Solve time: 0.019585132598876953
+2024-09-14 14:05:33,830 - Learned the following sketch:
+(:policy
+(:booleans )
+(:numericals (f7 "n_count(c_all(r_primitive(at,0,1),c_primitive(airport,0)))"))
+(:rule (:conditions (:c_n_gt f7)) (:effects (:e_n_dec f7)))
+(:rule (:conditions (:c_n_gt f7)) (:effects (:e_n_bot f7)))
+)
+Numer of sketch rules: 2
+Number of selected features: 1
+Maximum complexity of selected feature: 4
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/logistics/training/easy/p-2-1-1-1-1-7.pddl
+Sketch cycles
+Instance: 8
+47
+47
+Number of unsatisfied D2 facts: 85
+Number of D2 facts: 993 of 4096
+2024-09-14 14:05:34,261 - Grounding Logic Program...
+2024-09-14 14:05:34,565 - ..done
+2024-09-14 14:05:34,566 - Solving Logic Program...
+2024-09-14 14:05:34,606 - ..done
+Clingo statistics:
+{'call': 0.0, 'result': 1.0, 'signal': 0.0, 'exhausted': 1.0, 'costs': [5.0], 'lower': [5.0], 'concurrency': 32.0, 'winner': 27.0, 'times': {'total': 0.7748019695281982, 'cpu': 1.0953780000000002, 'solve': 0.0210568904876709, 'unsat': 0.003659963607788086, 'sat': 0.0062999725341796875}, 'models': {'enumerated': 19.0, 'optimal': 1.0}}
+Solution cost: [5.0]
+Total time: 0.7748019695281982
+CPU time: 1.0953780000000002
+Solve time: 0.0210568904876709
+2024-09-14 14:05:34,678 - Learned the following sketch:
+(:policy
+(:booleans )
+(:numericals (f7 "n_count(c_all(r_primitive(at,0,1),c_primitive(airport,0)))"))
+(:rule (:conditions (:c_n_gt f7)) (:effects (:e_n_dec f7)))
+(:rule (:conditions (:c_n_gt f7)) (:effects (:e_n_bot f7)))
+)
+Numer of sketch rules: 2
+Number of selected features: 1
+Maximum complexity of selected feature: 4
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/logistics/training/easy/p-2-1-1-1-1-7.pddl
+Sketch cycles
+Instance: 8
+47
+47
+Number of unsatisfied D2 facts: 48
+Number of D2 facts: 1041 of 4096
+2024-09-14 14:05:35,107 - Grounding Logic Program...
+2024-09-14 14:05:35,442 - ..done
+2024-09-14 14:05:35,442 - Solving Logic Program...
+2024-09-14 14:05:35,484 - ..done
+Clingo statistics:
+{'call': 0.0, 'result': 1.0, 'signal': 0.0, 'exhausted': 1.0, 'costs': [5.0], 'lower': [5.0], 'concurrency': 32.0, 'winner': 29.0, 'times': {'total': 0.8044769763946533, 'cpu': 1.1484339999999982, 'solve': 0.021914005279541016, 'unsat': 0.004730939865112305, 'sat': 0.0061380863189697266}, 'models': {'enumerated': 23.0, 'optimal': 1.0}}
+Solution cost: [5.0]
+Total time: 0.8044769763946533
+CPU time: 1.1484339999999982
+Solve time: 0.021914005279541016
+2024-09-14 14:05:35,552 - Learned the following sketch:
+(:policy
+(:booleans )
+(:numericals (f3 "n_count(c_equal(r_primitive(at,0,1),r_primitive(at_g,0,1)))"))
+(:rule (:conditions (:c_n_gt f3)) (:effects (:e_n_inc f3)))
+)
+Numer of sketch rules: 1
+Number of selected features: 1
+Maximum complexity of selected feature: 4
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/logistics/training/easy/p-2-1-1-1-1-7.pddl
+2024-09-14 14:05:35,554 - Verifying learned sketch...
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/logistics/training/easy/p-2-1-1-1-1-7.pddl
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/logistics/training/easy/p-1-2-1-1-2-2.pddl
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/logistics/training/easy/p-1-1-1-1-2-5.pddl
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/logistics/training/easy/p-1-1-1-1-1-8.pddl
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/logistics/training/easy/p-1-2-1-1-1-21.pddl
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/logistics/training/easy/p-1-1-1-2-1-7.pddl
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/logistics/training/easy/p-1-2-1-2-1-4.pddl
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/logistics/training/easy/p-1-1-1-2-2-27.pddl
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/logistics/training/easy/p-1-2-1-2-2-11.pddl
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/logistics/training/easy/p-2-1-1-1-1-7.pddl
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/logistics/training/easy/p-2-1-1-1-1-9.pddl
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/logistics/training/easy/p-2-2-1-1-1-26.pddl
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/logistics/training/easy/p-2-2-1-1-1-23.pddl
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/logistics/training/easy/p-1-1-2-1-2-4.pddl
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/logistics/training/easy/p-2-2-1-1-2-8.pddl
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/logistics/training/easy/p-2-2-1-1-2-17.pddl
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/logistics/training/easy/p-2-1-1-1-2-17.pddl
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/logistics/training/easy/p-2-1-1-1-2-1.pddl
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/logistics/training/easy/p-1-2-2-1-2-24.pddl
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/logistics/training/easy/p-2-1-1-2-1-10.pddl
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/logistics/training/easy/p-2-1-1-2-1-9.pddl
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/logistics/training/easy/p-2-2-1-2-1-29.pddl
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/logistics/training/easy/p-2-2-1-2-1-20.pddl
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/logistics/training/easy/p-1-1-2-2-2-4.pddl
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/logistics/training/easy/p-1-1-2-2-2-14.pddl
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/logistics/training/easy/p-2-1-1-2-1-2.pddl
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/logistics/training/easy/p-2-2-1-2-1-26.pddl
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/logistics/training/easy/p-2-1-1-2-2-22.pddl
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/logistics/training/easy/p-2-1-1-2-2-18.pddl
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/logistics/training/easy/p-2-2-1-2-2-20.pddl
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/logistics/training/easy/p-2-2-1-2-2-8.pddl
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/logistics/training/easy/p-1-2-2-2-2-5.pddl
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/logistics/training/easy/p-1-2-2-2-2-9.pddl
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/logistics/training/easy/p-2-1-2-1-2-10.pddl
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/logistics/training/easy/p-2-1-2-1-2-3.pddl
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/logistics/training/easy/p-2-1-1-2-2-24.pddl
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/logistics/training/easy/p-2-2-1-2-2-5.pddl
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/logistics/training/easy/p-2-2-2-1-2-28.pddl
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/logistics/training/easy/p-2-2-2-1-2-13.pddl
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/logistics/training/easy/p-2-1-2-2-2-15.pddl
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/logistics/training/easy/p-2-1-2-2-2-8.pddl
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/logistics/training/easy/p-2-1-2-2-2-11.pddl
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/logistics/training/easy/p-2-1-2-2-2-14.pddl
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/logistics/training/easy/p-2-2-2-2-2-5.pddl
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/logistics/training/easy/p-2-2-2-2-2-3.pddl
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/logistics/training/easy/p-2-2-2-2-2-11.pddl
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/logistics/training/easy/p-2-2-2-2-2-9.pddl
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/logistics/training/easy/p-2-1-2-2-2-12.pddl
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/logistics/training/easy/p-2-1-2-2-2-1.pddl
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/logistics/training/easy/p-2-2-2-2-2-28.pddl
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/logistics/training/easy/p-2-2-2-2-2-12.pddl
+2024-09-14 14:05:40,491 - ..done
+Sketch solves all instances!
+================================================================================
+2024-09-14 14:05:40,492 - Summary:
+LearningStatistics:
+    num_training_instances: 50
+    num_selected_training_instances (|P|): 1
+    num_states_in_selected_training_instances (|S|): 8
+    num_states_in_complete_selected_training_instances (|S|): 8
+    num_features_in_pool (|F|): 151
+================================================================================
+Resulting sketch:
+(:policy
+(:booleans )
+(:numericals (f3 "n_count(c_equal(r_primitive(at,0,1),r_primitive(at_g,0,1)))"))
+(:rule (:conditions (:c_n_gt f3)) (:effects (:e_n_inc f3)))
+)
+Numer of sketch rules: 1
+Number of selected features: 1
+Maximum complexity of selected feature: 4
+================================================================================
+Resulting minimized sketch:
+(:policy
+(:booleans )
+(:numericals (f3 "n_count(c_equal(r_primitive(at,0,1),r_primitive(at_g,0,1)))"))
+(:rule (:conditions (:c_n_gt f3)) (:effects (:e_n_inc f3)))
+)
+Numer of sketch rules: 1
+Number of selected features: 1
+Maximum complexity of selected feature: 4
+================================================================================
+================================================================================
+Preprocessing time: 11 seconds.
+ASP time: 4 seconds.
+Verification time: 5 seconds.
+Total time: 20 seconds.
+Total memory: 0 GiB.
+Num states in training data before symmetry pruning: 68940
+Num states in training data after symmetry pruning: 5378
+================================================================================
+

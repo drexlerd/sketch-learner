@@ -1,0 +1,797 @@
+digraph {
+rankdir="LR"
+s0[label="state_index=0 global_state_index = 264 abstraction_index=6 abstract_state_index=0
+State(index=0, fluent atoms=[(pointing satellite0 star0), (power_avail satellite0)], static atoms=[(supports instrument0 thermograph0), (calibration_target instrument0 star0), (supports instrument1 thermograph0), (calibration_target instrument1 star0), (on_board instrument0 satellite0), (on_board instrument1 satellite0), (satellite satellite0), (instrument instrument0), (instrument instrument1), (mode thermograph0), (direction star0), (direction planet1)], derived atoms=[])
+"]
+s1[label="state_index=1 global_state_index = 265 abstraction_index=6 abstract_state_index=1
+State(index=1, fluent atoms=[(pointing satellite0 star0), (power_on instrument0)], static atoms=[(supports instrument0 thermograph0), (calibration_target instrument0 star0), (supports instrument1 thermograph0), (calibration_target instrument1 star0), (on_board instrument0 satellite0), (on_board instrument1 satellite0), (satellite satellite0), (instrument instrument0), (instrument instrument1), (mode thermograph0), (direction star0), (direction planet1)], derived atoms=[])
+State(index=2, fluent atoms=[(pointing satellite0 star0), (power_on instrument1)], static atoms=[(supports instrument0 thermograph0), (calibration_target instrument0 star0), (supports instrument1 thermograph0), (calibration_target instrument1 star0), (on_board instrument0 satellite0), (on_board instrument1 satellite0), (satellite satellite0), (instrument instrument0), (instrument instrument1), (mode thermograph0), (direction star0), (direction planet1)], derived atoms=[])
+"]
+s2[label="state_index=2 global_state_index = 266 abstraction_index=6 abstract_state_index=2
+State(index=3, fluent atoms=[(power_avail satellite0), (pointing satellite0 planet1)], static atoms=[(supports instrument0 thermograph0), (calibration_target instrument0 star0), (supports instrument1 thermograph0), (calibration_target instrument1 star0), (on_board instrument0 satellite0), (on_board instrument1 satellite0), (satellite satellite0), (instrument instrument0), (instrument instrument1), (mode thermograph0), (direction star0), (direction planet1)], derived atoms=[])
+"]
+s3[label="state_index=3 global_state_index = 267 abstraction_index=6 abstract_state_index=3
+State(index=4, fluent atoms=[(power_on instrument0), (pointing satellite0 planet1)], static atoms=[(supports instrument0 thermograph0), (calibration_target instrument0 star0), (supports instrument1 thermograph0), (calibration_target instrument1 star0), (on_board instrument0 satellite0), (on_board instrument1 satellite0), (satellite satellite0), (instrument instrument0), (instrument instrument1), (mode thermograph0), (direction star0), (direction planet1)], derived atoms=[])
+State(index=5, fluent atoms=[(power_on instrument1), (pointing satellite0 planet1)], static atoms=[(supports instrument0 thermograph0), (calibration_target instrument0 star0), (supports instrument1 thermograph0), (calibration_target instrument1 star0), (on_board instrument0 satellite0), (on_board instrument1 satellite0), (satellite satellite0), (instrument instrument0), (instrument instrument1), (mode thermograph0), (direction star0), (direction planet1)], derived atoms=[])
+"]
+s4[label="state_index=4 global_state_index = 268 abstraction_index=6 abstract_state_index=4
+State(index=94, fluent atoms=[(pointing satellite0 star0), (power_on instrument0), (calibrated instrument0)], static atoms=[(supports instrument0 thermograph0), (calibration_target instrument0 star0), (supports instrument1 thermograph0), (calibration_target instrument1 star0), (on_board instrument0 satellite0), (on_board instrument1 satellite0), (satellite satellite0), (instrument instrument0), (instrument instrument1), (mode thermograph0), (direction star0), (direction planet1)], derived atoms=[])
+State(index=6, fluent atoms=[(pointing satellite0 star0), (power_on instrument1), (calibrated instrument1)], static atoms=[(supports instrument0 thermograph0), (calibration_target instrument0 star0), (supports instrument1 thermograph0), (calibration_target instrument1 star0), (on_board instrument0 satellite0), (on_board instrument1 satellite0), (satellite satellite0), (instrument instrument0), (instrument instrument1), (mode thermograph0), (direction star0), (direction planet1)], derived atoms=[])
+"]
+s5[label="state_index=5 global_state_index = 269 abstraction_index=6 abstract_state_index=5
+State(index=91, fluent atoms=[(pointing satellite0 star0), (power_avail satellite0), (calibrated instrument0)], static atoms=[(supports instrument0 thermograph0), (calibration_target instrument0 star0), (supports instrument1 thermograph0), (calibration_target instrument1 star0), (on_board instrument0 satellite0), (on_board instrument1 satellite0), (satellite satellite0), (instrument instrument0), (instrument instrument1), (mode thermograph0), (direction star0), (direction planet1)], derived atoms=[])
+State(index=7, fluent atoms=[(pointing satellite0 star0), (power_avail satellite0), (calibrated instrument1)], static atoms=[(supports instrument0 thermograph0), (calibration_target instrument0 star0), (supports instrument1 thermograph0), (calibration_target instrument1 star0), (on_board instrument0 satellite0), (on_board instrument1 satellite0), (satellite satellite0), (instrument instrument0), (instrument instrument1), (mode thermograph0), (direction star0), (direction planet1)], derived atoms=[])
+"]
+s6[label="state_index=6 global_state_index = 270 abstraction_index=6 abstract_state_index=6
+State(index=95, fluent atoms=[(power_on instrument0), (pointing satellite0 planet1), (calibrated instrument0)], static atoms=[(supports instrument0 thermograph0), (calibration_target instrument0 star0), (supports instrument1 thermograph0), (calibration_target instrument1 star0), (on_board instrument0 satellite0), (on_board instrument1 satellite0), (satellite satellite0), (instrument instrument0), (instrument instrument1), (mode thermograph0), (direction star0), (direction planet1)], derived atoms=[])
+State(index=8, fluent atoms=[(power_on instrument1), (pointing satellite0 planet1), (calibrated instrument1)], static atoms=[(supports instrument0 thermograph0), (calibration_target instrument0 star0), (supports instrument1 thermograph0), (calibration_target instrument1 star0), (on_board instrument0 satellite0), (on_board instrument1 satellite0), (satellite satellite0), (instrument instrument0), (instrument instrument1), (mode thermograph0), (direction star0), (direction planet1)], derived atoms=[])
+"]
+s7[label="state_index=7 global_state_index = 271 abstraction_index=6 abstract_state_index=7
+State(index=9, fluent atoms=[(pointing satellite0 star0), (power_on instrument1), (calibrated instrument1), (have_image star0 thermograph0)], static atoms=[(supports instrument0 thermograph0), (calibration_target instrument0 star0), (supports instrument1 thermograph0), (calibration_target instrument1 star0), (on_board instrument0 satellite0), (on_board instrument1 satellite0), (satellite satellite0), (instrument instrument0), (instrument instrument1), (mode thermograph0), (direction star0), (direction planet1)], derived atoms=[])
+State(index=44, fluent atoms=[(pointing satellite0 star0), (power_on instrument0), (calibrated instrument0), (have_image star0 thermograph0)], static atoms=[(supports instrument0 thermograph0), (calibration_target instrument0 star0), (supports instrument1 thermograph0), (calibration_target instrument1 star0), (on_board instrument0 satellite0), (on_board instrument1 satellite0), (satellite satellite0), (instrument instrument0), (instrument instrument1), (mode thermograph0), (direction star0), (direction planet1)], derived atoms=[])
+"]
+s8[label="state_index=8 global_state_index = 272 abstraction_index=6 abstract_state_index=8
+State(index=10, fluent atoms=[(pointing satellite0 star0), (power_avail satellite0), (calibrated instrument1), (have_image star0 thermograph0)], static atoms=[(supports instrument0 thermograph0), (calibration_target instrument0 star0), (supports instrument1 thermograph0), (calibration_target instrument1 star0), (on_board instrument0 satellite0), (on_board instrument1 satellite0), (satellite satellite0), (instrument instrument0), (instrument instrument1), (mode thermograph0), (direction star0), (direction planet1)], derived atoms=[])
+State(index=45, fluent atoms=[(pointing satellite0 star0), (power_avail satellite0), (calibrated instrument0), (have_image star0 thermograph0)], static atoms=[(supports instrument0 thermograph0), (calibration_target instrument0 star0), (supports instrument1 thermograph0), (calibration_target instrument1 star0), (on_board instrument0 satellite0), (on_board instrument1 satellite0), (satellite satellite0), (instrument instrument0), (instrument instrument1), (mode thermograph0), (direction star0), (direction planet1)], derived atoms=[])
+"]
+s9[label="state_index=9 global_state_index = 273 abstraction_index=6 abstract_state_index=9
+State(index=11, fluent atoms=[(power_on instrument1), (pointing satellite0 planet1), (calibrated instrument1), (have_image star0 thermograph0)], static atoms=[(supports instrument0 thermograph0), (calibration_target instrument0 star0), (supports instrument1 thermograph0), (calibration_target instrument1 star0), (on_board instrument0 satellite0), (on_board instrument1 satellite0), (satellite satellite0), (instrument instrument0), (instrument instrument1), (mode thermograph0), (direction star0), (direction planet1)], derived atoms=[])
+State(index=46, fluent atoms=[(power_on instrument0), (pointing satellite0 planet1), (calibrated instrument0), (have_image star0 thermograph0)], static atoms=[(supports instrument0 thermograph0), (calibration_target instrument0 star0), (supports instrument1 thermograph0), (calibration_target instrument1 star0), (on_board instrument0 satellite0), (on_board instrument1 satellite0), (satellite satellite0), (instrument instrument0), (instrument instrument1), (mode thermograph0), (direction star0), (direction planet1)], derived atoms=[])
+"]
+s10[label="state_index=10 global_state_index = 274 abstraction_index=6 abstract_state_index=10
+State(index=12, fluent atoms=[(power_avail satellite0), (pointing satellite0 planet1), (calibrated instrument1), (have_image star0 thermograph0)], static atoms=[(supports instrument0 thermograph0), (calibration_target instrument0 star0), (supports instrument1 thermograph0), (calibration_target instrument1 star0), (on_board instrument0 satellite0), (on_board instrument1 satellite0), (satellite satellite0), (instrument instrument0), (instrument instrument1), (mode thermograph0), (direction star0), (direction planet1)], derived atoms=[])
+State(index=47, fluent atoms=[(power_avail satellite0), (pointing satellite0 planet1), (calibrated instrument0), (have_image star0 thermograph0)], static atoms=[(supports instrument0 thermograph0), (calibration_target instrument0 star0), (supports instrument1 thermograph0), (calibration_target instrument1 star0), (on_board instrument0 satellite0), (on_board instrument1 satellite0), (satellite satellite0), (instrument instrument0), (instrument instrument1), (mode thermograph0), (direction star0), (direction planet1)], derived atoms=[])
+"]
+s11[label="state_index=11 global_state_index = 275 abstraction_index=6 abstract_state_index=11
+State(index=26, fluent atoms=[(have_image planet1 thermograph0), (power_on instrument0), (pointing satellite0 planet1), (calibrated instrument0), (have_image star0 thermograph0)], static atoms=[(supports instrument0 thermograph0), (calibration_target instrument0 star0), (supports instrument1 thermograph0), (calibration_target instrument1 star0), (on_board instrument0 satellite0), (on_board instrument1 satellite0), (satellite satellite0), (instrument instrument0), (instrument instrument1), (mode thermograph0), (direction star0), (direction planet1)], derived atoms=[])
+State(index=13, fluent atoms=[(have_image planet1 thermograph0), (power_on instrument1), (pointing satellite0 planet1), (calibrated instrument1), (have_image star0 thermograph0)], static atoms=[(supports instrument0 thermograph0), (calibration_target instrument0 star0), (supports instrument1 thermograph0), (calibration_target instrument1 star0), (on_board instrument0 satellite0), (on_board instrument1 satellite0), (satellite satellite0), (instrument instrument0), (instrument instrument1), (mode thermograph0), (direction star0), (direction planet1)], derived atoms=[])
+"]
+s12[label="state_index=12 global_state_index = 276 abstraction_index=6 abstract_state_index=12
+State(index=27, fluent atoms=[(have_image planet1 thermograph0), (power_avail satellite0), (pointing satellite0 planet1), (calibrated instrument0), (have_image star0 thermograph0)], static atoms=[(supports instrument0 thermograph0), (calibration_target instrument0 star0), (supports instrument1 thermograph0), (calibration_target instrument1 star0), (on_board instrument0 satellite0), (on_board instrument1 satellite0), (satellite satellite0), (instrument instrument0), (instrument instrument1), (mode thermograph0), (direction star0), (direction planet1)], derived atoms=[])
+State(index=14, fluent atoms=[(have_image planet1 thermograph0), (power_avail satellite0), (pointing satellite0 planet1), (calibrated instrument1), (have_image star0 thermograph0)], static atoms=[(supports instrument0 thermograph0), (calibration_target instrument0 star0), (supports instrument1 thermograph0), (calibration_target instrument1 star0), (on_board instrument0 satellite0), (on_board instrument1 satellite0), (satellite satellite0), (instrument instrument0), (instrument instrument1), (mode thermograph0), (direction star0), (direction planet1)], derived atoms=[])
+"]
+s13[peripheries=2,label="state_index=13 global_state_index = 277 abstraction_index=6 abstract_state_index=13
+State(index=24, fluent atoms=[(pointing satellite0 star0), (have_image planet1 thermograph0), (power_on instrument0), (calibrated instrument0), (have_image star0 thermograph0)], static atoms=[(supports instrument0 thermograph0), (calibration_target instrument0 star0), (supports instrument1 thermograph0), (calibration_target instrument1 star0), (on_board instrument0 satellite0), (on_board instrument1 satellite0), (satellite satellite0), (instrument instrument0), (instrument instrument1), (mode thermograph0), (direction star0), (direction planet1)], derived atoms=[])
+State(index=15, fluent atoms=[(pointing satellite0 star0), (have_image planet1 thermograph0), (power_on instrument1), (calibrated instrument1), (have_image star0 thermograph0)], static atoms=[(supports instrument0 thermograph0), (calibration_target instrument0 star0), (supports instrument1 thermograph0), (calibration_target instrument1 star0), (on_board instrument0 satellite0), (on_board instrument1 satellite0), (satellite satellite0), (instrument instrument0), (instrument instrument1), (mode thermograph0), (direction star0), (direction planet1)], derived atoms=[])
+"]
+s14[peripheries=2,label="state_index=14 global_state_index = 278 abstraction_index=6 abstract_state_index=14
+State(index=25, fluent atoms=[(pointing satellite0 star0), (have_image planet1 thermograph0), (power_avail satellite0), (calibrated instrument0), (have_image star0 thermograph0)], static atoms=[(supports instrument0 thermograph0), (calibration_target instrument0 star0), (supports instrument1 thermograph0), (calibration_target instrument1 star0), (on_board instrument0 satellite0), (on_board instrument1 satellite0), (satellite satellite0), (instrument instrument0), (instrument instrument1), (mode thermograph0), (direction star0), (direction planet1)], derived atoms=[])
+State(index=16, fluent atoms=[(pointing satellite0 star0), (have_image planet1 thermograph0), (power_avail satellite0), (calibrated instrument1), (have_image star0 thermograph0)], static atoms=[(supports instrument0 thermograph0), (calibration_target instrument0 star0), (supports instrument1 thermograph0), (calibration_target instrument1 star0), (on_board instrument0 satellite0), (on_board instrument1 satellite0), (satellite satellite0), (instrument instrument0), (instrument instrument1), (mode thermograph0), (direction star0), (direction planet1)], derived atoms=[])
+"]
+s15[peripheries=2,label="state_index=15 global_state_index = 279 abstraction_index=6 abstract_state_index=15
+State(index=17, fluent atoms=[(pointing satellite0 star0), (have_image planet1 thermograph0), (power_on instrument0), (calibrated instrument1), (have_image star0 thermograph0)], static atoms=[(supports instrument0 thermograph0), (calibration_target instrument0 star0), (supports instrument1 thermograph0), (calibration_target instrument1 star0), (on_board instrument0 satellite0), (on_board instrument1 satellite0), (satellite satellite0), (instrument instrument0), (instrument instrument1), (mode thermograph0), (direction star0), (direction planet1)], derived atoms=[])
+State(index=29, fluent atoms=[(pointing satellite0 star0), (have_image planet1 thermograph0), (power_on instrument1), (calibrated instrument0), (have_image star0 thermograph0)], static atoms=[(supports instrument0 thermograph0), (calibration_target instrument0 star0), (supports instrument1 thermograph0), (calibration_target instrument1 star0), (on_board instrument0 satellite0), (on_board instrument1 satellite0), (satellite satellite0), (instrument instrument0), (instrument instrument1), (mode thermograph0), (direction star0), (direction planet1)], derived atoms=[])
+"]
+s16[peripheries=2,label="state_index=16 global_state_index = 280 abstraction_index=6 abstract_state_index=16
+State(index=23, fluent atoms=[(pointing satellite0 star0), (have_image planet1 thermograph0), (power_on instrument0), (have_image star0 thermograph0)], static atoms=[(supports instrument0 thermograph0), (calibration_target instrument0 star0), (supports instrument1 thermograph0), (calibration_target instrument1 star0), (on_board instrument0 satellite0), (on_board instrument1 satellite0), (satellite satellite0), (instrument instrument0), (instrument instrument1), (mode thermograph0), (direction star0), (direction planet1)], derived atoms=[])
+State(index=18, fluent atoms=[(pointing satellite0 star0), (have_image planet1 thermograph0), (power_on instrument1), (have_image star0 thermograph0)], static atoms=[(supports instrument0 thermograph0), (calibration_target instrument0 star0), (supports instrument1 thermograph0), (calibration_target instrument1 star0), (on_board instrument0 satellite0), (on_board instrument1 satellite0), (satellite satellite0), (instrument instrument0), (instrument instrument1), (mode thermograph0), (direction star0), (direction planet1)], derived atoms=[])
+"]
+s17[peripheries=2,label="state_index=17 global_state_index = 281 abstraction_index=6 abstract_state_index=17
+State(index=19, fluent atoms=[(pointing satellite0 star0), (have_image planet1 thermograph0), (power_avail satellite0), (have_image star0 thermograph0)], static atoms=[(supports instrument0 thermograph0), (calibration_target instrument0 star0), (supports instrument1 thermograph0), (calibration_target instrument1 star0), (on_board instrument0 satellite0), (on_board instrument1 satellite0), (satellite satellite0), (instrument instrument0), (instrument instrument1), (mode thermograph0), (direction star0), (direction planet1)], derived atoms=[])
+"]
+s18[label="state_index=18 global_state_index = 282 abstraction_index=6 abstract_state_index=18
+State(index=22, fluent atoms=[(have_image planet1 thermograph0), (power_on instrument0), (pointing satellite0 planet1), (have_image star0 thermograph0)], static atoms=[(supports instrument0 thermograph0), (calibration_target instrument0 star0), (supports instrument1 thermograph0), (calibration_target instrument1 star0), (on_board instrument0 satellite0), (on_board instrument1 satellite0), (satellite satellite0), (instrument instrument0), (instrument instrument1), (mode thermograph0), (direction star0), (direction planet1)], derived atoms=[])
+State(index=20, fluent atoms=[(have_image planet1 thermograph0), (power_on instrument1), (pointing satellite0 planet1), (have_image star0 thermograph0)], static atoms=[(supports instrument0 thermograph0), (calibration_target instrument0 star0), (supports instrument1 thermograph0), (calibration_target instrument1 star0), (on_board instrument0 satellite0), (on_board instrument1 satellite0), (satellite satellite0), (instrument instrument0), (instrument instrument1), (mode thermograph0), (direction star0), (direction planet1)], derived atoms=[])
+"]
+s19[label="state_index=19 global_state_index = 283 abstraction_index=6 abstract_state_index=19
+State(index=21, fluent atoms=[(have_image planet1 thermograph0), (power_avail satellite0), (pointing satellite0 planet1), (have_image star0 thermograph0)], static atoms=[(supports instrument0 thermograph0), (calibration_target instrument0 star0), (supports instrument1 thermograph0), (calibration_target instrument1 star0), (on_board instrument0 satellite0), (on_board instrument1 satellite0), (satellite satellite0), (instrument instrument0), (instrument instrument1), (mode thermograph0), (direction star0), (direction planet1)], derived atoms=[])
+"]
+s20[label="state_index=20 global_state_index = 284 abstraction_index=6 abstract_state_index=20
+State(index=28, fluent atoms=[(have_image planet1 thermograph0), (power_on instrument1), (pointing satellite0 planet1), (calibrated instrument0), (have_image star0 thermograph0)], static atoms=[(supports instrument0 thermograph0), (calibration_target instrument0 star0), (supports instrument1 thermograph0), (calibration_target instrument1 star0), (on_board instrument0 satellite0), (on_board instrument1 satellite0), (satellite satellite0), (instrument instrument0), (instrument instrument1), (mode thermograph0), (direction star0), (direction planet1)], derived atoms=[])
+State(index=34, fluent atoms=[(have_image planet1 thermograph0), (power_on instrument0), (pointing satellite0 planet1), (calibrated instrument1), (have_image star0 thermograph0)], static atoms=[(supports instrument0 thermograph0), (calibration_target instrument0 star0), (supports instrument1 thermograph0), (calibration_target instrument1 star0), (on_board instrument0 satellite0), (on_board instrument1 satellite0), (satellite satellite0), (instrument instrument0), (instrument instrument1), (mode thermograph0), (direction star0), (direction planet1)], derived atoms=[])
+"]
+s21[peripheries=2,label="state_index=21 global_state_index = 285 abstraction_index=6 abstract_state_index=21
+State(index=30, fluent atoms=[(pointing satellite0 star0), (have_image planet1 thermograph0), (power_on instrument1), (calibrated instrument0), (calibrated instrument1), (have_image star0 thermograph0)], static atoms=[(supports instrument0 thermograph0), (calibration_target instrument0 star0), (supports instrument1 thermograph0), (calibration_target instrument1 star0), (on_board instrument0 satellite0), (on_board instrument1 satellite0), (satellite satellite0), (instrument instrument0), (instrument instrument1), (mode thermograph0), (direction star0), (direction planet1)], derived atoms=[])
+State(index=35, fluent atoms=[(pointing satellite0 star0), (have_image planet1 thermograph0), (power_on instrument0), (calibrated instrument0), (calibrated instrument1), (have_image star0 thermograph0)], static atoms=[(supports instrument0 thermograph0), (calibration_target instrument0 star0), (supports instrument1 thermograph0), (calibration_target instrument1 star0), (on_board instrument0 satellite0), (on_board instrument1 satellite0), (satellite satellite0), (instrument instrument0), (instrument instrument1), (mode thermograph0), (direction star0), (direction planet1)], derived atoms=[])
+"]
+s22[peripheries=2,label="state_index=22 global_state_index = 286 abstraction_index=6 abstract_state_index=22
+State(index=31, fluent atoms=[(pointing satellite0 star0), (have_image planet1 thermograph0), (power_avail satellite0), (calibrated instrument0), (calibrated instrument1), (have_image star0 thermograph0)], static atoms=[(supports instrument0 thermograph0), (calibration_target instrument0 star0), (supports instrument1 thermograph0), (calibration_target instrument1 star0), (on_board instrument0 satellite0), (on_board instrument1 satellite0), (satellite satellite0), (instrument instrument0), (instrument instrument1), (mode thermograph0), (direction star0), (direction planet1)], derived atoms=[])
+"]
+s23[label="state_index=23 global_state_index = 287 abstraction_index=6 abstract_state_index=23
+State(index=32, fluent atoms=[(have_image planet1 thermograph0), (power_on instrument1), (pointing satellite0 planet1), (calibrated instrument0), (calibrated instrument1), (have_image star0 thermograph0)], static atoms=[(supports instrument0 thermograph0), (calibration_target instrument0 star0), (supports instrument1 thermograph0), (calibration_target instrument1 star0), (on_board instrument0 satellite0), (on_board instrument1 satellite0), (satellite satellite0), (instrument instrument0), (instrument instrument1), (mode thermograph0), (direction star0), (direction planet1)], derived atoms=[])
+State(index=36, fluent atoms=[(have_image planet1 thermograph0), (power_on instrument0), (pointing satellite0 planet1), (calibrated instrument0), (calibrated instrument1), (have_image star0 thermograph0)], static atoms=[(supports instrument0 thermograph0), (calibration_target instrument0 star0), (supports instrument1 thermograph0), (calibration_target instrument1 star0), (on_board instrument0 satellite0), (on_board instrument1 satellite0), (satellite satellite0), (instrument instrument0), (instrument instrument1), (mode thermograph0), (direction star0), (direction planet1)], derived atoms=[])
+"]
+s24[label="state_index=24 global_state_index = 288 abstraction_index=6 abstract_state_index=24
+State(index=33, fluent atoms=[(have_image planet1 thermograph0), (power_avail satellite0), (pointing satellite0 planet1), (calibrated instrument0), (calibrated instrument1), (have_image star0 thermograph0)], static atoms=[(supports instrument0 thermograph0), (calibration_target instrument0 star0), (supports instrument1 thermograph0), (calibration_target instrument1 star0), (on_board instrument0 satellite0), (on_board instrument1 satellite0), (satellite satellite0), (instrument instrument0), (instrument instrument1), (mode thermograph0), (direction star0), (direction planet1)], derived atoms=[])
+"]
+s25[label="state_index=25 global_state_index = 289 abstraction_index=6 abstract_state_index=25
+State(index=37, fluent atoms=[(power_on instrument0), (pointing satellite0 planet1), (calibrated instrument1), (have_image star0 thermograph0)], static atoms=[(supports instrument0 thermograph0), (calibration_target instrument0 star0), (supports instrument1 thermograph0), (calibration_target instrument1 star0), (on_board instrument0 satellite0), (on_board instrument1 satellite0), (satellite satellite0), (instrument instrument0), (instrument instrument1), (mode thermograph0), (direction star0), (direction planet1)], derived atoms=[])
+State(index=48, fluent atoms=[(power_on instrument1), (pointing satellite0 planet1), (calibrated instrument0), (have_image star0 thermograph0)], static atoms=[(supports instrument0 thermograph0), (calibration_target instrument0 star0), (supports instrument1 thermograph0), (calibration_target instrument1 star0), (on_board instrument0 satellite0), (on_board instrument1 satellite0), (satellite satellite0), (instrument instrument0), (instrument instrument1), (mode thermograph0), (direction star0), (direction planet1)], derived atoms=[])
+"]
+s26[label="state_index=26 global_state_index = 290 abstraction_index=6 abstract_state_index=26
+State(index=38, fluent atoms=[(power_on instrument1), (pointing satellite0 planet1), (have_image star0 thermograph0)], static atoms=[(supports instrument0 thermograph0), (calibration_target instrument0 star0), (supports instrument1 thermograph0), (calibration_target instrument1 star0), (on_board instrument0 satellite0), (on_board instrument1 satellite0), (satellite satellite0), (instrument instrument0), (instrument instrument1), (mode thermograph0), (direction star0), (direction planet1)], derived atoms=[])
+State(index=43, fluent atoms=[(power_on instrument0), (pointing satellite0 planet1), (have_image star0 thermograph0)], static atoms=[(supports instrument0 thermograph0), (calibration_target instrument0 star0), (supports instrument1 thermograph0), (calibration_target instrument1 star0), (on_board instrument0 satellite0), (on_board instrument1 satellite0), (satellite satellite0), (instrument instrument0), (instrument instrument1), (mode thermograph0), (direction star0), (direction planet1)], derived atoms=[])
+"]
+s27[label="state_index=27 global_state_index = 291 abstraction_index=6 abstract_state_index=27
+State(index=39, fluent atoms=[(power_avail satellite0), (pointing satellite0 planet1), (have_image star0 thermograph0)], static atoms=[(supports instrument0 thermograph0), (calibration_target instrument0 star0), (supports instrument1 thermograph0), (calibration_target instrument1 star0), (on_board instrument0 satellite0), (on_board instrument1 satellite0), (satellite satellite0), (instrument instrument0), (instrument instrument1), (mode thermograph0), (direction star0), (direction planet1)], derived atoms=[])
+"]
+s28[label="state_index=28 global_state_index = 292 abstraction_index=6 abstract_state_index=28
+State(index=40, fluent atoms=[(pointing satellite0 star0), (power_on instrument1), (have_image star0 thermograph0)], static atoms=[(supports instrument0 thermograph0), (calibration_target instrument0 star0), (supports instrument1 thermograph0), (calibration_target instrument1 star0), (on_board instrument0 satellite0), (on_board instrument1 satellite0), (satellite satellite0), (instrument instrument0), (instrument instrument1), (mode thermograph0), (direction star0), (direction planet1)], derived atoms=[])
+State(index=42, fluent atoms=[(pointing satellite0 star0), (power_on instrument0), (have_image star0 thermograph0)], static atoms=[(supports instrument0 thermograph0), (calibration_target instrument0 star0), (supports instrument1 thermograph0), (calibration_target instrument1 star0), (on_board instrument0 satellite0), (on_board instrument1 satellite0), (satellite satellite0), (instrument instrument0), (instrument instrument1), (mode thermograph0), (direction star0), (direction planet1)], derived atoms=[])
+"]
+s29[label="state_index=29 global_state_index = 293 abstraction_index=6 abstract_state_index=29
+State(index=41, fluent atoms=[(pointing satellite0 star0), (power_avail satellite0), (have_image star0 thermograph0)], static atoms=[(supports instrument0 thermograph0), (calibration_target instrument0 star0), (supports instrument1 thermograph0), (calibration_target instrument1 star0), (on_board instrument0 satellite0), (on_board instrument1 satellite0), (satellite satellite0), (instrument instrument0), (instrument instrument1), (mode thermograph0), (direction star0), (direction planet1)], derived atoms=[])
+"]
+s30[label="state_index=30 global_state_index = 294 abstraction_index=6 abstract_state_index=30
+State(index=49, fluent atoms=[(pointing satellite0 star0), (power_on instrument1), (calibrated instrument0), (have_image star0 thermograph0)], static atoms=[(supports instrument0 thermograph0), (calibration_target instrument0 star0), (supports instrument1 thermograph0), (calibration_target instrument1 star0), (on_board instrument0 satellite0), (on_board instrument1 satellite0), (satellite satellite0), (instrument instrument0), (instrument instrument1), (mode thermograph0), (direction star0), (direction planet1)], derived atoms=[])
+State(index=54, fluent atoms=[(pointing satellite0 star0), (power_on instrument0), (calibrated instrument1), (have_image star0 thermograph0)], static atoms=[(supports instrument0 thermograph0), (calibration_target instrument0 star0), (supports instrument1 thermograph0), (calibration_target instrument1 star0), (on_board instrument0 satellite0), (on_board instrument1 satellite0), (satellite satellite0), (instrument instrument0), (instrument instrument1), (mode thermograph0), (direction star0), (direction planet1)], derived atoms=[])
+"]
+s31[label="state_index=31 global_state_index = 295 abstraction_index=6 abstract_state_index=31
+State(index=50, fluent atoms=[(pointing satellite0 star0), (power_on instrument1), (calibrated instrument0), (calibrated instrument1), (have_image star0 thermograph0)], static atoms=[(supports instrument0 thermograph0), (calibration_target instrument0 star0), (supports instrument1 thermograph0), (calibration_target instrument1 star0), (on_board instrument0 satellite0), (on_board instrument1 satellite0), (satellite satellite0), (instrument instrument0), (instrument instrument1), (mode thermograph0), (direction star0), (direction planet1)], derived atoms=[])
+State(index=55, fluent atoms=[(pointing satellite0 star0), (power_on instrument0), (calibrated instrument0), (calibrated instrument1), (have_image star0 thermograph0)], static atoms=[(supports instrument0 thermograph0), (calibration_target instrument0 star0), (supports instrument1 thermograph0), (calibration_target instrument1 star0), (on_board instrument0 satellite0), (on_board instrument1 satellite0), (satellite satellite0), (instrument instrument0), (instrument instrument1), (mode thermograph0), (direction star0), (direction planet1)], derived atoms=[])
+"]
+s32[label="state_index=32 global_state_index = 296 abstraction_index=6 abstract_state_index=32
+State(index=51, fluent atoms=[(pointing satellite0 star0), (power_avail satellite0), (calibrated instrument0), (calibrated instrument1), (have_image star0 thermograph0)], static atoms=[(supports instrument0 thermograph0), (calibration_target instrument0 star0), (supports instrument1 thermograph0), (calibration_target instrument1 star0), (on_board instrument0 satellite0), (on_board instrument1 satellite0), (satellite satellite0), (instrument instrument0), (instrument instrument1), (mode thermograph0), (direction star0), (direction planet1)], derived atoms=[])
+"]
+s33[label="state_index=33 global_state_index = 297 abstraction_index=6 abstract_state_index=33
+State(index=52, fluent atoms=[(power_on instrument1), (pointing satellite0 planet1), (calibrated instrument0), (calibrated instrument1), (have_image star0 thermograph0)], static atoms=[(supports instrument0 thermograph0), (calibration_target instrument0 star0), (supports instrument1 thermograph0), (calibration_target instrument1 star0), (on_board instrument0 satellite0), (on_board instrument1 satellite0), (satellite satellite0), (instrument instrument0), (instrument instrument1), (mode thermograph0), (direction star0), (direction planet1)], derived atoms=[])
+State(index=56, fluent atoms=[(power_on instrument0), (pointing satellite0 planet1), (calibrated instrument0), (calibrated instrument1), (have_image star0 thermograph0)], static atoms=[(supports instrument0 thermograph0), (calibration_target instrument0 star0), (supports instrument1 thermograph0), (calibration_target instrument1 star0), (on_board instrument0 satellite0), (on_board instrument1 satellite0), (satellite satellite0), (instrument instrument0), (instrument instrument1), (mode thermograph0), (direction star0), (direction planet1)], derived atoms=[])
+"]
+s34[label="state_index=34 global_state_index = 298 abstraction_index=6 abstract_state_index=34
+State(index=53, fluent atoms=[(power_avail satellite0), (pointing satellite0 planet1), (calibrated instrument0), (calibrated instrument1), (have_image star0 thermograph0)], static atoms=[(supports instrument0 thermograph0), (calibration_target instrument0 star0), (supports instrument1 thermograph0), (calibration_target instrument1 star0), (on_board instrument0 satellite0), (on_board instrument1 satellite0), (satellite satellite0), (instrument instrument0), (instrument instrument1), (mode thermograph0), (direction star0), (direction planet1)], derived atoms=[])
+"]
+s35[label="state_index=35 global_state_index = 299 abstraction_index=6 abstract_state_index=35
+State(index=89, fluent atoms=[(power_avail satellite0), (pointing satellite0 planet1), (calibrated instrument0)], static atoms=[(supports instrument0 thermograph0), (calibration_target instrument0 star0), (supports instrument1 thermograph0), (calibration_target instrument1 star0), (on_board instrument0 satellite0), (on_board instrument1 satellite0), (satellite satellite0), (instrument instrument0), (instrument instrument1), (mode thermograph0), (direction star0), (direction planet1)], derived atoms=[])
+State(index=57, fluent atoms=[(power_avail satellite0), (pointing satellite0 planet1), (calibrated instrument1)], static atoms=[(supports instrument0 thermograph0), (calibration_target instrument0 star0), (supports instrument1 thermograph0), (calibration_target instrument1 star0), (on_board instrument0 satellite0), (on_board instrument1 satellite0), (satellite satellite0), (instrument instrument0), (instrument instrument1), (mode thermograph0), (direction star0), (direction planet1)], derived atoms=[])
+"]
+s36[label="state_index=36 global_state_index = 300 abstraction_index=6 abstract_state_index=36
+State(index=71, fluent atoms=[(have_image planet1 thermograph0), (power_on instrument0), (pointing satellite0 planet1), (calibrated instrument0)], static atoms=[(supports instrument0 thermograph0), (calibration_target instrument0 star0), (supports instrument1 thermograph0), (calibration_target instrument1 star0), (on_board instrument0 satellite0), (on_board instrument1 satellite0), (satellite satellite0), (instrument instrument0), (instrument instrument1), (mode thermograph0), (direction star0), (direction planet1)], derived atoms=[])
+State(index=58, fluent atoms=[(have_image planet1 thermograph0), (power_on instrument1), (pointing satellite0 planet1), (calibrated instrument1)], static atoms=[(supports instrument0 thermograph0), (calibration_target instrument0 star0), (supports instrument1 thermograph0), (calibration_target instrument1 star0), (on_board instrument0 satellite0), (on_board instrument1 satellite0), (satellite satellite0), (instrument instrument0), (instrument instrument1), (mode thermograph0), (direction star0), (direction planet1)], derived atoms=[])
+"]
+s37[label="state_index=37 global_state_index = 301 abstraction_index=6 abstract_state_index=37
+State(index=72, fluent atoms=[(have_image planet1 thermograph0), (power_avail satellite0), (pointing satellite0 planet1), (calibrated instrument0)], static atoms=[(supports instrument0 thermograph0), (calibration_target instrument0 star0), (supports instrument1 thermograph0), (calibration_target instrument1 star0), (on_board instrument0 satellite0), (on_board instrument1 satellite0), (satellite satellite0), (instrument instrument0), (instrument instrument1), (mode thermograph0), (direction star0), (direction planet1)], derived atoms=[])
+State(index=59, fluent atoms=[(have_image planet1 thermograph0), (power_avail satellite0), (pointing satellite0 planet1), (calibrated instrument1)], static atoms=[(supports instrument0 thermograph0), (calibration_target instrument0 star0), (supports instrument1 thermograph0), (calibration_target instrument1 star0), (on_board instrument0 satellite0), (on_board instrument1 satellite0), (satellite satellite0), (instrument instrument0), (instrument instrument1), (mode thermograph0), (direction star0), (direction planet1)], derived atoms=[])
+"]
+s38[peripheries=2,label="state_index=38 global_state_index = 302 abstraction_index=6 abstract_state_index=38
+State(index=69, fluent atoms=[(pointing satellite0 star0), (have_image planet1 thermograph0), (power_on instrument0), (calibrated instrument0)], static atoms=[(supports instrument0 thermograph0), (calibration_target instrument0 star0), (supports instrument1 thermograph0), (calibration_target instrument1 star0), (on_board instrument0 satellite0), (on_board instrument1 satellite0), (satellite satellite0), (instrument instrument0), (instrument instrument1), (mode thermograph0), (direction star0), (direction planet1)], derived atoms=[])
+State(index=60, fluent atoms=[(pointing satellite0 star0), (have_image planet1 thermograph0), (power_on instrument1), (calibrated instrument1)], static atoms=[(supports instrument0 thermograph0), (calibration_target instrument0 star0), (supports instrument1 thermograph0), (calibration_target instrument1 star0), (on_board instrument0 satellite0), (on_board instrument1 satellite0), (satellite satellite0), (instrument instrument0), (instrument instrument1), (mode thermograph0), (direction star0), (direction planet1)], derived atoms=[])
+"]
+s39[peripheries=2,label="state_index=39 global_state_index = 303 abstraction_index=6 abstract_state_index=39
+State(index=70, fluent atoms=[(pointing satellite0 star0), (have_image planet1 thermograph0), (power_avail satellite0), (calibrated instrument0)], static atoms=[(supports instrument0 thermograph0), (calibration_target instrument0 star0), (supports instrument1 thermograph0), (calibration_target instrument1 star0), (on_board instrument0 satellite0), (on_board instrument1 satellite0), (satellite satellite0), (instrument instrument0), (instrument instrument1), (mode thermograph0), (direction star0), (direction planet1)], derived atoms=[])
+State(index=61, fluent atoms=[(pointing satellite0 star0), (have_image planet1 thermograph0), (power_avail satellite0), (calibrated instrument1)], static atoms=[(supports instrument0 thermograph0), (calibration_target instrument0 star0), (supports instrument1 thermograph0), (calibration_target instrument1 star0), (on_board instrument0 satellite0), (on_board instrument1 satellite0), (satellite satellite0), (instrument instrument0), (instrument instrument1), (mode thermograph0), (direction star0), (direction planet1)], derived atoms=[])
+"]
+s40[peripheries=2,label="state_index=40 global_state_index = 304 abstraction_index=6 abstract_state_index=40
+State(index=74, fluent atoms=[(pointing satellite0 star0), (have_image planet1 thermograph0), (power_on instrument1), (calibrated instrument0)], static atoms=[(supports instrument0 thermograph0), (calibration_target instrument0 star0), (supports instrument1 thermograph0), (calibration_target instrument1 star0), (on_board instrument0 satellite0), (on_board instrument1 satellite0), (satellite satellite0), (instrument instrument0), (instrument instrument1), (mode thermograph0), (direction star0), (direction planet1)], derived atoms=[])
+State(index=62, fluent atoms=[(pointing satellite0 star0), (have_image planet1 thermograph0), (power_on instrument0), (calibrated instrument1)], static atoms=[(supports instrument0 thermograph0), (calibration_target instrument0 star0), (supports instrument1 thermograph0), (calibration_target instrument1 star0), (on_board instrument0 satellite0), (on_board instrument1 satellite0), (satellite satellite0), (instrument instrument0), (instrument instrument1), (mode thermograph0), (direction star0), (direction planet1)], derived atoms=[])
+"]
+s41[peripheries=2,label="state_index=41 global_state_index = 305 abstraction_index=6 abstract_state_index=41
+State(index=68, fluent atoms=[(pointing satellite0 star0), (have_image planet1 thermograph0), (power_on instrument0)], static atoms=[(supports instrument0 thermograph0), (calibration_target instrument0 star0), (supports instrument1 thermograph0), (calibration_target instrument1 star0), (on_board instrument0 satellite0), (on_board instrument1 satellite0), (satellite satellite0), (instrument instrument0), (instrument instrument1), (mode thermograph0), (direction star0), (direction planet1)], derived atoms=[])
+State(index=63, fluent atoms=[(pointing satellite0 star0), (have_image planet1 thermograph0), (power_on instrument1)], static atoms=[(supports instrument0 thermograph0), (calibration_target instrument0 star0), (supports instrument1 thermograph0), (calibration_target instrument1 star0), (on_board instrument0 satellite0), (on_board instrument1 satellite0), (satellite satellite0), (instrument instrument0), (instrument instrument1), (mode thermograph0), (direction star0), (direction planet1)], derived atoms=[])
+"]
+s42[peripheries=2,label="state_index=42 global_state_index = 306 abstraction_index=6 abstract_state_index=42
+State(index=64, fluent atoms=[(pointing satellite0 star0), (have_image planet1 thermograph0), (power_avail satellite0)], static atoms=[(supports instrument0 thermograph0), (calibration_target instrument0 star0), (supports instrument1 thermograph0), (calibration_target instrument1 star0), (on_board instrument0 satellite0), (on_board instrument1 satellite0), (satellite satellite0), (instrument instrument0), (instrument instrument1), (mode thermograph0), (direction star0), (direction planet1)], derived atoms=[])
+"]
+s43[label="state_index=43 global_state_index = 307 abstraction_index=6 abstract_state_index=43
+State(index=67, fluent atoms=[(have_image planet1 thermograph0), (power_on instrument0), (pointing satellite0 planet1)], static atoms=[(supports instrument0 thermograph0), (calibration_target instrument0 star0), (supports instrument1 thermograph0), (calibration_target instrument1 star0), (on_board instrument0 satellite0), (on_board instrument1 satellite0), (satellite satellite0), (instrument instrument0), (instrument instrument1), (mode thermograph0), (direction star0), (direction planet1)], derived atoms=[])
+State(index=65, fluent atoms=[(have_image planet1 thermograph0), (power_on instrument1), (pointing satellite0 planet1)], static atoms=[(supports instrument0 thermograph0), (calibration_target instrument0 star0), (supports instrument1 thermograph0), (calibration_target instrument1 star0), (on_board instrument0 satellite0), (on_board instrument1 satellite0), (satellite satellite0), (instrument instrument0), (instrument instrument1), (mode thermograph0), (direction star0), (direction planet1)], derived atoms=[])
+"]
+s44[label="state_index=44 global_state_index = 308 abstraction_index=6 abstract_state_index=44
+State(index=66, fluent atoms=[(have_image planet1 thermograph0), (power_avail satellite0), (pointing satellite0 planet1)], static atoms=[(supports instrument0 thermograph0), (calibration_target instrument0 star0), (supports instrument1 thermograph0), (calibration_target instrument1 star0), (on_board instrument0 satellite0), (on_board instrument1 satellite0), (satellite satellite0), (instrument instrument0), (instrument instrument1), (mode thermograph0), (direction star0), (direction planet1)], derived atoms=[])
+"]
+s45[label="state_index=45 global_state_index = 309 abstraction_index=6 abstract_state_index=45
+State(index=79, fluent atoms=[(have_image planet1 thermograph0), (power_on instrument0), (pointing satellite0 planet1), (calibrated instrument1)], static atoms=[(supports instrument0 thermograph0), (calibration_target instrument0 star0), (supports instrument1 thermograph0), (calibration_target instrument1 star0), (on_board instrument0 satellite0), (on_board instrument1 satellite0), (satellite satellite0), (instrument instrument0), (instrument instrument1), (mode thermograph0), (direction star0), (direction planet1)], derived atoms=[])
+State(index=73, fluent atoms=[(have_image planet1 thermograph0), (power_on instrument1), (pointing satellite0 planet1), (calibrated instrument0)], static atoms=[(supports instrument0 thermograph0), (calibration_target instrument0 star0), (supports instrument1 thermograph0), (calibration_target instrument1 star0), (on_board instrument0 satellite0), (on_board instrument1 satellite0), (satellite satellite0), (instrument instrument0), (instrument instrument1), (mode thermograph0), (direction star0), (direction planet1)], derived atoms=[])
+"]
+s46[peripheries=2,label="state_index=46 global_state_index = 310 abstraction_index=6 abstract_state_index=46
+State(index=80, fluent atoms=[(pointing satellite0 star0), (have_image planet1 thermograph0), (power_on instrument0), (calibrated instrument0), (calibrated instrument1)], static atoms=[(supports instrument0 thermograph0), (calibration_target instrument0 star0), (supports instrument1 thermograph0), (calibration_target instrument1 star0), (on_board instrument0 satellite0), (on_board instrument1 satellite0), (satellite satellite0), (instrument instrument0), (instrument instrument1), (mode thermograph0), (direction star0), (direction planet1)], derived atoms=[])
+State(index=75, fluent atoms=[(pointing satellite0 star0), (have_image planet1 thermograph0), (power_on instrument1), (calibrated instrument0), (calibrated instrument1)], static atoms=[(supports instrument0 thermograph0), (calibration_target instrument0 star0), (supports instrument1 thermograph0), (calibration_target instrument1 star0), (on_board instrument0 satellite0), (on_board instrument1 satellite0), (satellite satellite0), (instrument instrument0), (instrument instrument1), (mode thermograph0), (direction star0), (direction planet1)], derived atoms=[])
+"]
+s47[peripheries=2,label="state_index=47 global_state_index = 311 abstraction_index=6 abstract_state_index=47
+State(index=76, fluent atoms=[(pointing satellite0 star0), (have_image planet1 thermograph0), (power_avail satellite0), (calibrated instrument0), (calibrated instrument1)], static atoms=[(supports instrument0 thermograph0), (calibration_target instrument0 star0), (supports instrument1 thermograph0), (calibration_target instrument1 star0), (on_board instrument0 satellite0), (on_board instrument1 satellite0), (satellite satellite0), (instrument instrument0), (instrument instrument1), (mode thermograph0), (direction star0), (direction planet1)], derived atoms=[])
+"]
+s48[label="state_index=48 global_state_index = 312 abstraction_index=6 abstract_state_index=48
+State(index=81, fluent atoms=[(have_image planet1 thermograph0), (power_on instrument0), (pointing satellite0 planet1), (calibrated instrument0), (calibrated instrument1)], static atoms=[(supports instrument0 thermograph0), (calibration_target instrument0 star0), (supports instrument1 thermograph0), (calibration_target instrument1 star0), (on_board instrument0 satellite0), (on_board instrument1 satellite0), (satellite satellite0), (instrument instrument0), (instrument instrument1), (mode thermograph0), (direction star0), (direction planet1)], derived atoms=[])
+State(index=77, fluent atoms=[(have_image planet1 thermograph0), (power_on instrument1), (pointing satellite0 planet1), (calibrated instrument0), (calibrated instrument1)], static atoms=[(supports instrument0 thermograph0), (calibration_target instrument0 star0), (supports instrument1 thermograph0), (calibration_target instrument1 star0), (on_board instrument0 satellite0), (on_board instrument1 satellite0), (satellite satellite0), (instrument instrument0), (instrument instrument1), (mode thermograph0), (direction star0), (direction planet1)], derived atoms=[])
+"]
+s49[label="state_index=49 global_state_index = 313 abstraction_index=6 abstract_state_index=49
+State(index=78, fluent atoms=[(have_image planet1 thermograph0), (power_avail satellite0), (pointing satellite0 planet1), (calibrated instrument0), (calibrated instrument1)], static atoms=[(supports instrument0 thermograph0), (calibration_target instrument0 star0), (supports instrument1 thermograph0), (calibration_target instrument1 star0), (on_board instrument0 satellite0), (on_board instrument1 satellite0), (satellite satellite0), (instrument instrument0), (instrument instrument1), (mode thermograph0), (direction star0), (direction planet1)], derived atoms=[])
+"]
+s50[label="state_index=50 global_state_index = 314 abstraction_index=6 abstract_state_index=50
+State(index=88, fluent atoms=[(power_on instrument1), (pointing satellite0 planet1), (calibrated instrument0)], static atoms=[(supports instrument0 thermograph0), (calibration_target instrument0 star0), (supports instrument1 thermograph0), (calibration_target instrument1 star0), (on_board instrument0 satellite0), (on_board instrument1 satellite0), (satellite satellite0), (instrument instrument0), (instrument instrument1), (mode thermograph0), (direction star0), (direction planet1)], derived atoms=[])
+State(index=82, fluent atoms=[(power_on instrument0), (pointing satellite0 planet1), (calibrated instrument1)], static atoms=[(supports instrument0 thermograph0), (calibration_target instrument0 star0), (supports instrument1 thermograph0), (calibration_target instrument1 star0), (on_board instrument0 satellite0), (on_board instrument1 satellite0), (satellite satellite0), (instrument instrument0), (instrument instrument1), (mode thermograph0), (direction star0), (direction planet1)], derived atoms=[])
+"]
+s51[label="state_index=51 global_state_index = 315 abstraction_index=6 abstract_state_index=51
+State(index=90, fluent atoms=[(pointing satellite0 star0), (power_on instrument1), (calibrated instrument0)], static atoms=[(supports instrument0 thermograph0), (calibration_target instrument0 star0), (supports instrument1 thermograph0), (calibration_target instrument1 star0), (on_board instrument0 satellite0), (on_board instrument1 satellite0), (satellite satellite0), (instrument instrument0), (instrument instrument1), (mode thermograph0), (direction star0), (direction planet1)], derived atoms=[])
+State(index=83, fluent atoms=[(pointing satellite0 star0), (power_on instrument0), (calibrated instrument1)], static atoms=[(supports instrument0 thermograph0), (calibration_target instrument0 star0), (supports instrument1 thermograph0), (calibration_target instrument1 star0), (on_board instrument0 satellite0), (on_board instrument1 satellite0), (satellite satellite0), (instrument instrument0), (instrument instrument1), (mode thermograph0), (direction star0), (direction planet1)], derived atoms=[])
+"]
+s52[label="state_index=52 global_state_index = 316 abstraction_index=6 abstract_state_index=52
+State(index=92, fluent atoms=[(pointing satellite0 star0), (power_on instrument1), (calibrated instrument0), (calibrated instrument1)], static atoms=[(supports instrument0 thermograph0), (calibration_target instrument0 star0), (supports instrument1 thermograph0), (calibration_target instrument1 star0), (on_board instrument0 satellite0), (on_board instrument1 satellite0), (satellite satellite0), (instrument instrument0), (instrument instrument1), (mode thermograph0), (direction star0), (direction planet1)], derived atoms=[])
+State(index=84, fluent atoms=[(pointing satellite0 star0), (power_on instrument0), (calibrated instrument0), (calibrated instrument1)], static atoms=[(supports instrument0 thermograph0), (calibration_target instrument0 star0), (supports instrument1 thermograph0), (calibration_target instrument1 star0), (on_board instrument0 satellite0), (on_board instrument1 satellite0), (satellite satellite0), (instrument instrument0), (instrument instrument1), (mode thermograph0), (direction star0), (direction planet1)], derived atoms=[])
+"]
+s53[label="state_index=53 global_state_index = 317 abstraction_index=6 abstract_state_index=53
+State(index=85, fluent atoms=[(pointing satellite0 star0), (power_avail satellite0), (calibrated instrument0), (calibrated instrument1)], static atoms=[(supports instrument0 thermograph0), (calibration_target instrument0 star0), (supports instrument1 thermograph0), (calibration_target instrument1 star0), (on_board instrument0 satellite0), (on_board instrument1 satellite0), (satellite satellite0), (instrument instrument0), (instrument instrument1), (mode thermograph0), (direction star0), (direction planet1)], derived atoms=[])
+"]
+s54[label="state_index=54 global_state_index = 318 abstraction_index=6 abstract_state_index=54
+State(index=93, fluent atoms=[(power_on instrument1), (pointing satellite0 planet1), (calibrated instrument0), (calibrated instrument1)], static atoms=[(supports instrument0 thermograph0), (calibration_target instrument0 star0), (supports instrument1 thermograph0), (calibration_target instrument1 star0), (on_board instrument0 satellite0), (on_board instrument1 satellite0), (satellite satellite0), (instrument instrument0), (instrument instrument1), (mode thermograph0), (direction star0), (direction planet1)], derived atoms=[])
+State(index=86, fluent atoms=[(power_on instrument0), (pointing satellite0 planet1), (calibrated instrument0), (calibrated instrument1)], static atoms=[(supports instrument0 thermograph0), (calibration_target instrument0 star0), (supports instrument1 thermograph0), (calibration_target instrument1 star0), (on_board instrument0 satellite0), (on_board instrument1 satellite0), (satellite satellite0), (instrument instrument0), (instrument instrument1), (mode thermograph0), (direction star0), (direction planet1)], derived atoms=[])
+"]
+s55[label="state_index=55 global_state_index = 319 abstraction_index=6 abstract_state_index=55
+State(index=87, fluent atoms=[(power_avail satellite0), (pointing satellite0 planet1), (calibrated instrument0), (calibrated instrument1)], static atoms=[(supports instrument0 thermograph0), (calibration_target instrument0 star0), (supports instrument1 thermograph0), (calibration_target instrument1 star0), (on_board instrument0 satellite0), (on_board instrument1 satellite0), (satellite satellite0), (instrument instrument0), (instrument instrument1), (mode thermograph0), (direction star0), (direction planet1)], derived atoms=[])
+"]
+Dangling [ label = "", style = invis ]
+{ rank = same; Dangling }
+Dangling -> s0
+{ rank = same; s2,s10,s27,s34,s35,s55}
+{ rank = same; s0,s3,s5,s8,s25,s26,s29,s32,s50,s53}
+{ rank = same; s1,s28,s30,s51}
+{ rank = same; s4,s7,s31,s52}
+{ rank = same; s6,s9,s33,s54}
+{ rank = same; s11,s12,s18,s19,s20,s23,s24,s36,s37,s43,s44,s45,s48,s49}
+{ rank = same; s13,s14,s15,s16,s17,s21,s22,s38,s39,s40,s41,s42,s46,s47}
+s0->s0 [label="(turn_to satellite0 star0 star0)
+"]
+s0->s1 [label="(switch_on instrument1 satellite0)
+(switch_on instrument0 satellite0)
+"]
+s0->s2 [label="(turn_to satellite0 planet1 star0)
+"]
+s1->s0 [label="(switch_off instrument0 satellite0)
+(switch_off instrument1 satellite0)
+"]
+s1->s1 [label="(turn_to satellite0 star0 star0)
+(turn_to satellite0 star0 star0)
+"]
+s1->s3 [label="(turn_to satellite0 planet1 star0)
+(turn_to satellite0 planet1 star0)
+"]
+s1->s4 [label="(calibrate satellite0 instrument1 star0)
+(calibrate satellite0 instrument0 star0)
+"]
+s2->s0 [label="(turn_to satellite0 star0 planet1)
+"]
+s2->s2 [label="(turn_to satellite0 planet1 planet1)
+"]
+s2->s3 [label="(switch_on instrument0 satellite0)
+(switch_on instrument1 satellite0)
+"]
+s3->s1 [label="(turn_to satellite0 star0 planet1)
+(turn_to satellite0 star0 planet1)
+"]
+s3->s2 [label="(switch_off instrument0 satellite0)
+(switch_off instrument1 satellite0)
+"]
+s3->s3 [label="(turn_to satellite0 planet1 planet1)
+(turn_to satellite0 planet1 planet1)
+"]
+s4->s4 [label="(turn_to satellite0 star0 star0)
+(calibrate satellite0 instrument0 star0)
+(calibrate satellite0 instrument1 star0)
+(turn_to satellite0 star0 star0)
+"]
+s4->s5 [label="(switch_off instrument0 satellite0)
+(switch_off instrument1 satellite0)
+"]
+s4->s6 [label="(turn_to satellite0 planet1 star0)
+(turn_to satellite0 planet1 star0)
+"]
+s4->s7 [label="(take_image satellite0 star0 instrument1 thermograph0)
+(take_image satellite0 star0 instrument0 thermograph0)
+"]
+s5->s1 [label="(switch_on instrument1 satellite0)
+(switch_on instrument0 satellite0)
+"]
+s5->s5 [label="(turn_to satellite0 star0 star0)
+(turn_to satellite0 star0 star0)
+"]
+s5->s35 [label="(turn_to satellite0 planet1 star0)
+(turn_to satellite0 planet1 star0)
+"]
+s5->s51 [label="(switch_on instrument0 satellite0)
+(switch_on instrument1 satellite0)
+"]
+s6->s4 [label="(turn_to satellite0 star0 planet1)
+(turn_to satellite0 star0 planet1)
+"]
+s6->s6 [label="(turn_to satellite0 planet1 planet1)
+(turn_to satellite0 planet1 planet1)
+"]
+s6->s35 [label="(switch_off instrument0 satellite0)
+(switch_off instrument1 satellite0)
+"]
+s6->s36 [label="(take_image satellite0 planet1 instrument1 thermograph0)
+(take_image satellite0 planet1 instrument0 thermograph0)
+"]
+s7->s7 [label="(turn_to satellite0 star0 star0)
+(calibrate satellite0 instrument1 star0)
+(take_image satellite0 star0 instrument1 thermograph0)
+(take_image satellite0 star0 instrument0 thermograph0)
+(calibrate satellite0 instrument0 star0)
+(turn_to satellite0 star0 star0)
+"]
+s7->s8 [label="(switch_off instrument1 satellite0)
+(switch_off instrument0 satellite0)
+"]
+s7->s9 [label="(turn_to satellite0 planet1 star0)
+(turn_to satellite0 planet1 star0)
+"]
+s8->s8 [label="(turn_to satellite0 star0 star0)
+(turn_to satellite0 star0 star0)
+"]
+s8->s10 [label="(turn_to satellite0 planet1 star0)
+(turn_to satellite0 planet1 star0)
+"]
+s8->s28 [label="(switch_on instrument1 satellite0)
+(switch_on instrument0 satellite0)
+"]
+s8->s30 [label="(switch_on instrument0 satellite0)
+(switch_on instrument1 satellite0)
+"]
+s9->s7 [label="(turn_to satellite0 star0 planet1)
+(turn_to satellite0 star0 planet1)
+"]
+s9->s9 [label="(turn_to satellite0 planet1 planet1)
+(turn_to satellite0 planet1 planet1)
+"]
+s9->s10 [label="(switch_off instrument1 satellite0)
+(switch_off instrument0 satellite0)
+"]
+s9->s11 [label="(take_image satellite0 planet1 instrument1 thermograph0)
+(take_image satellite0 planet1 instrument0 thermograph0)
+"]
+s10->s8 [label="(turn_to satellite0 star0 planet1)
+(turn_to satellite0 star0 planet1)
+"]
+s10->s10 [label="(turn_to satellite0 planet1 planet1)
+(turn_to satellite0 planet1 planet1)
+"]
+s10->s25 [label="(switch_on instrument1 satellite0)
+(switch_on instrument0 satellite0)
+"]
+s10->s26 [label="(switch_on instrument1 satellite0)
+(switch_on instrument0 satellite0)
+"]
+s11->s11 [label="(turn_to satellite0 planet1 planet1)
+(take_image satellite0 planet1 instrument1 thermograph0)
+(take_image satellite0 planet1 instrument0 thermograph0)
+(turn_to satellite0 planet1 planet1)
+"]
+s11->s12 [label="(switch_off instrument1 satellite0)
+(switch_off instrument0 satellite0)
+"]
+s11->s13 [label="(turn_to satellite0 star0 planet1)
+(turn_to satellite0 star0 planet1)
+"]
+s12->s12 [label="(turn_to satellite0 planet1 planet1)
+(turn_to satellite0 planet1 planet1)
+"]
+s12->s14 [label="(turn_to satellite0 star0 planet1)
+(turn_to satellite0 star0 planet1)
+"]
+s12->s18 [label="(switch_on instrument1 satellite0)
+(switch_on instrument0 satellite0)
+"]
+s12->s20 [label="(switch_on instrument0 satellite0)
+(switch_on instrument1 satellite0)
+"]
+s13->s11 [label="(turn_to satellite0 planet1 star0)
+(turn_to satellite0 planet1 star0)
+"]
+s13->s13 [label="(turn_to satellite0 star0 star0)
+(take_image satellite0 star0 instrument1 thermograph0)
+(calibrate satellite0 instrument1 star0)
+(calibrate satellite0 instrument0 star0)
+(take_image satellite0 star0 instrument0 thermograph0)
+(turn_to satellite0 star0 star0)
+"]
+s13->s14 [label="(switch_off instrument0 satellite0)
+(switch_off instrument1 satellite0)
+"]
+s14->s12 [label="(turn_to satellite0 planet1 star0)
+(turn_to satellite0 planet1 star0)
+"]
+s14->s14 [label="(turn_to satellite0 star0 star0)
+(turn_to satellite0 star0 star0)
+"]
+s14->s15 [label="(switch_on instrument0 satellite0)
+(switch_on instrument1 satellite0)
+"]
+s14->s16 [label="(switch_on instrument1 satellite0)
+(switch_on instrument0 satellite0)
+"]
+s15->s14 [label="(switch_off instrument0 satellite0)
+(switch_off instrument1 satellite0)
+"]
+s15->s15 [label="(turn_to satellite0 star0 star0)
+(turn_to satellite0 star0 star0)
+"]
+s15->s20 [label="(turn_to satellite0 planet1 star0)
+(turn_to satellite0 planet1 star0)
+"]
+s15->s21 [label="(calibrate satellite0 instrument1 star0)
+(calibrate satellite0 instrument0 star0)
+"]
+s16->s13 [label="(calibrate satellite0 instrument0 star0)
+(calibrate satellite0 instrument1 star0)
+"]
+s16->s16 [label="(turn_to satellite0 star0 star0)
+(turn_to satellite0 star0 star0)
+"]
+s16->s17 [label="(switch_off instrument1 satellite0)
+(switch_off instrument0 satellite0)
+"]
+s16->s18 [label="(turn_to satellite0 planet1 star0)
+(turn_to satellite0 planet1 star0)
+"]
+s17->s16 [label="(switch_on instrument1 satellite0)
+(switch_on instrument0 satellite0)
+"]
+s17->s17 [label="(turn_to satellite0 star0 star0)
+"]
+s17->s19 [label="(turn_to satellite0 planet1 star0)
+"]
+s18->s16 [label="(turn_to satellite0 star0 planet1)
+(turn_to satellite0 star0 planet1)
+"]
+s18->s18 [label="(turn_to satellite0 planet1 planet1)
+(turn_to satellite0 planet1 planet1)
+"]
+s18->s19 [label="(switch_off instrument0 satellite0)
+(switch_off instrument1 satellite0)
+"]
+s19->s17 [label="(turn_to satellite0 star0 planet1)
+"]
+s19->s18 [label="(switch_on instrument1 satellite0)
+(switch_on instrument0 satellite0)
+"]
+s19->s19 [label="(turn_to satellite0 planet1 planet1)
+"]
+s20->s12 [label="(switch_off instrument1 satellite0)
+(switch_off instrument0 satellite0)
+"]
+s20->s15 [label="(turn_to satellite0 star0 planet1)
+(turn_to satellite0 star0 planet1)
+"]
+s20->s20 [label="(turn_to satellite0 planet1 planet1)
+(turn_to satellite0 planet1 planet1)
+"]
+s21->s21 [label="(turn_to satellite0 star0 star0)
+(take_image satellite0 star0 instrument0 thermograph0)
+(calibrate satellite0 instrument0 star0)
+(take_image satellite0 star0 instrument1 thermograph0)
+(calibrate satellite0 instrument1 star0)
+(turn_to satellite0 star0 star0)
+"]
+s21->s22 [label="(switch_off instrument0 satellite0)
+(switch_off instrument1 satellite0)
+"]
+s21->s23 [label="(turn_to satellite0 planet1 star0)
+(turn_to satellite0 planet1 star0)
+"]
+s22->s15 [label="(switch_on instrument0 satellite0)
+(switch_on instrument1 satellite0)
+"]
+s22->s22 [label="(turn_to satellite0 star0 star0)
+"]
+s22->s24 [label="(turn_to satellite0 planet1 star0)
+"]
+s23->s21 [label="(turn_to satellite0 star0 planet1)
+(turn_to satellite0 star0 planet1)
+"]
+s23->s23 [label="(turn_to satellite0 planet1 planet1)
+(take_image satellite0 planet1 instrument1 thermograph0)
+(turn_to satellite0 planet1 planet1)
+(take_image satellite0 planet1 instrument0 thermograph0)
+"]
+s23->s24 [label="(switch_off instrument0 satellite0)
+(switch_off instrument1 satellite0)
+"]
+s24->s20 [label="(switch_on instrument0 satellite0)
+(switch_on instrument1 satellite0)
+"]
+s24->s22 [label="(turn_to satellite0 star0 planet1)
+"]
+s24->s24 [label="(turn_to satellite0 planet1 planet1)
+"]
+s25->s10 [label="(switch_off instrument1 satellite0)
+(switch_off instrument0 satellite0)
+"]
+s25->s25 [label="(turn_to satellite0 planet1 planet1)
+(turn_to satellite0 planet1 planet1)
+"]
+s25->s30 [label="(turn_to satellite0 star0 planet1)
+(turn_to satellite0 star0 planet1)
+"]
+s26->s26 [label="(turn_to satellite0 planet1 planet1)
+(turn_to satellite0 planet1 planet1)
+"]
+s26->s27 [label="(switch_off instrument0 satellite0)
+(switch_off instrument1 satellite0)
+"]
+s26->s28 [label="(turn_to satellite0 star0 planet1)
+(turn_to satellite0 star0 planet1)
+"]
+s27->s26 [label="(switch_on instrument0 satellite0)
+(switch_on instrument1 satellite0)
+"]
+s27->s27 [label="(turn_to satellite0 planet1 planet1)
+"]
+s27->s29 [label="(turn_to satellite0 star0 planet1)
+"]
+s28->s7 [label="(calibrate satellite0 instrument1 star0)
+(calibrate satellite0 instrument0 star0)
+"]
+s28->s26 [label="(turn_to satellite0 planet1 star0)
+(turn_to satellite0 planet1 star0)
+"]
+s28->s28 [label="(turn_to satellite0 star0 star0)
+(turn_to satellite0 star0 star0)
+"]
+s28->s29 [label="(switch_off instrument1 satellite0)
+(switch_off instrument0 satellite0)
+"]
+s29->s27 [label="(turn_to satellite0 planet1 star0)
+"]
+s29->s28 [label="(switch_on instrument0 satellite0)
+(switch_on instrument1 satellite0)
+"]
+s29->s29 [label="(turn_to satellite0 star0 star0)
+"]
+s30->s8 [label="(switch_off instrument1 satellite0)
+(switch_off instrument0 satellite0)
+"]
+s30->s25 [label="(turn_to satellite0 planet1 star0)
+(turn_to satellite0 planet1 star0)
+"]
+s30->s30 [label="(turn_to satellite0 star0 star0)
+(turn_to satellite0 star0 star0)
+"]
+s30->s31 [label="(calibrate satellite0 instrument1 star0)
+(calibrate satellite0 instrument0 star0)
+"]
+s31->s31 [label="(calibrate satellite0 instrument1 star0)
+(take_image satellite0 star0 instrument1 thermograph0)
+(take_image satellite0 star0 instrument0 thermograph0)
+(turn_to satellite0 star0 star0)
+(calibrate satellite0 instrument0 star0)
+(turn_to satellite0 star0 star0)
+"]
+s31->s32 [label="(switch_off instrument0 satellite0)
+(switch_off instrument1 satellite0)
+"]
+s31->s33 [label="(turn_to satellite0 planet1 star0)
+(turn_to satellite0 planet1 star0)
+"]
+s32->s30 [label="(switch_on instrument1 satellite0)
+(switch_on instrument0 satellite0)
+"]
+s32->s32 [label="(turn_to satellite0 star0 star0)
+"]
+s32->s34 [label="(turn_to satellite0 planet1 star0)
+"]
+s33->s23 [label="(take_image satellite0 planet1 instrument1 thermograph0)
+(take_image satellite0 planet1 instrument0 thermograph0)
+"]
+s33->s31 [label="(turn_to satellite0 star0 planet1)
+(turn_to satellite0 star0 planet1)
+"]
+s33->s33 [label="(turn_to satellite0 planet1 planet1)
+(turn_to satellite0 planet1 planet1)
+"]
+s33->s34 [label="(switch_off instrument1 satellite0)
+(switch_off instrument0 satellite0)
+"]
+s34->s25 [label="(switch_on instrument0 satellite0)
+(switch_on instrument1 satellite0)
+"]
+s34->s32 [label="(turn_to satellite0 star0 planet1)
+"]
+s34->s34 [label="(turn_to satellite0 planet1 planet1)
+"]
+s35->s3 [label="(switch_on instrument1 satellite0)
+(switch_on instrument0 satellite0)
+"]
+s35->s5 [label="(turn_to satellite0 star0 planet1)
+(turn_to satellite0 star0 planet1)
+"]
+s35->s35 [label="(turn_to satellite0 planet1 planet1)
+(turn_to satellite0 planet1 planet1)
+"]
+s35->s50 [label="(switch_on instrument0 satellite0)
+(switch_on instrument1 satellite0)
+"]
+s36->s36 [label="(turn_to satellite0 planet1 planet1)
+(take_image satellite0 planet1 instrument0 thermograph0)
+(turn_to satellite0 planet1 planet1)
+(take_image satellite0 planet1 instrument1 thermograph0)
+"]
+s36->s37 [label="(switch_off instrument0 satellite0)
+(switch_off instrument1 satellite0)
+"]
+s36->s38 [label="(turn_to satellite0 star0 planet1)
+(turn_to satellite0 star0 planet1)
+"]
+s37->s37 [label="(turn_to satellite0 planet1 planet1)
+(turn_to satellite0 planet1 planet1)
+"]
+s37->s39 [label="(turn_to satellite0 star0 planet1)
+(turn_to satellite0 star0 planet1)
+"]
+s37->s43 [label="(switch_on instrument1 satellite0)
+(switch_on instrument0 satellite0)
+"]
+s37->s45 [label="(switch_on instrument0 satellite0)
+(switch_on instrument1 satellite0)
+"]
+s38->s13 [label="(take_image satellite0 star0 instrument1 thermograph0)
+(take_image satellite0 star0 instrument0 thermograph0)
+"]
+s38->s36 [label="(turn_to satellite0 planet1 star0)
+(turn_to satellite0 planet1 star0)
+"]
+s38->s38 [label="(calibrate satellite0 instrument0 star0)
+(calibrate satellite0 instrument1 star0)
+(turn_to satellite0 star0 star0)
+(turn_to satellite0 star0 star0)
+"]
+s38->s39 [label="(switch_off instrument1 satellite0)
+(switch_off instrument0 satellite0)
+"]
+s39->s37 [label="(turn_to satellite0 planet1 star0)
+(turn_to satellite0 planet1 star0)
+"]
+s39->s39 [label="(turn_to satellite0 star0 star0)
+(turn_to satellite0 star0 star0)
+"]
+s39->s40 [label="(switch_on instrument1 satellite0)
+(switch_on instrument0 satellite0)
+"]
+s39->s41 [label="(switch_on instrument0 satellite0)
+(switch_on instrument1 satellite0)
+"]
+s40->s39 [label="(switch_off instrument1 satellite0)
+(switch_off instrument0 satellite0)
+"]
+s40->s40 [label="(turn_to satellite0 star0 star0)
+(turn_to satellite0 star0 star0)
+"]
+s40->s45 [label="(turn_to satellite0 planet1 star0)
+(turn_to satellite0 planet1 star0)
+"]
+s40->s46 [label="(calibrate satellite0 instrument0 star0)
+(calibrate satellite0 instrument1 star0)
+"]
+s41->s38 [label="(calibrate satellite0 instrument1 star0)
+(calibrate satellite0 instrument0 star0)
+"]
+s41->s41 [label="(turn_to satellite0 star0 star0)
+(turn_to satellite0 star0 star0)
+"]
+s41->s42 [label="(switch_off instrument0 satellite0)
+(switch_off instrument1 satellite0)
+"]
+s41->s43 [label="(turn_to satellite0 planet1 star0)
+(turn_to satellite0 planet1 star0)
+"]
+s42->s41 [label="(switch_on instrument0 satellite0)
+(switch_on instrument1 satellite0)
+"]
+s42->s42 [label="(turn_to satellite0 star0 star0)
+"]
+s42->s44 [label="(turn_to satellite0 planet1 star0)
+"]
+s43->s41 [label="(turn_to satellite0 star0 planet1)
+(turn_to satellite0 star0 planet1)
+"]
+s43->s43 [label="(turn_to satellite0 planet1 planet1)
+(turn_to satellite0 planet1 planet1)
+"]
+s43->s44 [label="(switch_off instrument1 satellite0)
+(switch_off instrument0 satellite0)
+"]
+s44->s42 [label="(turn_to satellite0 star0 planet1)
+"]
+s44->s43 [label="(switch_on instrument0 satellite0)
+(switch_on instrument1 satellite0)
+"]
+s44->s44 [label="(turn_to satellite0 planet1 planet1)
+"]
+s45->s37 [label="(switch_off instrument0 satellite0)
+(switch_off instrument1 satellite0)
+"]
+s45->s40 [label="(turn_to satellite0 star0 planet1)
+(turn_to satellite0 star0 planet1)
+"]
+s45->s45 [label="(turn_to satellite0 planet1 planet1)
+(turn_to satellite0 planet1 planet1)
+"]
+s46->s21 [label="(take_image satellite0 star0 instrument0 thermograph0)
+(take_image satellite0 star0 instrument1 thermograph0)
+"]
+s46->s46 [label="(turn_to satellite0 star0 star0)
+(calibrate satellite0 instrument1 star0)
+(turn_to satellite0 star0 star0)
+(calibrate satellite0 instrument0 star0)
+"]
+s46->s47 [label="(switch_off instrument1 satellite0)
+(switch_off instrument0 satellite0)
+"]
+s46->s48 [label="(turn_to satellite0 planet1 star0)
+(turn_to satellite0 planet1 star0)
+"]
+s47->s40 [label="(switch_on instrument1 satellite0)
+(switch_on instrument0 satellite0)
+"]
+s47->s47 [label="(turn_to satellite0 star0 star0)
+"]
+s47->s49 [label="(turn_to satellite0 planet1 star0)
+"]
+s48->s46 [label="(turn_to satellite0 star0 planet1)
+(turn_to satellite0 star0 planet1)
+"]
+s48->s48 [label="(turn_to satellite0 planet1 planet1)
+(take_image satellite0 planet1 instrument0 thermograph0)
+(turn_to satellite0 planet1 planet1)
+(take_image satellite0 planet1 instrument1 thermograph0)
+"]
+s48->s49 [label="(switch_off instrument0 satellite0)
+(switch_off instrument1 satellite0)
+"]
+s49->s45 [label="(switch_on instrument0 satellite0)
+(switch_on instrument1 satellite0)
+"]
+s49->s47 [label="(turn_to satellite0 star0 planet1)
+"]
+s49->s49 [label="(turn_to satellite0 planet1 planet1)
+"]
+s50->s35 [label="(switch_off instrument1 satellite0)
+(switch_off instrument0 satellite0)
+"]
+s50->s50 [label="(turn_to satellite0 planet1 planet1)
+(turn_to satellite0 planet1 planet1)
+"]
+s50->s51 [label="(turn_to satellite0 star0 planet1)
+(turn_to satellite0 star0 planet1)
+"]
+s51->s5 [label="(switch_off instrument1 satellite0)
+(switch_off instrument0 satellite0)
+"]
+s51->s50 [label="(turn_to satellite0 planet1 star0)
+(turn_to satellite0 planet1 star0)
+"]
+s51->s51 [label="(turn_to satellite0 star0 star0)
+(turn_to satellite0 star0 star0)
+"]
+s51->s52 [label="(calibrate satellite0 instrument0 star0)
+(calibrate satellite0 instrument1 star0)
+"]
+s52->s31 [label="(take_image satellite0 star0 instrument1 thermograph0)
+(take_image satellite0 star0 instrument0 thermograph0)
+"]
+s52->s52 [label="(calibrate satellite0 instrument1 star0)
+(turn_to satellite0 star0 star0)
+(turn_to satellite0 star0 star0)
+(calibrate satellite0 instrument0 star0)
+"]
+s52->s53 [label="(switch_off instrument0 satellite0)
+(switch_off instrument1 satellite0)
+"]
+s52->s54 [label="(turn_to satellite0 planet1 star0)
+(turn_to satellite0 planet1 star0)
+"]
+s53->s51 [label="(switch_on instrument1 satellite0)
+(switch_on instrument0 satellite0)
+"]
+s53->s53 [label="(turn_to satellite0 star0 star0)
+"]
+s53->s55 [label="(turn_to satellite0 planet1 star0)
+"]
+s54->s48 [label="(take_image satellite0 planet1 instrument0 thermograph0)
+(take_image satellite0 planet1 instrument1 thermograph0)
+"]
+s54->s52 [label="(turn_to satellite0 star0 planet1)
+(turn_to satellite0 star0 planet1)
+"]
+s54->s54 [label="(turn_to satellite0 planet1 planet1)
+(turn_to satellite0 planet1 planet1)
+"]
+s54->s55 [label="(switch_off instrument0 satellite0)
+(switch_off instrument1 satellite0)
+"]
+s55->s50 [label="(switch_on instrument1 satellite0)
+(switch_on instrument0 satellite0)
+"]
+s55->s53 [label="(turn_to satellite0 star0 planet1)
+"]
+s55->s55 [label="(turn_to satellite0 planet1 planet1)
+"]
+}

@@ -1,0 +1,22 @@
+digraph {
+rankdir="LR"
+s0[label="State(index=0, fluent atoms=[(on-table b2), (clear b1), (arm-empty), (on b1 b2)], static atoms=[], derived atoms=[])"]
+s1[label="State(index=1, fluent atoms=[(clear b2), (on-table b2), (holding b1)], static atoms=[], derived atoms=[])"]
+s2[peripheries=2,label="State(index=2, fluent atoms=[(clear b2), (on-table b2), (clear b1), (on-table b1), (arm-empty)], static atoms=[], derived atoms=[])"]
+s3[label="State(index=3, fluent atoms=[(clear b1), (on-table b1), (holding b2)], static atoms=[], derived atoms=[])"]
+s4[label="State(index=4, fluent atoms=[(clear b2), (on-table b1), (arm-empty), (on b2 b1)], static atoms=[], derived atoms=[])"]
+Dangling [ label = "", style = invis ]
+{ rank = same; Dangling }
+Dangling -> s0
+{ rank = same; s0,s4}
+{ rank = same; s1,s3}
+{ rank = same; s2}
+s0->s1 [label="(unstack b1 b2)"]
+s1->s2 [label="(putdown b1)"]
+s1->s0 [label="(stack b1 b2)"]
+s2->s3 [label="(pickup b2)"]
+s2->s1 [label="(pickup b1)"]
+s3->s2 [label="(putdown b2)"]
+s3->s4 [label="(stack b2 b1)"]
+s4->s3 [label="(unstack b2 b1)"]
+}

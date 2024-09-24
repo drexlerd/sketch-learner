@@ -1,0 +1,2422 @@
+digraph {
+rankdir="LR"
+s0[label="(instance index=1, state index=0, atoms={at(rover1,waypoint2), empty(rover1store), at_soil_sample(waypoint1)})"]
+s1[label="(instance index=1, state index=1, atoms={empty(rover1store), at_soil_sample(waypoint1), at(rover1,waypoint1)})"]
+s2[label="(instance index=1, state index=2, atoms={at(rover1,waypoint2), empty(rover1store), at_soil_sample(waypoint1), calibrated(camera1,rover1)})"]
+s532[label="(instance index=1, state index=532, atoms={at(rover1,waypoint1), full(rover1store), have_soil_analysis(rover1,waypoint1)})"]
+s3[label="(instance index=1, state index=3, atoms={empty(rover1store), at_soil_sample(waypoint1), at(rover1,waypoint1), calibrated(camera1,rover1)})"]
+s4[label="(instance index=1, state index=4, atoms={at(rover1,waypoint2), empty(rover1store), at_soil_sample(waypoint1), have_image(rover1,objective1,high_res)})"]
+s5[label="(instance index=1, state index=5, atoms={at(rover1,waypoint2), empty(rover1store), at_soil_sample(waypoint1), have_image(rover1,objective1,low_res)})"]
+s6[label="(instance index=1, state index=6, atoms={at(rover1,waypoint2), empty(rover1store), at_soil_sample(waypoint1), have_image(rover1,objective1,colour)})"]
+s533[label="(instance index=1, state index=533, atoms={empty(rover1store), at(rover1,waypoint1), have_soil_analysis(rover1,waypoint1)})"]
+s538[label="(instance index=1, state index=538, atoms={communicated_soil_data(waypoint1), at(rover1,waypoint1), full(rover1store), have_soil_analysis(rover1,waypoint1)})"]
+s485[label="(instance index=1, state index=485, atoms={empty(rover1store), at_soil_sample(waypoint1), at(rover1,waypoint1), have_image(rover1,objective1,high_res)})"]
+s366[label="(instance index=1, state index=366, atoms={empty(rover1store), at_soil_sample(waypoint1), at(rover1,waypoint1), have_image(rover1,objective1,low_res)})"]
+s534[label="(instance index=1, state index=534, atoms={at(rover1,waypoint2), full(rover1store), have_soil_analysis(rover1,waypoint1)})"]
+s524[label="(instance index=1, state index=524, atoms={at(rover1,waypoint1), calibrated(camera1,rover1), full(rover1store), have_soil_analysis(rover1,waypoint1)})"]
+s7[label="(instance index=1, state index=7, atoms={empty(rover1store), at_soil_sample(waypoint1), at(rover1,waypoint1), have_image(rover1,objective1,colour)})"]
+s487[label="(instance index=1, state index=487, atoms={communicated_image_data(objective1,high_res), at(rover1,waypoint2), empty(rover1store), at_soil_sample(waypoint1), have_image(rover1,objective1,high_res)})"]
+s486[label="(instance index=1, state index=486, atoms={at(rover1,waypoint2), empty(rover1store), at_soil_sample(waypoint1), calibrated(camera1,rover1), have_image(rover1,objective1,high_res)})"]
+s368[label="(instance index=1, state index=368, atoms={communicated_image_data(objective1,low_res), at(rover1,waypoint2), empty(rover1store), at_soil_sample(waypoint1), have_image(rover1,objective1,low_res)})"]
+s367[label="(instance index=1, state index=367, atoms={at(rover1,waypoint2), empty(rover1store), at_soil_sample(waypoint1), calibrated(camera1,rover1), have_image(rover1,objective1,low_res)})"]
+s9[label="(instance index=1, state index=9, atoms={communicated_image_data(objective1,colour), at(rover1,waypoint2), empty(rover1store), at_soil_sample(waypoint1), have_image(rover1,objective1,colour)})"]
+s8[label="(instance index=1, state index=8, atoms={at(rover1,waypoint2), empty(rover1store), at_soil_sample(waypoint1), calibrated(camera1,rover1), have_image(rover1,objective1,colour)})"]
+s539[label="(instance index=1, state index=539, atoms={communicated_soil_data(waypoint1), empty(rover1store), at(rover1,waypoint1), have_soil_analysis(rover1,waypoint1)})"]
+s535[label="(instance index=1, state index=535, atoms={at(rover1,waypoint2), empty(rover1store), have_soil_analysis(rover1,waypoint1)})"]
+s525[label="(instance index=1, state index=525, atoms={empty(rover1store), at(rover1,waypoint1), calibrated(camera1,rover1), have_soil_analysis(rover1,waypoint1)})"]
+s536[label="(instance index=1, state index=536, atoms={communicated_soil_data(waypoint1), at(rover1,waypoint2), full(rover1store), have_soil_analysis(rover1,waypoint1)})"]
+s530[label="(instance index=1, state index=530, atoms={communicated_soil_data(waypoint1), at(rover1,waypoint1), calibrated(camera1,rover1), full(rover1store), have_soil_analysis(rover1,waypoint1)})"]
+s488[label="(instance index=1, state index=488, atoms={communicated_image_data(objective1,high_res), empty(rover1store), at_soil_sample(waypoint1), at(rover1,waypoint1), have_image(rover1,objective1,high_res)})"]
+s515[label="(instance index=1, state index=515, atoms={at(rover1,waypoint1), have_image(rover1,objective1,high_res), full(rover1store), have_soil_analysis(rover1,waypoint1)})"]
+s507[label="(instance index=1, state index=507, atoms={empty(rover1store), at_soil_sample(waypoint1), at(rover1,waypoint1), calibrated(camera1,rover1), have_image(rover1,objective1,high_res)})"]
+s369[label="(instance index=1, state index=369, atoms={communicated_image_data(objective1,low_res), empty(rover1store), at_soil_sample(waypoint1), at(rover1,waypoint1), have_image(rover1,objective1,low_res)})"]
+s476[label="(instance index=1, state index=476, atoms={at(rover1,waypoint1), have_image(rover1,objective1,low_res), full(rover1store), have_soil_analysis(rover1,waypoint1)})"]
+s428[label="(instance index=1, state index=428, atoms={empty(rover1store), at_soil_sample(waypoint1), at(rover1,waypoint1), calibrated(camera1,rover1), have_image(rover1,objective1,low_res)})"]
+s189[label="(instance index=1, state index=189, atoms={empty(rover1store), at_soil_sample(waypoint1), at(rover1,waypoint1), calibrated(camera1,rover1), have_image(rover1,objective1,colour)})"]
+s526[label="(instance index=1, state index=526, atoms={at(rover1,waypoint2), calibrated(camera1,rover1), full(rover1store), have_soil_analysis(rover1,waypoint1)})"]
+s357[label="(instance index=1, state index=357, atoms={at(rover1,waypoint1), have_image(rover1,objective1,colour), full(rover1store), have_soil_analysis(rover1,waypoint1)})"]
+s10[label="(instance index=1, state index=10, atoms={communicated_image_data(objective1,colour), empty(rover1store), at_soil_sample(waypoint1), at(rover1,waypoint1), have_image(rover1,objective1,colour)})"]
+s489[label="(instance index=1, state index=489, atoms={communicated_image_data(objective1,high_res), at(rover1,waypoint2), empty(rover1store), at_soil_sample(waypoint1), calibrated(camera1,rover1), have_image(rover1,objective1,high_res)})"]
+s429[label="(instance index=1, state index=429, atoms={at(rover1,waypoint2), empty(rover1store), at_soil_sample(waypoint1), have_image(rover1,objective1,high_res), have_image(rover1,objective1,low_res)})"]
+s190[label="(instance index=1, state index=190, atoms={at(rover1,waypoint2), empty(rover1store), at_soil_sample(waypoint1), have_image(rover1,objective1,high_res), have_image(rover1,objective1,colour)})"]
+s370[label="(instance index=1, state index=370, atoms={communicated_image_data(objective1,low_res), at(rover1,waypoint2), empty(rover1store), at_soil_sample(waypoint1), calibrated(camera1,rover1), have_image(rover1,objective1,low_res)})"]
+s191[label="(instance index=1, state index=191, atoms={at(rover1,waypoint2), empty(rover1store), at_soil_sample(waypoint1), have_image(rover1,objective1,low_res), have_image(rover1,objective1,colour)})"]
+s11[label="(instance index=1, state index=11, atoms={communicated_image_data(objective1,colour), at(rover1,waypoint2), empty(rover1store), at_soil_sample(waypoint1), calibrated(camera1,rover1), have_image(rover1,objective1,colour)})"]
+s537[label="(instance index=1, state index=537, atoms={communicated_soil_data(waypoint1), at(rover1,waypoint2), empty(rover1store), have_soil_analysis(rover1,waypoint1)})"]
+s531[label="(instance index=1, state index=531, atoms={communicated_soil_data(waypoint1), empty(rover1store), at(rover1,waypoint1), calibrated(camera1,rover1), have_soil_analysis(rover1,waypoint1)})"]
+s522[label="(instance index=1, state index=522, atoms={empty(rover1store), at(rover1,waypoint1), have_image(rover1,objective1,high_res), have_soil_analysis(rover1,waypoint1)})"]
+s483[label="(instance index=1, state index=483, atoms={empty(rover1store), at(rover1,waypoint1), have_image(rover1,objective1,low_res), have_soil_analysis(rover1,waypoint1)})"]
+s527[label="(instance index=1, state index=527, atoms={at(rover1,waypoint2), empty(rover1store), calibrated(camera1,rover1), have_soil_analysis(rover1,waypoint1)})"]
+s364[label="(instance index=1, state index=364, atoms={empty(rover1store), at(rover1,waypoint1), have_image(rover1,objective1,colour), have_soil_analysis(rover1,waypoint1)})"]
+s518[label="(instance index=1, state index=518, atoms={communicated_soil_data(waypoint1), at(rover1,waypoint1), have_image(rover1,objective1,high_res), full(rover1store), have_soil_analysis(rover1,waypoint1)})"]
+s479[label="(instance index=1, state index=479, atoms={communicated_soil_data(waypoint1), at(rover1,waypoint1), have_image(rover1,objective1,low_res), full(rover1store), have_soil_analysis(rover1,waypoint1)})"]
+s528[label="(instance index=1, state index=528, atoms={communicated_soil_data(waypoint1), at(rover1,waypoint2), calibrated(camera1,rover1), full(rover1store), have_soil_analysis(rover1,waypoint1)})"]
+s360[label="(instance index=1, state index=360, atoms={communicated_soil_data(waypoint1), at(rover1,waypoint1), have_image(rover1,objective1,colour), full(rover1store), have_soil_analysis(rover1,waypoint1)})"]
+s498[label="(instance index=1, state index=498, atoms={communicated_image_data(objective1,high_res), at(rover1,waypoint1), have_image(rover1,objective1,high_res), full(rover1store), have_soil_analysis(rover1,waypoint1)})"]
+s490[label="(instance index=1, state index=490, atoms={communicated_image_data(objective1,high_res), empty(rover1store), at_soil_sample(waypoint1), at(rover1,waypoint1), calibrated(camera1,rover1), have_image(rover1,objective1,high_res)})"]
+s430[label="(instance index=1, state index=430, atoms={empty(rover1store), at_soil_sample(waypoint1), at(rover1,waypoint1), have_image(rover1,objective1,high_res), have_image(rover1,objective1,low_res)})"]
+s513[label="(instance index=1, state index=513, atoms={at(rover1,waypoint2), have_image(rover1,objective1,high_res), full(rover1store), have_soil_analysis(rover1,waypoint1)})"]
+s508[label="(instance index=1, state index=508, atoms={at(rover1,waypoint1), calibrated(camera1,rover1), have_image(rover1,objective1,high_res), full(rover1store), have_soil_analysis(rover1,waypoint1)})"]
+s311[label="(instance index=1, state index=311, atoms={empty(rover1store), at_soil_sample(waypoint1), at(rover1,waypoint1), have_image(rover1,objective1,high_res), have_image(rover1,objective1,colour)})"]
+s419[label="(instance index=1, state index=419, atoms={communicated_image_data(objective1,low_res), at(rover1,waypoint1), have_image(rover1,objective1,low_res), full(rover1store), have_soil_analysis(rover1,waypoint1)})"]
+s371[label="(instance index=1, state index=371, atoms={communicated_image_data(objective1,low_res), empty(rover1store), at_soil_sample(waypoint1), at(rover1,waypoint1), calibrated(camera1,rover1), have_image(rover1,objective1,low_res)})"]
+s474[label="(instance index=1, state index=474, atoms={at(rover1,waypoint2), have_image(rover1,objective1,low_res), full(rover1store), have_soil_analysis(rover1,waypoint1)})"]
+s469[label="(instance index=1, state index=469, atoms={at(rover1,waypoint1), calibrated(camera1,rover1), have_image(rover1,objective1,low_res), full(rover1store), have_soil_analysis(rover1,waypoint1)})"]
+s192[label="(instance index=1, state index=192, atoms={empty(rover1store), at_soil_sample(waypoint1), at(rover1,waypoint1), have_image(rover1,objective1,low_res), have_image(rover1,objective1,colour)})"]
+s350[label="(instance index=1, state index=350, atoms={at(rover1,waypoint1), calibrated(camera1,rover1), have_image(rover1,objective1,colour), full(rover1store), have_soil_analysis(rover1,waypoint1)})"]
+s355[label="(instance index=1, state index=355, atoms={at(rover1,waypoint2), have_image(rover1,objective1,colour), full(rover1store), have_soil_analysis(rover1,waypoint1)})"]
+s180[label="(instance index=1, state index=180, atoms={communicated_image_data(objective1,colour), at(rover1,waypoint1), have_image(rover1,objective1,colour), full(rover1store), have_soil_analysis(rover1,waypoint1)})"]
+s12[label="(instance index=1, state index=12, atoms={communicated_image_data(objective1,colour), empty(rover1store), at_soil_sample(waypoint1), at(rover1,waypoint1), calibrated(camera1,rover1), have_image(rover1,objective1,colour)})"]
+s432[label="(instance index=1, state index=432, atoms={communicated_image_data(objective1,high_res), at(rover1,waypoint2), empty(rover1store), at_soil_sample(waypoint1), have_image(rover1,objective1,high_res), have_image(rover1,objective1,low_res)})"]
+s313[label="(instance index=1, state index=313, atoms={communicated_image_data(objective1,high_res), at(rover1,waypoint2), empty(rover1store), at_soil_sample(waypoint1), have_image(rover1,objective1,high_res), have_image(rover1,objective1,colour)})"]
+s372[label="(instance index=1, state index=372, atoms={communicated_image_data(objective1,low_res), at(rover1,waypoint2), empty(rover1store), at_soil_sample(waypoint1), have_image(rover1,objective1,high_res), have_image(rover1,objective1,low_res)})"]
+s431[label="(instance index=1, state index=431, atoms={at(rover1,waypoint2), empty(rover1store), at_soil_sample(waypoint1), calibrated(camera1,rover1), have_image(rover1,objective1,high_res), have_image(rover1,objective1,low_res)})"]
+s312[label="(instance index=1, state index=312, atoms={at(rover1,waypoint2), empty(rover1store), at_soil_sample(waypoint1), calibrated(camera1,rover1), have_image(rover1,objective1,high_res), have_image(rover1,objective1,colour)})"]
+s13[label="(instance index=1, state index=13, atoms={communicated_image_data(objective1,colour), at(rover1,waypoint2), empty(rover1store), at_soil_sample(waypoint1), have_image(rover1,objective1,high_res), have_image(rover1,objective1,colour)})"]
+s194[label="(instance index=1, state index=194, atoms={communicated_image_data(objective1,low_res), at(rover1,waypoint2), empty(rover1store), at_soil_sample(waypoint1), have_image(rover1,objective1,low_res), have_image(rover1,objective1,colour)})"]
+s193[label="(instance index=1, state index=193, atoms={at(rover1,waypoint2), empty(rover1store), at_soil_sample(waypoint1), calibrated(camera1,rover1), have_image(rover1,objective1,low_res), have_image(rover1,objective1,colour)})"]
+s14[label="(instance index=1, state index=14, atoms={communicated_image_data(objective1,colour), at(rover1,waypoint2), empty(rover1store), at_soil_sample(waypoint1), have_image(rover1,objective1,low_res), have_image(rover1,objective1,colour)})"]
+s519[label="(instance index=1, state index=519, atoms={communicated_soil_data(waypoint1), empty(rover1store), at(rover1,waypoint1), have_image(rover1,objective1,high_res), have_soil_analysis(rover1,waypoint1)})"]
+s480[label="(instance index=1, state index=480, atoms={communicated_soil_data(waypoint1), empty(rover1store), at(rover1,waypoint1), have_image(rover1,objective1,low_res), have_soil_analysis(rover1,waypoint1)})"]
+s529[label="(instance index=1, state index=529, atoms={communicated_soil_data(waypoint1), at(rover1,waypoint2), empty(rover1store), calibrated(camera1,rover1), have_soil_analysis(rover1,waypoint1)})"]
+s361[label="(instance index=1, state index=361, atoms={communicated_soil_data(waypoint1), empty(rover1store), at(rover1,waypoint1), have_image(rover1,objective1,colour), have_soil_analysis(rover1,waypoint1)})"]
+s505[label="(instance index=1, state index=505, atoms={communicated_image_data(objective1,high_res), empty(rover1store), at(rover1,waypoint1), have_image(rover1,objective1,high_res), have_soil_analysis(rover1,waypoint1)})"]
+s514[label="(instance index=1, state index=514, atoms={at(rover1,waypoint2), empty(rover1store), have_image(rover1,objective1,high_res), have_soil_analysis(rover1,waypoint1)})"]
+s509[label="(instance index=1, state index=509, atoms={empty(rover1store), at(rover1,waypoint1), calibrated(camera1,rover1), have_image(rover1,objective1,high_res), have_soil_analysis(rover1,waypoint1)})"]
+s426[label="(instance index=1, state index=426, atoms={communicated_image_data(objective1,low_res), empty(rover1store), at(rover1,waypoint1), have_image(rover1,objective1,low_res), have_soil_analysis(rover1,waypoint1)})"]
+s475[label="(instance index=1, state index=475, atoms={at(rover1,waypoint2), empty(rover1store), have_image(rover1,objective1,low_res), have_soil_analysis(rover1,waypoint1)})"]
+s470[label="(instance index=1, state index=470, atoms={empty(rover1store), at(rover1,waypoint1), calibrated(camera1,rover1), have_image(rover1,objective1,low_res), have_soil_analysis(rover1,waypoint1)})"]
+s351[label="(instance index=1, state index=351, atoms={empty(rover1store), at(rover1,waypoint1), calibrated(camera1,rover1), have_image(rover1,objective1,colour), have_soil_analysis(rover1,waypoint1)})"]
+s356[label="(instance index=1, state index=356, atoms={at(rover1,waypoint2), empty(rover1store), have_image(rover1,objective1,colour), have_soil_analysis(rover1,waypoint1)})"]
+s187[label="(instance index=1, state index=187, atoms={communicated_image_data(objective1,colour), empty(rover1store), at(rover1,waypoint1), have_image(rover1,objective1,colour), have_soil_analysis(rover1,waypoint1)})"]
+s257[label="(instance index=1, state index=257, atoms={at(rover1,waypoint2), empty(rover1store), at_soil_sample(waypoint1), calibrated(camera1,rover1), have_image(rover1,objective1,high_res), have_image(rover1,objective1,low_res), have_image(rover1,objective1,colour)})"]
+s501[label="(instance index=1, state index=501, atoms={communicated_soil_data(waypoint1), communicated_image_data(objective1,high_res), at(rover1,waypoint1), have_image(rover1,objective1,high_res), full(rover1store), have_soil_analysis(rover1,waypoint1)})"]
+s523[label="(instance index=1, state index=523, atoms={communicated_soil_data(waypoint1), at(rover1,waypoint1), calibrated(camera1,rover1), have_image(rover1,objective1,high_res), full(rover1store), have_soil_analysis(rover1,waypoint1)})"]
+s516[label="(instance index=1, state index=516, atoms={communicated_soil_data(waypoint1), at(rover1,waypoint2), have_image(rover1,objective1,high_res), full(rover1store), have_soil_analysis(rover1,waypoint1)})"]
+s422[label="(instance index=1, state index=422, atoms={communicated_soil_data(waypoint1), communicated_image_data(objective1,low_res), at(rover1,waypoint1), have_image(rover1,objective1,low_res), full(rover1store), have_soil_analysis(rover1,waypoint1)})"]
+s484[label="(instance index=1, state index=484, atoms={communicated_soil_data(waypoint1), at(rover1,waypoint1), calibrated(camera1,rover1), have_image(rover1,objective1,low_res), full(rover1store), have_soil_analysis(rover1,waypoint1)})"]
+s477[label="(instance index=1, state index=477, atoms={communicated_soil_data(waypoint1), at(rover1,waypoint2), have_image(rover1,objective1,low_res), full(rover1store), have_soil_analysis(rover1,waypoint1)})"]
+s365[label="(instance index=1, state index=365, atoms={communicated_soil_data(waypoint1), at(rover1,waypoint1), calibrated(camera1,rover1), have_image(rover1,objective1,colour), full(rover1store), have_soil_analysis(rover1,waypoint1)})"]
+s358[label="(instance index=1, state index=358, atoms={communicated_soil_data(waypoint1), at(rover1,waypoint2), have_image(rover1,objective1,colour), full(rover1store), have_soil_analysis(rover1,waypoint1)})"]
+s183[label="(instance index=1, state index=183, atoms={communicated_soil_data(waypoint1), communicated_image_data(objective1,colour), at(rover1,waypoint1), have_image(rover1,objective1,colour), full(rover1store), have_soil_analysis(rover1,waypoint1)})"]
+s433[label="(instance index=1, state index=433, atoms={communicated_image_data(objective1,high_res), empty(rover1store), at_soil_sample(waypoint1), at(rover1,waypoint1), have_image(rover1,objective1,high_res), have_image(rover1,objective1,low_res)})"]
+s496[label="(instance index=1, state index=496, atoms={communicated_image_data(objective1,high_res), at(rover1,waypoint2), have_image(rover1,objective1,high_res), full(rover1store), have_soil_analysis(rover1,waypoint1)})"]
+s491[label="(instance index=1, state index=491, atoms={communicated_image_data(objective1,high_res), at(rover1,waypoint1), calibrated(camera1,rover1), have_image(rover1,objective1,high_res), full(rover1store), have_soil_analysis(rover1,waypoint1)})"]
+s314[label="(instance index=1, state index=314, atoms={communicated_image_data(objective1,high_res), empty(rover1store), at_soil_sample(waypoint1), at(rover1,waypoint1), have_image(rover1,objective1,high_res), have_image(rover1,objective1,colour)})"]
+s373[label="(instance index=1, state index=373, atoms={communicated_image_data(objective1,low_res), empty(rover1store), at_soil_sample(waypoint1), at(rover1,waypoint1), have_image(rover1,objective1,high_res), have_image(rover1,objective1,low_res)})"]
+s460[label="(instance index=1, state index=460, atoms={at(rover1,waypoint1), have_image(rover1,objective1,high_res), have_image(rover1,objective1,low_res), full(rover1store), have_soil_analysis(rover1,waypoint1)})"]
+s452[label="(instance index=1, state index=452, atoms={empty(rover1store), at_soil_sample(waypoint1), at(rover1,waypoint1), calibrated(camera1,rover1), have_image(rover1,objective1,high_res), have_image(rover1,objective1,low_res)})"]
+s333[label="(instance index=1, state index=333, atoms={empty(rover1store), at_soil_sample(waypoint1), at(rover1,waypoint1), calibrated(camera1,rover1), have_image(rover1,objective1,high_res), have_image(rover1,objective1,colour)})"]
+s510[label="(instance index=1, state index=510, atoms={at(rover1,waypoint2), calibrated(camera1,rover1), have_image(rover1,objective1,high_res), full(rover1store), have_soil_analysis(rover1,waypoint1)})"]
+s341[label="(instance index=1, state index=341, atoms={at(rover1,waypoint1), have_image(rover1,objective1,high_res), have_image(rover1,objective1,colour), full(rover1store), have_soil_analysis(rover1,waypoint1)})"]
+s134[label="(instance index=1, state index=134, atoms={communicated_image_data(objective1,colour), empty(rover1store), at_soil_sample(waypoint1), at(rover1,waypoint1), have_image(rover1,objective1,high_res), have_image(rover1,objective1,colour)})"]
+s254[label="(instance index=1, state index=254, atoms={empty(rover1store), at_soil_sample(waypoint1), at(rover1,waypoint1), calibrated(camera1,rover1), have_image(rover1,objective1,low_res), have_image(rover1,objective1,colour)})"]
+s417[label="(instance index=1, state index=417, atoms={communicated_image_data(objective1,low_res), at(rover1,waypoint2), have_image(rover1,objective1,low_res), full(rover1store), have_soil_analysis(rover1,waypoint1)})"]
+s412[label="(instance index=1, state index=412, atoms={communicated_image_data(objective1,low_res), at(rover1,waypoint1), calibrated(camera1,rover1), have_image(rover1,objective1,low_res), full(rover1store), have_soil_analysis(rover1,waypoint1)})"]
+s195[label="(instance index=1, state index=195, atoms={communicated_image_data(objective1,low_res), empty(rover1store), at_soil_sample(waypoint1), at(rover1,waypoint1), have_image(rover1,objective1,low_res), have_image(rover1,objective1,colour)})"]
+s471[label="(instance index=1, state index=471, atoms={at(rover1,waypoint2), calibrated(camera1,rover1), have_image(rover1,objective1,low_res), full(rover1store), have_soil_analysis(rover1,waypoint1)})"]
+s302[label="(instance index=1, state index=302, atoms={at(rover1,waypoint1), have_image(rover1,objective1,low_res), have_image(rover1,objective1,colour), full(rover1store), have_soil_analysis(rover1,waypoint1)})"]
+s352[label="(instance index=1, state index=352, atoms={at(rover1,waypoint2), calibrated(camera1,rover1), have_image(rover1,objective1,colour), full(rover1store), have_soil_analysis(rover1,waypoint1)})"]
+s178[label="(instance index=1, state index=178, atoms={communicated_image_data(objective1,colour), at(rover1,waypoint2), have_image(rover1,objective1,colour), full(rover1store), have_soil_analysis(rover1,waypoint1)})"]
+s173[label="(instance index=1, state index=173, atoms={communicated_image_data(objective1,colour), at(rover1,waypoint1), calibrated(camera1,rover1), have_image(rover1,objective1,colour), full(rover1store), have_soil_analysis(rover1,waypoint1)})"]
+s15[label="(instance index=1, state index=15, atoms={communicated_image_data(objective1,colour), empty(rover1store), at_soil_sample(waypoint1), at(rover1,waypoint1), have_image(rover1,objective1,low_res), have_image(rover1,objective1,colour)})"]
+s375[label="(instance index=1, state index=375, atoms={communicated_image_data(objective1,high_res), communicated_image_data(objective1,low_res), at(rover1,waypoint2), empty(rover1store), at_soil_sample(waypoint1), have_image(rover1,objective1,high_res), have_image(rover1,objective1,low_res)})"]
+s434[label="(instance index=1, state index=434, atoms={communicated_image_data(objective1,high_res), at(rover1,waypoint2), empty(rover1store), at_soil_sample(waypoint1), calibrated(camera1,rover1), have_image(rover1,objective1,high_res), have_image(rover1,objective1,low_res)})"]
+s315[label="(instance index=1, state index=315, atoms={communicated_image_data(objective1,high_res), at(rover1,waypoint2), empty(rover1store), at_soil_sample(waypoint1), calibrated(camera1,rover1), have_image(rover1,objective1,high_res), have_image(rover1,objective1,colour)})"]
+s136[label="(instance index=1, state index=136, atoms={communicated_image_data(objective1,high_res), communicated_image_data(objective1,colour), at(rover1,waypoint2), empty(rover1store), at_soil_sample(waypoint1), have_image(rover1,objective1,high_res), have_image(rover1,objective1,colour)})"]
+s374[label="(instance index=1, state index=374, atoms={communicated_image_data(objective1,low_res), at(rover1,waypoint2), empty(rover1store), at_soil_sample(waypoint1), calibrated(camera1,rover1), have_image(rover1,objective1,high_res), have_image(rover1,objective1,low_res)})"]
+s255[label="(instance index=1, state index=255, atoms={at(rover1,waypoint2), empty(rover1store), at_soil_sample(waypoint1), have_image(rover1,objective1,high_res), have_image(rover1,objective1,low_res), have_image(rover1,objective1,colour)})"]
+s135[label="(instance index=1, state index=135, atoms={communicated_image_data(objective1,colour), at(rover1,waypoint2), empty(rover1store), at_soil_sample(waypoint1), calibrated(camera1,rover1), have_image(rover1,objective1,high_res), have_image(rover1,objective1,colour)})"]
+s196[label="(instance index=1, state index=196, atoms={communicated_image_data(objective1,low_res), at(rover1,waypoint2), empty(rover1store), at_soil_sample(waypoint1), calibrated(camera1,rover1), have_image(rover1,objective1,low_res), have_image(rover1,objective1,colour)})"]
+s17[label="(instance index=1, state index=17, atoms={communicated_image_data(objective1,low_res), communicated_image_data(objective1,colour), at(rover1,waypoint2), empty(rover1store), at_soil_sample(waypoint1), have_image(rover1,objective1,low_res), have_image(rover1,objective1,colour)})"]
+s16[label="(instance index=1, state index=16, atoms={communicated_image_data(objective1,colour), at(rover1,waypoint2), empty(rover1store), at_soil_sample(waypoint1), calibrated(camera1,rover1), have_image(rover1,objective1,low_res), have_image(rover1,objective1,colour)})"]
+s502[label="(instance index=1, state index=502, atoms={communicated_soil_data(waypoint1), communicated_image_data(objective1,high_res), empty(rover1store), at(rover1,waypoint1), have_image(rover1,objective1,high_res), have_soil_analysis(rover1,waypoint1)})"]
+s521[label="(instance index=1, state index=521, atoms={communicated_soil_data(waypoint1), empty(rover1store), at(rover1,waypoint1), calibrated(camera1,rover1), have_image(rover1,objective1,high_res), have_soil_analysis(rover1,waypoint1)})"]
+s517[label="(instance index=1, state index=517, atoms={communicated_soil_data(waypoint1), at(rover1,waypoint2), empty(rover1store), have_image(rover1,objective1,high_res), have_soil_analysis(rover1,waypoint1)})"]
+s423[label="(instance index=1, state index=423, atoms={communicated_soil_data(waypoint1), communicated_image_data(objective1,low_res), empty(rover1store), at(rover1,waypoint1), have_image(rover1,objective1,low_res), have_soil_analysis(rover1,waypoint1)})"]
+s482[label="(instance index=1, state index=482, atoms={communicated_soil_data(waypoint1), empty(rover1store), at(rover1,waypoint1), calibrated(camera1,rover1), have_image(rover1,objective1,low_res), have_soil_analysis(rover1,waypoint1)})"]
+s478[label="(instance index=1, state index=478, atoms={communicated_soil_data(waypoint1), at(rover1,waypoint2), empty(rover1store), have_image(rover1,objective1,low_res), have_soil_analysis(rover1,waypoint1)})"]
+s363[label="(instance index=1, state index=363, atoms={communicated_soil_data(waypoint1), empty(rover1store), at(rover1,waypoint1), calibrated(camera1,rover1), have_image(rover1,objective1,colour), have_soil_analysis(rover1,waypoint1)})"]
+s359[label="(instance index=1, state index=359, atoms={communicated_soil_data(waypoint1), at(rover1,waypoint2), empty(rover1store), have_image(rover1,objective1,colour), have_soil_analysis(rover1,waypoint1)})"]
+s184[label="(instance index=1, state index=184, atoms={communicated_soil_data(waypoint1), communicated_image_data(objective1,colour), empty(rover1store), at(rover1,waypoint1), have_image(rover1,objective1,colour), have_soil_analysis(rover1,waypoint1)})"]
+s497[label="(instance index=1, state index=497, atoms={communicated_image_data(objective1,high_res), at(rover1,waypoint2), empty(rover1store), have_image(rover1,objective1,high_res), have_soil_analysis(rover1,waypoint1)})"]
+s492[label="(instance index=1, state index=492, atoms={communicated_image_data(objective1,high_res), empty(rover1store), at(rover1,waypoint1), calibrated(camera1,rover1), have_image(rover1,objective1,high_res), have_soil_analysis(rover1,waypoint1)})"]
+s467[label="(instance index=1, state index=467, atoms={empty(rover1store), at(rover1,waypoint1), have_image(rover1,objective1,high_res), have_image(rover1,objective1,low_res), have_soil_analysis(rover1,waypoint1)})"]
+s511[label="(instance index=1, state index=511, atoms={at(rover1,waypoint2), empty(rover1store), calibrated(camera1,rover1), have_image(rover1,objective1,high_res), have_soil_analysis(rover1,waypoint1)})"]
+s348[label="(instance index=1, state index=348, atoms={empty(rover1store), at(rover1,waypoint1), have_image(rover1,objective1,high_res), have_image(rover1,objective1,colour), have_soil_analysis(rover1,waypoint1)})"]
+s418[label="(instance index=1, state index=418, atoms={communicated_image_data(objective1,low_res), at(rover1,waypoint2), empty(rover1store), have_image(rover1,objective1,low_res), have_soil_analysis(rover1,waypoint1)})"]
+s413[label="(instance index=1, state index=413, atoms={communicated_image_data(objective1,low_res), empty(rover1store), at(rover1,waypoint1), calibrated(camera1,rover1), have_image(rover1,objective1,low_res), have_soil_analysis(rover1,waypoint1)})"]
+s472[label="(instance index=1, state index=472, atoms={at(rover1,waypoint2), empty(rover1store), calibrated(camera1,rover1), have_image(rover1,objective1,low_res), have_soil_analysis(rover1,waypoint1)})"]
+s309[label="(instance index=1, state index=309, atoms={empty(rover1store), at(rover1,waypoint1), have_image(rover1,objective1,low_res), have_image(rover1,objective1,colour), have_soil_analysis(rover1,waypoint1)})"]
+s353[label="(instance index=1, state index=353, atoms={at(rover1,waypoint2), empty(rover1store), calibrated(camera1,rover1), have_image(rover1,objective1,colour), have_soil_analysis(rover1,waypoint1)})"]
+s179[label="(instance index=1, state index=179, atoms={communicated_image_data(objective1,colour), at(rover1,waypoint2), empty(rover1store), have_image(rover1,objective1,colour), have_soil_analysis(rover1,waypoint1)})"]
+s174[label="(instance index=1, state index=174, atoms={communicated_image_data(objective1,colour), empty(rover1store), at(rover1,waypoint1), calibrated(camera1,rover1), have_image(rover1,objective1,colour), have_soil_analysis(rover1,waypoint1)})"]
+s278[label="(instance index=1, state index=278, atoms={empty(rover1store), at_soil_sample(waypoint1), at(rover1,waypoint1), calibrated(camera1,rover1), have_image(rover1,objective1,high_res), have_image(rover1,objective1,low_res), have_image(rover1,objective1,colour)})"]
+s260[label="(instance index=1, state index=260, atoms={communicated_image_data(objective1,high_res), at(rover1,waypoint2), empty(rover1store), at_soil_sample(waypoint1), calibrated(camera1,rover1), have_image(rover1,objective1,high_res), have_image(rover1,objective1,low_res), have_image(rover1,objective1,colour)})"]
+s200[label="(instance index=1, state index=200, atoms={communicated_image_data(objective1,low_res), at(rover1,waypoint2), empty(rover1store), at_soil_sample(waypoint1), calibrated(camera1,rover1), have_image(rover1,objective1,high_res), have_image(rover1,objective1,low_res), have_image(rover1,objective1,colour)})"]
+s80[label="(instance index=1, state index=80, atoms={communicated_image_data(objective1,colour), at(rover1,waypoint2), empty(rover1store), at_soil_sample(waypoint1), calibrated(camera1,rover1), have_image(rover1,objective1,high_res), have_image(rover1,objective1,low_res), have_image(rover1,objective1,colour)})"]
+s499[label="(instance index=1, state index=499, atoms={communicated_soil_data(waypoint1), communicated_image_data(objective1,high_res), at(rover1,waypoint2), have_image(rover1,objective1,high_res), full(rover1store), have_soil_analysis(rover1,waypoint1)})"]
+s506[label="(instance index=1, state index=506, atoms={communicated_soil_data(waypoint1), communicated_image_data(objective1,high_res), at(rover1,waypoint1), calibrated(camera1,rover1), have_image(rover1,objective1,high_res), full(rover1store), have_soil_analysis(rover1,waypoint1)})"]
+s463[label="(instance index=1, state index=463, atoms={communicated_soil_data(waypoint1), at(rover1,waypoint1), have_image(rover1,objective1,high_res), have_image(rover1,objective1,low_res), full(rover1store), have_soil_analysis(rover1,waypoint1)})"]
+s512[label="(instance index=1, state index=512, atoms={communicated_soil_data(waypoint1), at(rover1,waypoint2), calibrated(camera1,rover1), have_image(rover1,objective1,high_res), full(rover1store), have_soil_analysis(rover1,waypoint1)})"]
+s344[label="(instance index=1, state index=344, atoms={communicated_soil_data(waypoint1), at(rover1,waypoint1), have_image(rover1,objective1,high_res), have_image(rover1,objective1,colour), full(rover1store), have_soil_analysis(rover1,waypoint1)})"]
+s427[label="(instance index=1, state index=427, atoms={communicated_soil_data(waypoint1), communicated_image_data(objective1,low_res), at(rover1,waypoint1), calibrated(camera1,rover1), have_image(rover1,objective1,low_res), full(rover1store), have_soil_analysis(rover1,waypoint1)})"]
+s420[label="(instance index=1, state index=420, atoms={communicated_soil_data(waypoint1), communicated_image_data(objective1,low_res), at(rover1,waypoint2), have_image(rover1,objective1,low_res), full(rover1store), have_soil_analysis(rover1,waypoint1)})"]
+s473[label="(instance index=1, state index=473, atoms={communicated_soil_data(waypoint1), at(rover1,waypoint2), calibrated(camera1,rover1), have_image(rover1,objective1,low_res), full(rover1store), have_soil_analysis(rover1,waypoint1)})"]
+s305[label="(instance index=1, state index=305, atoms={communicated_soil_data(waypoint1), at(rover1,waypoint1), have_image(rover1,objective1,low_res), have_image(rover1,objective1,colour), full(rover1store), have_soil_analysis(rover1,waypoint1)})"]
+s354[label="(instance index=1, state index=354, atoms={communicated_soil_data(waypoint1), at(rover1,waypoint2), calibrated(camera1,rover1), have_image(rover1,objective1,colour), full(rover1store), have_soil_analysis(rover1,waypoint1)})"]
+s188[label="(instance index=1, state index=188, atoms={communicated_soil_data(waypoint1), communicated_image_data(objective1,colour), at(rover1,waypoint1), calibrated(camera1,rover1), have_image(rover1,objective1,colour), full(rover1store), have_soil_analysis(rover1,waypoint1)})"]
+s181[label="(instance index=1, state index=181, atoms={communicated_soil_data(waypoint1), communicated_image_data(objective1,colour), at(rover1,waypoint2), have_image(rover1,objective1,colour), full(rover1store), have_soil_analysis(rover1,waypoint1)})"]
+s376[label="(instance index=1, state index=376, atoms={communicated_image_data(objective1,high_res), communicated_image_data(objective1,low_res), empty(rover1store), at_soil_sample(waypoint1), at(rover1,waypoint1), have_image(rover1,objective1,high_res), have_image(rover1,objective1,low_res)})"]
+s443[label="(instance index=1, state index=443, atoms={communicated_image_data(objective1,high_res), at(rover1,waypoint1), have_image(rover1,objective1,high_res), have_image(rover1,objective1,low_res), full(rover1store), have_soil_analysis(rover1,waypoint1)})"]
+s435[label="(instance index=1, state index=435, atoms={communicated_image_data(objective1,high_res), empty(rover1store), at_soil_sample(waypoint1), at(rover1,waypoint1), calibrated(camera1,rover1), have_image(rover1,objective1,high_res), have_image(rover1,objective1,low_res)})"]
+s316[label="(instance index=1, state index=316, atoms={communicated_image_data(objective1,high_res), empty(rover1store), at_soil_sample(waypoint1), at(rover1,waypoint1), calibrated(camera1,rover1), have_image(rover1,objective1,high_res), have_image(rover1,objective1,colour)})"]
+s493[label="(instance index=1, state index=493, atoms={communicated_image_data(objective1,high_res), at(rover1,waypoint2), calibrated(camera1,rover1), have_image(rover1,objective1,high_res), full(rover1store), have_soil_analysis(rover1,waypoint1)})"]
+s324[label="(instance index=1, state index=324, atoms={communicated_image_data(objective1,high_res), at(rover1,waypoint1), have_image(rover1,objective1,high_res), have_image(rover1,objective1,colour), full(rover1store), have_soil_analysis(rover1,waypoint1)})"]
+s137[label="(instance index=1, state index=137, atoms={communicated_image_data(objective1,high_res), communicated_image_data(objective1,colour), empty(rover1store), at_soil_sample(waypoint1), at(rover1,waypoint1), have_image(rover1,objective1,high_res), have_image(rover1,objective1,colour)})"]
+s403[label="(instance index=1, state index=403, atoms={communicated_image_data(objective1,low_res), at(rover1,waypoint1), have_image(rover1,objective1,high_res), have_image(rover1,objective1,low_res), full(rover1store), have_soil_analysis(rover1,waypoint1)})"]
+s395[label="(instance index=1, state index=395, atoms={communicated_image_data(objective1,low_res), empty(rover1store), at_soil_sample(waypoint1), at(rover1,waypoint1), calibrated(camera1,rover1), have_image(rover1,objective1,high_res), have_image(rover1,objective1,low_res)})"]
+s458[label="(instance index=1, state index=458, atoms={at(rover1,waypoint2), have_image(rover1,objective1,high_res), have_image(rover1,objective1,low_res), full(rover1store), have_soil_analysis(rover1,waypoint1)})"]
+s453[label="(instance index=1, state index=453, atoms={at(rover1,waypoint1), calibrated(camera1,rover1), have_image(rover1,objective1,high_res), have_image(rover1,objective1,low_res), full(rover1store), have_soil_analysis(rover1,waypoint1)})"]
+s256[label="(instance index=1, state index=256, atoms={empty(rover1store), at_soil_sample(waypoint1), at(rover1,waypoint1), have_image(rover1,objective1,high_res), have_image(rover1,objective1,low_res), have_image(rover1,objective1,colour)})"]
+s334[label="(instance index=1, state index=334, atoms={at(rover1,waypoint1), calibrated(camera1,rover1), have_image(rover1,objective1,high_res), have_image(rover1,objective1,colour), full(rover1store), have_soil_analysis(rover1,waypoint1)})"]
+s339[label="(instance index=1, state index=339, atoms={at(rover1,waypoint2), have_image(rover1,objective1,high_res), have_image(rover1,objective1,colour), full(rover1store), have_soil_analysis(rover1,waypoint1)})"]
+s164[label="(instance index=1, state index=164, atoms={communicated_image_data(objective1,colour), at(rover1,waypoint1), have_image(rover1,objective1,high_res), have_image(rover1,objective1,colour), full(rover1store), have_soil_analysis(rover1,waypoint1)})"]
+s156[label="(instance index=1, state index=156, atoms={communicated_image_data(objective1,colour), empty(rover1store), at_soil_sample(waypoint1), at(rover1,waypoint1), calibrated(camera1,rover1), have_image(rover1,objective1,high_res), have_image(rover1,objective1,colour)})"]
+s197[label="(instance index=1, state index=197, atoms={communicated_image_data(objective1,low_res), empty(rover1store), at_soil_sample(waypoint1), at(rover1,waypoint1), calibrated(camera1,rover1), have_image(rover1,objective1,low_res), have_image(rover1,objective1,colour)})"]
+s295[label="(instance index=1, state index=295, atoms={at(rover1,waypoint1), calibrated(camera1,rover1), have_image(rover1,objective1,low_res), have_image(rover1,objective1,colour), full(rover1store), have_soil_analysis(rover1,waypoint1)})"]
+s77[label="(instance index=1, state index=77, atoms={communicated_image_data(objective1,colour), empty(rover1store), at_soil_sample(waypoint1), at(rover1,waypoint1), calibrated(camera1,rover1), have_image(rover1,objective1,low_res), have_image(rover1,objective1,colour)})"]
+s414[label="(instance index=1, state index=414, atoms={communicated_image_data(objective1,low_res), at(rover1,waypoint2), calibrated(camera1,rover1), have_image(rover1,objective1,low_res), full(rover1store), have_soil_analysis(rover1,waypoint1)})"]
+s245[label="(instance index=1, state index=245, atoms={communicated_image_data(objective1,low_res), at(rover1,waypoint1), have_image(rover1,objective1,low_res), have_image(rover1,objective1,colour), full(rover1store), have_soil_analysis(rover1,waypoint1)})"]
+s300[label="(instance index=1, state index=300, atoms={at(rover1,waypoint2), have_image(rover1,objective1,low_res), have_image(rover1,objective1,colour), full(rover1store), have_soil_analysis(rover1,waypoint1)})"]
+s175[label="(instance index=1, state index=175, atoms={communicated_image_data(objective1,colour), at(rover1,waypoint2), calibrated(camera1,rover1), have_image(rover1,objective1,colour), full(rover1store), have_soil_analysis(rover1,waypoint1)})"]
+s125[label="(instance index=1, state index=125, atoms={communicated_image_data(objective1,colour), at(rover1,waypoint1), have_image(rover1,objective1,low_res), have_image(rover1,objective1,colour), full(rover1store), have_soil_analysis(rover1,waypoint1)})"]
+s18[label="(instance index=1, state index=18, atoms={communicated_image_data(objective1,low_res), communicated_image_data(objective1,colour), empty(rover1store), at_soil_sample(waypoint1), at(rover1,waypoint1), have_image(rover1,objective1,low_res), have_image(rover1,objective1,colour)})"]
+s377[label="(instance index=1, state index=377, atoms={communicated_image_data(objective1,high_res), communicated_image_data(objective1,low_res), at(rover1,waypoint2), empty(rover1store), at_soil_sample(waypoint1), calibrated(camera1,rover1), have_image(rover1,objective1,high_res), have_image(rover1,objective1,low_res)})"]
+s258[label="(instance index=1, state index=258, atoms={communicated_image_data(objective1,high_res), at(rover1,waypoint2), empty(rover1store), at_soil_sample(waypoint1), have_image(rover1,objective1,high_res), have_image(rover1,objective1,low_res), have_image(rover1,objective1,colour)})"]
+s138[label="(instance index=1, state index=138, atoms={communicated_image_data(objective1,high_res), communicated_image_data(objective1,colour), at(rover1,waypoint2), empty(rover1store), at_soil_sample(waypoint1), calibrated(camera1,rover1), have_image(rover1,objective1,high_res), have_image(rover1,objective1,colour)})"]
+s198[label="(instance index=1, state index=198, atoms={communicated_image_data(objective1,low_res), at(rover1,waypoint2), empty(rover1store), at_soil_sample(waypoint1), have_image(rover1,objective1,high_res), have_image(rover1,objective1,low_res), have_image(rover1,objective1,colour)})"]
+s78[label="(instance index=1, state index=78, atoms={communicated_image_data(objective1,colour), at(rover1,waypoint2), empty(rover1store), at_soil_sample(waypoint1), have_image(rover1,objective1,high_res), have_image(rover1,objective1,low_res), have_image(rover1,objective1,colour)})"]
+s19[label="(instance index=1, state index=19, atoms={communicated_image_data(objective1,low_res), communicated_image_data(objective1,colour), at(rover1,waypoint2), empty(rover1store), at_soil_sample(waypoint1), calibrated(camera1,rover1), have_image(rover1,objective1,low_res), have_image(rover1,objective1,colour)})"]
+s504[label="(instance index=1, state index=504, atoms={communicated_soil_data(waypoint1), communicated_image_data(objective1,high_res), empty(rover1store), at(rover1,waypoint1), calibrated(camera1,rover1), have_image(rover1,objective1,high_res), have_soil_analysis(rover1,waypoint1)})"]
+s500[label="(instance index=1, state index=500, atoms={communicated_soil_data(waypoint1), communicated_image_data(objective1,high_res), at(rover1,waypoint2), empty(rover1store), have_image(rover1,objective1,high_res), have_soil_analysis(rover1,waypoint1)})"]
+s464[label="(instance index=1, state index=464, atoms={communicated_soil_data(waypoint1), empty(rover1store), at(rover1,waypoint1), have_image(rover1,objective1,high_res), have_image(rover1,objective1,low_res), have_soil_analysis(rover1,waypoint1)})"]
+s520[label="(instance index=1, state index=520, atoms={communicated_soil_data(waypoint1), at(rover1,waypoint2), empty(rover1store), calibrated(camera1,rover1), have_image(rover1,objective1,high_res), have_soil_analysis(rover1,waypoint1)})"]
+s345[label="(instance index=1, state index=345, atoms={communicated_soil_data(waypoint1), empty(rover1store), at(rover1,waypoint1), have_image(rover1,objective1,high_res), have_image(rover1,objective1,colour), have_soil_analysis(rover1,waypoint1)})"]
+s425[label="(instance index=1, state index=425, atoms={communicated_soil_data(waypoint1), communicated_image_data(objective1,low_res), empty(rover1store), at(rover1,waypoint1), calibrated(camera1,rover1), have_image(rover1,objective1,low_res), have_soil_analysis(rover1,waypoint1)})"]
+s421[label="(instance index=1, state index=421, atoms={communicated_soil_data(waypoint1), communicated_image_data(objective1,low_res), at(rover1,waypoint2), empty(rover1store), have_image(rover1,objective1,low_res), have_soil_analysis(rover1,waypoint1)})"]
+s481[label="(instance index=1, state index=481, atoms={communicated_soil_data(waypoint1), at(rover1,waypoint2), empty(rover1store), calibrated(camera1,rover1), have_image(rover1,objective1,low_res), have_soil_analysis(rover1,waypoint1)})"]
+s306[label="(instance index=1, state index=306, atoms={communicated_soil_data(waypoint1), empty(rover1store), at(rover1,waypoint1), have_image(rover1,objective1,low_res), have_image(rover1,objective1,colour), have_soil_analysis(rover1,waypoint1)})"]
+s362[label="(instance index=1, state index=362, atoms={communicated_soil_data(waypoint1), at(rover1,waypoint2), empty(rover1store), calibrated(camera1,rover1), have_image(rover1,objective1,colour), have_soil_analysis(rover1,waypoint1)})"]
+s186[label="(instance index=1, state index=186, atoms={communicated_soil_data(waypoint1), communicated_image_data(objective1,colour), empty(rover1store), at(rover1,waypoint1), calibrated(camera1,rover1), have_image(rover1,objective1,colour), have_soil_analysis(rover1,waypoint1)})"]
+s182[label="(instance index=1, state index=182, atoms={communicated_soil_data(waypoint1), communicated_image_data(objective1,colour), at(rover1,waypoint2), empty(rover1store), have_image(rover1,objective1,colour), have_soil_analysis(rover1,waypoint1)})"]
+s450[label="(instance index=1, state index=450, atoms={communicated_image_data(objective1,high_res), empty(rover1store), at(rover1,waypoint1), have_image(rover1,objective1,high_res), have_image(rover1,objective1,low_res), have_soil_analysis(rover1,waypoint1)})"]
+s494[label="(instance index=1, state index=494, atoms={communicated_image_data(objective1,high_res), at(rover1,waypoint2), empty(rover1store), calibrated(camera1,rover1), have_image(rover1,objective1,high_res), have_soil_analysis(rover1,waypoint1)})"]
+s331[label="(instance index=1, state index=331, atoms={communicated_image_data(objective1,high_res), empty(rover1store), at(rover1,waypoint1), have_image(rover1,objective1,high_res), have_image(rover1,objective1,colour), have_soil_analysis(rover1,waypoint1)})"]
+s410[label="(instance index=1, state index=410, atoms={communicated_image_data(objective1,low_res), empty(rover1store), at(rover1,waypoint1), have_image(rover1,objective1,high_res), have_image(rover1,objective1,low_res), have_soil_analysis(rover1,waypoint1)})"]
+s459[label="(instance index=1, state index=459, atoms={at(rover1,waypoint2), empty(rover1store), have_image(rover1,objective1,high_res), have_image(rover1,objective1,low_res), have_soil_analysis(rover1,waypoint1)})"]
+s454[label="(instance index=1, state index=454, atoms={empty(rover1store), at(rover1,waypoint1), calibrated(camera1,rover1), have_image(rover1,objective1,high_res), have_image(rover1,objective1,low_res), have_soil_analysis(rover1,waypoint1)})"]
+s335[label="(instance index=1, state index=335, atoms={empty(rover1store), at(rover1,waypoint1), calibrated(camera1,rover1), have_image(rover1,objective1,high_res), have_image(rover1,objective1,colour), have_soil_analysis(rover1,waypoint1)})"]
+s340[label="(instance index=1, state index=340, atoms={at(rover1,waypoint2), empty(rover1store), have_image(rover1,objective1,high_res), have_image(rover1,objective1,colour), have_soil_analysis(rover1,waypoint1)})"]
+s171[label="(instance index=1, state index=171, atoms={communicated_image_data(objective1,colour), empty(rover1store), at(rover1,waypoint1), have_image(rover1,objective1,high_res), have_image(rover1,objective1,colour), have_soil_analysis(rover1,waypoint1)})"]
+s296[label="(instance index=1, state index=296, atoms={empty(rover1store), at(rover1,waypoint1), calibrated(camera1,rover1), have_image(rover1,objective1,low_res), have_image(rover1,objective1,colour), have_soil_analysis(rover1,waypoint1)})"]
+s415[label="(instance index=1, state index=415, atoms={communicated_image_data(objective1,low_res), at(rover1,waypoint2), empty(rover1store), calibrated(camera1,rover1), have_image(rover1,objective1,low_res), have_soil_analysis(rover1,waypoint1)})"]
+s252[label="(instance index=1, state index=252, atoms={communicated_image_data(objective1,low_res), empty(rover1store), at(rover1,waypoint1), have_image(rover1,objective1,low_res), have_image(rover1,objective1,colour), have_soil_analysis(rover1,waypoint1)})"]
+s301[label="(instance index=1, state index=301, atoms={at(rover1,waypoint2), empty(rover1store), have_image(rover1,objective1,low_res), have_image(rover1,objective1,colour), have_soil_analysis(rover1,waypoint1)})"]
+s132[label="(instance index=1, state index=132, atoms={communicated_image_data(objective1,colour), empty(rover1store), at(rover1,waypoint1), have_image(rover1,objective1,low_res), have_image(rover1,objective1,colour), have_soil_analysis(rover1,waypoint1)})"]
+s176[label="(instance index=1, state index=176, atoms={communicated_image_data(objective1,colour), at(rover1,waypoint2), empty(rover1store), calibrated(camera1,rover1), have_image(rover1,objective1,colour), have_soil_analysis(rover1,waypoint1)})"]
+s261[label="(instance index=1, state index=261, atoms={communicated_image_data(objective1,high_res), empty(rover1store), at_soil_sample(waypoint1), at(rover1,waypoint1), calibrated(camera1,rover1), have_image(rover1,objective1,high_res), have_image(rover1,objective1,low_res), have_image(rover1,objective1,colour)})"]
+s221[label="(instance index=1, state index=221, atoms={communicated_image_data(objective1,low_res), empty(rover1store), at_soil_sample(waypoint1), at(rover1,waypoint1), calibrated(camera1,rover1), have_image(rover1,objective1,high_res), have_image(rover1,objective1,low_res), have_image(rover1,objective1,colour)})"]
+s279[label="(instance index=1, state index=279, atoms={at(rover1,waypoint1), calibrated(camera1,rover1), have_image(rover1,objective1,high_res), have_image(rover1,objective1,low_res), have_image(rover1,objective1,colour), full(rover1store), have_soil_analysis(rover1,waypoint1)})"]
+s101[label="(instance index=1, state index=101, atoms={communicated_image_data(objective1,colour), empty(rover1store), at_soil_sample(waypoint1), at(rover1,waypoint1), calibrated(camera1,rover1), have_image(rover1,objective1,high_res), have_image(rover1,objective1,low_res), have_image(rover1,objective1,colour)})"]
+s203[label="(instance index=1, state index=203, atoms={communicated_image_data(objective1,high_res), communicated_image_data(objective1,low_res), at(rover1,waypoint2), empty(rover1store), at_soil_sample(waypoint1), calibrated(camera1,rover1), have_image(rover1,objective1,high_res), have_image(rover1,objective1,low_res), have_image(rover1,objective1,colour)})"]
+s83[label="(instance index=1, state index=83, atoms={communicated_image_data(objective1,high_res), communicated_image_data(objective1,colour), at(rover1,waypoint2), empty(rover1store), at_soil_sample(waypoint1), calibrated(camera1,rover1), have_image(rover1,objective1,high_res), have_image(rover1,objective1,low_res), have_image(rover1,objective1,colour)})"]
+s23[label="(instance index=1, state index=23, atoms={communicated_image_data(objective1,low_res), communicated_image_data(objective1,colour), at(rover1,waypoint2), empty(rover1store), at_soil_sample(waypoint1), calibrated(camera1,rover1), have_image(rover1,objective1,high_res), have_image(rover1,objective1,low_res), have_image(rover1,objective1,colour)})"]
+s446[label="(instance index=1, state index=446, atoms={communicated_soil_data(waypoint1), communicated_image_data(objective1,high_res), at(rover1,waypoint1), have_image(rover1,objective1,high_res), have_image(rover1,objective1,low_res), full(rover1store), have_soil_analysis(rover1,waypoint1)})"]
+s495[label="(instance index=1, state index=495, atoms={communicated_soil_data(waypoint1), communicated_image_data(objective1,high_res), at(rover1,waypoint2), calibrated(camera1,rover1), have_image(rover1,objective1,high_res), full(rover1store), have_soil_analysis(rover1,waypoint1)})"]
+s327[label="(instance index=1, state index=327, atoms={communicated_soil_data(waypoint1), communicated_image_data(objective1,high_res), at(rover1,waypoint1), have_image(rover1,objective1,high_res), have_image(rover1,objective1,colour), full(rover1store), have_soil_analysis(rover1,waypoint1)})"]
+s406[label="(instance index=1, state index=406, atoms={communicated_soil_data(waypoint1), communicated_image_data(objective1,low_res), at(rover1,waypoint1), have_image(rover1,objective1,high_res), have_image(rover1,objective1,low_res), full(rover1store), have_soil_analysis(rover1,waypoint1)})"]
+s468[label="(instance index=1, state index=468, atoms={communicated_soil_data(waypoint1), at(rover1,waypoint1), calibrated(camera1,rover1), have_image(rover1,objective1,high_res), have_image(rover1,objective1,low_res), full(rover1store), have_soil_analysis(rover1,waypoint1)})"]
+s461[label="(instance index=1, state index=461, atoms={communicated_soil_data(waypoint1), at(rover1,waypoint2), have_image(rover1,objective1,high_res), have_image(rover1,objective1,low_res), full(rover1store), have_soil_analysis(rover1,waypoint1)})"]
+s349[label="(instance index=1, state index=349, atoms={communicated_soil_data(waypoint1), at(rover1,waypoint1), calibrated(camera1,rover1), have_image(rover1,objective1,high_res), have_image(rover1,objective1,colour), full(rover1store), have_soil_analysis(rover1,waypoint1)})"]
+s342[label="(instance index=1, state index=342, atoms={communicated_soil_data(waypoint1), at(rover1,waypoint2), have_image(rover1,objective1,high_res), have_image(rover1,objective1,colour), full(rover1store), have_soil_analysis(rover1,waypoint1)})"]
+s167[label="(instance index=1, state index=167, atoms={communicated_soil_data(waypoint1), communicated_image_data(objective1,colour), at(rover1,waypoint1), have_image(rover1,objective1,high_res), have_image(rover1,objective1,colour), full(rover1store), have_soil_analysis(rover1,waypoint1)})"]
+s310[label="(instance index=1, state index=310, atoms={communicated_soil_data(waypoint1), at(rover1,waypoint1), calibrated(camera1,rover1), have_image(rover1,objective1,low_res), have_image(rover1,objective1,colour), full(rover1store), have_soil_analysis(rover1,waypoint1)})"]
+s416[label="(instance index=1, state index=416, atoms={communicated_soil_data(waypoint1), communicated_image_data(objective1,low_res), at(rover1,waypoint2), calibrated(camera1,rover1), have_image(rover1,objective1,low_res), full(rover1store), have_soil_analysis(rover1,waypoint1)})"]
+s248[label="(instance index=1, state index=248, atoms={communicated_soil_data(waypoint1), communicated_image_data(objective1,low_res), at(rover1,waypoint1), have_image(rover1,objective1,low_res), have_image(rover1,objective1,colour), full(rover1store), have_soil_analysis(rover1,waypoint1)})"]
+s303[label="(instance index=1, state index=303, atoms={communicated_soil_data(waypoint1), at(rover1,waypoint2), have_image(rover1,objective1,low_res), have_image(rover1,objective1,colour), full(rover1store), have_soil_analysis(rover1,waypoint1)})"]
+s177[label="(instance index=1, state index=177, atoms={communicated_soil_data(waypoint1), communicated_image_data(objective1,colour), at(rover1,waypoint2), calibrated(camera1,rover1), have_image(rover1,objective1,colour), full(rover1store), have_soil_analysis(rover1,waypoint1)})"]
+s128[label="(instance index=1, state index=128, atoms={communicated_soil_data(waypoint1), communicated_image_data(objective1,colour), at(rover1,waypoint1), have_image(rover1,objective1,low_res), have_image(rover1,objective1,colour), full(rover1store), have_soil_analysis(rover1,waypoint1)})"]
+s386[label="(instance index=1, state index=386, atoms={communicated_image_data(objective1,high_res), communicated_image_data(objective1,low_res), at(rover1,waypoint1), have_image(rover1,objective1,high_res), have_image(rover1,objective1,low_res), full(rover1store), have_soil_analysis(rover1,waypoint1)})"]
+s378[label="(instance index=1, state index=378, atoms={communicated_image_data(objective1,high_res), communicated_image_data(objective1,low_res), empty(rover1store), at_soil_sample(waypoint1), at(rover1,waypoint1), calibrated(camera1,rover1), have_image(rover1,objective1,high_res), have_image(rover1,objective1,low_res)})"]
+s441[label="(instance index=1, state index=441, atoms={communicated_image_data(objective1,high_res), at(rover1,waypoint2), have_image(rover1,objective1,high_res), have_image(rover1,objective1,low_res), full(rover1store), have_soil_analysis(rover1,waypoint1)})"]
+s436[label="(instance index=1, state index=436, atoms={communicated_image_data(objective1,high_res), at(rover1,waypoint1), calibrated(camera1,rover1), have_image(rover1,objective1,high_res), have_image(rover1,objective1,low_res), full(rover1store), have_soil_analysis(rover1,waypoint1)})"]
+s259[label="(instance index=1, state index=259, atoms={communicated_image_data(objective1,high_res), empty(rover1store), at_soil_sample(waypoint1), at(rover1,waypoint1), have_image(rover1,objective1,high_res), have_image(rover1,objective1,low_res), have_image(rover1,objective1,colour)})"]
+s317[label="(instance index=1, state index=317, atoms={communicated_image_data(objective1,high_res), at(rover1,waypoint1), calibrated(camera1,rover1), have_image(rover1,objective1,high_res), have_image(rover1,objective1,colour), full(rover1store), have_soil_analysis(rover1,waypoint1)})"]
+s322[label="(instance index=1, state index=322, atoms={communicated_image_data(objective1,high_res), at(rover1,waypoint2), have_image(rover1,objective1,high_res), have_image(rover1,objective1,colour), full(rover1store), have_soil_analysis(rover1,waypoint1)})"]
+s147[label="(instance index=1, state index=147, atoms={communicated_image_data(objective1,high_res), communicated_image_data(objective1,colour), at(rover1,waypoint1), have_image(rover1,objective1,high_res), have_image(rover1,objective1,colour), full(rover1store), have_soil_analysis(rover1,waypoint1)})"]
+s139[label="(instance index=1, state index=139, atoms={communicated_image_data(objective1,high_res), communicated_image_data(objective1,colour), empty(rover1store), at_soil_sample(waypoint1), at(rover1,waypoint1), calibrated(camera1,rover1), have_image(rover1,objective1,high_res), have_image(rover1,objective1,colour)})"]
+s401[label="(instance index=1, state index=401, atoms={communicated_image_data(objective1,low_res), at(rover1,waypoint2), have_image(rover1,objective1,high_res), have_image(rover1,objective1,low_res), full(rover1store), have_soil_analysis(rover1,waypoint1)})"]
+s396[label="(instance index=1, state index=396, atoms={communicated_image_data(objective1,low_res), at(rover1,waypoint1), calibrated(camera1,rover1), have_image(rover1,objective1,high_res), have_image(rover1,objective1,low_res), full(rover1store), have_soil_analysis(rover1,waypoint1)})"]
+s199[label="(instance index=1, state index=199, atoms={communicated_image_data(objective1,low_res), empty(rover1store), at_soil_sample(waypoint1), at(rover1,waypoint1), have_image(rover1,objective1,high_res), have_image(rover1,objective1,low_res), have_image(rover1,objective1,colour)})"]
+s455[label="(instance index=1, state index=455, atoms={at(rover1,waypoint2), calibrated(camera1,rover1), have_image(rover1,objective1,high_res), have_image(rover1,objective1,low_res), full(rover1store), have_soil_analysis(rover1,waypoint1)})"]
+s286[label="(instance index=1, state index=286, atoms={at(rover1,waypoint1), have_image(rover1,objective1,high_res), have_image(rover1,objective1,low_res), have_image(rover1,objective1,colour), full(rover1store), have_soil_analysis(rover1,waypoint1)})"]
+s336[label="(instance index=1, state index=336, atoms={at(rover1,waypoint2), calibrated(camera1,rover1), have_image(rover1,objective1,high_res), have_image(rover1,objective1,colour), full(rover1store), have_soil_analysis(rover1,waypoint1)})"]
+s162[label="(instance index=1, state index=162, atoms={communicated_image_data(objective1,colour), at(rover1,waypoint2), have_image(rover1,objective1,high_res), have_image(rover1,objective1,colour), full(rover1store), have_soil_analysis(rover1,waypoint1)})"]
+s157[label="(instance index=1, state index=157, atoms={communicated_image_data(objective1,colour), at(rover1,waypoint1), calibrated(camera1,rover1), have_image(rover1,objective1,high_res), have_image(rover1,objective1,colour), full(rover1store), have_soil_analysis(rover1,waypoint1)})"]
+s79[label="(instance index=1, state index=79, atoms={communicated_image_data(objective1,colour), empty(rover1store), at_soil_sample(waypoint1), at(rover1,waypoint1), have_image(rover1,objective1,high_res), have_image(rover1,objective1,low_res), have_image(rover1,objective1,colour)})"]
+s238[label="(instance index=1, state index=238, atoms={communicated_image_data(objective1,low_res), at(rover1,waypoint1), calibrated(camera1,rover1), have_image(rover1,objective1,low_res), have_image(rover1,objective1,colour), full(rover1store), have_soil_analysis(rover1,waypoint1)})"]
+s297[label="(instance index=1, state index=297, atoms={at(rover1,waypoint2), calibrated(camera1,rover1), have_image(rover1,objective1,low_res), have_image(rover1,objective1,colour), full(rover1store), have_soil_analysis(rover1,waypoint1)})"]
+s118[label="(instance index=1, state index=118, atoms={communicated_image_data(objective1,colour), at(rover1,waypoint1), calibrated(camera1,rover1), have_image(rover1,objective1,low_res), have_image(rover1,objective1,colour), full(rover1store), have_soil_analysis(rover1,waypoint1)})"]
+s243[label="(instance index=1, state index=243, atoms={communicated_image_data(objective1,low_res), at(rover1,waypoint2), have_image(rover1,objective1,low_res), have_image(rover1,objective1,colour), full(rover1store), have_soil_analysis(rover1,waypoint1)})"]
+s123[label="(instance index=1, state index=123, atoms={communicated_image_data(objective1,colour), at(rover1,waypoint2), have_image(rover1,objective1,low_res), have_image(rover1,objective1,colour), full(rover1store), have_soil_analysis(rover1,waypoint1)})"]
+s68[label="(instance index=1, state index=68, atoms={communicated_image_data(objective1,low_res), communicated_image_data(objective1,colour), at(rover1,waypoint1), have_image(rover1,objective1,low_res), have_image(rover1,objective1,colour), full(rover1store), have_soil_analysis(rover1,waypoint1)})"]
+s20[label="(instance index=1, state index=20, atoms={communicated_image_data(objective1,low_res), communicated_image_data(objective1,colour), empty(rover1store), at_soil_sample(waypoint1), at(rover1,waypoint1), calibrated(camera1,rover1), have_image(rover1,objective1,low_res), have_image(rover1,objective1,colour)})"]
+s201[label="(instance index=1, state index=201, atoms={communicated_image_data(objective1,high_res), communicated_image_data(objective1,low_res), at(rover1,waypoint2), empty(rover1store), at_soil_sample(waypoint1), have_image(rover1,objective1,high_res), have_image(rover1,objective1,low_res), have_image(rover1,objective1,colour)})"]
+s81[label="(instance index=1, state index=81, atoms={communicated_image_data(objective1,high_res), communicated_image_data(objective1,colour), at(rover1,waypoint2), empty(rover1store), at_soil_sample(waypoint1), have_image(rover1,objective1,high_res), have_image(rover1,objective1,low_res), have_image(rover1,objective1,colour)})"]
+s21[label="(instance index=1, state index=21, atoms={communicated_image_data(objective1,low_res), communicated_image_data(objective1,colour), at(rover1,waypoint2), empty(rover1store), at_soil_sample(waypoint1), have_image(rover1,objective1,high_res), have_image(rover1,objective1,low_res), have_image(rover1,objective1,colour)})"]
+s447[label="(instance index=1, state index=447, atoms={communicated_soil_data(waypoint1), communicated_image_data(objective1,high_res), empty(rover1store), at(rover1,waypoint1), have_image(rover1,objective1,high_res), have_image(rover1,objective1,low_res), have_soil_analysis(rover1,waypoint1)})"]
+s503[label="(instance index=1, state index=503, atoms={communicated_soil_data(waypoint1), communicated_image_data(objective1,high_res), at(rover1,waypoint2), empty(rover1store), calibrated(camera1,rover1), have_image(rover1,objective1,high_res), have_soil_analysis(rover1,waypoint1)})"]
+s328[label="(instance index=1, state index=328, atoms={communicated_soil_data(waypoint1), communicated_image_data(objective1,high_res), empty(rover1store), at(rover1,waypoint1), have_image(rover1,objective1,high_res), have_image(rover1,objective1,colour), have_soil_analysis(rover1,waypoint1)})"]
+s407[label="(instance index=1, state index=407, atoms={communicated_soil_data(waypoint1), communicated_image_data(objective1,low_res), empty(rover1store), at(rover1,waypoint1), have_image(rover1,objective1,high_res), have_image(rover1,objective1,low_res), have_soil_analysis(rover1,waypoint1)})"]
+s466[label="(instance index=1, state index=466, atoms={communicated_soil_data(waypoint1), empty(rover1store), at(rover1,waypoint1), calibrated(camera1,rover1), have_image(rover1,objective1,high_res), have_image(rover1,objective1,low_res), have_soil_analysis(rover1,waypoint1)})"]
+s462[label="(instance index=1, state index=462, atoms={communicated_soil_data(waypoint1), at(rover1,waypoint2), empty(rover1store), have_image(rover1,objective1,high_res), have_image(rover1,objective1,low_res), have_soil_analysis(rover1,waypoint1)})"]
+s347[label="(instance index=1, state index=347, atoms={communicated_soil_data(waypoint1), empty(rover1store), at(rover1,waypoint1), calibrated(camera1,rover1), have_image(rover1,objective1,high_res), have_image(rover1,objective1,colour), have_soil_analysis(rover1,waypoint1)})"]
+s343[label="(instance index=1, state index=343, atoms={communicated_soil_data(waypoint1), at(rover1,waypoint2), empty(rover1store), have_image(rover1,objective1,high_res), have_image(rover1,objective1,colour), have_soil_analysis(rover1,waypoint1)})"]
+s124[label="(instance index=1, state index=124, atoms={communicated_image_data(objective1,colour), at(rover1,waypoint2), empty(rover1store), have_image(rover1,objective1,low_res), have_image(rover1,objective1,colour), have_soil_analysis(rover1,waypoint1)})"]
+s304[label="(instance index=1, state index=304, atoms={communicated_soil_data(waypoint1), at(rover1,waypoint2), empty(rover1store), have_image(rover1,objective1,low_res), have_image(rover1,objective1,colour), have_soil_analysis(rover1,waypoint1)})"]
+s298[label="(instance index=1, state index=298, atoms={at(rover1,waypoint2), empty(rover1store), calibrated(camera1,rover1), have_image(rover1,objective1,low_res), have_image(rover1,objective1,colour), have_soil_analysis(rover1,waypoint1)})"]
+s293[label="(instance index=1, state index=293, atoms={empty(rover1store), at(rover1,waypoint1), have_image(rover1,objective1,high_res), have_image(rover1,objective1,low_res), have_image(rover1,objective1,colour), have_soil_analysis(rover1,waypoint1)})"]
+s308[label="(instance index=1, state index=308, atoms={communicated_soil_data(waypoint1), empty(rover1store), at(rover1,waypoint1), calibrated(camera1,rover1), have_image(rover1,objective1,low_res), have_image(rover1,objective1,colour), have_soil_analysis(rover1,waypoint1)})"]
+s318[label="(instance index=1, state index=318, atoms={communicated_image_data(objective1,high_res), empty(rover1store), at(rover1,waypoint1), calibrated(camera1,rover1), have_image(rover1,objective1,high_res), have_image(rover1,objective1,colour), have_soil_analysis(rover1,waypoint1)})"]
+s323[label="(instance index=1, state index=323, atoms={communicated_image_data(objective1,high_res), at(rover1,waypoint2), empty(rover1store), have_image(rover1,objective1,high_res), have_image(rover1,objective1,colour), have_soil_analysis(rover1,waypoint1)})"]
+s397[label="(instance index=1, state index=397, atoms={communicated_image_data(objective1,low_res), empty(rover1store), at(rover1,waypoint1), calibrated(camera1,rover1), have_image(rover1,objective1,high_res), have_image(rover1,objective1,low_res), have_soil_analysis(rover1,waypoint1)})"]
+s402[label="(instance index=1, state index=402, atoms={communicated_image_data(objective1,low_res), at(rover1,waypoint2), empty(rover1store), have_image(rover1,objective1,high_res), have_image(rover1,objective1,low_res), have_soil_analysis(rover1,waypoint1)})"]
+s154[label="(instance index=1, state index=154, atoms={communicated_image_data(objective1,high_res), communicated_image_data(objective1,colour), empty(rover1store), at(rover1,waypoint1), have_image(rover1,objective1,high_res), have_image(rover1,objective1,colour), have_soil_analysis(rover1,waypoint1)})"]
+s75[label="(instance index=1, state index=75, atoms={communicated_image_data(objective1,low_res), communicated_image_data(objective1,colour), empty(rover1store), at(rover1,waypoint1), have_image(rover1,objective1,low_res), have_image(rover1,objective1,colour), have_soil_analysis(rover1,waypoint1)})"]
+s280[label="(instance index=1, state index=280, atoms={empty(rover1store), at(rover1,waypoint1), calibrated(camera1,rover1), have_image(rover1,objective1,high_res), have_image(rover1,objective1,low_res), have_image(rover1,objective1,colour), have_soil_analysis(rover1,waypoint1)})"]
+s244[label="(instance index=1, state index=244, atoms={communicated_image_data(objective1,low_res), at(rover1,waypoint2), empty(rover1store), have_image(rover1,objective1,low_res), have_image(rover1,objective1,colour), have_soil_analysis(rover1,waypoint1)})"]
+s119[label="(instance index=1, state index=119, atoms={communicated_image_data(objective1,colour), empty(rover1store), at(rover1,waypoint1), calibrated(camera1,rover1), have_image(rover1,objective1,low_res), have_image(rover1,objective1,colour), have_soil_analysis(rover1,waypoint1)})"]
+s239[label="(instance index=1, state index=239, atoms={communicated_image_data(objective1,low_res), empty(rover1store), at(rover1,waypoint1), calibrated(camera1,rover1), have_image(rover1,objective1,low_res), have_image(rover1,objective1,colour), have_soil_analysis(rover1,waypoint1)})"]
+s158[label="(instance index=1, state index=158, atoms={communicated_image_data(objective1,colour), empty(rover1store), at(rover1,waypoint1), calibrated(camera1,rover1), have_image(rover1,objective1,high_res), have_image(rover1,objective1,colour), have_soil_analysis(rover1,waypoint1)})"]
+s163[label="(instance index=1, state index=163, atoms={communicated_image_data(objective1,colour), at(rover1,waypoint2), empty(rover1store), have_image(rover1,objective1,high_res), have_image(rover1,objective1,colour), have_soil_analysis(rover1,waypoint1)})"]
+s337[label="(instance index=1, state index=337, atoms={at(rover1,waypoint2), empty(rover1store), calibrated(camera1,rover1), have_image(rover1,objective1,high_res), have_image(rover1,objective1,colour), have_soil_analysis(rover1,waypoint1)})"]
+s456[label="(instance index=1, state index=456, atoms={at(rover1,waypoint2), empty(rover1store), calibrated(camera1,rover1), have_image(rover1,objective1,high_res), have_image(rover1,objective1,low_res), have_soil_analysis(rover1,waypoint1)})"]
+s437[label="(instance index=1, state index=437, atoms={communicated_image_data(objective1,high_res), empty(rover1store), at(rover1,waypoint1), calibrated(camera1,rover1), have_image(rover1,objective1,high_res), have_image(rover1,objective1,low_res), have_soil_analysis(rover1,waypoint1)})"]
+s442[label="(instance index=1, state index=442, atoms={communicated_image_data(objective1,high_res), at(rover1,waypoint2), empty(rover1store), have_image(rover1,objective1,high_res), have_image(rover1,objective1,low_res), have_soil_analysis(rover1,waypoint1)})"]
+s185[label="(instance index=1, state index=185, atoms={communicated_soil_data(waypoint1), communicated_image_data(objective1,colour), at(rover1,waypoint2), empty(rover1store), calibrated(camera1,rover1), have_image(rover1,objective1,colour), have_soil_analysis(rover1,waypoint1)})"]
+s393[label="(instance index=1, state index=393, atoms={communicated_image_data(objective1,high_res), communicated_image_data(objective1,low_res), empty(rover1store), at(rover1,waypoint1), have_image(rover1,objective1,high_res), have_image(rover1,objective1,low_res), have_soil_analysis(rover1,waypoint1)})"]
+s129[label="(instance index=1, state index=129, atoms={communicated_soil_data(waypoint1), communicated_image_data(objective1,colour), empty(rover1store), at(rover1,waypoint1), have_image(rover1,objective1,low_res), have_image(rover1,objective1,colour), have_soil_analysis(rover1,waypoint1)})"]
+s249[label="(instance index=1, state index=249, atoms={communicated_soil_data(waypoint1), communicated_image_data(objective1,low_res), empty(rover1store), at(rover1,waypoint1), have_image(rover1,objective1,low_res), have_image(rover1,objective1,colour), have_soil_analysis(rover1,waypoint1)})"]
+s424[label="(instance index=1, state index=424, atoms={communicated_soil_data(waypoint1), communicated_image_data(objective1,low_res), at(rover1,waypoint2), empty(rover1store), calibrated(camera1,rover1), have_image(rover1,objective1,low_res), have_soil_analysis(rover1,waypoint1)})"]
+s168[label="(instance index=1, state index=168, atoms={communicated_soil_data(waypoint1), communicated_image_data(objective1,colour), empty(rover1store), at(rover1,waypoint1), have_image(rover1,objective1,high_res), have_image(rover1,objective1,colour), have_soil_analysis(rover1,waypoint1)})"]
+s379[label="(instance index=1, state index=379, atoms={communicated_image_data(objective1,high_res), communicated_image_data(objective1,low_res), at(rover1,waypoint1), calibrated(camera1,rover1), have_image(rover1,objective1,high_res), have_image(rover1,objective1,low_res), full(rover1store), have_soil_analysis(rover1,waypoint1)})"]
+s326[label="(instance index=1, state index=326, atoms={communicated_soil_data(waypoint1), communicated_image_data(objective1,high_res), at(rover1,waypoint2), empty(rover1store), have_image(rover1,objective1,high_res), have_image(rover1,objective1,colour), have_soil_analysis(rover1,waypoint1)})"]
+s399[label="(instance index=1, state index=399, atoms={communicated_image_data(objective1,low_res), at(rover1,waypoint2), empty(rover1store), calibrated(camera1,rover1), have_image(rover1,objective1,high_res), have_image(rover1,objective1,low_res), have_soil_analysis(rover1,waypoint1)})"]
+s320[label="(instance index=1, state index=320, atoms={communicated_image_data(objective1,high_res), at(rover1,waypoint2), empty(rover1store), calibrated(camera1,rover1), have_image(rover1,objective1,high_res), have_image(rover1,objective1,colour), have_soil_analysis(rover1,waypoint1)})"]
+s131[label="(instance index=1, state index=131, atoms={communicated_soil_data(waypoint1), communicated_image_data(objective1,colour), empty(rover1store), at(rover1,waypoint1), calibrated(camera1,rover1), have_image(rover1,objective1,low_res), have_image(rover1,objective1,colour), have_soil_analysis(rover1,waypoint1)})"]
+s72[label="(instance index=1, state index=72, atoms={communicated_soil_data(waypoint1), communicated_image_data(objective1,low_res), communicated_image_data(objective1,colour), empty(rover1store), at(rover1,waypoint1), have_image(rover1,objective1,low_res), have_image(rover1,objective1,colour), have_soil_analysis(rover1,waypoint1)})"]
+s151[label="(instance index=1, state index=151, atoms={communicated_soil_data(waypoint1), communicated_image_data(objective1,high_res), communicated_image_data(objective1,colour), empty(rover1store), at(rover1,waypoint1), have_image(rover1,objective1,high_res), have_image(rover1,objective1,colour), have_soil_analysis(rover1,waypoint1)})"]
+s405[label="(instance index=1, state index=405, atoms={communicated_soil_data(waypoint1), communicated_image_data(objective1,low_res), at(rover1,waypoint2), empty(rover1store), have_image(rover1,objective1,high_res), have_image(rover1,objective1,low_res), have_soil_analysis(rover1,waypoint1)})"]
+s285[label="(instance index=1, state index=285, atoms={at(rover1,waypoint2), empty(rover1store), have_image(rover1,objective1,high_res), have_image(rover1,objective1,low_res), have_image(rover1,objective1,colour), have_soil_analysis(rover1,waypoint1)})"]
+s126[label="(instance index=1, state index=126, atoms={communicated_soil_data(waypoint1), communicated_image_data(objective1,colour), at(rover1,waypoint2), have_image(rover1,objective1,low_res), have_image(rover1,objective1,colour), full(rover1store), have_soil_analysis(rover1,waypoint1)})"]
+s289[label="(instance index=1, state index=289, atoms={communicated_soil_data(waypoint1), at(rover1,waypoint1), have_image(rover1,objective1,high_res), have_image(rover1,objective1,low_res), have_image(rover1,objective1,colour), full(rover1store), have_soil_analysis(rover1,waypoint1)})"]
+s282[label="(instance index=1, state index=282, atoms={at(rover1,waypoint2), empty(rover1store), calibrated(camera1,rover1), have_image(rover1,objective1,high_res), have_image(rover1,objective1,low_res), have_image(rover1,objective1,colour), have_soil_analysis(rover1,waypoint1)})"]
+s409[label="(instance index=1, state index=409, atoms={communicated_soil_data(waypoint1), communicated_image_data(objective1,low_res), empty(rover1store), at(rover1,waypoint1), calibrated(camera1,rover1), have_image(rover1,objective1,high_res), have_image(rover1,objective1,low_res), have_soil_analysis(rover1,waypoint1)})"]
+s290[label="(instance index=1, state index=290, atoms={communicated_soil_data(waypoint1), empty(rover1store), at(rover1,waypoint1), have_image(rover1,objective1,high_res), have_image(rover1,objective1,low_res), have_image(rover1,objective1,colour), have_soil_analysis(rover1,waypoint1)})"]
+s294[label="(instance index=1, state index=294, atoms={communicated_soil_data(waypoint1), at(rover1,waypoint1), calibrated(camera1,rover1), have_image(rover1,objective1,high_res), have_image(rover1,objective1,low_res), have_image(rover1,objective1,colour), full(rover1store), have_soil_analysis(rover1,waypoint1)})"]
+s292[label="(instance index=1, state index=292, atoms={communicated_soil_data(waypoint1), empty(rover1store), at(rover1,waypoint1), calibrated(camera1,rover1), have_image(rover1,objective1,high_res), have_image(rover1,objective1,low_res), have_image(rover1,objective1,colour), have_soil_analysis(rover1,waypoint1)})"]
+s346[label="(instance index=1, state index=346, atoms={communicated_soil_data(waypoint1), at(rover1,waypoint2), empty(rover1store), calibrated(camera1,rover1), have_image(rover1,objective1,high_res), have_image(rover1,objective1,colour), have_soil_analysis(rover1,waypoint1)})"]
+s465[label="(instance index=1, state index=465, atoms={communicated_soil_data(waypoint1), at(rover1,waypoint2), empty(rover1store), calibrated(camera1,rover1), have_image(rover1,objective1,high_res), have_image(rover1,objective1,low_res), have_soil_analysis(rover1,waypoint1)})"]
+s299[label="(instance index=1, state index=299, atoms={communicated_soil_data(waypoint1), at(rover1,waypoint2), calibrated(camera1,rover1), have_image(rover1,objective1,low_res), have_image(rover1,objective1,colour), full(rover1store), have_soil_analysis(rover1,waypoint1)})"]
+s330[label="(instance index=1, state index=330, atoms={communicated_soil_data(waypoint1), communicated_image_data(objective1,high_res), empty(rover1store), at(rover1,waypoint1), calibrated(camera1,rover1), have_image(rover1,objective1,high_res), have_image(rover1,objective1,colour), have_soil_analysis(rover1,waypoint1)})"]
+s307[label="(instance index=1, state index=307, atoms={communicated_soil_data(waypoint1), at(rover1,waypoint2), empty(rover1store), calibrated(camera1,rover1), have_image(rover1,objective1,low_res), have_image(rover1,objective1,colour), have_soil_analysis(rover1,waypoint1)})"]
+s284[label="(instance index=1, state index=284, atoms={at(rover1,waypoint2), have_image(rover1,objective1,high_res), have_image(rover1,objective1,low_res), have_image(rover1,objective1,colour), full(rover1store), have_soil_analysis(rover1,waypoint1)})"]
+s26[label="(instance index=1, state index=26, atoms={communicated_image_data(objective1,high_res), communicated_image_data(objective1,low_res), communicated_image_data(objective1,colour), at(rover1,waypoint2), empty(rover1store), at_soil_sample(waypoint1), calibrated(camera1,rover1), have_image(rover1,objective1,high_res), have_image(rover1,objective1,low_res), have_image(rover1,objective1,colour)})"]
+s103[label="(instance index=1, state index=103, atoms={communicated_image_data(objective1,colour), empty(rover1store), at(rover1,waypoint1), calibrated(camera1,rover1), have_image(rover1,objective1,high_res), have_image(rover1,objective1,low_res), have_image(rover1,objective1,colour), have_soil_analysis(rover1,waypoint1)})"]
+s223[label="(instance index=1, state index=223, atoms={communicated_image_data(objective1,low_res), empty(rover1store), at(rover1,waypoint1), calibrated(camera1,rover1), have_image(rover1,objective1,high_res), have_image(rover1,objective1,low_res), have_image(rover1,objective1,colour), have_soil_analysis(rover1,waypoint1)})"]
+s263[label="(instance index=1, state index=263, atoms={communicated_image_data(objective1,high_res), empty(rover1store), at(rover1,waypoint1), calibrated(camera1,rover1), have_image(rover1,objective1,high_res), have_image(rover1,objective1,low_res), have_image(rover1,objective1,colour), have_soil_analysis(rover1,waypoint1)})"]
+s62[label="(instance index=1, state index=62, atoms={communicated_image_data(objective1,low_res), communicated_image_data(objective1,colour), empty(rover1store), at(rover1,waypoint1), calibrated(camera1,rover1), have_image(rover1,objective1,low_res), have_image(rover1,objective1,colour), have_soil_analysis(rover1,waypoint1)})"]
+s319[label="(instance index=1, state index=319, atoms={communicated_image_data(objective1,high_res), at(rover1,waypoint2), calibrated(camera1,rover1), have_image(rover1,objective1,high_res), have_image(rover1,objective1,colour), full(rover1store), have_soil_analysis(rover1,waypoint1)})"]
+s67[label="(instance index=1, state index=67, atoms={communicated_image_data(objective1,low_res), communicated_image_data(objective1,colour), at(rover1,waypoint2), empty(rover1store), have_image(rover1,objective1,low_res), have_image(rover1,objective1,colour), have_soil_analysis(rover1,waypoint1)})"]
+s121[label="(instance index=1, state index=121, atoms={communicated_image_data(objective1,colour), at(rover1,waypoint2), empty(rover1store), calibrated(camera1,rover1), have_image(rover1,objective1,low_res), have_image(rover1,objective1,colour), have_soil_analysis(rover1,waypoint1)})"]
+s241[label="(instance index=1, state index=241, atoms={communicated_image_data(objective1,low_res), at(rover1,waypoint2), empty(rover1store), calibrated(camera1,rover1), have_image(rover1,objective1,low_res), have_image(rover1,objective1,colour), have_soil_analysis(rover1,waypoint1)})"]
+s160[label="(instance index=1, state index=160, atoms={communicated_image_data(objective1,colour), at(rover1,waypoint2), empty(rover1store), calibrated(camera1,rover1), have_image(rover1,objective1,high_res), have_image(rover1,objective1,colour), have_soil_analysis(rover1,waypoint1)})"]
+s116[label="(instance index=1, state index=116, atoms={communicated_image_data(objective1,colour), empty(rover1store), at(rover1,waypoint1), have_image(rover1,objective1,high_res), have_image(rover1,objective1,low_res), have_image(rover1,objective1,colour), have_soil_analysis(rover1,waypoint1)})"]
+s236[label="(instance index=1, state index=236, atoms={communicated_image_data(objective1,low_res), empty(rover1store), at(rover1,waypoint1), have_image(rover1,objective1,high_res), have_image(rover1,objective1,low_res), have_image(rover1,objective1,colour), have_soil_analysis(rover1,waypoint1)})"]
+s141[label="(instance index=1, state index=141, atoms={communicated_image_data(objective1,high_res), communicated_image_data(objective1,colour), empty(rover1store), at(rover1,waypoint1), calibrated(camera1,rover1), have_image(rover1,objective1,high_res), have_image(rover1,objective1,colour), have_soil_analysis(rover1,waypoint1)})"]
+s398[label="(instance index=1, state index=398, atoms={communicated_image_data(objective1,low_res), at(rover1,waypoint2), calibrated(camera1,rover1), have_image(rover1,objective1,high_res), have_image(rover1,objective1,low_res), full(rover1store), have_soil_analysis(rover1,waypoint1)})"]
+s146[label="(instance index=1, state index=146, atoms={communicated_image_data(objective1,high_res), communicated_image_data(objective1,colour), at(rover1,waypoint2), empty(rover1store), have_image(rover1,objective1,high_res), have_image(rover1,objective1,colour), have_soil_analysis(rover1,waypoint1)})"]
+s276[label="(instance index=1, state index=276, atoms={communicated_image_data(objective1,high_res), empty(rover1store), at(rover1,waypoint1), have_image(rover1,objective1,high_res), have_image(rover1,objective1,low_res), have_image(rover1,objective1,colour), have_soil_analysis(rover1,waypoint1)})"]
+s439[label="(instance index=1, state index=439, atoms={communicated_image_data(objective1,high_res), at(rover1,waypoint2), empty(rover1store), calibrated(camera1,rover1), have_image(rover1,objective1,high_res), have_image(rover1,objective1,low_res), have_soil_analysis(rover1,waypoint1)})"]
+s380[label="(instance index=1, state index=380, atoms={communicated_image_data(objective1,high_res), communicated_image_data(objective1,low_res), empty(rover1store), at(rover1,waypoint1), calibrated(camera1,rover1), have_image(rover1,objective1,high_res), have_image(rover1,objective1,low_res), have_soil_analysis(rover1,waypoint1)})"]
+s385[label="(instance index=1, state index=385, atoms={communicated_image_data(objective1,high_res), communicated_image_data(objective1,low_res), at(rover1,waypoint2), empty(rover1store), have_image(rover1,objective1,high_res), have_image(rover1,objective1,low_res), have_soil_analysis(rover1,waypoint1)})"]
+s127[label="(instance index=1, state index=127, atoms={communicated_soil_data(waypoint1), communicated_image_data(objective1,colour), at(rover1,waypoint2), empty(rover1store), have_image(rover1,objective1,low_res), have_image(rover1,objective1,colour), have_soil_analysis(rover1,waypoint1)})"]
+s384[label="(instance index=1, state index=384, atoms={communicated_image_data(objective1,high_res), communicated_image_data(objective1,low_res), at(rover1,waypoint2), have_image(rover1,objective1,high_res), have_image(rover1,objective1,low_res), full(rover1store), have_soil_analysis(rover1,waypoint1)})"]
+s247[label="(instance index=1, state index=247, atoms={communicated_soil_data(waypoint1), communicated_image_data(objective1,low_res), at(rover1,waypoint2), empty(rover1store), have_image(rover1,objective1,low_res), have_image(rover1,objective1,colour), have_soil_analysis(rover1,waypoint1)})"]
+s251[label="(instance index=1, state index=251, atoms={communicated_soil_data(waypoint1), communicated_image_data(objective1,low_res), empty(rover1store), at(rover1,waypoint1), calibrated(camera1,rover1), have_image(rover1,objective1,low_res), have_image(rover1,objective1,colour), have_soil_analysis(rover1,waypoint1)})"]
+s166[label="(instance index=1, state index=166, atoms={communicated_soil_data(waypoint1), communicated_image_data(objective1,colour), at(rover1,waypoint2), empty(rover1store), have_image(rover1,objective1,high_res), have_image(rover1,objective1,colour), have_soil_analysis(rover1,waypoint1)})"]
+s170[label="(instance index=1, state index=170, atoms={communicated_soil_data(waypoint1), communicated_image_data(objective1,colour), empty(rover1store), at(rover1,waypoint1), calibrated(camera1,rover1), have_image(rover1,objective1,high_res), have_image(rover1,objective1,colour), have_soil_analysis(rover1,waypoint1)})"]
+s445[label="(instance index=1, state index=445, atoms={communicated_soil_data(waypoint1), communicated_image_data(objective1,high_res), at(rover1,waypoint2), empty(rover1store), have_image(rover1,objective1,high_res), have_image(rover1,objective1,low_res), have_soil_analysis(rover1,waypoint1)})"]
+s449[label="(instance index=1, state index=449, atoms={communicated_soil_data(waypoint1), communicated_image_data(objective1,high_res), empty(rover1store), at(rover1,waypoint1), calibrated(camera1,rover1), have_image(rover1,objective1,high_res), have_image(rover1,objective1,low_res), have_soil_analysis(rover1,waypoint1)})"]
+s390[label="(instance index=1, state index=390, atoms={communicated_soil_data(waypoint1), communicated_image_data(objective1,high_res), communicated_image_data(objective1,low_res), empty(rover1store), at(rover1,waypoint1), have_image(rover1,objective1,high_res), have_image(rover1,objective1,low_res), have_soil_analysis(rover1,waypoint1)})"]
+s133[label="(instance index=1, state index=133, atoms={communicated_soil_data(waypoint1), communicated_image_data(objective1,colour), at(rover1,waypoint1), calibrated(camera1,rover1), have_image(rover1,objective1,low_res), have_image(rover1,objective1,colour), full(rover1store), have_soil_analysis(rover1,waypoint1)})"]
+s24[label="(instance index=1, state index=24, atoms={communicated_image_data(objective1,high_res), communicated_image_data(objective1,low_res), communicated_image_data(objective1,colour), at(rover1,waypoint2), empty(rover1store), at_soil_sample(waypoint1), have_image(rover1,objective1,high_res), have_image(rover1,objective1,low_res), have_image(rover1,objective1,colour)})"]
+s281[label="(instance index=1, state index=281, atoms={at(rover1,waypoint2), calibrated(camera1,rover1), have_image(rover1,objective1,high_res), have_image(rover1,objective1,low_res), have_image(rover1,objective1,colour), full(rover1store), have_soil_analysis(rover1,waypoint1)})"]
+s22[label="(instance index=1, state index=22, atoms={communicated_image_data(objective1,low_res), communicated_image_data(objective1,colour), empty(rover1store), at_soil_sample(waypoint1), at(rover1,waypoint1), have_image(rover1,objective1,high_res), have_image(rover1,objective1,low_res), have_image(rover1,objective1,colour)})"]
+s61[label="(instance index=1, state index=61, atoms={communicated_image_data(objective1,low_res), communicated_image_data(objective1,colour), at(rover1,waypoint1), calibrated(camera1,rover1), have_image(rover1,objective1,low_res), have_image(rover1,objective1,colour), full(rover1store), have_soil_analysis(rover1,waypoint1)})"]
+s66[label="(instance index=1, state index=66, atoms={communicated_image_data(objective1,low_res), communicated_image_data(objective1,colour), at(rover1,waypoint2), have_image(rover1,objective1,low_res), have_image(rover1,objective1,colour), full(rover1store), have_soil_analysis(rover1,waypoint1)})"]
+s120[label="(instance index=1, state index=120, atoms={communicated_image_data(objective1,colour), at(rover1,waypoint2), calibrated(camera1,rover1), have_image(rover1,objective1,low_res), have_image(rover1,objective1,colour), full(rover1store), have_soil_analysis(rover1,waypoint1)})"]
+s240[label="(instance index=1, state index=240, atoms={communicated_image_data(objective1,low_res), at(rover1,waypoint2), calibrated(camera1,rover1), have_image(rover1,objective1,low_res), have_image(rover1,objective1,colour), full(rover1store), have_soil_analysis(rover1,waypoint1)})"]
+s109[label="(instance index=1, state index=109, atoms={communicated_image_data(objective1,colour), at(rover1,waypoint1), have_image(rover1,objective1,high_res), have_image(rover1,objective1,low_res), have_image(rover1,objective1,colour), full(rover1store), have_soil_analysis(rover1,waypoint1)})"]
+s159[label="(instance index=1, state index=159, atoms={communicated_image_data(objective1,colour), at(rover1,waypoint2), calibrated(camera1,rover1), have_image(rover1,objective1,high_res), have_image(rover1,objective1,colour), full(rover1store), have_soil_analysis(rover1,waypoint1)})"]
+s229[label="(instance index=1, state index=229, atoms={communicated_image_data(objective1,low_res), at(rover1,waypoint1), have_image(rover1,objective1,high_res), have_image(rover1,objective1,low_res), have_image(rover1,objective1,colour), full(rover1store), have_soil_analysis(rover1,waypoint1)})"]
+s82[label="(instance index=1, state index=82, atoms={communicated_image_data(objective1,high_res), communicated_image_data(objective1,colour), empty(rover1store), at_soil_sample(waypoint1), at(rover1,waypoint1), have_image(rover1,objective1,high_res), have_image(rover1,objective1,low_res), have_image(rover1,objective1,colour)})"]
+s140[label="(instance index=1, state index=140, atoms={communicated_image_data(objective1,high_res), communicated_image_data(objective1,colour), at(rover1,waypoint1), calibrated(camera1,rover1), have_image(rover1,objective1,high_res), have_image(rover1,objective1,colour), full(rover1store), have_soil_analysis(rover1,waypoint1)})"]
+s145[label="(instance index=1, state index=145, atoms={communicated_image_data(objective1,high_res), communicated_image_data(objective1,colour), at(rover1,waypoint2), have_image(rover1,objective1,high_res), have_image(rover1,objective1,colour), full(rover1store), have_soil_analysis(rover1,waypoint1)})"]
+s269[label="(instance index=1, state index=269, atoms={communicated_image_data(objective1,high_res), at(rover1,waypoint1), have_image(rover1,objective1,high_res), have_image(rover1,objective1,low_res), have_image(rover1,objective1,colour), full(rover1store), have_soil_analysis(rover1,waypoint1)})"]
+s438[label="(instance index=1, state index=438, atoms={communicated_image_data(objective1,high_res), at(rover1,waypoint2), calibrated(camera1,rover1), have_image(rover1,objective1,high_res), have_image(rover1,objective1,low_res), full(rover1store), have_soil_analysis(rover1,waypoint1)})"]
+s202[label="(instance index=1, state index=202, atoms={communicated_image_data(objective1,high_res), communicated_image_data(objective1,low_res), empty(rover1store), at_soil_sample(waypoint1), at(rover1,waypoint1), have_image(rover1,objective1,high_res), have_image(rover1,objective1,low_res), have_image(rover1,objective1,colour)})"]
+s71[label="(instance index=1, state index=71, atoms={communicated_soil_data(waypoint1), communicated_image_data(objective1,low_res), communicated_image_data(objective1,colour), at(rover1,waypoint1), have_image(rover1,objective1,low_res), have_image(rover1,objective1,colour), full(rover1store), have_soil_analysis(rover1,waypoint1)})"]
+s246[label="(instance index=1, state index=246, atoms={communicated_soil_data(waypoint1), communicated_image_data(objective1,low_res), at(rover1,waypoint2), have_image(rover1,objective1,low_res), have_image(rover1,objective1,colour), full(rover1store), have_soil_analysis(rover1,waypoint1)})"]
+s253[label="(instance index=1, state index=253, atoms={communicated_soil_data(waypoint1), communicated_image_data(objective1,low_res), at(rover1,waypoint1), calibrated(camera1,rover1), have_image(rover1,objective1,low_res), have_image(rover1,objective1,colour), full(rover1store), have_soil_analysis(rover1,waypoint1)})"]
+s165[label="(instance index=1, state index=165, atoms={communicated_soil_data(waypoint1), communicated_image_data(objective1,colour), at(rover1,waypoint2), have_image(rover1,objective1,high_res), have_image(rover1,objective1,colour), full(rover1store), have_soil_analysis(rover1,waypoint1)})"]
+s172[label="(instance index=1, state index=172, atoms={communicated_soil_data(waypoint1), communicated_image_data(objective1,colour), at(rover1,waypoint1), calibrated(camera1,rover1), have_image(rover1,objective1,high_res), have_image(rover1,objective1,colour), full(rover1store), have_soil_analysis(rover1,waypoint1)})"]
+s338[label="(instance index=1, state index=338, atoms={communicated_soil_data(waypoint1), at(rover1,waypoint2), calibrated(camera1,rover1), have_image(rover1,objective1,high_res), have_image(rover1,objective1,colour), full(rover1store), have_soil_analysis(rover1,waypoint1)})"]
+s457[label="(instance index=1, state index=457, atoms={communicated_soil_data(waypoint1), at(rover1,waypoint2), calibrated(camera1,rover1), have_image(rover1,objective1,high_res), have_image(rover1,objective1,low_res), full(rover1store), have_soil_analysis(rover1,waypoint1)})"]
+s404[label="(instance index=1, state index=404, atoms={communicated_soil_data(waypoint1), communicated_image_data(objective1,low_res), at(rover1,waypoint2), have_image(rover1,objective1,high_res), have_image(rover1,objective1,low_res), full(rover1store), have_soil_analysis(rover1,waypoint1)})"]
+s411[label="(instance index=1, state index=411, atoms={communicated_soil_data(waypoint1), communicated_image_data(objective1,low_res), at(rover1,waypoint1), calibrated(camera1,rover1), have_image(rover1,objective1,high_res), have_image(rover1,objective1,low_res), full(rover1store), have_soil_analysis(rover1,waypoint1)})"]
+s150[label="(instance index=1, state index=150, atoms={communicated_soil_data(waypoint1), communicated_image_data(objective1,high_res), communicated_image_data(objective1,colour), at(rover1,waypoint1), have_image(rover1,objective1,high_res), have_image(rover1,objective1,colour), full(rover1store), have_soil_analysis(rover1,waypoint1)})"]
+s325[label="(instance index=1, state index=325, atoms={communicated_soil_data(waypoint1), communicated_image_data(objective1,high_res), at(rover1,waypoint2), have_image(rover1,objective1,high_res), have_image(rover1,objective1,colour), full(rover1store), have_soil_analysis(rover1,waypoint1)})"]
+s332[label="(instance index=1, state index=332, atoms={communicated_soil_data(waypoint1), communicated_image_data(objective1,high_res), at(rover1,waypoint1), calibrated(camera1,rover1), have_image(rover1,objective1,high_res), have_image(rover1,objective1,colour), full(rover1store), have_soil_analysis(rover1,waypoint1)})"]
+s451[label="(instance index=1, state index=451, atoms={communicated_soil_data(waypoint1), communicated_image_data(objective1,high_res), at(rover1,waypoint1), calibrated(camera1,rover1), have_image(rover1,objective1,high_res), have_image(rover1,objective1,low_res), full(rover1store), have_soil_analysis(rover1,waypoint1)})"]
+s444[label="(instance index=1, state index=444, atoms={communicated_soil_data(waypoint1), communicated_image_data(objective1,high_res), at(rover1,waypoint2), have_image(rover1,objective1,high_res), have_image(rover1,objective1,low_res), full(rover1store), have_soil_analysis(rover1,waypoint1)})"]
+s389[label="(instance index=1, state index=389, atoms={communicated_soil_data(waypoint1), communicated_image_data(objective1,high_res), communicated_image_data(objective1,low_res), at(rover1,waypoint1), have_image(rover1,objective1,high_res), have_image(rover1,objective1,low_res), full(rover1store), have_soil_analysis(rover1,waypoint1)})"]
+s44[label="(instance index=1, state index=44, atoms={communicated_image_data(objective1,low_res), communicated_image_data(objective1,colour), empty(rover1store), at_soil_sample(waypoint1), at(rover1,waypoint1), calibrated(camera1,rover1), have_image(rover1,objective1,high_res), have_image(rover1,objective1,low_res), have_image(rover1,objective1,colour)})"]
+s102[label="(instance index=1, state index=102, atoms={communicated_image_data(objective1,colour), at(rover1,waypoint1), calibrated(camera1,rover1), have_image(rover1,objective1,high_res), have_image(rover1,objective1,low_res), have_image(rover1,objective1,colour), full(rover1store), have_soil_analysis(rover1,waypoint1)})"]
+s222[label="(instance index=1, state index=222, atoms={communicated_image_data(objective1,low_res), at(rover1,waypoint1), calibrated(camera1,rover1), have_image(rover1,objective1,high_res), have_image(rover1,objective1,low_res), have_image(rover1,objective1,colour), full(rover1store), have_soil_analysis(rover1,waypoint1)})"]
+s84[label="(instance index=1, state index=84, atoms={communicated_image_data(objective1,high_res), communicated_image_data(objective1,colour), empty(rover1store), at_soil_sample(waypoint1), at(rover1,waypoint1), calibrated(camera1,rover1), have_image(rover1,objective1,high_res), have_image(rover1,objective1,low_res), have_image(rover1,objective1,colour)})"]
+s262[label="(instance index=1, state index=262, atoms={communicated_image_data(objective1,high_res), at(rover1,waypoint1), calibrated(camera1,rover1), have_image(rover1,objective1,high_res), have_image(rover1,objective1,low_res), have_image(rover1,objective1,colour), full(rover1store), have_soil_analysis(rover1,waypoint1)})"]
+s204[label="(instance index=1, state index=204, atoms={communicated_image_data(objective1,high_res), communicated_image_data(objective1,low_res), empty(rover1store), at_soil_sample(waypoint1), at(rover1,waypoint1), calibrated(camera1,rover1), have_image(rover1,objective1,high_res), have_image(rover1,objective1,low_res), have_image(rover1,objective1,colour)})"]
+s112[label="(instance index=1, state index=112, atoms={communicated_soil_data(waypoint1), communicated_image_data(objective1,colour), at(rover1,waypoint1), have_image(rover1,objective1,high_res), have_image(rover1,objective1,low_res), have_image(rover1,objective1,colour), full(rover1store), have_soil_analysis(rover1,waypoint1)})"]
+s122[label="(instance index=1, state index=122, atoms={communicated_soil_data(waypoint1), communicated_image_data(objective1,colour), at(rover1,waypoint2), calibrated(camera1,rover1), have_image(rover1,objective1,low_res), have_image(rover1,objective1,colour), full(rover1store), have_soil_analysis(rover1,waypoint1)})"]
+s76[label="(instance index=1, state index=76, atoms={communicated_soil_data(waypoint1), communicated_image_data(objective1,low_res), communicated_image_data(objective1,colour), at(rover1,waypoint1), calibrated(camera1,rover1), have_image(rover1,objective1,low_res), have_image(rover1,objective1,colour), full(rover1store), have_soil_analysis(rover1,waypoint1)})"]
+s69[label="(instance index=1, state index=69, atoms={communicated_soil_data(waypoint1), communicated_image_data(objective1,low_res), communicated_image_data(objective1,colour), at(rover1,waypoint2), have_image(rover1,objective1,low_res), have_image(rover1,objective1,colour), full(rover1store), have_soil_analysis(rover1,waypoint1)})"]
+s381[label="(instance index=1, state index=381, atoms={communicated_image_data(objective1,high_res), communicated_image_data(objective1,low_res), at(rover1,waypoint2), calibrated(camera1,rover1), have_image(rover1,objective1,high_res), have_image(rover1,objective1,low_res), full(rover1store), have_soil_analysis(rover1,waypoint1)})"]
+s212[label="(instance index=1, state index=212, atoms={communicated_image_data(objective1,high_res), communicated_image_data(objective1,low_res), at(rover1,waypoint1), have_image(rover1,objective1,high_res), have_image(rover1,objective1,low_res), have_image(rover1,objective1,colour), full(rover1store), have_soil_analysis(rover1,waypoint1)})"]
+s267[label="(instance index=1, state index=267, atoms={communicated_image_data(objective1,high_res), at(rover1,waypoint2), have_image(rover1,objective1,high_res), have_image(rover1,objective1,low_res), have_image(rover1,objective1,colour), full(rover1store), have_soil_analysis(rover1,waypoint1)})"]
+s142[label="(instance index=1, state index=142, atoms={communicated_image_data(objective1,high_res), communicated_image_data(objective1,colour), at(rover1,waypoint2), calibrated(camera1,rover1), have_image(rover1,objective1,high_res), have_image(rover1,objective1,colour), full(rover1store), have_soil_analysis(rover1,waypoint1)})"]
+s63[label="(instance index=1, state index=63, atoms={communicated_image_data(objective1,low_res), communicated_image_data(objective1,colour), at(rover1,waypoint2), calibrated(camera1,rover1), have_image(rover1,objective1,low_res), have_image(rover1,objective1,colour), full(rover1store), have_soil_analysis(rover1,waypoint1)})"]
+s52[label="(instance index=1, state index=52, atoms={communicated_image_data(objective1,low_res), communicated_image_data(objective1,colour), at(rover1,waypoint1), have_image(rover1,objective1,high_res), have_image(rover1,objective1,low_res), have_image(rover1,objective1,colour), full(rover1store), have_soil_analysis(rover1,waypoint1)})"]
+s388[label="(instance index=1, state index=388, atoms={communicated_soil_data(waypoint1), communicated_image_data(objective1,high_res), communicated_image_data(objective1,low_res), at(rover1,waypoint2), empty(rover1store), have_image(rover1,objective1,high_res), have_image(rover1,objective1,low_res), have_soil_analysis(rover1,waypoint1)})"]
+s321[label="(instance index=1, state index=321, atoms={communicated_soil_data(waypoint1), communicated_image_data(objective1,high_res), at(rover1,waypoint2), calibrated(camera1,rover1), have_image(rover1,objective1,high_res), have_image(rover1,objective1,colour), full(rover1store), have_soil_analysis(rover1,waypoint1)})"]
+s64[label="(instance index=1, state index=64, atoms={communicated_image_data(objective1,low_res), communicated_image_data(objective1,colour), at(rover1,waypoint2), empty(rover1store), calibrated(camera1,rover1), have_image(rover1,objective1,low_res), have_image(rover1,objective1,colour), have_soil_analysis(rover1,waypoint1)})"]
+s448[label="(instance index=1, state index=448, atoms={communicated_soil_data(waypoint1), communicated_image_data(objective1,high_res), at(rover1,waypoint2), empty(rover1store), calibrated(camera1,rover1), have_image(rover1,objective1,high_res), have_image(rover1,objective1,low_res), have_soil_analysis(rover1,waypoint1)})"]
+s400[label="(instance index=1, state index=400, atoms={communicated_soil_data(waypoint1), communicated_image_data(objective1,low_res), at(rover1,waypoint2), calibrated(camera1,rover1), have_image(rover1,objective1,high_res), have_image(rover1,objective1,low_res), full(rover1store), have_soil_analysis(rover1,waypoint1)})"]
+s143[label="(instance index=1, state index=143, atoms={communicated_image_data(objective1,high_res), communicated_image_data(objective1,colour), at(rover1,waypoint2), empty(rover1store), calibrated(camera1,rover1), have_image(rover1,objective1,high_res), have_image(rover1,objective1,colour), have_soil_analysis(rover1,waypoint1)})"]
+s273[label="(instance index=1, state index=273, atoms={communicated_soil_data(waypoint1), communicated_image_data(objective1,high_res), empty(rover1store), at(rover1,waypoint1), have_image(rover1,objective1,high_res), have_image(rover1,objective1,low_res), have_image(rover1,objective1,colour), have_soil_analysis(rover1,waypoint1)})"]
+s329[label="(instance index=1, state index=329, atoms={communicated_soil_data(waypoint1), communicated_image_data(objective1,high_res), at(rover1,waypoint2), empty(rover1store), calibrated(camera1,rover1), have_image(rover1,objective1,high_res), have_image(rover1,objective1,colour), have_soil_analysis(rover1,waypoint1)})"]
+s153[label="(instance index=1, state index=153, atoms={communicated_soil_data(waypoint1), communicated_image_data(objective1,high_res), communicated_image_data(objective1,colour), empty(rover1store), at(rover1,waypoint1), calibrated(camera1,rover1), have_image(rover1,objective1,high_res), have_image(rover1,objective1,colour), have_soil_analysis(rover1,waypoint1)})"]
+s149[label="(instance index=1, state index=149, atoms={communicated_soil_data(waypoint1), communicated_image_data(objective1,high_res), communicated_image_data(objective1,colour), at(rover1,waypoint2), empty(rover1store), have_image(rover1,objective1,high_res), have_image(rover1,objective1,colour), have_soil_analysis(rover1,waypoint1)})"]
+s408[label="(instance index=1, state index=408, atoms={communicated_soil_data(waypoint1), communicated_image_data(objective1,low_res), at(rover1,waypoint2), empty(rover1store), calibrated(camera1,rover1), have_image(rover1,objective1,high_res), have_image(rover1,objective1,low_res), have_soil_analysis(rover1,waypoint1)})"]
+s113[label="(instance index=1, state index=113, atoms={communicated_soil_data(waypoint1), communicated_image_data(objective1,colour), empty(rover1store), at(rover1,waypoint1), have_image(rover1,objective1,high_res), have_image(rover1,objective1,low_res), have_image(rover1,objective1,colour), have_soil_analysis(rover1,waypoint1)})"]
+s250[label="(instance index=1, state index=250, atoms={communicated_soil_data(waypoint1), communicated_image_data(objective1,low_res), at(rover1,waypoint2), empty(rover1store), calibrated(camera1,rover1), have_image(rover1,objective1,low_res), have_image(rover1,objective1,colour), have_soil_analysis(rover1,waypoint1)})"]
+s130[label="(instance index=1, state index=130, atoms={communicated_soil_data(waypoint1), communicated_image_data(objective1,colour), at(rover1,waypoint2), empty(rover1store), calibrated(camera1,rover1), have_image(rover1,objective1,low_res), have_image(rover1,objective1,colour), have_soil_analysis(rover1,waypoint1)})"]
+s387[label="(instance index=1, state index=387, atoms={communicated_soil_data(waypoint1), communicated_image_data(objective1,high_res), communicated_image_data(objective1,low_res), at(rover1,waypoint2), have_image(rover1,objective1,high_res), have_image(rover1,objective1,low_res), full(rover1store), have_soil_analysis(rover1,waypoint1)})"]
+s74[label="(instance index=1, state index=74, atoms={communicated_soil_data(waypoint1), communicated_image_data(objective1,low_res), communicated_image_data(objective1,colour), empty(rover1store), at(rover1,waypoint1), calibrated(camera1,rover1), have_image(rover1,objective1,low_res), have_image(rover1,objective1,colour), have_soil_analysis(rover1,waypoint1)})"]
+s70[label="(instance index=1, state index=70, atoms={communicated_soil_data(waypoint1), communicated_image_data(objective1,low_res), communicated_image_data(objective1,colour), at(rover1,waypoint2), empty(rover1store), have_image(rover1,objective1,low_res), have_image(rover1,objective1,colour), have_soil_analysis(rover1,waypoint1)})"]
+s382[label="(instance index=1, state index=382, atoms={communicated_image_data(objective1,high_res), communicated_image_data(objective1,low_res), at(rover1,waypoint2), empty(rover1store), calibrated(camera1,rover1), have_image(rover1,objective1,high_res), have_image(rover1,objective1,low_res), have_soil_analysis(rover1,waypoint1)})"]
+s92[label="(instance index=1, state index=92, atoms={communicated_image_data(objective1,high_res), communicated_image_data(objective1,colour), at(rover1,waypoint1), have_image(rover1,objective1,high_res), have_image(rover1,objective1,low_res), have_image(rover1,objective1,colour), full(rover1store), have_soil_analysis(rover1,waypoint1)})"]
+s219[label="(instance index=1, state index=219, atoms={communicated_image_data(objective1,high_res), communicated_image_data(objective1,low_res), empty(rover1store), at(rover1,waypoint1), have_image(rover1,objective1,high_res), have_image(rover1,objective1,low_res), have_image(rover1,objective1,colour), have_soil_analysis(rover1,waypoint1)})"]
+s268[label="(instance index=1, state index=268, atoms={communicated_image_data(objective1,high_res), at(rover1,waypoint2), empty(rover1store), have_image(rover1,objective1,high_res), have_image(rover1,objective1,low_res), have_image(rover1,objective1,colour), have_soil_analysis(rover1,waypoint1)})"]
+s228[label="(instance index=1, state index=228, atoms={communicated_image_data(objective1,low_res), at(rover1,waypoint2), empty(rover1store), have_image(rover1,objective1,high_res), have_image(rover1,objective1,low_res), have_image(rover1,objective1,colour), have_soil_analysis(rover1,waypoint1)})"]
+s59[label="(instance index=1, state index=59, atoms={communicated_image_data(objective1,low_res), communicated_image_data(objective1,colour), empty(rover1store), at(rover1,waypoint1), have_image(rover1,objective1,high_res), have_image(rover1,objective1,low_res), have_image(rover1,objective1,colour), have_soil_analysis(rover1,waypoint1)})"]
+s148[label="(instance index=1, state index=148, atoms={communicated_soil_data(waypoint1), communicated_image_data(objective1,high_res), communicated_image_data(objective1,colour), at(rover1,waypoint2), have_image(rover1,objective1,high_res), have_image(rover1,objective1,colour), full(rover1store), have_soil_analysis(rover1,waypoint1)})"]
+s275[label="(instance index=1, state index=275, atoms={communicated_soil_data(waypoint1), communicated_image_data(objective1,high_res), empty(rover1store), at(rover1,waypoint1), calibrated(camera1,rover1), have_image(rover1,objective1,high_res), have_image(rover1,objective1,low_res), have_image(rover1,objective1,colour), have_soil_analysis(rover1,waypoint1)})"]
+s108[label="(instance index=1, state index=108, atoms={communicated_image_data(objective1,colour), at(rover1,waypoint2), empty(rover1store), have_image(rover1,objective1,high_res), have_image(rover1,objective1,low_res), have_image(rover1,objective1,colour), have_soil_analysis(rover1,waypoint1)})"]
+s235[label="(instance index=1, state index=235, atoms={communicated_soil_data(waypoint1), communicated_image_data(objective1,low_res), empty(rover1store), at(rover1,waypoint1), calibrated(camera1,rover1), have_image(rover1,objective1,high_res), have_image(rover1,objective1,low_res), have_image(rover1,objective1,colour), have_soil_analysis(rover1,waypoint1)})"]
+s242[label="(instance index=1, state index=242, atoms={communicated_soil_data(waypoint1), communicated_image_data(objective1,low_res), at(rover1,waypoint2), calibrated(camera1,rover1), have_image(rover1,objective1,low_res), have_image(rover1,objective1,colour), full(rover1store), have_soil_analysis(rover1,waypoint1)})"]
+s115[label="(instance index=1, state index=115, atoms={communicated_soil_data(waypoint1), communicated_image_data(objective1,colour), empty(rover1store), at(rover1,waypoint1), calibrated(camera1,rover1), have_image(rover1,objective1,high_res), have_image(rover1,objective1,low_res), have_image(rover1,objective1,colour), have_soil_analysis(rover1,waypoint1)})"]
+s206[label="(instance index=1, state index=206, atoms={communicated_image_data(objective1,high_res), communicated_image_data(objective1,low_res), empty(rover1store), at(rover1,waypoint1), calibrated(camera1,rover1), have_image(rover1,objective1,high_res), have_image(rover1,objective1,low_res), have_image(rover1,objective1,colour), have_soil_analysis(rover1,waypoint1)})"]
+s392[label="(instance index=1, state index=392, atoms={communicated_soil_data(waypoint1), communicated_image_data(objective1,high_res), communicated_image_data(objective1,low_res), empty(rover1store), at(rover1,waypoint1), calibrated(camera1,rover1), have_image(rover1,objective1,high_res), have_image(rover1,objective1,low_res), have_soil_analysis(rover1,waypoint1)})"]
+s265[label="(instance index=1, state index=265, atoms={communicated_image_data(objective1,high_res), at(rover1,waypoint2), empty(rover1store), calibrated(camera1,rover1), have_image(rover1,objective1,high_res), have_image(rover1,objective1,low_res), have_image(rover1,objective1,colour), have_soil_analysis(rover1,waypoint1)})"]
+s232[label="(instance index=1, state index=232, atoms={communicated_soil_data(waypoint1), communicated_image_data(objective1,low_res), at(rover1,waypoint1), have_image(rover1,objective1,high_res), have_image(rover1,objective1,low_res), have_image(rover1,objective1,colour), full(rover1store), have_soil_analysis(rover1,waypoint1)})"]
+s105[label="(instance index=1, state index=105, atoms={communicated_image_data(objective1,colour), at(rover1,waypoint2), empty(rover1store), calibrated(camera1,rover1), have_image(rover1,objective1,high_res), have_image(rover1,objective1,low_res), have_image(rover1,objective1,colour), have_soil_analysis(rover1,waypoint1)})"]
+s46[label="(instance index=1, state index=46, atoms={communicated_image_data(objective1,low_res), communicated_image_data(objective1,colour), empty(rover1store), at(rover1,waypoint1), calibrated(camera1,rover1), have_image(rover1,objective1,high_res), have_image(rover1,objective1,low_res), have_image(rover1,objective1,colour), have_soil_analysis(rover1,waypoint1)})"]
+s227[label="(instance index=1, state index=227, atoms={communicated_image_data(objective1,low_res), at(rover1,waypoint2), have_image(rover1,objective1,high_res), have_image(rover1,objective1,low_res), have_image(rover1,objective1,colour), full(rover1store), have_soil_analysis(rover1,waypoint1)})"]
+s99[label="(instance index=1, state index=99, atoms={communicated_image_data(objective1,high_res), communicated_image_data(objective1,colour), empty(rover1store), at(rover1,waypoint1), have_image(rover1,objective1,high_res), have_image(rover1,objective1,low_res), have_image(rover1,objective1,colour), have_soil_analysis(rover1,waypoint1)})"]
+s233[label="(instance index=1, state index=233, atoms={communicated_soil_data(waypoint1), communicated_image_data(objective1,low_res), empty(rover1store), at(rover1,waypoint1), have_image(rover1,objective1,high_res), have_image(rover1,objective1,low_res), have_image(rover1,objective1,colour), have_soil_analysis(rover1,waypoint1)})"]
+s155[label="(instance index=1, state index=155, atoms={communicated_soil_data(waypoint1), communicated_image_data(objective1,high_res), communicated_image_data(objective1,colour), at(rover1,waypoint1), calibrated(camera1,rover1), have_image(rover1,objective1,high_res), have_image(rover1,objective1,colour), full(rover1store), have_soil_analysis(rover1,waypoint1)})"]
+s287[label="(instance index=1, state index=287, atoms={communicated_soil_data(waypoint1), at(rover1,waypoint2), have_image(rover1,objective1,high_res), have_image(rover1,objective1,low_res), have_image(rover1,objective1,colour), full(rover1store), have_soil_analysis(rover1,waypoint1)})"]
+s161[label="(instance index=1, state index=161, atoms={communicated_soil_data(waypoint1), communicated_image_data(objective1,colour), at(rover1,waypoint2), calibrated(camera1,rover1), have_image(rover1,objective1,high_res), have_image(rover1,objective1,colour), full(rover1store), have_soil_analysis(rover1,waypoint1)})"]
+s288[label="(instance index=1, state index=288, atoms={communicated_soil_data(waypoint1), at(rover1,waypoint2), empty(rover1store), have_image(rover1,objective1,high_res), have_image(rover1,objective1,low_res), have_image(rover1,objective1,colour), have_soil_analysis(rover1,waypoint1)})"]
+s291[label="(instance index=1, state index=291, atoms={communicated_soil_data(waypoint1), at(rover1,waypoint2), empty(rover1store), calibrated(camera1,rover1), have_image(rover1,objective1,high_res), have_image(rover1,objective1,low_res), have_image(rover1,objective1,colour), have_soil_analysis(rover1,waypoint1)})"]
+s25[label="(instance index=1, state index=25, atoms={communicated_image_data(objective1,high_res), communicated_image_data(objective1,low_res), communicated_image_data(objective1,colour), empty(rover1store), at_soil_sample(waypoint1), at(rover1,waypoint1), have_image(rover1,objective1,high_res), have_image(rover1,objective1,low_res), have_image(rover1,objective1,colour)})"]
+s86[label="(instance index=1, state index=86, atoms={communicated_image_data(objective1,high_res), communicated_image_data(objective1,colour), empty(rover1store), at(rover1,waypoint1), calibrated(camera1,rover1), have_image(rover1,objective1,high_res), have_image(rover1,objective1,low_res), have_image(rover1,objective1,colour), have_soil_analysis(rover1,waypoint1)})"]
+s225[label="(instance index=1, state index=225, atoms={communicated_image_data(objective1,low_res), at(rover1,waypoint2), empty(rover1store), calibrated(camera1,rover1), have_image(rover1,objective1,high_res), have_image(rover1,objective1,low_res), have_image(rover1,objective1,colour), have_soil_analysis(rover1,waypoint1)})"]
+s107[label="(instance index=1, state index=107, atoms={communicated_image_data(objective1,colour), at(rover1,waypoint2), have_image(rover1,objective1,high_res), have_image(rover1,objective1,low_res), have_image(rover1,objective1,colour), full(rover1store), have_soil_analysis(rover1,waypoint1)})"]
+s169[label="(instance index=1, state index=169, atoms={communicated_soil_data(waypoint1), communicated_image_data(objective1,colour), at(rover1,waypoint2), empty(rover1store), calibrated(camera1,rover1), have_image(rover1,objective1,high_res), have_image(rover1,objective1,colour), have_soil_analysis(rover1,waypoint1)})"]
+s272[label="(instance index=1, state index=272, atoms={communicated_soil_data(waypoint1), communicated_image_data(objective1,high_res), at(rover1,waypoint1), have_image(rover1,objective1,high_res), have_image(rover1,objective1,low_res), have_image(rover1,objective1,colour), full(rover1store), have_soil_analysis(rover1,waypoint1)})"]
+s440[label="(instance index=1, state index=440, atoms={communicated_soil_data(waypoint1), communicated_image_data(objective1,high_res), at(rover1,waypoint2), calibrated(camera1,rover1), have_image(rover1,objective1,high_res), have_image(rover1,objective1,low_res), full(rover1store), have_soil_analysis(rover1,waypoint1)})"]
+s394[label="(instance index=1, state index=394, atoms={communicated_soil_data(waypoint1), communicated_image_data(objective1,high_res), communicated_image_data(objective1,low_res), at(rover1,waypoint1), calibrated(camera1,rover1), have_image(rover1,objective1,high_res), have_image(rover1,objective1,low_res), full(rover1store), have_soil_analysis(rover1,waypoint1)})"]
+s27[label="(instance index=1, state index=27, atoms={communicated_image_data(objective1,high_res), communicated_image_data(objective1,low_res), communicated_image_data(objective1,colour), empty(rover1store), at_soil_sample(waypoint1), at(rover1,waypoint1), calibrated(camera1,rover1), have_image(rover1,objective1,high_res), have_image(rover1,objective1,low_res), have_image(rover1,objective1,colour)})"]
+s45[label="(instance index=1, state index=45, atoms={communicated_image_data(objective1,low_res), communicated_image_data(objective1,colour), at(rover1,waypoint1), calibrated(camera1,rover1), have_image(rover1,objective1,high_res), have_image(rover1,objective1,low_res), have_image(rover1,objective1,colour), full(rover1store), have_soil_analysis(rover1,waypoint1)})"]
+s104[label="(instance index=1, state index=104, atoms={communicated_image_data(objective1,colour), at(rover1,waypoint2), calibrated(camera1,rover1), have_image(rover1,objective1,high_res), have_image(rover1,objective1,low_res), have_image(rover1,objective1,colour), full(rover1store), have_soil_analysis(rover1,waypoint1)})"]
+s224[label="(instance index=1, state index=224, atoms={communicated_image_data(objective1,low_res), at(rover1,waypoint2), calibrated(camera1,rover1), have_image(rover1,objective1,high_res), have_image(rover1,objective1,low_res), have_image(rover1,objective1,colour), full(rover1store), have_soil_analysis(rover1,waypoint1)})"]
+s85[label="(instance index=1, state index=85, atoms={communicated_image_data(objective1,high_res), communicated_image_data(objective1,colour), at(rover1,waypoint1), calibrated(camera1,rover1), have_image(rover1,objective1,high_res), have_image(rover1,objective1,low_res), have_image(rover1,objective1,colour), full(rover1store), have_soil_analysis(rover1,waypoint1)})"]
+s264[label="(instance index=1, state index=264, atoms={communicated_image_data(objective1,high_res), at(rover1,waypoint2), calibrated(camera1,rover1), have_image(rover1,objective1,high_res), have_image(rover1,objective1,low_res), have_image(rover1,objective1,colour), full(rover1store), have_soil_analysis(rover1,waypoint1)})"]
+s205[label="(instance index=1, state index=205, atoms={communicated_image_data(objective1,high_res), communicated_image_data(objective1,low_res), at(rover1,waypoint1), calibrated(camera1,rover1), have_image(rover1,objective1,high_res), have_image(rover1,objective1,low_res), have_image(rover1,objective1,colour), full(rover1store), have_soil_analysis(rover1,waypoint1)})"]
+s117[label="(instance index=1, state index=117, atoms={communicated_soil_data(waypoint1), communicated_image_data(objective1,colour), at(rover1,waypoint1), calibrated(camera1,rover1), have_image(rover1,objective1,high_res), have_image(rover1,objective1,low_res), have_image(rover1,objective1,colour), full(rover1store), have_soil_analysis(rover1,waypoint1)})"]
+s283[label="(instance index=1, state index=283, atoms={communicated_soil_data(waypoint1), at(rover1,waypoint2), calibrated(camera1,rover1), have_image(rover1,objective1,high_res), have_image(rover1,objective1,low_res), have_image(rover1,objective1,colour), full(rover1store), have_soil_analysis(rover1,waypoint1)})"]
+s237[label="(instance index=1, state index=237, atoms={communicated_soil_data(waypoint1), communicated_image_data(objective1,low_res), at(rover1,waypoint1), calibrated(camera1,rover1), have_image(rover1,objective1,high_res), have_image(rover1,objective1,low_res), have_image(rover1,objective1,colour), full(rover1store), have_soil_analysis(rover1,waypoint1)})"]
+s277[label="(instance index=1, state index=277, atoms={communicated_soil_data(waypoint1), communicated_image_data(objective1,high_res), at(rover1,waypoint1), calibrated(camera1,rover1), have_image(rover1,objective1,high_res), have_image(rover1,objective1,low_res), have_image(rover1,objective1,colour), full(rover1store), have_soil_analysis(rover1,waypoint1)})"]
+s266[label="(instance index=1, state index=266, atoms={communicated_soil_data(waypoint1), communicated_image_data(objective1,high_res), at(rover1,waypoint2), calibrated(camera1,rover1), have_image(rover1,objective1,high_res), have_image(rover1,objective1,low_res), have_image(rover1,objective1,colour), full(rover1store), have_soil_analysis(rover1,waypoint1)})"]
+s100[label="(instance index=1, state index=100, atoms={communicated_soil_data(waypoint1), communicated_image_data(objective1,high_res), communicated_image_data(objective1,colour), at(rover1,waypoint1), calibrated(camera1,rover1), have_image(rover1,objective1,high_res), have_image(rover1,objective1,low_res), have_image(rover1,objective1,colour), full(rover1store), have_soil_analysis(rover1,waypoint1)})"]
+s226[label="(instance index=1, state index=226, atoms={communicated_soil_data(waypoint1), communicated_image_data(objective1,low_res), at(rover1,waypoint2), calibrated(camera1,rover1), have_image(rover1,objective1,high_res), have_image(rover1,objective1,low_res), have_image(rover1,objective1,colour), full(rover1store), have_soil_analysis(rover1,waypoint1)})"]
+s106[label="(instance index=1, state index=106, atoms={communicated_soil_data(waypoint1), communicated_image_data(objective1,colour), at(rover1,waypoint2), calibrated(camera1,rover1), have_image(rover1,objective1,high_res), have_image(rover1,objective1,low_res), have_image(rover1,objective1,colour), full(rover1store), have_soil_analysis(rover1,waypoint1)})"]
+s60[label="(instance index=1, state index=60, atoms={communicated_soil_data(waypoint1), communicated_image_data(objective1,low_res), communicated_image_data(objective1,colour), at(rover1,waypoint1), calibrated(camera1,rover1), have_image(rover1,objective1,high_res), have_image(rover1,objective1,low_res), have_image(rover1,objective1,colour), full(rover1store), have_soil_analysis(rover1,waypoint1)})"]
+s207[label="(instance index=1, state index=207, atoms={communicated_image_data(objective1,high_res), communicated_image_data(objective1,low_res), at(rover1,waypoint2), calibrated(camera1,rover1), have_image(rover1,objective1,high_res), have_image(rover1,objective1,low_res), have_image(rover1,objective1,colour), full(rover1store), have_soil_analysis(rover1,waypoint1)})"]
+s47[label="(instance index=1, state index=47, atoms={communicated_image_data(objective1,low_res), communicated_image_data(objective1,colour), at(rover1,waypoint2), calibrated(camera1,rover1), have_image(rover1,objective1,high_res), have_image(rover1,objective1,low_res), have_image(rover1,objective1,colour), full(rover1store), have_soil_analysis(rover1,waypoint1)})"]
+s28[label="(instance index=1, state index=28, atoms={communicated_image_data(objective1,high_res), communicated_image_data(objective1,low_res), communicated_image_data(objective1,colour), at(rover1,waypoint1), calibrated(camera1,rover1), have_image(rover1,objective1,high_res), have_image(rover1,objective1,low_res), have_image(rover1,objective1,colour), full(rover1store), have_soil_analysis(rover1,waypoint1)})"]
+s383[label="(instance index=1, state index=383, atoms={communicated_soil_data(waypoint1), communicated_image_data(objective1,high_res), communicated_image_data(objective1,low_res), at(rover1,waypoint2), calibrated(camera1,rover1), have_image(rover1,objective1,high_res), have_image(rover1,objective1,low_res), full(rover1store), have_soil_analysis(rover1,waypoint1)})"]
+s48[label="(instance index=1, state index=48, atoms={communicated_image_data(objective1,low_res), communicated_image_data(objective1,colour), at(rover1,waypoint2), empty(rover1store), calibrated(camera1,rover1), have_image(rover1,objective1,high_res), have_image(rover1,objective1,low_res), have_image(rover1,objective1,colour), have_soil_analysis(rover1,waypoint1)})"]
+s58[label="(instance index=1, state index=58, atoms={communicated_soil_data(waypoint1), communicated_image_data(objective1,low_res), communicated_image_data(objective1,colour), empty(rover1store), at(rover1,waypoint1), calibrated(camera1,rover1), have_image(rover1,objective1,high_res), have_image(rover1,objective1,low_res), have_image(rover1,objective1,colour), have_soil_analysis(rover1,waypoint1)})"]
+s29[label="(instance index=1, state index=29, atoms={communicated_image_data(objective1,high_res), communicated_image_data(objective1,low_res), communicated_image_data(objective1,colour), empty(rover1store), at(rover1,waypoint1), calibrated(camera1,rover1), have_image(rover1,objective1,high_res), have_image(rover1,objective1,low_res), have_image(rover1,objective1,colour), have_soil_analysis(rover1,waypoint1)})"]
+s220[label="(instance index=1, state index=220, atoms={communicated_soil_data(waypoint1), communicated_image_data(objective1,high_res), communicated_image_data(objective1,low_res), at(rover1,waypoint1), calibrated(camera1,rover1), have_image(rover1,objective1,high_res), have_image(rover1,objective1,low_res), have_image(rover1,objective1,colour), full(rover1store), have_soil_analysis(rover1,waypoint1)})"]
+s211[label="(instance index=1, state index=211, atoms={communicated_image_data(objective1,high_res), communicated_image_data(objective1,low_res), at(rover1,waypoint2), empty(rover1store), have_image(rover1,objective1,high_res), have_image(rover1,objective1,low_res), have_image(rover1,objective1,colour), have_soil_analysis(rover1,waypoint1)})"]
+s152[label="(instance index=1, state index=152, atoms={communicated_soil_data(waypoint1), communicated_image_data(objective1,high_res), communicated_image_data(objective1,colour), at(rover1,waypoint2), empty(rover1store), calibrated(camera1,rover1), have_image(rover1,objective1,high_res), have_image(rover1,objective1,colour), have_soil_analysis(rover1,waypoint1)})"]
+s270[label="(instance index=1, state index=270, atoms={communicated_soil_data(waypoint1), communicated_image_data(objective1,high_res), at(rover1,waypoint2), have_image(rover1,objective1,high_res), have_image(rover1,objective1,low_res), have_image(rover1,objective1,colour), full(rover1store), have_soil_analysis(rover1,waypoint1)})"]
+s230[label="(instance index=1, state index=230, atoms={communicated_soil_data(waypoint1), communicated_image_data(objective1,low_res), at(rover1,waypoint2), have_image(rover1,objective1,high_res), have_image(rover1,objective1,low_res), have_image(rover1,objective1,colour), full(rover1store), have_soil_analysis(rover1,waypoint1)})"]
+s210[label="(instance index=1, state index=210, atoms={communicated_image_data(objective1,high_res), communicated_image_data(objective1,low_res), at(rover1,waypoint2), have_image(rover1,objective1,high_res), have_image(rover1,objective1,low_res), have_image(rover1,objective1,colour), full(rover1store), have_soil_analysis(rover1,waypoint1)})"]
+s231[label="(instance index=1, state index=231, atoms={communicated_soil_data(waypoint1), communicated_image_data(objective1,low_res), at(rover1,waypoint2), empty(rover1store), have_image(rover1,objective1,high_res), have_image(rover1,objective1,low_res), have_image(rover1,objective1,colour), have_soil_analysis(rover1,waypoint1)})"]
+s91[label="(instance index=1, state index=91, atoms={communicated_image_data(objective1,high_res), communicated_image_data(objective1,colour), at(rover1,waypoint2), empty(rover1store), have_image(rover1,objective1,high_res), have_image(rover1,objective1,low_res), have_image(rover1,objective1,colour), have_soil_analysis(rover1,waypoint1)})"]
+s218[label="(instance index=1, state index=218, atoms={communicated_soil_data(waypoint1), communicated_image_data(objective1,high_res), communicated_image_data(objective1,low_res), empty(rover1store), at(rover1,waypoint1), calibrated(camera1,rover1), have_image(rover1,objective1,high_res), have_image(rover1,objective1,low_res), have_image(rover1,objective1,colour), have_soil_analysis(rover1,waypoint1)})"]
+s87[label="(instance index=1, state index=87, atoms={communicated_image_data(objective1,high_res), communicated_image_data(objective1,colour), at(rover1,waypoint2), calibrated(camera1,rover1), have_image(rover1,objective1,high_res), have_image(rover1,objective1,low_res), have_image(rover1,objective1,colour), full(rover1store), have_soil_analysis(rover1,waypoint1)})"]
+s96[label="(instance index=1, state index=96, atoms={communicated_soil_data(waypoint1), communicated_image_data(objective1,high_res), communicated_image_data(objective1,colour), empty(rover1store), at(rover1,waypoint1), have_image(rover1,objective1,high_res), have_image(rover1,objective1,low_res), have_image(rover1,objective1,colour), have_soil_analysis(rover1,waypoint1)})"]
+s391[label="(instance index=1, state index=391, atoms={communicated_soil_data(waypoint1), communicated_image_data(objective1,high_res), communicated_image_data(objective1,low_res), at(rover1,waypoint2), empty(rover1store), calibrated(camera1,rover1), have_image(rover1,objective1,high_res), have_image(rover1,objective1,low_res), have_soil_analysis(rover1,waypoint1)})"]
+s274[label="(instance index=1, state index=274, atoms={communicated_soil_data(waypoint1), communicated_image_data(objective1,high_res), at(rover1,waypoint2), empty(rover1store), calibrated(camera1,rover1), have_image(rover1,objective1,high_res), have_image(rover1,objective1,low_res), have_image(rover1,objective1,colour), have_soil_analysis(rover1,waypoint1)})"]
+s88[label="(instance index=1, state index=88, atoms={communicated_image_data(objective1,high_res), communicated_image_data(objective1,colour), at(rover1,waypoint2), empty(rover1store), calibrated(camera1,rover1), have_image(rover1,objective1,high_res), have_image(rover1,objective1,low_res), have_image(rover1,objective1,colour), have_soil_analysis(rover1,waypoint1)})"]
+s215[label="(instance index=1, state index=215, atoms={communicated_soil_data(waypoint1), communicated_image_data(objective1,high_res), communicated_image_data(objective1,low_res), at(rover1,waypoint1), have_image(rover1,objective1,high_res), have_image(rover1,objective1,low_res), have_image(rover1,objective1,colour), full(rover1store), have_soil_analysis(rover1,waypoint1)})"]
+s35[label="(instance index=1, state index=35, atoms={communicated_image_data(objective1,high_res), communicated_image_data(objective1,low_res), communicated_image_data(objective1,colour), at(rover1,waypoint1), have_image(rover1,objective1,high_res), have_image(rover1,objective1,low_res), have_image(rover1,objective1,colour), full(rover1store), have_soil_analysis(rover1,waypoint1)})"]
+s95[label="(instance index=1, state index=95, atoms={communicated_soil_data(waypoint1), communicated_image_data(objective1,high_res), communicated_image_data(objective1,colour), at(rover1,waypoint1), have_image(rover1,objective1,high_res), have_image(rover1,objective1,low_res), have_image(rover1,objective1,colour), full(rover1store), have_soil_analysis(rover1,waypoint1)})"]
+s98[label="(instance index=1, state index=98, atoms={communicated_soil_data(waypoint1), communicated_image_data(objective1,high_res), communicated_image_data(objective1,colour), empty(rover1store), at(rover1,waypoint1), calibrated(camera1,rover1), have_image(rover1,objective1,high_res), have_image(rover1,objective1,low_res), have_image(rover1,objective1,colour), have_soil_analysis(rover1,waypoint1)})"]
+s216[label="(instance index=1, state index=216, atoms={communicated_soil_data(waypoint1), communicated_image_data(objective1,high_res), communicated_image_data(objective1,low_res), empty(rover1store), at(rover1,waypoint1), have_image(rover1,objective1,high_res), have_image(rover1,objective1,low_res), have_image(rover1,objective1,colour), have_soil_analysis(rover1,waypoint1)})"]
+s208[label="(instance index=1, state index=208, atoms={communicated_image_data(objective1,high_res), communicated_image_data(objective1,low_res), at(rover1,waypoint2), empty(rover1store), calibrated(camera1,rover1), have_image(rover1,objective1,high_res), have_image(rover1,objective1,low_res), have_image(rover1,objective1,colour), have_soil_analysis(rover1,waypoint1)})"]
+s90[label="(instance index=1, state index=90, atoms={communicated_image_data(objective1,high_res), communicated_image_data(objective1,colour), at(rover1,waypoint2), have_image(rover1,objective1,high_res), have_image(rover1,objective1,low_res), have_image(rover1,objective1,colour), full(rover1store), have_soil_analysis(rover1,waypoint1)})"]
+s234[label="(instance index=1, state index=234, atoms={communicated_soil_data(waypoint1), communicated_image_data(objective1,low_res), at(rover1,waypoint2), empty(rover1store), calibrated(camera1,rover1), have_image(rover1,objective1,high_res), have_image(rover1,objective1,low_res), have_image(rover1,objective1,colour), have_soil_analysis(rover1,waypoint1)})"]
+s114[label="(instance index=1, state index=114, atoms={communicated_soil_data(waypoint1), communicated_image_data(objective1,colour), at(rover1,waypoint2), empty(rover1store), calibrated(camera1,rover1), have_image(rover1,objective1,high_res), have_image(rover1,objective1,low_res), have_image(rover1,objective1,colour), have_soil_analysis(rover1,waypoint1)})"]
+s55[label="(instance index=1, state index=55, atoms={communicated_soil_data(waypoint1), communicated_image_data(objective1,low_res), communicated_image_data(objective1,colour), at(rover1,waypoint1), have_image(rover1,objective1,high_res), have_image(rover1,objective1,low_res), have_image(rover1,objective1,colour), full(rover1store), have_soil_analysis(rover1,waypoint1)})"]
+s51[label="(instance index=1, state index=51, atoms={communicated_image_data(objective1,low_res), communicated_image_data(objective1,colour), at(rover1,waypoint2), empty(rover1store), have_image(rover1,objective1,high_res), have_image(rover1,objective1,low_res), have_image(rover1,objective1,colour), have_soil_analysis(rover1,waypoint1)})"]
+s110[label="(instance index=1, state index=110, atoms={communicated_soil_data(waypoint1), communicated_image_data(objective1,colour), at(rover1,waypoint2), have_image(rover1,objective1,high_res), have_image(rover1,objective1,low_res), have_image(rover1,objective1,colour), full(rover1store), have_soil_analysis(rover1,waypoint1)})"]
+s42[label="(instance index=1, state index=42, atoms={communicated_image_data(objective1,high_res), communicated_image_data(objective1,low_res), communicated_image_data(objective1,colour), empty(rover1store), at(rover1,waypoint1), have_image(rover1,objective1,high_res), have_image(rover1,objective1,low_res), have_image(rover1,objective1,colour), have_soil_analysis(rover1,waypoint1)})"]
+s56[label="(instance index=1, state index=56, atoms={communicated_soil_data(waypoint1), communicated_image_data(objective1,low_res), communicated_image_data(objective1,colour), empty(rover1store), at(rover1,waypoint1), have_image(rover1,objective1,high_res), have_image(rover1,objective1,low_res), have_image(rover1,objective1,colour), have_soil_analysis(rover1,waypoint1)})"]
+s73[label="(instance index=1, state index=73, atoms={communicated_soil_data(waypoint1), communicated_image_data(objective1,low_res), communicated_image_data(objective1,colour), at(rover1,waypoint2), empty(rover1store), calibrated(camera1,rover1), have_image(rover1,objective1,low_res), have_image(rover1,objective1,colour), have_soil_analysis(rover1,waypoint1)})"]
+s111[label="(instance index=1, state index=111, atoms={communicated_soil_data(waypoint1), communicated_image_data(objective1,colour), at(rover1,waypoint2), empty(rover1store), have_image(rover1,objective1,high_res), have_image(rover1,objective1,low_res), have_image(rover1,objective1,colour), have_soil_analysis(rover1,waypoint1)})"]
+s50[label="(instance index=1, state index=50, atoms={communicated_image_data(objective1,low_res), communicated_image_data(objective1,colour), at(rover1,waypoint2), have_image(rover1,objective1,high_res), have_image(rover1,objective1,low_res), have_image(rover1,objective1,colour), full(rover1store), have_soil_analysis(rover1,waypoint1)})"]
+s65[label="(instance index=1, state index=65, atoms={communicated_soil_data(waypoint1), communicated_image_data(objective1,low_res), communicated_image_data(objective1,colour), at(rover1,waypoint2), calibrated(camera1,rover1), have_image(rover1,objective1,low_res), have_image(rover1,objective1,colour), full(rover1store), have_soil_analysis(rover1,waypoint1)})"]
+s271[label="(instance index=1, state index=271, atoms={communicated_soil_data(waypoint1), communicated_image_data(objective1,high_res), at(rover1,waypoint2), empty(rover1store), have_image(rover1,objective1,high_res), have_image(rover1,objective1,low_res), have_image(rover1,objective1,colour), have_soil_analysis(rover1,waypoint1)})"]
+s144[label="(instance index=1, state index=144, atoms={communicated_soil_data(waypoint1), communicated_image_data(objective1,high_res), communicated_image_data(objective1,colour), at(rover1,waypoint2), calibrated(camera1,rover1), have_image(rover1,objective1,high_res), have_image(rover1,objective1,colour), full(rover1store), have_soil_analysis(rover1,waypoint1)})"]
+s49[label="(instance index=1, state index=49, atoms={communicated_soil_data(waypoint1), communicated_image_data(objective1,low_res), communicated_image_data(objective1,colour), at(rover1,waypoint2), calibrated(camera1,rover1), have_image(rover1,objective1,high_res), have_image(rover1,objective1,low_res), have_image(rover1,objective1,colour), full(rover1store), have_soil_analysis(rover1,waypoint1)})"]
+s30[label="(instance index=1, state index=30, atoms={communicated_image_data(objective1,high_res), communicated_image_data(objective1,low_res), communicated_image_data(objective1,colour), at(rover1,waypoint2), calibrated(camera1,rover1), have_image(rover1,objective1,high_res), have_image(rover1,objective1,low_res), have_image(rover1,objective1,colour), full(rover1store), have_soil_analysis(rover1,waypoint1)})"]
+s209[label="(instance index=1, state index=209, atoms={communicated_soil_data(waypoint1), communicated_image_data(objective1,high_res), communicated_image_data(objective1,low_res), at(rover1,waypoint2), calibrated(camera1,rover1), have_image(rover1,objective1,high_res), have_image(rover1,objective1,low_res), have_image(rover1,objective1,colour), full(rover1store), have_soil_analysis(rover1,waypoint1)})"]
+s93[label="(instance index=1, state index=93, atoms={communicated_soil_data(waypoint1), communicated_image_data(objective1,high_res), communicated_image_data(objective1,colour), at(rover1,waypoint2), have_image(rover1,objective1,high_res), have_image(rover1,objective1,low_res), have_image(rover1,objective1,colour), full(rover1store), have_soil_analysis(rover1,waypoint1)})"]
+s31[label="(instance index=1, state index=31, atoms={communicated_image_data(objective1,high_res), communicated_image_data(objective1,low_res), communicated_image_data(objective1,colour), at(rover1,waypoint2), empty(rover1store), calibrated(camera1,rover1), have_image(rover1,objective1,high_res), have_image(rover1,objective1,low_res), have_image(rover1,objective1,colour), have_soil_analysis(rover1,waypoint1)})"]
+s34[label="(instance index=1, state index=34, atoms={communicated_image_data(objective1,high_res), communicated_image_data(objective1,low_res), communicated_image_data(objective1,colour), at(rover1,waypoint2), empty(rover1store), have_image(rover1,objective1,high_res), have_image(rover1,objective1,low_res), have_image(rover1,objective1,colour), have_soil_analysis(rover1,waypoint1)})"]
+s53[label="(instance index=1, state index=53, atoms={communicated_soil_data(waypoint1), communicated_image_data(objective1,low_res), communicated_image_data(objective1,colour), at(rover1,waypoint2), have_image(rover1,objective1,high_res), have_image(rover1,objective1,low_res), have_image(rover1,objective1,colour), full(rover1store), have_soil_analysis(rover1,waypoint1)})"]
+s33[label="(instance index=1, state index=33, atoms={communicated_image_data(objective1,high_res), communicated_image_data(objective1,low_res), communicated_image_data(objective1,colour), at(rover1,waypoint2), have_image(rover1,objective1,high_res), have_image(rover1,objective1,low_res), have_image(rover1,objective1,colour), full(rover1store), have_soil_analysis(rover1,waypoint1)})"]
+s54[label="(instance index=1, state index=54, atoms={communicated_soil_data(waypoint1), communicated_image_data(objective1,low_res), communicated_image_data(objective1,colour), at(rover1,waypoint2), empty(rover1store), have_image(rover1,objective1,high_res), have_image(rover1,objective1,low_res), have_image(rover1,objective1,colour), have_soil_analysis(rover1,waypoint1)})"]
+s214[label="(instance index=1, state index=214, atoms={communicated_soil_data(waypoint1), communicated_image_data(objective1,high_res), communicated_image_data(objective1,low_res), at(rover1,waypoint2), empty(rover1store), have_image(rover1,objective1,high_res), have_image(rover1,objective1,low_res), have_image(rover1,objective1,colour), have_soil_analysis(rover1,waypoint1)})"]
+s97[label="(instance index=1, state index=97, atoms={communicated_soil_data(waypoint1), communicated_image_data(objective1,high_res), communicated_image_data(objective1,colour), at(rover1,waypoint2), empty(rover1store), calibrated(camera1,rover1), have_image(rover1,objective1,high_res), have_image(rover1,objective1,low_res), have_image(rover1,objective1,colour), have_soil_analysis(rover1,waypoint1)})"]
+s94[label="(instance index=1, state index=94, atoms={communicated_soil_data(waypoint1), communicated_image_data(objective1,high_res), communicated_image_data(objective1,colour), at(rover1,waypoint2), empty(rover1store), have_image(rover1,objective1,high_res), have_image(rover1,objective1,low_res), have_image(rover1,objective1,colour), have_soil_analysis(rover1,waypoint1)})"]
+s213[label="(instance index=1, state index=213, atoms={communicated_soil_data(waypoint1), communicated_image_data(objective1,high_res), communicated_image_data(objective1,low_res), at(rover1,waypoint2), have_image(rover1,objective1,high_res), have_image(rover1,objective1,low_res), have_image(rover1,objective1,colour), full(rover1store), have_soil_analysis(rover1,waypoint1)})"]
+s89[label="(instance index=1, state index=89, atoms={communicated_soil_data(waypoint1), communicated_image_data(objective1,high_res), communicated_image_data(objective1,colour), at(rover1,waypoint2), calibrated(camera1,rover1), have_image(rover1,objective1,high_res), have_image(rover1,objective1,low_res), have_image(rover1,objective1,colour), full(rover1store), have_soil_analysis(rover1,waypoint1)})"]
+s217[label="(instance index=1, state index=217, atoms={communicated_soil_data(waypoint1), communicated_image_data(objective1,high_res), communicated_image_data(objective1,low_res), at(rover1,waypoint2), empty(rover1store), calibrated(camera1,rover1), have_image(rover1,objective1,high_res), have_image(rover1,objective1,low_res), have_image(rover1,objective1,colour), have_soil_analysis(rover1,waypoint1)})"]
+s57[label="(instance index=1, state index=57, atoms={communicated_soil_data(waypoint1), communicated_image_data(objective1,low_res), communicated_image_data(objective1,colour), at(rover1,waypoint2), empty(rover1store), calibrated(camera1,rover1), have_image(rover1,objective1,high_res), have_image(rover1,objective1,low_res), have_image(rover1,objective1,colour), have_soil_analysis(rover1,waypoint1)})"]
+s32[peripheries=2,label="(instance index=1, state index=32, atoms={communicated_soil_data(waypoint1), communicated_image_data(objective1,high_res), communicated_image_data(objective1,low_res), communicated_image_data(objective1,colour), at(rover1,waypoint2), calibrated(camera1,rover1), have_image(rover1,objective1,high_res), have_image(rover1,objective1,low_res), have_image(rover1,objective1,colour), full(rover1store), have_soil_analysis(rover1,waypoint1)})"]
+s41[peripheries=2,label="(instance index=1, state index=41, atoms={communicated_soil_data(waypoint1), communicated_image_data(objective1,high_res), communicated_image_data(objective1,low_res), communicated_image_data(objective1,colour), empty(rover1store), at(rover1,waypoint1), calibrated(camera1,rover1), have_image(rover1,objective1,high_res), have_image(rover1,objective1,low_res), have_image(rover1,objective1,colour), have_soil_analysis(rover1,waypoint1)})"]
+s37[peripheries=2,label="(instance index=1, state index=37, atoms={communicated_soil_data(waypoint1), communicated_image_data(objective1,high_res), communicated_image_data(objective1,low_res), communicated_image_data(objective1,colour), at(rover1,waypoint2), empty(rover1store), have_image(rover1,objective1,high_res), have_image(rover1,objective1,low_res), have_image(rover1,objective1,colour), have_soil_analysis(rover1,waypoint1)})"]
+s40[peripheries=2,label="(instance index=1, state index=40, atoms={communicated_soil_data(waypoint1), communicated_image_data(objective1,high_res), communicated_image_data(objective1,low_res), communicated_image_data(objective1,colour), at(rover1,waypoint2), empty(rover1store), calibrated(camera1,rover1), have_image(rover1,objective1,high_res), have_image(rover1,objective1,low_res), have_image(rover1,objective1,colour), have_soil_analysis(rover1,waypoint1)})"]
+s38[peripheries=2,label="(instance index=1, state index=38, atoms={communicated_soil_data(waypoint1), communicated_image_data(objective1,high_res), communicated_image_data(objective1,low_res), communicated_image_data(objective1,colour), at(rover1,waypoint1), have_image(rover1,objective1,high_res), have_image(rover1,objective1,low_res), have_image(rover1,objective1,colour), full(rover1store), have_soil_analysis(rover1,waypoint1)})"]
+s36[peripheries=2,label="(instance index=1, state index=36, atoms={communicated_soil_data(waypoint1), communicated_image_data(objective1,high_res), communicated_image_data(objective1,low_res), communicated_image_data(objective1,colour), at(rover1,waypoint2), have_image(rover1,objective1,high_res), have_image(rover1,objective1,low_res), have_image(rover1,objective1,colour), full(rover1store), have_soil_analysis(rover1,waypoint1)})"]
+s39[peripheries=2,label="(instance index=1, state index=39, atoms={communicated_soil_data(waypoint1), communicated_image_data(objective1,high_res), communicated_image_data(objective1,low_res), communicated_image_data(objective1,colour), empty(rover1store), at(rover1,waypoint1), have_image(rover1,objective1,high_res), have_image(rover1,objective1,low_res), have_image(rover1,objective1,colour), have_soil_analysis(rover1,waypoint1)})"]
+s43[peripheries=2,label="(instance index=1, state index=43, atoms={communicated_soil_data(waypoint1), communicated_image_data(objective1,high_res), communicated_image_data(objective1,low_res), communicated_image_data(objective1,colour), at(rover1,waypoint1), calibrated(camera1,rover1), have_image(rover1,objective1,high_res), have_image(rover1,objective1,low_res), have_image(rover1,objective1,colour), full(rover1store), have_soil_analysis(rover1,waypoint1)})"]
+Dangling [ label = "", style = invis ]
+{ rank = same; Dangling }
+Dangling -> s0
+{ rank = same; s0}
+{ rank = same; s1,s2}
+{ rank = same; s532,s3,s4,s5,s6,s533}
+{ rank = same; s538,s485,s366,s534,s524,s7,s487,s486,s368,s367,s9,s8,s539,s535,s525}
+{ rank = same; s536,s530,s488,s515,s507,s369,s476,s428,s189,s526,s357,s10,s489,s429,s190,s370,s191,s11,s537,s531,s522,s483,s527,s364}
+{ rank = same; s518,s479,s528,s360,s498,s490,s430,s513,s508,s311,s419,s371,s474,s469,s192,s350,s355,s180,s12,s432,s313,s372,s431,s312,s13,s194,s193,s14,s519,s480,s529,s361,s505,s514,s509,s426,s475,s470,s351,s356,s187}
+{ rank = same; s257,s501,s523,s516,s422,s484,s477,s365,s358,s183,s433,s496,s491,s314,s373,s460,s452,s333,s510,s341,s134,s254,s417,s412,s195,s471,s302,s352,s178,s173,s15,s375,s434,s315,s136,s374,s255,s135,s196,s17,s16,s502,s521,s517,s423,s482,s478,s363,s359,s184,s497,s492,s467,s511,s348,s418,s413,s472,s309,s353,s179,s174}
+{ rank = same; s278,s260,s200,s80,s499,s506,s463,s512,s344,s427,s420,s473,s305,s354,s188,s181,s376,s443,s435,s316,s493,s324,s137,s403,s395,s458,s453,s256,s334,s339,s164,s156,s197,s295,s77,s414,s245,s300,s175,s125,s18,s377,s258,s138,s198,s78,s19,s504,s500,s464,s520,s345,s425,s421,s481,s306,s362,s186,s182,s450,s494,s331,s410,s459,s454,s335,s340,s171,s296,s415,s252,s301,s132,s176}
+{ rank = same; s261,s221,s279,s101,s203,s83,s23,s446,s495,s327,s406,s468,s461,s349,s342,s167,s310,s416,s248,s303,s177,s128,s386,s378,s441,s436,s259,s317,s322,s147,s139,s401,s396,s199,s455,s286,s336,s162,s157,s79,s238,s297,s118,s243,s123,s68,s20,s201,s81,s21,s447,s503,s328,s407,s466,s462,s347,s343,s124,s304,s298,s293,s308,s318,s323,s397,s402,s154,s75,s280,s244,s119,s239,s158,s163,s337,s456,s437,s442,s185,s393,s129,s249,s424,s168}
+{ rank = same; s379,s326,s399,s320,s131,s72,s151,s405,s285,s126,s289,s282,s409,s290,s294,s292,s346,s465,s299,s330,s307,s284,s26,s103,s223,s263,s62,s319,s67,s121,s241,s160,s116,s236,s141,s398,s146,s276,s439,s380,s385,s127,s384,s247,s251,s166,s170,s445,s449,s390,s133,s24,s281,s22,s61,s66,s120,s240,s109,s159,s229,s82,s140,s145,s269,s438,s202,s71,s246,s253,s165,s172,s338,s457,s404,s411,s150,s325,s332,s451,s444,s389,s44,s102,s222,s84,s262,s204}
+{ rank = same; s112,s122,s76,s69,s381,s212,s267,s142,s63,s52,s388,s321,s64,s448,s400,s143,s273,s329,s153,s149,s408,s113,s250,s130,s387,s74,s70,s382,s92,s219,s268,s228,s59,s148,s275,s108,s235,s242,s115,s206,s392,s265,s232,s105,s46,s227,s99,s233,s155,s287,s161,s288,s291,s25,s86,s225,s107,s169,s272,s440,s394,s27,s45,s104,s224,s85,s264,s205,s117,s283,s237,s277}
+{ rank = same; s266,s100,s226,s106,s60,s207,s47,s28,s383,s48,s58,s29,s220,s211,s152,s270,s230,s210,s231,s91,s218,s87,s96,s391,s274,s88,s215,s35,s95,s98,s216,s208,s90,s234,s114,s55,s51,s110,s42,s56,s73,s111,s50,s65,s271,s144}
+{ rank = same; s49,s30,s209,s93,s31,s34,s53,s33,s54,s214,s97,s94,s213,s89,s217,s57}
+{ rank = same; s32,s41,s37,s40,s38,s36,s39,s43}
+{
+s0->s2
+s0->s1
+}
+{
+s1->s532
+s1->s0
+s2->s6
+s2->s5
+s2->s4
+s2->s3
+s2->s2
+}
+{
+s532->s534
+s532->s533
+s3->s524
+s3->s2
+s4->s487
+s4->s486
+s4->s485
+s5->s367
+s5->s366
+s5->s368
+s6->s7
+s6->s9
+s6->s8
+s533->s535
+}
+{
+s538->s539
+s538->s536
+s485->s4
+s485->s515
+s366->s5
+s366->s476
+s534->s535
+s534->s532
+s534->s526
+s534->s536
+s524->s526
+s524->s525
+s7->s6
+s7->s357
+s487->s487
+s487->s489
+s487->s488
+s486->s190
+s486->s429
+s486->s489
+s486->s507
+s486->s486
+s486->s4
+s368->s370
+s368->s369
+s368->s368
+s367->s370
+s367->s367
+s367->s191
+s367->s429
+s367->s428
+s367->s5
+s9->s11
+s9->s10
+s9->s9
+s8->s191
+s8->s189
+s8->s11
+s8->s190
+s8->s8
+s8->s6
+s539->s537
+s535->s527
+s535->s533
+s535->s537
+s525->s527
+}
+{
+s536->s536
+s536->s537
+s536->s538
+s536->s528
+s530->s531
+s530->s528
+s488->s487
+s488->s498
+s515->s522
+s515->s513
+s507->s486
+s507->s508
+s369->s419
+s369->s368
+s476->s483
+s476->s474
+s428->s367
+s428->s469
+s189->s350
+s189->s8
+s526->s528
+s526->s526
+s526->s524
+s526->s474
+s526->s355
+s526->s527
+s526->s513
+s357->s364
+s357->s355
+s10->s180
+s10->s9
+s489->s313
+s489->s490
+s489->s489
+s489->s432
+s489->s487
+s429->s431
+s429->s430
+s429->s372
+s429->s432
+s190->s311
+s190->s13
+s190->s313
+s190->s312
+s370->s372
+s370->s371
+s370->s370
+s370->s368
+s370->s194
+s191->s14
+s191->s194
+s191->s193
+s191->s192
+s11->s13
+s11->s12
+s11->s11
+s11->s14
+s11->s9
+s537->s537
+s537->s539
+s537->s529
+s531->s529
+s522->s514
+s483->s475
+s527->s529
+s527->s527
+s527->s525
+s527->s475
+s527->s356
+s527->s514
+s364->s356
+}
+{
+s518->s519
+s518->s516
+s479->s477
+s479->s480
+s528->s529
+s528->s528
+s528->s477
+s528->s358
+s528->s530
+s528->s516
+s360->s358
+s360->s361
+s498->s505
+s498->s496
+s490->s491
+s490->s489
+s430->s429
+s430->s460
+s513->s496
+s513->s516
+s513->s510
+s513->s515
+s513->s514
+s508->s510
+s508->s509
+s311->s190
+s311->s341
+s419->s426
+s419->s417
+s371->s412
+s371->s370
+s474->s475
+s474->s476
+s474->s471
+s474->s477
+s474->s417
+s469->s471
+s469->s470
+s192->s191
+s192->s302
+s350->s351
+s350->s352
+s355->s178
+s355->s358
+s355->s356
+s355->s357
+s355->s352
+s180->s187
+s180->s178
+s12->s173
+s12->s11
+s432->s375
+s432->s434
+s432->s433
+s432->s432
+s313->s315
+s313->s314
+s313->s313
+s313->s136
+s372->s375
+s372->s374
+s372->s373
+s372->s372
+s431->s255
+s431->s374
+s431->s434
+s431->s429
+s431->s431
+s431->s452
+s312->s255
+s312->s190
+s312->s315
+s312->s312
+s312->s333
+s312->s135
+s13->s135
+s13->s134
+s13->s13
+s13->s136
+s194->s196
+s194->s195
+s194->s194
+s194->s17
+s193->s255
+s193->s196
+s193->s254
+s193->s16
+s193->s191
+s193->s193
+s14->s15
+s14->s14
+s14->s17
+s14->s16
+s519->s517
+s480->s478
+s529->s478
+s529->s531
+s529->s529
+s529->s359
+s529->s517
+s361->s359
+s505->s497
+s514->s511
+s514->s517
+s514->s522
+s514->s497
+s509->s511
+s426->s418
+s475->s478
+s475->s483
+s475->s418
+s475->s472
+s470->s472
+s351->s353
+s356->s359
+s356->s364
+s356->s179
+s356->s353
+s187->s179
+}
+{
+s257->s255
+s257->s80
+s257->s200
+s257->s260
+s257->s278
+s257->s257
+s501->s502
+s501->s499
+s523->s521
+s523->s512
+s516->s499
+s516->s518
+s516->s516
+s516->s517
+s516->s512
+s422->s423
+s422->s420
+s484->s482
+s484->s473
+s477->s479
+s477->s477
+s477->s478
+s477->s473
+s477->s420
+s365->s363
+s365->s354
+s358->s181
+s358->s360
+s358->s358
+s358->s359
+s358->s354
+s183->s181
+s183->s184
+s433->s443
+s433->s432
+s496->s499
+s496->s497
+s496->s496
+s496->s498
+s496->s493
+s491->s493
+s491->s492
+s314->s324
+s314->s313
+s373->s372
+s373->s403
+s460->s467
+s460->s458
+s452->s431
+s452->s453
+s333->s334
+s333->s312
+s510->s511
+s510->s510
+s510->s508
+s510->s339
+s510->s493
+s510->s458
+s510->s513
+s510->s512
+s341->s348
+s341->s339
+s134->s13
+s134->s164
+s254->s295
+s254->s193
+s417->s420
+s417->s414
+s417->s419
+s417->s418
+s417->s417
+s412->s414
+s412->s413
+s195->s245
+s195->s194
+s471->s474
+s471->s473
+s471->s472
+s471->s471
+s471->s300
+s471->s414
+s471->s469
+s471->s458
+s302->s309
+s302->s300
+s352->s350
+s352->s339
+s352->s175
+s352->s300
+s352->s355
+s352->s354
+s352->s353
+s352->s352
+s178->s181
+s178->s179
+s178->s178
+s178->s180
+s178->s175
+s173->s175
+s173->s174
+s15->s14
+s15->s125
+s375->s375
+s375->s377
+s375->s376
+s434->s435
+s434->s434
+s434->s377
+s434->s432
+s434->s258
+s315->s316
+s315->s315
+s315->s313
+s315->s138
+s315->s258
+s136->s138
+s136->s137
+s136->s136
+s374->s374
+s374->s377
+s374->s372
+s374->s395
+s374->s198
+s255->s78
+s255->s198
+s255->s258
+s255->s257
+s255->s256
+s135->s156
+s135->s78
+s135->s13
+s135->s138
+s135->s135
+s196->s198
+s196->s197
+s196->s196
+s196->s19
+s196->s194
+s17->s19
+s17->s18
+s17->s17
+s16->s16
+s16->s19
+s16->s14
+s16->s78
+s16->s77
+s502->s500
+s521->s520
+s517->s519
+s517->s517
+s517->s500
+s517->s520
+s423->s421
+s482->s481
+s478->s478
+s478->s421
+s478->s481
+s478->s480
+s363->s362
+s359->s359
+s359->s182
+s359->s362
+s359->s361
+s184->s182
+s497->s494
+s497->s505
+s497->s500
+s497->s497
+s492->s494
+s467->s459
+s511->s511
+s511->s509
+s511->s340
+s511->s494
+s511->s459
+s511->s520
+s511->s514
+s348->s340
+s418->s415
+s418->s418
+s418->s421
+s418->s426
+s413->s415
+s472->s415
+s472->s475
+s472->s472
+s472->s470
+s472->s301
+s472->s459
+s472->s481
+s309->s301
+s353->s340
+s353->s351
+s353->s176
+s353->s301
+s353->s362
+s353->s356
+s353->s353
+s179->s182
+s179->s187
+s179->s179
+s179->s176
+s174->s176
+}
+{
+s278->s279
+s278->s257
+s260->s261
+s260->s260
+s260->s83
+s260->s203
+s260->s258
+s200->s221
+s200->s200
+s200->s23
+s200->s203
+s200->s198
+s80->s80
+s80->s23
+s80->s83
+s80->s78
+s80->s101
+s499->s501
+s499->s495
+s499->s500
+s499->s499
+s506->s495
+s506->s504
+s463->s461
+s463->s464
+s512->s342
+s512->s461
+s512->s520
+s512->s495
+s512->s523
+s512->s516
+s512->s512
+s344->s342
+s344->s345
+s427->s425
+s427->s416
+s420->s422
+s420->s420
+s420->s421
+s420->s416
+s473->s473
+s473->s303
+s473->s461
+s473->s477
+s473->s484
+s473->s481
+s473->s416
+s305->s303
+s305->s306
+s354->s342
+s354->s177
+s354->s303
+s354->s362
+s354->s365
+s354->s358
+s354->s354
+s188->s186
+s188->s177
+s181->s183
+s181->s181
+s181->s182
+s181->s177
+s376->s375
+s376->s386
+s443->s450
+s443->s441
+s435->s436
+s435->s434
+s316->s317
+s316->s315
+s493->s496
+s493->s495
+s493->s494
+s493->s493
+s493->s491
+s493->s441
+s493->s322
+s324->s331
+s324->s322
+s137->s147
+s137->s136
+s403->s410
+s403->s401
+s395->s374
+s395->s396
+s458->s401
+s458->s461
+s458->s460
+s458->s459
+s458->s441
+s458->s455
+s453->s455
+s453->s454
+s256->s255
+s256->s286
+s334->s335
+s334->s336
+s339->s342
+s339->s341
+s339->s340
+s339->s336
+s339->s322
+s339->s162
+s164->s171
+s164->s162
+s156->s135
+s156->s157
+s197->s238
+s197->s196
+s295->s297
+s295->s296
+s77->s118
+s77->s16
+s414->s414
+s414->s412
+s414->s243
+s414->s415
+s414->s401
+s414->s417
+s414->s416
+s245->s252
+s245->s243
+s300->s123
+s300->s243
+s300->s303
+s300->s302
+s300->s301
+s300->s297
+s175->s123
+s175->s178
+s175->s177
+s175->s175
+s175->s173
+s175->s176
+s175->s162
+s125->s132
+s125->s123
+s18->s68
+s18->s17
+s377->s375
+s377->s201
+s377->s378
+s377->s377
+s258->s81
+s258->s201
+s258->s260
+s258->s259
+s258->s258
+s138->s139
+s138->s138
+s138->s81
+s138->s136
+s198->s21
+s198->s201
+s198->s200
+s198->s199
+s198->s198
+s78->s21
+s78->s81
+s78->s80
+s78->s79
+s78->s78
+s19->s21
+s19->s20
+s19->s19
+s19->s17
+s504->s503
+s500->s502
+s500->s503
+s500->s500
+s464->s462
+s520->s343
+s520->s462
+s520->s521
+s520->s520
+s520->s517
+s520->s503
+s345->s343
+s425->s424
+s421->s423
+s421->s421
+s421->s424
+s481->s478
+s481->s304
+s481->s462
+s481->s424
+s481->s482
+s481->s481
+s306->s304
+s362->s343
+s362->s185
+s362->s304
+s362->s363
+s362->s362
+s362->s359
+s186->s185
+s182->s182
+s182->s185
+s182->s184
+s450->s442
+s494->s503
+s494->s497
+s494->s494
+s494->s492
+s494->s442
+s494->s323
+s331->s323
+s410->s402
+s459->s442
+s459->s467
+s459->s402
+s459->s462
+s459->s456
+s454->s456
+s335->s337
+s340->s337
+s340->s348
+s340->s343
+s340->s163
+s340->s323
+s171->s163
+s296->s298
+s415->s415
+s415->s413
+s415->s244
+s415->s402
+s415->s424
+s415->s418
+s252->s244
+s301->s124
+s301->s309
+s301->s244
+s301->s304
+s301->s298
+s132->s124
+s176->s124
+s176->s185
+s176->s179
+s176->s176
+s176->s174
+s176->s163
+}
+{
+s261->s262
+s261->s260
+s221->s222
+s221->s200
+s279->s281
+s279->s280
+s101->s102
+s101->s80
+s203->s204
+s203->s203
+s203->s26
+s203->s201
+s83->s84
+s83->s83
+s83->s26
+s83->s81
+s23->s23
+s23->s44
+s23->s21
+s23->s26
+s446->s447
+s446->s444
+s495->s503
+s495->s506
+s495->s499
+s495->s495
+s495->s444
+s495->s325
+s327->s325
+s327->s328
+s406->s407
+s406->s404
+s468->s466
+s468->s457
+s461->s444
+s461->s404
+s461->s463
+s461->s462
+s461->s461
+s461->s457
+s349->s347
+s349->s338
+s342->s344
+s342->s343
+s342->s342
+s342->s338
+s342->s165
+s342->s325
+s167->s165
+s167->s168
+s310->s308
+s310->s299
+s416->s246
+s416->s404
+s416->s424
+s416->s427
+s416->s420
+s416->s416
+s248->s246
+s248->s249
+s303->s126
+s303->s246
+s303->s305
+s303->s304
+s303->s303
+s303->s299
+s177->s126
+s177->s185
+s177->s188
+s177->s181
+s177->s177
+s177->s165
+s128->s126
+s128->s129
+s386->s393
+s386->s384
+s378->s379
+s378->s377
+s441->s444
+s441->s443
+s441->s442
+s441->s441
+s441->s438
+s441->s384
+s436->s438
+s436->s437
+s259->s269
+s259->s258
+s317->s319
+s317->s318
+s322->s319
+s322->s145
+s322->s325
+s322->s324
+s322->s323
+s322->s322
+s147->s154
+s147->s145
+s139->s140
+s139->s138
+s401->s404
+s401->s403
+s401->s402
+s401->s401
+s401->s398
+s401->s384
+s396->s398
+s396->s397
+s199->s198
+s199->s229
+s455->s284
+s455->s438
+s455->s458
+s455->s457
+s455->s456
+s455->s455
+s455->s398
+s455->s453
+s286->s293
+s286->s284
+s336->s159
+s336->s284
+s336->s339
+s336->s338
+s336->s337
+s336->s336
+s336->s334
+s336->s319
+s162->s159
+s162->s145
+s162->s165
+s162->s164
+s162->s163
+s162->s162
+s157->s159
+s157->s158
+s79->s78
+s79->s109
+s238->s239
+s238->s240
+s297->s120
+s297->s300
+s297->s299
+s297->s298
+s297->s297
+s297->s284
+s297->s240
+s297->s295
+s118->s119
+s118->s120
+s243->s246
+s243->s245
+s243->s244
+s243->s243
+s243->s240
+s243->s66
+s123->s126
+s123->s125
+s123->s124
+s123->s123
+s123->s120
+s123->s66
+s68->s75
+s68->s66
+s20->s61
+s20->s19
+s201->s203
+s201->s202
+s201->s201
+s201->s24
+s81->s83
+s81->s82
+s81->s81
+s81->s24
+s21->s23
+s21->s22
+s21->s21
+s21->s24
+s447->s445
+s503->s504
+s503->s503
+s503->s445
+s503->s500
+s503->s326
+s328->s326
+s407->s405
+s466->s465
+s462->s445
+s462->s405
+s462->s465
+s462->s464
+s462->s462
+s347->s346
+s343->s345
+s343->s343
+s343->s346
+s343->s166
+s343->s326
+s124->s124
+s124->s121
+s124->s127
+s124->s132
+s124->s67
+s304->s127
+s304->s247
+s304->s307
+s304->s306
+s304->s304
+s298->s285
+s298->s307
+s298->s241
+s298->s301
+s298->s298
+s298->s121
+s298->s296
+s293->s285
+s308->s307
+s318->s320
+s323->s146
+s323->s331
+s323->s326
+s323->s323
+s323->s320
+s397->s399
+s402->s402
+s402->s399
+s402->s410
+s402->s405
+s402->s385
+s154->s146
+s75->s67
+s280->s282
+s244->s244
+s244->s241
+s244->s252
+s244->s247
+s244->s67
+s119->s121
+s239->s241
+s158->s160
+s163->s146
+s163->s171
+s163->s166
+s163->s163
+s163->s160
+s337->s346
+s337->s340
+s337->s337
+s337->s285
+s337->s320
+s337->s335
+s337->s160
+s456->s285
+s456->s439
+s456->s465
+s456->s399
+s456->s459
+s456->s456
+s456->s454
+s437->s439
+s442->s442
+s442->s439
+s442->s445
+s442->s450
+s442->s385
+s185->s185
+s185->s127
+s185->s182
+s185->s186
+s185->s166
+s393->s385
+s129->s127
+s249->s247
+s424->s247
+s424->s405
+s424->s425
+s424->s424
+s424->s421
+s168->s166
+}
+{
+s379->s381
+s379->s380
+s326->s326
+s326->s149
+s326->s329
+s326->s328
+s399->s408
+s399->s402
+s399->s399
+s399->s397
+s399->s382
+s399->s228
+s320->s318
+s320->s143
+s320->s268
+s320->s329
+s320->s323
+s320->s320
+s131->s130
+s72->s70
+s151->s149
+s405->s407
+s405->s405
+s405->s388
+s405->s408
+s285->s282
+s285->s268
+s285->s108
+s285->s293
+s285->s228
+s285->s288
+s126->s126
+s126->s127
+s126->s122
+s126->s69
+s126->s128
+s289->s287
+s289->s290
+s282->s285
+s282->s282
+s282->s265
+s282->s280
+s282->s105
+s282->s291
+s282->s225
+s409->s408
+s290->s288
+s294->s292
+s294->s283
+s292->s291
+s346->s347
+s346->s346
+s346->s343
+s346->s329
+s346->s169
+s346->s288
+s465->s408
+s465->s466
+s465->s465
+s465->s462
+s465->s448
+s465->s288
+s299->s287
+s299->s122
+s299->s307
+s299->s242
+s299->s310
+s299->s303
+s299->s299
+s330->s329
+s307->s250
+s307->s308
+s307->s307
+s307->s304
+s307->s130
+s307->s288
+s284->s287
+s284->s286
+s284->s285
+s284->s107
+s284->s281
+s284->s267
+s284->s227
+s26->s26
+s26->s27
+s26->s24
+s103->s105
+s223->s225
+s263->s265
+s62->s64
+s319->s319
+s319->s317
+s319->s142
+s319->s267
+s319->s322
+s319->s321
+s319->s320
+s67->s70
+s67->s75
+s67->s67
+s67->s64
+s121->s124
+s121->s121
+s121->s119
+s121->s108
+s121->s130
+s121->s64
+s241->s250
+s241->s244
+s241->s241
+s241->s228
+s241->s239
+s241->s64
+s160->s158
+s160->s143
+s160->s108
+s160->s169
+s160->s163
+s160->s160
+s116->s108
+s236->s228
+s141->s143
+s398->s401
+s398->s400
+s398->s399
+s398->s398
+s398->s396
+s398->s381
+s398->s227
+s146->s143
+s146->s149
+s146->s154
+s146->s146
+s276->s268
+s439->s382
+s439->s442
+s439->s439
+s439->s437
+s439->s268
+s439->s448
+s380->s382
+s385->s382
+s385->s388
+s385->s393
+s385->s385
+s127->s127
+s127->s70
+s127->s130
+s127->s129
+s384->s387
+s384->s381
+s384->s386
+s384->s385
+s384->s384
+s247->s247
+s247->s70
+s247->s250
+s247->s249
+s251->s250
+s166->s166
+s166->s149
+s166->s169
+s166->s168
+s170->s169
+s445->s447
+s445->s445
+s445->s388
+s445->s448
+s449->s448
+s390->s388
+s133->s131
+s133->s122
+s24->s26
+s24->s25
+s24->s24
+s281->s284
+s281->s283
+s281->s282
+s281->s281
+s281->s264
+s281->s104
+s281->s279
+s281->s224
+s22->s21
+s22->s52
+s61->s63
+s61->s62
+s66->s69
+s66->s63
+s66->s68
+s66->s67
+s66->s66
+s120->s63
+s120->s123
+s120->s122
+s120->s120
+s120->s118
+s120->s121
+s120->s107
+s240->s243
+s240->s242
+s240->s240
+s240->s63
+s240->s238
+s240->s241
+s240->s227
+s109->s116
+s109->s107
+s159->s159
+s159->s157
+s159->s142
+s159->s107
+s159->s162
+s159->s161
+s159->s160
+s229->s236
+s229->s227
+s82->s92
+s82->s81
+s140->s142
+s140->s141
+s145->s148
+s145->s146
+s145->s145
+s145->s147
+s145->s142
+s269->s276
+s269->s267
+s438->s381
+s438->s441
+s438->s440
+s438->s439
+s438->s438
+s438->s436
+s438->s267
+s202->s212
+s202->s201
+s71->s69
+s71->s72
+s246->s248
+s246->s246
+s246->s247
+s246->s242
+s246->s69
+s253->s251
+s253->s242
+s165->s148
+s165->s167
+s165->s165
+s165->s166
+s165->s161
+s172->s170
+s172->s161
+s338->s346
+s338->s338
+s338->s287
+s338->s161
+s338->s349
+s338->s342
+s338->s321
+s457->s287
+s457->s465
+s457->s400
+s457->s440
+s457->s468
+s457->s461
+s457->s457
+s404->s406
+s404->s404
+s404->s405
+s404->s400
+s404->s387
+s411->s409
+s411->s400
+s150->s151
+s150->s148
+s325->s148
+s325->s327
+s325->s325
+s325->s326
+s325->s321
+s332->s330
+s332->s321
+s451->s449
+s451->s440
+s444->s446
+s444->s444
+s444->s445
+s444->s440
+s444->s387
+s389->s390
+s389->s387
+s44->s23
+s44->s45
+s102->s103
+s102->s104
+s222->s223
+s222->s224
+s84->s85
+s84->s83
+s262->s263
+s262->s264
+s204->s205
+s204->s203
+}
+{
+s112->s110
+s112->s113
+s122->s122
+s122->s110
+s122->s126
+s122->s133
+s122->s130
+s122->s65
+s76->s74
+s76->s65
+s69->s71
+s69->s69
+s69->s70
+s69->s65
+s381->s383
+s381->s382
+s381->s381
+s381->s379
+s381->s210
+s381->s384
+s212->s219
+s212->s210
+s267->s90
+s267->s210
+s267->s270
+s267->s269
+s267->s268
+s267->s267
+s267->s264
+s142->s90
+s142->s145
+s142->s144
+s142->s143
+s142->s142
+s142->s140
+s63->s63
+s63->s61
+s63->s66
+s63->s65
+s63->s50
+s63->s64
+s52->s59
+s52->s50
+s388->s390
+s388->s391
+s388->s388
+s321->s144
+s321->s270
+s321->s329
+s321->s332
+s321->s325
+s321->s321
+s64->s51
+s64->s73
+s64->s62
+s64->s67
+s64->s64
+s448->s445
+s448->s271
+s448->s391
+s448->s449
+s448->s448
+s400->s408
+s400->s383
+s400->s411
+s400->s404
+s400->s400
+s400->s230
+s143->s152
+s143->s143
+s143->s91
+s143->s146
+s143->s141
+s273->s271
+s329->s152
+s329->s330
+s329->s329
+s329->s271
+s329->s326
+s153->s152
+s149->s151
+s149->s149
+s149->s152
+s408->s409
+s408->s408
+s408->s405
+s408->s231
+s408->s391
+s113->s111
+s250->s250
+s250->s247
+s250->s73
+s250->s251
+s250->s231
+s130->s127
+s130->s73
+s130->s111
+s130->s131
+s130->s130
+s387->s389
+s387->s383
+s387->s388
+s387->s387
+s74->s73
+s70->s70
+s70->s73
+s70->s72
+s382->s382
+s382->s211
+s382->s391
+s382->s380
+s382->s385
+s92->s99
+s92->s90
+s219->s211
+s268->s91
+s268->s276
+s268->s211
+s268->s271
+s268->s268
+s268->s265
+s228->s51
+s228->s236
+s228->s231
+s228->s228
+s228->s211
+s228->s225
+s59->s51
+s148->s150
+s148->s148
+s148->s149
+s148->s144
+s275->s274
+s108->s116
+s108->s51
+s108->s111
+s108->s108
+s108->s91
+s108->s105
+s235->s234
+s242->s250
+s242->s253
+s242->s246
+s242->s242
+s242->s230
+s242->s65
+s115->s114
+s206->s208
+s392->s391
+s265->s274
+s265->s208
+s265->s268
+s265->s265
+s265->s88
+s265->s263
+s232->s230
+s232->s233
+s105->s88
+s105->s114
+s105->s48
+s105->s108
+s105->s105
+s105->s103
+s46->s48
+s227->s50
+s227->s230
+s227->s229
+s227->s228
+s227->s227
+s227->s210
+s227->s224
+s99->s91
+s233->s231
+s155->s153
+s155->s144
+s287->s287
+s287->s283
+s287->s270
+s287->s110
+s287->s230
+s287->s289
+s287->s288
+s161->s110
+s161->s169
+s161->s144
+s161->s172
+s161->s165
+s161->s161
+s288->s271
+s288->s111
+s288->s231
+s288->s291
+s288->s290
+s288->s288
+s291->s114
+s291->s234
+s291->s292
+s291->s291
+s291->s274
+s291->s288
+s25->s35
+s25->s24
+s86->s88
+s225->s208
+s225->s223
+s225->s48
+s225->s234
+s225->s228
+s225->s225
+s107->s50
+s107->s110
+s107->s109
+s107->s108
+s107->s107
+s107->s90
+s107->s104
+s169->s152
+s169->s170
+s169->s169
+s169->s111
+s169->s166
+s272->s270
+s272->s273
+s440->s383
+s440->s440
+s440->s270
+s440->s444
+s440->s451
+s440->s448
+s394->s383
+s394->s392
+s27->s28
+s27->s26
+s45->s47
+s45->s46
+s104->s87
+s104->s47
+s104->s107
+s104->s106
+s104->s105
+s104->s104
+s104->s102
+s224->s222
+s224->s47
+s224->s207
+s224->s227
+s224->s226
+s224->s225
+s224->s224
+s85->s87
+s85->s86
+s264->s207
+s264->s267
+s264->s266
+s264->s265
+s264->s264
+s264->s87
+s264->s262
+s205->s207
+s205->s206
+s117->s115
+s117->s106
+s283->s283
+s283->s106
+s283->s287
+s283->s266
+s283->s294
+s283->s291
+s283->s226
+s237->s235
+s237->s226
+s277->s275
+s277->s266
+}
+{
+s266->s89
+s266->s274
+s266->s209
+s266->s277
+s266->s270
+s266->s266
+s100->s98
+s100->s89
+s226->s49
+s226->s234
+s226->s209
+s226->s237
+s226->s230
+s226->s226
+s106->s114
+s106->s49
+s106->s89
+s106->s117
+s106->s110
+s106->s106
+s60->s58
+s60->s49
+s207->s210
+s207->s209
+s207->s208
+s207->s207
+s207->s30
+s207->s205
+s47->s30
+s47->s50
+s47->s49
+s47->s48
+s47->s47
+s47->s45
+s28->s30
+s28->s29
+s383->s383
+s383->s213
+s383->s394
+s383->s391
+s383->s387
+s48->s57
+s48->s48
+s48->s31
+s48->s51
+s48->s46
+s58->s57
+s29->s31
+s220->s218
+s220->s209
+s211->s211
+s211->s208
+s211->s219
+s211->s214
+s211->s34
+s152->s94
+s152->s149
+s152->s153
+s152->s152
+s270->s93
+s270->s213
+s270->s272
+s270->s271
+s270->s270
+s270->s266
+s230->s53
+s230->s213
+s230->s232
+s230->s231
+s230->s230
+s230->s226
+s210->s213
+s210->s212
+s210->s211
+s210->s210
+s210->s207
+s210->s33
+s231->s214
+s231->s54
+s231->s234
+s231->s233
+s231->s231
+s91->s91
+s91->s88
+s91->s94
+s91->s99
+s91->s34
+s218->s217
+s87->s30
+s87->s90
+s87->s89
+s87->s88
+s87->s87
+s87->s85
+s96->s94
+s391->s391
+s391->s214
+s391->s388
+s391->s392
+s274->s275
+s274->s274
+s274->s271
+s274->s217
+s274->s97
+s88->s88
+s88->s31
+s88->s91
+s88->s86
+s88->s97
+s215->s213
+s215->s216
+s35->s42
+s35->s33
+s95->s93
+s95->s96
+s98->s97
+s216->s214
+s208->s217
+s208->s208
+s208->s31
+s208->s211
+s208->s206
+s90->s93
+s90->s92
+s90->s91
+s90->s90
+s90->s87
+s90->s33
+s234->s57
+s234->s217
+s234->s235
+s234->s234
+s234->s231
+s114->s115
+s114->s114
+s114->s111
+s114->s57
+s114->s97
+s55->s53
+s55->s56
+s51->s51
+s51->s48
+s51->s59
+s51->s54
+s51->s34
+s110->s93
+s110->s53
+s110->s112
+s110->s111
+s110->s110
+s110->s106
+s42->s34
+s56->s54
+s73->s70
+s73->s54
+s73->s74
+s73->s73
+s111->s94
+s111->s54
+s111->s114
+s111->s113
+s111->s111
+s50->s53
+s50->s52
+s50->s51
+s50->s50
+s50->s47
+s50->s33
+s65->s76
+s65->s53
+s65->s73
+s65->s69
+s65->s65
+s271->s94
+s271->s214
+s271->s274
+s271->s273
+s271->s271
+s144->s155
+s144->s152
+s144->s93
+s144->s148
+s144->s144
+}
+{
+s49->s60
+s49->s53
+s49->s49
+s49->s57
+s49->s32
+s30->s31
+s30->s30
+s30->s28
+s30->s33
+s30->s32
+s209->s220
+s209->s213
+s209->s209
+s209->s217
+s209->s32
+s93->s95
+s93->s93
+s93->s94
+s93->s89
+s93->s36
+s31->s31
+s31->s29
+s31->s34
+s31->s40
+s34->s31
+s34->s34
+s34->s37
+s34->s42
+s53->s55
+s53->s53
+s53->s54
+s53->s49
+s53->s36
+s33->s36
+s33->s30
+s33->s35
+s33->s34
+s33->s33
+s54->s54
+s54->s37
+s54->s57
+s54->s56
+s214->s214
+s214->s37
+s214->s217
+s214->s216
+s97->s94
+s97->s98
+s97->s97
+s97->s40
+s94->s94
+s94->s37
+s94->s97
+s94->s96
+s213->s215
+s213->s213
+s213->s214
+s213->s209
+s213->s36
+s89->s93
+s89->s89
+s89->s100
+s89->s97
+s89->s32
+s217->s214
+s217->s218
+s217->s217
+s217->s40
+s57->s54
+s57->s58
+s57->s57
+s57->s40
+}
+{
+s32->s36
+s32->s43
+s32->s32
+s32->s40
+s41->s40
+s37->s39
+s37->s37
+s37->s40
+s40->s41
+s40->s37
+s40->s40
+s38->s39
+s38->s36
+s36->s38
+s36->s36
+s36->s37
+s36->s32
+s39->s37
+s43->s41
+s43->s32
+}
+}

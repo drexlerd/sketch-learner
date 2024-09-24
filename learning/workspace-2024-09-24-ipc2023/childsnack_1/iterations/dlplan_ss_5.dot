@@ -1,0 +1,1737 @@
+digraph {
+rankdir="LR"
+s18[label="(instance index=5, state index=18, atoms={at_kitchen_bread(bread1), at_kitchen_bread(bread2), at_kitchen_content(content1), at_kitchen_content(content2), notexist(sandw1), notexist(sandw2), at(tray1,table1)})"]
+s17[label="(instance index=5, state index=17, atoms={at_kitchen_bread(bread1), at_kitchen_bread(bread2), at_kitchen_content(content1), at_kitchen_content(content2), notexist(sandw1), notexist(sandw2), at(tray1,table2)})"]
+s226[label="(instance index=5, state index=226, atoms={at_kitchen_bread(bread1), at_kitchen_content(content2), notexist(sandw1), at(tray1,table2), at_kitchen_sandwich(sandw2)})"]
+s23[label="(instance index=5, state index=23, atoms={at_kitchen_bread(bread1), at_kitchen_content(content2), notexist(sandw1), at(tray1,table1), at_kitchen_sandwich(sandw2)})"]
+s230[label="(instance index=5, state index=230, atoms={at_kitchen_bread(bread1), at_kitchen_content(content1), notexist(sandw1), at(tray1,table2), at_kitchen_sandwich(sandw2)})"]
+s19[label="(instance index=5, state index=19, atoms={at_kitchen_bread(bread1), at_kitchen_content(content1), notexist(sandw1), at(tray1,table1), at_kitchen_sandwich(sandw2)})"]
+s222[label="(instance index=5, state index=222, atoms={at_kitchen_bread(bread2), at_kitchen_content(content1), notexist(sandw1), at(tray1,table2), at_kitchen_sandwich(sandw2)})"]
+s27[label="(instance index=5, state index=27, atoms={at_kitchen_bread(bread2), at_kitchen_content(content1), notexist(sandw1), at(tray1,table1), at_kitchen_sandwich(sandw2)})"]
+s218[label="(instance index=5, state index=218, atoms={at_kitchen_bread(bread2), at_kitchen_content(content2), notexist(sandw1), at(tray1,table2), at_kitchen_sandwich(sandw2)})"]
+s31[label="(instance index=5, state index=31, atoms={at_kitchen_bread(bread2), at_kitchen_content(content2), notexist(sandw1), at(tray1,table1), at_kitchen_sandwich(sandw2)})"]
+s128[label="(instance index=5, state index=128, atoms={at_kitchen_bread(bread2), at_kitchen_content(content2), notexist(sandw2), at(tray1,table2), at_kitchen_sandwich(sandw1)})"]
+s33[label="(instance index=5, state index=33, atoms={at_kitchen_bread(bread2), at_kitchen_content(content2), notexist(sandw2), at(tray1,table1), at_kitchen_sandwich(sandw1)})"]
+s220[label="(instance index=5, state index=220, atoms={at_kitchen_bread(bread2), at_kitchen_content(content1), notexist(sandw2), at(tray1,table2), at_kitchen_sandwich(sandw1)})"]
+s29[label="(instance index=5, state index=29, atoms={at_kitchen_bread(bread2), at_kitchen_content(content1), notexist(sandw2), at(tray1,table1), at_kitchen_sandwich(sandw1)})"]
+s224[label="(instance index=5, state index=224, atoms={at_kitchen_bread(bread1), at_kitchen_content(content2), notexist(sandw2), at(tray1,table2), at_kitchen_sandwich(sandw1)})"]
+s25[label="(instance index=5, state index=25, atoms={at_kitchen_bread(bread1), at_kitchen_content(content2), notexist(sandw2), at(tray1,table1), at_kitchen_sandwich(sandw1)})"]
+s228[label="(instance index=5, state index=228, atoms={at_kitchen_bread(bread1), at_kitchen_content(content1), notexist(sandw2), at(tray1,table2), at_kitchen_sandwich(sandw1)})"]
+s21[label="(instance index=5, state index=21, atoms={at_kitchen_bread(bread1), at_kitchen_content(content1), notexist(sandw2), at(tray1,table1), at_kitchen_sandwich(sandw1)})"]
+s221[label="(instance index=5, state index=221, atoms={at_kitchen_bread(bread2), at_kitchen_content(content1), notexist(sandw1), at(tray1,table2), at_kitchen_sandwich(sandw2), no_gluten_sandwich(sandw2)})"]
+s28[label="(instance index=5, state index=28, atoms={at_kitchen_bread(bread2), at_kitchen_content(content1), notexist(sandw1), at(tray1,table1), at_kitchen_sandwich(sandw2), no_gluten_sandwich(sandw2)})"]
+s37[label="(instance index=5, state index=37, atoms={at_kitchen_bread(bread2), at_kitchen_content(content2), notexist(sandw2), at(tray1,table2), at_kitchen_sandwich(sandw1), no_gluten_sandwich(sandw1)})"]
+s34[label="(instance index=5, state index=34, atoms={at_kitchen_bread(bread2), at_kitchen_content(content2), notexist(sandw2), at(tray1,table1), at_kitchen_sandwich(sandw1), no_gluten_sandwich(sandw1)})"]
+s217[label="(instance index=5, state index=217, atoms={at_kitchen_bread(bread2), at_kitchen_content(content2), notexist(sandw1), at(tray1,table2), at_kitchen_sandwich(sandw2), no_gluten_sandwich(sandw2)})"]
+s32[label="(instance index=5, state index=32, atoms={at_kitchen_bread(bread2), at_kitchen_content(content2), notexist(sandw1), at(tray1,table1), at_kitchen_sandwich(sandw2), no_gluten_sandwich(sandw2)})"]
+s219[label="(instance index=5, state index=219, atoms={at_kitchen_bread(bread2), at_kitchen_content(content1), notexist(sandw2), at(tray1,table2), at_kitchen_sandwich(sandw1), no_gluten_sandwich(sandw1)})"]
+s30[label="(instance index=5, state index=30, atoms={at_kitchen_bread(bread2), at_kitchen_content(content1), notexist(sandw2), at(tray1,table1), at_kitchen_sandwich(sandw1), no_gluten_sandwich(sandw1)})"]
+s223[label="(instance index=5, state index=223, atoms={at_kitchen_bread(bread1), at_kitchen_content(content2), notexist(sandw2), at(tray1,table2), at_kitchen_sandwich(sandw1), no_gluten_sandwich(sandw1)})"]
+s26[label="(instance index=5, state index=26, atoms={at_kitchen_bread(bread1), at_kitchen_content(content2), notexist(sandw2), at(tray1,table1), at_kitchen_sandwich(sandw1), no_gluten_sandwich(sandw1)})"]
+s225[label="(instance index=5, state index=225, atoms={at_kitchen_bread(bread1), at_kitchen_content(content2), notexist(sandw1), at(tray1,table2), at_kitchen_sandwich(sandw2), no_gluten_sandwich(sandw2)})"]
+s24[label="(instance index=5, state index=24, atoms={at_kitchen_bread(bread1), at_kitchen_content(content2), notexist(sandw1), at(tray1,table1), at_kitchen_sandwich(sandw2), no_gluten_sandwich(sandw2)})"]
+s227[label="(instance index=5, state index=227, atoms={at_kitchen_bread(bread1), at_kitchen_content(content1), notexist(sandw2), at(tray1,table2), at_kitchen_sandwich(sandw1), no_gluten_sandwich(sandw1)})"]
+s22[label="(instance index=5, state index=22, atoms={at_kitchen_bread(bread1), at_kitchen_content(content1), notexist(sandw2), at(tray1,table1), at_kitchen_sandwich(sandw1), no_gluten_sandwich(sandw1)})"]
+s229[label="(instance index=5, state index=229, atoms={at_kitchen_bread(bread1), at_kitchen_content(content1), notexist(sandw1), at(tray1,table2), at_kitchen_sandwich(sandw2), no_gluten_sandwich(sandw2)})"]
+s20[label="(instance index=5, state index=20, atoms={at_kitchen_bread(bread1), at_kitchen_content(content1), notexist(sandw1), at(tray1,table1), at_kitchen_sandwich(sandw2), no_gluten_sandwich(sandw2)})"]
+s0[label="(instance index=5, state index=0, atoms={at(tray1,kitchen), at_kitchen_bread(bread1), at_kitchen_bread(bread2), at_kitchen_content(content1), at_kitchen_content(content2), notexist(sandw1), notexist(sandw2)})"]
+s38[label="(instance index=5, state index=38, atoms={at(tray1,table2), at_kitchen_sandwich(sandw1), at_kitchen_sandwich(sandw2), no_gluten_sandwich(sandw1)})"]
+s35[label="(instance index=5, state index=35, atoms={at(tray1,table1), at_kitchen_sandwich(sandw1), at_kitchen_sandwich(sandw2), no_gluten_sandwich(sandw1)})"]
+s129[label="(instance index=5, state index=129, atoms={at(tray1,table2), at_kitchen_sandwich(sandw1), at_kitchen_sandwich(sandw2)})"]
+s126[label="(instance index=5, state index=126, atoms={at(tray1,table1), at_kitchen_sandwich(sandw1), at_kitchen_sandwich(sandw2)})"]
+s5[label="(instance index=5, state index=5, atoms={at(tray1,kitchen), at_kitchen_bread(bread1), at_kitchen_content(content2), notexist(sandw1), at_kitchen_sandwich(sandw2)})"]
+s1[label="(instance index=5, state index=1, atoms={at(tray1,kitchen), at_kitchen_bread(bread1), at_kitchen_content(content1), notexist(sandw1), at_kitchen_sandwich(sandw2)})"]
+s9[label="(instance index=5, state index=9, atoms={at(tray1,kitchen), at_kitchen_bread(bread2), at_kitchen_content(content1), notexist(sandw1), at_kitchen_sandwich(sandw2)})"]
+s13[label="(instance index=5, state index=13, atoms={at(tray1,kitchen), at_kitchen_bread(bread2), at_kitchen_content(content2), notexist(sandw1), at_kitchen_sandwich(sandw2)})"]
+s130[label="(instance index=5, state index=130, atoms={at(tray1,table2), at_kitchen_sandwich(sandw1), at_kitchen_sandwich(sandw2), no_gluten_sandwich(sandw2)})"]
+s127[label="(instance index=5, state index=127, atoms={at(tray1,table1), at_kitchen_sandwich(sandw1), at_kitchen_sandwich(sandw2), no_gluten_sandwich(sandw2)})"]
+s15[label="(instance index=5, state index=15, atoms={at(tray1,kitchen), at_kitchen_bread(bread2), at_kitchen_content(content2), notexist(sandw2), at_kitchen_sandwich(sandw1)})"]
+s11[label="(instance index=5, state index=11, atoms={at(tray1,kitchen), at_kitchen_bread(bread2), at_kitchen_content(content1), notexist(sandw2), at_kitchen_sandwich(sandw1)})"]
+s7[label="(instance index=5, state index=7, atoms={at(tray1,kitchen), at_kitchen_bread(bread1), at_kitchen_content(content2), notexist(sandw2), at_kitchen_sandwich(sandw1)})"]
+s3[label="(instance index=5, state index=3, atoms={at(tray1,kitchen), at_kitchen_bread(bread1), at_kitchen_content(content1), notexist(sandw2), at_kitchen_sandwich(sandw1)})"]
+s39[label="(instance index=5, state index=39, atoms={at(tray1,table2), at_kitchen_sandwich(sandw1), at_kitchen_sandwich(sandw2), no_gluten_sandwich(sandw1), no_gluten_sandwich(sandw2)})"]
+s36[label="(instance index=5, state index=36, atoms={at(tray1,table1), at_kitchen_sandwich(sandw1), at_kitchen_sandwich(sandw2), no_gluten_sandwich(sandw1), no_gluten_sandwich(sandw2)})"]
+s10[label="(instance index=5, state index=10, atoms={at(tray1,kitchen), at_kitchen_bread(bread2), at_kitchen_content(content1), notexist(sandw1), at_kitchen_sandwich(sandw2), no_gluten_sandwich(sandw2)})"]
+s16[label="(instance index=5, state index=16, atoms={at(tray1,kitchen), at_kitchen_bread(bread2), at_kitchen_content(content2), notexist(sandw2), at_kitchen_sandwich(sandw1), no_gluten_sandwich(sandw1)})"]
+s14[label="(instance index=5, state index=14, atoms={at(tray1,kitchen), at_kitchen_bread(bread2), at_kitchen_content(content2), notexist(sandw1), at_kitchen_sandwich(sandw2), no_gluten_sandwich(sandw2)})"]
+s12[label="(instance index=5, state index=12, atoms={at(tray1,kitchen), at_kitchen_bread(bread2), at_kitchen_content(content1), notexist(sandw2), at_kitchen_sandwich(sandw1), no_gluten_sandwich(sandw1)})"]
+s8[label="(instance index=5, state index=8, atoms={at(tray1,kitchen), at_kitchen_bread(bread1), at_kitchen_content(content2), notexist(sandw2), at_kitchen_sandwich(sandw1), no_gluten_sandwich(sandw1)})"]
+s6[label="(instance index=5, state index=6, atoms={at(tray1,kitchen), at_kitchen_bread(bread1), at_kitchen_content(content2), notexist(sandw1), at_kitchen_sandwich(sandw2), no_gluten_sandwich(sandw2)})"]
+s4[label="(instance index=5, state index=4, atoms={at(tray1,kitchen), at_kitchen_bread(bread1), at_kitchen_content(content1), notexist(sandw2), at_kitchen_sandwich(sandw1), no_gluten_sandwich(sandw1)})"]
+s2[label="(instance index=5, state index=2, atoms={at(tray1,kitchen), at_kitchen_bread(bread1), at_kitchen_content(content1), notexist(sandw1), at_kitchen_sandwich(sandw2), no_gluten_sandwich(sandw2)})"]
+s368[label="(instance index=5, state index=368, atoms={at_kitchen_bread(bread1), at_kitchen_content(content1), notexist(sandw1), at(tray1,table1), ontray(sandw2,tray1)})"]
+s332[label="(instance index=5, state index=332, atoms={at_kitchen_bread(bread1), at_kitchen_content(content2), notexist(sandw1), at(tray1,table1), ontray(sandw2,tray1)})"]
+s296[label="(instance index=5, state index=296, atoms={at_kitchen_bread(bread2), at_kitchen_content(content1), notexist(sandw1), at(tray1,table1), ontray(sandw2,tray1)})"]
+s260[label="(instance index=5, state index=260, atoms={at_kitchen_bread(bread2), at_kitchen_content(content2), notexist(sandw1), at(tray1,table1), ontray(sandw2,tray1)})"]
+s83[label="(instance index=5, state index=83, atoms={at(tray1,kitchen), at_kitchen_sandwich(sandw1), at_kitchen_sandwich(sandw2), no_gluten_sandwich(sandw1)})"]
+s367[label="(instance index=5, state index=367, atoms={at_kitchen_bread(bread1), at_kitchen_content(content1), notexist(sandw1), at(tray1,table2), ontray(sandw2,tray1)})"]
+s331[label="(instance index=5, state index=331, atoms={at_kitchen_bread(bread1), at_kitchen_content(content2), notexist(sandw1), at(tray1,table2), ontray(sandw2,tray1)})"]
+s295[label="(instance index=5, state index=295, atoms={at_kitchen_bread(bread2), at_kitchen_content(content1), notexist(sandw1), at(tray1,table2), ontray(sandw2,tray1)})"]
+s259[label="(instance index=5, state index=259, atoms={at_kitchen_bread(bread2), at_kitchen_content(content2), notexist(sandw1), at(tray1,table2), ontray(sandw2,tray1)})"]
+s366[label="(instance index=5, state index=366, atoms={at(tray1,kitchen), at_kitchen_bread(bread1), at_kitchen_content(content1), notexist(sandw1), ontray(sandw2,tray1)})"]
+s330[label="(instance index=5, state index=330, atoms={at(tray1,kitchen), at_kitchen_bread(bread1), at_kitchen_content(content2), notexist(sandw1), ontray(sandw2,tray1)})"]
+s174[label="(instance index=5, state index=174, atoms={at(tray1,kitchen), at_kitchen_sandwich(sandw1), at_kitchen_sandwich(sandw2)})"]
+s294[label="(instance index=5, state index=294, atoms={at(tray1,kitchen), at_kitchen_bread(bread2), at_kitchen_content(content1), notexist(sandw1), ontray(sandw2,tray1)})"]
+s258[label="(instance index=5, state index=258, atoms={at(tray1,kitchen), at_kitchen_bread(bread2), at_kitchen_content(content2), notexist(sandw1), ontray(sandw2,tray1)})"]
+s350[label="(instance index=5, state index=350, atoms={at_kitchen_bread(bread1), at_kitchen_content(content1), notexist(sandw2), at(tray1,table1), ontray(sandw1,tray1)})"]
+s314[label="(instance index=5, state index=314, atoms={at_kitchen_bread(bread1), at_kitchen_content(content2), notexist(sandw2), at(tray1,table1), ontray(sandw1,tray1)})"]
+s278[label="(instance index=5, state index=278, atoms={at_kitchen_bread(bread2), at_kitchen_content(content1), notexist(sandw2), at(tray1,table1), ontray(sandw1,tray1)})"]
+s242[label="(instance index=5, state index=242, atoms={at_kitchen_bread(bread2), at_kitchen_content(content2), notexist(sandw2), at(tray1,table1), ontray(sandw1,tray1)})"]
+s359[label="(instance index=5, state index=359, atoms={at_kitchen_bread(bread1), at_kitchen_content(content1), notexist(sandw1), at(tray1,table1), no_gluten_sandwich(sandw2), ontray(sandw2,tray1)})"]
+s323[label="(instance index=5, state index=323, atoms={at_kitchen_bread(bread1), at_kitchen_content(content2), notexist(sandw1), at(tray1,table1), no_gluten_sandwich(sandw2), ontray(sandw2,tray1)})"]
+s287[label="(instance index=5, state index=287, atoms={at_kitchen_bread(bread2), at_kitchen_content(content1), notexist(sandw1), at(tray1,table1), no_gluten_sandwich(sandw2), ontray(sandw2,tray1)})"]
+s251[label="(instance index=5, state index=251, atoms={at_kitchen_bread(bread2), at_kitchen_content(content2), notexist(sandw1), at(tray1,table1), no_gluten_sandwich(sandw2), ontray(sandw2,tray1)})"]
+s341[label="(instance index=5, state index=341, atoms={at_kitchen_bread(bread1), at_kitchen_content(content1), notexist(sandw2), at(tray1,table1), no_gluten_sandwich(sandw1), ontray(sandw1,tray1)})"]
+s305[label="(instance index=5, state index=305, atoms={at_kitchen_bread(bread1), at_kitchen_content(content2), notexist(sandw2), at(tray1,table1), no_gluten_sandwich(sandw1), ontray(sandw1,tray1)})"]
+s269[label="(instance index=5, state index=269, atoms={at_kitchen_bread(bread2), at_kitchen_content(content1), notexist(sandw2), at(tray1,table1), no_gluten_sandwich(sandw1), ontray(sandw1,tray1)})"]
+s233[label="(instance index=5, state index=233, atoms={at_kitchen_bread(bread2), at_kitchen_content(content2), notexist(sandw2), at(tray1,table1), no_gluten_sandwich(sandw1), ontray(sandw1,tray1)})"]
+s348[label="(instance index=5, state index=348, atoms={at(tray1,kitchen), at_kitchen_bread(bread1), at_kitchen_content(content1), notexist(sandw2), ontray(sandw1,tray1)})"]
+s312[label="(instance index=5, state index=312, atoms={at(tray1,kitchen), at_kitchen_bread(bread1), at_kitchen_content(content2), notexist(sandw2), ontray(sandw1,tray1)})"]
+s276[label="(instance index=5, state index=276, atoms={at(tray1,kitchen), at_kitchen_bread(bread2), at_kitchen_content(content1), notexist(sandw2), ontray(sandw1,tray1)})"]
+s240[label="(instance index=5, state index=240, atoms={at(tray1,kitchen), at_kitchen_bread(bread2), at_kitchen_content(content2), notexist(sandw2), ontray(sandw1,tray1)})"]
+s131[label="(instance index=5, state index=131, atoms={at(tray1,kitchen), at_kitchen_sandwich(sandw1), at_kitchen_sandwich(sandw2), no_gluten_sandwich(sandw2)})"]
+s349[label="(instance index=5, state index=349, atoms={at_kitchen_bread(bread1), at_kitchen_content(content1), notexist(sandw2), at(tray1,table2), ontray(sandw1,tray1)})"]
+s313[label="(instance index=5, state index=313, atoms={at_kitchen_bread(bread1), at_kitchen_content(content2), notexist(sandw2), at(tray1,table2), ontray(sandw1,tray1)})"]
+s277[label="(instance index=5, state index=277, atoms={at_kitchen_bread(bread2), at_kitchen_content(content1), notexist(sandw2), at(tray1,table2), ontray(sandw1,tray1)})"]
+s241[label="(instance index=5, state index=241, atoms={at_kitchen_bread(bread2), at_kitchen_content(content2), notexist(sandw2), at(tray1,table2), ontray(sandw1,tray1)})"]
+s304[label="(instance index=5, state index=304, atoms={at_kitchen_bread(bread1), at_kitchen_content(content2), notexist(sandw2), at(tray1,table2), no_gluten_sandwich(sandw1), ontray(sandw1,tray1)})"]
+s303[label="(instance index=5, state index=303, atoms={at(tray1,kitchen), at_kitchen_bread(bread1), at_kitchen_content(content2), notexist(sandw2), no_gluten_sandwich(sandw1), ontray(sandw1,tray1)})"]
+s339[label="(instance index=5, state index=339, atoms={at(tray1,kitchen), at_kitchen_bread(bread1), at_kitchen_content(content1), notexist(sandw2), no_gluten_sandwich(sandw1), ontray(sandw1,tray1)})"]
+s357[label="(instance index=5, state index=357, atoms={at(tray1,kitchen), at_kitchen_bread(bread1), at_kitchen_content(content1), notexist(sandw1), no_gluten_sandwich(sandw2), ontray(sandw2,tray1)})"]
+s358[label="(instance index=5, state index=358, atoms={at_kitchen_bread(bread1), at_kitchen_content(content1), notexist(sandw1), at(tray1,table2), no_gluten_sandwich(sandw2), ontray(sandw2,tray1)})"]
+s40[label="(instance index=5, state index=40, atoms={at(tray1,kitchen), at_kitchen_sandwich(sandw1), at_kitchen_sandwich(sandw2), no_gluten_sandwich(sandw1), no_gluten_sandwich(sandw2)})"]
+s232[label="(instance index=5, state index=232, atoms={at_kitchen_bread(bread2), at_kitchen_content(content2), notexist(sandw2), at(tray1,table2), no_gluten_sandwich(sandw1), ontray(sandw1,tray1)})"]
+s268[label="(instance index=5, state index=268, atoms={at_kitchen_bread(bread2), at_kitchen_content(content1), notexist(sandw2), at(tray1,table2), no_gluten_sandwich(sandw1), ontray(sandw1,tray1)})"]
+s340[label="(instance index=5, state index=340, atoms={at_kitchen_bread(bread1), at_kitchen_content(content1), notexist(sandw2), at(tray1,table2), no_gluten_sandwich(sandw1), ontray(sandw1,tray1)})"]
+s249[label="(instance index=5, state index=249, atoms={at(tray1,kitchen), at_kitchen_bread(bread2), at_kitchen_content(content2), notexist(sandw1), no_gluten_sandwich(sandw2), ontray(sandw2,tray1)})"]
+s285[label="(instance index=5, state index=285, atoms={at(tray1,kitchen), at_kitchen_bread(bread2), at_kitchen_content(content1), notexist(sandw1), no_gluten_sandwich(sandw2), ontray(sandw2,tray1)})"]
+s321[label="(instance index=5, state index=321, atoms={at(tray1,kitchen), at_kitchen_bread(bread1), at_kitchen_content(content2), notexist(sandw1), no_gluten_sandwich(sandw2), ontray(sandw2,tray1)})"]
+s231[label="(instance index=5, state index=231, atoms={at(tray1,kitchen), at_kitchen_bread(bread2), at_kitchen_content(content2), notexist(sandw2), no_gluten_sandwich(sandw1), ontray(sandw1,tray1)})"]
+s267[label="(instance index=5, state index=267, atoms={at(tray1,kitchen), at_kitchen_bread(bread2), at_kitchen_content(content1), notexist(sandw2), no_gluten_sandwich(sandw1), ontray(sandw1,tray1)})"]
+s250[label="(instance index=5, state index=250, atoms={at_kitchen_bread(bread2), at_kitchen_content(content2), notexist(sandw1), at(tray1,table2), no_gluten_sandwich(sandw2), ontray(sandw2,tray1)})"]
+s286[label="(instance index=5, state index=286, atoms={at_kitchen_bread(bread2), at_kitchen_content(content1), notexist(sandw1), at(tray1,table2), no_gluten_sandwich(sandw2), ontray(sandw2,tray1)})"]
+s322[label="(instance index=5, state index=322, atoms={at_kitchen_bread(bread1), at_kitchen_content(content2), notexist(sandw1), at(tray1,table2), no_gluten_sandwich(sandw2), ontray(sandw2,tray1)})"]
+s87[label="(instance index=5, state index=87, atoms={at(tray1,table2), at_kitchen_sandwich(sandw2), no_gluten_sandwich(sandw1), ontray(sandw1,tray1)})"]
+s316[label="(instance index=5, state index=316, atoms={served(child2), at_kitchen_bread(bread1), at_kitchen_content(content2), notexist(sandw2), at(tray1,table2)})"]
+s360[label="(instance index=5, state index=360, atoms={served(child2), at_kitchen_bread(bread1), at_kitchen_content(content1), notexist(sandw1), at(tray1,table1), no_gluten_sandwich(sandw2)})"]
+s300[label="(instance index=5, state index=300, atoms={served(child1), at_kitchen_bread(bread2), at_kitchen_content(content1), notexist(sandw1), at(tray1,table2)})"]
+s324[label="(instance index=5, state index=324, atoms={served(child2), at_kitchen_bread(bread1), at_kitchen_content(content2), notexist(sandw1), at(tray1,table1), no_gluten_sandwich(sandw2)})"]
+s373[label="(instance index=5, state index=373, atoms={served(child1), at_kitchen_bread(bread1), at_kitchen_content(content1), notexist(sandw1), at(tray1,table1)})"]
+s337[label="(instance index=5, state index=337, atoms={served(child1), at_kitchen_bread(bread1), at_kitchen_content(content2), notexist(sandw1), at(tray1,table1)})"]
+s307[label="(instance index=5, state index=307, atoms={served(child2), at_kitchen_bread(bread1), at_kitchen_content(content2), notexist(sandw2), at(tray1,table2), no_gluten_sandwich(sandw1)})"]
+s363[label="(instance index=5, state index=363, atoms={served(child1), at_kitchen_bread(bread1), at_kitchen_content(content1), notexist(sandw1), at(tray1,table2), no_gluten_sandwich(sandw2)})"]
+s318[label="(instance index=5, state index=318, atoms={served(child1), at_kitchen_bread(bread1), at_kitchen_content(content2), notexist(sandw2), at(tray1,table2)})"]
+s372[label="(instance index=5, state index=372, atoms={served(child1), at_kitchen_bread(bread1), at_kitchen_content(content1), notexist(sandw1), at(tray1,table2)})"]
+s336[label="(instance index=5, state index=336, atoms={served(child1), at_kitchen_bread(bread1), at_kitchen_content(content2), notexist(sandw1), at(tray1,table2)})"]
+s370[label="(instance index=5, state index=370, atoms={served(child2), at_kitchen_bread(bread1), at_kitchen_content(content1), notexist(sandw1), at(tray1,table2)})"]
+s334[label="(instance index=5, state index=334, atoms={served(child2), at_kitchen_bread(bread1), at_kitchen_content(content2), notexist(sandw1), at(tray1,table2)})"]
+s327[label="(instance index=5, state index=327, atoms={served(child1), at_kitchen_bread(bread1), at_kitchen_content(content2), notexist(sandw1), at(tray1,table2), no_gluten_sandwich(sandw2)})"]
+s328[label="(instance index=5, state index=328, atoms={served(child1), at_kitchen_bread(bread1), at_kitchen_content(content2), notexist(sandw1), at(tray1,table1), no_gluten_sandwich(sandw2)})"]
+s355[label="(instance index=5, state index=355, atoms={served(child1), at_kitchen_bread(bread1), at_kitchen_content(content1), notexist(sandw2), at(tray1,table1)})"]
+s319[label="(instance index=5, state index=319, atoms={served(child1), at_kitchen_bread(bread1), at_kitchen_content(content2), notexist(sandw2), at(tray1,table1)})"]
+s351[label="(instance index=5, state index=351, atoms={served(child2), at_kitchen_bread(bread1), at_kitchen_content(content1), notexist(sandw2), at(tray1,table1)})"]
+s361[label="(instance index=5, state index=361, atoms={served(child2), at_kitchen_bread(bread1), at_kitchen_content(content1), notexist(sandw1), at(tray1,table2), no_gluten_sandwich(sandw2)})"]
+s306[label="(instance index=5, state index=306, atoms={served(child2), at_kitchen_bread(bread1), at_kitchen_content(content2), notexist(sandw2), at(tray1,table1), no_gluten_sandwich(sandw1)})"]
+s325[label="(instance index=5, state index=325, atoms={served(child2), at_kitchen_bread(bread1), at_kitchen_content(content2), notexist(sandw1), at(tray1,table2), no_gluten_sandwich(sandw2)})"]
+s315[label="(instance index=5, state index=315, atoms={served(child2), at_kitchen_bread(bread1), at_kitchen_content(content2), notexist(sandw2), at(tray1,table1)})"]
+s369[label="(instance index=5, state index=369, atoms={served(child2), at_kitchen_bread(bread1), at_kitchen_content(content1), notexist(sandw1), at(tray1,table1)})"]
+s45[label="(instance index=5, state index=45, atoms={at(tray1,table1), at_kitchen_sandwich(sandw2), no_gluten_sandwich(sandw1), no_gluten_sandwich(sandw2), ontray(sandw1,tray1)})"]
+s343[label="(instance index=5, state index=343, atoms={served(child2), at_kitchen_bread(bread1), at_kitchen_content(content1), notexist(sandw2), at(tray1,table2), no_gluten_sandwich(sandw1)})"]
+s42[label="(instance index=5, state index=42, atoms={at(tray1,kitchen), at_kitchen_sandwich(sandw2), no_gluten_sandwich(sandw1), no_gluten_sandwich(sandw2), ontray(sandw1,tray1)})"]
+s346[label="(instance index=5, state index=346, atoms={served(child1), at_kitchen_bread(bread1), at_kitchen_content(content1), notexist(sandw2), at(tray1,table1), no_gluten_sandwich(sandw1)})"]
+s44[label="(instance index=5, state index=44, atoms={at(tray1,table2), at_kitchen_sandwich(sandw2), no_gluten_sandwich(sandw1), no_gluten_sandwich(sandw2), ontray(sandw1,tray1)})"]
+s301[label="(instance index=5, state index=301, atoms={served(child1), at_kitchen_bread(bread2), at_kitchen_content(content1), notexist(sandw1), at(tray1,table1)})"]
+s237[label="(instance index=5, state index=237, atoms={served(child1), at_kitchen_bread(bread2), at_kitchen_content(content2), notexist(sandw2), at(tray1,table2), no_gluten_sandwich(sandw1)})"]
+s273[label="(instance index=5, state index=273, atoms={served(child1), at_kitchen_bread(bread2), at_kitchen_content(content1), notexist(sandw2), at(tray1,table2), no_gluten_sandwich(sandw1)})"]
+s309[label="(instance index=5, state index=309, atoms={served(child1), at_kitchen_bread(bread1), at_kitchen_content(content2), notexist(sandw2), at(tray1,table2), no_gluten_sandwich(sandw1)})"]
+s345[label="(instance index=5, state index=345, atoms={served(child1), at_kitchen_bread(bread1), at_kitchen_content(content1), notexist(sandw2), at(tray1,table2), no_gluten_sandwich(sandw1)})"]
+s88[label="(instance index=5, state index=88, atoms={at(tray1,table1), at_kitchen_sandwich(sandw2), no_gluten_sandwich(sandw1), ontray(sandw1,tray1)})"]
+s238[label="(instance index=5, state index=238, atoms={served(child1), at_kitchen_bread(bread2), at_kitchen_content(content2), notexist(sandw2), at(tray1,table1), no_gluten_sandwich(sandw1)})"]
+s274[label="(instance index=5, state index=274, atoms={served(child1), at_kitchen_bread(bread2), at_kitchen_content(content1), notexist(sandw2), at(tray1,table1), no_gluten_sandwich(sandw1)})"]
+s310[label="(instance index=5, state index=310, atoms={served(child1), at_kitchen_bread(bread1), at_kitchen_content(content2), notexist(sandw2), at(tray1,table1), no_gluten_sandwich(sandw1)})"]
+s41[label="(instance index=5, state index=41, atoms={at(tray1,kitchen), at_kitchen_sandwich(sandw1), no_gluten_sandwich(sandw1), no_gluten_sandwich(sandw2), ontray(sandw2,tray1)})"]
+s298[label="(instance index=5, state index=298, atoms={served(child2), at_kitchen_bread(bread2), at_kitchen_content(content1), notexist(sandw1), at(tray1,table2)})"]
+s75[label="(instance index=5, state index=75, atoms={at(tray1,table2), at_kitchen_sandwich(sandw1), no_gluten_sandwich(sandw1), no_gluten_sandwich(sandw2), ontray(sandw2,tray1)})"]
+s255[label="(instance index=5, state index=255, atoms={served(child1), at_kitchen_bread(bread2), at_kitchen_content(content2), notexist(sandw1), at(tray1,table2), no_gluten_sandwich(sandw2)})"]
+s291[label="(instance index=5, state index=291, atoms={served(child1), at_kitchen_bread(bread2), at_kitchen_content(content1), notexist(sandw1), at(tray1,table2), no_gluten_sandwich(sandw2)})"]
+s256[label="(instance index=5, state index=256, atoms={served(child1), at_kitchen_bread(bread2), at_kitchen_content(content2), notexist(sandw1), at(tray1,table1), no_gluten_sandwich(sandw2)})"]
+s292[label="(instance index=5, state index=292, atoms={served(child1), at_kitchen_bread(bread2), at_kitchen_content(content1), notexist(sandw1), at(tray1,table1), no_gluten_sandwich(sandw2)})"]
+s364[label="(instance index=5, state index=364, atoms={served(child1), at_kitchen_bread(bread1), at_kitchen_content(content1), notexist(sandw1), at(tray1,table1), no_gluten_sandwich(sandw2)})"]
+s135[label="(instance index=5, state index=135, atoms={at(tray1,table2), at_kitchen_sandwich(sandw2), no_gluten_sandwich(sandw2), ontray(sandw1,tray1)})"]
+s246[label="(instance index=5, state index=246, atoms={served(child1), at_kitchen_bread(bread2), at_kitchen_content(content2), notexist(sandw2), at(tray1,table2)})"]
+s282[label="(instance index=5, state index=282, atoms={served(child1), at_kitchen_bread(bread2), at_kitchen_content(content1), notexist(sandw2), at(tray1,table2)})"]
+s354[label="(instance index=5, state index=354, atoms={served(child1), at_kitchen_bread(bread1), at_kitchen_content(content1), notexist(sandw2), at(tray1,table2)})"]
+s247[label="(instance index=5, state index=247, atoms={served(child1), at_kitchen_bread(bread2), at_kitchen_content(content2), notexist(sandw2), at(tray1,table1)})"]
+s283[label="(instance index=5, state index=283, atoms={served(child1), at_kitchen_bread(bread2), at_kitchen_content(content1), notexist(sandw2), at(tray1,table1)})"]
+s132[label="(instance index=5, state index=132, atoms={at(tray1,kitchen), at_kitchen_sandwich(sandw1), no_gluten_sandwich(sandw2), ontray(sandw2,tray1)})"]
+s133[label="(instance index=5, state index=133, atoms={at(tray1,kitchen), at_kitchen_sandwich(sandw2), no_gluten_sandwich(sandw2), ontray(sandw1,tray1)})"]
+s166[label="(instance index=5, state index=166, atoms={at(tray1,table2), at_kitchen_sandwich(sandw1), no_gluten_sandwich(sandw2), ontray(sandw2,tray1)})"]
+s234[label="(instance index=5, state index=234, atoms={served(child2), at_kitchen_bread(bread2), at_kitchen_content(content2), notexist(sandw2), at(tray1,table1), no_gluten_sandwich(sandw1)})"]
+s270[label="(instance index=5, state index=270, atoms={served(child2), at_kitchen_bread(bread2), at_kitchen_content(content1), notexist(sandw2), at(tray1,table1), no_gluten_sandwich(sandw1)})"]
+s342[label="(instance index=5, state index=342, atoms={served(child2), at_kitchen_bread(bread1), at_kitchen_content(content1), notexist(sandw2), at(tray1,table1), no_gluten_sandwich(sandw1)})"]
+s85[label="(instance index=5, state index=85, atoms={at(tray1,kitchen), at_kitchen_sandwich(sandw2), no_gluten_sandwich(sandw1), ontray(sandw1,tray1)})"]
+s235[label="(instance index=5, state index=235, atoms={served(child2), at_kitchen_bread(bread2), at_kitchen_content(content2), notexist(sandw2), at(tray1,table2), no_gluten_sandwich(sandw1)})"]
+s271[label="(instance index=5, state index=271, atoms={served(child2), at_kitchen_bread(bread2), at_kitchen_content(content1), notexist(sandw2), at(tray1,table2), no_gluten_sandwich(sandw1)})"]
+s76[label="(instance index=5, state index=76, atoms={at(tray1,table1), at_kitchen_sandwich(sandw1), no_gluten_sandwich(sandw1), no_gluten_sandwich(sandw2), ontray(sandw2,tray1)})"]
+s333[label="(instance index=5, state index=333, atoms={served(child2), at_kitchen_bread(bread1), at_kitchen_content(content2), notexist(sandw1), at(tray1,table1)})"]
+s252[label="(instance index=5, state index=252, atoms={served(child2), at_kitchen_bread(bread2), at_kitchen_content(content2), notexist(sandw1), at(tray1,table1), no_gluten_sandwich(sandw2)})"]
+s288[label="(instance index=5, state index=288, atoms={served(child2), at_kitchen_bread(bread2), at_kitchen_content(content1), notexist(sandw1), at(tray1,table1), no_gluten_sandwich(sandw2)})"]
+s253[label="(instance index=5, state index=253, atoms={served(child2), at_kitchen_bread(bread2), at_kitchen_content(content2), notexist(sandw1), at(tray1,table2), no_gluten_sandwich(sandw2)})"]
+s289[label="(instance index=5, state index=289, atoms={served(child2), at_kitchen_bread(bread2), at_kitchen_content(content1), notexist(sandw1), at(tray1,table2), no_gluten_sandwich(sandw2)})"]
+s243[label="(instance index=5, state index=243, atoms={served(child2), at_kitchen_bread(bread2), at_kitchen_content(content2), notexist(sandw2), at(tray1,table1)})"]
+s136[label="(instance index=5, state index=136, atoms={at(tray1,table1), at_kitchen_sandwich(sandw2), no_gluten_sandwich(sandw2), ontray(sandw1,tray1)})"]
+s279[label="(instance index=5, state index=279, atoms={served(child2), at_kitchen_bread(bread2), at_kitchen_content(content1), notexist(sandw2), at(tray1,table1)})"]
+s244[label="(instance index=5, state index=244, atoms={served(child2), at_kitchen_bread(bread2), at_kitchen_content(content2), notexist(sandw2), at(tray1,table2)})"]
+s280[label="(instance index=5, state index=280, atoms={served(child2), at_kitchen_bread(bread2), at_kitchen_content(content1), notexist(sandw2), at(tray1,table2)})"]
+s352[label="(instance index=5, state index=352, atoms={served(child2), at_kitchen_bread(bread1), at_kitchen_content(content1), notexist(sandw2), at(tray1,table2)})"]
+s167[label="(instance index=5, state index=167, atoms={at(tray1,table1), at_kitchen_sandwich(sandw1), no_gluten_sandwich(sandw2), ontray(sandw2,tray1)})"]
+s178[label="(instance index=5, state index=178, atoms={at(tray1,table2), at_kitchen_sandwich(sandw2), ontray(sandw1,tray1)})"]
+s175[label="(instance index=5, state index=175, atoms={at(tray1,kitchen), at_kitchen_sandwich(sandw1), ontray(sandw2,tray1)})"]
+s176[label="(instance index=5, state index=176, atoms={at(tray1,kitchen), at_kitchen_sandwich(sandw2), ontray(sandw1,tray1)})"]
+s265[label="(instance index=5, state index=265, atoms={served(child1), at_kitchen_bread(bread2), at_kitchen_content(content2), notexist(sandw1), at(tray1,table1)})"]
+s264[label="(instance index=5, state index=264, atoms={served(child1), at_kitchen_bread(bread2), at_kitchen_content(content2), notexist(sandw1), at(tray1,table2)})"]
+s209[label="(instance index=5, state index=209, atoms={at(tray1,table2), at_kitchen_sandwich(sandw1), ontray(sandw2,tray1)})"]
+s84[label="(instance index=5, state index=84, atoms={at(tray1,kitchen), at_kitchen_sandwich(sandw1), no_gluten_sandwich(sandw1), ontray(sandw2,tray1)})"]
+s118[label="(instance index=5, state index=118, atoms={at(tray1,table2), at_kitchen_sandwich(sandw1), no_gluten_sandwich(sandw1), ontray(sandw2,tray1)})"]
+s179[label="(instance index=5, state index=179, atoms={at(tray1,table1), at_kitchen_sandwich(sandw2), ontray(sandw1,tray1)})"]
+s262[label="(instance index=5, state index=262, atoms={served(child2), at_kitchen_bread(bread2), at_kitchen_content(content2), notexist(sandw1), at(tray1,table2)})"]
+s210[label="(instance index=5, state index=210, atoms={at(tray1,table1), at_kitchen_sandwich(sandw1), ontray(sandw2,tray1)})"]
+s261[label="(instance index=5, state index=261, atoms={served(child2), at_kitchen_bread(bread2), at_kitchen_content(content2), notexist(sandw1), at(tray1,table1)})"]
+s297[label="(instance index=5, state index=297, atoms={served(child2), at_kitchen_bread(bread2), at_kitchen_content(content1), notexist(sandw1), at(tray1,table1)})"]
+s119[label="(instance index=5, state index=119, atoms={at(tray1,table1), at_kitchen_sandwich(sandw1), no_gluten_sandwich(sandw1), ontray(sandw2,tray1)})"]
+s192[label="(instance index=5, state index=192, atoms={served(child1), at(tray1,table2), at_kitchen_sandwich(sandw2)})"]
+s169[label="(instance index=5, state index=169, atoms={served(child2), at(tray1,table2), at_kitchen_sandwich(sandw1), no_gluten_sandwich(sandw2)})"]
+s168[label="(instance index=5, state index=168, atoms={served(child2), at(tray1,table1), at_kitchen_sandwich(sandw1), no_gluten_sandwich(sandw2)})"]
+s138[label="(instance index=5, state index=138, atoms={served(child2), at(tray1,table2), at_kitchen_sandwich(sandw2), no_gluten_sandwich(sandw2)})"]
+s245[label="(instance index=5, state index=245, atoms={served(child2), at(tray1,kitchen), at_kitchen_bread(bread2), at_kitchen_content(content2), notexist(sandw2)})"]
+s137[label="(instance index=5, state index=137, atoms={served(child2), at(tray1,table1), at_kitchen_sandwich(sandw2), no_gluten_sandwich(sandw2)})"]
+s362[label="(instance index=5, state index=362, atoms={served(child2), at(tray1,kitchen), at_kitchen_bread(bread1), at_kitchen_content(content1), notexist(sandw1), no_gluten_sandwich(sandw2)})"]
+s254[label="(instance index=5, state index=254, atoms={served(child2), at(tray1,kitchen), at_kitchen_bread(bread2), at_kitchen_content(content2), notexist(sandw1), no_gluten_sandwich(sandw2)})"]
+s344[label="(instance index=5, state index=344, atoms={served(child2), at(tray1,kitchen), at_kitchen_bread(bread1), at_kitchen_content(content1), notexist(sandw2), no_gluten_sandwich(sandw1)})"]
+s308[label="(instance index=5, state index=308, atoms={served(child2), at(tray1,kitchen), at_kitchen_bread(bread1), at_kitchen_content(content2), notexist(sandw2), no_gluten_sandwich(sandw1)})"]
+s272[label="(instance index=5, state index=272, atoms={served(child2), at(tray1,kitchen), at_kitchen_bread(bread2), at_kitchen_content(content1), notexist(sandw2), no_gluten_sandwich(sandw1)})"]
+s236[label="(instance index=5, state index=236, atoms={served(child2), at(tray1,kitchen), at_kitchen_bread(bread2), at_kitchen_content(content2), notexist(sandw2), no_gluten_sandwich(sandw1)})"]
+s47[label="(instance index=5, state index=47, atoms={served(child2), at(tray1,table2), at_kitchen_sandwich(sandw2), no_gluten_sandwich(sandw1), no_gluten_sandwich(sandw2)})"]
+s172[label="(instance index=5, state index=172, atoms={served(child1), at(tray1,table1), at_kitchen_sandwich(sandw1), no_gluten_sandwich(sandw2)})"]
+s171[label="(instance index=5, state index=171, atoms={served(child1), at(tray1,table2), at_kitchen_sandwich(sandw1), no_gluten_sandwich(sandw2)})"]
+s134[label="(instance index=5, state index=134, atoms={at(tray1,kitchen), no_gluten_sandwich(sandw2), ontray(sandw1,tray1), ontray(sandw2,tray1)})"]
+s356[label="(instance index=5, state index=356, atoms={served(child1), at(tray1,kitchen), at_kitchen_bread(bread1), at_kitchen_content(content1), notexist(sandw2)})"]
+s320[label="(instance index=5, state index=320, atoms={served(child1), at(tray1,kitchen), at_kitchen_bread(bread1), at_kitchen_content(content2), notexist(sandw2)})"]
+s284[label="(instance index=5, state index=284, atoms={served(child1), at(tray1,kitchen), at_kitchen_bread(bread2), at_kitchen_content(content1), notexist(sandw2)})"]
+s248[label="(instance index=5, state index=248, atoms={served(child1), at(tray1,kitchen), at_kitchen_bread(bread2), at_kitchen_content(content2), notexist(sandw2)})"]
+s150[label="(instance index=5, state index=150, atoms={served(child1), at(tray1,table1), at_kitchen_sandwich(sandw2), no_gluten_sandwich(sandw2)})"]
+s149[label="(instance index=5, state index=149, atoms={served(child1), at(tray1,table2), at_kitchen_sandwich(sandw2), no_gluten_sandwich(sandw2)})"]
+s293[label="(instance index=5, state index=293, atoms={served(child1), at(tray1,kitchen), at_kitchen_bread(bread2), at_kitchen_content(content1), notexist(sandw1), no_gluten_sandwich(sandw2)})"]
+s257[label="(instance index=5, state index=257, atoms={served(child1), at(tray1,kitchen), at_kitchen_bread(bread2), at_kitchen_content(content2), notexist(sandw1), no_gluten_sandwich(sandw2)})"]
+s59[label="(instance index=5, state index=59, atoms={served(child1), at(tray1,table1), at_kitchen_sandwich(sandw2), no_gluten_sandwich(sandw1), no_gluten_sandwich(sandw2)})"]
+s365[label="(instance index=5, state index=365, atoms={served(child1), at(tray1,kitchen), at_kitchen_bread(bread1), at_kitchen_content(content1), notexist(sandw1), no_gluten_sandwich(sandw2)})"]
+s329[label="(instance index=5, state index=329, atoms={served(child1), at(tray1,kitchen), at_kitchen_bread(bread1), at_kitchen_content(content2), notexist(sandw1), no_gluten_sandwich(sandw2)})"]
+s43[label="(instance index=5, state index=43, atoms={at(tray1,kitchen), no_gluten_sandwich(sandw1), no_gluten_sandwich(sandw2), ontray(sandw1,tray1), ontray(sandw2,tray1)})"]
+s46[label="(instance index=5, state index=46, atoms={served(child2), at(tray1,table1), at_kitchen_sandwich(sandw2), no_gluten_sandwich(sandw1), no_gluten_sandwich(sandw2)})"]
+s317[label="(instance index=5, state index=317, atoms={served(child2), at(tray1,kitchen), at_kitchen_bread(bread1), at_kitchen_content(content2), notexist(sandw2)})"]
+s371[label="(instance index=5, state index=371, atoms={served(child2), at(tray1,kitchen), at_kitchen_bread(bread1), at_kitchen_content(content1), notexist(sandw1)})"]
+s347[label="(instance index=5, state index=347, atoms={served(child1), at(tray1,kitchen), at_kitchen_bread(bread1), at_kitchen_content(content1), notexist(sandw2), no_gluten_sandwich(sandw1)})"]
+s90[label="(instance index=5, state index=90, atoms={served(child2), at(tray1,table2), at_kitchen_sandwich(sandw2), no_gluten_sandwich(sandw1)})"]
+s311[label="(instance index=5, state index=311, atoms={served(child1), at(tray1,kitchen), at_kitchen_bread(bread1), at_kitchen_content(content2), notexist(sandw2), no_gluten_sandwich(sandw1)})"]
+s80[label="(instance index=5, state index=80, atoms={served(child1), at(tray1,table2), at_kitchen_sandwich(sandw1), no_gluten_sandwich(sandw1), no_gluten_sandwich(sandw2)})"]
+s275[label="(instance index=5, state index=275, atoms={served(child1), at(tray1,kitchen), at_kitchen_bread(bread2), at_kitchen_content(content1), notexist(sandw2), no_gluten_sandwich(sandw1)})"]
+s281[label="(instance index=5, state index=281, atoms={served(child2), at(tray1,kitchen), at_kitchen_bread(bread2), at_kitchen_content(content1), notexist(sandw2)})"]
+s77[label="(instance index=5, state index=77, atoms={served(child2), at(tray1,table1), at_kitchen_sandwich(sandw1), no_gluten_sandwich(sandw1), no_gluten_sandwich(sandw2)})"]
+s78[label="(instance index=5, state index=78, atoms={served(child2), at(tray1,table2), at_kitchen_sandwich(sandw1), no_gluten_sandwich(sandw1), no_gluten_sandwich(sandw2)})"]
+s335[label="(instance index=5, state index=335, atoms={served(child2), at(tray1,kitchen), at_kitchen_bread(bread1), at_kitchen_content(content2), notexist(sandw1)})"]
+s326[label="(instance index=5, state index=326, atoms={served(child2), at(tray1,kitchen), at_kitchen_bread(bread1), at_kitchen_content(content2), notexist(sandw1), no_gluten_sandwich(sandw2)})"]
+s353[label="(instance index=5, state index=353, atoms={served(child2), at(tray1,kitchen), at_kitchen_bread(bread1), at_kitchen_content(content1), notexist(sandw2)})"]
+s290[label="(instance index=5, state index=290, atoms={served(child2), at(tray1,kitchen), at_kitchen_bread(bread2), at_kitchen_content(content1), notexist(sandw1), no_gluten_sandwich(sandw2)})"]
+s81[label="(instance index=5, state index=81, atoms={served(child1), at(tray1,table1), at_kitchen_sandwich(sandw1), no_gluten_sandwich(sandw1), no_gluten_sandwich(sandw2)})"]
+s338[label="(instance index=5, state index=338, atoms={served(child1), at(tray1,kitchen), at_kitchen_bread(bread1), at_kitchen_content(content2), notexist(sandw1)})"]
+s374[label="(instance index=5, state index=374, atoms={served(child1), at(tray1,kitchen), at_kitchen_bread(bread1), at_kitchen_content(content1), notexist(sandw1)})"]
+s58[label="(instance index=5, state index=58, atoms={served(child1), at(tray1,table2), at_kitchen_sandwich(sandw2), no_gluten_sandwich(sandw1), no_gluten_sandwich(sandw2)})"]
+s239[label="(instance index=5, state index=239, atoms={served(child1), at(tray1,kitchen), at_kitchen_bread(bread2), at_kitchen_content(content2), notexist(sandw2), no_gluten_sandwich(sandw1)})"]
+s193[label="(instance index=5, state index=193, atoms={served(child1), at(tray1,table1), at_kitchen_sandwich(sandw2)})"]
+s177[label="(instance index=5, state index=177, atoms={at(tray1,kitchen), ontray(sandw1,tray1), ontray(sandw2,tray1)})"]
+s215[label="(instance index=5, state index=215, atoms={served(child1), at(tray1,table1), at_kitchen_sandwich(sandw1)})"]
+s214[label="(instance index=5, state index=214, atoms={served(child1), at(tray1,table2), at_kitchen_sandwich(sandw1)})"]
+s266[label="(instance index=5, state index=266, atoms={served(child1), at(tray1,kitchen), at_kitchen_bread(bread2), at_kitchen_content(content2), notexist(sandw1)})"]
+s302[label="(instance index=5, state index=302, atoms={served(child1), at(tray1,kitchen), at_kitchen_bread(bread2), at_kitchen_content(content1), notexist(sandw1)})"]
+s101[label="(instance index=5, state index=101, atoms={served(child1), at(tray1,table2), at_kitchen_sandwich(sandw2), no_gluten_sandwich(sandw1)})"]
+s102[label="(instance index=5, state index=102, atoms={served(child1), at(tray1,table1), at_kitchen_sandwich(sandw2), no_gluten_sandwich(sandw1)})"]
+s86[label="(instance index=5, state index=86, atoms={at(tray1,kitchen), no_gluten_sandwich(sandw1), ontray(sandw1,tray1), ontray(sandw2,tray1)})"]
+s124[label="(instance index=5, state index=124, atoms={served(child1), at(tray1,table1), at_kitchen_sandwich(sandw1), no_gluten_sandwich(sandw1)})"]
+s123[label="(instance index=5, state index=123, atoms={served(child1), at(tray1,table2), at_kitchen_sandwich(sandw1), no_gluten_sandwich(sandw1)})"]
+s181[label="(instance index=5, state index=181, atoms={served(child2), at(tray1,table2), at_kitchen_sandwich(sandw2)})"]
+s180[label="(instance index=5, state index=180, atoms={served(child2), at(tray1,table1), at_kitchen_sandwich(sandw2)})"]
+s212[label="(instance index=5, state index=212, atoms={served(child2), at(tray1,table2), at_kitchen_sandwich(sandw1)})"]
+s211[label="(instance index=5, state index=211, atoms={served(child2), at(tray1,table1), at_kitchen_sandwich(sandw1)})"]
+s263[label="(instance index=5, state index=263, atoms={served(child2), at(tray1,kitchen), at_kitchen_bread(bread2), at_kitchen_content(content2), notexist(sandw1)})"]
+s299[label="(instance index=5, state index=299, atoms={served(child2), at(tray1,kitchen), at_kitchen_bread(bread2), at_kitchen_content(content1), notexist(sandw1)})"]
+s89[label="(instance index=5, state index=89, atoms={served(child2), at(tray1,table1), at_kitchen_sandwich(sandw2), no_gluten_sandwich(sandw1)})"]
+s121[label="(instance index=5, state index=121, atoms={served(child2), at(tray1,table2), at_kitchen_sandwich(sandw1), no_gluten_sandwich(sandw1)})"]
+s120[label="(instance index=5, state index=120, atoms={served(child2), at(tray1,table1), at_kitchen_sandwich(sandw1), no_gluten_sandwich(sandw1)})"]
+s122[label="(instance index=5, state index=122, atoms={served(child2), at(tray1,kitchen), at_kitchen_sandwich(sandw1), no_gluten_sandwich(sandw1)})"]
+s111[label="(instance index=5, state index=111, atoms={at(tray1,table1), no_gluten_sandwich(sandw1), ontray(sandw1,tray1), ontray(sandw2,tray1)})"]
+s91[label="(instance index=5, state index=91, atoms={served(child2), at(tray1,kitchen), at_kitchen_sandwich(sandw2), no_gluten_sandwich(sandw1)})"]
+s213[label="(instance index=5, state index=213, atoms={served(child2), at(tray1,kitchen), at_kitchen_sandwich(sandw1)})"]
+s202[label="(instance index=5, state index=202, atoms={at(tray1,table1), ontray(sandw1,tray1), ontray(sandw2,tray1)})"]
+s125[label="(instance index=5, state index=125, atoms={served(child1), at(tray1,kitchen), at_kitchen_sandwich(sandw1), no_gluten_sandwich(sandw1)})"]
+s110[label="(instance index=5, state index=110, atoms={at(tray1,table2), no_gluten_sandwich(sandw1), ontray(sandw1,tray1), ontray(sandw2,tray1)})"]
+s103[label="(instance index=5, state index=103, atoms={served(child1), at(tray1,kitchen), at_kitchen_sandwich(sandw2), no_gluten_sandwich(sandw1)})"]
+s216[label="(instance index=5, state index=216, atoms={served(child1), at(tray1,kitchen), at_kitchen_sandwich(sandw1)})"]
+s170[label="(instance index=5, state index=170, atoms={served(child2), at(tray1,kitchen), at_kitchen_sandwich(sandw1), no_gluten_sandwich(sandw2)})"]
+s159[label="(instance index=5, state index=159, atoms={at(tray1,table1), no_gluten_sandwich(sandw2), ontray(sandw1,tray1), ontray(sandw2,tray1)})"]
+s139[label="(instance index=5, state index=139, atoms={served(child2), at(tray1,kitchen), at_kitchen_sandwich(sandw2), no_gluten_sandwich(sandw2)})"]
+s48[label="(instance index=5, state index=48, atoms={served(child2), at(tray1,kitchen), at_kitchen_sandwich(sandw2), no_gluten_sandwich(sandw1), no_gluten_sandwich(sandw2)})"]
+s173[label="(instance index=5, state index=173, atoms={served(child1), at(tray1,kitchen), at_kitchen_sandwich(sandw1), no_gluten_sandwich(sandw2)})"]
+s158[label="(instance index=5, state index=158, atoms={at(tray1,table2), no_gluten_sandwich(sandw2), ontray(sandw1,tray1), ontray(sandw2,tray1)})"]
+s151[label="(instance index=5, state index=151, atoms={served(child1), at(tray1,kitchen), at_kitchen_sandwich(sandw2), no_gluten_sandwich(sandw2)})"]
+s82[label="(instance index=5, state index=82, atoms={served(child1), at(tray1,kitchen), at_kitchen_sandwich(sandw1), no_gluten_sandwich(sandw1), no_gluten_sandwich(sandw2)})"]
+s194[label="(instance index=5, state index=194, atoms={served(child1), at(tray1,kitchen), at_kitchen_sandwich(sandw2)})"]
+s67[label="(instance index=5, state index=67, atoms={at(tray1,table2), no_gluten_sandwich(sandw1), no_gluten_sandwich(sandw2), ontray(sandw1,tray1), ontray(sandw2,tray1)})"]
+s60[label="(instance index=5, state index=60, atoms={served(child1), at(tray1,kitchen), at_kitchen_sandwich(sandw2), no_gluten_sandwich(sandw1), no_gluten_sandwich(sandw2)})"]
+s79[label="(instance index=5, state index=79, atoms={served(child2), at(tray1,kitchen), at_kitchen_sandwich(sandw1), no_gluten_sandwich(sandw1), no_gluten_sandwich(sandw2)})"]
+s182[label="(instance index=5, state index=182, atoms={served(child2), at(tray1,kitchen), at_kitchen_sandwich(sandw2)})"]
+s201[label="(instance index=5, state index=201, atoms={at(tray1,table2), ontray(sandw1,tray1), ontray(sandw2,tray1)})"]
+s68[label="(instance index=5, state index=68, atoms={at(tray1,table1), no_gluten_sandwich(sandw1), no_gluten_sandwich(sandw2), ontray(sandw1,tray1), ontray(sandw2,tray1)})"]
+s105[label="(instance index=5, state index=105, atoms={served(child1), at(tray1,table2), no_gluten_sandwich(sandw1), ontray(sandw2,tray1)})"]
+s51[label="(instance index=5, state index=51, atoms={served(child2), at(tray1,table1), no_gluten_sandwich(sandw1), no_gluten_sandwich(sandw2), ontray(sandw2,tray1)})"]
+s72[label="(instance index=5, state index=72, atoms={served(child1), at(tray1,table2), no_gluten_sandwich(sandw1), no_gluten_sandwich(sandw2), ontray(sandw1,tray1)})"]
+s114[label="(instance index=5, state index=114, atoms={served(child2), at(tray1,kitchen), no_gluten_sandwich(sandw1), ontray(sandw1,tray1)})"]
+s152[label="(instance index=5, state index=152, atoms={served(child1), at(tray1,kitchen), no_gluten_sandwich(sandw2), ontray(sandw2,tray1)})"]
+s165[label="(instance index=5, state index=165, atoms={served(child1), at(tray1,kitchen), no_gluten_sandwich(sandw2), ontray(sandw1,tray1)})"]
+s61[label="(instance index=5, state index=61, atoms={served(child1), at(tray1,kitchen), no_gluten_sandwich(sandw1), no_gluten_sandwich(sandw2), ontray(sandw2,tray1)})"]
+s115[label="(instance index=5, state index=115, atoms={served(child1), at(tray1,table2), no_gluten_sandwich(sandw1), ontray(sandw1,tray1)})"]
+s206[label="(instance index=5, state index=206, atoms={served(child1), at(tray1,table2), ontray(sandw1,tray1)})"]
+s205[label="(instance index=5, state index=205, atoms={served(child2), at(tray1,kitchen), ontray(sandw1,tray1)})"]
+s69[label="(instance index=5, state index=69, atoms={served(child2), at(tray1,table1), no_gluten_sandwich(sandw1), no_gluten_sandwich(sandw2), ontray(sandw1,tray1)})"]
+s71[label="(instance index=5, state index=71, atoms={served(child2), at(tray1,kitchen), no_gluten_sandwich(sandw1), no_gluten_sandwich(sandw2), ontray(sandw1,tray1)})"]
+s62[label="(instance index=5, state index=62, atoms={served(child1), at(tray1,table2), no_gluten_sandwich(sandw1), no_gluten_sandwich(sandw2), ontray(sandw2,tray1)})"]
+s74[label="(instance index=5, state index=74, atoms={served(child1), at(tray1,kitchen), no_gluten_sandwich(sandw1), no_gluten_sandwich(sandw2), ontray(sandw1,tray1)})"]
+s153[label="(instance index=5, state index=153, atoms={served(child1), at(tray1,table2), no_gluten_sandwich(sandw2), ontray(sandw2,tray1)})"]
+s94[label="(instance index=5, state index=94, atoms={served(child2), at(tray1,table1), no_gluten_sandwich(sandw1), ontray(sandw2,tray1)})"]
+s163[label="(instance index=5, state index=163, atoms={served(child1), at(tray1,table2), no_gluten_sandwich(sandw2), ontray(sandw1,tray1)})"]
+s104[label="(instance index=5, state index=104, atoms={served(child1), at(tray1,kitchen), no_gluten_sandwich(sandw1), ontray(sandw2,tray1)})"]
+s49[label="(instance index=5, state index=49, atoms={served(child2), at(tray1,kitchen), no_gluten_sandwich(sandw1), no_gluten_sandwich(sandw2), ontray(sandw2,tray1)})"]
+s140[label="(instance index=5, state index=140, atoms={served(child2), at(tray1,kitchen), no_gluten_sandwich(sandw2), ontray(sandw2,tray1)})"]
+s142[label="(instance index=5, state index=142, atoms={served(child2), at(tray1,table1), no_gluten_sandwich(sandw2), ontray(sandw2,tray1)})"]
+s160[label="(instance index=5, state index=160, atoms={served(child2), at(tray1,table1), no_gluten_sandwich(sandw2), ontray(sandw1,tray1)})"]
+s162[label="(instance index=5, state index=162, atoms={served(child2), at(tray1,kitchen), no_gluten_sandwich(sandw2), ontray(sandw1,tray1)})"]
+s195[label="(instance index=5, state index=195, atoms={served(child1), at(tray1,kitchen), ontray(sandw2,tray1)})"]
+s196[label="(instance index=5, state index=196, atoms={served(child1), at(tray1,table2), ontray(sandw2,tray1)})"]
+s208[label="(instance index=5, state index=208, atoms={served(child1), at(tray1,kitchen), ontray(sandw1,tray1)})"]
+s117[label="(instance index=5, state index=117, atoms={served(child1), at(tray1,kitchen), no_gluten_sandwich(sandw1), ontray(sandw1,tray1)})"]
+s183[label="(instance index=5, state index=183, atoms={served(child2), at(tray1,kitchen), ontray(sandw2,tray1)})"]
+s185[label="(instance index=5, state index=185, atoms={served(child2), at(tray1,table1), ontray(sandw2,tray1)})"]
+s203[label="(instance index=5, state index=203, atoms={served(child2), at(tray1,table1), ontray(sandw1,tray1)})"]
+s92[label="(instance index=5, state index=92, atoms={served(child2), at(tray1,kitchen), no_gluten_sandwich(sandw1), ontray(sandw2,tray1)})"]
+s112[label="(instance index=5, state index=112, atoms={served(child2), at(tray1,table1), no_gluten_sandwich(sandw1), ontray(sandw1,tray1)})"]
+s63[label="(instance index=5, state index=63, atoms={served(child1), at(tray1,table1), no_gluten_sandwich(sandw1), no_gluten_sandwich(sandw2), ontray(sandw2,tray1)})"]
+s93[label="(instance index=5, state index=93, atoms={served(child2), at(tray1,table2), no_gluten_sandwich(sandw1), ontray(sandw2,tray1)})"]
+s116[label="(instance index=5, state index=116, atoms={served(child1), at(tray1,table1), no_gluten_sandwich(sandw1), ontray(sandw1,tray1)})"]
+s184[label="(instance index=5, state index=184, atoms={served(child2), at(tray1,table2), ontray(sandw2,tray1)})"]
+s207[label="(instance index=5, state index=207, atoms={served(child1), at(tray1,table1), ontray(sandw1,tray1)})"]
+s141[label="(instance index=5, state index=141, atoms={served(child2), at(tray1,table2), no_gluten_sandwich(sandw2), ontray(sandw2,tray1)})"]
+s50[label="(instance index=5, state index=50, atoms={served(child2), at(tray1,table2), no_gluten_sandwich(sandw1), no_gluten_sandwich(sandw2), ontray(sandw2,tray1)})"]
+s106[label="(instance index=5, state index=106, atoms={served(child1), at(tray1,table1), no_gluten_sandwich(sandw1), ontray(sandw2,tray1)})"]
+s164[label="(instance index=5, state index=164, atoms={served(child1), at(tray1,table1), no_gluten_sandwich(sandw2), ontray(sandw1,tray1)})"]
+s154[label="(instance index=5, state index=154, atoms={served(child1), at(tray1,table1), no_gluten_sandwich(sandw2), ontray(sandw2,tray1)})"]
+s113[label="(instance index=5, state index=113, atoms={served(child2), at(tray1,table2), no_gluten_sandwich(sandw1), ontray(sandw1,tray1)})"]
+s204[label="(instance index=5, state index=204, atoms={served(child2), at(tray1,table2), ontray(sandw1,tray1)})"]
+s73[label="(instance index=5, state index=73, atoms={served(child1), at(tray1,table1), no_gluten_sandwich(sandw1), no_gluten_sandwich(sandw2), ontray(sandw1,tray1)})"]
+s161[label="(instance index=5, state index=161, atoms={served(child2), at(tray1,table2), no_gluten_sandwich(sandw2), ontray(sandw1,tray1)})"]
+s197[label="(instance index=5, state index=197, atoms={served(child1), at(tray1,table1), ontray(sandw2,tray1)})"]
+s70[label="(instance index=5, state index=70, atoms={served(child2), at(tray1,table2), no_gluten_sandwich(sandw1), no_gluten_sandwich(sandw2), ontray(sandw1,tray1)})"]
+s107[label="(instance index=5, state index=107, atoms={served(child1), at(tray1,table2), no_gluten_sandwich(sandw1)})"]
+s52[label="(instance index=5, state index=52, atoms={served(child2), at(tray1,table1), no_gluten_sandwich(sandw1), no_gluten_sandwich(sandw2)})"]
+s64[label="(instance index=5, state index=64, atoms={served(child1), at(tray1,table2), no_gluten_sandwich(sandw1), no_gluten_sandwich(sandw2)})"]
+s198[label="(instance index=5, state index=198, atoms={served(child1), at(tray1,table2)})"]
+s155[label="(instance index=5, state index=155, atoms={served(child1), at(tray1,table2), no_gluten_sandwich(sandw2)})"]
+s95[label="(instance index=5, state index=95, atoms={served(child2), at(tray1,table1), no_gluten_sandwich(sandw1)})"]
+s143[label="(instance index=5, state index=143, atoms={served(child2), at(tray1,table1), no_gluten_sandwich(sandw2)})"]
+s186[label="(instance index=5, state index=186, atoms={served(child2), at(tray1,table1)})"]
+s99[peripheries=2,label="(instance index=5, state index=99, atoms={served(child1), served(child2), at(tray1,table1), no_gluten_sandwich(sandw1)})"]
+s57[peripheries=2,label="(instance index=5, state index=57, atoms={served(child1), served(child2), at(tray1,kitchen), no_gluten_sandwich(sandw1), no_gluten_sandwich(sandw2)})"]
+s148[peripheries=2,label="(instance index=5, state index=148, atoms={served(child1), served(child2), at(tray1,kitchen), no_gluten_sandwich(sandw2)})"]
+s147[peripheries=2,label="(instance index=5, state index=147, atoms={served(child1), served(child2), at(tray1,table1), no_gluten_sandwich(sandw2)})"]
+s55[peripheries=2,label="(instance index=5, state index=55, atoms={served(child1), served(child2), at(tray1,table2), no_gluten_sandwich(sandw1), no_gluten_sandwich(sandw2)})"]
+s146[peripheries=2,label="(instance index=5, state index=146, atoms={served(child1), served(child2), at(tray1,table2), no_gluten_sandwich(sandw2)})"]
+s191[peripheries=2,label="(instance index=5, state index=191, atoms={served(child1), served(child2), at(tray1,kitchen)})"]
+s100[peripheries=2,label="(instance index=5, state index=100, atoms={served(child1), served(child2), at(tray1,kitchen), no_gluten_sandwich(sandw1)})"]
+s98[peripheries=2,label="(instance index=5, state index=98, atoms={served(child1), served(child2), at(tray1,table2), no_gluten_sandwich(sandw1)})"]
+s190[peripheries=2,label="(instance index=5, state index=190, atoms={served(child1), served(child2), at(tray1,table1)})"]
+s189[peripheries=2,label="(instance index=5, state index=189, atoms={served(child1), served(child2), at(tray1,table2)})"]
+s56[peripheries=2,label="(instance index=5, state index=56, atoms={served(child1), served(child2), at(tray1,table1), no_gluten_sandwich(sandw1), no_gluten_sandwich(sandw2)})"]
+s109[label="(instance index=5, state index=109, atoms={served(child1), at(tray1,kitchen), no_gluten_sandwich(sandw1)})"]
+s108[label="(instance index=5, state index=108, atoms={served(child1), at(tray1,table1), no_gluten_sandwich(sandw1)})"]
+s54[label="(instance index=5, state index=54, atoms={served(child2), at(tray1,kitchen), no_gluten_sandwich(sandw1), no_gluten_sandwich(sandw2)})"]
+s53[label="(instance index=5, state index=53, atoms={served(child2), at(tray1,table2), no_gluten_sandwich(sandw1), no_gluten_sandwich(sandw2)})"]
+s66[label="(instance index=5, state index=66, atoms={served(child1), at(tray1,kitchen), no_gluten_sandwich(sandw1), no_gluten_sandwich(sandw2)})"]
+s65[label="(instance index=5, state index=65, atoms={served(child1), at(tray1,table1), no_gluten_sandwich(sandw1), no_gluten_sandwich(sandw2)})"]
+s199[label="(instance index=5, state index=199, atoms={served(child1), at(tray1,table1)})"]
+s200[label="(instance index=5, state index=200, atoms={served(child1), at(tray1,kitchen)})"]
+s157[label="(instance index=5, state index=157, atoms={served(child1), at(tray1,kitchen), no_gluten_sandwich(sandw2)})"]
+s156[label="(instance index=5, state index=156, atoms={served(child1), at(tray1,table1), no_gluten_sandwich(sandw2)})"]
+s97[label="(instance index=5, state index=97, atoms={served(child2), at(tray1,kitchen), no_gluten_sandwich(sandw1)})"]
+s96[label="(instance index=5, state index=96, atoms={served(child2), at(tray1,table2), no_gluten_sandwich(sandw1)})"]
+s145[label="(instance index=5, state index=145, atoms={served(child2), at(tray1,kitchen), no_gluten_sandwich(sandw2)})"]
+s144[label="(instance index=5, state index=144, atoms={served(child2), at(tray1,table2), no_gluten_sandwich(sandw2)})"]
+s188[label="(instance index=5, state index=188, atoms={served(child2), at(tray1,kitchen)})"]
+s187[label="(instance index=5, state index=187, atoms={served(child2), at(tray1,table2)})"]
+Dangling [ label = "", style = invis ]
+{ rank = same; Dangling }
+Dangling -> s0
+{ rank = same; s0}
+{ rank = same; s226,s23,s230,s19,s222,s27,s218,s31,s128,s33,s220,s29,s224,s25,s228,s21,s221,s28,s37,s34,s217,s32,s219,s30,s223,s26,s225,s24,s227,s22,s229,s20,s0}
+{ rank = same; s38,s35,s129,s126,s5,s1,s9,s13,s130,s127,s15,s11,s7,s3,s39,s36,s10,s16,s14,s12,s8,s6,s4,s2}
+{ rank = same; s368,s332,s296,s260,s83,s367,s331,s295,s259,s366,s330,s174,s294,s258,s350,s314,s278,s242,s359,s323,s287,s251,s341,s305,s269,s233,s348,s312,s276,s240,s131,s349,s313,s277,s241,s304,s303,s339,s357,s358,s40,s232,s268,s340,s249,s285,s321,s231,s267,s250,s286,s322}
+{ rank = same; s87,s316,s360,s300,s324,s373,s337,s307,s363,s318,s372,s336,s370,s334,s327,s328,s355,s319,s351,s361,s306,s325,s315,s369,s45,s343,s42,s346,s44,s301,s237,s273,s309,s345,s88,s238,s274,s310,s41,s298,s75,s255,s291,s256,s292,s364,s135,s246,s282,s354,s247,s283,s132,s133,s166,s234,s270,s342,s85,s235,s271,s76,s333,s252,s288,s253,s289,s243,s136,s279,s244,s280,s352,s167,s178,s175,s176,s265,s264,s209,s84,s118,s179,s262,s210,s261,s297,s119}
+{ rank = same; s192,s169,s168,s138,s245,s137,s362,s254,s344,s308,s272,s236,s47,s172,s171,s134,s356,s320,s284,s248,s150,s149,s293,s257,s59,s365,s329,s43,s46,s317,s371,s347,s90,s311,s80,s275,s281,s77,s78,s335,s326,s353,s290,s81,s338,s374,s58,s239,s193,s177,s215,s214,s266,s302,s101,s102,s86,s124,s123,s181,s180,s212,s211,s263,s299,s89,s121,s120}
+{ rank = same; s122,s111,s91,s213,s202,s125,s110,s103,s216,s170,s159,s139,s48,s173,s158,s151,s82,s194,s67,s60,s79,s182,s201,s68}
+{ rank = same; s105,s51,s72,s114,s152,s165,s61,s115,s206,s205,s69,s71,s62,s74,s153,s94,s163,s104,s49,s140,s142,s160,s162,s195,s196,s208,s117,s183,s185,s203,s92,s112}
+{ rank = same; s63,s93,s116,s184,s207,s141,s50,s106,s164,s154,s113,s204,s73,s161,s197,s70,s107,s52,s64,s198,s155,s95,s143,s186}
+{ rank = same; s99,s57,s148,s147,s55,s146,s191,s100,s98,s190,s189,s56,s109,s108,s54,s53,s66,s65,s199,s200,s157,s156,s97,s96,s145,s144,s188,s187}
+{
+s18->s31
+s18->s30
+s18->s29
+s18->s28
+s18->s27
+s18->s26
+s18->s25
+s18->s24
+s18->s23
+s18->s22
+s18->s21
+s18->s20
+s18->s17
+s18->s34
+s18->s32
+s18->s33
+s18->s19
+s18->s0
+s17->s222
+s17->s221
+s17->s220
+s17->s219
+s17->s218
+s17->s217
+s17->s224
+s17->s223
+s17->s128
+s17->s230
+s17->s229
+s17->s18
+s17->s37
+s17->s227
+s17->s226
+s17->s225
+s17->s228
+s17->s0
+}
+{
+s226->s23
+s226->s38
+s226->s5
+s226->s129
+s23->s5
+s23->s35
+s23->s126
+s23->s226
+s230->s38
+s230->s19
+s230->s129
+s230->s1
+s19->s230
+s19->s35
+s19->s126
+s19->s1
+s222->s38
+s222->s27
+s222->s9
+s222->s129
+s27->s126
+s27->s222
+s27->s35
+s27->s9
+s218->s31
+s218->s38
+s218->s13
+s218->s129
+s31->s126
+s31->s35
+s31->s13
+s31->s218
+s128->s33
+s128->s15
+s128->s130
+s128->s129
+s33->s127
+s33->s126
+s33->s15
+s33->s128
+s220->s11
+s220->s130
+s220->s29
+s220->s129
+s29->s127
+s29->s220
+s29->s126
+s29->s11
+s224->s7
+s224->s25
+s224->s130
+s224->s129
+s25->s126
+s25->s7
+s25->s127
+s25->s224
+s228->s21
+s228->s3
+s228->s130
+s228->s129
+s21->s127
+s21->s126
+s21->s228
+s21->s3
+s221->s39
+s221->s28
+s221->s10
+s221->s130
+s28->s127
+s28->s221
+s28->s36
+s28->s10
+s37->s38
+s37->s39
+s37->s34
+s37->s16
+s34->s37
+s34->s35
+s34->s36
+s34->s16
+s217->s39
+s217->s14
+s217->s130
+s217->s32
+s32->s14
+s32->s36
+s32->s127
+s32->s217
+s219->s39
+s219->s30
+s219->s12
+s219->s38
+s30->s36
+s30->s219
+s30->s12
+s30->s35
+s223->s39
+s223->s26
+s223->s38
+s223->s8
+s26->s36
+s26->s35
+s26->s223
+s26->s8
+s225->s6
+s225->s130
+s225->s39
+s225->s24
+s24->s127
+s24->s6
+s24->s36
+s24->s225
+s227->s38
+s227->s39
+s227->s4
+s227->s22
+s22->s36
+s22->s4
+s22->s227
+s22->s35
+s229->s39
+s229->s130
+s229->s20
+s229->s2
+s20->s229
+s20->s36
+s20->s127
+s20->s2
+s0->s18
+s0->s17
+s0->s16
+s0->s15
+s0->s14
+s0->s13
+s0->s12
+s0->s11
+s0->s10
+s0->s9
+s0->s8
+s0->s7
+s0->s6
+s0->s5
+s0->s4
+s0->s3
+s0->s2
+s0->s1
+}
+{
+s38->s35
+s38->s83
+s35->s38
+s35->s83
+s129->s126
+s129->s174
+s126->s174
+s126->s129
+s5->s23
+s5->s83
+s5->s174
+s5->s330
+s5->s226
+s1->s83
+s1->s19
+s1->s174
+s1->s366
+s1->s230
+s9->s222
+s9->s27
+s9->s83
+s9->s174
+s9->s294
+s13->s31
+s13->s174
+s13->s218
+s13->s83
+s13->s258
+s130->s127
+s130->s131
+s127->s131
+s127->s130
+s15->s240
+s15->s174
+s15->s131
+s15->s33
+s15->s128
+s11->s220
+s11->s29
+s11->s174
+s11->s276
+s11->s131
+s7->s25
+s7->s312
+s7->s131
+s7->s174
+s7->s224
+s3->s174
+s3->s348
+s3->s228
+s3->s21
+s3->s131
+s39->s36
+s39->s40
+s36->s39
+s36->s40
+s10->s28
+s10->s285
+s10->s40
+s10->s221
+s10->s131
+s16->s83
+s16->s40
+s16->s231
+s16->s37
+s16->s34
+s14->s40
+s14->s249
+s14->s131
+s14->s217
+s14->s32
+s12->s219
+s12->s83
+s12->s267
+s12->s30
+s12->s40
+s8->s26
+s8->s223
+s8->s83
+s8->s303
+s8->s40
+s6->s24
+s6->s131
+s6->s321
+s6->s40
+s6->s225
+s4->s83
+s4->s339
+s4->s40
+s4->s22
+s4->s227
+s2->s20
+s2->s40
+s2->s357
+s2->s229
+s2->s131
+}
+{
+s368->s210
+s368->s119
+s368->s369
+s368->s367
+s368->s366
+s332->s119
+s332->s333
+s332->s331
+s332->s210
+s332->s330
+s296->s297
+s296->s210
+s296->s295
+s296->s119
+s296->s294
+s260->s210
+s260->s261
+s260->s119
+s260->s259
+s260->s258
+s83->s38
+s83->s84
+s83->s85
+s83->s35
+s367->s372
+s367->s209
+s367->s118
+s367->s368
+s367->s366
+s331->s118
+s331->s209
+s331->s336
+s331->s332
+s331->s330
+s295->s118
+s295->s300
+s295->s296
+s295->s209
+s295->s294
+s259->s209
+s259->s264
+s259->s260
+s259->s118
+s259->s258
+s366->s367
+s366->s84
+s366->s175
+s366->s368
+s330->s175
+s330->s84
+s330->s332
+s330->s331
+s174->s175
+s174->s129
+s174->s126
+s174->s176
+s294->s84
+s294->s295
+s294->s175
+s294->s296
+s258->s84
+s258->s259
+s258->s260
+s258->s175
+s350->s348
+s350->s349
+s350->s179
+s350->s351
+s350->s136
+s314->s315
+s314->s313
+s314->s312
+s314->s179
+s314->s136
+s278->s277
+s278->s279
+s278->s179
+s278->s276
+s278->s136
+s242->s243
+s242->s179
+s242->s240
+s242->s241
+s242->s136
+s359->s76
+s359->s360
+s359->s358
+s359->s167
+s359->s357
+s323->s324
+s323->s167
+s323->s322
+s323->s76
+s323->s321
+s287->s285
+s287->s286
+s287->s76
+s287->s167
+s287->s288
+s251->s250
+s251->s249
+s251->s76
+s251->s252
+s251->s167
+s341->s88
+s341->s342
+s341->s339
+s341->s340
+s341->s45
+s305->s306
+s305->s304
+s305->s88
+s305->s303
+s305->s45
+s269->s270
+s269->s45
+s269->s88
+s269->s268
+s269->s267
+s233->s88
+s233->s45
+s233->s234
+s233->s232
+s233->s231
+s348->s350
+s348->s133
+s348->s349
+s348->s176
+s312->s314
+s312->s133
+s312->s313
+s312->s176
+s276->s133
+s276->s278
+s276->s277
+s276->s176
+s240->s133
+s240->s242
+s240->s241
+s240->s176
+s131->s133
+s131->s127
+s131->s132
+s131->s130
+s349->s348
+s349->s178
+s349->s350
+s349->s135
+s349->s354
+s313->s314
+s313->s312
+s313->s318
+s313->s178
+s313->s135
+s277->s282
+s277->s276
+s277->s278
+s277->s178
+s277->s135
+s241->s246
+s241->s242
+s241->s178
+s241->s240
+s241->s135
+s304->s87
+s304->s305
+s304->s303
+s304->s309
+s304->s44
+s303->s42
+s303->s85
+s303->s305
+s303->s304
+s339->s85
+s339->s340
+s339->s341
+s339->s42
+s357->s359
+s357->s358
+s357->s132
+s357->s41
+s358->s363
+s358->s75
+s358->s359
+s358->s166
+s358->s357
+s40->s39
+s40->s42
+s40->s36
+s40->s41
+s232->s87
+s232->s237
+s232->s44
+s232->s233
+s232->s231
+s268->s273
+s268->s269
+s268->s44
+s268->s87
+s268->s267
+s340->s345
+s340->s87
+s340->s341
+s340->s339
+s340->s44
+s249->s132
+s249->s250
+s249->s251
+s249->s41
+s285->s287
+s285->s132
+s285->s286
+s285->s41
+s321->s323
+s321->s132
+s321->s322
+s321->s41
+s231->s85
+s231->s233
+s231->s42
+s231->s232
+s267->s85
+s267->s268
+s267->s269
+s267->s42
+s250->s249
+s250->s255
+s250->s75
+s250->s251
+s250->s166
+s286->s287
+s286->s285
+s286->s75
+s286->s166
+s286->s291
+s322->s75
+s322->s327
+s322->s323
+s322->s166
+s322->s321
+}
+{
+s87->s101
+s87->s85
+s87->s88
+s316->s181
+s316->s317
+s316->s315
+s316->s138
+s360->s77
+s360->s362
+s360->s361
+s360->s168
+s300->s302
+s300->s301
+s300->s123
+s300->s214
+s324->s326
+s324->s77
+s324->s325
+s324->s168
+s373->s215
+s373->s374
+s373->s124
+s373->s372
+s337->s215
+s337->s124
+s337->s338
+s337->s336
+s307->s47
+s307->s308
+s307->s306
+s307->s90
+s363->s364
+s363->s171
+s363->s365
+s363->s80
+s318->s319
+s318->s149
+s318->s192
+s318->s320
+s372->s373
+s372->s123
+s372->s214
+s372->s374
+s336->s214
+s336->s123
+s336->s338
+s336->s337
+s370->s369
+s370->s212
+s370->s371
+s370->s121
+s334->s335
+s334->s333
+s334->s212
+s334->s121
+s327->s329
+s327->s171
+s327->s328
+s327->s80
+s328->s327
+s328->s172
+s328->s329
+s328->s81
+s355->s150
+s355->s356
+s355->s354
+s355->s193
+s319->s318
+s319->s193
+s319->s150
+s319->s320
+s351->s353
+s351->s180
+s351->s137
+s351->s352
+s361->s78
+s361->s362
+s361->s169
+s361->s360
+s306->s46
+s306->s308
+s306->s307
+s306->s89
+s325->s78
+s325->s324
+s325->s169
+s325->s326
+s315->s316
+s315->s180
+s315->s317
+s315->s137
+s369->s120
+s369->s370
+s369->s211
+s369->s371
+s45->s46
+s45->s44
+s45->s42
+s343->s47
+s343->s342
+s343->s90
+s343->s344
+s42->s45
+s42->s44
+s42->s43
+s346->s59
+s346->s102
+s346->s347
+s346->s345
+s44->s45
+s44->s42
+s44->s58
+s301->s302
+s301->s215
+s301->s300
+s301->s124
+s237->s239
+s237->s101
+s237->s238
+s237->s58
+s273->s101
+s273->s274
+s273->s58
+s273->s275
+s309->s310
+s309->s311
+s309->s101
+s309->s58
+s345->s347
+s345->s58
+s345->s346
+s345->s101
+s88->s87
+s88->s85
+s88->s89
+s238->s102
+s238->s237
+s238->s239
+s238->s59
+s274->s59
+s274->s102
+s274->s275
+s274->s273
+s310->s311
+s310->s102
+s310->s309
+s310->s59
+s41->s76
+s41->s43
+s41->s75
+s298->s297
+s298->s212
+s298->s299
+s298->s121
+s75->s76
+s75->s41
+s75->s80
+s255->s256
+s255->s171
+s255->s257
+s255->s80
+s291->s293
+s291->s292
+s291->s171
+s291->s80
+s256->s255
+s256->s172
+s256->s257
+s256->s81
+s292->s293
+s292->s172
+s292->s291
+s292->s81
+s364->s365
+s364->s172
+s364->s363
+s364->s81
+s135->s149
+s135->s133
+s135->s136
+s246->s149
+s246->s248
+s246->s247
+s246->s192
+s282->s149
+s282->s284
+s282->s283
+s282->s192
+s354->s149
+s354->s356
+s354->s355
+s354->s192
+s247->s246
+s247->s150
+s247->s193
+s247->s248
+s283->s150
+s283->s284
+s283->s282
+s283->s193
+s132->s167
+s132->s134
+s132->s166
+s133->s135
+s133->s134
+s133->s136
+s166->s167
+s166->s132
+s166->s171
+s234->s46
+s234->s236
+s234->s235
+s234->s89
+s270->s271
+s270->s46
+s270->s89
+s270->s272
+s342->s343
+s342->s46
+s342->s89
+s342->s344
+s85->s87
+s85->s86
+s85->s88
+s235->s47
+s235->s90
+s235->s236
+s235->s234
+s271->s270
+s271->s90
+s271->s47
+s271->s272
+s76->s75
+s76->s77
+s76->s41
+s333->s334
+s333->s211
+s333->s335
+s333->s120
+s252->s254
+s252->s77
+s252->s253
+s252->s168
+s288->s77
+s288->s290
+s288->s289
+s288->s168
+s253->s78
+s253->s252
+s253->s254
+s253->s169
+s289->s290
+s289->s169
+s289->s78
+s289->s288
+s243->s244
+s243->s245
+s243->s180
+s243->s137
+s136->s135
+s136->s133
+s136->s137
+s279->s281
+s279->s137
+s279->s180
+s279->s280
+s244->s181
+s244->s243
+s244->s138
+s244->s245
+s280->s279
+s280->s138
+s280->s181
+s280->s281
+s352->s351
+s352->s181
+s352->s138
+s352->s353
+s167->s166
+s167->s132
+s167->s168
+s178->s192
+s178->s179
+s178->s176
+s175->s209
+s175->s210
+s175->s177
+s176->s179
+s176->s178
+s176->s177
+s265->s215
+s265->s266
+s265->s124
+s265->s264
+s264->s214
+s264->s123
+s264->s266
+s264->s265
+s209->s175
+s209->s214
+s209->s210
+s84->s119
+s84->s86
+s84->s118
+s118->s119
+s118->s84
+s118->s123
+s179->s180
+s179->s178
+s179->s176
+s262->s263
+s262->s212
+s262->s261
+s262->s121
+s210->s175
+s210->s211
+s210->s209
+s261->s263
+s261->s262
+s261->s211
+s261->s120
+s297->s211
+s297->s298
+s297->s299
+s297->s120
+s119->s118
+s119->s84
+s119->s120
+}
+{
+s192->s194
+s192->s193
+s169->s170
+s169->s168
+s168->s170
+s168->s169
+s138->s139
+s138->s137
+s245->s243
+s245->s182
+s245->s244
+s245->s139
+s137->s139
+s137->s138
+s362->s79
+s362->s361
+s362->s170
+s362->s360
+s254->s79
+s254->s253
+s254->s252
+s254->s170
+s344->s342
+s344->s91
+s344->s343
+s344->s48
+s308->s307
+s308->s306
+s308->s91
+s308->s48
+s272->s270
+s272->s271
+s272->s91
+s272->s48
+s236->s235
+s236->s91
+s236->s234
+s236->s48
+s47->s46
+s47->s48
+s172->s173
+s172->s171
+s171->s173
+s171->s172
+s134->s159
+s134->s158
+s356->s151
+s356->s355
+s356->s354
+s356->s194
+s320->s151
+s320->s318
+s320->s319
+s320->s194
+s284->s151
+s284->s283
+s284->s282
+s284->s194
+s248->s247
+s248->s194
+s248->s246
+s248->s151
+s150->s151
+s150->s149
+s149->s151
+s149->s150
+s293->s173
+s293->s291
+s293->s292
+s293->s82
+s257->s255
+s257->s173
+s257->s82
+s257->s256
+s59->s60
+s59->s58
+s365->s364
+s365->s173
+s365->s363
+s365->s82
+s329->s327
+s329->s82
+s329->s173
+s329->s328
+s43->s68
+s43->s67
+s46->s47
+s46->s48
+s317->s182
+s317->s139
+s317->s316
+s317->s315
+s371->s370
+s371->s213
+s371->s122
+s371->s369
+s347->s103
+s347->s346
+s347->s60
+s347->s345
+s90->s91
+s90->s89
+s311->s103
+s311->s309
+s311->s310
+s311->s60
+s80->s82
+s80->s81
+s275->s60
+s275->s274
+s275->s103
+s275->s273
+s281->s182
+s281->s279
+s281->s139
+s281->s280
+s77->s79
+s77->s78
+s78->s79
+s78->s77
+s335->s334
+s335->s122
+s335->s333
+s335->s213
+s326->s79
+s326->s324
+s326->s325
+s326->s170
+s353->s351
+s353->s139
+s353->s182
+s353->s352
+s290->s170
+s290->s79
+s290->s289
+s290->s288
+s81->s82
+s81->s80
+s338->s125
+s338->s337
+s338->s216
+s338->s336
+s374->s125
+s374->s372
+s374->s373
+s374->s216
+s58->s60
+s58->s59
+s239->s103
+s239->s238
+s239->s237
+s239->s60
+s193->s194
+s193->s192
+s177->s202
+s177->s201
+s215->s214
+s215->s216
+s214->s215
+s214->s216
+s266->s216
+s266->s125
+s266->s265
+s266->s264
+s302->s125
+s302->s300
+s302->s301
+s302->s216
+s101->s103
+s101->s102
+s102->s103
+s102->s101
+s86->s111
+s86->s110
+s124->s125
+s124->s123
+s123->s125
+s123->s124
+s181->s182
+s181->s180
+s180->s182
+s180->s181
+s212->s213
+s212->s211
+s211->s213
+s211->s212
+s263->s213
+s263->s261
+s263->s262
+s263->s122
+s299->s213
+s299->s298
+s299->s122
+s299->s297
+s89->s91
+s89->s90
+s121->s122
+s121->s120
+s120->s122
+s120->s121
+}
+{
+s122->s121
+s122->s114
+s122->s120
+s111->s86
+s111->s110
+s111->s94
+s111->s112
+s91->s90
+s91->s92
+s91->s89
+s213->s212
+s213->s205
+s213->s211
+s202->s201
+s202->s203
+s202->s177
+s202->s185
+s125->s124
+s125->s117
+s125->s123
+s110->s111
+s110->s86
+s110->s115
+s110->s105
+s103->s102
+s103->s101
+s103->s104
+s216->s215
+s216->s214
+s216->s208
+s170->s169
+s170->s162
+s170->s168
+s159->s160
+s159->s158
+s159->s134
+s159->s142
+s139->s138
+s139->s140
+s139->s137
+s48->s47
+s48->s46
+s48->s49
+s173->s172
+s173->s165
+s173->s171
+s158->s159
+s158->s134
+s158->s163
+s158->s153
+s151->s150
+s151->s149
+s151->s152
+s82->s81
+s82->s74
+s82->s80
+s194->s193
+s194->s195
+s194->s192
+s67->s68
+s67->s43
+s67->s62
+s67->s72
+s60->s59
+s60->s61
+s60->s58
+s79->s78
+s79->s71
+s79->s77
+s182->s181
+s182->s183
+s182->s180
+s201->s206
+s201->s196
+s201->s202
+s201->s177
+s68->s43
+s68->s69
+s68->s67
+s68->s51
+}
+{
+s105->s106
+s105->s107
+s105->s104
+s51->s50
+s51->s52
+s51->s49
+s72->s74
+s72->s73
+s72->s64
+s114->s113
+s114->s112
+s152->s154
+s152->s153
+s165->s164
+s165->s163
+s61->s63
+s61->s62
+s115->s117
+s115->s116
+s115->s107
+s206->s207
+s206->s198
+s206->s208
+s205->s204
+s205->s203
+s69->s71
+s69->s70
+s69->s52
+s71->s70
+s71->s69
+s62->s63
+s62->s61
+s62->s64
+s74->s73
+s74->s72
+s153->s154
+s153->s155
+s153->s152
+s94->s93
+s94->s95
+s94->s92
+s163->s165
+s163->s164
+s163->s155
+s104->s106
+s104->s105
+s49->s51
+s49->s50
+s140->s142
+s140->s141
+s142->s141
+s142->s143
+s142->s140
+s160->s162
+s160->s143
+s160->s161
+s162->s161
+s162->s160
+s195->s197
+s195->s196
+s196->s197
+s196->s198
+s196->s195
+s208->s207
+s208->s206
+s117->s116
+s117->s115
+s183->s185
+s183->s184
+s185->s183
+s185->s186
+s185->s184
+s203->s205
+s203->s204
+s203->s186
+s92->s94
+s92->s93
+s112->s114
+s112->s95
+s112->s113
+}
+{
+s63->s61
+s63->s62
+s63->s56
+s93->s94
+s93->s92
+s93->s98
+s116->s117
+s116->s99
+s116->s115
+s184->s183
+s184->s189
+s184->s185
+s207->s206
+s207->s190
+s207->s208
+s141->s142
+s141->s140
+s141->s146
+s50->s51
+s50->s55
+s50->s49
+s106->s99
+s106->s105
+s106->s104
+s164->s165
+s164->s147
+s164->s163
+s154->s147
+s154->s153
+s154->s152
+s113->s98
+s113->s114
+s113->s112
+s204->s189
+s204->s205
+s204->s203
+s73->s72
+s73->s74
+s73->s56
+s161->s146
+s161->s162
+s161->s160
+s197->s190
+s197->s196
+s197->s195
+s70->s71
+s70->s69
+s70->s55
+s107->s109
+s107->s108
+s52->s54
+s52->s53
+s64->s66
+s64->s65
+s198->s199
+s198->s200
+s155->s157
+s155->s156
+s95->s97
+s95->s96
+s143->s145
+s143->s144
+s186->s188
+s186->s187
+}
+{
+s99->s100
+s99->s98
+s57->s55
+s57->s56
+s148->s147
+s148->s146
+s147->s148
+s147->s146
+s55->s57
+s55->s56
+s146->s148
+s146->s147
+s191->s190
+s191->s189
+s100->s99
+s100->s98
+s98->s100
+s98->s99
+s190->s191
+s190->s189
+s189->s191
+s189->s190
+s56->s55
+s56->s57
+s109->s108
+s109->s107
+s108->s109
+s108->s107
+s54->s53
+s54->s52
+s53->s54
+s53->s52
+s66->s65
+s66->s64
+s65->s66
+s65->s64
+s199->s198
+s199->s200
+s200->s199
+s200->s198
+s157->s156
+s157->s155
+s156->s157
+s156->s155
+s97->s95
+s97->s96
+s96->s95
+s96->s97
+s145->s143
+s145->s144
+s144->s143
+s144->s145
+s188->s187
+s188->s186
+s187->s188
+s187->s186
+}
+}

@@ -1,0 +1,76 @@
+digraph {
+rankdir="LR"
+s3[label="(instance index=15, state index=3, atoms={reward(c_1_0), reward(c_0_1), at(c_1_1)})"]
+s0[label="(instance index=15, state index=0, atoms={at(c_0_0), reward(c_1_0), reward(c_0_1)})"]
+s2[label="(instance index=15, state index=2, atoms={reward(c_1_0), reward(c_0_1), at(c_0_1)})"]
+s1[label="(instance index=15, state index=1, atoms={reward(c_1_0), reward(c_0_1), at(c_1_0)})"]
+s12[label="(instance index=15, state index=12, atoms={picked(c_1_0), reward(c_0_1), at(c_1_0)})"]
+s4[label="(instance index=15, state index=4, atoms={picked(c_0_1), reward(c_1_0), at(c_0_1)})"]
+s13[label="(instance index=15, state index=13, atoms={picked(c_1_0), at(c_0_0), reward(c_0_1)})"]
+s14[label="(instance index=15, state index=14, atoms={picked(c_1_0), reward(c_0_1), at(c_1_1)})"]
+s5[label="(instance index=15, state index=5, atoms={picked(c_0_1), at(c_0_0), reward(c_1_0)})"]
+s6[label="(instance index=15, state index=6, atoms={picked(c_0_1), reward(c_1_0), at(c_1_1)})"]
+s15[label="(instance index=15, state index=15, atoms={picked(c_1_0), reward(c_0_1), at(c_0_1)})"]
+s7[label="(instance index=15, state index=7, atoms={picked(c_0_1), reward(c_1_0), at(c_1_0)})"]
+s11[peripheries=2,label="(instance index=15, state index=11, atoms={picked(c_1_0), picked(c_0_1), at(c_0_1)})"]
+s10[peripheries=2,label="(instance index=15, state index=10, atoms={picked(c_1_0), picked(c_0_1), at(c_1_1)})"]
+s9[peripheries=2,label="(instance index=15, state index=9, atoms={picked(c_1_0), picked(c_0_1), at(c_0_0)})"]
+s8[peripheries=2,label="(instance index=15, state index=8, atoms={picked(c_1_0), picked(c_0_1), at(c_1_0)})"]
+Dangling [ label = "", style = invis ]
+{ rank = same; Dangling }
+Dangling -> s0
+{ rank = same; s0}
+{ rank = same; s2,s1}
+{ rank = same; s12,s4}
+{ rank = same; s13,s14,s5,s6}
+{ rank = same; s15,s7}
+{ rank = same; s11,s10,s9,s8}
+{
+s3->s2
+s3->s1
+s0->s2
+s0->s1
+}
+{
+s2->s4
+s2->s3
+s2->s0
+s1->s12
+s1->s3
+s1->s0
+}
+{
+s12->s14
+s12->s13
+s4->s6
+s4->s5
+}
+{
+s13->s15
+s13->s12
+s14->s15
+s14->s12
+s5->s7
+s5->s4
+s6->s7
+s6->s4
+}
+{
+s15->s13
+s15->s14
+s15->s11
+s7->s6
+s7->s5
+s7->s8
+}
+{
+s11->s10
+s11->s9
+s10->s11
+s10->s8
+s9->s11
+s9->s8
+s8->s10
+s8->s9
+}
+}

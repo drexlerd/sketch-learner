@@ -1,0 +1,2962 @@
+Changing working directory:  /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/experiments/scripts/workspace-ipc2023/blocks_4_1
+2024-09-14 16:21:48,309 - Constructing InstanceDatas...
+2024-09-14 16:21:52,639 - Constructing GlobalFaithfulAbstractions...
+2024-09-14 16:22:02,151 - ...done
+2024-09-14 16:22:02,152 - Constructing StateSpaces...
+2024-09-14 16:22:02,177 - ...done
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/ipc2023/blocks_4/training/easy/p03.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/ipc2023/blocks_4/training/easy/p03.pddl
+2024-09-14 16:22:02,180 - Created InstanceData with num concrete states: 5 and num abstract states: 3
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/ipc2023/blocks_4/training/easy/p01.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/ipc2023/blocks_4/training/easy/p01.pddl
+2024-09-14 16:22:02,181 - Created InstanceData with num concrete states: 5 and num abstract states: 5
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/ipc2023/blocks_4/training/easy/p05.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/ipc2023/blocks_4/training/easy/p05.pddl
+2024-09-14 16:22:02,182 - Created InstanceData with num concrete states: 22 and num abstract states: 5
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/ipc2023/blocks_4/training/easy/p08.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/ipc2023/blocks_4/training/easy/p08.pddl
+2024-09-14 16:22:02,183 - Created InstanceData with num concrete states: 22 and num abstract states: 22
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/ipc2023/blocks_4/training/easy/p12.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/ipc2023/blocks_4/training/easy/p12.pddl
+2024-09-14 16:22:02,186 - Created InstanceData with num concrete states: 125 and num abstract states: 65
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/ipc2023/blocks_4/training/easy/p14.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/ipc2023/blocks_4/training/easy/p14.pddl
+2024-09-14 16:22:02,189 - Created InstanceData with num concrete states: 125 and num abstract states: 125
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/ipc2023/blocks_4/training/easy/p15.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/ipc2023/blocks_4/training/easy/p15.pddl
+2024-09-14 16:22:02,206 - Created InstanceData with num concrete states: 866 and num abstract states: 444
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/ipc2023/blocks_4/training/easy/p17.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/ipc2023/blocks_4/training/easy/p17.pddl
+2024-09-14 16:22:02,222 - Created InstanceData with num concrete states: 866 and num abstract states: 866
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/ipc2023/blocks_4/training/easy/p18.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/ipc2023/blocks_4/training/easy/p18.pddl
+2024-09-14 16:22:02,238 - Created InstanceData with num concrete states: 866 and num abstract states: 866
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/ipc2023/blocks_4/training/easy/p20.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/ipc2023/blocks_4/training/easy/p20.pddl
+2024-09-14 16:22:02,366 - Created InstanceData with num concrete states: 7057 and num abstract states: 7057
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/ipc2023/blocks_4/training/easy/p21.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/ipc2023/blocks_4/training/easy/p21.pddl
+2024-09-14 16:22:02,491 - Created InstanceData with num concrete states: 7057 and num abstract states: 7057
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/ipc2023/blocks_4/training/easy/p19.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/ipc2023/blocks_4/training/easy/p19.pddl
+2024-09-14 16:22:02,617 - Created InstanceData with num concrete states: 7057 and num abstract states: 7057
+2024-09-14 16:22:02,639 - ..done
+2024-09-14 16:22:02,677 - Initializing TupleGraphs...
+2024-09-14 16:22:21,784 - ..done
+2024-09-14 16:22:21,836 - Iteration: 0
+     id: 0 problem_filepath: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/ipc2023/blocks_4/training/easy/p03.pddl num_states: 5 num_state_equivalences: 3
+2024-09-14 16:22:21,912 - Initialize global faithful abstract states...
+2024-09-14 16:22:21,912 - ..done
+2024-09-14 16:22:21,912 - Initializing DomainFeatureData...
+[t=49.2957s, 2606680 KB] Started generating base features of complexity 1.
+[t=49.2961s, 2606680 KB] Complexity 1:
+    b_nullary: 2
+    c_one_of: 0
+    c_top: 1
+    c_bot: 1
+    c_primitive: 3
+    r_primitive: 2
+    c_and: 0
+    c_not: 0
+    c_equal: 0
+    c_some: 0
+    c_all: 0
+    r_restrict: 0
+    r_and: 0
+    r_inverse: 0
+    r_transitive_closure: 0
+    b_empty: 0
+    n_count: 0
+    n_concept_distance: 0
+[t=49.2962s, 2606680 KB] Finished generating base features.
+[t=49.2962s, 2606680 KB] Started generating composite features. 
+[t=49.2964s, 2606680 KB] Complexity 2:
+Total concept elements: 8
+Total role elements: 3
+Total numerical elements: 5
+Total boolean elements: 4
+    b_nullary: 2
+    c_one_of: 0
+    c_top: 1
+    c_bot: 1
+    c_primitive: 3
+    r_primitive: 2
+    c_and: 0
+    c_not: 3
+    c_equal: 0
+    c_some: 0
+    c_all: 0
+    r_restrict: 0
+    r_and: 0
+    r_inverse: 1
+    r_transitive_closure: 0
+    b_empty: 2
+    n_count: 5
+    n_concept_distance: 0
+[t=49.2968s, 2606680 KB] Complexity 3:
+Total concept elements: 11
+Total role elements: 3
+Total numerical elements: 7
+Total boolean elements: 5
+    b_nullary: 2
+    c_one_of: 0
+    c_top: 1
+    c_bot: 1
+    c_primitive: 3
+    r_primitive: 2
+    c_and: 1
+    c_not: 3
+    c_equal: 1
+    c_some: 1
+    c_all: 0
+    r_restrict: 0
+    r_and: 0
+    r_inverse: 1
+    r_transitive_closure: 0
+    b_empty: 3
+    n_count: 7
+    n_concept_distance: 0
+[t=49.2969s, 2606680 KB] Complexity 4:
+Total concept elements: 14
+Total role elements: 3
+Total numerical elements: 9
+Total boolean elements: 6
+    b_nullary: 2
+    c_one_of: 0
+    c_top: 1
+    c_bot: 1
+    c_primitive: 3
+    r_primitive: 2
+    c_and: 2
+    c_not: 4
+    c_equal: 1
+    c_some: 1
+    c_all: 1
+    r_restrict: 0
+    r_and: 0
+    r_inverse: 1
+    r_transitive_closure: 0
+    b_empty: 4
+    n_count: 9
+    n_concept_distance: 0
+[t=49.2971s, 2606680 KB] Complexity 5:
+Total concept elements: 14
+Total role elements: 3
+Total numerical elements: 10
+Total boolean elements: 6
+    b_nullary: 2
+    c_one_of: 0
+    c_top: 1
+    c_bot: 1
+    c_primitive: 3
+    r_primitive: 2
+    c_and: 2
+    c_not: 4
+    c_equal: 1
+    c_some: 1
+    c_all: 1
+    r_restrict: 0
+    r_and: 0
+    r_inverse: 1
+    r_transitive_closure: 0
+    b_empty: 4
+    n_count: 10
+    n_concept_distance: 0
+[t=49.2973s, 2606680 KB] Complexity 6:
+Total concept elements: 14
+Total role elements: 3
+Total numerical elements: 10
+Total boolean elements: 6
+    b_nullary: 2
+    c_one_of: 0
+    c_top: 1
+    c_bot: 1
+    c_primitive: 3
+    r_primitive: 2
+    c_and: 2
+    c_not: 4
+    c_equal: 1
+    c_some: 1
+    c_all: 1
+    r_restrict: 0
+    r_and: 0
+    r_inverse: 1
+    r_transitive_closure: 0
+    b_empty: 4
+    n_count: 10
+    n_concept_distance: 0
+[t=49.2974s, 2606680 KB] Complexity 7:
+Total concept elements: 15
+Total role elements: 3
+Total numerical elements: 10
+Total boolean elements: 6
+    b_nullary: 2
+    c_one_of: 0
+    c_top: 1
+    c_bot: 1
+    c_primitive: 3
+    r_primitive: 2
+    c_and: 3
+    c_not: 4
+    c_equal: 1
+    c_some: 1
+    c_all: 1
+    r_restrict: 0
+    r_and: 0
+    r_inverse: 1
+    r_transitive_closure: 0
+    b_empty: 4
+    n_count: 10
+    n_concept_distance: 0
+[t=49.2975s, 2606680 KB] Complexity 8:
+Total concept elements: 16
+Total role elements: 3
+Total numerical elements: 11
+Total boolean elements: 6
+    b_nullary: 2
+    c_one_of: 0
+    c_top: 1
+    c_bot: 1
+    c_primitive: 3
+    r_primitive: 2
+    c_and: 4
+    c_not: 4
+    c_equal: 1
+    c_some: 1
+    c_all: 1
+    r_restrict: 0
+    r_and: 0
+    r_inverse: 1
+    r_transitive_closure: 0
+    b_empty: 4
+    n_count: 11
+    n_concept_distance: 0
+[t=49.2977s, 2606680 KB] Complexity 9:
+Total concept elements: 16
+Total role elements: 3
+Total numerical elements: 12
+Total boolean elements: 6
+    b_nullary: 2
+    c_one_of: 0
+    c_top: 1
+    c_bot: 1
+    c_primitive: 3
+    r_primitive: 2
+    c_and: 4
+    c_not: 4
+    c_equal: 1
+    c_some: 1
+    c_all: 1
+    r_restrict: 0
+    r_and: 0
+    r_inverse: 1
+    r_transitive_closure: 0
+    b_empty: 4
+    n_count: 12
+    n_concept_distance: 0
+[t=49.2977s, 2606680 KB] Finished generating composite features.
+Features generated: 18
+Features after relevant changes pruning (complete): 9
+2024-09-14 16:22:21,921 - ..done
+2024-09-14 16:22:21,921 - Constructing PerStateFeatureValuations...
+2024-09-14 16:22:21,922 - ..done
+2024-09-14 16:22:21,922 - Constructing StatePairEquivalenceDatas...
+2024-09-14 16:22:21,923 - ..done
+2024-09-14 16:22:21,923 - Constructing TupleGraphEquivalences...
+Tuple graph equivalence construction statistics:
+Num nodes: 15
+2024-09-14 16:22:21,924 - ..done
+2024-09-14 16:22:21,924 - Minimizing TupleGraphEquivalences...
+Tuple graph equivalence minimization statistics:
+Num orig nodes: 15
+Num kept nodes: 9
+2024-09-14 16:22:21,924 - ..done
+Number of initial D2 facts: 9
+Number of D2 facts: 9 of 81
+2024-09-14 16:22:21,930 - Grounding Logic Program...
+2024-09-14 16:22:21,934 - ..done
+2024-09-14 16:22:21,935 - Solving Logic Program...
+2024-09-14 16:22:21,939 - ..done
+Clingo statistics:
+{'call': 0.0, 'result': 1.0, 'signal': 0.0, 'exhausted': 1.0, 'costs': [0.0], 'lower': [0.0], 'concurrency': 32.0, 'winner': 4.0, 'times': {'total': 0.013931989669799805, 'cpu': 0.020786000000015292, 'solve': 0.0034749507904052734, 'unsat': 0.0004749298095703125, 'sat': 0.002817869186401367}, 'models': {'enumerated': 4.0, 'optimal': 1.0}}
+Solution cost: [0.0]
+Total time: 0.013931989669799805
+CPU time: 0.020786000000015292
+Solve time: 0.0034749507904052734
+2024-09-14 16:22:21,941 - Learned the following sketch:
+(:policy
+(:booleans )
+(:numericals )
+(:rule (:conditions ) (:effects ))
+)
+Numer of sketch rules: 1
+Number of selected features: 0
+Maximum complexity of selected feature: 0
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/ipc2023/blocks_4/training/easy/p03.pddl
+Sketch cycles
+Instance: 0
+1
+1
+Number of unsatisfied D2 facts: 18
+Number of D2 facts: 27 of 81
+2024-09-14 16:22:21,948 - Grounding Logic Program...
+2024-09-14 16:22:21,952 - ..done
+2024-09-14 16:22:21,952 - Solving Logic Program...
+2024-09-14 16:22:21,954 - ..done
+Clingo statistics:
+{'call': 0.0, 'result': 1.0, 'signal': 0.0, 'exhausted': 1.0, 'costs': [3.0], 'lower': [3.0], 'concurrency': 32.0, 'winner': 31.0, 'times': {'total': 0.012610912322998047, 'cpu': 0.017463000000020656, 'solve': 0.0015099048614501953, 'unsat': 0.0003750324249267578, 'sat': 0.0009679794311523438}, 'models': {'enumerated': 4.0, 'optimal': 1.0}}
+Solution cost: [3.0]
+Total time: 0.012610912322998047
+CPU time: 0.017463000000020656
+Solve time: 0.0015099048614501953
+2024-09-14 16:22:21,955 - Learned the following sketch:
+(:policy
+(:booleans )
+(:numericals (f1 "n_count(c_primitive(clear,0))"))
+(:rule (:conditions (:c_n_gt f1)) (:effects (:e_n_inc f1)))
+(:rule (:conditions (:c_n_gt f1)) (:effects (:e_n_bot f1)))
+)
+Numer of sketch rules: 2
+Number of selected features: 1
+Maximum complexity of selected feature: 2
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/ipc2023/blocks_4/training/easy/p03.pddl
+Sketch cycles
+Instance: 0
+1
+1
+Number of unsatisfied D2 facts: 5
+Number of D2 facts: 32 of 81
+2024-09-14 16:22:21,962 - Grounding Logic Program...
+2024-09-14 16:22:21,966 - ..done
+2024-09-14 16:22:21,966 - Solving Logic Program...
+2024-09-14 16:22:21,968 - ..done
+Clingo statistics:
+{'call': 0.0, 'result': 1.0, 'signal': 0.0, 'exhausted': 1.0, 'costs': [3.0], 'lower': [3.0], 'concurrency': 32.0, 'winner': 3.0, 'times': {'total': 0.01212310791015625, 'cpu': 0.016921999999965465, 'solve': 0.0017881393432617188, 'unsat': 0.00038504600524902344, 'sat': 0.0012271404266357422}, 'models': {'enumerated': 4.0, 'optimal': 1.0}}
+Solution cost: [3.0]
+Total time: 0.01212310791015625
+CPU time: 0.016921999999965465
+Solve time: 0.0017881393432617188
+2024-09-14 16:22:21,970 - Learned the following sketch:
+(:policy
+(:booleans )
+(:numericals (f1 "n_count(c_primitive(clear,0))"))
+(:rule (:conditions (:c_n_gt f1)) (:effects (:e_n_inc f1)))
+(:rule (:conditions (:c_n_gt f1)) (:effects (:e_n_bot f1)))
+(:rule (:conditions (:c_n_gt f1)) (:effects (:e_n_dec f1)))
+)
+Numer of sketch rules: 3
+Number of selected features: 1
+Maximum complexity of selected feature: 2
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/ipc2023/blocks_4/training/easy/p03.pddl
+Sketch cycles
+Instance: 0
+1
+1
+Number of unsatisfied D2 facts: 4
+Number of D2 facts: 36 of 81
+2024-09-14 16:22:21,977 - Grounding Logic Program...
+2024-09-14 16:22:21,982 - ..done
+2024-09-14 16:22:21,982 - Solving Logic Program...
+2024-09-14 16:22:21,984 - ..done
+Clingo statistics:
+{'call': 0.0, 'result': 1.0, 'signal': 0.0, 'exhausted': 1.0, 'costs': [3.0], 'lower': [3.0], 'concurrency': 32.0, 'winner': 9.0, 'times': {'total': 0.013275861740112305, 'cpu': 0.016825000000011414, 'solve': 0.001435995101928711, 'unsat': 0.00033783912658691406, 'sat': 0.0008840560913085938}, 'models': {'enumerated': 4.0, 'optimal': 1.0}}
+Solution cost: [3.0]
+Total time: 0.013275861740112305
+CPU time: 0.016825000000011414
+Solve time: 0.001435995101928711
+2024-09-14 16:22:21,985 - Learned the following sketch:
+(:policy
+(:booleans )
+(:numericals (f1 "n_count(c_primitive(clear,0))"))
+(:rule (:conditions (:c_n_gt f1)) (:effects (:e_n_inc f1)))
+)
+Numer of sketch rules: 1
+Number of selected features: 1
+Maximum complexity of selected feature: 2
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/ipc2023/blocks_4/training/easy/p03.pddl
+2024-09-14 16:22:21,986 - Verifying learned sketch...
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/ipc2023/blocks_4/training/easy/p03.pddl
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/ipc2023/blocks_4/training/easy/p03.pddl
+Sketch fails to bound width of a state
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/ipc2023/blocks_4/training/easy/p01.pddl
+Instance: 1
+Source_state: 3
+Dlplan state: (instance index=1, state index=0, atoms={clear(b1), on-table(b2), arm-empty(), clear(b2), on-table(b1)})
+2024-09-14 16:22:21,987 - ..done
+Smallest unsolved instance: 1
+Selected instances: [1]
+2024-09-14 16:22:21,987 - Iteration: 1
+     id: 1 problem_filepath: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/ipc2023/blocks_4/training/easy/p01.pddl num_states: 5 num_state_equivalences: 5
+2024-09-14 16:22:22,166 - Initialize global faithful abstract states...
+2024-09-14 16:22:22,167 - ..done
+2024-09-14 16:22:22,167 - Initializing DomainFeatureData...
+[t=49.5498s, 2633868 KB] Started generating base features of complexity 1.
+[t=49.5499s, 2633868 KB] Complexity 1:
+    b_nullary: 2
+    c_one_of: 0
+    c_top: 1
+    c_bot: 1
+    c_primitive: 5
+    r_primitive: 2
+    c_and: 0
+    c_not: 0
+    c_equal: 0
+    c_some: 0
+    c_all: 0
+    r_restrict: 0
+    r_and: 0
+    r_inverse: 0
+    r_transitive_closure: 0
+    b_empty: 0
+    n_count: 0
+    n_concept_distance: 0
+[t=49.55s, 2633868 KB] Finished generating base features.
+[t=49.55s, 2633868 KB] Started generating composite features. 
+[t=49.5501s, 2633868 KB] Complexity 2:
+Total concept elements: 10
+Total role elements: 4
+Total numerical elements: 6
+Total boolean elements: 4
+    b_nullary: 2
+    c_one_of: 0
+    c_top: 1
+    c_bot: 1
+    c_primitive: 5
+    r_primitive: 2
+    c_and: 0
+    c_not: 3
+    c_equal: 0
+    c_some: 0
+    c_all: 0
+    r_restrict: 0
+    r_and: 0
+    r_inverse: 2
+    r_transitive_closure: 0
+    b_empty: 2
+    n_count: 6
+    n_concept_distance: 0
+[t=49.5504s, 2633868 KB] Complexity 3:
+Total concept elements: 30
+Total role elements: 10
+Total numerical elements: 8
+Total boolean elements: 5
+    b_nullary: 2
+    c_one_of: 0
+    c_top: 1
+    c_bot: 1
+    c_primitive: 5
+    r_primitive: 2
+    c_and: 7
+    c_not: 3
+    c_equal: 1
+    c_some: 6
+    c_all: 6
+    r_restrict: 6
+    r_and: 0
+    r_inverse: 2
+    r_transitive_closure: 0
+    b_empty: 3
+    n_count: 8
+    n_concept_distance: 0
+[t=49.5508s, 2633868 KB] Complexity 4:
+Total concept elements: 62
+Total role elements: 15
+Total numerical elements: 37
+Total boolean elements: 15
+    b_nullary: 2
+    c_one_of: 0
+    c_top: 1
+    c_bot: 1
+    c_primitive: 5
+    r_primitive: 2
+    c_and: 14
+    c_not: 17
+    c_equal: 1
+    c_some: 11
+    c_all: 12
+    r_restrict: 6
+    r_and: 0
+    r_inverse: 7
+    r_transitive_closure: 0
+    b_empty: 13
+    n_count: 24
+    n_concept_distance: 13
+[t=49.5517s, 2633868 KB] Complexity 5:
+Total concept elements: 94
+Total role elements: 15
+Total numerical elements: 61
+Total boolean elements: 22
+    b_nullary: 2
+    c_one_of: 0
+    c_top: 1
+    c_bot: 1
+    c_primitive: 5
+    r_primitive: 2
+    c_and: 30
+    c_not: 29
+    c_equal: 1
+    c_some: 13
+    c_all: 14
+    r_restrict: 6
+    r_and: 0
+    r_inverse: 7
+    r_transitive_closure: 0
+    b_empty: 20
+    n_count: 39
+    n_concept_distance: 22
+[t=49.5533s, 2633868 KB] Complexity 6:
+Total concept elements: 148
+Total role elements: 15
+Total numerical elements: 91
+Total boolean elements: 27
+    b_nullary: 2
+    c_one_of: 0
+    c_top: 1
+    c_bot: 1
+    c_primitive: 5
+    r_primitive: 2
+    c_and: 61
+    c_not: 47
+    c_equal: 1
+    c_some: 14
+    c_all: 18
+    r_restrict: 6
+    r_and: 0
+    r_inverse: 7
+    r_transitive_closure: 0
+    b_empty: 25
+    n_count: 53
+    n_concept_distance: 38
+[t=49.5562s, 2633868 KB] Complexity 7:
+Total concept elements: 202
+Total role elements: 15
+Total numerical elements: 133
+Total boolean elements: 31
+    b_nullary: 2
+    c_one_of: 0
+    c_top: 1
+    c_bot: 1
+    c_primitive: 5
+    r_primitive: 2
+    c_and: 90
+    c_not: 72
+    c_equal: 1
+    c_some: 14
+    c_all: 18
+    r_restrict: 6
+    r_and: 0
+    r_inverse: 7
+    r_transitive_closure: 0
+    b_empty: 29
+    n_count: 77
+    n_concept_distance: 56
+[t=49.5611s, 2633868 KB] Complexity 8:
+Total concept elements: 291
+Total role elements: 15
+Total numerical elements: 178
+Total boolean elements: 32
+    b_nullary: 2
+    c_one_of: 0
+    c_top: 1
+    c_bot: 1
+    c_primitive: 5
+    r_primitive: 2
+    c_and: 157
+    c_not: 90
+    c_equal: 1
+    c_some: 14
+    c_all: 22
+    r_restrict: 6
+    r_and: 0
+    r_inverse: 7
+    r_transitive_closure: 0
+    b_empty: 30
+    n_count: 98
+    n_concept_distance: 80
+[t=49.5684s, 2633868 KB] Complexity 9:
+Total concept elements: 414
+Total role elements: 15
+Total numerical elements: 245
+Total boolean elements: 32
+    b_nullary: 2
+    c_one_of: 0
+    c_top: 1
+    c_bot: 1
+    c_primitive: 5
+    r_primitive: 2
+    c_and: 243
+    c_not: 126
+    c_equal: 1
+    c_some: 14
+    c_all: 23
+    r_restrict: 6
+    r_and: 0
+    r_inverse: 7
+    r_transitive_closure: 0
+    b_empty: 30
+    n_count: 135
+    n_concept_distance: 110
+[t=49.5685s, 2633868 KB] Finished generating composite features.
+Features generated: 277
+Features after relevant changes pruning (complete): 130
+2024-09-14 16:22:22,345 - ..done
+2024-09-14 16:22:22,345 - Constructing PerStateFeatureValuations...
+2024-09-14 16:22:22,346 - ..done
+2024-09-14 16:22:22,346 - Constructing StatePairEquivalenceDatas...
+2024-09-14 16:22:22,366 - ..done
+2024-09-14 16:22:22,366 - Constructing TupleGraphEquivalences...
+Tuple graph equivalence construction statistics:
+Num nodes: 25
+2024-09-14 16:22:22,367 - ..done
+2024-09-14 16:22:22,367 - Minimizing TupleGraphEquivalences...
+Tuple graph equivalence minimization statistics:
+Num orig nodes: 25
+Num kept nodes: 25
+2024-09-14 16:22:22,367 - ..done
+Number of initial D2 facts: 50
+Number of D2 facts: 50 of 625
+2024-09-14 16:22:22,415 - Grounding Logic Program...
+2024-09-14 16:22:22,458 - ..done
+2024-09-14 16:22:22,458 - Solving Logic Program...
+2024-09-14 16:22:22,463 - ..done
+Clingo statistics:
+{'call': 0.0, 'result': 1.0, 'signal': 0.0, 'exhausted': 1.0, 'costs': [0.0], 'lower': [0.0], 'concurrency': 32.0, 'winner': 23.0, 'times': {'total': 0.09529399871826172, 'cpu': 0.10716000000002168, 'solve': 0.002427816390991211, 'unsat': 0.0005309581756591797, 'sat': 0.0016047954559326172}, 'models': {'enumerated': 2.0, 'optimal': 1.0}}
+Solution cost: [0.0]
+Total time: 0.09529399871826172
+CPU time: 0.10716000000002168
+Solve time: 0.002427816390991211
+2024-09-14 16:22:22,490 - Learned the following sketch:
+(:policy
+(:booleans )
+(:numericals )
+(:rule (:conditions ) (:effects ))
+)
+Numer of sketch rules: 1
+Number of selected features: 0
+Maximum complexity of selected feature: 0
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/ipc2023/blocks_4/training/easy/p01.pddl
+Sketch cycles
+Instance: 1
+7
+7
+Number of unsatisfied D2 facts: 126
+Number of D2 facts: 176 of 625
+2024-09-14 16:22:22,634 - Grounding Logic Program...
+2024-09-14 16:22:22,699 - ..done
+2024-09-14 16:22:22,699 - Solving Logic Program...
+2024-09-14 16:22:22,709 - ..done
+Clingo statistics:
+{'call': 0.0, 'result': 1.0, 'signal': 0.0, 'exhausted': 1.0, 'costs': [5.0], 'lower': [5.0], 'concurrency': 32.0, 'winner': 28.0, 'times': {'total': 0.21789813041687012, 'cpu': 0.2527819999999963, 'solve': 0.004621028900146484, 'unsat': 0.001605987548828125, 'sat': 0.0020508766174316406}, 'models': {'enumerated': 5.0, 'optimal': 1.0}}
+Solution cost: [5.0]
+Total time: 0.21789813041687012
+CPU time: 0.2527819999999963
+Solve time: 0.004621028900146484
+2024-09-14 16:22:22,735 - Learned the following sketch:
+(:policy
+(:booleans )
+(:numericals (f17 "n_count(c_all(r_primitive(on,0,1),c_primitive(clear_g,0)))"))
+(:rule (:conditions (:c_n_gt f17)) (:effects (:e_n_bot f17)))
+(:rule (:conditions (:c_n_gt f17)) (:effects (:e_n_dec f17)))
+)
+Numer of sketch rules: 2
+Number of selected features: 1
+Maximum complexity of selected feature: 4
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/ipc2023/blocks_4/training/easy/p01.pddl
+Sketch cycles
+Instance: 1
+7
+7
+Number of unsatisfied D2 facts: 64
+Number of D2 facts: 240 of 625
+2024-09-14 16:22:22,876 - Grounding Logic Program...
+2024-09-14 16:22:22,954 - ..done
+2024-09-14 16:22:22,954 - Solving Logic Program...
+2024-09-14 16:22:22,966 - ..done
+Clingo statistics:
+{'call': 0.0, 'result': 1.0, 'signal': 0.0, 'exhausted': 1.0, 'costs': [5.0], 'lower': [5.0], 'concurrency': 32.0, 'winner': 5.0, 'times': {'total': 0.2303450107574463, 'cpu': 0.28896199999999794, 'solve': 0.006545066833496094, 'unsat': 0.002382993698120117, 'sat': 0.0020880699157714844}, 'models': {'enumerated': 6.0, 'optimal': 1.0}}
+Solution cost: [5.0]
+Total time: 0.2303450107574463
+CPU time: 0.28896199999999794
+Solve time: 0.006545066833496094
+2024-09-14 16:22:22,994 - Learned the following sketch:
+(:policy
+(:booleans )
+(:numericals (f15 "n_count(c_some(r_primitive(on,0,1),c_primitive(on-table_g,0)))"))
+(:rule (:conditions (:c_n_eq f15)) (:effects (:e_n_inc f15)))
+(:rule (:conditions (:c_n_eq f15)) (:effects (:e_n_bot f15)))
+)
+Numer of sketch rules: 2
+Number of selected features: 1
+Maximum complexity of selected feature: 4
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/ipc2023/blocks_4/training/easy/p01.pddl
+Sketch cycles
+Instance: 1
+7
+7
+Number of unsatisfied D2 facts: 18
+Number of D2 facts: 258 of 625
+2024-09-14 16:22:23,145 - Grounding Logic Program...
+2024-09-14 16:22:23,227 - ..done
+2024-09-14 16:22:23,227 - Solving Logic Program...
+2024-09-14 16:22:23,240 - ..done
+Clingo statistics:
+{'call': 0.0, 'result': 1.0, 'signal': 0.0, 'exhausted': 1.0, 'costs': [5.0], 'lower': [5.0], 'concurrency': 32.0, 'winner': 29.0, 'times': {'total': 0.24541592597961426, 'cpu': 0.32015399999997385, 'solve': 0.0068149566650390625, 'unsat': 0.0021779537200927734, 'sat': 0.0024900436401367188}, 'models': {'enumerated': 7.0, 'optimal': 1.0}}
+Solution cost: [5.0]
+Total time: 0.24541592597961426
+CPU time: 0.32015399999997385
+Solve time: 0.0068149566650390625
+2024-09-14 16:22:23,266 - Learned the following sketch:
+(:policy
+(:booleans )
+(:numericals (f15 "n_count(c_some(r_primitive(on,0,1),c_primitive(on-table_g,0)))"))
+(:rule (:conditions (:c_n_eq f15)) (:effects (:e_n_inc f15)))
+)
+Numer of sketch rules: 1
+Number of selected features: 1
+Maximum complexity of selected feature: 4
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/ipc2023/blocks_4/training/easy/p01.pddl
+2024-09-14 16:22:23,267 - Verifying learned sketch...
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/ipc2023/blocks_4/training/easy/p01.pddl
+Sketch fails to bound width of a state
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/ipc2023/blocks_4/training/easy/p03.pddl
+Instance: 0
+Source_state: 0
+Dlplan state: (instance index=0, state index=4, atoms={clear(b2), on-table(b1), arm-empty(), on(b2,b1)})
+2024-09-14 16:22:23,268 - ..done
+Smallest unsolved instance: 0
+Selected instances: [1, 0]
+2024-09-14 16:22:23,268 - Iteration: 2
+     id: 1 problem_filepath: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/ipc2023/blocks_4/training/easy/p01.pddl num_states: 5 num_state_equivalences: 5
+     id: 0 problem_filepath: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/ipc2023/blocks_4/training/easy/p03.pddl num_states: 5 num_state_equivalences: 3
+2024-09-14 16:22:23,269 - Initialize global faithful abstract states...
+2024-09-14 16:22:23,269 - ..done
+2024-09-14 16:22:23,269 - Initializing DomainFeatureData...
+[t=50.6524s, 2646088 KB] Started generating base features of complexity 1.
+[t=50.6526s, 2646088 KB] Complexity 1:
+    b_nullary: 2
+    c_one_of: 0
+    c_top: 1
+    c_bot: 1
+    c_primitive: 5
+    r_primitive: 2
+    c_and: 0
+    c_not: 0
+    c_equal: 0
+    c_some: 0
+    c_all: 0
+    r_restrict: 0
+    r_and: 0
+    r_inverse: 0
+    r_transitive_closure: 0
+    b_empty: 0
+    n_count: 0
+    n_concept_distance: 0
+[t=50.6527s, 2646088 KB] Finished generating base features.
+[t=50.6527s, 2646088 KB] Started generating composite features. 
+[t=50.6528s, 2646088 KB] Complexity 2:
+Total concept elements: 12
+Total role elements: 4
+Total numerical elements: 7
+Total boolean elements: 5
+    b_nullary: 2
+    c_one_of: 0
+    c_top: 1
+    c_bot: 1
+    c_primitive: 5
+    r_primitive: 2
+    c_and: 0
+    c_not: 5
+    c_equal: 0
+    c_some: 0
+    c_all: 0
+    r_restrict: 0
+    r_and: 0
+    r_inverse: 2
+    r_transitive_closure: 0
+    b_empty: 3
+    n_count: 7
+    n_concept_distance: 0
+[t=50.6532s, 2646088 KB] Complexity 3:
+Total concept elements: 33
+Total role elements: 11
+Total numerical elements: 9
+Total boolean elements: 6
+    b_nullary: 2
+    c_one_of: 0
+    c_top: 1
+    c_bot: 1
+    c_primitive: 5
+    r_primitive: 2
+    c_and: 8
+    c_not: 5
+    c_equal: 1
+    c_some: 6
+    c_all: 6
+    r_restrict: 6
+    r_and: 1
+    r_inverse: 2
+    r_transitive_closure: 0
+    b_empty: 4
+    n_count: 9
+    n_concept_distance: 0
+[t=50.6537s, 2646088 KB] Complexity 4:
+Total concept elements: 76
+Total role elements: 17
+Total numerical elements: 30
+Total boolean elements: 21
+    b_nullary: 2
+    c_one_of: 0
+    c_top: 1
+    c_bot: 1
+    c_primitive: 5
+    r_primitive: 2
+    c_and: 21
+    c_not: 24
+    c_equal: 1
+    c_some: 11
+    c_all: 12
+    r_restrict: 6
+    r_and: 1
+    r_inverse: 8
+    r_transitive_closure: 0
+    b_empty: 19
+    n_count: 30
+    n_concept_distance: 0
+[t=50.6551s, 2646088 KB] Complexity 5:
+Total concept elements: 135
+Total role elements: 17
+Total numerical elements: 60
+Total boolean elements: 36
+    b_nullary: 2
+    c_one_of: 0
+    c_top: 1
+    c_bot: 1
+    c_primitive: 5
+    r_primitive: 2
+    c_and: 53
+    c_not: 46
+    c_equal: 1
+    c_some: 13
+    c_all: 15
+    r_restrict: 6
+    r_and: 1
+    r_inverse: 8
+    r_transitive_closure: 0
+    b_empty: 34
+    n_count: 60
+    n_concept_distance: 0
+[t=50.6579s, 2646088 KB] Complexity 6:
+Total concept elements: 240
+Total role elements: 17
+Total numerical elements: 101
+Total boolean elements: 53
+    b_nullary: 2
+    c_one_of: 0
+    c_top: 1
+    c_bot: 1
+    c_primitive: 5
+    r_primitive: 2
+    c_and: 115
+    c_not: 81
+    c_equal: 1
+    c_some: 15
+    c_all: 21
+    r_restrict: 6
+    r_and: 1
+    r_inverse: 8
+    r_transitive_closure: 0
+    b_empty: 51
+    n_count: 101
+    n_concept_distance: 0
+[t=50.6629s, 2646088 KB] Complexity 7:
+Total concept elements: 373
+Total role elements: 17
+Total numerical elements: 165
+Total boolean elements: 73
+    b_nullary: 2
+    c_one_of: 0
+    c_top: 1
+    c_bot: 1
+    c_primitive: 5
+    r_primitive: 2
+    c_and: 196
+    c_not: 133
+    c_equal: 1
+    c_some: 15
+    c_all: 21
+    r_restrict: 6
+    r_and: 1
+    r_inverse: 8
+    r_transitive_closure: 0
+    b_empty: 71
+    n_count: 165
+    n_concept_distance: 0
+[t=50.6729s, 2646088 KB] Complexity 8:
+Total concept elements: 607
+Total role elements: 17
+Total numerical elements: 240
+Total boolean elements: 95
+    b_nullary: 2
+    c_one_of: 0
+    c_top: 1
+    c_bot: 1
+    c_primitive: 5
+    r_primitive: 2
+    c_and: 362
+    c_not: 193
+    c_equal: 1
+    c_some: 17
+    c_all: 27
+    r_restrict: 6
+    r_and: 1
+    r_inverse: 8
+    r_transitive_closure: 0
+    b_empty: 93
+    n_count: 240
+    n_concept_distance: 0
+[t=50.6905s, 2646088 KB] Complexity 9:
+Total concept elements: 996
+Total role elements: 17
+Total numerical elements: 371
+Total boolean elements: 118
+    b_nullary: 2
+    c_one_of: 0
+    c_top: 1
+    c_bot: 1
+    c_primitive: 5
+    r_primitive: 2
+    c_and: 643
+    c_not: 300
+    c_equal: 1
+    c_some: 17
+    c_all: 28
+    r_restrict: 6
+    r_and: 1
+    r_inverse: 8
+    r_transitive_closure: 0
+    b_empty: 116
+    n_count: 371
+    n_concept_distance: 0
+[t=50.6906s, 2646088 KB] Finished generating composite features.
+Features generated: 489
+Features after relevant changes pruning (complete): 243
+2024-09-14 16:22:23,757 - ..done
+2024-09-14 16:22:23,757 - Constructing PerStateFeatureValuations...
+2024-09-14 16:22:23,759 - ..done
+2024-09-14 16:22:23,759 - Constructing StatePairEquivalenceDatas...
+2024-09-14 16:22:23,835 - ..done
+2024-09-14 16:22:23,836 - Constructing TupleGraphEquivalences...
+Tuple graph equivalence construction statistics:
+Num nodes: 40
+2024-09-14 16:22:23,837 - ..done
+2024-09-14 16:22:23,837 - Minimizing TupleGraphEquivalences...
+Tuple graph equivalence minimization statistics:
+Num orig nodes: 40
+Num kept nodes: 34
+2024-09-14 16:22:23,838 - ..done
+Number of initial D2 facts: 59
+Number of D2 facts: 59 of 1156
+2024-09-14 16:22:23,964 - Grounding Logic Program...
+2024-09-14 16:22:24,068 - ..done
+2024-09-14 16:22:24,068 - Solving Logic Program...
+2024-09-14 16:22:24,077 - ..done
+Clingo statistics:
+{'call': 0.0, 'result': 1.0, 'signal': 0.0, 'exhausted': 1.0, 'costs': [3.0], 'lower': [3.0], 'concurrency': 32.0, 'winner': 26.0, 'times': {'total': 0.2381141185760498, 'cpu': 0.25456600000001117, 'solve': 0.003422975540161133, 'unsat': 0.001026153564453125, 'sat': 0.0017168521881103516}, 'models': {'enumerated': 9.0, 'optimal': 1.0}}
+Solution cost: [3.0]
+Total time: 0.2381141185760498
+CPU time: 0.25456600000001117
+Solve time: 0.003422975540161133
+2024-09-14 16:22:24,136 - Learned the following sketch:
+(:policy
+(:booleans )
+(:numericals (f3 "n_count(r_primitive(on,0,1))"))
+(:rule (:conditions (:c_n_eq f3)) (:effects (:e_n_bot f3)))
+(:rule (:conditions (:c_n_eq f3)) (:effects (:e_n_inc f3)))
+(:rule (:conditions (:c_n_gt f3)) (:effects (:e_n_bot f3)))
+(:rule (:conditions (:c_n_gt f3)) (:effects (:e_n_dec f3)))
+)
+Numer of sketch rules: 4
+Number of selected features: 1
+Maximum complexity of selected feature: 2
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/ipc2023/blocks_4/training/easy/p01.pddl
+Sketch cycles
+Instance: 1
+7
+7
+Number of unsatisfied D2 facts: 56
+Number of D2 facts: 115 of 1156
+2024-09-14 16:22:24,505 - Grounding Logic Program...
+2024-09-14 16:22:24,621 - ..done
+2024-09-14 16:22:24,621 - Solving Logic Program...
+2024-09-14 16:22:24,633 - ..done
+Clingo statistics:
+{'call': 0.0, 'result': 1.0, 'signal': 0.0, 'exhausted': 1.0, 'costs': [3.0], 'lower': [3.0], 'concurrency': 32.0, 'winner': 30.0, 'times': {'total': 0.49605894088745117, 'cpu': 0.5347010000000125, 'solve': 0.004428863525390625, 'unsat': 0.00043392181396484375, 'sat': 0.0015559196472167969}, 'models': {'enumerated': 29.0, 'optimal': 1.0}}
+Solution cost: [3.0]
+Total time: 0.49605894088745117
+CPU time: 0.5347010000000125
+Solve time: 0.004428863525390625
+2024-09-14 16:22:24,693 - Learned the following sketch:
+(:policy
+(:booleans )
+(:numericals (f1 "n_count(c_primitive(clear,0))"))
+(:rule (:conditions (:c_n_gt f1)) (:effects (:e_n_inc f1)))
+(:rule (:conditions (:c_n_gt f1)) (:effects (:e_n_bot f1)))
+(:rule (:conditions (:c_n_gt f1)) (:effects (:e_n_dec f1)))
+)
+Numer of sketch rules: 3
+Number of selected features: 1
+Maximum complexity of selected feature: 2
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/ipc2023/blocks_4/training/easy/p01.pddl
+Sketch cycles
+Instance: 1
+7
+7
+Number of unsatisfied D2 facts: 99
+Number of D2 facts: 214 of 1156
+2024-09-14 16:22:25,063 - Grounding Logic Program...
+2024-09-14 16:22:25,213 - ..done
+2024-09-14 16:22:25,213 - Solving Logic Program...
+2024-09-14 16:22:25,231 - ..done
+Clingo statistics:
+{'call': 0.0, 'result': 1.0, 'signal': 0.0, 'exhausted': 1.0, 'costs': [5.0], 'lower': [5.0], 'concurrency': 32.0, 'winner': 2.0, 'times': {'total': 0.5362789630889893, 'cpu': 0.6370740000000126, 'solve': 0.008149862289428711, 'unsat': 0.0014879703521728516, 'sat': 0.002624988555908203}, 'models': {'enumerated': 15.0, 'optimal': 1.0}}
+Solution cost: [5.0]
+Total time: 0.5362789630889893
+CPU time: 0.6370740000000126
+Solve time: 0.008149862289428711
+2024-09-14 16:22:25,297 - Learned the following sketch:
+(:policy
+(:booleans )
+(:numericals (f9 "n_count(c_and(c_primitive(on-table,0),c_primitive(clear_g,0)))"))
+(:rule (:conditions (:c_n_gt f9)) (:effects (:e_n_inc f9)))
+(:rule (:conditions (:c_n_gt f9)) (:effects (:e_n_dec f9)))
+(:rule (:conditions (:c_n_eq f9)) (:effects (:e_n_bot f9)))
+)
+Numer of sketch rules: 3
+Number of selected features: 1
+Maximum complexity of selected feature: 4
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/ipc2023/blocks_4/training/easy/p01.pddl
+Sketch cycles
+Instance: 1
+5
+7
+5
+Number of unsatisfied D2 facts: 3
+Number of D2 facts: 217 of 1156
+2024-09-14 16:22:25,688 - Grounding Logic Program...
+2024-09-14 16:22:25,842 - ..done
+2024-09-14 16:22:25,843 - Solving Logic Program...
+2024-09-14 16:22:25,861 - ..done
+Clingo statistics:
+{'call': 0.0, 'result': 1.0, 'signal': 0.0, 'exhausted': 1.0, 'costs': [7.0], 'lower': [7.0], 'concurrency': 32.0, 'winner': 9.0, 'times': {'total': 0.5623459815979004, 'cpu': 0.6564900000000193, 'solve': 0.008552789688110352, 'unsat': 0.0028858184814453125, 'sat': 0.00273895263671875}, 'models': {'enumerated': 11.0, 'optimal': 1.0}}
+Solution cost: [7.0]
+Total time: 0.5623459815979004
+CPU time: 0.6564900000000193
+Solve time: 0.008552789688110352
+2024-09-14 16:22:25,920 - Learned the following sketch:
+(:policy
+(:booleans )
+(:numericals (f56 "n_count(c_and(c_primitive(on-table,0),c_all(r_primitive(on_g,0,1),c_primitive(holding,0))))"))
+(:rule (:conditions (:c_n_gt f56)) (:effects (:e_n_dec f56)))
+(:rule (:conditions (:c_n_gt f56)) (:effects (:e_n_inc f56)))
+(:rule (:conditions (:c_n_eq f56)) (:effects (:e_n_inc f56)))
+)
+Numer of sketch rules: 3
+Number of selected features: 1
+Maximum complexity of selected feature: 6
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/ipc2023/blocks_4/training/easy/p01.pddl
+Sketch cycles
+Instance: 1
+4
+7
+7
+Number of unsatisfied D2 facts: 8
+Number of D2 facts: 225 of 1156
+2024-09-14 16:22:26,303 - Grounding Logic Program...
+2024-09-14 16:22:26,460 - ..done
+2024-09-14 16:22:26,460 - Solving Logic Program...
+2024-09-14 16:22:26,481 - ..done
+Clingo statistics:
+{'call': 0.0, 'result': 1.0, 'signal': 0.0, 'exhausted': 1.0, 'costs': [7.0], 'lower': [7.0], 'concurrency': 32.0, 'winner': 20.0, 'times': {'total': 0.5588428974151611, 'cpu': 0.6994789999999966, 'solve': 0.010666131973266602, 'unsat': 0.002783060073852539, 'sat': 0.0028781890869140625}, 'models': {'enumerated': 17.0, 'optimal': 1.0}}
+Solution cost: [7.0]
+Total time: 0.5588428974151611
+CPU time: 0.6994789999999966
+Solve time: 0.010666131973266602
+2024-09-14 16:22:26,542 - Learned the following sketch:
+(:policy
+(:booleans )
+(:numericals (f50 "n_count(c_and(c_primitive(clear,0),c_all(r_primitive(on_g,0,1),c_primitive(holding,0))))"))
+(:rule (:conditions (:c_n_gt f50)) (:effects (:e_n_inc f50)))
+(:rule (:conditions (:c_n_gt f50)) (:effects (:e_n_dec f50)))
+)
+Numer of sketch rules: 2
+Number of selected features: 1
+Maximum complexity of selected feature: 6
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/ipc2023/blocks_4/training/easy/p01.pddl
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/ipc2023/blocks_4/training/easy/p03.pddl
+2024-09-14 16:22:26,543 - Verifying learned sketch...
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/ipc2023/blocks_4/training/easy/p01.pddl
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/ipc2023/blocks_4/training/easy/p03.pddl
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/ipc2023/blocks_4/training/easy/p03.pddl
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/ipc2023/blocks_4/training/easy/p01.pddl
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/ipc2023/blocks_4/training/easy/p05.pddl
+Sketch cycles
+Instance: 2
+9
+10
+10
+2024-09-14 16:22:26,546 - ..done
+Smallest unsolved instance: 2
+Selected instances: [2]
+2024-09-14 16:22:26,546 - Iteration: 3
+     id: 2 problem_filepath: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/ipc2023/blocks_4/training/easy/p05.pddl num_states: 22 num_state_equivalences: 5
+2024-09-14 16:22:26,638 - Initialize global faithful abstract states...
+2024-09-14 16:22:26,638 - ..done
+2024-09-14 16:22:26,638 - Initializing DomainFeatureData...
+[t=54.0215s, 2667960 KB] Started generating base features of complexity 1.
+[t=54.0216s, 2667960 KB] Complexity 1:
+    b_nullary: 2
+    c_one_of: 0
+    c_top: 1
+    c_bot: 1
+    c_primitive: 3
+    r_primitive: 2
+    c_and: 0
+    c_not: 0
+    c_equal: 0
+    c_some: 0
+    c_all: 0
+    r_restrict: 0
+    r_and: 0
+    r_inverse: 0
+    r_transitive_closure: 0
+    b_empty: 0
+    n_count: 0
+    n_concept_distance: 0
+[t=54.0217s, 2667960 KB] Finished generating base features.
+[t=54.0217s, 2667960 KB] Started generating composite features. 
+[t=54.0218s, 2667960 KB] Complexity 2:
+Total concept elements: 8
+Total role elements: 4
+Total numerical elements: 5
+Total boolean elements: 4
+    b_nullary: 2
+    c_one_of: 0
+    c_top: 1
+    c_bot: 1
+    c_primitive: 3
+    r_primitive: 2
+    c_and: 0
+    c_not: 3
+    c_equal: 0
+    c_some: 0
+    c_all: 0
+    r_restrict: 0
+    r_and: 0
+    r_inverse: 1
+    r_transitive_closure: 1
+    b_empty: 2
+    n_count: 5
+    n_concept_distance: 0
+[t=54.0221s, 2667960 KB] Complexity 3:
+Total concept elements: 13
+Total role elements: 6
+Total numerical elements: 8
+Total boolean elements: 5
+    b_nullary: 2
+    c_one_of: 0
+    c_top: 1
+    c_bot: 1
+    c_primitive: 3
+    r_primitive: 2
+    c_and: 1
+    c_not: 3
+    c_equal: 1
+    c_some: 2
+    c_all: 1
+    r_restrict: 1
+    r_and: 0
+    r_inverse: 2
+    r_transitive_closure: 1
+    b_empty: 3
+    n_count: 8
+    n_concept_distance: 0
+[t=54.0223s, 2667960 KB] Complexity 4:
+Total concept elements: 22
+Total role elements: 7
+Total numerical elements: 12
+Total boolean elements: 6
+    b_nullary: 2
+    c_one_of: 0
+    c_top: 1
+    c_bot: 1
+    c_primitive: 3
+    r_primitive: 2
+    c_and: 3
+    c_not: 6
+    c_equal: 1
+    c_some: 4
+    c_all: 3
+    r_restrict: 1
+    r_and: 0
+    r_inverse: 3
+    r_transitive_closure: 1
+    b_empty: 4
+    n_count: 12
+    n_concept_distance: 0
+[t=54.0226s, 2667960 KB] Complexity 5:
+Total concept elements: 29
+Total role elements: 7
+Total numerical elements: 15
+Total boolean elements: 7
+    b_nullary: 2
+    c_one_of: 0
+    c_top: 1
+    c_bot: 1
+    c_primitive: 3
+    r_primitive: 2
+    c_and: 6
+    c_not: 10
+    c_equal: 1
+    c_some: 4
+    c_all: 3
+    r_restrict: 1
+    r_and: 0
+    r_inverse: 3
+    r_transitive_closure: 1
+    b_empty: 5
+    n_count: 15
+    n_concept_distance: 0
+[t=54.0231s, 2667960 KB] Complexity 6:
+Total concept elements: 40
+Total role elements: 7
+Total numerical elements: 18
+Total boolean elements: 10
+    b_nullary: 2
+    c_one_of: 0
+    c_top: 1
+    c_bot: 1
+    c_primitive: 3
+    r_primitive: 2
+    c_and: 13
+    c_not: 13
+    c_equal: 1
+    c_some: 4
+    c_all: 4
+    r_restrict: 1
+    r_and: 0
+    r_inverse: 3
+    r_transitive_closure: 1
+    b_empty: 8
+    n_count: 18
+    n_concept_distance: 0
+[t=54.0236s, 2667960 KB] Complexity 7:
+Total concept elements: 53
+Total role elements: 7
+Total numerical elements: 23
+Total boolean elements: 11
+    b_nullary: 2
+    c_one_of: 0
+    c_top: 1
+    c_bot: 1
+    c_primitive: 3
+    r_primitive: 2
+    c_and: 20
+    c_not: 17
+    c_equal: 1
+    c_some: 4
+    c_all: 6
+    r_restrict: 1
+    r_and: 0
+    r_inverse: 3
+    r_transitive_closure: 1
+    b_empty: 9
+    n_count: 23
+    n_concept_distance: 0
+[t=54.0243s, 2667960 KB] Complexity 8:
+Total concept elements: 63
+Total role elements: 7
+Total numerical elements: 27
+Total boolean elements: 11
+    b_nullary: 2
+    c_one_of: 0
+    c_top: 1
+    c_bot: 1
+    c_primitive: 3
+    r_primitive: 2
+    c_and: 27
+    c_not: 20
+    c_equal: 1
+    c_some: 4
+    c_all: 6
+    r_restrict: 1
+    r_and: 0
+    r_inverse: 3
+    r_transitive_closure: 1
+    b_empty: 9
+    n_count: 27
+    n_concept_distance: 0
+[t=54.0252s, 2667960 KB] Complexity 9:
+Total concept elements: 74
+Total role elements: 7
+Total numerical elements: 30
+Total boolean elements: 11
+    b_nullary: 2
+    c_one_of: 0
+    c_top: 1
+    c_bot: 1
+    c_primitive: 3
+    r_primitive: 2
+    c_and: 36
+    c_not: 22
+    c_equal: 1
+    c_some: 4
+    c_all: 6
+    r_restrict: 1
+    r_and: 0
+    r_inverse: 3
+    r_transitive_closure: 1
+    b_empty: 9
+    n_count: 30
+    n_concept_distance: 0
+[t=54.0253s, 2667960 KB] Finished generating composite features.
+Features generated: 41
+Features after relevant changes pruning (complete): 26
+2024-09-14 16:22:26,683 - ..done
+2024-09-14 16:22:26,683 - Constructing PerStateFeatureValuations...
+2024-09-14 16:22:26,683 - ..done
+2024-09-14 16:22:26,683 - Constructing StatePairEquivalenceDatas...
+2024-09-14 16:22:26,697 - ..done
+2024-09-14 16:22:26,698 - Constructing TupleGraphEquivalences...
+Tuple graph equivalence construction statistics:
+Num nodes: 42
+2024-09-14 16:22:26,700 - ..done
+2024-09-14 16:22:26,700 - Minimizing TupleGraphEquivalences...
+Tuple graph equivalence minimization statistics:
+Num orig nodes: 42
+Num kept nodes: 21
+2024-09-14 16:22:26,700 - ..done
+Number of initial D2 facts: 43
+Number of D2 facts: 43 of 529
+2024-09-14 16:22:26,719 - Grounding Logic Program...
+2024-09-14 16:22:26,729 - ..done
+2024-09-14 16:22:26,730 - Solving Logic Program...
+2024-09-14 16:22:26,732 - ..done
+Clingo statistics:
+{'call': 0.0, 'result': 1.0, 'signal': 0.0, 'exhausted': 1.0, 'costs': [0.0], 'lower': [0.0], 'concurrency': 32.0, 'winner': 1.0, 'times': {'total': 0.031165122985839844, 'cpu': 0.037967000000008966, 'solve': 0.001619100570678711, 'unsat': 0.0004169940948486328, 'sat': 0.0012021064758300781}, 'models': {'enumerated': 1.0, 'optimal': 1.0}}
+Solution cost: [0.0]
+Total time: 0.031165122985839844
+CPU time: 0.037967000000008966
+Solve time: 0.001619100570678711
+2024-09-14 16:22:26,738 - Learned the following sketch:
+(:policy
+(:booleans )
+(:numericals )
+(:rule (:conditions ) (:effects ))
+)
+Numer of sketch rules: 1
+Number of selected features: 0
+Maximum complexity of selected feature: 0
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/ipc2023/blocks_4/training/easy/p05.pddl
+Sketch cycles
+Instance: 2
+11
+11
+Number of unsatisfied D2 facts: 120
+Number of D2 facts: 163 of 529
+2024-09-14 16:22:26,768 - Grounding Logic Program...
+2024-09-14 16:22:26,784 - ..done
+2024-09-14 16:22:26,785 - Solving Logic Program...
+2024-09-14 16:22:26,789 - ..done
+Clingo statistics:
+{'call': 0.0, 'result': 1.0, 'signal': 0.0, 'exhausted': 1.0, 'costs': [3.0], 'lower': [3.0], 'concurrency': 32.0, 'winner': 23.0, 'times': {'total': 0.05001187324523926, 'cpu': 0.07501200000001518, 'solve': 0.0032989978790283203, 'unsat': 0.0005578994750976562, 'sat': 0.001566171646118164}, 'models': {'enumerated': 11.0, 'optimal': 1.0}}
+Solution cost: [3.0]
+Total time: 0.05001187324523926
+CPU time: 0.07501200000001518
+Solve time: 0.0032989978790283203
+2024-09-14 16:22:26,796 - Learned the following sketch:
+(:policy
+(:booleans )
+(:numericals (f1 "n_count(c_primitive(clear,0))"))
+(:rule (:conditions (:c_n_gt f1)) (:effects (:e_n_inc f1)))
+(:rule (:conditions (:c_n_gt f1)) (:effects (:e_n_bot f1)))
+)
+Numer of sketch rules: 2
+Number of selected features: 1
+Maximum complexity of selected feature: 2
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/ipc2023/blocks_4/training/easy/p05.pddl
+Sketch cycles
+Instance: 2
+11
+11
+Number of unsatisfied D2 facts: 8
+Number of D2 facts: 171 of 529
+2024-09-14 16:22:26,828 - Grounding Logic Program...
+2024-09-14 16:22:26,844 - ..done
+2024-09-14 16:22:26,845 - Solving Logic Program...
+2024-09-14 16:22:26,848 - ..done
+Clingo statistics:
+{'call': 0.0, 'result': 1.0, 'signal': 0.0, 'exhausted': 1.0, 'costs': [3.0], 'lower': [3.0], 'concurrency': 32.0, 'winner': 10.0, 'times': {'total': 0.05177593231201172, 'cpu': 0.06677600000000439, 'solve': 0.0023140907287597656, 'unsat': 0.0003559589385986328, 'sat': 0.0011792182922363281}, 'models': {'enumerated': 6.0, 'optimal': 1.0}}
+Solution cost: [3.0]
+Total time: 0.05177593231201172
+CPU time: 0.06677600000000439
+Solve time: 0.0023140907287597656
+2024-09-14 16:22:26,855 - Learned the following sketch:
+(:policy
+(:booleans )
+(:numericals (f1 "n_count(c_primitive(clear,0))"))
+(:rule (:conditions (:c_n_gt f1)) (:effects (:e_n_inc f1)))
+(:rule (:conditions (:c_n_gt f1)) (:effects (:e_n_bot f1)))
+)
+Numer of sketch rules: 2
+Number of selected features: 1
+Maximum complexity of selected feature: 2
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/ipc2023/blocks_4/training/easy/p05.pddl
+Sketch cycles
+Instance: 2
+11
+11
+Number of unsatisfied D2 facts: 15
+Number of D2 facts: 186 of 529
+2024-09-14 16:22:26,886 - Grounding Logic Program...
+2024-09-14 16:22:26,903 - ..done
+2024-09-14 16:22:26,903 - Solving Logic Program...
+2024-09-14 16:22:26,907 - ..done
+Clingo statistics:
+{'call': 0.0, 'result': 1.0, 'signal': 0.0, 'exhausted': 1.0, 'costs': [3.0], 'lower': [3.0], 'concurrency': 32.0, 'winner': 21.0, 'times': {'total': 0.05189800262451172, 'cpu': 0.0731569999999806, 'solve': 0.0032720565795898438, 'unsat': 0.0004329681396484375, 'sat': 0.0015399456024169922}, 'models': {'enumerated': 7.0, 'optimal': 1.0}}
+Solution cost: [3.0]
+Total time: 0.05189800262451172
+CPU time: 0.0731569999999806
+Solve time: 0.0032720565795898438
+2024-09-14 16:22:26,914 - Learned the following sketch:
+(:policy
+(:booleans )
+(:numericals (f1 "n_count(c_primitive(clear,0))"))
+(:rule (:conditions (:c_n_gt f1)) (:effects (:e_n_inc f1)))
+)
+Numer of sketch rules: 1
+Number of selected features: 1
+Maximum complexity of selected feature: 2
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/ipc2023/blocks_4/training/easy/p05.pddl
+2024-09-14 16:22:26,915 - Verifying learned sketch...
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/ipc2023/blocks_4/training/easy/p05.pddl
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/ipc2023/blocks_4/training/easy/p03.pddl
+Sketch fails to bound width of a state
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/ipc2023/blocks_4/training/easy/p01.pddl
+Instance: 1
+Source_state: 3
+Dlplan state: (instance index=1, state index=0, atoms={clear(b1), on-table(b2), arm-empty(), clear(b2), on-table(b1)})
+2024-09-14 16:22:26,916 - ..done
+Smallest unsolved instance: 1
+Selected instances: [2, 1]
+2024-09-14 16:22:26,916 - Iteration: 4
+     id: 2 problem_filepath: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/ipc2023/blocks_4/training/easy/p05.pddl num_states: 22 num_state_equivalences: 5
+     id: 1 problem_filepath: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/ipc2023/blocks_4/training/easy/p01.pddl num_states: 5 num_state_equivalences: 5
+2024-09-14 16:22:26,919 - Initialize global faithful abstract states...
+2024-09-14 16:22:26,919 - ..done
+2024-09-14 16:22:26,919 - Initializing DomainFeatureData...
+[t=54.3023s, 2672076 KB] Started generating base features of complexity 1.
+[t=54.3024s, 2672076 KB] Complexity 1:
+    b_nullary: 2
+    c_one_of: 0
+    c_top: 1
+    c_bot: 1
+    c_primitive: 5
+    r_primitive: 2
+    c_and: 0
+    c_not: 0
+    c_equal: 0
+    c_some: 0
+    c_all: 0
+    r_restrict: 0
+    r_and: 0
+    r_inverse: 0
+    r_transitive_closure: 0
+    b_empty: 0
+    n_count: 0
+    n_concept_distance: 0
+[t=54.3025s, 2672076 KB] Finished generating base features.
+[t=54.3025s, 2672076 KB] Started generating composite features. 
+[t=54.3026s, 2672076 KB] Complexity 2:
+Total concept elements: 12
+Total role elements: 5
+Total numerical elements: 7
+Total boolean elements: 5
+    b_nullary: 2
+    c_one_of: 0
+    c_top: 1
+    c_bot: 1
+    c_primitive: 5
+    r_primitive: 2
+    c_and: 0
+    c_not: 5
+    c_equal: 0
+    c_some: 0
+    c_all: 0
+    r_restrict: 0
+    r_and: 0
+    r_inverse: 2
+    r_transitive_closure: 1
+    b_empty: 3
+    n_count: 7
+    n_concept_distance: 0
+[t=54.303s, 2672076 KB] Complexity 3:
+Total concept elements: 35
+Total role elements: 14
+Total numerical elements: 10
+Total boolean elements: 6
+    b_nullary: 2
+    c_one_of: 0
+    c_top: 1
+    c_bot: 1
+    c_primitive: 5
+    r_primitive: 2
+    c_and: 8
+    c_not: 5
+    c_equal: 1
+    c_some: 7
+    c_all: 7
+    r_restrict: 7
+    r_and: 1
+    r_inverse: 3
+    r_transitive_closure: 1
+    b_empty: 4
+    n_count: 10
+    n_concept_distance: 0
+[t=54.3036s, 2672076 KB] Complexity 4:
+Total concept elements: 84
+Total role elements: 21
+Total numerical elements: 33
+Total boolean elements: 21
+    b_nullary: 2
+    c_one_of: 0
+    c_top: 1
+    c_bot: 1
+    c_primitive: 5
+    r_primitive: 2
+    c_and: 22
+    c_not: 26
+    c_equal: 1
+    c_some: 14
+    c_all: 14
+    r_restrict: 7
+    r_and: 1
+    r_inverse: 10
+    r_transitive_closure: 1
+    b_empty: 19
+    n_count: 33
+    n_concept_distance: 0
+[t=54.3052s, 2672076 KB] Complexity 5:
+Total concept elements: 158
+Total role elements: 21
+Total numerical elements: 65
+Total boolean elements: 37
+    b_nullary: 2
+    c_one_of: 0
+    c_top: 1
+    c_bot: 1
+    c_primitive: 5
+    r_primitive: 2
+    c_and: 63
+    c_not: 52
+    c_equal: 1
+    c_some: 16
+    c_all: 19
+    r_restrict: 7
+    r_and: 1
+    r_inverse: 10
+    r_transitive_closure: 1
+    b_empty: 35
+    n_count: 65
+    n_concept_distance: 0
+[t=54.3087s, 2672076 KB] Complexity 6:
+Total concept elements: 293
+Total role elements: 21
+Total numerical elements: 114
+Total boolean elements: 57
+    b_nullary: 2
+    c_one_of: 0
+    c_top: 1
+    c_bot: 1
+    c_primitive: 5
+    r_primitive: 2
+    c_and: 141
+    c_not: 98
+    c_equal: 1
+    c_some: 18
+    c_all: 28
+    r_restrict: 7
+    r_and: 1
+    r_inverse: 10
+    r_transitive_closure: 1
+    b_empty: 55
+    n_count: 114
+    n_concept_distance: 0
+[t=54.3157s, 2672076 KB] Complexity 7:
+Total concept elements: 475
+Total role elements: 21
+Total numerical elements: 191
+Total boolean elements: 81
+    b_nullary: 2
+    c_one_of: 0
+    c_top: 1
+    c_bot: 1
+    c_primitive: 5
+    r_primitive: 2
+    c_and: 253
+    c_not: 165
+    c_equal: 1
+    c_some: 18
+    c_all: 31
+    r_restrict: 7
+    r_and: 1
+    r_inverse: 10
+    r_transitive_closure: 1
+    b_empty: 79
+    n_count: 191
+    n_concept_distance: 0
+[t=54.3309s, 2672076 KB] Complexity 8:
+Total concept elements: 824
+Total role elements: 21
+Total numerical elements: 291
+Total boolean elements: 114
+    b_nullary: 2
+    c_one_of: 0
+    c_top: 1
+    c_bot: 1
+    c_primitive: 5
+    r_primitive: 2
+    c_and: 497
+    c_not: 257
+    c_equal: 1
+    c_some: 20
+    c_all: 42
+    r_restrict: 7
+    r_and: 1
+    r_inverse: 10
+    r_transitive_closure: 1
+    b_empty: 112
+    n_count: 291
+    n_concept_distance: 0
+[t=54.3598s, 2672076 KB] Complexity 9:
+Total concept elements: 1424
+Total role elements: 21
+Total numerical elements: 483
+Total boolean elements: 150
+    b_nullary: 2
+    c_one_of: 0
+    c_top: 1
+    c_bot: 1
+    c_primitive: 5
+    r_primitive: 2
+    c_and: 928
+    c_not: 421
+    c_equal: 1
+    c_some: 20
+    c_all: 47
+    r_restrict: 7
+    r_and: 1
+    r_inverse: 10
+    r_transitive_closure: 1
+    b_empty: 148
+    n_count: 483
+    n_concept_distance: 0
+[t=54.3599s, 2672076 KB] Finished generating composite features.
+Features generated: 633
+Features after relevant changes pruning (complete): 362
+2024-09-14 16:22:27,914 - ..done
+2024-09-14 16:22:27,914 - Constructing PerStateFeatureValuations...
+2024-09-14 16:22:27,917 - ..done
+2024-09-14 16:22:27,917 - Constructing StatePairEquivalenceDatas...
+2024-09-14 16:22:28,130 - ..done
+2024-09-14 16:22:28,130 - Constructing TupleGraphEquivalences...
+Tuple graph equivalence construction statistics:
+Num nodes: 67
+2024-09-14 16:22:28,132 - ..done
+2024-09-14 16:22:28,132 - Minimizing TupleGraphEquivalences...
+Tuple graph equivalence minimization statistics:
+Num orig nodes: 67
+Num kept nodes: 46
+2024-09-14 16:22:28,133 - ..done
+Number of initial D2 facts: 93
+Number of D2 facts: 93 of 2304
+2024-09-14 16:22:28,366 - Grounding Logic Program...
+2024-09-14 16:22:28,584 - ..done
+2024-09-14 16:22:28,584 - Solving Logic Program...
+2024-09-14 16:22:28,599 - ..done
+Clingo statistics:
+{'call': 0.0, 'result': 1.0, 'signal': 0.0, 'exhausted': 1.0, 'costs': [0.0], 'lower': [0.0], 'concurrency': 32.0, 'winner': 29.0, 'times': {'total': 0.464993953704834, 'cpu': 0.4963369999999827, 'solve': 0.0034470558166503906, 'unsat': 0.0005829334259033203, 'sat': 0.0015339851379394531}, 'models': {'enumerated': 7.0, 'optimal': 1.0}}
+Solution cost: [0.0]
+Total time: 0.464993953704834
+CPU time: 0.4963369999999827
+Solve time: 0.0034470558166503906
+2024-09-14 16:22:28,718 - Learned the following sketch:
+(:policy
+(:booleans )
+(:numericals )
+(:rule (:conditions ) (:effects ))
+)
+Numer of sketch rules: 1
+Number of selected features: 0
+Maximum complexity of selected feature: 0
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/ipc2023/blocks_4/training/easy/p05.pddl
+Sketch cycles
+Instance: 2
+11
+11
+Number of unsatisfied D2 facts: 432
+Number of D2 facts: 525 of 2304
+2024-09-14 16:22:29,514 - Grounding Logic Program...
+2024-09-14 16:22:29,939 - ..done
+2024-09-14 16:22:29,939 - Solving Logic Program...
+2024-09-14 16:22:29,991 - ..done
+Clingo statistics:
+{'call': 0.0, 'result': 1.0, 'signal': 0.0, 'exhausted': 1.0, 'costs': [5.0], 'lower': [5.0], 'concurrency': 32.0, 'winner': 3.0, 'times': {'total': 1.270185947418213, 'cpu': 1.6591439999999977, 'solve': 0.023030996322631836, 'unsat': 0.005927085876464844, 'sat': 0.00570988655090332}, 'models': {'enumerated': 13.0, 'optimal': 1.0}}
+Solution cost: [5.0]
+Total time: 1.270185947418213
+CPU time: 1.6591439999999977
+Solve time: 0.023030996322631836
+2024-09-14 16:22:30,129 - Learned the following sketch:
+(:policy
+(:booleans )
+(:numericals (f16 "n_count(c_some(r_primitive(on,0,1),c_primitive(on-table_g,0)))"))
+(:rule (:conditions (:c_n_gt f16)) (:effects (:e_n_dec f16)))
+(:rule (:conditions (:c_n_eq f16)) (:effects (:e_n_inc f16)))
+(:rule (:conditions (:c_n_eq f16)) (:effects (:e_n_bot f16)))
+)
+Numer of sketch rules: 3
+Number of selected features: 1
+Maximum complexity of selected feature: 4
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/ipc2023/blocks_4/training/easy/p05.pddl
+Sketch cycles
+Instance: 2
+11
+11
+Number of unsatisfied D2 facts: 80
+Number of D2 facts: 605 of 2304
+2024-09-14 16:22:30,948 - Grounding Logic Program...
+2024-09-14 16:22:31,415 - ..done
+2024-09-14 16:22:31,415 - Solving Logic Program...
+2024-09-14 16:22:31,486 - ..done
+Clingo statistics:
+{'call': 0.0, 'result': 1.0, 'signal': 0.0, 'exhausted': 1.0, 'costs': [8.0], 'lower': [8.0], 'concurrency': 32.0, 'winner': 3.0, 'times': {'total': 1.355607032775879, 'cpu': 2.00911899999997, 'solve': 0.039463043212890625, 'unsat': 0.016896963119506836, 'sat': 0.006394147872924805}, 'models': {'enumerated': 18.0, 'optimal': 1.0}}
+Solution cost: [8.0]
+Total time: 1.355607032775879
+CPU time: 2.00911899999997
+Solve time: 0.039463043212890625
+2024-09-14 16:22:31,614 - Learned the following sketch:
+(:policy
+(:booleans )
+(:numericals (f2 "n_count(c_primitive(holding,0))") (f13 "n_count(c_equal(r_primitive(on,0,1),r_primitive(on_g,0,1)))"))
+(:rule (:conditions (:c_n_gt f2) (:c_n_gt f13)) (:effects (:e_n_dec f2) (:e_n_inc f13)))
+(:rule (:conditions (:c_n_gt f2) (:c_n_gt f13)) (:effects (:e_n_dec f2) (:e_n_bot f13)))
+(:rule (:conditions (:c_n_eq f2) (:c_n_gt f13)) (:effects (:e_n_inc f2) (:e_n_inc f13)))
+(:rule (:conditions (:c_n_eq f2) (:c_n_eq f13)) (:effects (:e_n_inc f2) (:e_n_inc f13)))
+(:rule (:conditions (:c_n_eq f2) (:c_n_gt f13)) (:effects (:e_n_bot f2) (:e_n_inc f13)))
+)
+Numer of sketch rules: 5
+Number of selected features: 2
+Maximum complexity of selected feature: 4
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/ipc2023/blocks_4/training/easy/p05.pddl
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/ipc2023/blocks_4/training/easy/p01.pddl
+2024-09-14 16:22:31,615 - Verifying learned sketch...
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/ipc2023/blocks_4/training/easy/p05.pddl
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/ipc2023/blocks_4/training/easy/p01.pddl
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/ipc2023/blocks_4/training/easy/p03.pddl
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/ipc2023/blocks_4/training/easy/p01.pddl
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/ipc2023/blocks_4/training/easy/p05.pddl
+Sketch fails to bound width of a state
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/ipc2023/blocks_4/training/easy/p08.pddl
+Instance: 3
+Source_state: 29
+Dlplan state: (instance index=3, state index=16, atoms={clear(b3), on(b3,b2), on-table(b1), arm-empty(), clear(b1), on-table(b2)})
+2024-09-14 16:22:31,618 - ..done
+Smallest unsolved instance: 3
+Selected instances: [3]
+2024-09-14 16:22:31,618 - Iteration: 5
+     id: 3 problem_filepath: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/ipc2023/blocks_4/training/easy/p08.pddl num_states: 22 num_state_equivalences: 22
+2024-09-14 16:22:31,675 - Initialize global faithful abstract states...
+2024-09-14 16:22:31,675 - ..done
+2024-09-14 16:22:31,675 - Initializing DomainFeatureData...
+[t=59.0582s, 2713508 KB] Started generating base features of complexity 1.
+[t=59.0583s, 2713508 KB] Complexity 1:
+    b_nullary: 2
+    c_one_of: 0
+    c_top: 1
+    c_bot: 1
+    c_primitive: 5
+    r_primitive: 2
+    c_and: 0
+    c_not: 0
+    c_equal: 0
+    c_some: 0
+    c_all: 0
+    r_restrict: 0
+    r_and: 0
+    r_inverse: 0
+    r_transitive_closure: 0
+    b_empty: 0
+    n_count: 0
+    n_concept_distance: 0
+[t=59.0584s, 2713508 KB] Finished generating base features.
+[t=59.0584s, 2713508 KB] Started generating composite features. 
+[t=59.0586s, 2713508 KB] Complexity 2:
+Total concept elements: 12
+Total role elements: 6
+Total numerical elements: 7
+Total boolean elements: 4
+    b_nullary: 2
+    c_one_of: 0
+    c_top: 1
+    c_bot: 1
+    c_primitive: 5
+    r_primitive: 2
+    c_and: 0
+    c_not: 5
+    c_equal: 0
+    c_some: 0
+    c_all: 0
+    r_restrict: 0
+    r_and: 0
+    r_inverse: 2
+    r_transitive_closure: 2
+    b_empty: 2
+    n_count: 7
+    n_concept_distance: 0
+[t=59.0591s, 2713508 KB] Complexity 3:
+Total concept elements: 35
+Total role elements: 17
+Total numerical elements: 10
+Total boolean elements: 5
+    b_nullary: 2
+    c_one_of: 0
+    c_top: 1
+    c_bot: 1
+    c_primitive: 5
+    r_primitive: 2
+    c_and: 7
+    c_not: 5
+    c_equal: 1
+    c_some: 8
+    c_all: 7
+    r_restrict: 8
+    r_and: 1
+    r_inverse: 4
+    r_transitive_closure: 2
+    b_empty: 3
+    n_count: 10
+    n_concept_distance: 0
+[t=59.0602s, 2713508 KB] Complexity 4:
+Total concept elements: 94
+Total role elements: 25
+Total numerical elements: 45
+Total boolean elements: 19
+    b_nullary: 2
+    c_one_of: 0
+    c_top: 1
+    c_bot: 1
+    c_primitive: 5
+    r_primitive: 2
+    c_and: 21
+    c_not: 26
+    c_equal: 1
+    c_some: 20
+    c_all: 19
+    r_restrict: 8
+    r_and: 1
+    r_inverse: 12
+    r_transitive_closure: 2
+    b_empty: 17
+    n_count: 32
+    n_concept_distance: 13
+[t=59.0631s, 2713508 KB] Complexity 5:
+Total concept elements: 272
+Total role elements: 25
+Total numerical elements: 102
+Total boolean elements: 36
+    b_nullary: 2
+    c_one_of: 0
+    c_top: 1
+    c_bot: 1
+    c_primitive: 5
+    r_primitive: 2
+    c_and: 72
+    c_not: 62
+    c_equal: 1
+    c_some: 61
+    c_all: 69
+    r_restrict: 8
+    r_and: 1
+    r_inverse: 12
+    r_transitive_closure: 2
+    b_empty: 34
+    n_count: 78
+    n_concept_distance: 24
+[t=59.0706s, 2713508 KB] Complexity 6:
+Total concept elements: 728
+Total role elements: 25
+Total numerical elements: 304
+Total boolean elements: 99
+    b_nullary: 2
+    c_one_of: 0
+    c_top: 1
+    c_bot: 1
+    c_primitive: 5
+    r_primitive: 2
+    c_and: 234
+    c_not: 190
+    c_equal: 1
+    c_some: 129
+    c_all: 167
+    r_restrict: 8
+    r_and: 1
+    r_inverse: 12
+    r_transitive_closure: 2
+    b_empty: 97
+    n_count: 211
+    n_concept_distance: 93
+[t=59.0918s, 2713508 KB] Complexity 7:
+Total concept elements: 2073
+Total role elements: 25
+Total numerical elements: 746
+Total boolean elements: 231
+    b_nullary: 2
+    c_one_of: 0
+    c_top: 1
+    c_bot: 1
+    c_primitive: 5
+    r_primitive: 2
+    c_and: 732
+    c_not: 469
+    c_equal: 1
+    c_some: 378
+    c_all: 486
+    r_restrict: 8
+    r_and: 1
+    r_inverse: 12
+    r_transitive_closure: 2
+    b_empty: 229
+    n_count: 538
+    n_concept_distance: 208
+[t=59.1553s, 2713508 KB] Complexity 8:
+Total concept elements: 5397
+Total role elements: 25
+Total numerical elements: 2051
+Total boolean elements: 614
+    b_nullary: 2
+    c_one_of: 0
+    c_top: 1
+    c_bot: 1
+    c_primitive: 5
+    r_primitive: 2
+    c_and: 2048
+    c_not: 1414
+    c_equal: 1
+    c_some: 834
+    c_all: 1093
+    r_restrict: 8
+    r_and: 1
+    r_inverse: 12
+    r_transitive_closure: 2
+    b_empty: 612
+    n_count: 1516
+    n_concept_distance: 535
+[t=59.3483s, 2713508 KB] Complexity 9:
+Total concept elements: 13832
+Total role elements: 25
+Total numerical elements: 5198
+Total boolean elements: 1361
+    b_nullary: 2
+    c_one_of: 0
+    c_top: 1
+    c_bot: 1
+    c_primitive: 5
+    r_primitive: 2
+    c_and: 5585
+    c_not: 3428
+    c_equal: 1
+    c_some: 2088
+    c_all: 2723
+    r_restrict: 8
+    r_and: 1
+    r_inverse: 12
+    r_transitive_closure: 2
+    b_empty: 1359
+    n_count: 3901
+    n_concept_distance: 1297
+[t=59.3484s, 2713508 KB] Finished generating composite features.
+Features generated: 6559
+Features after relevant changes pruning (complete): 4544
+2024-09-14 16:22:58,258 - ..done
+2024-09-14 16:22:58,258 - Constructing PerStateFeatureValuations...
+2024-09-14 16:22:58,346 - ..done
+2024-09-14 16:22:58,346 - Constructing StatePairEquivalenceDatas...
+2024-09-14 16:23:09,134 - ..done
+2024-09-14 16:23:09,138 - Constructing TupleGraphEquivalences...
+Tuple graph equivalence construction statistics:
+Num nodes: 178
+2024-09-14 16:23:09,143 - ..done
+2024-09-14 16:23:09,143 - Minimizing TupleGraphEquivalences...
+Tuple graph equivalence minimization statistics:
+Num orig nodes: 178
+Num kept nodes: 178
+2024-09-14 16:23:09,145 - ..done
+Number of initial D2 facts: 1053
+Number of D2 facts: 1053 of 92416
+2024-09-14 16:23:29,208 - Grounding Logic Program...
+2024-09-14 16:23:49,285 - ..done
+2024-09-14 16:23:49,535 - Solving Logic Program...
+2024-09-14 16:23:52,634 - ..done
+Clingo statistics:
+{'call': 0.0, 'result': 1.0, 'signal': 0.0, 'exhausted': 1.0, 'costs': [6.0], 'lower': [6.0], 'concurrency': 32.0, 'winner': 17.0, 'times': {'total': 43.41197395324707, 'cpu': 86.71051700000004, 'solve': 1.9455699920654297, 'unsat': 0.18899893760681152, 'sat': 0.05681204795837402}, 'models': {'enumerated': 171.0, 'optimal': 1.0}}
+Solution cost: [6.0]
+Total time: 43.41197395324707
+CPU time: 86.71051700000004
+Solve time: 1.9455699920654297
+2024-09-14 16:24:01,515 - Learned the following sketch:
+(:policy
+(:booleans )
+(:numericals (f68 "n_concept_distance(c_primitive(clear_g,0),r_primitive(on_g,0,1),c_not(c_primitive(on-table,0)))"))
+(:rule (:conditions (:c_n_eq f68)) (:effects (:e_n_bot f68)))
+(:rule (:conditions (:c_n_eq f68)) (:effects (:e_n_inc f68)))
+(:rule (:conditions (:c_n_gt f68)) (:effects (:e_n_dec f68)))
+(:rule (:conditions (:c_n_gt f68)) (:effects (:e_n_inc f68)))
+(:rule (:conditions (:c_n_gt f68)) (:effects (:e_n_bot f68)))
+)
+Numer of sketch rules: 5
+Number of selected features: 1
+Maximum complexity of selected feature: 5
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/ipc2023/blocks_4/training/easy/p08.pddl
+Sketch cycles
+Instance: 3
+34
+34
+Number of unsatisfied D2 facts: 3116
+Number of D2 facts: 4169 of 92416
+2024-09-14 16:25:04,560 - Grounding Logic Program...
+2024-09-14 16:25:47,926 - ..done
+2024-09-14 16:25:47,926 - Solving Logic Program...
+2024-09-14 16:26:00,087 - ..done
+Clingo statistics:
+{'call': 0.0, 'result': 1.0, 'signal': 0.0, 'exhausted': 1.0, 'costs': [8.0], 'lower': [8.0], 'concurrency': 32.0, 'winner': 0.0, 'times': {'total': 118.47090888023376, 'cpu': 316.62831100000005, 'solve': 9.218611001968384, 'unsat': 3.6443090438842773, 'sat': 0.2308940887451172}, 'models': {'enumerated': 50.0, 'optimal': 1.0}}
+Solution cost: [8.0]
+Total time: 118.47090888023376
+CPU time: 316.62831100000005
+Solve time: 9.218611001968384
+2024-09-14 16:26:09,289 - Learned the following sketch:
+(:policy
+(:booleans )
+(:numericals (f3 "n_count(r_primitive(on,0,1))") (f18 "n_count(c_some(r_primitive(on_g,0,1),c_primitive(on-table,0)))"))
+(:rule (:conditions (:c_n_eq f3) (:c_n_gt f18)) (:effects (:e_n_bot f3) (:e_n_bot f18)))
+(:rule (:conditions (:c_n_eq f3) (:c_n_gt f18)) (:effects (:e_n_inc f3) (:e_n_dec f18)))
+(:rule (:conditions (:c_n_gt f3) (:c_n_gt f18)) (:effects (:e_n_inc f3) (:e_n_bot f18)))
+(:rule (:conditions (:c_n_gt f3) (:c_n_gt f18)) (:effects (:e_n_dec f3) (:e_n_inc f18)))
+(:rule (:conditions (:c_n_gt f3) (:c_n_gt f18)) (:effects (:e_n_inc f3) (:e_n_dec f18)))
+(:rule (:conditions (:c_n_gt f3) (:c_n_gt f18)) (:effects (:e_n_bot f3) (:e_n_bot f18)))
+(:rule (:conditions (:c_n_gt f3) (:c_n_eq f18)) (:effects (:e_n_dec f3) (:e_n_bot f18)))
+(:rule (:conditions (:c_n_gt f3) (:c_n_eq f18)) (:effects (:e_n_dec f3) (:e_n_inc f18)))
+(:rule (:conditions (:c_n_gt f3) (:c_n_eq f18)) (:effects (:e_n_bot f3) (:e_n_inc f18)))
+(:rule (:conditions (:c_n_gt f3) (:c_n_gt f18)) (:effects (:e_n_bot f3) (:e_n_inc f18)))
+(:rule (:conditions (:c_n_gt f3) (:c_n_gt f18)) (:effects (:e_n_dec f3) (:e_n_bot f18)))
+(:rule (:conditions (:c_n_gt f3) (:c_n_gt f18)) (:effects (:e_n_bot f3) (:e_n_dec f18)))
+(:rule (:conditions (:c_n_eq f3) (:c_n_gt f18)) (:effects (:e_n_inc f3) (:e_n_inc f18)))
+(:rule (:conditions (:c_n_eq f3) (:c_n_gt f18)) (:effects (:e_n_inc f3) (:e_n_bot f18)))
+(:rule (:conditions (:c_n_gt f3) (:c_n_gt f18)) (:effects (:e_n_dec f3) (:e_n_dec f18)))
+(:rule (:conditions (:c_n_eq f3) (:c_n_gt f18)) (:effects (:e_n_bot f3) (:e_n_inc f18)))
+)
+Numer of sketch rules: 16
+Number of selected features: 2
+Maximum complexity of selected feature: 4
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/ipc2023/blocks_4/training/easy/p08.pddl
+Sketch cycles
+Instance: 3
+34
+34
+Number of unsatisfied D2 facts: 872
+Number of D2 facts: 5041 of 92416
+2024-09-14 16:27:13,236 - Grounding Logic Program...
+2024-09-14 16:28:03,716 - ..done
+2024-09-14 16:28:03,716 - Solving Logic Program...
+2024-09-14 16:28:34,900 - ..done
+Clingo statistics:
+{'call': 0.0, 'result': 1.0, 'signal': 0.0, 'exhausted': 1.0, 'costs': [9.0], 'lower': [9.0], 'concurrency': 32.0, 'winner': 31.0, 'times': {'total': 145.50042700767517, 'cpu': 765.0586040000001, 'solve': 27.720314979553223, 'unsat': 8.414350032806396, 'sat': 0.28864312171936035}, 'models': {'enumerated': 52.0, 'optimal': 1.0}}
+Solution cost: [9.0]
+Total time: 145.50042700767517
+CPU time: 765.0586040000001
+Solve time: 27.720314979553223
+2024-09-14 16:28:45,085 - Learned the following sketch:
+(:policy
+(:booleans )
+(:numericals (f4 "n_count(c_not(c_primitive(clear,0)))") (f24 "n_count(r_and(r_primitive(on,0,1),r_primitive(on_g,0,1)))"))
+(:rule (:conditions (:c_n_gt f4) (:c_n_eq f24)) (:effects (:e_n_dec f4) (:e_n_bot f24)))
+(:rule (:conditions (:c_n_gt f4) (:c_n_eq f24)) (:effects (:e_n_bot f4) (:e_n_bot f24)))
+(:rule (:conditions (:c_n_gt f4) (:c_n_eq f24)) (:effects (:e_n_bot f4) (:e_n_inc f24)))
+(:rule (:conditions (:c_n_gt f4) (:c_n_gt f24)) (:effects (:e_n_bot f4) (:e_n_inc f24)))
+(:rule (:conditions (:c_n_eq f4) (:c_n_eq f24)) (:effects (:e_n_inc f4) (:e_n_inc f24)))
+(:rule (:conditions (:c_n_gt f4) (:c_n_gt f24)) (:effects (:e_n_inc f4) (:e_n_bot f24)))
+(:rule (:conditions (:c_n_gt f4) (:c_n_gt f24)) (:effects (:e_n_inc f4) (:e_n_inc f24)))
+(:rule (:conditions (:c_n_gt f4) (:c_n_gt f24)) (:effects (:e_n_dec f4) (:e_n_bot f24)))
+(:rule (:conditions (:c_n_gt f4) (:c_n_gt f24)) (:effects (:e_n_dec f4) (:e_n_dec f24)))
+(:rule (:conditions (:c_n_gt f4) (:c_n_gt f24)) (:effects (:e_n_inc f4) (:e_n_dec f24)))
+(:rule (:conditions (:c_n_gt f4) (:c_n_gt f24)) (:effects (:e_n_bot f4) (:e_n_dec f24)))
+(:rule (:conditions (:c_n_gt f4) (:c_n_eq f24)) (:effects (:e_n_dec f4) (:e_n_inc f24)))
+)
+Numer of sketch rules: 12
+Number of selected features: 2
+Maximum complexity of selected feature: 4
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/ipc2023/blocks_4/training/easy/p08.pddl
+Sketch cycles
+Instance: 3
+33
+34
+29
+29
+Number of unsatisfied D2 facts: 1533
+Number of D2 facts: 6574 of 92416
+2024-09-14 16:29:49,650 - Grounding Logic Program...
+2024-09-14 16:30:52,041 - ..done
+2024-09-14 16:30:52,041 - Solving Logic Program...
+2024-09-14 16:33:43,723 - ..done
+Clingo statistics:
+{'call': 0.0, 'result': 1.0, 'signal': 0.0, 'exhausted': 1.0, 'costs': [10.0], 'lower': [10.0], 'concurrency': 32.0, 'winner': 24.0, 'times': {'total': 298.51544189453125, 'cpu': 2732.462149, 'solve': 167.0874788761139, 'unsat': 3.7427749633789062, 'sat': 0.3491818904876709}, 'models': {'enumerated': 85.0, 'optimal': 1.0}}
+Solution cost: [10.0]
+Total time: 298.51544189453125
+CPU time: 2732.462149
+Solve time: 167.0874788761139
+2024-09-14 16:33:53,265 - Learned the following sketch:
+(:policy
+(:booleans )
+(:numericals (f4 "n_count(c_not(c_primitive(clear,0)))") (f55 "n_count(c_some(r_transitive_closure(r_primitive(on,0,1)),c_primitive(on-table_g,0)))"))
+(:rule (:conditions (:c_n_gt f4) (:c_n_eq f55)) (:effects (:e_n_dec f4) (:e_n_bot f55)))
+(:rule (:conditions (:c_n_gt f4) (:c_n_gt f55)) (:effects (:e_n_dec f4) (:e_n_bot f55)))
+(:rule (:conditions (:c_n_gt f4) (:c_n_gt f55)) (:effects (:e_n_dec f4) (:e_n_dec f55)))
+(:rule (:conditions (:c_n_gt f4) (:c_n_gt f55)) (:effects (:e_n_bot f4) (:e_n_dec f55)))
+(:rule (:conditions (:c_n_eq f4) (:c_n_eq f55)) (:effects (:e_n_inc f4) (:e_n_inc f55)))
+(:rule (:conditions (:c_n_gt f4) (:c_n_eq f55)) (:effects (:e_n_bot f4) (:e_n_bot f55)))
+(:rule (:conditions (:c_n_gt f4) (:c_n_eq f55)) (:effects (:e_n_dec f4) (:e_n_inc f55)))
+(:rule (:conditions (:c_n_gt f4) (:c_n_gt f55)) (:effects (:e_n_inc f4) (:e_n_inc f55)))
+(:rule (:conditions (:c_n_gt f4) (:c_n_eq f55)) (:effects (:e_n_bot f4) (:e_n_inc f55)))
+)
+Numer of sketch rules: 9
+Number of selected features: 2
+Maximum complexity of selected feature: 5
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/ipc2023/blocks_4/training/easy/p08.pddl
+Sketch cycles
+Instance: 3
+34
+34
+Number of unsatisfied D2 facts: 1500
+Number of D2 facts: 8074 of 92416
+2024-09-14 16:34:57,517 - Grounding Logic Program...
+2024-09-14 16:36:09,770 - ..done
+2024-09-14 16:36:09,770 - Solving Logic Program...
+2024-09-14 16:39:46,244 - ..done
+Clingo statistics:
+{'call': 0.0, 'result': 1.0, 'signal': 0.0, 'exhausted': 1.0, 'costs': [11.0], 'lower': [11.0], 'concurrency': 32.0, 'winner': 1.0, 'times': {'total': 352.85209918022156, 'cpu': 3028.375145, 'solve': 211.03080320358276, 'unsat': 170.3451201915741, 'sat': 0.3773519992828369}, 'models': {'enumerated': 223.0, 'optimal': 1.0}}
+Solution cost: [11.0]
+Total time: 352.85209918022156
+CPU time: 3028.375145
+Solve time: 211.03080320358276
+2024-09-14 16:39:55,784 - Learned the following sketch:
+(:policy
+(:booleans (f5 "b_nullary(arm-empty)"))
+(:numericals (f1 "n_count(c_primitive(clear,0))") (f8 "n_count(c_and(c_primitive(clear,0),c_primitive(on-table_g,0)))"))
+(:rule (:conditions (:c_b_neg f5) (:c_n_gt f1) (:c_n_gt f8)) (:effects (:e_b_pos f5) (:e_n_inc f1) (:e_n_bot f8)))
+(:rule (:conditions (:c_b_neg f5) (:c_n_gt f1) (:c_n_eq f8)) (:effects (:e_b_pos f5) (:e_n_inc f1) (:e_n_bot f8)))
+(:rule (:conditions (:c_b_neg f5) (:c_n_gt f1) (:c_n_eq f8)) (:effects (:e_b_pos f5) (:e_n_inc f1) (:e_n_inc f8)))
+(:rule (:conditions (:c_b_neg f5) (:c_n_gt f1) (:c_n_eq f8)) (:effects (:e_b_bot f5) (:e_n_inc f1) (:e_n_bot f8)))
+(:rule (:conditions (:c_b_pos f5) (:c_n_gt f1) (:c_n_gt f8)) (:effects (:e_b_bot f5) (:e_n_dec f1) (:e_n_bot f8)))
+(:rule (:conditions (:c_b_pos f5) (:c_n_gt f1) (:c_n_gt f8)) (:effects (:e_b_bot f5) (:e_n_bot f1) (:e_n_dec f8)))
+(:rule (:conditions (:c_b_pos f5) (:c_n_gt f1) (:c_n_gt f8)) (:effects (:e_b_bot f5) (:e_n_dec f1) (:e_n_dec f8)))
+(:rule (:conditions (:c_b_pos f5) (:c_n_gt f1) (:c_n_gt f8)) (:effects (:e_b_bot f5) (:e_n_inc f1) (:e_n_dec f8)))
+(:rule (:conditions (:c_b_pos f5) (:c_n_gt f1) (:c_n_gt f8)) (:effects (:e_b_neg f5) (:e_n_bot f1) (:e_n_dec f8)))
+(:rule (:conditions (:c_b_pos f5) (:c_n_gt f1) (:c_n_eq f8)) (:effects (:e_b_bot f5) (:e_n_dec f1) (:e_n_bot f8)))
+(:rule (:conditions (:c_b_neg f5) (:c_n_gt f1) (:c_n_gt f8)) (:effects (:e_b_bot f5) (:e_n_inc f1) (:e_n_dec f8)))
+(:rule (:conditions (:c_b_neg f5) (:c_n_gt f1) (:c_n_eq f8)) (:effects (:e_b_pos f5) (:e_n_bot f1) (:e_n_inc f8)))
+(:rule (:conditions (:c_b_pos f5) (:c_n_gt f1) (:c_n_eq f8)) (:effects (:e_b_neg f5) (:e_n_inc f1) (:e_n_inc f8)))
+(:rule (:conditions (:c_b_pos f5) (:c_n_gt f1) (:c_n_eq f8)) (:effects (:e_b_neg f5) (:e_n_inc f1) (:e_n_bot f8)))
+(:rule (:conditions (:c_b_pos f5) (:c_n_gt f1) (:c_n_gt f8)) (:effects (:e_b_neg f5) (:e_n_inc f1) (:e_n_bot f8)))
+(:rule (:conditions (:c_b_pos f5) (:c_n_gt f1) (:c_n_eq f8)) (:effects (:e_b_bot f5) (:e_n_inc f1) (:e_n_bot f8)))
+(:rule (:conditions (:c_b_pos f5) (:c_n_gt f1) (:c_n_eq f8)) (:effects (:e_b_bot f5) (:e_n_inc f1) (:e_n_inc f8)))
+(:rule (:conditions (:c_b_neg f5) (:c_n_gt f1) (:c_n_gt f8)) (:effects (:e_b_bot f5) (:e_n_dec f1) (:e_n_dec f8)))
+(:rule (:conditions (:c_b_neg f5) (:c_n_gt f1) (:c_n_gt f8)) (:effects (:e_b_pos f5) (:e_n_bot f1) (:e_n_dec f8)))
+)
+Numer of sketch rules: 19
+Number of selected features: 3
+Maximum complexity of selected feature: 4
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/ipc2023/blocks_4/training/easy/p08.pddl
+Sketch cycles
+Instance: 3
+33
+34
+34
+Number of unsatisfied D2 facts: 184
+Number of D2 facts: 8258 of 92416
+2024-09-14 16:40:59,820 - Grounding Logic Program...
+2024-09-14 16:42:13,951 - ..done
+2024-09-14 16:42:13,951 - Solving Logic Program...
+2024-09-14 16:53:41,253 - ..done
+Clingo statistics:
+{'call': 0.0, 'result': 1.0, 'signal': 0.0, 'exhausted': 1.0, 'costs': [12.0], 'lower': [12.0], 'concurrency': 32.0, 'winner': 12.0, 'times': {'total': 825.3479878902435, 'cpu': 12323.8676, 'solve': 681.7303500175476, 'unsat': 490.5129539966583, 'sat': 0.4590599536895752}, 'models': {'enumerated': 77.0, 'optimal': 1.0}}
+Solution cost: [12.0]
+Total time: 825.3479878902435
+CPU time: 12323.8676
+Solve time: 681.7303500175476
+2024-09-14 16:53:51,855 - Learned the following sketch:
+(:policy
+(:booleans )
+(:numericals (f1 "n_count(c_primitive(clear,0))") (f576 "n_count(c_and(c_primitive(clear,0),c_some(r_primitive(on_g,0,1),c_some(r_primitive(on,0,1),c_primitive(on-table_g,0)))))"))
+(:rule (:conditions (:c_n_gt f1) (:c_n_eq f576)) (:effects (:e_n_inc f1) (:e_n_bot f576)))
+(:rule (:conditions (:c_n_gt f1) (:c_n_eq f576)) (:effects (:e_n_bot f1) (:e_n_inc f576)))
+(:rule (:conditions (:c_n_gt f1) (:c_n_eq f576)) (:effects (:e_n_dec f1) (:e_n_inc f576)))
+(:rule (:conditions (:c_n_gt f1) (:c_n_eq f576)) (:effects (:e_n_bot f1) (:e_n_bot f576)))
+(:rule (:conditions (:c_n_gt f1) (:c_n_gt f576)) (:effects (:e_n_dec f1) (:e_n_bot f576)))
+(:rule (:conditions (:c_n_gt f1) (:c_n_gt f576)) (:effects (:e_n_inc f1) (:e_n_bot f576)))
+)
+Numer of sketch rules: 6
+Number of selected features: 2
+Maximum complexity of selected feature: 8
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/ipc2023/blocks_4/training/easy/p08.pddl
+Sketch cycles
+Instance: 3
+34
+34
+Number of unsatisfied D2 facts: 410
+Number of D2 facts: 8668 of 92416
+2024-09-14 16:54:55,693 - Grounding Logic Program...
+2024-09-14 16:56:12,322 - ..done
+2024-09-14 16:56:12,322 - Solving Logic Program...
+2024-09-14 17:04:15,647 - ..done
+Clingo statistics:
+{'call': 0.0, 'result': 1.0, 'signal': 0.0, 'exhausted': 1.0, 'costs': [12.0], 'lower': [12.0], 'concurrency': 32.0, 'winner': 31.0, 'times': {'total': 623.6608757972717, 'cpu': 10482.14357, 'solve': 477.43707299232483, 'unsat': 233.93638396263123, 'sat': 0.4254741668701172}, 'models': {'enumerated': 136.0, 'optimal': 1.0}}
+Solution cost: [12.0]
+Total time: 623.6608757972717
+CPU time: 10482.14357
+Solve time: 477.43707299232483
+2024-09-14 17:04:26,418 - Learned the following sketch:
+(:policy
+(:booleans )
+(:numericals (f1 "n_count(c_primitive(clear,0))") (f1071 "n_count(c_some(r_primitive(on_g,0,1),c_some(r_primitive(on,0,1),c_and(c_primitive(on-table,0),c_primitive(on-table_g,0)))))"))
+(:rule (:conditions (:c_n_gt f1) (:c_n_eq f1071)) (:effects (:e_n_inc f1) (:e_n_bot f1071)))
+(:rule (:conditions (:c_n_gt f1) (:c_n_eq f1071)) (:effects (:e_n_bot f1) (:e_n_inc f1071)))
+(:rule (:conditions (:c_n_gt f1) (:c_n_gt f1071)) (:effects (:e_n_bot f1) (:e_n_bot f1071)))
+(:rule (:conditions (:c_n_gt f1) (:c_n_eq f1071)) (:effects (:e_n_dec f1) (:e_n_inc f1071)))
+(:rule (:conditions (:c_n_gt f1) (:c_n_eq f1071)) (:effects (:e_n_bot f1) (:e_n_bot f1071)))
+(:rule (:conditions (:c_n_gt f1) (:c_n_eq f1071)) (:effects (:e_n_inc f1) (:e_n_inc f1071)))
+(:rule (:conditions (:c_n_gt f1) (:c_n_gt f1071)) (:effects (:e_n_dec f1) (:e_n_bot f1071)))
+(:rule (:conditions (:c_n_gt f1) (:c_n_gt f1071)) (:effects (:e_n_inc f1) (:e_n_dec f1071)))
+)
+Numer of sketch rules: 8
+Number of selected features: 2
+Maximum complexity of selected feature: 8
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/ipc2023/blocks_4/training/easy/p08.pddl
+Sketch cycles
+Instance: 3
+34
+34
+Number of unsatisfied D2 facts: 220
+Number of D2 facts: 8888 of 92416
+2024-09-14 17:05:30,862 - Grounding Logic Program...
+2024-09-14 17:06:50,292 - ..done
+2024-09-14 17:06:50,292 - Solving Logic Program...
+2024-09-14 17:12:06,314 - ..done
+Clingo statistics:
+{'call': 0.0, 'result': 1.0, 'signal': 0.0, 'exhausted': 1.0, 'costs': [12.0], 'lower': [12.0], 'concurrency': 32.0, 'winner': 3.0, 'times': {'total': 459.7708899974823, 'cpu': 4840.396742000004, 'solve': 310.15402913093567, 'unsat': 193.78898406028748, 'sat': 0.40376901626586914}, 'models': {'enumerated': 129.0, 'optimal': 1.0}}
+Solution cost: [12.0]
+Total time: 459.7708899974823
+CPU time: 4840.396742000004
+Solve time: 310.15402913093567
+2024-09-14 17:12:16,581 - Learned the following sketch:
+(:policy
+(:booleans )
+(:numericals (f1 "n_count(c_primitive(clear,0))") (f1124 "n_count(c_some(r_and(r_primitive(on,0,1),r_primitive(on_g,0,1)),c_equal(r_primitive(on,0,1),r_primitive(on_g,0,1))))"))
+(:rule (:conditions (:c_n_gt f1) (:c_n_eq f1124)) (:effects (:e_n_inc f1) (:e_n_bot f1124)))
+(:rule (:conditions (:c_n_gt f1) (:c_n_gt f1124)) (:effects (:e_n_inc f1) (:e_n_bot f1124)))
+(:rule (:conditions (:c_n_gt f1) (:c_n_gt f1124)) (:effects (:e_n_inc f1) (:e_n_dec f1124)))
+(:rule (:conditions (:c_n_gt f1) (:c_n_eq f1124)) (:effects (:e_n_dec f1) (:e_n_inc f1124)))
+(:rule (:conditions (:c_n_gt f1) (:c_n_eq f1124)) (:effects (:e_n_inc f1) (:e_n_inc f1124)))
+(:rule (:conditions (:c_n_gt f1) (:c_n_gt f1124)) (:effects (:e_n_dec f1) (:e_n_inc f1124)))
+(:rule (:conditions (:c_n_gt f1) (:c_n_eq f1124)) (:effects (:e_n_bot f1) (:e_n_bot f1124)))
+)
+Numer of sketch rules: 7
+Number of selected features: 2
+Maximum complexity of selected feature: 8
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/ipc2023/blocks_4/training/easy/p08.pddl
+Sketch cycles
+Instance: 3
+34
+34
+Number of unsatisfied D2 facts: 334
+Number of D2 facts: 9222 of 92416
+2024-09-14 17:13:19,719 - Grounding Logic Program...
+2024-09-14 17:14:41,184 - ..done
+2024-09-14 17:14:41,184 - Solving Logic Program...
+2024-09-14 17:22:06,113 - ..done
+Clingo statistics:
+{'call': 0.0, 'result': 1.0, 'signal': 0.0, 'exhausted': 1.0, 'costs': [12.0], 'lower': [12.0], 'concurrency': 32.0, 'winner': 9.0, 'times': {'total': 589.4053869247437, 'cpu': 9323.071895999994, 'solve': 438.68730306625366, 'unsat': 232.6445620059967, 'sat': 0.4826340675354004}, 'models': {'enumerated': 76.0, 'optimal': 1.0}}
+Solution cost: [12.0]
+Total time: 589.4053869247437
+CPU time: 9323.071895999994
+Solve time: 438.68730306625366
+2024-09-14 17:22:16,308 - Learned the following sketch:
+(:policy
+(:booleans )
+(:numericals (f1 "n_count(c_primitive(clear,0))") (f1124 "n_count(c_some(r_and(r_primitive(on,0,1),r_primitive(on_g,0,1)),c_equal(r_primitive(on,0,1),r_primitive(on_g,0,1))))"))
+(:rule (:conditions (:c_n_gt f1) (:c_n_eq f1124)) (:effects (:e_n_inc f1) (:e_n_bot f1124)))
+(:rule (:conditions (:c_n_gt f1) (:c_n_eq f1124)) (:effects (:e_n_dec f1) (:e_n_inc f1124)))
+(:rule (:conditions (:c_n_gt f1) (:c_n_gt f1124)) (:effects (:e_n_bot f1) (:e_n_inc f1124)))
+(:rule (:conditions (:c_n_gt f1) (:c_n_gt f1124)) (:effects (:e_n_dec f1) (:e_n_bot f1124)))
+)
+Numer of sketch rules: 4
+Number of selected features: 2
+Maximum complexity of selected feature: 8
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/ipc2023/blocks_4/training/easy/p08.pddl
+2024-09-14 17:22:16,312 - Verifying learned sketch...
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/ipc2023/blocks_4/training/easy/p08.pddl
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/ipc2023/blocks_4/training/easy/p03.pddl
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/ipc2023/blocks_4/training/easy/p01.pddl
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/ipc2023/blocks_4/training/easy/p05.pddl
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/ipc2023/blocks_4/training/easy/p08.pddl
+Sketch fails to bound width of a state
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/ipc2023/blocks_4/training/easy/p12.pddl
+Instance: 4
+Source_state: 69
+Dlplan state: (instance index=4, state index=124, atoms={on(b1,b2), on-table(b2), clear(b3), on(b3,b4), arm-empty(), on(b4,b1)})
+2024-09-14 17:22:16,328 - ..done
+Smallest unsolved instance: 4
+Selected instances: [4]
+2024-09-14 17:22:16,328 - Iteration: 6
+     id: 4 problem_filepath: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/ipc2023/blocks_4/training/easy/p12.pddl num_states: 125 num_state_equivalences: 65
+2024-09-14 17:22:16,413 - Initialize global faithful abstract states...
+2024-09-14 17:22:16,414 - ..done
+2024-09-14 17:22:16,414 - Initializing DomainFeatureData...
+[t=3643.72s, 14393632 KB] Started generating base features of complexity 1.
+[t=3643.72s, 14393632 KB] Complexity 1:
+    b_nullary: 2
+    c_one_of: 0
+    c_top: 1
+    c_bot: 1
+    c_primitive: 5
+    r_primitive: 2
+    c_and: 0
+    c_not: 0
+    c_equal: 0
+    c_some: 0
+    c_all: 0
+    r_restrict: 0
+    r_and: 0
+    r_inverse: 0
+    r_transitive_closure: 0
+    b_empty: 0
+    n_count: 0
+    n_concept_distance: 0
+[t=3643.72s, 14393632 KB] Finished generating base features.
+[t=3643.72s, 14393632 KB] Started generating composite features. 
+[t=3643.72s, 14393632 KB] Complexity 2:
+Total concept elements: 10
+Total role elements: 5
+Total numerical elements: 6
+Total boolean elements: 4
+    b_nullary: 2
+    c_one_of: 0
+    c_top: 1
+    c_bot: 1
+    c_primitive: 5
+    r_primitive: 2
+    c_and: 0
+    c_not: 3
+    c_equal: 0
+    c_some: 0
+    c_all: 0
+    r_restrict: 0
+    r_and: 0
+    r_inverse: 2
+    r_transitive_closure: 1
+    b_empty: 2
+    n_count: 6
+    n_concept_distance: 0
+[t=3643.72s, 14393632 KB] Complexity 3:
+Total concept elements: 32
+Total role elements: 14
+Total numerical elements: 9
+Total boolean elements: 5
+    b_nullary: 2
+    c_one_of: 0
+    c_top: 1
+    c_bot: 1
+    c_primitive: 5
+    r_primitive: 2
+    c_and: 7
+    c_not: 3
+    c_equal: 1
+    c_some: 7
+    c_all: 7
+    r_restrict: 7
+    r_and: 1
+    r_inverse: 3
+    r_transitive_closure: 1
+    b_empty: 3
+    n_count: 9
+    n_concept_distance: 0
+[t=3643.72s, 14393632 KB] Complexity 4:
+Total concept elements: 74
+Total role elements: 21
+Total numerical elements: 28
+Total boolean elements: 16
+    b_nullary: 2
+    c_one_of: 0
+    c_top: 1
+    c_bot: 1
+    c_primitive: 5
+    r_primitive: 2
+    c_and: 15
+    c_not: 19
+    c_equal: 1
+    c_some: 16
+    c_all: 16
+    r_restrict: 7
+    r_and: 1
+    r_inverse: 10
+    r_transitive_closure: 1
+    b_empty: 14
+    n_count: 28
+    n_concept_distance: 0
+[t=3643.73s, 14393632 KB] Complexity 5:
+Total concept elements: 194
+Total role elements: 21
+Total numerical elements: 55
+Total boolean elements: 24
+    b_nullary: 2
+    c_one_of: 0
+    c_top: 1
+    c_bot: 1
+    c_primitive: 5
+    r_primitive: 2
+    c_and: 58
+    c_not: 35
+    c_equal: 1
+    c_some: 43
+    c_all: 50
+    r_restrict: 7
+    r_and: 1
+    r_inverse: 10
+    r_transitive_closure: 1
+    b_empty: 22
+    n_count: 55
+    n_concept_distance: 0
+[t=3643.75s, 14393632 KB] Complexity 6:
+Total concept elements: 510
+Total role elements: 21
+Total numerical elements: 145
+Total boolean elements: 72
+    b_nullary: 2
+    c_one_of: 0
+    c_top: 1
+    c_bot: 1
+    c_primitive: 5
+    r_primitive: 2
+    c_and: 176
+    c_not: 109
+    c_equal: 1
+    c_some: 93
+    c_all: 124
+    r_restrict: 7
+    r_and: 1
+    r_inverse: 10
+    r_transitive_closure: 1
+    b_empty: 70
+    n_count: 145
+    n_concept_distance: 0
+[t=3643.8s, 14393632 KB] Complexity 7:
+Total concept elements: 1400
+Total role elements: 21
+Total numerical elements: 357
+Total boolean elements: 147
+    b_nullary: 2
+    c_one_of: 0
+    c_top: 1
+    c_bot: 1
+    c_primitive: 5
+    r_primitive: 2
+    c_and: 524
+    c_not: 272
+    c_equal: 1
+    c_some: 272
+    c_all: 324
+    r_restrict: 7
+    r_and: 1
+    r_inverse: 10
+    r_transitive_closure: 1
+    b_empty: 145
+    n_count: 357
+    n_concept_distance: 0
+[t=3643.9s, 14393632 KB] Complexity 8:
+Total concept elements: 3709
+Total role elements: 21
+Total numerical elements: 1034
+Total boolean elements: 411
+    b_nullary: 2
+    c_one_of: 0
+    c_top: 1
+    c_bot: 1
+    c_primitive: 5
+    r_primitive: 2
+    c_and: 1557
+    c_not: 804
+    c_equal: 1
+    c_some: 594
+    c_all: 746
+    r_restrict: 7
+    r_and: 1
+    r_inverse: 10
+    r_transitive_closure: 1
+    b_empty: 409
+    n_count: 1034
+    n_concept_distance: 0
+[t=3644.2s, 14393632 KB] Complexity 9:
+Total concept elements: 10155
+Total role elements: 21
+Total numerical elements: 2695
+Total boolean elements: 963
+    b_nullary: 2
+    c_one_of: 0
+    c_top: 1
+    c_bot: 1
+    c_primitive: 5
+    r_primitive: 2
+    c_and: 4388
+    c_not: 2114
+    c_equal: 1
+    c_some: 1625
+    c_all: 2020
+    r_restrict: 7
+    r_and: 1
+    r_inverse: 10
+    r_transitive_closure: 1
+    b_empty: 961
+    n_count: 2695
+    n_concept_distance: 0
+[t=3644.2s, 14393632 KB] Finished generating composite features.
+Features generated: 3658
+Features after relevant changes pruning (complete): 3116
+2024-09-14 17:23:29,691 - ..done
+2024-09-14 17:23:29,692 - Constructing PerStateFeatureValuations...
+2024-09-14 17:23:29,885 - ..done
+2024-09-14 17:23:29,885 - Constructing StatePairEquivalenceDatas...
+2024-09-14 17:24:41,926 - ..done
+2024-09-14 17:24:42,100 - Constructing TupleGraphEquivalences...
+Tuple graph equivalence construction statistics:
+Num nodes: 733
+2024-09-14 17:24:42,129 - ..done
+2024-09-14 17:24:42,129 - Minimizing TupleGraphEquivalences...
+Tuple graph equivalence minimization statistics:
+Num orig nodes: 733
+Num kept nodes: 601
+2024-09-14 17:24:42,137 - ..done
+Number of initial D2 facts: 10502
+Number of D2 facts: 10502 of 4431025
+2024-09-14 17:26:29,496 - Grounding Logic Program...
+2024-09-14 17:28:15,954 - ..done
+2024-09-14 17:28:17,062 - Solving Logic Program...
+2024-09-14 17:28:37,046 - ..done
+Clingo statistics:
+{'call': 0.0, 'result': 1.0, 'signal': 0.0, 'exhausted': 1.0, 'costs': [8.0], 'lower': [8.0], 'concurrency': 32.0, 'winner': 1.0, 'times': {'total': 234.43954491615295, 'cpu': 556.9571949999954, 'solve': 13.224009990692139, 'unsat': 7.265883922576904, 'sat': 0.4488029479980469}, 'models': {'enumerated': 85.0, 'optimal': 1.0}}
+Solution cost: [8.0]
+Total time: 234.43954491615295
+CPU time: 556.9571949999954
+Solve time: 13.224009990692139
+2024-09-14 17:29:20,324 - Learned the following sketch:
+(:policy
+(:booleans )
+(:numericals (f1 "n_count(c_primitive(clear,0))") (f22 "n_count(r_and(r_primitive(on,0,1),r_primitive(on_g,0,1)))"))
+(:rule (:conditions (:c_n_gt f1) (:c_n_gt f22)) (:effects (:e_n_dec f1) (:e_n_inc f22)))
+(:rule (:conditions (:c_n_gt f1) (:c_n_eq f22)) (:effects (:e_n_inc f1) (:e_n_bot f22)))
+(:rule (:conditions (:c_n_gt f1) (:c_n_eq f22)) (:effects (:e_n_bot f1) (:e_n_bot f22)))
+(:rule (:conditions (:c_n_gt f1) (:c_n_eq f22)) (:effects (:e_n_dec f1) (:e_n_inc f22)))
+(:rule (:conditions (:c_n_gt f1) (:c_n_eq f22)) (:effects (:e_n_inc f1) (:e_n_inc f22)))
+(:rule (:conditions (:c_n_gt f1) (:c_n_eq f22)) (:effects (:e_n_bot f1) (:e_n_inc f22)))
+(:rule (:conditions (:c_n_gt f1) (:c_n_gt f22)) (:effects (:e_n_inc f1) (:e_n_dec f22)))
+(:rule (:conditions (:c_n_gt f1) (:c_n_gt f22)) (:effects (:e_n_bot f1) (:e_n_bot f22)))
+(:rule (:conditions (:c_n_gt f1) (:c_n_gt f22)) (:effects (:e_n_inc f1) (:e_n_bot f22)))
+(:rule (:conditions (:c_n_gt f1) (:c_n_gt f22)) (:effects (:e_n_bot f1) (:e_n_dec f22)))
+(:rule (:conditions (:c_n_gt f1) (:c_n_eq f22)) (:effects (:e_n_dec f1) (:e_n_bot f22)))
+(:rule (:conditions (:c_n_gt f1) (:c_n_gt f22)) (:effects (:e_n_dec f1) (:e_n_bot f22)))
+(:rule (:conditions (:c_n_gt f1) (:c_n_gt f22)) (:effects (:e_n_bot f1) (:e_n_inc f22)))
+(:rule (:conditions (:c_n_gt f1) (:c_n_gt f22)) (:effects (:e_n_inc f1) (:e_n_inc f22)))
+)
+Numer of sketch rules: 14
+Number of selected features: 2
+Maximum complexity of selected feature: 4
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/ipc2023/blocks_4/training/easy/p12.pddl
+Sketch cycles
+Instance: 4
+99
+99
+Number of unsatisfied D2 facts: 114967
+Number of D2 facts: 125469 of 4431025
+2024-09-14 17:34:15,353 - Grounding Logic Program...
+2024-09-14 18:52:13,899 - ..done
+2024-09-14 18:52:13,900 - Solving Logic Program...
+2024-09-14 18:54:51,602 - ..done
+Clingo statistics:
+{'call': 0.0, 'result': 1.0, 'signal': 0.0, 'exhausted': 1.0, 'costs': [8.0], 'lower': [8.0], 'concurrency': 32.0, 'winner': 4.0, 'times': {'total': 5129.783901929855, 'cpu': 7144.988064999998, 'solve': 92.69674301147461, 'unsat': 36.44031810760498, 'sat': 18.66291093826294}, 'models': {'enumerated': 106.0, 'optimal': 1.0}}
+Solution cost: [8.0]
+Total time: 5129.783901929855
+CPU time: 7144.988064999998
+Solve time: 92.69674301147461
+2024-09-14 18:55:39,674 - Learned the following sketch:
+(:policy
+(:booleans )
+(:numericals (f1 "n_count(c_primitive(clear,0))") (f14 "n_count(c_equal(r_primitive(on,0,1),r_primitive(on_g,0,1)))"))
+(:rule (:conditions (:c_n_gt f1) (:c_n_gt f14)) (:effects (:e_n_dec f1) (:e_n_inc f14)))
+(:rule (:conditions (:c_n_gt f1) (:c_n_gt f14)) (:effects (:e_n_inc f1) (:e_n_bot f14)))
+(:rule (:conditions (:c_n_gt f1) (:c_n_gt f14)) (:effects (:e_n_bot f1) (:e_n_inc f14)))
+(:rule (:conditions (:c_n_gt f1) (:c_n_gt f14)) (:effects (:e_n_bot f1) (:e_n_bot f14)))
+(:rule (:conditions (:c_n_gt f1) (:c_n_gt f14)) (:effects (:e_n_dec f1) (:e_n_bot f14)))
+(:rule (:conditions (:c_n_gt f1) (:c_n_gt f14)) (:effects (:e_n_inc f1) (:e_n_inc f14)))
+(:rule (:conditions (:c_n_gt f1) (:c_n_eq f14)) (:effects (:e_n_bot f1) (:e_n_bot f14)))
+(:rule (:conditions (:c_n_gt f1) (:c_n_eq f14)) (:effects (:e_n_inc f1) (:e_n_inc f14)))
+(:rule (:conditions (:c_n_gt f1) (:c_n_eq f14)) (:effects (:e_n_bot f1) (:e_n_inc f14)))
+(:rule (:conditions (:c_n_gt f1) (:c_n_gt f14)) (:effects (:e_n_dec f1) (:e_n_dec f14)))
+(:rule (:conditions (:c_n_gt f1) (:c_n_gt f14)) (:effects (:e_n_bot f1) (:e_n_dec f14)))
+(:rule (:conditions (:c_n_gt f1) (:c_n_gt f14)) (:effects (:e_n_inc f1) (:e_n_dec f14)))
+(:rule (:conditions (:c_n_gt f1) (:c_n_eq f14)) (:effects (:e_n_inc f1) (:e_n_bot f14)))
+(:rule (:conditions (:c_n_gt f1) (:c_n_eq f14)) (:effects (:e_n_dec f1) (:e_n_inc f14)))
+)
+Numer of sketch rules: 14
+Number of selected features: 2
+Maximum complexity of selected feature: 4
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/ipc2023/blocks_4/training/easy/p12.pddl
+Sketch cycles
+Instance: 4
+99
+99
+Number of unsatisfied D2 facts: 70409
+Number of D2 facts: 195878 of 4431025
+2024-09-14 19:01:01,163 - Grounding Logic Program...
+2024-09-14 20:35:02,848 - ..done
+2024-09-14 20:35:02,851 - Solving Logic Program...
+2024-09-14 20:46:26,460 - ..done
+Clingo statistics:
+{'call': 0.0, 'result': 1.0, 'signal': 0.0, 'exhausted': 1.0, 'costs': [10.0], 'lower': [10.0], 'concurrency': 32.0, 'winner': 6.0, 'times': {'total': 6646.192953824997, 'cpu': 21828.503756000013, 'solve': 558.6754748821259, 'unsat': 165.54677081108093, 'sat': 23.848674058914185}, 'models': {'enumerated': 120.0, 'optimal': 1.0}}
+Solution cost: [10.0]
+Total time: 6646.192953824997
+CPU time: 21828.503756000013
+Solve time: 558.6754748821259
+2024-09-14 20:47:20,385 - Learned the following sketch:
+(:policy
+(:booleans )
+(:numericals (f1 "n_count(c_primitive(clear,0))") (f94 "n_count(c_some(r_and(r_primitive(on,0,1),r_primitive(on_g,0,1)),c_primitive(on-table,0)))"))
+(:rule (:conditions (:c_n_gt f1) (:c_n_gt f94)) (:effects (:e_n_dec f1) (:e_n_inc f94)))
+(:rule (:conditions (:c_n_gt f1) (:c_n_eq f94)) (:effects (:e_n_inc f1) (:e_n_bot f94)))
+(:rule (:conditions (:c_n_gt f1) (:c_n_eq f94)) (:effects (:e_n_bot f1) (:e_n_bot f94)))
+(:rule (:conditions (:c_n_gt f1) (:c_n_eq f94)) (:effects (:e_n_inc f1) (:e_n_inc f94)))
+(:rule (:conditions (:c_n_gt f1) (:c_n_eq f94)) (:effects (:e_n_bot f1) (:e_n_inc f94)))
+(:rule (:conditions (:c_n_gt f1) (:c_n_eq f94)) (:effects (:e_n_dec f1) (:e_n_inc f94)))
+(:rule (:conditions (:c_n_gt f1) (:c_n_gt f94)) (:effects (:e_n_bot f1) (:e_n_bot f94)))
+(:rule (:conditions (:c_n_gt f1) (:c_n_gt f94)) (:effects (:e_n_inc f1) (:e_n_bot f94)))
+(:rule (:conditions (:c_n_gt f1) (:c_n_gt f94)) (:effects (:e_n_inc f1) (:e_n_dec f94)))
+(:rule (:conditions (:c_n_gt f1) (:c_n_gt f94)) (:effects (:e_n_bot f1) (:e_n_dec f94)))
+)
+Numer of sketch rules: 10
+Number of selected features: 2
+Maximum complexity of selected feature: 6
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/ipc2023/blocks_4/training/easy/p12.pddl
+Sketch cycles
+Instance: 4
+99
+99
+Number of unsatisfied D2 facts: 36709
+Number of D2 facts: 232587 of 4431025
+2024-09-14 20:52:37,719 - Grounding Logic Program...
+2024-09-14 22:27:22,643 - ..done
+2024-09-14 22:27:22,649 - Solving Logic Program...
+2024-09-14 22:40:54,086 - ..done
+Clingo statistics:
+{'call': 0.0, 'result': 1.0, 'signal': 0.0, 'exhausted': 1.0, 'costs': [10.0], 'lower': [10.0], 'concurrency': 32.0, 'winner': 31.0, 'times': {'total': 6812.232159852982, 'cpu': 23369.712289999996, 'solve': 654.0608208179474, 'unsat': 182.03315496444702, 'sat': 31.19232988357544}, 'models': {'enumerated': 118.0, 'optimal': 1.0}}
+Solution cost: [10.0]
+Total time: 6812.232159852982
+CPU time: 23369.712289999996
+Solve time: 654.0608208179474
+2024-09-14 22:41:48,528 - Learned the following sketch:
+(:policy
+(:booleans )
+(:numericals (f1 "n_count(c_primitive(clear,0))") (f94 "n_count(c_some(r_and(r_primitive(on,0,1),r_primitive(on_g,0,1)),c_primitive(on-table,0)))"))
+(:rule (:conditions (:c_n_gt f1) (:c_n_gt f94)) (:effects (:e_n_dec f1) (:e_n_inc f94)))
+(:rule (:conditions (:c_n_gt f1) (:c_n_eq f94)) (:effects (:e_n_inc f1) (:e_n_bot f94)))
+(:rule (:conditions (:c_n_gt f1) (:c_n_eq f94)) (:effects (:e_n_bot f1) (:e_n_bot f94)))
+(:rule (:conditions (:c_n_gt f1) (:c_n_eq f94)) (:effects (:e_n_inc f1) (:e_n_inc f94)))
+(:rule (:conditions (:c_n_gt f1) (:c_n_eq f94)) (:effects (:e_n_bot f1) (:e_n_inc f94)))
+(:rule (:conditions (:c_n_gt f1) (:c_n_eq f94)) (:effects (:e_n_dec f1) (:e_n_inc f94)))
+(:rule (:conditions (:c_n_gt f1) (:c_n_gt f94)) (:effects (:e_n_bot f1) (:e_n_bot f94)))
+(:rule (:conditions (:c_n_gt f1) (:c_n_gt f94)) (:effects (:e_n_inc f1) (:e_n_bot f94)))
+(:rule (:conditions (:c_n_gt f1) (:c_n_gt f94)) (:effects (:e_n_inc f1) (:e_n_dec f94)))
+(:rule (:conditions (:c_n_gt f1) (:c_n_gt f94)) (:effects (:e_n_bot f1) (:e_n_inc f94)))
+(:rule (:conditions (:c_n_gt f1) (:c_n_gt f94)) (:effects (:e_n_inc f1) (:e_n_inc f94)))
+)
+Numer of sketch rules: 11
+Number of selected features: 2
+Maximum complexity of selected feature: 6
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/ipc2023/blocks_4/training/easy/p12.pddl
+Sketch cycles
+Instance: 4
+99
+99
+Number of unsatisfied D2 facts: 11601
+Number of D2 facts: 244188 of 4431025
+2024-09-14 22:47:16,132 - Grounding Logic Program...
+2024-09-15 00:23:52,846 - ..done
+2024-09-15 00:23:52,848 - Solving Logic Program...
+2024-09-15 00:35:17,327 - ..done
+Clingo statistics:
+{'call': 0.0, 'result': 1.0, 'signal': 0.0, 'exhausted': 1.0, 'costs': [10.0], 'lower': [10.0], 'concurrency': 32.0, 'winner': 9.0, 'times': {'total': 6807.694056034088, 'cpu': 19642.828598000007, 'solve': 508.0030460357666, 'unsat': 189.84862804412842, 'sat': 29.220911026000977}, 'models': {'enumerated': 113.0, 'optimal': 1.0}}
+Solution cost: [10.0]
+Total time: 6807.694056034088
+CPU time: 19642.828598000007
+Solve time: 508.0030460357666
+2024-09-15 00:36:09,724 - Learned the following sketch:
+(:policy
+(:booleans )
+(:numericals (f1 "n_count(c_primitive(clear,0))") (f94 "n_count(c_some(r_and(r_primitive(on,0,1),r_primitive(on_g,0,1)),c_primitive(on-table,0)))"))
+(:rule (:conditions (:c_n_gt f1) (:c_n_gt f94)) (:effects (:e_n_dec f1) (:e_n_inc f94)))
+(:rule (:conditions (:c_n_gt f1) (:c_n_eq f94)) (:effects (:e_n_inc f1) (:e_n_bot f94)))
+(:rule (:conditions (:c_n_gt f1) (:c_n_eq f94)) (:effects (:e_n_bot f1) (:e_n_bot f94)))
+(:rule (:conditions (:c_n_gt f1) (:c_n_eq f94)) (:effects (:e_n_inc f1) (:e_n_inc f94)))
+(:rule (:conditions (:c_n_gt f1) (:c_n_eq f94)) (:effects (:e_n_bot f1) (:e_n_inc f94)))
+(:rule (:conditions (:c_n_gt f1) (:c_n_eq f94)) (:effects (:e_n_dec f1) (:e_n_inc f94)))
+(:rule (:conditions (:c_n_gt f1) (:c_n_gt f94)) (:effects (:e_n_bot f1) (:e_n_bot f94)))
+(:rule (:conditions (:c_n_gt f1) (:c_n_gt f94)) (:effects (:e_n_inc f1) (:e_n_bot f94)))
+(:rule (:conditions (:c_n_gt f1) (:c_n_gt f94)) (:effects (:e_n_inc f1) (:e_n_dec f94)))
+)
+Numer of sketch rules: 9
+Number of selected features: 2
+Maximum complexity of selected feature: 6
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/ipc2023/blocks_4/training/easy/p12.pddl
+Sketch cycles
+Instance: 4
+99
+99
+Number of unsatisfied D2 facts: 11583
+Number of D2 facts: 255771 of 4431025
+2024-09-15 00:41:34,802 - Grounding Logic Program...
+2024-09-15 02:20:14,905 - ..done
+2024-09-15 02:20:14,908 - Solving Logic Program...
+2024-09-15 02:30:35,134 - ..done
+Clingo statistics:
+{'call': 0.0, 'result': 1.0, 'signal': 0.0, 'exhausted': 1.0, 'costs': [10.0], 'lower': [10.0], 'concurrency': 32.0, 'winner': 21.0, 'times': {'total': 6864.727971076965, 'cpu': 13622.890467999998, 'solve': 395.74000906944275, 'unsat': 255.94689512252808, 'sat': 37.5027859210968}, 'models': {'enumerated': 100.0, 'optimal': 1.0}}
+Solution cost: [10.0]
+Total time: 6864.727971076965
+CPU time: 13622.890467999998
+Solve time: 395.74000906944275
+2024-09-15 02:31:28,870 - Learned the following sketch:
+(:policy
+(:booleans )
+(:numericals (f1 "n_count(c_primitive(clear,0))") (f94 "n_count(c_some(r_and(r_primitive(on,0,1),r_primitive(on_g,0,1)),c_primitive(on-table,0)))"))
+(:rule (:conditions (:c_n_gt f1) (:c_n_gt f94)) (:effects (:e_n_dec f1) (:e_n_inc f94)))
+(:rule (:conditions (:c_n_gt f1) (:c_n_eq f94)) (:effects (:e_n_inc f1) (:e_n_bot f94)))
+(:rule (:conditions (:c_n_gt f1) (:c_n_eq f94)) (:effects (:e_n_bot f1) (:e_n_bot f94)))
+(:rule (:conditions (:c_n_gt f1) (:c_n_eq f94)) (:effects (:e_n_inc f1) (:e_n_inc f94)))
+(:rule (:conditions (:c_n_gt f1) (:c_n_eq f94)) (:effects (:e_n_bot f1) (:e_n_inc f94)))
+(:rule (:conditions (:c_n_gt f1) (:c_n_eq f94)) (:effects (:e_n_dec f1) (:e_n_inc f94)))
+(:rule (:conditions (:c_n_gt f1) (:c_n_gt f94)) (:effects (:e_n_inc f1) (:e_n_bot f94)))
+(:rule (:conditions (:c_n_gt f1) (:c_n_gt f94)) (:effects (:e_n_inc f1) (:e_n_dec f94)))
+(:rule (:conditions (:c_n_gt f1) (:c_n_gt f94)) (:effects (:e_n_bot f1) (:e_n_inc f94)))
+(:rule (:conditions (:c_n_gt f1) (:c_n_gt f94)) (:effects (:e_n_inc f1) (:e_n_inc f94)))
+)
+Numer of sketch rules: 10
+Number of selected features: 2
+Maximum complexity of selected feature: 6
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/ipc2023/blocks_4/training/easy/p12.pddl
+Sketch cycles
+Instance: 4
+99
+99
+Number of unsatisfied D2 facts: 18526
+Number of D2 facts: 274297 of 4431025
+2024-09-15 02:36:54,786 - Grounding Logic Program...
+2024-09-15 04:19:41,780 - ..done
+2024-09-15 04:19:41,783 - Solving Logic Program...
+2024-09-15 04:35:29,253 - ..done
+Clingo statistics:
+{'call': 0.0, 'result': 1.0, 'signal': 0.0, 'exhausted': 1.0, 'costs': [10.0], 'lower': [10.0], 'concurrency': 32.0, 'winner': 29.0, 'times': {'total': 7439.526671886444, 'cpu': 22892.06687699999, 'solve': 718.6871218681335, 'unsat': 354.63005900382996, 'sat': 40.68735599517822}, 'models': {'enumerated': 113.0, 'optimal': 1.0}}
+Solution cost: [10.0]
+Total time: 7439.526671886444
+CPU time: 22892.06687699999
+Solve time: 718.6871218681335
+2024-09-15 04:36:21,693 - Learned the following sketch:
+(:policy
+(:booleans )
+(:numericals (f1 "n_count(c_primitive(clear,0))") (f94 "n_count(c_some(r_and(r_primitive(on,0,1),r_primitive(on_g,0,1)),c_primitive(on-table,0)))"))
+(:rule (:conditions (:c_n_gt f1) (:c_n_gt f94)) (:effects (:e_n_dec f1) (:e_n_inc f94)))
+(:rule (:conditions (:c_n_gt f1) (:c_n_eq f94)) (:effects (:e_n_inc f1) (:e_n_bot f94)))
+(:rule (:conditions (:c_n_gt f1) (:c_n_eq f94)) (:effects (:e_n_bot f1) (:e_n_bot f94)))
+(:rule (:conditions (:c_n_gt f1) (:c_n_eq f94)) (:effects (:e_n_inc f1) (:e_n_inc f94)))
+(:rule (:conditions (:c_n_gt f1) (:c_n_eq f94)) (:effects (:e_n_bot f1) (:e_n_inc f94)))
+(:rule (:conditions (:c_n_gt f1) (:c_n_eq f94)) (:effects (:e_n_dec f1) (:e_n_inc f94)))
+(:rule (:conditions (:c_n_gt f1) (:c_n_gt f94)) (:effects (:e_n_inc f1) (:e_n_bot f94)))
+(:rule (:conditions (:c_n_gt f1) (:c_n_gt f94)) (:effects (:e_n_inc f1) (:e_n_dec f94)))
+(:rule (:conditions (:c_n_gt f1) (:c_n_gt f94)) (:effects (:e_n_bot f1) (:e_n_inc f94)))
+)
+Numer of sketch rules: 9
+Number of selected features: 2
+Maximum complexity of selected feature: 6
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/ipc2023/blocks_4/training/easy/p12.pddl
+Sketch cycles
+Instance: 4
+99
+99
+Number of unsatisfied D2 facts: 9666
+Number of D2 facts: 283963 of 4431025
+2024-09-15 04:42:03,577 - Grounding Logic Program...
+2024-09-15 06:35:19,827 - ..done
+2024-09-15 06:35:19,832 - Solving Logic Program...
+2024-09-15 06:45:52,044 - ..done
+Clingo statistics:
+{'call': 0.0, 'result': 1.0, 'signal': 0.0, 'exhausted': 1.0, 'costs': [10.0], 'lower': [10.0], 'concurrency': 32.0, 'winner': 10.0, 'times': {'total': 7769.195673942566, 'cpu': 16607.445169000042, 'solve': 370.2331941127777, 'unsat': 214.84895205497742, 'sat': 44.57765507698059}, 'models': {'enumerated': 108.0, 'optimal': 1.0}}
+Solution cost: [10.0]
+Total time: 7769.195673942566
+CPU time: 16607.445169000042
+Solve time: 370.2331941127777
+2024-09-15 06:46:45,659 - Learned the following sketch:
+(:policy
+(:booleans )
+(:numericals (f1 "n_count(c_primitive(clear,0))") (f94 "n_count(c_some(r_and(r_primitive(on,0,1),r_primitive(on_g,0,1)),c_primitive(on-table,0)))"))
+(:rule (:conditions (:c_n_gt f1) (:c_n_gt f94)) (:effects (:e_n_dec f1) (:e_n_inc f94)))
+(:rule (:conditions (:c_n_gt f1) (:c_n_eq f94)) (:effects (:e_n_inc f1) (:e_n_bot f94)))
+(:rule (:conditions (:c_n_gt f1) (:c_n_eq f94)) (:effects (:e_n_bot f1) (:e_n_bot f94)))
+(:rule (:conditions (:c_n_gt f1) (:c_n_eq f94)) (:effects (:e_n_inc f1) (:e_n_inc f94)))
+(:rule (:conditions (:c_n_gt f1) (:c_n_eq f94)) (:effects (:e_n_bot f1) (:e_n_inc f94)))
+(:rule (:conditions (:c_n_gt f1) (:c_n_eq f94)) (:effects (:e_n_dec f1) (:e_n_inc f94)))
+(:rule (:conditions (:c_n_gt f1) (:c_n_gt f94)) (:effects (:e_n_inc f1) (:e_n_bot f94)))
+(:rule (:conditions (:c_n_gt f1) (:c_n_gt f94)) (:effects (:e_n_inc f1) (:e_n_dec f94)))
+(:rule (:conditions (:c_n_gt f1) (:c_n_gt f94)) (:effects (:e_n_bot f1) (:e_n_bot f94)))
+)
+Numer of sketch rules: 9
+Number of selected features: 2
+Maximum complexity of selected feature: 6
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/ipc2023/blocks_4/training/easy/p12.pddl
+Sketch cycles
+Instance: 4
+99
+99
+Number of unsatisfied D2 facts: 3011
+Number of D2 facts: 286974 of 4431025
+2024-09-15 06:52:17,654 - Grounding Logic Program...
+2024-09-15 08:42:42,789 - ..done
+2024-09-15 08:42:43,350 - Solving Logic Program...
+2024-09-15 08:55:24,511 - ..done
+Clingo statistics:
+{'call': 0.0, 'result': 1.0, 'signal': 0.0, 'exhausted': 1.0, 'costs': [10.0], 'lower': [10.0], 'concurrency': 32.0, 'winner': 0.0, 'times': {'total': 7717.859922885895, 'cpu': 19813.01331500002, 'solve': 536.6711049079895, 'unsat': 272.5655879974365, 'sat': 45.4174919128418}, 'models': {'enumerated': 110.0, 'optimal': 1.0}}
+Solution cost: [10.0]
+Total time: 7717.859922885895
+CPU time: 19813.01331500002
+Solve time: 536.6711049079895
+2024-09-15 08:56:16,679 - Learned the following sketch:
+(:policy
+(:booleans )
+(:numericals (f1 "n_count(c_primitive(clear,0))") (f94 "n_count(c_some(r_and(r_primitive(on,0,1),r_primitive(on_g,0,1)),c_primitive(on-table,0)))"))
+(:rule (:conditions (:c_n_gt f1) (:c_n_gt f94)) (:effects (:e_n_dec f1) (:e_n_inc f94)))
+(:rule (:conditions (:c_n_gt f1) (:c_n_eq f94)) (:effects (:e_n_inc f1) (:e_n_bot f94)))
+(:rule (:conditions (:c_n_gt f1) (:c_n_eq f94)) (:effects (:e_n_bot f1) (:e_n_bot f94)))
+(:rule (:conditions (:c_n_gt f1) (:c_n_eq f94)) (:effects (:e_n_dec f1) (:e_n_inc f94)))
+(:rule (:conditions (:c_n_gt f1) (:c_n_gt f94)) (:effects (:e_n_inc f1) (:e_n_bot f94)))
+(:rule (:conditions (:c_n_gt f1) (:c_n_gt f94)) (:effects (:e_n_bot f1) (:e_n_inc f94)))
+(:rule (:conditions (:c_n_gt f1) (:c_n_gt f94)) (:effects (:e_n_inc f1) (:e_n_inc f94)))
+)
+Numer of sketch rules: 7
+Number of selected features: 2
+Maximum complexity of selected feature: 6
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/ipc2023/blocks_4/training/easy/p12.pddl
+Sketch cycles
+Instance: 4
+99
+99
+Number of unsatisfied D2 facts: 3794
+Number of D2 facts: 290768 of 4431025
+2024-09-15 09:02:00,048 - Grounding Logic Program...
+2024-09-15 10:50:51,223 - ..done
+2024-09-15 10:50:51,829 - Solving Logic Program...
+2024-09-15 11:03:23,456 - ..done
+Clingo statistics:
+{'call': 0.0, 'result': 1.0, 'signal': 0.0, 'exhausted': 1.0, 'costs': [10.0], 'lower': [10.0], 'concurrency': 32.0, 'winner': 15.0, 'times': {'total': 7626.1528968811035, 'cpu': 20235.025523999997, 'solve': 539.6657130718231, 'unsat': 138.24104499816895, 'sat': 40.71999907493591}, 'models': {'enumerated': 58.0, 'optimal': 1.0}}
+Solution cost: [10.0]
+Total time: 7626.1528968811035
+CPU time: 20235.025523999997
+Solve time: 539.6657130718231
+2024-09-15 11:04:16,438 - Learned the following sketch:
+(:policy
+(:booleans )
+(:numericals (f1 "n_count(c_primitive(clear,0))") (f94 "n_count(c_some(r_and(r_primitive(on,0,1),r_primitive(on_g,0,1)),c_primitive(on-table,0)))"))
+(:rule (:conditions (:c_n_gt f1) (:c_n_gt f94)) (:effects (:e_n_dec f1) (:e_n_inc f94)))
+(:rule (:conditions (:c_n_gt f1) (:c_n_eq f94)) (:effects (:e_n_inc f1) (:e_n_bot f94)))
+(:rule (:conditions (:c_n_gt f1) (:c_n_eq f94)) (:effects (:e_n_bot f1) (:e_n_bot f94)))
+(:rule (:conditions (:c_n_gt f1) (:c_n_eq f94)) (:effects (:e_n_dec f1) (:e_n_inc f94)))
+(:rule (:conditions (:c_n_gt f1) (:c_n_gt f94)) (:effects (:e_n_inc f1) (:e_n_bot f94)))
+(:rule (:conditions (:c_n_gt f1) (:c_n_gt f94)) (:effects (:e_n_bot f1) (:e_n_inc f94)))
+(:rule (:conditions (:c_n_gt f1) (:c_n_eq f94)) (:effects (:e_n_inc f1) (:e_n_inc f94)))
+(:rule (:conditions (:c_n_gt f1) (:c_n_eq f94)) (:effects (:e_n_bot f1) (:e_n_inc f94)))
+)
+Numer of sketch rules: 8
+Number of selected features: 2
+Maximum complexity of selected feature: 6
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/ipc2023/blocks_4/training/easy/p12.pddl
+Sketch cycles
+Instance: 4
+99
+99
+Number of unsatisfied D2 facts: 1179
+Number of D2 facts: 291947 of 4431025
+2024-09-15 11:09:51,225 - Grounding Logic Program...
+2024-09-15 12:47:43,741 - ..done
+2024-09-15 12:47:44,308 - Solving Logic Program...
+2024-09-15 13:06:58,029 - ..done
+Clingo statistics:
+{'call': 0.0, 'result': 1.0, 'signal': 0.0, 'exhausted': 1.0, 'costs': [10.0], 'lower': [10.0], 'concurrency': 32.0, 'winner': 15.0, 'times': {'total': 7360.934209108353, 'cpu': 20784.638439000002, 'solve': 931.6087770462036, 'unsat': 52.24047899246216, 'sat': 42.40143895149231}, 'models': {'enumerated': 109.0, 'optimal': 1.0}}
+Solution cost: [10.0]
+Total time: 7360.934209108353
+CPU time: 20784.638439000002
+Solve time: 931.6087770462036
+2024-09-15 13:07:48,557 - Learned the following sketch:
+(:policy
+(:booleans )
+(:numericals (f1 "n_count(c_primitive(clear,0))") (f94 "n_count(c_some(r_and(r_primitive(on,0,1),r_primitive(on_g,0,1)),c_primitive(on-table,0)))"))
+(:rule (:conditions (:c_n_gt f1) (:c_n_gt f94)) (:effects (:e_n_dec f1) (:e_n_inc f94)))
+(:rule (:conditions (:c_n_gt f1) (:c_n_eq f94)) (:effects (:e_n_inc f1) (:e_n_bot f94)))
+(:rule (:conditions (:c_n_gt f1) (:c_n_eq f94)) (:effects (:e_n_bot f1) (:e_n_bot f94)))
+(:rule (:conditions (:c_n_gt f1) (:c_n_eq f94)) (:effects (:e_n_dec f1) (:e_n_inc f94)))
+(:rule (:conditions (:c_n_gt f1) (:c_n_gt f94)) (:effects (:e_n_inc f1) (:e_n_bot f94)))
+(:rule (:conditions (:c_n_gt f1) (:c_n_gt f94)) (:effects (:e_n_bot f1) (:e_n_inc f94)))
+(:rule (:conditions (:c_n_gt f1) (:c_n_eq f94)) (:effects (:e_n_inc f1) (:e_n_inc f94)))
+(:rule (:conditions (:c_n_gt f1) (:c_n_eq f94)) (:effects (:e_n_bot f1) (:e_n_inc f94)))
+)
+Numer of sketch rules: 8
+Number of selected features: 2
+Maximum complexity of selected feature: 6
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/ipc2023/blocks_4/training/easy/p12.pddl
+Sketch cycles
+Instance: 4
+99
+99
+Number of unsatisfied D2 facts: 750
+Number of D2 facts: 292697 of 4431025
+2024-09-15 13:13:07,361 - Grounding Logic Program...
+2024-09-15 14:47:08,657 - ..done
+2024-09-15 14:47:09,206 - Solving Logic Program...
+2024-09-15 14:59:54,855 - ..done
+Clingo statistics:
+{'call': 0.0, 'result': 1.0, 'signal': 0.0, 'exhausted': 1.0, 'costs': [10.0], 'lower': [10.0], 'concurrency': 32.0, 'winner': 2.0, 'times': {'total': 6724.0376670360565, 'cpu': 17257.697033999983, 'solve': 543.2235550880432, 'unsat': 158.6700611114502, 'sat': 44.85747289657593}, 'models': {'enumerated': 112.0, 'optimal': 1.0}}
+Solution cost: [10.0]
+Total time: 6724.0376670360565
+CPU time: 17257.697033999983
+Solve time: 543.2235550880432
+2024-09-15 15:00:48,303 - Learned the following sketch:
+(:policy
+(:booleans )
+(:numericals (f1 "n_count(c_primitive(clear,0))") (f94 "n_count(c_some(r_and(r_primitive(on,0,1),r_primitive(on_g,0,1)),c_primitive(on-table,0)))"))
+(:rule (:conditions (:c_n_gt f1) (:c_n_gt f94)) (:effects (:e_n_dec f1) (:e_n_inc f94)))
+(:rule (:conditions (:c_n_gt f1) (:c_n_eq f94)) (:effects (:e_n_inc f1) (:e_n_bot f94)))
+(:rule (:conditions (:c_n_gt f1) (:c_n_eq f94)) (:effects (:e_n_bot f1) (:e_n_bot f94)))
+(:rule (:conditions (:c_n_gt f1) (:c_n_eq f94)) (:effects (:e_n_dec f1) (:e_n_inc f94)))
+(:rule (:conditions (:c_n_gt f1) (:c_n_gt f94)) (:effects (:e_n_inc f1) (:e_n_bot f94)))
+(:rule (:conditions (:c_n_gt f1) (:c_n_gt f94)) (:effects (:e_n_bot f1) (:e_n_inc f94)))
+(:rule (:conditions (:c_n_gt f1) (:c_n_eq f94)) (:effects (:e_n_inc f1) (:e_n_inc f94)))
+(:rule (:conditions (:c_n_gt f1) (:c_n_eq f94)) (:effects (:e_n_bot f1) (:e_n_inc f94)))
+)
+Numer of sketch rules: 8
+Number of selected features: 2
+Maximum complexity of selected feature: 6
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/ipc2023/blocks_4/training/easy/p12.pddl
+Sketch cycles
+Instance: 4
+99
+99
+Number of unsatisfied D2 facts: 2265
+Number of D2 facts: 294962 of 4431025
+2024-09-15 15:06:06,646 - Grounding Logic Program...

@@ -1,0 +1,362 @@
+digraph {
+rankdir="LR"
+s0[label="state_index=0 global_state_index = 0 abstraction_index=0 abstract_state_index=0
+State(index=7, fluent atoms=[(has-hole p0 one front), (shape p0 circular), (temperature p0 cold), (objscheduled), (surface-condition p0 smooth)], static atoms=[(has-paint immersion-painter blue), (has-paint spray-painter blue), (can-orient drill-press front), (can-orient punch front), (has-bit drill-press one), (has-bit punch one), (part p0), (ashape circular), (colour blue), (width one), (anorient front), (temperature-type cold), (temperature-type hot), (ashape cylindrical), (machine polisher), (machine roller), (machine lathe), (machine grinder), (machine punch), (machine drill-press), (machine spray-painter), (machine immersion-painter), (surface polished), (surface rough), (surface smooth), (= p0 p0), (= circular circular), (= blue blue), (= one one), (= front front), (= cold cold), (= hot hot), (= cylindrical cylindrical), (= polisher polisher), (= roller roller), (= lathe lathe), (= grinder grinder), (= punch punch), (= drill-press drill-press), (= spray-painter spray-painter), (= immersion-painter immersion-painter), (= polished polished), (= rough rough), (= smooth smooth)], derived atoms=[])
+State(index=0, fluent atoms=[(has-hole p0 one front), (shape p0 circular), (surface-condition p0 rough), (temperature p0 cold)], static atoms=[(has-paint immersion-painter blue), (has-paint spray-painter blue), (can-orient drill-press front), (can-orient punch front), (has-bit drill-press one), (has-bit punch one), (part p0), (ashape circular), (colour blue), (width one), (anorient front), (temperature-type cold), (temperature-type hot), (ashape cylindrical), (machine polisher), (machine roller), (machine lathe), (machine grinder), (machine punch), (machine drill-press), (machine spray-painter), (machine immersion-painter), (surface polished), (surface rough), (surface smooth), (= p0 p0), (= circular circular), (= blue blue), (= one one), (= front front), (= cold cold), (= hot hot), (= cylindrical cylindrical), (= polisher polisher), (= roller roller), (= lathe lathe), (= grinder grinder), (= punch punch), (= drill-press drill-press), (= spray-painter spray-painter), (= immersion-painter immersion-painter), (= polished polished), (= rough rough), (= smooth smooth)], derived atoms=[])
+"]
+s1[label="state_index=1 global_state_index = 1 abstraction_index=0 abstract_state_index=1
+State(index=42, fluent atoms=[(painted p0 blue), (has-hole p0 one front), (shape p0 circular), (temperature p0 cold), (objscheduled), (scheduled p0), (busy immersion-painter)], static atoms=[(has-paint immersion-painter blue), (has-paint spray-painter blue), (can-orient drill-press front), (can-orient punch front), (has-bit drill-press one), (has-bit punch one), (part p0), (ashape circular), (colour blue), (width one), (anorient front), (temperature-type cold), (temperature-type hot), (ashape cylindrical), (machine polisher), (machine roller), (machine lathe), (machine grinder), (machine punch), (machine drill-press), (machine spray-painter), (machine immersion-painter), (surface polished), (surface rough), (surface smooth), (= p0 p0), (= circular circular), (= blue blue), (= one one), (= front front), (= cold cold), (= hot hot), (= cylindrical cylindrical), (= polisher polisher), (= roller roller), (= lathe lathe), (= grinder grinder), (= punch punch), (= drill-press drill-press), (= spray-painter spray-painter), (= immersion-painter immersion-painter), (= polished polished), (= rough rough), (= smooth smooth)], derived atoms=[])
+State(index=1, fluent atoms=[(painted p0 blue), (has-hole p0 one front), (shape p0 circular), (temperature p0 cold), (objscheduled), (scheduled p0), (busy spray-painter)], static atoms=[(has-paint immersion-painter blue), (has-paint spray-painter blue), (can-orient drill-press front), (can-orient punch front), (has-bit drill-press one), (has-bit punch one), (part p0), (ashape circular), (colour blue), (width one), (anorient front), (temperature-type cold), (temperature-type hot), (ashape cylindrical), (machine polisher), (machine roller), (machine lathe), (machine grinder), (machine punch), (machine drill-press), (machine spray-painter), (machine immersion-painter), (surface polished), (surface rough), (surface smooth), (= p0 p0), (= circular circular), (= blue blue), (= one one), (= front front), (= cold cold), (= hot hot), (= cylindrical cylindrical), (= polisher polisher), (= roller roller), (= lathe lathe), (= grinder grinder), (= punch punch), (= drill-press drill-press), (= spray-painter spray-painter), (= immersion-painter immersion-painter), (= polished polished), (= rough rough), (= smooth smooth)], derived atoms=[])
+"]
+s2[label="state_index=2 global_state_index = 2 abstraction_index=0 abstract_state_index=2
+State(index=2, fluent atoms=[(shape p0 cylindrical), (objscheduled), (scheduled p0), (temperature p0 hot), (busy roller)], static atoms=[(has-paint immersion-painter blue), (has-paint spray-painter blue), (can-orient drill-press front), (can-orient punch front), (has-bit drill-press one), (has-bit punch one), (part p0), (ashape circular), (colour blue), (width one), (anorient front), (temperature-type cold), (temperature-type hot), (ashape cylindrical), (machine polisher), (machine roller), (machine lathe), (machine grinder), (machine punch), (machine drill-press), (machine spray-painter), (machine immersion-painter), (surface polished), (surface rough), (surface smooth), (= p0 p0), (= circular circular), (= blue blue), (= one one), (= front front), (= cold cold), (= hot hot), (= cylindrical cylindrical), (= polisher polisher), (= roller roller), (= lathe lathe), (= grinder grinder), (= punch punch), (= drill-press drill-press), (= spray-painter spray-painter), (= immersion-painter immersion-painter), (= polished polished), (= rough rough), (= smooth smooth)], derived atoms=[])
+"]
+s3[label="state_index=3 global_state_index = 3 abstraction_index=0 abstract_state_index=3
+State(index=3, fluent atoms=[(surface-condition p0 polished), (has-hole p0 one front), (shape p0 circular), (temperature p0 cold), (objscheduled), (scheduled p0), (busy polisher)], static atoms=[(has-paint immersion-painter blue), (has-paint spray-painter blue), (can-orient drill-press front), (can-orient punch front), (has-bit drill-press one), (has-bit punch one), (part p0), (ashape circular), (colour blue), (width one), (anorient front), (temperature-type cold), (temperature-type hot), (ashape cylindrical), (machine polisher), (machine roller), (machine lathe), (machine grinder), (machine punch), (machine drill-press), (machine spray-painter), (machine immersion-painter), (surface polished), (surface rough), (surface smooth), (= p0 p0), (= circular circular), (= blue blue), (= one one), (= front front), (= cold cold), (= hot hot), (= cylindrical cylindrical), (= polisher polisher), (= roller roller), (= lathe lathe), (= grinder grinder), (= punch punch), (= drill-press drill-press), (= spray-painter spray-painter), (= immersion-painter immersion-painter), (= polished polished), (= rough rough), (= smooth smooth)], derived atoms=[])
+"]
+s4[label="state_index=4 global_state_index = 4 abstraction_index=0 abstract_state_index=4
+State(index=4, fluent atoms=[(shape p0 cylindrical), (has-hole p0 one front), (surface-condition p0 rough), (temperature p0 cold), (objscheduled), (scheduled p0), (busy lathe)], static atoms=[(has-paint immersion-painter blue), (has-paint spray-painter blue), (can-orient drill-press front), (can-orient punch front), (has-bit drill-press one), (has-bit punch one), (part p0), (ashape circular), (colour blue), (width one), (anorient front), (temperature-type cold), (temperature-type hot), (ashape cylindrical), (machine polisher), (machine roller), (machine lathe), (machine grinder), (machine punch), (machine drill-press), (machine spray-painter), (machine immersion-painter), (surface polished), (surface rough), (surface smooth), (= p0 p0), (= circular circular), (= blue blue), (= one one), (= front front), (= cold cold), (= hot hot), (= cylindrical cylindrical), (= polisher polisher), (= roller roller), (= lathe lathe), (= grinder grinder), (= punch punch), (= drill-press drill-press), (= spray-painter spray-painter), (= immersion-painter immersion-painter), (= polished polished), (= rough rough), (= smooth smooth)], derived atoms=[])
+State(index=18, fluent atoms=[(shape p0 cylindrical), (has-hole p0 one front), (temperature p0 cold), (objscheduled), (scheduled p0), (surface-condition p0 smooth), (busy grinder)], static atoms=[(has-paint immersion-painter blue), (has-paint spray-painter blue), (can-orient drill-press front), (can-orient punch front), (has-bit drill-press one), (has-bit punch one), (part p0), (ashape circular), (colour blue), (width one), (anorient front), (temperature-type cold), (temperature-type hot), (ashape cylindrical), (machine polisher), (machine roller), (machine lathe), (machine grinder), (machine punch), (machine drill-press), (machine spray-painter), (machine immersion-painter), (surface polished), (surface rough), (surface smooth), (= p0 p0), (= circular circular), (= blue blue), (= one one), (= front front), (= cold cold), (= hot hot), (= cylindrical cylindrical), (= polisher polisher), (= roller roller), (= lathe lathe), (= grinder grinder), (= punch punch), (= drill-press drill-press), (= spray-painter spray-painter), (= immersion-painter immersion-painter), (= polished polished), (= rough rough), (= smooth smooth)], derived atoms=[])
+"]
+s5[label="state_index=5 global_state_index = 5 abstraction_index=0 abstract_state_index=5
+State(index=8, fluent atoms=[(painted p0 blue), (has-hole p0 one front), (shape p0 circular), (temperature p0 cold), (objscheduled), (scheduled p0), (busy immersion-painter), (surface-condition p0 smooth)], static atoms=[(has-paint immersion-painter blue), (has-paint spray-painter blue), (can-orient drill-press front), (can-orient punch front), (has-bit drill-press one), (has-bit punch one), (part p0), (ashape circular), (colour blue), (width one), (anorient front), (temperature-type cold), (temperature-type hot), (ashape cylindrical), (machine polisher), (machine roller), (machine lathe), (machine grinder), (machine punch), (machine drill-press), (machine spray-painter), (machine immersion-painter), (surface polished), (surface rough), (surface smooth), (= p0 p0), (= circular circular), (= blue blue), (= one one), (= front front), (= cold cold), (= hot hot), (= cylindrical cylindrical), (= polisher polisher), (= roller roller), (= lathe lathe), (= grinder grinder), (= punch punch), (= drill-press drill-press), (= spray-painter spray-painter), (= immersion-painter immersion-painter), (= polished polished), (= rough rough), (= smooth smooth)], derived atoms=[])
+State(index=5, fluent atoms=[(painted p0 blue), (has-hole p0 one front), (shape p0 circular), (surface-condition p0 rough), (temperature p0 cold), (objscheduled), (scheduled p0), (busy immersion-painter)], static atoms=[(has-paint immersion-painter blue), (has-paint spray-painter blue), (can-orient drill-press front), (can-orient punch front), (has-bit drill-press one), (has-bit punch one), (part p0), (ashape circular), (colour blue), (width one), (anorient front), (temperature-type cold), (temperature-type hot), (ashape cylindrical), (machine polisher), (machine roller), (machine lathe), (machine grinder), (machine punch), (machine drill-press), (machine spray-painter), (machine immersion-painter), (surface polished), (surface rough), (surface smooth), (= p0 p0), (= circular circular), (= blue blue), (= one one), (= front front), (= cold cold), (= hot hot), (= cylindrical cylindrical), (= polisher polisher), (= roller roller), (= lathe lathe), (= grinder grinder), (= punch punch), (= drill-press drill-press), (= spray-painter spray-painter), (= immersion-painter immersion-painter), (= polished polished), (= rough rough), (= smooth smooth)], derived atoms=[])
+"]
+s6[label="state_index=6 global_state_index = 6 abstraction_index=0 abstract_state_index=6
+State(index=6, fluent atoms=[(has-hole p0 one front), (shape p0 circular), (temperature p0 cold), (objscheduled), (scheduled p0), (surface-condition p0 smooth), (busy grinder)], static atoms=[(has-paint immersion-painter blue), (has-paint spray-painter blue), (can-orient drill-press front), (can-orient punch front), (has-bit drill-press one), (has-bit punch one), (part p0), (ashape circular), (colour blue), (width one), (anorient front), (temperature-type cold), (temperature-type hot), (ashape cylindrical), (machine polisher), (machine roller), (machine lathe), (machine grinder), (machine punch), (machine drill-press), (machine spray-painter), (machine immersion-painter), (surface polished), (surface rough), (surface smooth), (= p0 p0), (= circular circular), (= blue blue), (= one one), (= front front), (= cold cold), (= hot hot), (= cylindrical cylindrical), (= polisher polisher), (= roller roller), (= lathe lathe), (= grinder grinder), (= punch punch), (= drill-press drill-press), (= spray-painter spray-painter), (= immersion-painter immersion-painter), (= polished polished), (= rough rough), (= smooth smooth)], derived atoms=[])
+"]
+s7[label="state_index=7 global_state_index = 7 abstraction_index=0 abstract_state_index=7
+State(index=9, fluent atoms=[(painted p0 blue), (has-hole p0 one front), (shape p0 circular), (temperature p0 cold), (objscheduled), (surface-condition p0 smooth)], static atoms=[(has-paint immersion-painter blue), (has-paint spray-painter blue), (can-orient drill-press front), (can-orient punch front), (has-bit drill-press one), (has-bit punch one), (part p0), (ashape circular), (colour blue), (width one), (anorient front), (temperature-type cold), (temperature-type hot), (ashape cylindrical), (machine polisher), (machine roller), (machine lathe), (machine grinder), (machine punch), (machine drill-press), (machine spray-painter), (machine immersion-painter), (surface polished), (surface rough), (surface smooth), (= p0 p0), (= circular circular), (= blue blue), (= one one), (= front front), (= cold cold), (= hot hot), (= cylindrical cylindrical), (= polisher polisher), (= roller roller), (= lathe lathe), (= grinder grinder), (= punch punch), (= drill-press drill-press), (= spray-painter spray-painter), (= immersion-painter immersion-painter), (= polished polished), (= rough rough), (= smooth smooth)], derived atoms=[])
+State(index=13, fluent atoms=[(painted p0 blue), (has-hole p0 one front), (shape p0 circular), (surface-condition p0 rough), (temperature p0 cold), (objscheduled)], static atoms=[(has-paint immersion-painter blue), (has-paint spray-painter blue), (can-orient drill-press front), (can-orient punch front), (has-bit drill-press one), (has-bit punch one), (part p0), (ashape circular), (colour blue), (width one), (anorient front), (temperature-type cold), (temperature-type hot), (ashape cylindrical), (machine polisher), (machine roller), (machine lathe), (machine grinder), (machine punch), (machine drill-press), (machine spray-painter), (machine immersion-painter), (surface polished), (surface rough), (surface smooth), (= p0 p0), (= circular circular), (= blue blue), (= one one), (= front front), (= cold cold), (= hot hot), (= cylindrical cylindrical), (= polisher polisher), (= roller roller), (= lathe lathe), (= grinder grinder), (= punch punch), (= drill-press drill-press), (= spray-painter spray-painter), (= immersion-painter immersion-painter), (= polished polished), (= rough rough), (= smooth smooth)], derived atoms=[])
+"]
+s8[label="state_index=8 global_state_index = 8 abstraction_index=0 abstract_state_index=8
+State(index=10, fluent atoms=[(surface-condition p0 polished), (painted p0 blue), (has-hole p0 one front), (shape p0 circular), (temperature p0 cold), (objscheduled), (scheduled p0), (busy polisher)], static atoms=[(has-paint immersion-painter blue), (has-paint spray-painter blue), (can-orient drill-press front), (can-orient punch front), (has-bit drill-press one), (has-bit punch one), (part p0), (ashape circular), (colour blue), (width one), (anorient front), (temperature-type cold), (temperature-type hot), (ashape cylindrical), (machine polisher), (machine roller), (machine lathe), (machine grinder), (machine punch), (machine drill-press), (machine spray-painter), (machine immersion-painter), (surface polished), (surface rough), (surface smooth), (= p0 p0), (= circular circular), (= blue blue), (= one one), (= front front), (= cold cold), (= hot hot), (= cylindrical cylindrical), (= polisher polisher), (= roller roller), (= lathe lathe), (= grinder grinder), (= punch punch), (= drill-press drill-press), (= spray-painter spray-painter), (= immersion-painter immersion-painter), (= polished polished), (= rough rough), (= smooth smooth)], derived atoms=[])
+"]
+s9[label="state_index=9 global_state_index = 9 abstraction_index=0 abstract_state_index=9
+State(index=11, fluent atoms=[(surface-condition p0 polished), (painted p0 blue), (has-hole p0 one front), (shape p0 circular), (temperature p0 cold), (objscheduled)], static atoms=[(has-paint immersion-painter blue), (has-paint spray-painter blue), (can-orient drill-press front), (can-orient punch front), (has-bit drill-press one), (has-bit punch one), (part p0), (ashape circular), (colour blue), (width one), (anorient front), (temperature-type cold), (temperature-type hot), (ashape cylindrical), (machine polisher), (machine roller), (machine lathe), (machine grinder), (machine punch), (machine drill-press), (machine spray-painter), (machine immersion-painter), (surface polished), (surface rough), (surface smooth), (= p0 p0), (= circular circular), (= blue blue), (= one one), (= front front), (= cold cold), (= hot hot), (= cylindrical cylindrical), (= polisher polisher), (= roller roller), (= lathe lathe), (= grinder grinder), (= punch punch), (= drill-press drill-press), (= spray-painter spray-painter), (= immersion-painter immersion-painter), (= polished polished), (= rough rough), (= smooth smooth)], derived atoms=[])
+"]
+s10[label="state_index=10 global_state_index = 10 abstraction_index=0 abstract_state_index=10
+State(index=12, fluent atoms=[(surface-condition p0 polished), (painted p0 blue), (has-hole p0 one front), (shape p0 circular), (temperature p0 cold), (objscheduled), (scheduled p0), (busy immersion-painter)], static atoms=[(has-paint immersion-painter blue), (has-paint spray-painter blue), (can-orient drill-press front), (can-orient punch front), (has-bit drill-press one), (has-bit punch one), (part p0), (ashape circular), (colour blue), (width one), (anorient front), (temperature-type cold), (temperature-type hot), (ashape cylindrical), (machine polisher), (machine roller), (machine lathe), (machine grinder), (machine punch), (machine drill-press), (machine spray-painter), (machine immersion-painter), (surface polished), (surface rough), (surface smooth), (= p0 p0), (= circular circular), (= blue blue), (= one one), (= front front), (= cold cold), (= hot hot), (= cylindrical cylindrical), (= polisher polisher), (= roller roller), (= lathe lathe), (= grinder grinder), (= punch punch), (= drill-press drill-press), (= spray-painter spray-painter), (= immersion-painter immersion-painter), (= polished polished), (= rough rough), (= smooth smooth)], derived atoms=[])
+"]
+s11[label="state_index=11 global_state_index = 11 abstraction_index=0 abstract_state_index=11
+State(index=14, fluent atoms=[(shape p0 cylindrical), (has-hole p0 one front), (surface-condition p0 rough), (temperature p0 cold), (objscheduled)], static atoms=[(has-paint immersion-painter blue), (has-paint spray-painter blue), (can-orient drill-press front), (can-orient punch front), (has-bit drill-press one), (has-bit punch one), (part p0), (ashape circular), (colour blue), (width one), (anorient front), (temperature-type cold), (temperature-type hot), (ashape cylindrical), (machine polisher), (machine roller), (machine lathe), (machine grinder), (machine punch), (machine drill-press), (machine spray-painter), (machine immersion-painter), (surface polished), (surface rough), (surface smooth), (= p0 p0), (= circular circular), (= blue blue), (= one one), (= front front), (= cold cold), (= hot hot), (= cylindrical cylindrical), (= polisher polisher), (= roller roller), (= lathe lathe), (= grinder grinder), (= punch punch), (= drill-press drill-press), (= spray-painter spray-painter), (= immersion-painter immersion-painter), (= polished polished), (= rough rough), (= smooth smooth)], derived atoms=[])
+State(index=19, fluent atoms=[(shape p0 cylindrical), (has-hole p0 one front), (temperature p0 cold), (objscheduled), (surface-condition p0 smooth)], static atoms=[(has-paint immersion-painter blue), (has-paint spray-painter blue), (can-orient drill-press front), (can-orient punch front), (has-bit drill-press one), (has-bit punch one), (part p0), (ashape circular), (colour blue), (width one), (anorient front), (temperature-type cold), (temperature-type hot), (ashape cylindrical), (machine polisher), (machine roller), (machine lathe), (machine grinder), (machine punch), (machine drill-press), (machine spray-painter), (machine immersion-painter), (surface polished), (surface rough), (surface smooth), (= p0 p0), (= circular circular), (= blue blue), (= one one), (= front front), (= cold cold), (= hot hot), (= cylindrical cylindrical), (= polisher polisher), (= roller roller), (= lathe lathe), (= grinder grinder), (= punch punch), (= drill-press drill-press), (= spray-painter spray-painter), (= immersion-painter immersion-painter), (= polished polished), (= rough rough), (= smooth smooth)], derived atoms=[])
+"]
+s12[label="state_index=12 global_state_index = 12 abstraction_index=0 abstract_state_index=12
+State(index=15, fluent atoms=[(shape p0 cylindrical), (painted p0 blue), (has-hole p0 one front), (temperature p0 cold), (objscheduled), (scheduled p0), (busy spray-painter)], static atoms=[(has-paint immersion-painter blue), (has-paint spray-painter blue), (can-orient drill-press front), (can-orient punch front), (has-bit drill-press one), (has-bit punch one), (part p0), (ashape circular), (colour blue), (width one), (anorient front), (temperature-type cold), (temperature-type hot), (ashape cylindrical), (machine polisher), (machine roller), (machine lathe), (machine grinder), (machine punch), (machine drill-press), (machine spray-painter), (machine immersion-painter), (surface polished), (surface rough), (surface smooth), (= p0 p0), (= circular circular), (= blue blue), (= one one), (= front front), (= cold cold), (= hot hot), (= cylindrical cylindrical), (= polisher polisher), (= roller roller), (= lathe lathe), (= grinder grinder), (= punch punch), (= drill-press drill-press), (= spray-painter spray-painter), (= immersion-painter immersion-painter), (= polished polished), (= rough rough), (= smooth smooth)], derived atoms=[])
+State(index=28, fluent atoms=[(shape p0 cylindrical), (painted p0 blue), (has-hole p0 one front), (temperature p0 cold), (objscheduled), (scheduled p0), (busy immersion-painter)], static atoms=[(has-paint immersion-painter blue), (has-paint spray-painter blue), (can-orient drill-press front), (can-orient punch front), (has-bit drill-press one), (has-bit punch one), (part p0), (ashape circular), (colour blue), (width one), (anorient front), (temperature-type cold), (temperature-type hot), (ashape cylindrical), (machine polisher), (machine roller), (machine lathe), (machine grinder), (machine punch), (machine drill-press), (machine spray-painter), (machine immersion-painter), (surface polished), (surface rough), (surface smooth), (= p0 p0), (= circular circular), (= blue blue), (= one one), (= front front), (= cold cold), (= hot hot), (= cylindrical cylindrical), (= polisher polisher), (= roller roller), (= lathe lathe), (= grinder grinder), (= punch punch), (= drill-press drill-press), (= spray-painter spray-painter), (= immersion-painter immersion-painter), (= polished polished), (= rough rough), (= smooth smooth)], derived atoms=[])
+"]
+s13[label="state_index=13 global_state_index = 13 abstraction_index=0 abstract_state_index=13
+State(index=16, fluent atoms=[(shape p0 cylindrical), (surface-condition p0 polished), (has-hole p0 one front), (temperature p0 cold), (objscheduled), (scheduled p0), (busy polisher)], static atoms=[(has-paint immersion-painter blue), (has-paint spray-painter blue), (can-orient drill-press front), (can-orient punch front), (has-bit drill-press one), (has-bit punch one), (part p0), (ashape circular), (colour blue), (width one), (anorient front), (temperature-type cold), (temperature-type hot), (ashape cylindrical), (machine polisher), (machine roller), (machine lathe), (machine grinder), (machine punch), (machine drill-press), (machine spray-painter), (machine immersion-painter), (surface polished), (surface rough), (surface smooth), (= p0 p0), (= circular circular), (= blue blue), (= one one), (= front front), (= cold cold), (= hot hot), (= cylindrical cylindrical), (= polisher polisher), (= roller roller), (= lathe lathe), (= grinder grinder), (= punch punch), (= drill-press drill-press), (= spray-painter spray-painter), (= immersion-painter immersion-painter), (= polished polished), (= rough rough), (= smooth smooth)], derived atoms=[])
+"]
+s14[label="state_index=14 global_state_index = 14 abstraction_index=0 abstract_state_index=14
+State(index=17, fluent atoms=[(shape p0 cylindrical), (painted p0 blue), (has-hole p0 one front), (surface-condition p0 rough), (temperature p0 cold), (objscheduled), (scheduled p0), (busy immersion-painter)], static atoms=[(has-paint immersion-painter blue), (has-paint spray-painter blue), (can-orient drill-press front), (can-orient punch front), (has-bit drill-press one), (has-bit punch one), (part p0), (ashape circular), (colour blue), (width one), (anorient front), (temperature-type cold), (temperature-type hot), (ashape cylindrical), (machine polisher), (machine roller), (machine lathe), (machine grinder), (machine punch), (machine drill-press), (machine spray-painter), (machine immersion-painter), (surface polished), (surface rough), (surface smooth), (= p0 p0), (= circular circular), (= blue blue), (= one one), (= front front), (= cold cold), (= hot hot), (= cylindrical cylindrical), (= polisher polisher), (= roller roller), (= lathe lathe), (= grinder grinder), (= punch punch), (= drill-press drill-press), (= spray-painter spray-painter), (= immersion-painter immersion-painter), (= polished polished), (= rough rough), (= smooth smooth)], derived atoms=[])
+State(index=20, fluent atoms=[(shape p0 cylindrical), (painted p0 blue), (has-hole p0 one front), (temperature p0 cold), (objscheduled), (scheduled p0), (busy immersion-painter), (surface-condition p0 smooth)], static atoms=[(has-paint immersion-painter blue), (has-paint spray-painter blue), (can-orient drill-press front), (can-orient punch front), (has-bit drill-press one), (has-bit punch one), (part p0), (ashape circular), (colour blue), (width one), (anorient front), (temperature-type cold), (temperature-type hot), (ashape cylindrical), (machine polisher), (machine roller), (machine lathe), (machine grinder), (machine punch), (machine drill-press), (machine spray-painter), (machine immersion-painter), (surface polished), (surface rough), (surface smooth), (= p0 p0), (= circular circular), (= blue blue), (= one one), (= front front), (= cold cold), (= hot hot), (= cylindrical cylindrical), (= polisher polisher), (= roller roller), (= lathe lathe), (= grinder grinder), (= punch punch), (= drill-press drill-press), (= spray-painter spray-painter), (= immersion-painter immersion-painter), (= polished polished), (= rough rough), (= smooth smooth)], derived atoms=[])
+"]
+s15[label="state_index=15 global_state_index = 15 abstraction_index=0 abstract_state_index=15
+State(index=21, fluent atoms=[(shape p0 cylindrical), (painted p0 blue), (has-hole p0 one front), (temperature p0 cold), (objscheduled), (surface-condition p0 smooth)], static atoms=[(has-paint immersion-painter blue), (has-paint spray-painter blue), (can-orient drill-press front), (can-orient punch front), (has-bit drill-press one), (has-bit punch one), (part p0), (ashape circular), (colour blue), (width one), (anorient front), (temperature-type cold), (temperature-type hot), (ashape cylindrical), (machine polisher), (machine roller), (machine lathe), (machine grinder), (machine punch), (machine drill-press), (machine spray-painter), (machine immersion-painter), (surface polished), (surface rough), (surface smooth), (= p0 p0), (= circular circular), (= blue blue), (= one one), (= front front), (= cold cold), (= hot hot), (= cylindrical cylindrical), (= polisher polisher), (= roller roller), (= lathe lathe), (= grinder grinder), (= punch punch), (= drill-press drill-press), (= spray-painter spray-painter), (= immersion-painter immersion-painter), (= polished polished), (= rough rough), (= smooth smooth)], derived atoms=[])
+State(index=25, fluent atoms=[(shape p0 cylindrical), (painted p0 blue), (has-hole p0 one front), (surface-condition p0 rough), (temperature p0 cold), (objscheduled)], static atoms=[(has-paint immersion-painter blue), (has-paint spray-painter blue), (can-orient drill-press front), (can-orient punch front), (has-bit drill-press one), (has-bit punch one), (part p0), (ashape circular), (colour blue), (width one), (anorient front), (temperature-type cold), (temperature-type hot), (ashape cylindrical), (machine polisher), (machine roller), (machine lathe), (machine grinder), (machine punch), (machine drill-press), (machine spray-painter), (machine immersion-painter), (surface polished), (surface rough), (surface smooth), (= p0 p0), (= circular circular), (= blue blue), (= one one), (= front front), (= cold cold), (= hot hot), (= cylindrical cylindrical), (= polisher polisher), (= roller roller), (= lathe lathe), (= grinder grinder), (= punch punch), (= drill-press drill-press), (= spray-painter spray-painter), (= immersion-painter immersion-painter), (= polished polished), (= rough rough), (= smooth smooth)], derived atoms=[])
+"]
+s16[peripheries=2,label="state_index=16 global_state_index = 16 abstraction_index=0 abstract_state_index=16
+State(index=22, fluent atoms=[(shape p0 cylindrical), (surface-condition p0 polished), (painted p0 blue), (has-hole p0 one front), (temperature p0 cold), (objscheduled), (scheduled p0), (busy polisher)], static atoms=[(has-paint immersion-painter blue), (has-paint spray-painter blue), (can-orient drill-press front), (can-orient punch front), (has-bit drill-press one), (has-bit punch one), (part p0), (ashape circular), (colour blue), (width one), (anorient front), (temperature-type cold), (temperature-type hot), (ashape cylindrical), (machine polisher), (machine roller), (machine lathe), (machine grinder), (machine punch), (machine drill-press), (machine spray-painter), (machine immersion-painter), (surface polished), (surface rough), (surface smooth), (= p0 p0), (= circular circular), (= blue blue), (= one one), (= front front), (= cold cold), (= hot hot), (= cylindrical cylindrical), (= polisher polisher), (= roller roller), (= lathe lathe), (= grinder grinder), (= punch punch), (= drill-press drill-press), (= spray-painter spray-painter), (= immersion-painter immersion-painter), (= polished polished), (= rough rough), (= smooth smooth)], derived atoms=[])
+"]
+s17[peripheries=2,label="state_index=17 global_state_index = 17 abstraction_index=0 abstract_state_index=17
+State(index=23, fluent atoms=[(shape p0 cylindrical), (surface-condition p0 polished), (painted p0 blue), (has-hole p0 one front), (temperature p0 cold), (objscheduled)], static atoms=[(has-paint immersion-painter blue), (has-paint spray-painter blue), (can-orient drill-press front), (can-orient punch front), (has-bit drill-press one), (has-bit punch one), (part p0), (ashape circular), (colour blue), (width one), (anorient front), (temperature-type cold), (temperature-type hot), (ashape cylindrical), (machine polisher), (machine roller), (machine lathe), (machine grinder), (machine punch), (machine drill-press), (machine spray-painter), (machine immersion-painter), (surface polished), (surface rough), (surface smooth), (= p0 p0), (= circular circular), (= blue blue), (= one one), (= front front), (= cold cold), (= hot hot), (= cylindrical cylindrical), (= polisher polisher), (= roller roller), (= lathe lathe), (= grinder grinder), (= punch punch), (= drill-press drill-press), (= spray-painter spray-painter), (= immersion-painter immersion-painter), (= polished polished), (= rough rough), (= smooth smooth)], derived atoms=[])
+"]
+s18[peripheries=2,label="state_index=18 global_state_index = 18 abstraction_index=0 abstract_state_index=18
+State(index=24, fluent atoms=[(shape p0 cylindrical), (surface-condition p0 polished), (painted p0 blue), (has-hole p0 one front), (temperature p0 cold), (objscheduled), (scheduled p0), (busy immersion-painter)], static atoms=[(has-paint immersion-painter blue), (has-paint spray-painter blue), (can-orient drill-press front), (can-orient punch front), (has-bit drill-press one), (has-bit punch one), (part p0), (ashape circular), (colour blue), (width one), (anorient front), (temperature-type cold), (temperature-type hot), (ashape cylindrical), (machine polisher), (machine roller), (machine lathe), (machine grinder), (machine punch), (machine drill-press), (machine spray-painter), (machine immersion-painter), (surface polished), (surface rough), (surface smooth), (= p0 p0), (= circular circular), (= blue blue), (= one one), (= front front), (= cold cold), (= hot hot), (= cylindrical cylindrical), (= polisher polisher), (= roller roller), (= lathe lathe), (= grinder grinder), (= punch punch), (= drill-press drill-press), (= spray-painter spray-painter), (= immersion-painter immersion-painter), (= polished polished), (= rough rough), (= smooth smooth)], derived atoms=[])
+"]
+s19[label="state_index=19 global_state_index = 19 abstraction_index=0 abstract_state_index=19
+State(index=26, fluent atoms=[(shape p0 cylindrical), (surface-condition p0 polished), (has-hole p0 one front), (temperature p0 cold), (objscheduled)], static atoms=[(has-paint immersion-painter blue), (has-paint spray-painter blue), (can-orient drill-press front), (can-orient punch front), (has-bit drill-press one), (has-bit punch one), (part p0), (ashape circular), (colour blue), (width one), (anorient front), (temperature-type cold), (temperature-type hot), (ashape cylindrical), (machine polisher), (machine roller), (machine lathe), (machine grinder), (machine punch), (machine drill-press), (machine spray-painter), (machine immersion-painter), (surface polished), (surface rough), (surface smooth), (= p0 p0), (= circular circular), (= blue blue), (= one one), (= front front), (= cold cold), (= hot hot), (= cylindrical cylindrical), (= polisher polisher), (= roller roller), (= lathe lathe), (= grinder grinder), (= punch punch), (= drill-press drill-press), (= spray-painter spray-painter), (= immersion-painter immersion-painter), (= polished polished), (= rough rough), (= smooth smooth)], derived atoms=[])
+"]
+s20[label="state_index=20 global_state_index = 20 abstraction_index=0 abstract_state_index=20
+State(index=27, fluent atoms=[(shape p0 cylindrical), (painted p0 blue), (has-hole p0 one front), (temperature p0 cold), (objscheduled)], static atoms=[(has-paint immersion-painter blue), (has-paint spray-painter blue), (can-orient drill-press front), (can-orient punch front), (has-bit drill-press one), (has-bit punch one), (part p0), (ashape circular), (colour blue), (width one), (anorient front), (temperature-type cold), (temperature-type hot), (ashape cylindrical), (machine polisher), (machine roller), (machine lathe), (machine grinder), (machine punch), (machine drill-press), (machine spray-painter), (machine immersion-painter), (surface polished), (surface rough), (surface smooth), (= p0 p0), (= circular circular), (= blue blue), (= one one), (= front front), (= cold cold), (= hot hot), (= cylindrical cylindrical), (= polisher polisher), (= roller roller), (= lathe lathe), (= grinder grinder), (= punch punch), (= drill-press drill-press), (= spray-painter spray-painter), (= immersion-painter immersion-painter), (= polished polished), (= rough rough), (= smooth smooth)], derived atoms=[])
+"]
+s21[label="state_index=21 global_state_index = 21 abstraction_index=0 abstract_state_index=21
+State(index=29, fluent atoms=[(surface-condition p0 polished), (has-hole p0 one front), (shape p0 circular), (temperature p0 cold), (objscheduled)], static atoms=[(has-paint immersion-painter blue), (has-paint spray-painter blue), (can-orient drill-press front), (can-orient punch front), (has-bit drill-press one), (has-bit punch one), (part p0), (ashape circular), (colour blue), (width one), (anorient front), (temperature-type cold), (temperature-type hot), (ashape cylindrical), (machine polisher), (machine roller), (machine lathe), (machine grinder), (machine punch), (machine drill-press), (machine spray-painter), (machine immersion-painter), (surface polished), (surface rough), (surface smooth), (= p0 p0), (= circular circular), (= blue blue), (= one one), (= front front), (= cold cold), (= hot hot), (= cylindrical cylindrical), (= polisher polisher), (= roller roller), (= lathe lathe), (= grinder grinder), (= punch punch), (= drill-press drill-press), (= spray-painter spray-painter), (= immersion-painter immersion-painter), (= polished polished), (= rough rough), (= smooth smooth)], derived atoms=[])
+"]
+s22[label="state_index=22 global_state_index = 22 abstraction_index=0 abstract_state_index=22
+State(index=30, fluent atoms=[(shape p0 cylindrical), (objscheduled), (temperature p0 hot)], static atoms=[(has-paint immersion-painter blue), (has-paint spray-painter blue), (can-orient drill-press front), (can-orient punch front), (has-bit drill-press one), (has-bit punch one), (part p0), (ashape circular), (colour blue), (width one), (anorient front), (temperature-type cold), (temperature-type hot), (ashape cylindrical), (machine polisher), (machine roller), (machine lathe), (machine grinder), (machine punch), (machine drill-press), (machine spray-painter), (machine immersion-painter), (surface polished), (surface rough), (surface smooth), (= p0 p0), (= circular circular), (= blue blue), (= one one), (= front front), (= cold cold), (= hot hot), (= cylindrical cylindrical), (= polisher polisher), (= roller roller), (= lathe lathe), (= grinder grinder), (= punch punch), (= drill-press drill-press), (= spray-painter spray-painter), (= immersion-painter immersion-painter), (= polished polished), (= rough rough), (= smooth smooth)], derived atoms=[])
+"]
+s23[label="state_index=23 global_state_index = 23 abstraction_index=0 abstract_state_index=23
+State(index=33, fluent atoms=[(shape p0 cylindrical), (objscheduled), (scheduled p0), (surface-condition p0 smooth), (busy grinder), (temperature p0 hot)], static atoms=[(has-paint immersion-painter blue), (has-paint spray-painter blue), (can-orient drill-press front), (can-orient punch front), (has-bit drill-press one), (has-bit punch one), (part p0), (ashape circular), (colour blue), (width one), (anorient front), (temperature-type cold), (temperature-type hot), (ashape cylindrical), (machine polisher), (machine roller), (machine lathe), (machine grinder), (machine punch), (machine drill-press), (machine spray-painter), (machine immersion-painter), (surface polished), (surface rough), (surface smooth), (= p0 p0), (= circular circular), (= blue blue), (= one one), (= front front), (= cold cold), (= hot hot), (= cylindrical cylindrical), (= polisher polisher), (= roller roller), (= lathe lathe), (= grinder grinder), (= punch punch), (= drill-press drill-press), (= spray-painter spray-painter), (= immersion-painter immersion-painter), (= polished polished), (= rough rough), (= smooth smooth)], derived atoms=[])
+State(index=31, fluent atoms=[(shape p0 cylindrical), (surface-condition p0 rough), (objscheduled), (scheduled p0), (busy lathe), (temperature p0 hot)], static atoms=[(has-paint immersion-painter blue), (has-paint spray-painter blue), (can-orient drill-press front), (can-orient punch front), (has-bit drill-press one), (has-bit punch one), (part p0), (ashape circular), (colour blue), (width one), (anorient front), (temperature-type cold), (temperature-type hot), (ashape cylindrical), (machine polisher), (machine roller), (machine lathe), (machine grinder), (machine punch), (machine drill-press), (machine spray-painter), (machine immersion-painter), (surface polished), (surface rough), (surface smooth), (= p0 p0), (= circular circular), (= blue blue), (= one one), (= front front), (= cold cold), (= hot hot), (= cylindrical cylindrical), (= polisher polisher), (= roller roller), (= lathe lathe), (= grinder grinder), (= punch punch), (= drill-press drill-press), (= spray-painter spray-painter), (= immersion-painter immersion-painter), (= polished polished), (= rough rough), (= smooth smooth)], derived atoms=[])
+"]
+s24[label="state_index=24 global_state_index = 24 abstraction_index=0 abstract_state_index=24
+State(index=32, fluent atoms=[(shape p0 cylindrical), (painted p0 blue), (objscheduled), (scheduled p0), (busy immersion-painter), (temperature p0 hot)], static atoms=[(has-paint immersion-painter blue), (has-paint spray-painter blue), (can-orient drill-press front), (can-orient punch front), (has-bit drill-press one), (has-bit punch one), (part p0), (ashape circular), (colour blue), (width one), (anorient front), (temperature-type cold), (temperature-type hot), (ashape cylindrical), (machine polisher), (machine roller), (machine lathe), (machine grinder), (machine punch), (machine drill-press), (machine spray-painter), (machine immersion-painter), (surface polished), (surface rough), (surface smooth), (= p0 p0), (= circular circular), (= blue blue), (= one one), (= front front), (= cold cold), (= hot hot), (= cylindrical cylindrical), (= polisher polisher), (= roller roller), (= lathe lathe), (= grinder grinder), (= punch punch), (= drill-press drill-press), (= spray-painter spray-painter), (= immersion-painter immersion-painter), (= polished polished), (= rough rough), (= smooth smooth)], derived atoms=[])
+"]
+s25[label="state_index=25 global_state_index = 25 abstraction_index=0 abstract_state_index=25
+State(index=38, fluent atoms=[(shape p0 cylindrical), (surface-condition p0 rough), (objscheduled), (temperature p0 hot)], static atoms=[(has-paint immersion-painter blue), (has-paint spray-painter blue), (can-orient drill-press front), (can-orient punch front), (has-bit drill-press one), (has-bit punch one), (part p0), (ashape circular), (colour blue), (width one), (anorient front), (temperature-type cold), (temperature-type hot), (ashape cylindrical), (machine polisher), (machine roller), (machine lathe), (machine grinder), (machine punch), (machine drill-press), (machine spray-painter), (machine immersion-painter), (surface polished), (surface rough), (surface smooth), (= p0 p0), (= circular circular), (= blue blue), (= one one), (= front front), (= cold cold), (= hot hot), (= cylindrical cylindrical), (= polisher polisher), (= roller roller), (= lathe lathe), (= grinder grinder), (= punch punch), (= drill-press drill-press), (= spray-painter spray-painter), (= immersion-painter immersion-painter), (= polished polished), (= rough rough), (= smooth smooth)], derived atoms=[])
+State(index=34, fluent atoms=[(shape p0 cylindrical), (objscheduled), (surface-condition p0 smooth), (temperature p0 hot)], static atoms=[(has-paint immersion-painter blue), (has-paint spray-painter blue), (can-orient drill-press front), (can-orient punch front), (has-bit drill-press one), (has-bit punch one), (part p0), (ashape circular), (colour blue), (width one), (anorient front), (temperature-type cold), (temperature-type hot), (ashape cylindrical), (machine polisher), (machine roller), (machine lathe), (machine grinder), (machine punch), (machine drill-press), (machine spray-painter), (machine immersion-painter), (surface polished), (surface rough), (surface smooth), (= p0 p0), (= circular circular), (= blue blue), (= one one), (= front front), (= cold cold), (= hot hot), (= cylindrical cylindrical), (= polisher polisher), (= roller roller), (= lathe lathe), (= grinder grinder), (= punch punch), (= drill-press drill-press), (= spray-painter spray-painter), (= immersion-painter immersion-painter), (= polished polished), (= rough rough), (= smooth smooth)], derived atoms=[])
+"]
+s26[label="state_index=26 global_state_index = 26 abstraction_index=0 abstract_state_index=26
+State(index=39, fluent atoms=[(shape p0 cylindrical), (painted p0 blue), (surface-condition p0 rough), (objscheduled), (scheduled p0), (busy immersion-painter), (temperature p0 hot)], static atoms=[(has-paint immersion-painter blue), (has-paint spray-painter blue), (can-orient drill-press front), (can-orient punch front), (has-bit drill-press one), (has-bit punch one), (part p0), (ashape circular), (colour blue), (width one), (anorient front), (temperature-type cold), (temperature-type hot), (ashape cylindrical), (machine polisher), (machine roller), (machine lathe), (machine grinder), (machine punch), (machine drill-press), (machine spray-painter), (machine immersion-painter), (surface polished), (surface rough), (surface smooth), (= p0 p0), (= circular circular), (= blue blue), (= one one), (= front front), (= cold cold), (= hot hot), (= cylindrical cylindrical), (= polisher polisher), (= roller roller), (= lathe lathe), (= grinder grinder), (= punch punch), (= drill-press drill-press), (= spray-painter spray-painter), (= immersion-painter immersion-painter), (= polished polished), (= rough rough), (= smooth smooth)], derived atoms=[])
+State(index=35, fluent atoms=[(shape p0 cylindrical), (painted p0 blue), (objscheduled), (scheduled p0), (busy immersion-painter), (surface-condition p0 smooth), (temperature p0 hot)], static atoms=[(has-paint immersion-painter blue), (has-paint spray-painter blue), (can-orient drill-press front), (can-orient punch front), (has-bit drill-press one), (has-bit punch one), (part p0), (ashape circular), (colour blue), (width one), (anorient front), (temperature-type cold), (temperature-type hot), (ashape cylindrical), (machine polisher), (machine roller), (machine lathe), (machine grinder), (machine punch), (machine drill-press), (machine spray-painter), (machine immersion-painter), (surface polished), (surface rough), (surface smooth), (= p0 p0), (= circular circular), (= blue blue), (= one one), (= front front), (= cold cold), (= hot hot), (= cylindrical cylindrical), (= polisher polisher), (= roller roller), (= lathe lathe), (= grinder grinder), (= punch punch), (= drill-press drill-press), (= spray-painter spray-painter), (= immersion-painter immersion-painter), (= polished polished), (= rough rough), (= smooth smooth)], derived atoms=[])
+"]
+s27[label="state_index=27 global_state_index = 27 abstraction_index=0 abstract_state_index=27
+State(index=40, fluent atoms=[(shape p0 cylindrical), (painted p0 blue), (surface-condition p0 rough), (objscheduled), (temperature p0 hot)], static atoms=[(has-paint immersion-painter blue), (has-paint spray-painter blue), (can-orient drill-press front), (can-orient punch front), (has-bit drill-press one), (has-bit punch one), (part p0), (ashape circular), (colour blue), (width one), (anorient front), (temperature-type cold), (temperature-type hot), (ashape cylindrical), (machine polisher), (machine roller), (machine lathe), (machine grinder), (machine punch), (machine drill-press), (machine spray-painter), (machine immersion-painter), (surface polished), (surface rough), (surface smooth), (= p0 p0), (= circular circular), (= blue blue), (= one one), (= front front), (= cold cold), (= hot hot), (= cylindrical cylindrical), (= polisher polisher), (= roller roller), (= lathe lathe), (= grinder grinder), (= punch punch), (= drill-press drill-press), (= spray-painter spray-painter), (= immersion-painter immersion-painter), (= polished polished), (= rough rough), (= smooth smooth)], derived atoms=[])
+State(index=36, fluent atoms=[(shape p0 cylindrical), (painted p0 blue), (objscheduled), (surface-condition p0 smooth), (temperature p0 hot)], static atoms=[(has-paint immersion-painter blue), (has-paint spray-painter blue), (can-orient drill-press front), (can-orient punch front), (has-bit drill-press one), (has-bit punch one), (part p0), (ashape circular), (colour blue), (width one), (anorient front), (temperature-type cold), (temperature-type hot), (ashape cylindrical), (machine polisher), (machine roller), (machine lathe), (machine grinder), (machine punch), (machine drill-press), (machine spray-painter), (machine immersion-painter), (surface polished), (surface rough), (surface smooth), (= p0 p0), (= circular circular), (= blue blue), (= one one), (= front front), (= cold cold), (= hot hot), (= cylindrical cylindrical), (= polisher polisher), (= roller roller), (= lathe lathe), (= grinder grinder), (= punch punch), (= drill-press drill-press), (= spray-painter spray-painter), (= immersion-painter immersion-painter), (= polished polished), (= rough rough), (= smooth smooth)], derived atoms=[])
+"]
+s28[label="state_index=28 global_state_index = 28 abstraction_index=0 abstract_state_index=28
+State(index=37, fluent atoms=[(shape p0 cylindrical), (painted p0 blue), (objscheduled), (temperature p0 hot)], static atoms=[(has-paint immersion-painter blue), (has-paint spray-painter blue), (can-orient drill-press front), (can-orient punch front), (has-bit drill-press one), (has-bit punch one), (part p0), (ashape circular), (colour blue), (width one), (anorient front), (temperature-type cold), (temperature-type hot), (ashape cylindrical), (machine polisher), (machine roller), (machine lathe), (machine grinder), (machine punch), (machine drill-press), (machine spray-painter), (machine immersion-painter), (surface polished), (surface rough), (surface smooth), (= p0 p0), (= circular circular), (= blue blue), (= one one), (= front front), (= cold cold), (= hot hot), (= cylindrical cylindrical), (= polisher polisher), (= roller roller), (= lathe lathe), (= grinder grinder), (= punch punch), (= drill-press drill-press), (= spray-painter spray-painter), (= immersion-painter immersion-painter), (= polished polished), (= rough rough), (= smooth smooth)], derived atoms=[])
+"]
+s29[label="state_index=29 global_state_index = 29 abstraction_index=0 abstract_state_index=29
+State(index=41, fluent atoms=[(painted p0 blue), (has-hole p0 one front), (shape p0 circular), (temperature p0 cold), (objscheduled)], static atoms=[(has-paint immersion-painter blue), (has-paint spray-painter blue), (can-orient drill-press front), (can-orient punch front), (has-bit drill-press one), (has-bit punch one), (part p0), (ashape circular), (colour blue), (width one), (anorient front), (temperature-type cold), (temperature-type hot), (ashape cylindrical), (machine polisher), (machine roller), (machine lathe), (machine grinder), (machine punch), (machine drill-press), (machine spray-painter), (machine immersion-painter), (surface polished), (surface rough), (surface smooth), (= p0 p0), (= circular circular), (= blue blue), (= one one), (= front front), (= cold cold), (= hot hot), (= cylindrical cylindrical), (= polisher polisher), (= roller roller), (= lathe lathe), (= grinder grinder), (= punch punch), (= drill-press drill-press), (= spray-painter spray-painter), (= immersion-painter immersion-painter), (= polished polished), (= rough rough), (= smooth smooth)], derived atoms=[])
+"]
+Dangling [ label = "", style = invis ]
+{ rank = same; Dangling }
+Dangling -> s0
+{ rank = same; s2,s22,s23,s24,s25,s26,s27,s28}
+{ rank = same; s1,s3,s5,s6,s8,s10}
+{ rank = same; s0,s7,s9,s21,s29}
+{ rank = same; s4}
+{ rank = same; s11}
+{ rank = same; s12,s13,s14}
+{ rank = same; s15,s19,s20}
+{ rank = same; s16,s17,s18}
+s0->s0 [label="(do-time-step)
+"]
+s0->s1 [label="(do-spray-paint p0 blue)
+(do-spray-paint p0 blue)
+"]
+s0->s2 [label="(do-roll p0)
+(do-roll p0)
+"]
+s0->s3 [label="(do-polish p0)
+(do-polish p0)
+"]
+s0->s4 [label="(do-lathe p0)
+(do-lathe p0)
+"]
+s0->s5 [label="(do-immersion-paint p0 blue)
+(do-immersion-paint p0 blue)
+"]
+s0->s6 [label="(do-grind p0)
+(do-grind p0)
+"]
+s1->s29 [label="(do-time-step)
+(do-time-step)
+"]
+s2->s22 [label="(do-time-step)
+"]
+s3->s21 [label="(do-time-step)
+"]
+s4->s11 [label="(do-time-step)
+(do-time-step)
+"]
+s5->s7 [label="(do-time-step)
+(do-time-step)
+"]
+s6->s0 [label="(do-time-step)
+"]
+s7->s1 [label="(do-spray-paint p0 blue)
+(do-spray-paint p0 blue)
+"]
+s7->s2 [label="(do-roll p0)
+(do-roll p0)
+"]
+s7->s4 [label="(do-lathe p0)
+(do-lathe p0)
+"]
+s7->s5 [label="(do-immersion-paint p0 blue)
+(do-immersion-paint p0 blue)
+"]
+s7->s6 [label="(do-grind p0)
+(do-grind p0)
+"]
+s7->s7 [label="(do-time-step)
+(do-time-step)
+"]
+s7->s8 [label="(do-polish p0)
+(do-polish p0)
+"]
+s8->s9 [label="(do-time-step)
+"]
+s9->s1 [label="(do-spray-paint p0 blue)
+"]
+s9->s2 [label="(do-roll p0)
+"]
+s9->s4 [label="(do-lathe p0)
+"]
+s9->s6 [label="(do-grind p0)
+"]
+s9->s8 [label="(do-polish p0)
+"]
+s9->s9 [label="(do-time-step)
+"]
+s9->s10 [label="(do-immersion-paint p0 blue)
+"]
+s10->s9 [label="(do-time-step)
+"]
+s11->s2 [label="(do-roll p0)
+(do-roll p0)
+"]
+s11->s4 [label="(do-lathe p0)
+(do-grind p0)
+(do-grind p0)
+(do-lathe p0)
+"]
+s11->s11 [label="(do-time-step)
+(do-time-step)
+"]
+s11->s12 [label="(do-spray-paint p0 blue)
+(do-spray-paint p0 blue)
+"]
+s11->s13 [label="(do-polish p0)
+(do-polish p0)
+"]
+s11->s14 [label="(do-immersion-paint p0 blue)
+(do-immersion-paint p0 blue)
+"]
+s12->s20 [label="(do-time-step)
+(do-time-step)
+"]
+s13->s19 [label="(do-time-step)
+"]
+s14->s15 [label="(do-time-step)
+(do-time-step)
+"]
+s15->s2 [label="(do-roll p0)
+(do-roll p0)
+"]
+s15->s4 [label="(do-lathe p0)
+(do-grind p0)
+(do-lathe p0)
+(do-grind p0)
+"]
+s15->s12 [label="(do-spray-paint p0 blue)
+(do-spray-paint p0 blue)
+"]
+s15->s14 [label="(do-immersion-paint p0 blue)
+(do-immersion-paint p0 blue)
+"]
+s15->s15 [label="(do-time-step)
+(do-time-step)
+"]
+s15->s16 [label="(do-polish p0)
+(do-polish p0)
+"]
+s16->s17 [label="(do-time-step)
+"]
+s17->s2 [label="(do-roll p0)
+"]
+s17->s4 [label="(do-grind p0)
+(do-lathe p0)
+"]
+s17->s12 [label="(do-spray-paint p0 blue)
+"]
+s17->s16 [label="(do-polish p0)
+"]
+s17->s17 [label="(do-time-step)
+"]
+s17->s18 [label="(do-immersion-paint p0 blue)
+"]
+s18->s17 [label="(do-time-step)
+"]
+s19->s2 [label="(do-roll p0)
+"]
+s19->s4 [label="(do-lathe p0)
+(do-grind p0)
+"]
+s19->s12 [label="(do-spray-paint p0 blue)
+"]
+s19->s13 [label="(do-polish p0)
+"]
+s19->s18 [label="(do-immersion-paint p0 blue)
+"]
+s19->s19 [label="(do-time-step)
+"]
+s20->s2 [label="(do-roll p0)
+"]
+s20->s4 [label="(do-lathe p0)
+(do-grind p0)
+"]
+s20->s12 [label="(do-immersion-paint p0 blue)
+(do-spray-paint p0 blue)
+"]
+s20->s16 [label="(do-polish p0)
+"]
+s20->s20 [label="(do-time-step)
+"]
+s21->s1 [label="(do-spray-paint p0 blue)
+"]
+s21->s2 [label="(do-roll p0)
+"]
+s21->s3 [label="(do-polish p0)
+"]
+s21->s4 [label="(do-lathe p0)
+"]
+s21->s6 [label="(do-grind p0)
+"]
+s21->s10 [label="(do-immersion-paint p0 blue)
+"]
+s21->s21 [label="(do-time-step)
+"]
+s22->s2 [label="(do-roll p0)
+"]
+s22->s22 [label="(do-time-step)
+"]
+s22->s23 [label="(do-lathe p0)
+(do-grind p0)
+"]
+s22->s24 [label="(do-immersion-paint p0 blue)
+"]
+s23->s25 [label="(do-time-step)
+(do-time-step)
+"]
+s24->s28 [label="(do-time-step)
+"]
+s25->s2 [label="(do-roll p0)
+(do-roll p0)
+"]
+s25->s23 [label="(do-lathe p0)
+(do-grind p0)
+(do-grind p0)
+(do-lathe p0)
+"]
+s25->s25 [label="(do-time-step)
+(do-time-step)
+"]
+s25->s26 [label="(do-immersion-paint p0 blue)
+(do-immersion-paint p0 blue)
+"]
+s26->s27 [label="(do-time-step)
+(do-time-step)
+"]
+s27->s2 [label="(do-roll p0)
+(do-roll p0)
+"]
+s27->s23 [label="(do-grind p0)
+(do-lathe p0)
+(do-lathe p0)
+(do-grind p0)
+"]
+s27->s26 [label="(do-immersion-paint p0 blue)
+(do-immersion-paint p0 blue)
+"]
+s27->s27 [label="(do-time-step)
+(do-time-step)
+"]
+s28->s2 [label="(do-roll p0)
+"]
+s28->s23 [label="(do-grind p0)
+(do-lathe p0)
+"]
+s28->s24 [label="(do-immersion-paint p0 blue)
+"]
+s28->s28 [label="(do-time-step)
+"]
+s29->s1 [label="(do-spray-paint p0 blue)
+(do-immersion-paint p0 blue)
+"]
+s29->s2 [label="(do-roll p0)
+"]
+s29->s4 [label="(do-lathe p0)
+"]
+s29->s6 [label="(do-grind p0)
+"]
+s29->s8 [label="(do-polish p0)
+"]
+s29->s29 [label="(do-time-step)
+"]
+}

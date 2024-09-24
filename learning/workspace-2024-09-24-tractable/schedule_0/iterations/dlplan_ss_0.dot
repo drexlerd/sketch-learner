@@ -1,0 +1,229 @@
+digraph {
+rankdir="LR"
+s6[label="(instance index=0, state index=6, atoms={has-hole(p0,one,front), shape(p0,circular), temperature(p0,cold), objscheduled(), scheduled(p0), surface-condition(p0,smooth), busy(grinder)})"]
+s8[label="(instance index=0, state index=8, atoms={painted(p0,blue), has-hole(p0,one,front), shape(p0,circular), temperature(p0,cold), objscheduled(), scheduled(p0), busy(immersion-painter), surface-condition(p0,smooth)})"]
+s12[label="(instance index=0, state index=12, atoms={surface-condition(p0,polished), painted(p0,blue), has-hole(p0,one,front), shape(p0,circular), temperature(p0,cold), objscheduled(), scheduled(p0), busy(immersion-painter)})"]
+s42[label="(instance index=0, state index=42, atoms={painted(p0,blue), has-hole(p0,one,front), shape(p0,circular), temperature(p0,cold), objscheduled(), scheduled(p0), busy(immersion-painter)})"]
+s1[label="(instance index=0, state index=1, atoms={painted(p0,blue), has-hole(p0,one,front), shape(p0,circular), temperature(p0,cold), objscheduled(), scheduled(p0), busy(spray-painter)})"]
+s3[label="(instance index=0, state index=3, atoms={surface-condition(p0,polished), has-hole(p0,one,front), shape(p0,circular), temperature(p0,cold), objscheduled(), scheduled(p0), busy(polisher)})"]
+s5[label="(instance index=0, state index=5, atoms={painted(p0,blue), has-hole(p0,one,front), shape(p0,circular), surface-condition(p0,rough), temperature(p0,cold), objscheduled(), scheduled(p0), busy(immersion-painter)})"]
+s10[label="(instance index=0, state index=10, atoms={surface-condition(p0,polished), painted(p0,blue), has-hole(p0,one,front), shape(p0,circular), temperature(p0,cold), objscheduled(), scheduled(p0), busy(polisher)})"]
+s41[label="(instance index=0, state index=41, atoms={painted(p0,blue), has-hole(p0,one,front), shape(p0,circular), temperature(p0,cold), objscheduled()})"]
+s0[label="(instance index=0, state index=0, atoms={has-hole(p0,one,front), shape(p0,circular), surface-condition(p0,rough), temperature(p0,cold)})"]
+s29[label="(instance index=0, state index=29, atoms={surface-condition(p0,polished), has-hole(p0,one,front), shape(p0,circular), temperature(p0,cold), objscheduled()})"]
+s13[label="(instance index=0, state index=13, atoms={painted(p0,blue), has-hole(p0,one,front), shape(p0,circular), surface-condition(p0,rough), temperature(p0,cold), objscheduled()})"]
+s11[label="(instance index=0, state index=11, atoms={surface-condition(p0,polished), painted(p0,blue), has-hole(p0,one,front), shape(p0,circular), temperature(p0,cold), objscheduled()})"]
+s9[label="(instance index=0, state index=9, atoms={painted(p0,blue), has-hole(p0,one,front), shape(p0,circular), temperature(p0,cold), objscheduled(), surface-condition(p0,smooth)})"]
+s7[label="(instance index=0, state index=7, atoms={has-hole(p0,one,front), shape(p0,circular), temperature(p0,cold), objscheduled(), surface-condition(p0,smooth)})"]
+s18[label="(instance index=0, state index=18, atoms={shape(p0,cylindrical), has-hole(p0,one,front), temperature(p0,cold), objscheduled(), scheduled(p0), surface-condition(p0,smooth), busy(grinder)})"]
+s4[label="(instance index=0, state index=4, atoms={shape(p0,cylindrical), has-hole(p0,one,front), surface-condition(p0,rough), temperature(p0,cold), objscheduled(), scheduled(p0), busy(lathe)})"]
+s19[label="(instance index=0, state index=19, atoms={shape(p0,cylindrical), has-hole(p0,one,front), temperature(p0,cold), objscheduled(), surface-condition(p0,smooth)})"]
+s14[label="(instance index=0, state index=14, atoms={shape(p0,cylindrical), has-hole(p0,one,front), surface-condition(p0,rough), temperature(p0,cold), objscheduled()})"]
+s16[label="(instance index=0, state index=16, atoms={shape(p0,cylindrical), surface-condition(p0,polished), has-hole(p0,one,front), temperature(p0,cold), objscheduled(), scheduled(p0), busy(polisher)})"]
+s28[label="(instance index=0, state index=28, atoms={shape(p0,cylindrical), painted(p0,blue), has-hole(p0,one,front), temperature(p0,cold), objscheduled(), scheduled(p0), busy(immersion-painter)})"]
+s15[label="(instance index=0, state index=15, atoms={shape(p0,cylindrical), painted(p0,blue), has-hole(p0,one,front), temperature(p0,cold), objscheduled(), scheduled(p0), busy(spray-painter)})"]
+s17[label="(instance index=0, state index=17, atoms={shape(p0,cylindrical), painted(p0,blue), has-hole(p0,one,front), surface-condition(p0,rough), temperature(p0,cold), objscheduled(), scheduled(p0), busy(immersion-painter)})"]
+s20[label="(instance index=0, state index=20, atoms={shape(p0,cylindrical), painted(p0,blue), has-hole(p0,one,front), temperature(p0,cold), objscheduled(), scheduled(p0), busy(immersion-painter), surface-condition(p0,smooth)})"]
+s2[label="(instance index=0, state index=2, atoms={shape(p0,cylindrical), objscheduled(), scheduled(p0), temperature(p0,hot), busy(roller)})"]
+s26[label="(instance index=0, state index=26, atoms={shape(p0,cylindrical), surface-condition(p0,polished), has-hole(p0,one,front), temperature(p0,cold), objscheduled()})"]
+s27[label="(instance index=0, state index=27, atoms={shape(p0,cylindrical), painted(p0,blue), has-hole(p0,one,front), temperature(p0,cold), objscheduled()})"]
+s25[label="(instance index=0, state index=25, atoms={shape(p0,cylindrical), painted(p0,blue), has-hole(p0,one,front), surface-condition(p0,rough), temperature(p0,cold), objscheduled()})"]
+s21[label="(instance index=0, state index=21, atoms={shape(p0,cylindrical), painted(p0,blue), has-hole(p0,one,front), temperature(p0,cold), objscheduled(), surface-condition(p0,smooth)})"]
+s30[label="(instance index=0, state index=30, atoms={shape(p0,cylindrical), objscheduled(), temperature(p0,hot)})"]
+s24[peripheries=2,label="(instance index=0, state index=24, atoms={shape(p0,cylindrical), surface-condition(p0,polished), painted(p0,blue), has-hole(p0,one,front), temperature(p0,cold), objscheduled(), scheduled(p0), busy(immersion-painter)})"]
+s22[peripheries=2,label="(instance index=0, state index=22, atoms={shape(p0,cylindrical), surface-condition(p0,polished), painted(p0,blue), has-hole(p0,one,front), temperature(p0,cold), objscheduled(), scheduled(p0), busy(polisher)})"]
+s23[peripheries=2,label="(instance index=0, state index=23, atoms={shape(p0,cylindrical), surface-condition(p0,polished), painted(p0,blue), has-hole(p0,one,front), temperature(p0,cold), objscheduled()})"]
+s31[label="(instance index=0, state index=31, atoms={shape(p0,cylindrical), surface-condition(p0,rough), objscheduled(), scheduled(p0), busy(lathe), temperature(p0,hot)})"]
+s33[label="(instance index=0, state index=33, atoms={shape(p0,cylindrical), objscheduled(), scheduled(p0), surface-condition(p0,smooth), busy(grinder), temperature(p0,hot)})"]
+s32[label="(instance index=0, state index=32, atoms={shape(p0,cylindrical), painted(p0,blue), objscheduled(), scheduled(p0), busy(immersion-painter), temperature(p0,hot)})"]
+s38[label="(instance index=0, state index=38, atoms={shape(p0,cylindrical), surface-condition(p0,rough), objscheduled(), temperature(p0,hot)})"]
+s34[label="(instance index=0, state index=34, atoms={shape(p0,cylindrical), objscheduled(), surface-condition(p0,smooth), temperature(p0,hot)})"]
+s37[label="(instance index=0, state index=37, atoms={shape(p0,cylindrical), painted(p0,blue), objscheduled(), temperature(p0,hot)})"]
+s39[label="(instance index=0, state index=39, atoms={shape(p0,cylindrical), painted(p0,blue), surface-condition(p0,rough), objscheduled(), scheduled(p0), busy(immersion-painter), temperature(p0,hot)})"]
+s35[label="(instance index=0, state index=35, atoms={shape(p0,cylindrical), painted(p0,blue), objscheduled(), scheduled(p0), busy(immersion-painter), surface-condition(p0,smooth), temperature(p0,hot)})"]
+s40[label="(instance index=0, state index=40, atoms={shape(p0,cylindrical), painted(p0,blue), surface-condition(p0,rough), objscheduled(), temperature(p0,hot)})"]
+s36[label="(instance index=0, state index=36, atoms={shape(p0,cylindrical), painted(p0,blue), objscheduled(), surface-condition(p0,smooth), temperature(p0,hot)})"]
+Dangling [ label = "", style = invis ]
+{ rank = same; Dangling }
+Dangling -> s0
+{ rank = same; s0}
+{ rank = same; s41,s0,s29,s13,s11,s9,s7}
+{ rank = same; s18,s4}
+{ rank = same; s19,s14}
+{ rank = same; s16,s28,s15,s17,s20,s2}
+{ rank = same; s26,s27,s25,s21,s30}
+{ rank = same; s24,s22,s23,s31,s33,s32}
+{ rank = same; s38,s34,s37}
+{ rank = same; s39,s35}
+{ rank = same; s40,s36}
+{
+s6->s7
+s8->s9
+s12->s11
+s42->s41
+s1->s41
+s3->s29
+s5->s13
+s10->s11
+}
+{
+s41->s42
+s41->s10
+s41->s41
+s41->s6
+s41->s4
+s41->s2
+s41->s1
+s0->s6
+s0->s5
+s0->s4
+s0->s3
+s0->s2
+s0->s1
+s29->s12
+s29->s6
+s29->s4
+s29->s3
+s29->s2
+s29->s29
+s29->s1
+s13->s10
+s13->s13
+s13->s6
+s13->s5
+s13->s4
+s13->s2
+s13->s1
+s11->s12
+s11->s10
+s11->s6
+s11->s11
+s11->s4
+s11->s2
+s11->s1
+s9->s10
+s9->s6
+s9->s4
+s9->s9
+s9->s2
+s9->s8
+s9->s1
+s7->s7
+s7->s6
+s7->s4
+s7->s3
+s7->s2
+s7->s8
+s7->s1
+}
+{
+s18->s19
+s4->s14
+}
+{
+s19->s20
+s19->s19
+s19->s15
+s19->s18
+s19->s4
+s19->s16
+s19->s2
+s14->s17
+s14->s15
+s14->s14
+s14->s18
+s14->s4
+s14->s16
+s14->s2
+}
+{
+s16->s26
+s28->s27
+s15->s27
+s17->s25
+s20->s21
+s2->s30
+}
+{
+s26->s26
+s26->s24
+s26->s15
+s26->s18
+s26->s4
+s26->s16
+s26->s2
+s27->s28
+s27->s27
+s27->s22
+s27->s15
+s27->s18
+s27->s4
+s27->s2
+s25->s17
+s25->s22
+s25->s15
+s25->s25
+s25->s18
+s25->s4
+s25->s2
+s21->s21
+s21->s20
+s21->s22
+s21->s15
+s21->s18
+s21->s4
+s21->s2
+s30->s31
+s30->s30
+s30->s33
+s30->s2
+s30->s32
+}
+{
+s24->s23
+s22->s23
+s23->s24
+s23->s22
+s23->s15
+s23->s18
+s23->s4
+s23->s23
+s23->s2
+s31->s38
+s33->s34
+s32->s37
+}
+{
+s38->s31
+s38->s39
+s38->s2
+s38->s38
+s38->s33
+s34->s31
+s34->s35
+s34->s2
+s34->s34
+s34->s33
+s37->s31
+s37->s33
+s37->s37
+s37->s2
+s37->s32
+}
+{
+s39->s40
+s35->s36
+}
+{
+s40->s31
+s40->s40
+s40->s39
+s40->s2
+s40->s33
+s36->s31
+s36->s36
+s36->s35
+s36->s2
+s36->s33
+}
+}

@@ -1,0 +1,27 @@
+digraph {
+rankdir="LR"
+s0[label="State(index=0, fluent atoms=[(empty-ferry), (at-ferry loc1), (at car1 loc1)], static atoms=[(car car1), (location loc1), (location loc2)], derived atoms=[])"]
+s1[label="State(index=1, fluent atoms=[(empty-ferry), (at car1 loc1), (at-ferry loc2)], static atoms=[(car car1), (location loc1), (location loc2)], derived atoms=[])"]
+s2[label="State(index=2, fluent atoms=[(at-ferry loc1), (on car1)], static atoms=[(car car1), (location loc1), (location loc2)], derived atoms=[])"]
+s3[label="State(index=3, fluent atoms=[(on car1), (at-ferry loc2)], static atoms=[(car car1), (location loc1), (location loc2)], derived atoms=[])"]
+s4[peripheries=2,label="State(index=4, fluent atoms=[(at car1 loc2), (empty-ferry), (at-ferry loc2)], static atoms=[(car car1), (location loc1), (location loc2)], derived atoms=[])"]
+s5[peripheries=2,label="State(index=5, fluent atoms=[(at car1 loc2), (empty-ferry), (at-ferry loc1)], static atoms=[(car car1), (location loc1), (location loc2)], derived atoms=[])"]
+Dangling [ label = "", style = invis ]
+{ rank = same; Dangling }
+Dangling -> s0
+{ rank = same; s1}
+{ rank = same; s0}
+{ rank = same; s2}
+{ rank = same; s3}
+{ rank = same; s4,s5}
+s0->s1 [label="(sail loc1 loc2)"]
+s0->s2 [label="(board car1 loc1)"]
+s2->s0 [label="(debark car1 loc1)"]
+s2->s3 [label="(sail loc1 loc2)"]
+s3->s4 [label="(debark car1 loc2)"]
+s3->s2 [label="(sail loc2 loc1)"]
+s4->s5 [label="(sail loc2 loc1)"]
+s4->s3 [label="(board car1 loc2)"]
+s5->s4 [label="(sail loc1 loc2)"]
+s1->s0 [label="(sail loc2 loc1)"]
+}

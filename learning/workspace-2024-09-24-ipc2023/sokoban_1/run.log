@@ -1,0 +1,582 @@
+Changing working directory:  /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/experiments/scripts/workspace-ipc2023/sokoban_1
+2024-09-14 15:50:38,098 - Constructing InstanceDatas...
+2024-09-14 15:50:46,863 - Constructing GlobalFaithfulAbstractions...
+2024-09-14 15:51:24,634 - ...done
+2024-09-14 15:51:24,635 - Constructing StateSpaces...
+2024-09-14 15:51:24,672 - ...done
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/ipc2023/sokoban/training/easy/p03.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/ipc2023/sokoban/training/easy/p03.pddl
+2024-09-14 15:51:24,679 - Created InstanceData with num concrete states: 17 and num abstract states: 13
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/ipc2023/sokoban/training/easy/p33.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/ipc2023/sokoban/training/easy/p33.pddl
+2024-09-14 15:51:24,688 - Created InstanceData with num concrete states: 33 and num abstract states: 33
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/ipc2023/sokoban/training/easy/p26.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/ipc2023/sokoban/training/easy/p26.pddl
+2024-09-14 15:51:24,694 - Created InstanceData with num concrete states: 97 and num abstract states: 97
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/ipc2023/sokoban/training/easy/p18.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/ipc2023/sokoban/training/easy/p18.pddl
+2024-09-14 15:51:24,700 - Created InstanceData with num concrete states: 131 and num abstract states: 131
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/ipc2023/sokoban/training/easy/p17.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/ipc2023/sokoban/training/easy/p17.pddl
+2024-09-14 15:51:24,708 - Created InstanceData with num concrete states: 180 and num abstract states: 180
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/ipc2023/sokoban/training/easy/p23.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/ipc2023/sokoban/training/easy/p23.pddl
+2024-09-14 15:51:24,715 - Created InstanceData with num concrete states: 181 and num abstract states: 181
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/ipc2023/sokoban/training/easy/p30.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/ipc2023/sokoban/training/easy/p30.pddl
+2024-09-14 15:51:24,724 - Created InstanceData with num concrete states: 209 and num abstract states: 209
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/ipc2023/sokoban/training/easy/p13.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/ipc2023/sokoban/training/easy/p13.pddl
+2024-09-14 15:51:24,733 - Created InstanceData with num concrete states: 253 and num abstract states: 253
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/ipc2023/sokoban/training/easy/p14.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/ipc2023/sokoban/training/easy/p14.pddl
+2024-09-14 15:51:24,743 - Created InstanceData with num concrete states: 269 and num abstract states: 269
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/ipc2023/sokoban/training/easy/p05.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/ipc2023/sokoban/training/easy/p05.pddl
+2024-09-14 15:51:24,760 - Created InstanceData with num concrete states: 552 and num abstract states: 282
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/ipc2023/sokoban/training/easy/p34.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/ipc2023/sokoban/training/easy/p34.pddl
+2024-09-14 15:51:24,771 - Created InstanceData with num concrete states: 283 and num abstract states: 283
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/ipc2023/sokoban/training/easy/p25.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/ipc2023/sokoban/training/easy/p25.pddl
+2024-09-14 15:51:24,784 - Created InstanceData with num concrete states: 319 and num abstract states: 319
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/ipc2023/sokoban/training/easy/p28.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/ipc2023/sokoban/training/easy/p28.pddl
+2024-09-14 15:51:24,795 - Created InstanceData with num concrete states: 334 and num abstract states: 334
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/ipc2023/sokoban/training/easy/p19.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/ipc2023/sokoban/training/easy/p19.pddl
+2024-09-14 15:51:24,807 - Created InstanceData with num concrete states: 338 and num abstract states: 338
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/ipc2023/sokoban/training/easy/p22.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/ipc2023/sokoban/training/easy/p22.pddl
+2024-09-14 15:51:24,819 - Created InstanceData with num concrete states: 376 and num abstract states: 376
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/ipc2023/sokoban/training/easy/p15.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/ipc2023/sokoban/training/easy/p15.pddl
+2024-09-14 15:51:24,833 - Created InstanceData with num concrete states: 459 and num abstract states: 459
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/ipc2023/sokoban/training/easy/p09.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/ipc2023/sokoban/training/easy/p09.pddl
+2024-09-14 15:51:24,847 - Created InstanceData with num concrete states: 462 and num abstract states: 462
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/ipc2023/sokoban/training/easy/p11.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/ipc2023/sokoban/training/easy/p11.pddl
+2024-09-14 15:51:24,861 - Created InstanceData with num concrete states: 462 and num abstract states: 462
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/ipc2023/sokoban/training/easy/p21.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/ipc2023/sokoban/training/easy/p21.pddl
+2024-09-14 15:51:24,876 - Created InstanceData with num concrete states: 496 and num abstract states: 496
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/ipc2023/sokoban/training/easy/p16.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/ipc2023/sokoban/training/easy/p16.pddl
+2024-09-14 15:51:24,892 - Created InstanceData with num concrete states: 525 and num abstract states: 525
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/ipc2023/sokoban/training/easy/p29.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/ipc2023/sokoban/training/easy/p29.pddl
+2024-09-14 15:51:24,912 - Created InstanceData with num concrete states: 623 and num abstract states: 623
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/ipc2023/sokoban/training/easy/p32.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/ipc2023/sokoban/training/easy/p32.pddl
+2024-09-14 15:51:24,933 - Created InstanceData with num concrete states: 642 and num abstract states: 642
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/ipc2023/sokoban/training/easy/p24.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/ipc2023/sokoban/training/easy/p24.pddl
+2024-09-14 15:51:24,953 - Created InstanceData with num concrete states: 687 and num abstract states: 687
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/ipc2023/sokoban/training/easy/p27.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/ipc2023/sokoban/training/easy/p27.pddl
+2024-09-14 15:51:24,973 - Created InstanceData with num concrete states: 698 and num abstract states: 698
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/ipc2023/sokoban/training/easy/p20.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/ipc2023/sokoban/training/easy/p20.pddl
+2024-09-14 15:51:25,001 - Created InstanceData with num concrete states: 928 and num abstract states: 928
+2024-09-14 15:51:25,011 - ..done
+2024-09-14 15:51:25,029 - Initializing TupleGraphs...
+2024-09-14 15:51:25,864 - ..done
+2024-09-14 15:51:25,865 - Iteration: 0
+     id: 0 problem_filepath: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/ipc2023/sokoban/training/easy/p03.pddl num_states: 17 num_state_equivalences: 13
+2024-09-14 15:51:25,868 - Initialize global faithful abstract states...
+2024-09-14 15:51:25,868 - ..done
+2024-09-14 15:51:25,868 - Initializing DomainFeatureData...
+[t=48.305s, 2742264 KB] Started generating base features of complexity 1.
+[t=48.3054s, 2742264 KB] Complexity 1:
+    b_nullary: 0
+    c_one_of: 4
+    c_top: 1
+    c_bot: 1
+    c_primitive: 5
+    r_primitive: 2
+    c_and: 0
+    c_not: 0
+    c_equal: 0
+    c_some: 0
+    c_all: 0
+    r_restrict: 0
+    r_and: 0
+    r_inverse: 0
+    r_transitive_closure: 0
+    b_empty: 0
+    n_count: 0
+    n_concept_distance: 0
+[t=48.3055s, 2742264 KB] Finished generating base features.
+[t=48.3055s, 2742264 KB] Started generating composite features. 
+[t=48.3062s, 2742264 KB] Complexity 2:
+Total concept elements: 20
+Total role elements: 4
+Total numerical elements: 6
+Total boolean elements: 2
+    b_nullary: 0
+    c_one_of: 4
+    c_top: 1
+    c_bot: 1
+    c_primitive: 5
+    r_primitive: 2
+    c_and: 0
+    c_not: 9
+    c_equal: 0
+    c_some: 0
+    c_all: 0
+    r_restrict: 0
+    r_and: 0
+    r_inverse: 2
+    r_transitive_closure: 0
+    b_empty: 2
+    n_count: 6
+    n_concept_distance: 0
+[t=48.3101s, 2742264 KB] Complexity 3:
+Total concept elements: 23
+Total role elements: 7
+Total numerical elements: 10
+Total boolean elements: 2
+    b_nullary: 0
+    c_one_of: 4
+    c_top: 1
+    c_bot: 1
+    c_primitive: 5
+    r_primitive: 2
+    c_and: 0
+    c_not: 9
+    c_equal: 1
+    c_some: 1
+    c_all: 1
+    r_restrict: 2
+    r_and: 1
+    r_inverse: 2
+    r_transitive_closure: 0
+    b_empty: 2
+    n_count: 10
+    n_concept_distance: 0
+[t=48.3152s, 2742264 KB] Complexity 4:
+Total concept elements: 35
+Total role elements: 9
+Total numerical elements: 16
+Total boolean elements: 4
+    b_nullary: 0
+    c_one_of: 4
+    c_top: 1
+    c_bot: 1
+    c_primitive: 5
+    r_primitive: 2
+    c_and: 7
+    c_not: 10
+    c_equal: 1
+    c_some: 3
+    c_all: 3
+    r_restrict: 2
+    r_and: 1
+    r_inverse: 4
+    r_transitive_closure: 0
+    b_empty: 4
+    n_count: 14
+    n_concept_distance: 2
+[t=48.3214s, 2742264 KB] Complexity 5:
+Total concept elements: 68
+Total role elements: 9
+Total numerical elements: 20
+Total boolean elements: 4
+    b_nullary: 0
+    c_one_of: 4
+    c_top: 1
+    c_bot: 1
+    c_primitive: 5
+    r_primitive: 2
+    c_and: 33
+    c_not: 17
+    c_equal: 1
+    c_some: 3
+    c_all: 3
+    r_restrict: 2
+    r_and: 1
+    r_inverse: 4
+    r_transitive_closure: 0
+    b_empty: 4
+    n_count: 18
+    n_concept_distance: 2
+[t=48.3304s, 2742264 KB] Complexity 6:
+Total concept elements: 119
+Total role elements: 9
+Total numerical elements: 28
+Total boolean elements: 4
+    b_nullary: 0
+    c_one_of: 4
+    c_top: 1
+    c_bot: 1
+    c_primitive: 5
+    r_primitive: 2
+    c_and: 53
+    c_not: 43
+    c_equal: 1
+    c_some: 5
+    c_all: 6
+    r_restrict: 2
+    r_and: 1
+    r_inverse: 4
+    r_transitive_closure: 0
+    b_empty: 4
+    n_count: 25
+    n_concept_distance: 3
+[t=48.3447s, 2742264 KB] Complexity 7:
+Total concept elements: 151
+Total role elements: 9
+Total numerical elements: 42
+Total boolean elements: 4
+    b_nullary: 0
+    c_one_of: 4
+    c_top: 1
+    c_bot: 1
+    c_primitive: 5
+    r_primitive: 2
+    c_and: 70
+    c_not: 58
+    c_equal: 1
+    c_some: 5
+    c_all: 6
+    r_restrict: 2
+    r_and: 1
+    r_inverse: 4
+    r_transitive_closure: 0
+    b_empty: 4
+    n_count: 37
+    n_concept_distance: 5
+[t=48.3696s, 2742264 KB] Complexity 8:
+Total concept elements: 229
+Total role elements: 9
+Total numerical elements: 47
+Total boolean elements: 4
+    b_nullary: 0
+    c_one_of: 4
+    c_top: 1
+    c_bot: 1
+    c_primitive: 5
+    r_primitive: 2
+    c_and: 132
+    c_not: 74
+    c_equal: 1
+    c_some: 5
+    c_all: 6
+    r_restrict: 2
+    r_and: 1
+    r_inverse: 4
+    r_transitive_closure: 0
+    b_empty: 4
+    n_count: 42
+    n_concept_distance: 5
+[t=48.404s, 2742264 KB] Complexity 9:
+Total concept elements: 361
+Total role elements: 9
+Total numerical elements: 51
+Total boolean elements: 4
+    b_nullary: 0
+    c_one_of: 4
+    c_top: 1
+    c_bot: 1
+    c_primitive: 5
+    r_primitive: 2
+    c_and: 237
+    c_not: 101
+    c_equal: 1
+    c_some: 5
+    c_all: 6
+    r_restrict: 2
+    r_and: 1
+    r_inverse: 4
+    r_transitive_closure: 0
+    b_empty: 4
+    n_count: 46
+    n_concept_distance: 5
+[t=48.4041s, 2742264 KB] Finished generating composite features.
+Features generated: 55
+Features after relevant changes pruning (complete): 3
+2024-09-14 15:51:26,085 - ..done
+2024-09-14 15:51:26,085 - Constructing PerStateFeatureValuations...
+2024-09-14 15:51:26,085 - ..done
+2024-09-14 15:51:26,085 - Constructing StatePairEquivalenceDatas...
+2024-09-14 15:51:26,088 - ..done
+2024-09-14 15:51:26,088 - Constructing TupleGraphEquivalences...
+Tuple graph equivalence construction statistics:
+Num nodes: 104
+2024-09-14 15:51:26,091 - ..done
+2024-09-14 15:51:26,091 - Minimizing TupleGraphEquivalences...
+Tuple graph equivalence minimization statistics:
+Num orig nodes: 104
+Num kept nodes: 20
+2024-09-14 15:51:26,092 - ..done
+Number of initial D2 facts: 1
+Number of D2 facts: 1 of 9
+2024-09-14 15:51:26,115 - Grounding Logic Program...
+2024-09-14 15:51:26,119 - ..done
+2024-09-14 15:51:26,119 - Solving Logic Program...
+2024-09-14 15:51:26,122 - ..done
+Clingo statistics:
+{'call': 0.0, 'result': 1.0, 'signal': 0.0, 'exhausted': 1.0, 'costs': [0.0], 'lower': [0.0], 'concurrency': 32.0, 'winner': 13.0, 'times': {'total': 0.028772830963134766, 'cpu': 0.017728000000033717, 'solve': 0.0017549991607666016, 'unsat': 0.0004668235778808594, 'sat': 0.0012881755828857422}, 'models': {'enumerated': 1.0, 'optimal': 1.0}}
+Solution cost: [0.0]
+Total time: 0.028772830963134766
+CPU time: 0.017728000000033717
+Solve time: 0.0017549991607666016
+2024-09-14 15:51:26,123 - Learned the following sketch:
+(:policy
+(:booleans )
+(:numericals )
+(:rule (:conditions ) (:effects ))
+)
+Numer of sketch rules: 1
+Number of selected features: 0
+Maximum complexity of selected feature: 0
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/ipc2023/sokoban/training/easy/p03.pddl
+Sketch cycles
+Instance: 0
+12
+12
+Number of unsatisfied D2 facts: 2
+Number of D2 facts: 3 of 9
+2024-09-14 15:51:26,129 - Grounding Logic Program...
+2024-09-14 15:51:26,132 - ..done
+2024-09-14 15:51:26,133 - Solving Logic Program...
+2024-09-14 15:51:26,135 - ..done
+Clingo statistics:
+{'call': 0.0, 'result': 1.0, 'signal': 0.0, 'exhausted': 1.0, 'costs': [5.0], 'lower': [5.0], 'concurrency': 32.0, 'winner': 21.0, 'times': {'total': 0.010715007781982422, 'cpu': 0.01258600000005572, 'solve': 0.001605987548828125, 'unsat': 0.00037479400634765625, 'sat': 0.0011970996856689453}, 'models': {'enumerated': 2.0, 'optimal': 1.0}}
+Solution cost: [5.0]
+Total time: 0.010715007781982422
+CPU time: 0.01258600000005572
+Solve time: 0.001605987548828125
+2024-09-14 15:51:26,136 - Learned the following sketch:
+(:policy
+(:booleans )
+(:numericals (f2 "n_count(c_some(r_primitive(at_g,0,1),c_primitive(clear,0)))"))
+(:rule (:conditions (:c_n_gt f2)) (:effects (:e_n_dec f2)))
+)
+Numer of sketch rules: 1
+Number of selected features: 1
+Maximum complexity of selected feature: 4
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/ipc2023/sokoban/training/easy/p03.pddl
+2024-09-14 15:51:26,137 - Verifying learned sketch...
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/ipc2023/sokoban/training/easy/p03.pddl
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/ipc2023/sokoban/training/easy/p03.pddl
+Sketch fails to bound width of a state
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/ipc2023/sokoban/training/easy/p33.pddl
+Instance: 1
+Source_state: 21
+Dlplan state: (instance index=1, state index=8, atoms={at(box1,loc_4_7), clear(loc_4_5), clear(loc_4_2), clear(loc_6_5), clear(loc_5_7), clear(loc_6_8), clear(loc_3_6), clear(loc_8_5), clear(loc_5_6), clear(loc_4_4), clear(loc_2_3), clear(loc_2_6), clear(loc_8_4), clear(loc_8_7), clear(loc_4_3), clear(loc_5_2), clear(loc_4_6), clear(loc_2_2), clear(loc_2_8), clear(loc_3_7), at-robot(loc_3_7)})
+2024-09-14 15:51:26,143 - ..done
+Smallest unsolved instance: 1
+Selected instances: [1]
+2024-09-14 15:51:26,143 - Iteration: 1
+     id: 1 problem_filepath: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/ipc2023/sokoban/training/easy/p33.pddl num_states: 33 num_state_equivalences: 33
+2024-09-14 15:51:26,146 - Initialize global faithful abstract states...
+2024-09-14 15:51:26,146 - ..done
+2024-09-14 15:51:26,146 - Initializing DomainFeatureData...
+[t=48.583s, 2742264 KB] Started generating base features of complexity 1.
+[t=48.5834s, 2742264 KB] Complexity 1:
+    b_nullary: 0
+    c_one_of: 4
+    c_top: 1
+    c_bot: 1
+    c_primitive: 5
+    r_primitive: 2
+    c_and: 0
+    c_not: 0
+    c_equal: 0
+    c_some: 0
+    c_all: 0
+    r_restrict: 0
+    r_and: 0
+    r_inverse: 0
+    r_transitive_closure: 0
+    b_empty: 0
+    n_count: 0
+    n_concept_distance: 0
+[t=48.5835s, 2742264 KB] Finished generating base features.
+[t=48.5835s, 2742264 KB] Started generating composite features. 
+[t=48.587s, 2742264 KB] Complexity 2:
+Total concept elements: 20
+Total role elements: 4
+Total numerical elements: 6
+Total boolean elements: 2
+    b_nullary: 0
+    c_one_of: 4
+    c_top: 1
+    c_bot: 1
+    c_primitive: 5
+    r_primitive: 2
+    c_and: 0
+    c_not: 9
+    c_equal: 0
+    c_some: 0
+    c_all: 0
+    r_restrict: 0
+    r_and: 0
+    r_inverse: 2
+    r_transitive_closure: 0
+    b_empty: 2
+    n_count: 6
+    n_concept_distance: 0
+[t=48.6148s, 2742264 KB] Complexity 3:
+Total concept elements: 25
+Total role elements: 8
+Total numerical elements: 10
+Total boolean elements: 2
+    b_nullary: 0
+    c_one_of: 4
+    c_top: 1
+    c_bot: 1
+    c_primitive: 5
+    r_primitive: 2
+    c_and: 0
+    c_not: 9
+    c_equal: 1
+    c_some: 2
+    c_all: 2
+    r_restrict: 3
+    r_and: 1
+    r_inverse: 2
+    r_transitive_closure: 0
+    b_empty: 2
+    n_count: 10
+    n_concept_distance: 0
+[t=48.6498s, 2742264 KB] Complexity 4:
+Total concept elements: 39
+Total role elements: 11
+Total numerical elements: 19
+Total boolean elements: 5
+    b_nullary: 0
+    c_one_of: 4
+    c_top: 1
+    c_bot: 1
+    c_primitive: 5
+    r_primitive: 2
+    c_and: 7
+    c_not: 12
+    c_equal: 1
+    c_some: 4
+    c_all: 4
+    r_restrict: 3
+    r_and: 1
+    r_inverse: 5
+    r_transitive_closure: 0
+    b_empty: 5
+    n_count: 16
+    n_concept_distance: 3
+[t=48.7068s, 2742264 KB] Complexity 5:
+Total concept elements: 73
+Total role elements: 11
+Total numerical elements: 25
+Total boolean elements: 6
+    b_nullary: 0
+    c_one_of: 4
+    c_top: 1
+    c_bot: 1
+    c_primitive: 5
+    r_primitive: 2
+    c_and: 33
+    c_not: 19
+    c_equal: 1
+    c_some: 4
+    c_all: 5
+    r_restrict: 3
+    r_and: 1
+    r_inverse: 5
+    r_transitive_closure: 0
+    b_empty: 6
+    n_count: 22
+    n_concept_distance: 3
+[t=48.7907s, 2742264 KB] Complexity 6:
+Total concept elements: 140
+Total role elements: 11
+Total numerical elements: 35
+Total boolean elements: 6
+    b_nullary: 0
+    c_one_of: 4
+    c_top: 1
+    c_bot: 1
+    c_primitive: 5
+    r_primitive: 2
+    c_and: 63
+    c_not: 46
+    c_equal: 1
+    c_some: 7
+    c_all: 12
+    r_restrict: 3
+    r_and: 1
+    r_inverse: 5
+    r_transitive_closure: 0
+    b_empty: 6
+    n_count: 30
+    n_concept_distance: 5
+[t=48.905s, 2742264 KB] Complexity 7:
+Total concept elements: 191
+Total role elements: 11
+Total numerical elements: 58
+Total boolean elements: 7
+    b_nullary: 0
+    c_one_of: 4
+    c_top: 1
+    c_bot: 1
+    c_primitive: 5
+    r_primitive: 2
+    c_and: 90
+    c_not: 70
+    c_equal: 1
+    c_some: 7
+    c_all: 12
+    r_restrict: 3
+    r_and: 1
+    r_inverse: 5
+    r_transitive_closure: 0
+    b_empty: 7
+    n_count: 48
+    n_concept_distance: 10
+[t=49.1215s, 2742264 KB] Complexity 8:
+Total concept elements: 294
+Total role elements: 11
+Total numerical elements: 72
+Total boolean elements: 8
+    b_nullary: 0
+    c_one_of: 4
+    c_top: 1
+    c_bot: 1
+    c_primitive: 5
+    r_primitive: 2
+    c_and: 167
+    c_not: 92
+    c_equal: 1
+    c_some: 9
+    c_all: 14
+    r_restrict: 3
+    r_and: 1
+    r_inverse: 5
+    r_transitive_closure: 0
+    b_empty: 8
+    n_count: 60
+    n_concept_distance: 12
+[t=49.3884s, 2742264 KB] Complexity 9:
+Total concept elements: 503
+Total role elements: 11
+Total numerical elements: 89
+Total boolean elements: 8
+    b_nullary: 0
+    c_one_of: 4
+    c_top: 1
+    c_bot: 1
+    c_primitive: 5
+    r_primitive: 2
+    c_and: 333
+    c_not: 135
+    c_equal: 1
+    c_some: 9
+    c_all: 14
+    r_restrict: 3
+    r_and: 1
+    r_inverse: 5
+    r_transitive_closure: 0
+    b_empty: 8
+    n_count: 74
+    n_concept_distance: 15
+[t=49.3885s, 2742264 KB] Finished generating composite features.
+Features generated: 97
+Features after relevant changes pruning (complete): 9
+2024-09-14 15:51:27,467 - ..done
+2024-09-14 15:51:27,467 - Constructing PerStateFeatureValuations...
+2024-09-14 15:51:27,468 - ..done
+2024-09-14 15:51:27,468 - Constructing StatePairEquivalenceDatas...
+2024-09-14 15:51:27,485 - ..done
+2024-09-14 15:51:27,485 - Constructing TupleGraphEquivalences...
+Tuple graph equivalence construction statistics:
+Num nodes: 260
+2024-09-14 15:51:27,492 - ..done
+2024-09-14 15:51:27,492 - Minimizing TupleGraphEquivalences...
+Tuple graph equivalence minimization statistics:
+Num orig nodes: 260
+Num kept nodes: 42
+2024-09-14 15:51:27,495 - ..done
+Number of initial D2 facts: 4
+Number of D2 facts: 4 of 49
+2024-09-14 15:51:27,509 - Grounding Logic Program...
+2024-09-14 15:51:27,517 - ..done
+2024-09-14 15:51:27,517 - Solving Logic Program...
+2024-09-14 15:51:27,518 - ..done
+ASP is unsatisfiable!
+No sketch of width 1 exists that solves all instances!

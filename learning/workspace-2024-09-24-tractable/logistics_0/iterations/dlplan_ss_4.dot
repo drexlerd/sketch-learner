@@ -1,0 +1,57 @@
+digraph {
+rankdir="LR"
+s6[label="(instance index=4, state index=6, atoms={at(t0,l0-0), at(a0,l0-0), in(p0,a0), in(p1,a0)})"]
+s7[label="(instance index=4, state index=7, atoms={at(t0,l0-0), at(a0,l0-0), in(p1,a0), in(p0,t0)})"]
+s8[label="(instance index=4, state index=8, atoms={at(t0,l0-0), at(a0,l0-0), in(p0,t0), in(p1,t0)})"]
+s5[label="(instance index=4, state index=5, atoms={at(t0,l0-0), at(a0,l0-0), in(p0,a0), in(p1,t0)})"]
+s4[label="(instance index=4, state index=4, atoms={at(p1,l0-0), at(t0,l0-0), at(a0,l0-0), in(p0,a0)})"]
+s3[label="(instance index=4, state index=3, atoms={at(p0,l0-0), at(t0,l0-0), at(a0,l0-0), in(p1,a0)})"]
+s2[label="(instance index=4, state index=2, atoms={at(p1,l0-0), at(t0,l0-0), at(a0,l0-0), in(p0,t0)})"]
+s1[label="(instance index=4, state index=1, atoms={at(p0,l0-0), at(t0,l0-0), at(a0,l0-0), in(p1,t0)})"]
+s0[peripheries=2,label="(instance index=4, state index=0, atoms={at(p0,l0-0), at(p1,l0-0), at(t0,l0-0), at(a0,l0-0)})"]
+Dangling [ label = "", style = invis ]
+{ rank = same; Dangling }
+Dangling -> s0
+{ rank = same; s0}
+{ rank = same; s4,s3,s2,s1}
+{ rank = same; s0}
+{
+s6->s4
+s6->s6
+s6->s3
+s7->s7
+s7->s3
+s7->s2
+s8->s1
+s8->s2
+s8->s8
+s5->s5
+s5->s4
+s5->s1
+}
+{
+s4->s6
+s4->s4
+s4->s5
+s4->s0
+s3->s7
+s3->s6
+s3->s3
+s3->s0
+s2->s7
+s2->s2
+s2->s0
+s2->s8
+s1->s0
+s1->s5
+s1->s1
+s1->s8
+}
+{
+s0->s4
+s0->s3
+s0->s2
+s0->s1
+s0->s0
+}
+}

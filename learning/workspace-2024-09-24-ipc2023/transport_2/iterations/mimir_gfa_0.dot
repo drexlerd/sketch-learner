@@ -1,0 +1,49 @@
+digraph {
+rankdir="LR"
+s0[label="state_index=0 global_state_index = 0 abstraction_index=0 abstract_state_index=0
+State(index=0, fluent atoms=[(capacity v1 c1), (at p1 l1), (at v1 l2)], static atoms=[(capacity-predecessor c0 c1), (road l1 l2), (road l2 l1), (locatable v1), (vehicle v1), (locatable p1), (package p1), (location l1), (location l2), (size c0), (size c1)], derived atoms=[])
+"]
+s1[label="state_index=1 global_state_index = 1 abstraction_index=0 abstract_state_index=1
+State(index=1, fluent atoms=[(capacity v1 c1), (at p1 l1), (at v1 l1)], static atoms=[(capacity-predecessor c0 c1), (road l1 l2), (road l2 l1), (locatable v1), (vehicle v1), (locatable p1), (package p1), (location l1), (location l2), (size c0), (size c1)], derived atoms=[])
+"]
+s2[label="state_index=2 global_state_index = 2 abstraction_index=0 abstract_state_index=2
+State(index=2, fluent atoms=[(at v1 l1), (in p1 v1), (capacity v1 c0)], static atoms=[(capacity-predecessor c0 c1), (road l1 l2), (road l2 l1), (locatable v1), (vehicle v1), (locatable p1), (package p1), (location l1), (location l2), (size c0), (size c1)], derived atoms=[])
+"]
+s3[label="state_index=3 global_state_index = 3 abstraction_index=0 abstract_state_index=3
+State(index=3, fluent atoms=[(at v1 l2), (in p1 v1), (capacity v1 c0)], static atoms=[(capacity-predecessor c0 c1), (road l1 l2), (road l2 l1), (locatable v1), (vehicle v1), (locatable p1), (package p1), (location l1), (location l2), (size c0), (size c1)], derived atoms=[])
+"]
+s4[peripheries=2,label="state_index=4 global_state_index = 4 abstraction_index=0 abstract_state_index=4
+State(index=4, fluent atoms=[(at p1 l2), (capacity v1 c1), (at v1 l2)], static atoms=[(capacity-predecessor c0 c1), (road l1 l2), (road l2 l1), (locatable v1), (vehicle v1), (locatable p1), (package p1), (location l1), (location l2), (size c0), (size c1)], derived atoms=[])
+"]
+s5[peripheries=2,label="state_index=5 global_state_index = 5 abstraction_index=0 abstract_state_index=5
+State(index=5, fluent atoms=[(at p1 l2), (capacity v1 c1), (at v1 l1)], static atoms=[(capacity-predecessor c0 c1), (road l1 l2), (road l2 l1), (locatable v1), (vehicle v1), (locatable p1), (package p1), (location l1), (location l2), (size c0), (size c1)], derived atoms=[])
+"]
+Dangling [ label = "", style = invis ]
+{ rank = same; Dangling }
+Dangling -> s0
+{ rank = same; s0}
+{ rank = same; s1}
+{ rank = same; s2}
+{ rank = same; s3}
+{ rank = same; s4,s5}
+s0->s1 [label="(drive v1 l2 l1)
+"]
+s1->s0 [label="(drive v1 l1 l2)
+"]
+s1->s2 [label="(pick-up v1 l1 p1 c0 c1)
+"]
+s2->s1 [label="(drop v1 l1 p1 c0 c1)
+"]
+s2->s3 [label="(drive v1 l1 l2)
+"]
+s3->s2 [label="(drive v1 l2 l1)
+"]
+s3->s4 [label="(drop v1 l2 p1 c0 c1)
+"]
+s4->s3 [label="(pick-up v1 l2 p1 c0 c1)
+"]
+s4->s5 [label="(drive v1 l2 l1)
+"]
+s5->s4 [label="(drive v1 l1 l2)
+"]
+}

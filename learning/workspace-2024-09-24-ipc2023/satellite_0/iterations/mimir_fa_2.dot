@@ -1,0 +1,857 @@
+digraph {
+rankdir="LR"
+s0[label="state_index=0
+State(index=0, fluent atoms=[(pointing sat1 dir1), (power_avail sat1)], static atoms=[(calibration_target ins1 dir1), (on_board ins1 sat1), (supports ins1 mod1), (supports ins1 mod2), (satellite sat1), (instrument ins1), (mode mod1), (mode mod2), (direction dir1), (direction dir2)], derived atoms=[])
+"]
+s1[label="state_index=1
+State(index=1, fluent atoms=[(pointing sat1 dir1), (power_on ins1)], static atoms=[(calibration_target ins1 dir1), (on_board ins1 sat1), (supports ins1 mod1), (supports ins1 mod2), (satellite sat1), (instrument ins1), (mode mod1), (mode mod2), (direction dir1), (direction dir2)], derived atoms=[])
+"]
+s2[label="state_index=2
+State(index=2, fluent atoms=[(power_avail sat1), (pointing sat1 dir2)], static atoms=[(calibration_target ins1 dir1), (on_board ins1 sat1), (supports ins1 mod1), (supports ins1 mod2), (satellite sat1), (instrument ins1), (mode mod1), (mode mod2), (direction dir1), (direction dir2)], derived atoms=[])
+"]
+s3[label="state_index=3
+State(index=3, fluent atoms=[(power_on ins1), (pointing sat1 dir2)], static atoms=[(calibration_target ins1 dir1), (on_board ins1 sat1), (supports ins1 mod1), (supports ins1 mod2), (satellite sat1), (instrument ins1), (mode mod1), (mode mod2), (direction dir1), (direction dir2)], derived atoms=[])
+"]
+s4[label="state_index=4
+State(index=4, fluent atoms=[(pointing sat1 dir1), (power_on ins1), (calibrated ins1)], static atoms=[(calibration_target ins1 dir1), (on_board ins1 sat1), (supports ins1 mod1), (supports ins1 mod2), (satellite sat1), (instrument ins1), (mode mod1), (mode mod2), (direction dir1), (direction dir2)], derived atoms=[])
+"]
+s5[label="state_index=5
+State(index=5, fluent atoms=[(pointing sat1 dir1), (power_avail sat1), (calibrated ins1)], static atoms=[(calibration_target ins1 dir1), (on_board ins1 sat1), (supports ins1 mod1), (supports ins1 mod2), (satellite sat1), (instrument ins1), (mode mod1), (mode mod2), (direction dir1), (direction dir2)], derived atoms=[])
+"]
+s6[label="state_index=6
+State(index=7, fluent atoms=[(pointing sat1 dir1), (power_on ins1), (calibrated ins1), (have_image dir1 mod2)], static atoms=[(calibration_target ins1 dir1), (on_board ins1 sat1), (supports ins1 mod1), (supports ins1 mod2), (satellite sat1), (instrument ins1), (mode mod1), (mode mod2), (direction dir1), (direction dir2)], derived atoms=[])
+State(index=6, fluent atoms=[(pointing sat1 dir1), (power_on ins1), (calibrated ins1), (have_image dir1 mod1)], static atoms=[(calibration_target ins1 dir1), (on_board ins1 sat1), (supports ins1 mod1), (supports ins1 mod2), (satellite sat1), (instrument ins1), (mode mod1), (mode mod2), (direction dir1), (direction dir2)], derived atoms=[])
+"]
+s7[label="state_index=7
+State(index=8, fluent atoms=[(power_on ins1), (pointing sat1 dir2), (calibrated ins1)], static atoms=[(calibration_target ins1 dir1), (on_board ins1 sat1), (supports ins1 mod1), (supports ins1 mod2), (satellite sat1), (instrument ins1), (mode mod1), (mode mod2), (direction dir1), (direction dir2)], derived atoms=[])
+"]
+s8[label="state_index=8
+State(index=9, fluent atoms=[(power_avail sat1), (pointing sat1 dir2), (calibrated ins1)], static atoms=[(calibration_target ins1 dir1), (on_board ins1 sat1), (supports ins1 mod1), (supports ins1 mod2), (satellite sat1), (instrument ins1), (mode mod1), (mode mod2), (direction dir1), (direction dir2)], derived atoms=[])
+"]
+s9[label="state_index=9
+State(index=11, fluent atoms=[(have_image dir2 mod2), (power_on ins1), (pointing sat1 dir2), (calibrated ins1)], static atoms=[(calibration_target ins1 dir1), (on_board ins1 sat1), (supports ins1 mod1), (supports ins1 mod2), (satellite sat1), (instrument ins1), (mode mod1), (mode mod2), (direction dir1), (direction dir2)], derived atoms=[])
+State(index=10, fluent atoms=[(have_image dir2 mod1), (power_on ins1), (pointing sat1 dir2), (calibrated ins1)], static atoms=[(calibration_target ins1 dir1), (on_board ins1 sat1), (supports ins1 mod1), (supports ins1 mod2), (satellite sat1), (instrument ins1), (mode mod1), (mode mod2), (direction dir1), (direction dir2)], derived atoms=[])
+"]
+s10[label="state_index=10
+State(index=12, fluent atoms=[(have_image dir2 mod2), (power_avail sat1), (pointing sat1 dir2), (calibrated ins1)], static atoms=[(calibration_target ins1 dir1), (on_board ins1 sat1), (supports ins1 mod1), (supports ins1 mod2), (satellite sat1), (instrument ins1), (mode mod1), (mode mod2), (direction dir1), (direction dir2)], derived atoms=[])
+State(index=75, fluent atoms=[(have_image dir2 mod1), (power_avail sat1), (pointing sat1 dir2), (calibrated ins1)], static atoms=[(calibration_target ins1 dir1), (on_board ins1 sat1), (supports ins1 mod1), (supports ins1 mod2), (satellite sat1), (instrument ins1), (mode mod1), (mode mod2), (direction dir1), (direction dir2)], derived atoms=[])
+"]
+s11[label="state_index=11
+State(index=13, fluent atoms=[(have_image dir2 mod1), (have_image dir2 mod2), (power_on ins1), (pointing sat1 dir2), (calibrated ins1)], static atoms=[(calibration_target ins1 dir1), (on_board ins1 sat1), (supports ins1 mod1), (supports ins1 mod2), (satellite sat1), (instrument ins1), (mode mod1), (mode mod2), (direction dir1), (direction dir2)], derived atoms=[])
+"]
+s12[label="state_index=12
+State(index=14, fluent atoms=[(pointing sat1 dir1), (have_image dir2 mod2), (power_on ins1), (calibrated ins1)], static atoms=[(calibration_target ins1 dir1), (on_board ins1 sat1), (supports ins1 mod1), (supports ins1 mod2), (satellite sat1), (instrument ins1), (mode mod1), (mode mod2), (direction dir1), (direction dir2)], derived atoms=[])
+State(index=76, fluent atoms=[(pointing sat1 dir1), (have_image dir2 mod1), (power_on ins1), (calibrated ins1)], static atoms=[(calibration_target ins1 dir1), (on_board ins1 sat1), (supports ins1 mod1), (supports ins1 mod2), (satellite sat1), (instrument ins1), (mode mod1), (mode mod2), (direction dir1), (direction dir2)], derived atoms=[])
+"]
+s13[label="state_index=13
+State(index=15, fluent atoms=[(pointing sat1 dir1), (have_image dir2 mod2), (power_avail sat1), (calibrated ins1)], static atoms=[(calibration_target ins1 dir1), (on_board ins1 sat1), (supports ins1 mod1), (supports ins1 mod2), (satellite sat1), (instrument ins1), (mode mod1), (mode mod2), (direction dir1), (direction dir2)], derived atoms=[])
+State(index=77, fluent atoms=[(pointing sat1 dir1), (have_image dir2 mod1), (power_avail sat1), (calibrated ins1)], static atoms=[(calibration_target ins1 dir1), (on_board ins1 sat1), (supports ins1 mod1), (supports ins1 mod2), (satellite sat1), (instrument ins1), (mode mod1), (mode mod2), (direction dir1), (direction dir2)], derived atoms=[])
+"]
+s14[label="state_index=14
+State(index=16, fluent atoms=[(pointing sat1 dir1), (have_image dir2 mod2), (power_on ins1), (calibrated ins1), (have_image dir1 mod1)], static atoms=[(calibration_target ins1 dir1), (on_board ins1 sat1), (supports ins1 mod1), (supports ins1 mod2), (satellite sat1), (instrument ins1), (mode mod1), (mode mod2), (direction dir1), (direction dir2)], derived atoms=[])
+State(index=79, fluent atoms=[(pointing sat1 dir1), (have_image dir2 mod1), (power_on ins1), (calibrated ins1), (have_image dir1 mod2)], static atoms=[(calibration_target ins1 dir1), (on_board ins1 sat1), (supports ins1 mod1), (supports ins1 mod2), (satellite sat1), (instrument ins1), (mode mod1), (mode mod2), (direction dir1), (direction dir2)], derived atoms=[])
+"]
+s15[label="state_index=15
+State(index=17, fluent atoms=[(pointing sat1 dir1), (have_image dir2 mod2), (power_on ins1), (calibrated ins1), (have_image dir1 mod2)], static atoms=[(calibration_target ins1 dir1), (on_board ins1 sat1), (supports ins1 mod1), (supports ins1 mod2), (satellite sat1), (instrument ins1), (mode mod1), (mode mod2), (direction dir1), (direction dir2)], derived atoms=[])
+State(index=78, fluent atoms=[(pointing sat1 dir1), (have_image dir2 mod1), (power_on ins1), (calibrated ins1), (have_image dir1 mod1)], static atoms=[(calibration_target ins1 dir1), (on_board ins1 sat1), (supports ins1 mod1), (supports ins1 mod2), (satellite sat1), (instrument ins1), (mode mod1), (mode mod2), (direction dir1), (direction dir2)], derived atoms=[])
+"]
+s16[label="state_index=16
+State(index=18, fluent atoms=[(pointing sat1 dir1), (have_image dir2 mod2), (power_avail sat1), (calibrated ins1), (have_image dir1 mod2)], static atoms=[(calibration_target ins1 dir1), (on_board ins1 sat1), (supports ins1 mod1), (supports ins1 mod2), (satellite sat1), (instrument ins1), (mode mod1), (mode mod2), (direction dir1), (direction dir2)], derived atoms=[])
+State(index=95, fluent atoms=[(pointing sat1 dir1), (have_image dir2 mod1), (power_avail sat1), (calibrated ins1), (have_image dir1 mod1)], static atoms=[(calibration_target ins1 dir1), (on_board ins1 sat1), (supports ins1 mod1), (supports ins1 mod2), (satellite sat1), (instrument ins1), (mode mod1), (mode mod2), (direction dir1), (direction dir2)], derived atoms=[])
+"]
+s17[label="state_index=17
+State(index=19, fluent atoms=[(pointing sat1 dir1), (have_image dir2 mod2), (power_on ins1), (calibrated ins1), (have_image dir1 mod1), (have_image dir1 mod2)], static atoms=[(calibration_target ins1 dir1), (on_board ins1 sat1), (supports ins1 mod1), (supports ins1 mod2), (satellite sat1), (instrument ins1), (mode mod1), (mode mod2), (direction dir1), (direction dir2)], derived atoms=[])
+State(index=81, fluent atoms=[(pointing sat1 dir1), (have_image dir2 mod1), (power_on ins1), (calibrated ins1), (have_image dir1 mod1), (have_image dir1 mod2)], static atoms=[(calibration_target ins1 dir1), (on_board ins1 sat1), (supports ins1 mod1), (supports ins1 mod2), (satellite sat1), (instrument ins1), (mode mod1), (mode mod2), (direction dir1), (direction dir2)], derived atoms=[])
+"]
+s18[label="state_index=18
+State(index=20, fluent atoms=[(have_image dir2 mod2), (power_on ins1), (pointing sat1 dir2), (calibrated ins1), (have_image dir1 mod2)], static atoms=[(calibration_target ins1 dir1), (on_board ins1 sat1), (supports ins1 mod1), (supports ins1 mod2), (satellite sat1), (instrument ins1), (mode mod1), (mode mod2), (direction dir1), (direction dir2)], derived atoms=[])
+State(index=96, fluent atoms=[(have_image dir2 mod1), (power_on ins1), (pointing sat1 dir2), (calibrated ins1), (have_image dir1 mod1)], static atoms=[(calibration_target ins1 dir1), (on_board ins1 sat1), (supports ins1 mod1), (supports ins1 mod2), (satellite sat1), (instrument ins1), (mode mod1), (mode mod2), (direction dir1), (direction dir2)], derived atoms=[])
+"]
+s19[label="state_index=19
+State(index=21, fluent atoms=[(have_image dir2 mod2), (power_avail sat1), (pointing sat1 dir2), (calibrated ins1), (have_image dir1 mod2)], static atoms=[(calibration_target ins1 dir1), (on_board ins1 sat1), (supports ins1 mod1), (supports ins1 mod2), (satellite sat1), (instrument ins1), (mode mod1), (mode mod2), (direction dir1), (direction dir2)], derived atoms=[])
+State(index=97, fluent atoms=[(have_image dir2 mod1), (power_avail sat1), (pointing sat1 dir2), (calibrated ins1), (have_image dir1 mod1)], static atoms=[(calibration_target ins1 dir1), (on_board ins1 sat1), (supports ins1 mod1), (supports ins1 mod2), (satellite sat1), (instrument ins1), (mode mod1), (mode mod2), (direction dir1), (direction dir2)], derived atoms=[])
+"]
+s20[label="state_index=20
+State(index=52, fluent atoms=[(have_image dir2 mod1), (have_image dir2 mod2), (power_on ins1), (pointing sat1 dir2), (calibrated ins1), (have_image dir1 mod1)], static atoms=[(calibration_target ins1 dir1), (on_board ins1 sat1), (supports ins1 mod1), (supports ins1 mod2), (satellite sat1), (instrument ins1), (mode mod1), (mode mod2), (direction dir1), (direction dir2)], derived atoms=[])
+State(index=22, fluent atoms=[(have_image dir2 mod1), (have_image dir2 mod2), (power_on ins1), (pointing sat1 dir2), (calibrated ins1), (have_image dir1 mod2)], static atoms=[(calibration_target ins1 dir1), (on_board ins1 sat1), (supports ins1 mod1), (supports ins1 mod2), (satellite sat1), (instrument ins1), (mode mod1), (mode mod2), (direction dir1), (direction dir2)], derived atoms=[])
+"]
+s21[label="state_index=21
+State(index=53, fluent atoms=[(have_image dir2 mod1), (have_image dir2 mod2), (power_avail sat1), (pointing sat1 dir2), (calibrated ins1), (have_image dir1 mod1)], static atoms=[(calibration_target ins1 dir1), (on_board ins1 sat1), (supports ins1 mod1), (supports ins1 mod2), (satellite sat1), (instrument ins1), (mode mod1), (mode mod2), (direction dir1), (direction dir2)], derived atoms=[])
+State(index=23, fluent atoms=[(have_image dir2 mod1), (have_image dir2 mod2), (power_avail sat1), (pointing sat1 dir2), (calibrated ins1), (have_image dir1 mod2)], static atoms=[(calibration_target ins1 dir1), (on_board ins1 sat1), (supports ins1 mod1), (supports ins1 mod2), (satellite sat1), (instrument ins1), (mode mod1), (mode mod2), (direction dir1), (direction dir2)], derived atoms=[])
+"]
+s22[peripheries=2,label="state_index=22
+State(index=54, fluent atoms=[(pointing sat1 dir1), (have_image dir2 mod1), (have_image dir2 mod2), (power_on ins1), (calibrated ins1), (have_image dir1 mod1)], static atoms=[(calibration_target ins1 dir1), (on_board ins1 sat1), (supports ins1 mod1), (supports ins1 mod2), (satellite sat1), (instrument ins1), (mode mod1), (mode mod2), (direction dir1), (direction dir2)], derived atoms=[])
+State(index=24, fluent atoms=[(pointing sat1 dir1), (have_image dir2 mod1), (have_image dir2 mod2), (power_on ins1), (calibrated ins1), (have_image dir1 mod2)], static atoms=[(calibration_target ins1 dir1), (on_board ins1 sat1), (supports ins1 mod1), (supports ins1 mod2), (satellite sat1), (instrument ins1), (mode mod1), (mode mod2), (direction dir1), (direction dir2)], derived atoms=[])
+"]
+s23[peripheries=2,label="state_index=23
+State(index=55, fluent atoms=[(pointing sat1 dir1), (have_image dir2 mod1), (have_image dir2 mod2), (power_avail sat1), (calibrated ins1), (have_image dir1 mod1)], static atoms=[(calibration_target ins1 dir1), (on_board ins1 sat1), (supports ins1 mod1), (supports ins1 mod2), (satellite sat1), (instrument ins1), (mode mod1), (mode mod2), (direction dir1), (direction dir2)], derived atoms=[])
+State(index=25, fluent atoms=[(pointing sat1 dir1), (have_image dir2 mod1), (have_image dir2 mod2), (power_avail sat1), (calibrated ins1), (have_image dir1 mod2)], static atoms=[(calibration_target ins1 dir1), (on_board ins1 sat1), (supports ins1 mod1), (supports ins1 mod2), (satellite sat1), (instrument ins1), (mode mod1), (mode mod2), (direction dir1), (direction dir2)], derived atoms=[])
+"]
+s24[peripheries=2,label="state_index=24
+State(index=26, fluent atoms=[(pointing sat1 dir1), (have_image dir2 mod1), (have_image dir2 mod2), (power_on ins1), (calibrated ins1), (have_image dir1 mod1), (have_image dir1 mod2)], static atoms=[(calibration_target ins1 dir1), (on_board ins1 sat1), (supports ins1 mod1), (supports ins1 mod2), (satellite sat1), (instrument ins1), (mode mod1), (mode mod2), (direction dir1), (direction dir2)], derived atoms=[])
+"]
+s25[peripheries=2,label="state_index=25
+State(index=27, fluent atoms=[(pointing sat1 dir1), (have_image dir2 mod1), (have_image dir2 mod2), (power_avail sat1), (calibrated ins1), (have_image dir1 mod1), (have_image dir1 mod2)], static atoms=[(calibration_target ins1 dir1), (on_board ins1 sat1), (supports ins1 mod1), (supports ins1 mod2), (satellite sat1), (instrument ins1), (mode mod1), (mode mod2), (direction dir1), (direction dir2)], derived atoms=[])
+"]
+s26[label="state_index=26
+State(index=28, fluent atoms=[(have_image dir2 mod1), (have_image dir2 mod2), (power_on ins1), (pointing sat1 dir2), (calibrated ins1), (have_image dir1 mod1), (have_image dir1 mod2)], static atoms=[(calibration_target ins1 dir1), (on_board ins1 sat1), (supports ins1 mod1), (supports ins1 mod2), (satellite sat1), (instrument ins1), (mode mod1), (mode mod2), (direction dir1), (direction dir2)], derived atoms=[])
+"]
+s27[label="state_index=27
+State(index=29, fluent atoms=[(have_image dir2 mod1), (have_image dir2 mod2), (power_avail sat1), (pointing sat1 dir2), (calibrated ins1), (have_image dir1 mod1), (have_image dir1 mod2)], static atoms=[(calibration_target ins1 dir1), (on_board ins1 sat1), (supports ins1 mod1), (supports ins1 mod2), (satellite sat1), (instrument ins1), (mode mod1), (mode mod2), (direction dir1), (direction dir2)], derived atoms=[])
+"]
+s28[label="state_index=28
+State(index=30, fluent atoms=[(have_image dir2 mod1), (have_image dir2 mod2), (power_on ins1), (pointing sat1 dir2), (have_image dir1 mod1), (have_image dir1 mod2)], static atoms=[(calibration_target ins1 dir1), (on_board ins1 sat1), (supports ins1 mod1), (supports ins1 mod2), (satellite sat1), (instrument ins1), (mode mod1), (mode mod2), (direction dir1), (direction dir2)], derived atoms=[])
+"]
+s29[label="state_index=29
+State(index=31, fluent atoms=[(have_image dir2 mod1), (have_image dir2 mod2), (power_avail sat1), (pointing sat1 dir2), (have_image dir1 mod1), (have_image dir1 mod2)], static atoms=[(calibration_target ins1 dir1), (on_board ins1 sat1), (supports ins1 mod1), (supports ins1 mod2), (satellite sat1), (instrument ins1), (mode mod1), (mode mod2), (direction dir1), (direction dir2)], derived atoms=[])
+"]
+s30[peripheries=2,label="state_index=30
+State(index=32, fluent atoms=[(pointing sat1 dir1), (have_image dir2 mod1), (have_image dir2 mod2), (power_on ins1), (have_image dir1 mod1), (have_image dir1 mod2)], static atoms=[(calibration_target ins1 dir1), (on_board ins1 sat1), (supports ins1 mod1), (supports ins1 mod2), (satellite sat1), (instrument ins1), (mode mod1), (mode mod2), (direction dir1), (direction dir2)], derived atoms=[])
+"]
+s31[peripheries=2,label="state_index=31
+State(index=33, fluent atoms=[(pointing sat1 dir1), (have_image dir2 mod1), (have_image dir2 mod2), (power_avail sat1), (have_image dir1 mod1), (have_image dir1 mod2)], static atoms=[(calibration_target ins1 dir1), (on_board ins1 sat1), (supports ins1 mod1), (supports ins1 mod2), (satellite sat1), (instrument ins1), (mode mod1), (mode mod2), (direction dir1), (direction dir2)], derived atoms=[])
+"]
+s32[peripheries=2,label="state_index=32
+State(index=56, fluent atoms=[(pointing sat1 dir1), (have_image dir2 mod1), (have_image dir2 mod2), (power_on ins1), (have_image dir1 mod1)], static atoms=[(calibration_target ins1 dir1), (on_board ins1 sat1), (supports ins1 mod1), (supports ins1 mod2), (satellite sat1), (instrument ins1), (mode mod1), (mode mod2), (direction dir1), (direction dir2)], derived atoms=[])
+State(index=34, fluent atoms=[(pointing sat1 dir1), (have_image dir2 mod1), (have_image dir2 mod2), (power_on ins1), (have_image dir1 mod2)], static atoms=[(calibration_target ins1 dir1), (on_board ins1 sat1), (supports ins1 mod1), (supports ins1 mod2), (satellite sat1), (instrument ins1), (mode mod1), (mode mod2), (direction dir1), (direction dir2)], derived atoms=[])
+"]
+s33[peripheries=2,label="state_index=33
+State(index=57, fluent atoms=[(pointing sat1 dir1), (have_image dir2 mod1), (have_image dir2 mod2), (power_avail sat1), (have_image dir1 mod1)], static atoms=[(calibration_target ins1 dir1), (on_board ins1 sat1), (supports ins1 mod1), (supports ins1 mod2), (satellite sat1), (instrument ins1), (mode mod1), (mode mod2), (direction dir1), (direction dir2)], derived atoms=[])
+State(index=35, fluent atoms=[(pointing sat1 dir1), (have_image dir2 mod1), (have_image dir2 mod2), (power_avail sat1), (have_image dir1 mod2)], static atoms=[(calibration_target ins1 dir1), (on_board ins1 sat1), (supports ins1 mod1), (supports ins1 mod2), (satellite sat1), (instrument ins1), (mode mod1), (mode mod2), (direction dir1), (direction dir2)], derived atoms=[])
+"]
+s34[label="state_index=34
+State(index=58, fluent atoms=[(have_image dir2 mod1), (have_image dir2 mod2), (power_on ins1), (pointing sat1 dir2), (have_image dir1 mod1)], static atoms=[(calibration_target ins1 dir1), (on_board ins1 sat1), (supports ins1 mod1), (supports ins1 mod2), (satellite sat1), (instrument ins1), (mode mod1), (mode mod2), (direction dir1), (direction dir2)], derived atoms=[])
+State(index=36, fluent atoms=[(have_image dir2 mod1), (have_image dir2 mod2), (power_on ins1), (pointing sat1 dir2), (have_image dir1 mod2)], static atoms=[(calibration_target ins1 dir1), (on_board ins1 sat1), (supports ins1 mod1), (supports ins1 mod2), (satellite sat1), (instrument ins1), (mode mod1), (mode mod2), (direction dir1), (direction dir2)], derived atoms=[])
+"]
+s35[label="state_index=35
+State(index=37, fluent atoms=[(have_image dir2 mod1), (have_image dir2 mod2), (power_avail sat1), (pointing sat1 dir2), (have_image dir1 mod2)], static atoms=[(calibration_target ins1 dir1), (on_board ins1 sat1), (supports ins1 mod1), (supports ins1 mod2), (satellite sat1), (instrument ins1), (mode mod1), (mode mod2), (direction dir1), (direction dir2)], derived atoms=[])
+State(index=59, fluent atoms=[(have_image dir2 mod1), (have_image dir2 mod2), (power_avail sat1), (pointing sat1 dir2), (have_image dir1 mod1)], static atoms=[(calibration_target ins1 dir1), (on_board ins1 sat1), (supports ins1 mod1), (supports ins1 mod2), (satellite sat1), (instrument ins1), (mode mod1), (mode mod2), (direction dir1), (direction dir2)], derived atoms=[])
+"]
+s36[label="state_index=36
+State(index=38, fluent atoms=[(have_image dir2 mod2), (power_on ins1), (pointing sat1 dir2), (have_image dir1 mod2)], static atoms=[(calibration_target ins1 dir1), (on_board ins1 sat1), (supports ins1 mod1), (supports ins1 mod2), (satellite sat1), (instrument ins1), (mode mod1), (mode mod2), (direction dir1), (direction dir2)], derived atoms=[])
+State(index=98, fluent atoms=[(have_image dir2 mod1), (power_on ins1), (pointing sat1 dir2), (have_image dir1 mod1)], static atoms=[(calibration_target ins1 dir1), (on_board ins1 sat1), (supports ins1 mod1), (supports ins1 mod2), (satellite sat1), (instrument ins1), (mode mod1), (mode mod2), (direction dir1), (direction dir2)], derived atoms=[])
+"]
+s37[label="state_index=37
+State(index=39, fluent atoms=[(have_image dir2 mod2), (power_avail sat1), (pointing sat1 dir2), (have_image dir1 mod2)], static atoms=[(calibration_target ins1 dir1), (on_board ins1 sat1), (supports ins1 mod1), (supports ins1 mod2), (satellite sat1), (instrument ins1), (mode mod1), (mode mod2), (direction dir1), (direction dir2)], derived atoms=[])
+State(index=99, fluent atoms=[(have_image dir2 mod1), (power_avail sat1), (pointing sat1 dir2), (have_image dir1 mod1)], static atoms=[(calibration_target ins1 dir1), (on_board ins1 sat1), (supports ins1 mod1), (supports ins1 mod2), (satellite sat1), (instrument ins1), (mode mod1), (mode mod2), (direction dir1), (direction dir2)], derived atoms=[])
+"]
+s38[label="state_index=38
+State(index=40, fluent atoms=[(pointing sat1 dir1), (have_image dir2 mod2), (power_on ins1), (have_image dir1 mod2)], static atoms=[(calibration_target ins1 dir1), (on_board ins1 sat1), (supports ins1 mod1), (supports ins1 mod2), (satellite sat1), (instrument ins1), (mode mod1), (mode mod2), (direction dir1), (direction dir2)], derived atoms=[])
+State(index=100, fluent atoms=[(pointing sat1 dir1), (have_image dir2 mod1), (power_on ins1), (have_image dir1 mod1)], static atoms=[(calibration_target ins1 dir1), (on_board ins1 sat1), (supports ins1 mod1), (supports ins1 mod2), (satellite sat1), (instrument ins1), (mode mod1), (mode mod2), (direction dir1), (direction dir2)], derived atoms=[])
+"]
+s39[label="state_index=39
+State(index=41, fluent atoms=[(pointing sat1 dir1), (have_image dir2 mod2), (power_avail sat1), (have_image dir1 mod2)], static atoms=[(calibration_target ins1 dir1), (on_board ins1 sat1), (supports ins1 mod1), (supports ins1 mod2), (satellite sat1), (instrument ins1), (mode mod1), (mode mod2), (direction dir1), (direction dir2)], derived atoms=[])
+State(index=101, fluent atoms=[(pointing sat1 dir1), (have_image dir2 mod1), (power_avail sat1), (have_image dir1 mod1)], static atoms=[(calibration_target ins1 dir1), (on_board ins1 sat1), (supports ins1 mod1), (supports ins1 mod2), (satellite sat1), (instrument ins1), (mode mod1), (mode mod2), (direction dir1), (direction dir2)], derived atoms=[])
+"]
+s40[label="state_index=40
+State(index=42, fluent atoms=[(pointing sat1 dir1), (have_image dir2 mod2), (power_avail sat1), (calibrated ins1), (have_image dir1 mod1), (have_image dir1 mod2)], static atoms=[(calibration_target ins1 dir1), (on_board ins1 sat1), (supports ins1 mod1), (supports ins1 mod2), (satellite sat1), (instrument ins1), (mode mod1), (mode mod2), (direction dir1), (direction dir2)], derived atoms=[])
+State(index=88, fluent atoms=[(pointing sat1 dir1), (have_image dir2 mod1), (power_avail sat1), (calibrated ins1), (have_image dir1 mod1), (have_image dir1 mod2)], static atoms=[(calibration_target ins1 dir1), (on_board ins1 sat1), (supports ins1 mod1), (supports ins1 mod2), (satellite sat1), (instrument ins1), (mode mod1), (mode mod2), (direction dir1), (direction dir2)], derived atoms=[])
+"]
+s41[label="state_index=41
+State(index=43, fluent atoms=[(have_image dir2 mod2), (power_on ins1), (pointing sat1 dir2), (calibrated ins1), (have_image dir1 mod1), (have_image dir1 mod2)], static atoms=[(calibration_target ins1 dir1), (on_board ins1 sat1), (supports ins1 mod1), (supports ins1 mod2), (satellite sat1), (instrument ins1), (mode mod1), (mode mod2), (direction dir1), (direction dir2)], derived atoms=[])
+State(index=89, fluent atoms=[(have_image dir2 mod1), (power_on ins1), (pointing sat1 dir2), (calibrated ins1), (have_image dir1 mod1), (have_image dir1 mod2)], static atoms=[(calibration_target ins1 dir1), (on_board ins1 sat1), (supports ins1 mod1), (supports ins1 mod2), (satellite sat1), (instrument ins1), (mode mod1), (mode mod2), (direction dir1), (direction dir2)], derived atoms=[])
+"]
+s42[label="state_index=42
+State(index=44, fluent atoms=[(have_image dir2 mod2), (power_avail sat1), (pointing sat1 dir2), (calibrated ins1), (have_image dir1 mod1), (have_image dir1 mod2)], static atoms=[(calibration_target ins1 dir1), (on_board ins1 sat1), (supports ins1 mod1), (supports ins1 mod2), (satellite sat1), (instrument ins1), (mode mod1), (mode mod2), (direction dir1), (direction dir2)], derived atoms=[])
+State(index=90, fluent atoms=[(have_image dir2 mod1), (power_avail sat1), (pointing sat1 dir2), (calibrated ins1), (have_image dir1 mod1), (have_image dir1 mod2)], static atoms=[(calibration_target ins1 dir1), (on_board ins1 sat1), (supports ins1 mod1), (supports ins1 mod2), (satellite sat1), (instrument ins1), (mode mod1), (mode mod2), (direction dir1), (direction dir2)], derived atoms=[])
+"]
+s43[label="state_index=43
+State(index=45, fluent atoms=[(have_image dir2 mod2), (power_on ins1), (pointing sat1 dir2), (have_image dir1 mod1), (have_image dir1 mod2)], static atoms=[(calibration_target ins1 dir1), (on_board ins1 sat1), (supports ins1 mod1), (supports ins1 mod2), (satellite sat1), (instrument ins1), (mode mod1), (mode mod2), (direction dir1), (direction dir2)], derived atoms=[])
+State(index=91, fluent atoms=[(have_image dir2 mod1), (power_on ins1), (pointing sat1 dir2), (have_image dir1 mod1), (have_image dir1 mod2)], static atoms=[(calibration_target ins1 dir1), (on_board ins1 sat1), (supports ins1 mod1), (supports ins1 mod2), (satellite sat1), (instrument ins1), (mode mod1), (mode mod2), (direction dir1), (direction dir2)], derived atoms=[])
+"]
+s44[label="state_index=44
+State(index=46, fluent atoms=[(have_image dir2 mod2), (power_avail sat1), (pointing sat1 dir2), (have_image dir1 mod1), (have_image dir1 mod2)], static atoms=[(calibration_target ins1 dir1), (on_board ins1 sat1), (supports ins1 mod1), (supports ins1 mod2), (satellite sat1), (instrument ins1), (mode mod1), (mode mod2), (direction dir1), (direction dir2)], derived atoms=[])
+State(index=92, fluent atoms=[(have_image dir2 mod1), (power_avail sat1), (pointing sat1 dir2), (have_image dir1 mod1), (have_image dir1 mod2)], static atoms=[(calibration_target ins1 dir1), (on_board ins1 sat1), (supports ins1 mod1), (supports ins1 mod2), (satellite sat1), (instrument ins1), (mode mod1), (mode mod2), (direction dir1), (direction dir2)], derived atoms=[])
+"]
+s45[label="state_index=45
+State(index=47, fluent atoms=[(pointing sat1 dir1), (have_image dir2 mod2), (power_on ins1), (have_image dir1 mod1), (have_image dir1 mod2)], static atoms=[(calibration_target ins1 dir1), (on_board ins1 sat1), (supports ins1 mod1), (supports ins1 mod2), (satellite sat1), (instrument ins1), (mode mod1), (mode mod2), (direction dir1), (direction dir2)], derived atoms=[])
+State(index=93, fluent atoms=[(pointing sat1 dir1), (have_image dir2 mod1), (power_on ins1), (have_image dir1 mod1), (have_image dir1 mod2)], static atoms=[(calibration_target ins1 dir1), (on_board ins1 sat1), (supports ins1 mod1), (supports ins1 mod2), (satellite sat1), (instrument ins1), (mode mod1), (mode mod2), (direction dir1), (direction dir2)], derived atoms=[])
+"]
+s46[label="state_index=46
+State(index=48, fluent atoms=[(pointing sat1 dir1), (have_image dir2 mod2), (power_avail sat1), (have_image dir1 mod1), (have_image dir1 mod2)], static atoms=[(calibration_target ins1 dir1), (on_board ins1 sat1), (supports ins1 mod1), (supports ins1 mod2), (satellite sat1), (instrument ins1), (mode mod1), (mode mod2), (direction dir1), (direction dir2)], derived atoms=[])
+State(index=94, fluent atoms=[(pointing sat1 dir1), (have_image dir2 mod1), (power_avail sat1), (have_image dir1 mod1), (have_image dir1 mod2)], static atoms=[(calibration_target ins1 dir1), (on_board ins1 sat1), (supports ins1 mod1), (supports ins1 mod2), (satellite sat1), (instrument ins1), (mode mod1), (mode mod2), (direction dir1), (direction dir2)], derived atoms=[])
+"]
+s47[label="state_index=47
+State(index=49, fluent atoms=[(pointing sat1 dir1), (have_image dir2 mod2), (power_avail sat1), (calibrated ins1), (have_image dir1 mod1)], static atoms=[(calibration_target ins1 dir1), (on_board ins1 sat1), (supports ins1 mod1), (supports ins1 mod2), (satellite sat1), (instrument ins1), (mode mod1), (mode mod2), (direction dir1), (direction dir2)], derived atoms=[])
+State(index=80, fluent atoms=[(pointing sat1 dir1), (have_image dir2 mod1), (power_avail sat1), (calibrated ins1), (have_image dir1 mod2)], static atoms=[(calibration_target ins1 dir1), (on_board ins1 sat1), (supports ins1 mod1), (supports ins1 mod2), (satellite sat1), (instrument ins1), (mode mod1), (mode mod2), (direction dir1), (direction dir2)], derived atoms=[])
+"]
+s48[label="state_index=48
+State(index=50, fluent atoms=[(have_image dir2 mod2), (power_on ins1), (pointing sat1 dir2), (calibrated ins1), (have_image dir1 mod1)], static atoms=[(calibration_target ins1 dir1), (on_board ins1 sat1), (supports ins1 mod1), (supports ins1 mod2), (satellite sat1), (instrument ins1), (mode mod1), (mode mod2), (direction dir1), (direction dir2)], derived atoms=[])
+State(index=82, fluent atoms=[(have_image dir2 mod1), (power_on ins1), (pointing sat1 dir2), (calibrated ins1), (have_image dir1 mod2)], static atoms=[(calibration_target ins1 dir1), (on_board ins1 sat1), (supports ins1 mod1), (supports ins1 mod2), (satellite sat1), (instrument ins1), (mode mod1), (mode mod2), (direction dir1), (direction dir2)], derived atoms=[])
+"]
+s49[label="state_index=49
+State(index=51, fluent atoms=[(have_image dir2 mod2), (power_avail sat1), (pointing sat1 dir2), (calibrated ins1), (have_image dir1 mod1)], static atoms=[(calibration_target ins1 dir1), (on_board ins1 sat1), (supports ins1 mod1), (supports ins1 mod2), (satellite sat1), (instrument ins1), (mode mod1), (mode mod2), (direction dir1), (direction dir2)], derived atoms=[])
+State(index=83, fluent atoms=[(have_image dir2 mod1), (power_avail sat1), (pointing sat1 dir2), (calibrated ins1), (have_image dir1 mod2)], static atoms=[(calibration_target ins1 dir1), (on_board ins1 sat1), (supports ins1 mod1), (supports ins1 mod2), (satellite sat1), (instrument ins1), (mode mod1), (mode mod2), (direction dir1), (direction dir2)], derived atoms=[])
+"]
+s50[label="state_index=50
+State(index=60, fluent atoms=[(have_image dir2 mod2), (power_on ins1), (pointing sat1 dir2), (have_image dir1 mod1)], static atoms=[(calibration_target ins1 dir1), (on_board ins1 sat1), (supports ins1 mod1), (supports ins1 mod2), (satellite sat1), (instrument ins1), (mode mod1), (mode mod2), (direction dir1), (direction dir2)], derived atoms=[])
+State(index=84, fluent atoms=[(have_image dir2 mod1), (power_on ins1), (pointing sat1 dir2), (have_image dir1 mod2)], static atoms=[(calibration_target ins1 dir1), (on_board ins1 sat1), (supports ins1 mod1), (supports ins1 mod2), (satellite sat1), (instrument ins1), (mode mod1), (mode mod2), (direction dir1), (direction dir2)], derived atoms=[])
+"]
+s51[label="state_index=51
+State(index=61, fluent atoms=[(have_image dir2 mod2), (power_avail sat1), (pointing sat1 dir2), (have_image dir1 mod1)], static atoms=[(calibration_target ins1 dir1), (on_board ins1 sat1), (supports ins1 mod1), (supports ins1 mod2), (satellite sat1), (instrument ins1), (mode mod1), (mode mod2), (direction dir1), (direction dir2)], derived atoms=[])
+State(index=85, fluent atoms=[(have_image dir2 mod1), (power_avail sat1), (pointing sat1 dir2), (have_image dir1 mod2)], static atoms=[(calibration_target ins1 dir1), (on_board ins1 sat1), (supports ins1 mod1), (supports ins1 mod2), (satellite sat1), (instrument ins1), (mode mod1), (mode mod2), (direction dir1), (direction dir2)], derived atoms=[])
+"]
+s52[label="state_index=52
+State(index=62, fluent atoms=[(pointing sat1 dir1), (have_image dir2 mod2), (power_on ins1), (have_image dir1 mod1)], static atoms=[(calibration_target ins1 dir1), (on_board ins1 sat1), (supports ins1 mod1), (supports ins1 mod2), (satellite sat1), (instrument ins1), (mode mod1), (mode mod2), (direction dir1), (direction dir2)], derived atoms=[])
+State(index=86, fluent atoms=[(pointing sat1 dir1), (have_image dir2 mod1), (power_on ins1), (have_image dir1 mod2)], static atoms=[(calibration_target ins1 dir1), (on_board ins1 sat1), (supports ins1 mod1), (supports ins1 mod2), (satellite sat1), (instrument ins1), (mode mod1), (mode mod2), (direction dir1), (direction dir2)], derived atoms=[])
+"]
+s53[label="state_index=53
+State(index=63, fluent atoms=[(pointing sat1 dir1), (have_image dir2 mod2), (power_avail sat1), (have_image dir1 mod1)], static atoms=[(calibration_target ins1 dir1), (on_board ins1 sat1), (supports ins1 mod1), (supports ins1 mod2), (satellite sat1), (instrument ins1), (mode mod1), (mode mod2), (direction dir1), (direction dir2)], derived atoms=[])
+State(index=87, fluent atoms=[(pointing sat1 dir1), (have_image dir2 mod1), (power_avail sat1), (have_image dir1 mod2)], static atoms=[(calibration_target ins1 dir1), (on_board ins1 sat1), (supports ins1 mod1), (supports ins1 mod2), (satellite sat1), (instrument ins1), (mode mod1), (mode mod2), (direction dir1), (direction dir2)], derived atoms=[])
+"]
+s54[label="state_index=54
+State(index=64, fluent atoms=[(pointing sat1 dir1), (have_image dir2 mod2), (power_on ins1)], static atoms=[(calibration_target ins1 dir1), (on_board ins1 sat1), (supports ins1 mod1), (supports ins1 mod2), (satellite sat1), (instrument ins1), (mode mod1), (mode mod2), (direction dir1), (direction dir2)], derived atoms=[])
+State(index=102, fluent atoms=[(pointing sat1 dir1), (have_image dir2 mod1), (power_on ins1)], static atoms=[(calibration_target ins1 dir1), (on_board ins1 sat1), (supports ins1 mod1), (supports ins1 mod2), (satellite sat1), (instrument ins1), (mode mod1), (mode mod2), (direction dir1), (direction dir2)], derived atoms=[])
+"]
+s55[label="state_index=55
+State(index=65, fluent atoms=[(pointing sat1 dir1), (have_image dir2 mod2), (power_avail sat1)], static atoms=[(calibration_target ins1 dir1), (on_board ins1 sat1), (supports ins1 mod1), (supports ins1 mod2), (satellite sat1), (instrument ins1), (mode mod1), (mode mod2), (direction dir1), (direction dir2)], derived atoms=[])
+State(index=103, fluent atoms=[(pointing sat1 dir1), (have_image dir2 mod1), (power_avail sat1)], static atoms=[(calibration_target ins1 dir1), (on_board ins1 sat1), (supports ins1 mod1), (supports ins1 mod2), (satellite sat1), (instrument ins1), (mode mod1), (mode mod2), (direction dir1), (direction dir2)], derived atoms=[])
+"]
+s56[label="state_index=56
+State(index=66, fluent atoms=[(have_image dir2 mod2), (power_on ins1), (pointing sat1 dir2)], static atoms=[(calibration_target ins1 dir1), (on_board ins1 sat1), (supports ins1 mod1), (supports ins1 mod2), (satellite sat1), (instrument ins1), (mode mod1), (mode mod2), (direction dir1), (direction dir2)], derived atoms=[])
+State(index=104, fluent atoms=[(have_image dir2 mod1), (power_on ins1), (pointing sat1 dir2)], static atoms=[(calibration_target ins1 dir1), (on_board ins1 sat1), (supports ins1 mod1), (supports ins1 mod2), (satellite sat1), (instrument ins1), (mode mod1), (mode mod2), (direction dir1), (direction dir2)], derived atoms=[])
+"]
+s57[label="state_index=57
+State(index=67, fluent atoms=[(have_image dir2 mod2), (power_avail sat1), (pointing sat1 dir2)], static atoms=[(calibration_target ins1 dir1), (on_board ins1 sat1), (supports ins1 mod1), (supports ins1 mod2), (satellite sat1), (instrument ins1), (mode mod1), (mode mod2), (direction dir1), (direction dir2)], derived atoms=[])
+State(index=105, fluent atoms=[(have_image dir2 mod1), (power_avail sat1), (pointing sat1 dir2)], static atoms=[(calibration_target ins1 dir1), (on_board ins1 sat1), (supports ins1 mod1), (supports ins1 mod2), (satellite sat1), (instrument ins1), (mode mod1), (mode mod2), (direction dir1), (direction dir2)], derived atoms=[])
+"]
+s58[label="state_index=58
+State(index=68, fluent atoms=[(have_image dir2 mod1), (have_image dir2 mod2), (power_avail sat1), (pointing sat1 dir2), (calibrated ins1)], static atoms=[(calibration_target ins1 dir1), (on_board ins1 sat1), (supports ins1 mod1), (supports ins1 mod2), (satellite sat1), (instrument ins1), (mode mod1), (mode mod2), (direction dir1), (direction dir2)], derived atoms=[])
+"]
+s59[peripheries=2,label="state_index=59
+State(index=69, fluent atoms=[(pointing sat1 dir1), (have_image dir2 mod1), (have_image dir2 mod2), (power_on ins1), (calibrated ins1)], static atoms=[(calibration_target ins1 dir1), (on_board ins1 sat1), (supports ins1 mod1), (supports ins1 mod2), (satellite sat1), (instrument ins1), (mode mod1), (mode mod2), (direction dir1), (direction dir2)], derived atoms=[])
+"]
+s60[peripheries=2,label="state_index=60
+State(index=70, fluent atoms=[(pointing sat1 dir1), (have_image dir2 mod1), (have_image dir2 mod2), (power_avail sat1), (calibrated ins1)], static atoms=[(calibration_target ins1 dir1), (on_board ins1 sat1), (supports ins1 mod1), (supports ins1 mod2), (satellite sat1), (instrument ins1), (mode mod1), (mode mod2), (direction dir1), (direction dir2)], derived atoms=[])
+"]
+s61[peripheries=2,label="state_index=61
+State(index=71, fluent atoms=[(pointing sat1 dir1), (have_image dir2 mod1), (have_image dir2 mod2), (power_on ins1)], static atoms=[(calibration_target ins1 dir1), (on_board ins1 sat1), (supports ins1 mod1), (supports ins1 mod2), (satellite sat1), (instrument ins1), (mode mod1), (mode mod2), (direction dir1), (direction dir2)], derived atoms=[])
+"]
+s62[peripheries=2,label="state_index=62
+State(index=72, fluent atoms=[(pointing sat1 dir1), (have_image dir2 mod1), (have_image dir2 mod2), (power_avail sat1)], static atoms=[(calibration_target ins1 dir1), (on_board ins1 sat1), (supports ins1 mod1), (supports ins1 mod2), (satellite sat1), (instrument ins1), (mode mod1), (mode mod2), (direction dir1), (direction dir2)], derived atoms=[])
+"]
+s63[label="state_index=63
+State(index=73, fluent atoms=[(have_image dir2 mod1), (have_image dir2 mod2), (power_on ins1), (pointing sat1 dir2)], static atoms=[(calibration_target ins1 dir1), (on_board ins1 sat1), (supports ins1 mod1), (supports ins1 mod2), (satellite sat1), (instrument ins1), (mode mod1), (mode mod2), (direction dir1), (direction dir2)], derived atoms=[])
+"]
+s64[label="state_index=64
+State(index=74, fluent atoms=[(have_image dir2 mod1), (have_image dir2 mod2), (power_avail sat1), (pointing sat1 dir2)], static atoms=[(calibration_target ins1 dir1), (on_board ins1 sat1), (supports ins1 mod1), (supports ins1 mod2), (satellite sat1), (instrument ins1), (mode mod1), (mode mod2), (direction dir1), (direction dir2)], derived atoms=[])
+"]
+s65[label="state_index=65
+State(index=106, fluent atoms=[(pointing sat1 dir1), (power_avail sat1), (calibrated ins1), (have_image dir1 mod2)], static atoms=[(calibration_target ins1 dir1), (on_board ins1 sat1), (supports ins1 mod1), (supports ins1 mod2), (satellite sat1), (instrument ins1), (mode mod1), (mode mod2), (direction dir1), (direction dir2)], derived atoms=[])
+State(index=121, fluent atoms=[(pointing sat1 dir1), (power_avail sat1), (calibrated ins1), (have_image dir1 mod1)], static atoms=[(calibration_target ins1 dir1), (on_board ins1 sat1), (supports ins1 mod1), (supports ins1 mod2), (satellite sat1), (instrument ins1), (mode mod1), (mode mod2), (direction dir1), (direction dir2)], derived atoms=[])
+"]
+s66[label="state_index=66
+State(index=107, fluent atoms=[(pointing sat1 dir1), (power_on ins1), (calibrated ins1), (have_image dir1 mod1), (have_image dir1 mod2)], static atoms=[(calibration_target ins1 dir1), (on_board ins1 sat1), (supports ins1 mod1), (supports ins1 mod2), (satellite sat1), (instrument ins1), (mode mod1), (mode mod2), (direction dir1), (direction dir2)], derived atoms=[])
+"]
+s67[label="state_index=67
+State(index=108, fluent atoms=[(power_on ins1), (pointing sat1 dir2), (calibrated ins1), (have_image dir1 mod2)], static atoms=[(calibration_target ins1 dir1), (on_board ins1 sat1), (supports ins1 mod1), (supports ins1 mod2), (satellite sat1), (instrument ins1), (mode mod1), (mode mod2), (direction dir1), (direction dir2)], derived atoms=[])
+State(index=122, fluent atoms=[(power_on ins1), (pointing sat1 dir2), (calibrated ins1), (have_image dir1 mod1)], static atoms=[(calibration_target ins1 dir1), (on_board ins1 sat1), (supports ins1 mod1), (supports ins1 mod2), (satellite sat1), (instrument ins1), (mode mod1), (mode mod2), (direction dir1), (direction dir2)], derived atoms=[])
+"]
+s68[label="state_index=68
+State(index=109, fluent atoms=[(power_avail sat1), (pointing sat1 dir2), (calibrated ins1), (have_image dir1 mod2)], static atoms=[(calibration_target ins1 dir1), (on_board ins1 sat1), (supports ins1 mod1), (supports ins1 mod2), (satellite sat1), (instrument ins1), (mode mod1), (mode mod2), (direction dir1), (direction dir2)], derived atoms=[])
+State(index=123, fluent atoms=[(power_avail sat1), (pointing sat1 dir2), (calibrated ins1), (have_image dir1 mod1)], static atoms=[(calibration_target ins1 dir1), (on_board ins1 sat1), (supports ins1 mod1), (supports ins1 mod2), (satellite sat1), (instrument ins1), (mode mod1), (mode mod2), (direction dir1), (direction dir2)], derived atoms=[])
+"]
+s69[label="state_index=69
+State(index=110, fluent atoms=[(power_on ins1), (pointing sat1 dir2), (have_image dir1 mod2)], static atoms=[(calibration_target ins1 dir1), (on_board ins1 sat1), (supports ins1 mod1), (supports ins1 mod2), (satellite sat1), (instrument ins1), (mode mod1), (mode mod2), (direction dir1), (direction dir2)], derived atoms=[])
+State(index=124, fluent atoms=[(power_on ins1), (pointing sat1 dir2), (have_image dir1 mod1)], static atoms=[(calibration_target ins1 dir1), (on_board ins1 sat1), (supports ins1 mod1), (supports ins1 mod2), (satellite sat1), (instrument ins1), (mode mod1), (mode mod2), (direction dir1), (direction dir2)], derived atoms=[])
+"]
+s70[label="state_index=70
+State(index=111, fluent atoms=[(power_avail sat1), (pointing sat1 dir2), (have_image dir1 mod2)], static atoms=[(calibration_target ins1 dir1), (on_board ins1 sat1), (supports ins1 mod1), (supports ins1 mod2), (satellite sat1), (instrument ins1), (mode mod1), (mode mod2), (direction dir1), (direction dir2)], derived atoms=[])
+State(index=125, fluent atoms=[(power_avail sat1), (pointing sat1 dir2), (have_image dir1 mod1)], static atoms=[(calibration_target ins1 dir1), (on_board ins1 sat1), (supports ins1 mod1), (supports ins1 mod2), (satellite sat1), (instrument ins1), (mode mod1), (mode mod2), (direction dir1), (direction dir2)], derived atoms=[])
+"]
+s71[label="state_index=71
+State(index=112, fluent atoms=[(pointing sat1 dir1), (power_on ins1), (have_image dir1 mod2)], static atoms=[(calibration_target ins1 dir1), (on_board ins1 sat1), (supports ins1 mod1), (supports ins1 mod2), (satellite sat1), (instrument ins1), (mode mod1), (mode mod2), (direction dir1), (direction dir2)], derived atoms=[])
+State(index=126, fluent atoms=[(pointing sat1 dir1), (power_on ins1), (have_image dir1 mod1)], static atoms=[(calibration_target ins1 dir1), (on_board ins1 sat1), (supports ins1 mod1), (supports ins1 mod2), (satellite sat1), (instrument ins1), (mode mod1), (mode mod2), (direction dir1), (direction dir2)], derived atoms=[])
+"]
+s72[label="state_index=72
+State(index=127, fluent atoms=[(pointing sat1 dir1), (power_avail sat1), (have_image dir1 mod1)], static atoms=[(calibration_target ins1 dir1), (on_board ins1 sat1), (supports ins1 mod1), (supports ins1 mod2), (satellite sat1), (instrument ins1), (mode mod1), (mode mod2), (direction dir1), (direction dir2)], derived atoms=[])
+State(index=113, fluent atoms=[(pointing sat1 dir1), (power_avail sat1), (have_image dir1 mod2)], static atoms=[(calibration_target ins1 dir1), (on_board ins1 sat1), (supports ins1 mod1), (supports ins1 mod2), (satellite sat1), (instrument ins1), (mode mod1), (mode mod2), (direction dir1), (direction dir2)], derived atoms=[])
+"]
+s73[label="state_index=73
+State(index=114, fluent atoms=[(pointing sat1 dir1), (power_avail sat1), (calibrated ins1), (have_image dir1 mod1), (have_image dir1 mod2)], static atoms=[(calibration_target ins1 dir1), (on_board ins1 sat1), (supports ins1 mod1), (supports ins1 mod2), (satellite sat1), (instrument ins1), (mode mod1), (mode mod2), (direction dir1), (direction dir2)], derived atoms=[])
+"]
+s74[label="state_index=74
+State(index=115, fluent atoms=[(power_on ins1), (pointing sat1 dir2), (calibrated ins1), (have_image dir1 mod1), (have_image dir1 mod2)], static atoms=[(calibration_target ins1 dir1), (on_board ins1 sat1), (supports ins1 mod1), (supports ins1 mod2), (satellite sat1), (instrument ins1), (mode mod1), (mode mod2), (direction dir1), (direction dir2)], derived atoms=[])
+"]
+s75[label="state_index=75
+State(index=116, fluent atoms=[(power_avail sat1), (pointing sat1 dir2), (calibrated ins1), (have_image dir1 mod1), (have_image dir1 mod2)], static atoms=[(calibration_target ins1 dir1), (on_board ins1 sat1), (supports ins1 mod1), (supports ins1 mod2), (satellite sat1), (instrument ins1), (mode mod1), (mode mod2), (direction dir1), (direction dir2)], derived atoms=[])
+"]
+s76[label="state_index=76
+State(index=117, fluent atoms=[(power_on ins1), (pointing sat1 dir2), (have_image dir1 mod1), (have_image dir1 mod2)], static atoms=[(calibration_target ins1 dir1), (on_board ins1 sat1), (supports ins1 mod1), (supports ins1 mod2), (satellite sat1), (instrument ins1), (mode mod1), (mode mod2), (direction dir1), (direction dir2)], derived atoms=[])
+"]
+s77[label="state_index=77
+State(index=118, fluent atoms=[(power_avail sat1), (pointing sat1 dir2), (have_image dir1 mod1), (have_image dir1 mod2)], static atoms=[(calibration_target ins1 dir1), (on_board ins1 sat1), (supports ins1 mod1), (supports ins1 mod2), (satellite sat1), (instrument ins1), (mode mod1), (mode mod2), (direction dir1), (direction dir2)], derived atoms=[])
+"]
+s78[label="state_index=78
+State(index=119, fluent atoms=[(pointing sat1 dir1), (power_on ins1), (have_image dir1 mod1), (have_image dir1 mod2)], static atoms=[(calibration_target ins1 dir1), (on_board ins1 sat1), (supports ins1 mod1), (supports ins1 mod2), (satellite sat1), (instrument ins1), (mode mod1), (mode mod2), (direction dir1), (direction dir2)], derived atoms=[])
+"]
+s79[label="state_index=79
+State(index=120, fluent atoms=[(pointing sat1 dir1), (power_avail sat1), (have_image dir1 mod1), (have_image dir1 mod2)], static atoms=[(calibration_target ins1 dir1), (on_board ins1 sat1), (supports ins1 mod1), (supports ins1 mod2), (satellite sat1), (instrument ins1), (mode mod1), (mode mod2), (direction dir1), (direction dir2)], derived atoms=[])
+"]
+Dangling [ label = "", style = invis ]
+{ rank = same; Dangling }
+Dangling -> s0
+{ rank = same; s2,s8,s68,s70,s75,s77}
+{ rank = same; s0,s3,s5,s10,s19,s37,s42,s44,s49,s51,s57,s65,s69,s72,s73,s76,s79}
+{ rank = same; s1,s13,s16,s36,s39,s40,s43,s46,s47,s50,s53,s55,s56,s71,s78}
+{ rank = same; s4,s6,s38,s45,s52,s54,s66}
+{ rank = same; s7,s12,s14,s15,s17,s67,s74}
+{ rank = same; s9,s18,s41,s48}
+{ rank = same; s11,s20,s21,s26,s27,s28,s29,s34,s35,s58,s63,s64}
+{ rank = same; s22,s23,s24,s25,s30,s31,s32,s33,s59,s60,s61,s62}
+s0->s1 [label="(switch_on ins1 sat1)
+"]
+s0->s2 [label="(turn_to sat1 dir2 dir1)
+"]
+s1->s0 [label="(switch_off ins1 sat1)
+"]
+s1->s3 [label="(turn_to sat1 dir2 dir1)
+"]
+s1->s4 [label="(calibrate sat1 ins1 dir1)
+"]
+s2->s0 [label="(turn_to sat1 dir1 dir2)
+"]
+s2->s3 [label="(switch_on ins1 sat1)
+"]
+s3->s1 [label="(turn_to sat1 dir1 dir2)
+"]
+s3->s2 [label="(switch_off ins1 sat1)
+"]
+s4->s4 [label="(calibrate sat1 ins1 dir1)
+"]
+s4->s5 [label="(switch_off ins1 sat1)
+"]
+s4->s6 [label="(take_image sat1 dir1 ins1 mod1)
+(take_image sat1 dir1 ins1 mod2)
+"]
+s4->s7 [label="(turn_to sat1 dir2 dir1)
+"]
+s5->s1 [label="(switch_on ins1 sat1)
+"]
+s5->s8 [label="(turn_to sat1 dir2 dir1)
+"]
+s6->s6 [label="(take_image sat1 dir1 ins1 mod1)
+(calibrate sat1 ins1 dir1)
+(take_image sat1 dir1 ins1 mod2)
+(calibrate sat1 ins1 dir1)
+"]
+s6->s65 [label="(switch_off ins1 sat1)
+(switch_off ins1 sat1)
+"]
+s6->s66 [label="(take_image sat1 dir1 ins1 mod2)
+(take_image sat1 dir1 ins1 mod1)
+"]
+s6->s67 [label="(turn_to sat1 dir2 dir1)
+(turn_to sat1 dir2 dir1)
+"]
+s7->s4 [label="(turn_to sat1 dir1 dir2)
+"]
+s7->s8 [label="(switch_off ins1 sat1)
+"]
+s7->s9 [label="(take_image sat1 dir2 ins1 mod2)
+(take_image sat1 dir2 ins1 mod1)
+"]
+s8->s3 [label="(switch_on ins1 sat1)
+"]
+s8->s5 [label="(turn_to sat1 dir1 dir2)
+"]
+s9->s9 [label="(take_image sat1 dir2 ins1 mod2)
+(take_image sat1 dir2 ins1 mod1)
+"]
+s9->s10 [label="(switch_off ins1 sat1)
+(switch_off ins1 sat1)
+"]
+s9->s11 [label="(take_image sat1 dir2 ins1 mod1)
+(take_image sat1 dir2 ins1 mod2)
+"]
+s9->s12 [label="(turn_to sat1 dir1 dir2)
+(turn_to sat1 dir1 dir2)
+"]
+s10->s13 [label="(turn_to sat1 dir1 dir2)
+(turn_to sat1 dir1 dir2)
+"]
+s10->s56 [label="(switch_on ins1 sat1)
+(switch_on ins1 sat1)
+"]
+s11->s11 [label="(take_image sat1 dir2 ins1 mod1)
+(take_image sat1 dir2 ins1 mod2)
+"]
+s11->s58 [label="(switch_off ins1 sat1)
+"]
+s11->s59 [label="(turn_to sat1 dir1 dir2)
+"]
+s12->s9 [label="(turn_to sat1 dir2 dir1)
+(turn_to sat1 dir2 dir1)
+"]
+s12->s12 [label="(calibrate sat1 ins1 dir1)
+(calibrate sat1 ins1 dir1)
+"]
+s12->s13 [label="(switch_off ins1 sat1)
+(switch_off ins1 sat1)
+"]
+s12->s14 [label="(take_image sat1 dir1 ins1 mod1)
+(take_image sat1 dir1 ins1 mod2)
+"]
+s12->s15 [label="(take_image sat1 dir1 ins1 mod1)
+(take_image sat1 dir1 ins1 mod2)
+"]
+s13->s10 [label="(turn_to sat1 dir2 dir1)
+(turn_to sat1 dir2 dir1)
+"]
+s13->s54 [label="(switch_on ins1 sat1)
+(switch_on ins1 sat1)
+"]
+s14->s14 [label="(calibrate sat1 ins1 dir1)
+(take_image sat1 dir1 ins1 mod2)
+(take_image sat1 dir1 ins1 mod1)
+(calibrate sat1 ins1 dir1)
+"]
+s14->s17 [label="(take_image sat1 dir1 ins1 mod1)
+(take_image sat1 dir1 ins1 mod2)
+"]
+s14->s47 [label="(switch_off ins1 sat1)
+(switch_off ins1 sat1)
+"]
+s14->s48 [label="(turn_to sat1 dir2 dir1)
+(turn_to sat1 dir2 dir1)
+"]
+s15->s15 [label="(calibrate sat1 ins1 dir1)
+(take_image sat1 dir1 ins1 mod1)
+(take_image sat1 dir1 ins1 mod2)
+(calibrate sat1 ins1 dir1)
+"]
+s15->s16 [label="(switch_off ins1 sat1)
+(switch_off ins1 sat1)
+"]
+s15->s17 [label="(take_image sat1 dir1 ins1 mod2)
+(take_image sat1 dir1 ins1 mod1)
+"]
+s15->s18 [label="(turn_to sat1 dir2 dir1)
+(turn_to sat1 dir2 dir1)
+"]
+s16->s19 [label="(turn_to sat1 dir2 dir1)
+(turn_to sat1 dir2 dir1)
+"]
+s16->s38 [label="(switch_on ins1 sat1)
+(switch_on ins1 sat1)
+"]
+s17->s17 [label="(calibrate sat1 ins1 dir1)
+(calibrate sat1 ins1 dir1)
+(take_image sat1 dir1 ins1 mod1)
+(take_image sat1 dir1 ins1 mod2)
+(take_image sat1 dir1 ins1 mod1)
+(take_image sat1 dir1 ins1 mod2)
+"]
+s17->s40 [label="(switch_off ins1 sat1)
+(switch_off ins1 sat1)
+"]
+s17->s41 [label="(turn_to sat1 dir2 dir1)
+(turn_to sat1 dir2 dir1)
+"]
+s18->s15 [label="(turn_to sat1 dir1 dir2)
+(turn_to sat1 dir1 dir2)
+"]
+s18->s18 [label="(take_image sat1 dir2 ins1 mod2)
+(take_image sat1 dir2 ins1 mod1)
+"]
+s18->s19 [label="(switch_off ins1 sat1)
+(switch_off ins1 sat1)
+"]
+s18->s20 [label="(take_image sat1 dir2 ins1 mod1)
+(take_image sat1 dir2 ins1 mod2)
+"]
+s19->s16 [label="(turn_to sat1 dir1 dir2)
+(turn_to sat1 dir1 dir2)
+"]
+s19->s36 [label="(switch_on ins1 sat1)
+(switch_on ins1 sat1)
+"]
+s20->s20 [label="(take_image sat1 dir2 ins1 mod1)
+(take_image sat1 dir2 ins1 mod2)
+(take_image sat1 dir2 ins1 mod2)
+(take_image sat1 dir2 ins1 mod1)
+"]
+s20->s21 [label="(switch_off ins1 sat1)
+(switch_off ins1 sat1)
+"]
+s20->s22 [label="(turn_to sat1 dir1 dir2)
+(turn_to sat1 dir1 dir2)
+"]
+s21->s23 [label="(turn_to sat1 dir1 dir2)
+(turn_to sat1 dir1 dir2)
+"]
+s21->s34 [label="(switch_on ins1 sat1)
+(switch_on ins1 sat1)
+"]
+s22->s20 [label="(turn_to sat1 dir2 dir1)
+(turn_to sat1 dir2 dir1)
+"]
+s22->s22 [label="(take_image sat1 dir1 ins1 mod1)
+(calibrate sat1 ins1 dir1)
+(take_image sat1 dir1 ins1 mod2)
+(calibrate sat1 ins1 dir1)
+"]
+s22->s23 [label="(switch_off ins1 sat1)
+(switch_off ins1 sat1)
+"]
+s22->s24 [label="(take_image sat1 dir1 ins1 mod1)
+(take_image sat1 dir1 ins1 mod2)
+"]
+s23->s21 [label="(turn_to sat1 dir2 dir1)
+(turn_to sat1 dir2 dir1)
+"]
+s23->s32 [label="(switch_on ins1 sat1)
+(switch_on ins1 sat1)
+"]
+s24->s24 [label="(calibrate sat1 ins1 dir1)
+(take_image sat1 dir1 ins1 mod1)
+(take_image sat1 dir1 ins1 mod2)
+"]
+s24->s25 [label="(switch_off ins1 sat1)
+"]
+s24->s26 [label="(turn_to sat1 dir2 dir1)
+"]
+s25->s27 [label="(turn_to sat1 dir2 dir1)
+"]
+s25->s30 [label="(switch_on ins1 sat1)
+"]
+s26->s24 [label="(turn_to sat1 dir1 dir2)
+"]
+s26->s26 [label="(take_image sat1 dir2 ins1 mod2)
+(take_image sat1 dir2 ins1 mod1)
+"]
+s26->s27 [label="(switch_off ins1 sat1)
+"]
+s27->s25 [label="(turn_to sat1 dir1 dir2)
+"]
+s27->s28 [label="(switch_on ins1 sat1)
+"]
+s28->s29 [label="(switch_off ins1 sat1)
+"]
+s28->s30 [label="(turn_to sat1 dir1 dir2)
+"]
+s29->s28 [label="(switch_on ins1 sat1)
+"]
+s29->s31 [label="(turn_to sat1 dir1 dir2)
+"]
+s30->s24 [label="(calibrate sat1 ins1 dir1)
+"]
+s30->s28 [label="(turn_to sat1 dir2 dir1)
+"]
+s30->s31 [label="(switch_off ins1 sat1)
+"]
+s31->s29 [label="(turn_to sat1 dir2 dir1)
+"]
+s31->s30 [label="(switch_on ins1 sat1)
+"]
+s32->s22 [label="(calibrate sat1 ins1 dir1)
+(calibrate sat1 ins1 dir1)
+"]
+s32->s33 [label="(switch_off ins1 sat1)
+(switch_off ins1 sat1)
+"]
+s32->s34 [label="(turn_to sat1 dir2 dir1)
+(turn_to sat1 dir2 dir1)
+"]
+s33->s32 [label="(switch_on ins1 sat1)
+(switch_on ins1 sat1)
+"]
+s33->s35 [label="(turn_to sat1 dir2 dir1)
+(turn_to sat1 dir2 dir1)
+"]
+s34->s32 [label="(turn_to sat1 dir1 dir2)
+(turn_to sat1 dir1 dir2)
+"]
+s34->s35 [label="(switch_off ins1 sat1)
+(switch_off ins1 sat1)
+"]
+s35->s33 [label="(turn_to sat1 dir1 dir2)
+(turn_to sat1 dir1 dir2)
+"]
+s35->s34 [label="(switch_on ins1 sat1)
+(switch_on ins1 sat1)
+"]
+s36->s37 [label="(switch_off ins1 sat1)
+(switch_off ins1 sat1)
+"]
+s36->s38 [label="(turn_to sat1 dir1 dir2)
+(turn_to sat1 dir1 dir2)
+"]
+s37->s36 [label="(switch_on ins1 sat1)
+(switch_on ins1 sat1)
+"]
+s37->s39 [label="(turn_to sat1 dir1 dir2)
+(turn_to sat1 dir1 dir2)
+"]
+s38->s15 [label="(calibrate sat1 ins1 dir1)
+(calibrate sat1 ins1 dir1)
+"]
+s38->s36 [label="(turn_to sat1 dir2 dir1)
+(turn_to sat1 dir2 dir1)
+"]
+s38->s39 [label="(switch_off ins1 sat1)
+(switch_off ins1 sat1)
+"]
+s39->s37 [label="(turn_to sat1 dir2 dir1)
+(turn_to sat1 dir2 dir1)
+"]
+s39->s38 [label="(switch_on ins1 sat1)
+(switch_on ins1 sat1)
+"]
+s40->s42 [label="(turn_to sat1 dir2 dir1)
+(turn_to sat1 dir2 dir1)
+"]
+s40->s45 [label="(switch_on ins1 sat1)
+(switch_on ins1 sat1)
+"]
+s41->s17 [label="(turn_to sat1 dir1 dir2)
+(turn_to sat1 dir1 dir2)
+"]
+s41->s26 [label="(take_image sat1 dir2 ins1 mod2)
+(take_image sat1 dir2 ins1 mod1)
+"]
+s41->s41 [label="(take_image sat1 dir2 ins1 mod2)
+(take_image sat1 dir2 ins1 mod1)
+"]
+s41->s42 [label="(switch_off ins1 sat1)
+(switch_off ins1 sat1)
+"]
+s42->s40 [label="(turn_to sat1 dir1 dir2)
+(turn_to sat1 dir1 dir2)
+"]
+s42->s43 [label="(switch_on ins1 sat1)
+(switch_on ins1 sat1)
+"]
+s43->s44 [label="(switch_off ins1 sat1)
+(switch_off ins1 sat1)
+"]
+s43->s45 [label="(turn_to sat1 dir1 dir2)
+(turn_to sat1 dir1 dir2)
+"]
+s44->s43 [label="(switch_on ins1 sat1)
+(switch_on ins1 sat1)
+"]
+s44->s46 [label="(turn_to sat1 dir1 dir2)
+(turn_to sat1 dir1 dir2)
+"]
+s45->s17 [label="(calibrate sat1 ins1 dir1)
+(calibrate sat1 ins1 dir1)
+"]
+s45->s43 [label="(turn_to sat1 dir2 dir1)
+(turn_to sat1 dir2 dir1)
+"]
+s45->s46 [label="(switch_off ins1 sat1)
+(switch_off ins1 sat1)
+"]
+s46->s44 [label="(turn_to sat1 dir2 dir1)
+(turn_to sat1 dir2 dir1)
+"]
+s46->s45 [label="(switch_on ins1 sat1)
+(switch_on ins1 sat1)
+"]
+s47->s49 [label="(turn_to sat1 dir2 dir1)
+(turn_to sat1 dir2 dir1)
+"]
+s47->s52 [label="(switch_on ins1 sat1)
+(switch_on ins1 sat1)
+"]
+s48->s14 [label="(turn_to sat1 dir1 dir2)
+(turn_to sat1 dir1 dir2)
+"]
+s48->s20 [label="(take_image sat1 dir2 ins1 mod1)
+(take_image sat1 dir2 ins1 mod2)
+"]
+s48->s48 [label="(take_image sat1 dir2 ins1 mod2)
+(take_image sat1 dir2 ins1 mod1)
+"]
+s48->s49 [label="(switch_off ins1 sat1)
+(switch_off ins1 sat1)
+"]
+s49->s47 [label="(turn_to sat1 dir1 dir2)
+(turn_to sat1 dir1 dir2)
+"]
+s49->s50 [label="(switch_on ins1 sat1)
+(switch_on ins1 sat1)
+"]
+s50->s51 [label="(switch_off ins1 sat1)
+(switch_off ins1 sat1)
+"]
+s50->s52 [label="(turn_to sat1 dir1 dir2)
+(turn_to sat1 dir1 dir2)
+"]
+s51->s50 [label="(switch_on ins1 sat1)
+(switch_on ins1 sat1)
+"]
+s51->s53 [label="(turn_to sat1 dir1 dir2)
+(turn_to sat1 dir1 dir2)
+"]
+s52->s14 [label="(calibrate sat1 ins1 dir1)
+(calibrate sat1 ins1 dir1)
+"]
+s52->s50 [label="(turn_to sat1 dir2 dir1)
+(turn_to sat1 dir2 dir1)
+"]
+s52->s53 [label="(switch_off ins1 sat1)
+(switch_off ins1 sat1)
+"]
+s53->s51 [label="(turn_to sat1 dir2 dir1)
+(turn_to sat1 dir2 dir1)
+"]
+s53->s52 [label="(switch_on ins1 sat1)
+(switch_on ins1 sat1)
+"]
+s54->s12 [label="(calibrate sat1 ins1 dir1)
+(calibrate sat1 ins1 dir1)
+"]
+s54->s55 [label="(switch_off ins1 sat1)
+(switch_off ins1 sat1)
+"]
+s54->s56 [label="(turn_to sat1 dir2 dir1)
+(turn_to sat1 dir2 dir1)
+"]
+s55->s54 [label="(switch_on ins1 sat1)
+(switch_on ins1 sat1)
+"]
+s55->s57 [label="(turn_to sat1 dir2 dir1)
+(turn_to sat1 dir2 dir1)
+"]
+s56->s54 [label="(turn_to sat1 dir1 dir2)
+(turn_to sat1 dir1 dir2)
+"]
+s56->s57 [label="(switch_off ins1 sat1)
+(switch_off ins1 sat1)
+"]
+s57->s55 [label="(turn_to sat1 dir1 dir2)
+(turn_to sat1 dir1 dir2)
+"]
+s57->s56 [label="(switch_on ins1 sat1)
+(switch_on ins1 sat1)
+"]
+s58->s60 [label="(turn_to sat1 dir1 dir2)
+"]
+s58->s63 [label="(switch_on ins1 sat1)
+"]
+s59->s11 [label="(turn_to sat1 dir2 dir1)
+"]
+s59->s22 [label="(take_image sat1 dir1 ins1 mod1)
+(take_image sat1 dir1 ins1 mod2)
+"]
+s59->s59 [label="(calibrate sat1 ins1 dir1)
+"]
+s59->s60 [label="(switch_off ins1 sat1)
+"]
+s60->s58 [label="(turn_to sat1 dir2 dir1)
+"]
+s60->s61 [label="(switch_on ins1 sat1)
+"]
+s61->s59 [label="(calibrate sat1 ins1 dir1)
+"]
+s61->s62 [label="(switch_off ins1 sat1)
+"]
+s61->s63 [label="(turn_to sat1 dir2 dir1)
+"]
+s62->s61 [label="(switch_on ins1 sat1)
+"]
+s62->s64 [label="(turn_to sat1 dir2 dir1)
+"]
+s63->s61 [label="(turn_to sat1 dir1 dir2)
+"]
+s63->s64 [label="(switch_off ins1 sat1)
+"]
+s64->s62 [label="(turn_to sat1 dir1 dir2)
+"]
+s64->s63 [label="(switch_on ins1 sat1)
+"]
+s65->s68 [label="(turn_to sat1 dir2 dir1)
+(turn_to sat1 dir2 dir1)
+"]
+s65->s71 [label="(switch_on ins1 sat1)
+(switch_on ins1 sat1)
+"]
+s66->s66 [label="(calibrate sat1 ins1 dir1)
+(take_image sat1 dir1 ins1 mod1)
+(take_image sat1 dir1 ins1 mod2)
+"]
+s66->s73 [label="(switch_off ins1 sat1)
+"]
+s66->s74 [label="(turn_to sat1 dir2 dir1)
+"]
+s67->s6 [label="(turn_to sat1 dir1 dir2)
+(turn_to sat1 dir1 dir2)
+"]
+s67->s18 [label="(take_image sat1 dir2 ins1 mod1)
+(take_image sat1 dir2 ins1 mod2)
+"]
+s67->s48 [label="(take_image sat1 dir2 ins1 mod2)
+(take_image sat1 dir2 ins1 mod1)
+"]
+s67->s68 [label="(switch_off ins1 sat1)
+(switch_off ins1 sat1)
+"]
+s68->s65 [label="(turn_to sat1 dir1 dir2)
+(turn_to sat1 dir1 dir2)
+"]
+s68->s69 [label="(switch_on ins1 sat1)
+(switch_on ins1 sat1)
+"]
+s69->s70 [label="(switch_off ins1 sat1)
+(switch_off ins1 sat1)
+"]
+s69->s71 [label="(turn_to sat1 dir1 dir2)
+(turn_to sat1 dir1 dir2)
+"]
+s70->s69 [label="(switch_on ins1 sat1)
+(switch_on ins1 sat1)
+"]
+s70->s72 [label="(turn_to sat1 dir1 dir2)
+(turn_to sat1 dir1 dir2)
+"]
+s71->s6 [label="(calibrate sat1 ins1 dir1)
+(calibrate sat1 ins1 dir1)
+"]
+s71->s69 [label="(turn_to sat1 dir2 dir1)
+(turn_to sat1 dir2 dir1)
+"]
+s71->s72 [label="(switch_off ins1 sat1)
+(switch_off ins1 sat1)
+"]
+s72->s70 [label="(turn_to sat1 dir2 dir1)
+(turn_to sat1 dir2 dir1)
+"]
+s72->s71 [label="(switch_on ins1 sat1)
+(switch_on ins1 sat1)
+"]
+s73->s75 [label="(turn_to sat1 dir2 dir1)
+"]
+s73->s78 [label="(switch_on ins1 sat1)
+"]
+s74->s41 [label="(take_image sat1 dir2 ins1 mod2)
+(take_image sat1 dir2 ins1 mod1)
+"]
+s74->s66 [label="(turn_to sat1 dir1 dir2)
+"]
+s74->s75 [label="(switch_off ins1 sat1)
+"]
+s75->s73 [label="(turn_to sat1 dir1 dir2)
+"]
+s75->s76 [label="(switch_on ins1 sat1)
+"]
+s76->s77 [label="(switch_off ins1 sat1)
+"]
+s76->s78 [label="(turn_to sat1 dir1 dir2)
+"]
+s77->s76 [label="(switch_on ins1 sat1)
+"]
+s77->s79 [label="(turn_to sat1 dir1 dir2)
+"]
+s78->s66 [label="(calibrate sat1 ins1 dir1)
+"]
+s78->s76 [label="(turn_to sat1 dir2 dir1)
+"]
+s78->s79 [label="(switch_off ins1 sat1)
+"]
+s79->s77 [label="(turn_to sat1 dir2 dir1)
+"]
+s79->s78 [label="(switch_on ins1 sat1)
+"]
+}

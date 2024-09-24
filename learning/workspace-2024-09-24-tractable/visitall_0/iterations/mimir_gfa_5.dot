@@ -1,0 +1,39 @@
+digraph {
+rankdir="LR"
+s0[label="state_index=0 global_state_index = 10 abstraction_index=5 abstract_state_index=0
+State(index=0, fluent atoms=[(visited loc-x1-y0), (at-robot loc-x1-y0)], static atoms=[(connected loc-x0-y1 loc-x1-y1), (connected loc-x1-y0 loc-x1-y1), (connected loc-x1-y1 loc-x0-y1), (connected loc-x1-y1 loc-x1-y0), (place loc-x0-y1), (place loc-x1-y0), (place loc-x1-y1)], derived atoms=[])
+"]
+s1[label="state_index=1 global_state_index = 11 abstraction_index=5 abstract_state_index=1
+State(index=1, fluent atoms=[(visited loc-x1-y0), (visited loc-x1-y1), (at-robot loc-x1-y1)], static atoms=[(connected loc-x0-y1 loc-x1-y1), (connected loc-x1-y0 loc-x1-y1), (connected loc-x1-y1 loc-x0-y1), (connected loc-x1-y1 loc-x1-y0), (place loc-x0-y1), (place loc-x1-y0), (place loc-x1-y1)], derived atoms=[])
+"]
+s2[peripheries=2,label="state_index=2 global_state_index = 12 abstraction_index=5 abstract_state_index=2
+State(index=5, fluent atoms=[(visited loc-x0-y1), (visited loc-x1-y0), (visited loc-x1-y1), (at-robot loc-x1-y0)], static atoms=[(connected loc-x0-y1 loc-x1-y1), (connected loc-x1-y0 loc-x1-y1), (connected loc-x1-y1 loc-x0-y1), (connected loc-x1-y1 loc-x1-y0), (place loc-x0-y1), (place loc-x1-y0), (place loc-x1-y1)], derived atoms=[])
+State(index=2, fluent atoms=[(visited loc-x0-y1), (visited loc-x1-y0), (visited loc-x1-y1), (at-robot loc-x0-y1)], static atoms=[(connected loc-x0-y1 loc-x1-y1), (connected loc-x1-y0 loc-x1-y1), (connected loc-x1-y1 loc-x0-y1), (connected loc-x1-y1 loc-x1-y0), (place loc-x0-y1), (place loc-x1-y0), (place loc-x1-y1)], derived atoms=[])
+"]
+s3[label="state_index=3 global_state_index = 13 abstraction_index=5 abstract_state_index=3
+State(index=3, fluent atoms=[(visited loc-x1-y0), (visited loc-x1-y1), (at-robot loc-x1-y0)], static atoms=[(connected loc-x0-y1 loc-x1-y1), (connected loc-x1-y0 loc-x1-y1), (connected loc-x1-y1 loc-x0-y1), (connected loc-x1-y1 loc-x1-y0), (place loc-x0-y1), (place loc-x1-y0), (place loc-x1-y1)], derived atoms=[])
+"]
+s4[peripheries=2,label="state_index=4 global_state_index = 14 abstraction_index=5 abstract_state_index=4
+State(index=4, fluent atoms=[(visited loc-x0-y1), (visited loc-x1-y0), (visited loc-x1-y1), (at-robot loc-x1-y1)], static atoms=[(connected loc-x0-y1 loc-x1-y1), (connected loc-x1-y0 loc-x1-y1), (connected loc-x1-y1 loc-x0-y1), (connected loc-x1-y1 loc-x1-y0), (place loc-x0-y1), (place loc-x1-y0), (place loc-x1-y1)], derived atoms=[])
+"]
+Dangling [ label = "", style = invis ]
+{ rank = same; Dangling }
+Dangling -> s0
+{ rank = same; s0,s3}
+{ rank = same; s1}
+{ rank = same; s2,s4}
+s0->s1 [label="(move loc-x1-y0 loc-x1-y1)
+"]
+s1->s2 [label="(move loc-x1-y1 loc-x0-y1)
+"]
+s1->s3 [label="(move loc-x1-y1 loc-x1-y0)
+"]
+s2->s4 [label="(move loc-x0-y1 loc-x1-y1)
+(move loc-x1-y0 loc-x1-y1)
+"]
+s3->s1 [label="(move loc-x1-y0 loc-x1-y1)
+"]
+s4->s2 [label="(move loc-x1-y1 loc-x0-y1)
+(move loc-x1-y1 loc-x1-y0)
+"]
+}

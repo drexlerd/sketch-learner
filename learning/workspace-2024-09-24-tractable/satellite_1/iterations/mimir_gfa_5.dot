@@ -1,0 +1,796 @@
+digraph {
+rankdir="LR"
+s0[label="state_index=0 global_state_index = 208 abstraction_index=5 abstract_state_index=0
+State(index=0, fluent atoms=[(pointing satellite0 phenomenon1), (power_avail satellite0)], static atoms=[(supports instrument0 spectrograph0), (calibration_target instrument0 groundstation0), (supports instrument1 spectrograph0), (calibration_target instrument1 groundstation0), (on_board instrument0 satellite0), (on_board instrument1 satellite0), (satellite satellite0), (instrument instrument0), (instrument instrument1), (mode spectrograph0), (direction groundstation0), (direction phenomenon1)], derived atoms=[])
+"]
+s1[label="state_index=1 global_state_index = 209 abstraction_index=5 abstract_state_index=1
+State(index=1, fluent atoms=[(pointing satellite0 phenomenon1), (power_on instrument0)], static atoms=[(supports instrument0 spectrograph0), (calibration_target instrument0 groundstation0), (supports instrument1 spectrograph0), (calibration_target instrument1 groundstation0), (on_board instrument0 satellite0), (on_board instrument1 satellite0), (satellite satellite0), (instrument instrument0), (instrument instrument1), (mode spectrograph0), (direction groundstation0), (direction phenomenon1)], derived atoms=[])
+State(index=2, fluent atoms=[(pointing satellite0 phenomenon1), (power_on instrument1)], static atoms=[(supports instrument0 spectrograph0), (calibration_target instrument0 groundstation0), (supports instrument1 spectrograph0), (calibration_target instrument1 groundstation0), (on_board instrument0 satellite0), (on_board instrument1 satellite0), (satellite satellite0), (instrument instrument0), (instrument instrument1), (mode spectrograph0), (direction groundstation0), (direction phenomenon1)], derived atoms=[])
+"]
+s2[label="state_index=2 global_state_index = 210 abstraction_index=5 abstract_state_index=2
+State(index=3, fluent atoms=[(power_avail satellite0), (pointing satellite0 groundstation0)], static atoms=[(supports instrument0 spectrograph0), (calibration_target instrument0 groundstation0), (supports instrument1 spectrograph0), (calibration_target instrument1 groundstation0), (on_board instrument0 satellite0), (on_board instrument1 satellite0), (satellite satellite0), (instrument instrument0), (instrument instrument1), (mode spectrograph0), (direction groundstation0), (direction phenomenon1)], derived atoms=[])
+"]
+s3[label="state_index=3 global_state_index = 211 abstraction_index=5 abstract_state_index=3
+State(index=4, fluent atoms=[(power_on instrument0), (pointing satellite0 groundstation0)], static atoms=[(supports instrument0 spectrograph0), (calibration_target instrument0 groundstation0), (supports instrument1 spectrograph0), (calibration_target instrument1 groundstation0), (on_board instrument0 satellite0), (on_board instrument1 satellite0), (satellite satellite0), (instrument instrument0), (instrument instrument1), (mode spectrograph0), (direction groundstation0), (direction phenomenon1)], derived atoms=[])
+State(index=5, fluent atoms=[(power_on instrument1), (pointing satellite0 groundstation0)], static atoms=[(supports instrument0 spectrograph0), (calibration_target instrument0 groundstation0), (supports instrument1 spectrograph0), (calibration_target instrument1 groundstation0), (on_board instrument0 satellite0), (on_board instrument1 satellite0), (satellite satellite0), (instrument instrument0), (instrument instrument1), (mode spectrograph0), (direction groundstation0), (direction phenomenon1)], derived atoms=[])
+"]
+s4[label="state_index=4 global_state_index = 212 abstraction_index=5 abstract_state_index=4
+State(index=94, fluent atoms=[(power_on instrument0), (pointing satellite0 groundstation0), (calibrated instrument0)], static atoms=[(supports instrument0 spectrograph0), (calibration_target instrument0 groundstation0), (supports instrument1 spectrograph0), (calibration_target instrument1 groundstation0), (on_board instrument0 satellite0), (on_board instrument1 satellite0), (satellite satellite0), (instrument instrument0), (instrument instrument1), (mode spectrograph0), (direction groundstation0), (direction phenomenon1)], derived atoms=[])
+State(index=6, fluent atoms=[(power_on instrument1), (pointing satellite0 groundstation0), (calibrated instrument1)], static atoms=[(supports instrument0 spectrograph0), (calibration_target instrument0 groundstation0), (supports instrument1 spectrograph0), (calibration_target instrument1 groundstation0), (on_board instrument0 satellite0), (on_board instrument1 satellite0), (satellite satellite0), (instrument instrument0), (instrument instrument1), (mode spectrograph0), (direction groundstation0), (direction phenomenon1)], derived atoms=[])
+"]
+s5[label="state_index=5 global_state_index = 213 abstraction_index=5 abstract_state_index=5
+State(index=91, fluent atoms=[(power_avail satellite0), (pointing satellite0 groundstation0), (calibrated instrument0)], static atoms=[(supports instrument0 spectrograph0), (calibration_target instrument0 groundstation0), (supports instrument1 spectrograph0), (calibration_target instrument1 groundstation0), (on_board instrument0 satellite0), (on_board instrument1 satellite0), (satellite satellite0), (instrument instrument0), (instrument instrument1), (mode spectrograph0), (direction groundstation0), (direction phenomenon1)], derived atoms=[])
+State(index=7, fluent atoms=[(power_avail satellite0), (pointing satellite0 groundstation0), (calibrated instrument1)], static atoms=[(supports instrument0 spectrograph0), (calibration_target instrument0 groundstation0), (supports instrument1 spectrograph0), (calibration_target instrument1 groundstation0), (on_board instrument0 satellite0), (on_board instrument1 satellite0), (satellite satellite0), (instrument instrument0), (instrument instrument1), (mode spectrograph0), (direction groundstation0), (direction phenomenon1)], derived atoms=[])
+"]
+s6[label="state_index=6 global_state_index = 214 abstraction_index=5 abstract_state_index=6
+State(index=95, fluent atoms=[(pointing satellite0 phenomenon1), (power_on instrument0), (calibrated instrument0)], static atoms=[(supports instrument0 spectrograph0), (calibration_target instrument0 groundstation0), (supports instrument1 spectrograph0), (calibration_target instrument1 groundstation0), (on_board instrument0 satellite0), (on_board instrument1 satellite0), (satellite satellite0), (instrument instrument0), (instrument instrument1), (mode spectrograph0), (direction groundstation0), (direction phenomenon1)], derived atoms=[])
+State(index=8, fluent atoms=[(pointing satellite0 phenomenon1), (power_on instrument1), (calibrated instrument1)], static atoms=[(supports instrument0 spectrograph0), (calibration_target instrument0 groundstation0), (supports instrument1 spectrograph0), (calibration_target instrument1 groundstation0), (on_board instrument0 satellite0), (on_board instrument1 satellite0), (satellite satellite0), (instrument instrument0), (instrument instrument1), (mode spectrograph0), (direction groundstation0), (direction phenomenon1)], derived atoms=[])
+"]
+s7[label="state_index=7 global_state_index = 215 abstraction_index=5 abstract_state_index=7
+State(index=9, fluent atoms=[(power_on instrument1), (pointing satellite0 groundstation0), (calibrated instrument1), (have_image groundstation0 spectrograph0)], static atoms=[(supports instrument0 spectrograph0), (calibration_target instrument0 groundstation0), (supports instrument1 spectrograph0), (calibration_target instrument1 groundstation0), (on_board instrument0 satellite0), (on_board instrument1 satellite0), (satellite satellite0), (instrument instrument0), (instrument instrument1), (mode spectrograph0), (direction groundstation0), (direction phenomenon1)], derived atoms=[])
+State(index=44, fluent atoms=[(power_on instrument0), (pointing satellite0 groundstation0), (calibrated instrument0), (have_image groundstation0 spectrograph0)], static atoms=[(supports instrument0 spectrograph0), (calibration_target instrument0 groundstation0), (supports instrument1 spectrograph0), (calibration_target instrument1 groundstation0), (on_board instrument0 satellite0), (on_board instrument1 satellite0), (satellite satellite0), (instrument instrument0), (instrument instrument1), (mode spectrograph0), (direction groundstation0), (direction phenomenon1)], derived atoms=[])
+"]
+s8[label="state_index=8 global_state_index = 216 abstraction_index=5 abstract_state_index=8
+State(index=10, fluent atoms=[(power_avail satellite0), (pointing satellite0 groundstation0), (calibrated instrument1), (have_image groundstation0 spectrograph0)], static atoms=[(supports instrument0 spectrograph0), (calibration_target instrument0 groundstation0), (supports instrument1 spectrograph0), (calibration_target instrument1 groundstation0), (on_board instrument0 satellite0), (on_board instrument1 satellite0), (satellite satellite0), (instrument instrument0), (instrument instrument1), (mode spectrograph0), (direction groundstation0), (direction phenomenon1)], derived atoms=[])
+State(index=45, fluent atoms=[(power_avail satellite0), (pointing satellite0 groundstation0), (calibrated instrument0), (have_image groundstation0 spectrograph0)], static atoms=[(supports instrument0 spectrograph0), (calibration_target instrument0 groundstation0), (supports instrument1 spectrograph0), (calibration_target instrument1 groundstation0), (on_board instrument0 satellite0), (on_board instrument1 satellite0), (satellite satellite0), (instrument instrument0), (instrument instrument1), (mode spectrograph0), (direction groundstation0), (direction phenomenon1)], derived atoms=[])
+"]
+s9[label="state_index=9 global_state_index = 217 abstraction_index=5 abstract_state_index=9
+State(index=11, fluent atoms=[(pointing satellite0 phenomenon1), (power_on instrument1), (calibrated instrument1), (have_image groundstation0 spectrograph0)], static atoms=[(supports instrument0 spectrograph0), (calibration_target instrument0 groundstation0), (supports instrument1 spectrograph0), (calibration_target instrument1 groundstation0), (on_board instrument0 satellite0), (on_board instrument1 satellite0), (satellite satellite0), (instrument instrument0), (instrument instrument1), (mode spectrograph0), (direction groundstation0), (direction phenomenon1)], derived atoms=[])
+State(index=46, fluent atoms=[(pointing satellite0 phenomenon1), (power_on instrument0), (calibrated instrument0), (have_image groundstation0 spectrograph0)], static atoms=[(supports instrument0 spectrograph0), (calibration_target instrument0 groundstation0), (supports instrument1 spectrograph0), (calibration_target instrument1 groundstation0), (on_board instrument0 satellite0), (on_board instrument1 satellite0), (satellite satellite0), (instrument instrument0), (instrument instrument1), (mode spectrograph0), (direction groundstation0), (direction phenomenon1)], derived atoms=[])
+"]
+s10[label="state_index=10 global_state_index = 218 abstraction_index=5 abstract_state_index=10
+State(index=12, fluent atoms=[(pointing satellite0 phenomenon1), (power_avail satellite0), (calibrated instrument1), (have_image groundstation0 spectrograph0)], static atoms=[(supports instrument0 spectrograph0), (calibration_target instrument0 groundstation0), (supports instrument1 spectrograph0), (calibration_target instrument1 groundstation0), (on_board instrument0 satellite0), (on_board instrument1 satellite0), (satellite satellite0), (instrument instrument0), (instrument instrument1), (mode spectrograph0), (direction groundstation0), (direction phenomenon1)], derived atoms=[])
+State(index=47, fluent atoms=[(pointing satellite0 phenomenon1), (power_avail satellite0), (calibrated instrument0), (have_image groundstation0 spectrograph0)], static atoms=[(supports instrument0 spectrograph0), (calibration_target instrument0 groundstation0), (supports instrument1 spectrograph0), (calibration_target instrument1 groundstation0), (on_board instrument0 satellite0), (on_board instrument1 satellite0), (satellite satellite0), (instrument instrument0), (instrument instrument1), (mode spectrograph0), (direction groundstation0), (direction phenomenon1)], derived atoms=[])
+"]
+s11[peripheries=2,label="state_index=11 global_state_index = 219 abstraction_index=5 abstract_state_index=11
+State(index=26, fluent atoms=[(pointing satellite0 phenomenon1), (have_image phenomenon1 spectrograph0), (power_on instrument0), (calibrated instrument0), (have_image groundstation0 spectrograph0)], static atoms=[(supports instrument0 spectrograph0), (calibration_target instrument0 groundstation0), (supports instrument1 spectrograph0), (calibration_target instrument1 groundstation0), (on_board instrument0 satellite0), (on_board instrument1 satellite0), (satellite satellite0), (instrument instrument0), (instrument instrument1), (mode spectrograph0), (direction groundstation0), (direction phenomenon1)], derived atoms=[])
+State(index=13, fluent atoms=[(pointing satellite0 phenomenon1), (have_image phenomenon1 spectrograph0), (power_on instrument1), (calibrated instrument1), (have_image groundstation0 spectrograph0)], static atoms=[(supports instrument0 spectrograph0), (calibration_target instrument0 groundstation0), (supports instrument1 spectrograph0), (calibration_target instrument1 groundstation0), (on_board instrument0 satellite0), (on_board instrument1 satellite0), (satellite satellite0), (instrument instrument0), (instrument instrument1), (mode spectrograph0), (direction groundstation0), (direction phenomenon1)], derived atoms=[])
+"]
+s12[peripheries=2,label="state_index=12 global_state_index = 220 abstraction_index=5 abstract_state_index=12
+State(index=27, fluent atoms=[(pointing satellite0 phenomenon1), (have_image phenomenon1 spectrograph0), (power_avail satellite0), (calibrated instrument0), (have_image groundstation0 spectrograph0)], static atoms=[(supports instrument0 spectrograph0), (calibration_target instrument0 groundstation0), (supports instrument1 spectrograph0), (calibration_target instrument1 groundstation0), (on_board instrument0 satellite0), (on_board instrument1 satellite0), (satellite satellite0), (instrument instrument0), (instrument instrument1), (mode spectrograph0), (direction groundstation0), (direction phenomenon1)], derived atoms=[])
+State(index=14, fluent atoms=[(pointing satellite0 phenomenon1), (have_image phenomenon1 spectrograph0), (power_avail satellite0), (calibrated instrument1), (have_image groundstation0 spectrograph0)], static atoms=[(supports instrument0 spectrograph0), (calibration_target instrument0 groundstation0), (supports instrument1 spectrograph0), (calibration_target instrument1 groundstation0), (on_board instrument0 satellite0), (on_board instrument1 satellite0), (satellite satellite0), (instrument instrument0), (instrument instrument1), (mode spectrograph0), (direction groundstation0), (direction phenomenon1)], derived atoms=[])
+"]
+s13[label="state_index=13 global_state_index = 221 abstraction_index=5 abstract_state_index=13
+State(index=24, fluent atoms=[(have_image phenomenon1 spectrograph0), (power_on instrument0), (pointing satellite0 groundstation0), (calibrated instrument0), (have_image groundstation0 spectrograph0)], static atoms=[(supports instrument0 spectrograph0), (calibration_target instrument0 groundstation0), (supports instrument1 spectrograph0), (calibration_target instrument1 groundstation0), (on_board instrument0 satellite0), (on_board instrument1 satellite0), (satellite satellite0), (instrument instrument0), (instrument instrument1), (mode spectrograph0), (direction groundstation0), (direction phenomenon1)], derived atoms=[])
+State(index=15, fluent atoms=[(have_image phenomenon1 spectrograph0), (power_on instrument1), (pointing satellite0 groundstation0), (calibrated instrument1), (have_image groundstation0 spectrograph0)], static atoms=[(supports instrument0 spectrograph0), (calibration_target instrument0 groundstation0), (supports instrument1 spectrograph0), (calibration_target instrument1 groundstation0), (on_board instrument0 satellite0), (on_board instrument1 satellite0), (satellite satellite0), (instrument instrument0), (instrument instrument1), (mode spectrograph0), (direction groundstation0), (direction phenomenon1)], derived atoms=[])
+"]
+s14[label="state_index=14 global_state_index = 222 abstraction_index=5 abstract_state_index=14
+State(index=25, fluent atoms=[(have_image phenomenon1 spectrograph0), (power_avail satellite0), (pointing satellite0 groundstation0), (calibrated instrument0), (have_image groundstation0 spectrograph0)], static atoms=[(supports instrument0 spectrograph0), (calibration_target instrument0 groundstation0), (supports instrument1 spectrograph0), (calibration_target instrument1 groundstation0), (on_board instrument0 satellite0), (on_board instrument1 satellite0), (satellite satellite0), (instrument instrument0), (instrument instrument1), (mode spectrograph0), (direction groundstation0), (direction phenomenon1)], derived atoms=[])
+State(index=16, fluent atoms=[(have_image phenomenon1 spectrograph0), (power_avail satellite0), (pointing satellite0 groundstation0), (calibrated instrument1), (have_image groundstation0 spectrograph0)], static atoms=[(supports instrument0 spectrograph0), (calibration_target instrument0 groundstation0), (supports instrument1 spectrograph0), (calibration_target instrument1 groundstation0), (on_board instrument0 satellite0), (on_board instrument1 satellite0), (satellite satellite0), (instrument instrument0), (instrument instrument1), (mode spectrograph0), (direction groundstation0), (direction phenomenon1)], derived atoms=[])
+"]
+s15[label="state_index=15 global_state_index = 223 abstraction_index=5 abstract_state_index=15
+State(index=17, fluent atoms=[(have_image phenomenon1 spectrograph0), (power_on instrument0), (pointing satellite0 groundstation0), (calibrated instrument1), (have_image groundstation0 spectrograph0)], static atoms=[(supports instrument0 spectrograph0), (calibration_target instrument0 groundstation0), (supports instrument1 spectrograph0), (calibration_target instrument1 groundstation0), (on_board instrument0 satellite0), (on_board instrument1 satellite0), (satellite satellite0), (instrument instrument0), (instrument instrument1), (mode spectrograph0), (direction groundstation0), (direction phenomenon1)], derived atoms=[])
+State(index=29, fluent atoms=[(have_image phenomenon1 spectrograph0), (power_on instrument1), (pointing satellite0 groundstation0), (calibrated instrument0), (have_image groundstation0 spectrograph0)], static atoms=[(supports instrument0 spectrograph0), (calibration_target instrument0 groundstation0), (supports instrument1 spectrograph0), (calibration_target instrument1 groundstation0), (on_board instrument0 satellite0), (on_board instrument1 satellite0), (satellite satellite0), (instrument instrument0), (instrument instrument1), (mode spectrograph0), (direction groundstation0), (direction phenomenon1)], derived atoms=[])
+"]
+s16[label="state_index=16 global_state_index = 224 abstraction_index=5 abstract_state_index=16
+State(index=23, fluent atoms=[(have_image phenomenon1 spectrograph0), (power_on instrument0), (pointing satellite0 groundstation0), (have_image groundstation0 spectrograph0)], static atoms=[(supports instrument0 spectrograph0), (calibration_target instrument0 groundstation0), (supports instrument1 spectrograph0), (calibration_target instrument1 groundstation0), (on_board instrument0 satellite0), (on_board instrument1 satellite0), (satellite satellite0), (instrument instrument0), (instrument instrument1), (mode spectrograph0), (direction groundstation0), (direction phenomenon1)], derived atoms=[])
+State(index=18, fluent atoms=[(have_image phenomenon1 spectrograph0), (power_on instrument1), (pointing satellite0 groundstation0), (have_image groundstation0 spectrograph0)], static atoms=[(supports instrument0 spectrograph0), (calibration_target instrument0 groundstation0), (supports instrument1 spectrograph0), (calibration_target instrument1 groundstation0), (on_board instrument0 satellite0), (on_board instrument1 satellite0), (satellite satellite0), (instrument instrument0), (instrument instrument1), (mode spectrograph0), (direction groundstation0), (direction phenomenon1)], derived atoms=[])
+"]
+s17[label="state_index=17 global_state_index = 225 abstraction_index=5 abstract_state_index=17
+State(index=19, fluent atoms=[(have_image phenomenon1 spectrograph0), (power_avail satellite0), (pointing satellite0 groundstation0), (have_image groundstation0 spectrograph0)], static atoms=[(supports instrument0 spectrograph0), (calibration_target instrument0 groundstation0), (supports instrument1 spectrograph0), (calibration_target instrument1 groundstation0), (on_board instrument0 satellite0), (on_board instrument1 satellite0), (satellite satellite0), (instrument instrument0), (instrument instrument1), (mode spectrograph0), (direction groundstation0), (direction phenomenon1)], derived atoms=[])
+"]
+s18[peripheries=2,label="state_index=18 global_state_index = 226 abstraction_index=5 abstract_state_index=18
+State(index=22, fluent atoms=[(pointing satellite0 phenomenon1), (have_image phenomenon1 spectrograph0), (power_on instrument0), (have_image groundstation0 spectrograph0)], static atoms=[(supports instrument0 spectrograph0), (calibration_target instrument0 groundstation0), (supports instrument1 spectrograph0), (calibration_target instrument1 groundstation0), (on_board instrument0 satellite0), (on_board instrument1 satellite0), (satellite satellite0), (instrument instrument0), (instrument instrument1), (mode spectrograph0), (direction groundstation0), (direction phenomenon1)], derived atoms=[])
+State(index=20, fluent atoms=[(pointing satellite0 phenomenon1), (have_image phenomenon1 spectrograph0), (power_on instrument1), (have_image groundstation0 spectrograph0)], static atoms=[(supports instrument0 spectrograph0), (calibration_target instrument0 groundstation0), (supports instrument1 spectrograph0), (calibration_target instrument1 groundstation0), (on_board instrument0 satellite0), (on_board instrument1 satellite0), (satellite satellite0), (instrument instrument0), (instrument instrument1), (mode spectrograph0), (direction groundstation0), (direction phenomenon1)], derived atoms=[])
+"]
+s19[peripheries=2,label="state_index=19 global_state_index = 227 abstraction_index=5 abstract_state_index=19
+State(index=21, fluent atoms=[(pointing satellite0 phenomenon1), (have_image phenomenon1 spectrograph0), (power_avail satellite0), (have_image groundstation0 spectrograph0)], static atoms=[(supports instrument0 spectrograph0), (calibration_target instrument0 groundstation0), (supports instrument1 spectrograph0), (calibration_target instrument1 groundstation0), (on_board instrument0 satellite0), (on_board instrument1 satellite0), (satellite satellite0), (instrument instrument0), (instrument instrument1), (mode spectrograph0), (direction groundstation0), (direction phenomenon1)], derived atoms=[])
+"]
+s20[peripheries=2,label="state_index=20 global_state_index = 228 abstraction_index=5 abstract_state_index=20
+State(index=28, fluent atoms=[(pointing satellite0 phenomenon1), (have_image phenomenon1 spectrograph0), (power_on instrument1), (calibrated instrument0), (have_image groundstation0 spectrograph0)], static atoms=[(supports instrument0 spectrograph0), (calibration_target instrument0 groundstation0), (supports instrument1 spectrograph0), (calibration_target instrument1 groundstation0), (on_board instrument0 satellite0), (on_board instrument1 satellite0), (satellite satellite0), (instrument instrument0), (instrument instrument1), (mode spectrograph0), (direction groundstation0), (direction phenomenon1)], derived atoms=[])
+State(index=34, fluent atoms=[(pointing satellite0 phenomenon1), (have_image phenomenon1 spectrograph0), (power_on instrument0), (calibrated instrument1), (have_image groundstation0 spectrograph0)], static atoms=[(supports instrument0 spectrograph0), (calibration_target instrument0 groundstation0), (supports instrument1 spectrograph0), (calibration_target instrument1 groundstation0), (on_board instrument0 satellite0), (on_board instrument1 satellite0), (satellite satellite0), (instrument instrument0), (instrument instrument1), (mode spectrograph0), (direction groundstation0), (direction phenomenon1)], derived atoms=[])
+"]
+s21[label="state_index=21 global_state_index = 229 abstraction_index=5 abstract_state_index=21
+State(index=30, fluent atoms=[(have_image phenomenon1 spectrograph0), (power_on instrument1), (pointing satellite0 groundstation0), (calibrated instrument0), (calibrated instrument1), (have_image groundstation0 spectrograph0)], static atoms=[(supports instrument0 spectrograph0), (calibration_target instrument0 groundstation0), (supports instrument1 spectrograph0), (calibration_target instrument1 groundstation0), (on_board instrument0 satellite0), (on_board instrument1 satellite0), (satellite satellite0), (instrument instrument0), (instrument instrument1), (mode spectrograph0), (direction groundstation0), (direction phenomenon1)], derived atoms=[])
+State(index=35, fluent atoms=[(have_image phenomenon1 spectrograph0), (power_on instrument0), (pointing satellite0 groundstation0), (calibrated instrument0), (calibrated instrument1), (have_image groundstation0 spectrograph0)], static atoms=[(supports instrument0 spectrograph0), (calibration_target instrument0 groundstation0), (supports instrument1 spectrograph0), (calibration_target instrument1 groundstation0), (on_board instrument0 satellite0), (on_board instrument1 satellite0), (satellite satellite0), (instrument instrument0), (instrument instrument1), (mode spectrograph0), (direction groundstation0), (direction phenomenon1)], derived atoms=[])
+"]
+s22[label="state_index=22 global_state_index = 230 abstraction_index=5 abstract_state_index=22
+State(index=31, fluent atoms=[(have_image phenomenon1 spectrograph0), (power_avail satellite0), (pointing satellite0 groundstation0), (calibrated instrument0), (calibrated instrument1), (have_image groundstation0 spectrograph0)], static atoms=[(supports instrument0 spectrograph0), (calibration_target instrument0 groundstation0), (supports instrument1 spectrograph0), (calibration_target instrument1 groundstation0), (on_board instrument0 satellite0), (on_board instrument1 satellite0), (satellite satellite0), (instrument instrument0), (instrument instrument1), (mode spectrograph0), (direction groundstation0), (direction phenomenon1)], derived atoms=[])
+"]
+s23[peripheries=2,label="state_index=23 global_state_index = 231 abstraction_index=5 abstract_state_index=23
+State(index=32, fluent atoms=[(pointing satellite0 phenomenon1), (have_image phenomenon1 spectrograph0), (power_on instrument1), (calibrated instrument0), (calibrated instrument1), (have_image groundstation0 spectrograph0)], static atoms=[(supports instrument0 spectrograph0), (calibration_target instrument0 groundstation0), (supports instrument1 spectrograph0), (calibration_target instrument1 groundstation0), (on_board instrument0 satellite0), (on_board instrument1 satellite0), (satellite satellite0), (instrument instrument0), (instrument instrument1), (mode spectrograph0), (direction groundstation0), (direction phenomenon1)], derived atoms=[])
+State(index=36, fluent atoms=[(pointing satellite0 phenomenon1), (have_image phenomenon1 spectrograph0), (power_on instrument0), (calibrated instrument0), (calibrated instrument1), (have_image groundstation0 spectrograph0)], static atoms=[(supports instrument0 spectrograph0), (calibration_target instrument0 groundstation0), (supports instrument1 spectrograph0), (calibration_target instrument1 groundstation0), (on_board instrument0 satellite0), (on_board instrument1 satellite0), (satellite satellite0), (instrument instrument0), (instrument instrument1), (mode spectrograph0), (direction groundstation0), (direction phenomenon1)], derived atoms=[])
+"]
+s24[peripheries=2,label="state_index=24 global_state_index = 232 abstraction_index=5 abstract_state_index=24
+State(index=33, fluent atoms=[(pointing satellite0 phenomenon1), (have_image phenomenon1 spectrograph0), (power_avail satellite0), (calibrated instrument0), (calibrated instrument1), (have_image groundstation0 spectrograph0)], static atoms=[(supports instrument0 spectrograph0), (calibration_target instrument0 groundstation0), (supports instrument1 spectrograph0), (calibration_target instrument1 groundstation0), (on_board instrument0 satellite0), (on_board instrument1 satellite0), (satellite satellite0), (instrument instrument0), (instrument instrument1), (mode spectrograph0), (direction groundstation0), (direction phenomenon1)], derived atoms=[])
+"]
+s25[label="state_index=25 global_state_index = 233 abstraction_index=5 abstract_state_index=25
+State(index=37, fluent atoms=[(pointing satellite0 phenomenon1), (power_on instrument0), (calibrated instrument1), (have_image groundstation0 spectrograph0)], static atoms=[(supports instrument0 spectrograph0), (calibration_target instrument0 groundstation0), (supports instrument1 spectrograph0), (calibration_target instrument1 groundstation0), (on_board instrument0 satellite0), (on_board instrument1 satellite0), (satellite satellite0), (instrument instrument0), (instrument instrument1), (mode spectrograph0), (direction groundstation0), (direction phenomenon1)], derived atoms=[])
+State(index=48, fluent atoms=[(pointing satellite0 phenomenon1), (power_on instrument1), (calibrated instrument0), (have_image groundstation0 spectrograph0)], static atoms=[(supports instrument0 spectrograph0), (calibration_target instrument0 groundstation0), (supports instrument1 spectrograph0), (calibration_target instrument1 groundstation0), (on_board instrument0 satellite0), (on_board instrument1 satellite0), (satellite satellite0), (instrument instrument0), (instrument instrument1), (mode spectrograph0), (direction groundstation0), (direction phenomenon1)], derived atoms=[])
+"]
+s26[label="state_index=26 global_state_index = 234 abstraction_index=5 abstract_state_index=26
+State(index=38, fluent atoms=[(pointing satellite0 phenomenon1), (power_on instrument1), (have_image groundstation0 spectrograph0)], static atoms=[(supports instrument0 spectrograph0), (calibration_target instrument0 groundstation0), (supports instrument1 spectrograph0), (calibration_target instrument1 groundstation0), (on_board instrument0 satellite0), (on_board instrument1 satellite0), (satellite satellite0), (instrument instrument0), (instrument instrument1), (mode spectrograph0), (direction groundstation0), (direction phenomenon1)], derived atoms=[])
+State(index=43, fluent atoms=[(pointing satellite0 phenomenon1), (power_on instrument0), (have_image groundstation0 spectrograph0)], static atoms=[(supports instrument0 spectrograph0), (calibration_target instrument0 groundstation0), (supports instrument1 spectrograph0), (calibration_target instrument1 groundstation0), (on_board instrument0 satellite0), (on_board instrument1 satellite0), (satellite satellite0), (instrument instrument0), (instrument instrument1), (mode spectrograph0), (direction groundstation0), (direction phenomenon1)], derived atoms=[])
+"]
+s27[label="state_index=27 global_state_index = 235 abstraction_index=5 abstract_state_index=27
+State(index=39, fluent atoms=[(pointing satellite0 phenomenon1), (power_avail satellite0), (have_image groundstation0 spectrograph0)], static atoms=[(supports instrument0 spectrograph0), (calibration_target instrument0 groundstation0), (supports instrument1 spectrograph0), (calibration_target instrument1 groundstation0), (on_board instrument0 satellite0), (on_board instrument1 satellite0), (satellite satellite0), (instrument instrument0), (instrument instrument1), (mode spectrograph0), (direction groundstation0), (direction phenomenon1)], derived atoms=[])
+"]
+s28[label="state_index=28 global_state_index = 236 abstraction_index=5 abstract_state_index=28
+State(index=40, fluent atoms=[(power_on instrument1), (pointing satellite0 groundstation0), (have_image groundstation0 spectrograph0)], static atoms=[(supports instrument0 spectrograph0), (calibration_target instrument0 groundstation0), (supports instrument1 spectrograph0), (calibration_target instrument1 groundstation0), (on_board instrument0 satellite0), (on_board instrument1 satellite0), (satellite satellite0), (instrument instrument0), (instrument instrument1), (mode spectrograph0), (direction groundstation0), (direction phenomenon1)], derived atoms=[])
+State(index=42, fluent atoms=[(power_on instrument0), (pointing satellite0 groundstation0), (have_image groundstation0 spectrograph0)], static atoms=[(supports instrument0 spectrograph0), (calibration_target instrument0 groundstation0), (supports instrument1 spectrograph0), (calibration_target instrument1 groundstation0), (on_board instrument0 satellite0), (on_board instrument1 satellite0), (satellite satellite0), (instrument instrument0), (instrument instrument1), (mode spectrograph0), (direction groundstation0), (direction phenomenon1)], derived atoms=[])
+"]
+s29[label="state_index=29 global_state_index = 237 abstraction_index=5 abstract_state_index=29
+State(index=41, fluent atoms=[(power_avail satellite0), (pointing satellite0 groundstation0), (have_image groundstation0 spectrograph0)], static atoms=[(supports instrument0 spectrograph0), (calibration_target instrument0 groundstation0), (supports instrument1 spectrograph0), (calibration_target instrument1 groundstation0), (on_board instrument0 satellite0), (on_board instrument1 satellite0), (satellite satellite0), (instrument instrument0), (instrument instrument1), (mode spectrograph0), (direction groundstation0), (direction phenomenon1)], derived atoms=[])
+"]
+s30[label="state_index=30 global_state_index = 238 abstraction_index=5 abstract_state_index=30
+State(index=49, fluent atoms=[(power_on instrument1), (pointing satellite0 groundstation0), (calibrated instrument0), (have_image groundstation0 spectrograph0)], static atoms=[(supports instrument0 spectrograph0), (calibration_target instrument0 groundstation0), (supports instrument1 spectrograph0), (calibration_target instrument1 groundstation0), (on_board instrument0 satellite0), (on_board instrument1 satellite0), (satellite satellite0), (instrument instrument0), (instrument instrument1), (mode spectrograph0), (direction groundstation0), (direction phenomenon1)], derived atoms=[])
+State(index=54, fluent atoms=[(power_on instrument0), (pointing satellite0 groundstation0), (calibrated instrument1), (have_image groundstation0 spectrograph0)], static atoms=[(supports instrument0 spectrograph0), (calibration_target instrument0 groundstation0), (supports instrument1 spectrograph0), (calibration_target instrument1 groundstation0), (on_board instrument0 satellite0), (on_board instrument1 satellite0), (satellite satellite0), (instrument instrument0), (instrument instrument1), (mode spectrograph0), (direction groundstation0), (direction phenomenon1)], derived atoms=[])
+"]
+s31[label="state_index=31 global_state_index = 239 abstraction_index=5 abstract_state_index=31
+State(index=50, fluent atoms=[(power_on instrument1), (pointing satellite0 groundstation0), (calibrated instrument0), (calibrated instrument1), (have_image groundstation0 spectrograph0)], static atoms=[(supports instrument0 spectrograph0), (calibration_target instrument0 groundstation0), (supports instrument1 spectrograph0), (calibration_target instrument1 groundstation0), (on_board instrument0 satellite0), (on_board instrument1 satellite0), (satellite satellite0), (instrument instrument0), (instrument instrument1), (mode spectrograph0), (direction groundstation0), (direction phenomenon1)], derived atoms=[])
+State(index=55, fluent atoms=[(power_on instrument0), (pointing satellite0 groundstation0), (calibrated instrument0), (calibrated instrument1), (have_image groundstation0 spectrograph0)], static atoms=[(supports instrument0 spectrograph0), (calibration_target instrument0 groundstation0), (supports instrument1 spectrograph0), (calibration_target instrument1 groundstation0), (on_board instrument0 satellite0), (on_board instrument1 satellite0), (satellite satellite0), (instrument instrument0), (instrument instrument1), (mode spectrograph0), (direction groundstation0), (direction phenomenon1)], derived atoms=[])
+"]
+s32[label="state_index=32 global_state_index = 240 abstraction_index=5 abstract_state_index=32
+State(index=51, fluent atoms=[(power_avail satellite0), (pointing satellite0 groundstation0), (calibrated instrument0), (calibrated instrument1), (have_image groundstation0 spectrograph0)], static atoms=[(supports instrument0 spectrograph0), (calibration_target instrument0 groundstation0), (supports instrument1 spectrograph0), (calibration_target instrument1 groundstation0), (on_board instrument0 satellite0), (on_board instrument1 satellite0), (satellite satellite0), (instrument instrument0), (instrument instrument1), (mode spectrograph0), (direction groundstation0), (direction phenomenon1)], derived atoms=[])
+"]
+s33[label="state_index=33 global_state_index = 241 abstraction_index=5 abstract_state_index=33
+State(index=52, fluent atoms=[(pointing satellite0 phenomenon1), (power_on instrument1), (calibrated instrument0), (calibrated instrument1), (have_image groundstation0 spectrograph0)], static atoms=[(supports instrument0 spectrograph0), (calibration_target instrument0 groundstation0), (supports instrument1 spectrograph0), (calibration_target instrument1 groundstation0), (on_board instrument0 satellite0), (on_board instrument1 satellite0), (satellite satellite0), (instrument instrument0), (instrument instrument1), (mode spectrograph0), (direction groundstation0), (direction phenomenon1)], derived atoms=[])
+State(index=56, fluent atoms=[(pointing satellite0 phenomenon1), (power_on instrument0), (calibrated instrument0), (calibrated instrument1), (have_image groundstation0 spectrograph0)], static atoms=[(supports instrument0 spectrograph0), (calibration_target instrument0 groundstation0), (supports instrument1 spectrograph0), (calibration_target instrument1 groundstation0), (on_board instrument0 satellite0), (on_board instrument1 satellite0), (satellite satellite0), (instrument instrument0), (instrument instrument1), (mode spectrograph0), (direction groundstation0), (direction phenomenon1)], derived atoms=[])
+"]
+s34[label="state_index=34 global_state_index = 242 abstraction_index=5 abstract_state_index=34
+State(index=53, fluent atoms=[(pointing satellite0 phenomenon1), (power_avail satellite0), (calibrated instrument0), (calibrated instrument1), (have_image groundstation0 spectrograph0)], static atoms=[(supports instrument0 spectrograph0), (calibration_target instrument0 groundstation0), (supports instrument1 spectrograph0), (calibration_target instrument1 groundstation0), (on_board instrument0 satellite0), (on_board instrument1 satellite0), (satellite satellite0), (instrument instrument0), (instrument instrument1), (mode spectrograph0), (direction groundstation0), (direction phenomenon1)], derived atoms=[])
+"]
+s35[label="state_index=35 global_state_index = 243 abstraction_index=5 abstract_state_index=35
+State(index=89, fluent atoms=[(pointing satellite0 phenomenon1), (power_avail satellite0), (calibrated instrument0)], static atoms=[(supports instrument0 spectrograph0), (calibration_target instrument0 groundstation0), (supports instrument1 spectrograph0), (calibration_target instrument1 groundstation0), (on_board instrument0 satellite0), (on_board instrument1 satellite0), (satellite satellite0), (instrument instrument0), (instrument instrument1), (mode spectrograph0), (direction groundstation0), (direction phenomenon1)], derived atoms=[])
+State(index=57, fluent atoms=[(pointing satellite0 phenomenon1), (power_avail satellite0), (calibrated instrument1)], static atoms=[(supports instrument0 spectrograph0), (calibration_target instrument0 groundstation0), (supports instrument1 spectrograph0), (calibration_target instrument1 groundstation0), (on_board instrument0 satellite0), (on_board instrument1 satellite0), (satellite satellite0), (instrument instrument0), (instrument instrument1), (mode spectrograph0), (direction groundstation0), (direction phenomenon1)], derived atoms=[])
+"]
+s36[peripheries=2,label="state_index=36 global_state_index = 244 abstraction_index=5 abstract_state_index=36
+State(index=71, fluent atoms=[(pointing satellite0 phenomenon1), (have_image phenomenon1 spectrograph0), (power_on instrument0), (calibrated instrument0)], static atoms=[(supports instrument0 spectrograph0), (calibration_target instrument0 groundstation0), (supports instrument1 spectrograph0), (calibration_target instrument1 groundstation0), (on_board instrument0 satellite0), (on_board instrument1 satellite0), (satellite satellite0), (instrument instrument0), (instrument instrument1), (mode spectrograph0), (direction groundstation0), (direction phenomenon1)], derived atoms=[])
+State(index=58, fluent atoms=[(pointing satellite0 phenomenon1), (have_image phenomenon1 spectrograph0), (power_on instrument1), (calibrated instrument1)], static atoms=[(supports instrument0 spectrograph0), (calibration_target instrument0 groundstation0), (supports instrument1 spectrograph0), (calibration_target instrument1 groundstation0), (on_board instrument0 satellite0), (on_board instrument1 satellite0), (satellite satellite0), (instrument instrument0), (instrument instrument1), (mode spectrograph0), (direction groundstation0), (direction phenomenon1)], derived atoms=[])
+"]
+s37[peripheries=2,label="state_index=37 global_state_index = 245 abstraction_index=5 abstract_state_index=37
+State(index=72, fluent atoms=[(pointing satellite0 phenomenon1), (have_image phenomenon1 spectrograph0), (power_avail satellite0), (calibrated instrument0)], static atoms=[(supports instrument0 spectrograph0), (calibration_target instrument0 groundstation0), (supports instrument1 spectrograph0), (calibration_target instrument1 groundstation0), (on_board instrument0 satellite0), (on_board instrument1 satellite0), (satellite satellite0), (instrument instrument0), (instrument instrument1), (mode spectrograph0), (direction groundstation0), (direction phenomenon1)], derived atoms=[])
+State(index=59, fluent atoms=[(pointing satellite0 phenomenon1), (have_image phenomenon1 spectrograph0), (power_avail satellite0), (calibrated instrument1)], static atoms=[(supports instrument0 spectrograph0), (calibration_target instrument0 groundstation0), (supports instrument1 spectrograph0), (calibration_target instrument1 groundstation0), (on_board instrument0 satellite0), (on_board instrument1 satellite0), (satellite satellite0), (instrument instrument0), (instrument instrument1), (mode spectrograph0), (direction groundstation0), (direction phenomenon1)], derived atoms=[])
+"]
+s38[label="state_index=38 global_state_index = 246 abstraction_index=5 abstract_state_index=38
+State(index=69, fluent atoms=[(have_image phenomenon1 spectrograph0), (power_on instrument0), (pointing satellite0 groundstation0), (calibrated instrument0)], static atoms=[(supports instrument0 spectrograph0), (calibration_target instrument0 groundstation0), (supports instrument1 spectrograph0), (calibration_target instrument1 groundstation0), (on_board instrument0 satellite0), (on_board instrument1 satellite0), (satellite satellite0), (instrument instrument0), (instrument instrument1), (mode spectrograph0), (direction groundstation0), (direction phenomenon1)], derived atoms=[])
+State(index=60, fluent atoms=[(have_image phenomenon1 spectrograph0), (power_on instrument1), (pointing satellite0 groundstation0), (calibrated instrument1)], static atoms=[(supports instrument0 spectrograph0), (calibration_target instrument0 groundstation0), (supports instrument1 spectrograph0), (calibration_target instrument1 groundstation0), (on_board instrument0 satellite0), (on_board instrument1 satellite0), (satellite satellite0), (instrument instrument0), (instrument instrument1), (mode spectrograph0), (direction groundstation0), (direction phenomenon1)], derived atoms=[])
+"]
+s39[label="state_index=39 global_state_index = 247 abstraction_index=5 abstract_state_index=39
+State(index=70, fluent atoms=[(have_image phenomenon1 spectrograph0), (power_avail satellite0), (pointing satellite0 groundstation0), (calibrated instrument0)], static atoms=[(supports instrument0 spectrograph0), (calibration_target instrument0 groundstation0), (supports instrument1 spectrograph0), (calibration_target instrument1 groundstation0), (on_board instrument0 satellite0), (on_board instrument1 satellite0), (satellite satellite0), (instrument instrument0), (instrument instrument1), (mode spectrograph0), (direction groundstation0), (direction phenomenon1)], derived atoms=[])
+State(index=61, fluent atoms=[(have_image phenomenon1 spectrograph0), (power_avail satellite0), (pointing satellite0 groundstation0), (calibrated instrument1)], static atoms=[(supports instrument0 spectrograph0), (calibration_target instrument0 groundstation0), (supports instrument1 spectrograph0), (calibration_target instrument1 groundstation0), (on_board instrument0 satellite0), (on_board instrument1 satellite0), (satellite satellite0), (instrument instrument0), (instrument instrument1), (mode spectrograph0), (direction groundstation0), (direction phenomenon1)], derived atoms=[])
+"]
+s40[label="state_index=40 global_state_index = 248 abstraction_index=5 abstract_state_index=40
+State(index=74, fluent atoms=[(have_image phenomenon1 spectrograph0), (power_on instrument1), (pointing satellite0 groundstation0), (calibrated instrument0)], static atoms=[(supports instrument0 spectrograph0), (calibration_target instrument0 groundstation0), (supports instrument1 spectrograph0), (calibration_target instrument1 groundstation0), (on_board instrument0 satellite0), (on_board instrument1 satellite0), (satellite satellite0), (instrument instrument0), (instrument instrument1), (mode spectrograph0), (direction groundstation0), (direction phenomenon1)], derived atoms=[])
+State(index=62, fluent atoms=[(have_image phenomenon1 spectrograph0), (power_on instrument0), (pointing satellite0 groundstation0), (calibrated instrument1)], static atoms=[(supports instrument0 spectrograph0), (calibration_target instrument0 groundstation0), (supports instrument1 spectrograph0), (calibration_target instrument1 groundstation0), (on_board instrument0 satellite0), (on_board instrument1 satellite0), (satellite satellite0), (instrument instrument0), (instrument instrument1), (mode spectrograph0), (direction groundstation0), (direction phenomenon1)], derived atoms=[])
+"]
+s41[label="state_index=41 global_state_index = 249 abstraction_index=5 abstract_state_index=41
+State(index=68, fluent atoms=[(have_image phenomenon1 spectrograph0), (power_on instrument0), (pointing satellite0 groundstation0)], static atoms=[(supports instrument0 spectrograph0), (calibration_target instrument0 groundstation0), (supports instrument1 spectrograph0), (calibration_target instrument1 groundstation0), (on_board instrument0 satellite0), (on_board instrument1 satellite0), (satellite satellite0), (instrument instrument0), (instrument instrument1), (mode spectrograph0), (direction groundstation0), (direction phenomenon1)], derived atoms=[])
+State(index=63, fluent atoms=[(have_image phenomenon1 spectrograph0), (power_on instrument1), (pointing satellite0 groundstation0)], static atoms=[(supports instrument0 spectrograph0), (calibration_target instrument0 groundstation0), (supports instrument1 spectrograph0), (calibration_target instrument1 groundstation0), (on_board instrument0 satellite0), (on_board instrument1 satellite0), (satellite satellite0), (instrument instrument0), (instrument instrument1), (mode spectrograph0), (direction groundstation0), (direction phenomenon1)], derived atoms=[])
+"]
+s42[label="state_index=42 global_state_index = 250 abstraction_index=5 abstract_state_index=42
+State(index=64, fluent atoms=[(have_image phenomenon1 spectrograph0), (power_avail satellite0), (pointing satellite0 groundstation0)], static atoms=[(supports instrument0 spectrograph0), (calibration_target instrument0 groundstation0), (supports instrument1 spectrograph0), (calibration_target instrument1 groundstation0), (on_board instrument0 satellite0), (on_board instrument1 satellite0), (satellite satellite0), (instrument instrument0), (instrument instrument1), (mode spectrograph0), (direction groundstation0), (direction phenomenon1)], derived atoms=[])
+"]
+s43[peripheries=2,label="state_index=43 global_state_index = 251 abstraction_index=5 abstract_state_index=43
+State(index=67, fluent atoms=[(pointing satellite0 phenomenon1), (have_image phenomenon1 spectrograph0), (power_on instrument0)], static atoms=[(supports instrument0 spectrograph0), (calibration_target instrument0 groundstation0), (supports instrument1 spectrograph0), (calibration_target instrument1 groundstation0), (on_board instrument0 satellite0), (on_board instrument1 satellite0), (satellite satellite0), (instrument instrument0), (instrument instrument1), (mode spectrograph0), (direction groundstation0), (direction phenomenon1)], derived atoms=[])
+State(index=65, fluent atoms=[(pointing satellite0 phenomenon1), (have_image phenomenon1 spectrograph0), (power_on instrument1)], static atoms=[(supports instrument0 spectrograph0), (calibration_target instrument0 groundstation0), (supports instrument1 spectrograph0), (calibration_target instrument1 groundstation0), (on_board instrument0 satellite0), (on_board instrument1 satellite0), (satellite satellite0), (instrument instrument0), (instrument instrument1), (mode spectrograph0), (direction groundstation0), (direction phenomenon1)], derived atoms=[])
+"]
+s44[peripheries=2,label="state_index=44 global_state_index = 252 abstraction_index=5 abstract_state_index=44
+State(index=66, fluent atoms=[(pointing satellite0 phenomenon1), (have_image phenomenon1 spectrograph0), (power_avail satellite0)], static atoms=[(supports instrument0 spectrograph0), (calibration_target instrument0 groundstation0), (supports instrument1 spectrograph0), (calibration_target instrument1 groundstation0), (on_board instrument0 satellite0), (on_board instrument1 satellite0), (satellite satellite0), (instrument instrument0), (instrument instrument1), (mode spectrograph0), (direction groundstation0), (direction phenomenon1)], derived atoms=[])
+"]
+s45[peripheries=2,label="state_index=45 global_state_index = 253 abstraction_index=5 abstract_state_index=45
+State(index=79, fluent atoms=[(pointing satellite0 phenomenon1), (have_image phenomenon1 spectrograph0), (power_on instrument0), (calibrated instrument1)], static atoms=[(supports instrument0 spectrograph0), (calibration_target instrument0 groundstation0), (supports instrument1 spectrograph0), (calibration_target instrument1 groundstation0), (on_board instrument0 satellite0), (on_board instrument1 satellite0), (satellite satellite0), (instrument instrument0), (instrument instrument1), (mode spectrograph0), (direction groundstation0), (direction phenomenon1)], derived atoms=[])
+State(index=73, fluent atoms=[(pointing satellite0 phenomenon1), (have_image phenomenon1 spectrograph0), (power_on instrument1), (calibrated instrument0)], static atoms=[(supports instrument0 spectrograph0), (calibration_target instrument0 groundstation0), (supports instrument1 spectrograph0), (calibration_target instrument1 groundstation0), (on_board instrument0 satellite0), (on_board instrument1 satellite0), (satellite satellite0), (instrument instrument0), (instrument instrument1), (mode spectrograph0), (direction groundstation0), (direction phenomenon1)], derived atoms=[])
+"]
+s46[label="state_index=46 global_state_index = 254 abstraction_index=5 abstract_state_index=46
+State(index=80, fluent atoms=[(have_image phenomenon1 spectrograph0), (power_on instrument0), (pointing satellite0 groundstation0), (calibrated instrument0), (calibrated instrument1)], static atoms=[(supports instrument0 spectrograph0), (calibration_target instrument0 groundstation0), (supports instrument1 spectrograph0), (calibration_target instrument1 groundstation0), (on_board instrument0 satellite0), (on_board instrument1 satellite0), (satellite satellite0), (instrument instrument0), (instrument instrument1), (mode spectrograph0), (direction groundstation0), (direction phenomenon1)], derived atoms=[])
+State(index=75, fluent atoms=[(have_image phenomenon1 spectrograph0), (power_on instrument1), (pointing satellite0 groundstation0), (calibrated instrument0), (calibrated instrument1)], static atoms=[(supports instrument0 spectrograph0), (calibration_target instrument0 groundstation0), (supports instrument1 spectrograph0), (calibration_target instrument1 groundstation0), (on_board instrument0 satellite0), (on_board instrument1 satellite0), (satellite satellite0), (instrument instrument0), (instrument instrument1), (mode spectrograph0), (direction groundstation0), (direction phenomenon1)], derived atoms=[])
+"]
+s47[label="state_index=47 global_state_index = 255 abstraction_index=5 abstract_state_index=47
+State(index=76, fluent atoms=[(have_image phenomenon1 spectrograph0), (power_avail satellite0), (pointing satellite0 groundstation0), (calibrated instrument0), (calibrated instrument1)], static atoms=[(supports instrument0 spectrograph0), (calibration_target instrument0 groundstation0), (supports instrument1 spectrograph0), (calibration_target instrument1 groundstation0), (on_board instrument0 satellite0), (on_board instrument1 satellite0), (satellite satellite0), (instrument instrument0), (instrument instrument1), (mode spectrograph0), (direction groundstation0), (direction phenomenon1)], derived atoms=[])
+"]
+s48[peripheries=2,label="state_index=48 global_state_index = 256 abstraction_index=5 abstract_state_index=48
+State(index=81, fluent atoms=[(pointing satellite0 phenomenon1), (have_image phenomenon1 spectrograph0), (power_on instrument0), (calibrated instrument0), (calibrated instrument1)], static atoms=[(supports instrument0 spectrograph0), (calibration_target instrument0 groundstation0), (supports instrument1 spectrograph0), (calibration_target instrument1 groundstation0), (on_board instrument0 satellite0), (on_board instrument1 satellite0), (satellite satellite0), (instrument instrument0), (instrument instrument1), (mode spectrograph0), (direction groundstation0), (direction phenomenon1)], derived atoms=[])
+State(index=77, fluent atoms=[(pointing satellite0 phenomenon1), (have_image phenomenon1 spectrograph0), (power_on instrument1), (calibrated instrument0), (calibrated instrument1)], static atoms=[(supports instrument0 spectrograph0), (calibration_target instrument0 groundstation0), (supports instrument1 spectrograph0), (calibration_target instrument1 groundstation0), (on_board instrument0 satellite0), (on_board instrument1 satellite0), (satellite satellite0), (instrument instrument0), (instrument instrument1), (mode spectrograph0), (direction groundstation0), (direction phenomenon1)], derived atoms=[])
+"]
+s49[peripheries=2,label="state_index=49 global_state_index = 257 abstraction_index=5 abstract_state_index=49
+State(index=78, fluent atoms=[(pointing satellite0 phenomenon1), (have_image phenomenon1 spectrograph0), (power_avail satellite0), (calibrated instrument0), (calibrated instrument1)], static atoms=[(supports instrument0 spectrograph0), (calibration_target instrument0 groundstation0), (supports instrument1 spectrograph0), (calibration_target instrument1 groundstation0), (on_board instrument0 satellite0), (on_board instrument1 satellite0), (satellite satellite0), (instrument instrument0), (instrument instrument1), (mode spectrograph0), (direction groundstation0), (direction phenomenon1)], derived atoms=[])
+"]
+s50[label="state_index=50 global_state_index = 258 abstraction_index=5 abstract_state_index=50
+State(index=88, fluent atoms=[(pointing satellite0 phenomenon1), (power_on instrument1), (calibrated instrument0)], static atoms=[(supports instrument0 spectrograph0), (calibration_target instrument0 groundstation0), (supports instrument1 spectrograph0), (calibration_target instrument1 groundstation0), (on_board instrument0 satellite0), (on_board instrument1 satellite0), (satellite satellite0), (instrument instrument0), (instrument instrument1), (mode spectrograph0), (direction groundstation0), (direction phenomenon1)], derived atoms=[])
+State(index=82, fluent atoms=[(pointing satellite0 phenomenon1), (power_on instrument0), (calibrated instrument1)], static atoms=[(supports instrument0 spectrograph0), (calibration_target instrument0 groundstation0), (supports instrument1 spectrograph0), (calibration_target instrument1 groundstation0), (on_board instrument0 satellite0), (on_board instrument1 satellite0), (satellite satellite0), (instrument instrument0), (instrument instrument1), (mode spectrograph0), (direction groundstation0), (direction phenomenon1)], derived atoms=[])
+"]
+s51[label="state_index=51 global_state_index = 259 abstraction_index=5 abstract_state_index=51
+State(index=90, fluent atoms=[(power_on instrument1), (pointing satellite0 groundstation0), (calibrated instrument0)], static atoms=[(supports instrument0 spectrograph0), (calibration_target instrument0 groundstation0), (supports instrument1 spectrograph0), (calibration_target instrument1 groundstation0), (on_board instrument0 satellite0), (on_board instrument1 satellite0), (satellite satellite0), (instrument instrument0), (instrument instrument1), (mode spectrograph0), (direction groundstation0), (direction phenomenon1)], derived atoms=[])
+State(index=83, fluent atoms=[(power_on instrument0), (pointing satellite0 groundstation0), (calibrated instrument1)], static atoms=[(supports instrument0 spectrograph0), (calibration_target instrument0 groundstation0), (supports instrument1 spectrograph0), (calibration_target instrument1 groundstation0), (on_board instrument0 satellite0), (on_board instrument1 satellite0), (satellite satellite0), (instrument instrument0), (instrument instrument1), (mode spectrograph0), (direction groundstation0), (direction phenomenon1)], derived atoms=[])
+"]
+s52[label="state_index=52 global_state_index = 260 abstraction_index=5 abstract_state_index=52
+State(index=92, fluent atoms=[(power_on instrument1), (pointing satellite0 groundstation0), (calibrated instrument0), (calibrated instrument1)], static atoms=[(supports instrument0 spectrograph0), (calibration_target instrument0 groundstation0), (supports instrument1 spectrograph0), (calibration_target instrument1 groundstation0), (on_board instrument0 satellite0), (on_board instrument1 satellite0), (satellite satellite0), (instrument instrument0), (instrument instrument1), (mode spectrograph0), (direction groundstation0), (direction phenomenon1)], derived atoms=[])
+State(index=84, fluent atoms=[(power_on instrument0), (pointing satellite0 groundstation0), (calibrated instrument0), (calibrated instrument1)], static atoms=[(supports instrument0 spectrograph0), (calibration_target instrument0 groundstation0), (supports instrument1 spectrograph0), (calibration_target instrument1 groundstation0), (on_board instrument0 satellite0), (on_board instrument1 satellite0), (satellite satellite0), (instrument instrument0), (instrument instrument1), (mode spectrograph0), (direction groundstation0), (direction phenomenon1)], derived atoms=[])
+"]
+s53[label="state_index=53 global_state_index = 261 abstraction_index=5 abstract_state_index=53
+State(index=85, fluent atoms=[(power_avail satellite0), (pointing satellite0 groundstation0), (calibrated instrument0), (calibrated instrument1)], static atoms=[(supports instrument0 spectrograph0), (calibration_target instrument0 groundstation0), (supports instrument1 spectrograph0), (calibration_target instrument1 groundstation0), (on_board instrument0 satellite0), (on_board instrument1 satellite0), (satellite satellite0), (instrument instrument0), (instrument instrument1), (mode spectrograph0), (direction groundstation0), (direction phenomenon1)], derived atoms=[])
+"]
+s54[label="state_index=54 global_state_index = 262 abstraction_index=5 abstract_state_index=54
+State(index=93, fluent atoms=[(pointing satellite0 phenomenon1), (power_on instrument1), (calibrated instrument0), (calibrated instrument1)], static atoms=[(supports instrument0 spectrograph0), (calibration_target instrument0 groundstation0), (supports instrument1 spectrograph0), (calibration_target instrument1 groundstation0), (on_board instrument0 satellite0), (on_board instrument1 satellite0), (satellite satellite0), (instrument instrument0), (instrument instrument1), (mode spectrograph0), (direction groundstation0), (direction phenomenon1)], derived atoms=[])
+State(index=86, fluent atoms=[(pointing satellite0 phenomenon1), (power_on instrument0), (calibrated instrument0), (calibrated instrument1)], static atoms=[(supports instrument0 spectrograph0), (calibration_target instrument0 groundstation0), (supports instrument1 spectrograph0), (calibration_target instrument1 groundstation0), (on_board instrument0 satellite0), (on_board instrument1 satellite0), (satellite satellite0), (instrument instrument0), (instrument instrument1), (mode spectrograph0), (direction groundstation0), (direction phenomenon1)], derived atoms=[])
+"]
+s55[label="state_index=55 global_state_index = 263 abstraction_index=5 abstract_state_index=55
+State(index=87, fluent atoms=[(pointing satellite0 phenomenon1), (power_avail satellite0), (calibrated instrument0), (calibrated instrument1)], static atoms=[(supports instrument0 spectrograph0), (calibration_target instrument0 groundstation0), (supports instrument1 spectrograph0), (calibration_target instrument1 groundstation0), (on_board instrument0 satellite0), (on_board instrument1 satellite0), (satellite satellite0), (instrument instrument0), (instrument instrument1), (mode spectrograph0), (direction groundstation0), (direction phenomenon1)], derived atoms=[])
+"]
+Dangling [ label = "", style = invis ]
+{ rank = same; Dangling }
+Dangling -> s0
+{ rank = same; s0,s10,s27,s34,s35,s55}
+{ rank = same; s1,s2,s5,s8,s25,s26,s29,s32,s50,s53}
+{ rank = same; s3,s28,s30,s51}
+{ rank = same; s4,s7,s31,s52}
+{ rank = same; s6,s9,s13,s14,s15,s16,s17,s21,s22,s33,s38,s39,s40,s41,s42,s46,s47,s54}
+{ rank = same; s11,s12,s18,s19,s20,s23,s24,s36,s37,s43,s44,s45,s48,s49}
+s0->s0 [label="(turn_to satellite0 phenomenon1 phenomenon1)
+"]
+s0->s1 [label="(switch_on instrument1 satellite0)
+(switch_on instrument0 satellite0)
+"]
+s0->s2 [label="(turn_to satellite0 groundstation0 phenomenon1)
+"]
+s1->s0 [label="(switch_off instrument0 satellite0)
+(switch_off instrument1 satellite0)
+"]
+s1->s1 [label="(turn_to satellite0 phenomenon1 phenomenon1)
+(turn_to satellite0 phenomenon1 phenomenon1)
+"]
+s1->s3 [label="(turn_to satellite0 groundstation0 phenomenon1)
+(turn_to satellite0 groundstation0 phenomenon1)
+"]
+s2->s0 [label="(turn_to satellite0 phenomenon1 groundstation0)
+"]
+s2->s2 [label="(turn_to satellite0 groundstation0 groundstation0)
+"]
+s2->s3 [label="(switch_on instrument0 satellite0)
+(switch_on instrument1 satellite0)
+"]
+s3->s1 [label="(turn_to satellite0 phenomenon1 groundstation0)
+(turn_to satellite0 phenomenon1 groundstation0)
+"]
+s3->s2 [label="(switch_off instrument1 satellite0)
+(switch_off instrument0 satellite0)
+"]
+s3->s3 [label="(turn_to satellite0 groundstation0 groundstation0)
+(turn_to satellite0 groundstation0 groundstation0)
+"]
+s3->s4 [label="(calibrate satellite0 instrument1 groundstation0)
+(calibrate satellite0 instrument0 groundstation0)
+"]
+s4->s4 [label="(turn_to satellite0 groundstation0 groundstation0)
+(calibrate satellite0 instrument1 groundstation0)
+(turn_to satellite0 groundstation0 groundstation0)
+(calibrate satellite0 instrument0 groundstation0)
+"]
+s4->s5 [label="(switch_off instrument1 satellite0)
+(switch_off instrument0 satellite0)
+"]
+s4->s6 [label="(turn_to satellite0 phenomenon1 groundstation0)
+(turn_to satellite0 phenomenon1 groundstation0)
+"]
+s4->s7 [label="(take_image satellite0 groundstation0 instrument1 spectrograph0)
+(take_image satellite0 groundstation0 instrument0 spectrograph0)
+"]
+s5->s3 [label="(switch_on instrument0 satellite0)
+(switch_on instrument1 satellite0)
+"]
+s5->s5 [label="(turn_to satellite0 groundstation0 groundstation0)
+(turn_to satellite0 groundstation0 groundstation0)
+"]
+s5->s35 [label="(turn_to satellite0 phenomenon1 groundstation0)
+(turn_to satellite0 phenomenon1 groundstation0)
+"]
+s5->s51 [label="(switch_on instrument1 satellite0)
+(switch_on instrument0 satellite0)
+"]
+s6->s4 [label="(turn_to satellite0 groundstation0 phenomenon1)
+(turn_to satellite0 groundstation0 phenomenon1)
+"]
+s6->s6 [label="(turn_to satellite0 phenomenon1 phenomenon1)
+(turn_to satellite0 phenomenon1 phenomenon1)
+"]
+s6->s35 [label="(switch_off instrument0 satellite0)
+(switch_off instrument1 satellite0)
+"]
+s6->s36 [label="(take_image satellite0 phenomenon1 instrument0 spectrograph0)
+(take_image satellite0 phenomenon1 instrument1 spectrograph0)
+"]
+s7->s7 [label="(calibrate satellite0 instrument1 groundstation0)
+(take_image satellite0 groundstation0 instrument1 spectrograph0)
+(turn_to satellite0 groundstation0 groundstation0)
+(turn_to satellite0 groundstation0 groundstation0)
+(calibrate satellite0 instrument0 groundstation0)
+(take_image satellite0 groundstation0 instrument0 spectrograph0)
+"]
+s7->s8 [label="(switch_off instrument0 satellite0)
+(switch_off instrument1 satellite0)
+"]
+s7->s9 [label="(turn_to satellite0 phenomenon1 groundstation0)
+(turn_to satellite0 phenomenon1 groundstation0)
+"]
+s8->s8 [label="(turn_to satellite0 groundstation0 groundstation0)
+(turn_to satellite0 groundstation0 groundstation0)
+"]
+s8->s10 [label="(turn_to satellite0 phenomenon1 groundstation0)
+(turn_to satellite0 phenomenon1 groundstation0)
+"]
+s8->s28 [label="(switch_on instrument1 satellite0)
+(switch_on instrument0 satellite0)
+"]
+s8->s30 [label="(switch_on instrument0 satellite0)
+(switch_on instrument1 satellite0)
+"]
+s9->s7 [label="(turn_to satellite0 groundstation0 phenomenon1)
+(turn_to satellite0 groundstation0 phenomenon1)
+"]
+s9->s9 [label="(turn_to satellite0 phenomenon1 phenomenon1)
+(turn_to satellite0 phenomenon1 phenomenon1)
+"]
+s9->s10 [label="(switch_off instrument1 satellite0)
+(switch_off instrument0 satellite0)
+"]
+s9->s11 [label="(take_image satellite0 phenomenon1 instrument0 spectrograph0)
+(take_image satellite0 phenomenon1 instrument1 spectrograph0)
+"]
+s10->s8 [label="(turn_to satellite0 groundstation0 phenomenon1)
+(turn_to satellite0 groundstation0 phenomenon1)
+"]
+s10->s10 [label="(turn_to satellite0 phenomenon1 phenomenon1)
+(turn_to satellite0 phenomenon1 phenomenon1)
+"]
+s10->s25 [label="(switch_on instrument1 satellite0)
+(switch_on instrument0 satellite0)
+"]
+s10->s26 [label="(switch_on instrument0 satellite0)
+(switch_on instrument1 satellite0)
+"]
+s11->s11 [label="(take_image satellite0 phenomenon1 instrument1 spectrograph0)
+(take_image satellite0 phenomenon1 instrument0 spectrograph0)
+(turn_to satellite0 phenomenon1 phenomenon1)
+(turn_to satellite0 phenomenon1 phenomenon1)
+"]
+s11->s12 [label="(switch_off instrument0 satellite0)
+(switch_off instrument1 satellite0)
+"]
+s11->s13 [label="(turn_to satellite0 groundstation0 phenomenon1)
+(turn_to satellite0 groundstation0 phenomenon1)
+"]
+s12->s12 [label="(turn_to satellite0 phenomenon1 phenomenon1)
+(turn_to satellite0 phenomenon1 phenomenon1)
+"]
+s12->s14 [label="(turn_to satellite0 groundstation0 phenomenon1)
+(turn_to satellite0 groundstation0 phenomenon1)
+"]
+s12->s18 [label="(switch_on instrument1 satellite0)
+(switch_on instrument0 satellite0)
+"]
+s12->s20 [label="(switch_on instrument0 satellite0)
+(switch_on instrument1 satellite0)
+"]
+s13->s11 [label="(turn_to satellite0 phenomenon1 groundstation0)
+(turn_to satellite0 phenomenon1 groundstation0)
+"]
+s13->s13 [label="(turn_to satellite0 groundstation0 groundstation0)
+(calibrate satellite0 instrument1 groundstation0)
+(turn_to satellite0 groundstation0 groundstation0)
+(take_image satellite0 groundstation0 instrument0 spectrograph0)
+(take_image satellite0 groundstation0 instrument1 spectrograph0)
+(calibrate satellite0 instrument0 groundstation0)
+"]
+s13->s14 [label="(switch_off instrument0 satellite0)
+(switch_off instrument1 satellite0)
+"]
+s14->s12 [label="(turn_to satellite0 phenomenon1 groundstation0)
+(turn_to satellite0 phenomenon1 groundstation0)
+"]
+s14->s14 [label="(turn_to satellite0 groundstation0 groundstation0)
+(turn_to satellite0 groundstation0 groundstation0)
+"]
+s14->s15 [label="(switch_on instrument1 satellite0)
+(switch_on instrument0 satellite0)
+"]
+s14->s16 [label="(switch_on instrument0 satellite0)
+(switch_on instrument1 satellite0)
+"]
+s15->s14 [label="(switch_off instrument1 satellite0)
+(switch_off instrument0 satellite0)
+"]
+s15->s15 [label="(turn_to satellite0 groundstation0 groundstation0)
+(turn_to satellite0 groundstation0 groundstation0)
+"]
+s15->s20 [label="(turn_to satellite0 phenomenon1 groundstation0)
+(turn_to satellite0 phenomenon1 groundstation0)
+"]
+s15->s21 [label="(calibrate satellite0 instrument0 groundstation0)
+(calibrate satellite0 instrument1 groundstation0)
+"]
+s16->s13 [label="(calibrate satellite0 instrument0 groundstation0)
+(calibrate satellite0 instrument1 groundstation0)
+"]
+s16->s16 [label="(turn_to satellite0 groundstation0 groundstation0)
+(turn_to satellite0 groundstation0 groundstation0)
+"]
+s16->s17 [label="(switch_off instrument0 satellite0)
+(switch_off instrument1 satellite0)
+"]
+s16->s18 [label="(turn_to satellite0 phenomenon1 groundstation0)
+(turn_to satellite0 phenomenon1 groundstation0)
+"]
+s17->s16 [label="(switch_on instrument0 satellite0)
+(switch_on instrument1 satellite0)
+"]
+s17->s17 [label="(turn_to satellite0 groundstation0 groundstation0)
+"]
+s17->s19 [label="(turn_to satellite0 phenomenon1 groundstation0)
+"]
+s18->s16 [label="(turn_to satellite0 groundstation0 phenomenon1)
+(turn_to satellite0 groundstation0 phenomenon1)
+"]
+s18->s18 [label="(turn_to satellite0 phenomenon1 phenomenon1)
+(turn_to satellite0 phenomenon1 phenomenon1)
+"]
+s18->s19 [label="(switch_off instrument1 satellite0)
+(switch_off instrument0 satellite0)
+"]
+s19->s17 [label="(turn_to satellite0 groundstation0 phenomenon1)
+"]
+s19->s18 [label="(switch_on instrument1 satellite0)
+(switch_on instrument0 satellite0)
+"]
+s19->s19 [label="(turn_to satellite0 phenomenon1 phenomenon1)
+"]
+s20->s12 [label="(switch_off instrument0 satellite0)
+(switch_off instrument1 satellite0)
+"]
+s20->s15 [label="(turn_to satellite0 groundstation0 phenomenon1)
+(turn_to satellite0 groundstation0 phenomenon1)
+"]
+s20->s20 [label="(turn_to satellite0 phenomenon1 phenomenon1)
+(turn_to satellite0 phenomenon1 phenomenon1)
+"]
+s21->s21 [label="(turn_to satellite0 groundstation0 groundstation0)
+(calibrate satellite0 instrument0 groundstation0)
+(take_image satellite0 groundstation0 instrument0 spectrograph0)
+(take_image satellite0 groundstation0 instrument1 spectrograph0)
+(turn_to satellite0 groundstation0 groundstation0)
+(calibrate satellite0 instrument1 groundstation0)
+"]
+s21->s22 [label="(switch_off instrument0 satellite0)
+(switch_off instrument1 satellite0)
+"]
+s21->s23 [label="(turn_to satellite0 phenomenon1 groundstation0)
+(turn_to satellite0 phenomenon1 groundstation0)
+"]
+s22->s15 [label="(switch_on instrument0 satellite0)
+(switch_on instrument1 satellite0)
+"]
+s22->s22 [label="(turn_to satellite0 groundstation0 groundstation0)
+"]
+s22->s24 [label="(turn_to satellite0 phenomenon1 groundstation0)
+"]
+s23->s21 [label="(turn_to satellite0 groundstation0 phenomenon1)
+(turn_to satellite0 groundstation0 phenomenon1)
+"]
+s23->s23 [label="(turn_to satellite0 phenomenon1 phenomenon1)
+(take_image satellite0 phenomenon1 instrument1 spectrograph0)
+(turn_to satellite0 phenomenon1 phenomenon1)
+(take_image satellite0 phenomenon1 instrument0 spectrograph0)
+"]
+s23->s24 [label="(switch_off instrument1 satellite0)
+(switch_off instrument0 satellite0)
+"]
+s24->s20 [label="(switch_on instrument0 satellite0)
+(switch_on instrument1 satellite0)
+"]
+s24->s22 [label="(turn_to satellite0 groundstation0 phenomenon1)
+"]
+s24->s24 [label="(turn_to satellite0 phenomenon1 phenomenon1)
+"]
+s25->s10 [label="(switch_off instrument1 satellite0)
+(switch_off instrument0 satellite0)
+"]
+s25->s25 [label="(turn_to satellite0 phenomenon1 phenomenon1)
+(turn_to satellite0 phenomenon1 phenomenon1)
+"]
+s25->s30 [label="(turn_to satellite0 groundstation0 phenomenon1)
+(turn_to satellite0 groundstation0 phenomenon1)
+"]
+s26->s26 [label="(turn_to satellite0 phenomenon1 phenomenon1)
+(turn_to satellite0 phenomenon1 phenomenon1)
+"]
+s26->s27 [label="(switch_off instrument1 satellite0)
+(switch_off instrument0 satellite0)
+"]
+s26->s28 [label="(turn_to satellite0 groundstation0 phenomenon1)
+(turn_to satellite0 groundstation0 phenomenon1)
+"]
+s27->s26 [label="(switch_on instrument0 satellite0)
+(switch_on instrument1 satellite0)
+"]
+s27->s27 [label="(turn_to satellite0 phenomenon1 phenomenon1)
+"]
+s27->s29 [label="(turn_to satellite0 groundstation0 phenomenon1)
+"]
+s28->s7 [label="(calibrate satellite0 instrument1 groundstation0)
+(calibrate satellite0 instrument0 groundstation0)
+"]
+s28->s26 [label="(turn_to satellite0 phenomenon1 groundstation0)
+(turn_to satellite0 phenomenon1 groundstation0)
+"]
+s28->s28 [label="(turn_to satellite0 groundstation0 groundstation0)
+(turn_to satellite0 groundstation0 groundstation0)
+"]
+s28->s29 [label="(switch_off instrument0 satellite0)
+(switch_off instrument1 satellite0)
+"]
+s29->s27 [label="(turn_to satellite0 phenomenon1 groundstation0)
+"]
+s29->s28 [label="(switch_on instrument1 satellite0)
+(switch_on instrument0 satellite0)
+"]
+s29->s29 [label="(turn_to satellite0 groundstation0 groundstation0)
+"]
+s30->s8 [label="(switch_off instrument1 satellite0)
+(switch_off instrument0 satellite0)
+"]
+s30->s25 [label="(turn_to satellite0 phenomenon1 groundstation0)
+(turn_to satellite0 phenomenon1 groundstation0)
+"]
+s30->s30 [label="(turn_to satellite0 groundstation0 groundstation0)
+(turn_to satellite0 groundstation0 groundstation0)
+"]
+s30->s31 [label="(calibrate satellite0 instrument0 groundstation0)
+(calibrate satellite0 instrument1 groundstation0)
+"]
+s31->s31 [label="(turn_to satellite0 groundstation0 groundstation0)
+(take_image satellite0 groundstation0 instrument1 spectrograph0)
+(calibrate satellite0 instrument1 groundstation0)
+(turn_to satellite0 groundstation0 groundstation0)
+(calibrate satellite0 instrument0 groundstation0)
+(take_image satellite0 groundstation0 instrument0 spectrograph0)
+"]
+s31->s32 [label="(switch_off instrument1 satellite0)
+(switch_off instrument0 satellite0)
+"]
+s31->s33 [label="(turn_to satellite0 phenomenon1 groundstation0)
+(turn_to satellite0 phenomenon1 groundstation0)
+"]
+s32->s30 [label="(switch_on instrument0 satellite0)
+(switch_on instrument1 satellite0)
+"]
+s32->s32 [label="(turn_to satellite0 groundstation0 groundstation0)
+"]
+s32->s34 [label="(turn_to satellite0 phenomenon1 groundstation0)
+"]
+s33->s23 [label="(take_image satellite0 phenomenon1 instrument0 spectrograph0)
+(take_image satellite0 phenomenon1 instrument1 spectrograph0)
+"]
+s33->s31 [label="(turn_to satellite0 groundstation0 phenomenon1)
+(turn_to satellite0 groundstation0 phenomenon1)
+"]
+s33->s33 [label="(turn_to satellite0 phenomenon1 phenomenon1)
+(turn_to satellite0 phenomenon1 phenomenon1)
+"]
+s33->s34 [label="(switch_off instrument0 satellite0)
+(switch_off instrument1 satellite0)
+"]
+s34->s25 [label="(switch_on instrument0 satellite0)
+(switch_on instrument1 satellite0)
+"]
+s34->s32 [label="(turn_to satellite0 groundstation0 phenomenon1)
+"]
+s34->s34 [label="(turn_to satellite0 phenomenon1 phenomenon1)
+"]
+s35->s1 [label="(switch_on instrument0 satellite0)
+(switch_on instrument1 satellite0)
+"]
+s35->s5 [label="(turn_to satellite0 groundstation0 phenomenon1)
+(turn_to satellite0 groundstation0 phenomenon1)
+"]
+s35->s35 [label="(turn_to satellite0 phenomenon1 phenomenon1)
+(turn_to satellite0 phenomenon1 phenomenon1)
+"]
+s35->s50 [label="(switch_on instrument0 satellite0)
+(switch_on instrument1 satellite0)
+"]
+s36->s36 [label="(take_image satellite0 phenomenon1 instrument1 spectrograph0)
+(turn_to satellite0 phenomenon1 phenomenon1)
+(turn_to satellite0 phenomenon1 phenomenon1)
+(take_image satellite0 phenomenon1 instrument0 spectrograph0)
+"]
+s36->s37 [label="(switch_off instrument0 satellite0)
+(switch_off instrument1 satellite0)
+"]
+s36->s38 [label="(turn_to satellite0 groundstation0 phenomenon1)
+(turn_to satellite0 groundstation0 phenomenon1)
+"]
+s37->s37 [label="(turn_to satellite0 phenomenon1 phenomenon1)
+(turn_to satellite0 phenomenon1 phenomenon1)
+"]
+s37->s39 [label="(turn_to satellite0 groundstation0 phenomenon1)
+(turn_to satellite0 groundstation0 phenomenon1)
+"]
+s37->s43 [label="(switch_on instrument0 satellite0)
+(switch_on instrument1 satellite0)
+"]
+s37->s45 [label="(switch_on instrument1 satellite0)
+(switch_on instrument0 satellite0)
+"]
+s38->s13 [label="(take_image satellite0 groundstation0 instrument0 spectrograph0)
+(take_image satellite0 groundstation0 instrument1 spectrograph0)
+"]
+s38->s36 [label="(turn_to satellite0 phenomenon1 groundstation0)
+(turn_to satellite0 phenomenon1 groundstation0)
+"]
+s38->s38 [label="(calibrate satellite0 instrument0 groundstation0)
+(turn_to satellite0 groundstation0 groundstation0)
+(calibrate satellite0 instrument1 groundstation0)
+(turn_to satellite0 groundstation0 groundstation0)
+"]
+s38->s39 [label="(switch_off instrument0 satellite0)
+(switch_off instrument1 satellite0)
+"]
+s39->s37 [label="(turn_to satellite0 phenomenon1 groundstation0)
+(turn_to satellite0 phenomenon1 groundstation0)
+"]
+s39->s39 [label="(turn_to satellite0 groundstation0 groundstation0)
+(turn_to satellite0 groundstation0 groundstation0)
+"]
+s39->s40 [label="(switch_on instrument0 satellite0)
+(switch_on instrument1 satellite0)
+"]
+s39->s41 [label="(switch_on instrument1 satellite0)
+(switch_on instrument0 satellite0)
+"]
+s40->s39 [label="(switch_off instrument1 satellite0)
+(switch_off instrument0 satellite0)
+"]
+s40->s40 [label="(turn_to satellite0 groundstation0 groundstation0)
+(turn_to satellite0 groundstation0 groundstation0)
+"]
+s40->s45 [label="(turn_to satellite0 phenomenon1 groundstation0)
+(turn_to satellite0 phenomenon1 groundstation0)
+"]
+s40->s46 [label="(calibrate satellite0 instrument0 groundstation0)
+(calibrate satellite0 instrument1 groundstation0)
+"]
+s41->s38 [label="(calibrate satellite0 instrument1 groundstation0)
+(calibrate satellite0 instrument0 groundstation0)
+"]
+s41->s41 [label="(turn_to satellite0 groundstation0 groundstation0)
+(turn_to satellite0 groundstation0 groundstation0)
+"]
+s41->s42 [label="(switch_off instrument0 satellite0)
+(switch_off instrument1 satellite0)
+"]
+s41->s43 [label="(turn_to satellite0 phenomenon1 groundstation0)
+(turn_to satellite0 phenomenon1 groundstation0)
+"]
+s42->s41 [label="(switch_on instrument1 satellite0)
+(switch_on instrument0 satellite0)
+"]
+s42->s42 [label="(turn_to satellite0 groundstation0 groundstation0)
+"]
+s42->s44 [label="(turn_to satellite0 phenomenon1 groundstation0)
+"]
+s43->s41 [label="(turn_to satellite0 groundstation0 phenomenon1)
+(turn_to satellite0 groundstation0 phenomenon1)
+"]
+s43->s43 [label="(turn_to satellite0 phenomenon1 phenomenon1)
+(turn_to satellite0 phenomenon1 phenomenon1)
+"]
+s43->s44 [label="(switch_off instrument1 satellite0)
+(switch_off instrument0 satellite0)
+"]
+s44->s42 [label="(turn_to satellite0 groundstation0 phenomenon1)
+"]
+s44->s43 [label="(switch_on instrument0 satellite0)
+(switch_on instrument1 satellite0)
+"]
+s44->s44 [label="(turn_to satellite0 phenomenon1 phenomenon1)
+"]
+s45->s37 [label="(switch_off instrument1 satellite0)
+(switch_off instrument0 satellite0)
+"]
+s45->s40 [label="(turn_to satellite0 groundstation0 phenomenon1)
+(turn_to satellite0 groundstation0 phenomenon1)
+"]
+s45->s45 [label="(turn_to satellite0 phenomenon1 phenomenon1)
+(turn_to satellite0 phenomenon1 phenomenon1)
+"]
+s46->s21 [label="(take_image satellite0 groundstation0 instrument0 spectrograph0)
+(take_image satellite0 groundstation0 instrument1 spectrograph0)
+"]
+s46->s46 [label="(calibrate satellite0 instrument1 groundstation0)
+(turn_to satellite0 groundstation0 groundstation0)
+(calibrate satellite0 instrument0 groundstation0)
+(turn_to satellite0 groundstation0 groundstation0)
+"]
+s46->s47 [label="(switch_off instrument1 satellite0)
+(switch_off instrument0 satellite0)
+"]
+s46->s48 [label="(turn_to satellite0 phenomenon1 groundstation0)
+(turn_to satellite0 phenomenon1 groundstation0)
+"]
+s47->s40 [label="(switch_on instrument1 satellite0)
+(switch_on instrument0 satellite0)
+"]
+s47->s47 [label="(turn_to satellite0 groundstation0 groundstation0)
+"]
+s47->s49 [label="(turn_to satellite0 phenomenon1 groundstation0)
+"]
+s48->s46 [label="(turn_to satellite0 groundstation0 phenomenon1)
+(turn_to satellite0 groundstation0 phenomenon1)
+"]
+s48->s48 [label="(take_image satellite0 phenomenon1 instrument0 spectrograph0)
+(turn_to satellite0 phenomenon1 phenomenon1)
+(take_image satellite0 phenomenon1 instrument1 spectrograph0)
+(turn_to satellite0 phenomenon1 phenomenon1)
+"]
+s48->s49 [label="(switch_off instrument0 satellite0)
+(switch_off instrument1 satellite0)
+"]
+s49->s45 [label="(switch_on instrument1 satellite0)
+(switch_on instrument0 satellite0)
+"]
+s49->s47 [label="(turn_to satellite0 groundstation0 phenomenon1)
+"]
+s49->s49 [label="(turn_to satellite0 phenomenon1 phenomenon1)
+"]
+s50->s35 [label="(switch_off instrument0 satellite0)
+(switch_off instrument1 satellite0)
+"]
+s50->s50 [label="(turn_to satellite0 phenomenon1 phenomenon1)
+(turn_to satellite0 phenomenon1 phenomenon1)
+"]
+s50->s51 [label="(turn_to satellite0 groundstation0 phenomenon1)
+(turn_to satellite0 groundstation0 phenomenon1)
+"]
+s51->s5 [label="(switch_off instrument0 satellite0)
+(switch_off instrument1 satellite0)
+"]
+s51->s50 [label="(turn_to satellite0 phenomenon1 groundstation0)
+(turn_to satellite0 phenomenon1 groundstation0)
+"]
+s51->s51 [label="(turn_to satellite0 groundstation0 groundstation0)
+(turn_to satellite0 groundstation0 groundstation0)
+"]
+s51->s52 [label="(calibrate satellite0 instrument0 groundstation0)
+(calibrate satellite0 instrument1 groundstation0)
+"]
+s52->s31 [label="(take_image satellite0 groundstation0 instrument1 spectrograph0)
+(take_image satellite0 groundstation0 instrument0 spectrograph0)
+"]
+s52->s52 [label="(turn_to satellite0 groundstation0 groundstation0)
+(calibrate satellite0 instrument0 groundstation0)
+(calibrate satellite0 instrument1 groundstation0)
+(turn_to satellite0 groundstation0 groundstation0)
+"]
+s52->s53 [label="(switch_off instrument0 satellite0)
+(switch_off instrument1 satellite0)
+"]
+s52->s54 [label="(turn_to satellite0 phenomenon1 groundstation0)
+(turn_to satellite0 phenomenon1 groundstation0)
+"]
+s53->s51 [label="(switch_on instrument1 satellite0)
+(switch_on instrument0 satellite0)
+"]
+s53->s53 [label="(turn_to satellite0 groundstation0 groundstation0)
+"]
+s53->s55 [label="(turn_to satellite0 phenomenon1 groundstation0)
+"]
+s54->s48 [label="(take_image satellite0 phenomenon1 instrument0 spectrograph0)
+(take_image satellite0 phenomenon1 instrument1 spectrograph0)
+"]
+s54->s52 [label="(turn_to satellite0 groundstation0 phenomenon1)
+(turn_to satellite0 groundstation0 phenomenon1)
+"]
+s54->s54 [label="(turn_to satellite0 phenomenon1 phenomenon1)
+(turn_to satellite0 phenomenon1 phenomenon1)
+"]
+s54->s55 [label="(switch_off instrument1 satellite0)
+(switch_off instrument0 satellite0)
+"]
+s55->s50 [label="(switch_on instrument0 satellite0)
+(switch_on instrument1 satellite0)
+"]
+s55->s53 [label="(turn_to satellite0 groundstation0 phenomenon1)
+"]
+s55->s55 [label="(turn_to satellite0 phenomenon1 phenomenon1)
+"]
+}

@@ -1,0 +1,963 @@
+Changing working directory:  /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/experiments/scripts/workspace-tractable/miconic_1
+2024-09-14 14:05:41,199 - Constructing InstanceDatas...
+2024-09-14 14:05:42,118 - Constructing GlobalFaithfulAbstractions...
+2024-09-14 14:05:42,863 - ...done
+2024-09-14 14:05:42,863 - Constructing StateSpaces...
+2024-09-14 14:05:42,896 - ...done
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-2-1-17.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-2-1-17.pddl
+2024-09-14 14:05:42,911 - Created InstanceData with num concrete states: 6 and num abstract states: 6
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-2-1-15.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-2-1-15.pddl
+2024-09-14 14:05:42,912 - Created InstanceData with num concrete states: 6 and num abstract states: 6
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-3-1-12.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-3-1-12.pddl
+2024-09-14 14:05:42,913 - Created InstanceData with num concrete states: 9 and num abstract states: 9
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-3-1-25.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-3-1-25.pddl
+2024-09-14 14:05:42,913 - Created InstanceData with num concrete states: 9 and num abstract states: 9
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-3-1-9.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-3-1-9.pddl
+2024-09-14 14:05:42,914 - Created InstanceData with num concrete states: 9 and num abstract states: 9
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-3-1-28.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-3-1-28.pddl
+2024-09-14 14:05:42,914 - Created InstanceData with num concrete states: 9 and num abstract states: 9
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-3-1-10.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-3-1-10.pddl
+2024-09-14 14:05:42,915 - Created InstanceData with num concrete states: 9 and num abstract states: 9
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-3-1-27.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-3-1-27.pddl
+2024-09-14 14:05:42,916 - Created InstanceData with num concrete states: 9 and num abstract states: 9
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-1-3.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-1-3.pddl
+2024-09-14 14:05:42,916 - Created InstanceData with num concrete states: 12 and num abstract states: 12
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-2-2-7.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-2-2-7.pddl
+2024-09-14 14:05:42,917 - Created InstanceData with num concrete states: 18 and num abstract states: 12
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-1-25.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-1-25.pddl
+2024-09-14 14:05:42,919 - Created InstanceData with num concrete states: 12 and num abstract states: 12
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-1-2.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-1-2.pddl
+2024-09-14 14:05:42,920 - Created InstanceData with num concrete states: 12 and num abstract states: 12
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-1-24.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-1-24.pddl
+2024-09-14 14:05:42,921 - Created InstanceData with num concrete states: 12 and num abstract states: 12
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-1-10.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-1-10.pddl
+2024-09-14 14:05:42,922 - Created InstanceData with num concrete states: 12 and num abstract states: 12
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-1-21.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-1-21.pddl
+2024-09-14 14:05:42,922 - Created InstanceData with num concrete states: 12 and num abstract states: 12
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-2-2-0.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-2-2-0.pddl
+2024-09-14 14:05:42,923 - Created InstanceData with num concrete states: 18 and num abstract states: 12
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-1-29.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-1-29.pddl
+2024-09-14 14:05:42,924 - Created InstanceData with num concrete states: 12 and num abstract states: 12
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-1-13.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-1-13.pddl
+2024-09-14 14:05:42,925 - Created InstanceData with num concrete states: 12 and num abstract states: 12
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-1-26.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-1-26.pddl
+2024-09-14 14:05:42,925 - Created InstanceData with num concrete states: 12 and num abstract states: 12
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-1-7.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-1-7.pddl
+2024-09-14 14:05:42,926 - Created InstanceData with num concrete states: 12 and num abstract states: 12
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-1-14.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-1-14.pddl
+2024-09-14 14:05:42,927 - Created InstanceData with num concrete states: 12 and num abstract states: 12
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-2-2-15.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-2-2-15.pddl
+2024-09-14 14:05:42,928 - Created InstanceData with num concrete states: 18 and num abstract states: 18
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-3-2-21.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-3-2-21.pddl
+2024-09-14 14:05:42,929 - Created InstanceData with num concrete states: 27 and num abstract states: 18
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-3-2-23.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-3-2-23.pddl
+2024-09-14 14:05:42,930 - Created InstanceData with num concrete states: 27 and num abstract states: 18
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-2-3-26.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-2-3-26.pddl
+2024-09-14 14:05:42,931 - Created InstanceData with num concrete states: 54 and num abstract states: 20
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-2-3-9.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-2-3-9.pddl
+2024-09-14 14:05:42,933 - Created InstanceData with num concrete states: 54 and num abstract states: 20
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-2-1.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-2-1.pddl
+2024-09-14 14:05:42,934 - Created InstanceData with num concrete states: 36 and num abstract states: 24
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-2-16.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-2-16.pddl
+2024-09-14 14:05:42,936 - Created InstanceData with num concrete states: 36 and num abstract states: 24
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-3-2-9.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-3-2-9.pddl
+2024-09-14 14:05:42,937 - Created InstanceData with num concrete states: 27 and num abstract states: 24
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-3-2-2.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-3-2-2.pddl
+2024-09-14 14:05:42,938 - Created InstanceData with num concrete states: 27 and num abstract states: 24
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-3-2-26.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-3-2-26.pddl
+2024-09-14 14:05:42,939 - Created InstanceData with num concrete states: 27 and num abstract states: 24
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-2-10.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-2-10.pddl
+2024-09-14 14:05:42,940 - Created InstanceData with num concrete states: 36 and num abstract states: 24
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-3-2-17.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-3-2-17.pddl
+2024-09-14 14:05:42,941 - Created InstanceData with num concrete states: 27 and num abstract states: 27
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-3-2-12.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-3-2-12.pddl
+2024-09-14 14:05:42,942 - Created InstanceData with num concrete states: 27 and num abstract states: 27
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-3-2-19.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-3-2-19.pddl
+2024-09-14 14:05:42,943 - Created InstanceData with num concrete states: 27 and num abstract states: 27
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-3-2-14.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-3-2-14.pddl
+2024-09-14 14:05:42,944 - Created InstanceData with num concrete states: 27 and num abstract states: 27
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-3-2-27.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-3-2-27.pddl
+2024-09-14 14:05:42,945 - Created InstanceData with num concrete states: 27 and num abstract states: 27
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-3-2-1.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-3-2-1.pddl
+2024-09-14 14:05:42,946 - Created InstanceData with num concrete states: 27 and num abstract states: 27
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-3-2-15.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-3-2-15.pddl
+2024-09-14 14:05:42,947 - Created InstanceData with num concrete states: 27 and num abstract states: 27
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-3-2-10.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-3-2-10.pddl
+2024-09-14 14:05:42,948 - Created InstanceData with num concrete states: 27 and num abstract states: 27
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-3-2-20.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-3-2-20.pddl
+2024-09-14 14:05:42,949 - Created InstanceData with num concrete states: 27 and num abstract states: 27
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-3-2-3.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-3-2-3.pddl
+2024-09-14 14:05:42,951 - Created InstanceData with num concrete states: 27 and num abstract states: 27
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-3-3-24.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-3-3-24.pddl
+2024-09-14 14:05:42,953 - Created InstanceData with num concrete states: 81 and num abstract states: 30
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-2-4-28.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-2-4-28.pddl
+2024-09-14 14:05:42,956 - Created InstanceData with num concrete states: 162 and num abstract states: 30
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-2-4-20.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-2-4-20.pddl
+2024-09-14 14:05:42,959 - Created InstanceData with num concrete states: 162 and num abstract states: 30
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-2-15.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-2-15.pddl
+2024-09-14 14:05:42,961 - Created InstanceData with num concrete states: 36 and num abstract states: 32
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-2-18.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-2-18.pddl
+2024-09-14 14:05:42,962 - Created InstanceData with num concrete states: 36 and num abstract states: 32
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-2-0.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-2-0.pddl
+2024-09-14 14:05:42,963 - Created InstanceData with num concrete states: 36 and num abstract states: 32
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-2-2.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-2-2.pddl
+2024-09-14 14:05:42,964 - Created InstanceData with num concrete states: 36 and num abstract states: 32
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-2-17.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-2-17.pddl
+2024-09-14 14:05:42,966 - Created InstanceData with num concrete states: 36 and num abstract states: 32
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-2-5.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-2-5.pddl
+2024-09-14 14:05:42,967 - Created InstanceData with num concrete states: 36 and num abstract states: 32
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-2-22.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-2-22.pddl
+2024-09-14 14:05:42,968 - Created InstanceData with num concrete states: 36 and num abstract states: 32
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-2-13.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-2-13.pddl
+2024-09-14 14:05:42,970 - Created InstanceData with num concrete states: 36 and num abstract states: 32
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-2-3-17.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-2-3-17.pddl
+2024-09-14 14:05:42,971 - Created InstanceData with num concrete states: 54 and num abstract states: 36
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-2-3-5.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-2-3-5.pddl
+2024-09-14 14:05:42,972 - Created InstanceData with num concrete states: 54 and num abstract states: 36
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-2-6.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-2-6.pddl
+2024-09-14 14:05:42,974 - Created InstanceData with num concrete states: 36 and num abstract states: 36
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-2-8.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-2-8.pddl
+2024-09-14 14:05:42,975 - Created InstanceData with num concrete states: 36 and num abstract states: 36
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-2-9.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-2-9.pddl
+2024-09-14 14:05:42,976 - Created InstanceData with num concrete states: 36 and num abstract states: 36
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-2-20.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-2-20.pddl
+2024-09-14 14:05:42,978 - Created InstanceData with num concrete states: 36 and num abstract states: 36
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-2-23.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-2-23.pddl
+2024-09-14 14:05:42,979 - Created InstanceData with num concrete states: 36 and num abstract states: 36
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-2-7.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-2-7.pddl
+2024-09-14 14:05:42,980 - Created InstanceData with num concrete states: 36 and num abstract states: 36
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-2-4.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-2-4.pddl
+2024-09-14 14:05:42,981 - Created InstanceData with num concrete states: 36 and num abstract states: 36
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-2-19.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-2-19.pddl
+2024-09-14 14:05:42,983 - Created InstanceData with num concrete states: 36 and num abstract states: 36
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-2-3.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-2-3.pddl
+2024-09-14 14:05:42,984 - Created InstanceData with num concrete states: 36 and num abstract states: 36
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-2-11.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-2-11.pddl
+2024-09-14 14:05:42,985 - Created InstanceData with num concrete states: 36 and num abstract states: 36
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-2-25.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-2-25.pddl
+2024-09-14 14:05:42,986 - Created InstanceData with num concrete states: 36 and num abstract states: 36
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-2-26.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-2-26.pddl
+2024-09-14 14:05:42,988 - Created InstanceData with num concrete states: 36 and num abstract states: 36
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-2-28.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-2-28.pddl
+2024-09-14 14:05:42,989 - Created InstanceData with num concrete states: 36 and num abstract states: 36
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-2-29.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-2-29.pddl
+2024-09-14 14:05:42,990 - Created InstanceData with num concrete states: 36 and num abstract states: 36
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-2-21.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-2-21.pddl
+2024-09-14 14:05:42,991 - Created InstanceData with num concrete states: 36 and num abstract states: 36
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-3-16.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-3-16.pddl
+2024-09-14 14:05:42,994 - Created InstanceData with num concrete states: 108 and num abstract states: 40
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-3-3-7.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-3-3-7.pddl
+2024-09-14 14:05:42,996 - Created InstanceData with num concrete states: 81 and num abstract states: 45
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-3-3-27.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-3-3-27.pddl
+2024-09-14 14:05:42,998 - Created InstanceData with num concrete states: 81 and num abstract states: 45
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-3-3-25.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-3-3-25.pddl
+2024-09-14 14:05:43,000 - Created InstanceData with num concrete states: 81 and num abstract states: 45
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-3-3-28.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-3-3-28.pddl
+2024-09-14 14:05:43,002 - Created InstanceData with num concrete states: 81 and num abstract states: 54
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-3-3-15.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-3-3-15.pddl
+2024-09-14 14:05:43,004 - Created InstanceData with num concrete states: 81 and num abstract states: 54
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-3-3-18.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-3-3-18.pddl
+2024-09-14 14:05:43,006 - Created InstanceData with num concrete states: 81 and num abstract states: 54
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-3-3-8.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-3-3-8.pddl
+2024-09-14 14:05:43,008 - Created InstanceData with num concrete states: 81 and num abstract states: 54
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-3-3-5.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-3-3-5.pddl
+2024-09-14 14:05:43,010 - Created InstanceData with num concrete states: 81 and num abstract states: 54
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-3-3-16.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-3-3-16.pddl
+2024-09-14 14:05:43,012 - Created InstanceData with num concrete states: 81 and num abstract states: 54
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-3-3-12.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-3-3-12.pddl
+2024-09-14 14:05:43,014 - Created InstanceData with num concrete states: 81 and num abstract states: 54
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-3-3-19.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-3-3-19.pddl
+2024-09-14 14:05:43,016 - Created InstanceData with num concrete states: 81 and num abstract states: 54
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-2-4-13.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-2-4-13.pddl
+2024-09-14 14:05:43,019 - Created InstanceData with num concrete states: 162 and num abstract states: 60
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-2-4-12.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-2-4-12.pddl
+2024-09-14 14:05:43,023 - Created InstanceData with num concrete states: 162 and num abstract states: 60
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-3-27.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-3-27.pddl
+2024-09-14 14:05:43,025 - Created InstanceData with num concrete states: 108 and num abstract states: 60
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-3-3-20.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-3-3-20.pddl
+2024-09-14 14:05:43,027 - Created InstanceData with num concrete states: 81 and num abstract states: 72
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-3-6.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-3-6.pddl
+2024-09-14 14:05:43,030 - Created InstanceData with num concrete states: 108 and num abstract states: 72
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-3-1.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-3-1.pddl
+2024-09-14 14:05:43,033 - Created InstanceData with num concrete states: 108 and num abstract states: 72
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-2-4-18.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-2-4-18.pddl
+2024-09-14 14:05:43,036 - Created InstanceData with num concrete states: 162 and num abstract states: 72
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-3-26.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-3-26.pddl
+2024-09-14 14:05:43,039 - Created InstanceData with num concrete states: 108 and num abstract states: 72
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-3-20.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-3-20.pddl
+2024-09-14 14:05:43,042 - Created InstanceData with num concrete states: 108 and num abstract states: 72
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-3-3.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-3-3.pddl
+2024-09-14 14:05:43,045 - Created InstanceData with num concrete states: 108 and num abstract states: 72
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-3-3-23.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-3-3-23.pddl
+2024-09-14 14:05:43,047 - Created InstanceData with num concrete states: 81 and num abstract states: 72
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-3-5.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-3-5.pddl
+2024-09-14 14:05:43,050 - Created InstanceData with num concrete states: 108 and num abstract states: 72
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-3-0.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-3-0.pddl
+2024-09-14 14:05:43,052 - Created InstanceData with num concrete states: 108 and num abstract states: 72
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-3-8.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-3-8.pddl
+2024-09-14 14:05:43,055 - Created InstanceData with num concrete states: 108 and num abstract states: 72
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-3-10.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-3-10.pddl
+2024-09-14 14:05:43,058 - Created InstanceData with num concrete states: 108 and num abstract states: 72
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-3-3-26.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-3-3-26.pddl
+2024-09-14 14:05:43,060 - Created InstanceData with num concrete states: 81 and num abstract states: 72
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-3-3-1.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-3-3-1.pddl
+2024-09-14 14:05:43,062 - Created InstanceData with num concrete states: 81 and num abstract states: 72
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-3-3-13.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-3-3-13.pddl
+2024-09-14 14:05:43,064 - Created InstanceData with num concrete states: 81 and num abstract states: 72
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-3-3-0.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-3-3-0.pddl
+2024-09-14 14:05:43,066 - Created InstanceData with num concrete states: 81 and num abstract states: 72
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-3-3-22.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-3-3-22.pddl
+2024-09-14 14:05:43,068 - Created InstanceData with num concrete states: 81 and num abstract states: 81
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-3-3-29.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-3-3-29.pddl
+2024-09-14 14:05:43,070 - Created InstanceData with num concrete states: 81 and num abstract states: 81
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-3-3-2.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-3-3-2.pddl
+2024-09-14 14:05:43,072 - Created InstanceData with num concrete states: 81 and num abstract states: 81
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-3-3-6.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-3-3-6.pddl
+2024-09-14 14:05:43,074 - Created InstanceData with num concrete states: 81 and num abstract states: 81
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-3-3-10.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-3-3-10.pddl
+2024-09-14 14:05:43,076 - Created InstanceData with num concrete states: 81 and num abstract states: 81
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-3-4-1.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-3-4-1.pddl
+2024-09-14 14:05:43,081 - Created InstanceData with num concrete states: 243 and num abstract states: 90
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-3-4-27.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-3-4-27.pddl
+2024-09-14 14:05:43,085 - Created InstanceData with num concrete states: 243 and num abstract states: 90
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-3-4-2.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-3-4-2.pddl
+2024-09-14 14:05:43,090 - Created InstanceData with num concrete states: 243 and num abstract states: 90
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-3-11.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-3-11.pddl
+2024-09-14 14:05:43,093 - Created InstanceData with num concrete states: 108 and num abstract states: 96
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-3-4.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-3-4.pddl
+2024-09-14 14:05:43,095 - Created InstanceData with num concrete states: 108 and num abstract states: 96
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-3-17.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-3-17.pddl
+2024-09-14 14:05:43,098 - Created InstanceData with num concrete states: 108 and num abstract states: 96
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-3-21.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-3-21.pddl
+2024-09-14 14:05:43,100 - Created InstanceData with num concrete states: 108 and num abstract states: 96
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-3-15.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-3-15.pddl
+2024-09-14 14:05:43,103 - Created InstanceData with num concrete states: 108 and num abstract states: 96
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-3-19.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-3-19.pddl
+2024-09-14 14:05:43,106 - Created InstanceData with num concrete states: 108 and num abstract states: 96
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-3-24.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-3-24.pddl
+2024-09-14 14:05:43,108 - Created InstanceData with num concrete states: 108 and num abstract states: 96
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-3-29.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-3-29.pddl
+2024-09-14 14:05:43,111 - Created InstanceData with num concrete states: 108 and num abstract states: 96
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-3-12.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-3-12.pddl
+2024-09-14 14:05:43,113 - Created InstanceData with num concrete states: 108 and num abstract states: 96
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-3-28.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-3-28.pddl
+2024-09-14 14:05:43,116 - Created InstanceData with num concrete states: 108 and num abstract states: 96
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-3-25.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-3-25.pddl
+2024-09-14 14:05:43,118 - Created InstanceData with num concrete states: 108 and num abstract states: 108
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-3-14.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-3-14.pddl
+2024-09-14 14:05:43,121 - Created InstanceData with num concrete states: 108 and num abstract states: 108
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-3-13.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-3-13.pddl
+2024-09-14 14:05:43,123 - Created InstanceData with num concrete states: 108 and num abstract states: 108
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-3-23.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-3-23.pddl
+2024-09-14 14:05:43,126 - Created InstanceData with num concrete states: 108 and num abstract states: 108
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-3-18.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-3-18.pddl
+2024-09-14 14:05:43,129 - Created InstanceData with num concrete states: 108 and num abstract states: 108
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-3-9.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-3-9.pddl
+2024-09-14 14:05:43,131 - Created InstanceData with num concrete states: 108 and num abstract states: 108
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-3-4-6.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-3-4-6.pddl
+2024-09-14 14:05:43,136 - Created InstanceData with num concrete states: 243 and num abstract states: 108
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-3-22.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-3-22.pddl
+2024-09-14 14:05:43,138 - Created InstanceData with num concrete states: 108 and num abstract states: 108
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-3-7.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-3-7.pddl
+2024-09-14 14:05:43,141 - Created InstanceData with num concrete states: 108 and num abstract states: 108
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-3-2.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-3-2.pddl
+2024-09-14 14:05:43,144 - Created InstanceData with num concrete states: 108 and num abstract states: 108
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-3-4-26.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-3-4-26.pddl
+2024-09-14 14:05:43,148 - Created InstanceData with num concrete states: 243 and num abstract states: 135
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-3-4-9.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-3-4-9.pddl
+2024-09-14 14:05:43,153 - Created InstanceData with num concrete states: 243 and num abstract states: 135
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-3-4-28.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-3-4-28.pddl
+2024-09-14 14:05:43,158 - Created InstanceData with num concrete states: 243 and num abstract states: 135
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-3-4-24.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-3-4-24.pddl
+2024-09-14 14:05:43,163 - Created InstanceData with num concrete states: 243 and num abstract states: 135
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-3-4-0.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-3-4-0.pddl
+2024-09-14 14:05:43,167 - Created InstanceData with num concrete states: 243 and num abstract states: 135
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-3-4-21.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-3-4-21.pddl
+2024-09-14 14:05:43,172 - Created InstanceData with num concrete states: 243 and num abstract states: 135
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-3-4-12.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-3-4-12.pddl
+2024-09-14 14:05:43,177 - Created InstanceData with num concrete states: 243 and num abstract states: 135
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-3-4-4.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-3-4-4.pddl
+2024-09-14 14:05:43,182 - Created InstanceData with num concrete states: 243 and num abstract states: 144
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-3-4-13.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-3-4-13.pddl
+2024-09-14 14:05:43,186 - Created InstanceData with num concrete states: 243 and num abstract states: 144
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-3-4-16.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-3-4-16.pddl
+2024-09-14 14:05:43,191 - Created InstanceData with num concrete states: 243 and num abstract states: 162
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-3-4-8.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-3-4-8.pddl
+2024-09-14 14:05:43,196 - Created InstanceData with num concrete states: 243 and num abstract states: 162
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-3-4-18.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-3-4-18.pddl
+2024-09-14 14:05:43,200 - Created InstanceData with num concrete states: 243 and num abstract states: 162
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-3-4-20.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-3-4-20.pddl
+2024-09-14 14:05:43,205 - Created InstanceData with num concrete states: 243 and num abstract states: 162
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-3-4-15.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-3-4-15.pddl
+2024-09-14 14:05:43,210 - Created InstanceData with num concrete states: 243 and num abstract states: 162
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-3-4-10.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-3-4-10.pddl
+2024-09-14 14:05:43,215 - Created InstanceData with num concrete states: 243 and num abstract states: 162
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-3-4-25.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-3-4-25.pddl
+2024-09-14 14:05:43,219 - Created InstanceData with num concrete states: 243 and num abstract states: 162
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-3-4-3.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-3-4-3.pddl
+2024-09-14 14:05:43,224 - Created InstanceData with num concrete states: 243 and num abstract states: 162
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-3-4-23.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-3-4-23.pddl
+2024-09-14 14:05:43,229 - Created InstanceData with num concrete states: 243 and num abstract states: 162
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-4-16.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-4-16.pddl
+2024-09-14 14:05:43,235 - Created InstanceData with num concrete states: 324 and num abstract states: 180
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-4-4.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-4-4.pddl
+2024-09-14 14:05:43,241 - Created InstanceData with num concrete states: 324 and num abstract states: 180
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-4-18.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-4-18.pddl
+2024-09-14 14:05:43,248 - Created InstanceData with num concrete states: 324 and num abstract states: 180
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-4-3.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-4-3.pddl
+2024-09-14 14:05:43,254 - Created InstanceData with num concrete states: 324 and num abstract states: 192
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-4-28.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-4-28.pddl
+2024-09-14 14:05:43,260 - Created InstanceData with num concrete states: 324 and num abstract states: 192
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-4-1.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-4-1.pddl
+2024-09-14 14:05:43,266 - Created InstanceData with num concrete states: 324 and num abstract states: 192
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-3-4-5.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-3-4-5.pddl
+2024-09-14 14:05:43,271 - Created InstanceData with num concrete states: 243 and num abstract states: 192
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-4-10.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-4-10.pddl
+2024-09-14 14:05:43,277 - Created InstanceData with num concrete states: 324 and num abstract states: 192
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-4-24.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-4-24.pddl
+2024-09-14 14:05:43,284 - Created InstanceData with num concrete states: 324 and num abstract states: 192
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-4-6.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-4-6.pddl
+2024-09-14 14:05:43,290 - Created InstanceData with num concrete states: 324 and num abstract states: 216
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-3-4-11.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-3-4-11.pddl
+2024-09-14 14:05:43,295 - Created InstanceData with num concrete states: 243 and num abstract states: 216
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-4-9.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-4-9.pddl
+2024-09-14 14:05:43,301 - Created InstanceData with num concrete states: 324 and num abstract states: 216
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-4-14.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-4-14.pddl
+2024-09-14 14:05:43,308 - Created InstanceData with num concrete states: 324 and num abstract states: 216
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-4-2.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-4-2.pddl
+2024-09-14 14:05:43,314 - Created InstanceData with num concrete states: 324 and num abstract states: 216
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-3-4-17.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-3-4-17.pddl
+2024-09-14 14:05:43,319 - Created InstanceData with num concrete states: 243 and num abstract states: 216
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-3-4-7.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-3-4-7.pddl
+2024-09-14 14:05:43,323 - Created InstanceData with num concrete states: 243 and num abstract states: 216
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-4-12.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-4-12.pddl
+2024-09-14 14:05:43,330 - Created InstanceData with num concrete states: 324 and num abstract states: 216
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-3-4-29.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-3-4-29.pddl
+2024-09-14 14:05:43,335 - Created InstanceData with num concrete states: 243 and num abstract states: 216
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-4-29.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-4-29.pddl
+2024-09-14 14:05:43,341 - Created InstanceData with num concrete states: 324 and num abstract states: 240
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-4-26.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-4-26.pddl
+2024-09-14 14:05:43,347 - Created InstanceData with num concrete states: 324 and num abstract states: 288
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-4-21.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-4-21.pddl
+2024-09-14 14:05:43,354 - Created InstanceData with num concrete states: 324 and num abstract states: 288
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-4-25.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-4-25.pddl
+2024-09-14 14:05:43,360 - Created InstanceData with num concrete states: 324 and num abstract states: 288
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-4-11.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-4-11.pddl
+2024-09-14 14:05:43,366 - Created InstanceData with num concrete states: 324 and num abstract states: 288
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-4-20.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-4-20.pddl
+2024-09-14 14:05:43,373 - Created InstanceData with num concrete states: 324 and num abstract states: 288
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-4-5.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-4-5.pddl
+2024-09-14 14:05:43,379 - Created InstanceData with num concrete states: 324 and num abstract states: 288
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-4-7.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-4-7.pddl
+2024-09-14 14:05:43,385 - Created InstanceData with num concrete states: 324 and num abstract states: 288
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-4-13.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-4-13.pddl
+2024-09-14 14:05:43,392 - Created InstanceData with num concrete states: 324 and num abstract states: 288
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-4-22.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-4-22.pddl
+2024-09-14 14:05:43,398 - Created InstanceData with num concrete states: 324 and num abstract states: 288
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-4-23.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-4-23.pddl
+2024-09-14 14:05:43,404 - Created InstanceData with num concrete states: 324 and num abstract states: 288
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-4-0.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-4-0.pddl
+2024-09-14 14:05:43,411 - Created InstanceData with num concrete states: 324 and num abstract states: 288
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-4-19.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-4-19.pddl
+2024-09-14 14:05:43,417 - Created InstanceData with num concrete states: 324 and num abstract states: 288
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-4-27.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-4-27.pddl
+2024-09-14 14:05:43,423 - Created InstanceData with num concrete states: 324 and num abstract states: 324
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-4-17.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-4-17.pddl
+2024-09-14 14:05:43,430 - Created InstanceData with num concrete states: 324 and num abstract states: 324
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-4-8.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-4-8.pddl
+2024-09-14 14:05:43,436 - Created InstanceData with num concrete states: 324 and num abstract states: 324
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-4-15.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-4-15.pddl
+2024-09-14 14:05:43,442 - Created InstanceData with num concrete states: 324 and num abstract states: 324
+2024-09-14 14:05:43,458 - ..done
+2024-09-14 14:05:43,489 - Initializing TupleGraphs...
+2024-09-14 14:05:43,880 - ..done
+2024-09-14 14:05:43,881 - Iteration: 0
+     id: 0 problem_filepath: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-2-1-17.pddl num_states: 6 num_state_equivalences: 6
+2024-09-14 14:05:43,911 - Initialize global faithful abstract states...
+2024-09-14 14:05:43,911 - ..done
+2024-09-14 14:05:43,911 - Initializing DomainFeatureData...
+[t=2.75371s, 2519772 KB] Started generating base features of complexity 1.
+[t=2.75408s, 2519772 KB] Complexity 1:
+    b_nullary: 0
+    c_one_of: 0
+    c_top: 1
+    c_bot: 1
+    c_primitive: 5
+    r_primitive: 4
+    c_and: 0
+    c_not: 0
+    c_equal: 0
+    c_some: 0
+    c_all: 0
+    r_restrict: 0
+    r_and: 0
+    r_inverse: 0
+    r_transitive_closure: 0
+    b_empty: 0
+    n_count: 0
+    n_concept_distance: 0
+[t=2.75442s, 2519772 KB] Finished generating base features.
+[t=2.75446s, 2519772 KB] Started generating composite features. 
+[t=2.75476s, 2519772 KB] Complexity 2:
+Total concept elements: 10
+Total role elements: 7
+Total numerical elements: 7
+Total boolean elements: 5
+    b_nullary: 0
+    c_one_of: 0
+    c_top: 1
+    c_bot: 1
+    c_primitive: 5
+    r_primitive: 4
+    c_and: 0
+    c_not: 3
+    c_equal: 0
+    c_some: 0
+    c_all: 0
+    r_restrict: 0
+    r_and: 0
+    r_inverse: 3
+    r_transitive_closure: 0
+    b_empty: 5
+    n_count: 7
+    n_concept_distance: 0
+[t=2.75553s, 2519772 KB] Complexity 3:
+Total concept elements: 20
+Total role elements: 10
+Total numerical elements: 9
+Total boolean elements: 5
+    b_nullary: 0
+    c_one_of: 0
+    c_top: 1
+    c_bot: 1
+    c_primitive: 5
+    r_primitive: 4
+    c_and: 0
+    c_not: 3
+    c_equal: 1
+    c_some: 5
+    c_all: 4
+    r_restrict: 3
+    r_and: 0
+    r_inverse: 3
+    r_transitive_closure: 0
+    b_empty: 5
+    n_count: 9
+    n_concept_distance: 0
+[t=2.75619s, 2519772 KB] Complexity 4:
+Total concept elements: 39
+Total role elements: 13
+Total numerical elements: 20
+Total boolean elements: 7
+    b_nullary: 0
+    c_one_of: 0
+    c_top: 1
+    c_bot: 1
+    c_primitive: 5
+    r_primitive: 4
+    c_and: 3
+    c_not: 9
+    c_equal: 1
+    c_some: 10
+    c_all: 9
+    r_restrict: 3
+    r_and: 0
+    r_inverse: 6
+    r_transitive_closure: 0
+    b_empty: 7
+    n_count: 14
+    n_concept_distance: 6
+[t=2.75709s, 2519772 KB] Complexity 5:
+Total concept elements: 56
+Total role elements: 13
+Total numerical elements: 31
+Total boolean elements: 11
+    b_nullary: 0
+    c_one_of: 0
+    c_top: 1
+    c_bot: 1
+    c_primitive: 5
+    r_primitive: 4
+    c_and: 12
+    c_not: 17
+    c_equal: 1
+    c_some: 10
+    c_all: 9
+    r_restrict: 3
+    r_and: 0
+    r_inverse: 6
+    r_transitive_closure: 0
+    b_empty: 11
+    n_count: 22
+    n_concept_distance: 9
+[t=2.75859s, 2519772 KB] Complexity 6:
+Total concept elements: 107
+Total role elements: 13
+Total numerical elements: 47
+Total boolean elements: 15
+    b_nullary: 0
+    c_one_of: 0
+    c_top: 1
+    c_bot: 1
+    c_primitive: 5
+    r_primitive: 4
+    c_and: 40
+    c_not: 23
+    c_equal: 1
+    c_some: 17
+    c_all: 19
+    r_restrict: 3
+    r_and: 0
+    r_inverse: 6
+    r_transitive_closure: 0
+    b_empty: 15
+    n_count: 30
+    n_concept_distance: 17
+[t=2.76056s, 2519772 KB] Complexity 7:
+Total concept elements: 181
+Total role elements: 13
+Total numerical elements: 84
+Total boolean elements: 22
+    b_nullary: 0
+    c_one_of: 0
+    c_top: 1
+    c_bot: 1
+    c_primitive: 5
+    r_primitive: 4
+    c_and: 81
+    c_not: 56
+    c_equal: 1
+    c_some: 17
+    c_all: 19
+    r_restrict: 3
+    r_and: 0
+    r_inverse: 6
+    r_transitive_closure: 0
+    b_empty: 22
+    n_count: 54
+    n_concept_distance: 30
+[t=2.76428s, 2519772 KB] Complexity 8:
+Total concept elements: 297
+Total role elements: 13
+Total numerical elements: 125
+Total boolean elements: 29
+    b_nullary: 0
+    c_one_of: 0
+    c_top: 1
+    c_bot: 1
+    c_primitive: 5
+    r_primitive: 4
+    c_and: 148
+    c_not: 89
+    c_equal: 1
+    c_some: 22
+    c_all: 30
+    r_restrict: 3
+    r_and: 0
+    r_inverse: 6
+    r_transitive_closure: 0
+    b_empty: 29
+    n_count: 81
+    n_concept_distance: 44
+[t=2.7709s, 2519772 KB] Complexity 9:
+Total concept elements: 467
+Total role elements: 13
+Total numerical elements: 186
+Total boolean elements: 35
+    b_nullary: 0
+    c_one_of: 0
+    c_top: 1
+    c_bot: 1
+    c_primitive: 5
+    r_primitive: 4
+    c_and: 244
+    c_not: 152
+    c_equal: 1
+    c_some: 24
+    c_all: 39
+    r_restrict: 3
+    r_and: 0
+    r_inverse: 6
+    r_transitive_closure: 0
+    b_empty: 35
+    n_count: 119
+    n_concept_distance: 67
+[t=2.77124s, 2519772 KB] Finished generating composite features.
+Features generated: 221
+Features after relevant changes pruning (complete): 68
+2024-09-14 14:05:44,023 - ..done
+2024-09-14 14:05:44,023 - Constructing PerStateFeatureValuations...
+2024-09-14 14:05:44,023 - ..done
+2024-09-14 14:05:44,023 - Constructing StatePairEquivalenceDatas...
+2024-09-14 14:05:44,031 - ..done
+2024-09-14 14:05:44,031 - Constructing TupleGraphEquivalences...
+Tuple graph equivalence construction statistics:
+Num nodes: 16
+2024-09-14 14:05:44,032 - ..done
+2024-09-14 14:05:44,032 - Minimizing TupleGraphEquivalences...
+Tuple graph equivalence minimization statistics:
+Num orig nodes: 16
+Num kept nodes: 16
+2024-09-14 14:05:44,032 - ..done
+Number of initial D2 facts: 14
+Number of D2 facts: 14 of 256
+2024-09-14 14:05:44,052 - Grounding Logic Program...
+2024-09-14 14:05:44,068 - ..done
+2024-09-14 14:05:44,068 - Solving Logic Program...
+2024-09-14 14:05:44,072 - ..done
+Clingo statistics:
+{'call': 0.0, 'result': 1.0, 'signal': 0.0, 'exhausted': 1.0, 'costs': [3.0], 'lower': [3.0], 'concurrency': 32.0, 'winner': 14.0, 'times': {'total': 0.03849387168884277, 'cpu': 0.04873400000000139, 'solve': 0.0025129318237304688, 'unsat': 0.0008409023284912109, 'sat': 0.00152587890625}, 'models': {'enumerated': 2.0, 'optimal': 1.0}}
+Solution cost: [3.0]
+Total time: 0.03849387168884277
+CPU time: 0.04873400000000139
+Solve time: 0.0025129318237304688
+2024-09-14 14:05:44,083 - Learned the following sketch:
+(:policy
+(:booleans )
+(:numericals (f2 "n_count(c_primitive(boarded,0))"))
+(:rule (:conditions (:c_n_gt f2)) (:effects (:e_n_bot f2)))
+(:rule (:conditions (:c_n_eq f2)) (:effects (:e_n_inc f2)))
+(:rule (:conditions (:c_n_gt f2)) (:effects (:e_n_dec f2)))
+(:rule (:conditions (:c_n_eq f2)) (:effects (:e_n_bot f2)))
+)
+Numer of sketch rules: 4
+Number of selected features: 1
+Maximum complexity of selected feature: 2
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-2-1-17.pddl
+Sketch cycles
+Instance: 0
+3
+3
+Number of unsatisfied D2 facts: 11
+Number of D2 facts: 25 of 256
+2024-09-14 14:05:44,136 - Grounding Logic Program...
+2024-09-14 14:05:44,151 - ..done
+2024-09-14 14:05:44,151 - Solving Logic Program...
+2024-09-14 14:05:44,157 - ..done
+Clingo statistics:
+{'call': 0.0, 'result': 1.0, 'signal': 0.0, 'exhausted': 1.0, 'costs': [3.0], 'lower': [3.0], 'concurrency': 32.0, 'winner': 17.0, 'times': {'total': 0.07271504402160645, 'cpu': 0.08487799999999979, 'solve': 0.004503011703491211, 'unsat': 0.0014770030975341797, 'sat': 0.001313924789428711}, 'models': {'enumerated': 8.0, 'optimal': 1.0}}
+Solution cost: [3.0]
+Total time: 0.07271504402160645
+CPU time: 0.08487799999999979
+Solve time: 0.004503011703491211
+2024-09-14 14:05:44,167 - Learned the following sketch:
+(:policy
+(:booleans )
+(:numericals (f2 "n_count(c_primitive(boarded,0))"))
+(:rule (:conditions (:c_n_gt f2)) (:effects (:e_n_bot f2)))
+(:rule (:conditions (:c_n_eq f2)) (:effects (:e_n_inc f2)))
+(:rule (:conditions (:c_n_gt f2)) (:effects (:e_n_dec f2)))
+)
+Numer of sketch rules: 3
+Number of selected features: 1
+Maximum complexity of selected feature: 2
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-2-1-17.pddl
+Sketch cycles
+Instance: 0
+3
+3
+Number of unsatisfied D2 facts: 4
+Number of D2 facts: 29 of 256
+2024-09-14 14:05:44,221 - Grounding Logic Program...
+2024-09-14 14:05:44,237 - ..done
+2024-09-14 14:05:44,237 - Solving Logic Program...
+2024-09-14 14:05:44,241 - ..done
+Clingo statistics:
+{'call': 0.0, 'result': 1.0, 'signal': 0.0, 'exhausted': 1.0, 'costs': [3.0], 'lower': [3.0], 'concurrency': 32.0, 'winner': 23.0, 'times': {'total': 0.07285308837890625, 'cpu': 0.08434000000000008, 'solve': 0.003208160400390625, 'unsat': 0.0005991458892822266, 'sat': 0.0012311935424804688}, 'models': {'enumerated': 7.0, 'optimal': 1.0}}
+Solution cost: [3.0]
+Total time: 0.07285308837890625
+CPU time: 0.08434000000000008
+Solve time: 0.003208160400390625
+2024-09-14 14:05:44,252 - Learned the following sketch:
+(:policy
+(:booleans )
+(:numericals (f3 "n_count(r_primitive(origin,0,1))"))
+(:rule (:conditions (:c_n_eq f3)) (:effects (:e_n_bot f3)))
+(:rule (:conditions (:c_n_gt f3)) (:effects (:e_n_dec f3)))
+)
+Numer of sketch rules: 2
+Number of selected features: 1
+Maximum complexity of selected feature: 2
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-2-1-17.pddl
+Sketch cycles
+Instance: 0
+3
+3
+Number of unsatisfied D2 facts: 21
+Number of D2 facts: 50 of 256
+2024-09-14 14:05:44,305 - Grounding Logic Program...
+2024-09-14 14:05:44,324 - ..done
+2024-09-14 14:05:44,324 - Solving Logic Program...
+2024-09-14 14:05:44,327 - ..done
+Clingo statistics:
+{'call': 0.0, 'result': 1.0, 'signal': 0.0, 'exhausted': 1.0, 'costs': [3.0], 'lower': [3.0], 'concurrency': 32.0, 'winner': 18.0, 'times': {'total': 0.07360601425170898, 'cpu': 0.0872679999999999, 'solve': 0.0021719932556152344, 'unsat': 0.0004019737243652344, 'sat': 0.0014750957489013672}, 'models': {'enumerated': 4.0, 'optimal': 1.0}}
+Solution cost: [3.0]
+Total time: 0.07360601425170898
+CPU time: 0.0872679999999999
+Solve time: 0.0021719932556152344
+2024-09-14 14:05:44,339 - Learned the following sketch:
+(:policy
+(:booleans )
+(:numericals (f2 "n_count(c_primitive(boarded,0))"))
+(:rule (:conditions (:c_n_eq f2)) (:effects (:e_n_bot f2)))
+(:rule (:conditions (:c_n_gt f2)) (:effects (:e_n_dec f2)))
+(:rule (:conditions (:c_n_eq f2)) (:effects (:e_n_inc f2)))
+)
+Numer of sketch rules: 3
+Number of selected features: 1
+Maximum complexity of selected feature: 2
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-2-1-17.pddl
+Sketch cycles
+Instance: 0
+1
+1
+Number of unsatisfied D2 facts: 16
+Number of D2 facts: 66 of 256
+2024-09-14 14:05:44,398 - Grounding Logic Program...
+2024-09-14 14:05:44,417 - ..done
+2024-09-14 14:05:44,417 - Solving Logic Program...
+2024-09-14 14:05:44,421 - ..done
+Clingo statistics:
+{'call': 0.0, 'result': 1.0, 'signal': 0.0, 'exhausted': 1.0, 'costs': [3.0], 'lower': [3.0], 'concurrency': 32.0, 'winner': 29.0, 'times': {'total': 0.08119893074035645, 'cpu': 0.09445499999999907, 'solve': 0.002307891845703125, 'unsat': 0.000598907470703125, 'sat': 0.0013890266418457031}, 'models': {'enumerated': 6.0, 'optimal': 1.0}}
+Solution cost: [3.0]
+Total time: 0.08119893074035645
+CPU time: 0.09445499999999907
+Solve time: 0.002307891845703125
+2024-09-14 14:05:44,432 - Learned the following sketch:
+(:policy
+(:booleans )
+(:numericals (f2 "n_count(c_primitive(boarded,0))"))
+(:rule (:conditions (:c_n_gt f2)) (:effects (:e_n_dec f2)))
+(:rule (:conditions (:c_n_eq f2)) (:effects (:e_n_inc f2)))
+)
+Numer of sketch rules: 2
+Number of selected features: 1
+Maximum complexity of selected feature: 2
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-2-1-17.pddl
+2024-09-14 14:05:44,433 - Verifying learned sketch...
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-2-1-17.pddl
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-2-1-17.pddl
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-2-1-15.pddl
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-3-1-12.pddl
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-3-1-25.pddl
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-3-1-9.pddl
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-3-1-28.pddl
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-3-1-10.pddl
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-3-1-27.pddl
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-1-3.pddl
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-2-2-7.pddl
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-1-25.pddl
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-1-2.pddl
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-1-24.pddl
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-1-10.pddl
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-1-21.pddl
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-2-2-0.pddl
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-1-29.pddl
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-1-13.pddl
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-1-26.pddl
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-1-7.pddl
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-1-14.pddl
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-2-2-15.pddl
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-3-2-21.pddl
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-3-2-23.pddl
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-2-3-26.pddl
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-2-3-9.pddl
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-2-1.pddl
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-2-16.pddl
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-3-2-9.pddl
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-3-2-2.pddl
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-3-2-26.pddl
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-2-10.pddl
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-3-2-17.pddl
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-3-2-12.pddl
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-3-2-19.pddl
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-3-2-14.pddl
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-3-2-27.pddl
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-3-2-1.pddl
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-3-2-15.pddl
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-3-2-10.pddl
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-3-2-20.pddl
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-3-2-3.pddl
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-3-3-24.pddl
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-2-4-28.pddl
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-2-4-20.pddl
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-2-15.pddl
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-2-18.pddl
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-2-0.pddl
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-2-2.pddl
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-2-17.pddl
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-2-5.pddl
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-2-22.pddl
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-2-13.pddl
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-2-3-17.pddl
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-2-3-5.pddl
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-2-6.pddl
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-2-8.pddl
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-2-9.pddl
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-2-20.pddl
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-2-23.pddl
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-2-7.pddl
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-2-4.pddl
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-2-19.pddl
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-2-3.pddl
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-2-11.pddl
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-2-25.pddl
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-2-26.pddl
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-2-28.pddl
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-2-29.pddl
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-2-21.pddl
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-3-16.pddl
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-3-3-7.pddl
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-3-3-27.pddl
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-3-3-25.pddl
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-3-3-28.pddl
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-3-3-15.pddl
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-3-3-18.pddl
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-3-3-8.pddl
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-3-3-5.pddl
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-3-3-16.pddl
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-3-3-12.pddl
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-3-3-19.pddl
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-2-4-13.pddl
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-2-4-12.pddl
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-3-27.pddl
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-3-3-20.pddl
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-3-6.pddl
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-3-1.pddl
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-2-4-18.pddl
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-3-26.pddl
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-3-20.pddl
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-3-3.pddl
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-3-3-23.pddl
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-3-5.pddl
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-3-0.pddl
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-3-8.pddl
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-3-10.pddl
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-3-3-26.pddl
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-3-3-1.pddl
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-3-3-13.pddl
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-3-3-0.pddl
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-3-3-22.pddl
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-3-3-29.pddl
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-3-3-2.pddl
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-3-3-6.pddl
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-3-3-10.pddl
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-3-4-1.pddl
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-3-4-27.pddl
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-3-4-2.pddl
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-3-11.pddl
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-3-4.pddl
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-3-17.pddl
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-3-21.pddl
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-3-15.pddl
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-3-19.pddl
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-3-24.pddl
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-3-29.pddl
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-3-12.pddl
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-3-28.pddl
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-3-25.pddl
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-3-14.pddl
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-3-13.pddl
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-3-23.pddl
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-3-18.pddl
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-3-9.pddl
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-3-4-6.pddl
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-3-22.pddl
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-3-7.pddl
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-3-2.pddl
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-3-4-26.pddl
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-3-4-9.pddl
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-3-4-28.pddl
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-3-4-24.pddl
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-3-4-0.pddl
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-3-4-21.pddl
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-3-4-12.pddl
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-3-4-4.pddl
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-3-4-13.pddl
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-3-4-16.pddl
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-3-4-8.pddl
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-3-4-18.pddl
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-3-4-20.pddl
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-3-4-15.pddl
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-3-4-10.pddl
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-3-4-25.pddl
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-3-4-3.pddl
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-3-4-23.pddl
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-4-16.pddl
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-4-4.pddl
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-4-18.pddl
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-4-3.pddl
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-4-28.pddl
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-4-1.pddl
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-3-4-5.pddl
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-4-10.pddl
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-4-24.pddl
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-4-6.pddl
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-3-4-11.pddl
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-4-9.pddl
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-4-14.pddl
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-4-2.pddl
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-3-4-17.pddl
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-3-4-7.pddl
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-4-12.pddl
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-3-4-29.pddl
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-4-29.pddl
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-4-26.pddl
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-4-21.pddl
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-4-25.pddl
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-4-11.pddl
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-4-20.pddl
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-4-5.pddl
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-4-7.pddl
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-4-13.pddl
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-4-22.pddl
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-4-23.pddl
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-4-0.pddl
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-4-19.pddl
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-4-27.pddl
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-4-17.pddl
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-4-8.pddl
+Sketch solves: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/miconic/training/easy/p-4-4-15.pddl
+2024-09-14 14:05:47,095 - ..done
+Sketch solves all instances!
+================================================================================
+2024-09-14 14:05:47,096 - Summary:
+LearningStatistics:
+    num_training_instances: 182
+    num_selected_training_instances (|P|): 1
+    num_states_in_selected_training_instances (|S|): 6
+    num_states_in_complete_selected_training_instances (|S|): 6
+    num_features_in_pool (|F|): 68
+================================================================================
+Resulting sketch:
+(:policy
+(:booleans )
+(:numericals (f2 "n_count(c_primitive(boarded,0))"))
+(:rule (:conditions (:c_n_gt f2)) (:effects (:e_n_dec f2)))
+(:rule (:conditions (:c_n_eq f2)) (:effects (:e_n_inc f2)))
+)
+Numer of sketch rules: 2
+Number of selected features: 1
+Maximum complexity of selected feature: 2
+================================================================================
+Resulting minimized sketch:
+(:policy
+(:booleans )
+(:numericals (f2 "n_count(c_primitive(boarded,0))"))
+(:rule (:conditions (:c_n_gt f2)) (:effects (:e_n_dec f2)))
+(:rule (:conditions (:c_n_eq f2)) (:effects (:e_n_inc f2)))
+)
+Numer of sketch rules: 2
+Number of selected features: 1
+Maximum complexity of selected feature: 2
+================================================================================
+================================================================================
+Preprocessing time: 3 seconds.
+ASP time: 1 seconds.
+Verification time: 3 seconds.
+Total time: 6 seconds.
+Total memory: 0 GiB.
+Num states in training data before symmetry pruning: 32400
+Num states in training data after symmetry pruning: 12339
+================================================================================
+

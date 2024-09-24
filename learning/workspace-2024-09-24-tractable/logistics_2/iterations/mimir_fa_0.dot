@@ -1,0 +1,54 @@
+digraph {
+rankdir="LR"
+s0[peripheries=2,label="state_index=0
+State(index=0, fluent atoms=[(at p0 l0-0), (at t0 l0-0), (at t1 l0-0), (at a0 l0-0), (at a1 l0-0)], static atoms=[(airplane a0), (airplane a1), (city c0), (truck t0), (truck t1), (location l0-0), (in-city l0-0 c0), (airport l0-0), (obj p0)], derived atoms=[])
+"]
+s1[label="state_index=1
+State(index=2, fluent atoms=[(at t0 l0-0), (at t1 l0-0), (at a0 l0-0), (at a1 l0-0), (in p0 t0)], static atoms=[(airplane a0), (airplane a1), (city c0), (truck t0), (truck t1), (location l0-0), (in-city l0-0 c0), (airport l0-0), (obj p0)], derived atoms=[])
+State(index=1, fluent atoms=[(at t0 l0-0), (at t1 l0-0), (at a0 l0-0), (at a1 l0-0), (in p0 t1)], static atoms=[(airplane a0), (airplane a1), (city c0), (truck t0), (truck t1), (location l0-0), (in-city l0-0 c0), (airport l0-0), (obj p0)], derived atoms=[])
+"]
+s2[label="state_index=2
+State(index=4, fluent atoms=[(at t0 l0-0), (at t1 l0-0), (at a0 l0-0), (at a1 l0-0), (in p0 a0)], static atoms=[(airplane a0), (airplane a1), (city c0), (truck t0), (truck t1), (location l0-0), (in-city l0-0 c0), (airport l0-0), (obj p0)], derived atoms=[])
+State(index=3, fluent atoms=[(at t0 l0-0), (at t1 l0-0), (at a0 l0-0), (at a1 l0-0), (in p0 a1)], static atoms=[(airplane a0), (airplane a1), (city c0), (truck t0), (truck t1), (location l0-0), (in-city l0-0 c0), (airport l0-0), (obj p0)], derived atoms=[])
+"]
+Dangling [ label = "", style = invis ]
+{ rank = same; Dangling }
+Dangling -> s0
+{ rank = same; s1,s2}
+{ rank = same; s0}
+s0->s0 [label="(drive-truck t0 l0-0 l0-0 c0)
+(fly-airplane a1 l0-0 l0-0)
+(fly-airplane a0 l0-0 l0-0)
+(drive-truck t1 l0-0 l0-0 c0)
+"]
+s0->s1 [label="(load-truck p0 t1 l0-0)
+(load-truck p0 t0 l0-0)
+"]
+s0->s2 [label="(load-airplane p0 a1 l0-0)
+(load-airplane p0 a0 l0-0)
+"]
+s1->s0 [label="(unload-truck p0 t1 l0-0)
+(unload-truck p0 t0 l0-0)
+"]
+s1->s1 [label="(drive-truck t1 l0-0 l0-0 c0)
+(fly-airplane a0 l0-0 l0-0)
+(drive-truck t0 l0-0 l0-0 c0)
+(fly-airplane a1 l0-0 l0-0)
+(fly-airplane a0 l0-0 l0-0)
+(drive-truck t1 l0-0 l0-0 c0)
+(drive-truck t0 l0-0 l0-0 c0)
+(fly-airplane a1 l0-0 l0-0)
+"]
+s2->s0 [label="(unload-airplane p0 a1 l0-0)
+(unload-airplane p0 a0 l0-0)
+"]
+s2->s2 [label="(fly-airplane a0 l0-0 l0-0)
+(fly-airplane a1 l0-0 l0-0)
+(drive-truck t0 l0-0 l0-0 c0)
+(drive-truck t1 l0-0 l0-0 c0)
+(fly-airplane a0 l0-0 l0-0)
+(fly-airplane a1 l0-0 l0-0)
+(drive-truck t0 l0-0 l0-0 c0)
+(drive-truck t1 l0-0 l0-0 c0)
+"]
+}

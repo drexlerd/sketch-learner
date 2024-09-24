@@ -1,0 +1,1690 @@
+digraph {
+rankdir="LR"
+s146[label="(instance index=20, state index=146, atoms={power_avail(satellite0), power_avail(satellite1), pointing(satellite0,planet1), pointing(satellite1,planet1), calibrated(instrument0)})"]
+s7[label="(instance index=20, state index=7, atoms={power_avail(satellite0), power_avail(satellite1), pointing(satellite0,planet1), pointing(satellite1,planet1)})"]
+s105[label="(instance index=20, state index=105, atoms={power_avail(satellite0), power_avail(satellite1), pointing(satellite0,planet1), pointing(satellite1,planet1), calibrated(instrument0), calibrated(instrument1), have_image(star0,thermograph0)})"]
+s23[label="(instance index=20, state index=23, atoms={power_avail(satellite0), power_avail(satellite1), pointing(satellite0,planet1), pointing(satellite1,planet1), calibrated(instrument0), have_image(star0,thermograph0)})"]
+s139[label="(instance index=20, state index=139, atoms={power_avail(satellite0), power_avail(satellite1), pointing(satellite0,planet1), pointing(satellite1,planet1), have_image(star0,thermograph0)})"]
+s120[label="(instance index=20, state index=120, atoms={power_avail(satellite0), power_avail(satellite1), pointing(satellite0,planet1), pointing(satellite1,planet1), calibrated(instrument1), have_image(star0,thermograph0)})"]
+s228[label="(instance index=20, state index=228, atoms={power_avail(satellite0), power_avail(satellite1), pointing(satellite0,planet1), pointing(satellite1,planet1), calibrated(instrument0), calibrated(instrument1)})"]
+s243[label="(instance index=20, state index=243, atoms={power_avail(satellite0), power_avail(satellite1), pointing(satellite0,planet1), pointing(satellite1,planet1), calibrated(instrument1)})"]
+s9[label="(instance index=20, state index=9, atoms={power_avail(satellite1), power_on(instrument0), pointing(satellite0,planet1), pointing(satellite1,planet1)})"]
+s122[label="(instance index=20, state index=122, atoms={power_avail(satellite1), power_on(instrument0), pointing(satellite0,planet1), pointing(satellite1,planet1), calibrated(instrument1), have_image(star0,thermograph0)})"]
+s134[label="(instance index=20, state index=134, atoms={power_avail(satellite1), power_on(instrument0), pointing(satellite0,planet1), pointing(satellite1,planet1), have_image(star0,thermograph0)})"]
+s14[label="(instance index=20, state index=14, atoms={pointing(satellite0,star0), power_avail(satellite0), power_avail(satellite1), pointing(satellite1,planet1), calibrated(instrument0)})"]
+s253[label="(instance index=20, state index=253, atoms={power_avail(satellite0), power_on(instrument1), pointing(satellite0,planet1), pointing(satellite1,planet1), calibrated(instrument0)})"]
+s213[label="(instance index=20, state index=213, atoms={pointing(satellite1,star0), power_avail(satellite0), power_avail(satellite1), pointing(satellite0,planet1), calibrated(instrument0)})"]
+s10[label="(instance index=20, state index=10, atoms={power_on(instrument0), power_on(instrument1), pointing(satellite0,planet1), pointing(satellite1,planet1)})"]
+s3[label="(instance index=20, state index=3, atoms={pointing(satellite0,star0), power_avail(satellite0), power_avail(satellite1), pointing(satellite1,planet1)})"]
+s8[label="(instance index=20, state index=8, atoms={power_avail(satellite0), power_on(instrument1), pointing(satellite0,planet1), pointing(satellite1,planet1)})"]
+s4[label="(instance index=20, state index=4, atoms={pointing(satellite1,star0), power_avail(satellite0), power_avail(satellite1), pointing(satellite0,planet1)})"]
+s19[label="(instance index=20, state index=19, atoms={pointing(satellite0,star0), power_avail(satellite0), power_avail(satellite1), pointing(satellite1,planet1), calibrated(instrument0), have_image(star0,thermograph0)})"]
+s141[label="(instance index=20, state index=141, atoms={pointing(satellite0,star0), power_avail(satellite0), power_avail(satellite1), pointing(satellite1,planet1), calibrated(instrument0), calibrated(instrument1), have_image(star0,thermograph0)})"]
+s143[label="(instance index=20, state index=143, atoms={power_avail(satellite0), power_on(instrument1), pointing(satellite0,planet1), pointing(satellite1,planet1), calibrated(instrument0), have_image(star0,thermograph0)})"]
+s108[label="(instance index=20, state index=108, atoms={pointing(satellite1,star0), power_avail(satellite0), power_avail(satellite1), pointing(satellite0,planet1), calibrated(instrument0), calibrated(instrument1), have_image(star0,thermograph0)})"]
+s90[label="(instance index=20, state index=90, atoms={pointing(satellite1,star0), power_avail(satellite0), power_avail(satellite1), pointing(satellite0,planet1), calibrated(instrument0), have_image(star0,thermograph0)})"]
+s133[label="(instance index=20, state index=133, atoms={power_on(instrument0), power_on(instrument1), pointing(satellite0,planet1), pointing(satellite1,planet1), have_image(star0,thermograph0)})"]
+s130[label="(instance index=20, state index=130, atoms={pointing(satellite0,star0), power_avail(satellite0), power_avail(satellite1), pointing(satellite1,planet1), have_image(star0,thermograph0)})"]
+s118[label="(instance index=20, state index=118, atoms={pointing(satellite0,star0), power_avail(satellite0), power_avail(satellite1), pointing(satellite1,planet1), calibrated(instrument1), have_image(star0,thermograph0)})"]
+s137[label="(instance index=20, state index=137, atoms={pointing(satellite1,star0), power_avail(satellite0), power_avail(satellite1), pointing(satellite0,planet1), have_image(star0,thermograph0)})"]
+s123[label="(instance index=20, state index=123, atoms={pointing(satellite1,star0), power_avail(satellite0), power_avail(satellite1), pointing(satellite0,planet1), calibrated(instrument1), have_image(star0,thermograph0)})"]
+s121[label="(instance index=20, state index=121, atoms={power_avail(satellite0), power_on(instrument1), pointing(satellite0,planet1), pointing(satellite1,planet1), have_image(star0,thermograph0)})"]
+s245[label="(instance index=20, state index=245, atoms={pointing(satellite1,star0), power_avail(satellite0), power_avail(satellite1), pointing(satellite0,planet1), calibrated(instrument1)})"]
+s231[label="(instance index=20, state index=231, atoms={pointing(satellite1,star0), power_avail(satellite0), power_avail(satellite1), pointing(satellite0,planet1), calibrated(instrument0), calibrated(instrument1)})"]
+s251[label="(instance index=20, state index=251, atoms={pointing(satellite0,star0), power_avail(satellite0), power_avail(satellite1), pointing(satellite1,planet1), calibrated(instrument0), calibrated(instrument1)})"]
+s244[label="(instance index=20, state index=244, atoms={power_avail(satellite1), power_on(instrument0), pointing(satellite0,planet1), pointing(satellite1,planet1), calibrated(instrument1)})"]
+s241[label="(instance index=20, state index=241, atoms={pointing(satellite0,star0), power_avail(satellite0), power_avail(satellite1), pointing(satellite1,planet1), calibrated(instrument1)})"]
+s6[label="(instance index=20, state index=6, atoms={pointing(satellite1,star0), power_avail(satellite1), power_on(instrument0), pointing(satellite0,planet1)})"]
+s11[label="(instance index=20, state index=11, atoms={pointing(satellite0,star0), power_avail(satellite1), power_on(instrument0), pointing(satellite1,planet1)})"]
+s110[label="(instance index=20, state index=110, atoms={pointing(satellite1,star0), power_avail(satellite1), power_on(instrument0), pointing(satellite0,planet1), calibrated(instrument1), have_image(star0,thermograph0)})"]
+s116[label="(instance index=20, state index=116, atoms={pointing(satellite0,star0), power_avail(satellite1), power_on(instrument0), pointing(satellite1,planet1), calibrated(instrument1), have_image(star0,thermograph0)})"]
+s136[label="(instance index=20, state index=136, atoms={pointing(satellite1,star0), power_avail(satellite1), power_on(instrument0), pointing(satellite0,planet1), have_image(star0,thermograph0)})"]
+s132[label="(instance index=20, state index=132, atoms={pointing(satellite0,star0), power_avail(satellite1), power_on(instrument0), pointing(satellite1,planet1), have_image(star0,thermograph0)})"]
+s255[label="(instance index=20, state index=255, atoms={pointing(satellite0,star0), pointing(satellite1,star0), power_avail(satellite0), power_avail(satellite1), calibrated(instrument0)})"]
+s252[label="(instance index=20, state index=252, atoms={pointing(satellite0,star0), power_avail(satellite0), power_on(instrument1), pointing(satellite1,planet1), calibrated(instrument0)})"]
+s215[label="(instance index=20, state index=215, atoms={pointing(satellite1,star0), power_avail(satellite0), power_on(instrument1), pointing(satellite0,planet1), calibrated(instrument0)})"]
+s12[label="(instance index=20, state index=12, atoms={pointing(satellite0,star0), power_on(instrument0), power_on(instrument1), pointing(satellite1,planet1)})"]
+s249[label="(instance index=20, state index=249, atoms={pointing(satellite1,star0), power_on(instrument0), power_on(instrument1), pointing(satellite0,planet1)})"]
+s247[label="(instance index=20, state index=247, atoms={pointing(satellite0,star0), power_avail(satellite0), power_on(instrument1), pointing(satellite1,planet1)})"]
+s0[label="(instance index=20, state index=0, atoms={pointing(satellite0,star0), pointing(satellite1,star0), power_avail(satellite0), power_avail(satellite1)})"]
+s5[label="(instance index=20, state index=5, atoms={pointing(satellite1,star0), power_avail(satellite0), power_on(instrument1), pointing(satellite0,planet1)})"]
+s145[label="(instance index=20, state index=145, atoms={pointing(satellite0,star0), pointing(satellite1,star0), power_avail(satellite0), power_avail(satellite1), calibrated(instrument0), have_image(star0,thermograph0)})"]
+s142[label="(instance index=20, state index=142, atoms={pointing(satellite0,star0), power_avail(satellite0), power_on(instrument1), pointing(satellite1,planet1), calibrated(instrument0), have_image(star0,thermograph0)})"]
+s140[label="(instance index=20, state index=140, atoms={pointing(satellite0,star0), pointing(satellite1,star0), power_avail(satellite0), power_avail(satellite1), calibrated(instrument0), calibrated(instrument1), have_image(star0,thermograph0)})"]
+s92[label="(instance index=20, state index=92, atoms={pointing(satellite1,star0), power_avail(satellite0), power_on(instrument1), pointing(satellite0,planet1), calibrated(instrument0), have_image(star0,thermograph0)})"]
+s131[label="(instance index=20, state index=131, atoms={pointing(satellite0,star0), power_on(instrument0), power_on(instrument1), pointing(satellite1,planet1), have_image(star0,thermograph0)})"]
+s135[label="(instance index=20, state index=135, atoms={pointing(satellite1,star0), power_on(instrument0), power_on(instrument1), pointing(satellite0,planet1), have_image(star0,thermograph0)})"]
+s129[label="(instance index=20, state index=129, atoms={pointing(satellite0,star0), power_avail(satellite0), power_on(instrument1), pointing(satellite1,planet1), have_image(star0,thermograph0)})"]
+s127[label="(instance index=20, state index=127, atoms={pointing(satellite0,star0), pointing(satellite1,star0), power_avail(satellite0), power_avail(satellite1), have_image(star0,thermograph0)})"]
+s125[label="(instance index=20, state index=125, atoms={pointing(satellite0,star0), pointing(satellite1,star0), power_avail(satellite0), power_avail(satellite1), calibrated(instrument1), have_image(star0,thermograph0)})"]
+s124[label="(instance index=20, state index=124, atoms={pointing(satellite1,star0), power_avail(satellite0), power_on(instrument1), pointing(satellite0,planet1), have_image(star0,thermograph0)})"]
+s250[label="(instance index=20, state index=250, atoms={pointing(satellite0,star0), pointing(satellite1,star0), power_avail(satellite0), power_avail(satellite1), calibrated(instrument0), calibrated(instrument1)})"]
+s246[label="(instance index=20, state index=246, atoms={pointing(satellite0,star0), pointing(satellite1,star0), power_avail(satellite0), power_avail(satellite1), calibrated(instrument1)})"]
+s233[label="(instance index=20, state index=233, atoms={pointing(satellite1,star0), power_avail(satellite1), power_on(instrument0), pointing(satellite0,planet1), calibrated(instrument1)})"]
+s239[label="(instance index=20, state index=239, atoms={pointing(satellite0,star0), power_avail(satellite1), power_on(instrument0), pointing(satellite1,planet1), calibrated(instrument1)})"]
+s2[label="(instance index=20, state index=2, atoms={pointing(satellite0,star0), pointing(satellite1,star0), power_avail(satellite1), power_on(instrument0)})"]
+s13[label="(instance index=20, state index=13, atoms={pointing(satellite0,star0), power_avail(satellite1), power_on(instrument0), pointing(satellite1,planet1), calibrated(instrument0)})"]
+s15[label="(instance index=20, state index=15, atoms={pointing(satellite0,star0), power_on(instrument0), power_on(instrument1), pointing(satellite1,planet1), calibrated(instrument0)})"]
+s113[label="(instance index=20, state index=113, atoms={pointing(satellite0,star0), pointing(satellite1,star0), power_avail(satellite1), power_on(instrument0), calibrated(instrument1), have_image(star0,thermograph0)})"]
+s100[label="(instance index=20, state index=100, atoms={pointing(satellite0,star0), power_avail(satellite1), power_on(instrument0), pointing(satellite1,planet1), calibrated(instrument0), calibrated(instrument1), have_image(star0,thermograph0)})"]
+s138[label="(instance index=20, state index=138, atoms={pointing(satellite0,star0), pointing(satellite1,star0), power_avail(satellite1), power_on(instrument0), have_image(star0,thermograph0)})"]
+s18[label="(instance index=20, state index=18, atoms={pointing(satellite0,star0), power_avail(satellite1), power_on(instrument0), pointing(satellite1,planet1), calibrated(instrument0), have_image(star0,thermograph0)})"]
+s20[label="(instance index=20, state index=20, atoms={pointing(satellite0,star0), power_on(instrument0), power_on(instrument1), pointing(satellite1,planet1), calibrated(instrument0), have_image(star0,thermograph0)})"]
+s218[label="(instance index=20, state index=218, atoms={pointing(satellite0,star0), pointing(satellite1,star0), power_avail(satellite0), power_on(instrument1), calibrated(instrument0)})"]
+s230[label="(instance index=20, state index=230, atoms={pointing(satellite1,star0), power_avail(satellite0), power_on(instrument1), pointing(satellite0,planet1), calibrated(instrument0), calibrated(instrument1)})"]
+s248[label="(instance index=20, state index=248, atoms={pointing(satellite0,star0), pointing(satellite1,star0), power_on(instrument0), power_on(instrument1)})"]
+s232[label="(instance index=20, state index=232, atoms={pointing(satellite1,star0), power_on(instrument0), power_on(instrument1), pointing(satellite0,planet1), calibrated(instrument1)})"]
+s1[label="(instance index=20, state index=1, atoms={pointing(satellite0,star0), pointing(satellite1,star0), power_avail(satellite0), power_on(instrument1)})"]
+s234[label="(instance index=20, state index=234, atoms={pointing(satellite1,star0), power_avail(satellite0), power_on(instrument1), pointing(satellite0,planet1), calibrated(instrument1)})"]
+s95[label="(instance index=20, state index=95, atoms={pointing(satellite0,star0), pointing(satellite1,star0), power_avail(satellite0), power_on(instrument1), calibrated(instrument0), have_image(star0,thermograph0)})"]
+s107[label="(instance index=20, state index=107, atoms={pointing(satellite1,star0), power_avail(satellite0), power_on(instrument1), pointing(satellite0,planet1), calibrated(instrument0), calibrated(instrument1), have_image(star0,thermograph0)})"]
+s128[label="(instance index=20, state index=128, atoms={pointing(satellite0,star0), pointing(satellite1,star0), power_on(instrument0), power_on(instrument1), have_image(star0,thermograph0)})"]
+s109[label="(instance index=20, state index=109, atoms={pointing(satellite1,star0), power_on(instrument0), power_on(instrument1), pointing(satellite0,planet1), calibrated(instrument1), have_image(star0,thermograph0)})"]
+s126[label="(instance index=20, state index=126, atoms={pointing(satellite0,star0), pointing(satellite1,star0), power_avail(satellite0), power_on(instrument1), have_image(star0,thermograph0)})"]
+s111[label="(instance index=20, state index=111, atoms={pointing(satellite1,star0), power_avail(satellite0), power_on(instrument1), pointing(satellite0,planet1), calibrated(instrument1), have_image(star0,thermograph0)})"]
+s236[label="(instance index=20, state index=236, atoms={pointing(satellite0,star0), pointing(satellite1,star0), power_avail(satellite1), power_on(instrument0), calibrated(instrument1)})"]
+s223[label="(instance index=20, state index=223, atoms={pointing(satellite0,star0), power_avail(satellite1), power_on(instrument0), pointing(satellite1,planet1), calibrated(instrument0), calibrated(instrument1)})"]
+s16[label="(instance index=20, state index=16, atoms={pointing(satellite0,star0), pointing(satellite1,star0), power_avail(satellite1), power_on(instrument0), calibrated(instrument0)})"]
+s17[label="(instance index=20, state index=17, atoms={power_avail(satellite1), power_on(instrument0), pointing(satellite0,planet1), pointing(satellite1,planet1), calibrated(instrument0)})"]
+s217[label="(instance index=20, state index=217, atoms={pointing(satellite0,star0), pointing(satellite1,star0), power_on(instrument0), power_on(instrument1), calibrated(instrument0)})"]
+s147[label="(instance index=20, state index=147, atoms={power_on(instrument0), power_on(instrument1), pointing(satellite0,planet1), pointing(satellite1,planet1), calibrated(instrument0)})"]
+s97[label="(instance index=20, state index=97, atoms={pointing(satellite0,star0), pointing(satellite1,star0), power_avail(satellite1), power_on(instrument0), calibrated(instrument0), calibrated(instrument1), have_image(star0,thermograph0)})"]
+s103[label="(instance index=20, state index=103, atoms={power_avail(satellite1), power_on(instrument0), pointing(satellite0,planet1), pointing(satellite1,planet1), calibrated(instrument0), calibrated(instrument1), have_image(star0,thermograph0)})"]
+s219[label="(instance index=20, state index=219, atoms={pointing(satellite0,star0), pointing(satellite1,star0), power_on(instrument0), power_on(instrument1), calibrated(instrument0), calibrated(instrument1)})"]
+s225[label="(instance index=20, state index=225, atoms={power_on(instrument0), power_on(instrument1), pointing(satellite0,planet1), pointing(satellite1,planet1), calibrated(instrument0), calibrated(instrument1)})"]
+s21[label="(instance index=20, state index=21, atoms={pointing(satellite0,star0), pointing(satellite1,star0), power_avail(satellite1), power_on(instrument0), calibrated(instrument0), have_image(star0,thermograph0)})"]
+s22[label="(instance index=20, state index=22, atoms={power_avail(satellite1), power_on(instrument0), pointing(satellite0,planet1), pointing(satellite1,planet1), calibrated(instrument0), have_image(star0,thermograph0)})"]
+s94[label="(instance index=20, state index=94, atoms={pointing(satellite0,star0), pointing(satellite1,star0), power_on(instrument0), power_on(instrument1), calibrated(instrument0), have_image(star0,thermograph0)})"]
+s24[label="(instance index=20, state index=24, atoms={power_on(instrument0), power_on(instrument1), pointing(satellite0,planet1), pointing(satellite1,planet1), calibrated(instrument0), have_image(star0,thermograph0)})"]
+s96[label="(instance index=20, state index=96, atoms={pointing(satellite0,star0), pointing(satellite1,star0), power_on(instrument0), power_on(instrument1), calibrated(instrument0), calibrated(instrument1), have_image(star0,thermograph0)})"]
+s102[label="(instance index=20, state index=102, atoms={power_on(instrument0), power_on(instrument1), pointing(satellite0,planet1), pointing(satellite1,planet1), calibrated(instrument0), calibrated(instrument1), have_image(star0,thermograph0)})"]
+s221[label="(instance index=20, state index=221, atoms={pointing(satellite0,star0), pointing(satellite1,star0), power_avail(satellite0), power_on(instrument1), calibrated(instrument0), calibrated(instrument1)})"]
+s227[label="(instance index=20, state index=227, atoms={power_avail(satellite0), power_on(instrument1), pointing(satellite0,planet1), pointing(satellite1,planet1), calibrated(instrument0), calibrated(instrument1)})"]
+s235[label="(instance index=20, state index=235, atoms={pointing(satellite0,star0), pointing(satellite1,star0), power_on(instrument0), power_on(instrument1), calibrated(instrument1)})"]
+s229[label="(instance index=20, state index=229, atoms={power_on(instrument0), power_on(instrument1), pointing(satellite0,planet1), pointing(satellite1,planet1), calibrated(instrument1)})"]
+s237[label="(instance index=20, state index=237, atoms={pointing(satellite0,star0), pointing(satellite1,star0), power_avail(satellite0), power_on(instrument1), calibrated(instrument1)})"]
+s242[label="(instance index=20, state index=242, atoms={power_avail(satellite0), power_on(instrument1), pointing(satellite0,planet1), pointing(satellite1,planet1), calibrated(instrument1)})"]
+s98[label="(instance index=20, state index=98, atoms={pointing(satellite0,star0), pointing(satellite1,star0), power_avail(satellite0), power_on(instrument1), calibrated(instrument0), calibrated(instrument1), have_image(star0,thermograph0)})"]
+s104[label="(instance index=20, state index=104, atoms={power_avail(satellite0), power_on(instrument1), pointing(satellite0,planet1), pointing(satellite1,planet1), calibrated(instrument0), calibrated(instrument1), have_image(star0,thermograph0)})"]
+s112[label="(instance index=20, state index=112, atoms={pointing(satellite0,star0), pointing(satellite1,star0), power_on(instrument0), power_on(instrument1), calibrated(instrument1), have_image(star0,thermograph0)})"]
+s106[label="(instance index=20, state index=106, atoms={power_on(instrument0), power_on(instrument1), pointing(satellite0,planet1), pointing(satellite1,planet1), calibrated(instrument1), have_image(star0,thermograph0)})"]
+s114[label="(instance index=20, state index=114, atoms={pointing(satellite0,star0), pointing(satellite1,star0), power_avail(satellite0), power_on(instrument1), calibrated(instrument1), have_image(star0,thermograph0)})"]
+s119[label="(instance index=20, state index=119, atoms={power_avail(satellite0), power_on(instrument1), pointing(satellite0,planet1), pointing(satellite1,planet1), calibrated(instrument1), have_image(star0,thermograph0)})"]
+s220[label="(instance index=20, state index=220, atoms={pointing(satellite0,star0), pointing(satellite1,star0), power_avail(satellite1), power_on(instrument0), calibrated(instrument0), calibrated(instrument1)})"]
+s226[label="(instance index=20, state index=226, atoms={power_avail(satellite1), power_on(instrument0), pointing(satellite0,planet1), pointing(satellite1,planet1), calibrated(instrument0), calibrated(instrument1)})"]
+s148[label="(instance index=20, state index=148, atoms={pointing(satellite1,star0), power_avail(satellite1), power_on(instrument0), pointing(satellite0,planet1), calibrated(instrument0)})"]
+s149[label="(instance index=20, state index=149, atoms={have_image(planet1,thermograph0), power_avail(satellite1), power_on(instrument0), pointing(satellite0,planet1), pointing(satellite1,planet1), calibrated(instrument0)})"]
+s150[label="(instance index=20, state index=150, atoms={have_image(planet1,thermograph0), power_avail(satellite0), power_avail(satellite1), pointing(satellite0,planet1), pointing(satellite1,planet1), calibrated(instrument0)})"]
+s214[label="(instance index=20, state index=214, atoms={pointing(satellite1,star0), power_on(instrument0), power_on(instrument1), pointing(satellite0,planet1), calibrated(instrument0)})"]
+s151[label="(instance index=20, state index=151, atoms={have_image(planet1,thermograph0), power_on(instrument0), power_on(instrument1), pointing(satellite0,planet1), pointing(satellite1,planet1), calibrated(instrument0)})"]
+s144[label="(instance index=20, state index=144, atoms={pointing(satellite1,star0), power_avail(satellite1), power_on(instrument0), pointing(satellite0,planet1), calibrated(instrument0), calibrated(instrument1), have_image(star0,thermograph0)})"]
+s44[label="(instance index=20, state index=44, atoms={have_image(planet1,thermograph0), power_avail(satellite1), power_on(instrument0), pointing(satellite0,planet1), pointing(satellite1,planet1), calibrated(instrument0), calibrated(instrument1), have_image(star0,thermograph0)})"]
+s210[label="(instance index=20, state index=210, atoms={have_image(planet1,thermograph0), power_avail(satellite0), power_on(instrument1), pointing(satellite0,planet1), pointing(satellite1,planet1), calibrated(instrument0)})"]
+s216[label="(instance index=20, state index=216, atoms={pointing(satellite1,star0), power_on(instrument0), power_on(instrument1), pointing(satellite0,planet1), calibrated(instrument0), calibrated(instrument1)})"]
+s222[label="(instance index=20, state index=222, atoms={pointing(satellite0,star0), power_on(instrument0), power_on(instrument1), pointing(satellite1,planet1), calibrated(instrument0), calibrated(instrument1)})"]
+s166[label="(instance index=20, state index=166, atoms={have_image(planet1,thermograph0), power_on(instrument0), power_on(instrument1), pointing(satellite0,planet1), pointing(satellite1,planet1), calibrated(instrument0), calibrated(instrument1)})"]
+s25[label="(instance index=20, state index=25, atoms={pointing(satellite1,star0), power_avail(satellite1), power_on(instrument0), pointing(satellite0,planet1), calibrated(instrument0), have_image(star0,thermograph0)})"]
+s26[label="(instance index=20, state index=26, atoms={have_image(planet1,thermograph0), power_avail(satellite1), power_on(instrument0), pointing(satellite0,planet1), pointing(satellite1,planet1), calibrated(instrument0), have_image(star0,thermograph0)})"]
+s27[label="(instance index=20, state index=27, atoms={have_image(planet1,thermograph0), power_avail(satellite0), power_avail(satellite1), pointing(satellite0,planet1), pointing(satellite1,planet1), calibrated(instrument0), have_image(star0,thermograph0)})"]
+s91[label="(instance index=20, state index=91, atoms={pointing(satellite1,star0), power_on(instrument0), power_on(instrument1), pointing(satellite0,planet1), calibrated(instrument0), have_image(star0,thermograph0)})"]
+s28[label="(instance index=20, state index=28, atoms={have_image(planet1,thermograph0), power_on(instrument0), power_on(instrument1), pointing(satellite0,planet1), pointing(satellite1,planet1), calibrated(instrument0), have_image(star0,thermograph0)})"]
+s87[label="(instance index=20, state index=87, atoms={have_image(planet1,thermograph0), power_avail(satellite0), power_on(instrument1), pointing(satellite0,planet1), pointing(satellite1,planet1), calibrated(instrument0), have_image(star0,thermograph0)})"]
+s60[label="(instance index=20, state index=60, atoms={have_image(planet1,thermograph0), power_avail(satellite1), power_on(instrument0), pointing(satellite0,planet1), pointing(satellite1,planet1), calibrated(instrument1), have_image(star0,thermograph0)})"]
+s73[label="(instance index=20, state index=73, atoms={have_image(planet1,thermograph0), power_avail(satellite0), power_on(instrument1), pointing(satellite0,planet1), pointing(satellite1,planet1), have_image(star0,thermograph0)})"]
+s209[label="(instance index=20, state index=209, atoms={have_image(planet1,thermograph0), power_avail(satellite0), power_avail(satellite1), pointing(satellite0,planet1), pointing(satellite1,planet1), calibrated(instrument0), calibrated(instrument1)})"]
+s61[label="(instance index=20, state index=61, atoms={have_image(planet1,thermograph0), power_avail(satellite0), power_on(instrument1), pointing(satellite0,planet1), pointing(satellite1,planet1), calibrated(instrument1), have_image(star0,thermograph0)})"]
+s197[label="(instance index=20, state index=197, atoms={have_image(planet1,thermograph0), power_avail(satellite0), power_avail(satellite1), pointing(satellite0,planet1), pointing(satellite1,planet1)})"]
+s74[label="(instance index=20, state index=74, atoms={have_image(planet1,thermograph0), power_avail(satellite0), power_avail(satellite1), pointing(satellite0,planet1), pointing(satellite1,planet1), have_image(star0,thermograph0)})"]
+s198[label="(instance index=20, state index=198, atoms={have_image(planet1,thermograph0), power_on(instrument0), power_on(instrument1), pointing(satellite0,planet1), pointing(satellite1,planet1)})"]
+s76[label="(instance index=20, state index=76, atoms={have_image(planet1,thermograph0), power_avail(satellite1), power_on(instrument0), pointing(satellite0,planet1), pointing(satellite1,planet1), have_image(star0,thermograph0)})"]
+s183[label="(instance index=20, state index=183, atoms={have_image(planet1,thermograph0), power_avail(satellite1), power_on(instrument0), pointing(satellite0,planet1), pointing(satellite1,planet1), calibrated(instrument1)})"]
+s199[label="(instance index=20, state index=199, atoms={have_image(planet1,thermograph0), power_avail(satellite1), power_on(instrument0), pointing(satellite0,planet1), pointing(satellite1,planet1)})"]
+s184[label="(instance index=20, state index=184, atoms={have_image(planet1,thermograph0), power_avail(satellite0), power_on(instrument1), pointing(satellite0,planet1), pointing(satellite1,planet1), calibrated(instrument1)})"]
+s182[label="(instance index=20, state index=182, atoms={have_image(planet1,thermograph0), power_on(instrument0), power_on(instrument1), pointing(satellite0,planet1), pointing(satellite1,planet1), calibrated(instrument1)})"]
+s75[label="(instance index=20, state index=75, atoms={have_image(planet1,thermograph0), power_on(instrument0), power_on(instrument1), pointing(satellite0,planet1), pointing(satellite1,planet1), have_image(star0,thermograph0)})"]
+s43[label="(instance index=20, state index=43, atoms={have_image(planet1,thermograph0), power_on(instrument0), power_on(instrument1), pointing(satellite0,planet1), pointing(satellite1,planet1), calibrated(instrument0), calibrated(instrument1), have_image(star0,thermograph0)})"]
+s185[label="(instance index=20, state index=185, atoms={have_image(planet1,thermograph0), power_avail(satellite0), power_avail(satellite1), pointing(satellite0,planet1), pointing(satellite1,planet1), calibrated(instrument1)})"]
+s196[label="(instance index=20, state index=196, atoms={have_image(planet1,thermograph0), power_avail(satellite0), power_on(instrument1), pointing(satellite0,planet1), pointing(satellite1,planet1)})"]
+s59[label="(instance index=20, state index=59, atoms={have_image(planet1,thermograph0), power_on(instrument0), power_on(instrument1), pointing(satellite0,planet1), pointing(satellite1,planet1), calibrated(instrument1), have_image(star0,thermograph0)})"]
+s62[label="(instance index=20, state index=62, atoms={have_image(planet1,thermograph0), power_avail(satellite0), power_avail(satellite1), pointing(satellite0,planet1), pointing(satellite1,planet1), calibrated(instrument1), have_image(star0,thermograph0)})"]
+s45[label="(instance index=20, state index=45, atoms={have_image(planet1,thermograph0), power_avail(satellite0), power_on(instrument1), pointing(satellite0,planet1), pointing(satellite1,planet1), calibrated(instrument0), calibrated(instrument1), have_image(star0,thermograph0)})"]
+s167[label="(instance index=20, state index=167, atoms={have_image(planet1,thermograph0), power_avail(satellite1), power_on(instrument0), pointing(satellite0,planet1), pointing(satellite1,planet1), calibrated(instrument0), calibrated(instrument1)})"]
+s168[label="(instance index=20, state index=168, atoms={have_image(planet1,thermograph0), power_avail(satellite0), power_on(instrument1), pointing(satellite0,planet1), pointing(satellite1,planet1), calibrated(instrument0), calibrated(instrument1)})"]
+s254[label="(instance index=20, state index=254, atoms={pointing(satellite1,star0), power_avail(satellite1), power_on(instrument0), pointing(satellite0,planet1), calibrated(instrument0), calibrated(instrument1)})"]
+s117[label="(instance index=20, state index=117, atoms={pointing(satellite0,star0), power_avail(satellite0), power_on(instrument1), pointing(satellite1,planet1), calibrated(instrument1), have_image(star0,thermograph0)})"]
+s115[label="(instance index=20, state index=115, atoms={pointing(satellite0,star0), power_on(instrument0), power_on(instrument1), pointing(satellite1,planet1), calibrated(instrument1), have_image(star0,thermograph0)})"]
+s86[label="(instance index=20, state index=86, atoms={have_image(planet1,thermograph0), power_avail(satellite0), power_avail(satellite1), pointing(satellite0,planet1), pointing(satellite1,planet1), calibrated(instrument0), calibrated(instrument1), have_image(star0,thermograph0)})"]
+s101[label="(instance index=20, state index=101, atoms={pointing(satellite0,star0), power_avail(satellite0), power_on(instrument1), pointing(satellite1,planet1), calibrated(instrument0), calibrated(instrument1), have_image(star0,thermograph0)})"]
+s240[label="(instance index=20, state index=240, atoms={pointing(satellite0,star0), power_avail(satellite0), power_on(instrument1), pointing(satellite1,planet1), calibrated(instrument1)})"]
+s238[label="(instance index=20, state index=238, atoms={pointing(satellite0,star0), power_on(instrument0), power_on(instrument1), pointing(satellite1,planet1), calibrated(instrument1)})"]
+s224[label="(instance index=20, state index=224, atoms={pointing(satellite0,star0), power_avail(satellite0), power_on(instrument1), pointing(satellite1,planet1), calibrated(instrument0), calibrated(instrument1)})"]
+s99[label="(instance index=20, state index=99, atoms={pointing(satellite0,star0), power_on(instrument0), power_on(instrument1), pointing(satellite1,planet1), calibrated(instrument0), calibrated(instrument1), have_image(star0,thermograph0)})"]
+s93[label="(instance index=20, state index=93, atoms={pointing(satellite1,star0), power_on(instrument0), power_on(instrument1), pointing(satellite0,planet1), calibrated(instrument0), calibrated(instrument1), have_image(star0,thermograph0)})"]
+s49[label="(instance index=20, state index=49, atoms={pointing(satellite0,star0), have_image(planet1,thermograph0), power_avail(satellite0), power_avail(satellite1), pointing(satellite1,planet1), calibrated(instrument0), calibrated(instrument1), have_image(star0,thermograph0)})"]
+s50[label="(instance index=20, state index=50, atoms={pointing(satellite0,star0), have_image(planet1,thermograph0), power_on(instrument0), power_on(instrument1), pointing(satellite1,planet1), calibrated(instrument1), have_image(star0,thermograph0)})"]
+s66[label="(instance index=20, state index=66, atoms={pointing(satellite0,star0), have_image(planet1,thermograph0), power_avail(satellite1), power_on(instrument0), pointing(satellite1,planet1), calibrated(instrument1), have_image(star0,thermograph0)})"]
+s193[label="(instance index=20, state index=193, atoms={pointing(satellite1,star0), have_image(planet1,thermograph0), power_avail(satellite0), power_on(instrument1), pointing(satellite0,planet1)})"]
+s63[label="(instance index=20, state index=63, atoms={pointing(satellite0,star0), have_image(planet1,thermograph0), power_avail(satellite0), power_on(instrument1), pointing(satellite1,planet1), calibrated(instrument1), have_image(star0,thermograph0)})"]
+s205[label="(instance index=20, state index=205, atoms={pointing(satellite1,star0), have_image(planet1,thermograph0), power_avail(satellite1), power_on(instrument0), pointing(satellite0,planet1)})"]
+s78[label="(instance index=20, state index=78, atoms={pointing(satellite0,star0), have_image(planet1,thermograph0), power_avail(satellite1), power_on(instrument0), pointing(satellite1,planet1), have_image(star0,thermograph0)})"]
+s192[label="(instance index=20, state index=192, atoms={pointing(satellite1,star0), have_image(planet1,thermograph0), power_avail(satellite0), power_avail(satellite1), pointing(satellite0,planet1), calibrated(instrument1)})"]
+s65[label="(instance index=20, state index=65, atoms={pointing(satellite0,star0), have_image(planet1,thermograph0), power_avail(satellite0), power_on(instrument1), pointing(satellite1,planet1), have_image(star0,thermograph0)})"]
+s187[label="(instance index=20, state index=187, atoms={pointing(satellite0,star0), have_image(planet1,thermograph0), power_avail(satellite0), power_avail(satellite1), pointing(satellite1,planet1), calibrated(instrument1)})"]
+s195[label="(instance index=20, state index=195, atoms={pointing(satellite1,star0), have_image(planet1,thermograph0), power_on(instrument0), power_on(instrument1), pointing(satellite0,planet1)})"]
+s77[label="(instance index=20, state index=77, atoms={pointing(satellite0,star0), have_image(planet1,thermograph0), power_on(instrument0), power_on(instrument1), pointing(satellite1,planet1), have_image(star0,thermograph0)})"]
+s200[label="(instance index=20, state index=200, atoms={pointing(satellite0,star0), have_image(planet1,thermograph0), power_on(instrument0), power_on(instrument1), pointing(satellite1,planet1)})"]
+s82[label="(instance index=20, state index=82, atoms={pointing(satellite1,star0), have_image(planet1,thermograph0), power_avail(satellite1), power_on(instrument0), pointing(satellite0,planet1), have_image(star0,thermograph0)})"]
+s188[label="(instance index=20, state index=188, atoms={pointing(satellite0,star0), have_image(planet1,thermograph0), power_avail(satellite0), power_on(instrument1), pointing(satellite1,planet1)})"]
+s70[label="(instance index=20, state index=70, atoms={pointing(satellite1,star0), have_image(planet1,thermograph0), power_avail(satellite0), power_on(instrument1), pointing(satellite0,planet1), have_image(star0,thermograph0)})"]
+s206[label="(instance index=20, state index=206, atoms={pointing(satellite0,star0), have_image(planet1,thermograph0), power_avail(satellite0), power_avail(satellite1), pointing(satellite1,planet1)})"]
+s194[label="(instance index=20, state index=194, atoms={pointing(satellite1,star0), have_image(planet1,thermograph0), power_avail(satellite0), power_avail(satellite1), pointing(satellite0,planet1)})"]
+s201[label="(instance index=20, state index=201, atoms={pointing(satellite0,star0), have_image(planet1,thermograph0), power_avail(satellite1), power_on(instrument0), pointing(satellite1,planet1)})"]
+s83[label="(instance index=20, state index=83, atoms={pointing(satellite0,star0), have_image(planet1,thermograph0), power_avail(satellite0), power_avail(satellite1), pointing(satellite1,planet1), have_image(star0,thermograph0)})"]
+s71[label="(instance index=20, state index=71, atoms={pointing(satellite1,star0), have_image(planet1,thermograph0), power_avail(satellite0), power_avail(satellite1), pointing(satellite0,planet1), have_image(star0,thermograph0)})"]
+s164[label="(instance index=20, state index=164, atoms={pointing(satellite1,star0), have_image(planet1,thermograph0), power_avail(satellite1), power_on(instrument0), pointing(satellite0,planet1), calibrated(instrument0), calibrated(instrument1)})"]
+s29[label="(instance index=20, state index=29, atoms={pointing(satellite1,star0), have_image(planet1,thermograph0), power_avail(satellite1), power_on(instrument0), pointing(satellite0,planet1), calibrated(instrument0), have_image(star0,thermograph0)})"]
+s30[label="(instance index=20, state index=30, atoms={pointing(satellite0,star0), have_image(planet1,thermograph0), power_avail(satellite1), power_on(instrument0), pointing(satellite1,planet1), calibrated(instrument0), have_image(star0,thermograph0)})"]
+s31[label="(instance index=20, state index=31, atoms={pointing(satellite0,star0), have_image(planet1,thermograph0), power_avail(satellite0), power_avail(satellite1), pointing(satellite1,planet1), calibrated(instrument0), have_image(star0,thermograph0)})"]
+s56[label="(instance index=20, state index=56, atoms={pointing(satellite1,star0), have_image(planet1,thermograph0), power_on(instrument0), power_on(instrument1), pointing(satellite0,planet1), calibrated(instrument1), have_image(star0,thermograph0)})"]
+s47[label="(instance index=20, state index=47, atoms={pointing(satellite0,star0), have_image(planet1,thermograph0), power_avail(satellite1), power_on(instrument0), pointing(satellite1,planet1), calibrated(instrument0), calibrated(instrument1), have_image(star0,thermograph0)})"]
+s72[label="(instance index=20, state index=72, atoms={pointing(satellite1,star0), have_image(planet1,thermograph0), power_on(instrument0), power_on(instrument1), pointing(satellite0,planet1), have_image(star0,thermograph0)})"]
+s180[label="(instance index=20, state index=180, atoms={pointing(satellite1,star0), have_image(planet1,thermograph0), power_avail(satellite1), power_on(instrument0), pointing(satellite0,planet1), calibrated(instrument1)})"]
+s181[label="(instance index=20, state index=181, atoms={pointing(satellite1,star0), have_image(planet1,thermograph0), power_avail(satellite0), power_on(instrument1), pointing(satellite0,planet1), calibrated(instrument1)})"]
+s64[label="(instance index=20, state index=64, atoms={pointing(satellite0,star0), have_image(planet1,thermograph0), power_avail(satellite0), power_avail(satellite1), pointing(satellite1,planet1), calibrated(instrument1), have_image(star0,thermograph0)})"]
+s57[label="(instance index=20, state index=57, atoms={pointing(satellite1,star0), have_image(planet1,thermograph0), power_avail(satellite1), power_on(instrument0), pointing(satellite0,planet1), calibrated(instrument1), have_image(star0,thermograph0)})"]
+s48[label="(instance index=20, state index=48, atoms={pointing(satellite0,star0), have_image(planet1,thermograph0), power_avail(satellite0), power_on(instrument1), pointing(satellite1,planet1), calibrated(instrument0), calibrated(instrument1), have_image(star0,thermograph0)})"]
+s211[label="(instance index=20, state index=211, atoms={pointing(satellite0,star0), have_image(planet1,thermograph0), power_avail(satellite0), power_on(instrument1), pointing(satellite1,planet1), calibrated(instrument0)})"]
+s208[label="(instance index=20, state index=208, atoms={pointing(satellite1,star0), have_image(planet1,thermograph0), power_avail(satellite0), power_avail(satellite1), pointing(satellite0,planet1), calibrated(instrument0), calibrated(instrument1)})"]
+s170[label="(instance index=20, state index=170, atoms={pointing(satellite0,star0), have_image(planet1,thermograph0), power_avail(satellite1), power_on(instrument0), pointing(satellite1,planet1), calibrated(instrument0), calibrated(instrument1)})"]
+s179[label="(instance index=20, state index=179, atoms={pointing(satellite1,star0), have_image(planet1,thermograph0), power_on(instrument0), power_on(instrument1), pointing(satellite0,planet1), calibrated(instrument1)})"]
+s58[label="(instance index=20, state index=58, atoms={pointing(satellite1,star0), have_image(planet1,thermograph0), power_avail(satellite0), power_on(instrument1), pointing(satellite0,planet1), calibrated(instrument1), have_image(star0,thermograph0)})"]
+s163[label="(instance index=20, state index=163, atoms={pointing(satellite1,star0), have_image(planet1,thermograph0), power_on(instrument0), power_on(instrument1), pointing(satellite0,planet1), calibrated(instrument0), calibrated(instrument1)})"]
+s162[label="(instance index=20, state index=162, atoms={pointing(satellite1,star0), have_image(planet1,thermograph0), power_avail(satellite0), power_on(instrument1), pointing(satellite0,planet1), calibrated(instrument0)})"]
+s161[label="(instance index=20, state index=161, atoms={pointing(satellite1,star0), have_image(planet1,thermograph0), power_on(instrument0), power_on(instrument1), pointing(satellite0,planet1), calibrated(instrument0)})"]
+s32[label="(instance index=20, state index=32, atoms={pointing(satellite0,star0), have_image(planet1,thermograph0), power_on(instrument0), power_on(instrument1), pointing(satellite1,planet1), calibrated(instrument0), have_image(star0,thermograph0)})"]
+s85[label="(instance index=20, state index=85, atoms={pointing(satellite1,star0), have_image(planet1,thermograph0), power_avail(satellite0), power_avail(satellite1), pointing(satellite0,planet1), calibrated(instrument0), calibrated(instrument1), have_image(star0,thermograph0)})"]
+s212[label="(instance index=20, state index=212, atoms={pointing(satellite1,star0), have_image(planet1,thermograph0), power_avail(satellite0), power_avail(satellite1), pointing(satellite0,planet1), calibrated(instrument0)})"]
+s42[label="(instance index=20, state index=42, atoms={pointing(satellite1,star0), have_image(planet1,thermograph0), power_avail(satellite0), power_on(instrument1), pointing(satellite0,planet1), calibrated(instrument0), calibrated(instrument1), have_image(star0,thermograph0)})"]
+s169[label="(instance index=20, state index=169, atoms={pointing(satellite0,star0), have_image(planet1,thermograph0), power_on(instrument0), power_on(instrument1), pointing(satellite1,planet1), calibrated(instrument0), calibrated(instrument1)})"]
+s69[label="(instance index=20, state index=69, atoms={pointing(satellite1,star0), have_image(planet1,thermograph0), power_avail(satellite0), power_avail(satellite1), pointing(satellite0,planet1), calibrated(instrument1), have_image(star0,thermograph0)})"]
+s186[label="(instance index=20, state index=186, atoms={pointing(satellite0,star0), have_image(planet1,thermograph0), power_avail(satellite0), power_on(instrument1), pointing(satellite1,planet1), calibrated(instrument1)})"]
+s189[label="(instance index=20, state index=189, atoms={pointing(satellite0,star0), have_image(planet1,thermograph0), power_avail(satellite1), power_on(instrument0), pointing(satellite1,planet1), calibrated(instrument1)})"]
+s173[label="(instance index=20, state index=173, atoms={pointing(satellite0,star0), have_image(planet1,thermograph0), power_on(instrument0), power_on(instrument1), pointing(satellite1,planet1), calibrated(instrument1)})"]
+s46[label="(instance index=20, state index=46, atoms={pointing(satellite0,star0), have_image(planet1,thermograph0), power_on(instrument0), power_on(instrument1), pointing(satellite1,planet1), calibrated(instrument0), calibrated(instrument1), have_image(star0,thermograph0)})"]
+s172[label="(instance index=20, state index=172, atoms={pointing(satellite0,star0), have_image(planet1,thermograph0), power_avail(satellite0), power_avail(satellite1), pointing(satellite1,planet1), calibrated(instrument0), calibrated(instrument1)})"]
+s165[label="(instance index=20, state index=165, atoms={pointing(satellite1,star0), have_image(planet1,thermograph0), power_avail(satellite0), power_on(instrument1), pointing(satellite0,planet1), calibrated(instrument0), calibrated(instrument1)})"]
+s38[label="(instance index=20, state index=38, atoms={pointing(satellite1,star0), have_image(planet1,thermograph0), power_on(instrument0), power_on(instrument1), pointing(satellite0,planet1), calibrated(instrument0), have_image(star0,thermograph0)})"]
+s171[label="(instance index=20, state index=171, atoms={pointing(satellite0,star0), have_image(planet1,thermograph0), power_avail(satellite0), power_on(instrument1), pointing(satellite1,planet1), calibrated(instrument0), calibrated(instrument1)})"]
+s40[label="(instance index=20, state index=40, atoms={pointing(satellite1,star0), have_image(planet1,thermograph0), power_on(instrument0), power_on(instrument1), pointing(satellite0,planet1), calibrated(instrument0), calibrated(instrument1), have_image(star0,thermograph0)})"]
+s39[label="(instance index=20, state index=39, atoms={pointing(satellite1,star0), have_image(planet1,thermograph0), power_avail(satellite0), power_on(instrument1), pointing(satellite0,planet1), calibrated(instrument0), have_image(star0,thermograph0)})"]
+s88[label="(instance index=20, state index=88, atoms={pointing(satellite0,star0), have_image(planet1,thermograph0), power_avail(satellite0), power_on(instrument1), pointing(satellite1,planet1), calibrated(instrument0), have_image(star0,thermograph0)})"]
+s89[label="(instance index=20, state index=89, atoms={pointing(satellite1,star0), have_image(planet1,thermograph0), power_avail(satellite0), power_avail(satellite1), pointing(satellite0,planet1), calibrated(instrument0), have_image(star0,thermograph0)})"]
+s41[label="(instance index=20, state index=41, atoms={pointing(satellite1,star0), have_image(planet1,thermograph0), power_avail(satellite1), power_on(instrument0), pointing(satellite0,planet1), calibrated(instrument0), calibrated(instrument1), have_image(star0,thermograph0)})"]
+s155[label="(instance index=20, state index=155, atoms={pointing(satellite0,star0), have_image(planet1,thermograph0), power_on(instrument0), power_on(instrument1), pointing(satellite1,planet1), calibrated(instrument0)})"]
+s154[label="(instance index=20, state index=154, atoms={pointing(satellite0,star0), have_image(planet1,thermograph0), power_avail(satellite0), power_avail(satellite1), pointing(satellite1,planet1), calibrated(instrument0)})"]
+s152[label="(instance index=20, state index=152, atoms={pointing(satellite1,star0), have_image(planet1,thermograph0), power_avail(satellite1), power_on(instrument0), pointing(satellite0,planet1), calibrated(instrument0)})"]
+s153[label="(instance index=20, state index=153, atoms={pointing(satellite0,star0), have_image(planet1,thermograph0), power_avail(satellite1), power_on(instrument0), pointing(satellite1,planet1), calibrated(instrument0)})"]
+s176[peripheries=2,label="(instance index=20, state index=176, atoms={pointing(satellite0,star0), pointing(satellite1,star0), have_image(planet1,thermograph0), power_on(instrument0), power_on(instrument1), calibrated(instrument1)})"]
+s177[peripheries=2,label="(instance index=20, state index=177, atoms={pointing(satellite0,star0), pointing(satellite1,star0), have_image(planet1,thermograph0), power_avail(satellite1), power_on(instrument0), calibrated(instrument1)})"]
+s190[peripheries=2,label="(instance index=20, state index=190, atoms={pointing(satellite0,star0), pointing(satellite1,star0), have_image(planet1,thermograph0), power_avail(satellite0), power_avail(satellite1), calibrated(instrument1)})"]
+s68[peripheries=2,label="(instance index=20, state index=68, atoms={pointing(satellite0,star0), pointing(satellite1,star0), have_image(planet1,thermograph0), power_avail(satellite0), power_on(instrument1), have_image(star0,thermograph0)})"]
+s204[peripheries=2,label="(instance index=20, state index=204, atoms={pointing(satellite0,star0), pointing(satellite1,star0), have_image(planet1,thermograph0), power_avail(satellite0), power_avail(satellite1)})"]
+s79[peripheries=2,label="(instance index=20, state index=79, atoms={pointing(satellite0,star0), pointing(satellite1,star0), have_image(planet1,thermograph0), power_on(instrument0), power_on(instrument1), have_image(star0,thermograph0)})"]
+s67[peripheries=2,label="(instance index=20, state index=67, atoms={pointing(satellite0,star0), pointing(satellite1,star0), have_image(planet1,thermograph0), power_avail(satellite0), power_avail(satellite1), calibrated(instrument1), have_image(star0,thermograph0)})"]
+s37[peripheries=2,label="(instance index=20, state index=37, atoms={pointing(satellite0,star0), pointing(satellite1,star0), have_image(planet1,thermograph0), power_on(instrument0), power_on(instrument1), calibrated(instrument0), calibrated(instrument1), have_image(star0,thermograph0)})"]
+s156[peripheries=2,label="(instance index=20, state index=156, atoms={pointing(satellite0,star0), pointing(satellite1,star0), have_image(planet1,thermograph0), power_avail(satellite1), power_on(instrument0), calibrated(instrument0)})"]
+s157[peripheries=2,label="(instance index=20, state index=157, atoms={pointing(satellite0,star0), pointing(satellite1,star0), have_image(planet1,thermograph0), power_avail(satellite0), power_avail(satellite1), calibrated(instrument0)})"]
+s158[peripheries=2,label="(instance index=20, state index=158, atoms={pointing(satellite0,star0), pointing(satellite1,star0), have_image(planet1,thermograph0), power_on(instrument0), power_on(instrument1), calibrated(instrument0)})"]
+s203[peripheries=2,label="(instance index=20, state index=203, atoms={pointing(satellite0,star0), pointing(satellite1,star0), have_image(planet1,thermograph0), power_avail(satellite1), power_on(instrument0)})"]
+s174[peripheries=2,label="(instance index=20, state index=174, atoms={pointing(satellite0,star0), pointing(satellite1,star0), have_image(planet1,thermograph0), power_avail(satellite0), power_on(instrument1), calibrated(instrument0), calibrated(instrument1)})"]
+s53[peripheries=2,label="(instance index=20, state index=53, atoms={pointing(satellite0,star0), pointing(satellite1,star0), have_image(planet1,thermograph0), power_on(instrument0), power_on(instrument1), calibrated(instrument1), have_image(star0,thermograph0)})"]
+s54[peripheries=2,label="(instance index=20, state index=54, atoms={pointing(satellite0,star0), pointing(satellite1,star0), have_image(planet1,thermograph0), power_avail(satellite1), power_on(instrument0), calibrated(instrument1), have_image(star0,thermograph0)})"]
+s80[peripheries=2,label="(instance index=20, state index=80, atoms={pointing(satellite0,star0), pointing(satellite1,star0), have_image(planet1,thermograph0), power_avail(satellite1), power_on(instrument0), have_image(star0,thermograph0)})"]
+s207[peripheries=2,label="(instance index=20, state index=207, atoms={pointing(satellite0,star0), pointing(satellite1,star0), have_image(planet1,thermograph0), power_avail(satellite1), power_on(instrument0), calibrated(instrument0), calibrated(instrument1)})"]
+s51[peripheries=2,label="(instance index=20, state index=51, atoms={pointing(satellite0,star0), pointing(satellite1,star0), have_image(planet1,thermograph0), power_avail(satellite0), power_on(instrument1), calibrated(instrument0), calibrated(instrument1), have_image(star0,thermograph0)})"]
+s178[peripheries=2,label="(instance index=20, state index=178, atoms={pointing(satellite0,star0), pointing(satellite1,star0), have_image(planet1,thermograph0), power_avail(satellite0), power_on(instrument1), calibrated(instrument1)})"]
+s191[peripheries=2,label="(instance index=20, state index=191, atoms={pointing(satellite0,star0), pointing(satellite1,star0), have_image(planet1,thermograph0), power_avail(satellite0), power_on(instrument1)})"]
+s175[peripheries=2,label="(instance index=20, state index=175, atoms={pointing(satellite0,star0), pointing(satellite1,star0), have_image(planet1,thermograph0), power_avail(satellite0), power_avail(satellite1), calibrated(instrument0), calibrated(instrument1)})"]
+s55[peripheries=2,label="(instance index=20, state index=55, atoms={pointing(satellite0,star0), pointing(satellite1,star0), have_image(planet1,thermograph0), power_avail(satellite0), power_on(instrument1), calibrated(instrument1), have_image(star0,thermograph0)})"]
+s202[peripheries=2,label="(instance index=20, state index=202, atoms={pointing(satellite0,star0), pointing(satellite1,star0), have_image(planet1,thermograph0), power_on(instrument0), power_on(instrument1)})"]
+s84[peripheries=2,label="(instance index=20, state index=84, atoms={pointing(satellite0,star0), pointing(satellite1,star0), have_image(planet1,thermograph0), power_avail(satellite1), power_on(instrument0), calibrated(instrument0), calibrated(instrument1), have_image(star0,thermograph0)})"]
+s81[peripheries=2,label="(instance index=20, state index=81, atoms={pointing(satellite0,star0), pointing(satellite1,star0), have_image(planet1,thermograph0), power_avail(satellite0), power_avail(satellite1), have_image(star0,thermograph0)})"]
+s52[peripheries=2,label="(instance index=20, state index=52, atoms={pointing(satellite0,star0), pointing(satellite1,star0), have_image(planet1,thermograph0), power_avail(satellite0), power_avail(satellite1), calibrated(instrument0), calibrated(instrument1), have_image(star0,thermograph0)})"]
+s33[peripheries=2,label="(instance index=20, state index=33, atoms={pointing(satellite0,star0), pointing(satellite1,star0), have_image(planet1,thermograph0), power_avail(satellite1), power_on(instrument0), calibrated(instrument0), have_image(star0,thermograph0)})"]
+s160[peripheries=2,label="(instance index=20, state index=160, atoms={pointing(satellite0,star0), pointing(satellite1,star0), have_image(planet1,thermograph0), power_on(instrument0), power_on(instrument1), calibrated(instrument0), calibrated(instrument1)})"]
+s36[peripheries=2,label="(instance index=20, state index=36, atoms={pointing(satellite0,star0), pointing(satellite1,star0), have_image(planet1,thermograph0), power_avail(satellite0), power_on(instrument1), calibrated(instrument0), have_image(star0,thermograph0)})"]
+s35[peripheries=2,label="(instance index=20, state index=35, atoms={pointing(satellite0,star0), pointing(satellite1,star0), have_image(planet1,thermograph0), power_on(instrument0), power_on(instrument1), calibrated(instrument0), have_image(star0,thermograph0)})"]
+s34[peripheries=2,label="(instance index=20, state index=34, atoms={pointing(satellite0,star0), pointing(satellite1,star0), have_image(planet1,thermograph0), power_avail(satellite0), power_avail(satellite1), calibrated(instrument0), have_image(star0,thermograph0)})"]
+s159[peripheries=2,label="(instance index=20, state index=159, atoms={pointing(satellite0,star0), pointing(satellite1,star0), have_image(planet1,thermograph0), power_avail(satellite0), power_on(instrument1), calibrated(instrument0)})"]
+Dangling [ label = "", style = invis ]
+{ rank = same; Dangling }
+Dangling -> s0
+{ rank = same; s0}
+{ rank = same; s9,s122,s134,s14,s253,s213,s10,s3,s8,s4,s19,s141,s143,s108,s90,s133,s130,s118,s137,s123,s121,s245,s231,s251,s244,s241}
+{ rank = same; s6,s11,s110,s116,s136,s132,s255,s252,s215,s12,s249,s247,s0,s5,s145,s142,s140,s92,s131,s135,s129,s127,s125,s124,s250,s246,s233,s239}
+{ rank = same; s2,s13,s15,s113,s100,s138,s18,s20,s218,s230,s248,s232,s1,s234,s95,s107,s128,s109,s126,s111,s236,s223}
+{ rank = same; s16,s17,s217,s147,s97,s103,s219,s225,s21,s22,s94,s24,s96,s102,s221,s227,s235,s229,s237,s242,s98,s104,s112,s106,s114,s119,s220,s226}
+{ rank = same; s148,s149,s150,s214,s151,s144,s44,s210,s216,s222,s166,s25,s26,s27,s91,s28,s87,s60,s73,s209,s61,s197,s74,s198,s76,s183,s199,s184,s182,s75,s43,s185,s196,s59,s62,s45,s167,s168,s254,s117,s115,s86,s101,s240,s238,s224,s99,s93}
+{ rank = same; s49,s50,s66,s193,s63,s205,s78,s192,s65,s187,s195,s77,s200,s82,s188,s70,s206,s194,s201,s83,s71,s164,s29,s30,s31,s56,s47,s72,s180,s181,s64,s57,s48,s211,s208,s170,s179,s58,s163,s162,s161,s32,s85,s212,s42,s169,s69,s186,s189,s173,s46,s172,s165,s38,s171,s40,s39,s88,s89,s41,s155,s154,s152,s153}
+{ rank = same; s176,s177,s190,s68,s204,s79,s67,s37,s156,s157,s158,s203,s174,s53,s54,s80,s207,s51,s178,s191,s175,s55,s202,s84,s81,s52,s33,s160,s36,s35,s34,s159}
+{
+s146->s253
+s146->s213
+s146->s146
+s146->s14
+s146->s9
+s7->s7
+s7->s9
+s7->s4
+s7->s8
+s7->s3
+s105->s122
+s105->s141
+s105->s143
+s105->s108
+s105->s105
+s23->s90
+s23->s23
+s23->s143
+s23->s19
+s23->s134
+s139->s121
+s139->s137
+s139->s139
+s139->s134
+s139->s130
+s120->s122
+s120->s121
+s120->s120
+s120->s123
+s120->s118
+s228->s244
+s228->s251
+s228->s231
+s228->s253
+s228->s228
+s243->s245
+s243->s244
+s243->s241
+s243->s243
+s243->s8
+}
+{
+s9->s10
+s9->s9
+s9->s7
+s9->s11
+s9->s6
+s122->s122
+s122->s116
+s122->s120
+s122->s110
+s122->s133
+s134->s136
+s134->s139
+s134->s134
+s134->s133
+s134->s132
+s14->s255
+s14->s252
+s14->s14
+s14->s146
+s14->s11
+s253->s253
+s253->s252
+s253->s146
+s253->s215
+s253->s10
+s213->s255
+s213->s215
+s213->s213
+s213->s146
+s213->s6
+s10->s12
+s10->s10
+s10->s249
+s10->s9
+s10->s8
+s3->s11
+s3->s247
+s3->s7
+s3->s3
+s3->s0
+s8->s8
+s8->s247
+s8->s7
+s8->s10
+s8->s5
+s4->s7
+s4->s6
+s4->s4
+s4->s5
+s4->s0
+s19->s23
+s19->s19
+s19->s145
+s19->s142
+s19->s132
+s141->s142
+s141->s116
+s141->s141
+s141->s140
+s141->s105
+s143->s92
+s143->s142
+s143->s23
+s143->s143
+s143->s133
+s108->s92
+s108->s108
+s108->s110
+s108->s140
+s108->s105
+s90->s92
+s90->s23
+s90->s90
+s90->s145
+s90->s136
+s133->s135
+s133->s134
+s133->s133
+s133->s121
+s133->s131
+s130->s127
+s130->s132
+s130->s130
+s130->s139
+s130->s129
+s118->s125
+s118->s120
+s118->s118
+s118->s116
+s118->s129
+s137->s124
+s137->s139
+s137->s127
+s137->s137
+s137->s136
+s123->s124
+s123->s123
+s123->s125
+s123->s120
+s123->s110
+s121->s121
+s121->s133
+s121->s124
+s121->s139
+s121->s129
+s245->s246
+s245->s243
+s245->s233
+s245->s245
+s245->s5
+s231->s250
+s231->s215
+s231->s231
+s231->s233
+s231->s228
+s251->s252
+s251->s251
+s251->s250
+s251->s239
+s251->s228
+s244->s244
+s244->s239
+s244->s10
+s244->s243
+s244->s233
+s241->s247
+s241->s243
+s241->s246
+s241->s241
+s241->s239
+}
+{
+s6->s6
+s6->s249
+s6->s9
+s6->s4
+s6->s2
+s11->s13
+s11->s12
+s11->s11
+s11->s3
+s11->s9
+s11->s2
+s110->s122
+s110->s123
+s110->s113
+s110->s110
+s110->s135
+s116->s122
+s116->s118
+s116->s116
+s116->s113
+s116->s100
+s116->s131
+s136->s138
+s136->s137
+s136->s136
+s136->s135
+s136->s134
+s132->s134
+s132->s132
+s132->s138
+s132->s131
+s132->s18
+s132->s130
+s255->s255
+s255->s218
+s255->s213
+s255->s14
+s255->s2
+s252->s253
+s252->s218
+s252->s14
+s252->s252
+s252->s12
+s215->s253
+s215->s218
+s215->s249
+s215->s215
+s215->s213
+s215->s230
+s12->s247
+s12->s15
+s12->s12
+s12->s11
+s12->s248
+s12->s10
+s249->s249
+s249->s248
+s249->s10
+s249->s232
+s249->s6
+s249->s5
+s247->s247
+s247->s12
+s247->s8
+s247->s3
+s247->s1
+s0->s4
+s0->s3
+s0->s2
+s0->s1
+s0->s0
+s5->s234
+s5->s5
+s5->s249
+s5->s4
+s5->s8
+s5->s1
+s145->s19
+s145->s95
+s145->s90
+s145->s145
+s145->s138
+s142->s95
+s142->s19
+s142->s143
+s142->s142
+s142->s131
+s140->s141
+s140->s95
+s140->s140
+s140->s113
+s140->s108
+s92->s95
+s92->s92
+s92->s90
+s92->s143
+s92->s107
+s92->s135
+s131->s133
+s131->s20
+s131->s132
+s131->s131
+s131->s129
+s131->s128
+s135->s124
+s135->s109
+s135->s136
+s135->s133
+s135->s135
+s135->s128
+s129->s126
+s129->s121
+s129->s131
+s129->s130
+s129->s129
+s127->s126
+s127->s138
+s127->s127
+s127->s137
+s127->s130
+s125->s126
+s125->s125
+s125->s123
+s125->s118
+s125->s113
+s124->s126
+s124->s124
+s124->s111
+s124->s137
+s124->s121
+s124->s135
+s250->s250
+s250->s218
+s250->s251
+s250->s236
+s250->s231
+s246->s245
+s246->s246
+s246->s241
+s246->s236
+s246->s1
+s233->s245
+s233->s249
+s233->s244
+s233->s236
+s233->s233
+s239->s223
+s239->s244
+s239->s241
+s239->s239
+s239->s236
+s239->s12
+}
+{
+s2->s248
+s2->s11
+s2->s6
+s2->s16
+s2->s2
+s2->s0
+s13->s18
+s13->s17
+s13->s16
+s13->s15
+s13->s14
+s13->s13
+s15->s252
+s15->s217
+s15->s147
+s15->s15
+s15->s20
+s15->s13
+s113->s116
+s113->s113
+s113->s110
+s113->s125
+s113->s97
+s113->s128
+s100->s141
+s100->s103
+s100->s20
+s100->s100
+s100->s97
+s138->s127
+s138->s21
+s138->s138
+s138->s136
+s138->s132
+s138->s128
+s18->s22
+s18->s21
+s18->s20
+s18->s19
+s18->s18
+s20->s94
+s20->s24
+s20->s20
+s20->s18
+s20->s142
+s218->s221
+s218->s252
+s218->s218
+s218->s255
+s218->s248
+s218->s215
+s230->s221
+s230->s107
+s230->s232
+s230->s231
+s230->s230
+s230->s227
+s248->s217
+s248->s248
+s248->s12
+s248->s235
+s248->s249
+s248->s2
+s248->s1
+s232->s109
+s232->s235
+s232->s234
+s232->s233
+s232->s232
+s232->s229
+s1->s248
+s1->s247
+s1->s237
+s1->s5
+s1->s1
+s1->s0
+s234->s245
+s234->s242
+s234->s111
+s234->s237
+s234->s234
+s234->s232
+s95->s95
+s95->s92
+s95->s145
+s95->s98
+s95->s142
+s95->s128
+s107->s107
+s107->s109
+s107->s104
+s107->s108
+s107->s98
+s128->s94
+s128->s126
+s128->s112
+s128->s138
+s128->s131
+s128->s135
+s128->s128
+s109->s112
+s109->s110
+s109->s109
+s109->s111
+s109->s106
+s126->s127
+s126->s126
+s126->s124
+s126->s129
+s126->s114
+s126->s128
+s111->s123
+s111->s111
+s111->s119
+s111->s114
+s111->s109
+s236->s220
+s236->s248
+s236->s246
+s236->s239
+s236->s236
+s236->s233
+s223->s220
+s223->s223
+s223->s251
+s223->s15
+s223->s100
+s223->s226
+}
+{
+s16->s255
+s16->s217
+s16->s21
+s16->s148
+s16->s16
+s16->s13
+s17->s149
+s17->s148
+s17->s147
+s17->s17
+s17->s146
+s17->s13
+s217->s94
+s217->s217
+s217->s214
+s217->s219
+s217->s16
+s217->s218
+s217->s15
+s147->s151
+s147->s214
+s147->s147
+s147->s17
+s147->s253
+s147->s15
+s97->s94
+s97->s144
+s97->s140
+s97->s100
+s97->s97
+s103->s24
+s103->s144
+s103->s105
+s103->s103
+s103->s44
+s103->s100
+s219->s221
+s219->s220
+s219->s219
+s219->s216
+s219->s222
+s219->s96
+s225->s216
+s225->s222
+s225->s166
+s225->s227
+s225->s226
+s225->s225
+s21->s94
+s21->s21
+s21->s18
+s21->s25
+s21->s145
+s22->s26
+s22->s24
+s22->s23
+s22->s22
+s22->s25
+s22->s18
+s94->s95
+s94->s94
+s94->s91
+s94->s21
+s94->s20
+s94->s96
+s24->s28
+s24->s91
+s24->s22
+s24->s20
+s24->s24
+s24->s143
+s96->s99
+s96->s93
+s96->s98
+s96->s97
+s96->s96
+s102->s93
+s102->s104
+s102->s103
+s102->s102
+s102->s43
+s102->s99
+s221->s250
+s221->s221
+s221->s235
+s221->s230
+s221->s98
+s221->s224
+s227->s230
+s227->s229
+s227->s228
+s227->s227
+s227->s168
+s227->s224
+s235->s219
+s235->s112
+s235->s238
+s235->s237
+s235->s236
+s235->s235
+s235->s232
+s229->s244
+s229->s242
+s229->s182
+s229->s238
+s229->s232
+s229->s229
+s237->s246
+s237->s114
+s237->s240
+s237->s237
+s237->s235
+s237->s234
+s242->s242
+s242->s184
+s242->s240
+s242->s234
+s242->s243
+s242->s229
+s98->s140
+s98->s112
+s98->s107
+s98->s101
+s98->s98
+s104->s107
+s104->s106
+s104->s105
+s104->s104
+s104->s45
+s104->s101
+s112->s115
+s112->s114
+s112->s113
+s112->s112
+s112->s109
+s112->s96
+s106->s119
+s106->s59
+s106->s122
+s106->s115
+s106->s109
+s106->s106
+s114->s125
+s114->s114
+s114->s117
+s114->s112
+s114->s111
+s119->s119
+s119->s61
+s119->s117
+s119->s111
+s119->s120
+s119->s106
+s220->s254
+s220->s220
+s220->s250
+s220->s217
+s220->s223
+s220->s97
+s226->s147
+s226->s223
+s226->s167
+s226->s228
+s226->s254
+s226->s226
+}
+{
+s148->s152
+s148->s214
+s148->s148
+s148->s213
+s148->s17
+s148->s16
+s149->s153
+s149->s152
+s149->s151
+s149->s150
+s149->s149
+s150->s212
+s150->s150
+s150->s210
+s150->s154
+s150->s199
+s214->s216
+s214->s215
+s214->s214
+s214->s148
+s214->s217
+s214->s147
+s214->s161
+s151->s149
+s151->s155
+s151->s210
+s151->s151
+s151->s161
+s144->s91
+s144->s144
+s144->s108
+s144->s103
+s144->s41
+s144->s97
+s44->s28
+s44->s47
+s44->s44
+s44->s86
+s44->s41
+s210->s211
+s210->s150
+s210->s210
+s210->s198
+s210->s162
+s216->s216
+s216->s230
+s216->s254
+s216->s93
+s216->s219
+s216->s163
+s216->s225
+s222->s223
+s222->s222
+s222->s219
+s222->s169
+s222->s99
+s222->s225
+s222->s224
+s166->s169
+s166->s167
+s166->s166
+s166->s168
+s166->s163
+s25->s90
+s25->s25
+s25->s29
+s25->s22
+s25->s91
+s25->s21
+s26->s30
+s26->s29
+s26->s28
+s26->s27
+s26->s26
+s27->s89
+s27->s27
+s27->s87
+s27->s31
+s27->s76
+s91->s93
+s91->s92
+s91->s91
+s91->s25
+s91->s94
+s91->s24
+s91->s38
+s28->s26
+s28->s28
+s28->s38
+s28->s87
+s28->s32
+s87->s88
+s87->s27
+s87->s87
+s87->s75
+s87->s39
+s60->s62
+s60->s57
+s60->s60
+s60->s75
+s60->s66
+s73->s74
+s73->s73
+s73->s75
+s73->s70
+s73->s65
+s209->s210
+s209->s209
+s209->s183
+s209->s208
+s209->s172
+s61->s62
+s61->s61
+s61->s59
+s61->s63
+s61->s58
+s197->s197
+s197->s206
+s197->s196
+s197->s199
+s197->s194
+s74->s74
+s74->s83
+s74->s73
+s74->s76
+s74->s71
+s198->s199
+s198->s198
+s198->s196
+s198->s200
+s198->s195
+s76->s82
+s76->s78
+s76->s76
+s76->s75
+s76->s74
+s183->s189
+s183->s185
+s183->s180
+s183->s183
+s183->s198
+s199->s205
+s199->s201
+s199->s199
+s199->s198
+s199->s197
+s184->s185
+s184->s184
+s184->s182
+s184->s186
+s184->s181
+s182->s182
+s182->s184
+s182->s179
+s182->s183
+s182->s173
+s75->s76
+s75->s75
+s75->s73
+s75->s77
+s75->s72
+s43->s46
+s43->s44
+s43->s43
+s43->s45
+s43->s40
+s185->s185
+s185->s183
+s185->s196
+s185->s187
+s185->s192
+s196->s197
+s196->s196
+s196->s188
+s196->s198
+s196->s193
+s59->s59
+s59->s61
+s59->s56
+s59->s60
+s59->s50
+s62->s62
+s62->s60
+s62->s73
+s62->s69
+s62->s64
+s45->s59
+s45->s86
+s45->s48
+s45->s45
+s45->s42
+s167->s151
+s167->s170
+s167->s167
+s167->s209
+s167->s164
+s168->s182
+s168->s209
+s168->s171
+s168->s168
+s168->s165
+s254->s214
+s254->s231
+s254->s220
+s254->s164
+s254->s254
+s254->s226
+s117->s63
+s117->s119
+s117->s118
+s117->s117
+s117->s115
+s117->s114
+s115->s117
+s115->s116
+s115->s115
+s115->s112
+s115->s50
+s115->s106
+s115->s99
+s86->s87
+s86->s86
+s86->s60
+s86->s85
+s86->s49
+s101->s141
+s101->s48
+s101->s104
+s101->s115
+s101->s101
+s101->s98
+s240->s186
+s240->s242
+s240->s241
+s240->s240
+s240->s238
+s240->s237
+s238->s240
+s238->s239
+s238->s238
+s238->s235
+s238->s222
+s238->s173
+s238->s229
+s224->s221
+s224->s251
+s224->s171
+s224->s227
+s224->s238
+s224->s224
+s99->s46
+s99->s102
+s99->s101
+s99->s100
+s99->s99
+s99->s96
+s93->s93
+s93->s107
+s93->s144
+s93->s102
+s93->s40
+s93->s96
+}
+{
+s49->s88
+s49->s52
+s49->s49
+s49->s86
+s49->s66
+s50->s63
+s50->s50
+s50->s53
+s50->s46
+s50->s59
+s50->s66
+s66->s60
+s66->s54
+s66->s47
+s66->s77
+s66->s66
+s66->s64
+s193->s191
+s193->s196
+s193->s181
+s193->s195
+s193->s194
+s193->s193
+s63->s63
+s63->s61
+s63->s55
+s63->s50
+s63->s64
+s205->s203
+s205->s205
+s205->s195
+s205->s199
+s205->s194
+s78->s30
+s78->s80
+s78->s78
+s78->s77
+s78->s83
+s78->s76
+s192->s190
+s192->s185
+s192->s180
+s192->s193
+s192->s192
+s65->s77
+s65->s83
+s65->s73
+s65->s68
+s65->s65
+s187->s189
+s187->s188
+s187->s187
+s187->s190
+s187->s185
+s195->s205
+s195->s198
+s195->s202
+s195->s195
+s195->s179
+s195->s193
+s77->s78
+s77->s77
+s77->s75
+s77->s79
+s77->s65
+s77->s32
+s200->s155
+s200->s188
+s200->s202
+s200->s201
+s200->s200
+s200->s198
+s82->s80
+s82->s82
+s82->s72
+s82->s76
+s82->s71
+s188->s188
+s188->s200
+s188->s191
+s188->s206
+s188->s196
+s70->s73
+s70->s58
+s70->s72
+s70->s71
+s70->s70
+s70->s68
+s206->s188
+s206->s204
+s206->s206
+s206->s201
+s206->s197
+s194->s205
+s194->s197
+s194->s204
+s194->s194
+s194->s193
+s201->s153
+s201->s203
+s201->s201
+s201->s200
+s201->s206
+s201->s199
+s83->s81
+s83->s83
+s83->s78
+s83->s74
+s83->s65
+s71->s82
+s71->s74
+s71->s81
+s71->s71
+s71->s70
+s164->s208
+s164->s207
+s164->s167
+s164->s164
+s164->s161
+s29->s26
+s29->s29
+s29->s89
+s29->s38
+s29->s33
+s30->s30
+s30->s31
+s30->s26
+s30->s33
+s30->s32
+s31->s31
+s31->s27
+s31->s88
+s31->s78
+s31->s34
+s56->s59
+s56->s57
+s56->s56
+s56->s58
+s56->s53
+s47->s84
+s47->s49
+s47->s44
+s47->s47
+s47->s32
+s72->s82
+s72->s75
+s72->s79
+s72->s72
+s72->s56
+s72->s70
+s180->s183
+s180->s180
+s180->s195
+s180->s177
+s180->s192
+s181->s58
+s181->s184
+s181->s181
+s181->s179
+s181->s178
+s181->s192
+s64->s62
+s64->s67
+s64->s66
+s64->s65
+s64->s64
+s57->s60
+s57->s57
+s57->s72
+s57->s54
+s57->s69
+s48->s51
+s48->s49
+s48->s48
+s48->s50
+s48->s45
+s211->s159
+s211->s154
+s211->s211
+s211->s210
+s211->s200
+s208->s209
+s208->s208
+s208->s180
+s208->s175
+s208->s162
+s170->s155
+s170->s47
+s170->s207
+s170->s172
+s170->s170
+s170->s167
+s179->s56
+s179->s182
+s179->s181
+s179->s180
+s179->s179
+s179->s176
+s58->s58
+s58->s61
+s58->s56
+s58->s55
+s58->s69
+s163->s40
+s163->s166
+s163->s165
+s163->s164
+s163->s163
+s163->s160
+s162->s159
+s162->s212
+s162->s210
+s162->s165
+s162->s195
+s162->s162
+s161->s152
+s161->s158
+s161->s151
+s161->s163
+s161->s162
+s161->s161
+s32->s28
+s32->s88
+s32->s30
+s32->s35
+s32->s32
+s85->s86
+s85->s85
+s85->s57
+s85->s52
+s85->s39
+s212->s150
+s212->s205
+s212->s157
+s212->s212
+s212->s162
+s42->s56
+s42->s51
+s42->s85
+s42->s45
+s42->s42
+s169->s46
+s169->s171
+s169->s170
+s169->s169
+s169->s166
+s169->s160
+s69->s70
+s69->s69
+s69->s62
+s69->s57
+s69->s67
+s186->s187
+s186->s186
+s186->s184
+s186->s178
+s186->s173
+s189->s189
+s189->s187
+s189->s183
+s189->s177
+s189->s170
+s189->s200
+s173->s186
+s173->s189
+s173->s182
+s173->s173
+s173->s176
+s173->s169
+s46->s46
+s46->s48
+s46->s43
+s46->s47
+s46->s37
+s172->s211
+s172->s189
+s172->s209
+s172->s175
+s172->s172
+s165->s208
+s165->s174
+s165->s42
+s165->s168
+s165->s179
+s165->s165
+s38->s29
+s38->s40
+s38->s39
+s38->s38
+s38->s28
+s38->s35
+s171->s174
+s171->s172
+s171->s171
+s171->s173
+s171->s168
+s40->s43
+s40->s41
+s40->s40
+s40->s42
+s40->s37
+s39->s89
+s39->s87
+s39->s42
+s39->s72
+s39->s39
+s39->s36
+s88->s88
+s88->s87
+s88->s77
+s88->s31
+s88->s36
+s89->s27
+s89->s82
+s89->s89
+s89->s39
+s89->s34
+s41->s85
+s41->s84
+s41->s44
+s41->s41
+s41->s38
+s155->s153
+s155->s155
+s155->s211
+s155->s158
+s155->s151
+s155->s32
+s154->s157
+s154->s154
+s154->s150
+s154->s211
+s154->s201
+s152->s149
+s152->s152
+s152->s212
+s152->s156
+s152->s161
+s153->s155
+s153->s154
+s153->s153
+s153->s30
+s153->s156
+s153->s149
+}
+{
+s176->s53
+s176->s179
+s176->s178
+s176->s177
+s176->s176
+s176->s173
+s176->s160
+s177->s190
+s177->s189
+s177->s180
+s177->s177
+s177->s207
+s177->s202
+s190->s191
+s190->s190
+s190->s187
+s190->s177
+s190->s192
+s68->s55
+s68->s81
+s68->s70
+s68->s68
+s68->s79
+s68->s65
+s204->s191
+s204->s206
+s204->s203
+s204->s204
+s204->s194
+s79->s53
+s79->s80
+s79->s79
+s79->s72
+s79->s68
+s79->s77
+s79->s35
+s67->s68
+s67->s67
+s67->s54
+s67->s69
+s67->s64
+s37->s84
+s37->s51
+s37->s46
+s37->s40
+s37->s37
+s156->s158
+s156->s157
+s156->s156
+s156->s153
+s156->s152
+s156->s33
+s157->s159
+s157->s154
+s157->s157
+s157->s212
+s157->s203
+s158->s159
+s158->s158
+s158->s156
+s158->s155
+s158->s35
+s158->s161
+s158->s160
+s203->s156
+s203->s205
+s203->s204
+s203->s203
+s203->s202
+s203->s201
+s174->s51
+s174->s176
+s174->s175
+s174->s174
+s174->s171
+s174->s165
+s53->s56
+s53->s55
+s53->s54
+s53->s53
+s53->s50
+s53->s37
+s54->s57
+s54->s54
+s54->s84
+s54->s79
+s54->s67
+s54->s66
+s80->s81
+s80->s80
+s80->s79
+s80->s78
+s80->s82
+s80->s33
+s207->s84
+s207->s175
+s207->s158
+s207->s207
+s207->s170
+s207->s164
+s51->s51
+s51->s53
+s51->s48
+s51->s52
+s51->s42
+s178->s186
+s178->s55
+s178->s181
+s178->s178
+s178->s190
+s178->s176
+s191->s191
+s191->s178
+s191->s204
+s191->s188
+s191->s202
+s191->s193
+s175->s159
+s175->s208
+s175->s175
+s175->s177
+s175->s172
+s55->s55
+s55->s63
+s55->s58
+s55->s53
+s55->s67
+s202->s191
+s202->s176
+s202->s203
+s202->s158
+s202->s200
+s202->s202
+s202->s195
+s84->s84
+s84->s52
+s84->s47
+s84->s41
+s84->s35
+s81->s80
+s81->s81
+s81->s71
+s81->s83
+s81->s68
+s52->s85
+s52->s52
+s52->s54
+s52->s49
+s52->s36
+s33->s30
+s33->s35
+s33->s29
+s33->s34
+s33->s33
+s160->s207
+s160->s169
+s160->s37
+s160->s163
+s160->s174
+s160->s160
+s36->s51
+s36->s79
+s36->s88
+s36->s39
+s36->s36
+s36->s34
+s35->s38
+s35->s37
+s35->s36
+s35->s35
+s35->s33
+s35->s32
+s34->s80
+s34->s31
+s34->s36
+s34->s89
+s34->s34
+s159->s159
+s159->s157
+s159->s174
+s159->s202
+s159->s211
+s159->s162
+}
+}

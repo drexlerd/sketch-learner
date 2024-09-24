@@ -1,0 +1,53 @@
+digraph {
+rankdir="LR"
+s1[label="(instance index=9, state index=1, atoms={at(p0,l0-1), at(a0,l0-0), at(t0,l0-0)})"]
+s0[label="(instance index=9, state index=0, atoms={at(t0,l0-1), at(p0,l0-1), at(a0,l0-0)})"]
+s2[label="(instance index=9, state index=2, atoms={at(t0,l0-1), at(a0,l0-0), in(p0,t0)})"]
+s6[label="(instance index=9, state index=6, atoms={at(a0,l0-0), at(t0,l0-0), in(p0,a0)})"]
+s3[label="(instance index=9, state index=3, atoms={at(a0,l0-0), at(t0,l0-0), in(p0,t0)})"]
+s7[label="(instance index=9, state index=7, atoms={at(t0,l0-1), at(a0,l0-0), in(p0,a0)})"]
+s4[peripheries=2,label="(instance index=9, state index=4, atoms={at(p0,l0-0), at(a0,l0-0), at(t0,l0-0)})"]
+s5[peripheries=2,label="(instance index=9, state index=5, atoms={at(p0,l0-0), at(t0,l0-1), at(a0,l0-0)})"]
+Dangling [ label = "", style = invis ]
+{ rank = same; Dangling }
+Dangling -> s0
+{ rank = same; s0}
+{ rank = same; s0}
+{ rank = same; s2}
+{ rank = same; s6,s3,s7}
+{ rank = same; s4,s5}
+{
+s1->s1
+s1->s0
+}
+{
+s0->s2
+s0->s1
+s0->s0
+}
+{
+s2->s2
+s2->s3
+s2->s0
+}
+{
+s6->s6
+s6->s7
+s6->s4
+s3->s4
+s3->s3
+s3->s2
+s7->s7
+s7->s6
+s7->s5
+}
+{
+s4->s6
+s4->s5
+s4->s4
+s4->s3
+s5->s5
+s5->s7
+s5->s4
+}
+}

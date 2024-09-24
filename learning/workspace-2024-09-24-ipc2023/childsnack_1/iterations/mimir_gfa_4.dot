@@ -1,0 +1,1149 @@
+digraph {
+rankdir="LR"
+s0[label="state_index=0 global_state_index = 106 abstraction_index=4 abstract_state_index=0
+State(index=11, fluent atoms=[(at_kitchen_bread bread1), (at_kitchen_bread bread2), (at_kitchen_content content1), (at_kitchen_content content2), (notexist sandw1), (notexist sandw2), (at tray1 table2)], static atoms=[(no_gluten_bread bread2), (no_gluten_content content2), (allergic_gluten child1), (not_allergic_gluten child2), (waiting child1 table1), (waiting child2 table1), (child child1), (child child2), (tray tray1), (sandwich sandw1), (sandwich sandw2), (bread-portion bread1), (bread-portion bread2), (content-portion content1), (content-portion content2), (place table1), (place table2), (place kitchen)], derived atoms=[])
+State(index=0, fluent atoms=[(at tray1 kitchen), (at_kitchen_bread bread1), (at_kitchen_bread bread2), (at_kitchen_content content1), (at_kitchen_content content2), (notexist sandw1), (notexist sandw2)], static atoms=[(no_gluten_bread bread2), (no_gluten_content content2), (allergic_gluten child1), (not_allergic_gluten child2), (waiting child1 table1), (waiting child2 table1), (child child1), (child child2), (tray tray1), (sandwich sandw1), (sandwich sandw2), (bread-portion bread1), (bread-portion bread2), (content-portion content1), (content-portion content2), (place table1), (place table2), (place kitchen)], derived atoms=[])
+"]
+s1[label="state_index=1 global_state_index = 107 abstraction_index=4 abstract_state_index=1
+State(index=131, fluent atoms=[(at_kitchen_bread bread1), (at_kitchen_content content1), (notexist sandw1), (at tray1 table2), (at_kitchen_sandwich sandw2)], static atoms=[(no_gluten_bread bread2), (no_gluten_content content2), (allergic_gluten child1), (not_allergic_gluten child2), (waiting child1 table1), (waiting child2 table1), (child child1), (child child2), (tray tray1), (sandwich sandw1), (sandwich sandw2), (bread-portion bread1), (bread-portion bread2), (content-portion content1), (content-portion content2), (place table1), (place table2), (place kitchen)], derived atoms=[])
+State(index=129, fluent atoms=[(at_kitchen_bread bread1), (at_kitchen_content content1), (notexist sandw2), (at tray1 table2), (at_kitchen_sandwich sandw1)], static atoms=[(no_gluten_bread bread2), (no_gluten_content content2), (allergic_gluten child1), (not_allergic_gluten child2), (waiting child1 table1), (waiting child2 table1), (child child1), (child child2), (tray tray1), (sandwich sandw1), (sandwich sandw2), (bread-portion bread1), (bread-portion bread2), (content-portion content1), (content-portion content2), (place table1), (place table2), (place kitchen)], derived atoms=[])
+State(index=3, fluent atoms=[(at tray1 kitchen), (at_kitchen_bread bread1), (at_kitchen_content content1), (notexist sandw2), (at_kitchen_sandwich sandw1)], static atoms=[(no_gluten_bread bread2), (no_gluten_content content2), (allergic_gluten child1), (not_allergic_gluten child2), (waiting child1 table1), (waiting child2 table1), (child child1), (child child2), (tray tray1), (sandwich sandw1), (sandwich sandw2), (bread-portion bread1), (bread-portion bread2), (content-portion content1), (content-portion content2), (place table1), (place table2), (place kitchen)], derived atoms=[])
+State(index=1, fluent atoms=[(at tray1 kitchen), (at_kitchen_bread bread1), (at_kitchen_content content1), (notexist sandw1), (at_kitchen_sandwich sandw2)], static atoms=[(no_gluten_bread bread2), (no_gluten_content content2), (allergic_gluten child1), (not_allergic_gluten child2), (waiting child1 table1), (waiting child2 table1), (child child1), (child child2), (tray tray1), (sandwich sandw1), (sandwich sandw2), (bread-portion bread1), (bread-portion bread2), (content-portion content1), (content-portion content2), (place table1), (place table2), (place kitchen)], derived atoms=[])
+"]
+s2[label="state_index=2 global_state_index = 108 abstraction_index=4 abstract_state_index=2
+State(index=130, fluent atoms=[(at_kitchen_bread bread1), (at_kitchen_content content1), (notexist sandw1), (at tray1 table2), (at_kitchen_sandwich sandw2), (no_gluten_sandwich sandw2)], static atoms=[(no_gluten_bread bread2), (no_gluten_content content2), (allergic_gluten child1), (not_allergic_gluten child2), (waiting child1 table1), (waiting child2 table1), (child child1), (child child2), (tray tray1), (sandwich sandw1), (sandwich sandw2), (bread-portion bread1), (bread-portion bread2), (content-portion content1), (content-portion content2), (place table1), (place table2), (place kitchen)], derived atoms=[])
+State(index=128, fluent atoms=[(at_kitchen_bread bread1), (at_kitchen_content content1), (notexist sandw2), (at tray1 table2), (at_kitchen_sandwich sandw1), (no_gluten_sandwich sandw1)], static atoms=[(no_gluten_bread bread2), (no_gluten_content content2), (allergic_gluten child1), (not_allergic_gluten child2), (waiting child1 table1), (waiting child2 table1), (child child1), (child child2), (tray tray1), (sandwich sandw1), (sandwich sandw2), (bread-portion bread1), (bread-portion bread2), (content-portion content1), (content-portion content2), (place table1), (place table2), (place kitchen)], derived atoms=[])
+State(index=4, fluent atoms=[(at tray1 kitchen), (at_kitchen_bread bread1), (at_kitchen_content content1), (notexist sandw2), (at_kitchen_sandwich sandw1), (no_gluten_sandwich sandw1)], static atoms=[(no_gluten_bread bread2), (no_gluten_content content2), (allergic_gluten child1), (not_allergic_gluten child2), (waiting child1 table1), (waiting child2 table1), (child child1), (child child2), (tray tray1), (sandwich sandw1), (sandwich sandw2), (bread-portion bread1), (bread-portion bread2), (content-portion content1), (content-portion content2), (place table1), (place table2), (place kitchen)], derived atoms=[])
+State(index=2, fluent atoms=[(at tray1 kitchen), (at_kitchen_bread bread1), (at_kitchen_content content1), (notexist sandw1), (at_kitchen_sandwich sandw2), (no_gluten_sandwich sandw2)], static atoms=[(no_gluten_bread bread2), (no_gluten_content content2), (allergic_gluten child1), (not_allergic_gluten child2), (waiting child1 table1), (waiting child2 table1), (child child1), (child child2), (tray tray1), (sandwich sandw1), (sandwich sandw2), (bread-portion bread1), (bread-portion bread2), (content-portion content1), (content-portion content2), (place table1), (place table2), (place kitchen)], derived atoms=[])
+"]
+s3[label="state_index=3 global_state_index = 109 abstraction_index=4 abstract_state_index=3
+State(index=127, fluent atoms=[(at_kitchen_bread bread1), (at_kitchen_content content2), (notexist sandw1), (at tray1 table2), (at_kitchen_sandwich sandw2)], static atoms=[(no_gluten_bread bread2), (no_gluten_content content2), (allergic_gluten child1), (not_allergic_gluten child2), (waiting child1 table1), (waiting child2 table1), (child child1), (child child2), (tray tray1), (sandwich sandw1), (sandwich sandw2), (bread-portion bread1), (bread-portion bread2), (content-portion content1), (content-portion content2), (place table1), (place table2), (place kitchen)], derived atoms=[])
+State(index=6, fluent atoms=[(at tray1 kitchen), (at_kitchen_bread bread1), (at_kitchen_content content2), (notexist sandw2), (at_kitchen_sandwich sandw1)], static atoms=[(no_gluten_bread bread2), (no_gluten_content content2), (allergic_gluten child1), (not_allergic_gluten child2), (waiting child1 table1), (waiting child2 table1), (child child1), (child child2), (tray tray1), (sandwich sandw1), (sandwich sandw2), (bread-portion bread1), (bread-portion bread2), (content-portion content1), (content-portion content2), (place table1), (place table2), (place kitchen)], derived atoms=[])
+State(index=5, fluent atoms=[(at tray1 kitchen), (at_kitchen_bread bread1), (at_kitchen_content content2), (notexist sandw1), (at_kitchen_sandwich sandw2)], static atoms=[(no_gluten_bread bread2), (no_gluten_content content2), (allergic_gluten child1), (not_allergic_gluten child2), (waiting child1 table1), (waiting child2 table1), (child child1), (child child2), (tray tray1), (sandwich sandw1), (sandwich sandw2), (bread-portion bread1), (bread-portion bread2), (content-portion content1), (content-portion content2), (place table1), (place table2), (place kitchen)], derived atoms=[])
+State(index=126, fluent atoms=[(at_kitchen_bread bread1), (at_kitchen_content content2), (notexist sandw2), (at tray1 table2), (at_kitchen_sandwich sandw1)], static atoms=[(no_gluten_bread bread2), (no_gluten_content content2), (allergic_gluten child1), (not_allergic_gluten child2), (waiting child1 table1), (waiting child2 table1), (child child1), (child child2), (tray tray1), (sandwich sandw1), (sandwich sandw2), (bread-portion bread1), (bread-portion bread2), (content-portion content1), (content-portion content2), (place table1), (place table2), (place kitchen)], derived atoms=[])
+"]
+s4[label="state_index=4 global_state_index = 110 abstraction_index=4 abstract_state_index=4
+State(index=8, fluent atoms=[(at tray1 kitchen), (at_kitchen_bread bread2), (at_kitchen_content content1), (notexist sandw2), (at_kitchen_sandwich sandw1)], static atoms=[(no_gluten_bread bread2), (no_gluten_content content2), (allergic_gluten child1), (not_allergic_gluten child2), (waiting child1 table1), (waiting child2 table1), (child child1), (child child2), (tray tray1), (sandwich sandw1), (sandwich sandw2), (bread-portion bread1), (bread-portion bread2), (content-portion content1), (content-portion content2), (place table1), (place table2), (place kitchen)], derived atoms=[])
+State(index=7, fluent atoms=[(at tray1 kitchen), (at_kitchen_bread bread2), (at_kitchen_content content1), (notexist sandw1), (at_kitchen_sandwich sandw2)], static atoms=[(no_gluten_bread bread2), (no_gluten_content content2), (allergic_gluten child1), (not_allergic_gluten child2), (waiting child1 table1), (waiting child2 table1), (child child1), (child child2), (tray tray1), (sandwich sandw1), (sandwich sandw2), (bread-portion bread1), (bread-portion bread2), (content-portion content1), (content-portion content2), (place table1), (place table2), (place kitchen)], derived atoms=[])
+State(index=124, fluent atoms=[(at_kitchen_bread bread2), (at_kitchen_content content1), (notexist sandw2), (at tray1 table2), (at_kitchen_sandwich sandw1)], static atoms=[(no_gluten_bread bread2), (no_gluten_content content2), (allergic_gluten child1), (not_allergic_gluten child2), (waiting child1 table1), (waiting child2 table1), (child child1), (child child2), (tray tray1), (sandwich sandw1), (sandwich sandw2), (bread-portion bread1), (bread-portion bread2), (content-portion content1), (content-portion content2), (place table1), (place table2), (place kitchen)], derived atoms=[])
+State(index=125, fluent atoms=[(at_kitchen_bread bread2), (at_kitchen_content content1), (notexist sandw1), (at tray1 table2), (at_kitchen_sandwich sandw2)], static atoms=[(no_gluten_bread bread2), (no_gluten_content content2), (allergic_gluten child1), (not_allergic_gluten child2), (waiting child1 table1), (waiting child2 table1), (child child1), (child child2), (tray tray1), (sandwich sandw1), (sandwich sandw2), (bread-portion bread1), (bread-portion bread2), (content-portion content1), (content-portion content2), (place table1), (place table2), (place kitchen)], derived atoms=[])
+"]
+s5[label="state_index=5 global_state_index = 111 abstraction_index=4 abstract_state_index=5
+State(index=10, fluent atoms=[(at tray1 kitchen), (at_kitchen_bread bread2), (at_kitchen_content content2), (notexist sandw2), (at_kitchen_sandwich sandw1)], static atoms=[(no_gluten_bread bread2), (no_gluten_content content2), (allergic_gluten child1), (not_allergic_gluten child2), (waiting child1 table1), (waiting child2 table1), (child child1), (child child2), (tray tray1), (sandwich sandw1), (sandwich sandw2), (bread-portion bread1), (bread-portion bread2), (content-portion content1), (content-portion content2), (place table1), (place table2), (place kitchen)], derived atoms=[])
+State(index=9, fluent atoms=[(at tray1 kitchen), (at_kitchen_bread bread2), (at_kitchen_content content2), (notexist sandw1), (at_kitchen_sandwich sandw2)], static atoms=[(no_gluten_bread bread2), (no_gluten_content content2), (allergic_gluten child1), (not_allergic_gluten child2), (waiting child1 table1), (waiting child2 table1), (child child1), (child child2), (tray tray1), (sandwich sandw1), (sandwich sandw2), (bread-portion bread1), (bread-portion bread2), (content-portion content1), (content-portion content2), (place table1), (place table2), (place kitchen)], derived atoms=[])
+State(index=25, fluent atoms=[(at_kitchen_bread bread2), (at_kitchen_content content2), (notexist sandw2), (at tray1 table2), (at_kitchen_sandwich sandw1)], static atoms=[(no_gluten_bread bread2), (no_gluten_content content2), (allergic_gluten child1), (not_allergic_gluten child2), (waiting child1 table1), (waiting child2 table1), (child child1), (child child2), (tray tray1), (sandwich sandw1), (sandwich sandw2), (bread-portion bread1), (bread-portion bread2), (content-portion content1), (content-portion content2), (place table1), (place table2), (place kitchen)], derived atoms=[])
+State(index=88, fluent atoms=[(at_kitchen_bread bread2), (at_kitchen_content content2), (notexist sandw1), (at tray1 table2), (at_kitchen_sandwich sandw2)], static atoms=[(no_gluten_bread bread2), (no_gluten_content content2), (allergic_gluten child1), (not_allergic_gluten child2), (waiting child1 table1), (waiting child2 table1), (child child1), (child child2), (tray tray1), (sandwich sandw1), (sandwich sandw2), (bread-portion bread1), (bread-portion bread2), (content-portion content1), (content-portion content2), (place table1), (place table2), (place kitchen)], derived atoms=[])
+"]
+s6[label="state_index=6 global_state_index = 112 abstraction_index=4 abstract_state_index=6
+State(index=12, fluent atoms=[(at_kitchen_bread bread1), (at_kitchen_bread bread2), (at_kitchen_content content1), (at_kitchen_content content2), (notexist sandw1), (notexist sandw2), (at tray1 table1)], static atoms=[(no_gluten_bread bread2), (no_gluten_content content2), (allergic_gluten child1), (not_allergic_gluten child2), (waiting child1 table1), (waiting child2 table1), (child child1), (child child2), (tray tray1), (sandwich sandw1), (sandwich sandw2), (bread-portion bread1), (bread-portion bread2), (content-portion content1), (content-portion content2), (place table1), (place table2), (place kitchen)], derived atoms=[])
+"]
+s7[label="state_index=7 global_state_index = 113 abstraction_index=4 abstract_state_index=7
+State(index=13, fluent atoms=[(at_kitchen_bread bread1), (at_kitchen_content content1), (notexist sandw1), (at tray1 table1), (at_kitchen_sandwich sandw2)], static atoms=[(no_gluten_bread bread2), (no_gluten_content content2), (allergic_gluten child1), (not_allergic_gluten child2), (waiting child1 table1), (waiting child2 table1), (child child1), (child child2), (tray tray1), (sandwich sandw1), (sandwich sandw2), (bread-portion bread1), (bread-portion bread2), (content-portion content1), (content-portion content2), (place table1), (place table2), (place kitchen)], derived atoms=[])
+State(index=15, fluent atoms=[(at_kitchen_bread bread1), (at_kitchen_content content1), (notexist sandw2), (at tray1 table1), (at_kitchen_sandwich sandw1)], static atoms=[(no_gluten_bread bread2), (no_gluten_content content2), (allergic_gluten child1), (not_allergic_gluten child2), (waiting child1 table1), (waiting child2 table1), (child child1), (child child2), (tray tray1), (sandwich sandw1), (sandwich sandw2), (bread-portion bread1), (bread-portion bread2), (content-portion content1), (content-portion content2), (place table1), (place table2), (place kitchen)], derived atoms=[])
+"]
+s8[label="state_index=8 global_state_index = 114 abstraction_index=4 abstract_state_index=8
+State(index=14, fluent atoms=[(at_kitchen_bread bread1), (at_kitchen_content content1), (notexist sandw1), (at tray1 table1), (at_kitchen_sandwich sandw2), (no_gluten_sandwich sandw2)], static atoms=[(no_gluten_bread bread2), (no_gluten_content content2), (allergic_gluten child1), (not_allergic_gluten child2), (waiting child1 table1), (waiting child2 table1), (child child1), (child child2), (tray tray1), (sandwich sandw1), (sandwich sandw2), (bread-portion bread1), (bread-portion bread2), (content-portion content1), (content-portion content2), (place table1), (place table2), (place kitchen)], derived atoms=[])
+State(index=16, fluent atoms=[(at_kitchen_bread bread1), (at_kitchen_content content1), (notexist sandw2), (at tray1 table1), (at_kitchen_sandwich sandw1), (no_gluten_sandwich sandw1)], static atoms=[(no_gluten_bread bread2), (no_gluten_content content2), (allergic_gluten child1), (not_allergic_gluten child2), (waiting child1 table1), (waiting child2 table1), (child child1), (child child2), (tray tray1), (sandwich sandw1), (sandwich sandw2), (bread-portion bread1), (bread-portion bread2), (content-portion content1), (content-portion content2), (place table1), (place table2), (place kitchen)], derived atoms=[])
+"]
+s9[label="state_index=9 global_state_index = 115 abstraction_index=4 abstract_state_index=9
+State(index=17, fluent atoms=[(at_kitchen_bread bread1), (at_kitchen_content content2), (notexist sandw1), (at tray1 table1), (at_kitchen_sandwich sandw2)], static atoms=[(no_gluten_bread bread2), (no_gluten_content content2), (allergic_gluten child1), (not_allergic_gluten child2), (waiting child1 table1), (waiting child2 table1), (child child1), (child child2), (tray tray1), (sandwich sandw1), (sandwich sandw2), (bread-portion bread1), (bread-portion bread2), (content-portion content1), (content-portion content2), (place table1), (place table2), (place kitchen)], derived atoms=[])
+State(index=18, fluent atoms=[(at_kitchen_bread bread1), (at_kitchen_content content2), (notexist sandw2), (at tray1 table1), (at_kitchen_sandwich sandw1)], static atoms=[(no_gluten_bread bread2), (no_gluten_content content2), (allergic_gluten child1), (not_allergic_gluten child2), (waiting child1 table1), (waiting child2 table1), (child child1), (child child2), (tray tray1), (sandwich sandw1), (sandwich sandw2), (bread-portion bread1), (bread-portion bread2), (content-portion content1), (content-portion content2), (place table1), (place table2), (place kitchen)], derived atoms=[])
+"]
+s10[label="state_index=10 global_state_index = 116 abstraction_index=4 abstract_state_index=10
+State(index=19, fluent atoms=[(at_kitchen_bread bread2), (at_kitchen_content content1), (notexist sandw1), (at tray1 table1), (at_kitchen_sandwich sandw2)], static atoms=[(no_gluten_bread bread2), (no_gluten_content content2), (allergic_gluten child1), (not_allergic_gluten child2), (waiting child1 table1), (waiting child2 table1), (child child1), (child child2), (tray tray1), (sandwich sandw1), (sandwich sandw2), (bread-portion bread1), (bread-portion bread2), (content-portion content1), (content-portion content2), (place table1), (place table2), (place kitchen)], derived atoms=[])
+State(index=20, fluent atoms=[(at_kitchen_bread bread2), (at_kitchen_content content1), (notexist sandw2), (at tray1 table1), (at_kitchen_sandwich sandw1)], static atoms=[(no_gluten_bread bread2), (no_gluten_content content2), (allergic_gluten child1), (not_allergic_gluten child2), (waiting child1 table1), (waiting child2 table1), (child child1), (child child2), (tray tray1), (sandwich sandw1), (sandwich sandw2), (bread-portion bread1), (bread-portion bread2), (content-portion content1), (content-portion content2), (place table1), (place table2), (place kitchen)], derived atoms=[])
+"]
+s11[label="state_index=11 global_state_index = 117 abstraction_index=4 abstract_state_index=11
+State(index=21, fluent atoms=[(at_kitchen_bread bread2), (at_kitchen_content content2), (notexist sandw1), (at tray1 table1), (at_kitchen_sandwich sandw2)], static atoms=[(no_gluten_bread bread2), (no_gluten_content content2), (allergic_gluten child1), (not_allergic_gluten child2), (waiting child1 table1), (waiting child2 table1), (child child1), (child child2), (tray tray1), (sandwich sandw1), (sandwich sandw2), (bread-portion bread1), (bread-portion bread2), (content-portion content1), (content-portion content2), (place table1), (place table2), (place kitchen)], derived atoms=[])
+State(index=22, fluent atoms=[(at_kitchen_bread bread2), (at_kitchen_content content2), (notexist sandw2), (at tray1 table1), (at_kitchen_sandwich sandw1)], static atoms=[(no_gluten_bread bread2), (no_gluten_content content2), (allergic_gluten child1), (not_allergic_gluten child2), (waiting child1 table1), (waiting child2 table1), (child child1), (child child2), (tray tray1), (sandwich sandw1), (sandwich sandw2), (bread-portion bread1), (bread-portion bread2), (content-portion content1), (content-portion content2), (place table1), (place table2), (place kitchen)], derived atoms=[])
+"]
+s12[label="state_index=12 global_state_index = 118 abstraction_index=4 abstract_state_index=12
+State(index=23, fluent atoms=[(at tray1 table1), (at_kitchen_sandwich sandw1), (at_kitchen_sandwich sandw2)], static atoms=[(no_gluten_bread bread2), (no_gluten_content content2), (allergic_gluten child1), (not_allergic_gluten child2), (waiting child1 table1), (waiting child2 table1), (child child1), (child child2), (tray tray1), (sandwich sandw1), (sandwich sandw2), (bread-portion bread1), (bread-portion bread2), (content-portion content1), (content-portion content2), (place table1), (place table2), (place kitchen)], derived atoms=[])
+"]
+s13[label="state_index=13 global_state_index = 119 abstraction_index=4 abstract_state_index=13
+State(index=24, fluent atoms=[(at tray1 table1), (at_kitchen_sandwich sandw1), (at_kitchen_sandwich sandw2), (no_gluten_sandwich sandw2)], static atoms=[(no_gluten_bread bread2), (no_gluten_content content2), (allergic_gluten child1), (not_allergic_gluten child2), (waiting child1 table1), (waiting child2 table1), (child child1), (child child2), (tray tray1), (sandwich sandw1), (sandwich sandw2), (bread-portion bread1), (bread-portion bread2), (content-portion content1), (content-portion content2), (place table1), (place table2), (place kitchen)], derived atoms=[])
+State(index=87, fluent atoms=[(at tray1 table1), (at_kitchen_sandwich sandw1), (at_kitchen_sandwich sandw2), (no_gluten_sandwich sandw1)], static atoms=[(no_gluten_bread bread2), (no_gluten_content content2), (allergic_gluten child1), (not_allergic_gluten child2), (waiting child1 table1), (waiting child2 table1), (child child1), (child child2), (tray tray1), (sandwich sandw1), (sandwich sandw2), (bread-portion bread1), (bread-portion bread2), (content-portion content1), (content-portion content2), (place table1), (place table2), (place kitchen)], derived atoms=[])
+"]
+s14[label="state_index=14 global_state_index = 120 abstraction_index=4 abstract_state_index=14
+State(index=26, fluent atoms=[(at tray1 table2), (at_kitchen_sandwich sandw1), (at_kitchen_sandwich sandw2)], static atoms=[(no_gluten_bread bread2), (no_gluten_content content2), (allergic_gluten child1), (not_allergic_gluten child2), (waiting child1 table1), (waiting child2 table1), (child child1), (child child2), (tray tray1), (sandwich sandw1), (sandwich sandw2), (bread-portion bread1), (bread-portion bread2), (content-portion content1), (content-portion content2), (place table1), (place table2), (place kitchen)], derived atoms=[])
+State(index=62, fluent atoms=[(at tray1 kitchen), (at_kitchen_sandwich sandw1), (at_kitchen_sandwich sandw2)], static atoms=[(no_gluten_bread bread2), (no_gluten_content content2), (allergic_gluten child1), (not_allergic_gluten child2), (waiting child1 table1), (waiting child2 table1), (child child1), (child child2), (tray tray1), (sandwich sandw1), (sandwich sandw2), (bread-portion bread1), (bread-portion bread2), (content-portion content1), (content-portion content2), (place table1), (place table2), (place kitchen)], derived atoms=[])
+"]
+s15[label="state_index=15 global_state_index = 121 abstraction_index=4 abstract_state_index=15
+State(index=27, fluent atoms=[(at tray1 table2), (at_kitchen_sandwich sandw1), (at_kitchen_sandwich sandw2), (no_gluten_sandwich sandw2)], static atoms=[(no_gluten_bread bread2), (no_gluten_content content2), (allergic_gluten child1), (not_allergic_gluten child2), (waiting child1 table1), (waiting child2 table1), (child child1), (child child2), (tray tray1), (sandwich sandw1), (sandwich sandw2), (bread-portion bread1), (bread-portion bread2), (content-portion content1), (content-portion content2), (place table1), (place table2), (place kitchen)], derived atoms=[])
+State(index=28, fluent atoms=[(at tray1 kitchen), (at_kitchen_sandwich sandw1), (at_kitchen_sandwich sandw2), (no_gluten_sandwich sandw2)], static atoms=[(no_gluten_bread bread2), (no_gluten_content content2), (allergic_gluten child1), (not_allergic_gluten child2), (waiting child1 table1), (waiting child2 table1), (child child1), (child child2), (tray tray1), (sandwich sandw1), (sandwich sandw2), (bread-portion bread1), (bread-portion bread2), (content-portion content1), (content-portion content2), (place table1), (place table2), (place kitchen)], derived atoms=[])
+State(index=89, fluent atoms=[(at tray1 table2), (at_kitchen_sandwich sandw1), (at_kitchen_sandwich sandw2), (no_gluten_sandwich sandw1)], static atoms=[(no_gluten_bread bread2), (no_gluten_content content2), (allergic_gluten child1), (not_allergic_gluten child2), (waiting child1 table1), (waiting child2 table1), (child child1), (child child2), (tray tray1), (sandwich sandw1), (sandwich sandw2), (bread-portion bread1), (bread-portion bread2), (content-portion content1), (content-portion content2), (place table1), (place table2), (place kitchen)], derived atoms=[])
+State(index=90, fluent atoms=[(at tray1 kitchen), (at_kitchen_sandwich sandw1), (at_kitchen_sandwich sandw2), (no_gluten_sandwich sandw1)], static atoms=[(no_gluten_bread bread2), (no_gluten_content content2), (allergic_gluten child1), (not_allergic_gluten child2), (waiting child1 table1), (waiting child2 table1), (child child1), (child child2), (tray tray1), (sandwich sandw1), (sandwich sandw2), (bread-portion bread1), (bread-portion bread2), (content-portion content1), (content-portion content2), (place table1), (place table2), (place kitchen)], derived atoms=[])
+"]
+s16[label="state_index=16 global_state_index = 122 abstraction_index=4 abstract_state_index=16
+State(index=54, fluent atoms=[(at tray1 table2), (at_kitchen_sandwich sandw1), (no_gluten_sandwich sandw2), (ontray sandw2 tray1)], static atoms=[(no_gluten_bread bread2), (no_gluten_content content2), (allergic_gluten child1), (not_allergic_gluten child2), (waiting child1 table1), (waiting child2 table1), (child child1), (child child2), (tray tray1), (sandwich sandw1), (sandwich sandw2), (bread-portion bread1), (bread-portion bread2), (content-portion content1), (content-portion content2), (place table1), (place table2), (place kitchen)], derived atoms=[])
+State(index=29, fluent atoms=[(at tray1 kitchen), (at_kitchen_sandwich sandw1), (no_gluten_sandwich sandw2), (ontray sandw2 tray1)], static atoms=[(no_gluten_bread bread2), (no_gluten_content content2), (allergic_gluten child1), (not_allergic_gluten child2), (waiting child1 table1), (waiting child2 table1), (child child1), (child child2), (tray tray1), (sandwich sandw1), (sandwich sandw2), (bread-portion bread1), (bread-portion bread2), (content-portion content1), (content-portion content2), (place table1), (place table2), (place kitchen)], derived atoms=[])
+State(index=92, fluent atoms=[(at tray1 kitchen), (at_kitchen_sandwich sandw2), (no_gluten_sandwich sandw1), (ontray sandw1 tray1)], static atoms=[(no_gluten_bread bread2), (no_gluten_content content2), (allergic_gluten child1), (not_allergic_gluten child2), (waiting child1 table1), (waiting child2 table1), (child child1), (child child2), (tray tray1), (sandwich sandw1), (sandwich sandw2), (bread-portion bread1), (bread-portion bread2), (content-portion content1), (content-portion content2), (place table1), (place table2), (place kitchen)], derived atoms=[])
+State(index=94, fluent atoms=[(at tray1 table2), (at_kitchen_sandwich sandw2), (no_gluten_sandwich sandw1), (ontray sandw1 tray1)], static atoms=[(no_gluten_bread bread2), (no_gluten_content content2), (allergic_gluten child1), (not_allergic_gluten child2), (waiting child1 table1), (waiting child2 table1), (child child1), (child child2), (tray tray1), (sandwich sandw1), (sandwich sandw2), (bread-portion bread1), (bread-portion bread2), (content-portion content1), (content-portion content2), (place table1), (place table2), (place kitchen)], derived atoms=[])
+"]
+s17[label="state_index=17 global_state_index = 123 abstraction_index=4 abstract_state_index=17
+State(index=32, fluent atoms=[(at tray1 table2), (at_kitchen_sandwich sandw2), (no_gluten_sandwich sandw2), (ontray sandw1 tray1)], static atoms=[(no_gluten_bread bread2), (no_gluten_content content2), (allergic_gluten child1), (not_allergic_gluten child2), (waiting child1 table1), (waiting child2 table1), (child child1), (child child2), (tray tray1), (sandwich sandw1), (sandwich sandw2), (bread-portion bread1), (bread-portion bread2), (content-portion content1), (content-portion content2), (place table1), (place table2), (place kitchen)], derived atoms=[])
+State(index=30, fluent atoms=[(at tray1 kitchen), (at_kitchen_sandwich sandw2), (no_gluten_sandwich sandw2), (ontray sandw1 tray1)], static atoms=[(no_gluten_bread bread2), (no_gluten_content content2), (allergic_gluten child1), (not_allergic_gluten child2), (waiting child1 table1), (waiting child2 table1), (child child1), (child child2), (tray tray1), (sandwich sandw1), (sandwich sandw2), (bread-portion bread1), (bread-portion bread2), (content-portion content1), (content-portion content2), (place table1), (place table2), (place kitchen)], derived atoms=[])
+State(index=91, fluent atoms=[(at tray1 kitchen), (at_kitchen_sandwich sandw1), (no_gluten_sandwich sandw1), (ontray sandw2 tray1)], static atoms=[(no_gluten_bread bread2), (no_gluten_content content2), (allergic_gluten child1), (not_allergic_gluten child2), (waiting child1 table1), (waiting child2 table1), (child child1), (child child2), (tray tray1), (sandwich sandw1), (sandwich sandw2), (bread-portion bread1), (bread-portion bread2), (content-portion content1), (content-portion content2), (place table1), (place table2), (place kitchen)], derived atoms=[])
+State(index=119, fluent atoms=[(at tray1 table2), (at_kitchen_sandwich sandw1), (no_gluten_sandwich sandw1), (ontray sandw2 tray1)], static atoms=[(no_gluten_bread bread2), (no_gluten_content content2), (allergic_gluten child1), (not_allergic_gluten child2), (waiting child1 table1), (waiting child2 table1), (child child1), (child child2), (tray tray1), (sandwich sandw1), (sandwich sandw2), (bread-portion bread1), (bread-portion bread2), (content-portion content1), (content-portion content2), (place table1), (place table2), (place kitchen)], derived atoms=[])
+"]
+s18[label="state_index=18 global_state_index = 124 abstraction_index=4 abstract_state_index=18
+State(index=46, fluent atoms=[(at tray1 table2), (no_gluten_sandwich sandw2), (ontray sandw1 tray1), (ontray sandw2 tray1)], static atoms=[(no_gluten_bread bread2), (no_gluten_content content2), (allergic_gluten child1), (not_allergic_gluten child2), (waiting child1 table1), (waiting child2 table1), (child child1), (child child2), (tray tray1), (sandwich sandw1), (sandwich sandw2), (bread-portion bread1), (bread-portion bread2), (content-portion content1), (content-portion content2), (place table1), (place table2), (place kitchen)], derived atoms=[])
+State(index=31, fluent atoms=[(at tray1 kitchen), (no_gluten_sandwich sandw2), (ontray sandw1 tray1), (ontray sandw2 tray1)], static atoms=[(no_gluten_bread bread2), (no_gluten_content content2), (allergic_gluten child1), (not_allergic_gluten child2), (waiting child1 table1), (waiting child2 table1), (child child1), (child child2), (tray tray1), (sandwich sandw1), (sandwich sandw2), (bread-portion bread1), (bread-portion bread2), (content-portion content1), (content-portion content2), (place table1), (place table2), (place kitchen)], derived atoms=[])
+State(index=93, fluent atoms=[(at tray1 kitchen), (no_gluten_sandwich sandw1), (ontray sandw1 tray1), (ontray sandw2 tray1)], static atoms=[(no_gluten_bread bread2), (no_gluten_content content2), (allergic_gluten child1), (not_allergic_gluten child2), (waiting child1 table1), (waiting child2 table1), (child child1), (child child2), (tray tray1), (sandwich sandw1), (sandwich sandw2), (bread-portion bread1), (bread-portion bread2), (content-portion content1), (content-portion content2), (place table1), (place table2), (place kitchen)], derived atoms=[])
+State(index=114, fluent atoms=[(at tray1 table2), (no_gluten_sandwich sandw1), (ontray sandw1 tray1), (ontray sandw2 tray1)], static atoms=[(no_gluten_bread bread2), (no_gluten_content content2), (allergic_gluten child1), (not_allergic_gluten child2), (waiting child1 table1), (waiting child2 table1), (child child1), (child child2), (tray tray1), (sandwich sandw1), (sandwich sandw2), (bread-portion bread1), (bread-portion bread2), (content-portion content1), (content-portion content2), (place table1), (place table2), (place kitchen)], derived atoms=[])
+"]
+s19[label="state_index=19 global_state_index = 125 abstraction_index=4 abstract_state_index=19
+State(index=33, fluent atoms=[(at tray1 table1), (at_kitchen_sandwich sandw2), (no_gluten_sandwich sandw2), (ontray sandw1 tray1)], static atoms=[(no_gluten_bread bread2), (no_gluten_content content2), (allergic_gluten child1), (not_allergic_gluten child2), (waiting child1 table1), (waiting child2 table1), (child child1), (child child2), (tray tray1), (sandwich sandw1), (sandwich sandw2), (bread-portion bread1), (bread-portion bread2), (content-portion content1), (content-portion content2), (place table1), (place table2), (place kitchen)], derived atoms=[])
+State(index=120, fluent atoms=[(at tray1 table1), (at_kitchen_sandwich sandw1), (no_gluten_sandwich sandw1), (ontray sandw2 tray1)], static atoms=[(no_gluten_bread bread2), (no_gluten_content content2), (allergic_gluten child1), (not_allergic_gluten child2), (waiting child1 table1), (waiting child2 table1), (child child1), (child child2), (tray tray1), (sandwich sandw1), (sandwich sandw2), (bread-portion bread1), (bread-portion bread2), (content-portion content1), (content-portion content2), (place table1), (place table2), (place kitchen)], derived atoms=[])
+"]
+s20[label="state_index=20 global_state_index = 126 abstraction_index=4 abstract_state_index=20
+State(index=34, fluent atoms=[(served child2), (at tray1 table1), (at_kitchen_sandwich sandw2), (no_gluten_sandwich sandw2)], static atoms=[(no_gluten_bread bread2), (no_gluten_content content2), (allergic_gluten child1), (not_allergic_gluten child2), (waiting child1 table1), (waiting child2 table1), (child child1), (child child2), (tray tray1), (sandwich sandw1), (sandwich sandw2), (bread-portion bread1), (bread-portion bread2), (content-portion content1), (content-portion content2), (place table1), (place table2), (place kitchen)], derived atoms=[])
+State(index=121, fluent atoms=[(served child2), (at tray1 table1), (at_kitchen_sandwich sandw1), (no_gluten_sandwich sandw1)], static atoms=[(no_gluten_bread bread2), (no_gluten_content content2), (allergic_gluten child1), (not_allergic_gluten child2), (waiting child1 table1), (waiting child2 table1), (child child1), (child child2), (tray tray1), (sandwich sandw1), (sandwich sandw2), (bread-portion bread1), (bread-portion bread2), (content-portion content1), (content-portion content2), (place table1), (place table2), (place kitchen)], derived atoms=[])
+"]
+s21[label="state_index=21 global_state_index = 127 abstraction_index=4 abstract_state_index=21
+State(index=36, fluent atoms=[(served child2), (at tray1 kitchen), (at_kitchen_sandwich sandw2), (no_gluten_sandwich sandw2)], static atoms=[(no_gluten_bread bread2), (no_gluten_content content2), (allergic_gluten child1), (not_allergic_gluten child2), (waiting child1 table1), (waiting child2 table1), (child child1), (child child2), (tray tray1), (sandwich sandw1), (sandwich sandw2), (bread-portion bread1), (bread-portion bread2), (content-portion content1), (content-portion content2), (place table1), (place table2), (place kitchen)], derived atoms=[])
+State(index=35, fluent atoms=[(served child2), (at tray1 table2), (at_kitchen_sandwich sandw2), (no_gluten_sandwich sandw2)], static atoms=[(no_gluten_bread bread2), (no_gluten_content content2), (allergic_gluten child1), (not_allergic_gluten child2), (waiting child1 table1), (waiting child2 table1), (child child1), (child child2), (tray tray1), (sandwich sandw1), (sandwich sandw2), (bread-portion bread1), (bread-portion bread2), (content-portion content1), (content-portion content2), (place table1), (place table2), (place kitchen)], derived atoms=[])
+State(index=122, fluent atoms=[(served child2), (at tray1 table2), (at_kitchen_sandwich sandw1), (no_gluten_sandwich sandw1)], static atoms=[(no_gluten_bread bread2), (no_gluten_content content2), (allergic_gluten child1), (not_allergic_gluten child2), (waiting child1 table1), (waiting child2 table1), (child child1), (child child2), (tray tray1), (sandwich sandw1), (sandwich sandw2), (bread-portion bread1), (bread-portion bread2), (content-portion content1), (content-portion content2), (place table1), (place table2), (place kitchen)], derived atoms=[])
+State(index=123, fluent atoms=[(served child2), (at tray1 kitchen), (at_kitchen_sandwich sandw1), (no_gluten_sandwich sandw1)], static atoms=[(no_gluten_bread bread2), (no_gluten_content content2), (allergic_gluten child1), (not_allergic_gluten child2), (waiting child1 table1), (waiting child2 table1), (child child1), (child child2), (tray tray1), (sandwich sandw1), (sandwich sandw2), (bread-portion bread1), (bread-portion bread2), (content-portion content1), (content-portion content2), (place table1), (place table2), (place kitchen)], derived atoms=[])
+"]
+s22[label="state_index=22 global_state_index = 128 abstraction_index=4 abstract_state_index=22
+State(index=38, fluent atoms=[(served child2), (at tray1 table2), (no_gluten_sandwich sandw2), (ontray sandw2 tray1)], static atoms=[(no_gluten_bread bread2), (no_gluten_content content2), (allergic_gluten child1), (not_allergic_gluten child2), (waiting child1 table1), (waiting child2 table1), (child child1), (child child2), (tray tray1), (sandwich sandw1), (sandwich sandw2), (bread-portion bread1), (bread-portion bread2), (content-portion content1), (content-portion content2), (place table1), (place table2), (place kitchen)], derived atoms=[])
+State(index=37, fluent atoms=[(served child2), (at tray1 kitchen), (no_gluten_sandwich sandw2), (ontray sandw2 tray1)], static atoms=[(no_gluten_bread bread2), (no_gluten_content content2), (allergic_gluten child1), (not_allergic_gluten child2), (waiting child1 table1), (waiting child2 table1), (child child1), (child child2), (tray tray1), (sandwich sandw1), (sandwich sandw2), (bread-portion bread1), (bread-portion bread2), (content-portion content1), (content-portion content2), (place table1), (place table2), (place kitchen)], derived atoms=[])
+State(index=117, fluent atoms=[(served child2), (at tray1 table2), (no_gluten_sandwich sandw1), (ontray sandw1 tray1)], static atoms=[(no_gluten_bread bread2), (no_gluten_content content2), (allergic_gluten child1), (not_allergic_gluten child2), (waiting child1 table1), (waiting child2 table1), (child child1), (child child2), (tray tray1), (sandwich sandw1), (sandwich sandw2), (bread-portion bread1), (bread-portion bread2), (content-portion content1), (content-portion content2), (place table1), (place table2), (place kitchen)], derived atoms=[])
+State(index=118, fluent atoms=[(served child2), (at tray1 kitchen), (no_gluten_sandwich sandw1), (ontray sandw1 tray1)], static atoms=[(no_gluten_bread bread2), (no_gluten_content content2), (allergic_gluten child1), (not_allergic_gluten child2), (waiting child1 table1), (waiting child2 table1), (child child1), (child child2), (tray tray1), (sandwich sandw1), (sandwich sandw2), (bread-portion bread1), (bread-portion bread2), (content-portion content1), (content-portion content2), (place table1), (place table2), (place kitchen)], derived atoms=[])
+"]
+s23[label="state_index=23 global_state_index = 129 abstraction_index=4 abstract_state_index=23
+State(index=39, fluent atoms=[(served child2), (at tray1 table1), (no_gluten_sandwich sandw2), (ontray sandw2 tray1)], static atoms=[(no_gluten_bread bread2), (no_gluten_content content2), (allergic_gluten child1), (not_allergic_gluten child2), (waiting child1 table1), (waiting child2 table1), (child child1), (child child2), (tray tray1), (sandwich sandw1), (sandwich sandw2), (bread-portion bread1), (bread-portion bread2), (content-portion content1), (content-portion content2), (place table1), (place table2), (place kitchen)], derived atoms=[])
+State(index=116, fluent atoms=[(served child2), (at tray1 table1), (no_gluten_sandwich sandw1), (ontray sandw1 tray1)], static atoms=[(no_gluten_bread bread2), (no_gluten_content content2), (allergic_gluten child1), (not_allergic_gluten child2), (waiting child1 table1), (waiting child2 table1), (child child1), (child child2), (tray tray1), (sandwich sandw1), (sandwich sandw2), (bread-portion bread1), (bread-portion bread2), (content-portion content1), (content-portion content2), (place table1), (place table2), (place kitchen)], derived atoms=[])
+"]
+s24[label="state_index=24 global_state_index = 130 abstraction_index=4 abstract_state_index=24
+State(index=40, fluent atoms=[(served child2), (at tray1 table1), (no_gluten_sandwich sandw2)], static atoms=[(no_gluten_bread bread2), (no_gluten_content content2), (allergic_gluten child1), (not_allergic_gluten child2), (waiting child1 table1), (waiting child2 table1), (child child1), (child child2), (tray tray1), (sandwich sandw1), (sandwich sandw2), (bread-portion bread1), (bread-portion bread2), (content-portion content1), (content-portion content2), (place table1), (place table2), (place kitchen)], derived atoms=[])
+State(index=111, fluent atoms=[(served child2), (at tray1 table1), (no_gluten_sandwich sandw1)], static atoms=[(no_gluten_bread bread2), (no_gluten_content content2), (allergic_gluten child1), (not_allergic_gluten child2), (waiting child1 table1), (waiting child2 table1), (child child1), (child child2), (tray tray1), (sandwich sandw1), (sandwich sandw2), (bread-portion bread1), (bread-portion bread2), (content-portion content1), (content-portion content2), (place table1), (place table2), (place kitchen)], derived atoms=[])
+"]
+s25[peripheries=2,label="state_index=25 global_state_index = 131 abstraction_index=4 abstract_state_index=25
+State(index=41, fluent atoms=[(served child1), (served child2), (at tray1 table1), (no_gluten_sandwich sandw2)], static atoms=[(no_gluten_bread bread2), (no_gluten_content content2), (allergic_gluten child1), (not_allergic_gluten child2), (waiting child1 table1), (waiting child2 table1), (child child1), (child child2), (tray tray1), (sandwich sandw1), (sandwich sandw2), (bread-portion bread1), (bread-portion bread2), (content-portion content1), (content-portion content2), (place table1), (place table2), (place kitchen)], derived atoms=[])
+State(index=103, fluent atoms=[(served child1), (served child2), (at tray1 table1), (no_gluten_sandwich sandw1)], static atoms=[(no_gluten_bread bread2), (no_gluten_content content2), (allergic_gluten child1), (not_allergic_gluten child2), (waiting child1 table1), (waiting child2 table1), (child child1), (child child2), (tray tray1), (sandwich sandw1), (sandwich sandw2), (bread-portion bread1), (bread-portion bread2), (content-portion content1), (content-portion content2), (place table1), (place table2), (place kitchen)], derived atoms=[])
+"]
+s26[peripheries=2,label="state_index=26 global_state_index = 132 abstraction_index=4 abstract_state_index=26
+State(index=43, fluent atoms=[(served child1), (served child2), (at tray1 kitchen), (no_gluten_sandwich sandw2)], static atoms=[(no_gluten_bread bread2), (no_gluten_content content2), (allergic_gluten child1), (not_allergic_gluten child2), (waiting child1 table1), (waiting child2 table1), (child child1), (child child2), (tray tray1), (sandwich sandw1), (sandwich sandw2), (bread-portion bread1), (bread-portion bread2), (content-portion content1), (content-portion content2), (place table1), (place table2), (place kitchen)], derived atoms=[])
+State(index=42, fluent atoms=[(served child1), (served child2), (at tray1 table2), (no_gluten_sandwich sandw2)], static atoms=[(no_gluten_bread bread2), (no_gluten_content content2), (allergic_gluten child1), (not_allergic_gluten child2), (waiting child1 table1), (waiting child2 table1), (child child1), (child child2), (tray tray1), (sandwich sandw1), (sandwich sandw2), (bread-portion bread1), (bread-portion bread2), (content-portion content1), (content-portion content2), (place table1), (place table2), (place kitchen)], derived atoms=[])
+State(index=104, fluent atoms=[(served child1), (served child2), (at tray1 table2), (no_gluten_sandwich sandw1)], static atoms=[(no_gluten_bread bread2), (no_gluten_content content2), (allergic_gluten child1), (not_allergic_gluten child2), (waiting child1 table1), (waiting child2 table1), (child child1), (child child2), (tray tray1), (sandwich sandw1), (sandwich sandw2), (bread-portion bread1), (bread-portion bread2), (content-portion content1), (content-portion content2), (place table1), (place table2), (place kitchen)], derived atoms=[])
+State(index=105, fluent atoms=[(served child1), (served child2), (at tray1 kitchen), (no_gluten_sandwich sandw1)], static atoms=[(no_gluten_bread bread2), (no_gluten_content content2), (allergic_gluten child1), (not_allergic_gluten child2), (waiting child1 table1), (waiting child2 table1), (child child1), (child child2), (tray tray1), (sandwich sandw1), (sandwich sandw2), (bread-portion bread1), (bread-portion bread2), (content-portion content1), (content-portion content2), (place table1), (place table2), (place kitchen)], derived atoms=[])
+"]
+s27[label="state_index=27 global_state_index = 133 abstraction_index=4 abstract_state_index=27
+State(index=45, fluent atoms=[(served child2), (at tray1 kitchen), (no_gluten_sandwich sandw2)], static atoms=[(no_gluten_bread bread2), (no_gluten_content content2), (allergic_gluten child1), (not_allergic_gluten child2), (waiting child1 table1), (waiting child2 table1), (child child1), (child child2), (tray tray1), (sandwich sandw1), (sandwich sandw2), (bread-portion bread1), (bread-portion bread2), (content-portion content1), (content-portion content2), (place table1), (place table2), (place kitchen)], derived atoms=[])
+State(index=44, fluent atoms=[(served child2), (at tray1 table2), (no_gluten_sandwich sandw2)], static atoms=[(no_gluten_bread bread2), (no_gluten_content content2), (allergic_gluten child1), (not_allergic_gluten child2), (waiting child1 table1), (waiting child2 table1), (child child1), (child child2), (tray tray1), (sandwich sandw1), (sandwich sandw2), (bread-portion bread1), (bread-portion bread2), (content-portion content1), (content-portion content2), (place table1), (place table2), (place kitchen)], derived atoms=[])
+State(index=112, fluent atoms=[(served child2), (at tray1 table2), (no_gluten_sandwich sandw1)], static atoms=[(no_gluten_bread bread2), (no_gluten_content content2), (allergic_gluten child1), (not_allergic_gluten child2), (waiting child1 table1), (waiting child2 table1), (child child1), (child child2), (tray tray1), (sandwich sandw1), (sandwich sandw2), (bread-portion bread1), (bread-portion bread2), (content-portion content1), (content-portion content2), (place table1), (place table2), (place kitchen)], derived atoms=[])
+State(index=113, fluent atoms=[(served child2), (at tray1 kitchen), (no_gluten_sandwich sandw1)], static atoms=[(no_gluten_bread bread2), (no_gluten_content content2), (allergic_gluten child1), (not_allergic_gluten child2), (waiting child1 table1), (waiting child2 table1), (child child1), (child child2), (tray tray1), (sandwich sandw1), (sandwich sandw2), (bread-portion bread1), (bread-portion bread2), (content-portion content1), (content-portion content2), (place table1), (place table2), (place kitchen)], derived atoms=[])
+"]
+s28[label="state_index=28 global_state_index = 134 abstraction_index=4 abstract_state_index=28
+State(index=47, fluent atoms=[(at tray1 table1), (no_gluten_sandwich sandw2), (ontray sandw1 tray1), (ontray sandw2 tray1)], static atoms=[(no_gluten_bread bread2), (no_gluten_content content2), (allergic_gluten child1), (not_allergic_gluten child2), (waiting child1 table1), (waiting child2 table1), (child child1), (child child2), (tray tray1), (sandwich sandw1), (sandwich sandw2), (bread-portion bread1), (bread-portion bread2), (content-portion content1), (content-portion content2), (place table1), (place table2), (place kitchen)], derived atoms=[])
+State(index=115, fluent atoms=[(at tray1 table1), (no_gluten_sandwich sandw1), (ontray sandw1 tray1), (ontray sandw2 tray1)], static atoms=[(no_gluten_bread bread2), (no_gluten_content content2), (allergic_gluten child1), (not_allergic_gluten child2), (waiting child1 table1), (waiting child2 table1), (child child1), (child child2), (tray tray1), (sandwich sandw1), (sandwich sandw2), (bread-portion bread1), (bread-portion bread2), (content-portion content1), (content-portion content2), (place table1), (place table2), (place kitchen)], derived atoms=[])
+"]
+s29[label="state_index=29 global_state_index = 135 abstraction_index=4 abstract_state_index=29
+State(index=48, fluent atoms=[(served child2), (at tray1 table1), (no_gluten_sandwich sandw2), (ontray sandw1 tray1)], static atoms=[(no_gluten_bread bread2), (no_gluten_content content2), (allergic_gluten child1), (not_allergic_gluten child2), (waiting child1 table1), (waiting child2 table1), (child child1), (child child2), (tray tray1), (sandwich sandw1), (sandwich sandw2), (bread-portion bread1), (bread-portion bread2), (content-portion content1), (content-portion content2), (place table1), (place table2), (place kitchen)], derived atoms=[])
+State(index=110, fluent atoms=[(served child2), (at tray1 table1), (no_gluten_sandwich sandw1), (ontray sandw2 tray1)], static atoms=[(no_gluten_bread bread2), (no_gluten_content content2), (allergic_gluten child1), (not_allergic_gluten child2), (waiting child1 table1), (waiting child2 table1), (child child1), (child child2), (tray tray1), (sandwich sandw1), (sandwich sandw2), (bread-portion bread1), (bread-portion bread2), (content-portion content1), (content-portion content2), (place table1), (place table2), (place kitchen)], derived atoms=[])
+"]
+s30[label="state_index=30 global_state_index = 136 abstraction_index=4 abstract_state_index=30
+State(index=49, fluent atoms=[(served child1), (at tray1 table1), (no_gluten_sandwich sandw2), (ontray sandw1 tray1)], static atoms=[(no_gluten_bread bread2), (no_gluten_content content2), (allergic_gluten child1), (not_allergic_gluten child2), (waiting child1 table1), (waiting child2 table1), (child child1), (child child2), (tray tray1), (sandwich sandw1), (sandwich sandw2), (bread-portion bread1), (bread-portion bread2), (content-portion content1), (content-portion content2), (place table1), (place table2), (place kitchen)], derived atoms=[])
+State(index=102, fluent atoms=[(served child1), (at tray1 table1), (no_gluten_sandwich sandw1), (ontray sandw2 tray1)], static atoms=[(no_gluten_bread bread2), (no_gluten_content content2), (allergic_gluten child1), (not_allergic_gluten child2), (waiting child1 table1), (waiting child2 table1), (child child1), (child child2), (tray tray1), (sandwich sandw1), (sandwich sandw2), (bread-portion bread1), (bread-portion bread2), (content-portion content1), (content-portion content2), (place table1), (place table2), (place kitchen)], derived atoms=[])
+"]
+s31[label="state_index=31 global_state_index = 137 abstraction_index=4 abstract_state_index=31
+State(index=51, fluent atoms=[(served child1), (at tray1 kitchen), (no_gluten_sandwich sandw2), (ontray sandw1 tray1)], static atoms=[(no_gluten_bread bread2), (no_gluten_content content2), (allergic_gluten child1), (not_allergic_gluten child2), (waiting child1 table1), (waiting child2 table1), (child child1), (child child2), (tray tray1), (sandwich sandw1), (sandwich sandw2), (bread-portion bread1), (bread-portion bread2), (content-portion content1), (content-portion content2), (place table1), (place table2), (place kitchen)], derived atoms=[])
+State(index=50, fluent atoms=[(served child1), (at tray1 table2), (no_gluten_sandwich sandw2), (ontray sandw1 tray1)], static atoms=[(no_gluten_bread bread2), (no_gluten_content content2), (allergic_gluten child1), (not_allergic_gluten child2), (waiting child1 table1), (waiting child2 table1), (child child1), (child child2), (tray tray1), (sandwich sandw1), (sandwich sandw2), (bread-portion bread1), (bread-portion bread2), (content-portion content1), (content-portion content2), (place table1), (place table2), (place kitchen)], derived atoms=[])
+State(index=100, fluent atoms=[(served child1), (at tray1 kitchen), (no_gluten_sandwich sandw1), (ontray sandw2 tray1)], static atoms=[(no_gluten_bread bread2), (no_gluten_content content2), (allergic_gluten child1), (not_allergic_gluten child2), (waiting child1 table1), (waiting child2 table1), (child child1), (child child2), (tray tray1), (sandwich sandw1), (sandwich sandw2), (bread-portion bread1), (bread-portion bread2), (content-portion content1), (content-portion content2), (place table1), (place table2), (place kitchen)], derived atoms=[])
+State(index=101, fluent atoms=[(served child1), (at tray1 table2), (no_gluten_sandwich sandw1), (ontray sandw2 tray1)], static atoms=[(no_gluten_bread bread2), (no_gluten_content content2), (allergic_gluten child1), (not_allergic_gluten child2), (waiting child1 table1), (waiting child2 table1), (child child1), (child child2), (tray tray1), (sandwich sandw1), (sandwich sandw2), (bread-portion bread1), (bread-portion bread2), (content-portion content1), (content-portion content2), (place table1), (place table2), (place kitchen)], derived atoms=[])
+"]
+s32[label="state_index=32 global_state_index = 138 abstraction_index=4 abstract_state_index=32
+State(index=53, fluent atoms=[(served child2), (at tray1 kitchen), (no_gluten_sandwich sandw2), (ontray sandw1 tray1)], static atoms=[(no_gluten_bread bread2), (no_gluten_content content2), (allergic_gluten child1), (not_allergic_gluten child2), (waiting child1 table1), (waiting child2 table1), (child child1), (child child2), (tray tray1), (sandwich sandw1), (sandwich sandw2), (bread-portion bread1), (bread-portion bread2), (content-portion content1), (content-portion content2), (place table1), (place table2), (place kitchen)], derived atoms=[])
+State(index=52, fluent atoms=[(served child2), (at tray1 table2), (no_gluten_sandwich sandw2), (ontray sandw1 tray1)], static atoms=[(no_gluten_bread bread2), (no_gluten_content content2), (allergic_gluten child1), (not_allergic_gluten child2), (waiting child1 table1), (waiting child2 table1), (child child1), (child child2), (tray tray1), (sandwich sandw1), (sandwich sandw2), (bread-portion bread1), (bread-portion bread2), (content-portion content1), (content-portion content2), (place table1), (place table2), (place kitchen)], derived atoms=[])
+State(index=108, fluent atoms=[(served child2), (at tray1 kitchen), (no_gluten_sandwich sandw1), (ontray sandw2 tray1)], static atoms=[(no_gluten_bread bread2), (no_gluten_content content2), (allergic_gluten child1), (not_allergic_gluten child2), (waiting child1 table1), (waiting child2 table1), (child child1), (child child2), (tray tray1), (sandwich sandw1), (sandwich sandw2), (bread-portion bread1), (bread-portion bread2), (content-portion content1), (content-portion content2), (place table1), (place table2), (place kitchen)], derived atoms=[])
+State(index=109, fluent atoms=[(served child2), (at tray1 table2), (no_gluten_sandwich sandw1), (ontray sandw2 tray1)], static atoms=[(no_gluten_bread bread2), (no_gluten_content content2), (allergic_gluten child1), (not_allergic_gluten child2), (waiting child1 table1), (waiting child2 table1), (child child1), (child child2), (tray tray1), (sandwich sandw1), (sandwich sandw2), (bread-portion bread1), (bread-portion bread2), (content-portion content1), (content-portion content2), (place table1), (place table2), (place kitchen)], derived atoms=[])
+"]
+s33[label="state_index=33 global_state_index = 139 abstraction_index=4 abstract_state_index=33
+State(index=55, fluent atoms=[(at tray1 table1), (at_kitchen_sandwich sandw1), (no_gluten_sandwich sandw2), (ontray sandw2 tray1)], static atoms=[(no_gluten_bread bread2), (no_gluten_content content2), (allergic_gluten child1), (not_allergic_gluten child2), (waiting child1 table1), (waiting child2 table1), (child child1), (child child2), (tray tray1), (sandwich sandw1), (sandwich sandw2), (bread-portion bread1), (bread-portion bread2), (content-portion content1), (content-portion content2), (place table1), (place table2), (place kitchen)], derived atoms=[])
+State(index=95, fluent atoms=[(at tray1 table1), (at_kitchen_sandwich sandw2), (no_gluten_sandwich sandw1), (ontray sandw1 tray1)], static atoms=[(no_gluten_bread bread2), (no_gluten_content content2), (allergic_gluten child1), (not_allergic_gluten child2), (waiting child1 table1), (waiting child2 table1), (child child1), (child child2), (tray tray1), (sandwich sandw1), (sandwich sandw2), (bread-portion bread1), (bread-portion bread2), (content-portion content1), (content-portion content2), (place table1), (place table2), (place kitchen)], derived atoms=[])
+"]
+s34[label="state_index=34 global_state_index = 140 abstraction_index=4 abstract_state_index=34
+State(index=56, fluent atoms=[(served child2), (at tray1 table1), (at_kitchen_sandwich sandw1), (no_gluten_sandwich sandw2)], static atoms=[(no_gluten_bread bread2), (no_gluten_content content2), (allergic_gluten child1), (not_allergic_gluten child2), (waiting child1 table1), (waiting child2 table1), (child child1), (child child2), (tray tray1), (sandwich sandw1), (sandwich sandw2), (bread-portion bread1), (bread-portion bread2), (content-portion content1), (content-portion content2), (place table1), (place table2), (place kitchen)], derived atoms=[])
+State(index=96, fluent atoms=[(served child2), (at tray1 table1), (at_kitchen_sandwich sandw2), (no_gluten_sandwich sandw1)], static atoms=[(no_gluten_bread bread2), (no_gluten_content content2), (allergic_gluten child1), (not_allergic_gluten child2), (waiting child1 table1), (waiting child2 table1), (child child1), (child child2), (tray tray1), (sandwich sandw1), (sandwich sandw2), (bread-portion bread1), (bread-portion bread2), (content-portion content1), (content-portion content2), (place table1), (place table2), (place kitchen)], derived atoms=[])
+"]
+s35[label="state_index=35 global_state_index = 141 abstraction_index=4 abstract_state_index=35
+State(index=57, fluent atoms=[(served child1), (at tray1 table1), (at_kitchen_sandwich sandw1), (no_gluten_sandwich sandw2)], static atoms=[(no_gluten_bread bread2), (no_gluten_content content2), (allergic_gluten child1), (not_allergic_gluten child2), (waiting child1 table1), (waiting child2 table1), (child child1), (child child2), (tray tray1), (sandwich sandw1), (sandwich sandw2), (bread-portion bread1), (bread-portion bread2), (content-portion content1), (content-portion content2), (place table1), (place table2), (place kitchen)], derived atoms=[])
+State(index=97, fluent atoms=[(served child1), (at tray1 table1), (at_kitchen_sandwich sandw2), (no_gluten_sandwich sandw1)], static atoms=[(no_gluten_bread bread2), (no_gluten_content content2), (allergic_gluten child1), (not_allergic_gluten child2), (waiting child1 table1), (waiting child2 table1), (child child1), (child child2), (tray tray1), (sandwich sandw1), (sandwich sandw2), (bread-portion bread1), (bread-portion bread2), (content-portion content1), (content-portion content2), (place table1), (place table2), (place kitchen)], derived atoms=[])
+"]
+s36[label="state_index=36 global_state_index = 142 abstraction_index=4 abstract_state_index=36
+State(index=58, fluent atoms=[(served child1), (at tray1 table2), (at_kitchen_sandwich sandw1), (no_gluten_sandwich sandw2)], static atoms=[(no_gluten_bread bread2), (no_gluten_content content2), (allergic_gluten child1), (not_allergic_gluten child2), (waiting child1 table1), (waiting child2 table1), (child child1), (child child2), (tray tray1), (sandwich sandw1), (sandwich sandw2), (bread-portion bread1), (bread-portion bread2), (content-portion content1), (content-portion content2), (place table1), (place table2), (place kitchen)], derived atoms=[])
+State(index=59, fluent atoms=[(served child1), (at tray1 kitchen), (at_kitchen_sandwich sandw1), (no_gluten_sandwich sandw2)], static atoms=[(no_gluten_bread bread2), (no_gluten_content content2), (allergic_gluten child1), (not_allergic_gluten child2), (waiting child1 table1), (waiting child2 table1), (child child1), (child child2), (tray tray1), (sandwich sandw1), (sandwich sandw2), (bread-portion bread1), (bread-portion bread2), (content-portion content1), (content-portion content2), (place table1), (place table2), (place kitchen)], derived atoms=[])
+State(index=98, fluent atoms=[(served child1), (at tray1 table2), (at_kitchen_sandwich sandw2), (no_gluten_sandwich sandw1)], static atoms=[(no_gluten_bread bread2), (no_gluten_content content2), (allergic_gluten child1), (not_allergic_gluten child2), (waiting child1 table1), (waiting child2 table1), (child child1), (child child2), (tray tray1), (sandwich sandw1), (sandwich sandw2), (bread-portion bread1), (bread-portion bread2), (content-portion content1), (content-portion content2), (place table1), (place table2), (place kitchen)], derived atoms=[])
+State(index=99, fluent atoms=[(served child1), (at tray1 kitchen), (at_kitchen_sandwich sandw2), (no_gluten_sandwich sandw1)], static atoms=[(no_gluten_bread bread2), (no_gluten_content content2), (allergic_gluten child1), (not_allergic_gluten child2), (waiting child1 table1), (waiting child2 table1), (child child1), (child child2), (tray tray1), (sandwich sandw1), (sandwich sandw2), (bread-portion bread1), (bread-portion bread2), (content-portion content1), (content-portion content2), (place table1), (place table2), (place kitchen)], derived atoms=[])
+"]
+s37[label="state_index=37 global_state_index = 143 abstraction_index=4 abstract_state_index=37
+State(index=60, fluent atoms=[(served child2), (at tray1 table2), (at_kitchen_sandwich sandw1), (no_gluten_sandwich sandw2)], static atoms=[(no_gluten_bread bread2), (no_gluten_content content2), (allergic_gluten child1), (not_allergic_gluten child2), (waiting child1 table1), (waiting child2 table1), (child child1), (child child2), (tray tray1), (sandwich sandw1), (sandwich sandw2), (bread-portion bread1), (bread-portion bread2), (content-portion content1), (content-portion content2), (place table1), (place table2), (place kitchen)], derived atoms=[])
+State(index=61, fluent atoms=[(served child2), (at tray1 kitchen), (at_kitchen_sandwich sandw1), (no_gluten_sandwich sandw2)], static atoms=[(no_gluten_bread bread2), (no_gluten_content content2), (allergic_gluten child1), (not_allergic_gluten child2), (waiting child1 table1), (waiting child2 table1), (child child1), (child child2), (tray tray1), (sandwich sandw1), (sandwich sandw2), (bread-portion bread1), (bread-portion bread2), (content-portion content1), (content-portion content2), (place table1), (place table2), (place kitchen)], derived atoms=[])
+State(index=106, fluent atoms=[(served child2), (at tray1 table2), (at_kitchen_sandwich sandw2), (no_gluten_sandwich sandw1)], static atoms=[(no_gluten_bread bread2), (no_gluten_content content2), (allergic_gluten child1), (not_allergic_gluten child2), (waiting child1 table1), (waiting child2 table1), (child child1), (child child2), (tray tray1), (sandwich sandw1), (sandwich sandw2), (bread-portion bread1), (bread-portion bread2), (content-portion content1), (content-portion content2), (place table1), (place table2), (place kitchen)], derived atoms=[])
+State(index=107, fluent atoms=[(served child2), (at tray1 kitchen), (at_kitchen_sandwich sandw2), (no_gluten_sandwich sandw1)], static atoms=[(no_gluten_bread bread2), (no_gluten_content content2), (allergic_gluten child1), (not_allergic_gluten child2), (waiting child1 table1), (waiting child2 table1), (child child1), (child child2), (tray tray1), (sandwich sandw1), (sandwich sandw2), (bread-portion bread1), (bread-portion bread2), (content-portion content1), (content-portion content2), (place table1), (place table2), (place kitchen)], derived atoms=[])
+"]
+s38[label="state_index=38 global_state_index = 144 abstraction_index=4 abstract_state_index=38
+State(index=63, fluent atoms=[(at tray1 kitchen), (at_kitchen_sandwich sandw1), (ontray sandw2 tray1)], static atoms=[(no_gluten_bread bread2), (no_gluten_content content2), (allergic_gluten child1), (not_allergic_gluten child2), (waiting child1 table1), (waiting child2 table1), (child child1), (child child2), (tray tray1), (sandwich sandw1), (sandwich sandw2), (bread-portion bread1), (bread-portion bread2), (content-portion content1), (content-portion content2), (place table1), (place table2), (place kitchen)], derived atoms=[])
+State(index=64, fluent atoms=[(at tray1 kitchen), (at_kitchen_sandwich sandw2), (ontray sandw1 tray1)], static atoms=[(no_gluten_bread bread2), (no_gluten_content content2), (allergic_gluten child1), (not_allergic_gluten child2), (waiting child1 table1), (waiting child2 table1), (child child1), (child child2), (tray tray1), (sandwich sandw1), (sandwich sandw2), (bread-portion bread1), (bread-portion bread2), (content-portion content1), (content-portion content2), (place table1), (place table2), (place kitchen)], derived atoms=[])
+State(index=66, fluent atoms=[(at tray1 table2), (at_kitchen_sandwich sandw2), (ontray sandw1 tray1)], static atoms=[(no_gluten_bread bread2), (no_gluten_content content2), (allergic_gluten child1), (not_allergic_gluten child2), (waiting child1 table1), (waiting child2 table1), (child child1), (child child2), (tray tray1), (sandwich sandw1), (sandwich sandw2), (bread-portion bread1), (bread-portion bread2), (content-portion content1), (content-portion content2), (place table1), (place table2), (place kitchen)], derived atoms=[])
+State(index=82, fluent atoms=[(at tray1 table2), (at_kitchen_sandwich sandw1), (ontray sandw2 tray1)], static atoms=[(no_gluten_bread bread2), (no_gluten_content content2), (allergic_gluten child1), (not_allergic_gluten child2), (waiting child1 table1), (waiting child2 table1), (child child1), (child child2), (tray tray1), (sandwich sandw1), (sandwich sandw2), (bread-portion bread1), (bread-portion bread2), (content-portion content1), (content-portion content2), (place table1), (place table2), (place kitchen)], derived atoms=[])
+"]
+s39[label="state_index=39 global_state_index = 145 abstraction_index=4 abstract_state_index=39
+State(index=65, fluent atoms=[(at tray1 kitchen), (ontray sandw1 tray1), (ontray sandw2 tray1)], static atoms=[(no_gluten_bread bread2), (no_gluten_content content2), (allergic_gluten child1), (not_allergic_gluten child2), (waiting child1 table1), (waiting child2 table1), (child child1), (child child2), (tray tray1), (sandwich sandw1), (sandwich sandw2), (bread-portion bread1), (bread-portion bread2), (content-portion content1), (content-portion content2), (place table1), (place table2), (place kitchen)], derived atoms=[])
+State(index=77, fluent atoms=[(at tray1 table2), (ontray sandw1 tray1), (ontray sandw2 tray1)], static atoms=[(no_gluten_bread bread2), (no_gluten_content content2), (allergic_gluten child1), (not_allergic_gluten child2), (waiting child1 table1), (waiting child2 table1), (child child1), (child child2), (tray tray1), (sandwich sandw1), (sandwich sandw2), (bread-portion bread1), (bread-portion bread2), (content-portion content1), (content-portion content2), (place table1), (place table2), (place kitchen)], derived atoms=[])
+"]
+s40[label="state_index=40 global_state_index = 146 abstraction_index=4 abstract_state_index=40
+State(index=67, fluent atoms=[(at tray1 table1), (at_kitchen_sandwich sandw2), (ontray sandw1 tray1)], static atoms=[(no_gluten_bread bread2), (no_gluten_content content2), (allergic_gluten child1), (not_allergic_gluten child2), (waiting child1 table1), (waiting child2 table1), (child child1), (child child2), (tray tray1), (sandwich sandw1), (sandwich sandw2), (bread-portion bread1), (bread-portion bread2), (content-portion content1), (content-portion content2), (place table1), (place table2), (place kitchen)], derived atoms=[])
+State(index=83, fluent atoms=[(at tray1 table1), (at_kitchen_sandwich sandw1), (ontray sandw2 tray1)], static atoms=[(no_gluten_bread bread2), (no_gluten_content content2), (allergic_gluten child1), (not_allergic_gluten child2), (waiting child1 table1), (waiting child2 table1), (child child1), (child child2), (tray tray1), (sandwich sandw1), (sandwich sandw2), (bread-portion bread1), (bread-portion bread2), (content-portion content1), (content-portion content2), (place table1), (place table2), (place kitchen)], derived atoms=[])
+"]
+s41[label="state_index=41 global_state_index = 147 abstraction_index=4 abstract_state_index=41
+State(index=68, fluent atoms=[(served child2), (at tray1 table1), (at_kitchen_sandwich sandw2)], static atoms=[(no_gluten_bread bread2), (no_gluten_content content2), (allergic_gluten child1), (not_allergic_gluten child2), (waiting child1 table1), (waiting child2 table1), (child child1), (child child2), (tray tray1), (sandwich sandw1), (sandwich sandw2), (bread-portion bread1), (bread-portion bread2), (content-portion content1), (content-portion content2), (place table1), (place table2), (place kitchen)], derived atoms=[])
+State(index=84, fluent atoms=[(served child2), (at tray1 table1), (at_kitchen_sandwich sandw1)], static atoms=[(no_gluten_bread bread2), (no_gluten_content content2), (allergic_gluten child1), (not_allergic_gluten child2), (waiting child1 table1), (waiting child2 table1), (child child1), (child child2), (tray tray1), (sandwich sandw1), (sandwich sandw2), (bread-portion bread1), (bread-portion bread2), (content-portion content1), (content-portion content2), (place table1), (place table2), (place kitchen)], derived atoms=[])
+"]
+s42[label="state_index=42 global_state_index = 148 abstraction_index=4 abstract_state_index=42
+State(index=69, fluent atoms=[(served child2), (at tray1 table2), (at_kitchen_sandwich sandw2)], static atoms=[(no_gluten_bread bread2), (no_gluten_content content2), (allergic_gluten child1), (not_allergic_gluten child2), (waiting child1 table1), (waiting child2 table1), (child child1), (child child2), (tray tray1), (sandwich sandw1), (sandwich sandw2), (bread-portion bread1), (bread-portion bread2), (content-portion content1), (content-portion content2), (place table1), (place table2), (place kitchen)], derived atoms=[])
+State(index=70, fluent atoms=[(served child2), (at tray1 kitchen), (at_kitchen_sandwich sandw2)], static atoms=[(no_gluten_bread bread2), (no_gluten_content content2), (allergic_gluten child1), (not_allergic_gluten child2), (waiting child1 table1), (waiting child2 table1), (child child1), (child child2), (tray tray1), (sandwich sandw1), (sandwich sandw2), (bread-portion bread1), (bread-portion bread2), (content-portion content1), (content-portion content2), (place table1), (place table2), (place kitchen)], derived atoms=[])
+State(index=85, fluent atoms=[(served child2), (at tray1 table2), (at_kitchen_sandwich sandw1)], static atoms=[(no_gluten_bread bread2), (no_gluten_content content2), (allergic_gluten child1), (not_allergic_gluten child2), (waiting child1 table1), (waiting child2 table1), (child child1), (child child2), (tray tray1), (sandwich sandw1), (sandwich sandw2), (bread-portion bread1), (bread-portion bread2), (content-portion content1), (content-portion content2), (place table1), (place table2), (place kitchen)], derived atoms=[])
+State(index=86, fluent atoms=[(served child2), (at tray1 kitchen), (at_kitchen_sandwich sandw1)], static atoms=[(no_gluten_bread bread2), (no_gluten_content content2), (allergic_gluten child1), (not_allergic_gluten child2), (waiting child1 table1), (waiting child2 table1), (child child1), (child child2), (tray tray1), (sandwich sandw1), (sandwich sandw2), (bread-portion bread1), (bread-portion bread2), (content-portion content1), (content-portion content2), (place table1), (place table2), (place kitchen)], derived atoms=[])
+"]
+s43[label="state_index=43 global_state_index = 149 abstraction_index=4 abstract_state_index=43
+State(index=71, fluent atoms=[(served child2), (at tray1 kitchen), (ontray sandw2 tray1)], static atoms=[(no_gluten_bread bread2), (no_gluten_content content2), (allergic_gluten child1), (not_allergic_gluten child2), (waiting child1 table1), (waiting child2 table1), (child child1), (child child2), (tray tray1), (sandwich sandw1), (sandwich sandw2), (bread-portion bread1), (bread-portion bread2), (content-portion content1), (content-portion content2), (place table1), (place table2), (place kitchen)], derived atoms=[])
+State(index=72, fluent atoms=[(served child2), (at tray1 table2), (ontray sandw2 tray1)], static atoms=[(no_gluten_bread bread2), (no_gluten_content content2), (allergic_gluten child1), (not_allergic_gluten child2), (waiting child1 table1), (waiting child2 table1), (child child1), (child child2), (tray tray1), (sandwich sandw1), (sandwich sandw2), (bread-portion bread1), (bread-portion bread2), (content-portion content1), (content-portion content2), (place table1), (place table2), (place kitchen)], derived atoms=[])
+State(index=80, fluent atoms=[(served child2), (at tray1 table2), (ontray sandw1 tray1)], static atoms=[(no_gluten_bread bread2), (no_gluten_content content2), (allergic_gluten child1), (not_allergic_gluten child2), (waiting child1 table1), (waiting child2 table1), (child child1), (child child2), (tray tray1), (sandwich sandw1), (sandwich sandw2), (bread-portion bread1), (bread-portion bread2), (content-portion content1), (content-portion content2), (place table1), (place table2), (place kitchen)], derived atoms=[])
+State(index=81, fluent atoms=[(served child2), (at tray1 kitchen), (ontray sandw1 tray1)], static atoms=[(no_gluten_bread bread2), (no_gluten_content content2), (allergic_gluten child1), (not_allergic_gluten child2), (waiting child1 table1), (waiting child2 table1), (child child1), (child child2), (tray tray1), (sandwich sandw1), (sandwich sandw2), (bread-portion bread1), (bread-portion bread2), (content-portion content1), (content-portion content2), (place table1), (place table2), (place kitchen)], derived atoms=[])
+"]
+s44[label="state_index=44 global_state_index = 150 abstraction_index=4 abstract_state_index=44
+State(index=73, fluent atoms=[(served child2), (at tray1 table1), (ontray sandw2 tray1)], static atoms=[(no_gluten_bread bread2), (no_gluten_content content2), (allergic_gluten child1), (not_allergic_gluten child2), (waiting child1 table1), (waiting child2 table1), (child child1), (child child2), (tray tray1), (sandwich sandw1), (sandwich sandw2), (bread-portion bread1), (bread-portion bread2), (content-portion content1), (content-portion content2), (place table1), (place table2), (place kitchen)], derived atoms=[])
+State(index=79, fluent atoms=[(served child2), (at tray1 table1), (ontray sandw1 tray1)], static atoms=[(no_gluten_bread bread2), (no_gluten_content content2), (allergic_gluten child1), (not_allergic_gluten child2), (waiting child1 table1), (waiting child2 table1), (child child1), (child child2), (tray tray1), (sandwich sandw1), (sandwich sandw2), (bread-portion bread1), (bread-portion bread2), (content-portion content1), (content-portion content2), (place table1), (place table2), (place kitchen)], derived atoms=[])
+"]
+s45[label="state_index=45 global_state_index = 151 abstraction_index=4 abstract_state_index=45
+State(index=74, fluent atoms=[(served child2), (at tray1 table1)], static atoms=[(no_gluten_bread bread2), (no_gluten_content content2), (allergic_gluten child1), (not_allergic_gluten child2), (waiting child1 table1), (waiting child2 table1), (child child1), (child child2), (tray tray1), (sandwich sandw1), (sandwich sandw2), (bread-portion bread1), (bread-portion bread2), (content-portion content1), (content-portion content2), (place table1), (place table2), (place kitchen)], derived atoms=[])
+"]
+s46[label="state_index=46 global_state_index = 152 abstraction_index=4 abstract_state_index=46
+State(index=75, fluent atoms=[(served child2), (at tray1 table2)], static atoms=[(no_gluten_bread bread2), (no_gluten_content content2), (allergic_gluten child1), (not_allergic_gluten child2), (waiting child1 table1), (waiting child2 table1), (child child1), (child child2), (tray tray1), (sandwich sandw1), (sandwich sandw2), (bread-portion bread1), (bread-portion bread2), (content-portion content1), (content-portion content2), (place table1), (place table2), (place kitchen)], derived atoms=[])
+State(index=76, fluent atoms=[(served child2), (at tray1 kitchen)], static atoms=[(no_gluten_bread bread2), (no_gluten_content content2), (allergic_gluten child1), (not_allergic_gluten child2), (waiting child1 table1), (waiting child2 table1), (child child1), (child child2), (tray tray1), (sandwich sandw1), (sandwich sandw2), (bread-portion bread1), (bread-portion bread2), (content-portion content1), (content-portion content2), (place table1), (place table2), (place kitchen)], derived atoms=[])
+"]
+s47[label="state_index=47 global_state_index = 153 abstraction_index=4 abstract_state_index=47
+State(index=78, fluent atoms=[(at tray1 table1), (ontray sandw1 tray1), (ontray sandw2 tray1)], static atoms=[(no_gluten_bread bread2), (no_gluten_content content2), (allergic_gluten child1), (not_allergic_gluten child2), (waiting child1 table1), (waiting child2 table1), (child child1), (child child2), (tray tray1), (sandwich sandw1), (sandwich sandw2), (bread-portion bread1), (bread-portion bread2), (content-portion content1), (content-portion content2), (place table1), (place table2), (place kitchen)], derived atoms=[])
+"]
+s48[label="state_index=48 global_state_index = 154 abstraction_index=4 abstract_state_index=48
+State(index=139, fluent atoms=[(at_kitchen_bread bread2), (at_kitchen_content content2), (notexist sandw1), (at tray1 table2), (ontray sandw2 tray1)], static atoms=[(no_gluten_bread bread2), (no_gluten_content content2), (allergic_gluten child1), (not_allergic_gluten child2), (waiting child1 table1), (waiting child2 table1), (child child1), (child child2), (tray tray1), (sandwich sandw1), (sandwich sandw2), (bread-portion bread1), (bread-portion bread2), (content-portion content1), (content-portion content2), (place table1), (place table2), (place kitchen)], derived atoms=[])
+State(index=138, fluent atoms=[(at tray1 kitchen), (at_kitchen_bread bread2), (at_kitchen_content content2), (notexist sandw1), (ontray sandw2 tray1)], static atoms=[(no_gluten_bread bread2), (no_gluten_content content2), (allergic_gluten child1), (not_allergic_gluten child2), (waiting child1 table1), (waiting child2 table1), (child child1), (child child2), (tray tray1), (sandwich sandw1), (sandwich sandw2), (bread-portion bread1), (bread-portion bread2), (content-portion content1), (content-portion content2), (place table1), (place table2), (place kitchen)], derived atoms=[])
+State(index=133, fluent atoms=[(at_kitchen_bread bread2), (at_kitchen_content content2), (notexist sandw2), (at tray1 table2), (ontray sandw1 tray1)], static atoms=[(no_gluten_bread bread2), (no_gluten_content content2), (allergic_gluten child1), (not_allergic_gluten child2), (waiting child1 table1), (waiting child2 table1), (child child1), (child child2), (tray tray1), (sandwich sandw1), (sandwich sandw2), (bread-portion bread1), (bread-portion bread2), (content-portion content1), (content-portion content2), (place table1), (place table2), (place kitchen)], derived atoms=[])
+State(index=132, fluent atoms=[(at tray1 kitchen), (at_kitchen_bread bread2), (at_kitchen_content content2), (notexist sandw2), (ontray sandw1 tray1)], static atoms=[(no_gluten_bread bread2), (no_gluten_content content2), (allergic_gluten child1), (not_allergic_gluten child2), (waiting child1 table1), (waiting child2 table1), (child child1), (child child2), (tray tray1), (sandwich sandw1), (sandwich sandw2), (bread-portion bread1), (bread-portion bread2), (content-portion content1), (content-portion content2), (place table1), (place table2), (place kitchen)], derived atoms=[])
+"]
+s49[label="state_index=49 global_state_index = 155 abstraction_index=4 abstract_state_index=49
+State(index=140, fluent atoms=[(at_kitchen_bread bread2), (at_kitchen_content content2), (notexist sandw1), (at tray1 table1), (ontray sandw2 tray1)], static atoms=[(no_gluten_bread bread2), (no_gluten_content content2), (allergic_gluten child1), (not_allergic_gluten child2), (waiting child1 table1), (waiting child2 table1), (child child1), (child child2), (tray tray1), (sandwich sandw1), (sandwich sandw2), (bread-portion bread1), (bread-portion bread2), (content-portion content1), (content-portion content2), (place table1), (place table2), (place kitchen)], derived atoms=[])
+State(index=134, fluent atoms=[(at_kitchen_bread bread2), (at_kitchen_content content2), (notexist sandw2), (at tray1 table1), (ontray sandw1 tray1)], static atoms=[(no_gluten_bread bread2), (no_gluten_content content2), (allergic_gluten child1), (not_allergic_gluten child2), (waiting child1 table1), (waiting child2 table1), (child child1), (child child2), (tray tray1), (sandwich sandw1), (sandwich sandw2), (bread-portion bread1), (bread-portion bread2), (content-portion content1), (content-portion content2), (place table1), (place table2), (place kitchen)], derived atoms=[])
+"]
+s50[label="state_index=50 global_state_index = 156 abstraction_index=4 abstract_state_index=50
+State(index=141, fluent atoms=[(served child2), (at_kitchen_bread bread2), (at_kitchen_content content2), (notexist sandw1), (at tray1 table1)], static atoms=[(no_gluten_bread bread2), (no_gluten_content content2), (allergic_gluten child1), (not_allergic_gluten child2), (waiting child1 table1), (waiting child2 table1), (child child1), (child child2), (tray tray1), (sandwich sandw1), (sandwich sandw2), (bread-portion bread1), (bread-portion bread2), (content-portion content1), (content-portion content2), (place table1), (place table2), (place kitchen)], derived atoms=[])
+State(index=135, fluent atoms=[(served child2), (at_kitchen_bread bread2), (at_kitchen_content content2), (notexist sandw2), (at tray1 table1)], static atoms=[(no_gluten_bread bread2), (no_gluten_content content2), (allergic_gluten child1), (not_allergic_gluten child2), (waiting child1 table1), (waiting child2 table1), (child child1), (child child2), (tray tray1), (sandwich sandw1), (sandwich sandw2), (bread-portion bread1), (bread-portion bread2), (content-portion content1), (content-portion content2), (place table1), (place table2), (place kitchen)], derived atoms=[])
+"]
+s51[label="state_index=51 global_state_index = 157 abstraction_index=4 abstract_state_index=51
+State(index=143, fluent atoms=[(served child2), (at tray1 kitchen), (at_kitchen_bread bread2), (at_kitchen_content content2), (notexist sandw1)], static atoms=[(no_gluten_bread bread2), (no_gluten_content content2), (allergic_gluten child1), (not_allergic_gluten child2), (waiting child1 table1), (waiting child2 table1), (child child1), (child child2), (tray tray1), (sandwich sandw1), (sandwich sandw2), (bread-portion bread1), (bread-portion bread2), (content-portion content1), (content-portion content2), (place table1), (place table2), (place kitchen)], derived atoms=[])
+State(index=142, fluent atoms=[(served child2), (at_kitchen_bread bread2), (at_kitchen_content content2), (notexist sandw1), (at tray1 table2)], static atoms=[(no_gluten_bread bread2), (no_gluten_content content2), (allergic_gluten child1), (not_allergic_gluten child2), (waiting child1 table1), (waiting child2 table1), (child child1), (child child2), (tray tray1), (sandwich sandw1), (sandwich sandw2), (bread-portion bread1), (bread-portion bread2), (content-portion content1), (content-portion content2), (place table1), (place table2), (place kitchen)], derived atoms=[])
+State(index=137, fluent atoms=[(served child2), (at tray1 kitchen), (at_kitchen_bread bread2), (at_kitchen_content content2), (notexist sandw2)], static atoms=[(no_gluten_bread bread2), (no_gluten_content content2), (allergic_gluten child1), (not_allergic_gluten child2), (waiting child1 table1), (waiting child2 table1), (child child1), (child child2), (tray tray1), (sandwich sandw1), (sandwich sandw2), (bread-portion bread1), (bread-portion bread2), (content-portion content1), (content-portion content2), (place table1), (place table2), (place kitchen)], derived atoms=[])
+State(index=136, fluent atoms=[(served child2), (at_kitchen_bread bread2), (at_kitchen_content content2), (notexist sandw2), (at tray1 table2)], static atoms=[(no_gluten_bread bread2), (no_gluten_content content2), (allergic_gluten child1), (not_allergic_gluten child2), (waiting child1 table1), (waiting child2 table1), (child child1), (child child2), (tray tray1), (sandwich sandw1), (sandwich sandw2), (bread-portion bread1), (bread-portion bread2), (content-portion content1), (content-portion content2), (place table1), (place table2), (place kitchen)], derived atoms=[])
+"]
+s52[label="state_index=52 global_state_index = 158 abstraction_index=4 abstract_state_index=52
+State(index=151, fluent atoms=[(at_kitchen_bread bread2), (at_kitchen_content content1), (notexist sandw1), (at tray1 table2), (ontray sandw2 tray1)], static atoms=[(no_gluten_bread bread2), (no_gluten_content content2), (allergic_gluten child1), (not_allergic_gluten child2), (waiting child1 table1), (waiting child2 table1), (child child1), (child child2), (tray tray1), (sandwich sandw1), (sandwich sandw2), (bread-portion bread1), (bread-portion bread2), (content-portion content1), (content-portion content2), (place table1), (place table2), (place kitchen)], derived atoms=[])
+State(index=150, fluent atoms=[(at tray1 kitchen), (at_kitchen_bread bread2), (at_kitchen_content content1), (notexist sandw1), (ontray sandw2 tray1)], static atoms=[(no_gluten_bread bread2), (no_gluten_content content2), (allergic_gluten child1), (not_allergic_gluten child2), (waiting child1 table1), (waiting child2 table1), (child child1), (child child2), (tray tray1), (sandwich sandw1), (sandwich sandw2), (bread-portion bread1), (bread-portion bread2), (content-portion content1), (content-portion content2), (place table1), (place table2), (place kitchen)], derived atoms=[])
+State(index=145, fluent atoms=[(at_kitchen_bread bread2), (at_kitchen_content content1), (notexist sandw2), (at tray1 table2), (ontray sandw1 tray1)], static atoms=[(no_gluten_bread bread2), (no_gluten_content content2), (allergic_gluten child1), (not_allergic_gluten child2), (waiting child1 table1), (waiting child2 table1), (child child1), (child child2), (tray tray1), (sandwich sandw1), (sandwich sandw2), (bread-portion bread1), (bread-portion bread2), (content-portion content1), (content-portion content2), (place table1), (place table2), (place kitchen)], derived atoms=[])
+State(index=144, fluent atoms=[(at tray1 kitchen), (at_kitchen_bread bread2), (at_kitchen_content content1), (notexist sandw2), (ontray sandw1 tray1)], static atoms=[(no_gluten_bread bread2), (no_gluten_content content2), (allergic_gluten child1), (not_allergic_gluten child2), (waiting child1 table1), (waiting child2 table1), (child child1), (child child2), (tray tray1), (sandwich sandw1), (sandwich sandw2), (bread-portion bread1), (bread-portion bread2), (content-portion content1), (content-portion content2), (place table1), (place table2), (place kitchen)], derived atoms=[])
+"]
+s53[label="state_index=53 global_state_index = 159 abstraction_index=4 abstract_state_index=53
+State(index=152, fluent atoms=[(at_kitchen_bread bread2), (at_kitchen_content content1), (notexist sandw1), (at tray1 table1), (ontray sandw2 tray1)], static atoms=[(no_gluten_bread bread2), (no_gluten_content content2), (allergic_gluten child1), (not_allergic_gluten child2), (waiting child1 table1), (waiting child2 table1), (child child1), (child child2), (tray tray1), (sandwich sandw1), (sandwich sandw2), (bread-portion bread1), (bread-portion bread2), (content-portion content1), (content-portion content2), (place table1), (place table2), (place kitchen)], derived atoms=[])
+State(index=146, fluent atoms=[(at_kitchen_bread bread2), (at_kitchen_content content1), (notexist sandw2), (at tray1 table1), (ontray sandw1 tray1)], static atoms=[(no_gluten_bread bread2), (no_gluten_content content2), (allergic_gluten child1), (not_allergic_gluten child2), (waiting child1 table1), (waiting child2 table1), (child child1), (child child2), (tray tray1), (sandwich sandw1), (sandwich sandw2), (bread-portion bread1), (bread-portion bread2), (content-portion content1), (content-portion content2), (place table1), (place table2), (place kitchen)], derived atoms=[])
+"]
+s54[label="state_index=54 global_state_index = 160 abstraction_index=4 abstract_state_index=54
+State(index=153, fluent atoms=[(served child2), (at_kitchen_bread bread2), (at_kitchen_content content1), (notexist sandw1), (at tray1 table1)], static atoms=[(no_gluten_bread bread2), (no_gluten_content content2), (allergic_gluten child1), (not_allergic_gluten child2), (waiting child1 table1), (waiting child2 table1), (child child1), (child child2), (tray tray1), (sandwich sandw1), (sandwich sandw2), (bread-portion bread1), (bread-portion bread2), (content-portion content1), (content-portion content2), (place table1), (place table2), (place kitchen)], derived atoms=[])
+State(index=147, fluent atoms=[(served child2), (at_kitchen_bread bread2), (at_kitchen_content content1), (notexist sandw2), (at tray1 table1)], static atoms=[(no_gluten_bread bread2), (no_gluten_content content2), (allergic_gluten child1), (not_allergic_gluten child2), (waiting child1 table1), (waiting child2 table1), (child child1), (child child2), (tray tray1), (sandwich sandw1), (sandwich sandw2), (bread-portion bread1), (bread-portion bread2), (content-portion content1), (content-portion content2), (place table1), (place table2), (place kitchen)], derived atoms=[])
+"]
+s55[label="state_index=55 global_state_index = 161 abstraction_index=4 abstract_state_index=55
+State(index=155, fluent atoms=[(served child2), (at tray1 kitchen), (at_kitchen_bread bread2), (at_kitchen_content content1), (notexist sandw1)], static atoms=[(no_gluten_bread bread2), (no_gluten_content content2), (allergic_gluten child1), (not_allergic_gluten child2), (waiting child1 table1), (waiting child2 table1), (child child1), (child child2), (tray tray1), (sandwich sandw1), (sandwich sandw2), (bread-portion bread1), (bread-portion bread2), (content-portion content1), (content-portion content2), (place table1), (place table2), (place kitchen)], derived atoms=[])
+State(index=154, fluent atoms=[(served child2), (at_kitchen_bread bread2), (at_kitchen_content content1), (notexist sandw1), (at tray1 table2)], static atoms=[(no_gluten_bread bread2), (no_gluten_content content2), (allergic_gluten child1), (not_allergic_gluten child2), (waiting child1 table1), (waiting child2 table1), (child child1), (child child2), (tray tray1), (sandwich sandw1), (sandwich sandw2), (bread-portion bread1), (bread-portion bread2), (content-portion content1), (content-portion content2), (place table1), (place table2), (place kitchen)], derived atoms=[])
+State(index=149, fluent atoms=[(served child2), (at tray1 kitchen), (at_kitchen_bread bread2), (at_kitchen_content content1), (notexist sandw2)], static atoms=[(no_gluten_bread bread2), (no_gluten_content content2), (allergic_gluten child1), (not_allergic_gluten child2), (waiting child1 table1), (waiting child2 table1), (child child1), (child child2), (tray tray1), (sandwich sandw1), (sandwich sandw2), (bread-portion bread1), (bread-portion bread2), (content-portion content1), (content-portion content2), (place table1), (place table2), (place kitchen)], derived atoms=[])
+State(index=148, fluent atoms=[(served child2), (at_kitchen_bread bread2), (at_kitchen_content content1), (notexist sandw2), (at tray1 table2)], static atoms=[(no_gluten_bread bread2), (no_gluten_content content2), (allergic_gluten child1), (not_allergic_gluten child2), (waiting child1 table1), (waiting child2 table1), (child child1), (child child2), (tray tray1), (sandwich sandw1), (sandwich sandw2), (bread-portion bread1), (bread-portion bread2), (content-portion content1), (content-portion content2), (place table1), (place table2), (place kitchen)], derived atoms=[])
+"]
+s56[label="state_index=56 global_state_index = 162 abstraction_index=4 abstract_state_index=56
+State(index=163, fluent atoms=[(at_kitchen_bread bread1), (at_kitchen_content content2), (notexist sandw1), (at tray1 table2), (ontray sandw2 tray1)], static atoms=[(no_gluten_bread bread2), (no_gluten_content content2), (allergic_gluten child1), (not_allergic_gluten child2), (waiting child1 table1), (waiting child2 table1), (child child1), (child child2), (tray tray1), (sandwich sandw1), (sandwich sandw2), (bread-portion bread1), (bread-portion bread2), (content-portion content1), (content-portion content2), (place table1), (place table2), (place kitchen)], derived atoms=[])
+State(index=162, fluent atoms=[(at tray1 kitchen), (at_kitchen_bread bread1), (at_kitchen_content content2), (notexist sandw1), (ontray sandw2 tray1)], static atoms=[(no_gluten_bread bread2), (no_gluten_content content2), (allergic_gluten child1), (not_allergic_gluten child2), (waiting child1 table1), (waiting child2 table1), (child child1), (child child2), (tray tray1), (sandwich sandw1), (sandwich sandw2), (bread-portion bread1), (bread-portion bread2), (content-portion content1), (content-portion content2), (place table1), (place table2), (place kitchen)], derived atoms=[])
+State(index=157, fluent atoms=[(at_kitchen_bread bread1), (at_kitchen_content content2), (notexist sandw2), (at tray1 table2), (ontray sandw1 tray1)], static atoms=[(no_gluten_bread bread2), (no_gluten_content content2), (allergic_gluten child1), (not_allergic_gluten child2), (waiting child1 table1), (waiting child2 table1), (child child1), (child child2), (tray tray1), (sandwich sandw1), (sandwich sandw2), (bread-portion bread1), (bread-portion bread2), (content-portion content1), (content-portion content2), (place table1), (place table2), (place kitchen)], derived atoms=[])
+State(index=156, fluent atoms=[(at tray1 kitchen), (at_kitchen_bread bread1), (at_kitchen_content content2), (notexist sandw2), (ontray sandw1 tray1)], static atoms=[(no_gluten_bread bread2), (no_gluten_content content2), (allergic_gluten child1), (not_allergic_gluten child2), (waiting child1 table1), (waiting child2 table1), (child child1), (child child2), (tray tray1), (sandwich sandw1), (sandwich sandw2), (bread-portion bread1), (bread-portion bread2), (content-portion content1), (content-portion content2), (place table1), (place table2), (place kitchen)], derived atoms=[])
+"]
+s57[label="state_index=57 global_state_index = 163 abstraction_index=4 abstract_state_index=57
+State(index=164, fluent atoms=[(at_kitchen_bread bread1), (at_kitchen_content content2), (notexist sandw1), (at tray1 table1), (ontray sandw2 tray1)], static atoms=[(no_gluten_bread bread2), (no_gluten_content content2), (allergic_gluten child1), (not_allergic_gluten child2), (waiting child1 table1), (waiting child2 table1), (child child1), (child child2), (tray tray1), (sandwich sandw1), (sandwich sandw2), (bread-portion bread1), (bread-portion bread2), (content-portion content1), (content-portion content2), (place table1), (place table2), (place kitchen)], derived atoms=[])
+State(index=158, fluent atoms=[(at_kitchen_bread bread1), (at_kitchen_content content2), (notexist sandw2), (at tray1 table1), (ontray sandw1 tray1)], static atoms=[(no_gluten_bread bread2), (no_gluten_content content2), (allergic_gluten child1), (not_allergic_gluten child2), (waiting child1 table1), (waiting child2 table1), (child child1), (child child2), (tray tray1), (sandwich sandw1), (sandwich sandw2), (bread-portion bread1), (bread-portion bread2), (content-portion content1), (content-portion content2), (place table1), (place table2), (place kitchen)], derived atoms=[])
+"]
+s58[label="state_index=58 global_state_index = 164 abstraction_index=4 abstract_state_index=58
+State(index=165, fluent atoms=[(served child2), (at_kitchen_bread bread1), (at_kitchen_content content2), (notexist sandw1), (at tray1 table1)], static atoms=[(no_gluten_bread bread2), (no_gluten_content content2), (allergic_gluten child1), (not_allergic_gluten child2), (waiting child1 table1), (waiting child2 table1), (child child1), (child child2), (tray tray1), (sandwich sandw1), (sandwich sandw2), (bread-portion bread1), (bread-portion bread2), (content-portion content1), (content-portion content2), (place table1), (place table2), (place kitchen)], derived atoms=[])
+State(index=159, fluent atoms=[(served child2), (at_kitchen_bread bread1), (at_kitchen_content content2), (notexist sandw2), (at tray1 table1)], static atoms=[(no_gluten_bread bread2), (no_gluten_content content2), (allergic_gluten child1), (not_allergic_gluten child2), (waiting child1 table1), (waiting child2 table1), (child child1), (child child2), (tray tray1), (sandwich sandw1), (sandwich sandw2), (bread-portion bread1), (bread-portion bread2), (content-portion content1), (content-portion content2), (place table1), (place table2), (place kitchen)], derived atoms=[])
+"]
+s59[label="state_index=59 global_state_index = 165 abstraction_index=4 abstract_state_index=59
+State(index=167, fluent atoms=[(served child2), (at tray1 kitchen), (at_kitchen_bread bread1), (at_kitchen_content content2), (notexist sandw1)], static atoms=[(no_gluten_bread bread2), (no_gluten_content content2), (allergic_gluten child1), (not_allergic_gluten child2), (waiting child1 table1), (waiting child2 table1), (child child1), (child child2), (tray tray1), (sandwich sandw1), (sandwich sandw2), (bread-portion bread1), (bread-portion bread2), (content-portion content1), (content-portion content2), (place table1), (place table2), (place kitchen)], derived atoms=[])
+State(index=166, fluent atoms=[(served child2), (at_kitchen_bread bread1), (at_kitchen_content content2), (notexist sandw1), (at tray1 table2)], static atoms=[(no_gluten_bread bread2), (no_gluten_content content2), (allergic_gluten child1), (not_allergic_gluten child2), (waiting child1 table1), (waiting child2 table1), (child child1), (child child2), (tray tray1), (sandwich sandw1), (sandwich sandw2), (bread-portion bread1), (bread-portion bread2), (content-portion content1), (content-portion content2), (place table1), (place table2), (place kitchen)], derived atoms=[])
+State(index=161, fluent atoms=[(served child2), (at tray1 kitchen), (at_kitchen_bread bread1), (at_kitchen_content content2), (notexist sandw2)], static atoms=[(no_gluten_bread bread2), (no_gluten_content content2), (allergic_gluten child1), (not_allergic_gluten child2), (waiting child1 table1), (waiting child2 table1), (child child1), (child child2), (tray tray1), (sandwich sandw1), (sandwich sandw2), (bread-portion bread1), (bread-portion bread2), (content-portion content1), (content-portion content2), (place table1), (place table2), (place kitchen)], derived atoms=[])
+State(index=160, fluent atoms=[(served child2), (at_kitchen_bread bread1), (at_kitchen_content content2), (notexist sandw2), (at tray1 table2)], static atoms=[(no_gluten_bread bread2), (no_gluten_content content2), (allergic_gluten child1), (not_allergic_gluten child2), (waiting child1 table1), (waiting child2 table1), (child child1), (child child2), (tray tray1), (sandwich sandw1), (sandwich sandw2), (bread-portion bread1), (bread-portion bread2), (content-portion content1), (content-portion content2), (place table1), (place table2), (place kitchen)], derived atoms=[])
+"]
+s60[label="state_index=60 global_state_index = 166 abstraction_index=4 abstract_state_index=60
+State(index=184, fluent atoms=[(at_kitchen_bread bread1), (at_kitchen_content content1), (notexist sandw1), (at tray1 table2), (no_gluten_sandwich sandw2), (ontray sandw2 tray1)], static atoms=[(no_gluten_bread bread2), (no_gluten_content content2), (allergic_gluten child1), (not_allergic_gluten child2), (waiting child1 table1), (waiting child2 table1), (child child1), (child child2), (tray tray1), (sandwich sandw1), (sandwich sandw2), (bread-portion bread1), (bread-portion bread2), (content-portion content1), (content-portion content2), (place table1), (place table2), (place kitchen)], derived atoms=[])
+State(index=183, fluent atoms=[(at tray1 kitchen), (at_kitchen_bread bread1), (at_kitchen_content content1), (notexist sandw1), (no_gluten_sandwich sandw2), (ontray sandw2 tray1)], static atoms=[(no_gluten_bread bread2), (no_gluten_content content2), (allergic_gluten child1), (not_allergic_gluten child2), (waiting child1 table1), (waiting child2 table1), (child child1), (child child2), (tray tray1), (sandwich sandw1), (sandwich sandw2), (bread-portion bread1), (bread-portion bread2), (content-portion content1), (content-portion content2), (place table1), (place table2), (place kitchen)], derived atoms=[])
+State(index=169, fluent atoms=[(at_kitchen_bread bread1), (at_kitchen_content content1), (notexist sandw2), (at tray1 table2), (no_gluten_sandwich sandw1), (ontray sandw1 tray1)], static atoms=[(no_gluten_bread bread2), (no_gluten_content content2), (allergic_gluten child1), (not_allergic_gluten child2), (waiting child1 table1), (waiting child2 table1), (child child1), (child child2), (tray tray1), (sandwich sandw1), (sandwich sandw2), (bread-portion bread1), (bread-portion bread2), (content-portion content1), (content-portion content2), (place table1), (place table2), (place kitchen)], derived atoms=[])
+State(index=168, fluent atoms=[(at tray1 kitchen), (at_kitchen_bread bread1), (at_kitchen_content content1), (notexist sandw2), (no_gluten_sandwich sandw1), (ontray sandw1 tray1)], static atoms=[(no_gluten_bread bread2), (no_gluten_content content2), (allergic_gluten child1), (not_allergic_gluten child2), (waiting child1 table1), (waiting child2 table1), (child child1), (child child2), (tray tray1), (sandwich sandw1), (sandwich sandw2), (bread-portion bread1), (bread-portion bread2), (content-portion content1), (content-portion content2), (place table1), (place table2), (place kitchen)], derived atoms=[])
+"]
+s61[label="state_index=61 global_state_index = 167 abstraction_index=4 abstract_state_index=61
+State(index=185, fluent atoms=[(at_kitchen_bread bread1), (at_kitchen_content content1), (notexist sandw1), (at tray1 table1), (no_gluten_sandwich sandw2), (ontray sandw2 tray1)], static atoms=[(no_gluten_bread bread2), (no_gluten_content content2), (allergic_gluten child1), (not_allergic_gluten child2), (waiting child1 table1), (waiting child2 table1), (child child1), (child child2), (tray tray1), (sandwich sandw1), (sandwich sandw2), (bread-portion bread1), (bread-portion bread2), (content-portion content1), (content-portion content2), (place table1), (place table2), (place kitchen)], derived atoms=[])
+State(index=170, fluent atoms=[(at_kitchen_bread bread1), (at_kitchen_content content1), (notexist sandw2), (at tray1 table1), (no_gluten_sandwich sandw1), (ontray sandw1 tray1)], static atoms=[(no_gluten_bread bread2), (no_gluten_content content2), (allergic_gluten child1), (not_allergic_gluten child2), (waiting child1 table1), (waiting child2 table1), (child child1), (child child2), (tray tray1), (sandwich sandw1), (sandwich sandw2), (bread-portion bread1), (bread-portion bread2), (content-portion content1), (content-portion content2), (place table1), (place table2), (place kitchen)], derived atoms=[])
+"]
+s62[label="state_index=62 global_state_index = 168 abstraction_index=4 abstract_state_index=62
+State(index=186, fluent atoms=[(served child2), (at_kitchen_bread bread1), (at_kitchen_content content1), (notexist sandw1), (at tray1 table1), (no_gluten_sandwich sandw2)], static atoms=[(no_gluten_bread bread2), (no_gluten_content content2), (allergic_gluten child1), (not_allergic_gluten child2), (waiting child1 table1), (waiting child2 table1), (child child1), (child child2), (tray tray1), (sandwich sandw1), (sandwich sandw2), (bread-portion bread1), (bread-portion bread2), (content-portion content1), (content-portion content2), (place table1), (place table2), (place kitchen)], derived atoms=[])
+State(index=171, fluent atoms=[(served child2), (at_kitchen_bread bread1), (at_kitchen_content content1), (notexist sandw2), (at tray1 table1), (no_gluten_sandwich sandw1)], static atoms=[(no_gluten_bread bread2), (no_gluten_content content2), (allergic_gluten child1), (not_allergic_gluten child2), (waiting child1 table1), (waiting child2 table1), (child child1), (child child2), (tray tray1), (sandwich sandw1), (sandwich sandw2), (bread-portion bread1), (bread-portion bread2), (content-portion content1), (content-portion content2), (place table1), (place table2), (place kitchen)], derived atoms=[])
+"]
+s63[label="state_index=63 global_state_index = 169 abstraction_index=4 abstract_state_index=63
+State(index=187, fluent atoms=[(served child1), (at_kitchen_bread bread1), (at_kitchen_content content1), (notexist sandw1), (at tray1 table1), (no_gluten_sandwich sandw2)], static atoms=[(no_gluten_bread bread2), (no_gluten_content content2), (allergic_gluten child1), (not_allergic_gluten child2), (waiting child1 table1), (waiting child2 table1), (child child1), (child child2), (tray tray1), (sandwich sandw1), (sandwich sandw2), (bread-portion bread1), (bread-portion bread2), (content-portion content1), (content-portion content2), (place table1), (place table2), (place kitchen)], derived atoms=[])
+State(index=172, fluent atoms=[(served child1), (at_kitchen_bread bread1), (at_kitchen_content content1), (notexist sandw2), (at tray1 table1), (no_gluten_sandwich sandw1)], static atoms=[(no_gluten_bread bread2), (no_gluten_content content2), (allergic_gluten child1), (not_allergic_gluten child2), (waiting child1 table1), (waiting child2 table1), (child child1), (child child2), (tray tray1), (sandwich sandw1), (sandwich sandw2), (bread-portion bread1), (bread-portion bread2), (content-portion content1), (content-portion content2), (place table1), (place table2), (place kitchen)], derived atoms=[])
+"]
+s64[label="state_index=64 global_state_index = 170 abstraction_index=4 abstract_state_index=64
+State(index=189, fluent atoms=[(served child1), (at tray1 kitchen), (at_kitchen_bread bread1), (at_kitchen_content content1), (notexist sandw1), (no_gluten_sandwich sandw2)], static atoms=[(no_gluten_bread bread2), (no_gluten_content content2), (allergic_gluten child1), (not_allergic_gluten child2), (waiting child1 table1), (waiting child2 table1), (child child1), (child child2), (tray tray1), (sandwich sandw1), (sandwich sandw2), (bread-portion bread1), (bread-portion bread2), (content-portion content1), (content-portion content2), (place table1), (place table2), (place kitchen)], derived atoms=[])
+State(index=188, fluent atoms=[(served child1), (at_kitchen_bread bread1), (at_kitchen_content content1), (notexist sandw1), (at tray1 table2), (no_gluten_sandwich sandw2)], static atoms=[(no_gluten_bread bread2), (no_gluten_content content2), (allergic_gluten child1), (not_allergic_gluten child2), (waiting child1 table1), (waiting child2 table1), (child child1), (child child2), (tray tray1), (sandwich sandw1), (sandwich sandw2), (bread-portion bread1), (bread-portion bread2), (content-portion content1), (content-portion content2), (place table1), (place table2), (place kitchen)], derived atoms=[])
+State(index=174, fluent atoms=[(served child1), (at tray1 kitchen), (at_kitchen_bread bread1), (at_kitchen_content content1), (notexist sandw2), (no_gluten_sandwich sandw1)], static atoms=[(no_gluten_bread bread2), (no_gluten_content content2), (allergic_gluten child1), (not_allergic_gluten child2), (waiting child1 table1), (waiting child2 table1), (child child1), (child child2), (tray tray1), (sandwich sandw1), (sandwich sandw2), (bread-portion bread1), (bread-portion bread2), (content-portion content1), (content-portion content2), (place table1), (place table2), (place kitchen)], derived atoms=[])
+State(index=173, fluent atoms=[(served child1), (at_kitchen_bread bread1), (at_kitchen_content content1), (notexist sandw2), (at tray1 table2), (no_gluten_sandwich sandw1)], static atoms=[(no_gluten_bread bread2), (no_gluten_content content2), (allergic_gluten child1), (not_allergic_gluten child2), (waiting child1 table1), (waiting child2 table1), (child child1), (child child2), (tray tray1), (sandwich sandw1), (sandwich sandw2), (bread-portion bread1), (bread-portion bread2), (content-portion content1), (content-portion content2), (place table1), (place table2), (place kitchen)], derived atoms=[])
+"]
+s65[label="state_index=65 global_state_index = 171 abstraction_index=4 abstract_state_index=65
+State(index=191, fluent atoms=[(served child2), (at tray1 kitchen), (at_kitchen_bread bread1), (at_kitchen_content content1), (notexist sandw1), (no_gluten_sandwich sandw2)], static atoms=[(no_gluten_bread bread2), (no_gluten_content content2), (allergic_gluten child1), (not_allergic_gluten child2), (waiting child1 table1), (waiting child2 table1), (child child1), (child child2), (tray tray1), (sandwich sandw1), (sandwich sandw2), (bread-portion bread1), (bread-portion bread2), (content-portion content1), (content-portion content2), (place table1), (place table2), (place kitchen)], derived atoms=[])
+State(index=190, fluent atoms=[(served child2), (at_kitchen_bread bread1), (at_kitchen_content content1), (notexist sandw1), (at tray1 table2), (no_gluten_sandwich sandw2)], static atoms=[(no_gluten_bread bread2), (no_gluten_content content2), (allergic_gluten child1), (not_allergic_gluten child2), (waiting child1 table1), (waiting child2 table1), (child child1), (child child2), (tray tray1), (sandwich sandw1), (sandwich sandw2), (bread-portion bread1), (bread-portion bread2), (content-portion content1), (content-portion content2), (place table1), (place table2), (place kitchen)], derived atoms=[])
+State(index=176, fluent atoms=[(served child2), (at tray1 kitchen), (at_kitchen_bread bread1), (at_kitchen_content content1), (notexist sandw2), (no_gluten_sandwich sandw1)], static atoms=[(no_gluten_bread bread2), (no_gluten_content content2), (allergic_gluten child1), (not_allergic_gluten child2), (waiting child1 table1), (waiting child2 table1), (child child1), (child child2), (tray tray1), (sandwich sandw1), (sandwich sandw2), (bread-portion bread1), (bread-portion bread2), (content-portion content1), (content-portion content2), (place table1), (place table2), (place kitchen)], derived atoms=[])
+State(index=175, fluent atoms=[(served child2), (at_kitchen_bread bread1), (at_kitchen_content content1), (notexist sandw2), (at tray1 table2), (no_gluten_sandwich sandw1)], static atoms=[(no_gluten_bread bread2), (no_gluten_content content2), (allergic_gluten child1), (not_allergic_gluten child2), (waiting child1 table1), (waiting child2 table1), (child child1), (child child2), (tray tray1), (sandwich sandw1), (sandwich sandw2), (bread-portion bread1), (bread-portion bread2), (content-portion content1), (content-portion content2), (place table1), (place table2), (place kitchen)], derived atoms=[])
+"]
+s66[label="state_index=66 global_state_index = 172 abstraction_index=4 abstract_state_index=66
+State(index=193, fluent atoms=[(at_kitchen_bread bread1), (at_kitchen_content content1), (notexist sandw1), (at tray1 table2), (ontray sandw2 tray1)], static atoms=[(no_gluten_bread bread2), (no_gluten_content content2), (allergic_gluten child1), (not_allergic_gluten child2), (waiting child1 table1), (waiting child2 table1), (child child1), (child child2), (tray tray1), (sandwich sandw1), (sandwich sandw2), (bread-portion bread1), (bread-portion bread2), (content-portion content1), (content-portion content2), (place table1), (place table2), (place kitchen)], derived atoms=[])
+State(index=192, fluent atoms=[(at tray1 kitchen), (at_kitchen_bread bread1), (at_kitchen_content content1), (notexist sandw1), (ontray sandw2 tray1)], static atoms=[(no_gluten_bread bread2), (no_gluten_content content2), (allergic_gluten child1), (not_allergic_gluten child2), (waiting child1 table1), (waiting child2 table1), (child child1), (child child2), (tray tray1), (sandwich sandw1), (sandwich sandw2), (bread-portion bread1), (bread-portion bread2), (content-portion content1), (content-portion content2), (place table1), (place table2), (place kitchen)], derived atoms=[])
+State(index=178, fluent atoms=[(at_kitchen_bread bread1), (at_kitchen_content content1), (notexist sandw2), (at tray1 table2), (ontray sandw1 tray1)], static atoms=[(no_gluten_bread bread2), (no_gluten_content content2), (allergic_gluten child1), (not_allergic_gluten child2), (waiting child1 table1), (waiting child2 table1), (child child1), (child child2), (tray tray1), (sandwich sandw1), (sandwich sandw2), (bread-portion bread1), (bread-portion bread2), (content-portion content1), (content-portion content2), (place table1), (place table2), (place kitchen)], derived atoms=[])
+State(index=177, fluent atoms=[(at tray1 kitchen), (at_kitchen_bread bread1), (at_kitchen_content content1), (notexist sandw2), (ontray sandw1 tray1)], static atoms=[(no_gluten_bread bread2), (no_gluten_content content2), (allergic_gluten child1), (not_allergic_gluten child2), (waiting child1 table1), (waiting child2 table1), (child child1), (child child2), (tray tray1), (sandwich sandw1), (sandwich sandw2), (bread-portion bread1), (bread-portion bread2), (content-portion content1), (content-portion content2), (place table1), (place table2), (place kitchen)], derived atoms=[])
+"]
+s67[label="state_index=67 global_state_index = 173 abstraction_index=4 abstract_state_index=67
+State(index=194, fluent atoms=[(at_kitchen_bread bread1), (at_kitchen_content content1), (notexist sandw1), (at tray1 table1), (ontray sandw2 tray1)], static atoms=[(no_gluten_bread bread2), (no_gluten_content content2), (allergic_gluten child1), (not_allergic_gluten child2), (waiting child1 table1), (waiting child2 table1), (child child1), (child child2), (tray tray1), (sandwich sandw1), (sandwich sandw2), (bread-portion bread1), (bread-portion bread2), (content-portion content1), (content-portion content2), (place table1), (place table2), (place kitchen)], derived atoms=[])
+State(index=179, fluent atoms=[(at_kitchen_bread bread1), (at_kitchen_content content1), (notexist sandw2), (at tray1 table1), (ontray sandw1 tray1)], static atoms=[(no_gluten_bread bread2), (no_gluten_content content2), (allergic_gluten child1), (not_allergic_gluten child2), (waiting child1 table1), (waiting child2 table1), (child child1), (child child2), (tray tray1), (sandwich sandw1), (sandwich sandw2), (bread-portion bread1), (bread-portion bread2), (content-portion content1), (content-portion content2), (place table1), (place table2), (place kitchen)], derived atoms=[])
+"]
+s68[label="state_index=68 global_state_index = 174 abstraction_index=4 abstract_state_index=68
+State(index=195, fluent atoms=[(served child2), (at_kitchen_bread bread1), (at_kitchen_content content1), (notexist sandw1), (at tray1 table1)], static atoms=[(no_gluten_bread bread2), (no_gluten_content content2), (allergic_gluten child1), (not_allergic_gluten child2), (waiting child1 table1), (waiting child2 table1), (child child1), (child child2), (tray tray1), (sandwich sandw1), (sandwich sandw2), (bread-portion bread1), (bread-portion bread2), (content-portion content1), (content-portion content2), (place table1), (place table2), (place kitchen)], derived atoms=[])
+State(index=180, fluent atoms=[(served child2), (at_kitchen_bread bread1), (at_kitchen_content content1), (notexist sandw2), (at tray1 table1)], static atoms=[(no_gluten_bread bread2), (no_gluten_content content2), (allergic_gluten child1), (not_allergic_gluten child2), (waiting child1 table1), (waiting child2 table1), (child child1), (child child2), (tray tray1), (sandwich sandw1), (sandwich sandw2), (bread-portion bread1), (bread-portion bread2), (content-portion content1), (content-portion content2), (place table1), (place table2), (place kitchen)], derived atoms=[])
+"]
+s69[label="state_index=69 global_state_index = 175 abstraction_index=4 abstract_state_index=69
+State(index=197, fluent atoms=[(served child2), (at tray1 kitchen), (at_kitchen_bread bread1), (at_kitchen_content content1), (notexist sandw1)], static atoms=[(no_gluten_bread bread2), (no_gluten_content content2), (allergic_gluten child1), (not_allergic_gluten child2), (waiting child1 table1), (waiting child2 table1), (child child1), (child child2), (tray tray1), (sandwich sandw1), (sandwich sandw2), (bread-portion bread1), (bread-portion bread2), (content-portion content1), (content-portion content2), (place table1), (place table2), (place kitchen)], derived atoms=[])
+State(index=196, fluent atoms=[(served child2), (at_kitchen_bread bread1), (at_kitchen_content content1), (notexist sandw1), (at tray1 table2)], static atoms=[(no_gluten_bread bread2), (no_gluten_content content2), (allergic_gluten child1), (not_allergic_gluten child2), (waiting child1 table1), (waiting child2 table1), (child child1), (child child2), (tray tray1), (sandwich sandw1), (sandwich sandw2), (bread-portion bread1), (bread-portion bread2), (content-portion content1), (content-portion content2), (place table1), (place table2), (place kitchen)], derived atoms=[])
+State(index=182, fluent atoms=[(served child2), (at tray1 kitchen), (at_kitchen_bread bread1), (at_kitchen_content content1), (notexist sandw2)], static atoms=[(no_gluten_bread bread2), (no_gluten_content content2), (allergic_gluten child1), (not_allergic_gluten child2), (waiting child1 table1), (waiting child2 table1), (child child1), (child child2), (tray tray1), (sandwich sandw1), (sandwich sandw2), (bread-portion bread1), (bread-portion bread2), (content-portion content1), (content-portion content2), (place table1), (place table2), (place kitchen)], derived atoms=[])
+State(index=181, fluent atoms=[(served child2), (at_kitchen_bread bread1), (at_kitchen_content content1), (notexist sandw2), (at tray1 table2)], static atoms=[(no_gluten_bread bread2), (no_gluten_content content2), (allergic_gluten child1), (not_allergic_gluten child2), (waiting child1 table1), (waiting child2 table1), (child child1), (child child2), (tray tray1), (sandwich sandw1), (sandwich sandw2), (bread-portion bread1), (bread-portion bread2), (content-portion content1), (content-portion content2), (place table1), (place table2), (place kitchen)], derived atoms=[])
+"]
+Dangling [ label = "", style = invis ]
+{ rank = same; Dangling }
+Dangling -> s0
+{ rank = same; s1,s3,s4,s7,s9,s10,s12,s14,s24,s27,s29,s32,s34,s37,s38,s39,s40,s41,s42,s43,s44,s45,s46,s47,s52,s53,s54,s55,s56,s57,s58,s59,s62,s65,s66,s67,s68,s69}
+{ rank = same; s6}
+{ rank = same; s0,s8,s11}
+{ rank = same; s2,s5,s13,s49,s61}
+{ rank = same; s15,s19,s33,s48,s50,s60,s63}
+{ rank = same; s16,s17,s20,s35,s51,s64}
+{ rank = same; s18,s21,s36}
+{ rank = same; s22,s28,s31}
+{ rank = same; s23,s30}
+{ rank = same; s25,s26}
+s0->s0 [label="(move_tray tray1 table2 kitchen)
+(move_tray tray1 kitchen table2)
+"]
+s0->s1 [label="(make_sandwich sandw1 bread2 content2)
+(make_sandwich sandw2 bread2 content2)
+(make_sandwich sandw1 bread2 content2)
+(make_sandwich sandw2 bread2 content2)
+"]
+s0->s2 [label="(make_sandwich_no_gluten sandw2 bread2 content2)
+(make_sandwich_no_gluten sandw1 bread2 content2)
+(make_sandwich_no_gluten sandw1 bread2 content2)
+(make_sandwich_no_gluten sandw2 bread2 content2)
+"]
+s0->s3 [label="(make_sandwich sandw2 bread2 content1)
+(make_sandwich sandw1 bread2 content1)
+(make_sandwich sandw2 bread2 content1)
+(make_sandwich sandw1 bread2 content1)
+"]
+s0->s4 [label="(make_sandwich sandw1 bread1 content2)
+(make_sandwich sandw2 bread1 content2)
+(make_sandwich sandw2 bread1 content2)
+(make_sandwich sandw1 bread1 content2)
+"]
+s0->s5 [label="(make_sandwich sandw1 bread1 content1)
+(make_sandwich sandw2 bread1 content1)
+(make_sandwich sandw1 bread1 content1)
+(make_sandwich sandw2 bread1 content1)
+"]
+s0->s6 [label="(move_tray tray1 table2 table1)
+(move_tray tray1 kitchen table1)
+"]
+s1->s1 [label="(move_tray tray1 kitchen table2)
+(move_tray tray1 kitchen table2)
+(move_tray tray1 table2 kitchen)
+(move_tray tray1 table2 kitchen)
+"]
+s1->s7 [label="(move_tray tray1 kitchen table1)
+(move_tray tray1 table2 table1)
+(move_tray tray1 table2 table1)
+(move_tray tray1 kitchen table1)
+"]
+s1->s14 [label="(make_sandwich sandw1 bread1 content1)
+(make_sandwich sandw2 bread1 content1)
+(make_sandwich sandw2 bread1 content1)
+(make_sandwich sandw1 bread1 content1)
+"]
+s1->s66 [label="(put_on_tray sandw2 tray1)
+(put_on_tray sandw1 tray1)
+"]
+s2->s2 [label="(move_tray tray1 table2 kitchen)
+(move_tray tray1 table2 kitchen)
+(move_tray tray1 kitchen table2)
+(move_tray tray1 kitchen table2)
+"]
+s2->s8 [label="(move_tray tray1 kitchen table1)
+(move_tray tray1 kitchen table1)
+(move_tray tray1 table2 table1)
+(move_tray tray1 table2 table1)
+"]
+s2->s15 [label="(make_sandwich sandw1 bread1 content1)
+(make_sandwich sandw2 bread1 content1)
+(make_sandwich sandw1 bread1 content1)
+(make_sandwich sandw2 bread1 content1)
+"]
+s2->s60 [label="(put_on_tray sandw1 tray1)
+(put_on_tray sandw2 tray1)
+"]
+s3->s3 [label="(move_tray tray1 kitchen table2)
+(move_tray tray1 table2 kitchen)
+(move_tray tray1 table2 kitchen)
+(move_tray tray1 kitchen table2)
+"]
+s3->s9 [label="(move_tray tray1 table2 table1)
+(move_tray tray1 table2 table1)
+(move_tray tray1 kitchen table1)
+(move_tray tray1 kitchen table1)
+"]
+s3->s14 [label="(make_sandwich sandw1 bread1 content2)
+(make_sandwich sandw2 bread1 content2)
+(make_sandwich sandw1 bread1 content2)
+(make_sandwich sandw2 bread1 content2)
+"]
+s3->s56 [label="(put_on_tray sandw2 tray1)
+(put_on_tray sandw1 tray1)
+"]
+s4->s4 [label="(move_tray tray1 table2 kitchen)
+(move_tray tray1 table2 kitchen)
+(move_tray tray1 kitchen table2)
+(move_tray tray1 kitchen table2)
+"]
+s4->s10 [label="(move_tray tray1 kitchen table1)
+(move_tray tray1 table2 table1)
+(move_tray tray1 kitchen table1)
+(move_tray tray1 table2 table1)
+"]
+s4->s14 [label="(make_sandwich sandw2 bread2 content1)
+(make_sandwich sandw1 bread2 content1)
+(make_sandwich sandw1 bread2 content1)
+(make_sandwich sandw2 bread2 content1)
+"]
+s4->s52 [label="(put_on_tray sandw1 tray1)
+(put_on_tray sandw2 tray1)
+"]
+s5->s5 [label="(move_tray tray1 kitchen table2)
+(move_tray tray1 kitchen table2)
+(move_tray tray1 table2 kitchen)
+(move_tray tray1 table2 kitchen)
+"]
+s5->s11 [label="(move_tray tray1 kitchen table1)
+(move_tray tray1 table2 table1)
+(move_tray tray1 table2 table1)
+(move_tray tray1 kitchen table1)
+"]
+s5->s14 [label="(make_sandwich sandw1 bread2 content2)
+(make_sandwich sandw2 bread2 content2)
+(make_sandwich sandw2 bread2 content2)
+(make_sandwich sandw1 bread2 content2)
+"]
+s5->s15 [label="(make_sandwich_no_gluten sandw1 bread2 content2)
+(make_sandwich_no_gluten sandw2 bread2 content2)
+(make_sandwich_no_gluten sandw1 bread2 content2)
+(make_sandwich_no_gluten sandw2 bread2 content2)
+"]
+s5->s48 [label="(put_on_tray sandw1 tray1)
+(put_on_tray sandw2 tray1)
+"]
+s6->s0 [label="(move_tray tray1 table1 kitchen)
+(move_tray tray1 table1 table2)
+"]
+s6->s7 [label="(make_sandwich sandw1 bread2 content2)
+(make_sandwich sandw2 bread2 content2)
+"]
+s6->s8 [label="(make_sandwich_no_gluten sandw1 bread2 content2)
+(make_sandwich_no_gluten sandw2 bread2 content2)
+"]
+s6->s9 [label="(make_sandwich sandw1 bread2 content1)
+(make_sandwich sandw2 bread2 content1)
+"]
+s6->s10 [label="(make_sandwich sandw2 bread1 content2)
+(make_sandwich sandw1 bread1 content2)
+"]
+s6->s11 [label="(make_sandwich sandw2 bread1 content1)
+(make_sandwich sandw1 bread1 content1)
+"]
+s7->s1 [label="(move_tray tray1 table1 table2)
+(move_tray tray1 table1 table2)
+(move_tray tray1 table1 kitchen)
+(move_tray tray1 table1 kitchen)
+"]
+s7->s12 [label="(make_sandwich sandw2 bread1 content1)
+(make_sandwich sandw1 bread1 content1)
+"]
+s8->s2 [label="(move_tray tray1 table1 table2)
+(move_tray tray1 table1 kitchen)
+(move_tray tray1 table1 table2)
+(move_tray tray1 table1 kitchen)
+"]
+s8->s13 [label="(make_sandwich sandw2 bread1 content1)
+(make_sandwich sandw1 bread1 content1)
+"]
+s9->s3 [label="(move_tray tray1 table1 table2)
+(move_tray tray1 table1 kitchen)
+(move_tray tray1 table1 table2)
+(move_tray tray1 table1 kitchen)
+"]
+s9->s12 [label="(make_sandwich sandw2 bread1 content2)
+(make_sandwich sandw1 bread1 content2)
+"]
+s10->s4 [label="(move_tray tray1 table1 kitchen)
+(move_tray tray1 table1 kitchen)
+(move_tray tray1 table1 table2)
+(move_tray tray1 table1 table2)
+"]
+s10->s12 [label="(make_sandwich sandw2 bread2 content1)
+(make_sandwich sandw1 bread2 content1)
+"]
+s11->s5 [label="(move_tray tray1 table1 table2)
+(move_tray tray1 table1 kitchen)
+(move_tray tray1 table1 table2)
+(move_tray tray1 table1 kitchen)
+"]
+s11->s12 [label="(make_sandwich sandw2 bread2 content2)
+(make_sandwich sandw1 bread2 content2)
+"]
+s11->s13 [label="(make_sandwich_no_gluten sandw1 bread2 content2)
+(make_sandwich_no_gluten sandw2 bread2 content2)
+"]
+s12->s14 [label="(move_tray tray1 table1 table2)
+(move_tray tray1 table1 kitchen)
+"]
+s13->s15 [label="(move_tray tray1 table1 kitchen)
+(move_tray tray1 table1 table2)
+(move_tray tray1 table1 table2)
+(move_tray tray1 table1 kitchen)
+"]
+s14->s12 [label="(move_tray tray1 kitchen table1)
+(move_tray tray1 table2 table1)
+"]
+s14->s14 [label="(move_tray tray1 kitchen table2)
+(move_tray tray1 table2 kitchen)
+"]
+s14->s38 [label="(put_on_tray sandw2 tray1)
+(put_on_tray sandw1 tray1)
+"]
+s15->s13 [label="(move_tray tray1 table2 table1)
+(move_tray tray1 table2 table1)
+(move_tray tray1 kitchen table1)
+(move_tray tray1 kitchen table1)
+"]
+s15->s15 [label="(move_tray tray1 table2 kitchen)
+(move_tray tray1 table2 kitchen)
+(move_tray tray1 kitchen table2)
+(move_tray tray1 kitchen table2)
+"]
+s15->s16 [label="(put_on_tray sandw2 tray1)
+(put_on_tray sandw1 tray1)
+"]
+s15->s17 [label="(put_on_tray sandw1 tray1)
+(put_on_tray sandw2 tray1)
+"]
+s16->s16 [label="(move_tray tray1 kitchen table2)
+(move_tray tray1 kitchen table2)
+(move_tray tray1 table2 kitchen)
+(move_tray tray1 table2 kitchen)
+"]
+s16->s18 [label="(put_on_tray sandw1 tray1)
+(put_on_tray sandw2 tray1)
+"]
+s16->s33 [label="(move_tray tray1 table2 table1)
+(move_tray tray1 kitchen table1)
+(move_tray tray1 kitchen table1)
+(move_tray tray1 table2 table1)
+"]
+s17->s17 [label="(move_tray tray1 table2 kitchen)
+(move_tray tray1 kitchen table2)
+(move_tray tray1 table2 kitchen)
+(move_tray tray1 kitchen table2)
+"]
+s17->s18 [label="(put_on_tray sandw2 tray1)
+(put_on_tray sandw1 tray1)
+"]
+s17->s19 [label="(move_tray tray1 table2 table1)
+(move_tray tray1 kitchen table1)
+(move_tray tray1 kitchen table1)
+(move_tray tray1 table2 table1)
+"]
+s18->s18 [label="(move_tray tray1 kitchen table2)
+(move_tray tray1 table2 kitchen)
+(move_tray tray1 table2 kitchen)
+(move_tray tray1 kitchen table2)
+"]
+s18->s28 [label="(move_tray tray1 table2 table1)
+(move_tray tray1 kitchen table1)
+(move_tray tray1 table2 table1)
+(move_tray tray1 kitchen table1)
+"]
+s19->s17 [label="(move_tray tray1 table1 table2)
+(move_tray tray1 table1 table2)
+(move_tray tray1 table1 kitchen)
+(move_tray tray1 table1 kitchen)
+"]
+s19->s20 [label="(serve_sandwich sandw2 child2 tray1 table1)
+(serve_sandwich sandw1 child2 tray1 table1)
+"]
+s20->s21 [label="(move_tray tray1 table1 kitchen)
+(move_tray tray1 table1 kitchen)
+(move_tray tray1 table1 table2)
+(move_tray tray1 table1 table2)
+"]
+s21->s20 [label="(move_tray tray1 kitchen table1)
+(move_tray tray1 table2 table1)
+(move_tray tray1 kitchen table1)
+(move_tray tray1 table2 table1)
+"]
+s21->s21 [label="(move_tray tray1 kitchen table2)
+(move_tray tray1 kitchen table2)
+(move_tray tray1 table2 kitchen)
+(move_tray tray1 table2 kitchen)
+"]
+s21->s22 [label="(put_on_tray sandw1 tray1)
+(put_on_tray sandw2 tray1)
+"]
+s22->s22 [label="(move_tray tray1 kitchen table2)
+(move_tray tray1 kitchen table2)
+(move_tray tray1 table2 kitchen)
+(move_tray tray1 table2 kitchen)
+"]
+s22->s23 [label="(move_tray tray1 kitchen table1)
+(move_tray tray1 kitchen table1)
+(move_tray tray1 table2 table1)
+(move_tray tray1 table2 table1)
+"]
+s23->s22 [label="(move_tray tray1 table1 kitchen)
+(move_tray tray1 table1 table2)
+(move_tray tray1 table1 kitchen)
+(move_tray tray1 table1 table2)
+"]
+s23->s24 [label="(serve_sandwich sandw1 child2 tray1 table1)
+(serve_sandwich sandw2 child2 tray1 table1)
+"]
+s23->s25 [label="(serve_sandwich_no_gluten sandw1 child1 tray1 table1)
+(serve_sandwich_no_gluten sandw2 child1 tray1 table1)
+"]
+s24->s27 [label="(move_tray tray1 table1 kitchen)
+(move_tray tray1 table1 table2)
+(move_tray tray1 table1 kitchen)
+(move_tray tray1 table1 table2)
+"]
+s25->s26 [label="(move_tray tray1 table1 kitchen)
+(move_tray tray1 table1 table2)
+(move_tray tray1 table1 table2)
+(move_tray tray1 table1 kitchen)
+"]
+s26->s25 [label="(move_tray tray1 table2 table1)
+(move_tray tray1 kitchen table1)
+(move_tray tray1 table2 table1)
+(move_tray tray1 kitchen table1)
+"]
+s26->s26 [label="(move_tray tray1 kitchen table2)
+(move_tray tray1 table2 kitchen)
+(move_tray tray1 table2 kitchen)
+(move_tray tray1 kitchen table2)
+"]
+s27->s24 [label="(move_tray tray1 kitchen table1)
+(move_tray tray1 table2 table1)
+(move_tray tray1 kitchen table1)
+(move_tray tray1 table2 table1)
+"]
+s27->s27 [label="(move_tray tray1 kitchen table2)
+(move_tray tray1 table2 kitchen)
+(move_tray tray1 table2 kitchen)
+(move_tray tray1 kitchen table2)
+"]
+s28->s18 [label="(move_tray tray1 table1 table2)
+(move_tray tray1 table1 kitchen)
+(move_tray tray1 table1 kitchen)
+(move_tray tray1 table1 table2)
+"]
+s28->s23 [label="(serve_sandwich sandw2 child2 tray1 table1)
+(serve_sandwich sandw1 child2 tray1 table1)
+"]
+s28->s29 [label="(serve_sandwich sandw1 child2 tray1 table1)
+(serve_sandwich sandw2 child2 tray1 table1)
+"]
+s28->s30 [label="(serve_sandwich_no_gluten sandw2 child1 tray1 table1)
+(serve_sandwich_no_gluten sandw1 child1 tray1 table1)
+"]
+s29->s24 [label="(serve_sandwich sandw1 child2 tray1 table1)
+(serve_sandwich sandw2 child2 tray1 table1)
+"]
+s29->s32 [label="(move_tray tray1 table1 table2)
+(move_tray tray1 table1 kitchen)
+(move_tray tray1 table1 table2)
+(move_tray tray1 table1 kitchen)
+"]
+s30->s25 [label="(serve_sandwich sandw2 child2 tray1 table1)
+(serve_sandwich sandw1 child2 tray1 table1)
+"]
+s30->s31 [label="(move_tray tray1 table1 kitchen)
+(move_tray tray1 table1 table2)
+(move_tray tray1 table1 kitchen)
+(move_tray tray1 table1 table2)
+"]
+s31->s30 [label="(move_tray tray1 kitchen table1)
+(move_tray tray1 table2 table1)
+(move_tray tray1 kitchen table1)
+(move_tray tray1 table2 table1)
+"]
+s31->s31 [label="(move_tray tray1 table2 kitchen)
+(move_tray tray1 kitchen table2)
+(move_tray tray1 kitchen table2)
+(move_tray tray1 table2 kitchen)
+"]
+s32->s29 [label="(move_tray tray1 table2 table1)
+(move_tray tray1 kitchen table1)
+(move_tray tray1 table2 table1)
+(move_tray tray1 kitchen table1)
+"]
+s32->s32 [label="(move_tray tray1 table2 kitchen)
+(move_tray tray1 kitchen table2)
+(move_tray tray1 kitchen table2)
+(move_tray tray1 table2 kitchen)
+"]
+s33->s16 [label="(move_tray tray1 table1 table2)
+(move_tray tray1 table1 kitchen)
+(move_tray tray1 table1 kitchen)
+(move_tray tray1 table1 table2)
+"]
+s33->s34 [label="(serve_sandwich sandw2 child2 tray1 table1)
+(serve_sandwich sandw1 child2 tray1 table1)
+"]
+s33->s35 [label="(serve_sandwich_no_gluten sandw2 child1 tray1 table1)
+(serve_sandwich_no_gluten sandw1 child1 tray1 table1)
+"]
+s34->s37 [label="(move_tray tray1 table1 table2)
+(move_tray tray1 table1 table2)
+(move_tray tray1 table1 kitchen)
+(move_tray tray1 table1 kitchen)
+"]
+s35->s36 [label="(move_tray tray1 table1 kitchen)
+(move_tray tray1 table1 kitchen)
+(move_tray tray1 table1 table2)
+(move_tray tray1 table1 table2)
+"]
+s36->s31 [label="(put_on_tray sandw2 tray1)
+(put_on_tray sandw1 tray1)
+"]
+s36->s35 [label="(move_tray tray1 table2 table1)
+(move_tray tray1 kitchen table1)
+(move_tray tray1 kitchen table1)
+(move_tray tray1 table2 table1)
+"]
+s36->s36 [label="(move_tray tray1 kitchen table2)
+(move_tray tray1 table2 kitchen)
+(move_tray tray1 kitchen table2)
+(move_tray tray1 table2 kitchen)
+"]
+s37->s32 [label="(put_on_tray sandw2 tray1)
+(put_on_tray sandw1 tray1)
+"]
+s37->s34 [label="(move_tray tray1 kitchen table1)
+(move_tray tray1 table2 table1)
+(move_tray tray1 table2 table1)
+(move_tray tray1 kitchen table1)
+"]
+s37->s37 [label="(move_tray tray1 kitchen table2)
+(move_tray tray1 table2 kitchen)
+(move_tray tray1 table2 kitchen)
+(move_tray tray1 kitchen table2)
+"]
+s38->s38 [label="(move_tray tray1 table2 kitchen)
+(move_tray tray1 table2 kitchen)
+(move_tray tray1 kitchen table2)
+(move_tray tray1 kitchen table2)
+"]
+s38->s39 [label="(put_on_tray sandw2 tray1)
+(put_on_tray sandw1 tray1)
+"]
+s38->s40 [label="(move_tray tray1 table2 table1)
+(move_tray tray1 table2 table1)
+(move_tray tray1 kitchen table1)
+(move_tray tray1 kitchen table1)
+"]
+s39->s39 [label="(move_tray tray1 kitchen table2)
+(move_tray tray1 table2 kitchen)
+"]
+s39->s47 [label="(move_tray tray1 kitchen table1)
+(move_tray tray1 table2 table1)
+"]
+s40->s38 [label="(move_tray tray1 table1 table2)
+(move_tray tray1 table1 kitchen)
+(move_tray tray1 table1 table2)
+(move_tray tray1 table1 kitchen)
+"]
+s40->s41 [label="(serve_sandwich sandw2 child2 tray1 table1)
+(serve_sandwich sandw1 child2 tray1 table1)
+"]
+s41->s42 [label="(move_tray tray1 table1 kitchen)
+(move_tray tray1 table1 table2)
+(move_tray tray1 table1 table2)
+(move_tray tray1 table1 kitchen)
+"]
+s42->s41 [label="(move_tray tray1 kitchen table1)
+(move_tray tray1 kitchen table1)
+(move_tray tray1 table2 table1)
+(move_tray tray1 table2 table1)
+"]
+s42->s42 [label="(move_tray tray1 table2 kitchen)
+(move_tray tray1 kitchen table2)
+(move_tray tray1 table2 kitchen)
+(move_tray tray1 kitchen table2)
+"]
+s42->s43 [label="(put_on_tray sandw1 tray1)
+(put_on_tray sandw2 tray1)
+"]
+s43->s43 [label="(move_tray tray1 kitchen table2)
+(move_tray tray1 kitchen table2)
+(move_tray tray1 table2 kitchen)
+(move_tray tray1 table2 kitchen)
+"]
+s43->s44 [label="(move_tray tray1 table2 table1)
+(move_tray tray1 kitchen table1)
+(move_tray tray1 table2 table1)
+(move_tray tray1 kitchen table1)
+"]
+s44->s43 [label="(move_tray tray1 table1 table2)
+(move_tray tray1 table1 kitchen)
+(move_tray tray1 table1 table2)
+(move_tray tray1 table1 kitchen)
+"]
+s44->s45 [label="(serve_sandwich sandw1 child2 tray1 table1)
+(serve_sandwich sandw2 child2 tray1 table1)
+"]
+s45->s46 [label="(move_tray tray1 table1 kitchen)
+(move_tray tray1 table1 table2)
+"]
+s46->s45 [label="(move_tray tray1 table2 table1)
+(move_tray tray1 kitchen table1)
+"]
+s46->s46 [label="(move_tray tray1 table2 kitchen)
+(move_tray tray1 kitchen table2)
+"]
+s47->s39 [label="(move_tray tray1 table1 table2)
+(move_tray tray1 table1 kitchen)
+"]
+s47->s44 [label="(serve_sandwich sandw1 child2 tray1 table1)
+(serve_sandwich sandw2 child2 tray1 table1)
+"]
+s48->s17 [label="(make_sandwich_no_gluten sandw1 bread2 content2)
+(make_sandwich_no_gluten sandw1 bread2 content2)
+(make_sandwich_no_gluten sandw2 bread2 content2)
+(make_sandwich_no_gluten sandw2 bread2 content2)
+"]
+s48->s38 [label="(make_sandwich sandw1 bread2 content2)
+(make_sandwich sandw2 bread2 content2)
+(make_sandwich sandw2 bread2 content2)
+(make_sandwich sandw1 bread2 content2)
+"]
+s48->s48 [label="(move_tray tray1 kitchen table2)
+(move_tray tray1 table2 kitchen)
+(move_tray tray1 kitchen table2)
+(move_tray tray1 table2 kitchen)
+"]
+s48->s49 [label="(move_tray tray1 kitchen table1)
+(move_tray tray1 table2 table1)
+(move_tray tray1 kitchen table1)
+(move_tray tray1 table2 table1)
+"]
+s49->s19 [label="(make_sandwich_no_gluten sandw2 bread2 content2)
+(make_sandwich_no_gluten sandw1 bread2 content2)
+"]
+s49->s40 [label="(make_sandwich sandw1 bread2 content2)
+(make_sandwich sandw2 bread2 content2)
+"]
+s49->s48 [label="(move_tray tray1 table1 table2)
+(move_tray tray1 table1 kitchen)
+(move_tray tray1 table1 kitchen)
+(move_tray tray1 table1 table2)
+"]
+s49->s50 [label="(serve_sandwich sandw1 child2 tray1 table1)
+(serve_sandwich sandw2 child2 tray1 table1)
+"]
+s50->s20 [label="(make_sandwich_no_gluten sandw1 bread2 content2)
+(make_sandwich_no_gluten sandw2 bread2 content2)
+"]
+s50->s41 [label="(make_sandwich sandw1 bread2 content2)
+(make_sandwich sandw2 bread2 content2)
+"]
+s50->s51 [label="(move_tray tray1 table1 table2)
+(move_tray tray1 table1 table2)
+(move_tray tray1 table1 kitchen)
+(move_tray tray1 table1 kitchen)
+"]
+s51->s21 [label="(make_sandwich_no_gluten sandw2 bread2 content2)
+(make_sandwich_no_gluten sandw2 bread2 content2)
+(make_sandwich_no_gluten sandw1 bread2 content2)
+(make_sandwich_no_gluten sandw1 bread2 content2)
+"]
+s51->s42 [label="(make_sandwich sandw1 bread2 content2)
+(make_sandwich sandw1 bread2 content2)
+(make_sandwich sandw2 bread2 content2)
+(make_sandwich sandw2 bread2 content2)
+"]
+s51->s50 [label="(move_tray tray1 kitchen table1)
+(move_tray tray1 kitchen table1)
+(move_tray tray1 table2 table1)
+(move_tray tray1 table2 table1)
+"]
+s51->s51 [label="(move_tray tray1 kitchen table2)
+(move_tray tray1 table2 kitchen)
+(move_tray tray1 table2 kitchen)
+(move_tray tray1 kitchen table2)
+"]
+s52->s38 [label="(make_sandwich sandw1 bread2 content1)
+(make_sandwich sandw1 bread2 content1)
+(make_sandwich sandw2 bread2 content1)
+(make_sandwich sandw2 bread2 content1)
+"]
+s52->s52 [label="(move_tray tray1 kitchen table2)
+(move_tray tray1 table2 kitchen)
+(move_tray tray1 table2 kitchen)
+(move_tray tray1 kitchen table2)
+"]
+s52->s53 [label="(move_tray tray1 kitchen table1)
+(move_tray tray1 table2 table1)
+(move_tray tray1 table2 table1)
+(move_tray tray1 kitchen table1)
+"]
+s53->s40 [label="(make_sandwich sandw2 bread2 content1)
+(make_sandwich sandw1 bread2 content1)
+"]
+s53->s52 [label="(move_tray tray1 table1 kitchen)
+(move_tray tray1 table1 table2)
+(move_tray tray1 table1 kitchen)
+(move_tray tray1 table1 table2)
+"]
+s53->s54 [label="(serve_sandwich sandw1 child2 tray1 table1)
+(serve_sandwich sandw2 child2 tray1 table1)
+"]
+s54->s41 [label="(make_sandwich sandw2 bread2 content1)
+(make_sandwich sandw1 bread2 content1)
+"]
+s54->s55 [label="(move_tray tray1 table1 table2)
+(move_tray tray1 table1 kitchen)
+(move_tray tray1 table1 table2)
+(move_tray tray1 table1 kitchen)
+"]
+s55->s42 [label="(make_sandwich sandw2 bread2 content1)
+(make_sandwich sandw1 bread2 content1)
+(make_sandwich sandw1 bread2 content1)
+(make_sandwich sandw2 bread2 content1)
+"]
+s55->s54 [label="(move_tray tray1 table2 table1)
+(move_tray tray1 table2 table1)
+(move_tray tray1 kitchen table1)
+(move_tray tray1 kitchen table1)
+"]
+s55->s55 [label="(move_tray tray1 table2 kitchen)
+(move_tray tray1 table2 kitchen)
+(move_tray tray1 kitchen table2)
+(move_tray tray1 kitchen table2)
+"]
+s56->s38 [label="(make_sandwich sandw1 bread1 content2)
+(make_sandwich sandw1 bread1 content2)
+(make_sandwich sandw2 bread1 content2)
+(make_sandwich sandw2 bread1 content2)
+"]
+s56->s56 [label="(move_tray tray1 table2 kitchen)
+(move_tray tray1 kitchen table2)
+(move_tray tray1 kitchen table2)
+(move_tray tray1 table2 kitchen)
+"]
+s56->s57 [label="(move_tray tray1 kitchen table1)
+(move_tray tray1 kitchen table1)
+(move_tray tray1 table2 table1)
+(move_tray tray1 table2 table1)
+"]
+s57->s40 [label="(make_sandwich sandw1 bread1 content2)
+(make_sandwich sandw2 bread1 content2)
+"]
+s57->s56 [label="(move_tray tray1 table1 kitchen)
+(move_tray tray1 table1 table2)
+(move_tray tray1 table1 table2)
+(move_tray tray1 table1 kitchen)
+"]
+s57->s58 [label="(serve_sandwich sandw2 child2 tray1 table1)
+(serve_sandwich sandw1 child2 tray1 table1)
+"]
+s58->s41 [label="(make_sandwich sandw2 bread1 content2)
+(make_sandwich sandw1 bread1 content2)
+"]
+s58->s59 [label="(move_tray tray1 table1 kitchen)
+(move_tray tray1 table1 table2)
+(move_tray tray1 table1 kitchen)
+(move_tray tray1 table1 table2)
+"]
+s59->s42 [label="(make_sandwich sandw1 bread1 content2)
+(make_sandwich sandw2 bread1 content2)
+(make_sandwich sandw1 bread1 content2)
+(make_sandwich sandw2 bread1 content2)
+"]
+s59->s58 [label="(move_tray tray1 table2 table1)
+(move_tray tray1 kitchen table1)
+(move_tray tray1 table2 table1)
+(move_tray tray1 kitchen table1)
+"]
+s59->s59 [label="(move_tray tray1 table2 kitchen)
+(move_tray tray1 table2 kitchen)
+(move_tray tray1 kitchen table2)
+(move_tray tray1 kitchen table2)
+"]
+s60->s16 [label="(make_sandwich sandw2 bread1 content1)
+(make_sandwich sandw2 bread1 content1)
+(make_sandwich sandw1 bread1 content1)
+(make_sandwich sandw1 bread1 content1)
+"]
+s60->s60 [label="(move_tray tray1 table2 kitchen)
+(move_tray tray1 kitchen table2)
+(move_tray tray1 table2 kitchen)
+(move_tray tray1 kitchen table2)
+"]
+s60->s61 [label="(move_tray tray1 kitchen table1)
+(move_tray tray1 table2 table1)
+(move_tray tray1 table2 table1)
+(move_tray tray1 kitchen table1)
+"]
+s61->s33 [label="(make_sandwich sandw1 bread1 content1)
+(make_sandwich sandw2 bread1 content1)
+"]
+s61->s60 [label="(move_tray tray1 table1 table2)
+(move_tray tray1 table1 table2)
+(move_tray tray1 table1 kitchen)
+(move_tray tray1 table1 kitchen)
+"]
+s61->s62 [label="(serve_sandwich sandw2 child2 tray1 table1)
+(serve_sandwich sandw1 child2 tray1 table1)
+"]
+s61->s63 [label="(serve_sandwich_no_gluten sandw1 child1 tray1 table1)
+(serve_sandwich_no_gluten sandw2 child1 tray1 table1)
+"]
+s62->s34 [label="(make_sandwich sandw1 bread1 content1)
+(make_sandwich sandw2 bread1 content1)
+"]
+s62->s65 [label="(move_tray tray1 table1 table2)
+(move_tray tray1 table1 kitchen)
+(move_tray tray1 table1 kitchen)
+(move_tray tray1 table1 table2)
+"]
+s63->s35 [label="(make_sandwich sandw2 bread1 content1)
+(make_sandwich sandw1 bread1 content1)
+"]
+s63->s64 [label="(move_tray tray1 table1 table2)
+(move_tray tray1 table1 kitchen)
+(move_tray tray1 table1 kitchen)
+(move_tray tray1 table1 table2)
+"]
+s64->s36 [label="(make_sandwich sandw1 bread1 content1)
+(make_sandwich sandw1 bread1 content1)
+(make_sandwich sandw2 bread1 content1)
+(make_sandwich sandw2 bread1 content1)
+"]
+s64->s63 [label="(move_tray tray1 kitchen table1)
+(move_tray tray1 table2 table1)
+(move_tray tray1 table2 table1)
+(move_tray tray1 kitchen table1)
+"]
+s64->s64 [label="(move_tray tray1 table2 kitchen)
+(move_tray tray1 kitchen table2)
+(move_tray tray1 table2 kitchen)
+(move_tray tray1 kitchen table2)
+"]
+s65->s37 [label="(make_sandwich sandw2 bread1 content1)
+(make_sandwich sandw2 bread1 content1)
+(make_sandwich sandw1 bread1 content1)
+(make_sandwich sandw1 bread1 content1)
+"]
+s65->s62 [label="(move_tray tray1 table2 table1)
+(move_tray tray1 kitchen table1)
+(move_tray tray1 table2 table1)
+(move_tray tray1 kitchen table1)
+"]
+s65->s65 [label="(move_tray tray1 kitchen table2)
+(move_tray tray1 table2 kitchen)
+(move_tray tray1 table2 kitchen)
+(move_tray tray1 kitchen table2)
+"]
+s66->s38 [label="(make_sandwich sandw2 bread1 content1)
+(make_sandwich sandw1 bread1 content1)
+(make_sandwich sandw1 bread1 content1)
+(make_sandwich sandw2 bread1 content1)
+"]
+s66->s66 [label="(move_tray tray1 table2 kitchen)
+(move_tray tray1 kitchen table2)
+(move_tray tray1 kitchen table2)
+(move_tray tray1 table2 kitchen)
+"]
+s66->s67 [label="(move_tray tray1 kitchen table1)
+(move_tray tray1 table2 table1)
+(move_tray tray1 table2 table1)
+(move_tray tray1 kitchen table1)
+"]
+s67->s40 [label="(make_sandwich sandw2 bread1 content1)
+(make_sandwich sandw1 bread1 content1)
+"]
+s67->s66 [label="(move_tray tray1 table1 kitchen)
+(move_tray tray1 table1 table2)
+(move_tray tray1 table1 table2)
+(move_tray tray1 table1 kitchen)
+"]
+s67->s68 [label="(serve_sandwich sandw1 child2 tray1 table1)
+(serve_sandwich sandw2 child2 tray1 table1)
+"]
+s68->s41 [label="(make_sandwich sandw1 bread1 content1)
+(make_sandwich sandw2 bread1 content1)
+"]
+s68->s69 [label="(move_tray tray1 table1 kitchen)
+(move_tray tray1 table1 table2)
+(move_tray tray1 table1 kitchen)
+(move_tray tray1 table1 table2)
+"]
+s69->s42 [label="(make_sandwich sandw2 bread1 content1)
+(make_sandwich sandw2 bread1 content1)
+(make_sandwich sandw1 bread1 content1)
+(make_sandwich sandw1 bread1 content1)
+"]
+s69->s68 [label="(move_tray tray1 kitchen table1)
+(move_tray tray1 table2 table1)
+(move_tray tray1 kitchen table1)
+(move_tray tray1 table2 table1)
+"]
+s69->s69 [label="(move_tray tray1 kitchen table2)
+(move_tray tray1 kitchen table2)
+(move_tray tray1 table2 kitchen)
+(move_tray tray1 table2 kitchen)
+"]
+}

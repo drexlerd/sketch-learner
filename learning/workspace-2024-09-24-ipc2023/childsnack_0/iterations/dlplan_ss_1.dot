@@ -1,0 +1,55 @@
+digraph {
+rankdir="LR"
+s3[label="(instance index=1, state index=3, atoms={at_kitchen_bread(bread1), at_kitchen_content(content1), notexist(sandw1), at(tray1,table1)})"]
+s5[label="(instance index=1, state index=5, atoms={at(tray1,table1), at_kitchen_sandwich(sandw1), no_gluten_sandwich(sandw1)})"]
+s0[label="(instance index=1, state index=0, atoms={at(tray1,kitchen), at_kitchen_bread(bread1), at_kitchen_content(content1), notexist(sandw1)})"]
+s4[label="(instance index=1, state index=4, atoms={at(tray1,table1), at_kitchen_sandwich(sandw1)})"]
+s2[label="(instance index=1, state index=2, atoms={at(tray1,kitchen), at_kitchen_sandwich(sandw1), no_gluten_sandwich(sandw1)})"]
+s1[label="(instance index=1, state index=1, atoms={at(tray1,kitchen), at_kitchen_sandwich(sandw1)})"]
+s6[label="(instance index=1, state index=6, atoms={at(tray1,kitchen), no_gluten_sandwich(sandw1), ontray(sandw1,tray1)})"]
+s10[label="(instance index=1, state index=10, atoms={at(tray1,kitchen), ontray(sandw1,tray1)})"]
+s7[label="(instance index=1, state index=7, atoms={at(tray1,table1), no_gluten_sandwich(sandw1), ontray(sandw1,tray1)})"]
+s11[label="(instance index=1, state index=11, atoms={at(tray1,table1), ontray(sandw1,tray1)})"]
+s8[peripheries=2,label="(instance index=1, state index=8, atoms={served(child1), at(tray1,table1), no_gluten_sandwich(sandw1)})"]
+s9[peripheries=2,label="(instance index=1, state index=9, atoms={served(child1), at(tray1,kitchen), no_gluten_sandwich(sandw1)})"]
+Dangling [ label = "", style = invis ]
+{ rank = same; Dangling }
+Dangling -> s0
+{ rank = same; s0}
+{ rank = same; s5,s0,s4}
+{ rank = same; s2,s1}
+{ rank = same; s6,s10}
+{ rank = same; s7,s11}
+{ rank = same; s8,s9}
+{
+s3->s5
+s3->s4
+s3->s0
+}
+{
+s5->s2
+s0->s3
+s0->s2
+s0->s1
+s4->s1
+}
+{
+s2->s6
+s2->s5
+s1->s4
+s1->s10
+}
+{
+s6->s7
+s10->s11
+}
+{
+s7->s6
+s7->s8
+s11->s10
+}
+{
+s8->s9
+s9->s8
+}
+}

@@ -1,0 +1,40 @@
+digraph {
+rankdir="LR"
+s0[label="state_index=0 global_state_index = 0 abstraction_index=0 abstract_state_index=0
+State(index=0, fluent atoms=[(at bob shed), (at spanner1 location1), (usable spanner1), (at nut1 gate), (loose nut1)], static atoms=[(link shed location1), (link location1 gate), (locatable bob), (man bob), (locatable spanner1), (spanner spanner1), (locatable nut1), (nut nut1), (location shed), (location location1), (location gate)], derived atoms=[])
+"]
+s1[label="state_index=1 global_state_index = 1 abstraction_index=0 abstract_state_index=1
+State(index=1, fluent atoms=[(at spanner1 location1), (usable spanner1), (at nut1 gate), (loose nut1), (at bob location1)], static atoms=[(link shed location1), (link location1 gate), (locatable bob), (man bob), (locatable spanner1), (spanner spanner1), (locatable nut1), (nut nut1), (location shed), (location location1), (location gate)], derived atoms=[])
+"]
+s2[label="state_index=2 global_state_index = 2 abstraction_index=0 abstract_state_index=2
+State(index=2, fluent atoms=[(at spanner1 location1), (usable spanner1), (at nut1 gate), (loose nut1), (at bob gate)], static atoms=[(link shed location1), (link location1 gate), (locatable bob), (man bob), (locatable spanner1), (spanner spanner1), (locatable nut1), (nut nut1), (location shed), (location location1), (location gate)], derived atoms=[])
+"]
+s3[label="state_index=3 global_state_index = 3 abstraction_index=0 abstract_state_index=3
+State(index=3, fluent atoms=[(usable spanner1), (at nut1 gate), (loose nut1), (at bob location1), (carrying bob spanner1)], static atoms=[(link shed location1), (link location1 gate), (locatable bob), (man bob), (locatable spanner1), (spanner spanner1), (locatable nut1), (nut nut1), (location shed), (location location1), (location gate)], derived atoms=[])
+"]
+s4[label="state_index=4 global_state_index = 4 abstraction_index=0 abstract_state_index=4
+State(index=4, fluent atoms=[(usable spanner1), (at nut1 gate), (loose nut1), (carrying bob spanner1), (at bob gate)], static atoms=[(link shed location1), (link location1 gate), (locatable bob), (man bob), (locatable spanner1), (spanner spanner1), (locatable nut1), (nut nut1), (location shed), (location location1), (location gate)], derived atoms=[])
+"]
+s5[peripheries=2,label="state_index=5 global_state_index = 5 abstraction_index=0 abstract_state_index=5
+State(index=5, fluent atoms=[(tightened nut1), (at nut1 gate), (carrying bob spanner1), (at bob gate)], static atoms=[(link shed location1), (link location1 gate), (locatable bob), (man bob), (locatable spanner1), (spanner spanner1), (locatable nut1), (nut nut1), (location shed), (location location1), (location gate)], derived atoms=[])
+"]
+Dangling [ label = "", style = invis ]
+{ rank = same; Dangling }
+Dangling -> s0
+{ rank = same; s2}
+{ rank = same; s0}
+{ rank = same; s1}
+{ rank = same; s3}
+{ rank = same; s4}
+{ rank = same; s5}
+s0->s1 [label="(walk shed location1 bob)
+"]
+s1->s2 [label="(walk location1 gate bob)
+"]
+s1->s3 [label="(pickup_spanner location1 spanner1 bob)
+"]
+s3->s4 [label="(walk location1 gate bob)
+"]
+s4->s5 [label="(tighten_nut gate spanner1 bob nut1)
+"]
+}

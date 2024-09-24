@@ -1,0 +1,65 @@
+digraph {
+rankdir="LR"
+s14[label="(instance index=0, state index=14, atoms={clear(loc_2_4), clear(loc_3_4), clear(loc_4_2), clear(loc_4_3), clear(loc_4_6), clear(loc_5_4), clear(loc_6_4), at(box1,loc_4_5), clear(loc_4_4), at-robot(loc_2_4)})"]
+s15[label="(instance index=0, state index=15, atoms={at-robot(loc_4_2), clear(loc_2_4), clear(loc_3_4), clear(loc_4_2), clear(loc_4_3), clear(loc_4_6), clear(loc_5_4), clear(loc_6_4), at(box1,loc_4_5), clear(loc_4_4)})"]
+s16[label="(instance index=0, state index=16, atoms={clear(loc_2_4), clear(loc_3_4), clear(loc_4_2), clear(loc_4_3), clear(loc_4_6), clear(loc_5_4), clear(loc_6_4), at(box1,loc_4_5), clear(loc_4_4), at-robot(loc_6_4)})"]
+s0[label="(instance index=0, state index=0, atoms={at-robot(loc_4_2), at(box1,loc_4_4), clear(loc_2_4), clear(loc_3_4), clear(loc_4_2), clear(loc_4_3), clear(loc_4_5), clear(loc_4_6), clear(loc_5_4), clear(loc_6_4)})"]
+s1[label="(instance index=0, state index=1, atoms={at(box1,loc_4_4), clear(loc_2_4), clear(loc_3_4), clear(loc_4_2), clear(loc_4_3), clear(loc_4_5), clear(loc_4_6), clear(loc_5_4), clear(loc_6_4), at-robot(loc_4_3)})"]
+s3[label="(instance index=0, state index=3, atoms={clear(loc_2_4), clear(loc_3_4), clear(loc_4_2), clear(loc_4_3), clear(loc_4_6), clear(loc_5_4), clear(loc_6_4), at(box1,loc_4_5), clear(loc_4_4), at-robot(loc_5_4)})"]
+s4[label="(instance index=0, state index=4, atoms={clear(loc_2_4), clear(loc_3_4), clear(loc_4_2), clear(loc_4_3), clear(loc_4_6), clear(loc_5_4), clear(loc_6_4), at-robot(loc_4_3), at(box1,loc_4_5), clear(loc_4_4)})"]
+s5[label="(instance index=0, state index=5, atoms={clear(loc_2_4), clear(loc_3_4), clear(loc_4_2), clear(loc_4_3), clear(loc_4_6), clear(loc_5_4), clear(loc_6_4), at(box1,loc_4_5), clear(loc_4_4), at-robot(loc_3_4)})"]
+s2[label="(instance index=0, state index=2, atoms={clear(loc_2_4), clear(loc_3_4), clear(loc_4_2), clear(loc_4_3), clear(loc_4_6), clear(loc_5_4), clear(loc_6_4), at-robot(loc_4_4), at(box1,loc_4_5), clear(loc_4_4)})"]
+s13[peripheries=2,label="(instance index=0, state index=13, atoms={at(box1,loc_4_6), clear(loc_2_4), clear(loc_3_4), clear(loc_4_2), clear(loc_4_3), clear(loc_4_5), clear(loc_5_4), clear(loc_6_4), clear(loc_4_4), at-robot(loc_6_4)})"]
+s12[peripheries=2,label="(instance index=0, state index=12, atoms={at(box1,loc_4_6), at-robot(loc_4_2), clear(loc_2_4), clear(loc_3_4), clear(loc_4_2), clear(loc_4_3), clear(loc_4_5), clear(loc_5_4), clear(loc_6_4), clear(loc_4_4)})"]
+s11[peripheries=2,label="(instance index=0, state index=11, atoms={at(box1,loc_4_6), clear(loc_2_4), clear(loc_3_4), clear(loc_4_2), clear(loc_4_3), clear(loc_4_5), clear(loc_5_4), clear(loc_6_4), clear(loc_4_4), at-robot(loc_2_4)})"]
+s10[peripheries=2,label="(instance index=0, state index=10, atoms={at(box1,loc_4_6), clear(loc_2_4), clear(loc_3_4), clear(loc_4_2), clear(loc_4_3), clear(loc_4_5), clear(loc_5_4), clear(loc_6_4), clear(loc_4_4), at-robot(loc_3_4)})"]
+s9[peripheries=2,label="(instance index=0, state index=9, atoms={at(box1,loc_4_6), clear(loc_2_4), clear(loc_3_4), clear(loc_4_2), clear(loc_4_3), clear(loc_4_5), clear(loc_5_4), clear(loc_6_4), at-robot(loc_4_3), clear(loc_4_4)})"]
+s8[peripheries=2,label="(instance index=0, state index=8, atoms={at(box1,loc_4_6), clear(loc_2_4), clear(loc_3_4), clear(loc_4_2), clear(loc_4_3), clear(loc_4_5), clear(loc_5_4), clear(loc_6_4), clear(loc_4_4), at-robot(loc_5_4)})"]
+s7[peripheries=2,label="(instance index=0, state index=7, atoms={at(box1,loc_4_6), clear(loc_2_4), clear(loc_3_4), clear(loc_4_2), clear(loc_4_3), clear(loc_4_5), clear(loc_5_4), clear(loc_6_4), at-robot(loc_4_4), clear(loc_4_4)})"]
+s6[peripheries=2,label="(instance index=0, state index=6, atoms={at(box1,loc_4_6), clear(loc_2_4), clear(loc_3_4), clear(loc_4_2), clear(loc_4_3), clear(loc_4_5), clear(loc_5_4), clear(loc_6_4), clear(loc_4_4), at-robot(loc_4_5)})"]
+Dangling [ label = "", style = invis ]
+{ rank = same; Dangling }
+Dangling -> s0
+{ rank = same; s0}
+{ rank = same; s1,s3,s4,s5}
+{ rank = same; s2}
+{ rank = same; s13,s12,s11,s10,s9,s8,s7,s6}
+{
+s14->s5
+s15->s4
+s16->s3
+s0->s1
+}
+{
+s1->s2
+s1->s0
+s3->s2
+s3->s16
+s4->s15
+s4->s2
+s5->s14
+s5->s2
+}
+{
+s2->s6
+s2->s5
+s2->s4
+s2->s3
+}
+{
+s13->s8
+s12->s9
+s11->s10
+s10->s7
+s10->s11
+s9->s7
+s9->s12
+s8->s7
+s8->s13
+s7->s6
+s7->s10
+s7->s9
+s7->s8
+s6->s7
+}
+}

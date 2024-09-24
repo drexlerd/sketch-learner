@@ -1,0 +1,403 @@
+digraph {
+rankdir="LR"
+s3[label="(instance index=3, state index=3, atoms={pointing(sat1,dir2), power_avail(sat1)})"]
+s1[label="(instance index=3, state index=1, atoms={pointing(sat1,dir1), power_on(ins1)})"]
+s7[label="(instance index=3, state index=7, atoms={pointing(sat1,dir2), power_avail(sat1), calibrated(ins1)})"]
+s91[label="(instance index=3, state index=91, atoms={pointing(sat1,dir1), power_on(ins1), calibrated(ins2)})"]
+s89[label="(instance index=3, state index=89, atoms={pointing(sat1,dir2), power_avail(sat1), calibrated(ins2)})"]
+s87[label="(instance index=3, state index=87, atoms={pointing(sat1,dir2), power_avail(sat1), calibrated(ins1), calibrated(ins2)})"]
+s92[label="(instance index=3, state index=92, atoms={pointing(sat1,dir1), power_avail(sat1), calibrated(ins2)})"]
+s5[label="(instance index=3, state index=5, atoms={pointing(sat1,dir2), power_on(ins2)})"]
+s0[label="(instance index=3, state index=0, atoms={pointing(sat1,dir1), power_avail(sat1)})"]
+s53[label="(instance index=3, state index=53, atoms={pointing(sat1,dir2), have_image(dir2,mod1), power_avail(sat1)})"]
+s37[label="(instance index=3, state index=37, atoms={have_image(dir2,mod1), pointing(sat1,dir1), power_on(ins1)})"]
+s4[label="(instance index=3, state index=4, atoms={pointing(sat1,dir2), power_on(ins1)})"]
+s85[label="(instance index=3, state index=85, atoms={pointing(sat1,dir1), power_avail(sat1), calibrated(ins1), calibrated(ins2)})"]
+s84[label="(instance index=3, state index=84, atoms={pointing(sat1,dir2), power_on(ins2), calibrated(ins1)})"]
+s57[label="(instance index=3, state index=57, atoms={pointing(sat1,dir1), power_avail(sat1), calibrated(ins1)})"]
+s10[label="(instance index=3, state index=10, atoms={pointing(sat1,dir2), have_image(dir2,mod1), power_avail(sat1), calibrated(ins1)})"]
+s88[label="(instance index=3, state index=88, atoms={pointing(sat1,dir2), power_on(ins1), calibrated(ins2)})"]
+s47[label="(instance index=3, state index=47, atoms={have_image(dir2,mod1), pointing(sat1,dir1), power_on(ins1), calibrated(ins2)})"]
+s45[label="(instance index=3, state index=45, atoms={pointing(sat1,dir2), have_image(dir2,mod1), power_avail(sat1), calibrated(ins2)})"]
+s43[label="(instance index=3, state index=43, atoms={pointing(sat1,dir2), have_image(dir2,mod1), power_avail(sat1), calibrated(ins1), calibrated(ins2)})"]
+s2[label="(instance index=3, state index=2, atoms={pointing(sat1,dir1), power_on(ins2)})"]
+s95[label="(instance index=3, state index=95, atoms={pointing(sat1,dir2), power_on(ins2), calibrated(ins2)})"]
+s52[label="(instance index=3, state index=52, atoms={pointing(sat1,dir2), have_image(dir2,mod1), power_on(ins2)})"]
+s50[label="(instance index=3, state index=50, atoms={have_image(dir2,mod1), pointing(sat1,dir1), power_avail(sat1)})"]
+s48[label="(instance index=3, state index=48, atoms={have_image(dir2,mod1), pointing(sat1,dir1), power_avail(sat1), calibrated(ins2)})"]
+s77[label="(instance index=3, state index=77, atoms={pointing(sat1,dir2), have_image(dir1,mod1), power_on(ins2)})"]
+s75[label="(instance index=3, state index=75, atoms={have_image(dir1,mod1), pointing(sat1,dir1), power_avail(sat1)})"]
+s54[label="(instance index=3, state index=54, atoms={pointing(sat1,dir2), have_image(dir2,mod1), power_on(ins1)})"]
+s6[label="(instance index=3, state index=6, atoms={pointing(sat1,dir2), power_on(ins1), calibrated(ins1)})"]
+s82[label="(instance index=3, state index=82, atoms={pointing(sat1,dir1), power_on(ins2), calibrated(ins1)})"]
+s63[label="(instance index=3, state index=63, atoms={pointing(sat1,dir2), have_image(dir1,mod1), power_on(ins2), calibrated(ins1)})"]
+s59[label="(instance index=3, state index=59, atoms={have_image(dir1,mod1), pointing(sat1,dir1), power_avail(sat1), calibrated(ins1)})"]
+s86[label="(instance index=3, state index=86, atoms={pointing(sat1,dir2), power_on(ins2), calibrated(ins1), calibrated(ins2)})"]
+s41[label="(instance index=3, state index=41, atoms={have_image(dir2,mod1), pointing(sat1,dir1), power_avail(sat1), calibrated(ins1), calibrated(ins2)})"]
+s40[label="(instance index=3, state index=40, atoms={pointing(sat1,dir2), have_image(dir2,mod1), power_on(ins2), calibrated(ins1)})"]
+s12[label="(instance index=3, state index=12, atoms={have_image(dir2,mod1), pointing(sat1,dir1), power_avail(sat1), calibrated(ins1)})"]
+s73[label="(instance index=3, state index=73, atoms={have_image(dir1,mod1), pointing(sat1,dir1), power_avail(sat1), calibrated(ins2)})"]
+s90[label="(instance index=3, state index=90, atoms={pointing(sat1,dir2), power_on(ins1), calibrated(ins1), calibrated(ins2)})"]
+s44[label="(instance index=3, state index=44, atoms={pointing(sat1,dir2), have_image(dir2,mod1), power_on(ins1), calibrated(ins2)})"]
+s66[label="(instance index=3, state index=66, atoms={have_image(dir1,mod1), pointing(sat1,dir1), power_avail(sat1), calibrated(ins1), calibrated(ins2)})"]
+s94[label="(instance index=3, state index=94, atoms={pointing(sat1,dir1), power_on(ins2), calibrated(ins2)})"]
+s78[label="(instance index=3, state index=78, atoms={pointing(sat1,dir2), have_image(dir1,mod1), power_avail(sat1)})"]
+s8[label="(instance index=3, state index=8, atoms={pointing(sat1,dir1), power_on(ins1), calibrated(ins1)})"]
+s80[label="(instance index=3, state index=80, atoms={have_image(dir1,mod1), pointing(sat1,dir1), power_on(ins1)})"]
+s72[label="(instance index=3, state index=72, atoms={have_image(dir1,mod1), pointing(sat1,dir1), power_on(ins1), calibrated(ins2)})"]
+s83[label="(instance index=3, state index=83, atoms={pointing(sat1,dir1), power_on(ins2), calibrated(ins1), calibrated(ins2)})"]
+s74[label="(instance index=3, state index=74, atoms={have_image(dir1,mod1), pointing(sat1,dir1), power_on(ins2)})"]
+s93[label="(instance index=3, state index=93, atoms={pointing(sat1,dir1), power_on(ins1), calibrated(ins1), calibrated(ins2)})"]
+s70[label="(instance index=3, state index=70, atoms={pointing(sat1,dir2), have_image(dir1,mod1), power_avail(sat1), calibrated(ins2)})"]
+s46[label="(instance index=3, state index=46, atoms={pointing(sat1,dir2), have_image(dir2,mod1), power_on(ins1), calibrated(ins1), calibrated(ins2)})"]
+s68[label="(instance index=3, state index=68, atoms={pointing(sat1,dir2), have_image(dir1,mod1), power_avail(sat1), calibrated(ins1), calibrated(ins2)})"]
+s9[label="(instance index=3, state index=9, atoms={pointing(sat1,dir2), have_image(dir2,mod1), power_on(ins1), calibrated(ins1)})"]
+s38[label="(instance index=3, state index=38, atoms={have_image(dir2,mod1), pointing(sat1,dir1), power_on(ins2), calibrated(ins1)})"]
+s42[label="(instance index=3, state index=42, atoms={pointing(sat1,dir2), have_image(dir2,mod1), power_on(ins2), calibrated(ins1), calibrated(ins2)})"]
+s64[label="(instance index=3, state index=64, atoms={have_image(dir1,mod1), pointing(sat1,dir1), power_on(ins2), calibrated(ins1)})"]
+s61[label="(instance index=3, state index=61, atoms={pointing(sat1,dir2), have_image(dir1,mod1), power_avail(sat1), calibrated(ins1)})"]
+s49[label="(instance index=3, state index=49, atoms={have_image(dir2,mod1), pointing(sat1,dir1), power_on(ins2)})"]
+s55[label="(instance index=3, state index=55, atoms={pointing(sat1,dir2), have_image(dir2,mod1), power_on(ins2), calibrated(ins2)})"]
+s56[label="(instance index=3, state index=56, atoms={have_image(dir2,mod1), pointing(sat1,dir1), power_on(ins1), calibrated(ins1), calibrated(ins2)})"]
+s81[label="(instance index=3, state index=81, atoms={have_image(dir1,mod1), pointing(sat1,dir1), power_on(ins1), calibrated(ins1), calibrated(ins2)})"]
+s76[label="(instance index=3, state index=76, atoms={have_image(dir1,mod1), pointing(sat1,dir1), power_on(ins2), calibrated(ins2)})"]
+s69[label="(instance index=3, state index=69, atoms={pointing(sat1,dir2), have_image(dir1,mod1), power_on(ins1), calibrated(ins2)})"]
+s39[label="(instance index=3, state index=39, atoms={have_image(dir2,mod1), pointing(sat1,dir1), power_on(ins2), calibrated(ins1), calibrated(ins2)})"]
+s65[label="(instance index=3, state index=65, atoms={have_image(dir1,mod1), pointing(sat1,dir1), power_on(ins2), calibrated(ins1), calibrated(ins2)})"]
+s11[label="(instance index=3, state index=11, atoms={have_image(dir2,mod1), pointing(sat1,dir1), power_on(ins1), calibrated(ins1)})"]
+s58[label="(instance index=3, state index=58, atoms={have_image(dir1,mod1), pointing(sat1,dir1), power_on(ins1), calibrated(ins1)})"]
+s62[label="(instance index=3, state index=62, atoms={pointing(sat1,dir2), have_image(dir1,mod1), power_on(ins1)})"]
+s51[label="(instance index=3, state index=51, atoms={have_image(dir2,mod1), pointing(sat1,dir1), power_on(ins2), calibrated(ins2)})"]
+s29[label="(instance index=3, state index=29, atoms={have_image(dir2,mod1), have_image(dir1,mod1), pointing(sat1,dir1), power_on(ins2)})"]
+s30[label="(instance index=3, state index=30, atoms={have_image(dir2,mod1), have_image(dir1,mod1), pointing(sat1,dir1), power_avail(sat1)})"]
+s31[label="(instance index=3, state index=31, atoms={have_image(dir2,mod1), have_image(dir1,mod1), pointing(sat1,dir1), power_on(ins2), calibrated(ins2)})"]
+s60[label="(instance index=3, state index=60, atoms={pointing(sat1,dir2), have_image(dir1,mod1), power_on(ins1), calibrated(ins1)})"]
+s14[label="(instance index=3, state index=14, atoms={have_image(dir2,mod1), have_image(dir1,mod1), pointing(sat1,dir1), power_avail(sat1), calibrated(ins1)})"]
+s35[label="(instance index=3, state index=35, atoms={have_image(dir2,mod1), have_image(dir1,mod1), pointing(sat1,dir1), power_on(ins1)})"]
+s19[label="(instance index=3, state index=19, atoms={have_image(dir2,mod1), have_image(dir1,mod1), pointing(sat1,dir1), power_on(ins2), calibrated(ins1)})"]
+s67[label="(instance index=3, state index=67, atoms={pointing(sat1,dir2), have_image(dir1,mod1), power_on(ins2), calibrated(ins1), calibrated(ins2)})"]
+s20[label="(instance index=3, state index=20, atoms={have_image(dir2,mod1), have_image(dir1,mod1), pointing(sat1,dir1), power_on(ins2), calibrated(ins1), calibrated(ins2)})"]
+s79[label="(instance index=3, state index=79, atoms={pointing(sat1,dir2), have_image(dir1,mod1), power_on(ins2), calibrated(ins2)})"]
+s21[label="(instance index=3, state index=21, atoms={have_image(dir2,mod1), have_image(dir1,mod1), pointing(sat1,dir1), power_avail(sat1), calibrated(ins1), calibrated(ins2)})"]
+s27[label="(instance index=3, state index=27, atoms={have_image(dir2,mod1), have_image(dir1,mod1), pointing(sat1,dir1), power_on(ins1), calibrated(ins2)})"]
+s28[label="(instance index=3, state index=28, atoms={have_image(dir2,mod1), have_image(dir1,mod1), pointing(sat1,dir1), power_avail(sat1), calibrated(ins2)})"]
+s13[label="(instance index=3, state index=13, atoms={have_image(dir2,mod1), have_image(dir1,mod1), pointing(sat1,dir1), power_on(ins1), calibrated(ins1)})"]
+s71[label="(instance index=3, state index=71, atoms={pointing(sat1,dir2), have_image(dir1,mod1), power_on(ins1), calibrated(ins1), calibrated(ins2)})"]
+s36[label="(instance index=3, state index=36, atoms={have_image(dir2,mod1), have_image(dir1,mod1), pointing(sat1,dir1), power_on(ins1), calibrated(ins1), calibrated(ins2)})"]
+s26[peripheries=2,label="(instance index=3, state index=26, atoms={pointing(sat1,dir2), have_image(dir2,mod1), have_image(dir1,mod1), power_on(ins1), calibrated(ins1), calibrated(ins2)})"]
+s25[peripheries=2,label="(instance index=3, state index=25, atoms={pointing(sat1,dir2), have_image(dir2,mod1), have_image(dir1,mod1), power_avail(sat1), calibrated(ins2)})"]
+s24[peripheries=2,label="(instance index=3, state index=24, atoms={pointing(sat1,dir2), have_image(dir2,mod1), have_image(dir1,mod1), power_on(ins1), calibrated(ins2)})"]
+s23[peripheries=2,label="(instance index=3, state index=23, atoms={pointing(sat1,dir2), have_image(dir2,mod1), have_image(dir1,mod1), power_avail(sat1), calibrated(ins1), calibrated(ins2)})"]
+s22[peripheries=2,label="(instance index=3, state index=22, atoms={pointing(sat1,dir2), have_image(dir2,mod1), have_image(dir1,mod1), power_on(ins2), calibrated(ins1), calibrated(ins2)})"]
+s18[peripheries=2,label="(instance index=3, state index=18, atoms={pointing(sat1,dir2), have_image(dir2,mod1), have_image(dir1,mod1), power_on(ins2), calibrated(ins1)})"]
+s17[peripheries=2,label="(instance index=3, state index=17, atoms={pointing(sat1,dir2), have_image(dir2,mod1), have_image(dir1,mod1), power_on(ins1)})"]
+s16[peripheries=2,label="(instance index=3, state index=16, atoms={pointing(sat1,dir2), have_image(dir2,mod1), have_image(dir1,mod1), power_avail(sat1), calibrated(ins1)})"]
+s15[peripheries=2,label="(instance index=3, state index=15, atoms={pointing(sat1,dir2), have_image(dir2,mod1), have_image(dir1,mod1), power_on(ins1), calibrated(ins1)})"]
+s34[peripheries=2,label="(instance index=3, state index=34, atoms={pointing(sat1,dir2), have_image(dir2,mod1), have_image(dir1,mod1), power_on(ins2), calibrated(ins2)})"]
+s33[peripheries=2,label="(instance index=3, state index=33, atoms={pointing(sat1,dir2), have_image(dir2,mod1), have_image(dir1,mod1), power_avail(sat1)})"]
+s32[peripheries=2,label="(instance index=3, state index=32, atoms={pointing(sat1,dir2), have_image(dir2,mod1), have_image(dir1,mod1), power_on(ins2)})"]
+Dangling [ label = "", style = invis ]
+{ rank = same; Dangling }
+Dangling -> s0
+{ rank = same; s0}
+{ rank = same; s92,s5,s0,s53,s37,s4,s85,s84,s57,s10,s88,s47,s45,s43}
+{ rank = same; s2,s95,s52,s50,s48,s77,s75,s54,s6,s82,s63,s59,s86,s41,s40,s12,s73,s90,s44,s66}
+{ rank = same; s94,s78,s8,s80,s72,s83,s74,s93,s70,s46,s68,s9,s38,s42,s64,s61,s49,s55}
+{ rank = same; s56,s81,s76,s69,s39,s65,s11,s58,s62,s51}
+{ rank = same; s29,s30,s31,s60,s14,s35,s19,s67,s20,s79,s21,s27,s28,s13,s71,s36}
+{ rank = same; s26,s25,s24,s23,s22,s18,s17,s16,s15,s34,s33,s32}
+{
+s3->s5
+s3->s4
+s3->s0
+s1->s4
+s1->s0
+s7->s4
+s7->s84
+s7->s57
+s91->s92
+s91->s88
+s89->s5
+s89->s92
+s89->s88
+s87->s84
+s87->s85
+s87->s88
+}
+{
+s92->s91
+s92->s2
+s92->s89
+s5->s3
+s5->s2
+s0->s3
+s0->s2
+s0->s1
+s53->s54
+s53->s52
+s53->s50
+s37->s54
+s37->s50
+s4->s6
+s4->s3
+s4->s1
+s85->s87
+s85->s91
+s85->s82
+s84->s7
+s84->s82
+s57->s7
+s57->s82
+s57->s1
+s10->s54
+s10->s12
+s10->s40
+s88->s91
+s88->s90
+s88->s89
+s47->s44
+s47->s48
+s45->s44
+s45->s52
+s45->s48
+s43->s44
+s43->s41
+s43->s40
+}
+{
+s2->s94
+s2->s5
+s2->s0
+s95->s55
+s95->s94
+s95->s89
+s52->s53
+s52->s49
+s50->s53
+s50->s37
+s50->s49
+s48->s47
+s48->s45
+s48->s49
+s77->s78
+s77->s74
+s75->s78
+s75->s74
+s75->s80
+s54->s37
+s54->s53
+s54->s9
+s6->s7
+s6->s6
+s6->s9
+s6->s8
+s82->s83
+s82->s84
+s82->s57
+s63->s61
+s63->s64
+s59->s61
+s59->s64
+s59->s80
+s86->s83
+s86->s87
+s86->s42
+s41->s47
+s41->s38
+s41->s43
+s40->s38
+s40->s10
+s12->s38
+s12->s37
+s12->s10
+s73->s70
+s73->s74
+s73->s72
+s90->s87
+s90->s46
+s90->s93
+s90->s90
+s44->s47
+s44->s46
+s44->s45
+s66->s68
+s66->s64
+s66->s72
+}
+{
+s94->s95
+s94->s94
+s94->s76
+s94->s92
+s78->s62
+s78->s77
+s78->s75
+s8->s58
+s8->s6
+s8->s57
+s80->s62
+s80->s75
+s72->s69
+s72->s73
+s83->s86
+s83->s83
+s83->s85
+s83->s65
+s74->s77
+s74->s76
+s74->s75
+s93->s85
+s93->s90
+s93->s81
+s70->s69
+s70->s77
+s70->s73
+s46->s46
+s46->s43
+s46->s56
+s68->s63
+s68->s69
+s68->s66
+s9->s11
+s9->s10
+s9->s9
+s38->s39
+s38->s12
+s38->s40
+s42->s43
+s42->s39
+s42->s42
+s64->s63
+s64->s59
+s64->s65
+s61->s63
+s61->s62
+s61->s59
+s49->s52
+s49->s51
+s49->s50
+s55->s55
+s55->s45
+s55->s51
+}
+{
+s56->s46
+s56->s36
+s56->s41
+s81->s71
+s81->s66
+s81->s81
+s76->s79
+s76->s76
+s76->s73
+s69->s71
+s69->s70
+s69->s72
+s39->s39
+s39->s20
+s39->s42
+s39->s41
+s65->s67
+s65->s66
+s65->s65
+s11->s13
+s11->s12
+s11->s9
+s58->s60
+s58->s59
+s58->s58
+s62->s78
+s62->s60
+s62->s80
+s51->s55
+s51->s31
+s51->s51
+s51->s48
+}
+{
+s29->s31
+s29->s30
+s29->s32
+s30->s29
+s30->s35
+s30->s33
+s31->s31
+s31->s28
+s31->s34
+s60->s61
+s60->s15
+s60->s60
+s60->s58
+s14->s35
+s14->s19
+s14->s16
+s35->s30
+s35->s17
+s19->s14
+s19->s20
+s19->s18
+s67->s22
+s67->s68
+s67->s65
+s20->s22
+s20->s21
+s20->s20
+s79->s70
+s79->s76
+s79->s34
+s21->s23
+s21->s27
+s21->s19
+s27->s28
+s27->s24
+s28->s29
+s28->s27
+s28->s25
+s13->s15
+s13->s14
+s13->s13
+s71->s68
+s71->s71
+s71->s26
+s71->s81
+s36->s21
+s36->s36
+s36->s26
+}
+{
+s26->s36
+s26->s23
+s26->s26
+s25->s28
+s25->s32
+s25->s24
+s24->s27
+s24->s26
+s24->s25
+s23->s21
+s23->s18
+s23->s24
+s22->s22
+s22->s23
+s22->s20
+s18->s19
+s18->s16
+s17->s35
+s17->s15
+s17->s33
+s16->s18
+s16->s14
+s16->s17
+s15->s15
+s15->s13
+s15->s16
+s34->s31
+s34->s34
+s34->s25
+s33->s30
+s33->s17
+s33->s32
+s32->s29
+s32->s33
+}
+}

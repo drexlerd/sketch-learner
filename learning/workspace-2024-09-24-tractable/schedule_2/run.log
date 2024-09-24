@@ -1,0 +1,597 @@
+Changing working directory:  /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/experiments/scripts/workspace-tractable/schedule_2
+2024-09-14 14:11:22,414 - Constructing InstanceDatas...
+2024-09-14 14:11:30,086 - Constructing GlobalFaithfulAbstractions...
+2024-09-14 14:12:58,965 - ...done
+2024-09-14 14:12:58,967 - Constructing StateSpaces...
+2024-09-14 14:12:59,295 - ...done
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-1-1-1-50-50-100-100-100-100-1-1-0.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-1-1-1-50-50-100-100-100-100-1-1-0.pddl
+2024-09-14 14:12:59,301 - Created InstanceData with num concrete states: 43 and num abstract states: 30
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-1-1-1-100-50-100-100-100-100-2-1-0.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-1-1-1-100-50-100-100-100-100-2-1-0.pddl
+2024-09-14 14:12:59,306 - Created InstanceData with num concrete states: 43 and num abstract states: 30
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-3-1-1-50-100-100-100-100-100-1-1-0.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-3-1-1-50-100-100-100-100-100-1-1-0.pddl
+2024-09-14 14:12:59,314 - Created InstanceData with num concrete states: 95 and num abstract states: 32
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-3-1-1-50-100-100-100-100-100-2-1-0.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-3-1-1-50-100-100-100-100-100-2-1-0.pddl
+2024-09-14 14:12:59,323 - Created InstanceData with num concrete states: 95 and num abstract states: 32
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-1-1-1-50-100-100-100-100-100-1-1-0.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-1-1-1-50-100-100-100-100-100-1-1-0.pddl
+2024-09-14 14:12:59,326 - Created InstanceData with num concrete states: 43 and num abstract states: 32
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-1-1-1-50-100-100-100-100-100-2-1-0.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-1-1-1-50-100-100-100-100-100-2-1-0.pddl
+2024-09-14 14:12:59,329 - Created InstanceData with num concrete states: 43 and num abstract states: 32
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-2-1-1-50-100-100-100-100-100-1-1-0.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-2-1-1-50-100-100-100-100-100-1-1-0.pddl
+2024-09-14 14:12:59,334 - Created InstanceData with num concrete states: 69 and num abstract states: 32
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-2-1-1-50-100-100-100-100-100-2-1-0.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-2-1-1-50-100-100-100-100-100-2-1-0.pddl
+2024-09-14 14:12:59,337 - Created InstanceData with num concrete states: 69 and num abstract states: 32
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-2-1-1-100-50-100-100-50-100-1-1-0.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-2-1-1-100-50-100-100-50-100-1-1-0.pddl
+2024-09-14 14:12:59,341 - Created InstanceData with num concrete states: 69 and num abstract states: 48
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-3-1-1-100-50-100-100-100-100-1-1-0.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-3-1-1-100-50-100-100-100-100-1-1-0.pddl
+2024-09-14 14:12:59,348 - Created InstanceData with num concrete states: 95 and num abstract states: 48
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-2-1-1-50-50-100-100-50-100-2-1-0.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-2-1-1-50-50-100-100-50-100-2-1-0.pddl
+2024-09-14 14:12:59,352 - Created InstanceData with num concrete states: 69 and num abstract states: 48
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-3-1-1-100-50-100-100-50-100-2-1-0.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-3-1-1-100-50-100-100-50-100-2-1-0.pddl
+2024-09-14 14:12:59,357 - Created InstanceData with num concrete states: 95 and num abstract states: 48
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-1-1-1-100-100-100-100-50-100-2-1-0.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-1-1-1-100-100-100-100-50-100-2-1-0.pddl
+2024-09-14 14:12:59,361 - Created InstanceData with num concrete states: 91 and num abstract states: 56
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-1-1-1-100-100-100-100-50-100-1-1-0.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-1-1-1-100-100-100-100-50-100-1-1-0.pddl
+2024-09-14 14:12:59,364 - Created InstanceData with num concrete states: 91 and num abstract states: 56
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-1-1-1-50-50-100-100-50-100-1-2-0.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-1-1-1-50-50-100-100-50-100-1-2-0.pddl
+2024-09-14 14:12:59,367 - Created InstanceData with num concrete states: 92 and num abstract states: 62
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-1-2-1-50-50-100-100-100-100-1-1-0.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-1-2-1-50-50-100-100-100-100-1-1-0.pddl
+2024-09-14 14:12:59,370 - Created InstanceData with num concrete states: 92 and num abstract states: 62
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-1-2-1-100-50-100-100-50-100-2-1-0.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-1-2-1-100-50-100-100-50-100-2-1-0.pddl
+2024-09-14 14:12:59,373 - Created InstanceData with num concrete states: 92 and num abstract states: 62
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-1-1-1-100-50-100-100-100-100-2-2-0.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-1-1-1-100-50-100-100-100-100-2-2-0.pddl
+2024-09-14 14:12:59,376 - Created InstanceData with num concrete states: 92 and num abstract states: 62
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-3-1-1-50-100-100-100-100-100-2-2-0.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-3-1-1-50-100-100-100-100-100-2-2-0.pddl
+2024-09-14 14:12:59,382 - Created InstanceData with num concrete states: 203 and num abstract states: 63
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-3-2-1-50-100-100-100-100-100-2-1-0.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-3-2-1-50-100-100-100-100-100-2-1-0.pddl
+2024-09-14 14:12:59,388 - Created InstanceData with num concrete states: 203 and num abstract states: 63
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-1-1-1-50-100-100-100-100-100-1-2-0.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-1-1-1-50-100-100-100-100-100-1-2-0.pddl
+2024-09-14 14:12:59,391 - Created InstanceData with num concrete states: 91 and num abstract states: 63
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-1-2-1-100-100-100-100-100-100-2-1-0.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-1-2-1-100-100-100-100-100-100-2-1-0.pddl
+2024-09-14 14:12:59,394 - Created InstanceData with num concrete states: 91 and num abstract states: 63
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-1-1-1-50-100-100-100-100-100-2-2-0.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-1-1-1-50-100-100-100-100-100-2-2-0.pddl
+2024-09-14 14:12:59,397 - Created InstanceData with num concrete states: 91 and num abstract states: 63
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-2-1-1-50-100-100-100-100-100-1-2-0.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-2-1-1-50-100-100-100-100-100-1-2-0.pddl
+2024-09-14 14:12:59,401 - Created InstanceData with num concrete states: 147 and num abstract states: 63
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-1-1-1-100-100-100-100-100-100-1-2-0.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-1-1-1-100-100-100-100-100-100-1-2-0.pddl
+2024-09-14 14:12:59,404 - Created InstanceData with num concrete states: 91 and num abstract states: 63
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-3-2-1-50-100-100-100-100-100-1-1-0.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-3-2-1-50-100-100-100-100-100-1-1-0.pddl
+2024-09-14 14:12:59,410 - Created InstanceData with num concrete states: 203 and num abstract states: 63
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-3-1-1-50-100-100-100-100-100-1-2-0.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-3-1-1-50-100-100-100-100-100-1-2-0.pddl
+2024-09-14 14:12:59,415 - Created InstanceData with num concrete states: 203 and num abstract states: 63
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-1-1-1-100-100-100-100-100-100-2-2-0.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-1-1-1-100-100-100-100-100-100-2-2-0.pddl
+2024-09-14 14:12:59,418 - Created InstanceData with num concrete states: 91 and num abstract states: 63
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-2-2-1-50-100-100-100-100-100-2-1-0.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-2-2-1-50-100-100-100-100-100-2-1-0.pddl
+2024-09-14 14:12:59,422 - Created InstanceData with num concrete states: 147 and num abstract states: 63
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-1-2-1-50-100-100-100-100-100-1-1-0.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-1-2-1-50-100-100-100-100-100-1-1-0.pddl
+2024-09-14 14:12:59,425 - Created InstanceData with num concrete states: 91 and num abstract states: 63
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-1-2-1-100-100-100-100-100-100-1-1-0.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-1-2-1-100-100-100-100-100-100-1-1-0.pddl
+2024-09-14 14:12:59,428 - Created InstanceData with num concrete states: 91 and num abstract states: 63
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-1-2-1-50-100-100-100-100-100-2-1-0.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-1-2-1-50-100-100-100-100-100-2-1-0.pddl
+2024-09-14 14:12:59,431 - Created InstanceData with num concrete states: 91 and num abstract states: 63
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-2-1-1-50-100-100-100-100-100-2-2-0.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-2-1-1-50-100-100-100-100-100-2-2-0.pddl
+2024-09-14 14:12:59,435 - Created InstanceData with num concrete states: 147 and num abstract states: 63
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-2-2-1-50-100-100-100-100-100-1-1-0.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-2-2-1-50-100-100-100-100-100-1-1-0.pddl
+2024-09-14 14:12:59,440 - Created InstanceData with num concrete states: 147 and num abstract states: 63
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-3-1-1-50-100-100-100-50-100-1-1-0.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-3-1-1-50-100-100-100-50-100-1-1-0.pddl
+2024-09-14 14:12:59,445 - Created InstanceData with num concrete states: 203 and num abstract states: 90
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-2-1-1-50-100-100-100-50-100-2-1-0.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-2-1-1-50-100-100-100-50-100-2-1-0.pddl
+2024-09-14 14:12:59,450 - Created InstanceData with num concrete states: 147 and num abstract states: 90
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-2-1-1-100-100-100-100-50-100-1-1-0.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-2-1-1-100-100-100-100-50-100-1-1-0.pddl
+2024-09-14 14:12:59,454 - Created InstanceData with num concrete states: 147 and num abstract states: 90
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-3-1-1-100-100-100-100-50-100-2-1-0.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-3-1-1-100-100-100-100-50-100-2-1-0.pddl
+2024-09-14 14:12:59,460 - Created InstanceData with num concrete states: 203 and num abstract states: 90
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-1-1-1-100-50-100-100-100-100-1-3-0.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-1-1-1-100-50-100-100-100-100-1-3-0.pddl
+2024-09-14 14:12:59,465 - Created InstanceData with num concrete states: 190 and num abstract states: 94
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-1-1-1-100-50-100-100-50-100-2-3-0.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-1-1-1-100-50-100-100-50-100-2-3-0.pddl
+2024-09-14 14:12:59,470 - Created InstanceData with num concrete states: 190 and num abstract states: 94
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-3-1-1-100-50-100-100-100-100-1-2-0.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-3-1-1-100-50-100-100-100-100-1-2-0.pddl
+2024-09-14 14:12:59,476 - Created InstanceData with num concrete states: 204 and num abstract states: 100
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-2-2-1-50-50-100-100-100-100-2-1-0.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-2-2-1-50-50-100-100-100-100-2-1-0.pddl
+2024-09-14 14:12:59,481 - Created InstanceData with num concrete states: 148 and num abstract states: 100
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-2-2-1-50-50-100-100-100-100-1-1-0.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-2-2-1-50-50-100-100-100-100-1-1-0.pddl
+2024-09-14 14:12:59,485 - Created InstanceData with num concrete states: 148 and num abstract states: 100
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-3-2-1-50-50-100-100-50-100-1-1-0.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-3-2-1-50-50-100-100-50-100-1-1-0.pddl
+2024-09-14 14:12:59,491 - Created InstanceData with num concrete states: 204 and num abstract states: 100
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-3-2-1-100-50-100-100-100-100-2-1-0.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-3-2-1-100-50-100-100-100-100-2-1-0.pddl
+2024-09-14 14:12:59,497 - Created InstanceData with num concrete states: 204 and num abstract states: 100
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-3-1-1-100-50-100-100-50-100-2-2-0.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-3-1-1-100-50-100-100-50-100-2-2-0.pddl
+2024-09-14 14:12:59,502 - Created InstanceData with num concrete states: 204 and num abstract states: 100
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-2-1-1-100-50-100-100-50-100-1-2-0.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-2-1-1-100-50-100-100-50-100-1-2-0.pddl
+2024-09-14 14:12:59,507 - Created InstanceData with num concrete states: 148 and num abstract states: 100
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-2-1-1-100-50-100-100-50-100-2-2-0.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-2-1-1-100-50-100-100-50-100-2-2-0.pddl
+2024-09-14 14:12:59,511 - Created InstanceData with num concrete states: 148 and num abstract states: 100
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-3-2-1-100-100-100-100-100-100-1-1-0.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-3-2-1-100-100-100-100-100-100-1-1-0.pddl
+2024-09-14 14:12:59,517 - Created InstanceData with num concrete states: 203 and num abstract states: 103
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-3-1-1-100-100-100-100-100-100-1-2-0.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-3-1-1-100-100-100-100-100-100-1-2-0.pddl
+2024-09-14 14:12:59,523 - Created InstanceData with num concrete states: 203 and num abstract states: 103
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-2-2-1-100-100-100-100-100-100-1-1-0.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-2-2-1-100-100-100-100-100-100-1-1-0.pddl
+2024-09-14 14:12:59,527 - Created InstanceData with num concrete states: 147 and num abstract states: 103
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-3-1-1-100-100-100-100-100-100-2-2-0.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-3-1-1-100-100-100-100-100-100-2-2-0.pddl
+2024-09-14 14:12:59,533 - Created InstanceData with num concrete states: 203 and num abstract states: 103
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-2-1-1-100-100-100-100-100-100-2-2-0.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-2-1-1-100-100-100-100-100-100-2-2-0.pddl
+2024-09-14 14:12:59,537 - Created InstanceData with num concrete states: 147 and num abstract states: 103
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-3-2-1-100-100-100-100-100-100-2-1-0.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-3-2-1-100-100-100-100-100-100-2-1-0.pddl
+2024-09-14 14:12:59,543 - Created InstanceData with num concrete states: 203 and num abstract states: 103
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-2-2-1-100-100-100-100-100-100-2-1-0.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-2-2-1-100-100-100-100-100-100-2-1-0.pddl
+2024-09-14 14:12:59,547 - Created InstanceData with num concrete states: 147 and num abstract states: 103
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-2-1-1-100-100-100-100-100-100-1-2-0.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-2-1-1-100-100-100-100-100-100-1-2-0.pddl
+2024-09-14 14:12:59,552 - Created InstanceData with num concrete states: 147 and num abstract states: 103
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-1-1-1-50-100-100-100-50-100-2-2-0.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-1-1-1-50-100-100-100-50-100-2-2-0.pddl
+2024-09-14 14:12:59,557 - Created InstanceData with num concrete states: 188 and num abstract states: 120
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-1-1-1-100-100-100-100-50-100-1-2-0.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-1-1-1-100-100-100-100-50-100-1-2-0.pddl
+2024-09-14 14:12:59,562 - Created InstanceData with num concrete states: 188 and num abstract states: 120
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-1-2-1-100-100-100-100-50-100-1-1-0.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-1-2-1-100-100-100-100-50-100-1-1-0.pddl
+2024-09-14 14:12:59,567 - Created InstanceData with num concrete states: 188 and num abstract states: 120
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-1-2-1-50-100-100-100-50-100-2-1-0.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-1-2-1-50-100-100-100-50-100-2-1-0.pddl
+2024-09-14 14:12:59,572 - Created InstanceData with num concrete states: 188 and num abstract states: 120
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-3-1-1-50-100-100-100-100-100-1-3-0.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-3-1-1-50-100-100-100-100-100-1-3-0.pddl
+2024-09-14 14:12:59,582 - Created InstanceData with num concrete states: 420 and num abstract states: 125
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-1-1-1-50-100-100-100-100-100-2-3-0.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-1-1-1-50-100-100-100-100-100-2-3-0.pddl
+2024-09-14 14:12:59,587 - Created InstanceData with num concrete states: 188 and num abstract states: 125
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-2-1-1-50-100-100-100-100-100-1-3-0.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-2-1-1-50-100-100-100-100-100-1-3-0.pddl
+2024-09-14 14:12:59,595 - Created InstanceData with num concrete states: 304 and num abstract states: 125
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-3-1-1-50-100-100-100-100-100-2-3-0.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-3-1-1-50-100-100-100-100-100-2-3-0.pddl
+2024-09-14 14:12:59,605 - Created InstanceData with num concrete states: 420 and num abstract states: 125
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-2-1-1-50-100-100-100-100-100-2-3-0.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-2-1-1-50-100-100-100-100-100-2-3-0.pddl
+2024-09-14 14:12:59,612 - Created InstanceData with num concrete states: 304 and num abstract states: 125
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-1-1-1-50-100-100-100-100-100-1-3-0.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-1-1-1-50-100-100-100-100-100-1-3-0.pddl
+2024-09-14 14:12:59,617 - Created InstanceData with num concrete states: 188 and num abstract states: 125
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-3-1-1-100-50-100-100-50-100-2-3-0.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-3-1-1-100-50-100-100-50-100-2-3-0.pddl
+2024-09-14 14:12:59,627 - Created InstanceData with num concrete states: 422 and num abstract states: 152
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-2-1-1-50-50-100-100-100-100-1-3-0.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-2-1-1-50-50-100-100-100-100-1-3-0.pddl
+2024-09-14 14:12:59,635 - Created InstanceData with num concrete states: 306 and num abstract states: 152
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-2-1-1-100-50-100-100-100-100-2-3-0.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-2-1-1-100-50-100-100-100-100-2-3-0.pddl
+2024-09-14 14:12:59,642 - Created InstanceData with num concrete states: 306 and num abstract states: 152
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-3-1-1-100-50-100-100-100-100-1-3-0.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-3-1-1-100-50-100-100-100-100-1-3-0.pddl
+2024-09-14 14:12:59,652 - Created InstanceData with num concrete states: 422 and num abstract states: 152
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-1-1-1-100-100-100-100-50-100-2-3-0.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-1-1-1-100-100-100-100-50-100-2-3-0.pddl
+2024-09-14 14:12:59,661 - Created InstanceData with num concrete states: 383 and num abstract states: 184
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-1-1-1-50-100-100-100-50-100-1-3-0.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-1-1-1-50-100-100-100-50-100-1-3-0.pddl
+2024-09-14 14:12:59,669 - Created InstanceData with num concrete states: 383 and num abstract states: 184
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-3-1-1-100-100-100-100-50-100-1-2-0.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-3-1-1-100-100-100-100-50-100-1-2-0.pddl
+2024-09-14 14:12:59,679 - Created InstanceData with num concrete states: 420 and num abstract states: 194
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-3-1-1-100-100-100-100-50-100-2-2-0.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-3-1-1-100-100-100-100-50-100-2-2-0.pddl
+2024-09-14 14:12:59,689 - Created InstanceData with num concrete states: 420 and num abstract states: 194
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-2-1-1-100-100-100-100-50-100-2-2-0.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-2-1-1-100-100-100-100-50-100-2-2-0.pddl
+2024-09-14 14:12:59,696 - Created InstanceData with num concrete states: 304 and num abstract states: 194
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-2-1-1-100-100-100-100-50-100-1-2-0.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-2-1-1-100-100-100-100-50-100-1-2-0.pddl
+2024-09-14 14:12:59,703 - Created InstanceData with num concrete states: 304 and num abstract states: 194
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-3-2-1-100-100-100-100-50-100-1-1-0.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-3-2-1-100-100-100-100-50-100-1-1-0.pddl
+2024-09-14 14:12:59,713 - Created InstanceData with num concrete states: 420 and num abstract states: 194
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-2-2-1-100-100-100-100-50-100-2-1-0.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-2-2-1-100-100-100-100-50-100-2-1-0.pddl
+2024-09-14 14:12:59,720 - Created InstanceData with num concrete states: 304 and num abstract states: 194
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-3-2-1-100-100-100-100-50-100-2-1-0.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-3-2-1-100-100-100-100-50-100-2-1-0.pddl
+2024-09-14 14:12:59,730 - Created InstanceData with num concrete states: 420 and num abstract states: 194
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-2-2-1-100-100-100-100-50-100-1-1-0.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-2-2-1-100-100-100-100-50-100-1-1-0.pddl
+2024-09-14 14:12:59,737 - Created InstanceData with num concrete states: 304 and num abstract states: 194
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-2-2-1-50-100-100-100-100-100-2-2-0.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-2-2-1-50-100-100-100-100-100-2-2-0.pddl
+2024-09-14 14:12:59,751 - Created InstanceData with num concrete states: 619 and num abstract states: 249
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-1-2-1-50-100-100-100-100-100-1-2-0.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-1-2-1-50-100-100-100-100-100-1-2-0.pddl
+2024-09-14 14:12:59,760 - Created InstanceData with num concrete states: 383 and num abstract states: 249
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-1-2-1-50-100-100-100-100-100-2-2-0.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-1-2-1-50-100-100-100-100-100-2-2-0.pddl
+2024-09-14 14:12:59,768 - Created InstanceData with num concrete states: 383 and num abstract states: 249
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-1-2-1-100-100-100-100-100-100-2-2-0.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-1-2-1-100-100-100-100-100-100-2-2-0.pddl
+2024-09-14 14:12:59,777 - Created InstanceData with num concrete states: 383 and num abstract states: 249
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-2-2-1-50-100-100-100-100-100-1-2-0.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-2-2-1-50-100-100-100-100-100-1-2-0.pddl
+2024-09-14 14:12:59,791 - Created InstanceData with num concrete states: 619 and num abstract states: 249
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-1-2-1-100-100-100-100-100-100-1-2-0.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-1-2-1-100-100-100-100-100-100-1-2-0.pddl
+2024-09-14 14:12:59,800 - Created InstanceData with num concrete states: 383 and num abstract states: 249
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-3-2-1-50-100-100-100-100-100-2-2-0.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-3-2-1-50-100-100-100-100-100-2-2-0.pddl
+2024-09-14 14:12:59,818 - Created InstanceData with num concrete states: 855 and num abstract states: 249
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-3-2-1-50-100-100-100-100-100-1-2-0.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-3-2-1-50-100-100-100-100-100-1-2-0.pddl
+2024-09-14 14:12:59,838 - Created InstanceData with num concrete states: 855 and num abstract states: 249
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-1-2-1-100-50-100-100-50-100-1-2-0.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-1-2-1-100-50-100-100-50-100-1-2-0.pddl
+2024-09-14 14:12:59,847 - Created InstanceData with num concrete states: 386 and num abstract states: 254
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-1-2-1-100-50-100-100-100-100-2-2-0.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-1-2-1-100-50-100-100-100-100-2-2-0.pddl
+2024-09-14 14:12:59,855 - Created InstanceData with num concrete states: 386 and num abstract states: 254
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-3-1-1-100-100-100-100-50-100-2-3-0.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-3-1-1-100-100-100-100-50-100-2-3-0.pddl
+2024-09-14 14:12:59,874 - Created InstanceData with num concrete states: 855 and num abstract states: 298
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-2-1-1-100-100-100-100-50-100-2-3-0.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-2-1-1-100-100-100-100-50-100-2-3-0.pddl
+2024-09-14 14:12:59,887 - Created InstanceData with num concrete states: 619 and num abstract states: 298
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-3-1-1-50-100-100-100-50-100-1-3-0.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-3-1-1-50-100-100-100-50-100-1-3-0.pddl
+2024-09-14 14:12:59,905 - Created InstanceData with num concrete states: 855 and num abstract states: 298
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-2-1-1-50-100-100-100-50-100-1-3-0.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-2-1-1-50-100-100-100-50-100-1-3-0.pddl
+2024-09-14 14:12:59,918 - Created InstanceData with num concrete states: 619 and num abstract states: 298
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-3-2-1-100-100-100-100-100-100-1-2-0.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-3-2-1-100-100-100-100-100-100-1-2-0.pddl
+2024-09-14 14:12:59,937 - Created InstanceData with num concrete states: 855 and num abstract states: 409
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-3-2-1-100-100-100-100-100-100-2-2-0.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-3-2-1-100-100-100-100-100-100-2-2-0.pddl
+2024-09-14 14:12:59,955 - Created InstanceData with num concrete states: 855 and num abstract states: 409
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-2-2-1-100-100-100-100-100-100-2-2-0.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-2-2-1-100-100-100-100-100-100-2-2-0.pddl
+2024-09-14 14:12:59,968 - Created InstanceData with num concrete states: 619 and num abstract states: 409
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-2-2-1-100-100-100-100-100-100-1-2-0.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-2-2-1-100-100-100-100-100-100-1-2-0.pddl
+2024-09-14 14:12:59,982 - Created InstanceData with num concrete states: 619 and num abstract states: 409
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-3-2-1-50-50-100-100-100-100-2-2-0.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-3-2-1-50-50-100-100-100-100-2-2-0.pddl
+2024-09-14 14:13:00,002 - Created InstanceData with num concrete states: 858 and num abstract states: 412
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-2-2-1-100-50-100-100-50-100-1-2-0.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-2-2-1-100-50-100-100-50-100-1-2-0.pddl
+2024-09-14 14:13:00,015 - Created InstanceData with num concrete states: 622 and num abstract states: 412
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-3-2-1-100-50-100-100-50-100-1-2-0.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-3-2-1-100-50-100-100-50-100-1-2-0.pddl
+2024-09-14 14:13:00,034 - Created InstanceData with num concrete states: 858 and num abstract states: 412
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-2-2-1-100-50-100-100-100-100-2-2-0.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-2-2-1-100-50-100-100-100-100-2-2-0.pddl
+2024-09-14 14:13:00,047 - Created InstanceData with num concrete states: 622 and num abstract states: 412
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-1-2-1-50-100-100-100-50-100-2-2-0.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-1-2-1-50-100-100-100-50-100-2-2-0.pddl
+2024-09-14 14:13:00,064 - Created InstanceData with num concrete states: 774 and num abstract states: 504
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-1-2-1-100-100-100-100-50-100-1-2-0.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-1-2-1-100-100-100-100-50-100-1-2-0.pddl
+2024-09-14 14:13:00,080 - Created InstanceData with num concrete states: 774 and num abstract states: 504
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-1-2-1-100-100-100-100-100-100-1-3-0.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-1-2-1-100-100-100-100-100-100-1-3-0.pddl
+2024-09-14 14:13:00,112 - Created InstanceData with num concrete states: 1557 and num abstract states: 621
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-1-2-1-100-100-100-100-100-100-2-3-0.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-1-2-1-100-100-100-100-100-100-2-3-0.pddl
+2024-09-14 14:13:00,147 - Created InstanceData with num concrete states: 1557 and num abstract states: 621
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-1-2-1-100-50-100-100-100-100-1-3-0.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-1-2-1-100-50-100-100-100-100-1-3-0.pddl
+2024-09-14 14:13:00,180 - Created InstanceData with num concrete states: 1562 and num abstract states: 638
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-1-2-1-50-50-100-100-100-100-2-3-0.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-1-2-1-50-50-100-100-100-100-2-3-0.pddl
+2024-09-14 14:13:00,216 - Created InstanceData with num concrete states: 1562 and num abstract states: 638
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-1-1-2-50-100-100-100-100-100-1-1-0.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-1-1-2-50-100-100-100-100-100-1-1-0.pddl
+2024-09-14 14:13:00,240 - Created InstanceData with num concrete states: 1075 and num abstract states: 786
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-1-1-2-50-100-100-100-100-100-2-1-0.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-1-1-2-50-100-100-100-100-100-2-1-0.pddl
+2024-09-14 14:13:00,264 - Created InstanceData with num concrete states: 1075 and num abstract states: 786
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-2-2-1-50-100-100-100-50-100-2-2-0.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-2-2-1-50-100-100-100-50-100-2-2-0.pddl
+2024-09-14 14:13:00,290 - Created InstanceData with num concrete states: 1250 and num abstract states: 818
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-3-2-1-100-100-100-100-50-100-1-2-0.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-3-2-1-100-100-100-100-50-100-1-2-0.pddl
+2024-09-14 14:13:00,329 - Created InstanceData with num concrete states: 1726 and num abstract states: 818
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-2-2-1-100-100-100-100-50-100-1-2-0.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-2-2-1-100-100-100-100-50-100-1-2-0.pddl
+2024-09-14 14:13:00,359 - Created InstanceData with num concrete states: 1250 and num abstract states: 818
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-3-2-1-100-100-100-100-50-100-2-2-0.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-3-2-1-100-100-100-100-50-100-2-2-0.pddl
+2024-09-14 14:13:00,395 - Created InstanceData with num concrete states: 1726 and num abstract states: 818
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-3-2-1-50-100-100-100-100-100-1-3-0.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-3-2-1-50-100-100-100-100-100-1-3-0.pddl
+2024-09-14 14:13:00,471 - Created InstanceData with num concrete states: 3469 and num abstract states: 869
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-2-2-1-50-100-100-100-100-100-2-3-0.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-2-2-1-50-100-100-100-100-100-2-3-0.pddl
+2024-09-14 14:13:00,534 - Created InstanceData with num concrete states: 2513 and num abstract states: 869
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-1-2-1-50-100-100-100-100-100-1-3-0.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-1-2-1-50-100-100-100-100-100-1-3-0.pddl
+2024-09-14 14:13:00,568 - Created InstanceData with num concrete states: 1557 and num abstract states: 869
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-2-2-1-50-100-100-100-100-100-1-3-0.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-2-2-1-50-100-100-100-100-100-1-3-0.pddl
+2024-09-14 14:13:00,623 - Created InstanceData with num concrete states: 2513 and num abstract states: 869
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-3-2-1-50-100-100-100-100-100-2-3-0.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-3-2-1-50-100-100-100-100-100-2-3-0.pddl
+2024-09-14 14:13:00,702 - Created InstanceData with num concrete states: 3469 and num abstract states: 869
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-1-2-1-50-100-100-100-100-100-2-3-0.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-1-2-1-50-100-100-100-100-100-2-3-0.pddl
+2024-09-14 14:13:00,734 - Created InstanceData with num concrete states: 1557 and num abstract states: 869
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-1-1-2-100-50-100-100-100-100-2-1-0.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-1-1-2-100-50-100-100-100-100-2-1-0.pddl
+2024-09-14 14:13:00,770 - Created InstanceData with num concrete states: 1569 and num abstract states: 1011
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-3-2-1-100-100-100-100-100-100-2-3-0.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-3-2-1-100-100-100-100-100-100-2-3-0.pddl
+2024-09-14 14:13:00,845 - Created InstanceData with num concrete states: 3469 and num abstract states: 1021
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-2-2-1-100-100-100-100-100-100-2-3-0.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-2-2-1-100-100-100-100-100-100-2-3-0.pddl
+2024-09-14 14:13:00,896 - Created InstanceData with num concrete states: 2513 and num abstract states: 1021
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-2-2-1-100-100-100-100-100-100-1-3-0.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-2-2-1-100-100-100-100-100-100-1-3-0.pddl
+2024-09-14 14:13:00,947 - Created InstanceData with num concrete states: 2513 and num abstract states: 1021
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-3-2-1-100-100-100-100-100-100-1-3-0.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-3-2-1-100-100-100-100-100-100-1-3-0.pddl
+2024-09-14 14:13:01,019 - Created InstanceData with num concrete states: 3469 and num abstract states: 1021
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-1-1-2-50-50-100-100-100-100-1-1-0.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-1-1-2-50-50-100-100-100-100-1-1-0.pddl
+2024-09-14 14:13:01,043 - Created InstanceData with num concrete states: 1103 and num abstract states: 1032
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-2-2-1-100-50-100-100-100-100-1-3-0.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-2-2-1-100-50-100-100-100-100-1-3-0.pddl
+2024-09-14 14:13:01,094 - Created InstanceData with num concrete states: 2518 and num abstract states: 1036
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-3-2-1-50-50-100-100-100-100-2-3-0.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-3-2-1-50-50-100-100-100-100-2-3-0.pddl
+2024-09-14 14:13:01,167 - Created InstanceData with num concrete states: 3474 and num abstract states: 1036
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-2-2-1-100-50-100-100-50-100-2-3-0.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-2-2-1-100-50-100-100-50-100-2-3-0.pddl
+2024-09-14 14:13:01,217 - Created InstanceData with num concrete states: 2518 and num abstract states: 1036
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-3-2-1-100-50-100-100-50-100-1-3-0.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-3-2-1-100-50-100-100-50-100-1-3-0.pddl
+2024-09-14 14:13:01,295 - Created InstanceData with num concrete states: 3474 and num abstract states: 1036
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-1-2-1-50-100-100-100-50-100-2-3-0.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-1-2-1-50-100-100-100-50-100-2-3-0.pddl
+2024-09-14 14:13:01,356 - Created InstanceData with num concrete states: 3124 and num abstract states: 1272
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-1-2-1-100-100-100-100-50-100-1-3-0.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-1-2-1-100-100-100-100-50-100-1-3-0.pddl
+2024-09-14 14:13:01,417 - Created InstanceData with num concrete states: 3124 and num abstract states: 1272
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-1-1-2-50-50-100-100-100-100-2-1-0.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-1-1-2-50-50-100-100-100-100-2-1-0.pddl
+2024-09-14 14:13:01,450 - Created InstanceData with num concrete states: 1569 and num abstract states: 1452
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-1-1-2-50-50-100-100-50-100-1-1-0.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-1-1-2-50-50-100-100-50-100-1-1-0.pddl
+2024-09-14 14:13:01,503 - Created InstanceData with num concrete states: 2115 and num abstract states: 1509
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-1-1-2-100-50-100-100-50-100-1-1-0.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-1-1-2-100-50-100-100-50-100-1-1-0.pddl
+2024-09-14 14:13:01,548 - Created InstanceData with num concrete states: 2115 and num abstract states: 1509
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-2-1-2-100-100-100-100-100-100-1-1-0.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-2-1-2-100-100-100-100-100-100-1-1-0.pddl
+2024-09-14 14:13:01,606 - Created InstanceData with num concrete states: 2632 and num abstract states: 1919
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-2-1-2-100-100-100-100-100-100-2-1-0.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-2-1-2-100-100-100-100-100-100-2-1-0.pddl
+2024-09-14 14:13:01,665 - Created InstanceData with num concrete states: 2632 and num abstract states: 1919
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-2-1-2-50-50-100-100-50-100-1-1-0.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-2-1-2-50-50-100-100-50-100-1-1-0.pddl
+2024-09-14 14:13:01,780 - Created InstanceData with num concrete states: 5213 and num abstract states: 1985
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-3-1-2-50-50-100-100-50-100-1-1-0.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-3-1-2-50-50-100-100-50-100-1-1-0.pddl
+2024-09-14 14:13:02,042 - Created InstanceData with num concrete states: 9649 and num abstract states: 1985
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-3-2-1-100-100-100-100-50-100-1-3-0.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-3-2-1-100-100-100-100-50-100-1-3-0.pddl
+2024-09-14 14:13:02,182 - Created InstanceData with num concrete states: 6956 and num abstract states: 2066
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-2-2-1-100-100-100-100-50-100-1-3-0.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-2-2-1-100-100-100-100-50-100-1-3-0.pddl
+2024-09-14 14:13:02,280 - Created InstanceData with num concrete states: 5040 and num abstract states: 2066
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-2-2-1-50-100-100-100-50-100-2-3-0.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-2-2-1-50-100-100-100-50-100-2-3-0.pddl
+2024-09-14 14:13:02,379 - Created InstanceData with num concrete states: 5040 and num abstract states: 2066
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-3-2-1-50-100-100-100-50-100-2-3-0.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-3-2-1-50-100-100-100-50-100-2-3-0.pddl
+2024-09-14 14:13:02,520 - Created InstanceData with num concrete states: 6956 and num abstract states: 2066
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-1-1-2-50-50-100-100-50-100-2-1-0.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-1-1-2-50-50-100-100-50-100-2-1-0.pddl
+2024-09-14 14:13:02,590 - Created InstanceData with num concrete states: 3466 and num abstract states: 2312
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-1-1-2-100-50-100-100-50-100-2-1-0.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-1-1-2-100-50-100-100-50-100-2-1-0.pddl
+2024-09-14 14:13:02,663 - Created InstanceData with num concrete states: 3466 and num abstract states: 2312
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-2-1-2-100-50-100-100-100-100-2-1-0.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-2-1-2-100-50-100-100-100-100-2-1-0.pddl
+2024-09-14 14:13:02,747 - Created InstanceData with num concrete states: 3879 and num abstract states: 2458
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-2-1-2-50-50-100-100-100-100-1-1-0.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-2-1-2-50-50-100-100-100-100-1-1-0.pddl
+2024-09-14 14:13:02,804 - Created InstanceData with num concrete states: 2676 and num abstract states: 2477
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-1-1-2-50-100-100-100-50-100-1-1-0.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-1-1-2-50-100-100-100-50-100-1-1-0.pddl
+2024-09-14 14:13:02,877 - Created InstanceData with num concrete states: 3494 and num abstract states: 2502
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-3-1-2-50-50-100-100-100-100-1-1-0.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-3-1-2-50-50-100-100-100-100-1-1-0.pddl
+2024-09-14 14:13:02,988 - Created InstanceData with num concrete states: 4911 and num abstract states: 2779
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-1-2-2-50-100-100-100-100-100-2-1-0.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-1-2-2-50-100-100-100-100-100-2-1-0.pddl
+2024-09-14 14:13:03,085 - Created InstanceData with num concrete states: 4328 and num abstract states: 2913
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-1-2-2-50-100-100-100-100-100-1-1-0.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-1-2-2-50-100-100-100-100-100-1-1-0.pddl
+2024-09-14 14:13:03,179 - Created InstanceData with num concrete states: 4328 and num abstract states: 2913
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-2-1-2-50-50-100-100-50-100-2-1-0.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-2-1-2-50-50-100-100-50-100-2-1-0.pddl
+2024-09-14 14:13:03,370 - Created InstanceData with num concrete states: 8679 and num abstract states: 3045
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-1-1-2-50-100-100-100-100-100-2-2-0.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-1-1-2-50-100-100-100-100-100-2-2-0.pddl
+2024-09-14 14:13:03,466 - Created InstanceData with num concrete states: 4328 and num abstract states: 3389
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-1-1-2-100-100-100-100-100-100-1-2-0.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-1-1-2-100-100-100-100-100-100-1-2-0.pddl
+2024-09-14 14:13:03,559 - Created InstanceData with num concrete states: 4328 and num abstract states: 3389
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-1-2-2-100-50-100-100-100-100-1-1-0.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-1-2-2-100-50-100-100-100-100-1-1-0.pddl
+2024-09-14 14:13:03,652 - Created InstanceData with num concrete states: 4425 and num abstract states: 3447
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-1-1-2-100-50-100-100-100-100-1-2-0.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-1-1-2-100-50-100-100-100-100-1-2-0.pddl
+2024-09-14 14:13:03,753 - Created InstanceData with num concrete states: 4425 and num abstract states: 3447
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-3-1-2-50-100-100-100-100-100-1-1-0.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-3-1-2-50-100-100-100-100-100-1-1-0.pddl
+2024-09-14 14:13:03,871 - Created InstanceData with num concrete states: 4851 and num abstract states: 3535
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-3-1-2-50-100-100-100-100-100-2-1-0.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-3-1-2-50-100-100-100-100-100-2-1-0.pddl
+2024-09-14 14:13:03,986 - Created InstanceData with num concrete states: 4851 and num abstract states: 3535
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-2-1-2-50-50-100-100-100-100-2-1-0.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-2-1-2-50-50-100-100-100-100-2-1-0.pddl
+2024-09-14 14:13:04,069 - Created InstanceData with num concrete states: 3879 and num abstract states: 3546
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-2-1-2-100-50-100-100-50-100-1-1-0.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-2-1-2-100-50-100-100-50-100-1-1-0.pddl
+2024-09-14 14:13:04,187 - Created InstanceData with num concrete states: 5213 and num abstract states: 3685
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-1-1-2-50-50-100-100-100-100-1-2-0.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-1-1-2-50-50-100-100-100-100-1-2-0.pddl
+2024-09-14 14:13:04,281 - Created InstanceData with num concrete states: 4425 and num abstract states: 3806
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-1-2-2-50-50-100-100-100-100-1-1-0.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-1-2-2-50-50-100-100-100-100-1-1-0.pddl
+2024-09-14 14:13:04,374 - Created InstanceData with num concrete states: 4425 and num abstract states: 3806
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-3-1-2-50-50-100-100-100-100-2-1-0.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-3-1-2-50-50-100-100-100-100-2-1-0.pddl
+2024-09-14 14:13:04,539 - Created InstanceData with num concrete states: 7185 and num abstract states: 3994
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-3-1-2-100-50-100-100-100-100-2-1-0.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-3-1-2-100-50-100-100-100-100-2-1-0.pddl
+2024-09-14 14:13:04,702 - Created InstanceData with num concrete states: 7185 and num abstract states: 4521
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-1-2-2-100-50-100-100-100-100-2-1-0.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-1-2-2-100-50-100-100-100-100-2-1-0.pddl
+2024-09-14 14:13:04,858 - Created InstanceData with num concrete states: 7238 and num abstract states: 5287
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-1-1-2-100-50-100-100-100-100-2-2-0.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-1-1-2-100-50-100-100-100-100-2-2-0.pddl
+2024-09-14 14:13:05,011 - Created InstanceData with num concrete states: 7238 and num abstract states: 5287
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-2-1-2-100-50-100-100-50-100-2-1-0.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-2-1-2-100-50-100-100-50-100-2-1-0.pddl
+2024-09-14 14:13:05,200 - Created InstanceData with num concrete states: 8679 and num abstract states: 5660
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-1-2-2-50-50-100-100-50-100-1-1-0.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-1-2-2-50-50-100-100-50-100-1-1-0.pddl
+2024-09-14 14:13:05,382 - Created InstanceData with num concrete states: 8477 and num abstract states: 6000
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-1-1-2-100-50-100-100-50-100-1-2-0.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-1-1-2-100-50-100-100-50-100-1-2-0.pddl
+2024-09-14 14:13:05,559 - Created InstanceData with num concrete states: 8477 and num abstract states: 6000
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-1-2-2-100-50-100-100-50-100-1-1-0.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-1-2-2-100-50-100-100-50-100-1-1-0.pddl
+2024-09-14 14:13:05,738 - Created InstanceData with num concrete states: 8477 and num abstract states: 6000
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-1-1-2-50-50-100-100-50-100-1-2-0.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-1-1-2-50-50-100-100-50-100-1-2-0.pddl
+2024-09-14 14:13:05,928 - Created InstanceData with num concrete states: 8477 and num abstract states: 6000
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-2-1-2-100-100-100-100-50-100-1-1-0.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-2-1-2-100-100-100-100-50-100-1-1-0.pddl
+2024-09-14 14:13:06,120 - Created InstanceData with num concrete states: 8903 and num abstract states: 6265
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-2-1-2-100-100-100-100-50-100-2-1-0.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-2-1-2-100-100-100-100-50-100-2-1-0.pddl
+2024-09-14 14:13:06,312 - Created InstanceData with num concrete states: 8903 and num abstract states: 6265
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-1-1-2-50-50-100-100-100-100-2-2-0.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-1-1-2-50-50-100-100-100-100-2-2-0.pddl
+2024-09-14 14:13:06,466 - Created InstanceData with num concrete states: 7238 and num abstract states: 6266
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-1-2-2-50-50-100-100-100-100-2-1-0.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-1-2-2-50-50-100-100-100-100-2-1-0.pddl
+2024-09-14 14:13:06,617 - Created InstanceData with num concrete states: 7238 and num abstract states: 6266
+/proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-3-1-2-100-50-100-100-50-100-1-1-0.pddl /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-3-1-2-100-50-100-100-50-100-1-1-0.pddl
+2024-09-14 14:13:06,835 - Created InstanceData with num concrete states: 9649 and num abstract states: 6795
+2024-09-14 14:13:07,011 - ..done
+2024-09-14 14:13:07,607 - Initializing TupleGraphs...
+2024-09-14 14:15:15,845 - ..done
+2024-09-14 14:15:15,847 - Iteration: 0
+     id: 0 problem_filepath: /proj/ssiw/users/x_domdr/projects/code/sketch-learner/learning/benchmarks/tractable/schedule/training/easy/p-1-1-1-50-50-100-100-100-100-1-1-0.pddl num_states: 43 num_state_equivalences: 30
+2024-09-14 14:15:15,850 - Initialize global faithful abstract states...
+2024-09-14 14:15:15,850 - ..done
+2024-09-14 14:15:15,851 - Initializing DomainFeatureData...
+[t=233.541s, 4775720 KB] Started generating base features of complexity 1.
+[t=233.542s, 4775720 KB] Complexity 1:
+    b_nullary: 2
+    c_one_of: 14
+    c_top: 1
+    c_bot: 1
+    c_primitive: 10
+    r_primitive: 11
+    c_and: 0
+    c_not: 0
+    c_equal: 0
+    c_some: 0
+    c_all: 0
+    r_restrict: 0
+    r_and: 0
+    r_inverse: 0
+    r_transitive_closure: 0
+    b_empty: 0
+    n_count: 0
+    n_concept_distance: 0
+[t=233.542s, 4775720 KB] Finished generating base features.
+[t=233.542s, 4775720 KB] Started generating composite features. 
+[t=233.543s, 4775720 KB] Complexity 2:
+Total concept elements: 50
+Total role elements: 21
+Total numerical elements: 9
+Total boolean elements: 5
+    b_nullary: 2
+    c_one_of: 14
+    c_top: 1
+    c_bot: 1
+    c_primitive: 10
+    r_primitive: 11
+    c_and: 0
+    c_not: 24
+    c_equal: 0
+    c_some: 0
+    c_all: 0
+    r_restrict: 0
+    r_and: 0
+    r_inverse: 10
+    r_transitive_closure: 0
+    b_empty: 3
+    n_count: 9
+    n_concept_distance: 0
+[t=233.565s, 4775720 KB] Complexity 3:
+Total concept elements: 78
+Total role elements: 27
+Total numerical elements: 14
+Total boolean elements: 5
+    b_nullary: 2
+    c_one_of: 14
+    c_top: 1
+    c_bot: 1
+    c_primitive: 10
+    r_primitive: 11
+    c_and: 6
+    c_not: 24
+    c_equal: 4
+    c_some: 10
+    c_all: 8
+    r_restrict: 6
+    r_and: 0
+    r_inverse: 10
+    r_transitive_closure: 0
+    b_empty: 3
+    n_count: 14
+    n_concept_distance: 0
+[t=233.618s, 4775720 KB] Complexity 4:
+Total concept elements: 143
+Total role elements: 33
+Total numerical elements: 52
+Total boolean elements: 17
+    b_nullary: 2
+    c_one_of: 14
+    c_top: 1
+    c_bot: 1
+    c_primitive: 10
+    r_primitive: 11
+    c_and: 32
+    c_not: 40
+    c_equal: 4
+    c_some: 22
+    c_all: 19
+    r_restrict: 6
+    r_and: 0
+    r_inverse: 16
+    r_transitive_closure: 0
+    b_empty: 15
+    n_count: 36
+    n_concept_distance: 16
+[t=233.66s, 4775720 KB] Complexity 5:
+Total concept elements: 459
+Total role elements: 33
+Total numerical elements: 98
+Total boolean elements: 39
+    b_nullary: 2
+    c_one_of: 14
+    c_top: 1
+    c_bot: 1
+    c_primitive: 10
+    r_primitive: 11
+    c_and: 310
+    c_not: 78
+    c_equal: 4
+    c_some: 22
+    c_all: 19
+    r_restrict: 6
+    r_and: 0
+    r_inverse: 16
+    r_transitive_closure: 0
+    b_empty: 37
+    n_count: 73
+    n_concept_distance: 25
+[t=233.756s, 4775720 KB] Complexity 6:
+Total concept elements: 1257
+Total role elements: 33
+Total numerical elements: 176
+Total boolean elements: 57
+    b_nullary: 2
+    c_one_of: 14
+    c_top: 1
+    c_bot: 1
+    c_primitive: 10
+    r_primitive: 11
+    c_and: 640
+    c_not: 353
+    c_equal: 4
+    c_some: 107
+    c_all: 127
+    r_restrict: 6
+    r_and: 0
+    r_inverse: 16
+    r_transitive_closure: 0
+    b_empty: 55
+    n_count: 124
+    n_concept_distance: 52
+[t=234.058s, 4775720 KB] Complexity 7:
+Total concept elements: 2321
+Total role elements: 33
+Total numerical elements: 397
+Total boolean elements: 95
+    b_nullary: 2
+    c_one_of: 14
+    c_top: 1
+    c_bot: 1
+    c_primitive: 10
+    r_primitive: 11
+    c_and: 1291
+    c_not: 764
+    c_equal: 4
+    c_some: 109
+    c_all: 127
+    r_restrict: 6
+    r_and: 0
+    r_inverse: 16
+    r_transitive_closure: 0
+    b_empty: 93
+    n_count: 302
+    n_concept_distance: 95
+[t=234.911s, 4775720 KB] Complexity 8:
+Total concept elements: 6035
+Total role elements: 33
+Total numerical elements: 743
+Total boolean elements: 162
+    b_nullary: 2
+    c_one_of: 14
+    c_top: 1
+    c_bot: 1
+    c_primitive: 10
+    r_primitive: 11
+    c_and: 4055
+    c_not: 1395
+    c_equal: 4
+    c_some: 240
+    c_all: 315
+    r_restrict: 6
+    r_and: 0
+    r_inverse: 16
+    r_transitive_closure: 0
+    b_empty: 160
+    n_count: 570
+    n_concept_distance: 173
+[t=236.813s, 4775720 KB] Complexity 9:
+Total concept elements: 15665
+Total role elements: 33
+Total numerical elements: 1638
+Total boolean elements: 306
+    b_nullary: 2
+    c_one_of: 14
+    c_top: 1
+    c_bot: 1
+    c_primitive: 10
+    r_primitive: 11
+    c_and: 10907
+    c_not: 3837
+    c_equal: 4
+    c_some: 399
+    c_all: 492
+    r_restrict: 6
+    r_and: 0
+    r_inverse: 16
+    r_transitive_closure: 0
+    b_empty: 304
+    n_count: 1218
+    n_concept_distance: 420
+[t=236.813s, 4775720 KB] Finished generating composite features.
+Features generated: 1944
+Features after relevant changes pruning (complete): 550
+2024-09-14 14:15:22,583 - ..done
+2024-09-14 14:15:22,583 - Constructing PerStateFeatureValuations...
+2024-09-14 14:15:22,598 - ..done
+2024-09-14 14:15:22,598 - Constructing StatePairEquivalenceDatas...
+2024-09-14 14:15:22,917 - ..done
+2024-09-14 14:15:22,917 - Constructing TupleGraphEquivalences...
+Tuple graph equivalence construction statistics:
+Num nodes: 82
+2024-09-14 14:15:22,919 - ..done
+2024-09-14 14:15:22,919 - Minimizing TupleGraphEquivalences...
+Tuple graph equivalence minimization statistics:
+Num orig nodes: 82
+Num kept nodes: 75
+2024-09-14 14:15:22,920 - ..done
+Number of initial D2 facts: 169
+Number of D2 facts: 169 of 5625
+2024-09-14 14:15:23,616 - Grounding Logic Program...
+2024-09-14 14:15:24,149 - ..done
+2024-09-14 14:15:24,149 - Solving Logic Program...
+2024-09-14 14:15:24,150 - ..done
+ASP is unsatisfiable!
+No sketch of width 2 exists that solves all instances!

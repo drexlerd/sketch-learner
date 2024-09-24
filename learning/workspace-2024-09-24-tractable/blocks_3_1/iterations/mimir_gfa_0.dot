@@ -1,0 +1,16 @@
+digraph {
+rankdir="LR"
+s0[peripheries=2,label="state_index=0 global_state_index = 0 abstraction_index=0 abstract_state_index=0
+State(index=0, fluent atoms=[(clear b1), (on-table b1)], static atoms=[], derived atoms=[])
+"]
+s1[label="state_index=1 global_state_index = 1 abstraction_index=0 abstract_state_index=1
+State(index=1, fluent atoms=[(on b1 b1)], static atoms=[], derived atoms=[])
+"]
+Dangling [ label = "", style = invis ]
+{ rank = same; Dangling }
+Dangling -> s0
+{ rank = same; s1}
+{ rank = same; s0}
+s0->s1 [label="(move-t-to-b b1 b1)
+"]
+}

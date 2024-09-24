@@ -1,0 +1,579 @@
+digraph {
+rankdir="LR"
+s0[label="(instance index=29, state index=0, atoms={lift-at(f1), origin(p1,f2), origin(p2,f1), origin(p3,f2), origin(p4,f1)})"]
+s1[label="(instance index=29, state index=1, atoms={origin(p1,f2), origin(p2,f1), origin(p3,f2), origin(p4,f1), lift-at(f2)})"]
+s148[label="(instance index=29, state index=148, atoms={lift-at(f1), origin(p2,f1), origin(p3,f2), origin(p4,f1), boarded(p1)})"]
+s159[label="(instance index=29, state index=159, atoms={lift-at(f1), origin(p1,f2), origin(p2,f1), origin(p4,f1), boarded(p3)})"]
+s3[label="(instance index=29, state index=3, atoms={lift-at(f1), origin(p1,f2), origin(p3,f2), origin(p4,f1), boarded(p2)})"]
+s2[label="(instance index=29, state index=2, atoms={lift-at(f1), origin(p1,f2), origin(p2,f1), origin(p3,f2), boarded(p4)})"]
+s111[label="(instance index=29, state index=111, atoms={origin(p1,f2), origin(p2,f1), origin(p3,f2), lift-at(f2), boarded(p4)})"]
+s147[label="(instance index=29, state index=147, atoms={origin(p2,f1), origin(p3,f2), origin(p4,f1), lift-at(f2), boarded(p1)})"]
+s146[label="(instance index=29, state index=146, atoms={origin(p1,f2), origin(p2,f1), origin(p4,f1), lift-at(f2), boarded(p3)})"]
+s4[label="(instance index=29, state index=4, atoms={origin(p1,f2), origin(p3,f2), origin(p4,f1), lift-at(f2), boarded(p2)})"]
+s157[label="(instance index=29, state index=157, atoms={served(p1), lift-at(f1), origin(p2,f1), origin(p3,f2), origin(p4,f1)})"]
+s160[label="(instance index=29, state index=160, atoms={served(p3), lift-at(f1), origin(p1,f2), origin(p2,f1), origin(p4,f1)})"]
+s132[label="(instance index=29, state index=132, atoms={lift-at(f1), origin(p2,f1), origin(p3,f2), boarded(p4), boarded(p1)})"]
+s97[label="(instance index=29, state index=97, atoms={lift-at(f1), origin(p3,f2), origin(p4,f1), boarded(p2), boarded(p1)})"]
+s115[label="(instance index=29, state index=115, atoms={served(p4), lift-at(f1), origin(p1,f2), origin(p2,f1), origin(p3,f2)})"]
+s80[label="(instance index=29, state index=80, atoms={served(p2), lift-at(f1), origin(p1,f2), origin(p3,f2), origin(p4,f1)})"]
+s143[label="(instance index=29, state index=143, atoms={lift-at(f1), origin(p1,f2), origin(p2,f1), boarded(p4), boarded(p3)})"]
+s108[label="(instance index=29, state index=108, atoms={lift-at(f1), origin(p1,f2), origin(p4,f1), boarded(p2), boarded(p3)})"]
+s5[label="(instance index=29, state index=5, atoms={lift-at(f1), origin(p1,f2), origin(p3,f2), boarded(p2), boarded(p4)})"]
+s114[label="(instance index=29, state index=114, atoms={served(p4), origin(p1,f2), origin(p2,f1), origin(p3,f2), lift-at(f2)})"]
+s158[label="(instance index=29, state index=158, atoms={served(p1), origin(p2,f1), origin(p3,f2), origin(p4,f1), lift-at(f2)})"]
+s161[label="(instance index=29, state index=161, atoms={served(p3), origin(p1,f2), origin(p2,f1), origin(p4,f1), lift-at(f2)})"]
+s113[label="(instance index=29, state index=113, atoms={origin(p2,f1), origin(p3,f2), lift-at(f2), boarded(p4), boarded(p1)})"]
+s112[label="(instance index=29, state index=112, atoms={origin(p1,f2), origin(p2,f1), lift-at(f2), boarded(p4), boarded(p3)})"]
+s149[label="(instance index=29, state index=149, atoms={origin(p2,f1), origin(p4,f1), lift-at(f2), boarded(p1), boarded(p3)})"]
+s78[label="(instance index=29, state index=78, atoms={origin(p3,f2), origin(p4,f1), lift-at(f2), boarded(p2), boarded(p1)})"]
+s79[label="(instance index=29, state index=79, atoms={served(p2), origin(p1,f2), origin(p3,f2), origin(p4,f1), lift-at(f2)})"]
+s77[label="(instance index=29, state index=77, atoms={origin(p1,f2), origin(p4,f1), lift-at(f2), boarded(p2), boarded(p3)})"]
+s141[label="(instance index=29, state index=141, atoms={served(p1), lift-at(f1), origin(p2,f1), origin(p3,f2), boarded(p4)})"]
+s106[label="(instance index=29, state index=106, atoms={served(p1), lift-at(f1), origin(p3,f2), origin(p4,f1), boarded(p2)})"]
+s144[label="(instance index=29, state index=144, atoms={served(p3), lift-at(f1), origin(p1,f2), origin(p2,f1), boarded(p4)})"]
+s109[label="(instance index=29, state index=109, atoms={served(p3), lift-at(f1), origin(p1,f2), origin(p4,f1), boarded(p2)})"]
+s118[label="(instance index=29, state index=118, atoms={served(p4), lift-at(f1), origin(p2,f1), origin(p3,f2), boarded(p1)})"]
+s83[label="(instance index=29, state index=83, atoms={served(p2), lift-at(f1), origin(p3,f2), origin(p4,f1), boarded(p1)})"]
+s63[label="(instance index=29, state index=63, atoms={lift-at(f1), origin(p3,f2), boarded(p2), boarded(p4), boarded(p1)})"]
+s150[label="(instance index=29, state index=150, atoms={lift-at(f1), origin(p2,f1), origin(p4,f1), boarded(p1), boarded(p3)})"]
+s11[label="(instance index=29, state index=11, atoms={served(p2), lift-at(f1), origin(p1,f2), origin(p3,f2), boarded(p4)})"]
+s153[label="(instance index=29, state index=153, atoms={served(p1), origin(p2,f1), origin(p4,f1), lift-at(f2), boarded(p3)})"]
+s156[label="(instance index=29, state index=156, atoms={served(p3), origin(p2,f1), origin(p4,f1), lift-at(f2), boarded(p1)})"]
+s145[label="(instance index=29, state index=145, atoms={served(p3), origin(p1,f2), origin(p2,f1), lift-at(f2), boarded(p4)})"]
+s142[label="(instance index=29, state index=142, atoms={served(p1), origin(p2,f1), origin(p3,f2), lift-at(f2), boarded(p4)})"]
+s81[label="(instance index=29, state index=81, atoms={served(p2), origin(p1,f2), origin(p4,f1), lift-at(f2), boarded(p3)})"]
+s82[label="(instance index=29, state index=82, atoms={served(p2), origin(p3,f2), origin(p4,f1), lift-at(f2), boarded(p1)})"]
+s98[label="(instance index=29, state index=98, atoms={origin(p4,f1), lift-at(f2), boarded(p2), boarded(p1), boarded(p3)})"]
+s110[label="(instance index=29, state index=110, atoms={served(p3), origin(p1,f2), origin(p4,f1), lift-at(f2), boarded(p2)})"]
+s107[label="(instance index=29, state index=107, atoms={served(p1), origin(p3,f2), origin(p4,f1), lift-at(f2), boarded(p2)})"]
+s133[label="(instance index=29, state index=133, atoms={origin(p2,f1), lift-at(f2), boarded(p4), boarded(p1), boarded(p3)})"]
+s6[label="(instance index=29, state index=6, atoms={origin(p1,f2), origin(p3,f2), lift-at(f2), boarded(p2), boarded(p4)})"]
+s116[label="(instance index=29, state index=116, atoms={served(p4), origin(p1,f2), origin(p2,f1), lift-at(f2), boarded(p3)})"]
+s117[label="(instance index=29, state index=117, atoms={served(p4), origin(p2,f1), origin(p3,f2), lift-at(f2), boarded(p1)})"]
+s74[label="(instance index=29, state index=74, atoms={lift-at(f1), origin(p1,f2), boarded(p2), boarded(p4), boarded(p3)})"]
+s94[label="(instance index=29, state index=94, atoms={served(p2), lift-at(f1), origin(p1,f2), origin(p4,f1), boarded(p3)})"]
+s46[label="(instance index=29, state index=46, atoms={served(p4), lift-at(f1), origin(p1,f2), origin(p3,f2), boarded(p2)})"]
+s129[label="(instance index=29, state index=129, atoms={served(p4), lift-at(f1), origin(p1,f2), origin(p2,f1), boarded(p3)})"]
+s9[label="(instance index=29, state index=9, atoms={served(p4), origin(p1,f2), origin(p3,f2), lift-at(f2), boarded(p2)})"]
+s8[label="(instance index=29, state index=8, atoms={origin(p3,f2), lift-at(f2), boarded(p2), boarded(p4), boarded(p1)})"]
+s151[label="(instance index=29, state index=151, atoms={served(p3), lift-at(f1), origin(p2,f1), origin(p4,f1), boarded(p1)})"]
+s152[label="(instance index=29, state index=152, atoms={served(p1), lift-at(f1), origin(p2,f1), origin(p4,f1), boarded(p3)})"]
+s155[label="(instance index=29, state index=155, atoms={served(p1), served(p3), origin(p2,f1), origin(p4,f1), lift-at(f2)})"]
+s140[label="(instance index=29, state index=140, atoms={served(p3), origin(p2,f1), lift-at(f2), boarded(p4), boarded(p1)})"]
+s84[label="(instance index=29, state index=84, atoms={served(p2), origin(p4,f1), lift-at(f2), boarded(p1), boarded(p3)})"]
+s96[label="(instance index=29, state index=96, atoms={served(p2), served(p3), origin(p1,f2), origin(p4,f1), lift-at(f2)})"]
+s105[label="(instance index=29, state index=105, atoms={served(p3), origin(p4,f1), lift-at(f2), boarded(p2), boarded(p1)})"]
+s93[label="(instance index=29, state index=93, atoms={served(p1), served(p2), origin(p3,f2), origin(p4,f1), lift-at(f2)})"]
+s102[label="(instance index=29, state index=102, atoms={served(p1), origin(p4,f1), lift-at(f2), boarded(p2), boarded(p3)})"]
+s99[label="(instance index=29, state index=99, atoms={lift-at(f1), origin(p4,f1), boarded(p2), boarded(p1), boarded(p3)})"]
+s134[label="(instance index=29, state index=134, atoms={lift-at(f1), origin(p2,f1), boarded(p4), boarded(p1), boarded(p3)})"]
+s7[label="(instance index=29, state index=7, atoms={origin(p1,f2), lift-at(f2), boarded(p2), boarded(p4), boarded(p3)})"]
+s137[label="(instance index=29, state index=137, atoms={served(p1), origin(p2,f1), lift-at(f2), boarded(p4), boarded(p3)})"]
+s10[label="(instance index=29, state index=10, atoms={served(p2), origin(p1,f2), origin(p3,f2), lift-at(f2), boarded(p4)})"]
+s119[label="(instance index=29, state index=119, atoms={served(p4), origin(p2,f1), lift-at(f2), boarded(p1), boarded(p3)})"]
+s131[label="(instance index=29, state index=131, atoms={served(p3), served(p4), origin(p1,f2), origin(p2,f1), lift-at(f2)})"]
+s128[label="(instance index=29, state index=128, atoms={served(p1), served(p4), origin(p2,f1), origin(p3,f2), lift-at(f2)})"]
+s43[label="(instance index=29, state index=43, atoms={served(p2), lift-at(f1), origin(p1,f2), boarded(p4), boarded(p3)})"]
+s15[label="(instance index=29, state index=15, atoms={served(p2), served(p4), lift-at(f1), origin(p1,f2), origin(p3,f2)})"]
+s60[label="(instance index=29, state index=60, atoms={served(p4), lift-at(f1), origin(p1,f2), boarded(p2), boarded(p3)})"]
+s32[label="(instance index=29, state index=32, atoms={served(p2), lift-at(f1), origin(p3,f2), boarded(p4), boarded(p1)})"]
+s49[label="(instance index=29, state index=49, atoms={served(p4), lift-at(f1), origin(p3,f2), boarded(p2), boarded(p1)})"]
+s95[label="(instance index=29, state index=95, atoms={served(p2), served(p3), lift-at(f1), origin(p1,f2), origin(p4,f1)})"]
+s75[label="(instance index=29, state index=75, atoms={served(p3), lift-at(f1), origin(p1,f2), boarded(p2), boarded(p4)})"]
+s130[label="(instance index=29, state index=130, atoms={served(p3), served(p4), lift-at(f1), origin(p1,f2), origin(p2,f1)})"]
+s92[label="(instance index=29, state index=92, atoms={served(p1), served(p2), lift-at(f1), origin(p3,f2), origin(p4,f1)})"]
+s72[label="(instance index=29, state index=72, atoms={served(p1), lift-at(f1), origin(p3,f2), boarded(p2), boarded(p4)})"]
+s127[label="(instance index=29, state index=127, atoms={served(p1), served(p4), lift-at(f1), origin(p2,f1), origin(p3,f2)})"]
+s136[label="(instance index=29, state index=136, atoms={served(p1), lift-at(f1), origin(p2,f1), boarded(p4), boarded(p3)})"]
+s100[label="(instance index=29, state index=100, atoms={served(p3), lift-at(f1), origin(p4,f1), boarded(p2), boarded(p1)})"]
+s88[label="(instance index=29, state index=88, atoms={served(p1), served(p2), origin(p4,f1), lift-at(f2), boarded(p3)})"]
+s91[label="(instance index=29, state index=91, atoms={served(p2), served(p3), origin(p4,f1), lift-at(f2), boarded(p1)})"]
+s101[label="(instance index=29, state index=101, atoms={served(p1), lift-at(f1), origin(p4,f1), boarded(p2), boarded(p3)})"]
+s104[label="(instance index=29, state index=104, atoms={served(p1), served(p3), origin(p4,f1), lift-at(f2), boarded(p2)})"]
+s135[label="(instance index=29, state index=135, atoms={served(p3), lift-at(f1), origin(p2,f1), boarded(p4), boarded(p1)})"]
+s85[label="(instance index=29, state index=85, atoms={served(p2), lift-at(f1), origin(p4,f1), boarded(p1), boarded(p3)})"]
+s65[label="(instance index=29, state index=65, atoms={lift-at(f1), boarded(p2), boarded(p4), boarded(p1), boarded(p3)})"]
+s154[label="(instance index=29, state index=154, atoms={served(p1), served(p3), lift-at(f1), origin(p2,f1), origin(p4,f1)})"]
+s139[label="(instance index=29, state index=139, atoms={served(p1), served(p3), origin(p2,f1), lift-at(f2), boarded(p4)})"]
+s12[label="(instance index=29, state index=12, atoms={served(p2), origin(p1,f2), lift-at(f2), boarded(p4), boarded(p3)})"]
+s120[label="(instance index=29, state index=120, atoms={served(p4), lift-at(f1), origin(p2,f1), boarded(p1), boarded(p3)})"]
+s126[label="(instance index=29, state index=126, atoms={served(p3), served(p4), origin(p2,f1), lift-at(f2), boarded(p1)})"]
+s123[label="(instance index=29, state index=123, atoms={served(p1), served(p4), origin(p2,f1), lift-at(f2), boarded(p3)})"]
+s14[label="(instance index=29, state index=14, atoms={served(p2), served(p4), origin(p1,f2), origin(p3,f2), lift-at(f2)})"]
+s29[label="(instance index=29, state index=29, atoms={served(p2), served(p4), lift-at(f1), origin(p1,f2), boarded(p3)})"]
+s47[label="(instance index=29, state index=47, atoms={served(p4), origin(p1,f2), lift-at(f2), boarded(p2), boarded(p3)})"]
+s13[label="(instance index=29, state index=13, atoms={served(p2), origin(p3,f2), lift-at(f2), boarded(p4), boarded(p1)})"]
+s18[label="(instance index=29, state index=18, atoms={served(p2), served(p4), lift-at(f1), origin(p3,f2), boarded(p1)})"]
+s48[label="(instance index=29, state index=48, atoms={served(p4), origin(p3,f2), lift-at(f2), boarded(p2), boarded(p1)})"]
+s64[label="(instance index=29, state index=64, atoms={lift-at(f2), boarded(p2), boarded(p4), boarded(p1), boarded(p3)})"]
+s44[label="(instance index=29, state index=44, atoms={served(p2), served(p3), lift-at(f1), origin(p1,f2), boarded(p4)})"]
+s76[label="(instance index=29, state index=76, atoms={served(p3), origin(p1,f2), lift-at(f2), boarded(p2), boarded(p4)})"]
+s61[label="(instance index=29, state index=61, atoms={served(p3), served(p4), lift-at(f1), origin(p1,f2), boarded(p2)})"]
+s41[label="(instance index=29, state index=41, atoms={served(p1), served(p2), lift-at(f1), origin(p3,f2), boarded(p4)})"]
+s73[label="(instance index=29, state index=73, atoms={served(p1), origin(p3,f2), lift-at(f2), boarded(p2), boarded(p4)})"]
+s58[label="(instance index=29, state index=58, atoms={served(p1), served(p4), lift-at(f1), origin(p3,f2), boarded(p2)})"]
+s59[label="(instance index=29, state index=59, atoms={served(p1), served(p4), origin(p3,f2), lift-at(f2), boarded(p2)})"]
+s68[label="(instance index=29, state index=68, atoms={served(p1), lift-at(f2), boarded(p2), boarded(p4), boarded(p3)})"]
+s42[label="(instance index=29, state index=42, atoms={served(p1), served(p2), origin(p3,f2), lift-at(f2), boarded(p4)})"]
+s71[label="(instance index=29, state index=71, atoms={served(p3), lift-at(f2), boarded(p2), boarded(p4), boarded(p1)})"]
+s45[label="(instance index=29, state index=45, atoms={served(p2), served(p3), origin(p1,f2), lift-at(f2), boarded(p4)})"]
+s50[label="(instance index=29, state index=50, atoms={served(p4), lift-at(f2), boarded(p2), boarded(p1), boarded(p3)})"]
+s33[label="(instance index=29, state index=33, atoms={served(p2), lift-at(f2), boarded(p4), boarded(p1), boarded(p3)})"]
+s17[label="(instance index=29, state index=17, atoms={served(p2), served(p4), origin(p3,f2), lift-at(f2), boarded(p1)})"]
+s16[label="(instance index=29, state index=16, atoms={served(p2), served(p4), origin(p1,f2), lift-at(f2), boarded(p3)})"]
+s122[label="(instance index=29, state index=122, atoms={served(p1), served(p4), lift-at(f1), origin(p2,f1), boarded(p3)})"]
+s62[label="(instance index=29, state index=62, atoms={served(p3), served(p4), origin(p1,f2), lift-at(f2), boarded(p2)})"]
+s121[label="(instance index=29, state index=121, atoms={served(p3), served(p4), lift-at(f1), origin(p2,f1), boarded(p1)})"]
+s51[label="(instance index=29, state index=51, atoms={served(p4), lift-at(f1), boarded(p2), boarded(p1), boarded(p3)})"]
+s103[label="(instance index=29, state index=103, atoms={served(p1), served(p3), lift-at(f1), origin(p4,f1), boarded(p2)})"]
+s67[label="(instance index=29, state index=67, atoms={served(p1), lift-at(f1), boarded(p2), boarded(p4), boarded(p3)})"]
+s125[label="(instance index=29, state index=125, atoms={served(p1), served(p3), served(p4), origin(p2,f1), lift-at(f2)})"]
+s66[label="(instance index=29, state index=66, atoms={served(p3), lift-at(f1), boarded(p2), boarded(p4), boarded(p1)})"]
+s138[label="(instance index=29, state index=138, atoms={served(p1), served(p3), lift-at(f1), origin(p2,f1), boarded(p4)})"]
+s30[label="(instance index=29, state index=30, atoms={served(p2), served(p3), served(p4), lift-at(f1), origin(p1,f2)})"]
+s90[label="(instance index=29, state index=90, atoms={served(p1), served(p2), served(p3), origin(p4,f1), lift-at(f2)})"]
+s27[label="(instance index=29, state index=27, atoms={served(p1), served(p2), served(p4), lift-at(f1), origin(p3,f2)})"]
+s86[label="(instance index=29, state index=86, atoms={served(p2), served(p3), lift-at(f1), origin(p4,f1), boarded(p1)})"]
+s34[label="(instance index=29, state index=34, atoms={served(p2), lift-at(f1), boarded(p4), boarded(p1), boarded(p3)})"]
+s87[label="(instance index=29, state index=87, atoms={served(p1), served(p2), lift-at(f1), origin(p4,f1), boarded(p3)})"]
+s52[label="(instance index=29, state index=52, atoms={served(p3), served(p4), lift-at(f1), boarded(p2), boarded(p1)})"]
+s35[label="(instance index=29, state index=35, atoms={served(p2), served(p3), lift-at(f1), boarded(p4), boarded(p1)})"]
+s53[label="(instance index=29, state index=53, atoms={served(p1), served(p4), lift-at(f1), boarded(p2), boarded(p3)})"]
+s54[label="(instance index=29, state index=54, atoms={served(p1), served(p4), lift-at(f2), boarded(p2), boarded(p3)})"]
+s36[label="(instance index=29, state index=36, atoms={served(p1), served(p2), lift-at(f1), boarded(p4), boarded(p3)})"]
+s89[label="(instance index=29, state index=89, atoms={served(p1), served(p2), served(p3), lift-at(f1), origin(p4,f1)})"]
+s31[label="(instance index=29, state index=31, atoms={served(p2), served(p3), served(p4), origin(p1,f2), lift-at(f2)})"]
+s69[label="(instance index=29, state index=69, atoms={served(p1), served(p3), lift-at(f1), boarded(p2), boarded(p4)})"]
+s40[label="(instance index=29, state index=40, atoms={served(p2), served(p3), lift-at(f2), boarded(p4), boarded(p1)})"]
+s124[label="(instance index=29, state index=124, atoms={served(p1), served(p3), served(p4), lift-at(f1), origin(p2,f1)})"]
+s37[label="(instance index=29, state index=37, atoms={served(p1), served(p2), lift-at(f2), boarded(p4), boarded(p3)})"]
+s19[label="(instance index=29, state index=19, atoms={served(p2), served(p4), lift-at(f2), boarded(p1), boarded(p3)})"]
+s57[label="(instance index=29, state index=57, atoms={served(p3), served(p4), lift-at(f2), boarded(p2), boarded(p1)})"]
+s28[label="(instance index=29, state index=28, atoms={served(p1), served(p2), served(p4), origin(p3,f2), lift-at(f2)})"]
+s23[label="(instance index=29, state index=23, atoms={served(p1), served(p2), served(p4), lift-at(f2), boarded(p3)})"]
+s20[label="(instance index=29, state index=20, atoms={served(p2), served(p4), lift-at(f1), boarded(p1), boarded(p3)})"]
+s55[label="(instance index=29, state index=55, atoms={served(p1), served(p3), served(p4), lift-at(f1), boarded(p2)})"]
+s26[label="(instance index=29, state index=26, atoms={served(p2), served(p3), served(p4), lift-at(f2), boarded(p1)})"]
+s70[label="(instance index=29, state index=70, atoms={served(p1), served(p3), lift-at(f2), boarded(p2), boarded(p4)})"]
+s38[label="(instance index=29, state index=38, atoms={served(p1), served(p2), served(p3), lift-at(f1), boarded(p4)})"]
+s22[label="(instance index=29, state index=22, atoms={served(p1), served(p2), served(p4), lift-at(f1), boarded(p3)})"]
+s21[label="(instance index=29, state index=21, atoms={served(p2), served(p3), served(p4), lift-at(f1), boarded(p1)})"]
+s56[label="(instance index=29, state index=56, atoms={served(p1), served(p3), served(p4), lift-at(f2), boarded(p2)})"]
+s39[label="(instance index=29, state index=39, atoms={served(p1), served(p2), served(p3), lift-at(f2), boarded(p4)})"]
+s24[peripheries=2,label="(instance index=29, state index=24, atoms={served(p1), served(p2), served(p3), served(p4), lift-at(f1)})"]
+s25[peripheries=2,label="(instance index=29, state index=25, atoms={served(p1), served(p2), served(p3), served(p4), lift-at(f2)})"]
+Dangling [ label = "", style = invis ]
+{ rank = same; Dangling }
+Dangling -> s0
+{ rank = same; s0}
+{ rank = same; s148,s159,s3,s2,s111,s147,s146,s4}
+{ rank = same; s157,s160,s132,s97,s115,s80,s143,s108,s5,s114,s158,s161,s113,s112,s149,s78,s79,s77}
+{ rank = same; s141,s106,s144,s109,s118,s83,s63,s150,s11,s153,s156,s145,s142,s81,s82,s98,s110,s107,s133,s6,s116,s117,s74,s94,s46,s129}
+{ rank = same; s9,s8,s151,s152,s155,s140,s84,s96,s105,s93,s102,s99,s134,s7,s137,s10,s119,s131,s128,s43,s15,s60,s32,s49,s95,s75,s130,s92,s72,s127}
+{ rank = same; s136,s100,s88,s91,s101,s104,s135,s85,s65,s154,s139,s12,s120,s126,s123,s14,s29,s47,s13,s18,s48,s64,s44,s76,s61,s41,s73,s58}
+{ rank = same; s59,s68,s42,s71,s45,s50,s33,s17,s16,s122,s62,s121,s51,s103,s67,s125,s66,s138,s30,s90,s27,s86,s34,s87}
+{ rank = same; s52,s35,s53,s54,s36,s89,s31,s69,s40,s124,s37,s19,s57,s28}
+{ rank = same; s23,s20,s55,s26,s70,s38}
+{ rank = same; s22,s21,s56,s39}
+{ rank = same; s24,s25}
+{
+s0->s3
+s0->s2
+s0->s1
+s1->s146
+s1->s147
+s1->s0
+}
+{
+s148->s157
+s148->s132
+s148->s147
+s148->s97
+s159->s143
+s159->s108
+s159->s146
+s159->s160
+s3->s5
+s3->s4
+s2->s111
+s2->s5
+s111->s114
+s111->s113
+s111->s2
+s111->s112
+s147->s149
+s147->s148
+s146->s159
+s146->s149
+s4->s79
+s4->s77
+s4->s78
+s4->s3
+}
+{
+s157->s158
+s157->s141
+s157->s106
+s160->s109
+s160->s161
+s160->s144
+s132->s63
+s132->s141
+s132->s113
+s97->s63
+s97->s78
+s97->s106
+s115->s46
+s115->s114
+s80->s79
+s80->s11
+s143->s112
+s143->s74
+s143->s144
+s108->s109
+s108->s77
+s108->s74
+s5->s6
+s114->s117
+s114->s116
+s114->s115
+s158->s157
+s158->s153
+s161->s156
+s161->s160
+s113->s133
+s113->s117
+s113->s132
+s112->s133
+s112->s143
+s112->s116
+s149->s150
+s78->s98
+s78->s82
+s78->s97
+s79->s82
+s79->s81
+s79->s80
+s77->s98
+s77->s108
+s77->s81
+}
+{
+s141->s142
+s141->s72
+s106->s107
+s106->s72
+s144->s75
+s144->s145
+s109->s110
+s109->s75
+s118->s117
+s118->s127
+s118->s49
+s83->s82
+s83->s92
+s83->s32
+s63->s8
+s63->s72
+s150->s152
+s150->s151
+s150->s149
+s150->s134
+s150->s99
+s11->s10
+s153->s152
+s156->s151
+s145->s140
+s145->s131
+s145->s144
+s142->s141
+s142->s137
+s142->s128
+s81->s94
+s81->s84
+s82->s84
+s82->s83
+s98->s84
+s98->s99
+s110->s109
+s110->s105
+s110->s96
+s107->s102
+s107->s93
+s107->s106
+s133->s119
+s133->s134
+s6->s9
+s6->s8
+s6->s7
+s6->s10
+s6->s5
+s116->s119
+s116->s129
+s117->s119
+s117->s118
+s74->s7
+s74->s75
+s94->s95
+s94->s43
+s94->s81
+s46->s9
+s129->s60
+s129->s130
+s129->s116
+}
+{
+s9->s47
+s9->s46
+s9->s14
+s9->s48
+s8->s64
+s8->s63
+s8->s13
+s8->s48
+s151->s156
+s151->s154
+s151->s135
+s151->s100
+s152->s154
+s152->s153
+s152->s101
+s152->s136
+s155->s154
+s140->s135
+s140->s126
+s84->s85
+s96->s95
+s96->s91
+s105->s100
+s105->s91
+s93->s92
+s93->s88
+s102->s101
+s102->s88
+s99->s101
+s99->s98
+s99->s100
+s99->s65
+s134->s133
+s134->s135
+s134->s65
+s134->s136
+s7->s47
+s7->s12
+s7->s74
+s7->s64
+s137->s123
+s137->s136
+s10->s14
+s10->s13
+s10->s12
+s10->s11
+s119->s120
+s131->s126
+s131->s130
+s128->s127
+s128->s123
+s43->s12
+s43->s44
+s15->s14
+s60->s47
+s60->s61
+s32->s13
+s32->s41
+s49->s58
+s49->s48
+s95->s44
+s95->s96
+s75->s76
+s130->s61
+s130->s131
+s92->s93
+s92->s41
+s72->s73
+s127->s58
+s127->s128
+}
+{
+s136->s67
+s136->s138
+s136->s137
+s100->s103
+s100->s66
+s100->s105
+s88->s87
+s91->s86
+s101->s102
+s101->s103
+s101->s67
+s104->s103
+s104->s90
+s135->s140
+s135->s66
+s135->s138
+s85->s87
+s85->s86
+s85->s84
+s85->s34
+s65->s66
+s65->s67
+s65->s64
+s154->s103
+s154->s155
+s154->s138
+s139->s125
+s139->s138
+s12->s33
+s12->s43
+s12->s16
+s120->s119
+s120->s122
+s120->s51
+s120->s121
+s126->s121
+s123->s122
+s14->s15
+s14->s17
+s14->s16
+s29->s30
+s29->s16
+s47->s60
+s47->s50
+s47->s16
+s13->s33
+s13->s17
+s13->s32
+s18->s27
+s18->s17
+s48->s17
+s48->s50
+s48->s49
+s64->s33
+s64->s50
+s64->s65
+s44->s45
+s76->s71
+s76->s62
+s76->s45
+s76->s75
+s61->s62
+s41->s42
+s73->s68
+s73->s59
+s73->s42
+s73->s72
+s58->s59
+}
+{
+s59->s54
+s59->s28
+s59->s58
+s68->s54
+s68->s37
+s68->s67
+s42->s37
+s42->s28
+s42->s41
+s71->s66
+s71->s57
+s71->s40
+s45->s44
+s45->s31
+s45->s40
+s50->s19
+s50->s51
+s33->s19
+s33->s34
+s17->s19
+s17->s18
+s16->s29
+s16->s19
+s122->s53
+s122->s124
+s122->s123
+s62->s31
+s62->s61
+s62->s57
+s121->s126
+s121->s52
+s121->s124
+s51->s52
+s51->s53
+s51->s50
+s103->s69
+s103->s104
+s67->s69
+s67->s68
+s125->s124
+s66->s71
+s66->s69
+s138->s69
+s138->s139
+s30->s31
+s90->s89
+s27->s28
+s86->s91
+s86->s35
+s86->s89
+s34->s35
+s34->s36
+s34->s33
+s87->s36
+s87->s89
+s87->s88
+}
+{
+s52->s55
+s52->s57
+s35->s38
+s35->s40
+s53->s55
+s53->s54
+s54->s23
+s54->s53
+s36->s38
+s36->s37
+s89->s38
+s89->s90
+s31->s30
+s31->s26
+s69->s70
+s40->s35
+s40->s26
+s124->s55
+s124->s125
+s37->s23
+s37->s36
+s19->s20
+s57->s52
+s57->s26
+s28->s23
+s28->s27
+}
+{
+s23->s22
+s20->s21
+s20->s22
+s20->s19
+s55->s56
+s26->s21
+s70->s39
+s70->s69
+s70->s56
+s38->s39
+}
+{
+s22->s23
+s22->s24
+s21->s26
+s21->s24
+s56->s55
+s56->s25
+s39->s38
+s39->s25
+}
+{
+s24->s25
+s25->s24
+}
+}

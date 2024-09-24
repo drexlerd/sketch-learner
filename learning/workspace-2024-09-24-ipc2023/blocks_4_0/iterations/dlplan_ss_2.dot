@@ -1,0 +1,85 @@
+digraph {
+rankdir="LR"
+s13[label="(instance index=2, state index=13, atoms={clear(b3), on-table(b2), arm-empty(), on(b3,b1), on(b1,b2)})"]
+s15[label="(instance index=2, state index=15, atoms={on-table(b3), clear(b2), arm-empty(), on(b2,b1), on(b1,b3)})"]
+s19[label="(instance index=2, state index=19, atoms={clear(b2), on-table(b1), arm-empty(), on(b3,b1), on(b2,b3)})"]
+s21[label="(instance index=2, state index=21, atoms={on-table(b2), clear(b1), arm-empty(), on(b3,b2), on(b1,b3)})"]
+s7[label="(instance index=2, state index=7, atoms={on-table(b3), clear(b1), arm-empty(), on(b2,b3), on(b1,b2)})"]
+s0[label="(instance index=2, state index=0, atoms={clear(b3), on-table(b1), arm-empty(), on(b3,b2), on(b2,b1)})"]
+s12[label="(instance index=2, state index=12, atoms={on-table(b2), clear(b1), holding(b3), on(b1,b2)})"]
+s14[label="(instance index=2, state index=14, atoms={on-table(b3), clear(b1), holding(b2), on(b1,b3)})"]
+s18[label="(instance index=2, state index=18, atoms={clear(b3), on-table(b1), holding(b2), on(b3,b1)})"]
+s1[label="(instance index=2, state index=1, atoms={clear(b2), on-table(b1), on(b2,b1), holding(b3)})"]
+s6[label="(instance index=2, state index=6, atoms={on-table(b3), clear(b2), on(b2,b3), holding(b1)})"]
+s20[label="(instance index=2, state index=20, atoms={clear(b3), on-table(b2), on(b3,b2), holding(b1)})"]
+s17[label="(instance index=2, state index=17, atoms={clear(b3), clear(b2), on-table(b2), on-table(b1), arm-empty(), on(b3,b1)})"]
+s16[label="(instance index=2, state index=16, atoms={clear(b3), on-table(b2), clear(b1), on-table(b1), arm-empty(), on(b3,b2)})"]
+s2[label="(instance index=2, state index=2, atoms={clear(b3), on-table(b3), clear(b2), on-table(b1), arm-empty(), on(b2,b1)})"]
+s5[label="(instance index=2, state index=5, atoms={on-table(b3), clear(b2), clear(b1), on-table(b1), arm-empty(), on(b2,b3)})"]
+s10[label="(instance index=2, state index=10, atoms={on-table(b3), clear(b2), on-table(b2), clear(b1), arm-empty(), on(b1,b3)})"]
+s11[label="(instance index=2, state index=11, atoms={clear(b3), on-table(b3), on-table(b2), clear(b1), arm-empty(), on(b1,b2)})"]
+s3[label="(instance index=2, state index=3, atoms={clear(b3), on-table(b3), clear(b1), on-table(b1), holding(b2)})"]
+s8[label="(instance index=2, state index=8, atoms={clear(b2), on-table(b2), clear(b1), on-table(b1), holding(b3)})"]
+s9[label="(instance index=2, state index=9, atoms={clear(b3), on-table(b3), clear(b2), on-table(b2), holding(b1)})"]
+s4[peripheries=2,label="(instance index=2, state index=4, atoms={clear(b3), on-table(b3), clear(b2), on-table(b2), clear(b1), on-table(b1), arm-empty()})"]
+Dangling [ label = "", style = invis ]
+{ rank = same; Dangling }
+Dangling -> s0
+{ rank = same; s0}
+{ rank = same; s12,s14,s18,s1,s6,s20}
+{ rank = same; s17,s16,s2,s5,s10,s11}
+{ rank = same; s3,s8,s9}
+{ rank = same; s4}
+{
+s13->s12
+s15->s14
+s19->s18
+s21->s20
+s7->s6
+s0->s1
+}
+{
+s12->s13
+s12->s11
+s14->s15
+s14->s10
+s18->s19
+s18->s17
+s1->s2
+s1->s0
+s6->s7
+s6->s5
+s20->s21
+s20->s16
+}
+{
+s17->s18
+s17->s8
+s16->s20
+s16->s8
+s2->s3
+s2->s1
+s5->s6
+s5->s3
+s10->s14
+s10->s9
+s11->s12
+s11->s9
+}
+{
+s3->s4
+s3->s5
+s3->s2
+s8->s17
+s8->s4
+s8->s16
+s9->s11
+s9->s4
+s9->s10
+}
+{
+s4->s3
+s4->s9
+s4->s8
+}
+}

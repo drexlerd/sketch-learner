@@ -1,0 +1,40 @@
+digraph {
+rankdir="LR"
+s0[label="State(index=0, fluent atoms=[(origin p0 f1), (lift-at f0)], static atoms=[(above f0 f1), (above f0 f2), (above f1 f2), (destin p0 f2), (passenger p0), (floor f0), (floor f1), (floor f2)], derived atoms=[])"]
+s1[label="State(index=1, fluent atoms=[(origin p0 f1), (lift-at f1)], static atoms=[(above f0 f1), (above f0 f2), (above f1 f2), (destin p0 f2), (passenger p0), (floor f0), (floor f1), (floor f2)], derived atoms=[])"]
+s2[label="State(index=2, fluent atoms=[(origin p0 f1), (lift-at f2)], static atoms=[(above f0 f1), (above f0 f2), (above f1 f2), (destin p0 f2), (passenger p0), (floor f0), (floor f1), (floor f2)], derived atoms=[])"]
+s3[label="State(index=3, fluent atoms=[(lift-at f1), (boarded p0)], static atoms=[(above f0 f1), (above f0 f2), (above f1 f2), (destin p0 f2), (passenger p0), (floor f0), (floor f1), (floor f2)], derived atoms=[])"]
+s4[label="State(index=4, fluent atoms=[(lift-at f0), (boarded p0)], static atoms=[(above f0 f1), (above f0 f2), (above f1 f2), (destin p0 f2), (passenger p0), (floor f0), (floor f1), (floor f2)], derived atoms=[])"]
+s5[label="State(index=5, fluent atoms=[(lift-at f2), (boarded p0)], static atoms=[(above f0 f1), (above f0 f2), (above f1 f2), (destin p0 f2), (passenger p0), (floor f0), (floor f1), (floor f2)], derived atoms=[])"]
+s6[peripheries=2,label="State(index=6, fluent atoms=[(served p0), (lift-at f2)], static atoms=[(above f0 f1), (above f0 f2), (above f1 f2), (destin p0 f2), (passenger p0), (floor f0), (floor f1), (floor f2)], derived atoms=[])"]
+s7[peripheries=2,label="State(index=7, fluent atoms=[(served p0), (lift-at f1)], static atoms=[(above f0 f1), (above f0 f2), (above f1 f2), (destin p0 f2), (passenger p0), (floor f0), (floor f1), (floor f2)], derived atoms=[])"]
+s8[peripheries=2,label="State(index=8, fluent atoms=[(served p0), (lift-at f0)], static atoms=[(above f0 f1), (above f0 f2), (above f1 f2), (destin p0 f2), (passenger p0), (floor f0), (floor f1), (floor f2)], derived atoms=[])"]
+Dangling [ label = "", style = invis ]
+{ rank = same; Dangling }
+Dangling -> s0
+{ rank = same; s0,s2}
+{ rank = same; s1}
+{ rank = same; s3,s4}
+{ rank = same; s5}
+{ rank = same; s6,s7,s8}
+s0->s1 [label="(up f0 f1)"]
+s0->s2 [label="(up f0 f2)"]
+s2->s1 [label="(down f2 f1)"]
+s2->s0 [label="(down f2 f0)"]
+s1->s0 [label="(down f1 f0)"]
+s1->s2 [label="(up f1 f2)"]
+s1->s3 [label="(board f1 p0)"]
+s3->s4 [label="(down f1 f0)"]
+s3->s5 [label="(up f1 f2)"]
+s5->s3 [label="(down f2 f1)"]
+s5->s4 [label="(down f2 f0)"]
+s5->s6 [label="(depart f2 p0)"]
+s6->s7 [label="(down f2 f1)"]
+s6->s8 [label="(down f2 f0)"]
+s8->s7 [label="(up f0 f1)"]
+s8->s6 [label="(up f0 f2)"]
+s7->s8 [label="(down f1 f0)"]
+s7->s6 [label="(up f1 f2)"]
+s4->s3 [label="(up f0 f1)"]
+s4->s5 [label="(up f0 f2)"]
+}

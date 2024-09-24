@@ -1,0 +1,1764 @@
+digraph {
+rankdir="LR"
+s305[label="(instance index=0, state index=305, atoms={ontable(shaker1), empty(shot1), handempty(left), shaker-level(shaker1,l0), holding(right,shot1), shaked(shaker1), contains(shaker1,cocktail1), used(shot1,cocktail1)})"]
+s302[label="(instance index=0, state index=302, atoms={ontable(shaker1), empty(shot1), handempty(right), shaker-level(shaker1,l0), holding(left,shot1), shaked(shaker1), contains(shaker1,cocktail1), used(shot1,cocktail1)})"]
+s315[label="(instance index=0, state index=315, atoms={ontable(shaker1), empty(shot1), handempty(left), shaker-level(shaker1,l0), holding(right,shot1), used(shot1,ingredient2), shaked(shaker1), contains(shaker1,cocktail1)})"]
+s319[label="(instance index=0, state index=319, atoms={ontable(shaker1), empty(shot1), handempty(right), shaker-level(shaker1,l0), holding(left,shot1), used(shot1,ingredient2), shaked(shaker1), contains(shaker1,cocktail1)})"]
+s330[label="(instance index=0, state index=330, atoms={ontable(shaker1), empty(shot1), handempty(right), shaker-level(shaker1,l0), holding(left,shot1), used(shot1,ingredient1), shaked(shaker1), contains(shaker1,cocktail1)})"]
+s333[label="(instance index=0, state index=333, atoms={ontable(shaker1), empty(shot1), handempty(left), shaker-level(shaker1,l0), holding(right,shot1), used(shot1,ingredient1), shaked(shaker1), contains(shaker1,cocktail1)})"]
+s307[label="(instance index=0, state index=307, atoms={empty(shot1), shaker-level(shaker1,l0), holding(left,shaker1), holding(right,shot1), shaked(shaker1), contains(shaker1,cocktail1), used(shot1,cocktail1)})"]
+s304[label="(instance index=0, state index=304, atoms={ontable(shaker1), ontable(shot1), empty(shot1), handempty(left), handempty(right), shaker-level(shaker1,l0), shaked(shaker1), contains(shaker1,cocktail1), used(shot1,cocktail1)})"]
+s301[label="(instance index=0, state index=301, atoms={empty(shot1), shaker-level(shaker1,l0), holding(left,shot1), holding(right,shaker1), shaked(shaker1), contains(shaker1,cocktail1), used(shot1,cocktail1)})"]
+s308[label="(instance index=0, state index=308, atoms={ontable(shaker1), clean(shot1), empty(shot1), handempty(left), shaker-level(shaker1,l0), holding(right,shot1), shaked(shaker1), contains(shaker1,cocktail1)})"]
+s239[label="(instance index=0, state index=239, atoms={ontable(shaker1), empty(shaker1), empty(shot1), handempty(left), shaker-level(shaker1,l0), holding(right,shot1), used(shot1,cocktail1)})"]
+s322[label="(instance index=0, state index=322, atoms={ontable(shaker1), clean(shot1), empty(shot1), handempty(right), shaker-level(shaker1,l0), holding(left,shot1), shaked(shaker1), contains(shaker1,cocktail1)})"]
+s242[label="(instance index=0, state index=242, atoms={ontable(shaker1), empty(shaker1), empty(shot1), handempty(right), shaker-level(shaker1,l0), holding(left,shot1), used(shot1,cocktail1)})"]
+s321[label="(instance index=0, state index=321, atoms={empty(shot1), shaker-level(shaker1,l0), holding(left,shot1), holding(right,shaker1), used(shot1,ingredient2), shaked(shaker1), contains(shaker1,cocktail1)})"]
+s317[label="(instance index=0, state index=317, atoms={ontable(shaker1), ontable(shot1), empty(shot1), handempty(left), handempty(right), shaker-level(shaker1,l0), used(shot1,ingredient2), shaked(shaker1), contains(shaker1,cocktail1)})"]
+s316[label="(instance index=0, state index=316, atoms={empty(shot1), shaker-level(shaker1,l0), holding(left,shaker1), holding(right,shot1), used(shot1,ingredient2), shaked(shaker1), contains(shaker1,cocktail1)})"]
+s312[label="(instance index=0, state index=312, atoms={ontable(shaker1), handempty(left), shaker-level(shaker1,l0), holding(right,shot1), contains(shot1,ingredient2), used(shot1,ingredient2), shaked(shaker1), contains(shaker1,cocktail1)})"]
+s323[label="(instance index=0, state index=323, atoms={ontable(shaker1), handempty(right), shaker-level(shaker1,l0), holding(left,shot1), contains(shot1,ingredient2), used(shot1,ingredient2), shaked(shaker1), contains(shaker1,cocktail1)})"]
+s175[label="(instance index=0, state index=175, atoms={ontable(shaker1), empty(shaker1), empty(shot1), handempty(right), shaker-level(shaker1,l0), holding(left,shot1), used(shot1,ingredient2)})"]
+s202[label="(instance index=0, state index=202, atoms={ontable(shaker1), empty(shaker1), empty(shot1), handempty(left), shaker-level(shaker1,l0), holding(right,shot1), used(shot1,ingredient2)})"]
+s336[label="(instance index=0, state index=336, atoms={empty(shot1), shaker-level(shaker1,l0), holding(left,shaker1), holding(right,shot1), used(shot1,ingredient1), shaked(shaker1), contains(shaker1,cocktail1)})"]
+s332[label="(instance index=0, state index=332, atoms={ontable(shaker1), ontable(shot1), empty(shot1), handempty(left), handempty(right), shaker-level(shaker1,l0), used(shot1,ingredient1), shaked(shaker1), contains(shaker1,cocktail1)})"]
+s331[label="(instance index=0, state index=331, atoms={empty(shot1), shaker-level(shaker1,l0), holding(left,shot1), holding(right,shaker1), used(shot1,ingredient1), shaked(shaker1), contains(shaker1,cocktail1)})"]
+s327[label="(instance index=0, state index=327, atoms={ontable(shaker1), handempty(right), shaker-level(shaker1,l0), holding(left,shot1), contains(shot1,ingredient1), used(shot1,ingredient1), shaked(shaker1), contains(shaker1,cocktail1)})"]
+s183[label="(instance index=0, state index=183, atoms={ontable(shaker1), empty(shaker1), empty(shot1), handempty(right), shaker-level(shaker1,l0), holding(left,shot1), used(shot1,ingredient1)})"]
+s311[label="(instance index=0, state index=311, atoms={ontable(shaker1), handempty(left), shaker-level(shaker1,l0), holding(right,shot1), contains(shot1,ingredient1), used(shot1,ingredient1), shaked(shaker1), contains(shaker1,cocktail1)})"]
+s186[label="(instance index=0, state index=186, atoms={ontable(shaker1), empty(shaker1), empty(shot1), handempty(left), shaker-level(shaker1,l0), holding(right,shot1), used(shot1,ingredient1)})"]
+s306[label="(instance index=0, state index=306, atoms={ontable(shot1), empty(shot1), handempty(right), shaker-level(shaker1,l0), holding(left,shaker1), shaked(shaker1), contains(shaker1,cocktail1), used(shot1,cocktail1)})"]
+s237[label="(instance index=0, state index=237, atoms={empty(shaker1), empty(shot1), shaker-level(shaker1,l0), holding(left,shaker1), holding(right,shot1), used(shot1,cocktail1)})"]
+s303[label="(instance index=0, state index=303, atoms={ontable(shot1), empty(shot1), handempty(left), shaker-level(shaker1,l0), holding(right,shaker1), shaked(shaker1), contains(shaker1,cocktail1), used(shot1,cocktail1)})"]
+s243[label="(instance index=0, state index=243, atoms={empty(shaker1), empty(shot1), shaker-level(shaker1,l0), holding(left,shot1), holding(right,shaker1), used(shot1,cocktail1)})"]
+s240[label="(instance index=0, state index=240, atoms={ontable(shaker1), ontable(shot1), empty(shaker1), empty(shot1), handempty(left), handempty(right), shaker-level(shaker1,l0), used(shot1,cocktail1)})"]
+s309[label="(instance index=0, state index=309, atoms={clean(shot1), empty(shot1), shaker-level(shaker1,l0), holding(left,shaker1), holding(right,shot1), shaked(shaker1), contains(shaker1,cocktail1)})"]
+s310[label="(instance index=0, state index=310, atoms={ontable(shaker1), ontable(shot1), clean(shot1), empty(shot1), handempty(left), handempty(right), shaker-level(shaker1,l0), shaked(shaker1), contains(shaker1,cocktail1)})"]
+s196[label="(instance index=0, state index=196, atoms={ontable(shaker1), clean(shot1), empty(shaker1), empty(shot1), handempty(left), shaker-level(shaker1,l0), holding(right,shot1)})"]
+s326[label="(instance index=0, state index=326, atoms={clean(shot1), empty(shot1), shaker-level(shaker1,l0), holding(left,shot1), holding(right,shaker1), shaked(shaker1), contains(shaker1,cocktail1)})"]
+s178[label="(instance index=0, state index=178, atoms={ontable(shaker1), clean(shot1), empty(shaker1), empty(shot1), handempty(right), shaker-level(shaker1,l0), holding(left,shot1)})"]
+s318[label="(instance index=0, state index=318, atoms={ontable(shot1), empty(shot1), handempty(left), shaker-level(shaker1,l0), holding(right,shaker1), used(shot1,ingredient2), shaked(shaker1), contains(shaker1,cocktail1)})"]
+s176[label="(instance index=0, state index=176, atoms={empty(shaker1), empty(shot1), shaker-level(shaker1,l0), holding(left,shot1), holding(right,shaker1), used(shot1,ingredient2)})"]
+s320[label="(instance index=0, state index=320, atoms={ontable(shot1), empty(shot1), handempty(right), shaker-level(shaker1,l0), holding(left,shaker1), used(shot1,ingredient2), shaked(shaker1), contains(shaker1,cocktail1)})"]
+s177[label="(instance index=0, state index=177, atoms={ontable(shaker1), ontable(shot1), empty(shaker1), empty(shot1), handempty(left), handempty(right), shaker-level(shaker1,l0), used(shot1,ingredient2)})"]
+s205[label="(instance index=0, state index=205, atoms={empty(shaker1), empty(shot1), shaker-level(shaker1,l0), holding(left,shaker1), holding(right,shot1), used(shot1,ingredient2)})"]
+s313[label="(instance index=0, state index=313, atoms={shaker-level(shaker1,l0), holding(left,shaker1), holding(right,shot1), contains(shot1,ingredient2), used(shot1,ingredient2), shaked(shaker1), contains(shaker1,cocktail1)})"]
+s314[label="(instance index=0, state index=314, atoms={ontable(shaker1), ontable(shot1), handempty(left), handempty(right), shaker-level(shaker1,l0), contains(shot1,ingredient2), used(shot1,ingredient2), shaked(shaker1), contains(shaker1,cocktail1)})"]
+s324[label="(instance index=0, state index=324, atoms={shaker-level(shaker1,l0), holding(left,shot1), holding(right,shaker1), contains(shot1,ingredient2), used(shot1,ingredient2), shaked(shaker1), contains(shaker1,cocktail1)})"]
+s173[label="(instance index=0, state index=173, atoms={ontable(shaker1), empty(shaker1), handempty(right), shaker-level(shaker1,l0), holding(left,shot1), contains(shot1,ingredient2), used(shot1,ingredient2)})"]
+s171[label="(instance index=0, state index=171, atoms={ontable(shaker1), empty(shaker1), handempty(left), shaker-level(shaker1,l0), holding(right,shot1), contains(shot1,ingredient2), used(shot1,ingredient2)})"]
+s335[label="(instance index=0, state index=335, atoms={ontable(shot1), empty(shot1), handempty(right), shaker-level(shaker1,l0), holding(left,shaker1), used(shot1,ingredient1), shaked(shaker1), contains(shaker1,cocktail1)})"]
+s189[label="(instance index=0, state index=189, atoms={empty(shaker1), empty(shot1), shaker-level(shaker1,l0), holding(left,shaker1), holding(right,shot1), used(shot1,ingredient1)})"]
+s334[label="(instance index=0, state index=334, atoms={ontable(shot1), empty(shot1), handempty(left), shaker-level(shaker1,l0), holding(right,shaker1), used(shot1,ingredient1), shaked(shaker1), contains(shaker1,cocktail1)})"]
+s184[label="(instance index=0, state index=184, atoms={empty(shaker1), empty(shot1), shaker-level(shaker1,l0), holding(left,shot1), holding(right,shaker1), used(shot1,ingredient1)})"]
+s185[label="(instance index=0, state index=185, atoms={ontable(shaker1), ontable(shot1), empty(shaker1), empty(shot1), handempty(left), handempty(right), shaker-level(shaker1,l0), used(shot1,ingredient1)})"]
+s328[label="(instance index=0, state index=328, atoms={shaker-level(shaker1,l0), holding(left,shot1), holding(right,shaker1), contains(shot1,ingredient1), used(shot1,ingredient1), shaked(shaker1), contains(shaker1,cocktail1)})"]
+s329[label="(instance index=0, state index=329, atoms={ontable(shaker1), ontable(shot1), handempty(left), handempty(right), shaker-level(shaker1,l0), contains(shot1,ingredient1), used(shot1,ingredient1), shaked(shaker1), contains(shaker1,cocktail1)})"]
+s181[label="(instance index=0, state index=181, atoms={ontable(shaker1), empty(shaker1), handempty(right), shaker-level(shaker1,l0), holding(left,shot1), contains(shot1,ingredient1), used(shot1,ingredient1)})"]
+s339[label="(instance index=0, state index=339, atoms={shaker-level(shaker1,l0), holding(left,shaker1), holding(right,shot1), contains(shot1,ingredient1), used(shot1,ingredient1), shaked(shaker1), contains(shaker1,cocktail1)})"]
+s197[label="(instance index=0, state index=197, atoms={ontable(shaker1), empty(shaker1), handempty(left), shaker-level(shaker1,l0), holding(right,shot1), contains(shot1,ingredient1), used(shot1,ingredient1)})"]
+s238[label="(instance index=0, state index=238, atoms={ontable(shot1), empty(shaker1), empty(shot1), handempty(right), shaker-level(shaker1,l0), holding(left,shaker1), used(shot1,cocktail1)})"]
+s241[label="(instance index=0, state index=241, atoms={ontable(shot1), empty(shaker1), empty(shot1), handempty(left), shaker-level(shaker1,l0), holding(right,shaker1), used(shot1,cocktail1)})"]
+s342[label="(instance index=0, state index=342, atoms={ontable(shot1), clean(shot1), empty(shot1), handempty(right), shaker-level(shaker1,l0), holding(left,shaker1), shaked(shaker1), contains(shaker1,cocktail1)})"]
+s198[label="(instance index=0, state index=198, atoms={clean(shot1), empty(shaker1), empty(shot1), shaker-level(shaker1,l0), holding(left,shaker1), holding(right,shot1)})"]
+s340[label="(instance index=0, state index=340, atoms={ontable(shot1), clean(shot1), empty(shot1), handempty(left), shaker-level(shaker1,l0), holding(right,shaker1), shaked(shaker1), contains(shaker1,cocktail1)})"]
+s180[label="(instance index=0, state index=180, atoms={ontable(shaker1), ontable(shot1), clean(shot1), empty(shaker1), empty(shot1), handempty(left), handempty(right), shaker-level(shaker1,l0)})"]
+s179[label="(instance index=0, state index=179, atoms={clean(shot1), empty(shaker1), empty(shot1), shaker-level(shaker1,l0), holding(left,shot1), holding(right,shaker1)})"]
+s203[label="(instance index=0, state index=203, atoms={ontable(shot1), empty(shaker1), empty(shot1), handempty(left), shaker-level(shaker1,l0), holding(right,shaker1), used(shot1,ingredient2)})"]
+s204[label="(instance index=0, state index=204, atoms={ontable(shot1), empty(shaker1), empty(shot1), handempty(right), shaker-level(shaker1,l0), holding(left,shaker1), used(shot1,ingredient2)})"]
+s341[label="(instance index=0, state index=341, atoms={ontable(shot1), handempty(right), shaker-level(shaker1,l0), holding(left,shaker1), contains(shot1,ingredient2), used(shot1,ingredient2), shaked(shaker1), contains(shaker1,cocktail1)})"]
+s160[label="(instance index=0, state index=160, atoms={empty(shaker1), shaker-level(shaker1,l0), holding(left,shaker1), holding(right,shot1), contains(shot1,ingredient2), used(shot1,ingredient2)})"]
+s325[label="(instance index=0, state index=325, atoms={ontable(shot1), handempty(left), shaker-level(shaker1,l0), holding(right,shaker1), contains(shot1,ingredient2), used(shot1,ingredient2), shaked(shaker1), contains(shaker1,cocktail1)})"]
+s174[label="(instance index=0, state index=174, atoms={empty(shaker1), shaker-level(shaker1,l0), holding(left,shot1), holding(right,shaker1), contains(shot1,ingredient2), used(shot1,ingredient2)})"]
+s161[label="(instance index=0, state index=161, atoms={ontable(shaker1), ontable(shot1), empty(shaker1), handempty(left), handempty(right), shaker-level(shaker1,l0), contains(shot1,ingredient2), used(shot1,ingredient2)})"]
+s188[label="(instance index=0, state index=188, atoms={ontable(shot1), empty(shaker1), empty(shot1), handempty(right), shaker-level(shaker1,l0), holding(left,shaker1), used(shot1,ingredient1)})"]
+s187[label="(instance index=0, state index=187, atoms={ontable(shot1), empty(shaker1), empty(shot1), handempty(left), shaker-level(shaker1,l0), holding(right,shaker1), used(shot1,ingredient1)})"]
+s337[label="(instance index=0, state index=337, atoms={ontable(shot1), handempty(left), shaker-level(shaker1,l0), holding(right,shaker1), contains(shot1,ingredient1), used(shot1,ingredient1), shaked(shaker1), contains(shaker1,cocktail1)})"]
+s182[label="(instance index=0, state index=182, atoms={empty(shaker1), shaker-level(shaker1,l0), holding(left,shot1), holding(right,shaker1), contains(shot1,ingredient1), used(shot1,ingredient1)})"]
+s338[label="(instance index=0, state index=338, atoms={ontable(shot1), handempty(right), shaker-level(shaker1,l0), holding(left,shaker1), contains(shot1,ingredient1), used(shot1,ingredient1), shaked(shaker1), contains(shaker1,cocktail1)})"]
+s83[label="(instance index=0, state index=83, atoms={ontable(shaker1), ontable(shot1), empty(shaker1), handempty(left), handempty(right), shaker-level(shaker1,l0), contains(shot1,ingredient1), used(shot1,ingredient1)})"]
+s82[label="(instance index=0, state index=82, atoms={empty(shaker1), shaker-level(shaker1,l0), holding(left,shaker1), holding(right,shot1), contains(shot1,ingredient1), used(shot1,ingredient1)})"]
+s249[label="(instance index=0, state index=249, atoms={ontable(shot1), clean(shaker1), empty(shaker1), empty(shot1), handempty(right), shaker-level(shaker1,l0), holding(left,shaker1), used(shot1,cocktail1)})"]
+s201[label="(instance index=0, state index=201, atoms={ontable(shot1), clean(shot1), empty(shaker1), empty(shot1), handempty(left), shaker-level(shaker1,l0), holding(right,shaker1)})"]
+s199[label="(instance index=0, state index=199, atoms={ontable(shot1), clean(shot1), empty(shaker1), empty(shot1), handempty(right), shaker-level(shaker1,l0), holding(left,shaker1)})"]
+s244[label="(instance index=0, state index=244, atoms={ontable(shot1), clean(shaker1), empty(shaker1), empty(shot1), handempty(left), shaker-level(shaker1,l0), holding(right,shaker1), used(shot1,cocktail1)})"]
+s2[label="(instance index=0, state index=2, atoms={ontable(shot1), clean(shaker1), clean(shot1), empty(shaker1), empty(shot1), handempty(left), shaker-level(shaker1,l0), holding(right,shaker1)})"]
+s4[label="(instance index=0, state index=4, atoms={ontable(shot1), clean(shaker1), clean(shot1), empty(shaker1), empty(shot1), handempty(right), shaker-level(shaker1,l0), holding(left,shaker1)})"]
+s245[label="(instance index=0, state index=245, atoms={clean(shaker1), empty(shaker1), empty(shot1), shaker-level(shaker1,l0), holding(left,shot1), holding(right,shaker1), used(shot1,cocktail1)})"]
+s246[label="(instance index=0, state index=246, atoms={ontable(shaker1), ontable(shot1), clean(shaker1), empty(shaker1), empty(shot1), handempty(left), handempty(right), shaker-level(shaker1,l0), used(shot1,cocktail1)})"]
+s81[label="(instance index=0, state index=81, atoms={ontable(shot1), empty(shaker1), handempty(right), shaker-level(shaker1,l0), holding(left,shaker1), contains(shot1,ingredient1), used(shot1,ingredient1)})"]
+s200[label="(instance index=0, state index=200, atoms={ontable(shot1), empty(shaker1), handempty(left), shaker-level(shaker1,l0), holding(right,shaker1), contains(shot1,ingredient1), used(shot1,ingredient1)})"]
+s194[label="(instance index=0, state index=194, atoms={ontable(shot1), clean(shaker1), empty(shaker1), empty(shot1), handempty(left), shaker-level(shaker1,l0), holding(right,shaker1), used(shot1,ingredient1)})"]
+s190[label="(instance index=0, state index=190, atoms={ontable(shot1), clean(shaker1), empty(shaker1), empty(shot1), handempty(right), shaker-level(shaker1,l0), holding(left,shaker1), used(shot1,ingredient1)})"]
+s172[label="(instance index=0, state index=172, atoms={ontable(shot1), empty(shaker1), handempty(left), shaker-level(shaker1,l0), holding(right,shaker1), contains(shot1,ingredient2), used(shot1,ingredient2)})"]
+s159[label="(instance index=0, state index=159, atoms={ontable(shot1), empty(shaker1), handempty(right), shaker-level(shaker1,l0), holding(left,shaker1), contains(shot1,ingredient2), used(shot1,ingredient2)})"]
+s166[label="(instance index=0, state index=166, atoms={ontable(shot1), clean(shaker1), empty(shaker1), empty(shot1), handempty(right), shaker-level(shaker1,l0), holding(left,shaker1), used(shot1,ingredient2)})"]
+s169[label="(instance index=0, state index=169, atoms={ontable(shot1), clean(shaker1), empty(shaker1), empty(shot1), handempty(left), shaker-level(shaker1,l0), holding(right,shaker1), used(shot1,ingredient2)})"]
+s250[label="(instance index=0, state index=250, atoms={clean(shaker1), empty(shaker1), empty(shot1), shaker-level(shaker1,l0), holding(left,shaker1), holding(right,shot1), used(shot1,cocktail1)})"]
+s5[label="(instance index=0, state index=5, atoms={clean(shaker1), clean(shot1), empty(shaker1), empty(shot1), shaker-level(shaker1,l0), holding(left,shaker1), holding(right,shot1)})"]
+s0[label="(instance index=0, state index=0, atoms={ontable(shaker1), ontable(shot1), clean(shaker1), clean(shot1), empty(shaker1), empty(shot1), handempty(left), handempty(right), shaker-level(shaker1,l0)})"]
+s88[label="(instance index=0, state index=88, atoms={ontable(shot1), clean(shaker1), empty(shaker1), handempty(left), shaker-level(shaker1,l0), holding(right,shaker1), contains(shot1,ingredient1), used(shot1,ingredient1)})"]
+s6[label="(instance index=0, state index=6, atoms={clean(shaker1), clean(shot1), empty(shaker1), empty(shot1), shaker-level(shaker1,l0), holding(left,shot1), holding(right,shaker1)})"]
+s90[label="(instance index=0, state index=90, atoms={clean(shaker1), empty(shaker1), empty(shot1), shaker-level(shaker1,l0), holding(left,shot1), holding(right,shaker1), used(shot1,ingredient1)})"]
+s137[label="(instance index=0, state index=137, atoms={ontable(shot1), handempty(left), holding(right,shaker1), contains(shot1,ingredient1), used(shot1,ingredient1), contains(shaker1,ingredient1), unshaked(shaker1), shaker-level(shaker1,l1)})"]
+s139[label="(instance index=0, state index=139, atoms={ontable(shot1), handempty(right), holding(left,shaker1), contains(shot1,ingredient1), used(shot1,ingredient1), contains(shaker1,ingredient1), unshaked(shaker1), shaker-level(shaker1,l1)})"]
+s248[label="(instance index=0, state index=248, atoms={ontable(shaker1), clean(shaker1), empty(shaker1), empty(shot1), handempty(right), shaker-level(shaker1,l0), holding(left,shot1), used(shot1,cocktail1)})"]
+s84[label="(instance index=0, state index=84, atoms={ontable(shot1), clean(shaker1), empty(shaker1), handempty(right), shaker-level(shaker1,l0), holding(left,shaker1), contains(shot1,ingredient1), used(shot1,ingredient1)})"]
+s192[label="(instance index=0, state index=192, atoms={ontable(shaker1), ontable(shot1), clean(shaker1), empty(shaker1), empty(shot1), handempty(left), handempty(right), shaker-level(shaker1,l0), used(shot1,ingredient1)})"]
+s206[label="(instance index=0, state index=206, atoms={ontable(shot1), clean(shaker1), empty(shaker1), handempty(left), shaker-level(shaker1,l0), holding(right,shaker1), contains(shot1,ingredient2), used(shot1,ingredient2)})"]
+s162[label="(instance index=0, state index=162, atoms={ontable(shot1), clean(shaker1), empty(shaker1), handempty(right), shaker-level(shaker1,l0), holding(left,shaker1), contains(shot1,ingredient2), used(shot1,ingredient2)})"]
+s168[label="(instance index=0, state index=168, atoms={ontable(shaker1), ontable(shot1), clean(shaker1), empty(shaker1), empty(shot1), handempty(left), handempty(right), shaker-level(shaker1,l0), used(shot1,ingredient2)})"]
+s170[label="(instance index=0, state index=170, atoms={clean(shaker1), empty(shaker1), empty(shot1), shaker-level(shaker1,l0), holding(left,shot1), holding(right,shaker1), used(shot1,ingredient2)})"]
+s55[label="(instance index=0, state index=55, atoms={ontable(shot1), handempty(left), holding(right,shaker1), contains(shot1,ingredient2), used(shot1,ingredient2), unshaked(shaker1), shaker-level(shaker1,l1), contains(shaker1,ingredient2)})"]
+s56[label="(instance index=0, state index=56, atoms={ontable(shot1), handempty(right), holding(left,shaker1), contains(shot1,ingredient2), used(shot1,ingredient2), unshaked(shaker1), shaker-level(shaker1,l1), contains(shaker1,ingredient2)})"]
+s247[label="(instance index=0, state index=247, atoms={ontable(shaker1), clean(shaker1), empty(shaker1), empty(shot1), handempty(left), shaker-level(shaker1,l0), holding(right,shot1), used(shot1,cocktail1)})"]
+s191[label="(instance index=0, state index=191, atoms={clean(shaker1), empty(shaker1), empty(shot1), shaker-level(shaker1,l0), holding(left,shaker1), holding(right,shot1), used(shot1,ingredient1)})"]
+s165[label="(instance index=0, state index=165, atoms={clean(shaker1), empty(shaker1), empty(shot1), shaker-level(shaker1,l0), holding(left,shaker1), holding(right,shot1), used(shot1,ingredient2)})"]
+s405[label="(instance index=0, state index=405, atoms={ontable(shot1), empty(shot1), handempty(left), holding(right,shaker1), used(shot1,ingredient2), unshaked(shaker1), shaker-level(shaker1,l1), contains(shaker1,ingredient2)})"]
+s18[label="(instance index=0, state index=18, atoms={ontable(shaker1), ontable(shot1), handempty(left), handempty(right), contains(shot1,ingredient2), used(shot1,ingredient2), unshaked(shaker1), shaker-level(shaker1,l1), contains(shaker1,ingredient2)})"]
+s11[label="(instance index=0, state index=11, atoms={ontable(shaker1), clean(shaker1), empty(shaker1), empty(shot1), handempty(right), shaker-level(shaker1,l0), holding(left,shot1), used(shot1,ingredient2)})"]
+s17[label="(instance index=0, state index=17, atoms={holding(left,shot1), holding(right,shaker1), contains(shot1,ingredient2), used(shot1,ingredient2), unshaked(shaker1), shaker-level(shaker1,l1), contains(shaker1,ingredient2)})"]
+s1[label="(instance index=0, state index=1, atoms={ontable(shaker1), clean(shaker1), clean(shot1), empty(shaker1), empty(shot1), handempty(left), shaker-level(shaker1,l0), holding(right,shot1)})"]
+s3[label="(instance index=0, state index=3, atoms={ontable(shaker1), clean(shaker1), clean(shot1), empty(shaker1), empty(shot1), handempty(right), shaker-level(shaker1,l0), holding(left,shot1)})"]
+s93[label="(instance index=0, state index=93, atoms={ontable(shot1), empty(shot1), handempty(left), holding(right,shaker1), used(shot1,ingredient1), contains(shaker1,ingredient1), unshaked(shaker1), shaker-level(shaker1,l1)})"]
+s100[label="(instance index=0, state index=100, atoms={holding(left,shaker1), holding(right,shot1), contains(shot1,ingredient1), used(shot1,ingredient1), contains(shaker1,ingredient1), unshaked(shaker1), shaker-level(shaker1,l1)})"]
+s101[label="(instance index=0, state index=101, atoms={ontable(shaker1), ontable(shot1), handempty(left), handempty(right), contains(shot1,ingredient1), used(shot1,ingredient1), contains(shaker1,ingredient1), unshaked(shaker1), shaker-level(shaker1,l1)})"]
+s96[label="(instance index=0, state index=96, atoms={ontable(shot1), empty(shot1), handempty(right), holding(left,shaker1), used(shot1,ingredient1), contains(shaker1,ingredient1), unshaked(shaker1), shaker-level(shaker1,l1)})"]
+s9[label="(instance index=0, state index=9, atoms={clean(shaker1), empty(shaker1), shaker-level(shaker1,l0), holding(left,shot1), holding(right,shaker1), contains(shot1,ingredient2), used(shot1,ingredient2)})"]
+s86[label="(instance index=0, state index=86, atoms={ontable(shaker1), ontable(shot1), clean(shaker1), empty(shaker1), handempty(left), handempty(right), shaker-level(shaker1,l0), contains(shot1,ingredient1), used(shot1,ingredient1)})"]
+s10[label="(instance index=0, state index=10, atoms={ontable(shaker1), ontable(shot1), clean(shaker1), empty(shaker1), handempty(left), handempty(right), shaker-level(shaker1,l0), contains(shot1,ingredient2), used(shot1,ingredient2)})"]
+s89[label="(instance index=0, state index=89, atoms={clean(shaker1), empty(shaker1), shaker-level(shaker1,l0), holding(left,shot1), holding(right,shaker1), contains(shot1,ingredient1), used(shot1,ingredient1)})"]
+s140[label="(instance index=0, state index=140, atoms={holding(left,shot1), holding(right,shaker1), contains(shot1,ingredient1), used(shot1,ingredient1), contains(shaker1,ingredient1), unshaked(shaker1), shaker-level(shaker1,l1)})"]
+s195[label="(instance index=0, state index=195, atoms={ontable(shaker1), clean(shaker1), empty(shaker1), empty(shot1), handempty(right), shaker-level(shaker1,l0), holding(left,shot1), used(shot1,ingredient1)})"]
+s59[label="(instance index=0, state index=59, atoms={ontable(shot1), empty(shot1), handempty(right), holding(left,shaker1), used(shot1,ingredient2), unshaked(shaker1), shaker-level(shaker1,l1), contains(shaker1,ingredient2)})"]
+s85[label="(instance index=0, state index=85, atoms={clean(shaker1), empty(shaker1), shaker-level(shaker1,l0), holding(left,shaker1), holding(right,shot1), contains(shot1,ingredient1), used(shot1,ingredient1)})"]
+s193[label="(instance index=0, state index=193, atoms={ontable(shaker1), clean(shaker1), empty(shaker1), empty(shot1), handempty(left), shaker-level(shaker1,l0), holding(right,shot1), used(shot1,ingredient1)})"]
+s57[label="(instance index=0, state index=57, atoms={holding(left,shaker1), holding(right,shot1), contains(shot1,ingredient2), used(shot1,ingredient2), unshaked(shaker1), shaker-level(shaker1,l1), contains(shaker1,ingredient2)})"]
+s163[label="(instance index=0, state index=163, atoms={clean(shaker1), empty(shaker1), shaker-level(shaker1,l0), holding(left,shaker1), holding(right,shot1), contains(shot1,ingredient2), used(shot1,ingredient2)})"]
+s167[label="(instance index=0, state index=167, atoms={ontable(shaker1), clean(shaker1), empty(shaker1), empty(shot1), handempty(left), shaker-level(shaker1,l0), holding(right,shot1), used(shot1,ingredient2)})"]
+s13[label="(instance index=0, state index=13, atoms={empty(shot1), holding(left,shot1), holding(right,shaker1), used(shot1,ingredient2), unshaked(shaker1), shaker-level(shaker1,l1), contains(shaker1,ingredient2)})"]
+s14[label="(instance index=0, state index=14, atoms={ontable(shaker1), ontable(shot1), empty(shot1), handempty(left), handempty(right), used(shot1,ingredient2), unshaked(shaker1), shaker-level(shaker1,l1), contains(shaker1,ingredient2)})"]
+s16[label="(instance index=0, state index=16, atoms={ontable(shaker1), handempty(right), holding(left,shot1), contains(shot1,ingredient2), used(shot1,ingredient2), unshaked(shaker1), shaker-level(shaker1,l1), contains(shaker1,ingredient2)})"]
+s94[label="(instance index=0, state index=94, atoms={ontable(shaker1), ontable(shot1), empty(shot1), handempty(left), handempty(right), used(shot1,ingredient1), contains(shaker1,ingredient1), unshaked(shaker1), shaker-level(shaker1,l1)})"]
+s7[label="(instance index=0, state index=7, atoms={ontable(shaker1), clean(shaker1), empty(shaker1), handempty(right), shaker-level(shaker1,l0), holding(left,shot1), contains(shot1,ingredient1), used(shot1,ingredient1)})"]
+s87[label="(instance index=0, state index=87, atoms={ontable(shaker1), clean(shaker1), empty(shaker1), handempty(left), shaker-level(shaker1,l0), holding(right,shot1), contains(shot1,ingredient1), used(shot1,ingredient1)})"]
+s91[label="(instance index=0, state index=91, atoms={empty(shot1), holding(left,shot1), holding(right,shaker1), used(shot1,ingredient1), contains(shaker1,ingredient1), unshaked(shaker1), shaker-level(shaker1,l1)})"]
+s97[label="(instance index=0, state index=97, atoms={empty(shot1), holding(left,shaker1), holding(right,shot1), used(shot1,ingredient1), contains(shaker1,ingredient1), unshaked(shaker1), shaker-level(shaker1,l1)})"]
+s99[label="(instance index=0, state index=99, atoms={ontable(shaker1), handempty(left), holding(right,shot1), contains(shot1,ingredient1), used(shot1,ingredient1), contains(shaker1,ingredient1), unshaked(shaker1), shaker-level(shaker1,l1)})"]
+s8[label="(instance index=0, state index=8, atoms={ontable(shaker1), clean(shaker1), empty(shaker1), handempty(right), shaker-level(shaker1,l0), holding(left,shot1), contains(shot1,ingredient2), used(shot1,ingredient2)})"]
+s402[label="(instance index=0, state index=402, atoms={ontable(shot1), clean(shot1), empty(shot1), handempty(left), holding(right,shaker1), unshaked(shaker1), shaker-level(shaker1,l1), contains(shaker1,ingredient2)})"]
+s138[label="(instance index=0, state index=138, atoms={ontable(shaker1), handempty(right), holding(left,shot1), contains(shot1,ingredient1), used(shot1,ingredient1), contains(shaker1,ingredient1), unshaked(shaker1), shaker-level(shaker1,l1)})"]
+s403[label="(instance index=0, state index=403, atoms={ontable(shot1), clean(shot1), empty(shot1), handempty(right), holding(left,shaker1), unshaked(shaker1), shaker-level(shaker1,l1), contains(shaker1,ingredient2)})"]
+s375[label="(instance index=0, state index=375, atoms={ontable(shot1), empty(shot1), handempty(left), holding(right,shaker1), used(shot1,ingredient2), contains(shaker1,ingredient1), unshaked(shaker1), shaker-level(shaker1,l1)})"]
+s377[label="(instance index=0, state index=377, atoms={ontable(shot1), empty(shot1), handempty(right), holding(left,shaker1), used(shot1,ingredient2), contains(shaker1,ingredient1), unshaked(shaker1), shaker-level(shaker1,l1)})"]
+s384[label="(instance index=0, state index=384, atoms={ontable(shot1), clean(shot1), empty(shot1), handempty(left), holding(right,shaker1), contains(shaker1,ingredient1), unshaked(shaker1), shaker-level(shaker1,l1)})"]
+s386[label="(instance index=0, state index=386, atoms={ontable(shot1), clean(shot1), empty(shot1), handempty(right), holding(left,shaker1), contains(shaker1,ingredient1), unshaked(shaker1), shaker-level(shaker1,l1)})"]
+s394[label="(instance index=0, state index=394, atoms={ontable(shot1), empty(shot1), handempty(left), holding(right,shaker1), used(shot1,ingredient1), unshaked(shaker1), shaker-level(shaker1,l1), contains(shaker1,ingredient2)})"]
+s396[label="(instance index=0, state index=396, atoms={ontable(shot1), empty(shot1), handempty(right), holding(left,shaker1), used(shot1,ingredient1), unshaked(shaker1), shaker-level(shaker1,l1), contains(shaker1,ingredient2)})"]
+s54[label="(instance index=0, state index=54, atoms={ontable(shaker1), handempty(left), holding(right,shot1), contains(shot1,ingredient2), used(shot1,ingredient2), unshaked(shaker1), shaker-level(shaker1,l1), contains(shaker1,ingredient2)})"]
+s58[label="(instance index=0, state index=58, atoms={empty(shot1), holding(left,shaker1), holding(right,shot1), used(shot1,ingredient2), unshaked(shaker1), shaker-level(shaker1,l1), contains(shaker1,ingredient2)})"]
+s164[label="(instance index=0, state index=164, atoms={ontable(shaker1), clean(shaker1), empty(shaker1), handempty(left), shaker-level(shaker1,l0), holding(right,shot1), contains(shot1,ingredient2), used(shot1,ingredient2)})"]
+s20[label="(instance index=0, state index=20, atoms={empty(shot1), holding(left,shot1), holding(right,shaker1), used(shot1,ingredient2), unshaked(shaker1), contains(shaker1,ingredient2), shaker-level(shaker1,l2)})"]
+s103[label="(instance index=0, state index=103, atoms={empty(shot1), holding(left,shaker1), holding(right,shot1), used(shot1,ingredient1), contains(shaker1,ingredient1), unshaked(shaker1), shaker-level(shaker1,l2)})"]
+s114[label="(instance index=0, state index=114, atoms={empty(shot1), holding(left,shot1), holding(right,shaker1), used(shot1,ingredient1), contains(shaker1,ingredient1), unshaked(shaker1), shaker-level(shaker1,l2)})"]
+s30[label="(instance index=0, state index=30, atoms={empty(shot1), holding(left,shaker1), holding(right,shot1), used(shot1,ingredient2), unshaked(shaker1), contains(shaker1,ingredient2), shaker-level(shaker1,l2)})"]
+s400[label="(instance index=0, state index=400, atoms={ontable(shot1), handempty(left), holding(right,shaker1), contains(shot1,ingredient1), used(shot1,ingredient1), unshaked(shaker1), shaker-level(shaker1,l1), contains(shaker1,ingredient2)})"]
+s141[label="(instance index=0, state index=141, atoms={clean(shot1), empty(shot1), holding(left,shaker1), holding(right,shot1), contains(shaker1,ingredient1), unshaked(shaker1), shaker-level(shaker1,l1)})"]
+s12[label="(instance index=0, state index=12, atoms={ontable(shaker1), empty(shot1), handempty(right), holding(left,shot1), used(shot1,ingredient2), unshaked(shaker1), shaker-level(shaker1,l1), contains(shaker1,ingredient2)})"]
+s404[label="(instance index=0, state index=404, atoms={clean(shot1), empty(shot1), holding(left,shot1), holding(right,shaker1), unshaked(shaker1), shaker-level(shaker1,l1), contains(shaker1,ingredient2)})"]
+s95[label="(instance index=0, state index=95, atoms={ontable(shaker1), empty(shot1), handempty(left), holding(right,shot1), used(shot1,ingredient1), contains(shaker1,ingredient1), unshaked(shaker1), shaker-level(shaker1,l1)})"]
+s92[label="(instance index=0, state index=92, atoms={ontable(shaker1), empty(shot1), handempty(right), holding(left,shot1), used(shot1,ingredient1), contains(shaker1,ingredient1), unshaked(shaker1), shaker-level(shaker1,l1)})"]
+s142[label="(instance index=0, state index=142, atoms={ontable(shaker1), ontable(shot1), clean(shot1), empty(shot1), handempty(left), handempty(right), contains(shaker1,ingredient1), unshaked(shaker1), shaker-level(shaker1,l1)})"]
+s401[label="(instance index=0, state index=401, atoms={ontable(shot1), handempty(right), holding(left,shaker1), contains(shot1,ingredient1), used(shot1,ingredient1), unshaked(shaker1), shaker-level(shaker1,l1), contains(shaker1,ingredient2)})"]
+s382[label="(instance index=0, state index=382, atoms={ontable(shot1), handempty(left), holding(right,shaker1), contains(shot1,ingredient2), used(shot1,ingredient2), contains(shaker1,ingredient1), unshaked(shaker1), shaker-level(shaker1,l1)})"]
+s374[label="(instance index=0, state index=374, atoms={ontable(shaker1), ontable(shot1), empty(shot1), handempty(left), handempty(right), used(shot1,ingredient2), contains(shaker1,ingredient1), unshaked(shaker1), shaker-level(shaker1,l1)})"]
+s378[label="(instance index=0, state index=378, atoms={empty(shot1), holding(left,shot1), holding(right,shaker1), used(shot1,ingredient2), contains(shaker1,ingredient1), unshaked(shaker1), shaker-level(shaker1,l1)})"]
+s385[label="(instance index=0, state index=385, atoms={ontable(shot1), handempty(right), holding(left,shaker1), contains(shot1,ingredient2), used(shot1,ingredient2), contains(shaker1,ingredient1), unshaked(shaker1), shaker-level(shaker1,l1)})"]
+s383[label="(instance index=0, state index=383, atoms={clean(shot1), empty(shot1), holding(left,shot1), holding(right,shaker1), contains(shaker1,ingredient1), unshaked(shaker1), shaker-level(shaker1,l1)})"]
+s63[label="(instance index=0, state index=63, atoms={ontable(shaker1), ontable(shot1), clean(shot1), empty(shot1), handempty(left), handempty(right), unshaked(shaker1), shaker-level(shaker1,l1), contains(shaker1,ingredient2)})"]
+s393[label="(instance index=0, state index=393, atoms={ontable(shaker1), ontable(shot1), empty(shot1), handempty(left), handempty(right), used(shot1,ingredient1), unshaked(shaker1), shaker-level(shaker1,l1), contains(shaker1,ingredient2)})"]
+s397[label="(instance index=0, state index=397, atoms={empty(shot1), holding(left,shot1), holding(right,shaker1), used(shot1,ingredient1), unshaked(shaker1), shaker-level(shaker1,l1), contains(shaker1,ingredient2)})"]
+s373[label="(instance index=0, state index=373, atoms={empty(shot1), holding(left,shaker1), holding(right,shot1), used(shot1,ingredient2), contains(shaker1,ingredient1), unshaked(shaker1), shaker-level(shaker1,l1)})"]
+s60[label="(instance index=0, state index=60, atoms={ontable(shaker1), empty(shot1), handempty(left), holding(right,shot1), used(shot1,ingredient2), unshaked(shaker1), shaker-level(shaker1,l1), contains(shaker1,ingredient2)})"]
+s62[label="(instance index=0, state index=62, atoms={clean(shot1), empty(shot1), holding(left,shaker1), holding(right,shot1), unshaked(shaker1), shaker-level(shaker1,l1), contains(shaker1,ingredient2)})"]
+s392[label="(instance index=0, state index=392, atoms={empty(shot1), holding(left,shaker1), holding(right,shot1), used(shot1,ingredient1), unshaked(shaker1), shaker-level(shaker1,l1), contains(shaker1,ingredient2)})"]
+s19[label="(instance index=0, state index=19, atoms={ontable(shaker1), empty(shot1), handempty(right), holding(left,shot1), used(shot1,ingredient2), unshaked(shaker1), contains(shaker1,ingredient2), shaker-level(shaker1,l2)})"]
+s102[label="(instance index=0, state index=102, atoms={ontable(shaker1), empty(shot1), handempty(left), holding(right,shot1), used(shot1,ingredient1), contains(shaker1,ingredient1), unshaked(shaker1), shaker-level(shaker1,l2)})"]
+s113[label="(instance index=0, state index=113, atoms={ontable(shaker1), empty(shot1), handempty(right), holding(left,shot1), used(shot1,ingredient1), contains(shaker1,ingredient1), unshaked(shaker1), shaker-level(shaker1,l2)})"]
+s32[label="(instance index=0, state index=32, atoms={ontable(shaker1), empty(shot1), handempty(left), holding(right,shot1), used(shot1,ingredient2), unshaked(shaker1), contains(shaker1,ingredient2), shaker-level(shaker1,l2)})"]
+s53[label="(instance index=0, state index=53, atoms={ontable(shot1), empty(shot1), handempty(left), holding(right,shaker1), used(shot1,ingredient2), unshaked(shaker1), contains(shaker1,ingredient2), shaker-level(shaker1,l2)})"]
+s136[label="(instance index=0, state index=136, atoms={ontable(shot1), empty(shot1), handempty(right), holding(left,shaker1), used(shot1,ingredient1), contains(shaker1,ingredient1), unshaked(shaker1), shaker-level(shaker1,l2)})"]
+s135[label="(instance index=0, state index=135, atoms={ontable(shot1), empty(shot1), handempty(left), holding(right,shaker1), used(shot1,ingredient1), contains(shaker1,ingredient1), unshaked(shaker1), shaker-level(shaker1,l2)})"]
+s31[label="(instance index=0, state index=31, atoms={ontable(shot1), empty(shot1), handempty(right), holding(left,shaker1), used(shot1,ingredient2), unshaked(shaker1), contains(shaker1,ingredient2), shaker-level(shaker1,l2)})"]
+s98[label="(instance index=0, state index=98, atoms={ontable(shaker1), clean(shot1), empty(shot1), handempty(left), holding(right,shot1), contains(shaker1,ingredient1), unshaked(shaker1), shaker-level(shaker1,l1)})"]
+s15[label="(instance index=0, state index=15, atoms={ontable(shaker1), clean(shot1), empty(shot1), handempty(right), holding(left,shot1), unshaked(shaker1), shaker-level(shaker1,l1), contains(shaker1,ingredient2)})"]
+s155[label="(instance index=0, state index=155, atoms={ontable(shot1), handempty(right), holding(left,shaker1), contains(shot1,ingredient2), used(shot1,ingredient2), contains(shaker1,ingredient1), unshaked(shaker1), contains(shaker1,ingredient2), shaker-level(shaker1,l2)})"]
+s153[label="(instance index=0, state index=153, atoms={ontable(shot1), handempty(left), holding(right,shaker1), contains(shot1,ingredient2), used(shot1,ingredient2), contains(shaker1,ingredient1), unshaked(shaker1), contains(shaker1,ingredient2), shaker-level(shaker1,l2)})"]
+s77[label="(instance index=0, state index=77, atoms={ontable(shot1), handempty(right), holding(left,shaker1), contains(shot1,ingredient1), used(shot1,ingredient1), contains(shaker1,ingredient1), unshaked(shaker1), contains(shaker1,ingredient2), shaker-level(shaker1,l2)})"]
+s75[label="(instance index=0, state index=75, atoms={ontable(shot1), handempty(left), holding(right,shaker1), contains(shot1,ingredient1), used(shot1,ingredient1), contains(shaker1,ingredient1), unshaked(shaker1), contains(shaker1,ingredient2), shaker-level(shaker1,l2)})"]
+s152[label="(instance index=0, state index=152, atoms={ontable(shaker1), ontable(shot1), handempty(left), handempty(right), contains(shot1,ingredient2), used(shot1,ingredient2), contains(shaker1,ingredient1), unshaked(shaker1), contains(shaker1,ingredient2), shaker-level(shaker1,l2)})"]
+s362[label="(instance index=0, state index=362, atoms={holding(left,shot1), holding(right,shaker1), contains(shot1,ingredient2), used(shot1,ingredient2), contains(shaker1,ingredient1), unshaked(shaker1), contains(shaker1,ingredient2), shaker-level(shaker1,l2)})"]
+s381[label="(instance index=0, state index=381, atoms={holding(left,shot1), holding(right,shaker1), contains(shot1,ingredient2), used(shot1,ingredient2), contains(shaker1,ingredient1), unshaked(shaker1), shaker-level(shaker1,l1)})"]
+s376[label="(instance index=0, state index=376, atoms={ontable(shaker1), empty(shot1), handempty(right), holding(left,shot1), used(shot1,ingredient2), contains(shaker1,ingredient1), unshaked(shaker1), shaker-level(shaker1,l1)})"]
+s145[label="(instance index=0, state index=145, atoms={ontable(shaker1), ontable(shot1), handempty(left), handempty(right), contains(shot1,ingredient2), used(shot1,ingredient2), contains(shaker1,ingredient1), unshaked(shaker1), shaker-level(shaker1,l1)})"]
+s379[label="(instance index=0, state index=379, atoms={ontable(shaker1), clean(shot1), empty(shot1), handempty(right), holding(left,shot1), contains(shaker1,ingredient1), unshaked(shaker1), shaker-level(shaker1,l1)})"]
+s74[label="(instance index=0, state index=74, atoms={ontable(shaker1), ontable(shot1), handempty(left), handempty(right), contains(shot1,ingredient1), used(shot1,ingredient1), contains(shaker1,ingredient1), unshaked(shaker1), contains(shaker1,ingredient2), shaker-level(shaker1,l2)})"]
+s387[label="(instance index=0, state index=387, atoms={holding(left,shot1), holding(right,shaker1), contains(shot1,ingredient1), used(shot1,ingredient1), contains(shaker1,ingredient1), unshaked(shaker1), contains(shaker1,ingredient2), shaker-level(shaker1,l2)})"]
+s399[label="(instance index=0, state index=399, atoms={holding(left,shot1), holding(right,shaker1), contains(shot1,ingredient1), used(shot1,ingredient1), unshaked(shaker1), shaker-level(shaker1,l1), contains(shaker1,ingredient2)})"]
+s66[label="(instance index=0, state index=66, atoms={ontable(shaker1), ontable(shot1), handempty(left), handempty(right), contains(shot1,ingredient1), used(shot1,ingredient1), unshaked(shaker1), shaker-level(shaker1,l1), contains(shaker1,ingredient2)})"]
+s395[label="(instance index=0, state index=395, atoms={ontable(shaker1), empty(shot1), handempty(right), holding(left,shot1), used(shot1,ingredient1), unshaked(shaker1), shaker-level(shaker1,l1), contains(shaker1,ingredient2)})"]
+s144[label="(instance index=0, state index=144, atoms={holding(left,shaker1), holding(right,shot1), contains(shot1,ingredient2), used(shot1,ingredient2), contains(shaker1,ingredient1), unshaked(shaker1), shaker-level(shaker1,l1)})"]
+s146[label="(instance index=0, state index=146, atoms={ontable(shaker1), empty(shot1), handempty(left), holding(right,shot1), used(shot1,ingredient2), contains(shaker1,ingredient1), unshaked(shaker1), shaker-level(shaker1,l1)})"]
+s151[label="(instance index=0, state index=151, atoms={holding(left,shaker1), holding(right,shot1), contains(shot1,ingredient2), used(shot1,ingredient2), contains(shaker1,ingredient1), unshaked(shaker1), contains(shaker1,ingredient2), shaker-level(shaker1,l2)})"]
+s61[label="(instance index=0, state index=61, atoms={ontable(shaker1), clean(shot1), empty(shot1), handempty(left), holding(right,shot1), unshaked(shaker1), shaker-level(shaker1,l1), contains(shaker1,ingredient2)})"]
+s65[label="(instance index=0, state index=65, atoms={holding(left,shaker1), holding(right,shot1), contains(shot1,ingredient1), used(shot1,ingredient1), unshaked(shaker1), shaker-level(shaker1,l1), contains(shaker1,ingredient2)})"]
+s67[label="(instance index=0, state index=67, atoms={ontable(shaker1), empty(shot1), handempty(left), holding(right,shot1), used(shot1,ingredient1), unshaked(shaker1), shaker-level(shaker1,l1), contains(shaker1,ingredient2)})"]
+s73[label="(instance index=0, state index=73, atoms={holding(left,shaker1), holding(right,shot1), contains(shot1,ingredient1), used(shot1,ingredient1), contains(shaker1,ingredient1), unshaked(shaker1), contains(shaker1,ingredient2), shaker-level(shaker1,l2)})"]
+s23[label="(instance index=0, state index=23, atoms={ontable(shaker1), handempty(right), holding(left,shot1), contains(shot1,ingredient2), used(shot1,ingredient2), unshaked(shaker1), contains(shaker1,ingredient2), shaker-level(shaker1,l2)})"]
+s22[label="(instance index=0, state index=22, atoms={ontable(shaker1), clean(shot1), empty(shot1), handempty(right), holding(left,shot1), unshaked(shaker1), contains(shaker1,ingredient2), shaker-level(shaker1,l2)})"]
+s21[label="(instance index=0, state index=21, atoms={ontable(shaker1), ontable(shot1), empty(shot1), handempty(left), handempty(right), used(shot1,ingredient2), unshaked(shaker1), contains(shaker1,ingredient2), shaker-level(shaker1,l2)})"]
+s106[label="(instance index=0, state index=106, atoms={ontable(shaker1), handempty(left), holding(right,shot1), contains(shot1,ingredient1), used(shot1,ingredient1), contains(shaker1,ingredient1), unshaked(shaker1), shaker-level(shaker1,l2)})"]
+s105[label="(instance index=0, state index=105, atoms={ontable(shaker1), clean(shot1), empty(shot1), handempty(left), holding(right,shot1), contains(shaker1,ingredient1), unshaked(shaker1), shaker-level(shaker1,l2)})"]
+s104[label="(instance index=0, state index=104, atoms={ontable(shaker1), ontable(shot1), empty(shot1), handempty(left), handempty(right), used(shot1,ingredient1), contains(shaker1,ingredient1), unshaked(shaker1), shaker-level(shaker1,l2)})"]
+s110[label="(instance index=0, state index=110, atoms={ontable(shaker1), handempty(right), holding(left,shot1), contains(shot1,ingredient1), used(shot1,ingredient1), contains(shaker1,ingredient1), unshaked(shaker1), shaker-level(shaker1,l2)})"]
+s115[label="(instance index=0, state index=115, atoms={ontable(shaker1), clean(shot1), empty(shot1), handempty(right), holding(left,shot1), contains(shaker1,ingredient1), unshaked(shaker1), shaker-level(shaker1,l2)})"]
+s26[label="(instance index=0, state index=26, atoms={ontable(shaker1), handempty(left), holding(right,shot1), contains(shot1,ingredient2), used(shot1,ingredient2), unshaked(shaker1), contains(shaker1,ingredient2), shaker-level(shaker1,l2)})"]
+s33[label="(instance index=0, state index=33, atoms={ontable(shaker1), clean(shot1), empty(shot1), handempty(left), holding(right,shot1), unshaked(shaker1), contains(shaker1,ingredient2), shaker-level(shaker1,l2)})"]
+s76[label="(instance index=0, state index=76, atoms={ontable(shaker1), handempty(right), holding(left,shot1), contains(shot1,ingredient1), used(shot1,ingredient1), contains(shaker1,ingredient1), unshaked(shaker1), contains(shaker1,ingredient2), shaker-level(shaker1,l2)})"]
+s70[label="(instance index=0, state index=70, atoms={ontable(shaker1), ontable(shot1), empty(shot1), handempty(left), handempty(right), used(shot1,ingredient1), contains(shaker1,ingredient1), unshaked(shaker1), contains(shaker1,ingredient2), shaker-level(shaker1,l2)})"]
+s364[label="(instance index=0, state index=364, atoms={empty(shot1), holding(left,shot1), holding(right,shaker1), used(shot1,ingredient2), contains(shaker1,ingredient1), unshaked(shaker1), contains(shaker1,ingredient2), shaker-level(shaker1,l2)})"]
+s78[label="(instance index=0, state index=78, atoms={ontable(shot1), handempty(right), holding(left,shaker1), contains(shot1,ingredient1), used(shot1,ingredient1), shaked(shaker1), contains(shaker1,cocktail1), shaker-level(shaker1,l2)})"]
+s372[label="(instance index=0, state index=372, atoms={ontable(shot1), empty(shot1), handempty(right), holding(left,shaker1), used(shot1,ingredient2), contains(shaker1,ingredient1), unshaked(shaker1), contains(shaker1,ingredient2), shaker-level(shaker1,l2)})"]
+s371[label="(instance index=0, state index=371, atoms={ontable(shot1), empty(shot1), handempty(left), holding(right,shaker1), used(shot1,ingredient2), contains(shaker1,ingredient1), unshaked(shaker1), contains(shaker1,ingredient2), shaker-level(shaker1,l2)})"]
+s208[label="(instance index=0, state index=208, atoms={ontable(shot1), handempty(left), holding(right,shaker1), contains(shot1,ingredient2), used(shot1,ingredient2), shaked(shaker1), contains(shaker1,cocktail1), shaker-level(shaker1,l2)})"]
+s143[label="(instance index=0, state index=143, atoms={ontable(shaker1), handempty(left), holding(right,shot1), contains(shot1,ingredient2), used(shot1,ingredient2), contains(shaker1,ingredient1), unshaked(shaker1), shaker-level(shaker1,l1)})"]
+s389[label="(instance index=0, state index=389, atoms={empty(shot1), holding(left,shot1), holding(right,shaker1), used(shot1,ingredient1), contains(shaker1,ingredient1), unshaked(shaker1), contains(shaker1,ingredient2), shaker-level(shaker1,l2)})"]
+s398[label="(instance index=0, state index=398, atoms={ontable(shaker1), handempty(right), holding(left,shot1), contains(shot1,ingredient1), used(shot1,ingredient1), unshaked(shaker1), shaker-level(shaker1,l1), contains(shaker1,ingredient2)})"]
+s154[label="(instance index=0, state index=154, atoms={ontable(shaker1), handempty(right), holding(left,shot1), contains(shot1,ingredient2), used(shot1,ingredient2), contains(shaker1,ingredient1), unshaked(shaker1), contains(shaker1,ingredient2), shaker-level(shaker1,l2)})"]
+s150[label="(instance index=0, state index=150, atoms={ontable(shaker1), handempty(left), holding(right,shot1), contains(shot1,ingredient2), used(shot1,ingredient2), contains(shaker1,ingredient1), unshaked(shaker1), contains(shaker1,ingredient2), shaker-level(shaker1,l2)})"]
+s148[label="(instance index=0, state index=148, atoms={empty(shot1), holding(left,shaker1), holding(right,shot1), used(shot1,ingredient2), contains(shaker1,ingredient1), unshaked(shaker1), contains(shaker1,ingredient2), shaker-level(shaker1,l2)})"]
+s391[label="(instance index=0, state index=391, atoms={ontable(shot1), empty(shot1), handempty(right), holding(left,shaker1), used(shot1,ingredient1), contains(shaker1,ingredient1), unshaked(shaker1), contains(shaker1,ingredient2), shaker-level(shaker1,l2)})"]
+s380[label="(instance index=0, state index=380, atoms={ontable(shaker1), handempty(right), holding(left,shot1), contains(shot1,ingredient2), used(shot1,ingredient2), contains(shaker1,ingredient1), unshaked(shaker1), shaker-level(shaker1,l1)})"]
+s156[label="(instance index=0, state index=156, atoms={ontable(shot1), handempty(right), holding(left,shaker1), contains(shot1,ingredient2), used(shot1,ingredient2), shaked(shaker1), contains(shaker1,cocktail1), shaker-level(shaker1,l2)})"]
+s356[label="(instance index=0, state index=356, atoms={ontable(shot1), handempty(left), holding(right,shaker1), contains(shot1,ingredient1), used(shot1,ingredient1), shaked(shaker1), contains(shaker1,cocktail1), shaker-level(shaker1,l2)})"]
+s149[label="(instance index=0, state index=149, atoms={ontable(shaker1), ontable(shot1), empty(shot1), handempty(left), handempty(right), used(shot1,ingredient2), contains(shaker1,ingredient1), unshaked(shaker1), contains(shaker1,ingredient2), shaker-level(shaker1,l2)})"]
+s390[label="(instance index=0, state index=390, atoms={ontable(shot1), empty(shot1), handempty(left), holding(right,shaker1), used(shot1,ingredient1), contains(shaker1,ingredient1), unshaked(shaker1), contains(shaker1,ingredient2), shaker-level(shaker1,l2)})"]
+s64[label="(instance index=0, state index=64, atoms={ontable(shaker1), handempty(left), holding(right,shot1), contains(shot1,ingredient1), used(shot1,ingredient1), unshaked(shaker1), shaker-level(shaker1,l1), contains(shaker1,ingredient2)})"]
+s69[label="(instance index=0, state index=69, atoms={empty(shot1), holding(left,shaker1), holding(right,shot1), used(shot1,ingredient1), contains(shaker1,ingredient1), unshaked(shaker1), contains(shaker1,ingredient2), shaker-level(shaker1,l2)})"]
+s72[label="(instance index=0, state index=72, atoms={ontable(shaker1), handempty(left), holding(right,shot1), contains(shot1,ingredient1), used(shot1,ingredient1), contains(shaker1,ingredient1), unshaked(shaker1), contains(shaker1,ingredient2), shaker-level(shaker1,l2)})"]
+s282[label="(instance index=0, state index=282, atoms={ontable(shot1), handempty(left), holding(right,shaker1), contains(shot1,ingredient2), used(shot1,ingredient2), shaker-level(shaker1,l1), shaked(shaker1), contains(shaker1,cocktail1)})"]
+s347[label="(instance index=0, state index=347, atoms={ontable(shot1), handempty(right), holding(left,shaker1), contains(shot1,ingredient2), used(shot1,ingredient2), shaker-level(shaker1,l1), shaked(shaker1), contains(shaker1,cocktail1)})"]
+s294[label="(instance index=0, state index=294, atoms={ontable(shot1), handempty(left), holding(right,shaker1), contains(shot1,ingredient1), used(shot1,ingredient1), shaker-level(shaker1,l1), shaked(shaker1), contains(shaker1,cocktail1)})"]
+s295[label="(instance index=0, state index=295, atoms={ontable(shot1), handempty(right), holding(left,shaker1), contains(shot1,ingredient1), used(shot1,ingredient1), shaker-level(shaker1,l1), shaked(shaker1), contains(shaker1,cocktail1)})"]
+s25[label="(instance index=0, state index=25, atoms={ontable(shaker1), ontable(shot1), handempty(left), handempty(right), contains(shot1,ingredient2), used(shot1,ingredient2), unshaked(shaker1), contains(shaker1,ingredient2), shaker-level(shaker1,l2)})"]
+s24[label="(instance index=0, state index=24, atoms={holding(left,shot1), holding(right,shaker1), contains(shot1,ingredient2), used(shot1,ingredient2), unshaked(shaker1), contains(shaker1,ingredient2), shaker-level(shaker1,l2)})"]
+s46[label="(instance index=0, state index=46, atoms={ontable(shaker1), handempty(right), holding(left,shot1), contains(shot1,ingredient1), used(shot1,ingredient1), unshaked(shaker1), contains(shaker1,ingredient2), shaker-level(shaker1,l2)})"]
+s52[label="(instance index=0, state index=52, atoms={clean(shot1), empty(shot1), holding(left,shot1), holding(right,shaker1), unshaked(shaker1), contains(shaker1,ingredient2), shaker-level(shaker1,l2)})"]
+s35[label="(instance index=0, state index=35, atoms={ontable(shaker1), ontable(shot1), clean(shot1), empty(shot1), handempty(left), handempty(right), unshaked(shaker1), contains(shaker1,ingredient2), shaker-level(shaker1,l2)})"]
+s108[label="(instance index=0, state index=108, atoms={ontable(shaker1), ontable(shot1), handempty(left), handempty(right), contains(shot1,ingredient1), used(shot1,ingredient1), contains(shaker1,ingredient1), unshaked(shaker1), shaker-level(shaker1,l2)})"]
+s107[label="(instance index=0, state index=107, atoms={holding(left,shaker1), holding(right,shot1), contains(shot1,ingredient1), used(shot1,ingredient1), contains(shaker1,ingredient1), unshaked(shaker1), shaker-level(shaker1,l2)})"]
+s134[label="(instance index=0, state index=134, atoms={clean(shot1), empty(shot1), holding(left,shaker1), holding(right,shot1), contains(shaker1,ingredient1), unshaked(shaker1), shaker-level(shaker1,l2)})"]
+s117[label="(instance index=0, state index=117, atoms={ontable(shaker1), ontable(shot1), clean(shot1), empty(shot1), handempty(left), handempty(right), contains(shaker1,ingredient1), unshaked(shaker1), shaker-level(shaker1,l2)})"]
+s128[label="(instance index=0, state index=128, atoms={ontable(shaker1), handempty(left), holding(right,shot1), contains(shot1,ingredient2), used(shot1,ingredient2), contains(shaker1,ingredient1), unshaked(shaker1), shaker-level(shaker1,l2)})"]
+s112[label="(instance index=0, state index=112, atoms={holding(left,shot1), holding(right,shaker1), contains(shot1,ingredient1), used(shot1,ingredient1), contains(shaker1,ingredient1), unshaked(shaker1), shaker-level(shaker1,l2)})"]
+s116[label="(instance index=0, state index=116, atoms={clean(shot1), empty(shot1), holding(left,shot1), holding(right,shaker1), contains(shaker1,ingredient1), unshaked(shaker1), shaker-level(shaker1,l2)})"]
+s118[label="(instance index=0, state index=118, atoms={ontable(shaker1), handempty(right), holding(left,shot1), contains(shot1,ingredient2), used(shot1,ingredient2), contains(shaker1,ingredient1), unshaked(shaker1), shaker-level(shaker1,l2)})"]
+s29[label="(instance index=0, state index=29, atoms={holding(left,shaker1), holding(right,shot1), contains(shot1,ingredient2), used(shot1,ingredient2), unshaked(shaker1), contains(shaker1,ingredient2), shaker-level(shaker1,l2)})"]
+s34[label="(instance index=0, state index=34, atoms={clean(shot1), empty(shot1), holding(left,shaker1), holding(right,shot1), unshaked(shaker1), contains(shaker1,ingredient2), shaker-level(shaker1,l2)})"]
+s36[label="(instance index=0, state index=36, atoms={ontable(shaker1), handempty(left), holding(right,shot1), contains(shot1,ingredient1), used(shot1,ingredient1), unshaked(shaker1), contains(shaker1,ingredient2), shaker-level(shaker1,l2)})"]
+s296[label="(instance index=0, state index=296, atoms={holding(left,shaker1), holding(right,shot1), contains(shot1,ingredient1), used(shot1,ingredient1), shaker-level(shaker1,l1), shaked(shaker1), contains(shaker1,cocktail1)})"]
+s270[label="(instance index=0, state index=270, atoms={holding(left,shaker1), holding(right,shot1), contains(shot1,ingredient2), used(shot1,ingredient2), shaker-level(shaker1,l1), shaked(shaker1), contains(shaker1,cocktail1)})"]
+s79[label="(instance index=0, state index=79, atoms={holding(left,shaker1), holding(right,shot1), contains(shot1,ingredient1), used(shot1,ingredient1), shaked(shaker1), contains(shaker1,cocktail1), shaker-level(shaker1,l2)})"]
+s262[label="(instance index=0, state index=262, atoms={ontable(shot1), empty(shot1), handempty(right), holding(left,shaker1), shaker-level(shaker1,l1), shaked(shaker1), contains(shaker1,cocktail1), used(shot1,cocktail1)})"]
+s292[label="(instance index=0, state index=292, atoms={ontable(shot1), empty(shot1), handempty(right), holding(left,shaker1), used(shot1,ingredient1), shaker-level(shaker1,l1), shaked(shaker1), contains(shaker1,cocktail1)})"]
+s291[label="(instance index=0, state index=291, atoms={ontable(shot1), empty(shot1), handempty(left), holding(right,shaker1), used(shot1,ingredient1), shaker-level(shaker1,l1), shaked(shaker1), contains(shaker1,cocktail1)})"]
+s286[label="(instance index=0, state index=286, atoms={ontable(shaker1), ontable(shot1), handempty(left), handempty(right), contains(shot1,ingredient1), used(shot1,ingredient1), shaker-level(shaker1,l1), shaked(shaker1), contains(shaker1,cocktail1)})"]
+s271[label="(instance index=0, state index=271, atoms={ontable(shaker1), ontable(shot1), handempty(left), handempty(right), contains(shot1,ingredient2), used(shot1,ingredient2), shaker-level(shaker1,l1), shaked(shaker1), contains(shaker1,cocktail1)})"]
+s281[label="(instance index=0, state index=281, atoms={holding(left,shot1), holding(right,shaker1), contains(shot1,ingredient2), used(shot1,ingredient2), shaker-level(shaker1,l1), shaked(shaker1), contains(shaker1,cocktail1)})"]
+s277[label="(instance index=0, state index=277, atoms={ontable(shot1), empty(shot1), handempty(right), holding(left,shaker1), used(shot1,ingredient2), shaker-level(shaker1,l1), shaked(shaker1), contains(shaker1,cocktail1)})"]
+s275[label="(instance index=0, state index=275, atoms={ontable(shot1), empty(shot1), handempty(left), holding(right,shaker1), used(shot1,ingredient2), shaker-level(shaker1,l1), shaked(shaker1), contains(shaker1,cocktail1)})"]
+s68[label="(instance index=0, state index=68, atoms={ontable(shaker1), empty(shot1), handempty(left), holding(right,shot1), used(shot1,ingredient1), contains(shaker1,ingredient1), unshaked(shaker1), contains(shaker1,ingredient2), shaker-level(shaker1,l2)})"]
+s210[label="(instance index=0, state index=210, atoms={holding(left,shot1), holding(right,shaker1), contains(shot1,ingredient2), used(shot1,ingredient2), shaked(shaker1), contains(shaker1,cocktail1), shaker-level(shaker1,l2)})"]
+s285[label="(instance index=0, state index=285, atoms={holding(left,shot1), holding(right,shaker1), contains(shot1,ingredient1), used(shot1,ingredient1), shaker-level(shaker1,l1), shaked(shaker1), contains(shaker1,cocktail1)})"]
+s158[label="(instance index=0, state index=158, atoms={ontable(shaker1), ontable(shot1), handempty(left), handempty(right), contains(shot1,ingredient2), used(shot1,ingredient2), shaked(shaker1), contains(shaker1,cocktail1), shaker-level(shaker1,l2)})"]
+s360[label="(instance index=0, state index=360, atoms={ontable(shot1), empty(shot1), handempty(right), holding(left,shaker1), used(shot1,ingredient2), shaked(shaker1), contains(shaker1,cocktail1), shaker-level(shaker1,l2)})"]
+s80[label="(instance index=0, state index=80, atoms={ontable(shaker1), ontable(shot1), handempty(left), handempty(right), contains(shot1,ingredient1), used(shot1,ingredient1), shaked(shaker1), contains(shaker1,cocktail1), shaker-level(shaker1,l2)})"]
+s224[label="(instance index=0, state index=224, atoms={ontable(shot1), empty(shot1), handempty(right), holding(left,shaker1), used(shot1,ingredient1), shaked(shaker1), contains(shaker1,cocktail1), shaker-level(shaker1,l2)})"]
+s157[label="(instance index=0, state index=157, atoms={holding(left,shaker1), holding(right,shot1), contains(shot1,ingredient2), used(shot1,ingredient2), shaked(shaker1), contains(shaker1,cocktail1), shaker-level(shaker1,l2)})"]
+s147[label="(instance index=0, state index=147, atoms={ontable(shaker1), empty(shot1), handempty(left), holding(right,shot1), used(shot1,ingredient2), contains(shaker1,ingredient1), unshaked(shaker1), contains(shaker1,ingredient2), shaker-level(shaker1,l2)})"]
+s218[label="(instance index=0, state index=218, atoms={holding(left,shot1), holding(right,shaker1), contains(shot1,ingredient1), used(shot1,ingredient1), shaked(shaker1), contains(shaker1,cocktail1), shaker-level(shaker1,l2)})"]
+s388[label="(instance index=0, state index=388, atoms={ontable(shaker1), empty(shot1), handempty(right), holding(left,shot1), used(shot1,ingredient1), contains(shaker1,ingredient1), unshaked(shaker1), contains(shaker1,ingredient2), shaker-level(shaker1,l2)})"]
+s359[label="(instance index=0, state index=359, atoms={ontable(shot1), empty(shot1), handempty(left), holding(right,shaker1), used(shot1,ingredient2), shaked(shaker1), contains(shaker1,cocktail1), shaker-level(shaker1,l2)})"]
+s223[label="(instance index=0, state index=223, atoms={ontable(shot1), empty(shot1), handempty(left), holding(right,shaker1), used(shot1,ingredient1), shaked(shaker1), contains(shaker1,cocktail1), shaker-level(shaker1,l2)})"]
+s363[label="(instance index=0, state index=363, atoms={ontable(shaker1), empty(shot1), handempty(right), holding(left,shot1), used(shot1,ingredient2), contains(shaker1,ingredient1), unshaked(shaker1), contains(shaker1,ingredient2), shaker-level(shaker1,l2)})"]
+s349[label="(instance index=0, state index=349, atoms={ontable(shot1), empty(shot1), handempty(left), holding(right,shaker1), shaker-level(shaker1,l1), shaked(shaker1), contains(shaker1,cocktail1), used(shot1,cocktail1)})"]
+s28[label="(instance index=0, state index=28, atoms={ontable(shot1), handempty(right), holding(left,shaker1), contains(shot1,ingredient2), used(shot1,ingredient2), unshaked(shaker1), contains(shaker1,ingredient2), shaker-level(shaker1,l2)})"]
+s27[label="(instance index=0, state index=27, atoms={ontable(shot1), handempty(left), holding(right,shaker1), contains(shot1,ingredient2), used(shot1,ingredient2), unshaked(shaker1), contains(shaker1,ingredient2), shaker-level(shaker1,l2)})"]
+s47[label="(instance index=0, state index=47, atoms={holding(left,shot1), holding(right,shaker1), contains(shot1,ingredient1), used(shot1,ingredient1), unshaked(shaker1), contains(shaker1,ingredient2), shaker-level(shaker1,l2)})"]
+s38[label="(instance index=0, state index=38, atoms={ontable(shaker1), ontable(shot1), handempty(left), handempty(right), contains(shot1,ingredient1), used(shot1,ingredient1), unshaked(shaker1), contains(shaker1,ingredient2), shaker-level(shaker1,l2)})"]
+s43[label="(instance index=0, state index=43, atoms={ontable(shaker1), empty(shot1), handempty(right), holding(left,shot1), used(shot1,ingredient1), unshaked(shaker1), contains(shaker1,ingredient2), shaker-level(shaker1,l2)})"]
+s50[label="(instance index=0, state index=50, atoms={ontable(shot1), clean(shot1), empty(shot1), handempty(left), holding(right,shaker1), unshaked(shaker1), contains(shaker1,ingredient2), shaker-level(shaker1,l2)})"]
+s51[label="(instance index=0, state index=51, atoms={ontable(shot1), clean(shot1), empty(shot1), handempty(right), holding(left,shaker1), unshaked(shaker1), contains(shaker1,ingredient2), shaker-level(shaker1,l2)})"]
+s109[label="(instance index=0, state index=109, atoms={ontable(shot1), handempty(left), holding(right,shaker1), contains(shot1,ingredient1), used(shot1,ingredient1), contains(shaker1,ingredient1), unshaked(shaker1), shaker-level(shaker1,l2)})"]
+s111[label="(instance index=0, state index=111, atoms={ontable(shot1), handempty(right), holding(left,shaker1), contains(shot1,ingredient1), used(shot1,ingredient1), contains(shaker1,ingredient1), unshaked(shaker1), shaker-level(shaker1,l2)})"]
+s133[label="(instance index=0, state index=133, atoms={ontable(shot1), clean(shot1), empty(shot1), handempty(right), holding(left,shaker1), contains(shaker1,ingredient1), unshaked(shaker1), shaker-level(shaker1,l2)})"]
+s132[label="(instance index=0, state index=132, atoms={ontable(shot1), clean(shot1), empty(shot1), handempty(left), holding(right,shaker1), contains(shaker1,ingredient1), unshaked(shaker1), shaker-level(shaker1,l2)})"]
+s124[label="(instance index=0, state index=124, atoms={ontable(shaker1), empty(shot1), handempty(left), holding(right,shot1), used(shot1,ingredient2), contains(shaker1,ingredient1), unshaked(shaker1), shaker-level(shaker1,l2)})"]
+s129[label="(instance index=0, state index=129, atoms={holding(left,shaker1), holding(right,shot1), contains(shot1,ingredient2), used(shot1,ingredient2), contains(shaker1,ingredient1), unshaked(shaker1), shaker-level(shaker1,l2)})"]
+s120[label="(instance index=0, state index=120, atoms={ontable(shaker1), ontable(shot1), handempty(left), handempty(right), contains(shot1,ingredient2), used(shot1,ingredient2), contains(shaker1,ingredient1), unshaked(shaker1), shaker-level(shaker1,l2)})"]
+s119[label="(instance index=0, state index=119, atoms={holding(left,shot1), holding(right,shaker1), contains(shot1,ingredient2), used(shot1,ingredient2), contains(shaker1,ingredient1), unshaked(shaker1), shaker-level(shaker1,l2)})"]
+s121[label="(instance index=0, state index=121, atoms={ontable(shaker1), empty(shot1), handempty(right), holding(left,shot1), used(shot1,ingredient2), contains(shaker1,ingredient1), unshaked(shaker1), shaker-level(shaker1,l2)})"]
+s39[label="(instance index=0, state index=39, atoms={ontable(shaker1), empty(shot1), handempty(left), holding(right,shot1), used(shot1,ingredient1), unshaked(shaker1), contains(shaker1,ingredient2), shaker-level(shaker1,l2)})"]
+s37[label="(instance index=0, state index=37, atoms={holding(left,shaker1), holding(right,shot1), contains(shot1,ingredient1), used(shot1,ingredient1), unshaked(shaker1), contains(shaker1,ingredient2), shaker-level(shaker1,l2)})"]
+s293[label="(instance index=0, state index=293, atoms={empty(shot1), holding(left,shaker1), holding(right,shot1), used(shot1,ingredient1), shaker-level(shaker1,l1), shaked(shaker1), contains(shaker1,cocktail1)})"]
+s268[label="(instance index=0, state index=268, atoms={ontable(shaker1), handempty(left), holding(right,shot1), contains(shot1,ingredient1), used(shot1,ingredient1), shaker-level(shaker1,l1), shaked(shaker1), contains(shaker1,cocktail1)})"]
+s273[label="(instance index=0, state index=273, atoms={empty(shot1), holding(left,shaker1), holding(right,shot1), used(shot1,ingredient2), shaker-level(shaker1,l1), shaked(shaker1), contains(shaker1,cocktail1)})"]
+s269[label="(instance index=0, state index=269, atoms={ontable(shaker1), handempty(left), holding(right,shot1), contains(shot1,ingredient2), used(shot1,ingredient2), shaker-level(shaker1,l1), shaked(shaker1), contains(shaker1,cocktail1)})"]
+s233[label="(instance index=0, state index=233, atoms={empty(shot1), holding(left,shaker1), holding(right,shot1), shaker-level(shaker1,l1), shaked(shaker1), contains(shaker1,cocktail1), used(shot1,cocktail1)})"]
+s207[label="(instance index=0, state index=207, atoms={ontable(shaker1), handempty(left), holding(right,shot1), contains(shot1,ingredient2), used(shot1,ingredient2), shaked(shaker1), contains(shaker1,cocktail1), shaker-level(shaker1,l2)})"]
+s351[label="(instance index=0, state index=351, atoms={empty(shot1), holding(left,shot1), holding(right,shaker1), shaker-level(shaker1,l1), shaked(shaker1), contains(shaker1,cocktail1), used(shot1,cocktail1)})"]
+s264[label="(instance index=0, state index=264, atoms={ontable(shaker1), ontable(shot1), empty(shot1), handempty(left), handempty(right), shaker-level(shaker1,l1), shaked(shaker1), contains(shaker1,cocktail1), used(shot1,cocktail1)})"]
+s289[label="(instance index=0, state index=289, atoms={ontable(shaker1), ontable(shot1), empty(shot1), handempty(left), handempty(right), used(shot1,ingredient1), shaker-level(shaker1,l1), shaked(shaker1), contains(shaker1,cocktail1)})"]
+s288[label="(instance index=0, state index=288, atoms={empty(shot1), holding(left,shot1), holding(right,shaker1), used(shot1,ingredient1), shaker-level(shaker1,l1), shaked(shaker1), contains(shaker1,cocktail1)})"]
+s284[label="(instance index=0, state index=284, atoms={ontable(shaker1), handempty(right), holding(left,shot1), contains(shot1,ingredient1), used(shot1,ingredient1), shaker-level(shaker1,l1), shaked(shaker1), contains(shaker1,cocktail1)})"]
+s280[label="(instance index=0, state index=280, atoms={ontable(shaker1), handempty(right), holding(left,shot1), contains(shot1,ingredient2), used(shot1,ingredient2), shaker-level(shaker1,l1), shaked(shaker1), contains(shaker1,cocktail1)})"]
+s278[label="(instance index=0, state index=278, atoms={empty(shot1), holding(left,shot1), holding(right,shaker1), used(shot1,ingredient2), shaker-level(shaker1,l1), shaked(shaker1), contains(shaker1,cocktail1)})"]
+s274[label="(instance index=0, state index=274, atoms={ontable(shaker1), ontable(shot1), empty(shot1), handempty(left), handempty(right), used(shot1,ingredient2), shaker-level(shaker1,l1), shaked(shaker1), contains(shaker1,cocktail1)})"]
+s71[label="(instance index=0, state index=71, atoms={ontable(shaker1), clean(shot1), empty(shot1), handempty(left), holding(right,shot1), contains(shaker1,ingredient1), unshaked(shaker1), contains(shaker1,ingredient2), shaker-level(shaker1,l2)})"]
+s365[label="(instance index=0, state index=365, atoms={ontable(shaker1), clean(shot1), empty(shot1), handempty(right), holding(left,shot1), contains(shaker1,ingredient1), unshaked(shaker1), contains(shaker1,ingredient2), shaker-level(shaker1,l2)})"]
+s220[label="(instance index=0, state index=220, atoms={empty(shot1), holding(left,shot1), holding(right,shaker1), used(shot1,ingredient1), shaked(shaker1), contains(shaker1,cocktail1), shaker-level(shaker1,l2)})"]
+s213[label="(instance index=0, state index=213, atoms={ontable(shaker1), ontable(shot1), empty(shot1), handempty(left), handempty(right), used(shot1,ingredient2), shaked(shaker1), contains(shaker1,cocktail1), shaker-level(shaker1,l2)})"]
+s217[label="(instance index=0, state index=217, atoms={ontable(shaker1), handempty(right), holding(left,shot1), contains(shot1,ingredient1), used(shot1,ingredient1), shaked(shaker1), contains(shaker1,cocktail1), shaker-level(shaker1,l2)})"]
+s221[label="(instance index=0, state index=221, atoms={ontable(shaker1), ontable(shot1), empty(shot1), handempty(left), handempty(right), used(shot1,ingredient1), shaked(shaker1), contains(shaker1,cocktail1), shaker-level(shaker1,l2)})"]
+s361[label="(instance index=0, state index=361, atoms={empty(shot1), holding(left,shaker1), holding(right,shot1), used(shot1,ingredient2), shaked(shaker1), contains(shaker1,cocktail1), shaker-level(shaker1,l2)})"]
+s225[label="(instance index=0, state index=225, atoms={empty(shot1), holding(left,shaker1), holding(right,shot1), used(shot1,ingredient1), shaked(shaker1), contains(shaker1,cocktail1), shaker-level(shaker1,l2)})"]
+s227[label="(instance index=0, state index=227, atoms={ontable(shaker1), handempty(left), holding(right,shot1), contains(shot1,ingredient1), used(shot1,ingredient1), shaked(shaker1), contains(shaker1,cocktail1), shaker-level(shaker1,l2)})"]
+s209[label="(instance index=0, state index=209, atoms={ontable(shaker1), handempty(right), holding(left,shot1), contains(shot1,ingredient2), used(shot1,ingredient2), shaked(shaker1), contains(shaker1,cocktail1), shaker-level(shaker1,l2)})"]
+s212[label="(instance index=0, state index=212, atoms={empty(shot1), holding(left,shot1), holding(right,shaker1), used(shot1,ingredient2), shaked(shaker1), contains(shaker1,cocktail1), shaker-level(shaker1,l2)})"]
+s45[label="(instance index=0, state index=45, atoms={empty(shot1), holding(left,shot1), holding(right,shaker1), used(shot1,ingredient1), unshaked(shaker1), contains(shaker1,ingredient2), shaker-level(shaker1,l2)})"]
+s48[label="(instance index=0, state index=48, atoms={ontable(shot1), handempty(left), holding(right,shaker1), contains(shot1,ingredient1), used(shot1,ingredient1), unshaked(shaker1), contains(shaker1,ingredient2), shaker-level(shaker1,l2)})"]
+s49[label="(instance index=0, state index=49, atoms={ontable(shot1), handempty(right), holding(left,shaker1), contains(shot1,ingredient1), used(shot1,ingredient1), unshaked(shaker1), contains(shaker1,ingredient2), shaker-level(shaker1,l2)})"]
+s41[label="(instance index=0, state index=41, atoms={ontable(shaker1), ontable(shot1), empty(shot1), handempty(left), handempty(right), used(shot1,ingredient1), unshaked(shaker1), contains(shaker1,ingredient2), shaker-level(shaker1,l2)})"]
+s127[label="(instance index=0, state index=127, atoms={empty(shot1), holding(left,shaker1), holding(right,shot1), used(shot1,ingredient2), contains(shaker1,ingredient1), unshaked(shaker1), shaker-level(shaker1,l2)})"]
+s123[label="(instance index=0, state index=123, atoms={ontable(shaker1), ontable(shot1), empty(shot1), handempty(left), handempty(right), used(shot1,ingredient2), contains(shaker1,ingredient1), unshaked(shaker1), shaker-level(shaker1,l2)})"]
+s130[label="(instance index=0, state index=130, atoms={ontable(shot1), handempty(right), holding(left,shaker1), contains(shot1,ingredient2), used(shot1,ingredient2), contains(shaker1,ingredient1), unshaked(shaker1), shaker-level(shaker1,l2)})"]
+s131[label="(instance index=0, state index=131, atoms={ontable(shot1), handempty(left), holding(right,shaker1), contains(shot1,ingredient2), used(shot1,ingredient2), contains(shaker1,ingredient1), unshaked(shaker1), shaker-level(shaker1,l2)})"]
+s122[label="(instance index=0, state index=122, atoms={empty(shot1), holding(left,shot1), holding(right,shaker1), used(shot1,ingredient2), contains(shaker1,ingredient1), unshaked(shaker1), shaker-level(shaker1,l2)})"]
+s40[label="(instance index=0, state index=40, atoms={empty(shot1), holding(left,shaker1), holding(right,shot1), used(shot1,ingredient1), unshaked(shaker1), contains(shaker1,ingredient2), shaker-level(shaker1,l2)})"]
+s287[label="(instance index=0, state index=287, atoms={ontable(shaker1), empty(shot1), handempty(right), holding(left,shot1), used(shot1,ingredient1), shaker-level(shaker1,l1), shaked(shaker1), contains(shaker1,cocktail1)})"]
+s290[label="(instance index=0, state index=290, atoms={ontable(shaker1), empty(shot1), handempty(left), holding(right,shot1), used(shot1,ingredient1), shaker-level(shaker1,l1), shaked(shaker1), contains(shaker1,cocktail1)})"]
+s350[label="(instance index=0, state index=350, atoms={ontable(shaker1), empty(shot1), handempty(right), holding(left,shot1), shaker-level(shaker1,l1), shaked(shaker1), contains(shaker1,cocktail1), used(shot1,cocktail1)})"]
+s358[label="(instance index=0, state index=358, atoms={ontable(shaker1), empty(shot1), handempty(left), holding(right,shot1), used(shot1,ingredient2), shaked(shaker1), contains(shaker1,cocktail1), shaker-level(shaker1,l2)})"]
+s370[label="(instance index=0, state index=370, atoms={clean(shot1), empty(shot1), holding(left,shaker1), holding(right,shot1), contains(shaker1,ingredient1), unshaked(shaker1), contains(shaker1,ingredient2), shaker-level(shaker1,l2)})"]
+s211[label="(instance index=0, state index=211, atoms={ontable(shaker1), empty(shot1), handempty(right), holding(left,shot1), used(shot1,ingredient2), shaked(shaker1), contains(shaker1,cocktail1), shaker-level(shaker1,l2)})"]
+s219[label="(instance index=0, state index=219, atoms={ontable(shaker1), empty(shot1), handempty(right), holding(left,shot1), used(shot1,ingredient1), shaked(shaker1), contains(shaker1,cocktail1), shaker-level(shaker1,l2)})"]
+s366[label="(instance index=0, state index=366, atoms={clean(shot1), empty(shot1), holding(left,shot1), holding(right,shaker1), contains(shaker1,ingredient1), unshaked(shaker1), contains(shaker1,ingredient2), shaker-level(shaker1,l2)})"]
+s367[label="(instance index=0, state index=367, atoms={ontable(shaker1), ontable(shot1), clean(shot1), empty(shot1), handempty(left), handempty(right), contains(shaker1,ingredient1), unshaked(shaker1), contains(shaker1,ingredient2), shaker-level(shaker1,l2)})"]
+s276[label="(instance index=0, state index=276, atoms={ontable(shaker1), empty(shot1), handempty(right), holding(left,shot1), used(shot1,ingredient2), shaker-level(shaker1,l1), shaked(shaker1), contains(shaker1,cocktail1)})"]
+s222[label="(instance index=0, state index=222, atoms={ontable(shaker1), empty(shot1), handempty(left), holding(right,shot1), used(shot1,ingredient1), shaked(shaker1), contains(shaker1,cocktail1), shaker-level(shaker1,l2)})"]
+s263[label="(instance index=0, state index=263, atoms={ontable(shaker1), empty(shot1), handempty(left), holding(right,shot1), shaker-level(shaker1,l1), shaked(shaker1), contains(shaker1,cocktail1), used(shot1,cocktail1)})"]
+s272[label="(instance index=0, state index=272, atoms={ontable(shaker1), empty(shot1), handempty(left), holding(right,shot1), used(shot1,ingredient2), shaker-level(shaker1,l1), shaked(shaker1), contains(shaker1,cocktail1)})"]
+s42[label="(instance index=0, state index=42, atoms={ontable(shot1), empty(shot1), handempty(left), holding(right,shaker1), used(shot1,ingredient1), unshaked(shaker1), contains(shaker1,ingredient2), shaker-level(shaker1,l2)})"]
+s44[label="(instance index=0, state index=44, atoms={ontable(shot1), empty(shot1), handempty(right), holding(left,shaker1), used(shot1,ingredient1), unshaked(shaker1), contains(shaker1,ingredient2), shaker-level(shaker1,l2)})"]
+s126[label="(instance index=0, state index=126, atoms={ontable(shot1), empty(shot1), handempty(right), holding(left,shaker1), used(shot1,ingredient2), contains(shaker1,ingredient1), unshaked(shaker1), shaker-level(shaker1,l2)})"]
+s125[label="(instance index=0, state index=125, atoms={ontable(shot1), empty(shot1), handempty(left), holding(right,shaker1), used(shot1,ingredient2), contains(shaker1,ingredient1), unshaked(shaker1), shaker-level(shaker1,l2)})"]
+s369[label="(instance index=0, state index=369, atoms={ontable(shot1), clean(shot1), empty(shot1), handempty(right), holding(left,shaker1), contains(shaker1,ingredient1), unshaked(shaker1), contains(shaker1,ingredient2), shaker-level(shaker1,l2)})"]
+s226[label="(instance index=0, state index=226, atoms={ontable(shaker1), clean(shot1), empty(shot1), handempty(left), holding(right,shot1), shaked(shaker1), contains(shaker1,cocktail1), shaker-level(shaker1,l2)})"]
+s214[label="(instance index=0, state index=214, atoms={ontable(shaker1), clean(shot1), empty(shot1), handempty(right), holding(left,shot1), shaked(shaker1), contains(shaker1,cocktail1), shaker-level(shaker1,l2)})"]
+s216[label="(instance index=0, state index=216, atoms={ontable(shaker1), ontable(shot1), clean(shot1), empty(shot1), handempty(left), handempty(right), shaked(shaker1), contains(shaker1,cocktail1), shaker-level(shaker1,l2)})"]
+s368[label="(instance index=0, state index=368, atoms={ontable(shot1), clean(shot1), empty(shot1), handempty(left), holding(right,shaker1), contains(shaker1,ingredient1), unshaked(shaker1), contains(shaker1,ingredient2), shaker-level(shaker1,l2)})"]
+s267[label="(instance index=0, state index=267, atoms={ontable(shaker1), ontable(shot1), clean(shot1), empty(shot1), handempty(left), handempty(right), shaker-level(shaker1,l1), shaked(shaker1), contains(shaker1,cocktail1)})"]
+s279[label="(instance index=0, state index=279, atoms={ontable(shaker1), clean(shot1), empty(shot1), handempty(right), holding(left,shot1), shaker-level(shaker1,l1), shaked(shaker1), contains(shaker1,cocktail1)})"]
+s265[label="(instance index=0, state index=265, atoms={ontable(shaker1), clean(shot1), empty(shot1), handempty(left), holding(right,shot1), shaker-level(shaker1,l1), shaked(shaker1), contains(shaker1,cocktail1)})"]
+s215[label="(instance index=0, state index=215, atoms={clean(shot1), empty(shot1), holding(left,shot1), holding(right,shaker1), shaked(shaker1), contains(shaker1,cocktail1), shaker-level(shaker1,l2)})"]
+s348[label="(instance index=0, state index=348, atoms={ontable(shot1), clean(shot1), empty(shot1), handempty(right), holding(left,shaker1), shaker-level(shaker1,l1), shaked(shaker1), contains(shaker1,cocktail1)})"]
+s357[label="(instance index=0, state index=357, atoms={ontable(shot1), clean(shot1), empty(shot1), handempty(left), holding(right,shaker1), shaked(shaker1), contains(shaker1,cocktail1), shaker-level(shaker1,l2)})"]
+s228[label="(instance index=0, state index=228, atoms={clean(shot1), empty(shot1), holding(left,shaker1), holding(right,shot1), shaked(shaker1), contains(shaker1,cocktail1), shaker-level(shaker1,l2)})"]
+s297[label="(instance index=0, state index=297, atoms={ontable(shot1), clean(shot1), empty(shot1), handempty(left), holding(right,shaker1), shaker-level(shaker1,l1), shaked(shaker1), contains(shaker1,cocktail1)})"]
+s283[label="(instance index=0, state index=283, atoms={clean(shot1), empty(shot1), holding(left,shot1), holding(right,shaker1), shaker-level(shaker1,l1), shaked(shaker1), contains(shaker1,cocktail1)})"]
+s229[label="(instance index=0, state index=229, atoms={ontable(shot1), clean(shot1), empty(shot1), handempty(right), holding(left,shaker1), shaked(shaker1), contains(shaker1,cocktail1), shaker-level(shaker1,l2)})"]
+s266[label="(instance index=0, state index=266, atoms={clean(shot1), empty(shot1), holding(left,shaker1), holding(right,shot1), shaker-level(shaker1,l1), shaked(shaker1), contains(shaker1,cocktail1)})"]
+s256[peripheries=2,label="(instance index=0, state index=256, atoms={contains(shot1,cocktail1), clean(shaker1), empty(shaker1), shaker-level(shaker1,l0), holding(left,shot1), holding(right,shaker1), used(shot1,cocktail1)})"]
+s257[peripheries=2,label="(instance index=0, state index=257, atoms={contains(shot1,cocktail1), ontable(shaker1), ontable(shot1), clean(shaker1), empty(shaker1), handempty(left), handempty(right), shaker-level(shaker1,l0), used(shot1,cocktail1)})"]
+s344[peripheries=2,label="(instance index=0, state index=344, atoms={contains(shot1,cocktail1), ontable(shaker1), handempty(left), shaker-level(shaker1,l0), holding(right,shot1), shaked(shaker1), contains(shaker1,cocktail1), used(shot1,cocktail1)})"]
+s258[peripheries=2,label="(instance index=0, state index=258, atoms={contains(shot1,cocktail1), ontable(shaker1), clean(shaker1), empty(shaker1), handempty(left), shaker-level(shaker1,l0), holding(right,shot1), used(shot1,cocktail1)})"]
+s345[peripheries=2,label="(instance index=0, state index=345, atoms={contains(shot1,cocktail1), ontable(shot1), handempty(right), shaker-level(shaker1,l0), holding(left,shaker1), shaked(shaker1), contains(shaker1,cocktail1), used(shot1,cocktail1)})"]
+s259[peripheries=2,label="(instance index=0, state index=259, atoms={contains(shot1,cocktail1), ontable(shaker1), clean(shaker1), empty(shaker1), handempty(right), shaker-level(shaker1,l0), holding(left,shot1), used(shot1,cocktail1)})"]
+s260[peripheries=2,label="(instance index=0, state index=260, atoms={contains(shot1,cocktail1), ontable(shot1), clean(shaker1), empty(shaker1), handempty(right), shaker-level(shaker1,l0), holding(left,shaker1), used(shot1,cocktail1)})"]
+s261[peripheries=2,label="(instance index=0, state index=261, atoms={contains(shot1,cocktail1), clean(shaker1), empty(shaker1), shaker-level(shaker1,l0), holding(left,shaker1), holding(right,shot1), used(shot1,cocktail1)})"]
+s232[peripheries=2,label="(instance index=0, state index=232, atoms={contains(shot1,cocktail1), ontable(shaker1), handempty(left), holding(right,shot1), shaker-level(shaker1,l1), shaked(shaker1), contains(shaker1,cocktail1), used(shot1,cocktail1)})"]
+s298[peripheries=2,label="(instance index=0, state index=298, atoms={contains(shot1,cocktail1), shaker-level(shaker1,l0), holding(left,shot1), holding(right,shaker1), shaked(shaker1), contains(shaker1,cocktail1), used(shot1,cocktail1)})"]
+s230[peripheries=2,label="(instance index=0, state index=230, atoms={contains(shot1,cocktail1), holding(left,shaker1), holding(right,shot1), shaker-level(shaker1,l1), shaked(shaker1), contains(shaker1,cocktail1), used(shot1,cocktail1)})"]
+s299[peripheries=2,label="(instance index=0, state index=299, atoms={contains(shot1,cocktail1), ontable(shaker1), handempty(right), shaker-level(shaker1,l0), holding(left,shot1), shaked(shaker1), contains(shaker1,cocktail1), used(shot1,cocktail1)})"]
+s231[peripheries=2,label="(instance index=0, state index=231, atoms={contains(shot1,cocktail1), ontable(shot1), handempty(right), holding(left,shaker1), shaker-level(shaker1,l1), shaked(shaker1), contains(shaker1,cocktail1), used(shot1,cocktail1)})"]
+s255[peripheries=2,label="(instance index=0, state index=255, atoms={contains(shot1,cocktail1), ontable(shot1), clean(shaker1), empty(shaker1), handempty(left), shaker-level(shaker1,l0), holding(right,shaker1), used(shot1,cocktail1)})"]
+s254[peripheries=2,label="(instance index=0, state index=254, atoms={contains(shot1,cocktail1), empty(shaker1), shaker-level(shaker1,l0), holding(left,shot1), holding(right,shaker1), used(shot1,cocktail1)})"]
+s253[peripheries=2,label="(instance index=0, state index=253, atoms={contains(shot1,cocktail1), ontable(shaker1), empty(shaker1), handempty(right), shaker-level(shaker1,l0), holding(left,shot1), used(shot1,cocktail1)})"]
+s252[peripheries=2,label="(instance index=0, state index=252, atoms={contains(shot1,cocktail1), ontable(shot1), empty(shaker1), handempty(left), shaker-level(shaker1,l0), holding(right,shaker1), used(shot1,cocktail1)})"]
+s251[peripheries=2,label="(instance index=0, state index=251, atoms={contains(shot1,cocktail1), ontable(shaker1), ontable(shot1), empty(shaker1), handempty(left), handempty(right), shaker-level(shaker1,l0), used(shot1,cocktail1)})"]
+s355[peripheries=2,label="(instance index=0, state index=355, atoms={contains(shot1,cocktail1), holding(left,shot1), holding(right,shaker1), shaker-level(shaker1,l1), shaked(shaker1), contains(shaker1,cocktail1), used(shot1,cocktail1)})"]
+s235[peripheries=2,label="(instance index=0, state index=235, atoms={contains(shot1,cocktail1), ontable(shot1), empty(shaker1), handempty(right), shaker-level(shaker1,l0), holding(left,shaker1), used(shot1,cocktail1)})"]
+s353[peripheries=2,label="(instance index=0, state index=353, atoms={contains(shot1,cocktail1), ontable(shot1), handempty(left), holding(right,shaker1), shaker-level(shaker1,l1), shaked(shaker1), contains(shaker1,cocktail1), used(shot1,cocktail1)})"]
+s300[peripheries=2,label="(instance index=0, state index=300, atoms={contains(shot1,cocktail1), ontable(shot1), handempty(left), shaker-level(shaker1,l0), holding(right,shaker1), shaked(shaker1), contains(shaker1,cocktail1), used(shot1,cocktail1)})"]
+s234[peripheries=2,label="(instance index=0, state index=234, atoms={contains(shot1,cocktail1), empty(shaker1), shaker-level(shaker1,l0), holding(left,shaker1), holding(right,shot1), used(shot1,cocktail1)})"]
+s352[peripheries=2,label="(instance index=0, state index=352, atoms={contains(shot1,cocktail1), ontable(shaker1), ontable(shot1), handempty(left), handempty(right), shaker-level(shaker1,l1), shaked(shaker1), contains(shaker1,cocktail1), used(shot1,cocktail1)})"]
+s354[peripheries=2,label="(instance index=0, state index=354, atoms={contains(shot1,cocktail1), ontable(shaker1), handempty(right), holding(left,shot1), shaker-level(shaker1,l1), shaked(shaker1), contains(shaker1,cocktail1), used(shot1,cocktail1)})"]
+s236[peripheries=2,label="(instance index=0, state index=236, atoms={contains(shot1,cocktail1), ontable(shaker1), empty(shaker1), handempty(left), shaker-level(shaker1,l0), holding(right,shot1), used(shot1,cocktail1)})"]
+s343[peripheries=2,label="(instance index=0, state index=343, atoms={contains(shot1,cocktail1), ontable(shaker1), ontable(shot1), handempty(left), handempty(right), shaker-level(shaker1,l0), shaked(shaker1), contains(shaker1,cocktail1), used(shot1,cocktail1)})"]
+s346[peripheries=2,label="(instance index=0, state index=346, atoms={contains(shot1,cocktail1), shaker-level(shaker1,l0), holding(left,shaker1), holding(right,shot1), shaked(shaker1), contains(shaker1,cocktail1), used(shot1,cocktail1)})"]
+Dangling [ label = "", style = invis ]
+{ rank = same; Dangling }
+Dangling -> s0
+{ rank = same; s0}
+{ rank = same; s315,s319,s330,s333,s307,s304,s301,s308,s239,s322,s242}
+{ rank = same; s321,s317,s316,s312,s323,s175,s202,s336,s332,s331,s327,s183,s311,s186,s306,s237,s303,s243,s240,s309,s310,s196,s326,s178}
+{ rank = same; s318,s176,s320,s177,s205,s313,s314,s324,s173,s171,s335,s189,s334,s184,s185,s328,s329,s181,s339,s197,s238,s241,s342,s198,s340,s180,s179}
+{ rank = same; s203,s204,s341,s160,s325,s174,s161,s188,s187,s337,s182,s338,s83,s82,s249,s201,s199,s244}
+{ rank = same; s2,s4,s245,s246,s81,s200,s194,s190,s172,s159,s166,s169,s250}
+{ rank = same; s5,s0,s88,s6,s90,s137,s139,s248,s84,s192,s206,s162,s168,s170,s55,s56,s247,s191,s165}
+{ rank = same; s405,s18,s11,s17,s1,s3,s93,s100,s101,s96,s9,s86,s10,s89,s140,s195,s59,s85,s193,s57,s163,s167}
+{ rank = same; s13,s14,s16,s94,s7,s87,s91,s97,s99,s8,s402,s138,s403,s375,s377,s384,s386,s394,s396,s54,s58,s164,s20,s103,s114,s30}
+{ rank = same; s400,s141,s12,s404,s95,s92,s142,s401,s382,s374,s378,s385,s383,s63,s393,s397,s373,s60,s62,s392,s19,s102,s113,s32,s53,s136,s135,s31}
+{ rank = same; s98,s15,s155,s153,s77,s75,s152,s362,s381,s376,s145,s379,s74,s387,s399,s66,s395,s144,s146,s151,s61,s65,s67,s73,s23,s22,s21,s106,s105,s104,s110,s115,s26,s33}
+{ rank = same; s76,s70,s364,s78,s372,s371,s208,s143,s389,s398,s154,s150,s148,s391,s380,s156,s356,s149,s390,s64,s69,s72,s282,s347,s294,s295,s25,s24,s46,s52,s35,s108,s107,s134,s117,s128,s112,s116,s118,s29,s34,s36}
+{ rank = same; s296,s270,s79,s262,s292,s291,s286,s271,s281,s277,s275,s68,s210,s285,s158,s360,s80,s224,s157,s147,s218,s388,s359,s223,s363,s349,s28,s27,s47,s38,s43,s50,s51,s109,s111,s133,s132,s124,s129,s120,s119,s121,s39,s37}
+{ rank = same; s293,s268,s273,s269,s233,s207,s351,s264,s289,s288,s284,s280,s278,s274,s71,s365,s220,s213,s217,s221,s361,s225,s227,s209,s212,s45,s48,s49,s41,s127,s123,s130,s131,s122,s40}
+{ rank = same; s287,s290,s350,s358,s370,s211,s219,s366,s367,s276,s222,s263,s272,s42,s44,s126,s125}
+{ rank = same; s369,s226,s214,s216,s368,s267,s279,s265}
+{ rank = same; s215,s348,s357,s228,s297,s283,s229,s266}
+{ rank = same; s256,s257,s344,s258,s345,s259,s260,s261,s232,s298,s230,s299,s231,s255,s254,s253,s252,s251,s355,s235,s353,s300,s234,s352,s354,s236,s343,s346}
+{
+s305->s308
+s305->s307
+s305->s304
+s302->s301
+s302->s322
+s302->s304
+}
+{
+s315->s316
+s315->s308
+s315->s317
+s315->s312
+s319->s323
+s319->s317
+s319->s322
+s319->s321
+s330->s331
+s330->s327
+s330->s332
+s330->s322
+s333->s308
+s333->s332
+s333->s311
+s333->s336
+s307->s237
+s307->s306
+s307->s305
+s304->s303
+s304->s302
+s304->s306
+s304->s305
+s301->s302
+s301->s303
+s301->s243
+s308->s311
+s308->s310
+s308->s309
+s308->s312
+s239->s196
+s239->s237
+s239->s240
+s322->s327
+s322->s326
+s322->s323
+s322->s310
+s242->s178
+s242->s243
+s242->s240
+}
+{
+s321->s319
+s321->s318
+s321->s176
+s317->s319
+s317->s318
+s317->s315
+s317->s320
+s316->s205
+s316->s315
+s316->s320
+s312->s315
+s312->s314
+s312->s313
+s323->s319
+s323->s324
+s323->s314
+s175->s173
+s175->s178
+s175->s177
+s175->s176
+s202->s205
+s202->s196
+s202->s171
+s202->s177
+s336->s335
+s336->s189
+s336->s333
+s332->s334
+s332->s333
+s332->s335
+s332->s330
+s331->s330
+s331->s334
+s331->s184
+s327->s330
+s327->s329
+s327->s328
+s183->s181
+s183->s178
+s183->s185
+s183->s184
+s311->s333
+s311->s339
+s311->s329
+s186->s189
+s186->s197
+s186->s196
+s186->s185
+s306->s238
+s306->s307
+s306->s304
+s237->s239
+s237->s238
+s303->s301
+s303->s241
+s303->s304
+s243->s242
+s243->s241
+s240->s239
+s240->s238
+s240->s242
+s240->s241
+s309->s308
+s309->s198
+s309->s342
+s310->s308
+s310->s340
+s310->s322
+s310->s342
+s196->s198
+s196->s197
+s196->s180
+s196->s171
+s326->s179
+s326->s340
+s326->s322
+s178->s181
+s178->s173
+s178->s180
+s178->s179
+}
+{
+s318->s317
+s318->s203
+s318->s321
+s176->s175
+s176->s203
+s320->s317
+s320->s316
+s320->s204
+s177->s175
+s177->s204
+s177->s203
+s177->s202
+s205->s204
+s205->s202
+s313->s341
+s313->s316
+s313->s312
+s313->s160
+s314->s341
+s314->s325
+s314->s323
+s314->s312
+s324->s174
+s324->s325
+s324->s323
+s324->s321
+s173->s175
+s173->s174
+s173->s161
+s171->s161
+s171->s202
+s171->s160
+s335->s332
+s335->s188
+s335->s336
+s189->s188
+s189->s186
+s334->s332
+s334->s187
+s334->s331
+s184->s183
+s184->s187
+s185->s183
+s185->s188
+s185->s187
+s185->s186
+s328->s331
+s328->s327
+s328->s182
+s328->s337
+s329->s311
+s329->s338
+s329->s327
+s329->s337
+s181->s183
+s181->s182
+s181->s83
+s339->s82
+s339->s338
+s339->s311
+s339->s336
+s197->s83
+s197->s82
+s197->s186
+s238->s237
+s238->s249
+s238->s240
+s241->s244
+s241->s243
+s241->s240
+s342->s199
+s342->s310
+s342->s309
+s198->s199
+s198->s196
+s340->s326
+s340->s310
+s340->s201
+s180->s199
+s180->s178
+s180->s196
+s180->s201
+s179->s178
+s179->s201
+}
+{
+s203->s169
+s203->s177
+s203->s176
+s204->s166
+s204->s205
+s204->s177
+s341->s159
+s341->s314
+s341->s313
+s160->s205
+s160->s159
+s160->s171
+s325->s324
+s325->s172
+s325->s314
+s174->s172
+s174->s173
+s174->s176
+s161->s159
+s161->s173
+s161->s172
+s161->s171
+s188->s190
+s188->s189
+s188->s185
+s187->s194
+s187->s185
+s187->s184
+s337->s328
+s337->s329
+s337->s200
+s182->s184
+s182->s181
+s182->s200
+s338->s329
+s338->s339
+s338->s81
+s83->s81
+s83->s181
+s83->s197
+s83->s200
+s82->s189
+s82->s81
+s82->s197
+s249->s250
+s249->s246
+s249->s249
+s201->s180
+s201->s179
+s201->s2
+s199->s4
+s199->s198
+s199->s180
+s244->s246
+s244->s245
+s244->s244
+}
+{
+s2->s2
+s2->s6
+s2->s0
+s4->s5
+s4->s4
+s4->s0
+s245->s244
+s245->s248
+s246->s247
+s246->s244
+s246->s249
+s246->s248
+s81->s84
+s81->s83
+s81->s82
+s200->s182
+s200->s83
+s200->s88
+s194->s194
+s194->s90
+s194->s192
+s190->s191
+s190->s190
+s190->s192
+s172->s174
+s172->s206
+s172->s161
+s159->s162
+s159->s161
+s159->s160
+s166->s166
+s166->s165
+s166->s168
+s169->s170
+s169->s169
+s169->s168
+s250->s247
+s250->s249
+}
+{
+s5->s4
+s5->s1
+s0->s4
+s0->s3
+s0->s2
+s0->s1
+s88->s86
+s88->s89
+s88->s88
+s6->s3
+s6->s2
+s90->s195
+s90->s194
+s137->s101
+s137->s140
+s139->s101
+s139->s100
+s248->s245
+s248->s246
+s248->s3
+s84->s86
+s84->s85
+s84->s84
+s192->s190
+s192->s195
+s192->s194
+s192->s193
+s206->s206
+s206->s10
+s206->s9
+s162->s162
+s162->s163
+s162->s10
+s168->s167
+s168->s166
+s168->s11
+s168->s169
+s170->s11
+s170->s169
+s55->s18
+s55->s17
+s56->s18
+s56->s57
+s247->s246
+s247->s250
+s247->s1
+s191->s190
+s191->s193
+s165->s167
+s165->s166
+}
+{
+s405->s14
+s405->s13
+s18->s55
+s18->s54
+s18->s56
+s18->s16
+s11->s170
+s11->s168
+s11->s3
+s11->s8
+s17->s13
+s17->s55
+s17->s20
+s17->s16
+s1->s87
+s1->s164
+s1->s5
+s1->s0
+s3->s7
+s3->s6
+s3->s8
+s3->s0
+s93->s94
+s93->s91
+s100->s103
+s100->s97
+s100->s139
+s100->s99
+s101->s138
+s101->s137
+s101->s139
+s101->s99
+s96->s94
+s96->s97
+s9->s206
+s9->s170
+s9->s13
+s9->s8
+s86->s87
+s86->s7
+s86->s84
+s86->s88
+s10->s206
+s10->s164
+s10->s162
+s10->s8
+s89->s7
+s89->s91
+s89->s90
+s89->s88
+s140->s114
+s140->s91
+s140->s138
+s140->s137
+s195->s3
+s195->s90
+s195->s7
+s195->s192
+s59->s14
+s59->s58
+s85->s87
+s85->s97
+s85->s84
+s85->s191
+s193->s191
+s193->s1
+s193->s87
+s193->s192
+s57->s30
+s57->s56
+s57->s58
+s57->s54
+s163->s165
+s163->s164
+s163->s58
+s163->s162
+s167->s165
+s167->s164
+s167->s1
+s167->s168
+}
+{
+s13->s405
+s13->s12
+s14->s405
+s14->s60
+s14->s59
+s14->s12
+s16->s19
+s16->s18
+s16->s12
+s16->s17
+s94->s95
+s94->s93
+s94->s92
+s94->s96
+s7->s86
+s7->s92
+s7->s195
+s7->s89
+s87->s86
+s87->s95
+s87->s85
+s87->s193
+s91->s93
+s91->s92
+s97->s95
+s97->s96
+s99->s102
+s99->s101
+s99->s95
+s99->s100
+s8->s12
+s8->s11
+s8->s10
+s8->s9
+s402->s63
+s402->s404
+s138->s92
+s138->s101
+s138->s140
+s138->s113
+s403->s63
+s403->s62
+s375->s374
+s375->s378
+s377->s374
+s377->s373
+s384->s383
+s384->s142
+s386->s142
+s386->s141
+s394->s397
+s394->s393
+s396->s393
+s396->s392
+s54->s60
+s54->s18
+s54->s57
+s54->s32
+s58->s60
+s58->s59
+s164->s167
+s164->s163
+s164->s60
+s164->s10
+s20->s53
+s20->s19
+s103->s102
+s103->s136
+s114->s135
+s114->s113
+s30->s31
+s30->s32
+}
+{
+s400->s399
+s400->s66
+s141->s98
+s141->s386
+s12->s15
+s12->s14
+s12->s13
+s12->s16
+s404->s15
+s404->s402
+s95->s94
+s95->s99
+s95->s98
+s95->s97
+s92->s91
+s92->s138
+s92->s94
+s92->s379
+s142->s98
+s142->s386
+s142->s379
+s142->s384
+s401->s66
+s401->s65
+s382->s381
+s382->s145
+s374->s375
+s374->s377
+s374->s146
+s374->s376
+s378->s375
+s378->s376
+s385->s145
+s385->s144
+s383->s379
+s383->s384
+s63->s15
+s63->s61
+s63->s403
+s63->s402
+s393->s395
+s393->s67
+s393->s394
+s393->s396
+s397->s395
+s397->s394
+s373->s146
+s373->s377
+s60->s61
+s60->s58
+s60->s14
+s60->s54
+s62->s61
+s62->s403
+s392->s396
+s392->s67
+s19->s23
+s19->s22
+s19->s21
+s19->s20
+s102->s103
+s102->s106
+s102->s105
+s102->s104
+s113->s110
+s113->s115
+s113->s114
+s113->s104
+s32->s30
+s32->s21
+s32->s26
+s32->s33
+s53->s21
+s53->s20
+s136->s103
+s136->s104
+s135->s114
+s135->s104
+s31->s30
+s31->s21
+}
+{
+s98->s143
+s98->s142
+s98->s141
+s98->s99
+s15->s63
+s15->s398
+s15->s404
+s15->s16
+s155->s151
+s155->s156
+s155->s152
+s153->s208
+s153->s362
+s153->s152
+s77->s78
+s77->s74
+s77->s73
+s75->s387
+s75->s356
+s75->s74
+s152->s150
+s152->s155
+s152->s154
+s152->s153
+s362->s364
+s362->s154
+s362->s153
+s381->s382
+s381->s364
+s381->s378
+s381->s380
+s376->s380
+s376->s374
+s376->s379
+s376->s378
+s145->s143
+s145->s382
+s145->s380
+s145->s385
+s379->s142
+s379->s380
+s379->s383
+s379->s138
+s74->s76
+s74->s75
+s74->s77
+s74->s72
+s387->s389
+s387->s76
+s387->s75
+s399->s389
+s399->s398
+s399->s397
+s399->s400
+s66->s398
+s66->s400
+s66->s401
+s66->s64
+s395->s15
+s395->s397
+s395->s398
+s395->s393
+s144->s143
+s144->s373
+s144->s148
+s144->s385
+s146->s374
+s146->s143
+s146->s373
+s146->s98
+s151->s150
+s151->s148
+s151->s155
+s61->s63
+s61->s54
+s61->s64
+s61->s62
+s65->s392
+s65->s401
+s65->s69
+s65->s64
+s67->s61
+s67->s64
+s67->s393
+s67->s392
+s73->s77
+s73->s69
+s73->s72
+s23->s19
+s23->s25
+s23->s24
+s22->s23
+s22->s46
+s22->s52
+s22->s35
+s21->s31
+s21->s53
+s21->s19
+s21->s32
+s106->s102
+s106->s108
+s106->s107
+s105->s134
+s105->s117
+s105->s106
+s105->s128
+s104->s135
+s104->s102
+s104->s113
+s104->s136
+s110->s108
+s110->s113
+s110->s112
+s115->s110
+s115->s117
+s115->s116
+s115->s118
+s26->s25
+s26->s29
+s26->s32
+s33->s35
+s33->s34
+s33->s36
+s33->s26
+}
+{
+s76->s388
+s76->s387
+s76->s74
+s70->s391
+s70->s390
+s70->s68
+s70->s388
+s364->s371
+s364->s363
+s78->s79
+s78->s81
+s78->s80
+s372->s149
+s372->s148
+s372->s360
+s371->s359
+s371->s149
+s371->s364
+s208->s158
+s208->s172
+s208->s210
+s143->s147
+s143->s146
+s143->s145
+s143->s144
+s389->s390
+s389->s388
+s398->s399
+s398->s388
+s398->s395
+s398->s66
+s154->s363
+s154->s362
+s154->s152
+s150->s151
+s150->s147
+s150->s152
+s148->s372
+s148->s147
+s391->s70
+s391->s69
+s391->s224
+s380->s363
+s380->s145
+s380->s381
+s380->s376
+s156->s159
+s156->s158
+s156->s157
+s356->s200
+s356->s218
+s356->s80
+s149->s147
+s149->s372
+s149->s363
+s149->s371
+s390->s223
+s390->s70
+s390->s389
+s64->s68
+s64->s67
+s64->s66
+s64->s65
+s69->s391
+s69->s68
+s72->s68
+s72->s74
+s72->s73
+s282->s271
+s282->s172
+s282->s281
+s347->s271
+s347->s270
+s347->s159
+s294->s286
+s294->s285
+s294->s200
+s295->s286
+s295->s81
+s295->s296
+s25->s23
+s25->s28
+s25->s27
+s25->s26
+s24->s23
+s24->s20
+s24->s27
+s46->s47
+s46->s38
+s46->s43
+s52->s22
+s52->s50
+s35->s22
+s35->s51
+s35->s50
+s35->s33
+s108->s110
+s108->s109
+s108->s111
+s108->s106
+s107->s111
+s107->s103
+s107->s106
+s134->s133
+s134->s105
+s117->s133
+s117->s132
+s117->s115
+s117->s105
+s128->s124
+s128->s129
+s128->s120
+s112->s110
+s112->s109
+s112->s114
+s116->s132
+s116->s115
+s118->s119
+s118->s121
+s118->s120
+s29->s30
+s29->s28
+s29->s26
+s34->s51
+s34->s33
+s36->s39
+s36->s38
+s36->s37
+}
+{
+s296->s295
+s296->s293
+s296->s268
+s296->s82
+s270->s269
+s270->s347
+s270->s273
+s270->s160
+s79->s78
+s79->s227
+s79->s82
+s79->s225
+s262->s238
+s262->s233
+s262->s264
+s292->s293
+s292->s188
+s292->s289
+s291->s187
+s291->s289
+s291->s288
+s286->s295
+s286->s268
+s286->s294
+s286->s284
+s271->s269
+s271->s347
+s271->s282
+s271->s280
+s281->s278
+s281->s174
+s281->s282
+s281->s280
+s277->s274
+s277->s204
+s277->s273
+s275->s278
+s275->s203
+s275->s274
+s68->s71
+s68->s70
+s68->s69
+s68->s72
+s210->s212
+s210->s174
+s210->s209
+s210->s208
+s285->s182
+s285->s294
+s285->s284
+s285->s288
+s158->s207
+s158->s156
+s158->s209
+s158->s208
+s360->s213
+s360->s204
+s360->s361
+s80->s78
+s80->s356
+s80->s227
+s80->s217
+s224->s221
+s224->s188
+s224->s225
+s157->s207
+s157->s156
+s157->s361
+s157->s160
+s147->s71
+s147->s150
+s147->s149
+s147->s148
+s218->s220
+s218->s182
+s218->s217
+s218->s356
+s388->s389
+s388->s76
+s388->s70
+s388->s365
+s359->s213
+s359->s212
+s359->s203
+s223->s221
+s223->s220
+s223->s187
+s363->s154
+s363->s149
+s363->s364
+s363->s365
+s349->s241
+s349->s351
+s349->s264
+s28->s29
+s28->s25
+s27->s25
+s27->s24
+s47->s46
+s47->s45
+s47->s48
+s38->s46
+s38->s36
+s38->s49
+s38->s48
+s43->s22
+s43->s45
+s43->s41
+s43->s46
+s50->s52
+s50->s35
+s51->s35
+s51->s34
+s109->s108
+s109->s112
+s111->s108
+s111->s107
+s133->s134
+s133->s117
+s132->s117
+s132->s116
+s124->s127
+s124->s105
+s124->s123
+s124->s128
+s129->s127
+s129->s130
+s129->s128
+s120->s131
+s120->s130
+s120->s118
+s120->s128
+s119->s118
+s119->s131
+s119->s122
+s121->s115
+s121->s122
+s121->s118
+s121->s123
+s39->s41
+s39->s36
+s39->s33
+s39->s40
+s37->s36
+s37->s49
+s37->s40
+}
+{
+s293->s189
+s293->s292
+s293->s290
+s268->s286
+s268->s290
+s268->s296
+s273->s277
+s273->s205
+s273->s272
+s269->s271
+s269->s270
+s269->s272
+s233->s263
+s233->s262
+s233->s237
+s207->s358
+s207->s157
+s207->s158
+s351->s350
+s351->s349
+s351->s243
+s264->s263
+s264->s350
+s264->s349
+s264->s262
+s289->s287
+s289->s292
+s289->s291
+s289->s290
+s288->s287
+s288->s291
+s288->s184
+s284->s287
+s284->s286
+s284->s285
+s280->s271
+s280->s276
+s280->s281
+s278->s276
+s278->s275
+s278->s176
+s274->s276
+s274->s275
+s274->s277
+s274->s272
+s71->s150
+s71->s370
+s71->s367
+s71->s72
+s365->s367
+s365->s366
+s365->s76
+s365->s154
+s220->s219
+s220->s223
+s220->s184
+s213->s359
+s213->s358
+s213->s211
+s213->s360
+s217->s219
+s217->s218
+s217->s80
+s221->s223
+s221->s222
+s221->s219
+s221->s224
+s361->s358
+s361->s205
+s361->s360
+s225->s222
+s225->s189
+s225->s224
+s227->s79
+s227->s222
+s227->s80
+s209->s158
+s209->s211
+s209->s210
+s212->s211
+s212->s359
+s212->s176
+s45->s43
+s45->s42
+s48->s47
+s48->s38
+s49->s38
+s49->s37
+s41->s39
+s41->s44
+s41->s43
+s41->s42
+s127->s126
+s127->s124
+s123->s125
+s123->s124
+s123->s126
+s123->s121
+s130->s129
+s130->s120
+s131->s119
+s131->s120
+s122->s125
+s122->s121
+s40->s39
+s40->s44
+}
+{
+s287->s279
+s287->s284
+s287->s289
+s287->s288
+s290->s289
+s290->s293
+s290->s268
+s290->s265
+s350->s351
+s350->s279
+s350->s264
+s358->s207
+s358->s213
+s358->s226
+s358->s361
+s370->s71
+s370->s369
+s211->s213
+s211->s212
+s211->s214
+s211->s209
+s219->s214
+s219->s221
+s219->s220
+s219->s217
+s366->s365
+s366->s368
+s367->s71
+s367->s365
+s367->s369
+s367->s368
+s276->s278
+s276->s279
+s276->s274
+s276->s280
+s222->s227
+s222->s221
+s222->s226
+s222->s225
+s263->s233
+s263->s265
+s263->s264
+s272->s273
+s272->s269
+s272->s274
+s272->s265
+s42->s45
+s42->s41
+s44->s41
+s44->s40
+s126->s127
+s126->s123
+s125->s123
+s125->s122
+}
+{
+s369->s367
+s369->s229
+s369->s370
+s226->s228
+s226->s207
+s226->s227
+s226->s216
+s214->s215
+s214->s217
+s214->s209
+s214->s216
+s216->s357
+s216->s226
+s216->s214
+s216->s229
+s368->s367
+s368->s366
+s368->s357
+s267->s279
+s267->s265
+s267->s348
+s267->s297
+s279->s284
+s279->s267
+s279->s283
+s279->s280
+s265->s269
+s265->s268
+s265->s267
+s265->s266
+}
+{
+s215->s357
+s215->s355
+s215->s214
+s215->s179
+s348->s199
+s348->s267
+s348->s266
+s348->s345
+s357->s215
+s357->s353
+s357->s201
+s357->s216
+s228->s230
+s228->s198
+s228->s229
+s228->s226
+s297->s300
+s297->s267
+s297->s201
+s297->s283
+s283->s279
+s283->s179
+s283->s298
+s283->s297
+s229->s199
+s229->s228
+s229->s231
+s229->s216
+s266->s198
+s266->s348
+s266->s346
+s266->s265
+}
+{
+s256->s255
+s256->s245
+s256->s259
+s257->s255
+s257->s260
+s257->s259
+s257->s258
+s344->s343
+s344->s346
+s344->s305
+s258->s247
+s258->s261
+s258->s257
+s345->s343
+s345->s235
+s345->s346
+s259->s257
+s259->s248
+s259->s256
+s260->s261
+s260->s260
+s260->s257
+s261->s260
+s261->s250
+s261->s258
+s232->s263
+s232->s230
+s232->s352
+s298->s301
+s298->s300
+s298->s254
+s298->s299
+s230->s231
+s230->s234
+s230->s233
+s230->s232
+s299->s302
+s299->s343
+s299->s298
+s231->s230
+s231->s235
+s231->s352
+s255->s255
+s255->s257
+s255->s256
+s254->s253
+s254->s252
+s254->s243
+s253->s254
+s253->s251
+s253->s242
+s252->s255
+s252->s254
+s252->s251
+s251->s252
+s251->s236
+s251->s235
+s251->s253
+s355->s351
+s355->s254
+s355->s354
+s355->s353
+s235->s260
+s235->s251
+s235->s234
+s353->s252
+s353->s355
+s353->s352
+s300->s252
+s300->s343
+s300->s298
+s234->s237
+s234->s236
+s234->s235
+s352->s231
+s352->s354
+s352->s353
+s352->s232
+s354->s350
+s354->s355
+s354->s352
+s236->s239
+s236->s251
+s236->s234
+s343->s300
+s343->s345
+s343->s299
+s343->s344
+s346->s307
+s346->s345
+s346->s234
+s346->s344
+}
+}

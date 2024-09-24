@@ -1,0 +1,18 @@
+digraph {
+rankdir="LR"
+s0[label="State(index=0, fluent atoms=[(at c_0_0), (reward c_0_1)], static atoms=[(adjacent c_0_1 c_0_0), (adjacent c_0_0 c_0_1), (unblocked c_0_1), (unblocked c_0_0), (cell c_0_0), (cell c_0_1)], derived atoms=[])"]
+s1[label="State(index=1, fluent atoms=[(reward c_0_1), (at c_0_1)], static atoms=[(adjacent c_0_1 c_0_0), (adjacent c_0_0 c_0_1), (unblocked c_0_1), (unblocked c_0_0), (cell c_0_0), (cell c_0_1)], derived atoms=[])"]
+s2[peripheries=2,label="State(index=2, fluent atoms=[(picked c_0_1), (at c_0_1)], static atoms=[(adjacent c_0_1 c_0_0), (adjacent c_0_0 c_0_1), (unblocked c_0_1), (unblocked c_0_0), (cell c_0_0), (cell c_0_1)], derived atoms=[])"]
+s3[peripheries=2,label="State(index=3, fluent atoms=[(picked c_0_1), (at c_0_0)], static atoms=[(adjacent c_0_1 c_0_0), (adjacent c_0_0 c_0_1), (unblocked c_0_1), (unblocked c_0_0), (cell c_0_0), (cell c_0_1)], derived atoms=[])"]
+Dangling [ label = "", style = invis ]
+{ rank = same; Dangling }
+Dangling -> s0
+{ rank = same; s0}
+{ rank = same; s1}
+{ rank = same; s2,s3}
+s0->s1 [label="(move c_0_0 c_0_1)"]
+s1->s0 [label="(move c_0_1 c_0_0)"]
+s1->s2 [label="(pick-reward c_0_1)"]
+s2->s3 [label="(move c_0_1 c_0_0)"]
+s3->s2 [label="(move c_0_0 c_0_1)"]
+}

@@ -1,0 +1,11 @@
+(:policy
+(:booleans )
+(:numericals (f9 "n_count(r_restrict(r_primitive(carrying,0,1),c_primitive(usable,0)))") (f39 "n_count(c_some(r_primitive(at,0,1),c_all(r_inverse(r_primitive(at,0,1)),c_primitive(man,0))))") (f85 "n_count(c_some(r_transitive_closure(r_primitive(link,0,1)),c_some(r_inverse(r_primitive(at,0,1)),c_primitive(man,0))))"))
+(:rule (:conditions (:c_n_eq f9) (:c_n_gt f39)) (:effects (:e_n_bot f9) (:e_n_dec f39) (:e_n_inc f85)))
+(:rule (:conditions (:c_n_eq f9) (:c_n_gt f39)) (:effects (:e_n_bot f9) (:e_n_bot f39) (:e_n_inc f85)))
+(:rule (:conditions (:c_n_gt f39) (:c_n_gt f85)) (:effects (:e_n_bot f9) (:e_n_bot f39) (:e_n_inc f85)))
+(:rule (:conditions (:c_n_gt f39) (:c_n_gt f85)) (:effects (:e_n_bot f9) (:e_n_dec f39) (:e_n_inc f85)))
+(:rule (:conditions (:c_n_eq f39) (:c_n_gt f85)) (:effects (:e_n_inc f9) (:e_n_inc f39) (:e_n_bot f85)))
+(:rule (:conditions (:c_n_eq f39) (:c_n_gt f85)) (:effects (:e_n_inc f9) (:e_n_bot f39) (:e_n_bot f85)))
+(:rule (:conditions (:c_n_gt f9) (:c_n_eq f39) (:c_n_gt f85)) (:effects (:e_n_dec f9) (:e_n_bot f39) (:e_n_bot f85)))
+)
